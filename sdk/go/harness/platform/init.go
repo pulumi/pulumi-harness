@@ -45,12 +45,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectorCustomSecretManager{}
 	case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
 		r = &ConnectorCustomhealthsource{}
+	case "harness:platform/connectorJdbc:ConnectorJdbc":
+		r = &ConnectorJdbc{}
 	case "harness:platform/connectorPdc:ConnectorPdc":
 		r = &ConnectorPdc{}
 	case "harness:platform/connectorRancher:ConnectorRancher":
 		r = &ConnectorRancher{}
 	case "harness:platform/datadogConnector:DatadogConnector":
 		r = &DatadogConnector{}
+	case "harness:platform/dbInstance:DbInstance":
+		r = &DbInstance{}
+	case "harness:platform/dbSchema:DbSchema":
+		r = &DbSchema{}
 	case "harness:platform/delegatetoken:Delegatetoken":
 		r = &Delegatetoken{}
 	case "harness:platform/dockerConnector:DockerConnector":
@@ -109,6 +115,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GitlabConnector{}
 	case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
 		r = &GitopsAppProjectMapping{}
+	case "harness:platform/gitopsProject:GitopsProject":
+		r = &GitopsProject{}
 	case "harness:platform/helmConnector:HelmConnector":
 		r = &HelmConnector{}
 	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
@@ -282,6 +290,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/connectorJdbc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/connectorPdc",
 		&module{version},
 	)
@@ -293,6 +306,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/datadogConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/dbInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/dbSchema",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -438,6 +461,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/gitopsAppProjectMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitopsProject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

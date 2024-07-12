@@ -70,6 +70,8 @@ type GetGitopsApplicationsResult struct {
 	RequestCascade bool `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
 	RequestPropagationPolicy string `pulumi:"requestPropagationPolicy"`
+	// Indicates if the GitOps application should skip validate repository definition exists.
+	SkipRepoValidation bool `pulumi:"skipRepoValidation"`
 	// Indicates if the GitOps application should be updated if existing and inserted if not.
 	Upsert bool `pulumi:"upsert"`
 	// Indicates if the GitOps application yaml has to be validated.
@@ -197,6 +199,11 @@ func (o GetGitopsApplicationsResultOutput) RequestCascade() pulumi.BoolOutput {
 // Request propagation policy to delete the GitOps application.
 func (o GetGitopsApplicationsResultOutput) RequestPropagationPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.RequestPropagationPolicy }).(pulumi.StringOutput)
+}
+
+// Indicates if the GitOps application should skip validate repository definition exists.
+func (o GetGitopsApplicationsResultOutput) SkipRepoValidation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) bool { return v.SkipRepoValidation }).(pulumi.BoolOutput)
 }
 
 // Indicates if the GitOps application should be updated if existing and inserted if not.

@@ -117,6 +117,10 @@ export interface GetGitopsApplicationsResult {
      */
     readonly requestPropagationPolicy: string;
     /**
+     * Indicates if the GitOps application should skip validate repository definition exists.
+     */
+    readonly skipRepoValidation: boolean;
+    /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
     readonly upsert: boolean;

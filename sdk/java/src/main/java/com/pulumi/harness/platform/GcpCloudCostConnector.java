@@ -120,14 +120,14 @@ public class GcpCloudCostConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Indicates which features to enable among Billing, Optimization, and Visibility.
+     * Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     @Export(name="featuresEnableds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> featuresEnableds;
 
     /**
-     * @return Indicates which features to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     public Output<List<String>> featuresEnableds() {

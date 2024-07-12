@@ -85,7 +85,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates which features to enable among Billing, Optimization, and Visibility.
+        /// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         /// </summary>
         [Output("featuresEnableds")]
         public Output<ImmutableArray<string>> FeaturesEnableds { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _featuresEnableds;
 
         /// <summary>
-        /// Indicates which features to enable among Billing, Optimization, and Visibility.
+        /// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         /// </summary>
         public InputList<string> FeaturesEnableds
         {
@@ -275,7 +275,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _featuresEnableds;
 
         /// <summary>
-        /// Indicates which features to enable among Billing, Optimization, and Visibility.
+        /// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         /// </summary>
         public InputList<string> FeaturesEnableds
         {

@@ -85,7 +85,7 @@ type AzureCloudCostConnector struct {
 	BillingExportSpec AzureCloudCostConnectorBillingExportSpecPtrOutput `pulumi:"billingExportSpec"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Indicates which feature to enable among Billing, Optimization, and Visibility.
+	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds pulumi.StringArrayOutput `pulumi:"featuresEnableds"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -149,7 +149,7 @@ type azureCloudCostConnectorState struct {
 	BillingExportSpec *AzureCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Indicates which feature to enable among Billing, Optimization, and Visibility.
+	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -172,7 +172,7 @@ type AzureCloudCostConnectorState struct {
 	BillingExportSpec AzureCloudCostConnectorBillingExportSpecPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Indicates which feature to enable among Billing, Optimization, and Visibility.
+	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds pulumi.StringArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -199,7 +199,7 @@ type azureCloudCostConnectorArgs struct {
 	BillingExportSpec *AzureCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Indicates which feature to enable among Billing, Optimization, and Visibility.
+	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -223,7 +223,7 @@ type AzureCloudCostConnectorArgs struct {
 	BillingExportSpec AzureCloudCostConnectorBillingExportSpecPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Indicates which feature to enable among Billing, Optimization, and Visibility.
+	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds pulumi.StringArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -340,7 +340,7 @@ func (o AzureCloudCostConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCloudCostConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Indicates which feature to enable among Billing, Optimization, and Visibility.
+// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 func (o AzureCloudCostConnectorOutput) FeaturesEnableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AzureCloudCostConnector) pulumi.StringArrayOutput { return v.FeaturesEnableds }).(pulumi.StringArrayOutput)
 }

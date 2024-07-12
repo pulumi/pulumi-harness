@@ -48,14 +48,14 @@ public final class AzureCloudCostConnectorState extends com.pulumi.resources.Res
     }
 
     /**
-     * Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     @Import(name="featuresEnableds")
     private @Nullable Output<List<String>> featuresEnableds;
 
     /**
-     * @return Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     public Optional<Output<List<String>>> featuresEnableds() {
@@ -243,7 +243,7 @@ public final class AzureCloudCostConnectorState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param featuresEnableds Indicates which feature to enable among Billing, Optimization, and Visibility.
+         * @param featuresEnableds Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class AzureCloudCostConnectorState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param featuresEnableds Indicates which feature to enable among Billing, Optimization, and Visibility.
+         * @param featuresEnableds Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class AzureCloudCostConnectorState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param featuresEnableds Indicates which feature to enable among Billing, Optimization, and Visibility.
+         * @param featuresEnableds Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
          * 
          * @return builder
          * 

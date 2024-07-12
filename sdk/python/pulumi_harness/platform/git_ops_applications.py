@@ -22,14 +22,15 @@ class GitOpsApplicationsArgs:
                  cluster_id: pulumi.Input[str],
                  org_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
-                 repo_id: pulumi.Input[str],
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_remove_existing_finalizers: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 repo_id: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
+                 skip_repo_validation: Optional[pulumi.Input[bool]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None):
         """
@@ -40,14 +41,15 @@ class GitOpsApplicationsArgs:
         :param pulumi.Input[str] cluster_id: Cluster identifier of the GitOps application.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
-        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[str] kind: Kind of the GitOps application.
         :param pulumi.Input[str] name: Name of the GitOps application.
         :param pulumi.Input[bool] options_remove_existing_finalizers: Options to remove existing finalizers to delete the GitOps application.
         :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
+        :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
         :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
@@ -57,7 +59,6 @@ class GitOpsApplicationsArgs:
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "repo_id", repo_id)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if kind is not None:
@@ -68,10 +69,14 @@ class GitOpsApplicationsArgs:
             pulumi.set(__self__, "options_remove_existing_finalizers", options_remove_existing_finalizers)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if repo_id is not None:
+            pulumi.set(__self__, "repo_id", repo_id)
         if request_cascade is not None:
             pulumi.set(__self__, "request_cascade", request_cascade)
         if request_propagation_policy is not None:
             pulumi.set(__self__, "request_propagation_policy", request_propagation_policy)
+        if skip_repo_validation is not None:
+            pulumi.set(__self__, "skip_repo_validation", skip_repo_validation)
         if upsert is not None:
             pulumi.set(__self__, "upsert", upsert)
         if validate is not None:
@@ -150,18 +155,6 @@ class GitOpsApplicationsArgs:
         pulumi.set(self, "project_id", value)
 
     @property
-    @pulumi.getter(name="repoId")
-    def repo_id(self) -> pulumi.Input[str]:
-        """
-        Repository identifier of the GitOps application.
-        """
-        return pulumi.get(self, "repo_id")
-
-    @repo_id.setter
-    def repo_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "repo_id", value)
-
-    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -222,6 +215,18 @@ class GitOpsApplicationsArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="repoId")
+    def repo_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository identifier of the GitOps application.
+        """
+        return pulumi.get(self, "repo_id")
+
+    @repo_id.setter
+    def repo_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_id", value)
+
+    @property
     @pulumi.getter(name="requestCascade")
     def request_cascade(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -244,6 +249,18 @@ class GitOpsApplicationsArgs:
     @request_propagation_policy.setter
     def request_propagation_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_propagation_policy", value)
+
+    @property
+    @pulumi.getter(name="skipRepoValidation")
+    def skip_repo_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the GitOps application should skip validate repository definition exists.
+        """
+        return pulumi.get(self, "skip_repo_validation")
+
+    @skip_repo_validation.setter
+    def skip_repo_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_repo_validation", value)
 
     @property
     @pulumi.getter
@@ -287,6 +304,7 @@ class _GitOpsApplicationsState:
                  repo_id: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
+                 skip_repo_validation: Optional[pulumi.Input[bool]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None):
         """
@@ -305,6 +323,7 @@ class _GitOpsApplicationsState:
         :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
+        :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
         :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
@@ -336,6 +355,8 @@ class _GitOpsApplicationsState:
             pulumi.set(__self__, "request_cascade", request_cascade)
         if request_propagation_policy is not None:
             pulumi.set(__self__, "request_propagation_policy", request_propagation_policy)
+        if skip_repo_validation is not None:
+            pulumi.set(__self__, "skip_repo_validation", skip_repo_validation)
         if upsert is not None:
             pulumi.set(__self__, "upsert", upsert)
         if validate is not None:
@@ -510,6 +531,18 @@ class _GitOpsApplicationsState:
         pulumi.set(self, "request_propagation_policy", value)
 
     @property
+    @pulumi.getter(name="skipRepoValidation")
+    def skip_repo_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the GitOps application should skip validate repository definition exists.
+        """
+        return pulumi.get(self, "skip_repo_validation")
+
+    @skip_repo_validation.setter
+    def skip_repo_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_repo_validation", value)
+
+    @property
     @pulumi.getter
     def upsert(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -553,6 +586,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  repo_id: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
+                 skip_repo_validation: Optional[pulumi.Input[bool]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -633,6 +667,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
+        :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
         :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
@@ -732,6 +767,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  repo_id: Optional[pulumi.Input[str]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
+                 skip_repo_validation: Optional[pulumi.Input[bool]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  validate: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -766,11 +802,10 @@ class GitOpsApplications(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
-            if repo_id is None and not opts.urn:
-                raise TypeError("Missing required property 'repo_id'")
             __props__.__dict__["repo_id"] = repo_id
             __props__.__dict__["request_cascade"] = request_cascade
             __props__.__dict__["request_propagation_policy"] = request_propagation_policy
+            __props__.__dict__["skip_repo_validation"] = skip_repo_validation
             __props__.__dict__["upsert"] = upsert
             __props__.__dict__["validate"] = validate
         super(GitOpsApplications, __self__).__init__(
@@ -797,6 +832,7 @@ class GitOpsApplications(pulumi.CustomResource):
             repo_id: Optional[pulumi.Input[str]] = None,
             request_cascade: Optional[pulumi.Input[bool]] = None,
             request_propagation_policy: Optional[pulumi.Input[str]] = None,
+            skip_repo_validation: Optional[pulumi.Input[bool]] = None,
             upsert: Optional[pulumi.Input[bool]] = None,
             validate: Optional[pulumi.Input[bool]] = None) -> 'GitOpsApplications':
         """
@@ -820,6 +856,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
+        :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
         :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
@@ -841,6 +878,7 @@ class GitOpsApplications(pulumi.CustomResource):
         __props__.__dict__["repo_id"] = repo_id
         __props__.__dict__["request_cascade"] = request_cascade
         __props__.__dict__["request_propagation_policy"] = request_propagation_policy
+        __props__.__dict__["skip_repo_validation"] = skip_repo_validation
         __props__.__dict__["upsert"] = upsert
         __props__.__dict__["validate"] = validate
         return GitOpsApplications(resource_name, opts=opts, __props__=__props__)
@@ -935,7 +973,7 @@ class GitOpsApplications(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="repoId")
-    def repo_id(self) -> pulumi.Output[str]:
+    def repo_id(self) -> pulumi.Output[Optional[str]]:
         """
         Repository identifier of the GitOps application.
         """
@@ -956,6 +994,14 @@ class GitOpsApplications(pulumi.CustomResource):
         Request propagation policy to delete the GitOps application.
         """
         return pulumi.get(self, "request_propagation_policy")
+
+    @property
+    @pulumi.getter(name="skipRepoValidation")
+    def skip_repo_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates if the GitOps application should skip validate repository definition exists.
+        """
+        return pulumi.get(self, "skip_repo_validation")
 
     @property
     @pulumi.getter

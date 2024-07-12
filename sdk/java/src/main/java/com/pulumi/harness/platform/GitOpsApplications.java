@@ -265,14 +265,14 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="repoId", refs={String.class}, tree="[0]")
-    private Output<String> repoId;
+    private Output</* @Nullable */ String> repoId;
 
     /**
      * @return Repository identifier of the GitOps application.
      * 
      */
-    public Output<String> repoId() {
-        return this.repoId;
+    public Output<Optional<String>> repoId() {
+        return Codegen.optional(this.repoId);
     }
     /**
      * Request cascade to delete the GitOps application.
@@ -301,6 +301,20 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> requestPropagationPolicy() {
         return Codegen.optional(this.requestPropagationPolicy);
+    }
+    /**
+     * Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    @Export(name="skipRepoValidation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipRepoValidation;
+
+    /**
+     * @return Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    public Output<Optional<Boolean>> skipRepoValidation() {
+        return Codegen.optional(this.skipRepoValidation);
     }
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.

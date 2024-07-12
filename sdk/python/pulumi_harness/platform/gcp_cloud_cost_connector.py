@@ -28,7 +28,7 @@ class GcpCloudCostConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GcpCloudCostConnector resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] gcp_project_id: GCP Project Id.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] service_account_email: Email corresponding to the Service Account.
@@ -60,7 +60,7 @@ class GcpCloudCostConnectorArgs:
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Indicates which features to enable among Billing, Optimization, and Visibility.
+        Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 
@@ -194,7 +194,7 @@ class _GcpCloudCostConnectorState:
         Input properties used for looking up and filtering GcpCloudCostConnector resources.
         :param pulumi.Input['GcpCloudCostConnectorBillingExportSpecArgs'] billing_export_spec: Returns billing details.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] gcp_project_id: GCP Project Id.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -252,7 +252,7 @@ class _GcpCloudCostConnectorState:
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Indicates which features to enable among Billing, Optimization, and Visibility.
+        Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 
@@ -412,7 +412,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GcpCloudCostConnectorBillingExportSpecArgs']] billing_export_spec: Returns billing details.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] gcp_project_id: GCP Project Id.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -555,7 +555,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GcpCloudCostConnectorBillingExportSpecArgs']] billing_export_spec: Returns billing details.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] gcp_project_id: GCP Project Id.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -600,7 +600,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> pulumi.Output[Sequence[str]]:
         """
-        Indicates which features to enable among Billing, Optimization, and Visibility.
+        Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 

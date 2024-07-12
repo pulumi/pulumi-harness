@@ -82,7 +82,7 @@ type GcpCloudCostConnector struct {
 	BillingExportSpec GcpCloudCostConnectorBillingExportSpecPtrOutput `pulumi:"billingExportSpec"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Indicates which features to enable among Billing, Optimization, and Visibility.
+	// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds pulumi.StringArrayOutput `pulumi:"featuresEnableds"`
 	// GCP Project Id.
 	GcpProjectId pulumi.StringOutput `pulumi:"gcpProjectId"`
@@ -146,7 +146,7 @@ type gcpCloudCostConnectorState struct {
 	BillingExportSpec *GcpCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Indicates which features to enable among Billing, Optimization, and Visibility.
+	// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// GCP Project Id.
 	GcpProjectId *string `pulumi:"gcpProjectId"`
@@ -169,7 +169,7 @@ type GcpCloudCostConnectorState struct {
 	BillingExportSpec GcpCloudCostConnectorBillingExportSpecPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Indicates which features to enable among Billing, Optimization, and Visibility.
+	// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds pulumi.StringArrayInput
 	// GCP Project Id.
 	GcpProjectId pulumi.StringPtrInput
@@ -196,7 +196,7 @@ type gcpCloudCostConnectorArgs struct {
 	BillingExportSpec *GcpCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Indicates which features to enable among Billing, Optimization, and Visibility.
+	// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// GCP Project Id.
 	GcpProjectId string `pulumi:"gcpProjectId"`
@@ -220,7 +220,7 @@ type GcpCloudCostConnectorArgs struct {
 	BillingExportSpec GcpCloudCostConnectorBillingExportSpecPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Indicates which features to enable among Billing, Optimization, and Visibility.
+	// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds pulumi.StringArrayInput
 	// GCP Project Id.
 	GcpProjectId pulumi.StringInput
@@ -337,7 +337,7 @@ func (o GcpCloudCostConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpCloudCostConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Indicates which features to enable among Billing, Optimization, and Visibility.
+// Indicates which features to enable among Billing, Optimization, Visibility and Governance.
 func (o GcpCloudCostConnectorOutput) FeaturesEnableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GcpCloudCostConnector) pulumi.StringArrayOutput { return v.FeaturesEnableds }).(pulumi.StringArrayOutput)
 }

@@ -22,7 +22,7 @@ class GetGitopsApplicationsResult:
     """
     A collection of values returned by getGitopsApplications.
     """
-    def __init__(__self__, account_id=None, agent_id=None, applications=None, cluster_id=None, id=None, identifier=None, kind=None, name=None, options_remove_existing_finalizers=None, org_id=None, project=None, project_id=None, repo_id=None, request_cascade=None, request_propagation_policy=None, upsert=None, validate=None):
+    def __init__(__self__, account_id=None, agent_id=None, applications=None, cluster_id=None, id=None, identifier=None, kind=None, name=None, options_remove_existing_finalizers=None, org_id=None, project=None, project_id=None, repo_id=None, request_cascade=None, request_propagation_policy=None, skip_repo_validation=None, upsert=None, validate=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -68,6 +68,9 @@ class GetGitopsApplicationsResult:
         if request_propagation_policy and not isinstance(request_propagation_policy, str):
             raise TypeError("Expected argument 'request_propagation_policy' to be a str")
         pulumi.set(__self__, "request_propagation_policy", request_propagation_policy)
+        if skip_repo_validation and not isinstance(skip_repo_validation, bool):
+            raise TypeError("Expected argument 'skip_repo_validation' to be a bool")
+        pulumi.set(__self__, "skip_repo_validation", skip_repo_validation)
         if upsert and not isinstance(upsert, bool):
             raise TypeError("Expected argument 'upsert' to be a bool")
         pulumi.set(__self__, "upsert", upsert)
@@ -196,6 +199,14 @@ class GetGitopsApplicationsResult:
         return pulumi.get(self, "request_propagation_policy")
 
     @property
+    @pulumi.getter(name="skipRepoValidation")
+    def skip_repo_validation(self) -> bool:
+        """
+        Indicates if the GitOps application should skip validate repository definition exists.
+        """
+        return pulumi.get(self, "skip_repo_validation")
+
+    @property
     @pulumi.getter
     def upsert(self) -> bool:
         """
@@ -233,6 +244,7 @@ class AwaitableGetGitopsApplicationsResult(GetGitopsApplicationsResult):
             repo_id=self.repo_id,
             request_cascade=self.request_cascade,
             request_propagation_policy=self.request_propagation_policy,
+            skip_repo_validation=self.skip_repo_validation,
             upsert=self.upsert,
             validate=self.validate)
 
@@ -281,6 +293,7 @@ def get_gitops_applications(account_id: Optional[str] = None,
         repo_id=pulumi.get(__ret__, 'repo_id'),
         request_cascade=pulumi.get(__ret__, 'request_cascade'),
         request_propagation_policy=pulumi.get(__ret__, 'request_propagation_policy'),
+        skip_repo_validation=pulumi.get(__ret__, 'skip_repo_validation'),
         upsert=pulumi.get(__ret__, 'upsert'),
         validate=pulumi.get(__ret__, 'validate'))
 

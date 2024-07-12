@@ -177,7 +177,7 @@ namespace Pulumi.Harness.Platform
         /// Repository identifier of the GitOps application.
         /// </summary>
         [Output("repoId")]
-        public Output<string> RepoId { get; private set; } = null!;
+        public Output<string?> RepoId { get; private set; } = null!;
 
         /// <summary>
         /// Request cascade to delete the GitOps application.
@@ -190,6 +190,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("requestPropagationPolicy")]
         public Output<string?> RequestPropagationPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if the GitOps application should skip validate repository definition exists.
+        /// </summary>
+        [Output("skipRepoValidation")]
+        public Output<bool?> SkipRepoValidation { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if the GitOps application should be updated if existing and inserted if not.
@@ -325,8 +331,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Repository identifier of the GitOps application.
         /// </summary>
-        [Input("repoId", required: true)]
-        public Input<string> RepoId { get; set; } = null!;
+        [Input("repoId")]
+        public Input<string>? RepoId { get; set; }
 
         /// <summary>
         /// Request cascade to delete the GitOps application.
@@ -339,6 +345,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("requestPropagationPolicy")]
         public Input<string>? RequestPropagationPolicy { get; set; }
+
+        /// <summary>
+        /// Indicates if the GitOps application should skip validate repository definition exists.
+        /// </summary>
+        [Input("skipRepoValidation")]
+        public Input<bool>? SkipRepoValidation { get; set; }
 
         /// <summary>
         /// Indicates if the GitOps application should be updated if existing and inserted if not.
@@ -449,6 +461,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("requestPropagationPolicy")]
         public Input<string>? RequestPropagationPolicy { get; set; }
+
+        /// <summary>
+        /// Indicates if the GitOps application should skip validate repository definition exists.
+        /// </summary>
+        [Input("skipRepoValidation")]
+        public Input<bool>? SkipRepoValidation { get; set; }
 
         /// <summary>
         /// Indicates if the GitOps application should be updated if existing and inserted if not.

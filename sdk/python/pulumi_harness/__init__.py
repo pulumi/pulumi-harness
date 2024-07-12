@@ -406,6 +406,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/connectorJdbc",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorJdbc:ConnectorJdbc": "ConnectorJdbc"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/connectorPdc",
   "fqn": "pulumi_harness.platform",
   "classes": {
@@ -426,6 +434,22 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/datadogConnector:DatadogConnector": "DatadogConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/dbInstance",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/dbInstance:DbInstance": "DbInstance"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/dbSchema",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/dbSchema:DbSchema": "DbSchema"
   }
  },
  {
@@ -658,6 +682,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping": "GitopsAppProjectMapping"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitopsProject",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitopsProject:GitopsProject": "GitopsProject"
   }
  },
  {

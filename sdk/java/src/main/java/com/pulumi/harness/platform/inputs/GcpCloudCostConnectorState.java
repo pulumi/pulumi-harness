@@ -48,14 +48,14 @@ public final class GcpCloudCostConnectorState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Indicates which features to enable among Billing, Optimization, and Visibility.
+     * Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     @Import(name="featuresEnableds")
     private @Nullable Output<List<String>> featuresEnableds;
 
     /**
-     * @return Indicates which features to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     public Optional<Output<List<String>>> featuresEnableds() {
@@ -243,7 +243,7 @@ public final class GcpCloudCostConnectorState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param featuresEnableds Indicates which features to enable among Billing, Optimization, and Visibility.
+         * @param featuresEnableds Indicates which features to enable among Billing, Optimization, Visibility and Governance.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class GcpCloudCostConnectorState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param featuresEnableds Indicates which features to enable among Billing, Optimization, and Visibility.
+         * @param featuresEnableds Indicates which features to enable among Billing, Optimization, Visibility and Governance.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class GcpCloudCostConnectorState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param featuresEnableds Indicates which features to enable among Billing, Optimization, and Visibility.
+         * @param featuresEnableds Indicates which features to enable among Billing, Optimization, Visibility and Governance.
          * 
          * @return builder
          * 

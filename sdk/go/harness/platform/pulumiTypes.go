@@ -5622,6 +5622,181 @@ func (o ConnectorCustomhealthsourceParamArrayOutput) Index(i pulumi.IntInput) Co
 	}).(ConnectorCustomhealthsourceParamOutput)
 }
 
+type ConnectorJdbcCredentials struct {
+	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// The username to use for the database server.
+	Username *string `pulumi:"username"`
+	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// ConnectorJdbcCredentialsInput is an input type that accepts ConnectorJdbcCredentialsArgs and ConnectorJdbcCredentialsOutput values.
+// You can construct a concrete instance of `ConnectorJdbcCredentialsInput` via:
+//
+//	ConnectorJdbcCredentialsArgs{...}
+type ConnectorJdbcCredentialsInput interface {
+	pulumi.Input
+
+	ToConnectorJdbcCredentialsOutput() ConnectorJdbcCredentialsOutput
+	ToConnectorJdbcCredentialsOutputWithContext(context.Context) ConnectorJdbcCredentialsOutput
+}
+
+type ConnectorJdbcCredentialsArgs struct {
+	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// The username to use for the database server.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (ConnectorJdbcCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorJdbcCredentials)(nil)).Elem()
+}
+
+func (i ConnectorJdbcCredentialsArgs) ToConnectorJdbcCredentialsOutput() ConnectorJdbcCredentialsOutput {
+	return i.ToConnectorJdbcCredentialsOutputWithContext(context.Background())
+}
+
+func (i ConnectorJdbcCredentialsArgs) ToConnectorJdbcCredentialsOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsOutput)
+}
+
+func (i ConnectorJdbcCredentialsArgs) ToConnectorJdbcCredentialsPtrOutput() ConnectorJdbcCredentialsPtrOutput {
+	return i.ToConnectorJdbcCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorJdbcCredentialsArgs) ToConnectorJdbcCredentialsPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsOutput).ToConnectorJdbcCredentialsPtrOutputWithContext(ctx)
+}
+
+// ConnectorJdbcCredentialsPtrInput is an input type that accepts ConnectorJdbcCredentialsArgs, ConnectorJdbcCredentialsPtr and ConnectorJdbcCredentialsPtrOutput values.
+// You can construct a concrete instance of `ConnectorJdbcCredentialsPtrInput` via:
+//
+//	        ConnectorJdbcCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorJdbcCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToConnectorJdbcCredentialsPtrOutput() ConnectorJdbcCredentialsPtrOutput
+	ToConnectorJdbcCredentialsPtrOutputWithContext(context.Context) ConnectorJdbcCredentialsPtrOutput
+}
+
+type connectorJdbcCredentialsPtrType ConnectorJdbcCredentialsArgs
+
+func ConnectorJdbcCredentialsPtr(v *ConnectorJdbcCredentialsArgs) ConnectorJdbcCredentialsPtrInput {
+	return (*connectorJdbcCredentialsPtrType)(v)
+}
+
+func (*connectorJdbcCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorJdbcCredentials)(nil)).Elem()
+}
+
+func (i *connectorJdbcCredentialsPtrType) ToConnectorJdbcCredentialsPtrOutput() ConnectorJdbcCredentialsPtrOutput {
+	return i.ToConnectorJdbcCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorJdbcCredentialsPtrType) ToConnectorJdbcCredentialsPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsPtrOutput)
+}
+
+type ConnectorJdbcCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ConnectorJdbcCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorJdbcCredentials)(nil)).Elem()
+}
+
+func (o ConnectorJdbcCredentialsOutput) ToConnectorJdbcCredentialsOutput() ConnectorJdbcCredentialsOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsOutput) ToConnectorJdbcCredentialsOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsOutput) ToConnectorJdbcCredentialsPtrOutput() ConnectorJdbcCredentialsPtrOutput {
+	return o.ToConnectorJdbcCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorJdbcCredentialsOutput) ToConnectorJdbcCredentialsPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorJdbcCredentials) *ConnectorJdbcCredentials {
+		return &v
+	}).(ConnectorJdbcCredentialsPtrOutput)
+}
+
+// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentials) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// The username to use for the database server.
+func (o ConnectorJdbcCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentials) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorJdbcCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorJdbcCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorJdbcCredentials)(nil)).Elem()
+}
+
+func (o ConnectorJdbcCredentialsPtrOutput) ToConnectorJdbcCredentialsPtrOutput() ConnectorJdbcCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsPtrOutput) ToConnectorJdbcCredentialsPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsPtrOutput) Elem() ConnectorJdbcCredentialsOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentials) ConnectorJdbcCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorJdbcCredentials
+		return ret
+	}).(ConnectorJdbcCredentialsOutput)
+}
+
+// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use for the database server.
+func (o ConnectorJdbcCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectorPdcHost struct {
 	// Host attributes with values. e.g. type, region, name, ip, etc.
 	Attributes map[string]interface{} `pulumi:"attributes"`
@@ -5862,6 +6037,181 @@ func (o ConnectorRancherBearerTokenPtrOutput) BearerTokenRef() pulumi.StringPtrO
 			return nil
 		}
 		return &v.BearerTokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbSchemaSchemaSource struct {
+	// Connector to repository at which to find details about the database schema
+	Connector string `pulumi:"connector"`
+	// The path within the specified repository at which to find details about the database schema
+	Location string `pulumi:"location"`
+	// If connector url is of account, which repository to connect to using the connector
+	Repo *string `pulumi:"repo"`
+}
+
+// DbSchemaSchemaSourceInput is an input type that accepts DbSchemaSchemaSourceArgs and DbSchemaSchemaSourceOutput values.
+// You can construct a concrete instance of `DbSchemaSchemaSourceInput` via:
+//
+//	DbSchemaSchemaSourceArgs{...}
+type DbSchemaSchemaSourceInput interface {
+	pulumi.Input
+
+	ToDbSchemaSchemaSourceOutput() DbSchemaSchemaSourceOutput
+	ToDbSchemaSchemaSourceOutputWithContext(context.Context) DbSchemaSchemaSourceOutput
+}
+
+type DbSchemaSchemaSourceArgs struct {
+	// Connector to repository at which to find details about the database schema
+	Connector pulumi.StringInput `pulumi:"connector"`
+	// The path within the specified repository at which to find details about the database schema
+	Location pulumi.StringInput `pulumi:"location"`
+	// If connector url is of account, which repository to connect to using the connector
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (DbSchemaSchemaSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (i DbSchemaSchemaSourceArgs) ToDbSchemaSchemaSourceOutput() DbSchemaSchemaSourceOutput {
+	return i.ToDbSchemaSchemaSourceOutputWithContext(context.Background())
+}
+
+func (i DbSchemaSchemaSourceArgs) ToDbSchemaSchemaSourceOutputWithContext(ctx context.Context) DbSchemaSchemaSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSchemaSchemaSourceOutput)
+}
+
+func (i DbSchemaSchemaSourceArgs) ToDbSchemaSchemaSourcePtrOutput() DbSchemaSchemaSourcePtrOutput {
+	return i.ToDbSchemaSchemaSourcePtrOutputWithContext(context.Background())
+}
+
+func (i DbSchemaSchemaSourceArgs) ToDbSchemaSchemaSourcePtrOutputWithContext(ctx context.Context) DbSchemaSchemaSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSchemaSchemaSourceOutput).ToDbSchemaSchemaSourcePtrOutputWithContext(ctx)
+}
+
+// DbSchemaSchemaSourcePtrInput is an input type that accepts DbSchemaSchemaSourceArgs, DbSchemaSchemaSourcePtr and DbSchemaSchemaSourcePtrOutput values.
+// You can construct a concrete instance of `DbSchemaSchemaSourcePtrInput` via:
+//
+//	        DbSchemaSchemaSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSchemaSchemaSourcePtrInput interface {
+	pulumi.Input
+
+	ToDbSchemaSchemaSourcePtrOutput() DbSchemaSchemaSourcePtrOutput
+	ToDbSchemaSchemaSourcePtrOutputWithContext(context.Context) DbSchemaSchemaSourcePtrOutput
+}
+
+type dbSchemaSchemaSourcePtrType DbSchemaSchemaSourceArgs
+
+func DbSchemaSchemaSourcePtr(v *DbSchemaSchemaSourceArgs) DbSchemaSchemaSourcePtrInput {
+	return (*dbSchemaSchemaSourcePtrType)(v)
+}
+
+func (*dbSchemaSchemaSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (i *dbSchemaSchemaSourcePtrType) ToDbSchemaSchemaSourcePtrOutput() DbSchemaSchemaSourcePtrOutput {
+	return i.ToDbSchemaSchemaSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *dbSchemaSchemaSourcePtrType) ToDbSchemaSchemaSourcePtrOutputWithContext(ctx context.Context) DbSchemaSchemaSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSchemaSchemaSourcePtrOutput)
+}
+
+type DbSchemaSchemaSourceOutput struct{ *pulumi.OutputState }
+
+func (DbSchemaSchemaSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (o DbSchemaSchemaSourceOutput) ToDbSchemaSchemaSourceOutput() DbSchemaSchemaSourceOutput {
+	return o
+}
+
+func (o DbSchemaSchemaSourceOutput) ToDbSchemaSchemaSourceOutputWithContext(ctx context.Context) DbSchemaSchemaSourceOutput {
+	return o
+}
+
+func (o DbSchemaSchemaSourceOutput) ToDbSchemaSchemaSourcePtrOutput() DbSchemaSchemaSourcePtrOutput {
+	return o.ToDbSchemaSchemaSourcePtrOutputWithContext(context.Background())
+}
+
+func (o DbSchemaSchemaSourceOutput) ToDbSchemaSchemaSourcePtrOutputWithContext(ctx context.Context) DbSchemaSchemaSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSchemaSchemaSource) *DbSchemaSchemaSource {
+		return &v
+	}).(DbSchemaSchemaSourcePtrOutput)
+}
+
+// Connector to repository at which to find details about the database schema
+func (o DbSchemaSchemaSourceOutput) Connector() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSchemaSchemaSource) string { return v.Connector }).(pulumi.StringOutput)
+}
+
+// The path within the specified repository at which to find details about the database schema
+func (o DbSchemaSchemaSourceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v DbSchemaSchemaSource) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// If connector url is of account, which repository to connect to using the connector
+func (o DbSchemaSchemaSourceOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSchemaSchemaSource) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type DbSchemaSchemaSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (DbSchemaSchemaSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (o DbSchemaSchemaSourcePtrOutput) ToDbSchemaSchemaSourcePtrOutput() DbSchemaSchemaSourcePtrOutput {
+	return o
+}
+
+func (o DbSchemaSchemaSourcePtrOutput) ToDbSchemaSchemaSourcePtrOutputWithContext(ctx context.Context) DbSchemaSchemaSourcePtrOutput {
+	return o
+}
+
+func (o DbSchemaSchemaSourcePtrOutput) Elem() DbSchemaSchemaSourceOutput {
+	return o.ApplyT(func(v *DbSchemaSchemaSource) DbSchemaSchemaSource {
+		if v != nil {
+			return *v
+		}
+		var ret DbSchemaSchemaSource
+		return ret
+	}).(DbSchemaSchemaSourceOutput)
+}
+
+// Connector to repository at which to find details about the database schema
+func (o DbSchemaSchemaSourcePtrOutput) Connector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaSchemaSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Connector
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path within the specified repository at which to find details about the database schema
+func (o DbSchemaSchemaSourcePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaSchemaSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// If connector url is of account, which repository to connect to using the connector
+func (o DbSchemaSchemaSourcePtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaSchemaSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17414,6 +17764,556 @@ func (o GitlabConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutp
 		}
 		return &v.SshKeyRef
 	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsProjectProject struct {
+	// Metadata details that all persisted resources must have.
+	Metadatas []GitopsProjectProjectMetadata `pulumi:"metadatas"`
+	// Spec is the specification of an AppProject.
+	Specs []GitopsProjectProjectSpec `pulumi:"specs"`
+}
+
+// GitopsProjectProjectInput is an input type that accepts GitopsProjectProjectArgs and GitopsProjectProjectOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectInput` via:
+//
+//	GitopsProjectProjectArgs{...}
+type GitopsProjectProjectInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectOutput() GitopsProjectProjectOutput
+	ToGitopsProjectProjectOutputWithContext(context.Context) GitopsProjectProjectOutput
+}
+
+type GitopsProjectProjectArgs struct {
+	// Metadata details that all persisted resources must have.
+	Metadatas GitopsProjectProjectMetadataArrayInput `pulumi:"metadatas"`
+	// Spec is the specification of an AppProject.
+	Specs GitopsProjectProjectSpecArrayInput `pulumi:"specs"`
+}
+
+func (GitopsProjectProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProject)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectArgs) ToGitopsProjectProjectOutput() GitopsProjectProjectOutput {
+	return i.ToGitopsProjectProjectOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectArgs) ToGitopsProjectProjectOutputWithContext(ctx context.Context) GitopsProjectProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectOutput)
+}
+
+// GitopsProjectProjectArrayInput is an input type that accepts GitopsProjectProjectArray and GitopsProjectProjectArrayOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectArrayInput` via:
+//
+//	GitopsProjectProjectArray{ GitopsProjectProjectArgs{...} }
+type GitopsProjectProjectArrayInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectArrayOutput() GitopsProjectProjectArrayOutput
+	ToGitopsProjectProjectArrayOutputWithContext(context.Context) GitopsProjectProjectArrayOutput
+}
+
+type GitopsProjectProjectArray []GitopsProjectProjectInput
+
+func (GitopsProjectProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProject)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectArray) ToGitopsProjectProjectArrayOutput() GitopsProjectProjectArrayOutput {
+	return i.ToGitopsProjectProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectArray) ToGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GitopsProjectProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectArrayOutput)
+}
+
+type GitopsProjectProjectOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProject)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectOutput) ToGitopsProjectProjectOutput() GitopsProjectProjectOutput {
+	return o
+}
+
+func (o GitopsProjectProjectOutput) ToGitopsProjectProjectOutputWithContext(ctx context.Context) GitopsProjectProjectOutput {
+	return o
+}
+
+// Metadata details that all persisted resources must have.
+func (o GitopsProjectProjectOutput) Metadatas() GitopsProjectProjectMetadataArrayOutput {
+	return o.ApplyT(func(v GitopsProjectProject) []GitopsProjectProjectMetadata { return v.Metadatas }).(GitopsProjectProjectMetadataArrayOutput)
+}
+
+// Spec is the specification of an AppProject.
+func (o GitopsProjectProjectOutput) Specs() GitopsProjectProjectSpecArrayOutput {
+	return o.ApplyT(func(v GitopsProjectProject) []GitopsProjectProjectSpec { return v.Specs }).(GitopsProjectProjectSpecArrayOutput)
+}
+
+type GitopsProjectProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProject)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectArrayOutput) ToGitopsProjectProjectArrayOutput() GitopsProjectProjectArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectArrayOutput) ToGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GitopsProjectProjectArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProject {
+		return vs[0].([]GitopsProjectProject)[vs[1].(int)]
+	}).(GitopsProjectProjectOutput)
+}
+
+type GitopsProjectProjectMetadata struct {
+	// A sequence number representing a specific generation of the desired state.
+	Generation *string `pulumi:"generation"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+	Name *string `pulumi:"name"`
+	// The namespace where the GitOps project should be created.
+	Namespace *string `pulumi:"namespace"`
+}
+
+// GitopsProjectProjectMetadataInput is an input type that accepts GitopsProjectProjectMetadataArgs and GitopsProjectProjectMetadataOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectMetadataInput` via:
+//
+//	GitopsProjectProjectMetadataArgs{...}
+type GitopsProjectProjectMetadataInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectMetadataOutput() GitopsProjectProjectMetadataOutput
+	ToGitopsProjectProjectMetadataOutputWithContext(context.Context) GitopsProjectProjectMetadataOutput
+}
+
+type GitopsProjectProjectMetadataArgs struct {
+	// A sequence number representing a specific generation of the desired state.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace where the GitOps project should be created.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GitopsProjectProjectMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectMetadataArgs) ToGitopsProjectProjectMetadataOutput() GitopsProjectProjectMetadataOutput {
+	return i.ToGitopsProjectProjectMetadataOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectMetadataArgs) ToGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectMetadataOutput)
+}
+
+// GitopsProjectProjectMetadataArrayInput is an input type that accepts GitopsProjectProjectMetadataArray and GitopsProjectProjectMetadataArrayOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectMetadataArrayInput` via:
+//
+//	GitopsProjectProjectMetadataArray{ GitopsProjectProjectMetadataArgs{...} }
+type GitopsProjectProjectMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectMetadataArrayOutput() GitopsProjectProjectMetadataArrayOutput
+	ToGitopsProjectProjectMetadataArrayOutputWithContext(context.Context) GitopsProjectProjectMetadataArrayOutput
+}
+
+type GitopsProjectProjectMetadataArray []GitopsProjectProjectMetadataInput
+
+func (GitopsProjectProjectMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectMetadataArray) ToGitopsProjectProjectMetadataArrayOutput() GitopsProjectProjectMetadataArrayOutput {
+	return i.ToGitopsProjectProjectMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectMetadataArray) ToGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectMetadataArrayOutput)
+}
+
+type GitopsProjectProjectMetadataOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectMetadataOutput) ToGitopsProjectProjectMetadataOutput() GitopsProjectProjectMetadataOutput {
+	return o
+}
+
+func (o GitopsProjectProjectMetadataOutput) ToGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataOutput {
+	return o
+}
+
+// A sequence number representing a specific generation of the desired state.
+func (o GitopsProjectProjectMetadataOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsProjectProjectMetadata) *string { return v.Generation }).(pulumi.StringPtrOutput)
+}
+
+// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+func (o GitopsProjectProjectMetadataOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsProjectProjectMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace where the GitOps project should be created.
+func (o GitopsProjectProjectMetadataOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsProjectProjectMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GitopsProjectProjectMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectMetadataArrayOutput) ToGitopsProjectProjectMetadataArrayOutput() GitopsProjectProjectMetadataArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectMetadataArrayOutput) ToGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectMetadataArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectMetadata {
+		return vs[0].([]GitopsProjectProjectMetadata)[vs[1].(int)]
+	}).(GitopsProjectProjectMetadataOutput)
+}
+
+type GitopsProjectProjectSpec struct {
+	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+	ClusterResourceWhitelists []GitopsProjectProjectSpecClusterResourceWhitelist `pulumi:"clusterResourceWhitelists"`
+	// Destinations contains list of destinations available for deployment.
+	Destinations []GitopsProjectProjectSpecDestination `pulumi:"destinations"`
+	// SourceRepos contains list of repository URLs which can be used for deployment.
+	SourceRepos []string `pulumi:"sourceRepos"`
+}
+
+// GitopsProjectProjectSpecInput is an input type that accepts GitopsProjectProjectSpecArgs and GitopsProjectProjectSpecOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectSpecInput` via:
+//
+//	GitopsProjectProjectSpecArgs{...}
+type GitopsProjectProjectSpecInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectSpecOutput() GitopsProjectProjectSpecOutput
+	ToGitopsProjectProjectSpecOutputWithContext(context.Context) GitopsProjectProjectSpecOutput
+}
+
+type GitopsProjectProjectSpecArgs struct {
+	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+	ClusterResourceWhitelists GitopsProjectProjectSpecClusterResourceWhitelistArrayInput `pulumi:"clusterResourceWhitelists"`
+	// Destinations contains list of destinations available for deployment.
+	Destinations GitopsProjectProjectSpecDestinationArrayInput `pulumi:"destinations"`
+	// SourceRepos contains list of repository URLs which can be used for deployment.
+	SourceRepos pulumi.StringArrayInput `pulumi:"sourceRepos"`
+}
+
+func (GitopsProjectProjectSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectSpecArgs) ToGitopsProjectProjectSpecOutput() GitopsProjectProjectSpecOutput {
+	return i.ToGitopsProjectProjectSpecOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectSpecArgs) ToGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GitopsProjectProjectSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecOutput)
+}
+
+// GitopsProjectProjectSpecArrayInput is an input type that accepts GitopsProjectProjectSpecArray and GitopsProjectProjectSpecArrayOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectSpecArrayInput` via:
+//
+//	GitopsProjectProjectSpecArray{ GitopsProjectProjectSpecArgs{...} }
+type GitopsProjectProjectSpecArrayInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectSpecArrayOutput() GitopsProjectProjectSpecArrayOutput
+	ToGitopsProjectProjectSpecArrayOutputWithContext(context.Context) GitopsProjectProjectSpecArrayOutput
+}
+
+type GitopsProjectProjectSpecArray []GitopsProjectProjectSpecInput
+
+func (GitopsProjectProjectSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectSpecArray) ToGitopsProjectProjectSpecArrayOutput() GitopsProjectProjectSpecArrayOutput {
+	return i.ToGitopsProjectProjectSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectSpecArray) ToGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecArrayOutput)
+}
+
+type GitopsProjectProjectSpecOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectSpecOutput) ToGitopsProjectProjectSpecOutput() GitopsProjectProjectSpecOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecOutput) ToGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GitopsProjectProjectSpecOutput {
+	return o
+}
+
+// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+func (o GitopsProjectProjectSpecOutput) ClusterResourceWhitelists() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o.ApplyT(func(v GitopsProjectProjectSpec) []GitopsProjectProjectSpecClusterResourceWhitelist {
+		return v.ClusterResourceWhitelists
+	}).(GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
+}
+
+// Destinations contains list of destinations available for deployment.
+func (o GitopsProjectProjectSpecOutput) Destinations() GitopsProjectProjectSpecDestinationArrayOutput {
+	return o.ApplyT(func(v GitopsProjectProjectSpec) []GitopsProjectProjectSpecDestination { return v.Destinations }).(GitopsProjectProjectSpecDestinationArrayOutput)
+}
+
+// SourceRepos contains list of repository URLs which can be used for deployment.
+func (o GitopsProjectProjectSpecOutput) SourceRepos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsProjectProjectSpec) []string { return v.SourceRepos }).(pulumi.StringArrayOutput)
+}
+
+type GitopsProjectProjectSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectSpecArrayOutput) ToGitopsProjectProjectSpecArrayOutput() GitopsProjectProjectSpecArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecArrayOutput) ToGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectSpec {
+		return vs[0].([]GitopsProjectProjectSpec)[vs[1].(int)]
+	}).(GitopsProjectProjectSpecOutput)
+}
+
+type GitopsProjectProjectSpecClusterResourceWhitelist struct {
+	// Cluster group name.
+	Group *string `pulumi:"group"`
+	// Cluster kind.
+	Kind *string `pulumi:"kind"`
+}
+
+// GitopsProjectProjectSpecClusterResourceWhitelistInput is an input type that accepts GitopsProjectProjectSpecClusterResourceWhitelistArgs and GitopsProjectProjectSpecClusterResourceWhitelistOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectSpecClusterResourceWhitelistInput` via:
+//
+//	GitopsProjectProjectSpecClusterResourceWhitelistArgs{...}
+type GitopsProjectProjectSpecClusterResourceWhitelistInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectSpecClusterResourceWhitelistOutput() GitopsProjectProjectSpecClusterResourceWhitelistOutput
+	ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Context) GitopsProjectProjectSpecClusterResourceWhitelistOutput
+}
+
+type GitopsProjectProjectSpecClusterResourceWhitelistArgs struct {
+	// Cluster group name.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Cluster kind.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (GitopsProjectProjectSpecClusterResourceWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGitopsProjectProjectSpecClusterResourceWhitelistOutput() GitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return i.ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecClusterResourceWhitelistOutput)
+}
+
+// GitopsProjectProjectSpecClusterResourceWhitelistArrayInput is an input type that accepts GitopsProjectProjectSpecClusterResourceWhitelistArray and GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectSpecClusterResourceWhitelistArrayInput` via:
+//
+//	GitopsProjectProjectSpecClusterResourceWhitelistArray{ GitopsProjectProjectSpecClusterResourceWhitelistArgs{...} }
+type GitopsProjectProjectSpecClusterResourceWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
+	ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Context) GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
+}
+
+type GitopsProjectProjectSpecClusterResourceWhitelistArray []GitopsProjectProjectSpecClusterResourceWhitelistInput
+
+func (GitopsProjectProjectSpecClusterResourceWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectSpecClusterResourceWhitelistArray) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return i.ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectSpecClusterResourceWhitelistArray) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
+}
+
+type GitopsProjectProjectSpecClusterResourceWhitelistOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectSpecClusterResourceWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistOutput() GitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return o
+}
+
+// Cluster group name.
+func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Cluster kind.
+func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectSpecClusterResourceWhitelist {
+		return vs[0].([]GitopsProjectProjectSpecClusterResourceWhitelist)[vs[1].(int)]
+	}).(GitopsProjectProjectSpecClusterResourceWhitelistOutput)
+}
+
+type GitopsProjectProjectSpecDestination struct {
+	// Namespace specifies the target namespace for the application's resources.
+	Namespace *string `pulumi:"namespace"`
+	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+	Server *string `pulumi:"server"`
+}
+
+// GitopsProjectProjectSpecDestinationInput is an input type that accepts GitopsProjectProjectSpecDestinationArgs and GitopsProjectProjectSpecDestinationOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectSpecDestinationInput` via:
+//
+//	GitopsProjectProjectSpecDestinationArgs{...}
+type GitopsProjectProjectSpecDestinationInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectSpecDestinationOutput() GitopsProjectProjectSpecDestinationOutput
+	ToGitopsProjectProjectSpecDestinationOutputWithContext(context.Context) GitopsProjectProjectSpecDestinationOutput
+}
+
+type GitopsProjectProjectSpecDestinationArgs struct {
+	// Namespace specifies the target namespace for the application's resources.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+	Server pulumi.StringPtrInput `pulumi:"server"`
+}
+
+func (GitopsProjectProjectSpecDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectSpecDestinationArgs) ToGitopsProjectProjectSpecDestinationOutput() GitopsProjectProjectSpecDestinationOutput {
+	return i.ToGitopsProjectProjectSpecDestinationOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectSpecDestinationArgs) ToGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecDestinationOutput)
+}
+
+// GitopsProjectProjectSpecDestinationArrayInput is an input type that accepts GitopsProjectProjectSpecDestinationArray and GitopsProjectProjectSpecDestinationArrayOutput values.
+// You can construct a concrete instance of `GitopsProjectProjectSpecDestinationArrayInput` via:
+//
+//	GitopsProjectProjectSpecDestinationArray{ GitopsProjectProjectSpecDestinationArgs{...} }
+type GitopsProjectProjectSpecDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGitopsProjectProjectSpecDestinationArrayOutput() GitopsProjectProjectSpecDestinationArrayOutput
+	ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Context) GitopsProjectProjectSpecDestinationArrayOutput
+}
+
+type GitopsProjectProjectSpecDestinationArray []GitopsProjectProjectSpecDestinationInput
+
+func (GitopsProjectProjectSpecDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (i GitopsProjectProjectSpecDestinationArray) ToGitopsProjectProjectSpecDestinationArrayOutput() GitopsProjectProjectSpecDestinationArrayOutput {
+	return i.ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsProjectProjectSpecDestinationArray) ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecDestinationArrayOutput)
+}
+
+type GitopsProjectProjectSpecDestinationOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectSpecDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectSpecDestinationOutput) ToGitopsProjectProjectSpecDestinationOutput() GitopsProjectProjectSpecDestinationOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecDestinationOutput) ToGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationOutput {
+	return o
+}
+
+// Namespace specifies the target namespace for the application's resources.
+func (o GitopsProjectProjectSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsProjectProjectSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+func (o GitopsProjectProjectSpecDestinationOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsProjectProjectSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type GitopsProjectProjectSpecDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsProjectProjectSpecDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (o GitopsProjectProjectSpecDestinationArrayOutput) ToGitopsProjectProjectSpecDestinationArrayOutput() GitopsProjectProjectSpecDestinationArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecDestinationArrayOutput) ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationArrayOutput {
+	return o
+}
+
+func (o GitopsProjectProjectSpecDestinationArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectSpecDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectSpecDestination {
+		return vs[0].([]GitopsProjectProjectSpecDestination)[vs[1].(int)]
+	}).(GitopsProjectProjectSpecDestinationOutput)
 }
 
 type HelmConnectorCredentials struct {
@@ -35468,6 +36368,121 @@ func (o GetConnectorCustomhealthsourceParamArrayOutput) Index(i pulumi.IntInput)
 	}).(GetConnectorCustomhealthsourceParamOutput)
 }
 
+type GetConnectorJdbcCredential struct {
+	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// The username to use for the database server.
+	Username string `pulumi:"username"`
+	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetConnectorJdbcCredentialInput is an input type that accepts GetConnectorJdbcCredentialArgs and GetConnectorJdbcCredentialOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialInput` via:
+//
+//	GetConnectorJdbcCredentialArgs{...}
+type GetConnectorJdbcCredentialInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialOutput() GetConnectorJdbcCredentialOutput
+	ToGetConnectorJdbcCredentialOutputWithContext(context.Context) GetConnectorJdbcCredentialOutput
+}
+
+type GetConnectorJdbcCredentialArgs struct {
+	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// The username to use for the database server.
+	Username pulumi.StringInput `pulumi:"username"`
+	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetConnectorJdbcCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredential)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialArgs) ToGetConnectorJdbcCredentialOutput() GetConnectorJdbcCredentialOutput {
+	return i.ToGetConnectorJdbcCredentialOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialArgs) ToGetConnectorJdbcCredentialOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialOutput)
+}
+
+// GetConnectorJdbcCredentialArrayInput is an input type that accepts GetConnectorJdbcCredentialArray and GetConnectorJdbcCredentialArrayOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialArrayInput` via:
+//
+//	GetConnectorJdbcCredentialArray{ GetConnectorJdbcCredentialArgs{...} }
+type GetConnectorJdbcCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialArrayOutput() GetConnectorJdbcCredentialArrayOutput
+	ToGetConnectorJdbcCredentialArrayOutputWithContext(context.Context) GetConnectorJdbcCredentialArrayOutput
+}
+
+type GetConnectorJdbcCredentialArray []GetConnectorJdbcCredentialInput
+
+func (GetConnectorJdbcCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredential)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialArray) ToGetConnectorJdbcCredentialArrayOutput() GetConnectorJdbcCredentialArrayOutput {
+	return i.ToGetConnectorJdbcCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialArray) ToGetConnectorJdbcCredentialArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialArrayOutput)
+}
+
+type GetConnectorJdbcCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredential)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialOutput) ToGetConnectorJdbcCredentialOutput() GetConnectorJdbcCredentialOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialOutput) ToGetConnectorJdbcCredentialOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOutput {
+	return o
+}
+
+// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// The username to use for the database server.
+func (o GetConnectorJdbcCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorJdbcCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredential)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialArrayOutput) ToGetConnectorJdbcCredentialArrayOutput() GetConnectorJdbcCredentialArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialArrayOutput) ToGetConnectorJdbcCredentialArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialArrayOutput) Index(i pulumi.IntInput) GetConnectorJdbcCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredential {
+		return vs[0].([]GetConnectorJdbcCredential)[vs[1].(int)]
+	}).(GetConnectorJdbcCredentialOutput)
+}
+
 type GetConnectorPdcHost struct {
 	// Host attributes with values. e.g. type, region, name, ip, etc.
 	Attributes map[string]interface{} `pulumi:"attributes"`
@@ -35728,6 +36743,121 @@ func (o GetConnectorRancherBearerTokenPtrOutput) RancherUrl() pulumi.StringPtrOu
 		}
 		return &v.RancherUrl
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetDbSchemaSchemaSource struct {
+	// Connector to repository at which to find details about the database schema
+	Connector string `pulumi:"connector"`
+	// The path within the specified repository at which to find details about the database schema
+	Location string `pulumi:"location"`
+	// If connector url is of account, which repository to connect to using the connector
+	Repo string `pulumi:"repo"`
+}
+
+// GetDbSchemaSchemaSourceInput is an input type that accepts GetDbSchemaSchemaSourceArgs and GetDbSchemaSchemaSourceOutput values.
+// You can construct a concrete instance of `GetDbSchemaSchemaSourceInput` via:
+//
+//	GetDbSchemaSchemaSourceArgs{...}
+type GetDbSchemaSchemaSourceInput interface {
+	pulumi.Input
+
+	ToGetDbSchemaSchemaSourceOutput() GetDbSchemaSchemaSourceOutput
+	ToGetDbSchemaSchemaSourceOutputWithContext(context.Context) GetDbSchemaSchemaSourceOutput
+}
+
+type GetDbSchemaSchemaSourceArgs struct {
+	// Connector to repository at which to find details about the database schema
+	Connector pulumi.StringInput `pulumi:"connector"`
+	// The path within the specified repository at which to find details about the database schema
+	Location pulumi.StringInput `pulumi:"location"`
+	// If connector url is of account, which repository to connect to using the connector
+	Repo pulumi.StringInput `pulumi:"repo"`
+}
+
+func (GetDbSchemaSchemaSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (i GetDbSchemaSchemaSourceArgs) ToGetDbSchemaSchemaSourceOutput() GetDbSchemaSchemaSourceOutput {
+	return i.ToGetDbSchemaSchemaSourceOutputWithContext(context.Background())
+}
+
+func (i GetDbSchemaSchemaSourceArgs) ToGetDbSchemaSchemaSourceOutputWithContext(ctx context.Context) GetDbSchemaSchemaSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaSchemaSourceOutput)
+}
+
+// GetDbSchemaSchemaSourceArrayInput is an input type that accepts GetDbSchemaSchemaSourceArray and GetDbSchemaSchemaSourceArrayOutput values.
+// You can construct a concrete instance of `GetDbSchemaSchemaSourceArrayInput` via:
+//
+//	GetDbSchemaSchemaSourceArray{ GetDbSchemaSchemaSourceArgs{...} }
+type GetDbSchemaSchemaSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetDbSchemaSchemaSourceArrayOutput() GetDbSchemaSchemaSourceArrayOutput
+	ToGetDbSchemaSchemaSourceArrayOutputWithContext(context.Context) GetDbSchemaSchemaSourceArrayOutput
+}
+
+type GetDbSchemaSchemaSourceArray []GetDbSchemaSchemaSourceInput
+
+func (GetDbSchemaSchemaSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (i GetDbSchemaSchemaSourceArray) ToGetDbSchemaSchemaSourceArrayOutput() GetDbSchemaSchemaSourceArrayOutput {
+	return i.ToGetDbSchemaSchemaSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbSchemaSchemaSourceArray) ToGetDbSchemaSchemaSourceArrayOutputWithContext(ctx context.Context) GetDbSchemaSchemaSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaSchemaSourceArrayOutput)
+}
+
+type GetDbSchemaSchemaSourceOutput struct{ *pulumi.OutputState }
+
+func (GetDbSchemaSchemaSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (o GetDbSchemaSchemaSourceOutput) ToGetDbSchemaSchemaSourceOutput() GetDbSchemaSchemaSourceOutput {
+	return o
+}
+
+func (o GetDbSchemaSchemaSourceOutput) ToGetDbSchemaSchemaSourceOutputWithContext(ctx context.Context) GetDbSchemaSchemaSourceOutput {
+	return o
+}
+
+// Connector to repository at which to find details about the database schema
+func (o GetDbSchemaSchemaSourceOutput) Connector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaSchemaSource) string { return v.Connector }).(pulumi.StringOutput)
+}
+
+// The path within the specified repository at which to find details about the database schema
+func (o GetDbSchemaSchemaSourceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaSchemaSource) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// If connector url is of account, which repository to connect to using the connector
+func (o GetDbSchemaSchemaSourceOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaSchemaSource) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+type GetDbSchemaSchemaSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbSchemaSchemaSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbSchemaSchemaSource)(nil)).Elem()
+}
+
+func (o GetDbSchemaSchemaSourceArrayOutput) ToGetDbSchemaSchemaSourceArrayOutput() GetDbSchemaSchemaSourceArrayOutput {
+	return o
+}
+
+func (o GetDbSchemaSchemaSourceArrayOutput) ToGetDbSchemaSchemaSourceArrayOutputWithContext(ctx context.Context) GetDbSchemaSchemaSourceArrayOutput {
+	return o
+}
+
+func (o GetDbSchemaSchemaSourceArrayOutput) Index(i pulumi.IntInput) GetDbSchemaSchemaSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbSchemaSchemaSource {
+		return vs[0].([]GetDbSchemaSchemaSource)[vs[1].(int)]
+	}).(GetDbSchemaSchemaSourceOutput)
 }
 
 type GetDockerConnectorCredential struct {
@@ -43409,6 +44539,556 @@ func (o GetGitopsGnupgRequestPublickeyArrayOutput) Index(i pulumi.IntInput) GetG
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsGnupgRequestPublickey {
 		return vs[0].([]GetGitopsGnupgRequestPublickey)[vs[1].(int)]
 	}).(GetGitopsGnupgRequestPublickeyOutput)
+}
+
+type GetGitopsProjectProject struct {
+	// Metadata details that all persisted resources must have.
+	Metadatas []GetGitopsProjectProjectMetadata `pulumi:"metadatas"`
+	// Spec is the specification of an AppProject.
+	Specs []GetGitopsProjectProjectSpec `pulumi:"specs"`
+}
+
+// GetGitopsProjectProjectInput is an input type that accepts GetGitopsProjectProjectArgs and GetGitopsProjectProjectOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectInput` via:
+//
+//	GetGitopsProjectProjectArgs{...}
+type GetGitopsProjectProjectInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectOutput() GetGitopsProjectProjectOutput
+	ToGetGitopsProjectProjectOutputWithContext(context.Context) GetGitopsProjectProjectOutput
+}
+
+type GetGitopsProjectProjectArgs struct {
+	// Metadata details that all persisted resources must have.
+	Metadatas GetGitopsProjectProjectMetadataArrayInput `pulumi:"metadatas"`
+	// Spec is the specification of an AppProject.
+	Specs GetGitopsProjectProjectSpecArrayInput `pulumi:"specs"`
+}
+
+func (GetGitopsProjectProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProject)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectArgs) ToGetGitopsProjectProjectOutput() GetGitopsProjectProjectOutput {
+	return i.ToGetGitopsProjectProjectOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectArgs) ToGetGitopsProjectProjectOutputWithContext(ctx context.Context) GetGitopsProjectProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectOutput)
+}
+
+// GetGitopsProjectProjectArrayInput is an input type that accepts GetGitopsProjectProjectArray and GetGitopsProjectProjectArrayOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectArrayInput` via:
+//
+//	GetGitopsProjectProjectArray{ GetGitopsProjectProjectArgs{...} }
+type GetGitopsProjectProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectArrayOutput() GetGitopsProjectProjectArrayOutput
+	ToGetGitopsProjectProjectArrayOutputWithContext(context.Context) GetGitopsProjectProjectArrayOutput
+}
+
+type GetGitopsProjectProjectArray []GetGitopsProjectProjectInput
+
+func (GetGitopsProjectProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProject)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectArray) ToGetGitopsProjectProjectArrayOutput() GetGitopsProjectProjectArrayOutput {
+	return i.ToGetGitopsProjectProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectArray) ToGetGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectArrayOutput)
+}
+
+type GetGitopsProjectProjectOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProject)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectOutput) ToGetGitopsProjectProjectOutput() GetGitopsProjectProjectOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectOutput) ToGetGitopsProjectProjectOutputWithContext(ctx context.Context) GetGitopsProjectProjectOutput {
+	return o
+}
+
+// Metadata details that all persisted resources must have.
+func (o GetGitopsProjectProjectOutput) Metadatas() GetGitopsProjectProjectMetadataArrayOutput {
+	return o.ApplyT(func(v GetGitopsProjectProject) []GetGitopsProjectProjectMetadata { return v.Metadatas }).(GetGitopsProjectProjectMetadataArrayOutput)
+}
+
+// Spec is the specification of an AppProject.
+func (o GetGitopsProjectProjectOutput) Specs() GetGitopsProjectProjectSpecArrayOutput {
+	return o.ApplyT(func(v GetGitopsProjectProject) []GetGitopsProjectProjectSpec { return v.Specs }).(GetGitopsProjectProjectSpecArrayOutput)
+}
+
+type GetGitopsProjectProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProject)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectArrayOutput) ToGetGitopsProjectProjectArrayOutput() GetGitopsProjectProjectArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectArrayOutput) ToGetGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProject {
+		return vs[0].([]GetGitopsProjectProject)[vs[1].(int)]
+	}).(GetGitopsProjectProjectOutput)
+}
+
+type GetGitopsProjectProjectMetadata struct {
+	// A sequence number representing a specific generation of the desired state.
+	Generation *string `pulumi:"generation"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+	Name *string `pulumi:"name"`
+	// The namespace where the GitOps project should be created.
+	Namespace *string `pulumi:"namespace"`
+}
+
+// GetGitopsProjectProjectMetadataInput is an input type that accepts GetGitopsProjectProjectMetadataArgs and GetGitopsProjectProjectMetadataOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectMetadataInput` via:
+//
+//	GetGitopsProjectProjectMetadataArgs{...}
+type GetGitopsProjectProjectMetadataInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectMetadataOutput() GetGitopsProjectProjectMetadataOutput
+	ToGetGitopsProjectProjectMetadataOutputWithContext(context.Context) GetGitopsProjectProjectMetadataOutput
+}
+
+type GetGitopsProjectProjectMetadataArgs struct {
+	// A sequence number representing a specific generation of the desired state.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace where the GitOps project should be created.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GetGitopsProjectProjectMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectMetadataArgs) ToGetGitopsProjectProjectMetadataOutput() GetGitopsProjectProjectMetadataOutput {
+	return i.ToGetGitopsProjectProjectMetadataOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectMetadataArgs) ToGetGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectMetadataOutput)
+}
+
+// GetGitopsProjectProjectMetadataArrayInput is an input type that accepts GetGitopsProjectProjectMetadataArray and GetGitopsProjectProjectMetadataArrayOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectMetadataArrayInput` via:
+//
+//	GetGitopsProjectProjectMetadataArray{ GetGitopsProjectProjectMetadataArgs{...} }
+type GetGitopsProjectProjectMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectMetadataArrayOutput() GetGitopsProjectProjectMetadataArrayOutput
+	ToGetGitopsProjectProjectMetadataArrayOutputWithContext(context.Context) GetGitopsProjectProjectMetadataArrayOutput
+}
+
+type GetGitopsProjectProjectMetadataArray []GetGitopsProjectProjectMetadataInput
+
+func (GetGitopsProjectProjectMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectMetadataArray) ToGetGitopsProjectProjectMetadataArrayOutput() GetGitopsProjectProjectMetadataArrayOutput {
+	return i.ToGetGitopsProjectProjectMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectMetadataArray) ToGetGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectMetadataArrayOutput)
+}
+
+type GetGitopsProjectProjectMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectMetadataOutput) ToGetGitopsProjectProjectMetadataOutput() GetGitopsProjectProjectMetadataOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectMetadataOutput) ToGetGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataOutput {
+	return o
+}
+
+// A sequence number representing a specific generation of the desired state.
+func (o GetGitopsProjectProjectMetadataOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectMetadata) *string { return v.Generation }).(pulumi.StringPtrOutput)
+}
+
+// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+func (o GetGitopsProjectProjectMetadataOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace where the GitOps project should be created.
+func (o GetGitopsProjectProjectMetadataOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsProjectProjectMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectMetadata)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectMetadataArrayOutput) ToGetGitopsProjectProjectMetadataArrayOutput() GetGitopsProjectProjectMetadataArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectMetadataArrayOutput) ToGetGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectMetadataArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectMetadata {
+		return vs[0].([]GetGitopsProjectProjectMetadata)[vs[1].(int)]
+	}).(GetGitopsProjectProjectMetadataOutput)
+}
+
+type GetGitopsProjectProjectSpec struct {
+	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+	ClusterResourceWhitelists []GetGitopsProjectProjectSpecClusterResourceWhitelist `pulumi:"clusterResourceWhitelists"`
+	// Destinations contains list of destinations available for deployment.
+	Destinations []GetGitopsProjectProjectSpecDestination `pulumi:"destinations"`
+	// SourceRepos contains list of repository URLs which can be used for deployment.
+	SourceRepos []string `pulumi:"sourceRepos"`
+}
+
+// GetGitopsProjectProjectSpecInput is an input type that accepts GetGitopsProjectProjectSpecArgs and GetGitopsProjectProjectSpecOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectSpecInput` via:
+//
+//	GetGitopsProjectProjectSpecArgs{...}
+type GetGitopsProjectProjectSpecInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectSpecOutput() GetGitopsProjectProjectSpecOutput
+	ToGetGitopsProjectProjectSpecOutputWithContext(context.Context) GetGitopsProjectProjectSpecOutput
+}
+
+type GetGitopsProjectProjectSpecArgs struct {
+	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+	ClusterResourceWhitelists GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput `pulumi:"clusterResourceWhitelists"`
+	// Destinations contains list of destinations available for deployment.
+	Destinations GetGitopsProjectProjectSpecDestinationArrayInput `pulumi:"destinations"`
+	// SourceRepos contains list of repository URLs which can be used for deployment.
+	SourceRepos pulumi.StringArrayInput `pulumi:"sourceRepos"`
+}
+
+func (GetGitopsProjectProjectSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectSpecArgs) ToGetGitopsProjectProjectSpecOutput() GetGitopsProjectProjectSpecOutput {
+	return i.ToGetGitopsProjectProjectSpecOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectSpecArgs) ToGetGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecOutput)
+}
+
+// GetGitopsProjectProjectSpecArrayInput is an input type that accepts GetGitopsProjectProjectSpecArray and GetGitopsProjectProjectSpecArrayOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectSpecArrayInput` via:
+//
+//	GetGitopsProjectProjectSpecArray{ GetGitopsProjectProjectSpecArgs{...} }
+type GetGitopsProjectProjectSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectSpecArrayOutput() GetGitopsProjectProjectSpecArrayOutput
+	ToGetGitopsProjectProjectSpecArrayOutputWithContext(context.Context) GetGitopsProjectProjectSpecArrayOutput
+}
+
+type GetGitopsProjectProjectSpecArray []GetGitopsProjectProjectSpecInput
+
+func (GetGitopsProjectProjectSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectSpecArray) ToGetGitopsProjectProjectSpecArrayOutput() GetGitopsProjectProjectSpecArrayOutput {
+	return i.ToGetGitopsProjectProjectSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectSpecArray) ToGetGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecArrayOutput)
+}
+
+type GetGitopsProjectProjectSpecOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectSpecOutput) ToGetGitopsProjectProjectSpecOutput() GetGitopsProjectProjectSpecOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecOutput) ToGetGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecOutput {
+	return o
+}
+
+// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+func (o GetGitopsProjectProjectSpecOutput) ClusterResourceWhitelists() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectSpec) []GetGitopsProjectProjectSpecClusterResourceWhitelist {
+		return v.ClusterResourceWhitelists
+	}).(GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
+}
+
+// Destinations contains list of destinations available for deployment.
+func (o GetGitopsProjectProjectSpecOutput) Destinations() GetGitopsProjectProjectSpecDestinationArrayOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectSpec) []GetGitopsProjectProjectSpecDestination { return v.Destinations }).(GetGitopsProjectProjectSpecDestinationArrayOutput)
+}
+
+// SourceRepos contains list of repository URLs which can be used for deployment.
+func (o GetGitopsProjectProjectSpecOutput) SourceRepos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectSpec) []string { return v.SourceRepos }).(pulumi.StringArrayOutput)
+}
+
+type GetGitopsProjectProjectSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectSpec)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectSpecArrayOutput) ToGetGitopsProjectProjectSpecArrayOutput() GetGitopsProjectProjectSpecArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecArrayOutput) ToGetGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectSpec {
+		return vs[0].([]GetGitopsProjectProjectSpec)[vs[1].(int)]
+	}).(GetGitopsProjectProjectSpecOutput)
+}
+
+type GetGitopsProjectProjectSpecClusterResourceWhitelist struct {
+	// Cluster group name.
+	Group *string `pulumi:"group"`
+	// Cluster kind.
+	Kind *string `pulumi:"kind"`
+}
+
+// GetGitopsProjectProjectSpecClusterResourceWhitelistInput is an input type that accepts GetGitopsProjectProjectSpecClusterResourceWhitelistArgs and GetGitopsProjectProjectSpecClusterResourceWhitelistOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectSpecClusterResourceWhitelistInput` via:
+//
+//	GetGitopsProjectProjectSpecClusterResourceWhitelistArgs{...}
+type GetGitopsProjectProjectSpecClusterResourceWhitelistInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistOutput
+	ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput
+}
+
+type GetGitopsProjectProjectSpecClusterResourceWhitelistArgs struct {
+	// Cluster group name.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Cluster kind.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (GetGitopsProjectProjectSpecClusterResourceWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return i.ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecClusterResourceWhitelistOutput)
+}
+
+// GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput is an input type that accepts GetGitopsProjectProjectSpecClusterResourceWhitelistArray and GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput` via:
+//
+//	GetGitopsProjectProjectSpecClusterResourceWhitelistArray{ GetGitopsProjectProjectSpecClusterResourceWhitelistArgs{...} }
+type GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
+	ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
+}
+
+type GetGitopsProjectProjectSpecClusterResourceWhitelistArray []GetGitopsProjectProjectSpecClusterResourceWhitelistInput
+
+func (GetGitopsProjectProjectSpecClusterResourceWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArray) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return i.ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArray) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
+}
+
+type GetGitopsProjectProjectSpecClusterResourceWhitelistOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return o
+}
+
+// Cluster group name.
+func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Cluster kind.
+func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectSpecClusterResourceWhitelist {
+		return vs[0].([]GetGitopsProjectProjectSpecClusterResourceWhitelist)[vs[1].(int)]
+	}).(GetGitopsProjectProjectSpecClusterResourceWhitelistOutput)
+}
+
+type GetGitopsProjectProjectSpecDestination struct {
+	// Namespace specifies the target namespace for the application's resources.
+	Namespace *string `pulumi:"namespace"`
+	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+	Server *string `pulumi:"server"`
+}
+
+// GetGitopsProjectProjectSpecDestinationInput is an input type that accepts GetGitopsProjectProjectSpecDestinationArgs and GetGitopsProjectProjectSpecDestinationOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectSpecDestinationInput` via:
+//
+//	GetGitopsProjectProjectSpecDestinationArgs{...}
+type GetGitopsProjectProjectSpecDestinationInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectSpecDestinationOutput() GetGitopsProjectProjectSpecDestinationOutput
+	ToGetGitopsProjectProjectSpecDestinationOutputWithContext(context.Context) GetGitopsProjectProjectSpecDestinationOutput
+}
+
+type GetGitopsProjectProjectSpecDestinationArgs struct {
+	// Namespace specifies the target namespace for the application's resources.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+	Server pulumi.StringPtrInput `pulumi:"server"`
+}
+
+func (GetGitopsProjectProjectSpecDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectSpecDestinationArgs) ToGetGitopsProjectProjectSpecDestinationOutput() GetGitopsProjectProjectSpecDestinationOutput {
+	return i.ToGetGitopsProjectProjectSpecDestinationOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectSpecDestinationArgs) ToGetGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecDestinationOutput)
+}
+
+// GetGitopsProjectProjectSpecDestinationArrayInput is an input type that accepts GetGitopsProjectProjectSpecDestinationArray and GetGitopsProjectProjectSpecDestinationArrayOutput values.
+// You can construct a concrete instance of `GetGitopsProjectProjectSpecDestinationArrayInput` via:
+//
+//	GetGitopsProjectProjectSpecDestinationArray{ GetGitopsProjectProjectSpecDestinationArgs{...} }
+type GetGitopsProjectProjectSpecDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsProjectProjectSpecDestinationArrayOutput() GetGitopsProjectProjectSpecDestinationArrayOutput
+	ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Context) GetGitopsProjectProjectSpecDestinationArrayOutput
+}
+
+type GetGitopsProjectProjectSpecDestinationArray []GetGitopsProjectProjectSpecDestinationInput
+
+func (GetGitopsProjectProjectSpecDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (i GetGitopsProjectProjectSpecDestinationArray) ToGetGitopsProjectProjectSpecDestinationArrayOutput() GetGitopsProjectProjectSpecDestinationArrayOutput {
+	return i.ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsProjectProjectSpecDestinationArray) ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecDestinationArrayOutput)
+}
+
+type GetGitopsProjectProjectSpecDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectSpecDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectSpecDestinationOutput) ToGetGitopsProjectProjectSpecDestinationOutput() GetGitopsProjectProjectSpecDestinationOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecDestinationOutput) ToGetGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationOutput {
+	return o
+}
+
+// Namespace specifies the target namespace for the application's resources.
+func (o GetGitopsProjectProjectSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+func (o GetGitopsProjectProjectSpecDestinationOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsProjectProjectSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsProjectProjectSpecDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsProjectProjectSpecDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (o GetGitopsProjectProjectSpecDestinationArrayOutput) ToGetGitopsProjectProjectSpecDestinationArrayOutput() GetGitopsProjectProjectSpecDestinationArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecDestinationArrayOutput) ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationArrayOutput {
+	return o
+}
+
+func (o GetGitopsProjectProjectSpecDestinationArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectSpecDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectSpecDestination {
+		return vs[0].([]GetGitopsProjectProjectSpecDestination)[vs[1].(int)]
+	}).(GetGitopsProjectProjectSpecDestinationOutput)
 }
 
 type GetGitopsRepoCredCred struct {
@@ -52742,10 +54422,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomhealthsourceHeaderArrayInput)(nil)).Elem(), ConnectorCustomhealthsourceHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomhealthsourceParamInput)(nil)).Elem(), ConnectorCustomhealthsourceParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomhealthsourceParamArrayInput)(nil)).Elem(), ConnectorCustomhealthsourceParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsInput)(nil)).Elem(), ConnectorJdbcCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsPtrInput)(nil)).Elem(), ConnectorJdbcCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostInput)(nil)).Elem(), ConnectorPdcHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostArrayInput)(nil)).Elem(), ConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorRancherBearerTokenInput)(nil)).Elem(), ConnectorRancherBearerTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorRancherBearerTokenPtrInput)(nil)).Elem(), ConnectorRancherBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSchemaSchemaSourceInput)(nil)).Elem(), DbSchemaSchemaSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSchemaSchemaSourcePtrInput)(nil)).Elem(), DbSchemaSchemaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerConnectorCredentialsInput)(nil)).Elem(), DockerConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerConnectorCredentialsPtrInput)(nil)).Elem(), DockerConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ElasticsearchConnectorApiTokenInput)(nil)).Elem(), ElasticsearchConnectorApiTokenArgs{})
@@ -52908,6 +54592,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsHttpPtrInput)(nil)).Elem(), GitlabConnectorCredentialsHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsSshInput)(nil)).Elem(), GitlabConnectorCredentialsSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsSshPtrInput)(nil)).Elem(), GitlabConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectInput)(nil)).Elem(), GitopsProjectProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectArrayInput)(nil)).Elem(), GitopsProjectProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectMetadataInput)(nil)).Elem(), GitopsProjectProjectMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectMetadataArrayInput)(nil)).Elem(), GitopsProjectProjectMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecInput)(nil)).Elem(), GitopsProjectProjectSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecArrayInput)(nil)).Elem(), GitopsProjectProjectSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelistInput)(nil)).Elem(), GitopsProjectProjectSpecClusterResourceWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelistArrayInput)(nil)).Elem(), GitopsProjectProjectSpecClusterResourceWhitelistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecDestinationInput)(nil)).Elem(), GitopsProjectProjectSpecDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecDestinationArrayInput)(nil)).Elem(), GitopsProjectProjectSpecDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureGitDetailsInput)(nil)).Elem(), InfrastructureGitDetailsArgs{})
@@ -53140,10 +54834,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomhealthsourceHeaderArrayInput)(nil)).Elem(), GetConnectorCustomhealthsourceHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomhealthsourceParamInput)(nil)).Elem(), GetConnectorCustomhealthsourceParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomhealthsourceParamArrayInput)(nil)).Elem(), GetConnectorCustomhealthsourceParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialInput)(nil)).Elem(), GetConnectorJdbcCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostInput)(nil)).Elem(), GetConnectorPdcHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostArrayInput)(nil)).Elem(), GetConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenPtrInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceInput)(nil)).Elem(), GetDbSchemaSchemaSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceArrayInput)(nil)).Elem(), GetDbSchemaSchemaSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialInput)(nil)).Elem(), GetDockerConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialArrayInput)(nil)).Elem(), GetDockerConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetElasticsearchConnectorApiTokenInput)(nil)).Elem(), GetElasticsearchConnectorApiTokenArgs{})
@@ -53272,6 +54970,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsGnupgRequestArrayInput)(nil)).Elem(), GetGitopsGnupgRequestArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsGnupgRequestPublickeyInput)(nil)).Elem(), GetGitopsGnupgRequestPublickeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsGnupgRequestPublickeyArrayInput)(nil)).Elem(), GetGitopsGnupgRequestPublickeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectInput)(nil)).Elem(), GetGitopsProjectProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectArrayInput)(nil)).Elem(), GetGitopsProjectProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectMetadataInput)(nil)).Elem(), GetGitopsProjectProjectMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectMetadataArrayInput)(nil)).Elem(), GetGitopsProjectProjectMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecInput)(nil)).Elem(), GetGitopsProjectProjectSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecArrayInput)(nil)).Elem(), GetGitopsProjectProjectSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelistInput)(nil)).Elem(), GetGitopsProjectProjectSpecClusterResourceWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput)(nil)).Elem(), GetGitopsProjectProjectSpecClusterResourceWhitelistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecDestinationInput)(nil)).Elem(), GetGitopsProjectProjectSpecDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecDestinationArrayInput)(nil)).Elem(), GetGitopsProjectProjectSpecDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepoCredCredInput)(nil)).Elem(), GetGitopsRepoCredCredArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepoCredCredArrayInput)(nil)).Elem(), GetGitopsRepoCredCredArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryRepoInput)(nil)).Elem(), GetGitopsRepositoryRepoArgs{})
@@ -53483,10 +55191,14 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorCustomhealthsourceHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomhealthsourceParamOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomhealthsourceParamArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorJdbcCredentialsOutput{})
+	pulumi.RegisterOutputType(ConnectorJdbcCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorPdcHostOutput{})
 	pulumi.RegisterOutputType(ConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorRancherBearerTokenOutput{})
 	pulumi.RegisterOutputType(ConnectorRancherBearerTokenPtrOutput{})
+	pulumi.RegisterOutputType(DbSchemaSchemaSourceOutput{})
+	pulumi.RegisterOutputType(DbSchemaSchemaSourcePtrOutput{})
 	pulumi.RegisterOutputType(DockerConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(DockerConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ElasticsearchConnectorApiTokenOutput{})
@@ -53649,6 +55361,16 @@ func init() {
 	pulumi.RegisterOutputType(GitlabConnectorCredentialsHttpPtrOutput{})
 	pulumi.RegisterOutputType(GitlabConnectorCredentialsSshOutput{})
 	pulumi.RegisterOutputType(GitlabConnectorCredentialsSshPtrOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectArrayOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectMetadataOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectSpecOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectSpecArrayOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectSpecClusterResourceWhitelistOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectSpecDestinationOutput{})
+	pulumi.RegisterOutputType(GitopsProjectProjectSpecDestinationArrayOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(InfrastructureGitDetailsOutput{})
@@ -53881,10 +55603,14 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorCustomhealthsourceHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorCustomhealthsourceParamOutput{})
 	pulumi.RegisterOutputType(GetConnectorCustomhealthsourceParamArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorPdcHostOutput{})
 	pulumi.RegisterOutputType(GetConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenPtrOutput{})
+	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceOutput{})
+	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetElasticsearchConnectorApiTokenOutput{})
@@ -54013,6 +55739,16 @@ func init() {
 	pulumi.RegisterOutputType(GetGitopsGnupgRequestArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsGnupgRequestPublickeyOutput{})
 	pulumi.RegisterOutputType(GetGitopsGnupgRequestPublickeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectMetadataOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecClusterResourceWhitelistOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecDestinationOutput{})
+	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepoCredCredOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepoCredCredArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepositoryRepoOutput{})

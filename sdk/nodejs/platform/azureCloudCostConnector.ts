@@ -94,7 +94,7 @@ export class AzureCloudCostConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      */
     public readonly featuresEnableds!: pulumi.Output<string[]>;
     /**
@@ -192,7 +192,7 @@ export interface AzureCloudCostConnectorState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      */
     featuresEnableds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -238,7 +238,7 @@ export interface AzureCloudCostConnectorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      */
     featuresEnableds: pulumi.Input<pulumi.Input<string>[]>;
     /**

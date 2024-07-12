@@ -36,6 +36,8 @@ import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomhealthsourceArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomhealthsourcePlainArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorJdbcPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorPdcPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
@@ -44,6 +46,10 @@ import com.pulumi.harness.platform.inputs.GetCurrentAccountArgs;
 import com.pulumi.harness.platform.inputs.GetCurrentAccountPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDatadogConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetDatadogConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
+import com.pulumi.harness.platform.inputs.GetDbInstancePlainArgs;
+import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
+import com.pulumi.harness.platform.inputs.GetDbSchemaPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
 import com.pulumi.harness.platform.inputs.GetDelegatetokenPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDockerConnectorArgs;
@@ -92,6 +98,8 @@ import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsClusterPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsGnupgPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsProjectArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsProjectPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCertPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
@@ -218,11 +226,14 @@ import com.pulumi.harness.platform.outputs.GetBitbucketConnectorResult;
 import com.pulumi.harness.platform.outputs.GetCcmFiltersResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomSecretManagerResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomhealthsourceResult;
+import com.pulumi.harness.platform.outputs.GetConnectorJdbcResult;
 import com.pulumi.harness.platform.outputs.GetConnectorPdcResult;
 import com.pulumi.harness.platform.outputs.GetConnectorRancherResult;
 import com.pulumi.harness.platform.outputs.GetCurrentAccountResult;
 import com.pulumi.harness.platform.outputs.GetCurrentUserResult;
 import com.pulumi.harness.platform.outputs.GetDatadogConnectorResult;
+import com.pulumi.harness.platform.outputs.GetDbInstanceResult;
+import com.pulumi.harness.platform.outputs.GetDbSchemaResult;
 import com.pulumi.harness.platform.outputs.GetDelegatetokenResult;
 import com.pulumi.harness.platform.outputs.GetDockerConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDynatraceConnectorResult;
@@ -247,6 +258,7 @@ import com.pulumi.harness.platform.outputs.GetGitopsAppProjectMappingResult;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsResult;
 import com.pulumi.harness.platform.outputs.GetGitopsClusterResult;
 import com.pulumi.harness.platform.outputs.GetGitopsGnupgResult;
+import com.pulumi.harness.platform.outputs.GetGitopsProjectResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCertResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCredResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepositoryResult;
@@ -2608,6 +2620,174 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", TypeShape.of(GetConnectorCustomhealthsourceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for retrieving a Harness JDBC Connector.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorJdbc(GetConnectorJdbcArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectorJdbcResult> getConnectorJdbc(GetConnectorJdbcArgs args) {
+        return getConnectorJdbc(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness JDBC Connector.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorJdbc(GetConnectorJdbcArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectorJdbcResult> getConnectorJdbcPlain(GetConnectorJdbcPlainArgs args) {
+        return getConnectorJdbcPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness JDBC Connector.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorJdbc(GetConnectorJdbcArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectorJdbcResult> getConnectorJdbc(GetConnectorJdbcArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorJdbc:getConnectorJdbc", TypeShape.of(GetConnectorJdbcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness JDBC Connector.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorJdbc(GetConnectorJdbcArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectorJdbcResult> getConnectorJdbcPlain(GetConnectorJdbcPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getConnectorJdbc:getConnectorJdbc", TypeShape.of(GetConnectorJdbcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Datasource for looking up a Physical data center connector.
      * 
      * ## Example Usage
@@ -3170,6 +3350,362 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetDatadogConnectorResult> getDatadogConnectorPlain(GetDatadogConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getDatadogConnector:getDatadogConnector", TypeShape.of(GetDatadogConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbInstance(GetDbInstanceArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .schema("schema1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbInstanceResult> getDbInstance(GetDbInstanceArgs args) {
+        return getDbInstance(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbInstance(GetDbInstanceArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .schema("schema1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDbInstanceResult> getDbInstancePlain(GetDbInstancePlainArgs args) {
+        return getDbInstancePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbInstance(GetDbInstanceArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .schema("schema1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbInstanceResult> getDbInstance(GetDbInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDbInstance:getDbInstance", TypeShape.of(GetDbInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbInstance(GetDbInstanceArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .schema("schema1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDbInstanceResult> getDbInstancePlain(GetDbInstancePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDbInstance:getDbInstance", TypeShape.of(GetDbInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Schema.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbSchema(GetDbSchemaArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbSchemaResult> getDbSchema(GetDbSchemaArgs args) {
+        return getDbSchema(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Schema.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbSchema(GetDbSchemaArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDbSchemaResult> getDbSchemaPlain(GetDbSchemaPlainArgs args) {
+        return getDbSchemaPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Schema.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbSchema(GetDbSchemaArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbSchemaResult> getDbSchema(GetDbSchemaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDbSchema:getDbSchema", TypeShape.of(GetDbSchemaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness DBDevOps Schema.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDbSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDbSchema(GetDbSchemaArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDbSchemaResult> getDbSchemaPlain(GetDbSchemaPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDbSchema:getDbSchema", TypeShape.of(GetDbSchemaResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetDelegatetokenResult> getDelegatetoken(GetDelegatetokenArgs args) {
         return getDelegatetoken(args, InvokeOptions.Empty);
@@ -7784,6 +8320,170 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetGitopsGnupgResult> getGitopsGnupgPlain(GetGitopsGnupgPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsGnupg:getGitopsGnupg", TypeShape.of(GetGitopsGnupgResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
+     *             .agentId("agent_id")
+     *             .queryName("query_name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGitopsProjectResult> getGitopsProject(GetGitopsProjectArgs args) {
+        return getGitopsProject(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
+     *             .agentId("agent_id")
+     *             .queryName("query_name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGitopsProjectResult> getGitopsProjectPlain(GetGitopsProjectPlainArgs args) {
+        return getGitopsProjectPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
+     *             .agentId("agent_id")
+     *             .queryName("query_name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGitopsProjectResult> getGitopsProject(GetGitopsProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsProject:getGitopsProject", TypeShape.of(GetGitopsProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
+     *             .agentId("agent_id")
+     *             .queryName("query_name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGitopsProjectResult> getGitopsProjectPlain(GetGitopsProjectPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsProject:getGitopsProject", TypeShape.of(GetGitopsProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.

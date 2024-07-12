@@ -229,6 +229,21 @@ public final class GitOpsApplicationsState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    @Import(name="skipRepoValidation")
+    private @Nullable Output<Boolean> skipRepoValidation;
+
+    /**
+     * @return Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    public Optional<Output<Boolean>> skipRepoValidation() {
+        return Optional.ofNullable(this.skipRepoValidation);
+    }
+
+    /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      * 
      */
@@ -275,6 +290,7 @@ public final class GitOpsApplicationsState extends com.pulumi.resources.Resource
         this.repoId = $.repoId;
         this.requestCascade = $.requestCascade;
         this.requestPropagationPolicy = $.requestPropagationPolicy;
+        this.skipRepoValidation = $.skipRepoValidation;
         this.upsert = $.upsert;
         this.validate = $.validate;
     }
@@ -599,6 +615,27 @@ public final class GitOpsApplicationsState extends com.pulumi.resources.Resource
          */
         public Builder requestPropagationPolicy(String requestPropagationPolicy) {
             return requestPropagationPolicy(Output.of(requestPropagationPolicy));
+        }
+
+        /**
+         * @param skipRepoValidation Indicates if the GitOps application should skip validate repository definition exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipRepoValidation(@Nullable Output<Boolean> skipRepoValidation) {
+            $.skipRepoValidation = skipRepoValidation;
+            return this;
+        }
+
+        /**
+         * @param skipRepoValidation Indicates if the GitOps application should skip validate repository definition exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipRepoValidation(Boolean skipRepoValidation) {
+            return skipRepoValidation(Output.of(skipRepoValidation));
         }
 
         /**

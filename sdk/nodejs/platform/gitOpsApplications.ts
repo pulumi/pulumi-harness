@@ -143,7 +143,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
     /**
      * Repository identifier of the GitOps application.
      */
-    public readonly repoId!: pulumi.Output<string>;
+    public readonly repoId!: pulumi.Output<string | undefined>;
     /**
      * Request cascade to delete the GitOps application.
      */
@@ -152,6 +152,10 @@ export class GitOpsApplications extends pulumi.CustomResource {
      * Request propagation policy to delete the GitOps application.
      */
     public readonly requestPropagationPolicy!: pulumi.Output<string | undefined>;
+    /**
+     * Indicates if the GitOps application should skip validate repository definition exists.
+     */
+    public readonly skipRepoValidation!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
@@ -188,6 +192,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["repoId"] = state ? state.repoId : undefined;
             resourceInputs["requestCascade"] = state ? state.requestCascade : undefined;
             resourceInputs["requestPropagationPolicy"] = state ? state.requestPropagationPolicy : undefined;
+            resourceInputs["skipRepoValidation"] = state ? state.skipRepoValidation : undefined;
             resourceInputs["upsert"] = state ? state.upsert : undefined;
             resourceInputs["validate"] = state ? state.validate : undefined;
         } else {
@@ -210,9 +215,6 @@ export class GitOpsApplications extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.repoId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'repoId'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["applications"] = args ? args.applications : undefined;
@@ -227,6 +229,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["repoId"] = args ? args.repoId : undefined;
             resourceInputs["requestCascade"] = args ? args.requestCascade : undefined;
             resourceInputs["requestPropagationPolicy"] = args ? args.requestPropagationPolicy : undefined;
+            resourceInputs["skipRepoValidation"] = args ? args.skipRepoValidation : undefined;
             resourceInputs["upsert"] = args ? args.upsert : undefined;
             resourceInputs["validate"] = args ? args.validate : undefined;
         }
@@ -296,6 +299,10 @@ export interface GitOpsApplicationsState {
      */
     requestPropagationPolicy?: pulumi.Input<string>;
     /**
+     * Indicates if the GitOps application should skip validate repository definition exists.
+     */
+    skipRepoValidation?: pulumi.Input<boolean>;
+    /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
@@ -356,7 +363,7 @@ export interface GitOpsApplicationsArgs {
     /**
      * Repository identifier of the GitOps application.
      */
-    repoId: pulumi.Input<string>;
+    repoId?: pulumi.Input<string>;
     /**
      * Request cascade to delete the GitOps application.
      */
@@ -365,6 +372,10 @@ export interface GitOpsApplicationsArgs {
      * Request propagation policy to delete the GitOps application.
      */
     requestPropagationPolicy?: pulumi.Input<string>;
+    /**
+     * Indicates if the GitOps application should skip validate repository definition exists.
+     */
+    skipRepoValidation?: pulumi.Input<boolean>;
     /**
      * Indicates if the GitOps application should be updated if existing and inserted if not.
      */

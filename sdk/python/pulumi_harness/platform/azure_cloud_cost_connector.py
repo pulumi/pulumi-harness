@@ -28,7 +28,7 @@ class AzureCloudCostConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AzureCloudCostConnector resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] subscription_id: Subsription id.
         :param pulumi.Input[str] tenant_id: Tenant id.
@@ -60,7 +60,7 @@ class AzureCloudCostConnectorArgs:
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Indicates which feature to enable among Billing, Optimization, and Visibility.
+        Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 
@@ -194,7 +194,7 @@ class _AzureCloudCostConnectorState:
         Input properties used for looking up and filtering AzureCloudCostConnector resources.
         :param pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs'] billing_export_spec: Returns billing details for the Azure account.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -252,7 +252,7 @@ class _AzureCloudCostConnectorState:
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Indicates which feature to enable among Billing, Optimization, and Visibility.
+        Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 
@@ -415,7 +415,7 @@ class AzureCloudCostConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AzureCloudCostConnectorBillingExportSpecArgs']] billing_export_spec: Returns billing details for the Azure account.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -561,7 +561,7 @@ class AzureCloudCostConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AzureCloudCostConnectorBillingExportSpecArgs']] billing_export_spec: Returns billing details for the Azure account.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -606,7 +606,7 @@ class AzureCloudCostConnector(pulumi.CustomResource):
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> pulumi.Output[Sequence[str]]:
         """
-        Indicates which feature to enable among Billing, Optimization, and Visibility.
+        Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 
