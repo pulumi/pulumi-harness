@@ -178,6 +178,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string RequestPropagationPolicy;
         /// <summary>
+        /// Indicates if the GitOps application should skip validate repository definition exists.
+        /// </summary>
+        public readonly bool SkipRepoValidation;
+        /// <summary>
         /// Indicates if the GitOps application should be updated if existing and inserted if not.
         /// </summary>
         public readonly bool Upsert;
@@ -218,6 +222,8 @@ namespace Pulumi.Harness.Platform
 
             string requestPropagationPolicy,
 
+            bool skipRepoValidation,
+
             bool upsert,
 
             bool validate)
@@ -237,6 +243,7 @@ namespace Pulumi.Harness.Platform
             RepoId = repoId;
             RequestCascade = requestCascade;
             RequestPropagationPolicy = requestPropagationPolicy;
+            SkipRepoValidation = skipRepoValidation;
             Upsert = upsert;
             Validate = validate;
         }

@@ -46,8 +46,10 @@ __all__ = [
     'ConnectorCustomSecretManagerTemplateInputEnvironmentVariable',
     'ConnectorCustomhealthsourceHeader',
     'ConnectorCustomhealthsourceParam',
+    'ConnectorJdbcCredentials',
     'ConnectorPdcHost',
     'ConnectorRancherBearerToken',
+    'DbSchemaSchemaSource',
     'DockerConnectorCredentials',
     'ElasticsearchConnectorApiToken',
     'ElasticsearchConnectorNoAuthentication',
@@ -129,6 +131,11 @@ __all__ = [
     'GitlabConnectorCredentials',
     'GitlabConnectorCredentialsHttp',
     'GitlabConnectorCredentialsSsh',
+    'GitopsProjectProject',
+    'GitopsProjectProjectMetadata',
+    'GitopsProjectProjectSpec',
+    'GitopsProjectProjectSpecClusterResourceWhitelist',
+    'GitopsProjectProjectSpecDestination',
     'HelmConnectorCredentials',
     'InfrastructureGitDetails',
     'InputSetGitDetails',
@@ -245,8 +252,10 @@ __all__ = [
     'GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult',
     'GetConnectorCustomhealthsourceHeaderResult',
     'GetConnectorCustomhealthsourceParamResult',
+    'GetConnectorJdbcCredentialResult',
     'GetConnectorPdcHostResult',
     'GetConnectorRancherBearerTokenResult',
+    'GetDbSchemaSchemaSourceResult',
     'GetDockerConnectorCredentialResult',
     'GetElasticsearchConnectorApiTokenResult',
     'GetElasticsearchConnectorUsernamePasswordResult',
@@ -311,6 +320,11 @@ __all__ = [
     'GetGitopsClusterRequestClusterRefreshRequestedAtResult',
     'GetGitopsGnupgRequestResult',
     'GetGitopsGnupgRequestPublickeyResult',
+    'GetGitopsProjectProjectResult',
+    'GetGitopsProjectProjectMetadataResult',
+    'GetGitopsProjectProjectSpecResult',
+    'GetGitopsProjectProjectSpecClusterResourceWhitelistResult',
+    'GetGitopsProjectProjectSpecDestinationResult',
     'GetGitopsRepoCredCredResult',
     'GetGitopsRepositoryRepoResult',
     'GetGitopsRepositoryUpdateMaskResult',
@@ -2270,6 +2284,67 @@ class ConnectorCustomhealthsourceParam(dict):
 
 
 @pulumi.output_type
+class ConnectorJdbcCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordRef":
+            suggest = "password_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorJdbcCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorJdbcCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorJdbcCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: Optional[str] = None,
+                 username_ref: Optional[str] = None):
+        """
+        :param str password_ref: The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str username: The username to use for the database server.
+        :param str username_ref: The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to use for the database server.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[str]:
+        """
+        The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
 class ConnectorPdcHost(dict):
     def __init__(__self__, *,
                  hostname: str,
@@ -2332,6 +2407,47 @@ class ConnectorRancherBearerToken(dict):
         Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "bearer_token_ref")
+
+
+@pulumi.output_type
+class DbSchemaSchemaSource(dict):
+    def __init__(__self__, *,
+                 connector: str,
+                 location: str,
+                 repo: Optional[str] = None):
+        """
+        :param str connector: Connector to repository at which to find details about the database schema
+        :param str location: The path within the specified repository at which to find details about the database schema
+        :param str repo: If connector url is of account, which repository to connect to using the connector
+        """
+        pulumi.set(__self__, "connector", connector)
+        pulumi.set(__self__, "location", location)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def connector(self) -> str:
+        """
+        Connector to repository at which to find details about the database schema
+        """
+        return pulumi.get(self, "connector")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The path within the specified repository at which to find details about the database schema
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        If connector url is of account, which repository to connect to using the connector
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -7533,6 +7649,204 @@ class GitlabConnectorCredentialsSsh(dict):
         Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GitopsProjectProject(dict):
+    def __init__(__self__, *,
+                 metadatas: Optional[Sequence['outputs.GitopsProjectProjectMetadata']] = None,
+                 specs: Optional[Sequence['outputs.GitopsProjectProjectSpec']] = None):
+        """
+        :param Sequence['GitopsProjectProjectMetadataArgs'] metadatas: Metadata details that all persisted resources must have.
+        :param Sequence['GitopsProjectProjectSpecArgs'] specs: Spec is the specification of an AppProject.
+        """
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if specs is not None:
+            pulumi.set(__self__, "specs", specs)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[Sequence['outputs.GitopsProjectProjectMetadata']]:
+        """
+        Metadata details that all persisted resources must have.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Optional[Sequence['outputs.GitopsProjectProjectSpec']]:
+        """
+        Spec is the specification of an AppProject.
+        """
+        return pulumi.get(self, "specs")
+
+
+@pulumi.output_type
+class GitopsProjectProjectMetadata(dict):
+    def __init__(__self__, *,
+                 generation: Optional[str] = None,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None):
+        """
+        :param str generation: A sequence number representing a specific generation of the desired state.
+        :param str name: Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+        :param str namespace: The namespace where the GitOps project should be created.
+        """
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[str]:
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        The namespace where the GitOps project should be created.
+        """
+        return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class GitopsProjectProjectSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterResourceWhitelists":
+            suggest = "cluster_resource_whitelists"
+        elif key == "sourceRepos":
+            suggest = "source_repos"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GitopsProjectProjectSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GitopsProjectProjectSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GitopsProjectProjectSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_resource_whitelists: Optional[Sequence['outputs.GitopsProjectProjectSpecClusterResourceWhitelist']] = None,
+                 destinations: Optional[Sequence['outputs.GitopsProjectProjectSpecDestination']] = None,
+                 source_repos: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['GitopsProjectProjectSpecClusterResourceWhitelistArgs'] cluster_resource_whitelists: ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+        :param Sequence['GitopsProjectProjectSpecDestinationArgs'] destinations: Destinations contains list of destinations available for deployment.
+        :param Sequence[str] source_repos: SourceRepos contains list of repository URLs which can be used for deployment.
+        """
+        if cluster_resource_whitelists is not None:
+            pulumi.set(__self__, "cluster_resource_whitelists", cluster_resource_whitelists)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if source_repos is not None:
+            pulumi.set(__self__, "source_repos", source_repos)
+
+    @property
+    @pulumi.getter(name="clusterResourceWhitelists")
+    def cluster_resource_whitelists(self) -> Optional[Sequence['outputs.GitopsProjectProjectSpecClusterResourceWhitelist']]:
+        """
+        ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+        """
+        return pulumi.get(self, "cluster_resource_whitelists")
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['outputs.GitopsProjectProjectSpecDestination']]:
+        """
+        Destinations contains list of destinations available for deployment.
+        """
+        return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="sourceRepos")
+    def source_repos(self) -> Optional[Sequence[str]]:
+        """
+        SourceRepos contains list of repository URLs which can be used for deployment.
+        """
+        return pulumi.get(self, "source_repos")
+
+
+@pulumi.output_type
+class GitopsProjectProjectSpecClusterResourceWhitelist(dict):
+    def __init__(__self__, *,
+                 group: Optional[str] = None,
+                 kind: Optional[str] = None):
+        """
+        :param str group: Cluster group name.
+        :param str kind: Cluster kind.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        Cluster group name.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        """
+        Cluster kind.
+        """
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class GitopsProjectProjectSpecDestination(dict):
+    def __init__(__self__, *,
+                 namespace: Optional[str] = None,
+                 server: Optional[str] = None):
+        """
+        :param str namespace: Namespace specifies the target namespace for the application's resources.
+        :param str server: Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if server is not None:
+            pulumi.set(__self__, "server", server)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Namespace specifies the target namespace for the application's resources.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def server(self) -> Optional[str]:
+        """
+        Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+        """
+        return pulumi.get(self, "server")
 
 
 @pulumi.output_type
@@ -14793,6 +15107,46 @@ class GetConnectorCustomhealthsourceParamResult(dict):
 
 
 @pulumi.output_type
+class GetConnectorJdbcCredentialResult(dict):
+    def __init__(__self__, *,
+                 password_ref: str,
+                 username: str,
+                 username_ref: str):
+        """
+        :param str password_ref: The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str username: The username to use for the database server.
+        :param str username_ref: The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> str:
+        """
+        The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username to use for the database server.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> str:
+        """
+        The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
 class GetConnectorPdcHostResult(dict):
     def __init__(__self__, *,
                  hostname: str,
@@ -14849,6 +15203,46 @@ class GetConnectorRancherBearerTokenResult(dict):
         The URL of the Rancher cluster.
         """
         return pulumi.get(self, "rancher_url")
+
+
+@pulumi.output_type
+class GetDbSchemaSchemaSourceResult(dict):
+    def __init__(__self__, *,
+                 connector: str,
+                 location: str,
+                 repo: str):
+        """
+        :param str connector: Connector to repository at which to find details about the database schema
+        :param str location: The path within the specified repository at which to find details about the database schema
+        :param str repo: If connector url is of account, which repository to connect to using the connector
+        """
+        pulumi.set(__self__, "connector", connector)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def connector(self) -> str:
+        """
+        Connector to repository at which to find details about the database schema
+        """
+        return pulumi.get(self, "connector")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The path within the specified repository at which to find details about the database schema
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> str:
+        """
+        If connector url is of account, which repository to connect to using the connector
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -17712,6 +18106,185 @@ class GetGitopsGnupgRequestPublickeyResult(dict):
         Trust holds the level of trust assigned to this key
         """
         return pulumi.get(self, "trust")
+
+
+@pulumi.output_type
+class GetGitopsProjectProjectResult(dict):
+    def __init__(__self__, *,
+                 metadatas: Optional[Sequence['outputs.GetGitopsProjectProjectMetadataResult']] = None,
+                 specs: Optional[Sequence['outputs.GetGitopsProjectProjectSpecResult']] = None):
+        """
+        :param Sequence['GetGitopsProjectProjectMetadataArgs'] metadatas: Metadata details that all persisted resources must have.
+        :param Sequence['GetGitopsProjectProjectSpecArgs'] specs: Spec is the specification of an AppProject.
+        """
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if specs is not None:
+            pulumi.set(__self__, "specs", specs)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[Sequence['outputs.GetGitopsProjectProjectMetadataResult']]:
+        """
+        Metadata details that all persisted resources must have.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def specs(self) -> Optional[Sequence['outputs.GetGitopsProjectProjectSpecResult']]:
+        """
+        Spec is the specification of an AppProject.
+        """
+        return pulumi.get(self, "specs")
+
+
+@pulumi.output_type
+class GetGitopsProjectProjectMetadataResult(dict):
+    def __init__(__self__, *,
+                 generation: Optional[str] = None,
+                 name: Optional[str] = None,
+                 namespace: Optional[str] = None):
+        """
+        :param str generation: A sequence number representing a specific generation of the desired state.
+        :param str name: Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+        :param str namespace: The namespace where the GitOps project should be created.
+        """
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def generation(self) -> Optional[str]:
+        """
+        A sequence number representing a specific generation of the desired state.
+        """
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        The namespace where the GitOps project should be created.
+        """
+        return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class GetGitopsProjectProjectSpecResult(dict):
+    def __init__(__self__, *,
+                 cluster_resource_whitelists: Optional[Sequence['outputs.GetGitopsProjectProjectSpecClusterResourceWhitelistResult']] = None,
+                 destinations: Optional[Sequence['outputs.GetGitopsProjectProjectSpecDestinationResult']] = None,
+                 source_repos: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['GetGitopsProjectProjectSpecClusterResourceWhitelistArgs'] cluster_resource_whitelists: ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+        :param Sequence['GetGitopsProjectProjectSpecDestinationArgs'] destinations: Destinations contains list of destinations available for deployment.
+        :param Sequence[str] source_repos: SourceRepos contains list of repository URLs which can be used for deployment.
+        """
+        if cluster_resource_whitelists is not None:
+            pulumi.set(__self__, "cluster_resource_whitelists", cluster_resource_whitelists)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if source_repos is not None:
+            pulumi.set(__self__, "source_repos", source_repos)
+
+    @property
+    @pulumi.getter(name="clusterResourceWhitelists")
+    def cluster_resource_whitelists(self) -> Optional[Sequence['outputs.GetGitopsProjectProjectSpecClusterResourceWhitelistResult']]:
+        """
+        ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+        """
+        return pulumi.get(self, "cluster_resource_whitelists")
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['outputs.GetGitopsProjectProjectSpecDestinationResult']]:
+        """
+        Destinations contains list of destinations available for deployment.
+        """
+        return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="sourceRepos")
+    def source_repos(self) -> Optional[Sequence[str]]:
+        """
+        SourceRepos contains list of repository URLs which can be used for deployment.
+        """
+        return pulumi.get(self, "source_repos")
+
+
+@pulumi.output_type
+class GetGitopsProjectProjectSpecClusterResourceWhitelistResult(dict):
+    def __init__(__self__, *,
+                 group: Optional[str] = None,
+                 kind: Optional[str] = None):
+        """
+        :param str group: Cluster group name.
+        :param str kind: Cluster kind.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[str]:
+        """
+        Cluster group name.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        """
+        Cluster kind.
+        """
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class GetGitopsProjectProjectSpecDestinationResult(dict):
+    def __init__(__self__, *,
+                 namespace: Optional[str] = None,
+                 server: Optional[str] = None):
+        """
+        :param str namespace: Namespace specifies the target namespace for the application's resources.
+        :param str server: Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if server is not None:
+            pulumi.set(__self__, "server", server)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Namespace specifies the target namespace for the application's resources.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def server(self) -> Optional[str]:
+        """
+        Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+        """
+        return pulumi.get(self, "server")
 
 
 @pulumi.output_type

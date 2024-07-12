@@ -933,6 +933,20 @@
                     }
                 }
             },
+            "harness_platform_connector_jdbc": {
+                "current": "harness:platform/connectorJdbc:ConnectorJdbc",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": true
+                    },
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_jenkins": {
                 "current": "harness:platform/jenkinsConnector:JenkinsConnector",
                 "fields": {
@@ -1238,6 +1252,25 @@
                 "fields": {
                     "delegate_selectors": {
                         "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_db_instance": {
+                "current": "harness:platform/dbInstance:DbInstance",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_db_schema": {
+                "current": "harness:platform/dbSchema:DbSchema",
+                "fields": {
+                    "schema_source": {
+                        "maxItemsOne": true
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -1598,6 +1631,37 @@
                             "fields": {
                                 "publickey": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_gitops_project": {
+                "current": "harness:platform/gitopsProject:GitopsProject",
+                "fields": {
+                    "project": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "metadata": {
+                                    "maxItemsOne": false
+                                },
+                                "spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cluster_resource_whitelist": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destinations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "source_repos": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3418,6 +3482,20 @@
                     }
                 }
             },
+            "harness_platform_connector_jdbc": {
+                "current": "harness:platform/getConnectorJdbc:getConnectorJdbc",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": false
+                    },
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_jenkins": {
                 "current": "harness:platform/getJenkinsConnector:getJenkinsConnector",
                 "fields": {
@@ -3723,6 +3801,25 @@
             },
             "harness_platform_current_user": {
                 "current": "harness:platform/getCurrentUser:getCurrentUser"
+            },
+            "harness_platform_db_instance": {
+                "current": "harness:platform/getDbInstance:getDbInstance",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_db_schema": {
+                "current": "harness:platform/getDbSchema:getDbSchema",
+                "fields": {
+                    "schema_source": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_delegatetoken": {
                 "current": "harness:platform/getDelegatetoken:getDelegatetoken"
@@ -4039,6 +4136,37 @@
                             "fields": {
                                 "publickey": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_gitops_project": {
+                "current": "harness:platform/getGitopsProject:getGitopsProject",
+                "fields": {
+                    "project": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "metadata": {
+                                    "maxItemsOne": false
+                                },
+                                "spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cluster_resource_whitelist": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destinations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "source_repos": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

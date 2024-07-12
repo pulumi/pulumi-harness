@@ -3098,6 +3098,26 @@
                 "key"
             ]
         },
+        "harness:platform/ConnectorJdbcCredentials:ConnectorJdbcCredentials": {
+            "properties": {
+                "passwordRef": {
+                    "type": "string",
+                    "description": "The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to use for the database server.\n"
+                },
+                "usernameRef": {
+                    "type": "string",
+                    "description": "The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "passwordRef"
+            ]
+        },
         "harness:platform/ConnectorPdcHost:ConnectorPdcHost": {
             "properties": {
                 "attributes": {
@@ -3127,6 +3147,27 @@
             "type": "object",
             "required": [
                 "bearerTokenRef"
+            ]
+        },
+        "harness:platform/DbSchemaSchemaSource:DbSchemaSchemaSource": {
+            "properties": {
+                "connector": {
+                    "type": "string",
+                    "description": "Connector to repository at which to find details about the database schema\n"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The path within the specified repository at which to find details about the database schema\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "If connector url is of account, which repository to connect to using the connector\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connector",
+                "location"
             ]
         },
         "harness:platform/DockerConnectorCredentials:DockerConnectorCredentials": {
@@ -5183,6 +5224,94 @@
             "required": [
                 "sshKeyRef"
             ]
+        },
+        "harness:platform/GitopsProjectProject:GitopsProjectProject": {
+            "properties": {
+                "metadatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsProjectProjectMetadata:GitopsProjectProjectMetadata"
+                    },
+                    "description": "Metadata details that all persisted resources must have.\n"
+                },
+                "specs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsProjectProjectSpec:GitopsProjectProjectSpec"
+                    },
+                    "description": "Spec is the specification of an AppProject.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsProjectProjectMetadata:GitopsProjectProjectMetadata": {
+            "properties": {
+                "generation": {
+                    "type": "string",
+                    "description": "A sequence number representing a specific generation of the desired state.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace where the GitOps project should be created.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsProjectProjectSpec:GitopsProjectProjectSpec": {
+            "properties": {
+                "clusterResourceWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsProjectProjectSpecClusterResourceWhitelist:GitopsProjectProjectSpecClusterResourceWhitelist"
+                    },
+                    "description": "ClusterResourceWhitelist contains list of whitelisted cluster level resources.\n"
+                },
+                "destinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsProjectProjectSpecDestination:GitopsProjectProjectSpecDestination"
+                    },
+                    "description": "Destinations contains list of destinations available for deployment.\n"
+                },
+                "sourceRepos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SourceRepos contains list of repository URLs which can be used for deployment.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsProjectProjectSpecClusterResourceWhitelist:GitopsProjectProjectSpecClusterResourceWhitelist": {
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "Cluster group name.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Cluster kind.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsProjectProjectSpecDestination:GitopsProjectProjectSpecDestination": {
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace specifies the target namespace for the application's resources.\n"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.\n"
+                }
+            },
+            "type": "object"
         },
         "harness:platform/HelmConnectorCredentials:HelmConnectorCredentials": {
             "properties": {
@@ -8295,6 +8424,33 @@
                 }
             }
         },
+        "harness:platform/getConnectorJdbcCredential:getConnectorJdbcCredential": {
+            "properties": {
+                "passwordRef": {
+                    "type": "string",
+                    "description": "The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to use for the database server.\n"
+                },
+                "usernameRef": {
+                    "type": "string",
+                    "description": "The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "passwordRef",
+                "username",
+                "usernameRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harness:platform/getConnectorPdcHost:getConnectorPdcHost": {
             "properties": {
                 "attributes": {
@@ -8335,6 +8491,33 @@
                 "passwordRef",
                 "rancherUrl"
             ]
+        },
+        "harness:platform/getDbSchemaSchemaSource:getDbSchemaSchemaSource": {
+            "properties": {
+                "connector": {
+                    "type": "string",
+                    "description": "Connector to repository at which to find details about the database schema\n"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The path within the specified repository at which to find details about the database schema\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "If connector url is of account, which repository to connect to using the connector\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connector",
+                "location",
+                "repo"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "harness:platform/getDockerConnectorCredential:getDockerConnectorCredential": {
             "properties": {
@@ -10213,6 +10396,94 @@
                 "trust": {
                     "type": "string",
                     "description": "Trust holds the level of trust assigned to this key\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/getGitopsProjectProject:getGitopsProjectProject": {
+            "properties": {
+                "metadatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getGitopsProjectProjectMetadata:getGitopsProjectProjectMetadata"
+                    },
+                    "description": "Metadata details that all persisted resources must have.\n"
+                },
+                "specs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getGitopsProjectProjectSpec:getGitopsProjectProjectSpec"
+                    },
+                    "description": "Spec is the specification of an AppProject.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/getGitopsProjectProjectMetadata:getGitopsProjectProjectMetadata": {
+            "properties": {
+                "generation": {
+                    "type": "string",
+                    "description": "A sequence number representing a specific generation of the desired state.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace where the GitOps project should be created.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/getGitopsProjectProjectSpec:getGitopsProjectProjectSpec": {
+            "properties": {
+                "clusterResourceWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getGitopsProjectProjectSpecClusterResourceWhitelist:getGitopsProjectProjectSpecClusterResourceWhitelist"
+                    },
+                    "description": "ClusterResourceWhitelist contains list of whitelisted cluster level resources.\n"
+                },
+                "destinations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getGitopsProjectProjectSpecDestination:getGitopsProjectProjectSpecDestination"
+                    },
+                    "description": "Destinations contains list of destinations available for deployment.\n"
+                },
+                "sourceRepos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SourceRepos contains list of repository URLs which can be used for deployment.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/getGitopsProjectProjectSpecClusterResourceWhitelist:getGitopsProjectProjectSpecClusterResourceWhitelist": {
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "Cluster group name.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Cluster kind.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/getGitopsProjectProjectSpecDestination:getGitopsProjectProjectSpecDestination": {
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace specifies the target namespace for the application's resources.\n"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.\n"
                 }
             },
             "type": "object"
@@ -17632,7 +17903,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Indicates which feature to enable among Billing, Optimization, and Visibility.\n"
+                    "description": "Indicates which feature to enable among Billing, Optimization, Visibility and Governance.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -17687,7 +17958,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Indicates which feature to enable among Billing, Optimization, and Visibility.\n"
+                    "description": "Indicates which feature to enable among Billing, Optimization, Visibility and Governance.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -17744,7 +18015,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Indicates which feature to enable among Billing, Optimization, and Visibility.\n"
+                        "description": "Indicates which feature to enable among Billing, Optimization, Visibility and Governance.\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -18827,6 +19098,158 @@
                 "type": "object"
             }
         },
+        "harness:platform/connectorJdbc:ConnectorJdbc": {
+            "description": "Resource for creating a JDBC connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.ConnectorJdbc(\"test\", {\n    identifier: \"identifer\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    url: \"jdbc:sqlserver://1.2.3;trustServerCertificate=true\",\n    delegateSelectors: [\"harness-delegate\"],\n    credentials: {\n        username: \"admin\",\n        passwordRef: \"account.secret_id\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.ConnectorJdbc(\"test\",\n    identifier=\"identifer\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    url=\"jdbc:sqlserver://1.2.3;trustServerCertificate=true\",\n    delegate_selectors=[\"harness-delegate\"],\n    credentials=harness.platform.ConnectorJdbcCredentialsArgs(\n        username=\"admin\",\n        password_ref=\"account.secret_id\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.ConnectorJdbc(\"test\", new()\n    {\n        Identifier = \"identifer\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        Url = \"jdbc:sqlserver://1.2.3;trustServerCertificate=true\",\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        Credentials = new Harness.Platform.Inputs.ConnectorJdbcCredentialsArgs\n        {\n            Username = \"admin\",\n            PasswordRef = \"account.secret_id\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewConnectorJdbc(ctx, \"test\", \u0026platform.ConnectorJdbcArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifer\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tUrl: pulumi.String(\"jdbc:sqlserver://1.2.3;trustServerCertificate=true\"),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tCredentials: \u0026platform.ConnectorJdbcCredentialsArgs{\n\t\t\t\tUsername:    pulumi.String(\"admin\"),\n\t\t\t\tPasswordRef: pulumi.String(\"account.secret_id\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.ConnectorJdbc;\nimport com.pulumi.harness.platform.ConnectorJdbcArgs;\nimport com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new ConnectorJdbc(\"test\", ConnectorJdbcArgs.builder()\n            .identifier(\"identifer\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .url(\"jdbc:sqlserver://1.2.3;trustServerCertificate=true\")\n            .delegateSelectors(\"harness-delegate\")\n            .credentials(ConnectorJdbcCredentialsArgs.builder()\n                .username(\"admin\")\n                .passwordRef(\"account.secret_id\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:ConnectorJdbc\n    properties:\n      identifier: identifer\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      url: jdbc:sqlserver://1.2.3;trustServerCertificate=true\n      delegateSelectors:\n        - harness-delegate\n      credentials:\n        username: admin\n        passwordRef: account.secret_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003cconnector_id\u003e\n```\n\nImport org level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
+            "properties": {
+                "credentials": {
+                    "$ref": "#/types/harness:platform/ConnectorJdbcCredentials:ConnectorJdbcCredentials",
+                    "description": "The credentials to use for the database server.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to filter delegates for connection.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the database server.\n"
+                }
+            },
+            "required": [
+                "credentials",
+                "identifier",
+                "name",
+                "url"
+            ],
+            "inputProperties": {
+                "credentials": {
+                    "$ref": "#/types/harness:platform/ConnectorJdbcCredentials:ConnectorJdbcCredentials",
+                    "description": "The credentials to use for the database server.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to filter delegates for connection.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the database server.\n"
+                }
+            },
+            "requiredInputs": [
+                "credentials",
+                "identifier",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectorJdbc resources.\n",
+                "properties": {
+                    "credentials": {
+                        "$ref": "#/types/harness:platform/ConnectorJdbcCredentials:ConnectorJdbcCredentials",
+                        "description": "The credentials to use for the database server.\n"
+                    },
+                    "delegateSelectors": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to filter delegates for connection.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL of the database server.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:platform/connectorPdc:ConnectorPdc": {
             "description": "Resource for creating a Physical data center connector.\n\n## Example to create Pdc Connector at different levels (Org, Project, Account)\n\n## Import\n\nImport account level pdc connector \n\n```sh\n$ pulumi import harness:platform/connectorPdc:ConnectorPdc example \u003cconnector_id\u003e\n```\n\nImport org level pdc connector \n\n```sh\n$ pulumi import harness:platform/connectorPdc:ConnectorPdc example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level pdc connector \n\n```sh\n$ pulumi import harness:platform/connectorPdc:ConnectorPdc example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
             "properties": {
@@ -19298,6 +19721,306 @@
                     "url": {
                         "type": "string",
                         "description": "URL of the Datadog server.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/dbInstance:DbInstance": {
+            "description": "Resource for creating a Harness DBDevOps Instance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.DbInstance(\"test\", {\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    name: \"name\",\n    tags: [\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema: \"schema1\",\n    branch: \"main\",\n    connector: \"jdbcConnector\",\n    context: \"ctx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.DbInstance(\"test\",\n    identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    name=\"name\",\n    tags=[\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema=\"schema1\",\n    branch=\"main\",\n    connector=\"jdbcConnector\",\n    context=\"ctx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.DbInstance(\"test\", new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Name = \"name\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"bar:foo\",\n        },\n        Schema = \"schema1\",\n        Branch = \"main\",\n        Connector = \"jdbcConnector\",\n        Context = \"ctx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewDbInstance(ctx, \"test\", \u0026platform.DbInstanceArgs{\n\t\t\tIdentifier: pulumi.String(\"identifier\"),\n\t\t\tOrgId:      pulumi.String(\"org_id\"),\n\t\t\tProjectId:  pulumi.String(\"project_id\"),\n\t\t\tName:       pulumi.String(\"name\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"bar:foo\"),\n\t\t\t},\n\t\t\tSchema:    pulumi.String(\"schema1\"),\n\t\t\tBranch:    pulumi.String(\"main\"),\n\t\t\tConnector: pulumi.String(\"jdbcConnector\"),\n\t\t\tContext:   pulumi.String(\"ctx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.DbInstance;\nimport com.pulumi.harness.platform.DbInstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new DbInstance(\"test\", DbInstanceArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .name(\"name\")\n            .tags(            \n                \"foo:bar\",\n                \"bar:foo\")\n            .schema(\"schema1\")\n            .branch(\"main\")\n            .connector(\"jdbcConnector\")\n            .context(\"ctx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:DbInstance\n    properties:\n      identifier: identifier\n      orgId: org_id\n      projectId: project_id\n      name: name\n      tags:\n        - foo:bar\n        - bar:foo\n      schema: schema1\n      branch: main\n      connector: jdbcConnector\n      context: ctx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport project level db instance\n\n```sh\n$ pulumi import harness:platform/dbInstance:DbInstance example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cdb_schema_id\u003e/\u003cdb_instance_id\u003e\n```\n\n",
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The branch of changeSet repository\n"
+                },
+                "connector": {
+                    "type": "string",
+                    "description": "The connector to database\n"
+                },
+                "context": {
+                    "type": "string",
+                    "description": "The liquibase context\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The identifier of the parent database schema\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "required": [
+                "connector",
+                "identifier",
+                "name",
+                "orgId",
+                "projectId",
+                "schema"
+            ],
+            "inputProperties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The branch of changeSet repository\n"
+                },
+                "connector": {
+                    "type": "string",
+                    "description": "The connector to database\n"
+                },
+                "context": {
+                    "type": "string",
+                    "description": "The liquibase context\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n",
+                    "willReplaceOnChanges": true
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The identifier of the parent database schema\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "connector",
+                "identifier",
+                "orgId",
+                "projectId",
+                "schema"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DbInstance resources.\n",
+                "properties": {
+                    "branch": {
+                        "type": "string",
+                        "description": "The branch of changeSet repository\n"
+                    },
+                    "connector": {
+                        "type": "string",
+                        "description": "The connector to database\n"
+                    },
+                    "context": {
+                        "type": "string",
+                        "description": "The liquibase context\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "schema": {
+                        "type": "string",
+                        "description": "The identifier of the parent database schema\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/dbSchema:DbSchema": {
+            "description": "Resource for creating a Harness DBDevOps Schema.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.DbSchema(\"test\", {\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    name: \"name\",\n    service: \"service1\",\n    tags: [\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schemaSource: {\n        connector: \"gitConnector\",\n        repo: \"TestRepo\",\n        location: \"db/example-changelog.yaml\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.DbSchema(\"test\",\n    identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    name=\"name\",\n    service=\"service1\",\n    tags=[\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema_source=harness.platform.DbSchemaSchemaSourceArgs(\n        connector=\"gitConnector\",\n        repo=\"TestRepo\",\n        location=\"db/example-changelog.yaml\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.DbSchema(\"test\", new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Name = \"name\",\n        Service = \"service1\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"bar:foo\",\n        },\n        SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs\n        {\n            Connector = \"gitConnector\",\n            Repo = \"TestRepo\",\n            Location = \"db/example-changelog.yaml\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewDbSchema(ctx, \"test\", \u0026platform.DbSchemaArgs{\n\t\t\tIdentifier: pulumi.String(\"identifier\"),\n\t\t\tOrgId:      pulumi.String(\"org_id\"),\n\t\t\tProjectId:  pulumi.String(\"project_id\"),\n\t\t\tName:       pulumi.String(\"name\"),\n\t\t\tService:    pulumi.String(\"service1\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"bar:foo\"),\n\t\t\t},\n\t\t\tSchemaSource: \u0026platform.DbSchemaSchemaSourceArgs{\n\t\t\t\tConnector: pulumi.String(\"gitConnector\"),\n\t\t\t\tRepo:      pulumi.String(\"TestRepo\"),\n\t\t\t\tLocation:  pulumi.String(\"db/example-changelog.yaml\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.DbSchema;\nimport com.pulumi.harness.platform.DbSchemaArgs;\nimport com.pulumi.harness.platform.inputs.DbSchemaSchemaSourceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new DbSchema(\"test\", DbSchemaArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .name(\"name\")\n            .service(\"service1\")\n            .tags(            \n                \"foo:bar\",\n                \"bar:foo\")\n            .schemaSource(DbSchemaSchemaSourceArgs.builder()\n                .connector(\"gitConnector\")\n                .repo(\"TestRepo\")\n                .location(\"db/example-changelog.yaml\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:DbSchema\n    properties:\n      identifier: identifier\n      orgId: org_id\n      projectId: project_id\n      name: name\n      service: service1\n      tags:\n        - foo:bar\n        - bar:foo\n      schemaSource:\n        connector: gitConnector\n        repo: TestRepo\n        location: db/example-changelog.yaml\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport project level db schema\n\n```sh\n$ pulumi import harness:platform/dbSchema:DbSchema example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cdb_schema_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "schemaSource": {
+                    "$ref": "#/types/harness:platform/DbSchemaSchemaSource:DbSchemaSchemaSource",
+                    "description": "Provides a connector and path at which to find the database schema representation\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The service associated with schema\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "required": [
+                "identifier",
+                "name",
+                "orgId",
+                "projectId",
+                "schemaSource"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n",
+                    "willReplaceOnChanges": true
+                },
+                "schemaSource": {
+                    "$ref": "#/types/harness:platform/DbSchemaSchemaSource:DbSchemaSchemaSource",
+                    "description": "Provides a connector and path at which to find the database schema representation\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The service associated with schema\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier",
+                "orgId",
+                "projectId",
+                "schemaSource"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DbSchema resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "schemaSource": {
+                        "$ref": "#/types/harness:platform/DbSchemaSchemaSource:DbSchemaSchemaSource",
+                        "description": "Provides a connector and path at which to find the database schema representation\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "The service associated with schema\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
                     }
                 },
                 "type": "object"
@@ -21586,7 +22309,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Indicates which features to enable among Billing, Optimization, and Visibility.\n"
+                    "description": "Indicates which features to enable among Billing, Optimization, Visibility and Governance.\n"
                 },
                 "gcpProjectId": {
                     "type": "string",
@@ -21641,7 +22364,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Indicates which features to enable among Billing, Optimization, and Visibility.\n"
+                    "description": "Indicates which features to enable among Billing, Optimization, Visibility and Governance.\n"
                 },
                 "gcpProjectId": {
                     "type": "string",
@@ -21698,7 +22421,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Indicates which features to enable among Billing, Optimization, and Visibility.\n"
+                        "description": "Indicates which features to enable among Billing, Optimization, Visibility and Governance.\n"
                     },
                     "gcpProjectId": {
                         "type": "string",
@@ -22459,6 +23182,10 @@
                     "type": "string",
                     "description": "Request propagation policy to delete the GitOps application.\n"
                 },
+                "skipRepoValidation": {
+                    "type": "boolean",
+                    "description": "Indicates if the GitOps application should skip validate repository definition exists.\n"
+                },
                 "upsert": {
                     "type": "boolean",
                     "description": "Indicates if the GitOps application should be updated if existing and inserted if not.\n"
@@ -22475,8 +23202,7 @@
                 "clusterId",
                 "name",
                 "orgId",
-                "projectId",
-                "repoId"
+                "projectId"
             ],
             "inputProperties": {
                 "accountId": {
@@ -22538,6 +23264,10 @@
                     "type": "string",
                     "description": "Request propagation policy to delete the GitOps application.\n"
                 },
+                "skipRepoValidation": {
+                    "type": "boolean",
+                    "description": "Indicates if the GitOps application should skip validate repository definition exists.\n"
+                },
                 "upsert": {
                     "type": "boolean",
                     "description": "Indicates if the GitOps application should be updated if existing and inserted if not.\n"
@@ -22553,8 +23283,7 @@
                 "applications",
                 "clusterId",
                 "orgId",
-                "projectId",
-                "repoId"
+                "projectId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering GitOpsApplications resources.\n",
@@ -22617,6 +23346,10 @@
                     "requestPropagationPolicy": {
                         "type": "string",
                         "description": "Request propagation policy to delete the GitOps application.\n"
+                    },
+                    "skipRepoValidation": {
+                        "type": "boolean",
+                        "description": "Indicates if the GitOps application should skip validate repository definition exists.\n"
                     },
                     "upsert": {
                         "type": "boolean",
@@ -23739,6 +24472,122 @@
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps agent's Application Project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/gitopsProject:GitopsProject": {
+            "description": "## Example Usage\n\n## Import\n\nImport an Account level Gitops Repository\n\n```sh\n$ pulumi import harness:platform/gitopsProject:GitopsProject example \u003cagent_id\u003e/\u003cquery_name\u003e\n```\n\nImport an Org level Gitops Repository\n\n```sh\n$ pulumi import harness:platform/gitopsProject:GitopsProject example \u003corganization_id\u003e/\u003cagent_id\u003e/\u003cquery_name\n```\n\nImport a Project level Gitops Repository\n\n```sh\n$ pulumi import harness:platform/gitopsProject:GitopsProject example \u003corganization_id\u003e/\u003cproject_id\u003e/\u003cagent_id\u003e/\u003cquery_name\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Account identifier of the GitOps project.\n"
+                },
+                "agentId": {
+                    "type": "string",
+                    "description": "Agent identifier of the GitOps project.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org identifier of the GitOps project.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier of the GitOps repository.\n"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsProjectProject:GitopsProjectProject"
+                    },
+                    "description": "App projects configuration details.\n"
+                },
+                "queryName": {
+                    "type": "string",
+                    "description": "Identifier for the GitOps project.\n"
+                },
+                "upsert": {
+                    "type": "boolean",
+                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "agentId",
+                "projects"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Account identifier of the GitOps project.\n"
+                },
+                "agentId": {
+                    "type": "string",
+                    "description": "Agent identifier of the GitOps project.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org identifier of the GitOps project.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier of the GitOps repository.\n"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsProjectProject:GitopsProjectProject"
+                    },
+                    "description": "App projects configuration details.\n"
+                },
+                "queryName": {
+                    "type": "string",
+                    "description": "Identifier for the GitOps project.\n"
+                },
+                "upsert": {
+                    "type": "boolean",
+                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "agentId",
+                "projects"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GitopsProject resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "Account identifier of the GitOps project.\n"
+                    },
+                    "agentId": {
+                        "type": "string",
+                        "description": "Agent identifier of the GitOps project.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Org identifier of the GitOps project.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project identifier of the GitOps repository.\n"
+                    },
+                    "projects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/GitopsProjectProject:GitopsProjectProject"
+                        },
+                        "description": "App projects configuration details.\n"
+                    },
+                    "queryName": {
+                        "type": "string",
+                        "description": "Identifier for the GitOps project.\n"
+                    },
+                    "upsert": {
+                        "type": "boolean",
+                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
                     }
                 },
                 "type": "object"
@@ -36154,6 +37003,99 @@
                 "type": "object"
             }
         },
+        "harness:platform/getConnectorJdbc:getConnectorJdbc": {
+            "description": "Data source for retrieving a Harness JDBC Connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getConnectorJdbc({\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_connector_jdbc(identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetConnectorJdbc.Invoke(new()\n    {\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupConnectorJdbc(ctx, \u0026platform.LookupConnectorJdbcArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getConnectorJdbc(GetConnectorJdbcArgs.builder()\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getConnectorJdbc\n      Arguments:\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectorJdbc.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectorJdbc.\n",
+                "properties": {
+                    "credentials": {
+                        "description": "The credentials to use for the database server.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getConnectorJdbcCredential:getConnectorJdbcCredential"
+                        },
+                        "type": "array"
+                    },
+                    "delegateSelectors": {
+                        "description": "Tags to filter delegates for connection.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Unique identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier of the project.\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Tags to associate with the resource.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "url": {
+                        "description": "The URL of the database server.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "credentials",
+                    "delegateSelectors",
+                    "description",
+                    "identifier",
+                    "tags",
+                    "url",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:platform/getConnectorPdc:getConnectorPdc": {
             "description": "Datasource for looking up a Physical data center connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getConnectorPdc({\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_connector_pdc(identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetConnectorPdc.Invoke(new()\n    {\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupConnectorPdc(ctx, \u0026platform.LookupConnectorPdcArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getConnectorPdc(GetConnectorPdcArgs.builder()\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getConnectorPdc\n      Arguments:\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -36537,6 +37479,200 @@
                     "identifier",
                     "tags",
                     "url",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getDbInstance:getDbInstance": {
+            "description": "Data source for retrieving a Harness DBDevOps Instance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getDbInstance({\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    schema: \"schema1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_db_instance(identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    schema=\"schema1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetDbInstance.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Schema = \"schema1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupDbInstance(ctx, \u0026platform.LookupDbInstanceArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tOrgId:      \"org_id\",\n\t\t\tProjectId:  \"project_id\",\n\t\t\tSchema:     \"schema1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetDbInstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getDbInstance(GetDbInstanceArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .schema(\"schema1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getDbInstance\n      Arguments:\n        identifier: identifier\n        orgId: org_id\n        projectId: project_id\n        schema: schema1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDbInstance.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "schema": {
+                        "type": "string",
+                        "description": "The identifier of the parent database schema\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "orgId",
+                    "projectId",
+                    "schema"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDbInstance.\n",
+                "properties": {
+                    "branch": {
+                        "description": "The branch of changeSet repository\n",
+                        "type": "string"
+                    },
+                    "connector": {
+                        "description": "The connector to database\n",
+                        "type": "string"
+                    },
+                    "context": {
+                        "description": "The liquibase context\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Unique identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier of the project.\n",
+                        "type": "string"
+                    },
+                    "schema": {
+                        "description": "The identifier of the parent database schema\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Tags to associate with the resource.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "branch",
+                    "connector",
+                    "context",
+                    "description",
+                    "identifier",
+                    "orgId",
+                    "projectId",
+                    "schema",
+                    "tags",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getDbSchema:getDbSchema": {
+            "description": "Data source for retrieving a Harness DBDevOps Schema.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getDbSchema({\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_db_schema(identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetDbSchema.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupDbSchema(ctx, \u0026platform.LookupDbSchemaArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tOrgId:      \"org_id\",\n\t\t\tProjectId:  \"project_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetDbSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getDbSchema(GetDbSchemaArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getDbSchema\n      Arguments:\n        identifier: identifier\n        orgId: org_id\n        projectId: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDbSchema.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "orgId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDbSchema.\n",
+                "properties": {
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Unique identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier of the project.\n",
+                        "type": "string"
+                    },
+                    "schemaSources": {
+                        "description": "Provides a connector and path at which to find the database schema representation\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getDbSchemaSchemaSource:getDbSchemaSchemaSource"
+                        },
+                        "type": "array"
+                    },
+                    "service": {
+                        "description": "The service associated with schema\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Tags to associate with the resource.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "description",
+                    "identifier",
+                    "orgId",
+                    "projectId",
+                    "schemaSources",
+                    "service",
+                    "tags",
                     "id"
                 ],
                 "type": "object"
@@ -38541,6 +39677,10 @@
                         "description": "Request propagation policy to delete the GitOps application.\n",
                         "type": "string"
                     },
+                    "skipRepoValidation": {
+                        "description": "Indicates if the GitOps application should skip validate repository definition exists.\n",
+                        "type": "boolean"
+                    },
                     "upsert": {
                         "description": "Indicates if the GitOps application should be updated if existing and inserted if not.\n",
                         "type": "boolean"
@@ -38564,6 +39704,7 @@
                     "repoId",
                     "requestCascade",
                     "requestPropagationPolicy",
+                    "skipRepoValidation",
                     "upsert",
                     "validate",
                     "id"
@@ -38729,6 +39870,98 @@
                     "agentId",
                     "identifier",
                     "requests",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getGitopsProject:getGitopsProject": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()\n            .agentId(\"agent_id\")\n            .queryName(\"query_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsRepository\n      Arguments:\n        agentId: agent_id\n        queryName: query_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGitopsProject.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "Account identifier of the GitOps project.\n"
+                    },
+                    "agentId": {
+                        "type": "string",
+                        "description": "Agent identifier of the GitOps project.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Org identifier of the GitOps project.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project identifier of the GitOps repository.\n"
+                    },
+                    "projects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getGitopsProjectProject:getGitopsProjectProject"
+                        },
+                        "description": "App projects configuration details.\n"
+                    },
+                    "queryName": {
+                        "type": "string",
+                        "description": "Identifier for the GitOps project.\n"
+                    },
+                    "upsert": {
+                        "type": "boolean",
+                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "agentId",
+                    "projects"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGitopsProject.\n",
+                "properties": {
+                    "accountId": {
+                        "description": "Account identifier of the GitOps project.\n",
+                        "type": "string"
+                    },
+                    "agentId": {
+                        "description": "Agent identifier of the GitOps project.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Org identifier of the GitOps project.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Project identifier of the GitOps repository.\n",
+                        "type": "string"
+                    },
+                    "projects": {
+                        "description": "App projects configuration details.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getGitopsProjectProject:getGitopsProjectProject"
+                        },
+                        "type": "array"
+                    },
+                    "queryName": {
+                        "description": "Identifier for the GitOps project.\n",
+                        "type": "string"
+                    },
+                    "upsert": {
+                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n",
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "agentId",
+                    "projects",
                     "id"
                 ],
                 "type": "object"

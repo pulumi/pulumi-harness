@@ -188,15 +188,15 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
      * Repository identifier of the GitOps application.
      * 
      */
-    @Import(name="repoId", required=true)
-    private Output<String> repoId;
+    @Import(name="repoId")
+    private @Nullable Output<String> repoId;
 
     /**
      * @return Repository identifier of the GitOps application.
      * 
      */
-    public Output<String> repoId() {
-        return this.repoId;
+    public Optional<Output<String>> repoId() {
+        return Optional.ofNullable(this.repoId);
     }
 
     /**
@@ -227,6 +227,21 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> requestPropagationPolicy() {
         return Optional.ofNullable(this.requestPropagationPolicy);
+    }
+
+    /**
+     * Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    @Import(name="skipRepoValidation")
+    private @Nullable Output<Boolean> skipRepoValidation;
+
+    /**
+     * @return Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    public Optional<Output<Boolean>> skipRepoValidation() {
+        return Optional.ofNullable(this.skipRepoValidation);
     }
 
     /**
@@ -276,6 +291,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         this.repoId = $.repoId;
         this.requestCascade = $.requestCascade;
         this.requestPropagationPolicy = $.requestPropagationPolicy;
+        this.skipRepoValidation = $.skipRepoValidation;
         this.upsert = $.upsert;
         this.validate = $.validate;
     }
@@ -545,7 +561,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder repoId(Output<String> repoId) {
+        public Builder repoId(@Nullable Output<String> repoId) {
             $.repoId = repoId;
             return this;
         }
@@ -600,6 +616,27 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
          */
         public Builder requestPropagationPolicy(String requestPropagationPolicy) {
             return requestPropagationPolicy(Output.of(requestPropagationPolicy));
+        }
+
+        /**
+         * @param skipRepoValidation Indicates if the GitOps application should skip validate repository definition exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipRepoValidation(@Nullable Output<Boolean> skipRepoValidation) {
+            $.skipRepoValidation = skipRepoValidation;
+            return this;
+        }
+
+        /**
+         * @param skipRepoValidation Indicates if the GitOps application should skip validate repository definition exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipRepoValidation(Boolean skipRepoValidation) {
+            return skipRepoValidation(Output.of(skipRepoValidation));
         }
 
         /**
@@ -662,9 +699,6 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
             }
             if ($.projectId == null) {
                 throw new MissingRequiredPropertyException("GitOpsApplicationsArgs", "projectId");
-            }
-            if ($.repoId == null) {
-                throw new MissingRequiredPropertyException("GitOpsApplicationsArgs", "repoId");
             }
             return $;
         }

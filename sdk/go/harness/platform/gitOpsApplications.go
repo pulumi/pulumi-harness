@@ -125,11 +125,13 @@ type GitOpsApplications struct {
 	// Project identifier of the GitOps application.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Repository identifier of the GitOps application.
-	RepoId pulumi.StringOutput `pulumi:"repoId"`
+	RepoId pulumi.StringPtrOutput `pulumi:"repoId"`
 	// Request cascade to delete the GitOps application.
 	RequestCascade pulumi.BoolPtrOutput `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
 	RequestPropagationPolicy pulumi.StringPtrOutput `pulumi:"requestPropagationPolicy"`
+	// Indicates if the GitOps application should skip validate repository definition exists.
+	SkipRepoValidation pulumi.BoolPtrOutput `pulumi:"skipRepoValidation"`
 	// Indicates if the GitOps application should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrOutput `pulumi:"upsert"`
 	// Indicates if the GitOps application yaml has to be validated.
@@ -160,9 +162,6 @@ func NewGitOpsApplications(ctx *pulumi.Context,
 	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
-	}
-	if args.RepoId == nil {
-		return nil, errors.New("invalid value for required argument 'RepoId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsApplications
@@ -215,6 +214,8 @@ type gitOpsApplicationsState struct {
 	RequestCascade *bool `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
 	RequestPropagationPolicy *string `pulumi:"requestPropagationPolicy"`
+	// Indicates if the GitOps application should skip validate repository definition exists.
+	SkipRepoValidation *bool `pulumi:"skipRepoValidation"`
 	// Indicates if the GitOps application should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 	// Indicates if the GitOps application yaml has to be validated.
@@ -250,6 +251,8 @@ type GitOpsApplicationsState struct {
 	RequestCascade pulumi.BoolPtrInput
 	// Request propagation policy to delete the GitOps application.
 	RequestPropagationPolicy pulumi.StringPtrInput
+	// Indicates if the GitOps application should skip validate repository definition exists.
+	SkipRepoValidation pulumi.BoolPtrInput
 	// Indicates if the GitOps application should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 	// Indicates if the GitOps application yaml has to be validated.
@@ -284,11 +287,13 @@ type gitOpsApplicationsArgs struct {
 	// Project identifier of the GitOps application.
 	ProjectId string `pulumi:"projectId"`
 	// Repository identifier of the GitOps application.
-	RepoId string `pulumi:"repoId"`
+	RepoId *string `pulumi:"repoId"`
 	// Request cascade to delete the GitOps application.
 	RequestCascade *bool `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
 	RequestPropagationPolicy *string `pulumi:"requestPropagationPolicy"`
+	// Indicates if the GitOps application should skip validate repository definition exists.
+	SkipRepoValidation *bool `pulumi:"skipRepoValidation"`
 	// Indicates if the GitOps application should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 	// Indicates if the GitOps application yaml has to be validated.
@@ -320,11 +325,13 @@ type GitOpsApplicationsArgs struct {
 	// Project identifier of the GitOps application.
 	ProjectId pulumi.StringInput
 	// Repository identifier of the GitOps application.
-	RepoId pulumi.StringInput
+	RepoId pulumi.StringPtrInput
 	// Request cascade to delete the GitOps application.
 	RequestCascade pulumi.BoolPtrInput
 	// Request propagation policy to delete the GitOps application.
 	RequestPropagationPolicy pulumi.StringPtrInput
+	// Indicates if the GitOps application should skip validate repository definition exists.
+	SkipRepoValidation pulumi.BoolPtrInput
 	// Indicates if the GitOps application should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 	// Indicates if the GitOps application yaml has to be validated.
@@ -474,8 +481,8 @@ func (o GitOpsApplicationsOutput) ProjectId() pulumi.StringOutput {
 }
 
 // Repository identifier of the GitOps application.
-func (o GitOpsApplicationsOutput) RepoId() pulumi.StringOutput {
-	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringOutput { return v.RepoId }).(pulumi.StringOutput)
+func (o GitOpsApplicationsOutput) RepoId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringPtrOutput { return v.RepoId }).(pulumi.StringPtrOutput)
 }
 
 // Request cascade to delete the GitOps application.
@@ -486,6 +493,11 @@ func (o GitOpsApplicationsOutput) RequestCascade() pulumi.BoolPtrOutput {
 // Request propagation policy to delete the GitOps application.
 func (o GitOpsApplicationsOutput) RequestPropagationPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringPtrOutput { return v.RequestPropagationPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the GitOps application should skip validate repository definition exists.
+func (o GitOpsApplicationsOutput) SkipRepoValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitOpsApplications) pulumi.BoolPtrOutput { return v.SkipRepoValidation }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates if the GitOps application should be updated if existing and inserted if not.

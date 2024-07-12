@@ -2321,6 +2321,21 @@ export namespace platform {
         valueEncrypted?: pulumi.Input<boolean>;
     }
 
+    export interface ConnectorJdbcCredentials {
+        /**
+         * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: pulumi.Input<string>;
+        /**
+         * The username to use for the database server.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
     export interface ConnectorPdcHost {
         /**
          * Host attributes with values. e.g. type, region, name, ip, etc.
@@ -2337,6 +2352,21 @@ export namespace platform {
          * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         bearerTokenRef: pulumi.Input<string>;
+    }
+
+    export interface DbSchemaSchemaSource {
+        /**
+         * Connector to repository at which to find details about the database schema
+         */
+        connector: pulumi.Input<string>;
+        /**
+         * The path within the specified repository at which to find details about the database schema
+         */
+        location: pulumi.Input<string>;
+        /**
+         * If connector url is of account, which repository to connect to using the connector
+         */
+        repo?: pulumi.Input<string>;
     }
 
     export interface DockerConnectorCredentials {
@@ -2834,6 +2864,132 @@ export namespace platform {
          * Trust holds the level of trust assigned to this key
          */
         trust?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsProjectProject {
+        /**
+         * Metadata details that all persisted resources must have.
+         */
+        metadatas?: inputs.platform.GetGitopsProjectProjectMetadata[];
+        /**
+         * Spec is the specification of an AppProject.
+         */
+        specs?: inputs.platform.GetGitopsProjectProjectSpec[];
+    }
+
+    export interface GetGitopsProjectProjectArgs {
+        /**
+         * Metadata details that all persisted resources must have.
+         */
+        metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectMetadataArgs>[]>;
+        /**
+         * Spec is the specification of an AppProject.
+         */
+        specs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectSpecArgs>[]>;
+    }
+
+    export interface GetGitopsProjectProjectMetadata {
+        /**
+         * A sequence number representing a specific generation of the desired state.
+         */
+        generation?: string;
+        /**
+         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+         */
+        name?: string;
+        /**
+         * The namespace where the GitOps project should be created.
+         */
+        namespace?: string;
+    }
+
+    export interface GetGitopsProjectProjectMetadataArgs {
+        /**
+         * A sequence number representing a specific generation of the desired state.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The namespace where the GitOps project should be created.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsProjectProjectSpec {
+        /**
+         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+         */
+        clusterResourceWhitelists?: inputs.platform.GetGitopsProjectProjectSpecClusterResourceWhitelist[];
+        /**
+         * Destinations contains list of destinations available for deployment.
+         */
+        destinations?: inputs.platform.GetGitopsProjectProjectSpecDestination[];
+        /**
+         * SourceRepos contains list of repository URLs which can be used for deployment.
+         */
+        sourceRepos?: string[];
+    }
+
+    export interface GetGitopsProjectProjectSpecArgs {
+        /**
+         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+         */
+        clusterResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectSpecClusterResourceWhitelistArgs>[]>;
+        /**
+         * Destinations contains list of destinations available for deployment.
+         */
+        destinations?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectSpecDestinationArgs>[]>;
+        /**
+         * SourceRepos contains list of repository URLs which can be used for deployment.
+         */
+        sourceRepos?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetGitopsProjectProjectSpecClusterResourceWhitelist {
+        /**
+         * Cluster group name.
+         */
+        group?: string;
+        /**
+         * Cluster kind.
+         */
+        kind?: string;
+    }
+
+    export interface GetGitopsProjectProjectSpecClusterResourceWhitelistArgs {
+        /**
+         * Cluster group name.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Cluster kind.
+         */
+        kind?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsProjectProjectSpecDestination {
+        /**
+         * Namespace specifies the target namespace for the application's resources.
+         */
+        namespace?: string;
+        /**
+         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+         */
+        server?: string;
+    }
+
+    export interface GetGitopsProjectProjectSpecDestinationArgs {
+        /**
+         * Namespace specifies the target namespace for the application's resources.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+         */
+        server?: pulumi.Input<string>;
     }
 
     export interface GetGitopsRepoCredCred {
@@ -4842,6 +4998,69 @@ export namespace platform {
          * Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         sshKeyRef: pulumi.Input<string>;
+    }
+
+    export interface GitopsProjectProject {
+        /**
+         * Metadata details that all persisted resources must have.
+         */
+        metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectMetadata>[]>;
+        /**
+         * Spec is the specification of an AppProject.
+         */
+        specs?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectSpec>[]>;
+    }
+
+    export interface GitopsProjectProjectMetadata {
+        /**
+         * A sequence number representing a specific generation of the desired state.
+         */
+        generation?: pulumi.Input<string>;
+        /**
+         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The namespace where the GitOps project should be created.
+         */
+        namespace?: pulumi.Input<string>;
+    }
+
+    export interface GitopsProjectProjectSpec {
+        /**
+         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+         */
+        clusterResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectSpecClusterResourceWhitelist>[]>;
+        /**
+         * Destinations contains list of destinations available for deployment.
+         */
+        destinations?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectSpecDestination>[]>;
+        /**
+         * SourceRepos contains list of repository URLs which can be used for deployment.
+         */
+        sourceRepos?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GitopsProjectProjectSpecClusterResourceWhitelist {
+        /**
+         * Cluster group name.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Cluster kind.
+         */
+        kind?: pulumi.Input<string>;
+    }
+
+    export interface GitopsProjectProjectSpecDestination {
+        /**
+         * Namespace specifies the target namespace for the application's resources.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+         */
+        server?: pulumi.Input<string>;
     }
 
     export interface HelmConnectorCredentials {

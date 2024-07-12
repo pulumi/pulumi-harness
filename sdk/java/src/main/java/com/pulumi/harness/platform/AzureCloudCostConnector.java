@@ -123,14 +123,14 @@ public class AzureCloudCostConnector extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.description);
     }
     /**
-     * Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     @Export(name="featuresEnableds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> featuresEnableds;
 
     /**
-     * @return Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     public Output<List<String>> featuresEnableds() {

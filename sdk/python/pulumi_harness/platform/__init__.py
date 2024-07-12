@@ -17,9 +17,12 @@ from .azure_key_vault_connector import *
 from .bitbucket_connector import *
 from .connector_custom_secret_manager import *
 from .connector_customhealthsource import *
+from .connector_jdbc import *
 from .connector_pdc import *
 from .connector_rancher import *
 from .datadog_connector import *
+from .db_instance import *
+from .db_schema import *
 from .delegatetoken import *
 from .docker_connector import *
 from .dynatrace_connector import *
@@ -52,11 +55,14 @@ from .get_bitbucket_connector import *
 from .get_ccm_filters import *
 from .get_connector_custom_secret_manager import *
 from .get_connector_customhealthsource import *
+from .get_connector_jdbc import *
 from .get_connector_pdc import *
 from .get_connector_rancher import *
 from .get_current_account import *
 from .get_current_user import *
 from .get_datadog_connector import *
+from .get_db_instance import *
+from .get_db_schema import *
 from .get_delegatetoken import *
 from .get_docker_connector import *
 from .get_dynatrace_connector import *
@@ -81,6 +87,7 @@ from .get_gitops_app_project_mapping import *
 from .get_gitops_applications import *
 from .get_gitops_cluster import *
 from .get_gitops_gnupg import *
+from .get_gitops_project import *
 from .get_gitops_repo_cert import *
 from .get_gitops_repo_cred import *
 from .get_gitops_repository import *
@@ -148,6 +155,7 @@ from .git_ops_repository import *
 from .github_connector import *
 from .gitlab_connector import *
 from .gitops_app_project_mapping import *
+from .gitops_project import *
 from .helm_connector import *
 from .iacm_default_pipeline import *
 from .infrastructure import *

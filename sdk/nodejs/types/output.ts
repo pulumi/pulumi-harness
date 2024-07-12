@@ -2065,6 +2065,21 @@ export namespace platform {
         valueEncrypted?: boolean;
     }
 
+    export interface ConnectorJdbcCredentials {
+        /**
+         * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * The username to use for the database server.
+         */
+        username?: string;
+        /**
+         * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: string;
+    }
+
     export interface ConnectorPdcHost {
         /**
          * Host attributes with values. e.g. type, region, name, ip, etc.
@@ -2081,6 +2096,21 @@ export namespace platform {
          * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         bearerTokenRef: string;
+    }
+
+    export interface DbSchemaSchemaSource {
+        /**
+         * Connector to repository at which to find details about the database schema
+         */
+        connector: string;
+        /**
+         * The path within the specified repository at which to find details about the database schema
+         */
+        location: string;
+        /**
+         * If connector url is of account, which repository to connect to using the connector
+         */
+        repo?: string;
     }
 
     export interface DockerConnectorCredentials {
@@ -2843,6 +2873,21 @@ export namespace platform {
         valueEncrypted: boolean;
     }
 
+    export interface GetConnectorJdbcCredential {
+        /**
+         * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * The username to use for the database server.
+         */
+        username: string;
+        /**
+         * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef: string;
+    }
+
     export interface GetConnectorPdcHost {
         /**
          * Host attributes with values. e.g. type, region, name, ip, etc.
@@ -2863,6 +2908,21 @@ export namespace platform {
          * The URL of the Rancher cluster.
          */
         rancherUrl: string;
+    }
+
+    export interface GetDbSchemaSchemaSource {
+        /**
+         * Connector to repository at which to find details about the database schema
+         */
+        connector: string;
+        /**
+         * The path within the specified repository at which to find details about the database schema
+         */
+        location: string;
+        /**
+         * If connector url is of account, which repository to connect to using the connector
+         */
+        repo: string;
     }
 
     export interface GetDockerConnectorCredential {
@@ -3909,6 +3969,69 @@ export namespace platform {
          * Trust holds the level of trust assigned to this key
          */
         trust?: string;
+    }
+
+    export interface GetGitopsProjectProject {
+        /**
+         * Metadata details that all persisted resources must have.
+         */
+        metadatas?: outputs.platform.GetGitopsProjectProjectMetadata[];
+        /**
+         * Spec is the specification of an AppProject.
+         */
+        specs?: outputs.platform.GetGitopsProjectProjectSpec[];
+    }
+
+    export interface GetGitopsProjectProjectMetadata {
+        /**
+         * A sequence number representing a specific generation of the desired state.
+         */
+        generation?: string;
+        /**
+         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+         */
+        name?: string;
+        /**
+         * The namespace where the GitOps project should be created.
+         */
+        namespace?: string;
+    }
+
+    export interface GetGitopsProjectProjectSpec {
+        /**
+         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+         */
+        clusterResourceWhitelists?: outputs.platform.GetGitopsProjectProjectSpecClusterResourceWhitelist[];
+        /**
+         * Destinations contains list of destinations available for deployment.
+         */
+        destinations?: outputs.platform.GetGitopsProjectProjectSpecDestination[];
+        /**
+         * SourceRepos contains list of repository URLs which can be used for deployment.
+         */
+        sourceRepos?: string[];
+    }
+
+    export interface GetGitopsProjectProjectSpecClusterResourceWhitelist {
+        /**
+         * Cluster group name.
+         */
+        group?: string;
+        /**
+         * Cluster kind.
+         */
+        kind?: string;
+    }
+
+    export interface GetGitopsProjectProjectSpecDestination {
+        /**
+         * Namespace specifies the target namespace for the application's resources.
+         */
+        namespace?: string;
+        /**
+         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+         */
+        server?: string;
     }
 
     export interface GetGitopsRepoCredCred {
@@ -6374,6 +6497,69 @@ export namespace platform {
          * Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         sshKeyRef: string;
+    }
+
+    export interface GitopsProjectProject {
+        /**
+         * Metadata details that all persisted resources must have.
+         */
+        metadatas?: outputs.platform.GitopsProjectProjectMetadata[];
+        /**
+         * Spec is the specification of an AppProject.
+         */
+        specs?: outputs.platform.GitopsProjectProjectSpec[];
+    }
+
+    export interface GitopsProjectProjectMetadata {
+        /**
+         * A sequence number representing a specific generation of the desired state.
+         */
+        generation?: string;
+        /**
+         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+         */
+        name?: string;
+        /**
+         * The namespace where the GitOps project should be created.
+         */
+        namespace?: string;
+    }
+
+    export interface GitopsProjectProjectSpec {
+        /**
+         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+         */
+        clusterResourceWhitelists?: outputs.platform.GitopsProjectProjectSpecClusterResourceWhitelist[];
+        /**
+         * Destinations contains list of destinations available for deployment.
+         */
+        destinations?: outputs.platform.GitopsProjectProjectSpecDestination[];
+        /**
+         * SourceRepos contains list of repository URLs which can be used for deployment.
+         */
+        sourceRepos?: string[];
+    }
+
+    export interface GitopsProjectProjectSpecClusterResourceWhitelist {
+        /**
+         * Cluster group name.
+         */
+        group?: string;
+        /**
+         * Cluster kind.
+         */
+        kind?: string;
+    }
+
+    export interface GitopsProjectProjectSpecDestination {
+        /**
+         * Namespace specifies the target namespace for the application's resources.
+         */
+        namespace?: string;
+        /**
+         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+         */
+        server?: string;
     }
 
     export interface HelmConnectorCredentials {

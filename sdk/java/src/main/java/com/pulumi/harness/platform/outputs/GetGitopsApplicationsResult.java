@@ -91,6 +91,11 @@ public final class GetGitopsApplicationsResult {
      */
     private String requestPropagationPolicy;
     /**
+     * @return Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    private Boolean skipRepoValidation;
+    /**
      * @return Indicates if the GitOps application should be updated if existing and inserted if not.
      * 
      */
@@ -208,6 +213,13 @@ public final class GetGitopsApplicationsResult {
         return this.requestPropagationPolicy;
     }
     /**
+     * @return Indicates if the GitOps application should skip validate repository definition exists.
+     * 
+     */
+    public Boolean skipRepoValidation() {
+        return this.skipRepoValidation;
+    }
+    /**
      * @return Indicates if the GitOps application should be updated if existing and inserted if not.
      * 
      */
@@ -246,6 +258,7 @@ public final class GetGitopsApplicationsResult {
         private String repoId;
         private Boolean requestCascade;
         private String requestPropagationPolicy;
+        private Boolean skipRepoValidation;
         private Boolean upsert;
         private Boolean validate;
         public Builder() {}
@@ -266,6 +279,7 @@ public final class GetGitopsApplicationsResult {
     	      this.repoId = defaults.repoId;
     	      this.requestCascade = defaults.requestCascade;
     	      this.requestPropagationPolicy = defaults.requestPropagationPolicy;
+    	      this.skipRepoValidation = defaults.skipRepoValidation;
     	      this.upsert = defaults.upsert;
     	      this.validate = defaults.validate;
         }
@@ -392,6 +406,14 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder skipRepoValidation(Boolean skipRepoValidation) {
+            if (skipRepoValidation == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "skipRepoValidation");
+            }
+            this.skipRepoValidation = skipRepoValidation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder upsert(Boolean upsert) {
             if (upsert == null) {
               throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "upsert");
@@ -424,6 +446,7 @@ public final class GetGitopsApplicationsResult {
             _resultValue.repoId = repoId;
             _resultValue.requestCascade = requestCascade;
             _resultValue.requestPropagationPolicy = requestPropagationPolicy;
+            _resultValue.skipRepoValidation = skipRepoValidation;
             _resultValue.upsert = upsert;
             _resultValue.validate = validate;
             return _resultValue;
