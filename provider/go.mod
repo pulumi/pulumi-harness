@@ -1,8 +1,6 @@
 module github.com/pulumi/pulumi-harness/provider
 
-go 1.21
-
-toolchain go1.21.11
+go 1.21.12
 
 replace (
 	github.com/harness/terraform-provider-harness/shim => ./shim
@@ -11,8 +9,8 @@ replace (
 
 require (
 	github.com/harness/terraform-provider-harness/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.86.0
-	github.com/pulumi/pulumi/sdk/v3 v3.121.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.86.1-0.20240716225253-c975862f43cf
+	github.com/pulumi/pulumi/sdk/v3 v3.124.0
 )
 
 require (
@@ -182,8 +180,8 @@ require (
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.11.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
-	github.com/pulumi/pulumi-yaml v1.8.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.121.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.9.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.124.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
