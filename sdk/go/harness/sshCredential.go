@@ -21,14 +21,14 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-harness/sdk/go/harness"
-//	"github.com/pulumi/pulumi-tls/sdk/v1/go/tls"
+//	"github.com/pulumi/pulumi-tls/sdk/go/tls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			harnessDeployKey, err := index.NewPrivateKey(ctx, "harness_deploy_key", &index.PrivateKeyArgs{
+//			harnessDeployKey, err := tls.NewPrivateKey(ctx, "harness_deploy_key", &tls.PrivateKeyArgs{
 //				Algorithm: "RSA",
 //				RsaBits:   4096,
 //			})
