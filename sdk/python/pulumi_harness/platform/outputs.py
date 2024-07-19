@@ -162,6 +162,9 @@ __all__ = [
     'MonitoredServiceRequestHealthSource',
     'MonitoredServiceRequestNotificationRuleRef',
     'NexusConnectorCredentials',
+    'NotificationRuleRequest',
+    'NotificationRuleRequestCondition',
+    'NotificationRuleRequestNotificationMethod',
     'OciHelmConnectorCredentials',
     'PipelineFiltersFilterProperties',
     'PipelineFiltersFilterPropertiesModuleProperties',
@@ -9920,6 +9923,134 @@ class NexusConnectorCredentials(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class NotificationRuleRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notificationMethod":
+            suggest = "notification_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationRuleRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationRuleRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationRuleRequest.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.NotificationRuleRequestCondition'],
+                 name: str,
+                 notification_method: 'outputs.NotificationRuleRequestNotificationMethod',
+                 type: str):
+        """
+        :param Sequence['NotificationRuleRequestConditionArgs'] conditions: Notification Rule conditions specification.
+        :param str name: Name for the Notification Rule.
+        :param 'NotificationRuleRequestNotificationMethodArgs' notification_method: Notification Method specifications.
+        :param str type: Type of the Notification Rule.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notification_method", notification_method)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.NotificationRuleRequestCondition']:
+        """
+        Notification Rule conditions specification.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name for the Notification Rule.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationMethod")
+    def notification_method(self) -> 'outputs.NotificationRuleRequestNotificationMethod':
+        """
+        Notification Method specifications.
+        """
+        return pulumi.get(self, "notification_method")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the Notification Rule.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class NotificationRuleRequestCondition(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 spec: Optional[str] = None):
+        """
+        :param str type: Type of the condition.
+        :param str spec: Specification of the notification condition. Depends on the type of the notification condition.
+        """
+        pulumi.set(__self__, "type", type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the condition.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[str]:
+        """
+        Specification of the notification condition. Depends on the type of the notification condition.
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class NotificationRuleRequestNotificationMethod(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 spec: Optional[str] = None):
+        """
+        :param str type: Type of the Notification Method.
+        :param str spec: Specification of the notification method. Depends on the type of the notification method.
+        """
+        pulumi.set(__self__, "type", type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the Notification Method.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[str]:
+        """
+        Specification of the notification method. Depends on the type of the notification method.
+        """
+        return pulumi.get(self, "spec")
 
 
 @pulumi.output_type

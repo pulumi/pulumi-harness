@@ -94,6 +94,37 @@ import * as utilities from "../utilities";
  *                 }),
  *                 category: "Alert",
  *             },
+ *             {
+ *                 name: "customff",
+ *                 identifier: "customff",
+ *                 type: "CustomFF",
+ *                 enabled: true,
+ *                 category: "FeatureFlag",
+ *                 spec: JSON.stringify({
+ *                     type: "FeatureFlag",
+ *                 }),
+ *             },
+ *             {
+ *                 name: "customdeploy",
+ *                 identifier: "customdeploy",
+ *                 type: "CustomDeploy",
+ *                 enabled: true,
+ *                 category: "Deployment",
+ *                 spec: JSON.stringify({
+ *                     type: "Deployment",
+ *                 }),
+ *             },
+ *             {
+ *                 name: "customincident",
+ *                 identifier: "customincident",
+ *                 type: "CustomIncident",
+ *                 enabled: true,
+ *                 category: "Alert",
+ *                 spec: JSON.stringify({
+ *                     type: "Alert",
+ *                     authorizationToken: "abc",
+ *                 }),
+ *             },
  *         ],
  *         notificationRuleRefs: [
  *             {

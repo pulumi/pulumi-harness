@@ -102,6 +102,7 @@ from .get_kubernetes_connector import *
 from .get_manual_freeze import *
 from .get_monitored_service import *
 from .get_nexus_connector import *
+from .get_notification_rule import *
 from .get_oci_helm_connector import *
 from .get_organization import *
 from .get_pagerduty_connector import *
@@ -168,6 +169,7 @@ from .manual_freeze import *
 from .monitored_service import *
 from .newrelic_connector import *
 from .nexus_connector import *
+from .notification_rule import *
 from .oci_helm_connector import *
 from .organization import *
 from .pagerduty_connector import *

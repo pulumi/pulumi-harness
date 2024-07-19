@@ -128,6 +128,8 @@ import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
 import com.pulumi.harness.platform.inputs.GetMonitoredServicePlainArgs;
 import com.pulumi.harness.platform.inputs.GetNexusConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetNexusConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
+import com.pulumi.harness.platform.inputs.GetNotificationRulePlainArgs;
 import com.pulumi.harness.platform.inputs.GetOciHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetOciHelmConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
@@ -273,6 +275,7 @@ import com.pulumi.harness.platform.outputs.GetKubernetesConnectorResult;
 import com.pulumi.harness.platform.outputs.GetManualFreezeResult;
 import com.pulumi.harness.platform.outputs.GetMonitoredServiceResult;
 import com.pulumi.harness.platform.outputs.GetNexusConnectorResult;
+import com.pulumi.harness.platform.outputs.GetNotificationRuleResult;
 import com.pulumi.harness.platform.outputs.GetOciHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetOrganizationResult;
 import com.pulumi.harness.platform.outputs.GetPagerdutyConnectorResult;
@@ -10644,6 +10647,182 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetNexusConnectorResult> getNexusConnectorPlain(GetNexusConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getNexusConnector:getNexusConnector", TypeShape.of(GetNexusConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getNotificationRule(GetNotificationRuleArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNotificationRuleResult> getNotificationRule(GetNotificationRuleArgs args) {
+        return getNotificationRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getNotificationRule(GetNotificationRuleArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNotificationRuleResult> getNotificationRulePlain(GetNotificationRulePlainArgs args) {
+        return getNotificationRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getNotificationRule(GetNotificationRuleArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNotificationRuleResult> getNotificationRule(GetNotificationRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getNotificationRule:getNotificationRule", TypeShape.of(GetNotificationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetNotificationRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getNotificationRule(GetNotificationRuleArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNotificationRuleResult> getNotificationRulePlain(GetNotificationRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getNotificationRule:getNotificationRule", TypeShape.of(GetNotificationRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for looking up a OCI Helm connector.

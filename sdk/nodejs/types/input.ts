@@ -5612,6 +5612,47 @@ export namespace platform {
         usernameRef?: pulumi.Input<string>;
     }
 
+    export interface NotificationRuleRequest {
+        /**
+         * Notification Rule conditions specification.
+         */
+        conditions: pulumi.Input<pulumi.Input<inputs.platform.NotificationRuleRequestCondition>[]>;
+        /**
+         * Name for the Notification Rule.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Notification Method specifications.
+         */
+        notificationMethod: pulumi.Input<inputs.platform.NotificationRuleRequestNotificationMethod>;
+        /**
+         * Type of the Notification Rule.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface NotificationRuleRequestCondition {
+        /**
+         * Specification of the notification condition. Depends on the type of the notification condition.
+         */
+        spec?: pulumi.Input<string>;
+        /**
+         * Type of the condition.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface NotificationRuleRequestNotificationMethod {
+        /**
+         * Specification of the notification method. Depends on the type of the notification method.
+         */
+        spec?: pulumi.Input<string>;
+        /**
+         * Type of the Notification Method.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface OciHelmConnectorCredentials {
         /**
          * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

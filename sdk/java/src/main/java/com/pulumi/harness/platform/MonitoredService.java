@@ -125,6 +125,40 @@ import javax.annotation.Nullable;
  *                                 jsonProperty("type", "Alert")
  *                             )))
  *                         .category("Alert")
+ *                         .build(),
+ *                     MonitoredServiceRequestChangeSourceArgs.builder()
+ *                         .name("customff")
+ *                         .identifier("customff")
+ *                         .type("CustomFF")
+ *                         .enabled(true)
+ *                         .category("FeatureFlag")
+ *                         .spec(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("type", "FeatureFlag")
+ *                             )))
+ *                         .build(),
+ *                     MonitoredServiceRequestChangeSourceArgs.builder()
+ *                         .name("customdeploy")
+ *                         .identifier("customdeploy")
+ *                         .type("CustomDeploy")
+ *                         .enabled(true)
+ *                         .category("Deployment")
+ *                         .spec(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("type", "Deployment")
+ *                             )))
+ *                         .build(),
+ *                     MonitoredServiceRequestChangeSourceArgs.builder()
+ *                         .name("customincident")
+ *                         .identifier("customincident")
+ *                         .type("CustomIncident")
+ *                         .enabled(true)
+ *                         .category("Alert")
+ *                         .spec(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("type", "Alert"),
+ *                                 jsonProperty("authorizationToken", "abc")
+ *                             )))
  *                         .build())
  *                 .notificationRuleRefs(                
  *                     MonitoredServiceRequestNotificationRuleRefArgs.builder()

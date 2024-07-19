@@ -120,6 +120,43 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                     Category = "Alert",
     ///                 },
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestChangeSourceArgs
+    ///                 {
+    ///                     Name = "customff",
+    ///                     Identifier = "customff",
+    ///                     Type = "CustomFF",
+    ///                     Enabled = true,
+    ///                     Category = "FeatureFlag",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "FeatureFlag",
+    ///                     }),
+    ///                 },
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestChangeSourceArgs
+    ///                 {
+    ///                     Name = "customdeploy",
+    ///                     Identifier = "customdeploy",
+    ///                     Type = "CustomDeploy",
+    ///                     Enabled = true,
+    ///                     Category = "Deployment",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "Deployment",
+    ///                     }),
+    ///                 },
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestChangeSourceArgs
+    ///                 {
+    ///                     Name = "customincident",
+    ///                     Identifier = "customincident",
+    ///                     Type = "CustomIncident",
+    ///                     Enabled = true,
+    ///                     Category = "Alert",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "Alert",
+    ///                         ["authorizationToken"] = "abc",
+    ///                     }),
+    ///                 },
     ///             },
     ///             NotificationRuleRefs = new[]
     ///             {

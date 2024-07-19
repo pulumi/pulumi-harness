@@ -790,6 +790,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/notificationRule",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/notificationRule:NotificationRule": "NotificationRule"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/ociHelmConnector",
   "fqn": "pulumi_harness.platform",
   "classes": {
