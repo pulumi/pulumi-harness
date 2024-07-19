@@ -1852,6 +1852,24 @@
                     }
                 }
             },
+            "harness_platform_notification_rule": {
+                "current": "harness:platform/notificationRule:NotificationRule",
+                "fields": {
+                    "request": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false
+                                },
+                                "notification_method": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_organization": {
                 "current": "harness:platform/organization:Organization",
                 "fields": {
@@ -4257,6 +4275,9 @@
             },
             "harness_platform_monitored_service": {
                 "current": "harness:platform/getMonitoredService:getMonitoredService"
+            },
+            "harness_platform_notification_rule": {
+                "current": "harness:platform/getNotificationRule:getNotificationRule"
             },
             "harness_platform_organization": {
                 "current": "harness:platform/getOrganization:getOrganization",
