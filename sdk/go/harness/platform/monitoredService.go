@@ -85,6 +85,28 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"type": "FeatureFlag",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//				"type": "Deployment",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json4 := string(tmpJSON4)
+//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//				"type":               "Alert",
+//				"authorizationToken": "abc",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json5 := string(tmpJSON5)
 //			// Sample template for Elastic Search Log Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -126,6 +148,30 @@ import (
 //							Spec:       pulumi.String(json2),
 //							Category:   pulumi.String("Alert"),
 //						},
+//						&platform.MonitoredServiceRequestChangeSourceArgs{
+//							Name:       pulumi.String("customff"),
+//							Identifier: pulumi.String("customff"),
+//							Type:       pulumi.String("CustomFF"),
+//							Enabled:    pulumi.Bool(true),
+//							Category:   pulumi.String("FeatureFlag"),
+//							Spec:       pulumi.String(json3),
+//						},
+//						&platform.MonitoredServiceRequestChangeSourceArgs{
+//							Name:       pulumi.String("customdeploy"),
+//							Identifier: pulumi.String("customdeploy"),
+//							Type:       pulumi.String("CustomDeploy"),
+//							Enabled:    pulumi.Bool(true),
+//							Category:   pulumi.String("Deployment"),
+//							Spec:       pulumi.String(json4),
+//						},
+//						&platform.MonitoredServiceRequestChangeSourceArgs{
+//							Name:       pulumi.String("customincident"),
+//							Identifier: pulumi.String("customincident"),
+//							Type:       pulumi.String("CustomIncident"),
+//							Enabled:    pulumi.Bool(true),
+//							Category:   pulumi.String("Alert"),
+//							Spec:       pulumi.String(json5),
+//						},
 //					},
 //					NotificationRuleRefs: platform.MonitoredServiceRequestNotificationRuleRefArray{
 //						&platform.MonitoredServiceRequestNotificationRuleRefArgs{
@@ -142,7 +188,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//			tmpJSON6, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"queryDefinitions": []interface{}{
 //					map[string]interface{}{
@@ -219,7 +265,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json3 := string(tmpJSON3)
+//			json6 := string(tmpJSON6)
 //			// Sample template for Sumologic Metrics Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example1", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -241,7 +287,7 @@ import (
 //							Identifier: pulumi.String("sumo_metric_identifier"),
 //							Type:       pulumi.String("SumologicMetrics"),
 //							Version:    pulumi.String("v2"),
-//							Spec:       pulumi.String(json3),
+//							Spec:       pulumi.String(json6),
 //						},
 //					},
 //				},
@@ -249,7 +295,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON7, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"queryDefinitions": []map[string]interface{}{
 //					map[string]interface{}{
@@ -275,7 +321,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json4 := string(tmpJSON4)
+//			json7 := string(tmpJSON7)
 //			// Sample template for Sumologic Log Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example2", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -297,7 +343,7 @@ import (
 //							Identifier: pulumi.String("sumo_metric_identifier"),
 //							Type:       pulumi.String("SumologicLogs"),
 //							Version:    pulumi.String("v2"),
-//							Spec:       pulumi.String(json4),
+//							Spec:       pulumi.String(json7),
 //						},
 //					},
 //				},
@@ -305,7 +351,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//			tmpJSON8, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"queryDefinitions": []interface{}{
 //					map[string]interface{}{
@@ -377,7 +423,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json5 := string(tmpJSON5)
+//			json8 := string(tmpJSON8)
 //			// Sample template for Splunk Signal FX Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example3", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -399,7 +445,7 @@ import (
 //							Identifier: pulumi.String("signalfxmetrics"),
 //							Type:       pulumi.String("SplunkSignalFXMetrics"),
 //							Version:    pulumi.String("v2"),
-//							Spec:       pulumi.String(json5),
+//							Spec:       pulumi.String(json8),
 //						},
 //					},
 //				},
@@ -407,7 +453,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//			tmpJSON9, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"queryDefinitions": []map[string]interface{}{
 //					map[string]interface{}{
@@ -436,7 +482,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json6 := string(tmpJSON6)
+//			json9 := string(tmpJSON9)
 //			// Sample template for Grafana Loki Log Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example4", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -458,7 +504,7 @@ import (
 //							Identifier: pulumi.String("Test"),
 //							Type:       pulumi.String("GrafanaLokiLogs"),
 //							Version:    pulumi.String("v2"),
-//							Spec:       pulumi.String(json6),
+//							Spec:       pulumi.String(json9),
 //						},
 //					},
 //				},
@@ -466,7 +512,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON7, err := json.Marshal(map[string]interface{}{
+//			tmpJSON10, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"queryDefinitions": []interface{}{
 //					map[string]interface{}{
@@ -550,7 +596,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json7 := string(tmpJSON7)
+//			json10 := string(tmpJSON10)
 //			// Sample template for Azure Metrics Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example5", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -572,7 +618,7 @@ import (
 //							Identifier: pulumi.String("azure_metrics_verify_step"),
 //							Type:       pulumi.String("AzureMetrics"),
 //							Version:    pulumi.String("v2"),
-//							Spec:       pulumi.String(json7),
+//							Spec:       pulumi.String(json10),
 //						},
 //					},
 //				},
@@ -580,7 +626,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON8, err := json.Marshal(map[string]interface{}{
+//			tmpJSON11, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"queryDefinitions": []map[string]interface{}{
 //					map[string]interface{}{
@@ -602,7 +648,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json8 := string(tmpJSON8)
+//			json11 := string(tmpJSON11)
 //			// Sample template for Azure Log Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example6", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -624,7 +670,7 @@ import (
 //							Identifier: pulumi.String("Demo_azure"),
 //							Type:       pulumi.String("AzureLogs"),
 //							Version:    pulumi.String("v2"),
-//							Spec:       pulumi.String(json8),
+//							Spec:       pulumi.String(json11),
 //						},
 //					},
 //				},
@@ -632,7 +678,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON9, err := json.Marshal(map[string]interface{}{
+//			tmpJSON12, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"metricDefinitions": []map[string]interface{}{
 //					map[string]interface{}{
@@ -700,7 +746,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json9 := string(tmpJSON9)
+//			json12 := string(tmpJSON12)
 //			// Sample template for Prometheus Metrics Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example7", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -721,7 +767,7 @@ import (
 //							Name:       pulumi.String("prometheus metrics verify step"),
 //							Identifier: pulumi.String("prometheus_metrics"),
 //							Type:       pulumi.String("Prometheus"),
-//							Spec:       pulumi.String(json9),
+//							Spec:       pulumi.String(json12),
 //						},
 //					},
 //				},
@@ -729,7 +775,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON10, err := json.Marshal(map[string]interface{}{
+//			tmpJSON13, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
 //				"feature":      "Datadog Cloud Metrics",
 //				"metricDefinitions": []interface{}{
@@ -826,7 +872,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json10 := string(tmpJSON10)
+//			json13 := string(tmpJSON13)
 //			// Sample template for Datadog Metrics Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example8", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -847,7 +893,7 @@ import (
 //							Name:       pulumi.String("ddm"),
 //							Identifier: pulumi.String("ddm"),
 //							Type:       pulumi.String("DatadogMetrics"),
-//							Spec:       pulumi.String(json10),
+//							Spec:       pulumi.String(json13),
 //						},
 //					},
 //				},
@@ -855,7 +901,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON11, err := json.Marshal(map[string]interface{}{
+//			tmpJSON14, err := json.Marshal(map[string]interface{}{
 //				"connectorRef":    "account.Newrelicautomation_do_not_delete",
 //				"feature":         "apm",
 //				"applicationId":   "107019083",
@@ -933,7 +979,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json11 := string(tmpJSON11)
+//			json14 := string(tmpJSON14)
 //			// Sample template for New Relic Metrics Health Source
 //			_, err = platform.NewMonitoredService(ctx, "example9", &platform.MonitoredServiceArgs{
 //				OrgId:      pulumi.String("org_id"),
@@ -954,7 +1000,7 @@ import (
 //							Name:       pulumi.String("name"),
 //							Identifier: pulumi.String("identifier"),
 //							Type:       pulumi.String("NewRelic"),
-//							Spec:       pulumi.String(json11),
+//							Spec:       pulumi.String(json14),
 //						},
 //					},
 //				},

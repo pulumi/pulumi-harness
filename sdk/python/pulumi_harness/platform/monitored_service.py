@@ -253,6 +253,37 @@ class MonitoredService(pulumi.CustomResource):
                         }),
                         category="Alert",
                     ),
+                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
+                        name="customff",
+                        identifier="customff",
+                        type="CustomFF",
+                        enabled=True,
+                        category="FeatureFlag",
+                        spec=json.dumps({
+                            "type": "FeatureFlag",
+                        }),
+                    ),
+                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
+                        name="customdeploy",
+                        identifier="customdeploy",
+                        type="CustomDeploy",
+                        enabled=True,
+                        category="Deployment",
+                        spec=json.dumps({
+                            "type": "Deployment",
+                        }),
+                    ),
+                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
+                        name="customincident",
+                        identifier="customincident",
+                        type="CustomIncident",
+                        enabled=True,
+                        category="Alert",
+                        spec=json.dumps({
+                            "type": "Alert",
+                            "authorizationToken": "abc",
+                        }),
+                    ),
                 ],
                 notification_rule_refs=[
                     harness.platform.MonitoredServiceRequestNotificationRuleRefArgs(
@@ -1081,6 +1112,37 @@ class MonitoredService(pulumi.CustomResource):
                             "type": "Alert",
                         }),
                         category="Alert",
+                    ),
+                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
+                        name="customff",
+                        identifier="customff",
+                        type="CustomFF",
+                        enabled=True,
+                        category="FeatureFlag",
+                        spec=json.dumps({
+                            "type": "FeatureFlag",
+                        }),
+                    ),
+                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
+                        name="customdeploy",
+                        identifier="customdeploy",
+                        type="CustomDeploy",
+                        enabled=True,
+                        category="Deployment",
+                        spec=json.dumps({
+                            "type": "Deployment",
+                        }),
+                    ),
+                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
+                        name="customincident",
+                        identifier="customincident",
+                        type="CustomIncident",
+                        enabled=True,
+                        category="Alert",
+                        spec=json.dumps({
+                            "type": "Alert",
+                            "authorizationToken": "abc",
+                        }),
                     ),
                 ],
                 notification_rule_refs=[

@@ -141,6 +141,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NewrelicConnector{}
 	case "harness:platform/nexusConnector:NexusConnector":
 		r = &NexusConnector{}
+	case "harness:platform/notificationRule:NotificationRule":
+		r = &NotificationRule{}
 	case "harness:platform/ociHelmConnector:OciHelmConnector":
 		r = &OciHelmConnector{}
 	case "harness:platform/organization:Organization":
@@ -526,6 +528,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/nexusConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/notificationRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

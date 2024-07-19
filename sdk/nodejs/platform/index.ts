@@ -490,6 +490,11 @@ export const getNexusConnector: typeof import("./getNexusConnector").getNexusCon
 export const getNexusConnectorOutput: typeof import("./getNexusConnector").getNexusConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getNexusConnector","getNexusConnectorOutput"], () => require("./getNexusConnector"));
 
+export { GetNotificationRuleArgs, GetNotificationRuleResult, GetNotificationRuleOutputArgs } from "./getNotificationRule";
+export const getNotificationRule: typeof import("./getNotificationRule").getNotificationRule = null as any;
+export const getNotificationRuleOutput: typeof import("./getNotificationRule").getNotificationRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getNotificationRule","getNotificationRuleOutput"], () => require("./getNotificationRule"));
+
 export { GetOciHelmConnectorArgs, GetOciHelmConnectorResult, GetOciHelmConnectorOutputArgs } from "./getOciHelmConnector";
 export const getOciHelmConnector: typeof import("./getOciHelmConnector").getOciHelmConnector = null as any;
 export const getOciHelmConnectorOutput: typeof import("./getOciHelmConnector").getOciHelmConnectorOutput = null as any;
@@ -820,6 +825,11 @@ export type NexusConnector = import("./nexusConnector").NexusConnector;
 export const NexusConnector: typeof import("./nexusConnector").NexusConnector = null as any;
 utilities.lazyLoad(exports, ["NexusConnector"], () => require("./nexusConnector"));
 
+export { NotificationRuleArgs, NotificationRuleState } from "./notificationRule";
+export type NotificationRule = import("./notificationRule").NotificationRule;
+export const NotificationRule: typeof import("./notificationRule").NotificationRule = null as any;
+utilities.lazyLoad(exports, ["NotificationRule"], () => require("./notificationRule"));
+
 export { OciHelmConnectorArgs, OciHelmConnectorState } from "./ociHelmConnector";
 export type OciHelmConnector = import("./ociHelmConnector").OciHelmConnector;
 export const OciHelmConnector: typeof import("./ociHelmConnector").OciHelmConnector = null as any;
@@ -1130,6 +1140,8 @@ const _module = {
                 return new NewrelicConnector(name, <any>undefined, { urn })
             case "harness:platform/nexusConnector:NexusConnector":
                 return new NexusConnector(name, <any>undefined, { urn })
+            case "harness:platform/notificationRule:NotificationRule":
+                return new NotificationRule(name, <any>undefined, { urn })
             case "harness:platform/ociHelmConnector:OciHelmConnector":
                 return new OciHelmConnector(name, <any>undefined, { urn })
             case "harness:platform/organization:Organization":
@@ -1269,6 +1281,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/manualFreeze", _modul
 pulumi.runtime.registerResourceModule("harness", "platform/monitoredService", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/newrelicConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/nexusConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/notificationRule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/ociHelmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/organization", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pagerdutyConnector", _module)

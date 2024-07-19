@@ -23126,6 +23126,462 @@ func (o NexusConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type NotificationRuleRequest struct {
+	// Notification Rule conditions specification.
+	Conditions []NotificationRuleRequestCondition `pulumi:"conditions"`
+	// Name for the Notification Rule.
+	Name string `pulumi:"name"`
+	// Notification Method specifications.
+	NotificationMethod NotificationRuleRequestNotificationMethod `pulumi:"notificationMethod"`
+	// Type of the Notification Rule.
+	Type string `pulumi:"type"`
+}
+
+// NotificationRuleRequestInput is an input type that accepts NotificationRuleRequestArgs and NotificationRuleRequestOutput values.
+// You can construct a concrete instance of `NotificationRuleRequestInput` via:
+//
+//	NotificationRuleRequestArgs{...}
+type NotificationRuleRequestInput interface {
+	pulumi.Input
+
+	ToNotificationRuleRequestOutput() NotificationRuleRequestOutput
+	ToNotificationRuleRequestOutputWithContext(context.Context) NotificationRuleRequestOutput
+}
+
+type NotificationRuleRequestArgs struct {
+	// Notification Rule conditions specification.
+	Conditions NotificationRuleRequestConditionArrayInput `pulumi:"conditions"`
+	// Name for the Notification Rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Notification Method specifications.
+	NotificationMethod NotificationRuleRequestNotificationMethodInput `pulumi:"notificationMethod"`
+	// Type of the Notification Rule.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (NotificationRuleRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleRequest)(nil)).Elem()
+}
+
+func (i NotificationRuleRequestArgs) ToNotificationRuleRequestOutput() NotificationRuleRequestOutput {
+	return i.ToNotificationRuleRequestOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleRequestArgs) ToNotificationRuleRequestOutputWithContext(ctx context.Context) NotificationRuleRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestOutput)
+}
+
+func (i NotificationRuleRequestArgs) ToNotificationRuleRequestPtrOutput() NotificationRuleRequestPtrOutput {
+	return i.ToNotificationRuleRequestPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleRequestArgs) ToNotificationRuleRequestPtrOutputWithContext(ctx context.Context) NotificationRuleRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestOutput).ToNotificationRuleRequestPtrOutputWithContext(ctx)
+}
+
+// NotificationRuleRequestPtrInput is an input type that accepts NotificationRuleRequestArgs, NotificationRuleRequestPtr and NotificationRuleRequestPtrOutput values.
+// You can construct a concrete instance of `NotificationRuleRequestPtrInput` via:
+//
+//	        NotificationRuleRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationRuleRequestPtrInput interface {
+	pulumi.Input
+
+	ToNotificationRuleRequestPtrOutput() NotificationRuleRequestPtrOutput
+	ToNotificationRuleRequestPtrOutputWithContext(context.Context) NotificationRuleRequestPtrOutput
+}
+
+type notificationRuleRequestPtrType NotificationRuleRequestArgs
+
+func NotificationRuleRequestPtr(v *NotificationRuleRequestArgs) NotificationRuleRequestPtrInput {
+	return (*notificationRuleRequestPtrType)(v)
+}
+
+func (*notificationRuleRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationRuleRequest)(nil)).Elem()
+}
+
+func (i *notificationRuleRequestPtrType) ToNotificationRuleRequestPtrOutput() NotificationRuleRequestPtrOutput {
+	return i.ToNotificationRuleRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationRuleRequestPtrType) ToNotificationRuleRequestPtrOutputWithContext(ctx context.Context) NotificationRuleRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestPtrOutput)
+}
+
+type NotificationRuleRequestOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleRequest)(nil)).Elem()
+}
+
+func (o NotificationRuleRequestOutput) ToNotificationRuleRequestOutput() NotificationRuleRequestOutput {
+	return o
+}
+
+func (o NotificationRuleRequestOutput) ToNotificationRuleRequestOutputWithContext(ctx context.Context) NotificationRuleRequestOutput {
+	return o
+}
+
+func (o NotificationRuleRequestOutput) ToNotificationRuleRequestPtrOutput() NotificationRuleRequestPtrOutput {
+	return o.ToNotificationRuleRequestPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationRuleRequestOutput) ToNotificationRuleRequestPtrOutputWithContext(ctx context.Context) NotificationRuleRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationRuleRequest) *NotificationRuleRequest {
+		return &v
+	}).(NotificationRuleRequestPtrOutput)
+}
+
+// Notification Rule conditions specification.
+func (o NotificationRuleRequestOutput) Conditions() NotificationRuleRequestConditionArrayOutput {
+	return o.ApplyT(func(v NotificationRuleRequest) []NotificationRuleRequestCondition { return v.Conditions }).(NotificationRuleRequestConditionArrayOutput)
+}
+
+// Name for the Notification Rule.
+func (o NotificationRuleRequestOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationRuleRequest) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Notification Method specifications.
+func (o NotificationRuleRequestOutput) NotificationMethod() NotificationRuleRequestNotificationMethodOutput {
+	return o.ApplyT(func(v NotificationRuleRequest) NotificationRuleRequestNotificationMethod { return v.NotificationMethod }).(NotificationRuleRequestNotificationMethodOutput)
+}
+
+// Type of the Notification Rule.
+func (o NotificationRuleRequestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationRuleRequest) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NotificationRuleRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationRuleRequest)(nil)).Elem()
+}
+
+func (o NotificationRuleRequestPtrOutput) ToNotificationRuleRequestPtrOutput() NotificationRuleRequestPtrOutput {
+	return o
+}
+
+func (o NotificationRuleRequestPtrOutput) ToNotificationRuleRequestPtrOutputWithContext(ctx context.Context) NotificationRuleRequestPtrOutput {
+	return o
+}
+
+func (o NotificationRuleRequestPtrOutput) Elem() NotificationRuleRequestOutput {
+	return o.ApplyT(func(v *NotificationRuleRequest) NotificationRuleRequest {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationRuleRequest
+		return ret
+	}).(NotificationRuleRequestOutput)
+}
+
+// Notification Rule conditions specification.
+func (o NotificationRuleRequestPtrOutput) Conditions() NotificationRuleRequestConditionArrayOutput {
+	return o.ApplyT(func(v *NotificationRuleRequest) []NotificationRuleRequestCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(NotificationRuleRequestConditionArrayOutput)
+}
+
+// Name for the Notification Rule.
+func (o NotificationRuleRequestPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationRuleRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Notification Method specifications.
+func (o NotificationRuleRequestPtrOutput) NotificationMethod() NotificationRuleRequestNotificationMethodPtrOutput {
+	return o.ApplyT(func(v *NotificationRuleRequest) *NotificationRuleRequestNotificationMethod {
+		if v == nil {
+			return nil
+		}
+		return &v.NotificationMethod
+	}).(NotificationRuleRequestNotificationMethodPtrOutput)
+}
+
+// Type of the Notification Rule.
+func (o NotificationRuleRequestPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationRuleRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotificationRuleRequestCondition struct {
+	// Specification of the notification condition. Depends on the type of the notification condition.
+	Spec *string `pulumi:"spec"`
+	// Type of the condition.
+	Type string `pulumi:"type"`
+}
+
+// NotificationRuleRequestConditionInput is an input type that accepts NotificationRuleRequestConditionArgs and NotificationRuleRequestConditionOutput values.
+// You can construct a concrete instance of `NotificationRuleRequestConditionInput` via:
+//
+//	NotificationRuleRequestConditionArgs{...}
+type NotificationRuleRequestConditionInput interface {
+	pulumi.Input
+
+	ToNotificationRuleRequestConditionOutput() NotificationRuleRequestConditionOutput
+	ToNotificationRuleRequestConditionOutputWithContext(context.Context) NotificationRuleRequestConditionOutput
+}
+
+type NotificationRuleRequestConditionArgs struct {
+	// Specification of the notification condition. Depends on the type of the notification condition.
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// Type of the condition.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (NotificationRuleRequestConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleRequestCondition)(nil)).Elem()
+}
+
+func (i NotificationRuleRequestConditionArgs) ToNotificationRuleRequestConditionOutput() NotificationRuleRequestConditionOutput {
+	return i.ToNotificationRuleRequestConditionOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleRequestConditionArgs) ToNotificationRuleRequestConditionOutputWithContext(ctx context.Context) NotificationRuleRequestConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestConditionOutput)
+}
+
+// NotificationRuleRequestConditionArrayInput is an input type that accepts NotificationRuleRequestConditionArray and NotificationRuleRequestConditionArrayOutput values.
+// You can construct a concrete instance of `NotificationRuleRequestConditionArrayInput` via:
+//
+//	NotificationRuleRequestConditionArray{ NotificationRuleRequestConditionArgs{...} }
+type NotificationRuleRequestConditionArrayInput interface {
+	pulumi.Input
+
+	ToNotificationRuleRequestConditionArrayOutput() NotificationRuleRequestConditionArrayOutput
+	ToNotificationRuleRequestConditionArrayOutputWithContext(context.Context) NotificationRuleRequestConditionArrayOutput
+}
+
+type NotificationRuleRequestConditionArray []NotificationRuleRequestConditionInput
+
+func (NotificationRuleRequestConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationRuleRequestCondition)(nil)).Elem()
+}
+
+func (i NotificationRuleRequestConditionArray) ToNotificationRuleRequestConditionArrayOutput() NotificationRuleRequestConditionArrayOutput {
+	return i.ToNotificationRuleRequestConditionArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleRequestConditionArray) ToNotificationRuleRequestConditionArrayOutputWithContext(ctx context.Context) NotificationRuleRequestConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestConditionArrayOutput)
+}
+
+type NotificationRuleRequestConditionOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleRequestConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleRequestCondition)(nil)).Elem()
+}
+
+func (o NotificationRuleRequestConditionOutput) ToNotificationRuleRequestConditionOutput() NotificationRuleRequestConditionOutput {
+	return o
+}
+
+func (o NotificationRuleRequestConditionOutput) ToNotificationRuleRequestConditionOutputWithContext(ctx context.Context) NotificationRuleRequestConditionOutput {
+	return o
+}
+
+// Specification of the notification condition. Depends on the type of the notification condition.
+func (o NotificationRuleRequestConditionOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationRuleRequestCondition) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+// Type of the condition.
+func (o NotificationRuleRequestConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationRuleRequestCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NotificationRuleRequestConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleRequestConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationRuleRequestCondition)(nil)).Elem()
+}
+
+func (o NotificationRuleRequestConditionArrayOutput) ToNotificationRuleRequestConditionArrayOutput() NotificationRuleRequestConditionArrayOutput {
+	return o
+}
+
+func (o NotificationRuleRequestConditionArrayOutput) ToNotificationRuleRequestConditionArrayOutputWithContext(ctx context.Context) NotificationRuleRequestConditionArrayOutput {
+	return o
+}
+
+func (o NotificationRuleRequestConditionArrayOutput) Index(i pulumi.IntInput) NotificationRuleRequestConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationRuleRequestCondition {
+		return vs[0].([]NotificationRuleRequestCondition)[vs[1].(int)]
+	}).(NotificationRuleRequestConditionOutput)
+}
+
+type NotificationRuleRequestNotificationMethod struct {
+	// Specification of the notification method. Depends on the type of the notification method.
+	Spec *string `pulumi:"spec"`
+	// Type of the Notification Method.
+	Type string `pulumi:"type"`
+}
+
+// NotificationRuleRequestNotificationMethodInput is an input type that accepts NotificationRuleRequestNotificationMethodArgs and NotificationRuleRequestNotificationMethodOutput values.
+// You can construct a concrete instance of `NotificationRuleRequestNotificationMethodInput` via:
+//
+//	NotificationRuleRequestNotificationMethodArgs{...}
+type NotificationRuleRequestNotificationMethodInput interface {
+	pulumi.Input
+
+	ToNotificationRuleRequestNotificationMethodOutput() NotificationRuleRequestNotificationMethodOutput
+	ToNotificationRuleRequestNotificationMethodOutputWithContext(context.Context) NotificationRuleRequestNotificationMethodOutput
+}
+
+type NotificationRuleRequestNotificationMethodArgs struct {
+	// Specification of the notification method. Depends on the type of the notification method.
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+	// Type of the Notification Method.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (NotificationRuleRequestNotificationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleRequestNotificationMethod)(nil)).Elem()
+}
+
+func (i NotificationRuleRequestNotificationMethodArgs) ToNotificationRuleRequestNotificationMethodOutput() NotificationRuleRequestNotificationMethodOutput {
+	return i.ToNotificationRuleRequestNotificationMethodOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleRequestNotificationMethodArgs) ToNotificationRuleRequestNotificationMethodOutputWithContext(ctx context.Context) NotificationRuleRequestNotificationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestNotificationMethodOutput)
+}
+
+func (i NotificationRuleRequestNotificationMethodArgs) ToNotificationRuleRequestNotificationMethodPtrOutput() NotificationRuleRequestNotificationMethodPtrOutput {
+	return i.ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationRuleRequestNotificationMethodArgs) ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(ctx context.Context) NotificationRuleRequestNotificationMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestNotificationMethodOutput).ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(ctx)
+}
+
+// NotificationRuleRequestNotificationMethodPtrInput is an input type that accepts NotificationRuleRequestNotificationMethodArgs, NotificationRuleRequestNotificationMethodPtr and NotificationRuleRequestNotificationMethodPtrOutput values.
+// You can construct a concrete instance of `NotificationRuleRequestNotificationMethodPtrInput` via:
+//
+//	        NotificationRuleRequestNotificationMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotificationRuleRequestNotificationMethodPtrInput interface {
+	pulumi.Input
+
+	ToNotificationRuleRequestNotificationMethodPtrOutput() NotificationRuleRequestNotificationMethodPtrOutput
+	ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(context.Context) NotificationRuleRequestNotificationMethodPtrOutput
+}
+
+type notificationRuleRequestNotificationMethodPtrType NotificationRuleRequestNotificationMethodArgs
+
+func NotificationRuleRequestNotificationMethodPtr(v *NotificationRuleRequestNotificationMethodArgs) NotificationRuleRequestNotificationMethodPtrInput {
+	return (*notificationRuleRequestNotificationMethodPtrType)(v)
+}
+
+func (*notificationRuleRequestNotificationMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationRuleRequestNotificationMethod)(nil)).Elem()
+}
+
+func (i *notificationRuleRequestNotificationMethodPtrType) ToNotificationRuleRequestNotificationMethodPtrOutput() NotificationRuleRequestNotificationMethodPtrOutput {
+	return i.ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationRuleRequestNotificationMethodPtrType) ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(ctx context.Context) NotificationRuleRequestNotificationMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationRuleRequestNotificationMethodPtrOutput)
+}
+
+type NotificationRuleRequestNotificationMethodOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleRequestNotificationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationRuleRequestNotificationMethod)(nil)).Elem()
+}
+
+func (o NotificationRuleRequestNotificationMethodOutput) ToNotificationRuleRequestNotificationMethodOutput() NotificationRuleRequestNotificationMethodOutput {
+	return o
+}
+
+func (o NotificationRuleRequestNotificationMethodOutput) ToNotificationRuleRequestNotificationMethodOutputWithContext(ctx context.Context) NotificationRuleRequestNotificationMethodOutput {
+	return o
+}
+
+func (o NotificationRuleRequestNotificationMethodOutput) ToNotificationRuleRequestNotificationMethodPtrOutput() NotificationRuleRequestNotificationMethodPtrOutput {
+	return o.ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationRuleRequestNotificationMethodOutput) ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(ctx context.Context) NotificationRuleRequestNotificationMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationRuleRequestNotificationMethod) *NotificationRuleRequestNotificationMethod {
+		return &v
+	}).(NotificationRuleRequestNotificationMethodPtrOutput)
+}
+
+// Specification of the notification method. Depends on the type of the notification method.
+func (o NotificationRuleRequestNotificationMethodOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationRuleRequestNotificationMethod) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+// Type of the Notification Method.
+func (o NotificationRuleRequestNotificationMethodOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationRuleRequestNotificationMethod) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NotificationRuleRequestNotificationMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationRuleRequestNotificationMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationRuleRequestNotificationMethod)(nil)).Elem()
+}
+
+func (o NotificationRuleRequestNotificationMethodPtrOutput) ToNotificationRuleRequestNotificationMethodPtrOutput() NotificationRuleRequestNotificationMethodPtrOutput {
+	return o
+}
+
+func (o NotificationRuleRequestNotificationMethodPtrOutput) ToNotificationRuleRequestNotificationMethodPtrOutputWithContext(ctx context.Context) NotificationRuleRequestNotificationMethodPtrOutput {
+	return o
+}
+
+func (o NotificationRuleRequestNotificationMethodPtrOutput) Elem() NotificationRuleRequestNotificationMethodOutput {
+	return o.ApplyT(func(v *NotificationRuleRequestNotificationMethod) NotificationRuleRequestNotificationMethod {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationRuleRequestNotificationMethod
+		return ret
+	}).(NotificationRuleRequestNotificationMethodOutput)
+}
+
+// Specification of the notification method. Depends on the type of the notification method.
+func (o NotificationRuleRequestNotificationMethodPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationRuleRequestNotificationMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the Notification Method.
+func (o NotificationRuleRequestNotificationMethodPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationRuleRequestNotificationMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type OciHelmConnectorCredentials struct {
 	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
@@ -54654,6 +55110,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredServiceRequestNotificationRuleRefArrayInput)(nil)).Elem(), MonitoredServiceRequestNotificationRuleRefArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NexusConnectorCredentialsInput)(nil)).Elem(), NexusConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NexusConnectorCredentialsPtrInput)(nil)).Elem(), NexusConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRuleRequestInput)(nil)).Elem(), NotificationRuleRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRuleRequestPtrInput)(nil)).Elem(), NotificationRuleRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRuleRequestConditionInput)(nil)).Elem(), NotificationRuleRequestConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRuleRequestConditionArrayInput)(nil)).Elem(), NotificationRuleRequestConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRuleRequestNotificationMethodInput)(nil)).Elem(), NotificationRuleRequestNotificationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRuleRequestNotificationMethodPtrInput)(nil)).Elem(), NotificationRuleRequestNotificationMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OciHelmConnectorCredentialsInput)(nil)).Elem(), OciHelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OciHelmConnectorCredentialsPtrInput)(nil)).Elem(), OciHelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersFilterPropertiesInput)(nil)).Elem(), PipelineFiltersFilterPropertiesArgs{})
@@ -55423,6 +55885,12 @@ func init() {
 	pulumi.RegisterOutputType(MonitoredServiceRequestNotificationRuleRefArrayOutput{})
 	pulumi.RegisterOutputType(NexusConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(NexusConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(NotificationRuleRequestOutput{})
+	pulumi.RegisterOutputType(NotificationRuleRequestPtrOutput{})
+	pulumi.RegisterOutputType(NotificationRuleRequestConditionOutput{})
+	pulumi.RegisterOutputType(NotificationRuleRequestConditionArrayOutput{})
+	pulumi.RegisterOutputType(NotificationRuleRequestNotificationMethodOutput{})
+	pulumi.RegisterOutputType(NotificationRuleRequestNotificationMethodPtrOutput{})
 	pulumi.RegisterOutputType(OciHelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(OciHelmConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersFilterPropertiesOutput{})

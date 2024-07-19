@@ -161,6 +161,9 @@ __all__ = [
     'MonitoredServiceRequestHealthSourceArgs',
     'MonitoredServiceRequestNotificationRuleRefArgs',
     'NexusConnectorCredentialsArgs',
+    'NotificationRuleRequestArgs',
+    'NotificationRuleRequestConditionArgs',
+    'NotificationRuleRequestNotificationMethodArgs',
     'OciHelmConnectorCredentialsArgs',
     'PipelineFiltersFilterPropertiesArgs',
     'PipelineFiltersFilterPropertiesModulePropertiesArgs',
@@ -9689,6 +9692,149 @@ class NexusConnectorCredentialsArgs:
     @username_ref.setter
     def username_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_ref", value)
+
+
+@pulumi.input_type
+class NotificationRuleRequestArgs:
+    def __init__(__self__, *,
+                 conditions: pulumi.Input[Sequence[pulumi.Input['NotificationRuleRequestConditionArgs']]],
+                 name: pulumi.Input[str],
+                 notification_method: pulumi.Input['NotificationRuleRequestNotificationMethodArgs'],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationRuleRequestConditionArgs']]] conditions: Notification Rule conditions specification.
+        :param pulumi.Input[str] name: Name for the Notification Rule.
+        :param pulumi.Input['NotificationRuleRequestNotificationMethodArgs'] notification_method: Notification Method specifications.
+        :param pulumi.Input[str] type: Type of the Notification Rule.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notification_method", notification_method)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['NotificationRuleRequestConditionArgs']]]:
+        """
+        Notification Rule conditions specification.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['NotificationRuleRequestConditionArgs']]]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name for the Notification Rule.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationMethod")
+    def notification_method(self) -> pulumi.Input['NotificationRuleRequestNotificationMethodArgs']:
+        """
+        Notification Method specifications.
+        """
+        return pulumi.get(self, "notification_method")
+
+    @notification_method.setter
+    def notification_method(self, value: pulumi.Input['NotificationRuleRequestNotificationMethodArgs']):
+        pulumi.set(self, "notification_method", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the Notification Rule.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class NotificationRuleRequestConditionArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 spec: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of the condition.
+        :param pulumi.Input[str] spec: Specification of the notification condition. Depends on the type of the notification condition.
+        """
+        pulumi.set(__self__, "type", type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the condition.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specification of the notification condition. Depends on the type of the notification condition.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
+
+
+@pulumi.input_type
+class NotificationRuleRequestNotificationMethodArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 spec: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of the Notification Method.
+        :param pulumi.Input[str] spec: Specification of the notification method. Depends on the type of the notification method.
+        """
+        pulumi.set(__self__, "type", type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the Notification Method.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specification of the notification method. Depends on the type of the notification method.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
