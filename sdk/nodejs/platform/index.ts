@@ -395,6 +395,11 @@ export const getGitopsAgentDeployYaml: typeof import("./getGitopsAgentDeployYaml
 export const getGitopsAgentDeployYamlOutput: typeof import("./getGitopsAgentDeployYaml").getGitopsAgentDeployYamlOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsAgentDeployYaml","getGitopsAgentDeployYamlOutput"], () => require("./getGitopsAgentDeployYaml"));
 
+export { GetGitopsAppProjectArgs, GetGitopsAppProjectResult, GetGitopsAppProjectOutputArgs } from "./getGitopsAppProject";
+export const getGitopsAppProject: typeof import("./getGitopsAppProject").getGitopsAppProject = null as any;
+export const getGitopsAppProjectOutput: typeof import("./getGitopsAppProject").getGitopsAppProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsAppProject","getGitopsAppProjectOutput"], () => require("./getGitopsAppProject"));
+
 export { GetGitopsAppProjectMappingArgs, GetGitopsAppProjectMappingResult, GetGitopsAppProjectMappingOutputArgs } from "./getGitopsAppProjectMapping";
 export const getGitopsAppProjectMapping: typeof import("./getGitopsAppProjectMapping").getGitopsAppProjectMapping = null as any;
 export const getGitopsAppProjectMappingOutput: typeof import("./getGitopsAppProjectMapping").getGitopsAppProjectMappingOutput = null as any;
@@ -414,11 +419,6 @@ export { GetGitopsGnupgArgs, GetGitopsGnupgResult, GetGitopsGnupgOutputArgs } fr
 export const getGitopsGnupg: typeof import("./getGitopsGnupg").getGitopsGnupg = null as any;
 export const getGitopsGnupgOutput: typeof import("./getGitopsGnupg").getGitopsGnupgOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsGnupg","getGitopsGnupgOutput"], () => require("./getGitopsGnupg"));
-
-export { GetGitopsProjectArgs, GetGitopsProjectResult, GetGitopsProjectOutputArgs } from "./getGitopsProject";
-export const getGitopsProject: typeof import("./getGitopsProject").getGitopsProject = null as any;
-export const getGitopsProjectOutput: typeof import("./getGitopsProject").getGitopsProjectOutput = null as any;
-utilities.lazyLoad(exports, ["getGitopsProject","getGitopsProjectOutput"], () => require("./getGitopsProject"));
 
 export { GetGitopsRepoCertArgs, GetGitopsRepoCertResult, GetGitopsRepoCertOutputArgs } from "./getGitopsRepoCert";
 export const getGitopsRepoCert: typeof import("./getGitopsRepoCert").getGitopsRepoCert = null as any;
@@ -755,15 +755,15 @@ export type GitlabConnector = import("./gitlabConnector").GitlabConnector;
 export const GitlabConnector: typeof import("./gitlabConnector").GitlabConnector = null as any;
 utilities.lazyLoad(exports, ["GitlabConnector"], () => require("./gitlabConnector"));
 
+export { GitopsAppProjectArgs, GitopsAppProjectState } from "./gitopsAppProject";
+export type GitopsAppProject = import("./gitopsAppProject").GitopsAppProject;
+export const GitopsAppProject: typeof import("./gitopsAppProject").GitopsAppProject = null as any;
+utilities.lazyLoad(exports, ["GitopsAppProject"], () => require("./gitopsAppProject"));
+
 export { GitopsAppProjectMappingArgs, GitopsAppProjectMappingState } from "./gitopsAppProjectMapping";
 export type GitopsAppProjectMapping = import("./gitopsAppProjectMapping").GitopsAppProjectMapping;
 export const GitopsAppProjectMapping: typeof import("./gitopsAppProjectMapping").GitopsAppProjectMapping = null as any;
 utilities.lazyLoad(exports, ["GitopsAppProjectMapping"], () => require("./gitopsAppProjectMapping"));
-
-export { GitopsProjectArgs, GitopsProjectState } from "./gitopsProject";
-export type GitopsProject = import("./gitopsProject").GitopsProject;
-export const GitopsProject: typeof import("./gitopsProject").GitopsProject = null as any;
-utilities.lazyLoad(exports, ["GitopsProject"], () => require("./gitopsProject"));
 
 export { HelmConnectorArgs, HelmConnectorState } from "./helmConnector";
 export type HelmConnector = import("./helmConnector").HelmConnector;
@@ -1112,10 +1112,10 @@ const _module = {
                 return new GithubConnector(name, <any>undefined, { urn })
             case "harness:platform/gitlabConnector:GitlabConnector":
                 return new GitlabConnector(name, <any>undefined, { urn })
+            case "harness:platform/gitopsAppProject:GitopsAppProject":
+                return new GitopsAppProject(name, <any>undefined, { urn })
             case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
                 return new GitopsAppProjectMapping(name, <any>undefined, { urn })
-            case "harness:platform/gitopsProject:GitopsProject":
-                return new GitopsProject(name, <any>undefined, { urn })
             case "harness:platform/helmConnector:HelmConnector":
                 return new HelmConnector(name, <any>undefined, { urn })
             case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
@@ -1267,8 +1267,8 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitOpsRepoCred", _mod
 pulumi.runtime.registerResourceModule("harness", "platform/gitOpsRepository", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/githubConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProject", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMapping", _module)
-pulumi.runtime.registerResourceModule("harness", "platform/gitopsProject", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)

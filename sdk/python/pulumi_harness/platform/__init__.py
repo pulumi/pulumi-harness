@@ -83,11 +83,11 @@ from .get_github_connector import *
 from .get_gitlab_connector import *
 from .get_gitops_agent import *
 from .get_gitops_agent_deploy_yaml import *
+from .get_gitops_app_project import *
 from .get_gitops_app_project_mapping import *
 from .get_gitops_applications import *
 from .get_gitops_cluster import *
 from .get_gitops_gnupg import *
-from .get_gitops_project import *
 from .get_gitops_repo_cert import *
 from .get_gitops_repo_cred import *
 from .get_gitops_repository import *
@@ -155,8 +155,8 @@ from .git_ops_repo_cred import *
 from .git_ops_repository import *
 from .github_connector import *
 from .gitlab_connector import *
+from .gitops_app_project import *
 from .gitops_app_project_mapping import *
-from .gitops_project import *
 from .helm_connector import *
 from .iacm_default_pipeline import *
 from .infrastructure import *

@@ -113,10 +113,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GithubConnector{}
 	case "harness:platform/gitlabConnector:GitlabConnector":
 		r = &GitlabConnector{}
+	case "harness:platform/gitopsAppProject:GitopsAppProject":
+		r = &GitopsAppProject{}
 	case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
 		r = &GitopsAppProjectMapping{}
-	case "harness:platform/gitopsProject:GitopsProject":
-		r = &GitopsProject{}
 	case "harness:platform/helmConnector:HelmConnector":
 		r = &HelmConnector{}
 	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
@@ -462,12 +462,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"platform/gitopsAppProjectMapping",
+		"platform/gitopsAppProject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
-		"platform/gitopsProject",
+		"platform/gitopsAppProjectMapping",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

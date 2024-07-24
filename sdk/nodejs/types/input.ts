@@ -2866,132 +2866,6 @@ export namespace platform {
         trust?: pulumi.Input<string>;
     }
 
-    export interface GetGitopsProjectProject {
-        /**
-         * Metadata details that all persisted resources must have.
-         */
-        metadatas?: inputs.platform.GetGitopsProjectProjectMetadata[];
-        /**
-         * Spec is the specification of an AppProject.
-         */
-        specs?: inputs.platform.GetGitopsProjectProjectSpec[];
-    }
-
-    export interface GetGitopsProjectProjectArgs {
-        /**
-         * Metadata details that all persisted resources must have.
-         */
-        metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectMetadataArgs>[]>;
-        /**
-         * Spec is the specification of an AppProject.
-         */
-        specs?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectSpecArgs>[]>;
-    }
-
-    export interface GetGitopsProjectProjectMetadata {
-        /**
-         * A sequence number representing a specific generation of the desired state.
-         */
-        generation?: string;
-        /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-         */
-        name?: string;
-        /**
-         * The namespace where the GitOps project should be created.
-         */
-        namespace?: string;
-    }
-
-    export interface GetGitopsProjectProjectMetadataArgs {
-        /**
-         * A sequence number representing a specific generation of the desired state.
-         */
-        generation?: pulumi.Input<string>;
-        /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The namespace where the GitOps project should be created.
-         */
-        namespace?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsProjectProjectSpec {
-        /**
-         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-         */
-        clusterResourceWhitelists?: inputs.platform.GetGitopsProjectProjectSpecClusterResourceWhitelist[];
-        /**
-         * Destinations contains list of destinations available for deployment.
-         */
-        destinations?: inputs.platform.GetGitopsProjectProjectSpecDestination[];
-        /**
-         * SourceRepos contains list of repository URLs which can be used for deployment.
-         */
-        sourceRepos?: string[];
-    }
-
-    export interface GetGitopsProjectProjectSpecArgs {
-        /**
-         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-         */
-        clusterResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectSpecClusterResourceWhitelistArgs>[]>;
-        /**
-         * Destinations contains list of destinations available for deployment.
-         */
-        destinations?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsProjectProjectSpecDestinationArgs>[]>;
-        /**
-         * SourceRepos contains list of repository URLs which can be used for deployment.
-         */
-        sourceRepos?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface GetGitopsProjectProjectSpecClusterResourceWhitelist {
-        /**
-         * Cluster group name.
-         */
-        group?: string;
-        /**
-         * Cluster kind.
-         */
-        kind?: string;
-    }
-
-    export interface GetGitopsProjectProjectSpecClusterResourceWhitelistArgs {
-        /**
-         * Cluster group name.
-         */
-        group?: pulumi.Input<string>;
-        /**
-         * Cluster kind.
-         */
-        kind?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsProjectProjectSpecDestination {
-        /**
-         * Namespace specifies the target namespace for the application's resources.
-         */
-        namespace?: string;
-        /**
-         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-         */
-        server?: string;
-    }
-
-    export interface GetGitopsProjectProjectSpecDestinationArgs {
-        /**
-         * Namespace specifies the target namespace for the application's resources.
-         */
-        namespace?: pulumi.Input<string>;
-        /**
-         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-         */
-        server?: pulumi.Input<string>;
-    }
-
     export interface GetGitopsRepoCredCred {
         /**
          * Specifies whether helm-oci support should be enabled for this repo.
@@ -5000,67 +4874,289 @@ export namespace platform {
         sshKeyRef: pulumi.Input<string>;
     }
 
-    export interface GitopsProjectProject {
+    export interface GitopsAppProjectProject {
         /**
-         * Metadata details that all persisted resources must have.
+         * Metadata details for the GitOps project.
          */
-        metadatas?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectMetadata>[]>;
+        metadatas: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectMetadata>[]>;
         /**
-         * Spec is the specification of an AppProject.
+         * Specification details for the GitOps project.
          */
-        specs?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectSpec>[]>;
+        specs: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpec>[]>;
     }
 
-    export interface GitopsProjectProjectMetadata {
+    export interface GitopsAppProjectProjectMetadata {
         /**
-         * A sequence number representing a specific generation of the desired state.
+         * Annotations associated with the GitOps project.
          */
-        generation?: pulumi.Input<string>;
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+         * Name of the cluster associated with the GitOps project.
+         */
+        clusterName?: pulumi.Input<string>;
+        /**
+         * Finalizers associated with the GitOps project.
+         */
+        finalizers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Labels associated with the GitOps project.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Managed fields associated with the GitOps project.
+         */
+        managedFields?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectMetadataManagedField>[]>;
+        /**
+         * Name of the GitOps project.
          */
         name?: pulumi.Input<string>;
         /**
-         * The namespace where the GitOps project should be created.
+         * Namespace of the GitOps project.
          */
         namespace?: pulumi.Input<string>;
     }
 
-    export interface GitopsProjectProjectSpec {
+    export interface GitopsAppProjectProjectMetadataManagedField {
         /**
-         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+         * API version of the operation performed.
          */
-        clusterResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectSpecClusterResourceWhitelist>[]>;
+        apiVersion?: pulumi.Input<string>;
         /**
-         * Destinations contains list of destinations available for deployment.
+         * Type of the fields in the GitOps project.
          */
-        destinations?: pulumi.Input<pulumi.Input<inputs.platform.GitopsProjectProjectSpecDestination>[]>;
+        fieldsType?: pulumi.Input<string>;
         /**
-         * SourceRepos contains list of repository URLs which can be used for deployment.
+         * Raw fields associated with the GitOps project.
          */
-        sourceRepos?: pulumi.Input<pulumi.Input<string>[]>;
+        fieldsV1?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Manager responsible for the operation.
+         */
+        manager?: pulumi.Input<string>;
+        /**
+         * Operation type performed on the GitOps project.
+         */
+        operation?: pulumi.Input<string>;
+        /**
+         * Subresource associated with the GitOps project.
+         */
+        subresource?: pulumi.Input<string>;
+        /**
+         * Timestamp of the operation.
+         */
+        time?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
-    export interface GitopsProjectProjectSpecClusterResourceWhitelist {
+    export interface GitopsAppProjectProjectSpec {
         /**
-         * Cluster group name.
+         * Cluster resource blacklist for the GitOps project.
+         */
+        clusterResourceBlacklists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecClusterResourceBlacklist>[]>;
+        /**
+         * Cluster resource whitelist for the GitOps project.
+         */
+        clusterResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecClusterResourceWhitelist>[]>;
+        /**
+         * Description of the GitOps project.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Destinations for deployment of the GitOps project.
+         */
+        destinations?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecDestination>[]>;
+        /**
+         * Namespace resource blacklist for the GitOps project.
+         */
+        namespaceResourceBlacklists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecNamespaceResourceBlacklist>[]>;
+        /**
+         * Namespace resource whitelist for the GitOps project.
+         */
+        namespaceResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecNamespaceResourceWhitelist>[]>;
+        /**
+         * Orphaned resources configuration for the GitOps project.
+         */
+        orphanedResources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecOrphanedResource>[]>;
+        /**
+         * Roles associated with the GitOps project.
+         */
+        roles?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecRole>[]>;
+        /**
+         * Signature keys for the GitOps project.
+         */
+        signatureKeys?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecSignatureKey>[]>;
+        /**
+         * Source repositories for the GitOps project.
+         */
+        sourceRepos?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Synchronization windows for the GitOps project.
+         */
+        syncWindows?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecSyncWindow>[]>;
+    }
+
+    export interface GitopsAppProjectProjectSpecClusterResourceBlacklist {
+        /**
+         * Group of the cluster resource blacklist.
          */
         group?: pulumi.Input<string>;
         /**
-         * Cluster kind.
+         * Kind of the cluster resource blacklist.
          */
         kind?: pulumi.Input<string>;
     }
 
-    export interface GitopsProjectProjectSpecDestination {
+    export interface GitopsAppProjectProjectSpecClusterResourceWhitelist {
         /**
-         * Namespace specifies the target namespace for the application's resources.
+         * Group of the cluster resource whitelist.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Kind of the cluster resource whitelist.
+         */
+        kind?: pulumi.Input<string>;
+    }
+
+    export interface GitopsAppProjectProjectSpecDestination {
+        /**
+         * Name of the destination.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Namespace of the destination.
          */
         namespace?: pulumi.Input<string>;
         /**
-         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+         * Server URL of the destination.
          */
         server?: pulumi.Input<string>;
+    }
+
+    export interface GitopsAppProjectProjectSpecNamespaceResourceBlacklist {
+        /**
+         * Group of the namespace resource blacklist.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Kind of the namespace resource blacklist.
+         */
+        kind?: pulumi.Input<string>;
+    }
+
+    export interface GitopsAppProjectProjectSpecNamespaceResourceWhitelist {
+        /**
+         * Group of the namespace resource whitelist.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Kind of the namespace resource whitelist.
+         */
+        kind?: pulumi.Input<string>;
+    }
+
+    export interface GitopsAppProjectProjectSpecOrphanedResource {
+        /**
+         * List of ignored orphaned resources.
+         */
+        ignores?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecOrphanedResourceIgnore>[]>;
+        /**
+         * Whether to warn about orphaned resources.
+         */
+        warn?: pulumi.Input<boolean>;
+    }
+
+    export interface GitopsAppProjectProjectSpecOrphanedResourceIgnore {
+        /**
+         * Group of the ignored orphaned resource.
+         */
+        group?: pulumi.Input<string>;
+        /**
+         * Kind of the ignored orphaned resource.
+         */
+        kind?: pulumi.Input<string>;
+        /**
+         * Name of the ignored orphaned resource.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface GitopsAppProjectProjectSpecRole {
+        /**
+         * Description of the role.
+         */
+        description: pulumi.Input<string>;
+        /**
+         * Groups associated with the role.
+         */
+        groups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * JWT tokens associated with the role.
+         */
+        jwtTokens?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecRoleJwtToken>[]>;
+        /**
+         * Name of the role.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Policies associated with the role.
+         */
+        policies?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GitopsAppProjectProjectSpecRoleJwtToken {
+        /**
+         * Expiration time of the JWT token.
+         */
+        exp?: pulumi.Input<string>;
+        /**
+         * Issued At time of the JWT token.
+         */
+        iat?: pulumi.Input<string>;
+        /**
+         * ID of the JWT token.
+         */
+        id?: pulumi.Input<string>;
+    }
+
+    export interface GitopsAppProjectProjectSpecSignatureKey {
+        /**
+         * ID of the signature key.
+         */
+        keyId?: pulumi.Input<string>;
+    }
+
+    export interface GitopsAppProjectProjectSpecSyncWindow {
+        /**
+         * Applications associated with synchronization window.
+         */
+        applications?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Clusters associated with synchronization window.
+         */
+        clusters?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Duration of synchronization window.
+         */
+        duration?: pulumi.Input<string>;
+        /**
+         * Kind of synchronization window.
+         */
+        kind?: pulumi.Input<string>;
+        /**
+         * Whether manual synchronization is enabled.
+         */
+        manualSync?: pulumi.Input<boolean>;
+        /**
+         * Namespaces associated with synchronization window.
+         */
+        namespaces?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Schedule of synchronization window.
+         */
+        schedule?: pulumi.Input<string>;
+        /**
+         * Time zone of synchronization window.
+         */
+        timeZone?: pulumi.Input<string>;
     }
 
     export interface HelmConnectorCredentials {

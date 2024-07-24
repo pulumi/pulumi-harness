@@ -90,16 +90,16 @@ import com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsAppProjectPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsApplicationsArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsApplicationsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsClusterPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsGnupgPlainArgs;
-import com.pulumi.harness.platform.inputs.GetGitopsProjectArgs;
-import com.pulumi.harness.platform.inputs.GetGitopsProjectPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCertPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
@@ -257,10 +257,10 @@ import com.pulumi.harness.platform.outputs.GetGitlabConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAgentDeployYamlResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAgentResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAppProjectMappingResult;
+import com.pulumi.harness.platform.outputs.GetGitopsAppProjectResult;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsResult;
 import com.pulumi.harness.platform.outputs.GetGitopsClusterResult;
 import com.pulumi.harness.platform.outputs.GetGitopsGnupgResult;
-import com.pulumi.harness.platform.outputs.GetGitopsProjectResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCertResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCredResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepositoryResult;
@@ -7592,6 +7592,18 @@ public final class PlatformFunctions {
     public static CompletableFuture<GetGitopsAgentDeployYamlResult> getGitopsAgentDeployYamlPlain(GetGitopsAgentDeployYamlPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", TypeShape.of(GetGitopsAgentDeployYamlResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGitopsAppProjectResult> getGitopsAppProject(GetGitopsAppProjectArgs args) {
+        return getGitopsAppProject(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGitopsAppProjectResult> getGitopsAppProjectPlain(GetGitopsAppProjectPlainArgs args) {
+        return getGitopsAppProjectPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGitopsAppProjectResult> getGitopsAppProject(GetGitopsAppProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsAppProject:getGitopsAppProject", TypeShape.of(GetGitopsAppProjectResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGitopsAppProjectResult> getGitopsAppProjectPlain(GetGitopsAppProjectPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsAppProject:getGitopsAppProject", TypeShape.of(GetGitopsAppProjectResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Resource for managing the Harness GitOps Application Project Mappings.
      * 
@@ -8323,170 +8335,6 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetGitopsGnupgResult> getGitopsGnupgPlain(GetGitopsGnupgPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsGnupg:getGitopsGnupg", TypeShape.of(GetGitopsGnupgResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
-     *             .agentId("agent_id")
-     *             .queryName("query_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetGitopsProjectResult> getGitopsProject(GetGitopsProjectArgs args) {
-        return getGitopsProject(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
-     *             .agentId("agent_id")
-     *             .queryName("query_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static CompletableFuture<GetGitopsProjectResult> getGitopsProjectPlain(GetGitopsProjectPlainArgs args) {
-        return getGitopsProjectPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
-     *             .agentId("agent_id")
-     *             .queryName("query_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetGitopsProjectResult> getGitopsProject(GetGitopsProjectArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("harness:platform/getGitopsProject:getGitopsProject", TypeShape.of(GetGitopsProjectResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()
-     *             .agentId("agent_id")
-     *             .queryName("query_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static CompletableFuture<GetGitopsProjectResult> getGitopsProjectPlain(GetGitopsProjectPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsProject:getGitopsProject", TypeShape.of(GetGitopsProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.

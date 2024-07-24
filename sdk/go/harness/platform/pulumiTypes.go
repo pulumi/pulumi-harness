@@ -17766,554 +17766,1878 @@ func (o GitlabConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-type GitopsProjectProject struct {
-	// Metadata details that all persisted resources must have.
-	Metadatas []GitopsProjectProjectMetadata `pulumi:"metadatas"`
-	// Spec is the specification of an AppProject.
-	Specs []GitopsProjectProjectSpec `pulumi:"specs"`
+type GitopsAppProjectProject struct {
+	// Metadata details for the GitOps project.
+	Metadatas []GitopsAppProjectProjectMetadata `pulumi:"metadatas"`
+	// Specification details for the GitOps project.
+	Specs []GitopsAppProjectProjectSpec `pulumi:"specs"`
 }
 
-// GitopsProjectProjectInput is an input type that accepts GitopsProjectProjectArgs and GitopsProjectProjectOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectInput` via:
+// GitopsAppProjectProjectInput is an input type that accepts GitopsAppProjectProjectArgs and GitopsAppProjectProjectOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectInput` via:
 //
-//	GitopsProjectProjectArgs{...}
-type GitopsProjectProjectInput interface {
+//	GitopsAppProjectProjectArgs{...}
+type GitopsAppProjectProjectInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectOutput() GitopsProjectProjectOutput
-	ToGitopsProjectProjectOutputWithContext(context.Context) GitopsProjectProjectOutput
+	ToGitopsAppProjectProjectOutput() GitopsAppProjectProjectOutput
+	ToGitopsAppProjectProjectOutputWithContext(context.Context) GitopsAppProjectProjectOutput
 }
 
-type GitopsProjectProjectArgs struct {
-	// Metadata details that all persisted resources must have.
-	Metadatas GitopsProjectProjectMetadataArrayInput `pulumi:"metadatas"`
-	// Spec is the specification of an AppProject.
-	Specs GitopsProjectProjectSpecArrayInput `pulumi:"specs"`
+type GitopsAppProjectProjectArgs struct {
+	// Metadata details for the GitOps project.
+	Metadatas GitopsAppProjectProjectMetadataArrayInput `pulumi:"metadatas"`
+	// Specification details for the GitOps project.
+	Specs GitopsAppProjectProjectSpecArrayInput `pulumi:"specs"`
 }
 
-func (GitopsProjectProjectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProject)(nil)).Elem()
+func (GitopsAppProjectProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProject)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectArgs) ToGitopsProjectProjectOutput() GitopsProjectProjectOutput {
-	return i.ToGitopsProjectProjectOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectArgs) ToGitopsAppProjectProjectOutput() GitopsAppProjectProjectOutput {
+	return i.ToGitopsAppProjectProjectOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectArgs) ToGitopsProjectProjectOutputWithContext(ctx context.Context) GitopsProjectProjectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectOutput)
+func (i GitopsAppProjectProjectArgs) ToGitopsAppProjectProjectOutputWithContext(ctx context.Context) GitopsAppProjectProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectOutput)
 }
 
-// GitopsProjectProjectArrayInput is an input type that accepts GitopsProjectProjectArray and GitopsProjectProjectArrayOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectArrayInput` via:
+// GitopsAppProjectProjectArrayInput is an input type that accepts GitopsAppProjectProjectArray and GitopsAppProjectProjectArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectArrayInput` via:
 //
-//	GitopsProjectProjectArray{ GitopsProjectProjectArgs{...} }
-type GitopsProjectProjectArrayInput interface {
+//	GitopsAppProjectProjectArray{ GitopsAppProjectProjectArgs{...} }
+type GitopsAppProjectProjectArrayInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectArrayOutput() GitopsProjectProjectArrayOutput
-	ToGitopsProjectProjectArrayOutputWithContext(context.Context) GitopsProjectProjectArrayOutput
+	ToGitopsAppProjectProjectArrayOutput() GitopsAppProjectProjectArrayOutput
+	ToGitopsAppProjectProjectArrayOutputWithContext(context.Context) GitopsAppProjectProjectArrayOutput
 }
 
-type GitopsProjectProjectArray []GitopsProjectProjectInput
+type GitopsAppProjectProjectArray []GitopsAppProjectProjectInput
 
-func (GitopsProjectProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProject)(nil)).Elem()
+func (GitopsAppProjectProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProject)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectArray) ToGitopsProjectProjectArrayOutput() GitopsProjectProjectArrayOutput {
-	return i.ToGitopsProjectProjectArrayOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectArray) ToGitopsAppProjectProjectArrayOutput() GitopsAppProjectProjectArrayOutput {
+	return i.ToGitopsAppProjectProjectArrayOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectArray) ToGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GitopsProjectProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectArrayOutput)
+func (i GitopsAppProjectProjectArray) ToGitopsAppProjectProjectArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectArrayOutput)
 }
 
-type GitopsProjectProjectOutput struct{ *pulumi.OutputState }
+type GitopsAppProjectProjectOutput struct{ *pulumi.OutputState }
 
-func (GitopsProjectProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProject)(nil)).Elem()
+func (GitopsAppProjectProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProject)(nil)).Elem()
 }
 
-func (o GitopsProjectProjectOutput) ToGitopsProjectProjectOutput() GitopsProjectProjectOutput {
+func (o GitopsAppProjectProjectOutput) ToGitopsAppProjectProjectOutput() GitopsAppProjectProjectOutput {
 	return o
 }
 
-func (o GitopsProjectProjectOutput) ToGitopsProjectProjectOutputWithContext(ctx context.Context) GitopsProjectProjectOutput {
+func (o GitopsAppProjectProjectOutput) ToGitopsAppProjectProjectOutputWithContext(ctx context.Context) GitopsAppProjectProjectOutput {
 	return o
 }
 
-// Metadata details that all persisted resources must have.
-func (o GitopsProjectProjectOutput) Metadatas() GitopsProjectProjectMetadataArrayOutput {
-	return o.ApplyT(func(v GitopsProjectProject) []GitopsProjectProjectMetadata { return v.Metadatas }).(GitopsProjectProjectMetadataArrayOutput)
+// Metadata details for the GitOps project.
+func (o GitopsAppProjectProjectOutput) Metadatas() GitopsAppProjectProjectMetadataArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProject) []GitopsAppProjectProjectMetadata { return v.Metadatas }).(GitopsAppProjectProjectMetadataArrayOutput)
 }
 
-// Spec is the specification of an AppProject.
-func (o GitopsProjectProjectOutput) Specs() GitopsProjectProjectSpecArrayOutput {
-	return o.ApplyT(func(v GitopsProjectProject) []GitopsProjectProjectSpec { return v.Specs }).(GitopsProjectProjectSpecArrayOutput)
+// Specification details for the GitOps project.
+func (o GitopsAppProjectProjectOutput) Specs() GitopsAppProjectProjectSpecArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProject) []GitopsAppProjectProjectSpec { return v.Specs }).(GitopsAppProjectProjectSpecArrayOutput)
 }
 
-type GitopsProjectProjectArrayOutput struct{ *pulumi.OutputState }
+type GitopsAppProjectProjectArrayOutput struct{ *pulumi.OutputState }
 
-func (GitopsProjectProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProject)(nil)).Elem()
+func (GitopsAppProjectProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProject)(nil)).Elem()
 }
 
-func (o GitopsProjectProjectArrayOutput) ToGitopsProjectProjectArrayOutput() GitopsProjectProjectArrayOutput {
+func (o GitopsAppProjectProjectArrayOutput) ToGitopsAppProjectProjectArrayOutput() GitopsAppProjectProjectArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectArrayOutput) ToGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GitopsProjectProjectArrayOutput {
+func (o GitopsAppProjectProjectArrayOutput) ToGitopsAppProjectProjectArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProject {
-		return vs[0].([]GitopsProjectProject)[vs[1].(int)]
-	}).(GitopsProjectProjectOutput)
+func (o GitopsAppProjectProjectArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProject {
+		return vs[0].([]GitopsAppProjectProject)[vs[1].(int)]
+	}).(GitopsAppProjectProjectOutput)
 }
 
-type GitopsProjectProjectMetadata struct {
-	// A sequence number representing a specific generation of the desired state.
-	Generation *string `pulumi:"generation"`
-	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+type GitopsAppProjectProjectMetadata struct {
+	// Annotations associated with the GitOps project.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Name of the cluster associated with the GitOps project.
+	ClusterName *string `pulumi:"clusterName"`
+	// Finalizers associated with the GitOps project.
+	Finalizers []string `pulumi:"finalizers"`
+	// Labels associated with the GitOps project.
+	Labels map[string]string `pulumi:"labels"`
+	// Managed fields associated with the GitOps project.
+	ManagedFields []GitopsAppProjectProjectMetadataManagedField `pulumi:"managedFields"`
+	// Name of the GitOps project.
 	Name *string `pulumi:"name"`
-	// The namespace where the GitOps project should be created.
+	// Namespace of the GitOps project.
 	Namespace *string `pulumi:"namespace"`
 }
 
-// GitopsProjectProjectMetadataInput is an input type that accepts GitopsProjectProjectMetadataArgs and GitopsProjectProjectMetadataOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectMetadataInput` via:
+// GitopsAppProjectProjectMetadataInput is an input type that accepts GitopsAppProjectProjectMetadataArgs and GitopsAppProjectProjectMetadataOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectMetadataInput` via:
 //
-//	GitopsProjectProjectMetadataArgs{...}
-type GitopsProjectProjectMetadataInput interface {
+//	GitopsAppProjectProjectMetadataArgs{...}
+type GitopsAppProjectProjectMetadataInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectMetadataOutput() GitopsProjectProjectMetadataOutput
-	ToGitopsProjectProjectMetadataOutputWithContext(context.Context) GitopsProjectProjectMetadataOutput
+	ToGitopsAppProjectProjectMetadataOutput() GitopsAppProjectProjectMetadataOutput
+	ToGitopsAppProjectProjectMetadataOutputWithContext(context.Context) GitopsAppProjectProjectMetadataOutput
 }
 
-type GitopsProjectProjectMetadataArgs struct {
-	// A sequence number representing a specific generation of the desired state.
-	Generation pulumi.StringPtrInput `pulumi:"generation"`
-	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+type GitopsAppProjectProjectMetadataArgs struct {
+	// Annotations associated with the GitOps project.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Name of the cluster associated with the GitOps project.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// Finalizers associated with the GitOps project.
+	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
+	// Labels associated with the GitOps project.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Managed fields associated with the GitOps project.
+	ManagedFields GitopsAppProjectProjectMetadataManagedFieldArrayInput `pulumi:"managedFields"`
+	// Name of the GitOps project.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The namespace where the GitOps project should be created.
+	// Namespace of the GitOps project.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
-func (GitopsProjectProjectMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectMetadata)(nil)).Elem()
+func (GitopsAppProjectProjectMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectMetadata)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectMetadataArgs) ToGitopsProjectProjectMetadataOutput() GitopsProjectProjectMetadataOutput {
-	return i.ToGitopsProjectProjectMetadataOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectMetadataArgs) ToGitopsAppProjectProjectMetadataOutput() GitopsAppProjectProjectMetadataOutput {
+	return i.ToGitopsAppProjectProjectMetadataOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectMetadataArgs) ToGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectMetadataOutput)
+func (i GitopsAppProjectProjectMetadataArgs) ToGitopsAppProjectProjectMetadataOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectMetadataOutput)
 }
 
-// GitopsProjectProjectMetadataArrayInput is an input type that accepts GitopsProjectProjectMetadataArray and GitopsProjectProjectMetadataArrayOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectMetadataArrayInput` via:
+// GitopsAppProjectProjectMetadataArrayInput is an input type that accepts GitopsAppProjectProjectMetadataArray and GitopsAppProjectProjectMetadataArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectMetadataArrayInput` via:
 //
-//	GitopsProjectProjectMetadataArray{ GitopsProjectProjectMetadataArgs{...} }
-type GitopsProjectProjectMetadataArrayInput interface {
+//	GitopsAppProjectProjectMetadataArray{ GitopsAppProjectProjectMetadataArgs{...} }
+type GitopsAppProjectProjectMetadataArrayInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectMetadataArrayOutput() GitopsProjectProjectMetadataArrayOutput
-	ToGitopsProjectProjectMetadataArrayOutputWithContext(context.Context) GitopsProjectProjectMetadataArrayOutput
+	ToGitopsAppProjectProjectMetadataArrayOutput() GitopsAppProjectProjectMetadataArrayOutput
+	ToGitopsAppProjectProjectMetadataArrayOutputWithContext(context.Context) GitopsAppProjectProjectMetadataArrayOutput
 }
 
-type GitopsProjectProjectMetadataArray []GitopsProjectProjectMetadataInput
+type GitopsAppProjectProjectMetadataArray []GitopsAppProjectProjectMetadataInput
 
-func (GitopsProjectProjectMetadataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectMetadata)(nil)).Elem()
+func (GitopsAppProjectProjectMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectMetadata)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectMetadataArray) ToGitopsProjectProjectMetadataArrayOutput() GitopsProjectProjectMetadataArrayOutput {
-	return i.ToGitopsProjectProjectMetadataArrayOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectMetadataArray) ToGitopsAppProjectProjectMetadataArrayOutput() GitopsAppProjectProjectMetadataArrayOutput {
+	return i.ToGitopsAppProjectProjectMetadataArrayOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectMetadataArray) ToGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectMetadataArrayOutput)
+func (i GitopsAppProjectProjectMetadataArray) ToGitopsAppProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectMetadataArrayOutput)
 }
 
-type GitopsProjectProjectMetadataOutput struct{ *pulumi.OutputState }
+type GitopsAppProjectProjectMetadataOutput struct{ *pulumi.OutputState }
 
-func (GitopsProjectProjectMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectMetadata)(nil)).Elem()
+func (GitopsAppProjectProjectMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectMetadata)(nil)).Elem()
 }
 
-func (o GitopsProjectProjectMetadataOutput) ToGitopsProjectProjectMetadataOutput() GitopsProjectProjectMetadataOutput {
+func (o GitopsAppProjectProjectMetadataOutput) ToGitopsAppProjectProjectMetadataOutput() GitopsAppProjectProjectMetadataOutput {
 	return o
 }
 
-func (o GitopsProjectProjectMetadataOutput) ToGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataOutput {
+func (o GitopsAppProjectProjectMetadataOutput) ToGitopsAppProjectProjectMetadataOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataOutput {
 	return o
 }
 
-// A sequence number representing a specific generation of the desired state.
-func (o GitopsProjectProjectMetadataOutput) Generation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsProjectProjectMetadata) *string { return v.Generation }).(pulumi.StringPtrOutput)
+// Annotations associated with the GitOps project.
+func (o GitopsAppProjectProjectMetadataOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-func (o GitopsProjectProjectMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsProjectProjectMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the cluster associated with the GitOps project.
+func (o GitopsAppProjectProjectMetadataOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-// The namespace where the GitOps project should be created.
-func (o GitopsProjectProjectMetadataOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsProjectProjectMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+// Finalizers associated with the GitOps project.
+func (o GitopsAppProjectProjectMetadataOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
 }
 
-type GitopsProjectProjectMetadataArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsProjectProjectMetadataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectMetadata)(nil)).Elem()
+// Labels associated with the GitOps project.
+func (o GitopsAppProjectProjectMetadataOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o GitopsProjectProjectMetadataArrayOutput) ToGitopsProjectProjectMetadataArrayOutput() GitopsProjectProjectMetadataArrayOutput {
+// Managed fields associated with the GitOps project.
+func (o GitopsAppProjectProjectMetadataOutput) ManagedFields() GitopsAppProjectProjectMetadataManagedFieldArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) []GitopsAppProjectProjectMetadataManagedField {
+		return v.ManagedFields
+	}).(GitopsAppProjectProjectMetadataManagedFieldArrayOutput)
+}
+
+// Name of the GitOps project.
+func (o GitopsAppProjectProjectMetadataOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Namespace of the GitOps project.
+func (o GitopsAppProjectProjectMetadataOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectMetadata)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectMetadataArrayOutput) ToGitopsAppProjectProjectMetadataArrayOutput() GitopsAppProjectProjectMetadataArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectMetadataArrayOutput) ToGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GitopsProjectProjectMetadataArrayOutput {
+func (o GitopsAppProjectProjectMetadataArrayOutput) ToGitopsAppProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectMetadataArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectMetadataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectMetadata {
-		return vs[0].([]GitopsProjectProjectMetadata)[vs[1].(int)]
-	}).(GitopsProjectProjectMetadataOutput)
+func (o GitopsAppProjectProjectMetadataArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectMetadata {
+		return vs[0].([]GitopsAppProjectProjectMetadata)[vs[1].(int)]
+	}).(GitopsAppProjectProjectMetadataOutput)
 }
 
-type GitopsProjectProjectSpec struct {
-	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-	ClusterResourceWhitelists []GitopsProjectProjectSpecClusterResourceWhitelist `pulumi:"clusterResourceWhitelists"`
-	// Destinations contains list of destinations available for deployment.
-	Destinations []GitopsProjectProjectSpecDestination `pulumi:"destinations"`
-	// SourceRepos contains list of repository URLs which can be used for deployment.
+type GitopsAppProjectProjectMetadataManagedField struct {
+	// API version of the operation performed.
+	ApiVersion *string `pulumi:"apiVersion"`
+	// Type of the fields in the GitOps project.
+	FieldsType *string `pulumi:"fieldsType"`
+	// Raw fields associated with the GitOps project.
+	FieldsV1 map[string]string `pulumi:"fieldsV1"`
+	// Manager responsible for the operation.
+	Manager *string `pulumi:"manager"`
+	// Operation type performed on the GitOps project.
+	Operation *string `pulumi:"operation"`
+	// Subresource associated with the GitOps project.
+	Subresource *string `pulumi:"subresource"`
+	// Timestamp of the operation.
+	Time map[string]string `pulumi:"time"`
+}
+
+// GitopsAppProjectProjectMetadataManagedFieldInput is an input type that accepts GitopsAppProjectProjectMetadataManagedFieldArgs and GitopsAppProjectProjectMetadataManagedFieldOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectMetadataManagedFieldInput` via:
+//
+//	GitopsAppProjectProjectMetadataManagedFieldArgs{...}
+type GitopsAppProjectProjectMetadataManagedFieldInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectMetadataManagedFieldOutput() GitopsAppProjectProjectMetadataManagedFieldOutput
+	ToGitopsAppProjectProjectMetadataManagedFieldOutputWithContext(context.Context) GitopsAppProjectProjectMetadataManagedFieldOutput
+}
+
+type GitopsAppProjectProjectMetadataManagedFieldArgs struct {
+	// API version of the operation performed.
+	ApiVersion pulumi.StringPtrInput `pulumi:"apiVersion"`
+	// Type of the fields in the GitOps project.
+	FieldsType pulumi.StringPtrInput `pulumi:"fieldsType"`
+	// Raw fields associated with the GitOps project.
+	FieldsV1 pulumi.StringMapInput `pulumi:"fieldsV1"`
+	// Manager responsible for the operation.
+	Manager pulumi.StringPtrInput `pulumi:"manager"`
+	// Operation type performed on the GitOps project.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	// Subresource associated with the GitOps project.
+	Subresource pulumi.StringPtrInput `pulumi:"subresource"`
+	// Timestamp of the operation.
+	Time pulumi.StringMapInput `pulumi:"time"`
+}
+
+func (GitopsAppProjectProjectMetadataManagedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectMetadataManagedField)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectMetadataManagedFieldArgs) ToGitopsAppProjectProjectMetadataManagedFieldOutput() GitopsAppProjectProjectMetadataManagedFieldOutput {
+	return i.ToGitopsAppProjectProjectMetadataManagedFieldOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectMetadataManagedFieldArgs) ToGitopsAppProjectProjectMetadataManagedFieldOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataManagedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectMetadataManagedFieldOutput)
+}
+
+// GitopsAppProjectProjectMetadataManagedFieldArrayInput is an input type that accepts GitopsAppProjectProjectMetadataManagedFieldArray and GitopsAppProjectProjectMetadataManagedFieldArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectMetadataManagedFieldArrayInput` via:
+//
+//	GitopsAppProjectProjectMetadataManagedFieldArray{ GitopsAppProjectProjectMetadataManagedFieldArgs{...} }
+type GitopsAppProjectProjectMetadataManagedFieldArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectMetadataManagedFieldArrayOutput() GitopsAppProjectProjectMetadataManagedFieldArrayOutput
+	ToGitopsAppProjectProjectMetadataManagedFieldArrayOutputWithContext(context.Context) GitopsAppProjectProjectMetadataManagedFieldArrayOutput
+}
+
+type GitopsAppProjectProjectMetadataManagedFieldArray []GitopsAppProjectProjectMetadataManagedFieldInput
+
+func (GitopsAppProjectProjectMetadataManagedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectMetadataManagedField)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectMetadataManagedFieldArray) ToGitopsAppProjectProjectMetadataManagedFieldArrayOutput() GitopsAppProjectProjectMetadataManagedFieldArrayOutput {
+	return i.ToGitopsAppProjectProjectMetadataManagedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectMetadataManagedFieldArray) ToGitopsAppProjectProjectMetadataManagedFieldArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataManagedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectMetadataManagedFieldArrayOutput)
+}
+
+type GitopsAppProjectProjectMetadataManagedFieldOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectMetadataManagedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectMetadataManagedField)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) ToGitopsAppProjectProjectMetadataManagedFieldOutput() GitopsAppProjectProjectMetadataManagedFieldOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) ToGitopsAppProjectProjectMetadataManagedFieldOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataManagedFieldOutput {
+	return o
+}
+
+// API version of the operation performed.
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadataManagedField) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the fields in the GitOps project.
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) FieldsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadataManagedField) *string { return v.FieldsType }).(pulumi.StringPtrOutput)
+}
+
+// Raw fields associated with the GitOps project.
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) FieldsV1() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadataManagedField) map[string]string { return v.FieldsV1 }).(pulumi.StringMapOutput)
+}
+
+// Manager responsible for the operation.
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) Manager() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadataManagedField) *string { return v.Manager }).(pulumi.StringPtrOutput)
+}
+
+// Operation type performed on the GitOps project.
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadataManagedField) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+// Subresource associated with the GitOps project.
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) Subresource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadataManagedField) *string { return v.Subresource }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp of the operation.
+func (o GitopsAppProjectProjectMetadataManagedFieldOutput) Time() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadataManagedField) map[string]string { return v.Time }).(pulumi.StringMapOutput)
+}
+
+type GitopsAppProjectProjectMetadataManagedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectMetadataManagedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectMetadataManagedField)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectMetadataManagedFieldArrayOutput) ToGitopsAppProjectProjectMetadataManagedFieldArrayOutput() GitopsAppProjectProjectMetadataManagedFieldArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectMetadataManagedFieldArrayOutput) ToGitopsAppProjectProjectMetadataManagedFieldArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectMetadataManagedFieldArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectMetadataManagedFieldArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectMetadataManagedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectMetadataManagedField {
+		return vs[0].([]GitopsAppProjectProjectMetadataManagedField)[vs[1].(int)]
+	}).(GitopsAppProjectProjectMetadataManagedFieldOutput)
+}
+
+type GitopsAppProjectProjectSpec struct {
+	// Cluster resource blacklist for the GitOps project.
+	ClusterResourceBlacklists []GitopsAppProjectProjectSpecClusterResourceBlacklist `pulumi:"clusterResourceBlacklists"`
+	// Cluster resource whitelist for the GitOps project.
+	ClusterResourceWhitelists []GitopsAppProjectProjectSpecClusterResourceWhitelist `pulumi:"clusterResourceWhitelists"`
+	// Description of the GitOps project.
+	Description *string `pulumi:"description"`
+	// Destinations for deployment of the GitOps project.
+	Destinations []GitopsAppProjectProjectSpecDestination `pulumi:"destinations"`
+	// Namespace resource blacklist for the GitOps project.
+	NamespaceResourceBlacklists []GitopsAppProjectProjectSpecNamespaceResourceBlacklist `pulumi:"namespaceResourceBlacklists"`
+	// Namespace resource whitelist for the GitOps project.
+	NamespaceResourceWhitelists []GitopsAppProjectProjectSpecNamespaceResourceWhitelist `pulumi:"namespaceResourceWhitelists"`
+	// Orphaned resources configuration for the GitOps project.
+	OrphanedResources []GitopsAppProjectProjectSpecOrphanedResource `pulumi:"orphanedResources"`
+	// Roles associated with the GitOps project.
+	Roles []GitopsAppProjectProjectSpecRole `pulumi:"roles"`
+	// Signature keys for the GitOps project.
+	SignatureKeys []GitopsAppProjectProjectSpecSignatureKey `pulumi:"signatureKeys"`
+	// Source repositories for the GitOps project.
 	SourceRepos []string `pulumi:"sourceRepos"`
+	// Synchronization windows for the GitOps project.
+	SyncWindows []GitopsAppProjectProjectSpecSyncWindow `pulumi:"syncWindows"`
 }
 
-// GitopsProjectProjectSpecInput is an input type that accepts GitopsProjectProjectSpecArgs and GitopsProjectProjectSpecOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectSpecInput` via:
+// GitopsAppProjectProjectSpecInput is an input type that accepts GitopsAppProjectProjectSpecArgs and GitopsAppProjectProjectSpecOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecInput` via:
 //
-//	GitopsProjectProjectSpecArgs{...}
-type GitopsProjectProjectSpecInput interface {
+//	GitopsAppProjectProjectSpecArgs{...}
+type GitopsAppProjectProjectSpecInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectSpecOutput() GitopsProjectProjectSpecOutput
-	ToGitopsProjectProjectSpecOutputWithContext(context.Context) GitopsProjectProjectSpecOutput
+	ToGitopsAppProjectProjectSpecOutput() GitopsAppProjectProjectSpecOutput
+	ToGitopsAppProjectProjectSpecOutputWithContext(context.Context) GitopsAppProjectProjectSpecOutput
 }
 
-type GitopsProjectProjectSpecArgs struct {
-	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-	ClusterResourceWhitelists GitopsProjectProjectSpecClusterResourceWhitelistArrayInput `pulumi:"clusterResourceWhitelists"`
-	// Destinations contains list of destinations available for deployment.
-	Destinations GitopsProjectProjectSpecDestinationArrayInput `pulumi:"destinations"`
-	// SourceRepos contains list of repository URLs which can be used for deployment.
+type GitopsAppProjectProjectSpecArgs struct {
+	// Cluster resource blacklist for the GitOps project.
+	ClusterResourceBlacklists GitopsAppProjectProjectSpecClusterResourceBlacklistArrayInput `pulumi:"clusterResourceBlacklists"`
+	// Cluster resource whitelist for the GitOps project.
+	ClusterResourceWhitelists GitopsAppProjectProjectSpecClusterResourceWhitelistArrayInput `pulumi:"clusterResourceWhitelists"`
+	// Description of the GitOps project.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Destinations for deployment of the GitOps project.
+	Destinations GitopsAppProjectProjectSpecDestinationArrayInput `pulumi:"destinations"`
+	// Namespace resource blacklist for the GitOps project.
+	NamespaceResourceBlacklists GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayInput `pulumi:"namespaceResourceBlacklists"`
+	// Namespace resource whitelist for the GitOps project.
+	NamespaceResourceWhitelists GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayInput `pulumi:"namespaceResourceWhitelists"`
+	// Orphaned resources configuration for the GitOps project.
+	OrphanedResources GitopsAppProjectProjectSpecOrphanedResourceArrayInput `pulumi:"orphanedResources"`
+	// Roles associated with the GitOps project.
+	Roles GitopsAppProjectProjectSpecRoleArrayInput `pulumi:"roles"`
+	// Signature keys for the GitOps project.
+	SignatureKeys GitopsAppProjectProjectSpecSignatureKeyArrayInput `pulumi:"signatureKeys"`
+	// Source repositories for the GitOps project.
 	SourceRepos pulumi.StringArrayInput `pulumi:"sourceRepos"`
+	// Synchronization windows for the GitOps project.
+	SyncWindows GitopsAppProjectProjectSpecSyncWindowArrayInput `pulumi:"syncWindows"`
 }
 
-func (GitopsProjectProjectSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectSpec)(nil)).Elem()
+func (GitopsAppProjectProjectSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpec)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectSpecArgs) ToGitopsProjectProjectSpecOutput() GitopsProjectProjectSpecOutput {
-	return i.ToGitopsProjectProjectSpecOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectSpecArgs) ToGitopsAppProjectProjectSpecOutput() GitopsAppProjectProjectSpecOutput {
+	return i.ToGitopsAppProjectProjectSpecOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectSpecArgs) ToGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GitopsProjectProjectSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecOutput)
+func (i GitopsAppProjectProjectSpecArgs) ToGitopsAppProjectProjectSpecOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecOutput)
 }
 
-// GitopsProjectProjectSpecArrayInput is an input type that accepts GitopsProjectProjectSpecArray and GitopsProjectProjectSpecArrayOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectSpecArrayInput` via:
+// GitopsAppProjectProjectSpecArrayInput is an input type that accepts GitopsAppProjectProjectSpecArray and GitopsAppProjectProjectSpecArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecArrayInput` via:
 //
-//	GitopsProjectProjectSpecArray{ GitopsProjectProjectSpecArgs{...} }
-type GitopsProjectProjectSpecArrayInput interface {
+//	GitopsAppProjectProjectSpecArray{ GitopsAppProjectProjectSpecArgs{...} }
+type GitopsAppProjectProjectSpecArrayInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectSpecArrayOutput() GitopsProjectProjectSpecArrayOutput
-	ToGitopsProjectProjectSpecArrayOutputWithContext(context.Context) GitopsProjectProjectSpecArrayOutput
+	ToGitopsAppProjectProjectSpecArrayOutput() GitopsAppProjectProjectSpecArrayOutput
+	ToGitopsAppProjectProjectSpecArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecArrayOutput
 }
 
-type GitopsProjectProjectSpecArray []GitopsProjectProjectSpecInput
+type GitopsAppProjectProjectSpecArray []GitopsAppProjectProjectSpecInput
 
-func (GitopsProjectProjectSpecArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectSpec)(nil)).Elem()
+func (GitopsAppProjectProjectSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpec)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectSpecArray) ToGitopsProjectProjectSpecArrayOutput() GitopsProjectProjectSpecArrayOutput {
-	return i.ToGitopsProjectProjectSpecArrayOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectSpecArray) ToGitopsAppProjectProjectSpecArrayOutput() GitopsAppProjectProjectSpecArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecArrayOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectSpecArray) ToGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecArrayOutput)
+func (i GitopsAppProjectProjectSpecArray) ToGitopsAppProjectProjectSpecArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecArrayOutput)
 }
 
-type GitopsProjectProjectSpecOutput struct{ *pulumi.OutputState }
+type GitopsAppProjectProjectSpecOutput struct{ *pulumi.OutputState }
 
-func (GitopsProjectProjectSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectSpec)(nil)).Elem()
+func (GitopsAppProjectProjectSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpec)(nil)).Elem()
 }
 
-func (o GitopsProjectProjectSpecOutput) ToGitopsProjectProjectSpecOutput() GitopsProjectProjectSpecOutput {
+func (o GitopsAppProjectProjectSpecOutput) ToGitopsAppProjectProjectSpecOutput() GitopsAppProjectProjectSpecOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecOutput) ToGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GitopsProjectProjectSpecOutput {
+func (o GitopsAppProjectProjectSpecOutput) ToGitopsAppProjectProjectSpecOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOutput {
 	return o
 }
 
-// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-func (o GitopsProjectProjectSpecOutput) ClusterResourceWhitelists() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return o.ApplyT(func(v GitopsProjectProjectSpec) []GitopsProjectProjectSpecClusterResourceWhitelist {
+// Cluster resource blacklist for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) ClusterResourceBlacklists() GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecClusterResourceBlacklist {
+		return v.ClusterResourceBlacklists
+	}).(GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput)
+}
+
+// Cluster resource whitelist for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) ClusterResourceWhitelists() GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecClusterResourceWhitelist {
 		return v.ClusterResourceWhitelists
-	}).(GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
+	}).(GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput)
 }
 
-// Destinations contains list of destinations available for deployment.
-func (o GitopsProjectProjectSpecOutput) Destinations() GitopsProjectProjectSpecDestinationArrayOutput {
-	return o.ApplyT(func(v GitopsProjectProjectSpec) []GitopsProjectProjectSpecDestination { return v.Destinations }).(GitopsProjectProjectSpecDestinationArrayOutput)
+// Description of the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// SourceRepos contains list of repository URLs which can be used for deployment.
-func (o GitopsProjectProjectSpecOutput) SourceRepos() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GitopsProjectProjectSpec) []string { return v.SourceRepos }).(pulumi.StringArrayOutput)
+// Destinations for deployment of the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) Destinations() GitopsAppProjectProjectSpecDestinationArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecDestination { return v.Destinations }).(GitopsAppProjectProjectSpecDestinationArrayOutput)
 }
 
-type GitopsProjectProjectSpecArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsProjectProjectSpecArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectSpec)(nil)).Elem()
+// Namespace resource blacklist for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) NamespaceResourceBlacklists() GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecNamespaceResourceBlacklist {
+		return v.NamespaceResourceBlacklists
+	}).(GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput)
 }
 
-func (o GitopsProjectProjectSpecArrayOutput) ToGitopsProjectProjectSpecArrayOutput() GitopsProjectProjectSpecArrayOutput {
+// Namespace resource whitelist for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) NamespaceResourceWhitelists() GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecNamespaceResourceWhitelist {
+		return v.NamespaceResourceWhitelists
+	}).(GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput)
+}
+
+// Orphaned resources configuration for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) OrphanedResources() GitopsAppProjectProjectSpecOrphanedResourceArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecOrphanedResource {
+		return v.OrphanedResources
+	}).(GitopsAppProjectProjectSpecOrphanedResourceArrayOutput)
+}
+
+// Roles associated with the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) Roles() GitopsAppProjectProjectSpecRoleArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecRole { return v.Roles }).(GitopsAppProjectProjectSpecRoleArrayOutput)
+}
+
+// Signature keys for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) SignatureKeys() GitopsAppProjectProjectSpecSignatureKeyArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecSignatureKey { return v.SignatureKeys }).(GitopsAppProjectProjectSpecSignatureKeyArrayOutput)
+}
+
+// Source repositories for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) SourceRepos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []string { return v.SourceRepos }).(pulumi.StringArrayOutput)
+}
+
+// Synchronization windows for the GitOps project.
+func (o GitopsAppProjectProjectSpecOutput) SyncWindows() GitopsAppProjectProjectSpecSyncWindowArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecSyncWindow { return v.SyncWindows }).(GitopsAppProjectProjectSpecSyncWindowArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpec)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecArrayOutput) ToGitopsAppProjectProjectSpecArrayOutput() GitopsAppProjectProjectSpecArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecArrayOutput) ToGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecArrayOutput {
+func (o GitopsAppProjectProjectSpecArrayOutput) ToGitopsAppProjectProjectSpecArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectSpecOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectSpec {
-		return vs[0].([]GitopsProjectProjectSpec)[vs[1].(int)]
-	}).(GitopsProjectProjectSpecOutput)
+func (o GitopsAppProjectProjectSpecArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpec {
+		return vs[0].([]GitopsAppProjectProjectSpec)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecOutput)
 }
 
-type GitopsProjectProjectSpecClusterResourceWhitelist struct {
-	// Cluster group name.
+type GitopsAppProjectProjectSpecClusterResourceBlacklist struct {
+	// Group of the cluster resource blacklist.
 	Group *string `pulumi:"group"`
-	// Cluster kind.
+	// Kind of the cluster resource blacklist.
 	Kind *string `pulumi:"kind"`
 }
 
-// GitopsProjectProjectSpecClusterResourceWhitelistInput is an input type that accepts GitopsProjectProjectSpecClusterResourceWhitelistArgs and GitopsProjectProjectSpecClusterResourceWhitelistOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectSpecClusterResourceWhitelistInput` via:
+// GitopsAppProjectProjectSpecClusterResourceBlacklistInput is an input type that accepts GitopsAppProjectProjectSpecClusterResourceBlacklistArgs and GitopsAppProjectProjectSpecClusterResourceBlacklistOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecClusterResourceBlacklistInput` via:
 //
-//	GitopsProjectProjectSpecClusterResourceWhitelistArgs{...}
-type GitopsProjectProjectSpecClusterResourceWhitelistInput interface {
+//	GitopsAppProjectProjectSpecClusterResourceBlacklistArgs{...}
+type GitopsAppProjectProjectSpecClusterResourceBlacklistInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectSpecClusterResourceWhitelistOutput() GitopsProjectProjectSpecClusterResourceWhitelistOutput
-	ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Context) GitopsProjectProjectSpecClusterResourceWhitelistOutput
+	ToGitopsAppProjectProjectSpecClusterResourceBlacklistOutput() GitopsAppProjectProjectSpecClusterResourceBlacklistOutput
+	ToGitopsAppProjectProjectSpecClusterResourceBlacklistOutputWithContext(context.Context) GitopsAppProjectProjectSpecClusterResourceBlacklistOutput
 }
 
-type GitopsProjectProjectSpecClusterResourceWhitelistArgs struct {
-	// Cluster group name.
+type GitopsAppProjectProjectSpecClusterResourceBlacklistArgs struct {
+	// Group of the cluster resource blacklist.
 	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Cluster kind.
+	// Kind of the cluster resource blacklist.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 }
 
-func (GitopsProjectProjectSpecClusterResourceWhitelistArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+func (GitopsAppProjectProjectSpecClusterResourceBlacklistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceBlacklist)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGitopsProjectProjectSpecClusterResourceWhitelistOutput() GitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return i.ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectSpecClusterResourceBlacklistArgs) ToGitopsAppProjectProjectSpecClusterResourceBlacklistOutput() GitopsAppProjectProjectSpecClusterResourceBlacklistOutput {
+	return i.ToGitopsAppProjectProjectSpecClusterResourceBlacklistOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecClusterResourceWhitelistOutput)
+func (i GitopsAppProjectProjectSpecClusterResourceBlacklistArgs) ToGitopsAppProjectProjectSpecClusterResourceBlacklistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceBlacklistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecClusterResourceBlacklistOutput)
 }
 
-// GitopsProjectProjectSpecClusterResourceWhitelistArrayInput is an input type that accepts GitopsProjectProjectSpecClusterResourceWhitelistArray and GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectSpecClusterResourceWhitelistArrayInput` via:
+// GitopsAppProjectProjectSpecClusterResourceBlacklistArrayInput is an input type that accepts GitopsAppProjectProjectSpecClusterResourceBlacklistArray and GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecClusterResourceBlacklistArrayInput` via:
 //
-//	GitopsProjectProjectSpecClusterResourceWhitelistArray{ GitopsProjectProjectSpecClusterResourceWhitelistArgs{...} }
-type GitopsProjectProjectSpecClusterResourceWhitelistArrayInput interface {
+//	GitopsAppProjectProjectSpecClusterResourceBlacklistArray{ GitopsAppProjectProjectSpecClusterResourceBlacklistArgs{...} }
+type GitopsAppProjectProjectSpecClusterResourceBlacklistArrayInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
-	ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Context) GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
+	ToGitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput() GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput
+	ToGitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput
 }
 
-type GitopsProjectProjectSpecClusterResourceWhitelistArray []GitopsProjectProjectSpecClusterResourceWhitelistInput
+type GitopsAppProjectProjectSpecClusterResourceBlacklistArray []GitopsAppProjectProjectSpecClusterResourceBlacklistInput
 
-func (GitopsProjectProjectSpecClusterResourceWhitelistArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+func (GitopsAppProjectProjectSpecClusterResourceBlacklistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecClusterResourceBlacklist)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectSpecClusterResourceWhitelistArray) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return i.ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectSpecClusterResourceBlacklistArray) ToGitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput() GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectSpecClusterResourceWhitelistArray) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
+func (i GitopsAppProjectProjectSpecClusterResourceBlacklistArray) ToGitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput)
 }
 
-type GitopsProjectProjectSpecClusterResourceWhitelistOutput struct{ *pulumi.OutputState }
+type GitopsAppProjectProjectSpecClusterResourceBlacklistOutput struct{ *pulumi.OutputState }
 
-func (GitopsProjectProjectSpecClusterResourceWhitelistOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+func (GitopsAppProjectProjectSpecClusterResourceBlacklistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceBlacklist)(nil)).Elem()
 }
 
-func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistOutput() GitopsProjectProjectSpecClusterResourceWhitelistOutput {
+func (o GitopsAppProjectProjectSpecClusterResourceBlacklistOutput) ToGitopsAppProjectProjectSpecClusterResourceBlacklistOutput() GitopsAppProjectProjectSpecClusterResourceBlacklistOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistOutput {
+func (o GitopsAppProjectProjectSpecClusterResourceBlacklistOutput) ToGitopsAppProjectProjectSpecClusterResourceBlacklistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceBlacklistOutput {
 	return o
 }
 
-// Cluster group name.
-func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) Group() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Group }).(pulumi.StringPtrOutput)
+// Group of the cluster resource blacklist.
+func (o GitopsAppProjectProjectSpecClusterResourceBlacklistOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecClusterResourceBlacklist) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Cluster kind.
-func (o GitopsProjectProjectSpecClusterResourceWhitelistOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Kind }).(pulumi.StringPtrOutput)
+// Kind of the cluster resource blacklist.
+func (o GitopsAppProjectProjectSpecClusterResourceBlacklistOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecClusterResourceBlacklist) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-type GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput struct{ *pulumi.OutputState }
+type GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput struct{ *pulumi.OutputState }
 
-func (GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+func (GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecClusterResourceBlacklist)(nil)).Elem()
 }
 
-func (o GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+func (o GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput) ToGitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput() GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
+func (o GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput) ToGitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectSpecClusterResourceWhitelist {
-		return vs[0].([]GitopsProjectProjectSpecClusterResourceWhitelist)[vs[1].(int)]
-	}).(GitopsProjectProjectSpecClusterResourceWhitelistOutput)
+func (o GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecClusterResourceBlacklistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecClusterResourceBlacklist {
+		return vs[0].([]GitopsAppProjectProjectSpecClusterResourceBlacklist)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecClusterResourceBlacklistOutput)
 }
 
-type GitopsProjectProjectSpecDestination struct {
-	// Namespace specifies the target namespace for the application's resources.
+type GitopsAppProjectProjectSpecClusterResourceWhitelist struct {
+	// Group of the cluster resource whitelist.
+	Group *string `pulumi:"group"`
+	// Kind of the cluster resource whitelist.
+	Kind *string `pulumi:"kind"`
+}
+
+// GitopsAppProjectProjectSpecClusterResourceWhitelistInput is an input type that accepts GitopsAppProjectProjectSpecClusterResourceWhitelistArgs and GitopsAppProjectProjectSpecClusterResourceWhitelistOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecClusterResourceWhitelistInput` via:
+//
+//	GitopsAppProjectProjectSpecClusterResourceWhitelistArgs{...}
+type GitopsAppProjectProjectSpecClusterResourceWhitelistInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecClusterResourceWhitelistOutput() GitopsAppProjectProjectSpecClusterResourceWhitelistOutput
+	ToGitopsAppProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Context) GitopsAppProjectProjectSpecClusterResourceWhitelistOutput
+}
+
+type GitopsAppProjectProjectSpecClusterResourceWhitelistArgs struct {
+	// Group of the cluster resource whitelist.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Kind of the cluster resource whitelist.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (GitopsAppProjectProjectSpecClusterResourceWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecClusterResourceWhitelistArgs) ToGitopsAppProjectProjectSpecClusterResourceWhitelistOutput() GitopsAppProjectProjectSpecClusterResourceWhitelistOutput {
+	return i.ToGitopsAppProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecClusterResourceWhitelistArgs) ToGitopsAppProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecClusterResourceWhitelistOutput)
+}
+
+// GitopsAppProjectProjectSpecClusterResourceWhitelistArrayInput is an input type that accepts GitopsAppProjectProjectSpecClusterResourceWhitelistArray and GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecClusterResourceWhitelistArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecClusterResourceWhitelistArray{ GitopsAppProjectProjectSpecClusterResourceWhitelistArgs{...} }
+type GitopsAppProjectProjectSpecClusterResourceWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput
+	ToGitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput
+}
+
+type GitopsAppProjectProjectSpecClusterResourceWhitelistArray []GitopsAppProjectProjectSpecClusterResourceWhitelistInput
+
+func (GitopsAppProjectProjectSpecClusterResourceWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecClusterResourceWhitelistArray) ToGitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecClusterResourceWhitelistArray) ToGitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecClusterResourceWhitelistOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecClusterResourceWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecClusterResourceWhitelistOutput) ToGitopsAppProjectProjectSpecClusterResourceWhitelistOutput() GitopsAppProjectProjectSpecClusterResourceWhitelistOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecClusterResourceWhitelistOutput) ToGitopsAppProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceWhitelistOutput {
+	return o
+}
+
+// Group of the cluster resource whitelist.
+func (o GitopsAppProjectProjectSpecClusterResourceWhitelistOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecClusterResourceWhitelist) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Kind of the cluster resource whitelist.
+func (o GitopsAppProjectProjectSpecClusterResourceWhitelistOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecClusterResourceWhitelist) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput() GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecClusterResourceWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecClusterResourceWhitelist {
+		return vs[0].([]GitopsAppProjectProjectSpecClusterResourceWhitelist)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecClusterResourceWhitelistOutput)
+}
+
+type GitopsAppProjectProjectSpecDestination struct {
+	// Name of the destination.
+	Name *string `pulumi:"name"`
+	// Namespace of the destination.
 	Namespace *string `pulumi:"namespace"`
-	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+	// Server URL of the destination.
 	Server *string `pulumi:"server"`
 }
 
-// GitopsProjectProjectSpecDestinationInput is an input type that accepts GitopsProjectProjectSpecDestinationArgs and GitopsProjectProjectSpecDestinationOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectSpecDestinationInput` via:
+// GitopsAppProjectProjectSpecDestinationInput is an input type that accepts GitopsAppProjectProjectSpecDestinationArgs and GitopsAppProjectProjectSpecDestinationOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecDestinationInput` via:
 //
-//	GitopsProjectProjectSpecDestinationArgs{...}
-type GitopsProjectProjectSpecDestinationInput interface {
+//	GitopsAppProjectProjectSpecDestinationArgs{...}
+type GitopsAppProjectProjectSpecDestinationInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectSpecDestinationOutput() GitopsProjectProjectSpecDestinationOutput
-	ToGitopsProjectProjectSpecDestinationOutputWithContext(context.Context) GitopsProjectProjectSpecDestinationOutput
+	ToGitopsAppProjectProjectSpecDestinationOutput() GitopsAppProjectProjectSpecDestinationOutput
+	ToGitopsAppProjectProjectSpecDestinationOutputWithContext(context.Context) GitopsAppProjectProjectSpecDestinationOutput
 }
 
-type GitopsProjectProjectSpecDestinationArgs struct {
-	// Namespace specifies the target namespace for the application's resources.
+type GitopsAppProjectProjectSpecDestinationArgs struct {
+	// Name of the destination.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Namespace of the destination.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+	// Server URL of the destination.
 	Server pulumi.StringPtrInput `pulumi:"server"`
 }
 
-func (GitopsProjectProjectSpecDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectSpecDestination)(nil)).Elem()
+func (GitopsAppProjectProjectSpecDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecDestination)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectSpecDestinationArgs) ToGitopsProjectProjectSpecDestinationOutput() GitopsProjectProjectSpecDestinationOutput {
-	return i.ToGitopsProjectProjectSpecDestinationOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectSpecDestinationArgs) ToGitopsAppProjectProjectSpecDestinationOutput() GitopsAppProjectProjectSpecDestinationOutput {
+	return i.ToGitopsAppProjectProjectSpecDestinationOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectSpecDestinationArgs) ToGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecDestinationOutput)
+func (i GitopsAppProjectProjectSpecDestinationArgs) ToGitopsAppProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecDestinationOutput)
 }
 
-// GitopsProjectProjectSpecDestinationArrayInput is an input type that accepts GitopsProjectProjectSpecDestinationArray and GitopsProjectProjectSpecDestinationArrayOutput values.
-// You can construct a concrete instance of `GitopsProjectProjectSpecDestinationArrayInput` via:
+// GitopsAppProjectProjectSpecDestinationArrayInput is an input type that accepts GitopsAppProjectProjectSpecDestinationArray and GitopsAppProjectProjectSpecDestinationArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecDestinationArrayInput` via:
 //
-//	GitopsProjectProjectSpecDestinationArray{ GitopsProjectProjectSpecDestinationArgs{...} }
-type GitopsProjectProjectSpecDestinationArrayInput interface {
+//	GitopsAppProjectProjectSpecDestinationArray{ GitopsAppProjectProjectSpecDestinationArgs{...} }
+type GitopsAppProjectProjectSpecDestinationArrayInput interface {
 	pulumi.Input
 
-	ToGitopsProjectProjectSpecDestinationArrayOutput() GitopsProjectProjectSpecDestinationArrayOutput
-	ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Context) GitopsProjectProjectSpecDestinationArrayOutput
+	ToGitopsAppProjectProjectSpecDestinationArrayOutput() GitopsAppProjectProjectSpecDestinationArrayOutput
+	ToGitopsAppProjectProjectSpecDestinationArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecDestinationArrayOutput
 }
 
-type GitopsProjectProjectSpecDestinationArray []GitopsProjectProjectSpecDestinationInput
+type GitopsAppProjectProjectSpecDestinationArray []GitopsAppProjectProjectSpecDestinationInput
 
-func (GitopsProjectProjectSpecDestinationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectSpecDestination)(nil)).Elem()
+func (GitopsAppProjectProjectSpecDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecDestination)(nil)).Elem()
 }
 
-func (i GitopsProjectProjectSpecDestinationArray) ToGitopsProjectProjectSpecDestinationArrayOutput() GitopsProjectProjectSpecDestinationArrayOutput {
-	return i.ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Background())
+func (i GitopsAppProjectProjectSpecDestinationArray) ToGitopsAppProjectProjectSpecDestinationArrayOutput() GitopsAppProjectProjectSpecDestinationArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecDestinationArrayOutputWithContext(context.Background())
 }
 
-func (i GitopsProjectProjectSpecDestinationArray) ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsProjectProjectSpecDestinationArrayOutput)
+func (i GitopsAppProjectProjectSpecDestinationArray) ToGitopsAppProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecDestinationArrayOutput)
 }
 
-type GitopsProjectProjectSpecDestinationOutput struct{ *pulumi.OutputState }
+type GitopsAppProjectProjectSpecDestinationOutput struct{ *pulumi.OutputState }
 
-func (GitopsProjectProjectSpecDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsProjectProjectSpecDestination)(nil)).Elem()
+func (GitopsAppProjectProjectSpecDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecDestination)(nil)).Elem()
 }
 
-func (o GitopsProjectProjectSpecDestinationOutput) ToGitopsProjectProjectSpecDestinationOutput() GitopsProjectProjectSpecDestinationOutput {
+func (o GitopsAppProjectProjectSpecDestinationOutput) ToGitopsAppProjectProjectSpecDestinationOutput() GitopsAppProjectProjectSpecDestinationOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecDestinationOutput) ToGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationOutput {
+func (o GitopsAppProjectProjectSpecDestinationOutput) ToGitopsAppProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecDestinationOutput {
 	return o
 }
 
-// Namespace specifies the target namespace for the application's resources.
-func (o GitopsProjectProjectSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsProjectProjectSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+// Name of the destination.
+func (o GitopsAppProjectProjectSpecDestinationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecDestination) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-func (o GitopsProjectProjectSpecDestinationOutput) Server() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsProjectProjectSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
+// Namespace of the destination.
+func (o GitopsAppProjectProjectSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-type GitopsProjectProjectSpecDestinationArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsProjectProjectSpecDestinationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsProjectProjectSpecDestination)(nil)).Elem()
+// Server URL of the destination.
+func (o GitopsAppProjectProjectSpecDestinationOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
-func (o GitopsProjectProjectSpecDestinationArrayOutput) ToGitopsProjectProjectSpecDestinationArrayOutput() GitopsProjectProjectSpecDestinationArrayOutput {
+type GitopsAppProjectProjectSpecDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecDestination)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecDestinationArrayOutput) ToGitopsAppProjectProjectSpecDestinationArrayOutput() GitopsAppProjectProjectSpecDestinationArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecDestinationArrayOutput) ToGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GitopsProjectProjectSpecDestinationArrayOutput {
+func (o GitopsAppProjectProjectSpecDestinationArrayOutput) ToGitopsAppProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecDestinationArrayOutput {
 	return o
 }
 
-func (o GitopsProjectProjectSpecDestinationArrayOutput) Index(i pulumi.IntInput) GitopsProjectProjectSpecDestinationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsProjectProjectSpecDestination {
-		return vs[0].([]GitopsProjectProjectSpecDestination)[vs[1].(int)]
-	}).(GitopsProjectProjectSpecDestinationOutput)
+func (o GitopsAppProjectProjectSpecDestinationArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecDestination {
+		return vs[0].([]GitopsAppProjectProjectSpecDestination)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecDestinationOutput)
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceBlacklist struct {
+	// Group of the namespace resource blacklist.
+	Group *string `pulumi:"group"`
+	// Kind of the namespace resource blacklist.
+	Kind *string `pulumi:"kind"`
+}
+
+// GitopsAppProjectProjectSpecNamespaceResourceBlacklistInput is an input type that accepts GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs and GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecNamespaceResourceBlacklistInput` via:
+//
+//	GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs{...}
+type GitopsAppProjectProjectSpecNamespaceResourceBlacklistInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput() GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput
+	ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistOutputWithContext(context.Context) GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs struct {
+	// Group of the namespace resource blacklist.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Kind of the namespace resource blacklist.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceBlacklist)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput() GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput {
+	return i.ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput)
+}
+
+// GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayInput is an input type that accepts GitopsAppProjectProjectSpecNamespaceResourceBlacklistArray and GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecNamespaceResourceBlacklistArray{ GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs{...} }
+type GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput() GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput
+	ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceBlacklistArray []GitopsAppProjectProjectSpecNamespaceResourceBlacklistInput
+
+func (GitopsAppProjectProjectSpecNamespaceResourceBlacklistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecNamespaceResourceBlacklist)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceBlacklistArray) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput() GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceBlacklistArray) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceBlacklist)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput() GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput {
+	return o
+}
+
+// Group of the namespace resource blacklist.
+func (o GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecNamespaceResourceBlacklist) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Kind of the namespace resource blacklist.
+func (o GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecNamespaceResourceBlacklist) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecNamespaceResourceBlacklist)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput() GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput) ToGitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecNamespaceResourceBlacklist {
+		return vs[0].([]GitopsAppProjectProjectSpecNamespaceResourceBlacklist)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput)
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceWhitelist struct {
+	// Group of the namespace resource whitelist.
+	Group *string `pulumi:"group"`
+	// Kind of the namespace resource whitelist.
+	Kind *string `pulumi:"kind"`
+}
+
+// GitopsAppProjectProjectSpecNamespaceResourceWhitelistInput is an input type that accepts GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs and GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecNamespaceResourceWhitelistInput` via:
+//
+//	GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs{...}
+type GitopsAppProjectProjectSpecNamespaceResourceWhitelistInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput() GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput
+	ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistOutputWithContext(context.Context) GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs struct {
+	// Group of the namespace resource whitelist.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Kind of the namespace resource whitelist.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceWhitelist)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput() GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput {
+	return i.ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput)
+}
+
+// GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayInput is an input type that accepts GitopsAppProjectProjectSpecNamespaceResourceWhitelistArray and GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecNamespaceResourceWhitelistArray{ GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs{...} }
+type GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput() GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput
+	ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceWhitelistArray []GitopsAppProjectProjectSpecNamespaceResourceWhitelistInput
+
+func (GitopsAppProjectProjectSpecNamespaceResourceWhitelistArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecNamespaceResourceWhitelist)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceWhitelistArray) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput() GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecNamespaceResourceWhitelistArray) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceWhitelist)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput() GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput {
+	return o
+}
+
+// Group of the namespace resource whitelist.
+func (o GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecNamespaceResourceWhitelist) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Kind of the namespace resource whitelist.
+func (o GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecNamespaceResourceWhitelist) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecNamespaceResourceWhitelist)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput() GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput) ToGitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecNamespaceResourceWhitelist {
+		return vs[0].([]GitopsAppProjectProjectSpecNamespaceResourceWhitelist)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput)
+}
+
+type GitopsAppProjectProjectSpecOrphanedResource struct {
+	// List of ignored orphaned resources.
+	Ignores []GitopsAppProjectProjectSpecOrphanedResourceIgnore `pulumi:"ignores"`
+	// Whether to warn about orphaned resources.
+	Warn *bool `pulumi:"warn"`
+}
+
+// GitopsAppProjectProjectSpecOrphanedResourceInput is an input type that accepts GitopsAppProjectProjectSpecOrphanedResourceArgs and GitopsAppProjectProjectSpecOrphanedResourceOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecOrphanedResourceInput` via:
+//
+//	GitopsAppProjectProjectSpecOrphanedResourceArgs{...}
+type GitopsAppProjectProjectSpecOrphanedResourceInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecOrphanedResourceOutput() GitopsAppProjectProjectSpecOrphanedResourceOutput
+	ToGitopsAppProjectProjectSpecOrphanedResourceOutputWithContext(context.Context) GitopsAppProjectProjectSpecOrphanedResourceOutput
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceArgs struct {
+	// List of ignored orphaned resources.
+	Ignores GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayInput `pulumi:"ignores"`
+	// Whether to warn about orphaned resources.
+	Warn pulumi.BoolPtrInput `pulumi:"warn"`
+}
+
+func (GitopsAppProjectProjectSpecOrphanedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResource)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceArgs) ToGitopsAppProjectProjectSpecOrphanedResourceOutput() GitopsAppProjectProjectSpecOrphanedResourceOutput {
+	return i.ToGitopsAppProjectProjectSpecOrphanedResourceOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceArgs) ToGitopsAppProjectProjectSpecOrphanedResourceOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecOrphanedResourceOutput)
+}
+
+// GitopsAppProjectProjectSpecOrphanedResourceArrayInput is an input type that accepts GitopsAppProjectProjectSpecOrphanedResourceArray and GitopsAppProjectProjectSpecOrphanedResourceArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecOrphanedResourceArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecOrphanedResourceArray{ GitopsAppProjectProjectSpecOrphanedResourceArgs{...} }
+type GitopsAppProjectProjectSpecOrphanedResourceArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecOrphanedResourceArrayOutput() GitopsAppProjectProjectSpecOrphanedResourceArrayOutput
+	ToGitopsAppProjectProjectSpecOrphanedResourceArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecOrphanedResourceArrayOutput
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceArray []GitopsAppProjectProjectSpecOrphanedResourceInput
+
+func (GitopsAppProjectProjectSpecOrphanedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecOrphanedResource)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceArray) ToGitopsAppProjectProjectSpecOrphanedResourceArrayOutput() GitopsAppProjectProjectSpecOrphanedResourceArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecOrphanedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceArray) ToGitopsAppProjectProjectSpecOrphanedResourceArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecOrphanedResourceArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecOrphanedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResource)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceOutput) ToGitopsAppProjectProjectSpecOrphanedResourceOutput() GitopsAppProjectProjectSpecOrphanedResourceOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceOutput) ToGitopsAppProjectProjectSpecOrphanedResourceOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceOutput {
+	return o
+}
+
+// List of ignored orphaned resources.
+func (o GitopsAppProjectProjectSpecOrphanedResourceOutput) Ignores() GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecOrphanedResource) []GitopsAppProjectProjectSpecOrphanedResourceIgnore {
+		return v.Ignores
+	}).(GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput)
+}
+
+// Whether to warn about orphaned resources.
+func (o GitopsAppProjectProjectSpecOrphanedResourceOutput) Warn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecOrphanedResource) *bool { return v.Warn }).(pulumi.BoolPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecOrphanedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecOrphanedResource)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceArrayOutput) ToGitopsAppProjectProjectSpecOrphanedResourceArrayOutput() GitopsAppProjectProjectSpecOrphanedResourceArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceArrayOutput) ToGitopsAppProjectProjectSpecOrphanedResourceArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecOrphanedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecOrphanedResource {
+		return vs[0].([]GitopsAppProjectProjectSpecOrphanedResource)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecOrphanedResourceOutput)
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceIgnore struct {
+	// Group of the ignored orphaned resource.
+	Group *string `pulumi:"group"`
+	// Kind of the ignored orphaned resource.
+	Kind *string `pulumi:"kind"`
+	// Name of the ignored orphaned resource.
+	Name *string `pulumi:"name"`
+}
+
+// GitopsAppProjectProjectSpecOrphanedResourceIgnoreInput is an input type that accepts GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs and GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecOrphanedResourceIgnoreInput` via:
+//
+//	GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs{...}
+type GitopsAppProjectProjectSpecOrphanedResourceIgnoreInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput() GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput
+	ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreOutputWithContext(context.Context) GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs struct {
+	// Group of the ignored orphaned resource.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Kind of the ignored orphaned resource.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Name of the ignored orphaned resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResourceIgnore)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput() GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput {
+	return i.ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput)
+}
+
+// GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayInput is an input type that accepts GitopsAppProjectProjectSpecOrphanedResourceIgnoreArray and GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecOrphanedResourceIgnoreArray{ GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs{...} }
+type GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput() GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput
+	ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceIgnoreArray []GitopsAppProjectProjectSpecOrphanedResourceIgnoreInput
+
+func (GitopsAppProjectProjectSpecOrphanedResourceIgnoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecOrphanedResourceIgnore)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceIgnoreArray) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput() GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecOrphanedResourceIgnoreArray) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResourceIgnore)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput() GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput {
+	return o
+}
+
+// Group of the ignored orphaned resource.
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecOrphanedResourceIgnore) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Kind of the ignored orphaned resource.
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecOrphanedResourceIgnore) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Name of the ignored orphaned resource.
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecOrphanedResourceIgnore) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecOrphanedResourceIgnore)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput() GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput) ToGitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecOrphanedResourceIgnore {
+		return vs[0].([]GitopsAppProjectProjectSpecOrphanedResourceIgnore)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput)
+}
+
+type GitopsAppProjectProjectSpecRole struct {
+	// Description of the role.
+	Description string `pulumi:"description"`
+	// Groups associated with the role.
+	Groups []string `pulumi:"groups"`
+	// JWT tokens associated with the role.
+	JwtTokens []GitopsAppProjectProjectSpecRoleJwtToken `pulumi:"jwtTokens"`
+	// Name of the role.
+	Name string `pulumi:"name"`
+	// Policies associated with the role.
+	Policies []string `pulumi:"policies"`
+}
+
+// GitopsAppProjectProjectSpecRoleInput is an input type that accepts GitopsAppProjectProjectSpecRoleArgs and GitopsAppProjectProjectSpecRoleOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecRoleInput` via:
+//
+//	GitopsAppProjectProjectSpecRoleArgs{...}
+type GitopsAppProjectProjectSpecRoleInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecRoleOutput() GitopsAppProjectProjectSpecRoleOutput
+	ToGitopsAppProjectProjectSpecRoleOutputWithContext(context.Context) GitopsAppProjectProjectSpecRoleOutput
+}
+
+type GitopsAppProjectProjectSpecRoleArgs struct {
+	// Description of the role.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Groups associated with the role.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// JWT tokens associated with the role.
+	JwtTokens GitopsAppProjectProjectSpecRoleJwtTokenArrayInput `pulumi:"jwtTokens"`
+	// Name of the role.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Policies associated with the role.
+	Policies pulumi.StringArrayInput `pulumi:"policies"`
+}
+
+func (GitopsAppProjectProjectSpecRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecRole)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecRoleArgs) ToGitopsAppProjectProjectSpecRoleOutput() GitopsAppProjectProjectSpecRoleOutput {
+	return i.ToGitopsAppProjectProjectSpecRoleOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecRoleArgs) ToGitopsAppProjectProjectSpecRoleOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecRoleOutput)
+}
+
+// GitopsAppProjectProjectSpecRoleArrayInput is an input type that accepts GitopsAppProjectProjectSpecRoleArray and GitopsAppProjectProjectSpecRoleArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecRoleArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecRoleArray{ GitopsAppProjectProjectSpecRoleArgs{...} }
+type GitopsAppProjectProjectSpecRoleArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecRoleArrayOutput() GitopsAppProjectProjectSpecRoleArrayOutput
+	ToGitopsAppProjectProjectSpecRoleArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecRoleArrayOutput
+}
+
+type GitopsAppProjectProjectSpecRoleArray []GitopsAppProjectProjectSpecRoleInput
+
+func (GitopsAppProjectProjectSpecRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecRole)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecRoleArray) ToGitopsAppProjectProjectSpecRoleArrayOutput() GitopsAppProjectProjectSpecRoleArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecRoleArray) ToGitopsAppProjectProjectSpecRoleArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecRoleArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecRoleOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecRole)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecRoleOutput) ToGitopsAppProjectProjectSpecRoleOutput() GitopsAppProjectProjectSpecRoleOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecRoleOutput) ToGitopsAppProjectProjectSpecRoleOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleOutput {
+	return o
+}
+
+// Description of the role.
+func (o GitopsAppProjectProjectSpecRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRole) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Groups associated with the role.
+func (o GitopsAppProjectProjectSpecRoleOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRole) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+// JWT tokens associated with the role.
+func (o GitopsAppProjectProjectSpecRoleOutput) JwtTokens() GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRole) []GitopsAppProjectProjectSpecRoleJwtToken { return v.JwtTokens }).(GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput)
+}
+
+// Name of the role.
+func (o GitopsAppProjectProjectSpecRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Policies associated with the role.
+func (o GitopsAppProjectProjectSpecRoleOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRole) []string { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecRole)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecRoleArrayOutput) ToGitopsAppProjectProjectSpecRoleArrayOutput() GitopsAppProjectProjectSpecRoleArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecRoleArrayOutput) ToGitopsAppProjectProjectSpecRoleArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecRoleArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecRole {
+		return vs[0].([]GitopsAppProjectProjectSpecRole)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecRoleOutput)
+}
+
+type GitopsAppProjectProjectSpecRoleJwtToken struct {
+	// Expiration time of the JWT token.
+	Exp *string `pulumi:"exp"`
+	// Issued At time of the JWT token.
+	Iat *string `pulumi:"iat"`
+	// ID of the JWT token.
+	Id *string `pulumi:"id"`
+}
+
+// GitopsAppProjectProjectSpecRoleJwtTokenInput is an input type that accepts GitopsAppProjectProjectSpecRoleJwtTokenArgs and GitopsAppProjectProjectSpecRoleJwtTokenOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecRoleJwtTokenInput` via:
+//
+//	GitopsAppProjectProjectSpecRoleJwtTokenArgs{...}
+type GitopsAppProjectProjectSpecRoleJwtTokenInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecRoleJwtTokenOutput() GitopsAppProjectProjectSpecRoleJwtTokenOutput
+	ToGitopsAppProjectProjectSpecRoleJwtTokenOutputWithContext(context.Context) GitopsAppProjectProjectSpecRoleJwtTokenOutput
+}
+
+type GitopsAppProjectProjectSpecRoleJwtTokenArgs struct {
+	// Expiration time of the JWT token.
+	Exp pulumi.StringPtrInput `pulumi:"exp"`
+	// Issued At time of the JWT token.
+	Iat pulumi.StringPtrInput `pulumi:"iat"`
+	// ID of the JWT token.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GitopsAppProjectProjectSpecRoleJwtTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecRoleJwtToken)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecRoleJwtTokenArgs) ToGitopsAppProjectProjectSpecRoleJwtTokenOutput() GitopsAppProjectProjectSpecRoleJwtTokenOutput {
+	return i.ToGitopsAppProjectProjectSpecRoleJwtTokenOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecRoleJwtTokenArgs) ToGitopsAppProjectProjectSpecRoleJwtTokenOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleJwtTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecRoleJwtTokenOutput)
+}
+
+// GitopsAppProjectProjectSpecRoleJwtTokenArrayInput is an input type that accepts GitopsAppProjectProjectSpecRoleJwtTokenArray and GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecRoleJwtTokenArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecRoleJwtTokenArray{ GitopsAppProjectProjectSpecRoleJwtTokenArgs{...} }
+type GitopsAppProjectProjectSpecRoleJwtTokenArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecRoleJwtTokenArrayOutput() GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput
+	ToGitopsAppProjectProjectSpecRoleJwtTokenArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput
+}
+
+type GitopsAppProjectProjectSpecRoleJwtTokenArray []GitopsAppProjectProjectSpecRoleJwtTokenInput
+
+func (GitopsAppProjectProjectSpecRoleJwtTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecRoleJwtToken)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecRoleJwtTokenArray) ToGitopsAppProjectProjectSpecRoleJwtTokenArrayOutput() GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecRoleJwtTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecRoleJwtTokenArray) ToGitopsAppProjectProjectSpecRoleJwtTokenArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecRoleJwtTokenOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecRoleJwtTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecRoleJwtToken)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecRoleJwtTokenOutput) ToGitopsAppProjectProjectSpecRoleJwtTokenOutput() GitopsAppProjectProjectSpecRoleJwtTokenOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecRoleJwtTokenOutput) ToGitopsAppProjectProjectSpecRoleJwtTokenOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleJwtTokenOutput {
+	return o
+}
+
+// Expiration time of the JWT token.
+func (o GitopsAppProjectProjectSpecRoleJwtTokenOutput) Exp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRoleJwtToken) *string { return v.Exp }).(pulumi.StringPtrOutput)
+}
+
+// Issued At time of the JWT token.
+func (o GitopsAppProjectProjectSpecRoleJwtTokenOutput) Iat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRoleJwtToken) *string { return v.Iat }).(pulumi.StringPtrOutput)
+}
+
+// ID of the JWT token.
+func (o GitopsAppProjectProjectSpecRoleJwtTokenOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecRoleJwtToken) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecRoleJwtToken)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput) ToGitopsAppProjectProjectSpecRoleJwtTokenArrayOutput() GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput) ToGitopsAppProjectProjectSpecRoleJwtTokenArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecRoleJwtTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecRoleJwtToken {
+		return vs[0].([]GitopsAppProjectProjectSpecRoleJwtToken)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecRoleJwtTokenOutput)
+}
+
+type GitopsAppProjectProjectSpecSignatureKey struct {
+	// ID of the signature key.
+	KeyId *string `pulumi:"keyId"`
+}
+
+// GitopsAppProjectProjectSpecSignatureKeyInput is an input type that accepts GitopsAppProjectProjectSpecSignatureKeyArgs and GitopsAppProjectProjectSpecSignatureKeyOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecSignatureKeyInput` via:
+//
+//	GitopsAppProjectProjectSpecSignatureKeyArgs{...}
+type GitopsAppProjectProjectSpecSignatureKeyInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecSignatureKeyOutput() GitopsAppProjectProjectSpecSignatureKeyOutput
+	ToGitopsAppProjectProjectSpecSignatureKeyOutputWithContext(context.Context) GitopsAppProjectProjectSpecSignatureKeyOutput
+}
+
+type GitopsAppProjectProjectSpecSignatureKeyArgs struct {
+	// ID of the signature key.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+}
+
+func (GitopsAppProjectProjectSpecSignatureKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecSignatureKey)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecSignatureKeyArgs) ToGitopsAppProjectProjectSpecSignatureKeyOutput() GitopsAppProjectProjectSpecSignatureKeyOutput {
+	return i.ToGitopsAppProjectProjectSpecSignatureKeyOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecSignatureKeyArgs) ToGitopsAppProjectProjectSpecSignatureKeyOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSignatureKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecSignatureKeyOutput)
+}
+
+// GitopsAppProjectProjectSpecSignatureKeyArrayInput is an input type that accepts GitopsAppProjectProjectSpecSignatureKeyArray and GitopsAppProjectProjectSpecSignatureKeyArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecSignatureKeyArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecSignatureKeyArray{ GitopsAppProjectProjectSpecSignatureKeyArgs{...} }
+type GitopsAppProjectProjectSpecSignatureKeyArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecSignatureKeyArrayOutput() GitopsAppProjectProjectSpecSignatureKeyArrayOutput
+	ToGitopsAppProjectProjectSpecSignatureKeyArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecSignatureKeyArrayOutput
+}
+
+type GitopsAppProjectProjectSpecSignatureKeyArray []GitopsAppProjectProjectSpecSignatureKeyInput
+
+func (GitopsAppProjectProjectSpecSignatureKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecSignatureKey)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecSignatureKeyArray) ToGitopsAppProjectProjectSpecSignatureKeyArrayOutput() GitopsAppProjectProjectSpecSignatureKeyArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecSignatureKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecSignatureKeyArray) ToGitopsAppProjectProjectSpecSignatureKeyArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSignatureKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecSignatureKeyArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecSignatureKeyOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecSignatureKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecSignatureKey)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecSignatureKeyOutput) ToGitopsAppProjectProjectSpecSignatureKeyOutput() GitopsAppProjectProjectSpecSignatureKeyOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecSignatureKeyOutput) ToGitopsAppProjectProjectSpecSignatureKeyOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSignatureKeyOutput {
+	return o
+}
+
+// ID of the signature key.
+func (o GitopsAppProjectProjectSpecSignatureKeyOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSignatureKey) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecSignatureKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecSignatureKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecSignatureKey)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecSignatureKeyArrayOutput) ToGitopsAppProjectProjectSpecSignatureKeyArrayOutput() GitopsAppProjectProjectSpecSignatureKeyArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecSignatureKeyArrayOutput) ToGitopsAppProjectProjectSpecSignatureKeyArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSignatureKeyArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecSignatureKeyArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecSignatureKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecSignatureKey {
+		return vs[0].([]GitopsAppProjectProjectSpecSignatureKey)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecSignatureKeyOutput)
+}
+
+type GitopsAppProjectProjectSpecSyncWindow struct {
+	// Applications associated with synchronization window.
+	Applications []string `pulumi:"applications"`
+	// Clusters associated with synchronization window.
+	Clusters []string `pulumi:"clusters"`
+	// Duration of synchronization window.
+	Duration *string `pulumi:"duration"`
+	// Kind of synchronization window.
+	Kind *string `pulumi:"kind"`
+	// Whether manual synchronization is enabled.
+	ManualSync *bool `pulumi:"manualSync"`
+	// Namespaces associated with synchronization window.
+	Namespaces []string `pulumi:"namespaces"`
+	// Schedule of synchronization window.
+	Schedule *string `pulumi:"schedule"`
+	// Time zone of synchronization window.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// GitopsAppProjectProjectSpecSyncWindowInput is an input type that accepts GitopsAppProjectProjectSpecSyncWindowArgs and GitopsAppProjectProjectSpecSyncWindowOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecSyncWindowInput` via:
+//
+//	GitopsAppProjectProjectSpecSyncWindowArgs{...}
+type GitopsAppProjectProjectSpecSyncWindowInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecSyncWindowOutput() GitopsAppProjectProjectSpecSyncWindowOutput
+	ToGitopsAppProjectProjectSpecSyncWindowOutputWithContext(context.Context) GitopsAppProjectProjectSpecSyncWindowOutput
+}
+
+type GitopsAppProjectProjectSpecSyncWindowArgs struct {
+	// Applications associated with synchronization window.
+	Applications pulumi.StringArrayInput `pulumi:"applications"`
+	// Clusters associated with synchronization window.
+	Clusters pulumi.StringArrayInput `pulumi:"clusters"`
+	// Duration of synchronization window.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Kind of synchronization window.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Whether manual synchronization is enabled.
+	ManualSync pulumi.BoolPtrInput `pulumi:"manualSync"`
+	// Namespaces associated with synchronization window.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Schedule of synchronization window.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// Time zone of synchronization window.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (GitopsAppProjectProjectSpecSyncWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecSyncWindow)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecSyncWindowArgs) ToGitopsAppProjectProjectSpecSyncWindowOutput() GitopsAppProjectProjectSpecSyncWindowOutput {
+	return i.ToGitopsAppProjectProjectSpecSyncWindowOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecSyncWindowArgs) ToGitopsAppProjectProjectSpecSyncWindowOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSyncWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecSyncWindowOutput)
+}
+
+// GitopsAppProjectProjectSpecSyncWindowArrayInput is an input type that accepts GitopsAppProjectProjectSpecSyncWindowArray and GitopsAppProjectProjectSpecSyncWindowArrayOutput values.
+// You can construct a concrete instance of `GitopsAppProjectProjectSpecSyncWindowArrayInput` via:
+//
+//	GitopsAppProjectProjectSpecSyncWindowArray{ GitopsAppProjectProjectSpecSyncWindowArgs{...} }
+type GitopsAppProjectProjectSpecSyncWindowArrayInput interface {
+	pulumi.Input
+
+	ToGitopsAppProjectProjectSpecSyncWindowArrayOutput() GitopsAppProjectProjectSpecSyncWindowArrayOutput
+	ToGitopsAppProjectProjectSpecSyncWindowArrayOutputWithContext(context.Context) GitopsAppProjectProjectSpecSyncWindowArrayOutput
+}
+
+type GitopsAppProjectProjectSpecSyncWindowArray []GitopsAppProjectProjectSpecSyncWindowInput
+
+func (GitopsAppProjectProjectSpecSyncWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecSyncWindow)(nil)).Elem()
+}
+
+func (i GitopsAppProjectProjectSpecSyncWindowArray) ToGitopsAppProjectProjectSpecSyncWindowArrayOutput() GitopsAppProjectProjectSpecSyncWindowArrayOutput {
+	return i.ToGitopsAppProjectProjectSpecSyncWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsAppProjectProjectSpecSyncWindowArray) ToGitopsAppProjectProjectSpecSyncWindowArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSyncWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsAppProjectProjectSpecSyncWindowArrayOutput)
+}
+
+type GitopsAppProjectProjectSpecSyncWindowOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecSyncWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsAppProjectProjectSpecSyncWindow)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) ToGitopsAppProjectProjectSpecSyncWindowOutput() GitopsAppProjectProjectSpecSyncWindowOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) ToGitopsAppProjectProjectSpecSyncWindowOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSyncWindowOutput {
+	return o
+}
+
+// Applications associated with synchronization window.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) Applications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) []string { return v.Applications }).(pulumi.StringArrayOutput)
+}
+
+// Clusters associated with synchronization window.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) Clusters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) []string { return v.Clusters }).(pulumi.StringArrayOutput)
+}
+
+// Duration of synchronization window.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// Kind of synchronization window.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Whether manual synchronization is enabled.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) ManualSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) *bool { return v.ManualSync }).(pulumi.BoolPtrOutput)
+}
+
+// Namespaces associated with synchronization window.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Schedule of synchronization window.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// Time zone of synchronization window.
+func (o GitopsAppProjectProjectSpecSyncWindowOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpecSyncWindow) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type GitopsAppProjectProjectSpecSyncWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsAppProjectProjectSpecSyncWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsAppProjectProjectSpecSyncWindow)(nil)).Elem()
+}
+
+func (o GitopsAppProjectProjectSpecSyncWindowArrayOutput) ToGitopsAppProjectProjectSpecSyncWindowArrayOutput() GitopsAppProjectProjectSpecSyncWindowArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecSyncWindowArrayOutput) ToGitopsAppProjectProjectSpecSyncWindowArrayOutputWithContext(ctx context.Context) GitopsAppProjectProjectSpecSyncWindowArrayOutput {
+	return o
+}
+
+func (o GitopsAppProjectProjectSpecSyncWindowArrayOutput) Index(i pulumi.IntInput) GitopsAppProjectProjectSpecSyncWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsAppProjectProjectSpecSyncWindow {
+		return vs[0].([]GitopsAppProjectProjectSpecSyncWindow)[vs[1].(int)]
+	}).(GitopsAppProjectProjectSpecSyncWindowOutput)
 }
 
 type HelmConnectorCredentials struct {
@@ -44997,556 +46321,6 @@ func (o GetGitopsGnupgRequestPublickeyArrayOutput) Index(i pulumi.IntInput) GetG
 	}).(GetGitopsGnupgRequestPublickeyOutput)
 }
 
-type GetGitopsProjectProject struct {
-	// Metadata details that all persisted resources must have.
-	Metadatas []GetGitopsProjectProjectMetadata `pulumi:"metadatas"`
-	// Spec is the specification of an AppProject.
-	Specs []GetGitopsProjectProjectSpec `pulumi:"specs"`
-}
-
-// GetGitopsProjectProjectInput is an input type that accepts GetGitopsProjectProjectArgs and GetGitopsProjectProjectOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectInput` via:
-//
-//	GetGitopsProjectProjectArgs{...}
-type GetGitopsProjectProjectInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectOutput() GetGitopsProjectProjectOutput
-	ToGetGitopsProjectProjectOutputWithContext(context.Context) GetGitopsProjectProjectOutput
-}
-
-type GetGitopsProjectProjectArgs struct {
-	// Metadata details that all persisted resources must have.
-	Metadatas GetGitopsProjectProjectMetadataArrayInput `pulumi:"metadatas"`
-	// Spec is the specification of an AppProject.
-	Specs GetGitopsProjectProjectSpecArrayInput `pulumi:"specs"`
-}
-
-func (GetGitopsProjectProjectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProject)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectArgs) ToGetGitopsProjectProjectOutput() GetGitopsProjectProjectOutput {
-	return i.ToGetGitopsProjectProjectOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectArgs) ToGetGitopsProjectProjectOutputWithContext(ctx context.Context) GetGitopsProjectProjectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectOutput)
-}
-
-// GetGitopsProjectProjectArrayInput is an input type that accepts GetGitopsProjectProjectArray and GetGitopsProjectProjectArrayOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectArrayInput` via:
-//
-//	GetGitopsProjectProjectArray{ GetGitopsProjectProjectArgs{...} }
-type GetGitopsProjectProjectArrayInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectArrayOutput() GetGitopsProjectProjectArrayOutput
-	ToGetGitopsProjectProjectArrayOutputWithContext(context.Context) GetGitopsProjectProjectArrayOutput
-}
-
-type GetGitopsProjectProjectArray []GetGitopsProjectProjectInput
-
-func (GetGitopsProjectProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProject)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectArray) ToGetGitopsProjectProjectArrayOutput() GetGitopsProjectProjectArrayOutput {
-	return i.ToGetGitopsProjectProjectArrayOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectArray) ToGetGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectArrayOutput)
-}
-
-type GetGitopsProjectProjectOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProject)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectOutput) ToGetGitopsProjectProjectOutput() GetGitopsProjectProjectOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectOutput) ToGetGitopsProjectProjectOutputWithContext(ctx context.Context) GetGitopsProjectProjectOutput {
-	return o
-}
-
-// Metadata details that all persisted resources must have.
-func (o GetGitopsProjectProjectOutput) Metadatas() GetGitopsProjectProjectMetadataArrayOutput {
-	return o.ApplyT(func(v GetGitopsProjectProject) []GetGitopsProjectProjectMetadata { return v.Metadatas }).(GetGitopsProjectProjectMetadataArrayOutput)
-}
-
-// Spec is the specification of an AppProject.
-func (o GetGitopsProjectProjectOutput) Specs() GetGitopsProjectProjectSpecArrayOutput {
-	return o.ApplyT(func(v GetGitopsProjectProject) []GetGitopsProjectProjectSpec { return v.Specs }).(GetGitopsProjectProjectSpecArrayOutput)
-}
-
-type GetGitopsProjectProjectArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProject)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectArrayOutput) ToGetGitopsProjectProjectArrayOutput() GetGitopsProjectProjectArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectArrayOutput) ToGetGitopsProjectProjectArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProject {
-		return vs[0].([]GetGitopsProjectProject)[vs[1].(int)]
-	}).(GetGitopsProjectProjectOutput)
-}
-
-type GetGitopsProjectProjectMetadata struct {
-	// A sequence number representing a specific generation of the desired state.
-	Generation *string `pulumi:"generation"`
-	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-	Name *string `pulumi:"name"`
-	// The namespace where the GitOps project should be created.
-	Namespace *string `pulumi:"namespace"`
-}
-
-// GetGitopsProjectProjectMetadataInput is an input type that accepts GetGitopsProjectProjectMetadataArgs and GetGitopsProjectProjectMetadataOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectMetadataInput` via:
-//
-//	GetGitopsProjectProjectMetadataArgs{...}
-type GetGitopsProjectProjectMetadataInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectMetadataOutput() GetGitopsProjectProjectMetadataOutput
-	ToGetGitopsProjectProjectMetadataOutputWithContext(context.Context) GetGitopsProjectProjectMetadataOutput
-}
-
-type GetGitopsProjectProjectMetadataArgs struct {
-	// A sequence number representing a specific generation of the desired state.
-	Generation pulumi.StringPtrInput `pulumi:"generation"`
-	// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The namespace where the GitOps project should be created.
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-}
-
-func (GetGitopsProjectProjectMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectMetadata)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectMetadataArgs) ToGetGitopsProjectProjectMetadataOutput() GetGitopsProjectProjectMetadataOutput {
-	return i.ToGetGitopsProjectProjectMetadataOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectMetadataArgs) ToGetGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectMetadataOutput)
-}
-
-// GetGitopsProjectProjectMetadataArrayInput is an input type that accepts GetGitopsProjectProjectMetadataArray and GetGitopsProjectProjectMetadataArrayOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectMetadataArrayInput` via:
-//
-//	GetGitopsProjectProjectMetadataArray{ GetGitopsProjectProjectMetadataArgs{...} }
-type GetGitopsProjectProjectMetadataArrayInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectMetadataArrayOutput() GetGitopsProjectProjectMetadataArrayOutput
-	ToGetGitopsProjectProjectMetadataArrayOutputWithContext(context.Context) GetGitopsProjectProjectMetadataArrayOutput
-}
-
-type GetGitopsProjectProjectMetadataArray []GetGitopsProjectProjectMetadataInput
-
-func (GetGitopsProjectProjectMetadataArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectMetadata)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectMetadataArray) ToGetGitopsProjectProjectMetadataArrayOutput() GetGitopsProjectProjectMetadataArrayOutput {
-	return i.ToGetGitopsProjectProjectMetadataArrayOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectMetadataArray) ToGetGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectMetadataArrayOutput)
-}
-
-type GetGitopsProjectProjectMetadataOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectMetadata)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectMetadataOutput) ToGetGitopsProjectProjectMetadataOutput() GetGitopsProjectProjectMetadataOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectMetadataOutput) ToGetGitopsProjectProjectMetadataOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataOutput {
-	return o
-}
-
-// A sequence number representing a specific generation of the desired state.
-func (o GetGitopsProjectProjectMetadataOutput) Generation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectMetadata) *string { return v.Generation }).(pulumi.StringPtrOutput)
-}
-
-// Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-func (o GetGitopsProjectProjectMetadataOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The namespace where the GitOps project should be created.
-func (o GetGitopsProjectProjectMetadataOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
-}
-
-type GetGitopsProjectProjectMetadataArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectMetadataArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectMetadata)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectMetadataArrayOutput) ToGetGitopsProjectProjectMetadataArrayOutput() GetGitopsProjectProjectMetadataArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectMetadataArrayOutput) ToGetGitopsProjectProjectMetadataArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectMetadataArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectMetadataArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectMetadataOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectMetadata {
-		return vs[0].([]GetGitopsProjectProjectMetadata)[vs[1].(int)]
-	}).(GetGitopsProjectProjectMetadataOutput)
-}
-
-type GetGitopsProjectProjectSpec struct {
-	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-	ClusterResourceWhitelists []GetGitopsProjectProjectSpecClusterResourceWhitelist `pulumi:"clusterResourceWhitelists"`
-	// Destinations contains list of destinations available for deployment.
-	Destinations []GetGitopsProjectProjectSpecDestination `pulumi:"destinations"`
-	// SourceRepos contains list of repository URLs which can be used for deployment.
-	SourceRepos []string `pulumi:"sourceRepos"`
-}
-
-// GetGitopsProjectProjectSpecInput is an input type that accepts GetGitopsProjectProjectSpecArgs and GetGitopsProjectProjectSpecOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectSpecInput` via:
-//
-//	GetGitopsProjectProjectSpecArgs{...}
-type GetGitopsProjectProjectSpecInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectSpecOutput() GetGitopsProjectProjectSpecOutput
-	ToGetGitopsProjectProjectSpecOutputWithContext(context.Context) GetGitopsProjectProjectSpecOutput
-}
-
-type GetGitopsProjectProjectSpecArgs struct {
-	// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-	ClusterResourceWhitelists GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput `pulumi:"clusterResourceWhitelists"`
-	// Destinations contains list of destinations available for deployment.
-	Destinations GetGitopsProjectProjectSpecDestinationArrayInput `pulumi:"destinations"`
-	// SourceRepos contains list of repository URLs which can be used for deployment.
-	SourceRepos pulumi.StringArrayInput `pulumi:"sourceRepos"`
-}
-
-func (GetGitopsProjectProjectSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectSpec)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectSpecArgs) ToGetGitopsProjectProjectSpecOutput() GetGitopsProjectProjectSpecOutput {
-	return i.ToGetGitopsProjectProjectSpecOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectSpecArgs) ToGetGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecOutput)
-}
-
-// GetGitopsProjectProjectSpecArrayInput is an input type that accepts GetGitopsProjectProjectSpecArray and GetGitopsProjectProjectSpecArrayOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectSpecArrayInput` via:
-//
-//	GetGitopsProjectProjectSpecArray{ GetGitopsProjectProjectSpecArgs{...} }
-type GetGitopsProjectProjectSpecArrayInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectSpecArrayOutput() GetGitopsProjectProjectSpecArrayOutput
-	ToGetGitopsProjectProjectSpecArrayOutputWithContext(context.Context) GetGitopsProjectProjectSpecArrayOutput
-}
-
-type GetGitopsProjectProjectSpecArray []GetGitopsProjectProjectSpecInput
-
-func (GetGitopsProjectProjectSpecArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectSpec)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectSpecArray) ToGetGitopsProjectProjectSpecArrayOutput() GetGitopsProjectProjectSpecArrayOutput {
-	return i.ToGetGitopsProjectProjectSpecArrayOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectSpecArray) ToGetGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecArrayOutput)
-}
-
-type GetGitopsProjectProjectSpecOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectSpec)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectSpecOutput) ToGetGitopsProjectProjectSpecOutput() GetGitopsProjectProjectSpecOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecOutput) ToGetGitopsProjectProjectSpecOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecOutput {
-	return o
-}
-
-// ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-func (o GetGitopsProjectProjectSpecOutput) ClusterResourceWhitelists() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectSpec) []GetGitopsProjectProjectSpecClusterResourceWhitelist {
-		return v.ClusterResourceWhitelists
-	}).(GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
-}
-
-// Destinations contains list of destinations available for deployment.
-func (o GetGitopsProjectProjectSpecOutput) Destinations() GetGitopsProjectProjectSpecDestinationArrayOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectSpec) []GetGitopsProjectProjectSpecDestination { return v.Destinations }).(GetGitopsProjectProjectSpecDestinationArrayOutput)
-}
-
-// SourceRepos contains list of repository URLs which can be used for deployment.
-func (o GetGitopsProjectProjectSpecOutput) SourceRepos() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectSpec) []string { return v.SourceRepos }).(pulumi.StringArrayOutput)
-}
-
-type GetGitopsProjectProjectSpecArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectSpecArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectSpec)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectSpecArrayOutput) ToGetGitopsProjectProjectSpecArrayOutput() GetGitopsProjectProjectSpecArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecArrayOutput) ToGetGitopsProjectProjectSpecArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectSpecOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectSpec {
-		return vs[0].([]GetGitopsProjectProjectSpec)[vs[1].(int)]
-	}).(GetGitopsProjectProjectSpecOutput)
-}
-
-type GetGitopsProjectProjectSpecClusterResourceWhitelist struct {
-	// Cluster group name.
-	Group *string `pulumi:"group"`
-	// Cluster kind.
-	Kind *string `pulumi:"kind"`
-}
-
-// GetGitopsProjectProjectSpecClusterResourceWhitelistInput is an input type that accepts GetGitopsProjectProjectSpecClusterResourceWhitelistArgs and GetGitopsProjectProjectSpecClusterResourceWhitelistOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectSpecClusterResourceWhitelistInput` via:
-//
-//	GetGitopsProjectProjectSpecClusterResourceWhitelistArgs{...}
-type GetGitopsProjectProjectSpecClusterResourceWhitelistInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistOutput
-	ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput
-}
-
-type GetGitopsProjectProjectSpecClusterResourceWhitelistArgs struct {
-	// Cluster group name.
-	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Cluster kind.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-}
-
-func (GetGitopsProjectProjectSpecClusterResourceWhitelistArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return i.ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArgs) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecClusterResourceWhitelistOutput)
-}
-
-// GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput is an input type that accepts GetGitopsProjectProjectSpecClusterResourceWhitelistArray and GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput` via:
-//
-//	GetGitopsProjectProjectSpecClusterResourceWhitelistArray{ GetGitopsProjectProjectSpecClusterResourceWhitelistArgs{...} }
-type GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
-	ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput
-}
-
-type GetGitopsProjectProjectSpecClusterResourceWhitelistArray []GetGitopsProjectProjectSpecClusterResourceWhitelistInput
-
-func (GetGitopsProjectProjectSpecClusterResourceWhitelistArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArray) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return i.ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectSpecClusterResourceWhitelistArray) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput)
-}
-
-type GetGitopsProjectProjectSpecClusterResourceWhitelistOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return o
-}
-
-// Cluster group name.
-func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) Group() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Group }).(pulumi.StringPtrOutput)
-}
-
-// Cluster kind.
-func (o GetGitopsProjectProjectSpecClusterResourceWhitelistOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectSpecClusterResourceWhitelist) *string { return v.Kind }).(pulumi.StringPtrOutput)
-}
-
-type GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecClusterResourceWhitelist)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput() GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) ToGetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectSpecClusterResourceWhitelistOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectSpecClusterResourceWhitelist {
-		return vs[0].([]GetGitopsProjectProjectSpecClusterResourceWhitelist)[vs[1].(int)]
-	}).(GetGitopsProjectProjectSpecClusterResourceWhitelistOutput)
-}
-
-type GetGitopsProjectProjectSpecDestination struct {
-	// Namespace specifies the target namespace for the application's resources.
-	Namespace *string `pulumi:"namespace"`
-	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-	Server *string `pulumi:"server"`
-}
-
-// GetGitopsProjectProjectSpecDestinationInput is an input type that accepts GetGitopsProjectProjectSpecDestinationArgs and GetGitopsProjectProjectSpecDestinationOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectSpecDestinationInput` via:
-//
-//	GetGitopsProjectProjectSpecDestinationArgs{...}
-type GetGitopsProjectProjectSpecDestinationInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectSpecDestinationOutput() GetGitopsProjectProjectSpecDestinationOutput
-	ToGetGitopsProjectProjectSpecDestinationOutputWithContext(context.Context) GetGitopsProjectProjectSpecDestinationOutput
-}
-
-type GetGitopsProjectProjectSpecDestinationArgs struct {
-	// Namespace specifies the target namespace for the application's resources.
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-	Server pulumi.StringPtrInput `pulumi:"server"`
-}
-
-func (GetGitopsProjectProjectSpecDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectSpecDestination)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectSpecDestinationArgs) ToGetGitopsProjectProjectSpecDestinationOutput() GetGitopsProjectProjectSpecDestinationOutput {
-	return i.ToGetGitopsProjectProjectSpecDestinationOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectSpecDestinationArgs) ToGetGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecDestinationOutput)
-}
-
-// GetGitopsProjectProjectSpecDestinationArrayInput is an input type that accepts GetGitopsProjectProjectSpecDestinationArray and GetGitopsProjectProjectSpecDestinationArrayOutput values.
-// You can construct a concrete instance of `GetGitopsProjectProjectSpecDestinationArrayInput` via:
-//
-//	GetGitopsProjectProjectSpecDestinationArray{ GetGitopsProjectProjectSpecDestinationArgs{...} }
-type GetGitopsProjectProjectSpecDestinationArrayInput interface {
-	pulumi.Input
-
-	ToGetGitopsProjectProjectSpecDestinationArrayOutput() GetGitopsProjectProjectSpecDestinationArrayOutput
-	ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Context) GetGitopsProjectProjectSpecDestinationArrayOutput
-}
-
-type GetGitopsProjectProjectSpecDestinationArray []GetGitopsProjectProjectSpecDestinationInput
-
-func (GetGitopsProjectProjectSpecDestinationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecDestination)(nil)).Elem()
-}
-
-func (i GetGitopsProjectProjectSpecDestinationArray) ToGetGitopsProjectProjectSpecDestinationArrayOutput() GetGitopsProjectProjectSpecDestinationArrayOutput {
-	return i.ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(context.Background())
-}
-
-func (i GetGitopsProjectProjectSpecDestinationArray) ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsProjectProjectSpecDestinationArrayOutput)
-}
-
-type GetGitopsProjectProjectSpecDestinationOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectSpecDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsProjectProjectSpecDestination)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectSpecDestinationOutput) ToGetGitopsProjectProjectSpecDestinationOutput() GetGitopsProjectProjectSpecDestinationOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecDestinationOutput) ToGetGitopsProjectProjectSpecDestinationOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationOutput {
-	return o
-}
-
-// Namespace specifies the target namespace for the application's resources.
-func (o GetGitopsProjectProjectSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
-}
-
-// Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-func (o GetGitopsProjectProjectSpecDestinationOutput) Server() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsProjectProjectSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
-}
-
-type GetGitopsProjectProjectSpecDestinationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsProjectProjectSpecDestinationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsProjectProjectSpecDestination)(nil)).Elem()
-}
-
-func (o GetGitopsProjectProjectSpecDestinationArrayOutput) ToGetGitopsProjectProjectSpecDestinationArrayOutput() GetGitopsProjectProjectSpecDestinationArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecDestinationArrayOutput) ToGetGitopsProjectProjectSpecDestinationArrayOutputWithContext(ctx context.Context) GetGitopsProjectProjectSpecDestinationArrayOutput {
-	return o
-}
-
-func (o GetGitopsProjectProjectSpecDestinationArrayOutput) Index(i pulumi.IntInput) GetGitopsProjectProjectSpecDestinationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsProjectProjectSpecDestination {
-		return vs[0].([]GetGitopsProjectProjectSpecDestination)[vs[1].(int)]
-	}).(GetGitopsProjectProjectSpecDestinationOutput)
-}
-
 type GetGitopsRepoCredCred struct {
 	// Specifies whether helm-oci support should be enabled for this repo.
 	EnableOci *bool `pulumi:"enableOci"`
@@ -55048,16 +55822,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsHttpPtrInput)(nil)).Elem(), GitlabConnectorCredentialsHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsSshInput)(nil)).Elem(), GitlabConnectorCredentialsSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitlabConnectorCredentialsSshPtrInput)(nil)).Elem(), GitlabConnectorCredentialsSshArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectInput)(nil)).Elem(), GitopsProjectProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectArrayInput)(nil)).Elem(), GitopsProjectProjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectMetadataInput)(nil)).Elem(), GitopsProjectProjectMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectMetadataArrayInput)(nil)).Elem(), GitopsProjectProjectMetadataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecInput)(nil)).Elem(), GitopsProjectProjectSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecArrayInput)(nil)).Elem(), GitopsProjectProjectSpecArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelistInput)(nil)).Elem(), GitopsProjectProjectSpecClusterResourceWhitelistArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecClusterResourceWhitelistArrayInput)(nil)).Elem(), GitopsProjectProjectSpecClusterResourceWhitelistArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecDestinationInput)(nil)).Elem(), GitopsProjectProjectSpecDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsProjectProjectSpecDestinationArrayInput)(nil)).Elem(), GitopsProjectProjectSpecDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectInput)(nil)).Elem(), GitopsAppProjectProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectArrayInput)(nil)).Elem(), GitopsAppProjectProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectMetadataInput)(nil)).Elem(), GitopsAppProjectProjectMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectMetadataArrayInput)(nil)).Elem(), GitopsAppProjectProjectMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectMetadataManagedFieldInput)(nil)).Elem(), GitopsAppProjectProjectMetadataManagedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectMetadataManagedFieldArrayInput)(nil)).Elem(), GitopsAppProjectProjectMetadataManagedFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecInput)(nil)).Elem(), GitopsAppProjectProjectSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceBlacklistInput)(nil)).Elem(), GitopsAppProjectProjectSpecClusterResourceBlacklistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceBlacklistArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecClusterResourceBlacklistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceWhitelistInput)(nil)).Elem(), GitopsAppProjectProjectSpecClusterResourceWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecClusterResourceWhitelistArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecClusterResourceWhitelistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecDestinationInput)(nil)).Elem(), GitopsAppProjectProjectSpecDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecDestinationArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceBlacklistInput)(nil)).Elem(), GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecNamespaceResourceBlacklistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceWhitelistInput)(nil)).Elem(), GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecNamespaceResourceWhitelistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResourceInput)(nil)).Elem(), GitopsAppProjectProjectSpecOrphanedResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResourceArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecOrphanedResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResourceIgnoreInput)(nil)).Elem(), GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecOrphanedResourceIgnoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecRoleInput)(nil)).Elem(), GitopsAppProjectProjectSpecRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecRoleArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecRoleJwtTokenInput)(nil)).Elem(), GitopsAppProjectProjectSpecRoleJwtTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecRoleJwtTokenArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecRoleJwtTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecSignatureKeyInput)(nil)).Elem(), GitopsAppProjectProjectSpecSignatureKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecSignatureKeyArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecSignatureKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecSyncWindowInput)(nil)).Elem(), GitopsAppProjectProjectSpecSyncWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsAppProjectProjectSpecSyncWindowArrayInput)(nil)).Elem(), GitopsAppProjectProjectSpecSyncWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureGitDetailsInput)(nil)).Elem(), InfrastructureGitDetailsArgs{})
@@ -55432,16 +56226,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsGnupgRequestArrayInput)(nil)).Elem(), GetGitopsGnupgRequestArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsGnupgRequestPublickeyInput)(nil)).Elem(), GetGitopsGnupgRequestPublickeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsGnupgRequestPublickeyArrayInput)(nil)).Elem(), GetGitopsGnupgRequestPublickeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectInput)(nil)).Elem(), GetGitopsProjectProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectArrayInput)(nil)).Elem(), GetGitopsProjectProjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectMetadataInput)(nil)).Elem(), GetGitopsProjectProjectMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectMetadataArrayInput)(nil)).Elem(), GetGitopsProjectProjectMetadataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecInput)(nil)).Elem(), GetGitopsProjectProjectSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecArrayInput)(nil)).Elem(), GetGitopsProjectProjectSpecArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelistInput)(nil)).Elem(), GetGitopsProjectProjectSpecClusterResourceWhitelistArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecClusterResourceWhitelistArrayInput)(nil)).Elem(), GetGitopsProjectProjectSpecClusterResourceWhitelistArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecDestinationInput)(nil)).Elem(), GetGitopsProjectProjectSpecDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsProjectProjectSpecDestinationArrayInput)(nil)).Elem(), GetGitopsProjectProjectSpecDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepoCredCredInput)(nil)).Elem(), GetGitopsRepoCredCredArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepoCredCredArrayInput)(nil)).Elem(), GetGitopsRepoCredCredArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryRepoInput)(nil)).Elem(), GetGitopsRepositoryRepoArgs{})
@@ -55823,16 +56607,36 @@ func init() {
 	pulumi.RegisterOutputType(GitlabConnectorCredentialsHttpPtrOutput{})
 	pulumi.RegisterOutputType(GitlabConnectorCredentialsSshOutput{})
 	pulumi.RegisterOutputType(GitlabConnectorCredentialsSshPtrOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectArrayOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectMetadataOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectMetadataArrayOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectSpecOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectSpecArrayOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectSpecClusterResourceWhitelistOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectSpecClusterResourceWhitelistArrayOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectSpecDestinationOutput{})
-	pulumi.RegisterOutputType(GitopsProjectProjectSpecDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectMetadataOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectMetadataManagedFieldOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectMetadataManagedFieldArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecClusterResourceBlacklistOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecClusterResourceWhitelistOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecDestinationOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecNamespaceResourceBlacklistOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecNamespaceResourceWhitelistOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecOrphanedResourceOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecOrphanedResourceArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecOrphanedResourceIgnoreOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecOrphanedResourceIgnoreArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecRoleOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecRoleArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecRoleJwtTokenOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecRoleJwtTokenArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecSignatureKeyOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecSignatureKeyArrayOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecSyncWindowOutput{})
+	pulumi.RegisterOutputType(GitopsAppProjectProjectSpecSyncWindowArrayOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(InfrastructureGitDetailsOutput{})
@@ -56207,16 +57011,6 @@ func init() {
 	pulumi.RegisterOutputType(GetGitopsGnupgRequestArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsGnupgRequestPublickeyOutput{})
 	pulumi.RegisterOutputType(GetGitopsGnupgRequestPublickeyArrayOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectArrayOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectMetadataOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectMetadataArrayOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecArrayOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecClusterResourceWhitelistOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecClusterResourceWhitelistArrayOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecDestinationOutput{})
-	pulumi.RegisterOutputType(GetGitopsProjectProjectSpecDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepoCredCredOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepoCredCredArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepositoryRepoOutput{})
