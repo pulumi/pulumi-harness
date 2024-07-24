@@ -678,18 +678,18 @@ _utilities.register(
  },
  {
   "pkg": "harness",
-  "mod": "platform/gitopsAppProjectMapping",
+  "mod": "platform/gitopsAppProject",
   "fqn": "pulumi_harness.platform",
   "classes": {
-   "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping": "GitopsAppProjectMapping"
+   "harness:platform/gitopsAppProject:GitopsAppProject": "GitopsAppProject"
   }
  },
  {
   "pkg": "harness",
-  "mod": "platform/gitopsProject",
+  "mod": "platform/gitopsAppProjectMapping",
   "fqn": "pulumi_harness.platform",
   "classes": {
-   "harness:platform/gitopsProject:GitopsProject": "GitopsProject"
+   "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping": "GitopsAppProjectMapping"
   }
  },
  {

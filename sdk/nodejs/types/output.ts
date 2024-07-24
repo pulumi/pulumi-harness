@@ -3971,69 +3971,6 @@ export namespace platform {
         trust?: string;
     }
 
-    export interface GetGitopsProjectProject {
-        /**
-         * Metadata details that all persisted resources must have.
-         */
-        metadatas?: outputs.platform.GetGitopsProjectProjectMetadata[];
-        /**
-         * Spec is the specification of an AppProject.
-         */
-        specs?: outputs.platform.GetGitopsProjectProjectSpec[];
-    }
-
-    export interface GetGitopsProjectProjectMetadata {
-        /**
-         * A sequence number representing a specific generation of the desired state.
-         */
-        generation?: string;
-        /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-         */
-        name?: string;
-        /**
-         * The namespace where the GitOps project should be created.
-         */
-        namespace?: string;
-    }
-
-    export interface GetGitopsProjectProjectSpec {
-        /**
-         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-         */
-        clusterResourceWhitelists?: outputs.platform.GetGitopsProjectProjectSpecClusterResourceWhitelist[];
-        /**
-         * Destinations contains list of destinations available for deployment.
-         */
-        destinations?: outputs.platform.GetGitopsProjectProjectSpecDestination[];
-        /**
-         * SourceRepos contains list of repository URLs which can be used for deployment.
-         */
-        sourceRepos?: string[];
-    }
-
-    export interface GetGitopsProjectProjectSpecClusterResourceWhitelist {
-        /**
-         * Cluster group name.
-         */
-        group?: string;
-        /**
-         * Cluster kind.
-         */
-        kind?: string;
-    }
-
-    export interface GetGitopsProjectProjectSpecDestination {
-        /**
-         * Namespace specifies the target namespace for the application's resources.
-         */
-        namespace?: string;
-        /**
-         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-         */
-        server?: string;
-    }
-
     export interface GetGitopsRepoCredCred {
         /**
          * Specifies whether helm-oci support should be enabled for this repo.
@@ -6499,67 +6436,289 @@ export namespace platform {
         sshKeyRef: string;
     }
 
-    export interface GitopsProjectProject {
+    export interface GitopsAppProjectProject {
         /**
-         * Metadata details that all persisted resources must have.
+         * Metadata details for the GitOps project.
          */
-        metadatas?: outputs.platform.GitopsProjectProjectMetadata[];
+        metadatas: outputs.platform.GitopsAppProjectProjectMetadata[];
         /**
-         * Spec is the specification of an AppProject.
+         * Specification details for the GitOps project.
          */
-        specs?: outputs.platform.GitopsProjectProjectSpec[];
+        specs: outputs.platform.GitopsAppProjectProjectSpec[];
     }
 
-    export interface GitopsProjectProjectMetadata {
+    export interface GitopsAppProjectProjectMetadata {
         /**
-         * A sequence number representing a specific generation of the desired state.
+         * Annotations associated with the GitOps project.
          */
-        generation?: string;
+        annotations: {[key: string]: string};
         /**
-         * Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+         * Name of the cluster associated with the GitOps project.
+         */
+        clusterName?: string;
+        /**
+         * Finalizers associated with the GitOps project.
+         */
+        finalizers?: string[];
+        /**
+         * Labels associated with the GitOps project.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Managed fields associated with the GitOps project.
+         */
+        managedFields: outputs.platform.GitopsAppProjectProjectMetadataManagedField[];
+        /**
+         * Name of the GitOps project.
          */
         name?: string;
         /**
-         * The namespace where the GitOps project should be created.
+         * Namespace of the GitOps project.
          */
         namespace?: string;
     }
 
-    export interface GitopsProjectProjectSpec {
+    export interface GitopsAppProjectProjectMetadataManagedField {
         /**
-         * ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+         * API version of the operation performed.
          */
-        clusterResourceWhitelists?: outputs.platform.GitopsProjectProjectSpecClusterResourceWhitelist[];
+        apiVersion: string;
         /**
-         * Destinations contains list of destinations available for deployment.
+         * Type of the fields in the GitOps project.
          */
-        destinations?: outputs.platform.GitopsProjectProjectSpecDestination[];
+        fieldsType: string;
         /**
-         * SourceRepos contains list of repository URLs which can be used for deployment.
+         * Raw fields associated with the GitOps project.
          */
-        sourceRepos?: string[];
+        fieldsV1: {[key: string]: string};
+        /**
+         * Manager responsible for the operation.
+         */
+        manager: string;
+        /**
+         * Operation type performed on the GitOps project.
+         */
+        operation: string;
+        /**
+         * Subresource associated with the GitOps project.
+         */
+        subresource: string;
+        /**
+         * Timestamp of the operation.
+         */
+        time: {[key: string]: string};
     }
 
-    export interface GitopsProjectProjectSpecClusterResourceWhitelist {
+    export interface GitopsAppProjectProjectSpec {
         /**
-         * Cluster group name.
+         * Cluster resource blacklist for the GitOps project.
+         */
+        clusterResourceBlacklists?: outputs.platform.GitopsAppProjectProjectSpecClusterResourceBlacklist[];
+        /**
+         * Cluster resource whitelist for the GitOps project.
+         */
+        clusterResourceWhitelists?: outputs.platform.GitopsAppProjectProjectSpecClusterResourceWhitelist[];
+        /**
+         * Description of the GitOps project.
+         */
+        description?: string;
+        /**
+         * Destinations for deployment of the GitOps project.
+         */
+        destinations?: outputs.platform.GitopsAppProjectProjectSpecDestination[];
+        /**
+         * Namespace resource blacklist for the GitOps project.
+         */
+        namespaceResourceBlacklists?: outputs.platform.GitopsAppProjectProjectSpecNamespaceResourceBlacklist[];
+        /**
+         * Namespace resource whitelist for the GitOps project.
+         */
+        namespaceResourceWhitelists?: outputs.platform.GitopsAppProjectProjectSpecNamespaceResourceWhitelist[];
+        /**
+         * Orphaned resources configuration for the GitOps project.
+         */
+        orphanedResources?: outputs.platform.GitopsAppProjectProjectSpecOrphanedResource[];
+        /**
+         * Roles associated with the GitOps project.
+         */
+        roles?: outputs.platform.GitopsAppProjectProjectSpecRole[];
+        /**
+         * Signature keys for the GitOps project.
+         */
+        signatureKeys?: outputs.platform.GitopsAppProjectProjectSpecSignatureKey[];
+        /**
+         * Source repositories for the GitOps project.
+         */
+        sourceRepos?: string[];
+        /**
+         * Synchronization windows for the GitOps project.
+         */
+        syncWindows: outputs.platform.GitopsAppProjectProjectSpecSyncWindow[];
+    }
+
+    export interface GitopsAppProjectProjectSpecClusterResourceBlacklist {
+        /**
+         * Group of the cluster resource blacklist.
          */
         group?: string;
         /**
-         * Cluster kind.
+         * Kind of the cluster resource blacklist.
          */
         kind?: string;
     }
 
-    export interface GitopsProjectProjectSpecDestination {
+    export interface GitopsAppProjectProjectSpecClusterResourceWhitelist {
         /**
-         * Namespace specifies the target namespace for the application's resources.
+         * Group of the cluster resource whitelist.
+         */
+        group?: string;
+        /**
+         * Kind of the cluster resource whitelist.
+         */
+        kind?: string;
+    }
+
+    export interface GitopsAppProjectProjectSpecDestination {
+        /**
+         * Name of the destination.
+         */
+        name?: string;
+        /**
+         * Namespace of the destination.
          */
         namespace?: string;
         /**
-         * Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+         * Server URL of the destination.
          */
         server?: string;
+    }
+
+    export interface GitopsAppProjectProjectSpecNamespaceResourceBlacklist {
+        /**
+         * Group of the namespace resource blacklist.
+         */
+        group?: string;
+        /**
+         * Kind of the namespace resource blacklist.
+         */
+        kind?: string;
+    }
+
+    export interface GitopsAppProjectProjectSpecNamespaceResourceWhitelist {
+        /**
+         * Group of the namespace resource whitelist.
+         */
+        group?: string;
+        /**
+         * Kind of the namespace resource whitelist.
+         */
+        kind?: string;
+    }
+
+    export interface GitopsAppProjectProjectSpecOrphanedResource {
+        /**
+         * List of ignored orphaned resources.
+         */
+        ignores?: outputs.platform.GitopsAppProjectProjectSpecOrphanedResourceIgnore[];
+        /**
+         * Whether to warn about orphaned resources.
+         */
+        warn?: boolean;
+    }
+
+    export interface GitopsAppProjectProjectSpecOrphanedResourceIgnore {
+        /**
+         * Group of the ignored orphaned resource.
+         */
+        group?: string;
+        /**
+         * Kind of the ignored orphaned resource.
+         */
+        kind?: string;
+        /**
+         * Name of the ignored orphaned resource.
+         */
+        name?: string;
+    }
+
+    export interface GitopsAppProjectProjectSpecRole {
+        /**
+         * Description of the role.
+         */
+        description: string;
+        /**
+         * Groups associated with the role.
+         */
+        groups: string[];
+        /**
+         * JWT tokens associated with the role.
+         */
+        jwtTokens?: outputs.platform.GitopsAppProjectProjectSpecRoleJwtToken[];
+        /**
+         * Name of the role.
+         */
+        name: string;
+        /**
+         * Policies associated with the role.
+         */
+        policies?: string[];
+    }
+
+    export interface GitopsAppProjectProjectSpecRoleJwtToken {
+        /**
+         * Expiration time of the JWT token.
+         */
+        exp?: string;
+        /**
+         * Issued At time of the JWT token.
+         */
+        iat?: string;
+        /**
+         * ID of the JWT token.
+         */
+        id?: string;
+    }
+
+    export interface GitopsAppProjectProjectSpecSignatureKey {
+        /**
+         * ID of the signature key.
+         */
+        keyId?: string;
+    }
+
+    export interface GitopsAppProjectProjectSpecSyncWindow {
+        /**
+         * Applications associated with synchronization window.
+         */
+        applications: string[];
+        /**
+         * Clusters associated with synchronization window.
+         */
+        clusters: string[];
+        /**
+         * Duration of synchronization window.
+         */
+        duration: string;
+        /**
+         * Kind of synchronization window.
+         */
+        kind: string;
+        /**
+         * Whether manual synchronization is enabled.
+         */
+        manualSync: boolean;
+        /**
+         * Namespaces associated with synchronization window.
+         */
+        namespaces: string[];
+        /**
+         * Schedule of synchronization window.
+         */
+        schedule: string;
+        /**
+         * Time zone of synchronization window.
+         */
+        timeZone: string;
     }
 
     export interface HelmConnectorCredentials {

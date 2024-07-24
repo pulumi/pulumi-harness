@@ -1592,10 +1592,10 @@ github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 h1
 github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645/go.mod h1:6iZfnjpejD4L/4DwD7NryNaJyCQdzwWwH2MWhCA90Kw=
 github.com/harness/harness-go-sdk v0.3.97 h1:Hgxz7IdkjMr25hmzkD5pTtrrfWhHvklIgs5KIRFi29w=
 github.com/harness/harness-go-sdk v0.3.97/go.mod h1:a/1HYTgVEuNEoh3Z3IsOHZdlUNxl94KcX57ZSNVGll0=
-github.com/harness/harness-openapi-go-client v0.0.19 h1:8XuZvSPZrNqKRLh7Qksdz78WvRMRzRf88LgzxoT5u7k=
-github.com/harness/harness-openapi-go-client v0.0.19/go.mod h1:u0vqYb994BJGotmEwJevF4L3BNAdU9i8ui2d22gmLPA=
-github.com/harness/terraform-provider-harness v0.31.9 h1:FNxOY1ZpGCV8egOoSj2kZdf9jAEWrnG259XExgRWfq0=
-github.com/harness/terraform-provider-harness v0.31.9/go.mod h1:Z62DnOGjx8bELGb0LHDkoOOI40wSaSQ0Vn8ft6VxLUU=
+github.com/harness/harness-openapi-go-client v0.0.21 h1:VtJnpQKZvCAlaCmUPbNR69OT3c5WRdhNN5TOgUwtwZ4=
+github.com/harness/harness-openapi-go-client v0.0.21/go.mod h1:u0vqYb994BJGotmEwJevF4L3BNAdU9i8ui2d22gmLPA=
+github.com/harness/terraform-provider-harness v0.32.1 h1:jnGpsrRhHgMCHbNc/m0iKAy2aZWGvY+o6ArTzbrmTpc=
+github.com/harness/terraform-provider-harness v0.32.1/go.mod h1:MPW9GL91ug+50nAdL2dvDtYzV5sCZtNnRLglyCS22rc=
 github.com/hashicorp/cli v1.1.6/go.mod h1:MPon5QYlgjjo0BSoAiN0ESeT5fRzDjVRp+uioJ0piz4=
 github.com/hashicorp/errwrap v1.0.0/go.mod h1:YH+1FKiLXxHSkmPseP+kNlulaMuP3n2brvKWEqk/Jc4=
 github.com/hashicorp/errwrap v1.1.0 h1:OxrOeh75EUXMY8TBjag2fzXGZ40LB6IKw45YeGUDY2I=

@@ -192,14 +192,19 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_ff_api_key":          {Tok: harnessResource(platformMod, "FeatureFlagApiKey")},
 			"harness_platform_filters":             {Tok: harnessResource(platformMod, "Filters")},
 			"harness_platform_gitops_applications": {Tok: harnessResource(platformMod, "GitOpsApplications")},
-			"harness_platform_gitops_gnupg":        {Tok: harnessResource(platformMod, "GitOpsGnupg")},
-			"harness_platform_gitops_repo_cert":    {Tok: harnessResource(platformMod, "GitOpsRepoCert")},
-			"harness_platform_gitops_repo_cred":    {Tok: harnessResource(platformMod, "GitOpsRepoCred")},
-			"harness_platform_manual_freeze":       {Tok: harnessResource(platformMod, "ManualFreeze")},
-			"harness_platform_monitored_service":   {Tok: harnessResource(platformMod, "MonitoredService")},
-			"harness_platform_pipeline_filters":    {Tok: harnessResource(platformMod, "PipelineFilters")},
-			"harness_platform_policy":              {Tok: harnessResource(platformMod, "Policy")},
-			"harness_platform_policyset":           {Tok: harnessResource(platformMod, "PolicySet")},
+			"harness_platform_gitops_app_project": {
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
+			"harness_platform_gitops_gnupg":      {Tok: harnessResource(platformMod, "GitOpsGnupg")},
+			"harness_platform_gitops_repo_cert":  {Tok: harnessResource(platformMod, "GitOpsRepoCert")},
+			"harness_platform_gitops_repo_cred":  {Tok: harnessResource(platformMod, "GitOpsRepoCred")},
+			"harness_platform_manual_freeze":     {Tok: harnessResource(platformMod, "ManualFreeze")},
+			"harness_platform_monitored_service": {Tok: harnessResource(platformMod, "MonitoredService")},
+			"harness_platform_pipeline_filters":  {Tok: harnessResource(platformMod, "PipelineFilters")},
+			"harness_platform_policy":            {Tok: harnessResource(platformMod, "Policy")},
+			"harness_platform_policyset":         {Tok: harnessResource(platformMod, "PolicySet")},
 			"harness_platform_service_overrides_v2": {
 				Tok:  harnessResource(platformMod, "ServiceOverridesV2"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
@@ -320,6 +325,11 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: harnessDataSource(platformMod, "getGitopsAgentDeployYaml")},
 			"harness_platform_gitops_applications": {
 				Tok: harnessDataSource(platformMod, "getGitopsApplications")},
+			"harness_platform_gitops_app_project": {
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
 			"harness_platform_gitops_gnupg":      {Tok: harnessDataSource(platformMod, "getGitopsGnupg")},
 			"harness_platform_gitops_repo_cert":  {Tok: harnessDataSource(platformMod, "getGitopsRepoCert")},
 			"harness_platform_gitops_repo_cred":  {Tok: harnessDataSource(platformMod, "getGitopsRepoCred")},

@@ -5225,93 +5225,454 @@
                 "sshKeyRef"
             ]
         },
-        "harness:platform/GitopsProjectProject:GitopsProjectProject": {
+        "harness:platform/GitopsAppProjectProject:GitopsAppProjectProject": {
             "properties": {
                 "metadatas": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/harness:platform/GitopsProjectProjectMetadata:GitopsProjectProjectMetadata"
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectMetadata:GitopsAppProjectProjectMetadata"
                     },
-                    "description": "Metadata details that all persisted resources must have.\n"
+                    "description": "Metadata details for the GitOps project.\n"
                 },
                 "specs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/harness:platform/GitopsProjectProjectSpec:GitopsProjectProjectSpec"
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpec:GitopsAppProjectProjectSpec"
                     },
-                    "description": "Spec is the specification of an AppProject.\n"
+                    "description": "Specification details for the GitOps project.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "metadatas",
+                "specs"
+            ]
         },
-        "harness:platform/GitopsProjectProjectMetadata:GitopsProjectProjectMetadata": {
+        "harness:platform/GitopsAppProjectProjectMetadata:GitopsAppProjectProjectMetadata": {
             "properties": {
-                "generation": {
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Annotations associated with the GitOps project.\n"
+                },
+                "clusterName": {
                     "type": "string",
-                    "description": "A sequence number representing a specific generation of the desired state.\n"
+                    "description": "Name of the cluster associated with the GitOps project.\n"
+                },
+                "finalizers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Finalizers associated with the GitOps project.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels associated with the GitOps project.\n"
+                },
+                "managedFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectMetadataManagedField:GitopsAppProjectProjectMetadataManagedField"
+                    },
+                    "description": "Managed fields associated with the GitOps project.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.\n"
+                    "description": "Name of the GitOps project.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "The namespace where the GitOps project should be created.\n"
+                    "description": "Namespace of the GitOps project.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "annotations",
+                        "managedFields"
+                    ]
+                }
+            }
         },
-        "harness:platform/GitopsProjectProjectSpec:GitopsProjectProjectSpec": {
+        "harness:platform/GitopsAppProjectProjectMetadataManagedField:GitopsAppProjectProjectMetadataManagedField": {
             "properties": {
+                "apiVersion": {
+                    "type": "string",
+                    "description": "API version of the operation performed.\n"
+                },
+                "fieldsType": {
+                    "type": "string",
+                    "description": "Type of the fields in the GitOps project.\n"
+                },
+                "fieldsV1": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Raw fields associated with the GitOps project.\n"
+                },
+                "manager": {
+                    "type": "string",
+                    "description": "Manager responsible for the operation.\n"
+                },
+                "operation": {
+                    "type": "string",
+                    "description": "Operation type performed on the GitOps project.\n"
+                },
+                "subresource": {
+                    "type": "string",
+                    "description": "Subresource associated with the GitOps project.\n"
+                },
+                "time": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Timestamp of the operation.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "apiVersion",
+                        "fieldsType",
+                        "fieldsV1",
+                        "manager",
+                        "operation",
+                        "subresource",
+                        "time"
+                    ]
+                }
+            }
+        },
+        "harness:platform/GitopsAppProjectProjectSpec:GitopsAppProjectProjectSpec": {
+            "properties": {
+                "clusterResourceBlacklists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecClusterResourceBlacklist:GitopsAppProjectProjectSpecClusterResourceBlacklist"
+                    },
+                    "description": "Cluster resource blacklist for the GitOps project.\n"
+                },
                 "clusterResourceWhitelists": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/harness:platform/GitopsProjectProjectSpecClusterResourceWhitelist:GitopsProjectProjectSpecClusterResourceWhitelist"
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecClusterResourceWhitelist:GitopsAppProjectProjectSpecClusterResourceWhitelist"
                     },
-                    "description": "ClusterResourceWhitelist contains list of whitelisted cluster level resources.\n"
+                    "description": "Cluster resource whitelist for the GitOps project.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the GitOps project.\n"
                 },
                 "destinations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/harness:platform/GitopsProjectProjectSpecDestination:GitopsProjectProjectSpecDestination"
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecDestination:GitopsAppProjectProjectSpecDestination"
                     },
-                    "description": "Destinations contains list of destinations available for deployment.\n"
+                    "description": "Destinations for deployment of the GitOps project.\n"
+                },
+                "namespaceResourceBlacklists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecNamespaceResourceBlacklist:GitopsAppProjectProjectSpecNamespaceResourceBlacklist"
+                    },
+                    "description": "Namespace resource blacklist for the GitOps project.\n"
+                },
+                "namespaceResourceWhitelists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecNamespaceResourceWhitelist:GitopsAppProjectProjectSpecNamespaceResourceWhitelist"
+                    },
+                    "description": "Namespace resource whitelist for the GitOps project.\n"
+                },
+                "orphanedResources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecOrphanedResource:GitopsAppProjectProjectSpecOrphanedResource"
+                    },
+                    "description": "Orphaned resources configuration for the GitOps project.\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecRole:GitopsAppProjectProjectSpecRole"
+                    },
+                    "description": "Roles associated with the GitOps project.\n"
+                },
+                "signatureKeys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecSignatureKey:GitopsAppProjectProjectSpecSignatureKey"
+                    },
+                    "description": "Signature keys for the GitOps project.\n"
                 },
                 "sourceRepos": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "SourceRepos contains list of repository URLs which can be used for deployment.\n"
+                    "description": "Source repositories for the GitOps project.\n"
+                },
+                "syncWindows": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecSyncWindow:GitopsAppProjectProjectSpecSyncWindow"
+                    },
+                    "description": "Synchronization windows for the GitOps project.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "syncWindows"
+                    ]
+                }
+            }
         },
-        "harness:platform/GitopsProjectProjectSpecClusterResourceWhitelist:GitopsProjectProjectSpecClusterResourceWhitelist": {
+        "harness:platform/GitopsAppProjectProjectSpecClusterResourceBlacklist:GitopsAppProjectProjectSpecClusterResourceBlacklist": {
             "properties": {
                 "group": {
                     "type": "string",
-                    "description": "Cluster group name.\n"
+                    "description": "Group of the cluster resource blacklist.\n"
                 },
                 "kind": {
                     "type": "string",
-                    "description": "Cluster kind.\n"
+                    "description": "Kind of the cluster resource blacklist.\n"
                 }
             },
             "type": "object"
         },
-        "harness:platform/GitopsProjectProjectSpecDestination:GitopsProjectProjectSpecDestination": {
+        "harness:platform/GitopsAppProjectProjectSpecClusterResourceWhitelist:GitopsAppProjectProjectSpecClusterResourceWhitelist": {
             "properties": {
-                "namespace": {
+                "group": {
                     "type": "string",
-                    "description": "Namespace specifies the target namespace for the application's resources.\n"
+                    "description": "Group of the cluster resource whitelist.\n"
                 },
-                "server": {
+                "kind": {
                     "type": "string",
-                    "description": "Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.\n"
+                    "description": "Kind of the cluster resource whitelist.\n"
                 }
             },
             "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecDestination:GitopsAppProjectProjectSpecDestination": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the destination.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace of the destination.\n"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Server URL of the destination.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecNamespaceResourceBlacklist:GitopsAppProjectProjectSpecNamespaceResourceBlacklist": {
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "Group of the namespace resource blacklist.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind of the namespace resource blacklist.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecNamespaceResourceWhitelist:GitopsAppProjectProjectSpecNamespaceResourceWhitelist": {
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "Group of the namespace resource whitelist.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind of the namespace resource whitelist.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecOrphanedResource:GitopsAppProjectProjectSpecOrphanedResource": {
+            "properties": {
+                "ignores": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecOrphanedResourceIgnore:GitopsAppProjectProjectSpecOrphanedResourceIgnore"
+                    },
+                    "description": "List of ignored orphaned resources.\n"
+                },
+                "warn": {
+                    "type": "boolean",
+                    "description": "Whether to warn about orphaned resources.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecOrphanedResourceIgnore:GitopsAppProjectProjectSpecOrphanedResourceIgnore": {
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "Group of the ignored orphaned resource.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind of the ignored orphaned resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ignored orphaned resource.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecRole:GitopsAppProjectProjectSpecRole": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the role.\n"
+                },
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Groups associated with the role.\n"
+                },
+                "jwtTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecRoleJwtToken:GitopsAppProjectProjectSpecRoleJwtToken"
+                    },
+                    "description": "JWT tokens associated with the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Policies associated with the role.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "groups",
+                        "name"
+                    ]
+                }
+            }
+        },
+        "harness:platform/GitopsAppProjectProjectSpecRoleJwtToken:GitopsAppProjectProjectSpecRoleJwtToken": {
+            "properties": {
+                "exp": {
+                    "type": "string",
+                    "description": "Expiration time of the JWT token.\n"
+                },
+                "iat": {
+                    "type": "string",
+                    "description": "Issued At time of the JWT token.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the JWT token.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecSignatureKey:GitopsAppProjectProjectSpecSignatureKey": {
+            "properties": {
+                "keyId": {
+                    "type": "string",
+                    "description": "ID of the signature key.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/GitopsAppProjectProjectSpecSyncWindow:GitopsAppProjectProjectSpecSyncWindow": {
+            "properties": {
+                "applications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Applications associated with synchronization window.\n"
+                },
+                "clusters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Clusters associated with synchronization window.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Duration of synchronization window.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Kind of synchronization window.\n"
+                },
+                "manualSync": {
+                    "type": "boolean",
+                    "description": "Whether manual synchronization is enabled.\n"
+                },
+                "namespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Namespaces associated with synchronization window.\n"
+                },
+                "schedule": {
+                    "type": "string",
+                    "description": "Schedule of synchronization window.\n"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": "Time zone of synchronization window.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "applications",
+                        "clusters",
+                        "duration",
+                        "kind",
+                        "manualSync",
+                        "namespaces",
+                        "schedule",
+                        "timeZone"
+                    ]
+                }
+            }
         },
         "harness:platform/HelmConnectorCredentials:HelmConnectorCredentials": {
             "properties": {
@@ -10458,94 +10819,6 @@
                 "trust": {
                     "type": "string",
                     "description": "Trust holds the level of trust assigned to this key\n"
-                }
-            },
-            "type": "object"
-        },
-        "harness:platform/getGitopsProjectProject:getGitopsProjectProject": {
-            "properties": {
-                "metadatas": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/harness:platform/getGitopsProjectProjectMetadata:getGitopsProjectProjectMetadata"
-                    },
-                    "description": "Metadata details that all persisted resources must have.\n"
-                },
-                "specs": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/harness:platform/getGitopsProjectProjectSpec:getGitopsProjectProjectSpec"
-                    },
-                    "description": "Spec is the specification of an AppProject.\n"
-                }
-            },
-            "type": "object"
-        },
-        "harness:platform/getGitopsProjectProjectMetadata:getGitopsProjectProjectMetadata": {
-            "properties": {
-                "generation": {
-                    "type": "string",
-                    "description": "A sequence number representing a specific generation of the desired state.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.\n"
-                },
-                "namespace": {
-                    "type": "string",
-                    "description": "The namespace where the GitOps project should be created.\n"
-                }
-            },
-            "type": "object"
-        },
-        "harness:platform/getGitopsProjectProjectSpec:getGitopsProjectProjectSpec": {
-            "properties": {
-                "clusterResourceWhitelists": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/harness:platform/getGitopsProjectProjectSpecClusterResourceWhitelist:getGitopsProjectProjectSpecClusterResourceWhitelist"
-                    },
-                    "description": "ClusterResourceWhitelist contains list of whitelisted cluster level resources.\n"
-                },
-                "destinations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/harness:platform/getGitopsProjectProjectSpecDestination:getGitopsProjectProjectSpecDestination"
-                    },
-                    "description": "Destinations contains list of destinations available for deployment.\n"
-                },
-                "sourceRepos": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "SourceRepos contains list of repository URLs which can be used for deployment.\n"
-                }
-            },
-            "type": "object"
-        },
-        "harness:platform/getGitopsProjectProjectSpecClusterResourceWhitelist:getGitopsProjectProjectSpecClusterResourceWhitelist": {
-            "properties": {
-                "group": {
-                    "type": "string",
-                    "description": "Cluster group name.\n"
-                },
-                "kind": {
-                    "type": "string",
-                    "description": "Cluster kind.\n"
-                }
-            },
-            "type": "object"
-        },
-        "harness:platform/getGitopsProjectProjectSpecDestination:getGitopsProjectProjectSpecDestination": {
-            "properties": {
-                "namespace": {
-                    "type": "string",
-                    "description": "Namespace specifies the target namespace for the application's resources.\n"
-                },
-                "server": {
-                    "type": "string",
-                    "description": "Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.\n"
                 }
             },
             "type": "object"
@@ -24443,6 +24716,122 @@
                 "type": "object"
             }
         },
+        "harness:platform/gitopsAppProject:GitopsAppProject": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Account identifier of the GitOps project.\n"
+                },
+                "agentId": {
+                    "type": "string",
+                    "description": "Agent identifier of the GitOps project.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org identifier of the GitOps project.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier of the GitOps repository.\n"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProject:GitopsAppProjectProject"
+                    },
+                    "description": "GitOps project configuration.\n"
+                },
+                "queryName": {
+                    "type": "string",
+                    "description": "Identifier for the GitOps project.\n"
+                },
+                "upsert": {
+                    "type": "boolean",
+                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "agentId",
+                "projects",
+                "queryName"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Account identifier of the GitOps project.\n"
+                },
+                "agentId": {
+                    "type": "string",
+                    "description": "Agent identifier of the GitOps project.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Org identifier of the GitOps project.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier of the GitOps repository.\n"
+                },
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitopsAppProjectProject:GitopsAppProjectProject"
+                    },
+                    "description": "GitOps project configuration.\n"
+                },
+                "queryName": {
+                    "type": "string",
+                    "description": "Identifier for the GitOps project.\n"
+                },
+                "upsert": {
+                    "type": "boolean",
+                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "agentId",
+                "projects"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GitopsAppProject resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "Account identifier of the GitOps project.\n"
+                    },
+                    "agentId": {
+                        "type": "string",
+                        "description": "Agent identifier of the GitOps project.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Org identifier of the GitOps project.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project identifier of the GitOps repository.\n"
+                    },
+                    "projects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/GitopsAppProjectProject:GitopsAppProjectProject"
+                        },
+                        "description": "GitOps project configuration.\n"
+                    },
+                    "queryName": {
+                        "type": "string",
+                        "description": "Identifier for the GitOps project.\n"
+                    },
+                    "upsert": {
+                        "type": "boolean",
+                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping": {
             "description": "Resource for managing Harness GitOps Application Project Mappings.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.GitopsAppProjectMapping(\"example\", {\n    accountId: \"account_id\",\n    orgId: \"organization_id\",\n    projectId: \"project_id\",\n    agentId: \"agent_id\",\n    argoProjectName: \"argoProjectName\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.GitopsAppProjectMapping(\"example\",\n    account_id=\"account_id\",\n    org_id=\"organization_id\",\n    project_id=\"project_id\",\n    agent_id=\"agent_id\",\n    argo_project_name=\"argoProjectName\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.GitopsAppProjectMapping(\"example\", new()\n    {\n        AccountId = \"account_id\",\n        OrgId = \"organization_id\",\n        ProjectId = \"project_id\",\n        AgentId = \"agent_id\",\n        ArgoProjectName = \"argoProjectName\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewGitopsAppProjectMapping(ctx, \"example\", \u0026platform.GitopsAppProjectMappingArgs{\n\t\t\tAccountId:       pulumi.String(\"account_id\"),\n\t\t\tOrgId:           pulumi.String(\"organization_id\"),\n\t\t\tProjectId:       pulumi.String(\"project_id\"),\n\t\t\tAgentId:         pulumi.String(\"agent_id\"),\n\t\t\tArgoProjectName: pulumi.String(\"argoProjectName\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.GitopsAppProjectMapping;\nimport com.pulumi.harness.platform.GitopsAppProjectMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new GitopsAppProjectMapping(\"example\", GitopsAppProjectMappingArgs.builder()\n            .accountId(\"account_id\")\n            .orgId(\"organization_id\")\n            .projectId(\"project_id\")\n            .agentId(\"agent_id\")\n            .argoProjectName(\"argoProjectName\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:GitopsAppProjectMapping\n    properties:\n      accountId: account_id\n      orgId: organization_id\n      projectId: project_id\n      agentId: agent_id\n      argoProjectName: argoProjectName\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport a GitOps agent app project mapping\n\n```sh\n$ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example \u003corganization_id\u003e/\u003cproject_id\u003e/\u003cagent_id\u003e/\u003cappproject_id\u003e\n```\n\n",
             "properties": {
@@ -24534,122 +24923,6 @@
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps agent's Application Project.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "harness:platform/gitopsProject:GitopsProject": {
-            "description": "## Example Usage\n\n## Import\n\nImport an Account level Gitops Repository\n\n```sh\n$ pulumi import harness:platform/gitopsProject:GitopsProject example \u003cagent_id\u003e/\u003cquery_name\u003e\n```\n\nImport an Org level Gitops Repository\n\n```sh\n$ pulumi import harness:platform/gitopsProject:GitopsProject example \u003corganization_id\u003e/\u003cagent_id\u003e/\u003cquery_name\n```\n\nImport a Project level Gitops Repository\n\n```sh\n$ pulumi import harness:platform/gitopsProject:GitopsProject example \u003corganization_id\u003e/\u003cproject_id\u003e/\u003cagent_id\u003e/\u003cquery_name\u003e\n```\n\n",
-            "properties": {
-                "accountId": {
-                    "type": "string",
-                    "description": "Account identifier of the GitOps project.\n"
-                },
-                "agentId": {
-                    "type": "string",
-                    "description": "Agent identifier of the GitOps project.\n"
-                },
-                "orgId": {
-                    "type": "string",
-                    "description": "Org identifier of the GitOps project.\n"
-                },
-                "projectId": {
-                    "type": "string",
-                    "description": "Project identifier of the GitOps repository.\n"
-                },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/harness:platform/GitopsProjectProject:GitopsProjectProject"
-                    },
-                    "description": "App projects configuration details.\n"
-                },
-                "queryName": {
-                    "type": "string",
-                    "description": "Identifier for the GitOps project.\n"
-                },
-                "upsert": {
-                    "type": "boolean",
-                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
-                }
-            },
-            "required": [
-                "accountId",
-                "agentId",
-                "projects"
-            ],
-            "inputProperties": {
-                "accountId": {
-                    "type": "string",
-                    "description": "Account identifier of the GitOps project.\n"
-                },
-                "agentId": {
-                    "type": "string",
-                    "description": "Agent identifier of the GitOps project.\n"
-                },
-                "orgId": {
-                    "type": "string",
-                    "description": "Org identifier of the GitOps project.\n"
-                },
-                "projectId": {
-                    "type": "string",
-                    "description": "Project identifier of the GitOps repository.\n"
-                },
-                "projects": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/harness:platform/GitopsProjectProject:GitopsProjectProject"
-                    },
-                    "description": "App projects configuration details.\n"
-                },
-                "queryName": {
-                    "type": "string",
-                    "description": "Identifier for the GitOps project.\n"
-                },
-                "upsert": {
-                    "type": "boolean",
-                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
-                }
-            },
-            "requiredInputs": [
-                "accountId",
-                "agentId",
-                "projects"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering GitopsProject resources.\n",
-                "properties": {
-                    "accountId": {
-                        "type": "string",
-                        "description": "Account identifier of the GitOps project.\n"
-                    },
-                    "agentId": {
-                        "type": "string",
-                        "description": "Agent identifier of the GitOps project.\n"
-                    },
-                    "orgId": {
-                        "type": "string",
-                        "description": "Org identifier of the GitOps project.\n"
-                    },
-                    "projectId": {
-                        "type": "string",
-                        "description": "Project identifier of the GitOps repository.\n"
-                    },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/harness:platform/GitopsProjectProject:GitopsProjectProject"
-                        },
-                        "description": "App projects configuration details.\n"
-                    },
-                    "queryName": {
-                        "type": "string",
-                        "description": "Identifier for the GitOps project.\n"
-                    },
-                    "upsert": {
-                        "type": "boolean",
-                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
                     }
                 },
                 "type": "object"
@@ -39626,6 +39899,64 @@
                 "type": "object"
             }
         },
+        "harness:platform/getGitopsAppProject:getGitopsAppProject": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGitopsAppProject.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "agentId": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "queryName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "agentId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGitopsAppProject.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "agentId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "queryName": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "agentId",
+                    "queryName",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping": {
             "description": "Resource for managing the Harness GitOps Application Project Mappings.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsAppProjectMapping({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    orgId: \"organization_id\",\n    projectId: \"project_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_app_project_mapping(identifier=\"identifier\",\n    account_id=\"account_id\",\n    org_id=\"organization_id\",\n    project_id=\"project_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsAppProjectMapping.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        OrgId = \"organization_id\",\n        ProjectId = \"project_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupGitopsAppProjectMapping(ctx, \u0026platform.LookupGitopsAppProjectMappingArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  \"account_id\",\n\t\t\tOrgId:      \"organization_id\",\n\t\t\tProjectId:  \"project_id\",\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .orgId(\"organization_id\")\n            .projectId(\"project_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsAppProjectMapping\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        orgId: organization_id\n        projectId: project_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -40003,98 +40334,6 @@
                     "agentId",
                     "identifier",
                     "requests",
-                    "id"
-                ],
-                "type": "object"
-            }
-        },
-        "harness:platform/getGitopsProject:getGitopsProject": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()\n            .agentId(\"agent_id\")\n            .queryName(\"query_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsRepository\n      Arguments:\n        agentId: agent_id\n        queryName: query_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
-            "inputs": {
-                "description": "A collection of arguments for invoking getGitopsProject.\n",
-                "properties": {
-                    "accountId": {
-                        "type": "string",
-                        "description": "Account identifier of the GitOps project.\n"
-                    },
-                    "agentId": {
-                        "type": "string",
-                        "description": "Agent identifier of the GitOps project.\n"
-                    },
-                    "orgId": {
-                        "type": "string",
-                        "description": "Org identifier of the GitOps project.\n"
-                    },
-                    "projectId": {
-                        "type": "string",
-                        "description": "Project identifier of the GitOps repository.\n"
-                    },
-                    "projects": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/harness:platform/getGitopsProjectProject:getGitopsProjectProject"
-                        },
-                        "description": "App projects configuration details.\n"
-                    },
-                    "queryName": {
-                        "type": "string",
-                        "description": "Identifier for the GitOps project.\n"
-                    },
-                    "upsert": {
-                        "type": "boolean",
-                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "accountId",
-                    "agentId",
-                    "projects"
-                ]
-            },
-            "outputs": {
-                "description": "A collection of values returned by getGitopsProject.\n",
-                "properties": {
-                    "accountId": {
-                        "description": "Account identifier of the GitOps project.\n",
-                        "type": "string"
-                    },
-                    "agentId": {
-                        "description": "Agent identifier of the GitOps project.\n",
-                        "type": "string"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
-                        "type": "string"
-                    },
-                    "orgId": {
-                        "description": "Org identifier of the GitOps project.\n",
-                        "type": "string"
-                    },
-                    "projectId": {
-                        "description": "Project identifier of the GitOps repository.\n",
-                        "type": "string"
-                    },
-                    "projects": {
-                        "description": "App projects configuration details.\n",
-                        "items": {
-                            "$ref": "#/types/harness:platform/getGitopsProjectProject:getGitopsProjectProject"
-                        },
-                        "type": "array"
-                    },
-                    "queryName": {
-                        "description": "Identifier for the GitOps project.\n",
-                        "type": "string"
-                    },
-                    "upsert": {
-                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n",
-                        "type": "boolean"
-                    }
-                },
-                "required": [
-                    "accountId",
-                    "agentId",
-                    "projects",
                     "id"
                 ],
                 "type": "object"

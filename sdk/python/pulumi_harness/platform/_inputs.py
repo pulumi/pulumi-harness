@@ -130,11 +130,21 @@ __all__ = [
     'GitlabConnectorCredentialsArgs',
     'GitlabConnectorCredentialsHttpArgs',
     'GitlabConnectorCredentialsSshArgs',
-    'GitopsProjectProjectArgs',
-    'GitopsProjectProjectMetadataArgs',
-    'GitopsProjectProjectSpecArgs',
-    'GitopsProjectProjectSpecClusterResourceWhitelistArgs',
-    'GitopsProjectProjectSpecDestinationArgs',
+    'GitopsAppProjectProjectArgs',
+    'GitopsAppProjectProjectMetadataArgs',
+    'GitopsAppProjectProjectMetadataManagedFieldArgs',
+    'GitopsAppProjectProjectSpecArgs',
+    'GitopsAppProjectProjectSpecClusterResourceBlacklistArgs',
+    'GitopsAppProjectProjectSpecClusterResourceWhitelistArgs',
+    'GitopsAppProjectProjectSpecDestinationArgs',
+    'GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs',
+    'GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs',
+    'GitopsAppProjectProjectSpecOrphanedResourceArgs',
+    'GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs',
+    'GitopsAppProjectProjectSpecRoleArgs',
+    'GitopsAppProjectProjectSpecRoleJwtTokenArgs',
+    'GitopsAppProjectProjectSpecSignatureKeyArgs',
+    'GitopsAppProjectProjectSpecSyncWindowArgs',
     'HelmConnectorCredentialsArgs',
     'InfrastructureGitDetailsArgs',
     'InputSetGitDetailsArgs',
@@ -224,11 +234,6 @@ __all__ = [
     'GetGitopsAgentDeployYamlProxyArgs',
     'GetGitopsGnupgRequestArgs',
     'GetGitopsGnupgRequestPublickeyArgs',
-    'GetGitopsProjectProjectArgs',
-    'GetGitopsProjectProjectMetadataArgs',
-    'GetGitopsProjectProjectSpecArgs',
-    'GetGitopsProjectProjectSpecClusterResourceWhitelistArgs',
-    'GetGitopsProjectProjectSpecDestinationArgs',
     'GetGitopsRepoCredCredArgs',
     'GetGitopsRepositoryUpdateMaskArgs',
     'GetInfrastructureGitDetailsArgs',
@@ -7435,57 +7440,71 @@ class GitlabConnectorCredentialsSshArgs:
 
 
 @pulumi.input_type
-class GitopsProjectProjectArgs:
+class GitopsAppProjectProjectArgs:
     def __init__(__self__, *,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectMetadataArgs']]]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecArgs']]]] = None):
+                 metadatas: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]],
+                 specs: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectMetadataArgs']]] metadatas: Metadata details that all persisted resources must have.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecArgs']]] specs: Spec is the specification of an AppProject.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]] metadatas: Metadata details for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]] specs: Specification details for the GitOps project.
         """
-        if metadatas is not None:
-            pulumi.set(__self__, "metadatas", metadatas)
-        if specs is not None:
-            pulumi.set(__self__, "specs", specs)
+        pulumi.set(__self__, "metadatas", metadatas)
+        pulumi.set(__self__, "specs", specs)
 
     @property
     @pulumi.getter
-    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectMetadataArgs']]]]:
+    def metadatas(self) -> pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]]:
         """
-        Metadata details that all persisted resources must have.
+        Metadata details for the GitOps project.
         """
         return pulumi.get(self, "metadatas")
 
     @metadatas.setter
-    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectMetadataArgs']]]]):
+    def metadatas(self, value: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]]):
         pulumi.set(self, "metadatas", value)
 
     @property
     @pulumi.getter
-    def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecArgs']]]]:
+    def specs(self) -> pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]]:
         """
-        Spec is the specification of an AppProject.
+        Specification details for the GitOps project.
         """
         return pulumi.get(self, "specs")
 
     @specs.setter
-    def specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecArgs']]]]):
+    def specs(self, value: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]]):
         pulumi.set(self, "specs", value)
 
 
 @pulumi.input_type
-class GitopsProjectProjectMetadataArgs:
+class GitopsAppProjectProjectMetadataArgs:
     def __init__(__self__, *,
-                 generation: Optional[pulumi.Input[str]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 finalizers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 managed_fields: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] generation: A sequence number representing a specific generation of the desired state.
-        :param pulumi.Input[str] name: Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-        :param pulumi.Input[str] namespace: The namespace where the GitOps project should be created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations associated with the GitOps project.
+        :param pulumi.Input[str] cluster_name: Name of the cluster associated with the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] finalizers: Finalizers associated with the GitOps project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgs']]] managed_fields: Managed fields associated with the GitOps project.
+        :param pulumi.Input[str] name: Name of the GitOps project.
+        :param pulumi.Input[str] namespace: Namespace of the GitOps project.
         """
-        if generation is not None:
-            pulumi.set(__self__, "generation", generation)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if finalizers is not None:
+            pulumi.set(__self__, "finalizers", finalizers)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if managed_fields is not None:
+            pulumi.set(__self__, "managed_fields", managed_fields)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
@@ -7493,21 +7512,69 @@ class GitopsProjectProjectMetadataArgs:
 
     @property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[str]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A sequence number representing a specific generation of the desired state.
+        Annotations associated with the GitOps project.
         """
-        return pulumi.get(self, "generation")
+        return pulumi.get(self, "annotations")
 
-    @generation.setter
-    def generation(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "generation", value)
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the cluster associated with the GitOps project.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def finalizers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Finalizers associated with the GitOps project.
+        """
+        return pulumi.get(self, "finalizers")
+
+    @finalizers.setter
+    def finalizers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "finalizers", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels associated with the GitOps project.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="managedFields")
+    def managed_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgs']]]]:
+        """
+        Managed fields associated with the GitOps project.
+        """
+        return pulumi.get(self, "managed_fields")
+
+    @managed_fields.setter
+    def managed_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgs']]]]):
+        pulumi.set(self, "managed_fields", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
+        Name of the GitOps project.
         """
         return pulumi.get(self, "name")
 
@@ -7519,7 +7586,7 @@ class GitopsProjectProjectMetadataArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        The namespace where the GitOps project should be created.
+        Namespace of the GitOps project.
         """
         return pulumi.get(self, "namespace")
 
@@ -7529,52 +7596,287 @@ class GitopsProjectProjectMetadataArgs:
 
 
 @pulumi.input_type
-class GitopsProjectProjectSpecArgs:
+class GitopsAppProjectProjectMetadataManagedFieldArgs:
     def __init__(__self__, *,
-                 cluster_resource_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecClusterResourceWhitelistArgs']]]] = None,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecDestinationArgs']]]] = None,
-                 source_repos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 fields_type: Optional[pulumi.Input[str]] = None,
+                 fields_v1: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 manager: Optional[pulumi.Input[str]] = None,
+                 operation: Optional[pulumi.Input[str]] = None,
+                 subresource: Optional[pulumi.Input[str]] = None,
+                 time: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecClusterResourceWhitelistArgs']]] cluster_resource_whitelists: ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecDestinationArgs']]] destinations: Destinations contains list of destinations available for deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_repos: SourceRepos contains list of repository URLs which can be used for deployment.
+        :param pulumi.Input[str] api_version: API version of the operation performed.
+        :param pulumi.Input[str] fields_type: Type of the fields in the GitOps project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields_v1: Raw fields associated with the GitOps project.
+        :param pulumi.Input[str] manager: Manager responsible for the operation.
+        :param pulumi.Input[str] operation: Operation type performed on the GitOps project.
+        :param pulumi.Input[str] subresource: Subresource associated with the GitOps project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] time: Timestamp of the operation.
         """
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if fields_type is not None:
+            pulumi.set(__self__, "fields_type", fields_type)
+        if fields_v1 is not None:
+            pulumi.set(__self__, "fields_v1", fields_v1)
+        if manager is not None:
+            pulumi.set(__self__, "manager", manager)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if subresource is not None:
+            pulumi.set(__self__, "subresource", subresource)
+        if time is not None:
+            pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        API version of the operation performed.
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="fieldsType")
+    def fields_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the fields in the GitOps project.
+        """
+        return pulumi.get(self, "fields_type")
+
+    @fields_type.setter
+    def fields_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fields_type", value)
+
+    @property
+    @pulumi.getter(name="fieldsV1")
+    def fields_v1(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Raw fields associated with the GitOps project.
+        """
+        return pulumi.get(self, "fields_v1")
+
+    @fields_v1.setter
+    def fields_v1(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "fields_v1", value)
+
+    @property
+    @pulumi.getter
+    def manager(self) -> Optional[pulumi.Input[str]]:
+        """
+        Manager responsible for the operation.
+        """
+        return pulumi.get(self, "manager")
+
+    @manager.setter
+    def manager(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "manager", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Operation type performed on the GitOps project.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter
+    def subresource(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subresource associated with the GitOps project.
+        """
+        return pulumi.get(self, "subresource")
+
+    @subresource.setter
+    def subresource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subresource", value)
+
+    @property
+    @pulumi.getter
+    def time(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Timestamp of the operation.
+        """
+        return pulumi.get(self, "time")
+
+    @time.setter
+    def time(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "time", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecArgs:
+    def __init__(__self__, *,
+                 cluster_resource_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceBlacklistArgs']]]] = None,
+                 cluster_resource_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgs']]]] = None,
+                 namespace_resource_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]]] = None,
+                 namespace_resource_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs']]]] = None,
+                 orphaned_resources: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]]] = None,
+                 signature_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]]] = None,
+                 source_repos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sync_windows: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceBlacklistArgs']]] cluster_resource_blacklists: Cluster resource blacklist for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs']]] cluster_resource_whitelists: Cluster resource whitelist for the GitOps project.
+        :param pulumi.Input[str] description: Description of the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgs']]] destinations: Destinations for deployment of the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]] namespace_resource_blacklists: Namespace resource blacklist for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs']]] namespace_resource_whitelists: Namespace resource whitelist for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]] orphaned_resources: Orphaned resources configuration for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]] roles: Roles associated with the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]] signature_keys: Signature keys for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_repos: Source repositories for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]] sync_windows: Synchronization windows for the GitOps project.
+        """
+        if cluster_resource_blacklists is not None:
+            pulumi.set(__self__, "cluster_resource_blacklists", cluster_resource_blacklists)
         if cluster_resource_whitelists is not None:
             pulumi.set(__self__, "cluster_resource_whitelists", cluster_resource_whitelists)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
+        if namespace_resource_blacklists is not None:
+            pulumi.set(__self__, "namespace_resource_blacklists", namespace_resource_blacklists)
+        if namespace_resource_whitelists is not None:
+            pulumi.set(__self__, "namespace_resource_whitelists", namespace_resource_whitelists)
+        if orphaned_resources is not None:
+            pulumi.set(__self__, "orphaned_resources", orphaned_resources)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if signature_keys is not None:
+            pulumi.set(__self__, "signature_keys", signature_keys)
         if source_repos is not None:
             pulumi.set(__self__, "source_repos", source_repos)
+        if sync_windows is not None:
+            pulumi.set(__self__, "sync_windows", sync_windows)
+
+    @property
+    @pulumi.getter(name="clusterResourceBlacklists")
+    def cluster_resource_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceBlacklistArgs']]]]:
+        """
+        Cluster resource blacklist for the GitOps project.
+        """
+        return pulumi.get(self, "cluster_resource_blacklists")
+
+    @cluster_resource_blacklists.setter
+    def cluster_resource_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceBlacklistArgs']]]]):
+        pulumi.set(self, "cluster_resource_blacklists", value)
 
     @property
     @pulumi.getter(name="clusterResourceWhitelists")
-    def cluster_resource_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecClusterResourceWhitelistArgs']]]]:
+    def cluster_resource_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs']]]]:
         """
-        ClusterResourceWhitelist contains list of whitelisted cluster level resources.
+        Cluster resource whitelist for the GitOps project.
         """
         return pulumi.get(self, "cluster_resource_whitelists")
 
     @cluster_resource_whitelists.setter
-    def cluster_resource_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecClusterResourceWhitelistArgs']]]]):
+    def cluster_resource_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs']]]]):
         pulumi.set(self, "cluster_resource_whitelists", value)
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecDestinationArgs']]]]:
+    def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Destinations contains list of destinations available for deployment.
+        Description of the GitOps project.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgs']]]]:
+        """
+        Destinations for deployment of the GitOps project.
         """
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsProjectProjectSpecDestinationArgs']]]]):
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgs']]]]):
         pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter(name="namespaceResourceBlacklists")
+    def namespace_resource_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]]]:
+        """
+        Namespace resource blacklist for the GitOps project.
+        """
+        return pulumi.get(self, "namespace_resource_blacklists")
+
+    @namespace_resource_blacklists.setter
+    def namespace_resource_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]]]):
+        pulumi.set(self, "namespace_resource_blacklists", value)
+
+    @property
+    @pulumi.getter(name="namespaceResourceWhitelists")
+    def namespace_resource_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs']]]]:
+        """
+        Namespace resource whitelist for the GitOps project.
+        """
+        return pulumi.get(self, "namespace_resource_whitelists")
+
+    @namespace_resource_whitelists.setter
+    def namespace_resource_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs']]]]):
+        pulumi.set(self, "namespace_resource_whitelists", value)
+
+    @property
+    @pulumi.getter(name="orphanedResources")
+    def orphaned_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]]]:
+        """
+        Orphaned resources configuration for the GitOps project.
+        """
+        return pulumi.get(self, "orphaned_resources")
+
+    @orphaned_resources.setter
+    def orphaned_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]]]):
+        pulumi.set(self, "orphaned_resources", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]]]:
+        """
+        Roles associated with the GitOps project.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter(name="signatureKeys")
+    def signature_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]]]:
+        """
+        Signature keys for the GitOps project.
+        """
+        return pulumi.get(self, "signature_keys")
+
+    @signature_keys.setter
+    def signature_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]]]):
+        pulumi.set(self, "signature_keys", value)
 
     @property
     @pulumi.getter(name="sourceRepos")
     def source_repos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        SourceRepos contains list of repository URLs which can be used for deployment.
+        Source repositories for the GitOps project.
         """
         return pulumi.get(self, "source_repos")
 
@@ -7582,15 +7884,27 @@ class GitopsProjectProjectSpecArgs:
     def source_repos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "source_repos", value)
 
+    @property
+    @pulumi.getter(name="syncWindows")
+    def sync_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]]]:
+        """
+        Synchronization windows for the GitOps project.
+        """
+        return pulumi.get(self, "sync_windows")
+
+    @sync_windows.setter
+    def sync_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]]]):
+        pulumi.set(self, "sync_windows", value)
+
 
 @pulumi.input_type
-class GitopsProjectProjectSpecClusterResourceWhitelistArgs:
+class GitopsAppProjectProjectSpecClusterResourceBlacklistArgs:
     def __init__(__self__, *,
                  group: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] group: Cluster group name.
-        :param pulumi.Input[str] kind: Cluster kind.
+        :param pulumi.Input[str] group: Group of the cluster resource blacklist.
+        :param pulumi.Input[str] kind: Kind of the cluster resource blacklist.
         """
         if group is not None:
             pulumi.set(__self__, "group", group)
@@ -7601,7 +7915,7 @@ class GitopsProjectProjectSpecClusterResourceWhitelistArgs:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster group name.
+        Group of the cluster resource blacklist.
         """
         return pulumi.get(self, "group")
 
@@ -7613,7 +7927,7 @@ class GitopsProjectProjectSpecClusterResourceWhitelistArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster kind.
+        Kind of the cluster resource blacklist.
         """
         return pulumi.get(self, "kind")
 
@@ -7623,14 +7937,57 @@ class GitopsProjectProjectSpecClusterResourceWhitelistArgs:
 
 
 @pulumi.input_type
-class GitopsProjectProjectSpecDestinationArgs:
+class GitopsAppProjectProjectSpecClusterResourceWhitelistArgs:
     def __init__(__self__, *,
+                 group: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] group: Group of the cluster resource whitelist.
+        :param pulumi.Input[str] kind: Kind of the cluster resource whitelist.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group of the cluster resource whitelist.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of the cluster resource whitelist.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecDestinationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
                  server: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] namespace: Namespace specifies the target namespace for the application's resources.
-        :param pulumi.Input[str] server: Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+        :param pulumi.Input[str] name: Name of the destination.
+        :param pulumi.Input[str] namespace: Namespace of the destination.
+        :param pulumi.Input[str] server: Server URL of the destination.
         """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if server is not None:
@@ -7638,9 +7995,21 @@ class GitopsProjectProjectSpecDestinationArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the destination.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Namespace specifies the target namespace for the application's resources.
+        Namespace of the destination.
         """
         return pulumi.get(self, "namespace")
 
@@ -7652,13 +8021,483 @@ class GitopsProjectProjectSpecDestinationArgs:
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
         """
-        Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
+        Server URL of the destination.
         """
         return pulumi.get(self, "server")
 
     @server.setter
     def server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs:
+    def __init__(__self__, *,
+                 group: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] group: Group of the namespace resource blacklist.
+        :param pulumi.Input[str] kind: Kind of the namespace resource blacklist.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group of the namespace resource blacklist.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of the namespace resource blacklist.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs:
+    def __init__(__self__, *,
+                 group: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] group: Group of the namespace resource whitelist.
+        :param pulumi.Input[str] kind: Kind of the namespace resource whitelist.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group of the namespace resource whitelist.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of the namespace resource whitelist.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecOrphanedResourceArgs:
+    def __init__(__self__, *,
+                 ignores: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs']]]] = None,
+                 warn: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs']]] ignores: List of ignored orphaned resources.
+        :param pulumi.Input[bool] warn: Whether to warn about orphaned resources.
+        """
+        if ignores is not None:
+            pulumi.set(__self__, "ignores", ignores)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+
+    @property
+    @pulumi.getter
+    def ignores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs']]]]:
+        """
+        List of ignored orphaned resources.
+        """
+        return pulumi.get(self, "ignores")
+
+    @ignores.setter
+    def ignores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs']]]]):
+        pulumi.set(self, "ignores", value)
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to warn about orphaned resources.
+        """
+        return pulumi.get(self, "warn")
+
+    @warn.setter
+    def warn(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "warn", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs:
+    def __init__(__self__, *,
+                 group: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] group: Group of the ignored orphaned resource.
+        :param pulumi.Input[str] kind: Kind of the ignored orphaned resource.
+        :param pulumi.Input[str] name: Name of the ignored orphaned resource.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Group of the ignored orphaned resource.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of the ignored orphaned resource.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the ignored orphaned resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecRoleArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 jwt_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleJwtTokenArgs']]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] description: Description of the role.
+        :param pulumi.Input[str] name: Name of the role.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Groups associated with the role.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleJwtTokenArgs']]] jwt_tokens: JWT tokens associated with the role.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: Policies associated with the role.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if jwt_tokens is not None:
+            pulumi.set(__self__, "jwt_tokens", jwt_tokens)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        Description of the role.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the role.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Groups associated with the role.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "groups", value)
+
+    @property
+    @pulumi.getter(name="jwtTokens")
+    def jwt_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleJwtTokenArgs']]]]:
+        """
+        JWT tokens associated with the role.
+        """
+        return pulumi.get(self, "jwt_tokens")
+
+    @jwt_tokens.setter
+    def jwt_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleJwtTokenArgs']]]]):
+        pulumi.set(self, "jwt_tokens", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Policies associated with the role.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecRoleJwtTokenArgs:
+    def __init__(__self__, *,
+                 exp: Optional[pulumi.Input[str]] = None,
+                 iat: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] exp: Expiration time of the JWT token.
+        :param pulumi.Input[str] iat: Issued At time of the JWT token.
+        :param pulumi.Input[str] id: ID of the JWT token.
+        """
+        if exp is not None:
+            pulumi.set(__self__, "exp", exp)
+        if iat is not None:
+            pulumi.set(__self__, "iat", iat)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def exp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expiration time of the JWT token.
+        """
+        return pulumi.get(self, "exp")
+
+    @exp.setter
+    def exp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exp", value)
+
+    @property
+    @pulumi.getter
+    def iat(self) -> Optional[pulumi.Input[str]]:
+        """
+        Issued At time of the JWT token.
+        """
+        return pulumi.get(self, "iat")
+
+    @iat.setter
+    def iat(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iat", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the JWT token.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecSignatureKeyArgs:
+    def __init__(__self__, *,
+                 key_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key_id: ID of the signature key.
+        """
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the signature key.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+
+@pulumi.input_type
+class GitopsAppProjectProjectSpecSyncWindowArgs:
+    def __init__(__self__, *,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 manual_sync: Optional[pulumi.Input[bool]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: Applications associated with synchronization window.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] clusters: Clusters associated with synchronization window.
+        :param pulumi.Input[str] duration: Duration of synchronization window.
+        :param pulumi.Input[str] kind: Kind of synchronization window.
+        :param pulumi.Input[bool] manual_sync: Whether manual synchronization is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: Namespaces associated with synchronization window.
+        :param pulumi.Input[str] schedule: Schedule of synchronization window.
+        :param pulumi.Input[str] time_zone: Time zone of synchronization window.
+        """
+        if applications is not None:
+            pulumi.set(__self__, "applications", applications)
+        if clusters is not None:
+            pulumi.set(__self__, "clusters", clusters)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if manual_sync is not None:
+            pulumi.set(__self__, "manual_sync", manual_sync)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Applications associated with synchronization window.
+        """
+        return pulumi.get(self, "applications")
+
+    @applications.setter
+    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "applications", value)
+
+    @property
+    @pulumi.getter
+    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Clusters associated with synchronization window.
+        """
+        return pulumi.get(self, "clusters")
+
+    @clusters.setter
+    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "clusters", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration of synchronization window.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of synchronization window.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="manualSync")
+    def manual_sync(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether manual synchronization is enabled.
+        """
+        return pulumi.get(self, "manual_sync")
+
+    @manual_sync.setter
+    def manual_sync(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "manual_sync", value)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Namespaces associated with synchronization window.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schedule of synchronization window.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time zone of synchronization window.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
 
 @pulumi.input_type
@@ -13955,233 +14794,6 @@ class GetGitopsGnupgRequestPublickeyArgs:
     @trust.setter
     def trust(self, value: Optional[str]):
         pulumi.set(self, "trust", value)
-
-
-@pulumi.input_type
-class GetGitopsProjectProjectArgs:
-    def __init__(__self__, *,
-                 metadatas: Optional[Sequence['GetGitopsProjectProjectMetadataArgs']] = None,
-                 specs: Optional[Sequence['GetGitopsProjectProjectSpecArgs']] = None):
-        """
-        :param Sequence['GetGitopsProjectProjectMetadataArgs'] metadatas: Metadata details that all persisted resources must have.
-        :param Sequence['GetGitopsProjectProjectSpecArgs'] specs: Spec is the specification of an AppProject.
-        """
-        if metadatas is not None:
-            pulumi.set(__self__, "metadatas", metadatas)
-        if specs is not None:
-            pulumi.set(__self__, "specs", specs)
-
-    @property
-    @pulumi.getter
-    def metadatas(self) -> Optional[Sequence['GetGitopsProjectProjectMetadataArgs']]:
-        """
-        Metadata details that all persisted resources must have.
-        """
-        return pulumi.get(self, "metadatas")
-
-    @metadatas.setter
-    def metadatas(self, value: Optional[Sequence['GetGitopsProjectProjectMetadataArgs']]):
-        pulumi.set(self, "metadatas", value)
-
-    @property
-    @pulumi.getter
-    def specs(self) -> Optional[Sequence['GetGitopsProjectProjectSpecArgs']]:
-        """
-        Spec is the specification of an AppProject.
-        """
-        return pulumi.get(self, "specs")
-
-    @specs.setter
-    def specs(self, value: Optional[Sequence['GetGitopsProjectProjectSpecArgs']]):
-        pulumi.set(self, "specs", value)
-
-
-@pulumi.input_type
-class GetGitopsProjectProjectMetadataArgs:
-    def __init__(__self__, *,
-                 generation: Optional[str] = None,
-                 name: Optional[str] = None,
-                 namespace: Optional[str] = None):
-        """
-        :param str generation: A sequence number representing a specific generation of the desired state.
-        :param str name: Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-        :param str namespace: The namespace where the GitOps project should be created.
-        """
-        if generation is not None:
-            pulumi.set(__self__, "generation", generation)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-
-    @property
-    @pulumi.getter
-    def generation(self) -> Optional[str]:
-        """
-        A sequence number representing a specific generation of the desired state.
-        """
-        return pulumi.get(self, "generation")
-
-    @generation.setter
-    def generation(self, value: Optional[str]):
-        pulumi.set(self, "generation", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def namespace(self) -> Optional[str]:
-        """
-        The namespace where the GitOps project should be created.
-        """
-        return pulumi.get(self, "namespace")
-
-    @namespace.setter
-    def namespace(self, value: Optional[str]):
-        pulumi.set(self, "namespace", value)
-
-
-@pulumi.input_type
-class GetGitopsProjectProjectSpecArgs:
-    def __init__(__self__, *,
-                 cluster_resource_whitelists: Optional[Sequence['GetGitopsProjectProjectSpecClusterResourceWhitelistArgs']] = None,
-                 destinations: Optional[Sequence['GetGitopsProjectProjectSpecDestinationArgs']] = None,
-                 source_repos: Optional[Sequence[str]] = None):
-        """
-        :param Sequence['GetGitopsProjectProjectSpecClusterResourceWhitelistArgs'] cluster_resource_whitelists: ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-        :param Sequence['GetGitopsProjectProjectSpecDestinationArgs'] destinations: Destinations contains list of destinations available for deployment.
-        :param Sequence[str] source_repos: SourceRepos contains list of repository URLs which can be used for deployment.
-        """
-        if cluster_resource_whitelists is not None:
-            pulumi.set(__self__, "cluster_resource_whitelists", cluster_resource_whitelists)
-        if destinations is not None:
-            pulumi.set(__self__, "destinations", destinations)
-        if source_repos is not None:
-            pulumi.set(__self__, "source_repos", source_repos)
-
-    @property
-    @pulumi.getter(name="clusterResourceWhitelists")
-    def cluster_resource_whitelists(self) -> Optional[Sequence['GetGitopsProjectProjectSpecClusterResourceWhitelistArgs']]:
-        """
-        ClusterResourceWhitelist contains list of whitelisted cluster level resources.
-        """
-        return pulumi.get(self, "cluster_resource_whitelists")
-
-    @cluster_resource_whitelists.setter
-    def cluster_resource_whitelists(self, value: Optional[Sequence['GetGitopsProjectProjectSpecClusterResourceWhitelistArgs']]):
-        pulumi.set(self, "cluster_resource_whitelists", value)
-
-    @property
-    @pulumi.getter
-    def destinations(self) -> Optional[Sequence['GetGitopsProjectProjectSpecDestinationArgs']]:
-        """
-        Destinations contains list of destinations available for deployment.
-        """
-        return pulumi.get(self, "destinations")
-
-    @destinations.setter
-    def destinations(self, value: Optional[Sequence['GetGitopsProjectProjectSpecDestinationArgs']]):
-        pulumi.set(self, "destinations", value)
-
-    @property
-    @pulumi.getter(name="sourceRepos")
-    def source_repos(self) -> Optional[Sequence[str]]:
-        """
-        SourceRepos contains list of repository URLs which can be used for deployment.
-        """
-        return pulumi.get(self, "source_repos")
-
-    @source_repos.setter
-    def source_repos(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "source_repos", value)
-
-
-@pulumi.input_type
-class GetGitopsProjectProjectSpecClusterResourceWhitelistArgs:
-    def __init__(__self__, *,
-                 group: Optional[str] = None,
-                 kind: Optional[str] = None):
-        """
-        :param str group: Cluster group name.
-        :param str kind: Cluster kind.
-        """
-        if group is not None:
-            pulumi.set(__self__, "group", group)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-
-    @property
-    @pulumi.getter
-    def group(self) -> Optional[str]:
-        """
-        Cluster group name.
-        """
-        return pulumi.get(self, "group")
-
-    @group.setter
-    def group(self, value: Optional[str]):
-        pulumi.set(self, "group", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[str]:
-        """
-        Cluster kind.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[str]):
-        pulumi.set(self, "kind", value)
-
-
-@pulumi.input_type
-class GetGitopsProjectProjectSpecDestinationArgs:
-    def __init__(__self__, *,
-                 namespace: Optional[str] = None,
-                 server: Optional[str] = None):
-        """
-        :param str namespace: Namespace specifies the target namespace for the application's resources.
-        :param str server: Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-        """
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-        if server is not None:
-            pulumi.set(__self__, "server", server)
-
-    @property
-    @pulumi.getter
-    def namespace(self) -> Optional[str]:
-        """
-        Namespace specifies the target namespace for the application's resources.
-        """
-        return pulumi.get(self, "namespace")
-
-    @namespace.setter
-    def namespace(self, value: Optional[str]):
-        pulumi.set(self, "namespace", value)
-
-    @property
-    @pulumi.getter
-    def server(self) -> Optional[str]:
-        """
-        Server specifies the URL of the target cluster and must be set to the Kubernetes control plane API.
-        """
-        return pulumi.get(self, "server")
-
-    @server.setter
-    def server(self, value: Optional[str]):
-        pulumi.set(self, "server", value)
 
 
 @pulumi.input_type

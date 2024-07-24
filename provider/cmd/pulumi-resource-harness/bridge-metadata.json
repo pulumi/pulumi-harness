@@ -1411,6 +1411,101 @@
                     }
                 }
             },
+            "harness_platform_gitops_app_project": {
+                "current": "harness:platform/gitopsAppProject:GitopsAppProject",
+                "fields": {
+                    "project": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "metadata": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "finalizers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "managed_fields": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cluster_resource_blacklist": {
+                                                "maxItemsOne": false
+                                            },
+                                            "cluster_resource_whitelist": {
+                                                "maxItemsOne": false
+                                            },
+                                            "destinations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "namespace_resource_blacklist": {
+                                                "maxItemsOne": false
+                                            },
+                                            "namespace_resource_whitelist": {
+                                                "maxItemsOne": false
+                                            },
+                                            "orphaned_resources": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ignore": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "roles": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "groups": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "jwt_tokens": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "policies": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "signature_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "source_repos": {
+                                                "maxItemsOne": false
+                                            },
+                                            "sync_windows": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "applications": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "clusters": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "namespaces": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_gitops_app_project_mapping": {
                 "current": "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping"
             },
@@ -1631,37 +1726,6 @@
                             "fields": {
                                 "publickey": {
                                     "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "harness_platform_gitops_project": {
-                "current": "harness:platform/gitopsProject:GitopsProject",
-                "fields": {
-                    "project": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "metadata": {
-                                    "maxItemsOne": false
-                                },
-                                "spec": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "cluster_resource_whitelist": {
-                                                "maxItemsOne": false
-                                            },
-                                            "destinations": {
-                                                "maxItemsOne": false
-                                            },
-                                            "source_repos": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -3934,6 +3998,9 @@
                     }
                 }
             },
+            "harness_platform_gitops_app_project": {
+                "current": "harness:platform/getGitopsAppProject:getGitopsAppProject"
+            },
             "harness_platform_gitops_app_project_mapping": {
                 "current": "harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping"
             },
@@ -4154,37 +4221,6 @@
                             "fields": {
                                 "publickey": {
                                     "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "harness_platform_gitops_project": {
-                "current": "harness:platform/getGitopsProject:getGitopsProject",
-                "fields": {
-                    "project": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "metadata": {
-                                    "maxItemsOne": false
-                                },
-                                "spec": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "cluster_resource_whitelist": {
-                                                "maxItemsOne": false
-                                            },
-                                            "destinations": {
-                                                "maxItemsOne": false
-                                            },
-                                            "source_repos": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }
