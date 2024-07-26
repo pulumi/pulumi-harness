@@ -1594,8 +1594,8 @@ github.com/harness/harness-go-sdk v0.3.97 h1:Hgxz7IdkjMr25hmzkD5pTtrrfWhHvklIgs5
 github.com/harness/harness-go-sdk v0.3.97/go.mod h1:a/1HYTgVEuNEoh3Z3IsOHZdlUNxl94KcX57ZSNVGll0=
 github.com/harness/harness-openapi-go-client v0.0.21 h1:VtJnpQKZvCAlaCmUPbNR69OT3c5WRdhNN5TOgUwtwZ4=
 github.com/harness/harness-openapi-go-client v0.0.21/go.mod h1:u0vqYb994BJGotmEwJevF4L3BNAdU9i8ui2d22gmLPA=
-github.com/harness/terraform-provider-harness v0.32.1 h1:jnGpsrRhHgMCHbNc/m0iKAy2aZWGvY+o6ArTzbrmTpc=
-github.com/harness/terraform-provider-harness v0.32.1/go.mod h1:MPW9GL91ug+50nAdL2dvDtYzV5sCZtNnRLglyCS22rc=
+github.com/harness/terraform-provider-harness v0.32.2 h1:cUNqkfBAMoEARRGleh6pcmOWasM4yeq1Q2m+Tmx+42g=
+github.com/harness/terraform-provider-harness v0.32.2/go.mod h1:MPW9GL91ug+50nAdL2dvDtYzV5sCZtNnRLglyCS22rc=
 github.com/hashicorp/cli v1.1.6/go.mod h1:MPon5QYlgjjo0BSoAiN0ESeT5fRzDjVRp+uioJ0piz4=
 github.com/hashicorp/errwrap v1.0.0/go.mod h1:YH+1FKiLXxHSkmPseP+kNlulaMuP3n2brvKWEqk/Jc4=
 github.com/hashicorp/errwrap v1.1.0 h1:OxrOeh75EUXMY8TBjag2fzXGZ40LB6IKw45YeGUDY2I=
