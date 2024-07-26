@@ -49,6 +49,11 @@ public final class GitopsAppProjectProjectMetadata {
      * 
      */
     private @Nullable String namespace;
+    /**
+     * @return Resource Version for the GitOps project
+     * 
+     */
+    private @Nullable String resourceVersion;
 
     private GitopsAppProjectProjectMetadata() {}
     /**
@@ -100,6 +105,13 @@ public final class GitopsAppProjectProjectMetadata {
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
+    /**
+     * @return Resource Version for the GitOps project
+     * 
+     */
+    public Optional<String> resourceVersion() {
+        return Optional.ofNullable(this.resourceVersion);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -117,6 +129,7 @@ public final class GitopsAppProjectProjectMetadata {
         private @Nullable List<GitopsAppProjectProjectMetadataManagedField> managedFields;
         private @Nullable String name;
         private @Nullable String namespace;
+        private @Nullable String resourceVersion;
         public Builder() {}
         public Builder(GitopsAppProjectProjectMetadata defaults) {
     	      Objects.requireNonNull(defaults);
@@ -127,6 +140,7 @@ public final class GitopsAppProjectProjectMetadata {
     	      this.managedFields = defaults.managedFields;
     	      this.name = defaults.name;
     	      this.namespace = defaults.namespace;
+    	      this.resourceVersion = defaults.resourceVersion;
         }
 
         @CustomType.Setter
@@ -177,6 +191,12 @@ public final class GitopsAppProjectProjectMetadata {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
+        public Builder resourceVersion(@Nullable String resourceVersion) {
+
+            this.resourceVersion = resourceVersion;
+            return this;
+        }
         public GitopsAppProjectProjectMetadata build() {
             final var _resultValue = new GitopsAppProjectProjectMetadata();
             _resultValue.annotations = annotations;
@@ -186,6 +206,7 @@ public final class GitopsAppProjectProjectMetadata {
             _resultValue.managedFields = managedFields;
             _resultValue.name = name;
             _resultValue.namespace = namespace;
+            _resultValue.resourceVersion = resourceVersion;
             return _resultValue;
         }
     }

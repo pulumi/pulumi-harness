@@ -15,37 +15,77 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
 
     public static final GetGitopsAppProjectPlainArgs Empty = new GetGitopsAppProjectPlainArgs();
 
+    /**
+     * Account identifier of the GitOps project.
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return Account identifier of the GitOps project.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
 
+    /**
+     * Agent identifier of the GitOps project.
+     * 
+     */
     @Import(name="agentId", required=true)
     private String agentId;
 
+    /**
+     * @return Agent identifier of the GitOps project.
+     * 
+     */
     public String agentId() {
         return this.agentId;
     }
 
+    /**
+     * Org identifier of the GitOps project.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Org identifier of the GitOps project.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Project identifier of the GitOps repository.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Project identifier of the GitOps repository.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Identifier for the GitOps project.
+     * 
+     */
     @Import(name="queryName")
     private @Nullable String queryName;
 
+    /**
+     * @return Identifier for the GitOps project.
+     * 
+     */
     public Optional<String> queryName() {
         return Optional.ofNullable(this.queryName);
     }
@@ -78,26 +118,56 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
             $ = new GetGitopsAppProjectPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account identifier of the GitOps project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param agentId Agent identifier of the GitOps project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder agentId(String agentId) {
             $.agentId = agentId;
             return this;
         }
 
+        /**
+         * @param orgId Org identifier of the GitOps project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param projectId Project identifier of the GitOps repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param queryName Identifier for the GitOps project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryName(@Nullable String queryName) {
             $.queryName = queryName;
             return this;

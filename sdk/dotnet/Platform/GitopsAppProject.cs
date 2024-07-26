@@ -9,6 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// Import gitOps project with account level agent
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example &lt;agent_id&gt;/&lt;app_proj_name&gt;
+    /// ```
+    /// 
+    /// Import gitOps project with org level agent
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;app_proj_name&gt;
+    /// ```
+    /// 
+    /// Import gitOps project with project level agent
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;app_proj_name&gt;
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:platform/gitopsAppProject:GitopsAppProject")]
     public partial class GitopsAppProject : global::Pulumi.CustomResource
     {

@@ -2399,7 +2399,7 @@ export namespace platform {
         /**
          * The delegates to connect with.
          */
-        delegateSelectors: string[];
+        delegateSelectors?: string[];
         /**
          * Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
@@ -6476,6 +6476,10 @@ export namespace platform {
          * Namespace of the GitOps project.
          */
         namespace?: string;
+        /**
+         * Resource Version for the GitOps project
+         */
+        resourceVersion: string;
     }
 
     export interface GitopsAppProjectProjectMetadataManagedField {

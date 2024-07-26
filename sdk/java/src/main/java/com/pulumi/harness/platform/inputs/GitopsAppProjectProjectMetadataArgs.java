@@ -123,6 +123,21 @@ public final class GitopsAppProjectProjectMetadataArgs extends com.pulumi.resour
         return Optional.ofNullable(this.namespace);
     }
 
+    /**
+     * Resource Version for the GitOps project
+     * 
+     */
+    @Import(name="resourceVersion")
+    private @Nullable Output<String> resourceVersion;
+
+    /**
+     * @return Resource Version for the GitOps project
+     * 
+     */
+    public Optional<Output<String>> resourceVersion() {
+        return Optional.ofNullable(this.resourceVersion);
+    }
+
     private GitopsAppProjectProjectMetadataArgs() {}
 
     private GitopsAppProjectProjectMetadataArgs(GitopsAppProjectProjectMetadataArgs $) {
@@ -133,6 +148,7 @@ public final class GitopsAppProjectProjectMetadataArgs extends com.pulumi.resour
         this.managedFields = $.managedFields;
         this.name = $.name;
         this.namespace = $.namespace;
+        this.resourceVersion = $.resourceVersion;
     }
 
     public static Builder builder() {
@@ -318,6 +334,27 @@ public final class GitopsAppProjectProjectMetadataArgs extends com.pulumi.resour
          */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
+        }
+
+        /**
+         * @param resourceVersion Resource Version for the GitOps project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceVersion(@Nullable Output<String> resourceVersion) {
+            $.resourceVersion = resourceVersion;
+            return this;
+        }
+
+        /**
+         * @param resourceVersion Resource Version for the GitOps project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceVersion(String resourceVersion) {
+            return resourceVersion(Output.of(resourceVersion));
         }
 
         public GitopsAppProjectProjectMetadataArgs build() {

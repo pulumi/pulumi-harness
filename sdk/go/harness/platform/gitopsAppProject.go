@@ -12,6 +12,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ## Import
+//
+// # Import gitOps project with account level agent
+//
+// ```sh
+// $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <agent_id>/<app_proj_name>
+// ```
+//
+// # Import gitOps project with org level agent
+//
+// ```sh
+// $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<agent_id>/<app_proj_name>
+// ```
+//
+// # Import gitOps project with project level agent
+//
+// ```sh
+// $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<project_id>/<agent_id>/<app_proj_name>
+// ```
 type GitopsAppProject struct {
 	pulumi.CustomResourceState
 

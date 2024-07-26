@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GcpConnectorManualArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +21,15 @@ public final class GcpConnectorManualArgs extends com.pulumi.resources.ResourceA
      * The delegates to connect with.
      * 
      */
-    @Import(name="delegateSelectors", required=true)
-    private Output<List<String>> delegateSelectors;
+    @Import(name="delegateSelectors")
+    private @Nullable Output<List<String>> delegateSelectors;
 
     /**
      * @return The delegates to connect with.
      * 
      */
-    public Output<List<String>> delegateSelectors() {
-        return this.delegateSelectors;
+    public Optional<Output<List<String>>> delegateSelectors() {
+        return Optional.ofNullable(this.delegateSelectors);
     }
 
     /**
@@ -76,7 +78,7 @@ public final class GcpConnectorManualArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder delegateSelectors(Output<List<String>> delegateSelectors) {
+        public Builder delegateSelectors(@Nullable Output<List<String>> delegateSelectors) {
             $.delegateSelectors = delegateSelectors;
             return this;
         }
@@ -123,9 +125,6 @@ public final class GcpConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         public GcpConnectorManualArgs build() {
-            if ($.delegateSelectors == null) {
-                throw new MissingRequiredPropertyException("GcpConnectorManualArgs", "delegateSelectors");
-            }
             if ($.secretKeyRef == null) {
                 throw new MissingRequiredPropertyException("GcpConnectorManualArgs", "secretKeyRef");
             }

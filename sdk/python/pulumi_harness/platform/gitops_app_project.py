@@ -264,7 +264,28 @@ class GitopsAppProject(pulumi.CustomResource):
                  upsert: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a GitopsAppProject resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ## Import
+
+        Import gitOps project with account level agent
+
+        ```sh
+        $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <agent_id>/<app_proj_name>
+        ```
+
+        Import gitOps project with org level agent
+
+        ```sh
+        $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<agent_id>/<app_proj_name>
+        ```
+
+        Import gitOps project with project level agent
+
+        ```sh
+        $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<project_id>/<agent_id>/<app_proj_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps project.
@@ -282,7 +303,28 @@ class GitopsAppProject(pulumi.CustomResource):
                  args: GitopsAppProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GitopsAppProject resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ## Import
+
+        Import gitOps project with account level agent
+
+        ```sh
+        $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <agent_id>/<app_proj_name>
+        ```
+
+        Import gitOps project with org level agent
+
+        ```sh
+        $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<agent_id>/<app_proj_name>
+        ```
+
+        Import gitOps project with project level agent
+
+        ```sh
+        $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<project_id>/<agent_id>/<app_proj_name>
+        ```
+
         :param str resource_name: The name of the resource.
         :param GitopsAppProjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

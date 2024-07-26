@@ -3630,7 +3630,6 @@
             },
             "type": "object",
             "required": [
-                "delegateSelectors",
                 "secretKeyRef"
             ]
         },
@@ -5289,6 +5288,10 @@
                 "namespace": {
                     "type": "string",
                     "description": "Namespace of the GitOps project.\n"
+                },
+                "resourceVersion": {
+                    "type": "string",
+                    "description": "Resource Version for the GitOps project\n"
                 }
             },
             "type": "object",
@@ -5296,7 +5299,8 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "annotations",
-                        "managedFields"
+                        "managedFields",
+                        "resourceVersion"
                     ]
                 }
             }
@@ -24717,6 +24721,7 @@
             }
         },
         "harness:platform/gitopsAppProject:GitopsAppProject": {
+            "description": "## Example Usage\n\n## Import\n\nImport gitOps project with account level agent\n\n```sh\n$ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example \u003cagent_id\u003e/\u003capp_proj_name\u003e\n```\n\nImport gitOps project with org level agent\n\n```sh\n$ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example \u003corganization_id\u003e/\u003cagent_id\u003e/\u003capp_proj_name\u003e\n```\n\nImport gitOps project with project level agent\n\n```sh\n$ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example \u003corganization_id\u003e/\u003cproject_id\u003e/\u003cagent_id\u003e/\u003capp_proj_name\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -39900,23 +39905,29 @@
             }
         },
         "harness:platform/getGitopsAppProject:getGitopsAppProject": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsAppProject({\n    agentId: \"agent_id\",\n    queryName: \"query_name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_app_project(agent_id=\"agent_id\",\n    query_name=\"query_name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsAppProject.Invoke(new()\n    {\n        AgentId = \"agent_id\",\n        QueryName = \"query_name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupGitopsAppProject(ctx, \u0026platform.LookupGitopsAppProjectArgs{\n\t\t\tAgentId:   \"agent_id\",\n\t\t\tQueryName: pulumi.StringRef(\"query_name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAppProject(GetGitopsAppProjectArgs.builder()\n            .agentId(\"agent_id\")\n            .queryName(\"query_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsAppProject\n      Arguments:\n        agentId: agent_id\n        queryName: query_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsAppProject.\n",
                 "properties": {
                     "accountId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Account identifier of the GitOps project.\n"
                     },
                     "agentId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Agent identifier of the GitOps project.\n"
                     },
                     "orgId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Org identifier of the GitOps project.\n"
                     },
                     "projectId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Project identifier of the GitOps repository.\n"
                     },
                     "queryName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Identifier for the GitOps project.\n"
                     }
                 },
                 "type": "object",
@@ -39929,9 +39940,11 @@
                 "description": "A collection of values returned by getGitopsAppProject.\n",
                 "properties": {
                     "accountId": {
+                        "description": "Account identifier of the GitOps project.\n",
                         "type": "string"
                     },
                     "agentId": {
+                        "description": "Agent identifier of the GitOps project.\n",
                         "type": "string"
                     },
                     "id": {
@@ -39939,12 +39952,15 @@
                         "type": "string"
                     },
                     "orgId": {
+                        "description": "Org identifier of the GitOps project.\n",
                         "type": "string"
                     },
                     "projectId": {
+                        "description": "Project identifier of the GitOps repository.\n",
                         "type": "string"
                     },
                     "queryName": {
+                        "description": "Identifier for the GitOps project.\n",
                         "type": "string"
                     }
                 },

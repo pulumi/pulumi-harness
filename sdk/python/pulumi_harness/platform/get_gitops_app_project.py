@@ -44,11 +44,17 @@ class GetGitopsAppProjectResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account identifier of the GitOps project.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="agentId")
     def agent_id(self) -> str:
+        """
+        Agent identifier of the GitOps project.
+        """
         return pulumi.get(self, "agent_id")
 
     @property
@@ -62,16 +68,25 @@ class GetGitopsAppProjectResult:
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
+        """
+        Org identifier of the GitOps project.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        Project identifier of the GitOps repository.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="queryName")
     def query_name(self) -> str:
+        """
+        Identifier for the GitOps project.
+        """
         return pulumi.get(self, "query_name")
 
 
@@ -96,7 +111,22 @@ def get_gitops_app_project(account_id: Optional[str] = None,
                            query_name: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAppProjectResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_app_project(agent_id="agent_id",
+        query_name="query_name")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps project.
+    :param str agent_id: Agent identifier of the GitOps project.
+    :param str org_id: Org identifier of the GitOps project.
+    :param str project_id: Project identifier of the GitOps repository.
+    :param str query_name: Identifier for the GitOps project.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -124,6 +154,21 @@ def get_gitops_app_project_output(account_id: Optional[pulumi.Input[str]] = None
                                   query_name: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAppProjectResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_app_project(agent_id="agent_id",
+        query_name="query_name")
+    ```
+
+
+    :param str account_id: Account identifier of the GitOps project.
+    :param str agent_id: Agent identifier of the GitOps project.
+    :param str org_id: Org identifier of the GitOps project.
+    :param str project_id: Project identifier of the GitOps repository.
+    :param str query_name: Identifier for the GitOps project.
     """
     ...
