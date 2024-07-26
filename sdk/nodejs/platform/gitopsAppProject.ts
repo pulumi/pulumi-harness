@@ -6,6 +6,29 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ## Import
+ *
+ * Import gitOps project with account level agent
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <agent_id>/<app_proj_name>
+ * ```
+ *
+ * Import gitOps project with org level agent
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<agent_id>/<app_proj_name>
+ * ```
+ *
+ * Import gitOps project with project level agent
+ *
+ * ```sh
+ * $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example <organization_id>/<project_id>/<agent_id>/<app_proj_name>
+ * ```
+ */
 export class GitopsAppProject extends pulumi.CustomResource {
     /**
      * Get an existing GitopsAppProject resource's state with the given name, ID, and optional extra

@@ -41,6 +41,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Namespace of the GitOps project.
         /// </summary>
         public readonly string? Namespace;
+        /// <summary>
+        /// Resource Version for the GitOps project
+        /// </summary>
+        public readonly string? ResourceVersion;
 
         [OutputConstructor]
         private GitopsAppProjectProjectMetadata(
@@ -56,7 +60,9 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? name,
 
-            string? @namespace)
+            string? @namespace,
+
+            string? resourceVersion)
         {
             Annotations = annotations;
             ClusterName = clusterName;
@@ -65,6 +71,7 @@ namespace Pulumi.Harness.Platform.Outputs
             ManagedFields = managedFields;
             Name = name;
             Namespace = @namespace;
+            ResourceVersion = resourceVersion;
         }
     }
 }

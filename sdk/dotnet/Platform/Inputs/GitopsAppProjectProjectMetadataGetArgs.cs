@@ -78,6 +78,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// Resource Version for the GitOps project
+        /// </summary>
+        [Input("resourceVersion")]
+        public Input<string>? ResourceVersion { get; set; }
+
         public GitopsAppProjectProjectMetadataGetArgs()
         {
         }

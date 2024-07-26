@@ -12,21 +12,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsAppProjectResult {
+    /**
+     * @return Account identifier of the GitOps project.
+     * 
+     */
     private String accountId;
+    /**
+     * @return Agent identifier of the GitOps project.
+     * 
+     */
     private String agentId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Org identifier of the GitOps project.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Project identifier of the GitOps repository.
+     * 
+     */
     private @Nullable String projectId;
+    /**
+     * @return Identifier for the GitOps project.
+     * 
+     */
     private String queryName;
 
     private GetGitopsAppProjectResult() {}
+    /**
+     * @return Account identifier of the GitOps project.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Agent identifier of the GitOps project.
+     * 
+     */
     public String agentId() {
         return this.agentId;
     }
@@ -37,12 +65,24 @@ public final class GetGitopsAppProjectResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Org identifier of the GitOps project.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Project identifier of the GitOps repository.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Identifier for the GitOps project.
+     * 
+     */
     public String queryName() {
         return this.queryName;
     }

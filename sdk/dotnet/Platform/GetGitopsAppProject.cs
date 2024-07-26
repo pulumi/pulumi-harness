@@ -11,9 +11,49 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetGitopsAppProject
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsAppProject.Invoke(new()
+        ///     {
+        ///         AgentId = "agent_id",
+        ///         QueryName = "query_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetGitopsAppProjectResult> InvokeAsync(GetGitopsAppProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsAppProjectResult>("harness:platform/getGitopsAppProject:getGitopsAppProject", args ?? new GetGitopsAppProjectArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsAppProject.Invoke(new()
+        ///     {
+        ///         AgentId = "agent_id",
+        ///         QueryName = "query_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetGitopsAppProjectResult> Invoke(GetGitopsAppProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAppProjectResult>("harness:platform/getGitopsAppProject:getGitopsAppProject", args ?? new GetGitopsAppProjectInvokeArgs(), options.WithDefaults());
     }
@@ -21,18 +61,33 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsAppProjectArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps project.
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Agent identifier of the GitOps project.
+        /// </summary>
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
 
+        /// <summary>
+        /// Org identifier of the GitOps project.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Project identifier of the GitOps repository.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
+        /// <summary>
+        /// Identifier for the GitOps project.
+        /// </summary>
         [Input("queryName")]
         public string? QueryName { get; set; }
 
@@ -44,18 +99,33 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsAppProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account identifier of the GitOps project.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Agent identifier of the GitOps project.
+        /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
+        /// <summary>
+        /// Org identifier of the GitOps project.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Project identifier of the GitOps repository.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Identifier for the GitOps project.
+        /// </summary>
         [Input("queryName")]
         public Input<string>? QueryName { get; set; }
 
@@ -69,14 +139,29 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetGitopsAppProjectResult
     {
+        /// <summary>
+        /// Account identifier of the GitOps project.
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Agent identifier of the GitOps project.
+        /// </summary>
         public readonly string AgentId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Org identifier of the GitOps project.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Project identifier of the GitOps repository.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Identifier for the GitOps project.
+        /// </summary>
         public readonly string QueryName;
 
         [OutputConstructor]

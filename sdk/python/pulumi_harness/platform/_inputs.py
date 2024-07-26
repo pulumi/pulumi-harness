@@ -3084,26 +3084,15 @@ class GcpConnectorInheritFromDelegateArgs:
 @pulumi.input_type
 class GcpConnectorManualArgs:
     def __init__(__self__, *,
-                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 secret_key_ref: pulumi.Input[str]):
+                 secret_key_ref: pulumi.Input[str],
+                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to connect with.
         :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to connect with.
         """
-        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
-
-    @property
-    @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The delegates to connect with.
-        """
-        return pulumi.get(self, "delegate_selectors")
-
-    @delegate_selectors.setter
-    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "delegate_selectors", value)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -3116,6 +3105,18 @@ class GcpConnectorManualArgs:
     @secret_key_ref.setter
     def secret_key_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_key_ref", value)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The delegates to connect with.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "delegate_selectors", value)
 
 
 @pulumi.input_type
@@ -7485,7 +7486,8 @@ class GitopsAppProjectProjectMetadataArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  managed_fields: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input[str]] = None):
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 resource_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations associated with the GitOps project.
         :param pulumi.Input[str] cluster_name: Name of the cluster associated with the GitOps project.
@@ -7494,6 +7496,7 @@ class GitopsAppProjectProjectMetadataArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgs']]] managed_fields: Managed fields associated with the GitOps project.
         :param pulumi.Input[str] name: Name of the GitOps project.
         :param pulumi.Input[str] namespace: Namespace of the GitOps project.
+        :param pulumi.Input[str] resource_version: Resource Version for the GitOps project
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -7509,6 +7512,8 @@ class GitopsAppProjectProjectMetadataArgs:
             pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
 
     @property
     @pulumi.getter
@@ -7593,6 +7598,18 @@ class GitopsAppProjectProjectMetadataArgs:
     @namespace.setter
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Version for the GitOps project
+        """
+        return pulumi.get(self, "resource_version")
+
+    @resource_version.setter
+    def resource_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_version", value)
 
 
 @pulumi.input_type

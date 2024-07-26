@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpConnectorManual {
@@ -15,7 +16,7 @@ public final class GcpConnectorManual {
      * @return The delegates to connect with.
      * 
      */
-    private List<String> delegateSelectors;
+    private @Nullable List<String> delegateSelectors;
     /**
      * @return Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -28,7 +29,7 @@ public final class GcpConnectorManual {
      * 
      */
     public List<String> delegateSelectors() {
-        return this.delegateSelectors;
+        return this.delegateSelectors == null ? List.of() : this.delegateSelectors;
     }
     /**
      * @return Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -47,7 +48,7 @@ public final class GcpConnectorManual {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> delegateSelectors;
+        private @Nullable List<String> delegateSelectors;
         private String secretKeyRef;
         public Builder() {}
         public Builder(GcpConnectorManual defaults) {
@@ -57,10 +58,8 @@ public final class GcpConnectorManual {
         }
 
         @CustomType.Setter
-        public Builder delegateSelectors(List<String> delegateSelectors) {
-            if (delegateSelectors == null) {
-              throw new MissingRequiredPropertyException("GcpConnectorManual", "delegateSelectors");
-            }
+        public Builder delegateSelectors(@Nullable List<String> delegateSelectors) {
+
             this.delegateSelectors = delegateSelectors;
             return this;
         }

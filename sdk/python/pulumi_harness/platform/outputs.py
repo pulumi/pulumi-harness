@@ -3450,10 +3450,10 @@ class GcpConnectorManual(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "delegateSelectors":
-            suggest = "delegate_selectors"
-        elif key == "secretKeyRef":
+        if key == "secretKeyRef":
             suggest = "secret_key_ref"
+        elif key == "delegateSelectors":
+            suggest = "delegate_selectors"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GcpConnectorManual. Access the value via the '{suggest}' property getter instead.")
@@ -3467,22 +3467,15 @@ class GcpConnectorManual(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 delegate_selectors: Sequence[str],
-                 secret_key_ref: str):
+                 secret_key_ref: str,
+                 delegate_selectors: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] delegate_selectors: The delegates to connect with.
         :param str secret_key_ref: Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param Sequence[str] delegate_selectors: The delegates to connect with.
         """
-        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
-
-    @property
-    @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Sequence[str]:
-        """
-        The delegates to connect with.
-        """
-        return pulumi.get(self, "delegate_selectors")
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -3491,6 +3484,14 @@ class GcpConnectorManual(dict):
         Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "secret_key_ref")
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[Sequence[str]]:
+        """
+        The delegates to connect with.
+        """
+        return pulumi.get(self, "delegate_selectors")
 
 
 @pulumi.output_type
@@ -7697,6 +7698,8 @@ class GitopsAppProjectProjectMetadata(dict):
             suggest = "cluster_name"
         elif key == "managedFields":
             suggest = "managed_fields"
+        elif key == "resourceVersion":
+            suggest = "resource_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GitopsAppProjectProjectMetadata. Access the value via the '{suggest}' property getter instead.")
@@ -7716,7 +7719,8 @@ class GitopsAppProjectProjectMetadata(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  managed_fields: Optional[Sequence['outputs.GitopsAppProjectProjectMetadataManagedField']] = None,
                  name: Optional[str] = None,
-                 namespace: Optional[str] = None):
+                 namespace: Optional[str] = None,
+                 resource_version: Optional[str] = None):
         """
         :param Mapping[str, str] annotations: Annotations associated with the GitOps project.
         :param str cluster_name: Name of the cluster associated with the GitOps project.
@@ -7725,6 +7729,7 @@ class GitopsAppProjectProjectMetadata(dict):
         :param Sequence['GitopsAppProjectProjectMetadataManagedFieldArgs'] managed_fields: Managed fields associated with the GitOps project.
         :param str name: Name of the GitOps project.
         :param str namespace: Namespace of the GitOps project.
+        :param str resource_version: Resource Version for the GitOps project
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -7740,6 +7745,8 @@ class GitopsAppProjectProjectMetadata(dict):
             pulumi.set(__self__, "name", name)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
 
     @property
     @pulumi.getter
@@ -7796,6 +7803,14 @@ class GitopsAppProjectProjectMetadata(dict):
         Namespace of the GitOps project.
         """
         return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[str]:
+        """
+        Resource Version for the GitOps project
+        """
+        return pulumi.get(self, "resource_version")
 
 
 @pulumi.output_type

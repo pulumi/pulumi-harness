@@ -17887,6 +17887,8 @@ type GitopsAppProjectProjectMetadata struct {
 	Name *string `pulumi:"name"`
 	// Namespace of the GitOps project.
 	Namespace *string `pulumi:"namespace"`
+	// Resource Version for the GitOps project
+	ResourceVersion *string `pulumi:"resourceVersion"`
 }
 
 // GitopsAppProjectProjectMetadataInput is an input type that accepts GitopsAppProjectProjectMetadataArgs and GitopsAppProjectProjectMetadataOutput values.
@@ -17915,6 +17917,8 @@ type GitopsAppProjectProjectMetadataArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Namespace of the GitOps project.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Resource Version for the GitOps project
+	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
 }
 
 func (GitopsAppProjectProjectMetadataArgs) ElementType() reflect.Type {
@@ -18003,6 +18007,11 @@ func (o GitopsAppProjectProjectMetadataOutput) Name() pulumi.StringPtrOutput {
 // Namespace of the GitOps project.
 func (o GitopsAppProjectProjectMetadataOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Resource Version for the GitOps project
+func (o GitopsAppProjectProjectMetadataOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
 type GitopsAppProjectProjectMetadataArrayOutput struct{ *pulumi.OutputState }

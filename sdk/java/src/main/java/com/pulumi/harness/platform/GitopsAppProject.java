@@ -17,6 +17,30 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * 
+ * ## Import
+ * 
+ * Import gitOps project with account level agent
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example &lt;agent_id&gt;/&lt;app_proj_name&gt;
+ * ```
+ * 
+ * Import gitOps project with org level agent
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example &lt;organization_id&gt;/&lt;agent_id&gt;/&lt;app_proj_name&gt;
+ * ```
+ * 
+ * Import gitOps project with project level agent
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/gitopsAppProject:GitopsAppProject example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;app_proj_name&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="harness:platform/gitopsAppProject:GitopsAppProject")
 public class GitopsAppProject extends com.pulumi.resources.CustomResource {
     /**
