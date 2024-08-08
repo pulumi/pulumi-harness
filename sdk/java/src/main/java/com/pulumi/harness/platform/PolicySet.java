@@ -176,7 +176,7 @@ public class PolicySet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PolicySet(String name) {
+    public PolicySet(java.lang.String name) {
         this(name, PolicySetArgs.Empty);
     }
     /**
@@ -184,7 +184,7 @@ public class PolicySet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PolicySet(String name, PolicySetArgs args) {
+    public PolicySet(java.lang.String name, PolicySetArgs args) {
         this(name, args, null);
     }
     /**
@@ -193,15 +193,22 @@ public class PolicySet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PolicySet(String name, PolicySetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/policySet:PolicySet", name, args == null ? PolicySetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PolicySet(java.lang.String name, PolicySetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/policySet:PolicySet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PolicySet(String name, Output<String> id, @Nullable PolicySetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/policySet:PolicySet", name, state, makeResourceOptions(options, id));
+    private PolicySet(java.lang.String name, Output<java.lang.String> id, @Nullable PolicySetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/policySet:PolicySet", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PolicySetArgs makeArgs(PolicySetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PolicySetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -217,7 +224,7 @@ public class PolicySet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PolicySet get(String name, Output<String> id, @Nullable PolicySetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PolicySet get(java.lang.String name, Output<java.lang.String> id, @Nullable PolicySetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PolicySet(name, id, state, options);
     }
 }

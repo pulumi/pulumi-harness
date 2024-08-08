@@ -552,7 +552,7 @@ class Usergroup(pulumi.CustomResource):
                  linked_sso_id: Optional[pulumi.Input[str]] = None,
                  linked_sso_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]]] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  sso_group_id: Optional[pulumi.Input[str]] = None,
@@ -578,23 +578,23 @@ class Usergroup(pulumi.CustomResource):
             externally_managed=False,
             users=["user_id"],
             notification_configs=[
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="SLACK",
-                    slack_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="EMAIL",
-                    group_email="email@email.com",
-                    send_email_to_all_users=True,
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="MSTEAMS",
-                    microsoft_teams_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="PAGERDUTY",
-                    pager_duty_key="pagerDutyKey",
-                ),
+                {
+                    "type": "SLACK",
+                    "slack_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "EMAIL",
+                    "group_email": "email@email.com",
+                    "send_email_to_all_users": True,
+                },
+                {
+                    "type": "MSTEAMS",
+                    "microsoft_teams_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "PAGERDUTY",
+                    "pager_duty_key": "pagerDutyKey",
+                },
             ],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
@@ -610,23 +610,23 @@ class Usergroup(pulumi.CustomResource):
             externally_managed=False,
             users=["user_id"],
             notification_configs=[
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="SLACK",
-                    slack_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="EMAIL",
-                    group_email="email@email.com",
-                    send_email_to_all_users=True,
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="MSTEAMS",
-                    microsoft_teams_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="PAGERDUTY",
-                    pager_duty_key="pagerDutyKey",
-                ),
+                {
+                    "type": "SLACK",
+                    "slack_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "EMAIL",
+                    "group_email": "email@email.com",
+                    "send_email_to_all_users": True,
+                },
+                {
+                    "type": "MSTEAMS",
+                    "microsoft_teams_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "PAGERDUTY",
+                    "pager_duty_key": "pagerDutyKey",
+                },
             ],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_id",
@@ -643,23 +643,23 @@ class Usergroup(pulumi.CustomResource):
             externally_managed=False,
             user_emails=["user@email.com"],
             notification_configs=[
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="SLACK",
-                    slack_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="EMAIL",
-                    group_email="email@email.com",
-                    send_email_to_all_users=True,
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="MSTEAMS",
-                    microsoft_teams_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="PAGERDUTY",
-                    pager_duty_key="pagerDutyKey",
-                ),
+                {
+                    "type": "SLACK",
+                    "slack_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "EMAIL",
+                    "group_email": "email@email.com",
+                    "send_email_to_all_users": True,
+                },
+                {
+                    "type": "MSTEAMS",
+                    "microsoft_teams_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "PAGERDUTY",
+                    "pager_duty_key": "pagerDutyKey",
+                },
             ],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
@@ -697,7 +697,7 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[str] linked_sso_id: The SSO account ID that the user group is linked to.
         :param pulumi.Input[str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]] notification_configs: List of notification settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]] notification_configs: List of notification settings.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.
@@ -729,23 +729,23 @@ class Usergroup(pulumi.CustomResource):
             externally_managed=False,
             users=["user_id"],
             notification_configs=[
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="SLACK",
-                    slack_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="EMAIL",
-                    group_email="email@email.com",
-                    send_email_to_all_users=True,
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="MSTEAMS",
-                    microsoft_teams_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="PAGERDUTY",
-                    pager_duty_key="pagerDutyKey",
-                ),
+                {
+                    "type": "SLACK",
+                    "slack_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "EMAIL",
+                    "group_email": "email@email.com",
+                    "send_email_to_all_users": True,
+                },
+                {
+                    "type": "MSTEAMS",
+                    "microsoft_teams_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "PAGERDUTY",
+                    "pager_duty_key": "pagerDutyKey",
+                },
             ],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
@@ -761,23 +761,23 @@ class Usergroup(pulumi.CustomResource):
             externally_managed=False,
             users=["user_id"],
             notification_configs=[
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="SLACK",
-                    slack_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="EMAIL",
-                    group_email="email@email.com",
-                    send_email_to_all_users=True,
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="MSTEAMS",
-                    microsoft_teams_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="PAGERDUTY",
-                    pager_duty_key="pagerDutyKey",
-                ),
+                {
+                    "type": "SLACK",
+                    "slack_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "EMAIL",
+                    "group_email": "email@email.com",
+                    "send_email_to_all_users": True,
+                },
+                {
+                    "type": "MSTEAMS",
+                    "microsoft_teams_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "PAGERDUTY",
+                    "pager_duty_key": "pagerDutyKey",
+                },
             ],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_id",
@@ -794,23 +794,23 @@ class Usergroup(pulumi.CustomResource):
             externally_managed=False,
             user_emails=["user@email.com"],
             notification_configs=[
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="SLACK",
-                    slack_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="EMAIL",
-                    group_email="email@email.com",
-                    send_email_to_all_users=True,
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="MSTEAMS",
-                    microsoft_teams_webhook_url="https://google.com",
-                ),
-                harness.platform.UsergroupNotificationConfigArgs(
-                    type="PAGERDUTY",
-                    pager_duty_key="pagerDutyKey",
-                ),
+                {
+                    "type": "SLACK",
+                    "slack_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "EMAIL",
+                    "group_email": "email@email.com",
+                    "send_email_to_all_users": True,
+                },
+                {
+                    "type": "MSTEAMS",
+                    "microsoft_teams_webhook_url": "https://google.com",
+                },
+                {
+                    "type": "PAGERDUTY",
+                    "pager_duty_key": "pagerDutyKey",
+                },
             ],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
@@ -861,7 +861,7 @@ class Usergroup(pulumi.CustomResource):
                  linked_sso_id: Optional[pulumi.Input[str]] = None,
                  linked_sso_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]]] = None,
+                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  sso_group_id: Optional[pulumi.Input[str]] = None,
@@ -914,7 +914,7 @@ class Usergroup(pulumi.CustomResource):
             linked_sso_id: Optional[pulumi.Input[str]] = None,
             linked_sso_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]]] = None,
+            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             sso_group_id: Optional[pulumi.Input[str]] = None,
@@ -937,7 +937,7 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[str] linked_sso_id: The SSO account ID that the user group is linked to.
         :param pulumi.Input[str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UsergroupNotificationConfigArgs']]]] notification_configs: List of notification settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]] notification_configs: List of notification settings.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] sso_group_id: Identifier of the userGroup in SSO.

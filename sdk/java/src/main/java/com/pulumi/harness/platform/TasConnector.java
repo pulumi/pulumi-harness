@@ -174,7 +174,7 @@ public class TasConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TasConnector(String name) {
+    public TasConnector(java.lang.String name) {
         this(name, TasConnectorArgs.Empty);
     }
     /**
@@ -182,7 +182,7 @@ public class TasConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TasConnector(String name, TasConnectorArgs args) {
+    public TasConnector(java.lang.String name, TasConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -191,15 +191,22 @@ public class TasConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TasConnector(String name, TasConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/tasConnector:TasConnector", name, args == null ? TasConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TasConnector(java.lang.String name, TasConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/tasConnector:TasConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TasConnector(String name, Output<String> id, @Nullable TasConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/tasConnector:TasConnector", name, state, makeResourceOptions(options, id));
+    private TasConnector(java.lang.String name, Output<java.lang.String> id, @Nullable TasConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/tasConnector:TasConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TasConnectorArgs makeArgs(TasConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TasConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -215,7 +222,7 @@ public class TasConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TasConnector get(String name, Output<String> id, @Nullable TasConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TasConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable TasConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TasConnector(name, id, state, options);
     }
 }

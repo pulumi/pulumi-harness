@@ -192,7 +192,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Slo(String name) {
+    public Slo(java.lang.String name) {
         this(name, SloArgs.Empty);
     }
     /**
@@ -200,7 +200,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Slo(String name, SloArgs args) {
+    public Slo(java.lang.String name, SloArgs args) {
         this(name, args, null);
     }
     /**
@@ -209,15 +209,22 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Slo(String name, SloArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/slo:Slo", name, args == null ? SloArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Slo(java.lang.String name, SloArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/slo:Slo", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Slo(String name, Output<String> id, @Nullable SloState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/slo:Slo", name, state, makeResourceOptions(options, id));
+    private Slo(java.lang.String name, Output<java.lang.String> id, @Nullable SloState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/slo:Slo", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SloArgs makeArgs(SloArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SloArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -233,7 +240,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Slo get(String name, Output<String> id, @Nullable SloState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Slo get(java.lang.String name, Output<java.lang.String> id, @Nullable SloState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Slo(name, id, state, options);
     }
 }

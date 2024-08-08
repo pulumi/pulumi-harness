@@ -142,7 +142,7 @@ class AwaitableGetConnectorRancherResult(GetConnectorRancherResult):
             tags=self.tags)
 
 
-def get_connector_rancher(bearer_token: Optional[pulumi.InputType['GetConnectorRancherBearerTokenArgs']] = None,
+def get_connector_rancher(bearer_token: Optional[Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict']] = None,
                           identifier: Optional[str] = None,
                           name: Optional[str] = None,
                           org_id: Optional[str] = None,
@@ -161,7 +161,7 @@ def get_connector_rancher(bearer_token: Optional[pulumi.InputType['GetConnectorR
     ```
 
 
-    :param pulumi.InputType['GetConnectorRancherBearerTokenArgs'] bearer_token: URL and bearer token for the rancher cluster.
+    :param Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict'] bearer_token: URL and bearer token for the rancher cluster.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
@@ -189,7 +189,7 @@ def get_connector_rancher(bearer_token: Optional[pulumi.InputType['GetConnectorR
 
 
 @_utilities.lift_output_func(get_connector_rancher)
-def get_connector_rancher_output(bearer_token: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorRancherBearerTokenArgs']]]] = None,
+def get_connector_rancher_output(bearer_token: Optional[pulumi.Input[Optional[Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict']]]] = None,
                                  identifier: Optional[pulumi.Input[str]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -208,7 +208,7 @@ def get_connector_rancher_output(bearer_token: Optional[pulumi.Input[Optional[pu
     ```
 
 
-    :param pulumi.InputType['GetConnectorRancherBearerTokenArgs'] bearer_token: URL and bearer token for the rancher cluster.
+    :param Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict'] bearer_token: URL and bearer token for the rancher cluster.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.

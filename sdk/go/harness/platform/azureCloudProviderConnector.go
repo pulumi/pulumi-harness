@@ -45,7 +45,7 @@ import (
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
 //							Type: pulumi.String("Secret"),
 //							AzureClientSecretKey: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs{
-//								SecretRef: pulumi.String(fmt.Sprintf("account.%v", test.Id)),
+//								SecretRef: pulumi.Sprintf("account.%v", test.Id),
 //							},
 //						},
 //					},
@@ -73,7 +73,7 @@ import (
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
 //							Type: pulumi.String("Certificate"),
 //							AzureClientKeyCert: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs{
-//								CertificateRef: pulumi.String(fmt.Sprintf("account.%v", test.Id)),
+//								CertificateRef: pulumi.Sprintf("account.%v", test.Id),
 //							},
 //						},
 //					},

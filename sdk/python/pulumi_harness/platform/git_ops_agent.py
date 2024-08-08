@@ -374,7 +374,7 @@ class GitOpsAgent(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsAgentMetadataArgs', 'GitOpsAgentMetadataArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -398,10 +398,10 @@ class GitOpsAgent(pulumi.CustomResource):
             org_id="org_id",
             name="name",
             type="MANAGED_ARGO_PROVIDER",
-            metadatas=[harness.platform.GitOpsAgentMetadataArgs(
-                namespace="namespace",
-                high_availability=True,
-            )])
+            metadatas=[{
+                "namespace": "namespace",
+                "high_availability": True,
+            }])
         ```
 
         ## Import
@@ -429,7 +429,7 @@ class GitOpsAgent(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: Account identifier of the GitOps agent.
         :param pulumi.Input[str] description: Description of the GitOps agent.
         :param pulumi.Input[str] identifier: Identifier of the GitOps agent.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]] metadatas: Metadata of the agent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsAgentMetadataArgs', 'GitOpsAgentMetadataArgsDict']]]] metadatas: Metadata of the agent.
         :param pulumi.Input[str] name: Name of the GitOps agent.
         :param pulumi.Input[str] operator: The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.
@@ -460,10 +460,10 @@ class GitOpsAgent(pulumi.CustomResource):
             org_id="org_id",
             name="name",
             type="MANAGED_ARGO_PROVIDER",
-            metadatas=[harness.platform.GitOpsAgentMetadataArgs(
-                namespace="namespace",
-                high_availability=True,
-            )])
+            metadatas=[{
+                "namespace": "namespace",
+                "high_availability": True,
+            }])
         ```
 
         ## Import
@@ -504,7 +504,7 @@ class GitOpsAgent(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsAgentMetadataArgs', 'GitOpsAgentMetadataArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -551,7 +551,7 @@ class GitOpsAgent(pulumi.CustomResource):
             agent_token: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]]] = None,
+            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsAgentMetadataArgs', 'GitOpsAgentMetadataArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             operator: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -569,7 +569,7 @@ class GitOpsAgent(pulumi.CustomResource):
         :param pulumi.Input[str] agent_token: Agent token to be used for authentication of the agent with Harness.
         :param pulumi.Input[str] description: Description of the GitOps agent.
         :param pulumi.Input[str] identifier: Identifier of the GitOps agent.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsAgentMetadataArgs']]]] metadatas: Metadata of the agent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsAgentMetadataArgs', 'GitOpsAgentMetadataArgsDict']]]] metadatas: Metadata of the agent.
         :param pulumi.Input[str] name: Name of the GitOps agent.
         :param pulumi.Input[str] operator: The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.

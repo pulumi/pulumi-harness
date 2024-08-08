@@ -275,7 +275,7 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserRoleBindingArgs']]]]] = None,
+                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
                  user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -306,7 +306,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] email: The email of the user.
         :param pulumi.Input[str] org_id: Organization identifier of the user.
         :param pulumi.Input[str] project_id: Project identifier of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserRoleBindingArgs']]]] role_bindings: Role Bindings of the user. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]] role_bindings: Role Bindings of the user. Cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user.
         """
         ...
@@ -356,7 +356,7 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserRoleBindingArgs']]]]] = None,
+                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
                  user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -399,7 +399,7 @@ class User(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserRoleBindingArgs']]]]] = None,
+            role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
             user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
@@ -416,7 +416,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the user.
         :param pulumi.Input[str] org_id: Organization identifier of the user.
         :param pulumi.Input[str] project_id: Project identifier of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserRoleBindingArgs']]]] role_bindings: Role Bindings of the user. Cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]] role_bindings: Role Bindings of the user. Cannot be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_groups: The user group of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

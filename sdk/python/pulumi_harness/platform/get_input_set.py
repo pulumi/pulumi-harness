@@ -154,7 +154,7 @@ class AwaitableGetInputSetResult(GetInputSetResult):
             yaml=self.yaml)
 
 
-def get_input_set(git_details: Optional[pulumi.InputType['GetInputSetGitDetailsArgs']] = None,
+def get_input_set(git_details: Optional[Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict']] = None,
                   identifier: Optional[str] = None,
                   name: Optional[str] = None,
                   org_id: Optional[str] = None,
@@ -165,7 +165,7 @@ def get_input_set(git_details: Optional[pulumi.InputType['GetInputSetGitDetailsA
     Data source for retrieving a Harness input set.
 
 
-    :param pulumi.InputType['GetInputSetGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
@@ -196,7 +196,7 @@ def get_input_set(git_details: Optional[pulumi.InputType['GetInputSetGitDetailsA
 
 
 @_utilities.lift_output_func(get_input_set)
-def get_input_set_output(git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetInputSetGitDetailsArgs']]]] = None,
+def get_input_set_output(git_details: Optional[pulumi.Input[Optional[Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict']]]] = None,
                          identifier: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          org_id: Optional[pulumi.Input[str]] = None,
@@ -207,7 +207,7 @@ def get_input_set_output(git_details: Optional[pulumi.Input[Optional[pulumi.Inpu
     Data source for retrieving a Harness input set.
 
 
-    :param pulumi.InputType['GetInputSetGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.

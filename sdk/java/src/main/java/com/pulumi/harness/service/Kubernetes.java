@@ -161,7 +161,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Kubernetes(String name) {
+    public Kubernetes(java.lang.String name) {
         this(name, KubernetesArgs.Empty);
     }
     /**
@@ -169,7 +169,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Kubernetes(String name, KubernetesArgs args) {
+    public Kubernetes(java.lang.String name, KubernetesArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,15 +178,22 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Kubernetes(String name, KubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:service/kubernetes:Kubernetes", name, args == null ? KubernetesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Kubernetes(java.lang.String name, KubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:service/kubernetes:Kubernetes", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Kubernetes(String name, Output<String> id, @Nullable KubernetesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:service/kubernetes:Kubernetes", name, state, makeResourceOptions(options, id));
+    private Kubernetes(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:service/kubernetes:Kubernetes", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KubernetesArgs makeArgs(KubernetesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubernetesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -202,7 +209,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Kubernetes get(String name, Output<String> id, @Nullable KubernetesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Kubernetes get(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Kubernetes(name, id, state, options);
     }
 }

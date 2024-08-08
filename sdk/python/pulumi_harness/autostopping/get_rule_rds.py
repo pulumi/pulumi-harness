@@ -128,21 +128,21 @@ class AwaitableGetRuleRdsResult(GetRuleRdsResult):
 
 
 def get_rule_rds(cloud_connector_id: Optional[str] = None,
-                 database: Optional[pulumi.InputType['GetRuleRdsDatabaseArgs']] = None,
-                 depends: Optional[Sequence[pulumi.InputType['GetRuleRdsDependArgs']]] = None,
+                 database: Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict']] = None,
+                 depends: Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']]] = None,
                  idle_time_mins: Optional[int] = None,
                  name: Optional[str] = None,
-                 tcps: Optional[Sequence[pulumi.InputType['GetRuleRdsTcpArgs']]] = None,
+                 tcps: Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleRdsResult:
     """
     Data source for retrieving a Harness Variable.
 
 
     :param str cloud_connector_id: Id of the cloud connector
-    :param Sequence[pulumi.InputType['GetRuleRdsDependArgs']] depends: Dependent rules
+    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']] depends: Dependent rules
     :param int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param str name: Name of the rule
-    :param Sequence[pulumi.InputType['GetRuleRdsTcpArgs']] tcps: TCP routing configuration
+    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']] tcps: TCP routing configuration
     """
     __args__ = dict()
     __args__['cloudConnectorId'] = cloud_connector_id
@@ -167,20 +167,20 @@ def get_rule_rds(cloud_connector_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_rule_rds)
 def get_rule_rds_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
-                        database: Optional[pulumi.Input[pulumi.InputType['GetRuleRdsDatabaseArgs']]] = None,
-                        depends: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRuleRdsDependArgs']]]]] = None,
+                        database: Optional[pulumi.Input[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict']]] = None,
+                        depends: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']]]]] = None,
                         idle_time_mins: Optional[pulumi.Input[Optional[int]]] = None,
                         name: Optional[pulumi.Input[str]] = None,
-                        tcps: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRuleRdsTcpArgs']]]]] = None,
+                        tcps: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleRdsResult]:
     """
     Data source for retrieving a Harness Variable.
 
 
     :param str cloud_connector_id: Id of the cloud connector
-    :param Sequence[pulumi.InputType['GetRuleRdsDependArgs']] depends: Dependent rules
+    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']] depends: Dependent rules
     :param int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param str name: Name of the rule
-    :param Sequence[pulumi.InputType['GetRuleRdsTcpArgs']] tcps: TCP routing configuration
+    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']] tcps: TCP routing configuration
     """
     ...

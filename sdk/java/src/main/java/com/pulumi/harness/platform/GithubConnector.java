@@ -245,7 +245,7 @@ public class GithubConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GithubConnector(String name) {
+    public GithubConnector(java.lang.String name) {
         this(name, GithubConnectorArgs.Empty);
     }
     /**
@@ -253,7 +253,7 @@ public class GithubConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GithubConnector(String name, GithubConnectorArgs args) {
+    public GithubConnector(java.lang.String name, GithubConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -262,15 +262,22 @@ public class GithubConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GithubConnector(String name, GithubConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/githubConnector:GithubConnector", name, args == null ? GithubConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GithubConnector(java.lang.String name, GithubConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/githubConnector:GithubConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GithubConnector(String name, Output<String> id, @Nullable GithubConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/githubConnector:GithubConnector", name, state, makeResourceOptions(options, id));
+    private GithubConnector(java.lang.String name, Output<java.lang.String> id, @Nullable GithubConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/githubConnector:GithubConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GithubConnectorArgs makeArgs(GithubConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GithubConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -286,7 +293,7 @@ public class GithubConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GithubConnector get(String name, Output<String> id, @Nullable GithubConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GithubConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable GithubConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GithubConnector(name, id, state, options);
     }
 }

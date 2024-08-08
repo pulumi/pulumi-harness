@@ -212,7 +212,7 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FeatureFlag(String name) {
+    public FeatureFlag(java.lang.String name) {
         this(name, FeatureFlagArgs.Empty);
     }
     /**
@@ -220,7 +220,7 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FeatureFlag(String name, FeatureFlagArgs args) {
+    public FeatureFlag(java.lang.String name, FeatureFlagArgs args) {
         this(name, args, null);
     }
     /**
@@ -229,15 +229,22 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FeatureFlag(String name, FeatureFlagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/featureFlag:FeatureFlag", name, args == null ? FeatureFlagArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FeatureFlag(java.lang.String name, FeatureFlagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/featureFlag:FeatureFlag", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FeatureFlag(String name, Output<String> id, @Nullable FeatureFlagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/featureFlag:FeatureFlag", name, state, makeResourceOptions(options, id));
+    private FeatureFlag(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureFlagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/featureFlag:FeatureFlag", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FeatureFlagArgs makeArgs(FeatureFlagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FeatureFlagArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -253,7 +260,7 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FeatureFlag get(String name, Output<String> id, @Nullable FeatureFlagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FeatureFlag get(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureFlagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FeatureFlag(name, id, state, options);
     }
 }

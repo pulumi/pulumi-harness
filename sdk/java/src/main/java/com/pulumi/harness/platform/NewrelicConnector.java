@@ -228,7 +228,7 @@ public class NewrelicConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NewrelicConnector(String name) {
+    public NewrelicConnector(java.lang.String name) {
         this(name, NewrelicConnectorArgs.Empty);
     }
     /**
@@ -236,7 +236,7 @@ public class NewrelicConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NewrelicConnector(String name, NewrelicConnectorArgs args) {
+    public NewrelicConnector(java.lang.String name, NewrelicConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -245,15 +245,22 @@ public class NewrelicConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NewrelicConnector(String name, NewrelicConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/newrelicConnector:NewrelicConnector", name, args == null ? NewrelicConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NewrelicConnector(java.lang.String name, NewrelicConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/newrelicConnector:NewrelicConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NewrelicConnector(String name, Output<String> id, @Nullable NewrelicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/newrelicConnector:NewrelicConnector", name, state, makeResourceOptions(options, id));
+    private NewrelicConnector(java.lang.String name, Output<java.lang.String> id, @Nullable NewrelicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/newrelicConnector:NewrelicConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NewrelicConnectorArgs makeArgs(NewrelicConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NewrelicConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -269,7 +276,7 @@ public class NewrelicConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NewrelicConnector get(String name, Output<String> id, @Nullable NewrelicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NewrelicConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable NewrelicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NewrelicConnector(name, id, state, options);
     }
 }

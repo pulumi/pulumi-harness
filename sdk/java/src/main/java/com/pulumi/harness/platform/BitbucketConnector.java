@@ -216,7 +216,7 @@ public class BitbucketConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BitbucketConnector(String name) {
+    public BitbucketConnector(java.lang.String name) {
         this(name, BitbucketConnectorArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class BitbucketConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BitbucketConnector(String name, BitbucketConnectorArgs args) {
+    public BitbucketConnector(java.lang.String name, BitbucketConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,15 +233,22 @@ public class BitbucketConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BitbucketConnector(String name, BitbucketConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/bitbucketConnector:BitbucketConnector", name, args == null ? BitbucketConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BitbucketConnector(java.lang.String name, BitbucketConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/bitbucketConnector:BitbucketConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BitbucketConnector(String name, Output<String> id, @Nullable BitbucketConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/bitbucketConnector:BitbucketConnector", name, state, makeResourceOptions(options, id));
+    private BitbucketConnector(java.lang.String name, Output<java.lang.String> id, @Nullable BitbucketConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/bitbucketConnector:BitbucketConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BitbucketConnectorArgs makeArgs(BitbucketConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BitbucketConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +264,7 @@ public class BitbucketConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BitbucketConnector get(String name, Output<String> id, @Nullable BitbucketConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BitbucketConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable BitbucketConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BitbucketConnector(name, id, state, options);
     }
 }

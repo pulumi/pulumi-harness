@@ -196,7 +196,7 @@ public class FeatureFlagApiKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FeatureFlagApiKey(String name) {
+    public FeatureFlagApiKey(java.lang.String name) {
         this(name, FeatureFlagApiKeyArgs.Empty);
     }
     /**
@@ -204,7 +204,7 @@ public class FeatureFlagApiKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FeatureFlagApiKey(String name, FeatureFlagApiKeyArgs args) {
+    public FeatureFlagApiKey(java.lang.String name, FeatureFlagApiKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -213,15 +213,22 @@ public class FeatureFlagApiKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FeatureFlagApiKey(String name, FeatureFlagApiKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/featureFlagApiKey:FeatureFlagApiKey", name, args == null ? FeatureFlagApiKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FeatureFlagApiKey(java.lang.String name, FeatureFlagApiKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/featureFlagApiKey:FeatureFlagApiKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FeatureFlagApiKey(String name, Output<String> id, @Nullable FeatureFlagApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/featureFlagApiKey:FeatureFlagApiKey", name, state, makeResourceOptions(options, id));
+    private FeatureFlagApiKey(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureFlagApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/featureFlagApiKey:FeatureFlagApiKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FeatureFlagApiKeyArgs makeArgs(FeatureFlagApiKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FeatureFlagApiKeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -240,7 +247,7 @@ public class FeatureFlagApiKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FeatureFlagApiKey get(String name, Output<String> id, @Nullable FeatureFlagApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FeatureFlagApiKey get(java.lang.String name, Output<java.lang.String> id, @Nullable FeatureFlagApiKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FeatureFlagApiKey(name, id, state, options);
     }
 }

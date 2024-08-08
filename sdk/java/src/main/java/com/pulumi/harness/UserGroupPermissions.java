@@ -69,7 +69,7 @@ public class UserGroupPermissions extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserGroupPermissions(String name) {
+    public UserGroupPermissions(java.lang.String name) {
         this(name, UserGroupPermissionsArgs.Empty);
     }
     /**
@@ -77,7 +77,7 @@ public class UserGroupPermissions extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserGroupPermissions(String name, UserGroupPermissionsArgs args) {
+    public UserGroupPermissions(java.lang.String name, UserGroupPermissionsArgs args) {
         this(name, args, null);
     }
     /**
@@ -86,15 +86,22 @@ public class UserGroupPermissions extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserGroupPermissions(String name, UserGroupPermissionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:index/userGroupPermissions:UserGroupPermissions", name, args == null ? UserGroupPermissionsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserGroupPermissions(java.lang.String name, UserGroupPermissionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:index/userGroupPermissions:UserGroupPermissions", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserGroupPermissions(String name, Output<String> id, @Nullable UserGroupPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:index/userGroupPermissions:UserGroupPermissions", name, state, makeResourceOptions(options, id));
+    private UserGroupPermissions(java.lang.String name, Output<java.lang.String> id, @Nullable UserGroupPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:index/userGroupPermissions:UserGroupPermissions", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserGroupPermissionsArgs makeArgs(UserGroupPermissionsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserGroupPermissionsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -110,7 +117,7 @@ public class UserGroupPermissions extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserGroupPermissions get(String name, Output<String> id, @Nullable UserGroupPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserGroupPermissions get(java.lang.String name, Output<java.lang.String> id, @Nullable UserGroupPermissionsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserGroupPermissions(name, id, state, options);
     }
 }

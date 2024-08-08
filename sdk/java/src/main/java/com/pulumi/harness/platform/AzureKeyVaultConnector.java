@@ -286,7 +286,7 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AzureKeyVaultConnector(String name) {
+    public AzureKeyVaultConnector(java.lang.String name) {
         this(name, AzureKeyVaultConnectorArgs.Empty);
     }
     /**
@@ -294,7 +294,7 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AzureKeyVaultConnector(String name, AzureKeyVaultConnectorArgs args) {
+    public AzureKeyVaultConnector(java.lang.String name, AzureKeyVaultConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -303,15 +303,22 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AzureKeyVaultConnector(String name, AzureKeyVaultConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector", name, args == null ? AzureKeyVaultConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AzureKeyVaultConnector(java.lang.String name, AzureKeyVaultConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AzureKeyVaultConnector(String name, Output<String> id, @Nullable AzureKeyVaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector", name, state, makeResourceOptions(options, id));
+    private AzureKeyVaultConnector(java.lang.String name, Output<java.lang.String> id, @Nullable AzureKeyVaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AzureKeyVaultConnectorArgs makeArgs(AzureKeyVaultConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AzureKeyVaultConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -327,7 +334,7 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AzureKeyVaultConnector get(String name, Output<String> id, @Nullable AzureKeyVaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AzureKeyVaultConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable AzureKeyVaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AzureKeyVaultConnector(name, id, state, options);
     }
 }

@@ -255,7 +255,7 @@ class TemplateFilters(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[pulumi.InputType['TemplateFiltersFilterPropertiesArgs']]] = None,
+                 filter_properties: Optional[pulumi.Input[Union['TemplateFiltersFilterPropertiesArgs', 'TemplateFiltersFilterPropertiesArgsDict']]] = None,
                  filter_visibility: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -278,10 +278,10 @@ class TemplateFilters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="Template",
-            filter_properties=harness.platform.TemplateFiltersFilterPropertiesArgs(
-                tags=["foo:bar"],
-                filter_type="Template",
-            ),
+            filter_properties={
+                "tags": ["foo:bar"],
+                "filter_type": "Template",
+            },
             filter_visibility="EveryOne")
         ```
 
@@ -307,7 +307,7 @@ class TemplateFilters(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TemplateFiltersFilterPropertiesArgs']] filter_properties: Properties of the filters entity defined in Harness.
+        :param pulumi.Input[Union['TemplateFiltersFilterPropertiesArgs', 'TemplateFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[str] filter_visibility: Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the template filters.
@@ -336,10 +336,10 @@ class TemplateFilters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="Template",
-            filter_properties=harness.platform.TemplateFiltersFilterPropertiesArgs(
-                tags=["foo:bar"],
-                filter_type="Template",
-            ),
+            filter_properties={
+                "tags": ["foo:bar"],
+                "filter_type": "Template",
+            },
             filter_visibility="EveryOne")
         ```
 
@@ -378,7 +378,7 @@ class TemplateFilters(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[pulumi.InputType['TemplateFiltersFilterPropertiesArgs']]] = None,
+                 filter_properties: Optional[pulumi.Input[Union['TemplateFiltersFilterPropertiesArgs', 'TemplateFiltersFilterPropertiesArgsDict']]] = None,
                  filter_visibility: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -417,7 +417,7 @@ class TemplateFilters(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            filter_properties: Optional[pulumi.Input[pulumi.InputType['TemplateFiltersFilterPropertiesArgs']]] = None,
+            filter_properties: Optional[pulumi.Input[Union['TemplateFiltersFilterPropertiesArgs', 'TemplateFiltersFilterPropertiesArgsDict']]] = None,
             filter_visibility: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -431,7 +431,7 @@ class TemplateFilters(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TemplateFiltersFilterPropertiesArgs']] filter_properties: Properties of the filters entity defined in Harness.
+        :param pulumi.Input[Union['TemplateFiltersFilterPropertiesArgs', 'TemplateFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[str] filter_visibility: Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the template filters.

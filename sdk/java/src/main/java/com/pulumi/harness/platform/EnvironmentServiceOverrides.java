@@ -337,7 +337,7 @@ public class EnvironmentServiceOverrides extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnvironmentServiceOverrides(String name) {
+    public EnvironmentServiceOverrides(java.lang.String name) {
         this(name, EnvironmentServiceOverridesArgs.Empty);
     }
     /**
@@ -345,7 +345,7 @@ public class EnvironmentServiceOverrides extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnvironmentServiceOverrides(String name, EnvironmentServiceOverridesArgs args) {
+    public EnvironmentServiceOverrides(java.lang.String name, EnvironmentServiceOverridesArgs args) {
         this(name, args, null);
     }
     /**
@@ -354,15 +354,22 @@ public class EnvironmentServiceOverrides extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnvironmentServiceOverrides(String name, EnvironmentServiceOverridesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides", name, args == null ? EnvironmentServiceOverridesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnvironmentServiceOverrides(java.lang.String name, EnvironmentServiceOverridesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnvironmentServiceOverrides(String name, Output<String> id, @Nullable EnvironmentServiceOverridesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides", name, state, makeResourceOptions(options, id));
+    private EnvironmentServiceOverrides(java.lang.String name, Output<java.lang.String> id, @Nullable EnvironmentServiceOverridesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnvironmentServiceOverridesArgs makeArgs(EnvironmentServiceOverridesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnvironmentServiceOverridesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -378,7 +385,7 @@ public class EnvironmentServiceOverrides extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnvironmentServiceOverrides get(String name, Output<String> id, @Nullable EnvironmentServiceOverridesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnvironmentServiceOverrides get(java.lang.String name, Output<java.lang.String> id, @Nullable EnvironmentServiceOverridesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnvironmentServiceOverrides(name, id, state, options);
     }
 }
