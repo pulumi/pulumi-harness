@@ -259,7 +259,7 @@ class GitopsAppProject(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitopsAppProjectProjectArgs']]]]] = None,
+                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
                  query_name: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -292,7 +292,7 @@ class GitopsAppProject(pulumi.CustomResource):
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps project.
         :param pulumi.Input[str] org_id: Org identifier of the GitOps project.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps repository.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitopsAppProjectProjectArgs']]]] projects: GitOps project configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]] projects: GitOps project configuration.
         :param pulumi.Input[str] query_name: Identifier for the GitOps project.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
         """
@@ -344,7 +344,7 @@ class GitopsAppProject(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitopsAppProjectProjectArgs']]]]] = None,
+                 projects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
                  query_name: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -383,7 +383,7 @@ class GitopsAppProject(pulumi.CustomResource):
             agent_id: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            projects: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitopsAppProjectProjectArgs']]]]] = None,
+            projects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
             query_name: Optional[pulumi.Input[str]] = None,
             upsert: Optional[pulumi.Input[bool]] = None) -> 'GitopsAppProject':
         """
@@ -397,7 +397,7 @@ class GitopsAppProject(pulumi.CustomResource):
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps project.
         :param pulumi.Input[str] org_id: Org identifier of the GitOps project.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps repository.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitopsAppProjectProjectArgs']]]] projects: GitOps project configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]] projects: GitOps project configuration.
         :param pulumi.Input[str] query_name: Identifier for the GitOps project.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
         """

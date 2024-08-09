@@ -202,12 +202,12 @@ class AwaitableGetRepoRuleBranchResult(GetRepoRuleBranchResult):
             updated_by=self.updated_by)
 
 
-def get_repo_rule_branch(bypasses: Optional[Sequence[pulumi.InputType['GetRepoRuleBranchBypassArgs']]] = None,
+def get_repo_rule_branch(bypasses: Optional[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']]] = None,
                          description: Optional[str] = None,
                          identifier: Optional[str] = None,
                          org_id: Optional[str] = None,
-                         patterns: Optional[Sequence[pulumi.InputType['GetRepoRuleBranchPatternArgs']]] = None,
-                         policies: Optional[Sequence[pulumi.InputType['GetRepoRuleBranchPolicyArgs']]] = None,
+                         patterns: Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']]] = None,
+                         policies: Optional[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']]] = None,
                          project_id: Optional[str] = None,
                          repo_identifier: Optional[str] = None,
                          state: Optional[str] = None,
@@ -216,12 +216,12 @@ def get_repo_rule_branch(bypasses: Optional[Sequence[pulumi.InputType['GetRepoRu
     Data source for retrieving a Harness repo branch rule.
 
 
-    :param Sequence[pulumi.InputType['GetRepoRuleBranchBypassArgs']] bypasses: List of users who can bypass this rule.
+    :param Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']] bypasses: List of users who can bypass this rule.
     :param str description: Description of the rule.
     :param str identifier: Identifier of the rule.
     :param str org_id: Unique identifier of the organization.
-    :param Sequence[pulumi.InputType['GetRepoRuleBranchPatternArgs']] patterns: Pattern of branch to which rule will apply.
-    :param Sequence[pulumi.InputType['GetRepoRuleBranchPolicyArgs']] policies: Policies to be applied for this rule.
+    :param Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']] patterns: Pattern of branch to which rule will apply.
+    :param Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']] policies: Policies to be applied for this rule.
     :param str project_id: Unique identifier of the project.
     :param str repo_identifier: Repo identifier of the repository.
     :param str state: State of the rule (active, disable, monitor).
@@ -257,12 +257,12 @@ def get_repo_rule_branch(bypasses: Optional[Sequence[pulumi.InputType['GetRepoRu
 
 
 @_utilities.lift_output_func(get_repo_rule_branch)
-def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[pulumi.InputType['GetRepoRuleBranchBypassArgs']]]] = None,
+def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']]]] = None,
                                 description: Optional[pulumi.Input[Optional[str]]] = None,
                                 identifier: Optional[pulumi.Input[str]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                patterns: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRepoRuleBranchPatternArgs']]]]] = None,
-                                policies: Optional[pulumi.Input[Sequence[pulumi.InputType['GetRepoRuleBranchPolicyArgs']]]] = None,
+                                patterns: Optional[pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']]]]] = None,
+                                policies: Optional[pulumi.Input[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 repo_identifier: Optional[pulumi.Input[str]] = None,
                                 state: Optional[pulumi.Input[str]] = None,
@@ -271,12 +271,12 @@ def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[pulumi.
     Data source for retrieving a Harness repo branch rule.
 
 
-    :param Sequence[pulumi.InputType['GetRepoRuleBranchBypassArgs']] bypasses: List of users who can bypass this rule.
+    :param Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']] bypasses: List of users who can bypass this rule.
     :param str description: Description of the rule.
     :param str identifier: Identifier of the rule.
     :param str org_id: Unique identifier of the organization.
-    :param Sequence[pulumi.InputType['GetRepoRuleBranchPatternArgs']] patterns: Pattern of branch to which rule will apply.
-    :param Sequence[pulumi.InputType['GetRepoRuleBranchPolicyArgs']] policies: Policies to be applied for this rule.
+    :param Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']] patterns: Pattern of branch to which rule will apply.
+    :param Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']] policies: Policies to be applied for this rule.
     :param str project_id: Unique identifier of the project.
     :param str repo_identifier: Repo identifier of the repository.
     :param str state: State of the rule (active, disable, monitor).

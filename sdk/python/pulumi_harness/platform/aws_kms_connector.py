@@ -351,7 +351,7 @@ class AwsKmsConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arn_ref: Optional[pulumi.Input[str]] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -387,7 +387,7 @@ class AwsKmsConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        :param pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -442,7 +442,7 @@ class AwsKmsConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arn_ref: Optional[pulumi.Input[str]] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -489,7 +489,7 @@ class AwsKmsConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             arn_ref: Optional[pulumi.Input[str]] = None,
-            credentials: Optional[pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']]] = None,
+            credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -506,7 +506,7 @@ class AwsKmsConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        :param pulumi.Input[pulumi.InputType['AwsKmsConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.

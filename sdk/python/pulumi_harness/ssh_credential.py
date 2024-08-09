@@ -162,10 +162,10 @@ class SshCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 kerberos_authentication: Optional[pulumi.Input[pulumi.InputType['SshCredentialKerberosAuthenticationArgs']]] = None,
+                 kerberos_authentication: Optional[pulumi.Input[Union['SshCredentialKerberosAuthenticationArgs', 'SshCredentialKerberosAuthenticationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ssh_authentication: Optional[pulumi.Input[pulumi.InputType['SshCredentialSshAuthenticationArgs']]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SshCredentialUsageScopeArgs']]]]] = None,
+                 ssh_authentication: Optional[pulumi.Input[Union['SshCredentialSshAuthenticationArgs', 'SshCredentialSshAuthenticationArgsDict']]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SshCredentialUsageScopeArgs', 'SshCredentialUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating an encrypted text secret
@@ -187,13 +187,13 @@ class SshCredential(pulumi.CustomResource):
             secret_manager_id=secret_manager.id)
         ssh_creds = harness.SshCredential("ssh_creds",
             name="ssh-test",
-            ssh_authentication=harness.SshCredentialSshAuthenticationArgs(
-                port=22,
-                username="git",
-                inline_ssh=harness.SshCredentialSshAuthenticationInlineSshArgs(
-                    ssh_key_file_id=my_secret.id,
-                ),
-            ))
+            ssh_authentication={
+                "port": 22,
+                "username": "git",
+                "inline_ssh": {
+                    "ssh_key_file_id": my_secret.id,
+                },
+            })
         ```
 
         ## Import
@@ -206,10 +206,10 @@ class SshCredential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SshCredentialKerberosAuthenticationArgs']] kerberos_authentication: Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
+        :param pulumi.Input[Union['SshCredentialKerberosAuthenticationArgs', 'SshCredentialKerberosAuthenticationArgsDict']] kerberos_authentication: Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
         :param pulumi.Input[str] name: Name of the encrypted text secret
-        :param pulumi.Input[pulumi.InputType['SshCredentialSshAuthenticationArgs']] ssh_authentication: Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SshCredentialUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Union['SshCredentialSshAuthenticationArgs', 'SshCredentialSshAuthenticationArgsDict']] ssh_authentication: Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SshCredentialUsageScopeArgs', 'SshCredentialUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
         ...
     @overload
@@ -237,13 +237,13 @@ class SshCredential(pulumi.CustomResource):
             secret_manager_id=secret_manager.id)
         ssh_creds = harness.SshCredential("ssh_creds",
             name="ssh-test",
-            ssh_authentication=harness.SshCredentialSshAuthenticationArgs(
-                port=22,
-                username="git",
-                inline_ssh=harness.SshCredentialSshAuthenticationInlineSshArgs(
-                    ssh_key_file_id=my_secret.id,
-                ),
-            ))
+            ssh_authentication={
+                "port": 22,
+                "username": "git",
+                "inline_ssh": {
+                    "ssh_key_file_id": my_secret.id,
+                },
+            })
         ```
 
         ## Import
@@ -269,10 +269,10 @@ class SshCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 kerberos_authentication: Optional[pulumi.Input[pulumi.InputType['SshCredentialKerberosAuthenticationArgs']]] = None,
+                 kerberos_authentication: Optional[pulumi.Input[Union['SshCredentialKerberosAuthenticationArgs', 'SshCredentialKerberosAuthenticationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ssh_authentication: Optional[pulumi.Input[pulumi.InputType['SshCredentialSshAuthenticationArgs']]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SshCredentialUsageScopeArgs']]]]] = None,
+                 ssh_authentication: Optional[pulumi.Input[Union['SshCredentialSshAuthenticationArgs', 'SshCredentialSshAuthenticationArgsDict']]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SshCredentialUsageScopeArgs', 'SshCredentialUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -296,10 +296,10 @@ class SshCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            kerberos_authentication: Optional[pulumi.Input[pulumi.InputType['SshCredentialKerberosAuthenticationArgs']]] = None,
+            kerberos_authentication: Optional[pulumi.Input[Union['SshCredentialKerberosAuthenticationArgs', 'SshCredentialKerberosAuthenticationArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            ssh_authentication: Optional[pulumi.Input[pulumi.InputType['SshCredentialSshAuthenticationArgs']]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SshCredentialUsageScopeArgs']]]]] = None) -> 'SshCredential':
+            ssh_authentication: Optional[pulumi.Input[Union['SshCredentialSshAuthenticationArgs', 'SshCredentialSshAuthenticationArgsDict']]] = None,
+            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SshCredentialUsageScopeArgs', 'SshCredentialUsageScopeArgsDict']]]]] = None) -> 'SshCredential':
         """
         Get an existing SshCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -307,10 +307,10 @@ class SshCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SshCredentialKerberosAuthenticationArgs']] kerberos_authentication: Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
+        :param pulumi.Input[Union['SshCredentialKerberosAuthenticationArgs', 'SshCredentialKerberosAuthenticationArgsDict']] kerberos_authentication: Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
         :param pulumi.Input[str] name: Name of the encrypted text secret
-        :param pulumi.Input[pulumi.InputType['SshCredentialSshAuthenticationArgs']] ssh_authentication: Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SshCredentialUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Union['SshCredentialSshAuthenticationArgs', 'SshCredentialSshAuthenticationArgsDict']] ssh_authentication: Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inline_ssh`, `server_password`, or `ssh_key_file` should be set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SshCredentialUsageScopeArgs', 'SshCredentialUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

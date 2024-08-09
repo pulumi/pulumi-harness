@@ -654,7 +654,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VaultConnector(String name) {
+    public VaultConnector(java.lang.String name) {
         this(name, VaultConnectorArgs.Empty);
     }
     /**
@@ -662,7 +662,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VaultConnector(String name, VaultConnectorArgs args) {
+    public VaultConnector(java.lang.String name, VaultConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -671,15 +671,22 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VaultConnector(String name, VaultConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/vaultConnector:VaultConnector", name, args == null ? VaultConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VaultConnector(java.lang.String name, VaultConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/vaultConnector:VaultConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VaultConnector(String name, Output<String> id, @Nullable VaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/vaultConnector:VaultConnector", name, state, makeResourceOptions(options, id));
+    private VaultConnector(java.lang.String name, Output<java.lang.String> id, @Nullable VaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/vaultConnector:VaultConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VaultConnectorArgs makeArgs(VaultConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VaultConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -695,7 +702,7 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VaultConnector get(String name, Output<String> id, @Nullable VaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VaultConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable VaultConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VaultConnector(name, id, state, options);
     }
 }

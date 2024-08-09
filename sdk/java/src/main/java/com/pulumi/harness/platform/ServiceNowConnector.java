@@ -216,7 +216,7 @@ public class ServiceNowConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceNowConnector(String name) {
+    public ServiceNowConnector(java.lang.String name) {
         this(name, ServiceNowConnectorArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class ServiceNowConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceNowConnector(String name, ServiceNowConnectorArgs args) {
+    public ServiceNowConnector(java.lang.String name, ServiceNowConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,15 +233,22 @@ public class ServiceNowConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceNowConnector(String name, ServiceNowConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/serviceNowConnector:ServiceNowConnector", name, args == null ? ServiceNowConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceNowConnector(java.lang.String name, ServiceNowConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/serviceNowConnector:ServiceNowConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceNowConnector(String name, Output<String> id, @Nullable ServiceNowConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/serviceNowConnector:ServiceNowConnector", name, state, makeResourceOptions(options, id));
+    private ServiceNowConnector(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceNowConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/serviceNowConnector:ServiceNowConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceNowConnectorArgs makeArgs(ServiceNowConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceNowConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +264,7 @@ public class ServiceNowConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceNowConnector get(String name, Output<String> id, @Nullable ServiceNowConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceNowConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceNowConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceNowConnector(name, id, state, options);
     }
 }

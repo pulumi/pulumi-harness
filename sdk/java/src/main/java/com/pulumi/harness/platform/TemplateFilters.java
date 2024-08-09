@@ -189,7 +189,7 @@ public class TemplateFilters extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TemplateFilters(String name) {
+    public TemplateFilters(java.lang.String name) {
         this(name, TemplateFiltersArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class TemplateFilters extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TemplateFilters(String name, TemplateFiltersArgs args) {
+    public TemplateFilters(java.lang.String name, TemplateFiltersArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,15 +206,22 @@ public class TemplateFilters extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TemplateFilters(String name, TemplateFiltersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/templateFilters:TemplateFilters", name, args == null ? TemplateFiltersArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TemplateFilters(java.lang.String name, TemplateFiltersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/templateFilters:TemplateFilters", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TemplateFilters(String name, Output<String> id, @Nullable TemplateFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/templateFilters:TemplateFilters", name, state, makeResourceOptions(options, id));
+    private TemplateFilters(java.lang.String name, Output<java.lang.String> id, @Nullable TemplateFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/templateFilters:TemplateFilters", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TemplateFiltersArgs makeArgs(TemplateFiltersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TemplateFiltersArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +237,7 @@ public class TemplateFilters extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TemplateFilters get(String name, Output<String> id, @Nullable TemplateFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TemplateFilters get(java.lang.String name, Output<java.lang.String> id, @Nullable TemplateFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TemplateFilters(name, id, state, options);
     }
 }

@@ -234,7 +234,7 @@ def get_repo(default_branch: Optional[str] = None,
              org_id: Optional[str] = None,
              project_id: Optional[str] = None,
              readme: Optional[bool] = None,
-             sources: Optional[Sequence[pulumi.InputType['GetRepoSourceArgs']]] = None,
+             sources: Optional[Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepoResult:
     """
     Data source for retrieving a Harness repo.
@@ -259,7 +259,7 @@ def get_repo(default_branch: Optional[str] = None,
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     :param bool readme: Repository should be created with readme file.
-    :param Sequence[pulumi.InputType['GetRepoSourceArgs']] sources: Configuration for importing an existing repository from SCM provider.
+    :param Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']] sources: Configuration for importing an existing repository from SCM provider.
     """
     __args__ = dict()
     __args__['defaultBranch'] = default_branch
@@ -302,7 +302,7 @@ def get_repo_output(default_branch: Optional[pulumi.Input[Optional[str]]] = None
                     org_id: Optional[pulumi.Input[Optional[str]]] = None,
                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
                     readme: Optional[pulumi.Input[Optional[bool]]] = None,
-                    sources: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRepoSourceArgs']]]]] = None,
+                    sources: Optional[pulumi.Input[Optional[Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepoResult]:
     """
     Data source for retrieving a Harness repo.
@@ -327,6 +327,6 @@ def get_repo_output(default_branch: Optional[pulumi.Input[Optional[str]]] = None
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     :param bool readme: Repository should be created with readme file.
-    :param Sequence[pulumi.InputType['GetRepoSourceArgs']] sources: Configuration for importing an existing repository from SCM provider.
+    :param Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']] sources: Configuration for importing an existing repository from SCM provider.
     """
     ...

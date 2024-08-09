@@ -210,7 +210,7 @@ class AwaitableGetGcpProxyResult(GetGcpProxyResult):
 
 def get_gcp_proxy(allocate_static_ip: Optional[bool] = None,
                   api_key: Optional[str] = None,
-                  certificates: Optional[pulumi.InputType['GetGcpProxyCertificatesArgs']] = None,
+                  certificates: Optional[Union['GetGcpProxyCertificatesArgs', 'GetGcpProxyCertificatesArgsDict']] = None,
                   cloud_connector_id: Optional[str] = None,
                   delete_cloud_resources_on_destroy: Optional[bool] = None,
                   host_name: Optional[str] = None,
@@ -276,7 +276,7 @@ def get_gcp_proxy(allocate_static_ip: Optional[bool] = None,
 @_utilities.lift_output_func(get_gcp_proxy)
 def get_gcp_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bool]]] = None,
                          api_key: Optional[pulumi.Input[str]] = None,
-                         certificates: Optional[pulumi.Input[Optional[pulumi.InputType['GetGcpProxyCertificatesArgs']]]] = None,
+                         certificates: Optional[pulumi.Input[Optional[Union['GetGcpProxyCertificatesArgs', 'GetGcpProxyCertificatesArgsDict']]]] = None,
                          cloud_connector_id: Optional[pulumi.Input[str]] = None,
                          delete_cloud_resources_on_destroy: Optional[pulumi.Input[bool]] = None,
                          host_name: Optional[pulumi.Input[str]] = None,

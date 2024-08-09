@@ -425,7 +425,7 @@ class Repo(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  readme: Optional[pulumi.Input[bool]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Repo.
@@ -460,7 +460,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[bool] readme: Repository should be created with readme file.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoSourceArgs']]]] sources: Configuration for importing an existing repository from SCM provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]] sources: Configuration for importing an existing repository from SCM provider.
         """
         ...
     @overload
@@ -514,7 +514,7 @@ class Repo(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  readme: Optional[pulumi.Input[bool]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -564,7 +564,7 @@ class Repo(pulumi.CustomResource):
             path: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             readme: Optional[pulumi.Input[bool]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoSourceArgs']]]]] = None,
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
             updated: Optional[pulumi.Input[int]] = None) -> 'Repo':
         """
         Get an existing Repo resource's state with the given name, id, and optional extra
@@ -586,7 +586,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] path: Path of the repository.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[bool] readme: Repository should be created with readme file.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoSourceArgs']]]] sources: Configuration for importing an existing repository from SCM provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]] sources: Configuration for importing an existing repository from SCM provider.
         :param pulumi.Input[int] updated: Timestamp when the repository was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
