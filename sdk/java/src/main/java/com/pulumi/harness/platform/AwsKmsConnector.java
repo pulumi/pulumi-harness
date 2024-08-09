@@ -187,7 +187,7 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AwsKmsConnector(String name) {
+    public AwsKmsConnector(java.lang.String name) {
         this(name, AwsKmsConnectorArgs.Empty);
     }
     /**
@@ -195,7 +195,7 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AwsKmsConnector(String name, AwsKmsConnectorArgs args) {
+    public AwsKmsConnector(java.lang.String name, AwsKmsConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -204,15 +204,22 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AwsKmsConnector(String name, AwsKmsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/awsKmsConnector:AwsKmsConnector", name, args == null ? AwsKmsConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AwsKmsConnector(java.lang.String name, AwsKmsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/awsKmsConnector:AwsKmsConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AwsKmsConnector(String name, Output<String> id, @Nullable AwsKmsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/awsKmsConnector:AwsKmsConnector", name, state, makeResourceOptions(options, id));
+    private AwsKmsConnector(java.lang.String name, Output<java.lang.String> id, @Nullable AwsKmsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/awsKmsConnector:AwsKmsConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AwsKmsConnectorArgs makeArgs(AwsKmsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AwsKmsConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -228,7 +235,7 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AwsKmsConnector get(String name, Output<String> id, @Nullable AwsKmsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AwsKmsConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable AwsKmsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AwsKmsConnector(name, id, state, options);
     }
 }

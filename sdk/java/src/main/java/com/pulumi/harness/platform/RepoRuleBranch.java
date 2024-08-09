@@ -212,7 +212,7 @@ public class RepoRuleBranch extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RepoRuleBranch(String name) {
+    public RepoRuleBranch(java.lang.String name) {
         this(name, RepoRuleBranchArgs.Empty);
     }
     /**
@@ -220,7 +220,7 @@ public class RepoRuleBranch extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RepoRuleBranch(String name, RepoRuleBranchArgs args) {
+    public RepoRuleBranch(java.lang.String name, RepoRuleBranchArgs args) {
         this(name, args, null);
     }
     /**
@@ -229,15 +229,22 @@ public class RepoRuleBranch extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RepoRuleBranch(String name, RepoRuleBranchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/repoRuleBranch:RepoRuleBranch", name, args == null ? RepoRuleBranchArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RepoRuleBranch(java.lang.String name, RepoRuleBranchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/repoRuleBranch:RepoRuleBranch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RepoRuleBranch(String name, Output<String> id, @Nullable RepoRuleBranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/repoRuleBranch:RepoRuleBranch", name, state, makeResourceOptions(options, id));
+    private RepoRuleBranch(java.lang.String name, Output<java.lang.String> id, @Nullable RepoRuleBranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/repoRuleBranch:RepoRuleBranch", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RepoRuleBranchArgs makeArgs(RepoRuleBranchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RepoRuleBranchArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -253,7 +260,7 @@ public class RepoRuleBranch extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RepoRuleBranch get(String name, Output<String> id, @Nullable RepoRuleBranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RepoRuleBranch get(java.lang.String name, Output<java.lang.String> id, @Nullable RepoRuleBranchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RepoRuleBranch(name, id, state, options);
     }
 }

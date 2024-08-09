@@ -218,7 +218,7 @@ public class ConnectorJdbc extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectorJdbc(String name) {
+    public ConnectorJdbc(java.lang.String name) {
         this(name, ConnectorJdbcArgs.Empty);
     }
     /**
@@ -226,7 +226,7 @@ public class ConnectorJdbc extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectorJdbc(String name, ConnectorJdbcArgs args) {
+    public ConnectorJdbc(java.lang.String name, ConnectorJdbcArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,15 +235,22 @@ public class ConnectorJdbc extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectorJdbc(String name, ConnectorJdbcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorJdbc:ConnectorJdbc", name, args == null ? ConnectorJdbcArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConnectorJdbc(java.lang.String name, ConnectorJdbcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorJdbc:ConnectorJdbc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConnectorJdbc(String name, Output<String> id, @Nullable ConnectorJdbcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorJdbc:ConnectorJdbc", name, state, makeResourceOptions(options, id));
+    private ConnectorJdbc(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorJdbcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorJdbc:ConnectorJdbc", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConnectorJdbcArgs makeArgs(ConnectorJdbcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectorJdbcArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -259,7 +266,7 @@ public class ConnectorJdbc extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectorJdbc get(String name, Output<String> id, @Nullable ConnectorJdbcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConnectorJdbc get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorJdbcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConnectorJdbc(name, id, state, options);
     }
 }

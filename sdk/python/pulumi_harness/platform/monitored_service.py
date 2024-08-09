@@ -162,7 +162,7 @@ class MonitoredService(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request: Optional[pulumi.Input[pulumi.InputType['MonitoredServiceRequestArgs']]] = None,
+                 request: Optional[pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating a monitored service.
@@ -179,36 +179,36 @@ class MonitoredService(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="name",
-                    identifier="identifier",
-                    type="ElasticSearch",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "name",
+                    "identifier": "identifier",
+                    "type": "ElasticSearch",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "error_4xx",
                                 "identifier": "error_4xx_id",
                                 "query": "Bad Request",
                                 "index": "index",
-                                "groupName": "Logs_Group",
-                                "queryParams": {
+                                "group_name": "Logs_Group",
+                                "query_params": {
                                     "index": "index",
-                                    "serviceInstanceField": "serviceInstanceIdentifier",
-                                    "timeStampIdentifier": "timeStampIdentifier",
-                                    "timeStampFormat": "timeStampFormat",
-                                    "messageIdentifier": "messageIdentifier",
+                                    "service_instance_field": "serviceInstanceIdentifier",
+                                    "time_stamp_identifier": "timeStampIdentifier",
+                                    "time_stamp_format": "timeStampFormat",
+                                    "message_identifier": "messageIdentifier",
                                 },
                             },
                             {
@@ -227,114 +227,114 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-                change_sources=[
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="BAC",
-                        identifier="BAC",
-                        type="PagerDuty",
-                        enabled=True,
-                        spec=json.dumps({
-                            "connectorRef": "account.pd",
-                            "pagerDutyServiceId": "P0N21OB",
+                }],
+                "change_sources": [
+                    {
+                        "name": "BAC",
+                        "identifier": "BAC",
+                        "type": "PagerDuty",
+                        "enabled": True,
+                        "spec": json.dumps({
+                            "connector_ref": "account.pd",
+                            "pager_duty_service_id": "P0N21OB",
                         }),
-                        category="Alert",
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="FH",
-                        identifier="FH",
-                        type="CustomIncident",
-                        enabled=True,
-                        spec=json.dumps({
+                        "category": "Alert",
+                    },
+                    {
+                        "name": "FH",
+                        "identifier": "FH",
+                        "type": "CustomIncident",
+                        "enabled": True,
+                        "spec": json.dumps({
                             "name": "FH",
-                            "webhookUrl": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
-                            "webhookCurlCommand": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
+                            "webhook_url": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
+                            "webhook_curl_command": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
                             "type": "Alert",
                         }),
-                        category="Alert",
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="customff",
-                        identifier="customff",
-                        type="CustomFF",
-                        enabled=True,
-                        category="FeatureFlag",
-                        spec=json.dumps({
+                        "category": "Alert",
+                    },
+                    {
+                        "name": "customff",
+                        "identifier": "customff",
+                        "type": "CustomFF",
+                        "enabled": True,
+                        "category": "FeatureFlag",
+                        "spec": json.dumps({
                             "type": "FeatureFlag",
                         }),
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="customdeploy",
-                        identifier="customdeploy",
-                        type="CustomDeploy",
-                        enabled=True,
-                        category="Deployment",
-                        spec=json.dumps({
+                    },
+                    {
+                        "name": "customdeploy",
+                        "identifier": "customdeploy",
+                        "type": "CustomDeploy",
+                        "enabled": True,
+                        "category": "Deployment",
+                        "spec": json.dumps({
                             "type": "Deployment",
                         }),
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="customincident",
-                        identifier="customincident",
-                        type="CustomIncident",
-                        enabled=True,
-                        category="Alert",
-                        spec=json.dumps({
+                    },
+                    {
+                        "name": "customincident",
+                        "identifier": "customincident",
+                        "type": "CustomIncident",
+                        "enabled": True,
+                        "category": "Alert",
+                        "spec": json.dumps({
                             "type": "Alert",
-                            "authorizationToken": "abc",
+                            "authorization_token": "abc",
                         }),
-                    ),
+                    },
                 ],
-                notification_rule_refs=[
-                    harness.platform.MonitoredServiceRequestNotificationRuleRefArgs(
-                        notification_rule_ref="notification_rule_ref",
-                        enabled=True,
-                    ),
-                    harness.platform.MonitoredServiceRequestNotificationRuleRefArgs(
-                        notification_rule_ref="notification_rule_ref1",
-                        enabled=False,
-                    ),
+                "notification_rule_refs": [
+                    {
+                        "notification_rule_ref": "notification_rule_ref",
+                        "enabled": True,
+                    },
+                    {
+                        "notification_rule_ref": "notification_rule_ref1",
+                        "enabled": False,
+                    },
                 ],
-            ))
+            })
         #Sample template for Sumologic Metrics Health Source
         example1 = harness.platform.MonitoredService("example1",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="sumologicmetrics",
-                    identifier="sumo_metric_identifier",
-                    type="SumologicMetrics",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "sumologicmetrics",
+                    "identifier": "sumo_metric_identifier",
+                    "type": "SumologicMetrics",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "metric_cpu",
                                 "identifier": "metric_cpu",
                                 "query": "metric=cpu",
-                                "groupName": "g1",
-                                "queryParams": {
-                                    "serviceInstanceField": "_sourcehost",
+                                "group_name": "g1",
+                                "query_params": {
+                                    "service_instance_field": "_sourcehost",
                                 },
-                                "riskProfile": {
-                                    "riskCategory": "Performance_Other",
-                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                                "risk_profile": {
+                                    "risk_category": "Performance_Other",
+                                    "threshold_types": ["ACT_WHEN_HIGHER"],
                                 },
-                                "liveMonitoringEnabled": "true",
-                                "continuousVerificationEnabled": "true",
-                                "sliEnabled": "false",
-                                "metricThresholds": [
+                                "live_monitoring_enabled": "true",
+                                "continuous_verification_enabled": "true",
+                                "sli_enabled": "false",
+                                "metric_thresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -343,11 +343,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greaterThan": 100,
+                                                "greater_than": 100,
                                             },
                                         },
-                                        "metricType": "Custom",
-                                        "metricName": "metric_cpu",
+                                        "metric_type": "Custom",
+                                        "metric_name": "metric_cpu",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -386,38 +386,38 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Sumologic Log Health Source
         example2 = harness.platform.MonitoredService("example2",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="sumologic",
-                    identifier="sumo_metric_identifier",
-                    type="SumologicLogs",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "sumologic",
+                    "identifier": "sumo_metric_identifier",
+                    "type": "SumologicLogs",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "log1",
                                 "identifier": "log1",
                                 "query": "*",
-                                "groupName": "Logs Group",
-                                "queryParams": {
-                                    "serviceInstanceField": "_sourcehost",
+                                "group_name": "Logs Group",
+                                "query_params": {
+                                    "service_instance_field": "_sourcehost",
                                 },
                             },
                             {
@@ -431,46 +431,46 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Splunk Signal FX Health Source
         example3 = harness.platform.MonitoredService("example3",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="signalfxmetrics",
-                    identifier="signalfxmetrics",
-                    type="SplunkSignalFXMetrics",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "signalfxmetrics",
+                    "identifier": "signalfxmetrics",
+                    "type": "SplunkSignalFXMetrics",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "metric_infra_cpu",
                                 "identifier": "metric_infra_cpu",
                                 "query": "***",
-                                "groupName": "g",
-                                "riskProfile": {
-                                    "riskCategory": "Errors",
-                                    "thresholdTypes": [
+                                "group_name": "g",
+                                "risk_profile": {
+                                    "risk_category": "Errors",
+                                    "threshold_types": [
                                         "ACT_WHEN_HIGHER",
                                         "ACT_WHEN_LOWER",
                                     ],
                                 },
-                                "liveMonitoringEnabled": "true",
-                                "continuousVerificationEnabled": "true",
-                                "sliEnabled": "false",
+                                "live_monitoring_enabled": "true",
+                                "continuous_verification_enabled": "true",
+                                "sli_enabled": "false",
                             },
                             {
                                 "name": "name2",
@@ -520,38 +520,38 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Grafana Loki Log Health Source
         example4 = harness.platform.MonitoredService("example4",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="Test",
-                    identifier="Test",
-                    type="GrafanaLokiLogs",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "Test",
+                    "identifier": "Test",
+                    "type": "GrafanaLokiLogs",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "Demo",
                                 "identifier": "Demo",
                                 "query": "{job=~\\".+\\"}",
-                                "groupName": "Log_Group",
-                                "queryParams": {
-                                    "serviceInstanceField": "job",
+                                "group_name": "Log_Group",
+                                "query_params": {
+                                    "service_instance_field": "job",
                                 },
                             },
                             {
@@ -568,51 +568,51 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Azure Metrics Health Source
         example5 = harness.platform.MonitoredService("example5",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="azure metrics verify step",
-                    identifier="azure_metrics_verify_step",
-                    type="AzureMetrics",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "azure metrics verify step",
+                    "identifier": "azure_metrics_verify_step",
+                    "type": "AzureMetrics",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "metric",
                                 "identifier": "metric",
                                 "query": "default",
-                                "groupName": "g1",
-                                "queryParams": {
-                                    "serviceInstanceField": "host",
+                                "group_name": "g1",
+                                "query_params": {
+                                    "service_instance_field": "host",
                                     "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
-                                    "healthSourceMetricName": "cpuUsagePercentage",
-                                    "healthSourceMetricNamespace": "insights.container/nodes",
-                                    "aggregationType": "average",
+                                    "health_source_metric_name": "cpuUsagePercentage",
+                                    "health_source_metric_namespace": "insights.container/nodes",
+                                    "aggregation_type": "average",
                                 },
-                                "riskProfile": {
-                                    "riskCategory": "Performance_Other",
-                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                                "risk_profile": {
+                                    "risk_category": "Performance_Other",
+                                    "threshold_types": ["ACT_WHEN_HIGHER"],
                                 },
-                                "liveMonitoringEnabled": "true",
-                                "continuousVerificationEnabled": "true",
-                                "sliEnabled": "false",
-                                "metricThresholds": [
+                                "live_monitoring_enabled": "true",
+                                "continuous_verification_enabled": "true",
+                                "sli_enabled": "false",
+                                "metric_thresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -621,11 +621,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greaterThan": 100,
+                                                "greater_than": 100,
                                             },
                                         },
                                         "metrictype": "Custom",
-                                        "metricName": "metric",
+                                        "metric_name": "metric",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -667,91 +667,91 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Azure Log Health Source
         example6 = harness.platform.MonitoredService("example6",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="Demo azure",
-                    identifier="Demo_azure",
-                    type="AzureLogs",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [{
+                "health_sources": [{
+                    "name": "Demo azure",
+                    "identifier": "Demo_azure",
+                    "type": "AzureLogs",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [{
                             "name": "name2",
                             "identifier": "identifier2",
-                            "groupName": "g2",
+                            "group_name": "g2",
                             "query": "*",
-                            "queryParams": {
-                                "serviceInstanceField": "Name",
-                                "timeStampIdentifier": "StartedTime",
-                                "messageIdentifier": "Image",
+                            "query_params": {
+                                "service_instance_field": "Name",
+                                "time_stamp_identifier": "StartedTime",
+                                "message_identifier": "Image",
                                 "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
                             },
-                            "liveMonitoringEnabled": "false",
-                            "continuousVerificationEnabled": "false",
+                            "live_monitoring_enabled": "false",
+                            "continuous_verification_enabled": "false",
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Prometheus Metrics Health Source
         example7 = harness.platform.MonitoredService("example7",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="prometheus metrics verify step",
-                    identifier="prometheus_metrics",
-                    type="Prometheus",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "metricDefinitions": [{
+                "health_sources": [{
+                    "name": "prometheus metrics verify step",
+                    "identifier": "prometheus_metrics",
+                    "type": "Prometheus",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "metric_definitions": [{
                             "identifier": "Prometheus_Metric",
-                            "metricName": "Prometheus Metric",
-                            "riskProfile": {
-                                "riskCategory": "Performance_Other",
-                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                            "metric_name": "Prometheus Metric",
+                            "risk_profile": {
+                                "risk_category": "Performance_Other",
+                                "threshold_types": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "liveMonitoring": {
+                                "live_monitoring": {
                                     "enabled": True,
                                 },
-                                "deploymentVerification": {
+                                "deployment_verification": {
                                     "enabled": True,
-                                    "serviceInstanceFieldName": "pod_name",
+                                    "service_instance_field_name": "pod_name",
                                 },
                             },
                             "query": "count(up{group=\\"cv\\",group=\\"cv\\"})",
-                            "groupName": "met",
-                            "isManualQuery": True,
+                            "group_name": "met",
+                            "is_manual_query": True,
                         }],
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Custom",
-                            "metricThresholds": [
+                            "metric_thresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -760,11 +760,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greaterThan": 100,
+                                            "greater_than": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metricName": "Prometheus Metric",
+                                    "metric_name": "Prometheus Metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -786,51 +786,51 @@ class MonitoredService(pulumi.CustomResource):
                             ],
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Datadog Metrics Health Source
         example8 = harness.platform.MonitoredService("example8",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="ddm",
-                    identifier="ddm",
-                    type="DatadogMetrics",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
+                "health_sources": [{
+                    "name": "ddm",
+                    "identifier": "ddm",
+                    "type": "DatadogMetrics",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
                         "feature": "Datadog Cloud Metrics",
-                        "metricDefinitions": [
+                        "metric_definitions": [
                             {
-                                "metricName": "metric",
-                                "metricPath": "M1",
+                                "metric_name": "metric",
+                                "metric_path": "M1",
                                 "identifier": "metric",
                                 "query": \"\"\"avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
         avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
         (a+b)/10\"\"\",
-                                "isManualQuery": True,
-                                "isCustomCreatedMetric": True,
-                                "riskProfile": {
-                                    "riskCategory": "Performance_Other",
-                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                                "is_manual_query": True,
+                                "is_custom_created_metric": True,
+                                "risk_profile": {
+                                    "risk_category": "Performance_Other",
+                                    "threshold_types": ["ACT_WHEN_HIGHER"],
                                 },
                                 "analysis": {
-                                    "liveMonitoring": {
+                                    "live_monitoring": {
                                         "enabled": True,
                                     },
-                                    "deploymentVerification": {
+                                    "deployment_verification": {
                                         "enabled": True,
-                                        "serviceInstanceFieldName": "pod",
+                                        "service_instance_field_name": "pod",
                                     },
                                 },
                             },
@@ -862,9 +862,9 @@ class MonitoredService(pulumi.CustomResource):
                                 },
                             },
                         ],
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Custom",
-                            "metricThresholds": [
+                            "metric_thresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -873,11 +873,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greaterThan": 100,
+                                            "greater_than": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metricName": "metric",
+                                    "metric_name": "metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -899,60 +899,60 @@ class MonitoredService(pulumi.CustomResource):
                             ],
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for New Relic Metrics Health Source
         example9 = harness.platform.MonitoredService("example9",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="name",
-                    identifier="identifier",
-                    type="NewRelic",
-                    spec=json.dumps({
-                        "connectorRef": "account.Newrelicautomation_do_not_delete",
+                "health_sources": [{
+                    "name": "name",
+                    "identifier": "identifier",
+                    "type": "NewRelic",
+                    "spec": json.dumps({
+                        "connector_ref": "account.Newrelicautomation_do_not_delete",
                         "feature": "apm",
-                        "applicationId": "107019083",
-                        "applicationName": "My Application",
-                        "metricData": {
-                            "Performance": True,
+                        "application_id": "107019083",
+                        "application_name": "My Application",
+                        "metric_data": {
+                            "performance": True,
                         },
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Performance",
                         }],
-                        "newRelicMetricDefinitions": [{
+                        "new_relic_metric_definitions": [{
                             "identifier": "New_Relic_Metric",
-                            "metricName": "New Relic Metric",
-                            "riskProfile": {
-                                "riskCategory": "Performance_Other",
-                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                            "metric_name": "New Relic Metric",
+                            "risk_profile": {
+                                "risk_category": "Performance_Other",
+                                "threshold_types": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "deploymentVerification": {
+                                "deployment_verification": {
                                     "enabled": True,
                                 },
                             },
-                            "groupName": "group1",
+                            "group_name": "group1",
                             "nrql": "SELECT count(apm.service.instance.count) FROM Metric WHERE appName LIKE 'My Application' TIMESERIES",
-                            "responseMapping": {
-                                "metricValueJsonPath": "$.['timeSeries'].[*].['results'].[*].['count']",
-                                "timestampJsonPath": "$.['timeSeries'].[*].['beginTimeSeconds']",
+                            "response_mapping": {
+                                "metric_value_json_path": "$.['timeSeries'].[*].['results'].[*].['count']",
+                                "timestamp_json_path": "$.['timeSeries'].[*].['beginTimeSeconds']",
                             },
                         }],
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Custom",
-                            "metricThresholds": [
+                            "metric_thresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -961,11 +961,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greaterThan": 100,
+                                            "greater_than": 100,
                                         },
                                     },
-                                    "metricType": "Custom",
-                                    "metricName": "New Relic Metric",
+                                    "metric_type": "Custom",
+                                    "metric_name": "New Relic Metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -987,8 +987,8 @@ class MonitoredService(pulumi.CustomResource):
                             ],
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         ```
 
         ## Import
@@ -1016,7 +1016,7 @@ class MonitoredService(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier of the monitored service.
         :param pulumi.Input[str] org_id: Identifier of the organization in which the monitored service is configured.
         :param pulumi.Input[str] project_id: Identifier of the project in which the monitored service is configured.
-        :param pulumi.Input[pulumi.InputType['MonitoredServiceRequestArgs']] request: Request for creating or updating a monitored service.
+        :param pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']] request: Request for creating or updating a monitored service.
         """
         ...
     @overload
@@ -1039,36 +1039,36 @@ class MonitoredService(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="name",
-                    identifier="identifier",
-                    type="ElasticSearch",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "name",
+                    "identifier": "identifier",
+                    "type": "ElasticSearch",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "error_4xx",
                                 "identifier": "error_4xx_id",
                                 "query": "Bad Request",
                                 "index": "index",
-                                "groupName": "Logs_Group",
-                                "queryParams": {
+                                "group_name": "Logs_Group",
+                                "query_params": {
                                     "index": "index",
-                                    "serviceInstanceField": "serviceInstanceIdentifier",
-                                    "timeStampIdentifier": "timeStampIdentifier",
-                                    "timeStampFormat": "timeStampFormat",
-                                    "messageIdentifier": "messageIdentifier",
+                                    "service_instance_field": "serviceInstanceIdentifier",
+                                    "time_stamp_identifier": "timeStampIdentifier",
+                                    "time_stamp_format": "timeStampFormat",
+                                    "message_identifier": "messageIdentifier",
                                 },
                             },
                             {
@@ -1087,114 +1087,114 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-                change_sources=[
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="BAC",
-                        identifier="BAC",
-                        type="PagerDuty",
-                        enabled=True,
-                        spec=json.dumps({
-                            "connectorRef": "account.pd",
-                            "pagerDutyServiceId": "P0N21OB",
+                }],
+                "change_sources": [
+                    {
+                        "name": "BAC",
+                        "identifier": "BAC",
+                        "type": "PagerDuty",
+                        "enabled": True,
+                        "spec": json.dumps({
+                            "connector_ref": "account.pd",
+                            "pager_duty_service_id": "P0N21OB",
                         }),
-                        category="Alert",
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="FH",
-                        identifier="FH",
-                        type="CustomIncident",
-                        enabled=True,
-                        spec=json.dumps({
+                        "category": "Alert",
+                    },
+                    {
+                        "name": "FH",
+                        "identifier": "FH",
+                        "type": "CustomIncident",
+                        "enabled": True,
+                        "spec": json.dumps({
                             "name": "FH",
-                            "webhookUrl": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
-                            "webhookCurlCommand": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
+                            "webhook_url": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
+                            "webhook_curl_command": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
                             "type": "Alert",
                         }),
-                        category="Alert",
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="customff",
-                        identifier="customff",
-                        type="CustomFF",
-                        enabled=True,
-                        category="FeatureFlag",
-                        spec=json.dumps({
+                        "category": "Alert",
+                    },
+                    {
+                        "name": "customff",
+                        "identifier": "customff",
+                        "type": "CustomFF",
+                        "enabled": True,
+                        "category": "FeatureFlag",
+                        "spec": json.dumps({
                             "type": "FeatureFlag",
                         }),
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="customdeploy",
-                        identifier="customdeploy",
-                        type="CustomDeploy",
-                        enabled=True,
-                        category="Deployment",
-                        spec=json.dumps({
+                    },
+                    {
+                        "name": "customdeploy",
+                        "identifier": "customdeploy",
+                        "type": "CustomDeploy",
+                        "enabled": True,
+                        "category": "Deployment",
+                        "spec": json.dumps({
                             "type": "Deployment",
                         }),
-                    ),
-                    harness.platform.MonitoredServiceRequestChangeSourceArgs(
-                        name="customincident",
-                        identifier="customincident",
-                        type="CustomIncident",
-                        enabled=True,
-                        category="Alert",
-                        spec=json.dumps({
+                    },
+                    {
+                        "name": "customincident",
+                        "identifier": "customincident",
+                        "type": "CustomIncident",
+                        "enabled": True,
+                        "category": "Alert",
+                        "spec": json.dumps({
                             "type": "Alert",
-                            "authorizationToken": "abc",
+                            "authorization_token": "abc",
                         }),
-                    ),
+                    },
                 ],
-                notification_rule_refs=[
-                    harness.platform.MonitoredServiceRequestNotificationRuleRefArgs(
-                        notification_rule_ref="notification_rule_ref",
-                        enabled=True,
-                    ),
-                    harness.platform.MonitoredServiceRequestNotificationRuleRefArgs(
-                        notification_rule_ref="notification_rule_ref1",
-                        enabled=False,
-                    ),
+                "notification_rule_refs": [
+                    {
+                        "notification_rule_ref": "notification_rule_ref",
+                        "enabled": True,
+                    },
+                    {
+                        "notification_rule_ref": "notification_rule_ref1",
+                        "enabled": False,
+                    },
                 ],
-            ))
+            })
         #Sample template for Sumologic Metrics Health Source
         example1 = harness.platform.MonitoredService("example1",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="sumologicmetrics",
-                    identifier="sumo_metric_identifier",
-                    type="SumologicMetrics",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "sumologicmetrics",
+                    "identifier": "sumo_metric_identifier",
+                    "type": "SumologicMetrics",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "metric_cpu",
                                 "identifier": "metric_cpu",
                                 "query": "metric=cpu",
-                                "groupName": "g1",
-                                "queryParams": {
-                                    "serviceInstanceField": "_sourcehost",
+                                "group_name": "g1",
+                                "query_params": {
+                                    "service_instance_field": "_sourcehost",
                                 },
-                                "riskProfile": {
-                                    "riskCategory": "Performance_Other",
-                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                                "risk_profile": {
+                                    "risk_category": "Performance_Other",
+                                    "threshold_types": ["ACT_WHEN_HIGHER"],
                                 },
-                                "liveMonitoringEnabled": "true",
-                                "continuousVerificationEnabled": "true",
-                                "sliEnabled": "false",
-                                "metricThresholds": [
+                                "live_monitoring_enabled": "true",
+                                "continuous_verification_enabled": "true",
+                                "sli_enabled": "false",
+                                "metric_thresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -1203,11 +1203,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greaterThan": 100,
+                                                "greater_than": 100,
                                             },
                                         },
-                                        "metricType": "Custom",
-                                        "metricName": "metric_cpu",
+                                        "metric_type": "Custom",
+                                        "metric_name": "metric_cpu",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -1246,38 +1246,38 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Sumologic Log Health Source
         example2 = harness.platform.MonitoredService("example2",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="sumologic",
-                    identifier="sumo_metric_identifier",
-                    type="SumologicLogs",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "sumologic",
+                    "identifier": "sumo_metric_identifier",
+                    "type": "SumologicLogs",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "log1",
                                 "identifier": "log1",
                                 "query": "*",
-                                "groupName": "Logs Group",
-                                "queryParams": {
-                                    "serviceInstanceField": "_sourcehost",
+                                "group_name": "Logs Group",
+                                "query_params": {
+                                    "service_instance_field": "_sourcehost",
                                 },
                             },
                             {
@@ -1291,46 +1291,46 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Splunk Signal FX Health Source
         example3 = harness.platform.MonitoredService("example3",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="signalfxmetrics",
-                    identifier="signalfxmetrics",
-                    type="SplunkSignalFXMetrics",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "signalfxmetrics",
+                    "identifier": "signalfxmetrics",
+                    "type": "SplunkSignalFXMetrics",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "metric_infra_cpu",
                                 "identifier": "metric_infra_cpu",
                                 "query": "***",
-                                "groupName": "g",
-                                "riskProfile": {
-                                    "riskCategory": "Errors",
-                                    "thresholdTypes": [
+                                "group_name": "g",
+                                "risk_profile": {
+                                    "risk_category": "Errors",
+                                    "threshold_types": [
                                         "ACT_WHEN_HIGHER",
                                         "ACT_WHEN_LOWER",
                                     ],
                                 },
-                                "liveMonitoringEnabled": "true",
-                                "continuousVerificationEnabled": "true",
-                                "sliEnabled": "false",
+                                "live_monitoring_enabled": "true",
+                                "continuous_verification_enabled": "true",
+                                "sli_enabled": "false",
                             },
                             {
                                 "name": "name2",
@@ -1380,38 +1380,38 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Grafana Loki Log Health Source
         example4 = harness.platform.MonitoredService("example4",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="Test",
-                    identifier="Test",
-                    type="GrafanaLokiLogs",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "Test",
+                    "identifier": "Test",
+                    "type": "GrafanaLokiLogs",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "Demo",
                                 "identifier": "Demo",
                                 "query": "{job=~\\".+\\"}",
-                                "groupName": "Log_Group",
-                                "queryParams": {
-                                    "serviceInstanceField": "job",
+                                "group_name": "Log_Group",
+                                "query_params": {
+                                    "service_instance_field": "job",
                                 },
                             },
                             {
@@ -1428,51 +1428,51 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Azure Metrics Health Source
         example5 = harness.platform.MonitoredService("example5",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="azure metrics verify step",
-                    identifier="azure_metrics_verify_step",
-                    type="AzureMetrics",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
+                "health_sources": [{
+                    "name": "azure metrics verify step",
+                    "identifier": "azure_metrics_verify_step",
+                    "type": "AzureMetrics",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [
                             {
                                 "name": "metric",
                                 "identifier": "metric",
                                 "query": "default",
-                                "groupName": "g1",
-                                "queryParams": {
-                                    "serviceInstanceField": "host",
+                                "group_name": "g1",
+                                "query_params": {
+                                    "service_instance_field": "host",
                                     "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
-                                    "healthSourceMetricName": "cpuUsagePercentage",
-                                    "healthSourceMetricNamespace": "insights.container/nodes",
-                                    "aggregationType": "average",
+                                    "health_source_metric_name": "cpuUsagePercentage",
+                                    "health_source_metric_namespace": "insights.container/nodes",
+                                    "aggregation_type": "average",
                                 },
-                                "riskProfile": {
-                                    "riskCategory": "Performance_Other",
-                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                                "risk_profile": {
+                                    "risk_category": "Performance_Other",
+                                    "threshold_types": ["ACT_WHEN_HIGHER"],
                                 },
-                                "liveMonitoringEnabled": "true",
-                                "continuousVerificationEnabled": "true",
-                                "sliEnabled": "false",
-                                "metricThresholds": [
+                                "live_monitoring_enabled": "true",
+                                "continuous_verification_enabled": "true",
+                                "sli_enabled": "false",
+                                "metric_thresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -1481,11 +1481,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greaterThan": 100,
+                                                "greater_than": 100,
                                             },
                                         },
                                         "metrictype": "Custom",
-                                        "metricName": "metric",
+                                        "metric_name": "metric",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -1527,91 +1527,91 @@ class MonitoredService(pulumi.CustomResource):
                             },
                         ],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Azure Log Health Source
         example6 = harness.platform.MonitoredService("example6",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="Demo azure",
-                    identifier="Demo_azure",
-                    type="AzureLogs",
-                    version="v2",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [{
+                "health_sources": [{
+                    "name": "Demo azure",
+                    "identifier": "Demo_azure",
+                    "type": "AzureLogs",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "query_definitions": [{
                             "name": "name2",
                             "identifier": "identifier2",
-                            "groupName": "g2",
+                            "group_name": "g2",
                             "query": "*",
-                            "queryParams": {
-                                "serviceInstanceField": "Name",
-                                "timeStampIdentifier": "StartedTime",
-                                "messageIdentifier": "Image",
+                            "query_params": {
+                                "service_instance_field": "Name",
+                                "time_stamp_identifier": "StartedTime",
+                                "message_identifier": "Image",
                                 "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
                             },
-                            "liveMonitoringEnabled": "false",
-                            "continuousVerificationEnabled": "false",
+                            "live_monitoring_enabled": "false",
+                            "continuous_verification_enabled": "false",
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Prometheus Metrics Health Source
         example7 = harness.platform.MonitoredService("example7",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="prometheus metrics verify step",
-                    identifier="prometheus_metrics",
-                    type="Prometheus",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
-                        "metricDefinitions": [{
+                "health_sources": [{
+                    "name": "prometheus metrics verify step",
+                    "identifier": "prometheus_metrics",
+                    "type": "Prometheus",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
+                        "metric_definitions": [{
                             "identifier": "Prometheus_Metric",
-                            "metricName": "Prometheus Metric",
-                            "riskProfile": {
-                                "riskCategory": "Performance_Other",
-                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                            "metric_name": "Prometheus Metric",
+                            "risk_profile": {
+                                "risk_category": "Performance_Other",
+                                "threshold_types": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "liveMonitoring": {
+                                "live_monitoring": {
                                     "enabled": True,
                                 },
-                                "deploymentVerification": {
+                                "deployment_verification": {
                                     "enabled": True,
-                                    "serviceInstanceFieldName": "pod_name",
+                                    "service_instance_field_name": "pod_name",
                                 },
                             },
                             "query": "count(up{group=\\"cv\\",group=\\"cv\\"})",
-                            "groupName": "met",
-                            "isManualQuery": True,
+                            "group_name": "met",
+                            "is_manual_query": True,
                         }],
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Custom",
-                            "metricThresholds": [
+                            "metric_thresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -1620,11 +1620,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greaterThan": 100,
+                                            "greater_than": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metricName": "Prometheus Metric",
+                                    "metric_name": "Prometheus Metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -1646,51 +1646,51 @@ class MonitoredService(pulumi.CustomResource):
                             ],
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for Datadog Metrics Health Source
         example8 = harness.platform.MonitoredService("example8",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="ddm",
-                    identifier="ddm",
-                    type="DatadogMetrics",
-                    spec=json.dumps({
-                        "connectorRef": "connectorRef",
+                "health_sources": [{
+                    "name": "ddm",
+                    "identifier": "ddm",
+                    "type": "DatadogMetrics",
+                    "spec": json.dumps({
+                        "connector_ref": "connectorRef",
                         "feature": "Datadog Cloud Metrics",
-                        "metricDefinitions": [
+                        "metric_definitions": [
                             {
-                                "metricName": "metric",
-                                "metricPath": "M1",
+                                "metric_name": "metric",
+                                "metric_path": "M1",
                                 "identifier": "metric",
                                 "query": \"\"\"avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
         avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
         (a+b)/10\"\"\",
-                                "isManualQuery": True,
-                                "isCustomCreatedMetric": True,
-                                "riskProfile": {
-                                    "riskCategory": "Performance_Other",
-                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                                "is_manual_query": True,
+                                "is_custom_created_metric": True,
+                                "risk_profile": {
+                                    "risk_category": "Performance_Other",
+                                    "threshold_types": ["ACT_WHEN_HIGHER"],
                                 },
                                 "analysis": {
-                                    "liveMonitoring": {
+                                    "live_monitoring": {
                                         "enabled": True,
                                     },
-                                    "deploymentVerification": {
+                                    "deployment_verification": {
                                         "enabled": True,
-                                        "serviceInstanceFieldName": "pod",
+                                        "service_instance_field_name": "pod",
                                     },
                                 },
                             },
@@ -1722,9 +1722,9 @@ class MonitoredService(pulumi.CustomResource):
                                 },
                             },
                         ],
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Custom",
-                            "metricThresholds": [
+                            "metric_thresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -1733,11 +1733,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greaterThan": 100,
+                                            "greater_than": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metricName": "metric",
+                                    "metric_name": "metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -1759,60 +1759,60 @@ class MonitoredService(pulumi.CustomResource):
                             ],
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         #Sample template for New Relic Metrics Health Source
         example9 = harness.platform.MonitoredService("example9",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.MonitoredServiceRequestArgs(
-                name="name",
-                type="Application",
-                description="description",
-                service_ref="service_ref",
-                environment_ref="environment_ref",
-                tags=[
+            request={
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                health_sources=[harness.platform.MonitoredServiceRequestHealthSourceArgs(
-                    name="name",
-                    identifier="identifier",
-                    type="NewRelic",
-                    spec=json.dumps({
-                        "connectorRef": "account.Newrelicautomation_do_not_delete",
+                "health_sources": [{
+                    "name": "name",
+                    "identifier": "identifier",
+                    "type": "NewRelic",
+                    "spec": json.dumps({
+                        "connector_ref": "account.Newrelicautomation_do_not_delete",
                         "feature": "apm",
-                        "applicationId": "107019083",
-                        "applicationName": "My Application",
-                        "metricData": {
-                            "Performance": True,
+                        "application_id": "107019083",
+                        "application_name": "My Application",
+                        "metric_data": {
+                            "performance": True,
                         },
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Performance",
                         }],
-                        "newRelicMetricDefinitions": [{
+                        "new_relic_metric_definitions": [{
                             "identifier": "New_Relic_Metric",
-                            "metricName": "New Relic Metric",
-                            "riskProfile": {
-                                "riskCategory": "Performance_Other",
-                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
+                            "metric_name": "New Relic Metric",
+                            "risk_profile": {
+                                "risk_category": "Performance_Other",
+                                "threshold_types": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "deploymentVerification": {
+                                "deployment_verification": {
                                     "enabled": True,
                                 },
                             },
-                            "groupName": "group1",
+                            "group_name": "group1",
                             "nrql": "SELECT count(apm.service.instance.count) FROM Metric WHERE appName LIKE 'My Application' TIMESERIES",
-                            "responseMapping": {
-                                "metricValueJsonPath": "$.['timeSeries'].[*].['results'].[*].['count']",
-                                "timestampJsonPath": "$.['timeSeries'].[*].['beginTimeSeconds']",
+                            "response_mapping": {
+                                "metric_value_json_path": "$.['timeSeries'].[*].['results'].[*].['count']",
+                                "timestamp_json_path": "$.['timeSeries'].[*].['beginTimeSeconds']",
                             },
                         }],
-                        "metricPacks": [{
+                        "metric_packs": [{
                             "identifier": "Custom",
-                            "metricThresholds": [
+                            "metric_thresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -1821,11 +1821,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greaterThan": 100,
+                                            "greater_than": 100,
                                         },
                                     },
-                                    "metricType": "Custom",
-                                    "metricName": "New Relic Metric",
+                                    "metric_type": "Custom",
+                                    "metric_name": "New Relic Metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -1847,8 +1847,8 @@ class MonitoredService(pulumi.CustomResource):
                             ],
                         }],
                     }),
-                )],
-            ))
+                }],
+            })
         ```
 
         ## Import
@@ -1889,7 +1889,7 @@ class MonitoredService(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request: Optional[pulumi.Input[pulumi.InputType['MonitoredServiceRequestArgs']]] = None,
+                 request: Optional[pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1922,7 +1922,7 @@ class MonitoredService(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            request: Optional[pulumi.Input[pulumi.InputType['MonitoredServiceRequestArgs']]] = None) -> 'MonitoredService':
+            request: Optional[pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']]] = None) -> 'MonitoredService':
         """
         Get an existing MonitoredService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1933,7 +1933,7 @@ class MonitoredService(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier of the monitored service.
         :param pulumi.Input[str] org_id: Identifier of the organization in which the monitored service is configured.
         :param pulumi.Input[str] project_id: Identifier of the project in which the monitored service is configured.
-        :param pulumi.Input[pulumi.InputType['MonitoredServiceRequestArgs']] request: Request for creating or updating a monitored service.
+        :param pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']] request: Request for creating or updating a monitored service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

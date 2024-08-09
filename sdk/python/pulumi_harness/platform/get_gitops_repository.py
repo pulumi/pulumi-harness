@@ -148,7 +148,7 @@ def get_gitops_repository(account_id: Optional[str] = None,
                           identifier: Optional[str] = None,
                           org_id: Optional[str] = None,
                           project_id: Optional[str] = None,
-                          update_masks: Optional[Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']]] = None,
+                          update_masks: Optional[Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsRepositoryResult:
     """
     Data source for fetching a Harness GitOps Repository.
@@ -173,7 +173,7 @@ def get_gitops_repository(account_id: Optional[str] = None,
     :param str identifier: Identifier of the GitOps repository.
     :param str org_id: Organization identifier of the GitOps repository.
     :param str project_id: Project identifier of the GitOps repository.
-    :param Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']] update_masks: Update mask of the repository.
+    :param Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']] update_masks: Update mask of the repository.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -205,7 +205,7 @@ def get_gitops_repository_output(account_id: Optional[pulumi.Input[str]] = None,
                                  identifier: Optional[pulumi.Input[str]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 update_masks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']]]]] = None,
+                                 update_masks: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsRepositoryResult]:
     """
     Data source for fetching a Harness GitOps Repository.
@@ -230,6 +230,6 @@ def get_gitops_repository_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str identifier: Identifier of the GitOps repository.
     :param str org_id: Organization identifier of the GitOps repository.
     :param str project_id: Project identifier of the GitOps repository.
-    :param Sequence[pulumi.InputType['GetGitopsRepositoryUpdateMaskArgs']] update_masks: Update mask of the repository.
+    :param Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']] update_masks: Update mask of the repository.
     """
     ...

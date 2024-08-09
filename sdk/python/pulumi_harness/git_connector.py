@@ -417,7 +417,7 @@ class GitConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: Optional[pulumi.Input[str]] = None,
-                 commit_details: Optional[pulumi.Input[pulumi.InputType['GitConnectorCommitDetailsArgs']]] = None,
+                 commit_details: Optional[pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  generate_webhook_url: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -425,7 +425,7 @@ class GitConnector(pulumi.CustomResource):
                  ssh_setting_id: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  url_type: Optional[pulumi.Input[str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitConnectorUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -463,7 +463,7 @@ class GitConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] branch: The branch of the git connector to use
-        :param pulumi.Input[pulumi.InputType['GitConnectorCommitDetailsArgs']] commit_details: Custom details to use when making commits using this git connector
+        :param pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']] commit_details: Custom details to use when making commits using this git connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Delegate selectors to apply to this git connector.
         :param pulumi.Input[bool] generate_webhook_url: Boolean indicating whether or not to generate a webhook url.
         :param pulumi.Input[str] name: Name of the git connector.
@@ -471,7 +471,7 @@ class GitConnector(pulumi.CustomResource):
         :param pulumi.Input[str] ssh_setting_id: The id of the SSH secret to use
         :param pulumi.Input[str] url: The URL of the git repository or account/organization
         :param pulumi.Input[str] url_type: The type of git url being used. Options are `ACCOUNT`, and `REPO.`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitConnectorUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[str] username: The name of the user used to connect to the git repository
         """
         ...
@@ -528,7 +528,7 @@ class GitConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: Optional[pulumi.Input[str]] = None,
-                 commit_details: Optional[pulumi.Input[pulumi.InputType['GitConnectorCommitDetailsArgs']]] = None,
+                 commit_details: Optional[pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  generate_webhook_url: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -536,7 +536,7 @@ class GitConnector(pulumi.CustomResource):
                  ssh_setting_id: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  url_type: Optional[pulumi.Input[str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitConnectorUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -575,7 +575,7 @@ class GitConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             branch: Optional[pulumi.Input[str]] = None,
-            commit_details: Optional[pulumi.Input[pulumi.InputType['GitConnectorCommitDetailsArgs']]] = None,
+            commit_details: Optional[pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             generate_webhook_url: Optional[pulumi.Input[bool]] = None,
@@ -584,7 +584,7 @@ class GitConnector(pulumi.CustomResource):
             ssh_setting_id: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             url_type: Optional[pulumi.Input[str]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitConnectorUsageScopeArgs']]]]] = None,
+            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]]] = None,
             username: Optional[pulumi.Input[str]] = None,
             webhook_url: Optional[pulumi.Input[str]] = None) -> 'GitConnector':
         """
@@ -595,7 +595,7 @@ class GitConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] branch: The branch of the git connector to use
-        :param pulumi.Input[pulumi.InputType['GitConnectorCommitDetailsArgs']] commit_details: Custom details to use when making commits using this git connector
+        :param pulumi.Input[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict']] commit_details: Custom details to use when making commits using this git connector
         :param pulumi.Input[str] created_at: The time the git connector was created
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Delegate selectors to apply to this git connector.
         :param pulumi.Input[bool] generate_webhook_url: Boolean indicating whether or not to generate a webhook url.
@@ -604,7 +604,7 @@ class GitConnector(pulumi.CustomResource):
         :param pulumi.Input[str] ssh_setting_id: The id of the SSH secret to use
         :param pulumi.Input[str] url: The URL of the git repository or account/organization
         :param pulumi.Input[str] url_type: The type of git url being used. Options are `ACCOUNT`, and `REPO.`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitConnectorUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[str] username: The name of the user used to connect to the git repository
         :param pulumi.Input[str] webhook_url: The generated webhook url
         """

@@ -171,7 +171,7 @@ public class JenkinsConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public JenkinsConnector(String name) {
+    public JenkinsConnector(java.lang.String name) {
         this(name, JenkinsConnectorArgs.Empty);
     }
     /**
@@ -179,7 +179,7 @@ public class JenkinsConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public JenkinsConnector(String name, JenkinsConnectorArgs args) {
+    public JenkinsConnector(java.lang.String name, JenkinsConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -188,15 +188,22 @@ public class JenkinsConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public JenkinsConnector(String name, JenkinsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/jenkinsConnector:JenkinsConnector", name, args == null ? JenkinsConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public JenkinsConnector(java.lang.String name, JenkinsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/jenkinsConnector:JenkinsConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private JenkinsConnector(String name, Output<String> id, @Nullable JenkinsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/jenkinsConnector:JenkinsConnector", name, state, makeResourceOptions(options, id));
+    private JenkinsConnector(java.lang.String name, Output<java.lang.String> id, @Nullable JenkinsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/jenkinsConnector:JenkinsConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static JenkinsConnectorArgs makeArgs(JenkinsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? JenkinsConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -212,7 +219,7 @@ public class JenkinsConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static JenkinsConnector get(String name, Output<String> id, @Nullable JenkinsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static JenkinsConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable JenkinsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new JenkinsConnector(name, id, state, options);
     }
 }

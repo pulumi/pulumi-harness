@@ -247,7 +247,7 @@ public class FileStoreFolder extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FileStoreFolder(String name) {
+    public FileStoreFolder(java.lang.String name) {
         this(name, FileStoreFolderArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class FileStoreFolder extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FileStoreFolder(String name, FileStoreFolderArgs args) {
+    public FileStoreFolder(java.lang.String name, FileStoreFolderArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,15 +264,22 @@ public class FileStoreFolder extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FileStoreFolder(String name, FileStoreFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/fileStoreFolder:FileStoreFolder", name, args == null ? FileStoreFolderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FileStoreFolder(java.lang.String name, FileStoreFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/fileStoreFolder:FileStoreFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FileStoreFolder(String name, Output<String> id, @Nullable FileStoreFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/fileStoreFolder:FileStoreFolder", name, state, makeResourceOptions(options, id));
+    private FileStoreFolder(java.lang.String name, Output<java.lang.String> id, @Nullable FileStoreFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/fileStoreFolder:FileStoreFolder", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FileStoreFolderArgs makeArgs(FileStoreFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FileStoreFolderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -288,7 +295,7 @@ public class FileStoreFolder extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FileStoreFolder get(String name, Output<String> id, @Nullable FileStoreFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FileStoreFolder get(java.lang.String name, Output<java.lang.String> id, @Nullable FileStoreFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FileStoreFolder(name, id, state, options);
     }
 }

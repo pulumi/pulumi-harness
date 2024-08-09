@@ -291,7 +291,7 @@ class RoleAssignments(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleAssignmentsPrincipalArgs']]]]] = None,
+                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  resource_group_identifier: Optional[pulumi.Input[str]] = None,
                  role_identifier: Optional[pulumi.Input[str]] = None,
@@ -325,7 +325,7 @@ class RoleAssignments(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier for role assignment.
         :param pulumi.Input[bool] managed: Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         :param pulumi.Input[str] org_id: Org identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleAssignmentsPrincipalArgs']]]] principals: Principal.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]] principals: Principal.
         :param pulumi.Input[str] project_id: Project Identifier
         :param pulumi.Input[str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[str] role_identifier: Role identifier.
@@ -378,7 +378,7 @@ class RoleAssignments(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleAssignmentsPrincipalArgs']]]]] = None,
+                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  resource_group_identifier: Optional[pulumi.Input[str]] = None,
                  role_identifier: Optional[pulumi.Input[str]] = None,
@@ -419,7 +419,7 @@ class RoleAssignments(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             managed: Optional[pulumi.Input[bool]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            principals: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleAssignmentsPrincipalArgs']]]]] = None,
+            principals: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             resource_group_identifier: Optional[pulumi.Input[str]] = None,
             role_identifier: Optional[pulumi.Input[str]] = None) -> 'RoleAssignments':
@@ -434,7 +434,7 @@ class RoleAssignments(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier for role assignment.
         :param pulumi.Input[bool] managed: Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
         :param pulumi.Input[str] org_id: Org identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleAssignmentsPrincipalArgs']]]] principals: Principal.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]] principals: Principal.
         :param pulumi.Input[str] project_id: Project Identifier
         :param pulumi.Input[str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[str] role_identifier: Role identifier.

@@ -357,8 +357,8 @@ class GcpConnector(pulumi.CustomResource):
                  execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]]] = None,
-                 manual: Optional[pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']]] = None,
+                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
+                 manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -393,8 +393,8 @@ class GcpConnector(pulumi.CustomResource):
         :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
         :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]] inherit_from_delegates: Inherit configuration from delegate.
-        :param pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']] manual: Manual credential configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]] inherit_from_delegates: Inherit configuration from delegate.
+        :param pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']] manual: Manual credential configuration.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -448,8 +448,8 @@ class GcpConnector(pulumi.CustomResource):
                  execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]]] = None,
-                 manual: Optional[pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']]] = None,
+                 inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
+                 manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -489,8 +489,8 @@ class GcpConnector(pulumi.CustomResource):
             execute_on_delegate: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]]] = None,
-            manual: Optional[pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']]] = None,
+            inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
+            manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -506,8 +506,8 @@ class GcpConnector(pulumi.CustomResource):
         :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
         :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpConnectorInheritFromDelegateArgs']]]] inherit_from_delegates: Inherit configuration from delegate.
-        :param pulumi.Input[pulumi.InputType['GcpConnectorManualArgs']] manual: Manual credential configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]] inherit_from_delegates: Inherit configuration from delegate.
+        :param pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']] manual: Manual credential configuration.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.

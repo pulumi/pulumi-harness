@@ -161,10 +161,10 @@ class Kubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['KubernetesAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['KubernetesAuthenticationArgs', 'KubernetesAuthenticationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesUsageScopeArgs', 'KubernetesUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Kubernetes cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -179,10 +179,10 @@ class Kubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KubernetesAuthenticationArgs']] authentication: Authentication configuration for the Kubernetes cluster
+        :param pulumi.Input[Union['KubernetesAuthenticationArgs', 'KubernetesAuthenticationArgsDict']] authentication: Authentication configuration for the Kubernetes cluster
         :param pulumi.Input[str] name: The name of the cloud provider.
         :param pulumi.Input[bool] skip_validation: Skip validation of Kubernetes configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesUsageScopeArgs', 'KubernetesUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
         ...
     @overload
@@ -216,10 +216,10 @@ class Kubernetes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['KubernetesAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['KubernetesAuthenticationArgs', 'KubernetesAuthenticationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesUsageScopeArgs', 'KubernetesUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -245,10 +245,10 @@ class Kubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[pulumi.InputType['KubernetesAuthenticationArgs']]] = None,
+            authentication: Optional[pulumi.Input[Union['KubernetesAuthenticationArgs', 'KubernetesAuthenticationArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             skip_validation: Optional[pulumi.Input[bool]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesUsageScopeArgs']]]]] = None) -> 'Kubernetes':
+            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesUsageScopeArgs', 'KubernetesUsageScopeArgsDict']]]]] = None) -> 'Kubernetes':
         """
         Get an existing Kubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -256,10 +256,10 @@ class Kubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KubernetesAuthenticationArgs']] authentication: Authentication configuration for the Kubernetes cluster
+        :param pulumi.Input[Union['KubernetesAuthenticationArgs', 'KubernetesAuthenticationArgsDict']] authentication: Authentication configuration for the Kubernetes cluster
         :param pulumi.Input[str] name: The name of the cloud provider.
         :param pulumi.Input[bool] skip_validation: Skip validation of Kubernetes configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesUsageScopeArgs', 'KubernetesUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

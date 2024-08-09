@@ -396,7 +396,7 @@ public class ServiceOverridesV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceOverridesV2(String name) {
+    public ServiceOverridesV2(java.lang.String name) {
         this(name, ServiceOverridesV2Args.Empty);
     }
     /**
@@ -404,7 +404,7 @@ public class ServiceOverridesV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceOverridesV2(String name, ServiceOverridesV2Args args) {
+    public ServiceOverridesV2(java.lang.String name, ServiceOverridesV2Args args) {
         this(name, args, null);
     }
     /**
@@ -413,15 +413,22 @@ public class ServiceOverridesV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceOverridesV2(String name, ServiceOverridesV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/serviceOverridesV2:ServiceOverridesV2", name, args == null ? ServiceOverridesV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceOverridesV2(java.lang.String name, ServiceOverridesV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/serviceOverridesV2:ServiceOverridesV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceOverridesV2(String name, Output<String> id, @Nullable ServiceOverridesV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/serviceOverridesV2:ServiceOverridesV2", name, state, makeResourceOptions(options, id));
+    private ServiceOverridesV2(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceOverridesV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/serviceOverridesV2:ServiceOverridesV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceOverridesV2Args makeArgs(ServiceOverridesV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceOverridesV2Args.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -437,7 +444,7 @@ public class ServiceOverridesV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceOverridesV2 get(String name, Output<String> id, @Nullable ServiceOverridesV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceOverridesV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceOverridesV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceOverridesV2(name, id, state, options);
     }
 }

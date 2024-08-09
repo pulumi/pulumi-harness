@@ -228,7 +228,7 @@ public class DatadogConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatadogConnector(String name) {
+    public DatadogConnector(java.lang.String name) {
         this(name, DatadogConnectorArgs.Empty);
     }
     /**
@@ -236,7 +236,7 @@ public class DatadogConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatadogConnector(String name, DatadogConnectorArgs args) {
+    public DatadogConnector(java.lang.String name, DatadogConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -245,15 +245,22 @@ public class DatadogConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatadogConnector(String name, DatadogConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/datadogConnector:DatadogConnector", name, args == null ? DatadogConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DatadogConnector(java.lang.String name, DatadogConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/datadogConnector:DatadogConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DatadogConnector(String name, Output<String> id, @Nullable DatadogConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/datadogConnector:DatadogConnector", name, state, makeResourceOptions(options, id));
+    private DatadogConnector(java.lang.String name, Output<java.lang.String> id, @Nullable DatadogConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/datadogConnector:DatadogConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DatadogConnectorArgs makeArgs(DatadogConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DatadogConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -269,7 +276,7 @@ public class DatadogConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatadogConnector get(String name, Output<String> id, @Nullable DatadogConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DatadogConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable DatadogConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DatadogConnector(name, id, state, options);
     }
 }

@@ -17834,20 +17834,20 @@ public final class PlatformFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = PlatformFunctions.getUser(GetUserArgs.builder()
      *             .orgId("org_id")
      *             .projectId("project_id")
-     *             .email("john.doe{@literal @}harness.io")
+     *             .email("john.doe}{@literal @}{@code harness.io")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -17876,20 +17876,20 @@ public final class PlatformFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = PlatformFunctions.getUser(GetUserArgs.builder()
      *             .orgId("org_id")
      *             .projectId("project_id")
-     *             .email("john.doe{@literal @}harness.io")
+     *             .email("john.doe}{@literal @}{@code harness.io")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -17918,20 +17918,20 @@ public final class PlatformFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = PlatformFunctions.getUser(GetUserArgs.builder()
      *             .orgId("org_id")
      *             .projectId("project_id")
-     *             .email("john.doe{@literal @}harness.io")
+     *             .email("john.doe}{@literal @}{@code harness.io")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -17960,20 +17960,20 @@ public final class PlatformFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = PlatformFunctions.getUser(GetUserArgs.builder()
      *             .orgId("org_id")
      *             .projectId("project_id")
-     *             .email("john.doe{@literal @}harness.io")
+     *             .email("john.doe}{@literal @}{@code harness.io")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

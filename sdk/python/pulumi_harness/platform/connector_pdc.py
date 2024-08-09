@@ -290,7 +290,7 @@ class ConnectorPdc(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorPdcHostArgs']]]]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -326,7 +326,7 @@ class ConnectorPdc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorPdcHostArgs']]]] hosts: Hosts to be provided.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Hosts to be provided.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -381,7 +381,7 @@ class ConnectorPdc(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorPdcHostArgs']]]]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -420,7 +420,7 @@ class ConnectorPdc(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            hosts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorPdcHostArgs']]]]] = None,
+            hosts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -435,7 +435,7 @@ class ConnectorPdc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorPdcHostArgs']]]] hosts: Hosts to be provided.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Hosts to be provided.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.

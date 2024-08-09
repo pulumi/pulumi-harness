@@ -381,12 +381,12 @@ class RepoRuleBranch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchBypassArgs']]]]] = None,
+                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPatternArgs']]]]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPolicyArgs']]]]] = None,
+                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repo_identifier: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -396,12 +396,12 @@ class RepoRuleBranch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchBypassArgs']]]] bypasses: List of users who can bypass this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]] bypasses: List of users who can bypass this rule.
         :param pulumi.Input[str] description: Description of the rule.
         :param pulumi.Input[str] identifier: Identifier of the rule.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPatternArgs']]]] patterns: Pattern of branch to which rule will apply.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPolicyArgs']]]] policies: Policies to be applied for this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]] patterns: Pattern of branch to which rule will apply.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]] policies: Policies to be applied for this rule.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] repo_identifier: Repo identifier of the repository.
         :param pulumi.Input[str] state: State of the rule (active, disable, monitor).
@@ -430,12 +430,12 @@ class RepoRuleBranch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchBypassArgs']]]]] = None,
+                 bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPatternArgs']]]]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPolicyArgs']]]]] = None,
+                 patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repo_identifier: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -481,14 +481,14 @@ class RepoRuleBranch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchBypassArgs']]]]] = None,
+            bypasses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]]] = None,
             created: Optional[pulumi.Input[int]] = None,
             created_by: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            patterns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPatternArgs']]]]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPolicyArgs']]]]] = None,
+            patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             repo_identifier: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
@@ -501,14 +501,14 @@ class RepoRuleBranch(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchBypassArgs']]]] bypasses: List of users who can bypass this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict']]]] bypasses: List of users who can bypass this rule.
         :param pulumi.Input[int] created: Timestamp when the rule was created.
         :param pulumi.Input[int] created_by: ID of the user who created the rule.
         :param pulumi.Input[str] description: Description of the rule.
         :param pulumi.Input[str] identifier: Identifier of the rule.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPatternArgs']]]] patterns: Pattern of branch to which rule will apply.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepoRuleBranchPolicyArgs']]]] policies: Policies to be applied for this rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict']]]] patterns: Pattern of branch to which rule will apply.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict']]]] policies: Policies to be applied for this rule.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] repo_identifier: Repo identifier of the repository.
         :param pulumi.Input[str] state: State of the rule (active, disable, monitor).

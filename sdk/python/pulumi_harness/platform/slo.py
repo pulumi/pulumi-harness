@@ -162,7 +162,7 @@ class Slo(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request: Optional[pulumi.Input[pulumi.InputType['SloRequestArgs']]] = None,
+                 request: Optional[pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating an SLO.
@@ -178,32 +178,32 @@ class Slo(pulumi.CustomResource):
             org_id="default",
             project_id="default_project",
             identifier="TerraformSLO",
-            request=harness.platform.SloRequestArgs(
-                name="TSLO",
-                description="description",
-                tags=[
+            request={
+                "name": "TSLO",
+                "description": "description",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                user_journey_refs=[
+                "user_journey_refs": [
                     "one",
                     "two",
                 ],
-                slo_target=harness.platform.SloRequestSloTargetArgs(
-                    type="Calender",
-                    slo_target_percentage=10,
-                    spec=json.dumps({
+                "slo_target": {
+                    "type": "Calender",
+                    "slo_target_percentage": 10,
+                    "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {
-                            "dayOfMonth": 5,
+                            "day_of_month": 5,
                         },
                     }),
-                ),
-                type="Simple",
-                spec=json.dumps({
-                    "monitoredServiceRef": "monitoredServiceRef",
-                    "serviceLevelIndicatorType": "Availability",
-                    "serviceLevelIndicators": [{
+                },
+                "type": "Simple",
+                "spec": json.dumps({
+                    "monitored_service_ref": "monitoredServiceRef",
+                    "service_level_indicator_type": "Availability",
+                    "service_level_indicators": [{
                         "name": "name",
                         "identifier": "identifier",
                         "type": "Window",
@@ -211,18 +211,18 @@ class Slo(pulumi.CustomResource):
                             "type": "Threshold",
                             "spec": {
                                 "metric1": "metric1",
-                                "thresholdValue": 10,
-                                "thresholdType": ">",
+                                "threshold_value": 10,
+                                "threshold_type": ">",
                             },
-                            "sliMissingDataType": "Good",
+                            "sli_missing_data_type": "Good",
                         },
                     }],
                 }),
-                notification_rule_refs=[harness.platform.SloRequestNotificationRuleRefArgs(
-                    notification_rule_ref="notification_rule_ref",
-                    enabled=True,
-                )],
-            ))
+                "notification_rule_refs": [{
+                    "notification_rule_ref": "notification_rule_ref",
+                    "enabled": True,
+                }],
+            })
         ```
 
         Note the above example is for "Threshold" SLI type, if you want to use
@@ -255,7 +255,7 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier of the SLO.
         :param pulumi.Input[str] org_id: Identifier of the organization in which the SLO is configured.
         :param pulumi.Input[str] project_id: Identifier of the project in which the SLO is configured.
-        :param pulumi.Input[pulumi.InputType['SloRequestArgs']] request: Request for creating or updating SLO.
+        :param pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']] request: Request for creating or updating SLO.
         """
         ...
     @overload
@@ -277,32 +277,32 @@ class Slo(pulumi.CustomResource):
             org_id="default",
             project_id="default_project",
             identifier="TerraformSLO",
-            request=harness.platform.SloRequestArgs(
-                name="TSLO",
-                description="description",
-                tags=[
+            request={
+                "name": "TSLO",
+                "description": "description",
+                "tags": [
                     "foo:bar",
                     "bar:foo",
                 ],
-                user_journey_refs=[
+                "user_journey_refs": [
                     "one",
                     "two",
                 ],
-                slo_target=harness.platform.SloRequestSloTargetArgs(
-                    type="Calender",
-                    slo_target_percentage=10,
-                    spec=json.dumps({
+                "slo_target": {
+                    "type": "Calender",
+                    "slo_target_percentage": 10,
+                    "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {
-                            "dayOfMonth": 5,
+                            "day_of_month": 5,
                         },
                     }),
-                ),
-                type="Simple",
-                spec=json.dumps({
-                    "monitoredServiceRef": "monitoredServiceRef",
-                    "serviceLevelIndicatorType": "Availability",
-                    "serviceLevelIndicators": [{
+                },
+                "type": "Simple",
+                "spec": json.dumps({
+                    "monitored_service_ref": "monitoredServiceRef",
+                    "service_level_indicator_type": "Availability",
+                    "service_level_indicators": [{
                         "name": "name",
                         "identifier": "identifier",
                         "type": "Window",
@@ -310,18 +310,18 @@ class Slo(pulumi.CustomResource):
                             "type": "Threshold",
                             "spec": {
                                 "metric1": "metric1",
-                                "thresholdValue": 10,
-                                "thresholdType": ">",
+                                "threshold_value": 10,
+                                "threshold_type": ">",
                             },
-                            "sliMissingDataType": "Good",
+                            "sli_missing_data_type": "Good",
                         },
                     }],
                 }),
-                notification_rule_refs=[harness.platform.SloRequestNotificationRuleRefArgs(
-                    notification_rule_ref="notification_rule_ref",
-                    enabled=True,
-                )],
-            ))
+                "notification_rule_refs": [{
+                    "notification_rule_ref": "notification_rule_ref",
+                    "enabled": True,
+                }],
+            })
         ```
 
         Note the above example is for "Threshold" SLI type, if you want to use
@@ -367,7 +367,7 @@ class Slo(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request: Optional[pulumi.Input[pulumi.InputType['SloRequestArgs']]] = None,
+                 request: Optional[pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,7 +400,7 @@ class Slo(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            request: Optional[pulumi.Input[pulumi.InputType['SloRequestArgs']]] = None) -> 'Slo':
+            request: Optional[pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -411,7 +411,7 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier of the SLO.
         :param pulumi.Input[str] org_id: Identifier of the organization in which the SLO is configured.
         :param pulumi.Input[str] project_id: Identifier of the project in which the SLO is configured.
-        :param pulumi.Input[pulumi.InputType['SloRequestArgs']] request: Request for creating or updating SLO.
+        :param pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']] request: Request for creating or updating SLO.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

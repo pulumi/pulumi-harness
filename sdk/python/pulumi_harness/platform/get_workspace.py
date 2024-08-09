@@ -254,14 +254,14 @@ class AwaitableGetWorkspaceResult(GetWorkspaceResult):
 
 
 def get_workspace(description: Optional[str] = None,
-                  environment_variables: Optional[Sequence[pulumi.InputType['GetWorkspaceEnvironmentVariableArgs']]] = None,
+                  environment_variables: Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']]] = None,
                   identifier: Optional[str] = None,
                   org_id: Optional[str] = None,
                   project_id: Optional[str] = None,
                   repository_branch: Optional[str] = None,
                   repository_commit: Optional[str] = None,
-                  terraform_variable_files: Optional[Sequence[pulumi.InputType['GetWorkspaceTerraformVariableFileArgs']]] = None,
-                  terraform_variables: Optional[Sequence[pulumi.InputType['GetWorkspaceTerraformVariableArgs']]] = None,
+                  terraform_variable_files: Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]] = None,
+                  terraform_variables: Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceResult:
     """
     Data source for retrieving workspaces.
@@ -279,7 +279,7 @@ def get_workspace(description: Optional[str] = None,
 
 
     :param str description: Description of the Workspace
-    :param Sequence[pulumi.InputType['GetWorkspaceEnvironmentVariableArgs']] environment_variables: Environment variables configured on the workspace
+    :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
     :param str identifier: Identifier of the Workspace
     :param str org_id: Organization Identifier
     :param str project_id: Project Identifier
@@ -323,14 +323,14 @@ def get_workspace(description: Optional[str] = None,
 
 @_utilities.lift_output_func(get_workspace)
 def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = None,
-                         environment_variables: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetWorkspaceEnvironmentVariableArgs']]]]] = None,
+                         environment_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']]]]] = None,
                          identifier: Optional[pulumi.Input[str]] = None,
                          org_id: Optional[pulumi.Input[str]] = None,
                          project_id: Optional[pulumi.Input[str]] = None,
                          repository_branch: Optional[pulumi.Input[Optional[str]]] = None,
                          repository_commit: Optional[pulumi.Input[Optional[str]]] = None,
-                         terraform_variable_files: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetWorkspaceTerraformVariableFileArgs']]]]] = None,
-                         terraform_variables: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetWorkspaceTerraformVariableArgs']]]]] = None,
+                         terraform_variable_files: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]]]] = None,
+                         terraform_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkspaceResult]:
     """
     Data source for retrieving workspaces.
@@ -348,7 +348,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = No
 
 
     :param str description: Description of the Workspace
-    :param Sequence[pulumi.InputType['GetWorkspaceEnvironmentVariableArgs']] environment_variables: Environment variables configured on the workspace
+    :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
     :param str identifier: Identifier of the Workspace
     :param str org_id: Organization Identifier
     :param str project_id: Project Identifier

@@ -140,7 +140,7 @@ public class RuleEcs extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RuleEcs(String name) {
+    public RuleEcs(java.lang.String name) {
         this(name, RuleEcsArgs.Empty);
     }
     /**
@@ -148,7 +148,7 @@ public class RuleEcs extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RuleEcs(String name, RuleEcsArgs args) {
+    public RuleEcs(java.lang.String name, RuleEcsArgs args) {
         this(name, args, null);
     }
     /**
@@ -157,15 +157,22 @@ public class RuleEcs extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RuleEcs(String name, RuleEcsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:autostopping/ruleEcs:RuleEcs", name, args == null ? RuleEcsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RuleEcs(java.lang.String name, RuleEcsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:autostopping/ruleEcs:RuleEcs", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RuleEcs(String name, Output<String> id, @Nullable RuleEcsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:autostopping/ruleEcs:RuleEcs", name, state, makeResourceOptions(options, id));
+    private RuleEcs(java.lang.String name, Output<java.lang.String> id, @Nullable RuleEcsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:autostopping/ruleEcs:RuleEcs", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RuleEcsArgs makeArgs(RuleEcsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RuleEcsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -181,7 +188,7 @@ public class RuleEcs extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RuleEcs get(String name, Output<String> id, @Nullable RuleEcsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RuleEcs get(java.lang.String name, Output<java.lang.String> id, @Nullable RuleEcsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RuleEcs(name, id, state, options);
     }
 }

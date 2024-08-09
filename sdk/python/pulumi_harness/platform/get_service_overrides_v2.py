@@ -136,7 +136,7 @@ class AwaitableGetServiceOverridesV2Result(GetServiceOverridesV2Result):
             yaml=self.yaml)
 
 
-def get_service_overrides_v2(git_details: Optional[pulumi.InputType['GetServiceOverridesV2GitDetailsArgs']] = None,
+def get_service_overrides_v2(git_details: Optional[Union['GetServiceOverridesV2GitDetailsArgs', 'GetServiceOverridesV2GitDetailsArgsDict']] = None,
                              identifier: Optional[str] = None,
                              org_id: Optional[str] = None,
                              project_id: Optional[str] = None,
@@ -178,7 +178,7 @@ def get_service_overrides_v2(git_details: Optional[pulumi.InputType['GetServiceO
 
 
 @_utilities.lift_output_func(get_service_overrides_v2)
-def get_service_overrides_v2_output(git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceOverridesV2GitDetailsArgs']]]] = None,
+def get_service_overrides_v2_output(git_details: Optional[pulumi.Input[Optional[Union['GetServiceOverridesV2GitDetailsArgs', 'GetServiceOverridesV2GitDetailsArgsDict']]]] = None,
                                     identifier: Optional[pulumi.Input[str]] = None,
                                     org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     project_id: Optional[pulumi.Input[Optional[str]]] = None,

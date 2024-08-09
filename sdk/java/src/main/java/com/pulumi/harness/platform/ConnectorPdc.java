@@ -161,7 +161,7 @@ public class ConnectorPdc extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectorPdc(String name) {
+    public ConnectorPdc(java.lang.String name) {
         this(name, ConnectorPdcArgs.Empty);
     }
     /**
@@ -169,7 +169,7 @@ public class ConnectorPdc extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectorPdc(String name, ConnectorPdcArgs args) {
+    public ConnectorPdc(java.lang.String name, ConnectorPdcArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,15 +178,22 @@ public class ConnectorPdc extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectorPdc(String name, ConnectorPdcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorPdc:ConnectorPdc", name, args == null ? ConnectorPdcArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConnectorPdc(java.lang.String name, ConnectorPdcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorPdc:ConnectorPdc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConnectorPdc(String name, Output<String> id, @Nullable ConnectorPdcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorPdc:ConnectorPdc", name, state, makeResourceOptions(options, id));
+    private ConnectorPdc(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorPdcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorPdc:ConnectorPdc", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConnectorPdcArgs makeArgs(ConnectorPdcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectorPdcArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -202,7 +209,7 @@ public class ConnectorPdc extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectorPdc get(String name, Output<String> id, @Nullable ConnectorPdcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConnectorPdc get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorPdcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConnectorPdc(name, id, state, options);
     }
 }

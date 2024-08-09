@@ -193,7 +193,7 @@ public class ConnectorRancher extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectorRancher(String name) {
+    public ConnectorRancher(java.lang.String name) {
         this(name, ConnectorRancherArgs.Empty);
     }
     /**
@@ -201,7 +201,7 @@ public class ConnectorRancher extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectorRancher(String name, ConnectorRancherArgs args) {
+    public ConnectorRancher(java.lang.String name, ConnectorRancherArgs args) {
         this(name, args, null);
     }
     /**
@@ -210,15 +210,22 @@ public class ConnectorRancher extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectorRancher(String name, ConnectorRancherArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorRancher:ConnectorRancher", name, args == null ? ConnectorRancherArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConnectorRancher(java.lang.String name, ConnectorRancherArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorRancher:ConnectorRancher", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConnectorRancher(String name, Output<String> id, @Nullable ConnectorRancherState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorRancher:ConnectorRancher", name, state, makeResourceOptions(options, id));
+    private ConnectorRancher(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorRancherState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorRancher:ConnectorRancher", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConnectorRancherArgs makeArgs(ConnectorRancherArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectorRancherArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -234,7 +241,7 @@ public class ConnectorRancher extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectorRancher get(String name, Output<String> id, @Nullable ConnectorRancherState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConnectorRancher get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorRancherState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConnectorRancher(name, id, state, options);
     }
 }

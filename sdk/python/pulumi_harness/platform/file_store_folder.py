@@ -486,11 +486,11 @@ class FileStoreFolder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_bies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileStoreFolderCreatedByArgs']]]]] = None,
+            created_bies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFolderCreatedByArgs', 'FileStoreFolderCreatedByArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             last_modified_at: Optional[pulumi.Input[int]] = None,
-            last_modified_bies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileStoreFolderLastModifiedByArgs']]]]] = None,
+            last_modified_bies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFolderLastModifiedByArgs', 'FileStoreFolderLastModifiedByArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             parent_identifier: Optional[pulumi.Input[str]] = None,
@@ -504,11 +504,11 @@ class FileStoreFolder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileStoreFolderCreatedByArgs']]]] created_bies: Created by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFolderCreatedByArgs', 'FileStoreFolderCreatedByArgsDict']]]] created_bies: Created by
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[int] last_modified_at: Last modified at
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileStoreFolderLastModifiedByArgs']]]] last_modified_bies: Last modified by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFolderLastModifiedByArgs', 'FileStoreFolderLastModifiedByArgsDict']]]] last_modified_bies: Last modified by
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] parent_identifier: Folder parent identifier on Harness File Store

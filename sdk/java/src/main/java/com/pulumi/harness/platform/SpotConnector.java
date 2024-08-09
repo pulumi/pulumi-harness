@@ -133,7 +133,7 @@ public class SpotConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SpotConnector(String name) {
+    public SpotConnector(java.lang.String name) {
         this(name, SpotConnectorArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class SpotConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SpotConnector(String name, SpotConnectorArgs args) {
+    public SpotConnector(java.lang.String name, SpotConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,15 +150,22 @@ public class SpotConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SpotConnector(String name, SpotConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/spotConnector:SpotConnector", name, args == null ? SpotConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SpotConnector(java.lang.String name, SpotConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/spotConnector:SpotConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SpotConnector(String name, Output<String> id, @Nullable SpotConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/spotConnector:SpotConnector", name, state, makeResourceOptions(options, id));
+    private SpotConnector(java.lang.String name, Output<java.lang.String> id, @Nullable SpotConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/spotConnector:SpotConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SpotConnectorArgs makeArgs(SpotConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SpotConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -174,7 +181,7 @@ public class SpotConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SpotConnector get(String name, Output<String> id, @Nullable SpotConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SpotConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable SpotConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SpotConnector(name, id, state, options);
     }
 }

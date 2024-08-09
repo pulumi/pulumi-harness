@@ -445,7 +445,7 @@ class FeatureFlag(pulumi.CustomResource):
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentArgs', 'FeatureFlagEnvironmentArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -453,8 +453,8 @@ class FeatureFlag(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[str]] = None,
                  permanent: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTagArgs', 'FeatureFlagTagArgsDict']]]]] = None,
+                 variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing Feature Flags.
@@ -464,7 +464,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
         :param pulumi.Input[str] description: Description of the Feature Flag
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]] environments: Environment Identifier
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentArgs', 'FeatureFlagEnvironmentArgsDict']]]] environments: Environment Identifier
         :param pulumi.Input[str] identifier: Identifier of the Feature Flag
         :param pulumi.Input[str] kind: The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
         :param pulumi.Input[str] name: Name of the Feature Flag
@@ -472,8 +472,8 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The owner of the flag
         :param pulumi.Input[bool] permanent: Whether or not the flag is permanent. If it is, it will never be flagged as stale
         :param pulumi.Input[str] project_id: Project Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]] tags: The tags for the flag
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]] variations: The options available for your flag
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTagArgs', 'FeatureFlagTagArgsDict']]]] tags: The tags for the flag
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: The options available for your flag
         """
         ...
     @overload
@@ -502,7 +502,7 @@ class FeatureFlag(pulumi.CustomResource):
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentArgs', 'FeatureFlagEnvironmentArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -510,8 +510,8 @@ class FeatureFlag(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[str]] = None,
                  permanent: Optional[pulumi.Input[bool]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]]] = None,
-                 variations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTagArgs', 'FeatureFlagTagArgsDict']]]]] = None,
+                 variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -563,7 +563,7 @@ class FeatureFlag(pulumi.CustomResource):
             default_off_variation: Optional[pulumi.Input[str]] = None,
             default_on_variation: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]]] = None,
+            environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentArgs', 'FeatureFlagEnvironmentArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -571,8 +571,8 @@ class FeatureFlag(pulumi.CustomResource):
             owner: Optional[pulumi.Input[str]] = None,
             permanent: Optional[pulumi.Input[bool]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]]] = None,
-            variations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]]] = None) -> 'FeatureFlag':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTagArgs', 'FeatureFlagTagArgsDict']]]]] = None,
+            variations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]]] = None) -> 'FeatureFlag':
         """
         Get an existing FeatureFlag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -583,7 +583,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
         :param pulumi.Input[str] description: Description of the Feature Flag
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentArgs']]]] environments: Environment Identifier
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagEnvironmentArgs', 'FeatureFlagEnvironmentArgsDict']]]] environments: Environment Identifier
         :param pulumi.Input[str] identifier: Identifier of the Feature Flag
         :param pulumi.Input[str] kind: The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
         :param pulumi.Input[str] name: Name of the Feature Flag
@@ -591,8 +591,8 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] owner: The owner of the flag
         :param pulumi.Input[bool] permanent: Whether or not the flag is permanent. If it is, it will never be flagged as stale
         :param pulumi.Input[str] project_id: Project Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTagArgs']]]] tags: The tags for the flag
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagVariationArgs']]]] variations: The options available for your flag
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTagArgs', 'FeatureFlagTagArgsDict']]]] tags: The tags for the flag
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagVariationArgs', 'FeatureFlagVariationArgsDict']]]] variations: The options available for your flag
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

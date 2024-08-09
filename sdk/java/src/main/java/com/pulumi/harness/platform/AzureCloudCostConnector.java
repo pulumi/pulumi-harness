@@ -239,7 +239,7 @@ public class AzureCloudCostConnector extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AzureCloudCostConnector(String name) {
+    public AzureCloudCostConnector(java.lang.String name) {
         this(name, AzureCloudCostConnectorArgs.Empty);
     }
     /**
@@ -247,7 +247,7 @@ public class AzureCloudCostConnector extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AzureCloudCostConnector(String name, AzureCloudCostConnectorArgs args) {
+    public AzureCloudCostConnector(java.lang.String name, AzureCloudCostConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -256,15 +256,22 @@ public class AzureCloudCostConnector extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AzureCloudCostConnector(String name, AzureCloudCostConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/azureCloudCostConnector:AzureCloudCostConnector", name, args == null ? AzureCloudCostConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AzureCloudCostConnector(java.lang.String name, AzureCloudCostConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/azureCloudCostConnector:AzureCloudCostConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AzureCloudCostConnector(String name, Output<String> id, @Nullable AzureCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/azureCloudCostConnector:AzureCloudCostConnector", name, state, makeResourceOptions(options, id));
+    private AzureCloudCostConnector(java.lang.String name, Output<java.lang.String> id, @Nullable AzureCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/azureCloudCostConnector:AzureCloudCostConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AzureCloudCostConnectorArgs makeArgs(AzureCloudCostConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AzureCloudCostConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -280,7 +287,7 @@ public class AzureCloudCostConnector extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AzureCloudCostConnector get(String name, Output<String> id, @Nullable AzureCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AzureCloudCostConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable AzureCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AzureCloudCostConnector(name, id, state, options);
     }
 }

@@ -166,7 +166,7 @@ class AwaitableGetSecretTextResult(GetSecretTextResult):
             value_type=self.value_type)
 
 
-def get_secret_text(additional_metadatas: Optional[Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']]] = None,
+def get_secret_text(additional_metadatas: Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']]] = None,
                     identifier: Optional[str] = None,
                     name: Optional[str] = None,
                     org_id: Optional[str] = None,
@@ -185,7 +185,7 @@ def get_secret_text(additional_metadatas: Optional[Sequence[pulumi.InputType['Ge
     ```
 
 
-    :param Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']] additional_metadatas: Additional Metadata for the Secret
+    :param Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']] additional_metadatas: Additional Metadata for the Secret
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
@@ -215,7 +215,7 @@ def get_secret_text(additional_metadatas: Optional[Sequence[pulumi.InputType['Ge
 
 
 @_utilities.lift_output_func(get_secret_text)
-def get_secret_text_output(additional_metadatas: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']]]]] = None,
+def get_secret_text_output(additional_metadatas: Optional[pulumi.Input[Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']]]]] = None,
                            identifier: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -234,7 +234,7 @@ def get_secret_text_output(additional_metadatas: Optional[pulumi.Input[Optional[
     ```
 
 
-    :param Sequence[pulumi.InputType['GetSecretTextAdditionalMetadataArgs']] additional_metadatas: Additional Metadata for the Secret
+    :param Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']] additional_metadatas: Additional Metadata for the Secret
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.

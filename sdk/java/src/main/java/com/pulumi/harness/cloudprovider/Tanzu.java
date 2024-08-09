@@ -171,7 +171,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Tanzu(String name) {
+    public Tanzu(java.lang.String name) {
         this(name, TanzuArgs.Empty);
     }
     /**
@@ -179,7 +179,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Tanzu(String name, TanzuArgs args) {
+    public Tanzu(java.lang.String name, TanzuArgs args) {
         this(name, args, null);
     }
     /**
@@ -188,15 +188,22 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Tanzu(String name, TanzuArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:cloudprovider/tanzu:Tanzu", name, args == null ? TanzuArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Tanzu(java.lang.String name, TanzuArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:cloudprovider/tanzu:Tanzu", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Tanzu(String name, Output<String> id, @Nullable TanzuState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:cloudprovider/tanzu:Tanzu", name, state, makeResourceOptions(options, id));
+    private Tanzu(java.lang.String name, Output<java.lang.String> id, @Nullable TanzuState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:cloudprovider/tanzu:Tanzu", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TanzuArgs makeArgs(TanzuArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TanzuArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -212,7 +219,7 @@ public class Tanzu extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Tanzu get(String name, Output<String> id, @Nullable TanzuState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Tanzu get(java.lang.String name, Output<java.lang.String> id, @Nullable TanzuState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Tanzu(name, id, state, options);
     }
 }

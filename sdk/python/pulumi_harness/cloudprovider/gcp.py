@@ -198,7 +198,7 @@ class Gcp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  secret_file_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a GCP cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -209,7 +209,7 @@ class Gcp(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the cloud provider.
         :param pulumi.Input[str] secret_file_id: The id of the secret containing the GCP credentials
         :param pulumi.Input[bool] skip_validation: Skip validation of GCP configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
         ...
     @overload
@@ -239,7 +239,7 @@ class Gcp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  secret_file_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -268,7 +268,7 @@ class Gcp(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             secret_file_id: Optional[pulumi.Input[str]] = None,
             skip_validation: Optional[pulumi.Input[bool]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpUsageScopeArgs']]]]] = None) -> 'Gcp':
+            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None) -> 'Gcp':
         """
         Get an existing Gcp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -280,7 +280,7 @@ class Gcp(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the cloud provider.
         :param pulumi.Input[str] secret_file_id: The id of the secret containing the GCP credentials
         :param pulumi.Input[bool] skip_validation: Skip validation of GCP configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

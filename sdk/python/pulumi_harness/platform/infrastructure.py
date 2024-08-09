@@ -420,7 +420,7 @@ class Infrastructure(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -535,14 +535,14 @@ class Infrastructure(pulumi.CustomResource):
             identifier="identifier",
             name="name",
             env_id="env_id",
-            git_details=harness.platform.InfrastructureGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-                import_from_git=True,
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+                "import_from_git": True,
+            })
         ```
 
         ## Import
@@ -571,7 +571,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
-        :param pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -692,14 +692,14 @@ class Infrastructure(pulumi.CustomResource):
             identifier="identifier",
             name="name",
             env_id="env_id",
-            git_details=harness.platform.InfrastructureGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-                import_from_git=True,
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+                "import_from_git": True,
+            })
         ```
 
         ## Import
@@ -741,7 +741,7 @@ class Infrastructure(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -788,7 +788,7 @@ class Infrastructure(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[str]] = None,
-            git_details: Optional[pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']]] = None,
+            git_details: Optional[pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -807,7 +807,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
-        :param pulumi.Input[pulumi.InputType['InfrastructureGitDetailsArgs']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.

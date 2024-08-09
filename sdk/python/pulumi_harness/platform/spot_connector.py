@@ -260,7 +260,7 @@ class SpotConnector(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 permanent_token: Optional[pulumi.Input[pulumi.InputType['SpotConnectorPermanentTokenArgs']]] = None,
+                 permanent_token: Optional[pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -281,7 +281,7 @@ class SpotConnector(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[pulumi.InputType['SpotConnectorPermanentTokenArgs']] permanent_token: Authenticate to Spot using account id and permanent token.
+        :param pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']] permanent_token: Authenticate to Spot using account id and permanent token.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
@@ -321,7 +321,7 @@ class SpotConnector(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 permanent_token: Optional[pulumi.Input[pulumi.InputType['SpotConnectorPermanentTokenArgs']]] = None,
+                 permanent_token: Optional[pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -358,7 +358,7 @@ class SpotConnector(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            permanent_token: Optional[pulumi.Input[pulumi.InputType['SpotConnectorPermanentTokenArgs']]] = None,
+            permanent_token: Optional[pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'SpotConnector':
         """
@@ -372,7 +372,7 @@ class SpotConnector(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[pulumi.InputType['SpotConnectorPermanentTokenArgs']] permanent_token: Authenticate to Spot using account id and permanent token.
+        :param pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']] permanent_token: Authenticate to Spot using account id and permanent token.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """

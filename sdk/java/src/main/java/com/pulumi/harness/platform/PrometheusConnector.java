@@ -250,7 +250,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PrometheusConnector(String name) {
+    public PrometheusConnector(java.lang.String name) {
         this(name, PrometheusConnectorArgs.Empty);
     }
     /**
@@ -258,7 +258,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrometheusConnector(String name, PrometheusConnectorArgs args) {
+    public PrometheusConnector(java.lang.String name, PrometheusConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -267,15 +267,22 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrometheusConnector(String name, PrometheusConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/prometheusConnector:PrometheusConnector", name, args == null ? PrometheusConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PrometheusConnector(java.lang.String name, PrometheusConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/prometheusConnector:PrometheusConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PrometheusConnector(String name, Output<String> id, @Nullable PrometheusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/prometheusConnector:PrometheusConnector", name, state, makeResourceOptions(options, id));
+    private PrometheusConnector(java.lang.String name, Output<java.lang.String> id, @Nullable PrometheusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/prometheusConnector:PrometheusConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PrometheusConnectorArgs makeArgs(PrometheusConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrometheusConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -291,7 +298,7 @@ public class PrometheusConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PrometheusConnector get(String name, Output<String> id, @Nullable PrometheusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PrometheusConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable PrometheusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PrometheusConnector(name, id, state, options);
     }
 }

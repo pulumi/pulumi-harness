@@ -228,7 +228,7 @@ class AwaitableGetUsergroupResult(GetUsergroupResult):
 
 def get_usergroup(identifier: Optional[str] = None,
                   name: Optional[str] = None,
-                  notification_configs: Optional[Sequence[pulumi.InputType['GetUsergroupNotificationConfigArgs']]] = None,
+                  notification_configs: Optional[Sequence[Union['GetUsergroupNotificationConfigArgs', 'GetUsergroupNotificationConfigArgsDict']]] = None,
                   org_id: Optional[str] = None,
                   project_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsergroupResult:
@@ -250,7 +250,7 @@ def get_usergroup(identifier: Optional[str] = None,
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param Sequence[pulumi.InputType['GetUsergroupNotificationConfigArgs']] notification_configs: List of notification settings.
+    :param Sequence[Union['GetUsergroupNotificationConfigArgs', 'GetUsergroupNotificationConfigArgsDict']] notification_configs: List of notification settings.
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     """
@@ -285,7 +285,7 @@ def get_usergroup(identifier: Optional[str] = None,
 @_utilities.lift_output_func(get_usergroup)
 def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
-                         notification_configs: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUsergroupNotificationConfigArgs']]]]] = None,
+                         notification_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetUsergroupNotificationConfigArgs', 'GetUsergroupNotificationConfigArgsDict']]]]] = None,
                          org_id: Optional[pulumi.Input[Optional[str]]] = None,
                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsergroupResult]:
@@ -307,7 +307,7 @@ def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
 
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
-    :param Sequence[pulumi.InputType['GetUsergroupNotificationConfigArgs']] notification_configs: List of notification settings.
+    :param Sequence[Union['GetUsergroupNotificationConfigArgs', 'GetUsergroupNotificationConfigArgsDict']] notification_configs: List of notification settings.
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     """

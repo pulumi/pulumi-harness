@@ -357,7 +357,7 @@ class PolicySet(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicySetPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -381,7 +381,7 @@ class PolicySet(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicySetPolicyArgs']]]] policies: List of policy identifiers / severity for the policyset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: Type for the policyset.
@@ -424,7 +424,7 @@ class PolicySet(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicySetPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -469,7 +469,7 @@ class PolicySet(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicySetPolicyArgs']]]]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'PolicySet':
@@ -486,7 +486,7 @@ class PolicySet(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicySetPolicyArgs']]]] policies: List of policy identifiers / severity for the policyset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] type: Type for the policyset.

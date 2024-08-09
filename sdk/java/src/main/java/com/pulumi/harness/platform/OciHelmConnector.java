@@ -188,7 +188,7 @@ public class OciHelmConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OciHelmConnector(String name) {
+    public OciHelmConnector(java.lang.String name) {
         this(name, OciHelmConnectorArgs.Empty);
     }
     /**
@@ -196,7 +196,7 @@ public class OciHelmConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OciHelmConnector(String name, OciHelmConnectorArgs args) {
+    public OciHelmConnector(java.lang.String name, OciHelmConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -205,15 +205,22 @@ public class OciHelmConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OciHelmConnector(String name, OciHelmConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/ociHelmConnector:OciHelmConnector", name, args == null ? OciHelmConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OciHelmConnector(java.lang.String name, OciHelmConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/ociHelmConnector:OciHelmConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OciHelmConnector(String name, Output<String> id, @Nullable OciHelmConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/ociHelmConnector:OciHelmConnector", name, state, makeResourceOptions(options, id));
+    private OciHelmConnector(java.lang.String name, Output<java.lang.String> id, @Nullable OciHelmConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/ociHelmConnector:OciHelmConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OciHelmConnectorArgs makeArgs(OciHelmConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OciHelmConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -229,7 +236,7 @@ public class OciHelmConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OciHelmConnector get(String name, Output<String> id, @Nullable OciHelmConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OciHelmConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable OciHelmConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OciHelmConnector(name, id, state, options);
     }
 }

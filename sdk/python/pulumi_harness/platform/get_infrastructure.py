@@ -176,7 +176,7 @@ class AwaitableGetInfrastructureResult(GetInfrastructureResult):
 
 
 def get_infrastructure(env_id: Optional[str] = None,
-                       git_details: Optional[pulumi.InputType['GetInfrastructureGitDetailsArgs']] = None,
+                       git_details: Optional[Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict']] = None,
                        identifier: Optional[str] = None,
                        name: Optional[str] = None,
                        org_id: Optional[str] = None,
@@ -232,7 +232,7 @@ def get_infrastructure(env_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_infrastructure)
 def get_infrastructure_output(env_id: Optional[pulumi.Input[str]] = None,
-                              git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetInfrastructureGitDetailsArgs']]]] = None,
+                              git_details: Optional[pulumi.Input[Optional[Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict']]]] = None,
                               identifier: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               org_id: Optional[pulumi.Input[Optional[str]]] = None,

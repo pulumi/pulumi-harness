@@ -148,7 +148,7 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
                                  namespace: Optional[str] = None,
                                  org_id: Optional[str] = None,
                                  project_id: Optional[str] = None,
-                                 proxies: Optional[Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']]] = None,
+                                 proxies: Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentDeployYamlResult:
     """
     Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
@@ -173,7 +173,7 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
     :param str namespace: The kubernetes namespace where the agent is installed.
     :param str org_id: Organization identifier of the GitOps agent.
     :param str project_id: Project identifier of the GitOps agent.
-    :param Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']] proxies: Proxy settings for the GitOps agent.
+    :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -205,7 +205,7 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] 
                                         namespace: Optional[pulumi.Input[str]] = None,
                                         org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                        proxies: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']]]]] = None,
+                                        proxies: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']]]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAgentDeployYamlResult]:
     """
     Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
@@ -230,6 +230,6 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] 
     :param str namespace: The kubernetes namespace where the agent is installed.
     :param str org_id: Organization identifier of the GitOps agent.
     :param str project_id: Project identifier of the GitOps agent.
-    :param Sequence[pulumi.InputType['GetGitopsAgentDeployYamlProxyArgs']] proxies: Proxy settings for the GitOps agent.
+    :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
     """
     ...

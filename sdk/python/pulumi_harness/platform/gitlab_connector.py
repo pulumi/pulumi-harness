@@ -414,9 +414,9 @@ class GitlabConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_authentication: Optional[pulumi.Input[pulumi.InputType['GitlabConnectorApiAuthenticationArgs']]] = None,
+                 api_authentication: Optional[pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
                  connection_type: Optional[pulumi.Input[str]] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['GitlabConnectorCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -452,9 +452,9 @@ class GitlabConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GitlabConnectorApiAuthenticationArgs']] api_authentication: Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']] api_authentication: Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a gitlab repository or a gitlab account. Valid values are Account, Repo.
-        :param pulumi.Input[pulumi.InputType['GitlabConnectorCredentialsArgs']] credentials: Credentials to use for the connection.
+        :param pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -509,9 +509,9 @@ class GitlabConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_authentication: Optional[pulumi.Input[pulumi.InputType['GitlabConnectorApiAuthenticationArgs']]] = None,
+                 api_authentication: Optional[pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
                  connection_type: Optional[pulumi.Input[str]] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['GitlabConnectorCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -560,9 +560,9 @@ class GitlabConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_authentication: Optional[pulumi.Input[pulumi.InputType['GitlabConnectorApiAuthenticationArgs']]] = None,
+            api_authentication: Optional[pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']]] = None,
             connection_type: Optional[pulumi.Input[str]] = None,
-            credentials: Optional[pulumi.Input[pulumi.InputType['GitlabConnectorCredentialsArgs']]] = None,
+            credentials: Optional[pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -579,9 +579,9 @@ class GitlabConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GitlabConnectorApiAuthenticationArgs']] api_authentication: Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input[Union['GitlabConnectorApiAuthenticationArgs', 'GitlabConnectorApiAuthenticationArgsDict']] api_authentication: Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[str] connection_type: Whether the connection we're making is to a gitlab repository or a gitlab account. Valid values are Account, Repo.
-        :param pulumi.Input[pulumi.InputType['GitlabConnectorCredentialsArgs']] credentials: Credentials to use for the connection.
+        :param pulumi.Input[Union['GitlabConnectorCredentialsArgs', 'GitlabConnectorCredentialsArgsDict']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.

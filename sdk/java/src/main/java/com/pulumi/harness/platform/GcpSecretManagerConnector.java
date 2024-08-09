@@ -211,7 +211,7 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GcpSecretManagerConnector(String name) {
+    public GcpSecretManagerConnector(java.lang.String name) {
         this(name, GcpSecretManagerConnectorArgs.Empty);
     }
     /**
@@ -219,7 +219,7 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GcpSecretManagerConnector(String name, GcpSecretManagerConnectorArgs args) {
+    public GcpSecretManagerConnector(java.lang.String name, GcpSecretManagerConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -228,15 +228,22 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GcpSecretManagerConnector(String name, GcpSecretManagerConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector", name, args == null ? GcpSecretManagerConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GcpSecretManagerConnector(java.lang.String name, GcpSecretManagerConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GcpSecretManagerConnector(String name, Output<String> id, @Nullable GcpSecretManagerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector", name, state, makeResourceOptions(options, id));
+    private GcpSecretManagerConnector(java.lang.String name, Output<java.lang.String> id, @Nullable GcpSecretManagerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GcpSecretManagerConnectorArgs makeArgs(GcpSecretManagerConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GcpSecretManagerConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -252,7 +259,7 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GcpSecretManagerConnector get(String name, Output<String> id, @Nullable GcpSecretManagerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GcpSecretManagerConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable GcpSecretManagerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GcpSecretManagerConnector(name, id, state, options);
     }
 }

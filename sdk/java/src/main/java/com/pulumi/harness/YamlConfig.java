@@ -138,7 +138,7 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public YamlConfig(String name) {
+    public YamlConfig(java.lang.String name) {
         this(name, YamlConfigArgs.Empty);
     }
     /**
@@ -146,7 +146,7 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public YamlConfig(String name, YamlConfigArgs args) {
+    public YamlConfig(java.lang.String name, YamlConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -155,15 +155,22 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public YamlConfig(String name, YamlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:index/yamlConfig:YamlConfig", name, args == null ? YamlConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public YamlConfig(java.lang.String name, YamlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:index/yamlConfig:YamlConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private YamlConfig(String name, Output<String> id, @Nullable YamlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:index/yamlConfig:YamlConfig", name, state, makeResourceOptions(options, id));
+    private YamlConfig(java.lang.String name, Output<java.lang.String> id, @Nullable YamlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:index/yamlConfig:YamlConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static YamlConfigArgs makeArgs(YamlConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? YamlConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -179,7 +186,7 @@ public class YamlConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static YamlConfig get(String name, Output<String> id, @Nullable YamlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static YamlConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable YamlConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new YamlConfig(name, id, state, options);
     }
 }

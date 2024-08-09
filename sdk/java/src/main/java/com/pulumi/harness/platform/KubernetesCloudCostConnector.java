@@ -200,7 +200,7 @@ public class KubernetesCloudCostConnector extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KubernetesCloudCostConnector(String name) {
+    public KubernetesCloudCostConnector(java.lang.String name) {
         this(name, KubernetesCloudCostConnectorArgs.Empty);
     }
     /**
@@ -208,7 +208,7 @@ public class KubernetesCloudCostConnector extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KubernetesCloudCostConnector(String name, KubernetesCloudCostConnectorArgs args) {
+    public KubernetesCloudCostConnector(java.lang.String name, KubernetesCloudCostConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,15 +217,22 @@ public class KubernetesCloudCostConnector extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KubernetesCloudCostConnector(String name, KubernetesCloudCostConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector", name, args == null ? KubernetesCloudCostConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KubernetesCloudCostConnector(java.lang.String name, KubernetesCloudCostConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KubernetesCloudCostConnector(String name, Output<String> id, @Nullable KubernetesCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector", name, state, makeResourceOptions(options, id));
+    private KubernetesCloudCostConnector(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KubernetesCloudCostConnectorArgs makeArgs(KubernetesCloudCostConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubernetesCloudCostConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -241,7 +248,7 @@ public class KubernetesCloudCostConnector extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KubernetesCloudCostConnector get(String name, Output<String> id, @Nullable KubernetesCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KubernetesCloudCostConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesCloudCostConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KubernetesCloudCostConnector(name, id, state, options);
     }
 }

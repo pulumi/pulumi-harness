@@ -139,7 +139,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             yaml=self.yaml)
 
 
-def get_service(git_details: Optional[pulumi.InputType['GetServiceGitDetailsArgs']] = None,
+def get_service(git_details: Optional[Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict']] = None,
                 identifier: Optional[str] = None,
                 name: Optional[str] = None,
                 org_id: Optional[str] = None,
@@ -187,7 +187,7 @@ def get_service(git_details: Optional[pulumi.InputType['GetServiceGitDetailsArgs
 
 
 @_utilities.lift_output_func(get_service)
-def get_service_output(git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetServiceGitDetailsArgs']]]] = None,
+def get_service_output(git_details: Optional[pulumi.Input[Optional[Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict']]]] = None,
                        identifier: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        org_id: Optional[pulumi.Input[Optional[str]]] = None,

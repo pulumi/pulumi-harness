@@ -325,7 +325,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTargetGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Feature Flag Target Group.
@@ -345,11 +345,11 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
             account_id="MY_ACCOUNT_ID",
             includeds=["target_id_1"],
             excludeds=["target_id_2"],
-            rules=[harness.platform.FeatureFlagTargetGroupRuleArgs(
-                attribute="MY_ATTRIBUTE",
-                op="equal",
-                values=["MY_VALUE"],
-            )])
+            rules=[{
+                "attribute": "MY_ATTRIBUTE",
+                "op": "equal",
+                "values": ["MY_VALUE"],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -362,7 +362,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the feature flag target group.
         :param pulumi.Input[str] org_id: Organization Identifier
         :param pulumi.Input[str] project_id: Project Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTargetGroupRuleArgs']]]] rules: The list of rules used to include targets in the target group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]] rules: The list of rules used to include targets in the target group.
         """
         ...
     @overload
@@ -388,11 +388,11 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
             account_id="MY_ACCOUNT_ID",
             includeds=["target_id_1"],
             excludeds=["target_id_2"],
-            rules=[harness.platform.FeatureFlagTargetGroupRuleArgs(
-                attribute="MY_ATTRIBUTE",
-                op="equal",
-                values=["MY_VALUE"],
-            )])
+            rules=[{
+                "attribute": "MY_ATTRIBUTE",
+                "op": "equal",
+                "values": ["MY_VALUE"],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -418,7 +418,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTargetGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -465,7 +465,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTargetGroupRuleArgs']]]]] = None) -> 'FeatureFlagTargetGroup':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None) -> 'FeatureFlagTargetGroup':
         """
         Get an existing FeatureFlagTargetGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -481,7 +481,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the feature flag target group.
         :param pulumi.Input[str] org_id: Organization Identifier
         :param pulumi.Input[str] project_id: Project Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagTargetGroupRuleArgs']]]] rules: The list of rules used to include targets in the target group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]] rules: The list of rules used to include targets in the target group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

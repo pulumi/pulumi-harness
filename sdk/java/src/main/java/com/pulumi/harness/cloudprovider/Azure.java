@@ -155,7 +155,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Azure(String name) {
+    public Azure(java.lang.String name) {
         this(name, AzureArgs.Empty);
     }
     /**
@@ -163,7 +163,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Azure(String name, AzureArgs args) {
+    public Azure(java.lang.String name, AzureArgs args) {
         this(name, args, null);
     }
     /**
@@ -172,15 +172,22 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Azure(String name, AzureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:cloudprovider/azure:Azure", name, args == null ? AzureArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Azure(java.lang.String name, AzureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:cloudprovider/azure:Azure", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Azure(String name, Output<String> id, @Nullable AzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:cloudprovider/azure:Azure", name, state, makeResourceOptions(options, id));
+    private Azure(java.lang.String name, Output<java.lang.String> id, @Nullable AzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:cloudprovider/azure:Azure", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AzureArgs makeArgs(AzureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AzureArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -196,7 +203,7 @@ public class Azure extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Azure get(String name, Output<String> id, @Nullable AzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Azure get(java.lang.String name, Output<java.lang.String> id, @Nullable AzureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Azure(name, id, state, options);
     }
 }

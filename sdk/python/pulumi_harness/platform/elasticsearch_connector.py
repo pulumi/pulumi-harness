@@ -384,17 +384,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorApiTokenArgs']]] = None,
+                 api_token: Optional[pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 no_authentication: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorNoAuthenticationArgs']]] = None,
+                 no_authentication: Optional[pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url: Optional[pulumi.Input[str]] = None,
-                 username_password: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorUsernamePasswordArgs']]] = None,
+                 username_password: Optional[pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating an ElasticSearch connector.
@@ -413,10 +413,10 @@ class ElasticsearchConnector(pulumi.CustomResource):
             tags=["foo:bar"],
             url="https://elasticsearch.com/",
             delegate_selectors=["harness-delegate"],
-            api_token=harness.platform.ElasticsearchConnectorApiTokenArgs(
-                client_id="client_id",
-                client_secret_ref="account.secret_id",
-            ))
+            api_token={
+                "client_id": "client_id",
+                "client_secret_ref": "account.secret_id",
+            })
         # Authentication mechanism as username and password
         test = harness.platform.ElasticsearchConnector("test",
             identifier="identifier",
@@ -425,10 +425,10 @@ class ElasticsearchConnector(pulumi.CustomResource):
             tags=["foo:bar"],
             url="https://elasticsearch.com/",
             delegate_selectors=["harness-delegate"],
-            username_password=harness.platform.ElasticsearchConnectorUsernamePasswordArgs(
-                username="username",
-                password_ref="account.secret_id",
-            ))
+            username_password={
+                "username": "username",
+                "password_ref": "account.secret_id",
+            })
         # Authentication mechanism as username and password
         no_authentication = harness.platform.ElasticsearchConnector("no_authentication",
             identifier="identifier",
@@ -461,17 +461,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ElasticsearchConnectorApiTokenArgs']] api_token: Authenticate to ElasticSearch using api token.
+        :param pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']] api_token: Authenticate to ElasticSearch using api token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[pulumi.InputType['ElasticsearchConnectorNoAuthenticationArgs']] no_authentication: No Authentication to ElasticSearch
+        :param pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']] no_authentication: No Authentication to ElasticSearch
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] url: URL of the ElasticSearch controller.
-        :param pulumi.Input[pulumi.InputType['ElasticsearchConnectorUsernamePasswordArgs']] username_password: Authenticate to ElasticSearch using username and password.
+        :param pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']] username_password: Authenticate to ElasticSearch using username and password.
         """
         ...
     @overload
@@ -496,10 +496,10 @@ class ElasticsearchConnector(pulumi.CustomResource):
             tags=["foo:bar"],
             url="https://elasticsearch.com/",
             delegate_selectors=["harness-delegate"],
-            api_token=harness.platform.ElasticsearchConnectorApiTokenArgs(
-                client_id="client_id",
-                client_secret_ref="account.secret_id",
-            ))
+            api_token={
+                "client_id": "client_id",
+                "client_secret_ref": "account.secret_id",
+            })
         # Authentication mechanism as username and password
         test = harness.platform.ElasticsearchConnector("test",
             identifier="identifier",
@@ -508,10 +508,10 @@ class ElasticsearchConnector(pulumi.CustomResource):
             tags=["foo:bar"],
             url="https://elasticsearch.com/",
             delegate_selectors=["harness-delegate"],
-            username_password=harness.platform.ElasticsearchConnectorUsernamePasswordArgs(
-                username="username",
-                password_ref="account.secret_id",
-            ))
+            username_password={
+                "username": "username",
+                "password_ref": "account.secret_id",
+            })
         # Authentication mechanism as username and password
         no_authentication = harness.platform.ElasticsearchConnector("no_authentication",
             identifier="identifier",
@@ -557,17 +557,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorApiTokenArgs']]] = None,
+                 api_token: Optional[pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 no_authentication: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorNoAuthenticationArgs']]] = None,
+                 no_authentication: Optional[pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url: Optional[pulumi.Input[str]] = None,
-                 username_password: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorUsernamePasswordArgs']]] = None,
+                 username_password: Optional[pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -602,17 +602,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_token: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorApiTokenArgs']]] = None,
+            api_token: Optional[pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            no_authentication: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorNoAuthenticationArgs']]] = None,
+            no_authentication: Optional[pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            username_password: Optional[pulumi.Input[pulumi.InputType['ElasticsearchConnectorUsernamePasswordArgs']]] = None) -> 'ElasticsearchConnector':
+            username_password: Optional[pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None) -> 'ElasticsearchConnector':
         """
         Get an existing ElasticsearchConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -620,17 +620,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ElasticsearchConnectorApiTokenArgs']] api_token: Authenticate to ElasticSearch using api token.
+        :param pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']] api_token: Authenticate to ElasticSearch using api token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[pulumi.InputType['ElasticsearchConnectorNoAuthenticationArgs']] no_authentication: No Authentication to ElasticSearch
+        :param pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']] no_authentication: No Authentication to ElasticSearch
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[str] url: URL of the ElasticSearch controller.
-        :param pulumi.Input[pulumi.InputType['ElasticsearchConnectorUsernamePasswordArgs']] username_password: Authenticate to ElasticSearch using username and password.
+        :param pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']] username_password: Authenticate to ElasticSearch using username and password.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

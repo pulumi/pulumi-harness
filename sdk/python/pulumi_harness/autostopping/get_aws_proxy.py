@@ -207,7 +207,7 @@ class AwaitableGetAwsProxyResult(GetAwsProxyResult):
 
 def get_aws_proxy(allocate_static_ip: Optional[bool] = None,
                   api_key: Optional[str] = None,
-                  certificates: Optional[pulumi.InputType['GetAwsProxyCertificatesArgs']] = None,
+                  certificates: Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict']] = None,
                   cloud_connector_id: Optional[str] = None,
                   delete_cloud_resources_on_destroy: Optional[bool] = None,
                   host_name: Optional[str] = None,
@@ -272,7 +272,7 @@ def get_aws_proxy(allocate_static_ip: Optional[bool] = None,
 @_utilities.lift_output_func(get_aws_proxy)
 def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bool]]] = None,
                          api_key: Optional[pulumi.Input[str]] = None,
-                         certificates: Optional[pulumi.Input[Optional[pulumi.InputType['GetAwsProxyCertificatesArgs']]]] = None,
+                         certificates: Optional[pulumi.Input[Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict']]]] = None,
                          cloud_connector_id: Optional[pulumi.Input[str]] = None,
                          delete_cloud_resources_on_destroy: Optional[pulumi.Input[bool]] = None,
                          host_name: Optional[pulumi.Input[str]] = None,

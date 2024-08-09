@@ -196,7 +196,7 @@ class Winrm(pulumi.CustomResource):
                  artifact_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WinrmVariableArgs']]]]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating an WinRM service. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -229,7 +229,7 @@ class Winrm(pulumi.CustomResource):
         :param pulumi.Input[str] artifact_type: The type of artifact to deploy.
         :param pulumi.Input[str] description: Description of th service
         :param pulumi.Input[str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WinrmVariableArgs']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]] variables: Variables to be used in the service
         """
         ...
     @overload
@@ -281,7 +281,7 @@ class Winrm(pulumi.CustomResource):
                  artifact_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WinrmVariableArgs']]]]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -314,7 +314,7 @@ class Winrm(pulumi.CustomResource):
             artifact_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WinrmVariableArgs']]]]] = None) -> 'Winrm':
+            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None) -> 'Winrm':
         """
         Get an existing Winrm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -326,7 +326,7 @@ class Winrm(pulumi.CustomResource):
         :param pulumi.Input[str] artifact_type: The type of artifact to deploy.
         :param pulumi.Input[str] description: Description of th service
         :param pulumi.Input[str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WinrmVariableArgs']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]] variables: Variables to be used in the service
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

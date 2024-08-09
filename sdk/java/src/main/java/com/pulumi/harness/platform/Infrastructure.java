@@ -432,7 +432,7 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Infrastructure(String name) {
+    public Infrastructure(java.lang.String name) {
         this(name, InfrastructureArgs.Empty);
     }
     /**
@@ -440,7 +440,7 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Infrastructure(String name, InfrastructureArgs args) {
+    public Infrastructure(java.lang.String name, InfrastructureArgs args) {
         this(name, args, null);
     }
     /**
@@ -449,15 +449,22 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Infrastructure(String name, InfrastructureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/infrastructure:Infrastructure", name, args == null ? InfrastructureArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Infrastructure(java.lang.String name, InfrastructureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/infrastructure:Infrastructure", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Infrastructure(String name, Output<String> id, @Nullable InfrastructureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/infrastructure:Infrastructure", name, state, makeResourceOptions(options, id));
+    private Infrastructure(java.lang.String name, Output<java.lang.String> id, @Nullable InfrastructureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/infrastructure:Infrastructure", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InfrastructureArgs makeArgs(InfrastructureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InfrastructureArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -473,7 +480,7 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Infrastructure get(String name, Output<String> id, @Nullable InfrastructureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Infrastructure get(java.lang.String name, Output<java.lang.String> id, @Nullable InfrastructureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Infrastructure(name, id, state, options);
     }
 }

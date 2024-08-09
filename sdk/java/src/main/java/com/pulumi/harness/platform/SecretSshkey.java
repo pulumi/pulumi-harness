@@ -175,7 +175,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecretSshkey(String name) {
+    public SecretSshkey(java.lang.String name) {
         this(name, SecretSshkeyArgs.Empty);
     }
     /**
@@ -183,7 +183,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecretSshkey(String name, SecretSshkeyArgs args) {
+    public SecretSshkey(java.lang.String name, SecretSshkeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -192,15 +192,22 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecretSshkey(String name, SecretSshkeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/secretSshkey:SecretSshkey", name, args == null ? SecretSshkeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SecretSshkey(java.lang.String name, SecretSshkeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/secretSshkey:SecretSshkey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecretSshkey(String name, Output<String> id, @Nullable SecretSshkeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/secretSshkey:SecretSshkey", name, state, makeResourceOptions(options, id));
+    private SecretSshkey(java.lang.String name, Output<java.lang.String> id, @Nullable SecretSshkeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/secretSshkey:SecretSshkey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SecretSshkeyArgs makeArgs(SecretSshkeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecretSshkeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -216,7 +223,7 @@ public class SecretSshkey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecretSshkey get(String name, Output<String> id, @Nullable SecretSshkeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecretSshkey get(java.lang.String name, Output<java.lang.String> id, @Nullable SecretSshkeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecretSshkey(name, id, state, options);
     }
 }

@@ -260,7 +260,7 @@ class Variables(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['VariablesSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['VariablesSpecArgs', 'VariablesSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -276,10 +276,10 @@ class Variables(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="String",
-            spec=harness.platform.VariablesSpecArgs(
-                value_type="FIXED",
-                fixed_value="fixedValue",
-            ))
+            spec={
+                "value_type": "FIXED",
+                "fixed_value": "fixedValue",
+            })
         ```
 
         ## Import
@@ -309,7 +309,7 @@ class Variables(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the Variable
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[pulumi.InputType['VariablesSpecArgs']] spec: List of Spec Fields.
+        :param pulumi.Input[Union['VariablesSpecArgs', 'VariablesSpecArgsDict']] spec: List of Spec Fields.
         :param pulumi.Input[str] type: Type of Variable
         """
         ...
@@ -331,10 +331,10 @@ class Variables(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="String",
-            spec=harness.platform.VariablesSpecArgs(
-                value_type="FIXED",
-                fixed_value="fixedValue",
-            ))
+            spec={
+                "value_type": "FIXED",
+                "fixed_value": "fixedValue",
+            })
         ```
 
         ## Import
@@ -377,7 +377,7 @@ class Variables(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['VariablesSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['VariablesSpecArgs', 'VariablesSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -416,7 +416,7 @@ class Variables(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            spec: Optional[pulumi.Input[pulumi.InputType['VariablesSpecArgs']]] = None,
+            spec: Optional[pulumi.Input[Union['VariablesSpecArgs', 'VariablesSpecArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Variables':
         """
         Get an existing Variables resource's state with the given name, id, and optional extra
@@ -430,7 +430,7 @@ class Variables(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the Variable
         :param pulumi.Input[str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[pulumi.InputType['VariablesSpecArgs']] spec: List of Spec Fields.
+        :param pulumi.Input[Union['VariablesSpecArgs', 'VariablesSpecArgsDict']] spec: List of Spec Fields.
         :param pulumi.Input[str] type: Type of Variable
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

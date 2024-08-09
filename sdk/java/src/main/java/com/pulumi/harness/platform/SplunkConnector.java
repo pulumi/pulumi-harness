@@ -243,7 +243,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SplunkConnector(String name) {
+    public SplunkConnector(java.lang.String name) {
         this(name, SplunkConnectorArgs.Empty);
     }
     /**
@@ -251,7 +251,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SplunkConnector(String name, SplunkConnectorArgs args) {
+    public SplunkConnector(java.lang.String name, SplunkConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -260,15 +260,22 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SplunkConnector(String name, SplunkConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/splunkConnector:SplunkConnector", name, args == null ? SplunkConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SplunkConnector(java.lang.String name, SplunkConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/splunkConnector:SplunkConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SplunkConnector(String name, Output<String> id, @Nullable SplunkConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/splunkConnector:SplunkConnector", name, state, makeResourceOptions(options, id));
+    private SplunkConnector(java.lang.String name, Output<java.lang.String> id, @Nullable SplunkConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/splunkConnector:SplunkConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SplunkConnectorArgs makeArgs(SplunkConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SplunkConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -284,7 +291,7 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SplunkConnector get(String name, Output<String> id, @Nullable SplunkConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SplunkConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable SplunkConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SplunkConnector(name, id, state, options);
     }
 }

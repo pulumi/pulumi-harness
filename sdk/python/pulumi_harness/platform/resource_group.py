@@ -389,11 +389,11 @@ class ResourceGroup(pulumi.CustomResource):
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]]] = None,
+                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupResourceFilterArgs']]]]] = None,
+                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -410,20 +410,20 @@ class ResourceGroup(pulumi.CustomResource):
             tags=["foo:bar"],
             account_id="account_id",
             allowed_scope_levels=["account"],
-            included_scopes=[harness.platform.ResourceGroupIncludedScopeArgs(
-                filter="EXCLUDING_CHILD_SCOPES",
-                account_id="account_id",
-            )],
-            resource_filters=[harness.platform.ResourceGroupResourceFilterArgs(
-                include_all_resources=False,
-                resources=[harness.platform.ResourceGroupResourceFilterResourceArgs(
-                    resource_type="CONNECTOR",
-                    attribute_filters=[harness.platform.ResourceGroupResourceFilterResourceAttributeFilterArgs(
-                        attribute_name="category",
-                        attribute_values=["CLOUD_COST"],
-                    )],
-                )],
-            )])
+            included_scopes=[{
+                "filter": "EXCLUDING_CHILD_SCOPES",
+                "account_id": "account_id",
+            }],
+            resource_filters=[{
+                "include_all_resources": False,
+                "resources": [{
+                    "resource_type": "CONNECTOR",
+                    "attribute_filters": [{
+                        "attribute_name": "category",
+                        "attribute_values": ["CLOUD_COST"],
+                    }],
+                }],
+            }])
         ```
 
         ## Import
@@ -453,11 +453,11 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupResourceFilterArgs']]]] resource_filters: Contains resource filter for a resource group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]] resource_filters: Contains resource filter for a resource group
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
@@ -480,20 +480,20 @@ class ResourceGroup(pulumi.CustomResource):
             tags=["foo:bar"],
             account_id="account_id",
             allowed_scope_levels=["account"],
-            included_scopes=[harness.platform.ResourceGroupIncludedScopeArgs(
-                filter="EXCLUDING_CHILD_SCOPES",
-                account_id="account_id",
-            )],
-            resource_filters=[harness.platform.ResourceGroupResourceFilterArgs(
-                include_all_resources=False,
-                resources=[harness.platform.ResourceGroupResourceFilterResourceArgs(
-                    resource_type="CONNECTOR",
-                    attribute_filters=[harness.platform.ResourceGroupResourceFilterResourceAttributeFilterArgs(
-                        attribute_name="category",
-                        attribute_values=["CLOUD_COST"],
-                    )],
-                )],
-            )])
+            included_scopes=[{
+                "filter": "EXCLUDING_CHILD_SCOPES",
+                "account_id": "account_id",
+            }],
+            resource_filters=[{
+                "include_all_resources": False,
+                "resources": [{
+                    "resource_type": "CONNECTOR",
+                    "attribute_filters": [{
+                        "attribute_name": "category",
+                        "attribute_values": ["CLOUD_COST"],
+                    }],
+                }],
+            }])
         ```
 
         ## Import
@@ -536,11 +536,11 @@ class ResourceGroup(pulumi.CustomResource):
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
-                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]]] = None,
+                 included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupResourceFilterArgs']]]]] = None,
+                 resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -581,11 +581,11 @@ class ResourceGroup(pulumi.CustomResource):
             color: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
-            included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]]] = None,
+            included_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupResourceFilterArgs']]]]] = None,
+            resource_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ResourceGroup':
         """
         Get an existing ResourceGroup resource's state with the given name, id, and optional extra
@@ -599,11 +599,11 @@ class ResourceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupIncludedScopeArgs']]]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupIncludedScopeArgs', 'ResourceGroupIncludedScopeArgsDict']]]] included_scopes: Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceGroupResourceFilterArgs']]]] resource_filters: Contains resource filter for a resource group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceGroupResourceFilterArgs', 'ResourceGroupResourceFilterArgsDict']]]] resource_filters: Contains resource filter for a resource group
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -432,7 +432,7 @@ class Service(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
                  is_force_import: Optional[pulumi.Input[bool]] = None,
@@ -611,13 +611,13 @@ class Service(pulumi.CustomResource):
             description="test",
             org_id="org_id",
             project_id="project_id",
-            git_details=harness.platform.ServiceGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ),
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            },
             yaml=\"\"\"service:
           name: name
           identifier: identifier
@@ -668,13 +668,13 @@ class Service(pulumi.CustomResource):
             identifier="identifier",
             name="name",
             import_from_git=True,
-            git_details=harness.platform.ServiceGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            })
         ```
 
         ## Import
@@ -702,7 +702,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
-        :param pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']] git_details: Contains parameters related to Git Experience for remote entities
+        :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] import_from_git: import service from git
         :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
@@ -890,13 +890,13 @@ class Service(pulumi.CustomResource):
             description="test",
             org_id="org_id",
             project_id="project_id",
-            git_details=harness.platform.ServiceGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ),
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            },
             yaml=\"\"\"service:
           name: name
           identifier: identifier
@@ -947,13 +947,13 @@ class Service(pulumi.CustomResource):
             identifier="identifier",
             name="name",
             import_from_git=True,
-            git_details=harness.platform.ServiceGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            })
         ```
 
         ## Import
@@ -994,7 +994,7 @@ class Service(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
                  is_force_import: Optional[pulumi.Input[bool]] = None,
@@ -1039,7 +1039,7 @@ class Service(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[str]] = None,
-            git_details: Optional[pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']]] = None,
+            git_details: Optional[pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             import_from_git: Optional[pulumi.Input[bool]] = None,
             is_force_import: Optional[pulumi.Input[bool]] = None,
@@ -1058,7 +1058,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
-        :param pulumi.Input[pulumi.InputType['ServiceGitDetailsArgs']] git_details: Contains parameters related to Git Experience for remote entities
+        :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] import_from_git: import service from git
         :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist

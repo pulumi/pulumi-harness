@@ -204,7 +204,7 @@ public class DockerConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DockerConnector(String name) {
+    public DockerConnector(java.lang.String name) {
         this(name, DockerConnectorArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class DockerConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DockerConnector(String name, DockerConnectorArgs args) {
+    public DockerConnector(java.lang.String name, DockerConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,15 +221,22 @@ public class DockerConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DockerConnector(String name, DockerConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/dockerConnector:DockerConnector", name, args == null ? DockerConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DockerConnector(java.lang.String name, DockerConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/dockerConnector:DockerConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DockerConnector(String name, Output<String> id, @Nullable DockerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/dockerConnector:DockerConnector", name, state, makeResourceOptions(options, id));
+    private DockerConnector(java.lang.String name, Output<java.lang.String> id, @Nullable DockerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/dockerConnector:DockerConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DockerConnectorArgs makeArgs(DockerConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DockerConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -245,7 +252,7 @@ public class DockerConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DockerConnector get(String name, Output<String> id, @Nullable DockerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DockerConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable DockerConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DockerConnector(name, id, state, options);
     }
 }

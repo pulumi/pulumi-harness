@@ -164,7 +164,7 @@ class Lambda(pulumi.CustomResource):
                  app_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LambdaVariableArgs']]]]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LambdaVariableArgs', 'LambdaVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating an AWS Lambda service. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -195,7 +195,7 @@ class Lambda(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: The id of the application the service belongs to
         :param pulumi.Input[str] description: Description of th service
         :param pulumi.Input[str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LambdaVariableArgs']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LambdaVariableArgs', 'LambdaVariableArgsDict']]]] variables: Variables to be used in the service
         """
         ...
     @overload
@@ -245,7 +245,7 @@ class Lambda(pulumi.CustomResource):
                  app_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LambdaVariableArgs']]]]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LambdaVariableArgs', 'LambdaVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -274,7 +274,7 @@ class Lambda(pulumi.CustomResource):
             app_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LambdaVariableArgs']]]]] = None) -> 'Lambda':
+            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LambdaVariableArgs', 'LambdaVariableArgsDict']]]]] = None) -> 'Lambda':
         """
         Get an existing Lambda resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -285,7 +285,7 @@ class Lambda(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: The id of the application the service belongs to
         :param pulumi.Input[str] description: Description of th service
         :param pulumi.Input[str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LambdaVariableArgs']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LambdaVariableArgs', 'LambdaVariableArgsDict']]]] variables: Variables to be used in the service
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

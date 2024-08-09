@@ -196,7 +196,7 @@ public class PagerdutyConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PagerdutyConnector(String name) {
+    public PagerdutyConnector(java.lang.String name) {
         this(name, PagerdutyConnectorArgs.Empty);
     }
     /**
@@ -204,7 +204,7 @@ public class PagerdutyConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PagerdutyConnector(String name, PagerdutyConnectorArgs args) {
+    public PagerdutyConnector(java.lang.String name, PagerdutyConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -213,15 +213,22 @@ public class PagerdutyConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PagerdutyConnector(String name, PagerdutyConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/pagerdutyConnector:PagerdutyConnector", name, args == null ? PagerdutyConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PagerdutyConnector(java.lang.String name, PagerdutyConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/pagerdutyConnector:PagerdutyConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PagerdutyConnector(String name, Output<String> id, @Nullable PagerdutyConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/pagerdutyConnector:PagerdutyConnector", name, state, makeResourceOptions(options, id));
+    private PagerdutyConnector(java.lang.String name, Output<java.lang.String> id, @Nullable PagerdutyConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/pagerdutyConnector:PagerdutyConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PagerdutyConnectorArgs makeArgs(PagerdutyConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PagerdutyConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -237,7 +244,7 @@ public class PagerdutyConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PagerdutyConnector get(String name, Output<String> id, @Nullable PagerdutyConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PagerdutyConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable PagerdutyConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PagerdutyConnector(name, id, state, options);
     }
 }

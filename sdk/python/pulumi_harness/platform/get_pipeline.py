@@ -166,7 +166,7 @@ class AwaitableGetPipelineResult(GetPipelineResult):
             yaml=self.yaml)
 
 
-def get_pipeline(git_details: Optional[pulumi.InputType['GetPipelineGitDetailsArgs']] = None,
+def get_pipeline(git_details: Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict']] = None,
                  identifier: Optional[str] = None,
                  name: Optional[str] = None,
                  org_id: Optional[str] = None,
@@ -187,7 +187,7 @@ def get_pipeline(git_details: Optional[pulumi.InputType['GetPipelineGitDetailsAr
     ```
 
 
-    :param pulumi.InputType['GetPipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
@@ -217,7 +217,7 @@ def get_pipeline(git_details: Optional[pulumi.InputType['GetPipelineGitDetailsAr
 
 
 @_utilities.lift_output_func(get_pipeline)
-def get_pipeline_output(git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetPipelineGitDetailsArgs']]]] = None,
+def get_pipeline_output(git_details: Optional[pulumi.Input[Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict']]]] = None,
                         identifier: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         org_id: Optional[pulumi.Input[str]] = None,
@@ -238,7 +238,7 @@ def get_pipeline_output(git_details: Optional[pulumi.Input[Optional[pulumi.Input
     ```
 
 
-    :param pulumi.InputType['GetPipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.

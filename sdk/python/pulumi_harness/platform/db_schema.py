@@ -291,7 +291,7 @@ class DbSchema(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 schema_source: Optional[pulumi.Input[pulumi.InputType['DbSchemaSchemaSourceArgs']]] = None,
+                 schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -314,11 +314,11 @@ class DbSchema(pulumi.CustomResource):
                 "foo:bar",
                 "bar:foo",
             ],
-            schema_source=harness.platform.DbSchemaSchemaSourceArgs(
-                connector="gitConnector",
-                repo="TestRepo",
-                location="db/example-changelog.yaml",
-            ))
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+            })
         ```
 
         ## Import
@@ -336,7 +336,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[pulumi.InputType['DbSchemaSchemaSourceArgs']] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
         :param pulumi.Input[str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
@@ -365,11 +365,11 @@ class DbSchema(pulumi.CustomResource):
                 "foo:bar",
                 "bar:foo",
             ],
-            schema_source=harness.platform.DbSchemaSchemaSourceArgs(
-                connector="gitConnector",
-                repo="TestRepo",
-                location="db/example-changelog.yaml",
-            ))
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+            })
         ```
 
         ## Import
@@ -400,7 +400,7 @@ class DbSchema(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 schema_source: Optional[pulumi.Input[pulumi.InputType['DbSchemaSchemaSourceArgs']]] = None,
+                 schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -443,7 +443,7 @@ class DbSchema(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            schema_source: Optional[pulumi.Input[pulumi.InputType['DbSchemaSchemaSourceArgs']]] = None,
+            schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
             service: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'DbSchema':
         """
@@ -458,7 +458,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
-        :param pulumi.Input[pulumi.InputType['DbSchemaSchemaSourceArgs']] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
         :param pulumi.Input[str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """

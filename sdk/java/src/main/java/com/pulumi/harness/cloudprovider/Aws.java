@@ -220,7 +220,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Aws(String name) {
+    public Aws(java.lang.String name) {
         this(name, AwsArgs.Empty);
     }
     /**
@@ -228,7 +228,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Aws(String name, @Nullable AwsArgs args) {
+    public Aws(java.lang.String name, @Nullable AwsArgs args) {
         this(name, args, null);
     }
     /**
@@ -237,15 +237,22 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Aws(String name, @Nullable AwsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:cloudprovider/aws:Aws", name, args == null ? AwsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Aws(java.lang.String name, @Nullable AwsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:cloudprovider/aws:Aws", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Aws(String name, Output<String> id, @Nullable AwsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:cloudprovider/aws:Aws", name, state, makeResourceOptions(options, id));
+    private Aws(java.lang.String name, Output<java.lang.String> id, @Nullable AwsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:cloudprovider/aws:Aws", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AwsArgs makeArgs(@Nullable AwsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AwsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -261,7 +268,7 @@ public class Aws extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Aws get(String name, Output<String> id, @Nullable AwsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Aws get(java.lang.String name, Output<java.lang.String> id, @Nullable AwsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Aws(name, id, state, options);
     }
 }

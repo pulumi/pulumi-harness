@@ -196,7 +196,7 @@ public class SecretFile extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecretFile(String name) {
+    public SecretFile(java.lang.String name) {
         this(name, SecretFileArgs.Empty);
     }
     /**
@@ -204,7 +204,7 @@ public class SecretFile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecretFile(String name, SecretFileArgs args) {
+    public SecretFile(java.lang.String name, SecretFileArgs args) {
         this(name, args, null);
     }
     /**
@@ -213,15 +213,22 @@ public class SecretFile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecretFile(String name, SecretFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/secretFile:SecretFile", name, args == null ? SecretFileArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SecretFile(java.lang.String name, SecretFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/secretFile:SecretFile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecretFile(String name, Output<String> id, @Nullable SecretFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/secretFile:SecretFile", name, state, makeResourceOptions(options, id));
+    private SecretFile(java.lang.String name, Output<java.lang.String> id, @Nullable SecretFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/secretFile:SecretFile", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SecretFileArgs makeArgs(SecretFileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecretFileArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -237,7 +244,7 @@ public class SecretFile extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecretFile get(String name, Output<String> id, @Nullable SecretFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecretFile get(java.lang.String name, Output<java.lang.String> id, @Nullable SecretFileState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecretFile(name, id, state, options);
     }
 }

@@ -251,7 +251,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AwsCCConnector(String name) {
+    public AwsCCConnector(java.lang.String name) {
         this(name, AwsCCConnectorArgs.Empty);
     }
     /**
@@ -259,7 +259,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AwsCCConnector(String name, AwsCCConnectorArgs args) {
+    public AwsCCConnector(java.lang.String name, AwsCCConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -268,15 +268,22 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AwsCCConnector(String name, AwsCCConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/awsCCConnector:AwsCCConnector", name, args == null ? AwsCCConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AwsCCConnector(java.lang.String name, AwsCCConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/awsCCConnector:AwsCCConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AwsCCConnector(String name, Output<String> id, @Nullable AwsCCConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/awsCCConnector:AwsCCConnector", name, state, makeResourceOptions(options, id));
+    private AwsCCConnector(java.lang.String name, Output<java.lang.String> id, @Nullable AwsCCConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/awsCCConnector:AwsCCConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AwsCCConnectorArgs makeArgs(AwsCCConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AwsCCConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -292,7 +299,7 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AwsCCConnector get(String name, Output<String> id, @Nullable AwsCCConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AwsCCConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable AwsCCConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AwsCCConnector(name, id, state, options);
     }
 }
