@@ -163,7 +163,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             yaml=self.yaml)
 
 
-def get_environment(git_details: Optional[pulumi.InputType['GetEnvironmentGitDetailsArgs']] = None,
+def get_environment(git_details: Optional[Union['GetEnvironmentGitDetailsArgs', 'GetEnvironmentGitDetailsArgsDict']] = None,
                     identifier: Optional[str] = None,
                     name: Optional[str] = None,
                     org_id: Optional[str] = None,
@@ -213,7 +213,7 @@ def get_environment(git_details: Optional[pulumi.InputType['GetEnvironmentGitDet
 
 
 @_utilities.lift_output_func(get_environment)
-def get_environment_output(git_details: Optional[pulumi.Input[Optional[pulumi.InputType['GetEnvironmentGitDetailsArgs']]]] = None,
+def get_environment_output(git_details: Optional[pulumi.Input[Optional[Union['GetEnvironmentGitDetailsArgs', 'GetEnvironmentGitDetailsArgsDict']]]] = None,
                            identifier: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            org_id: Optional[pulumi.Input[Optional[str]]] = None,

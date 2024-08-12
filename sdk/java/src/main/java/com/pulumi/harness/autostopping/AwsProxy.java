@@ -247,7 +247,7 @@ public class AwsProxy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AwsProxy(String name) {
+    public AwsProxy(java.lang.String name) {
         this(name, AwsProxyArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class AwsProxy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AwsProxy(String name, AwsProxyArgs args) {
+    public AwsProxy(java.lang.String name, AwsProxyArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,15 +264,22 @@ public class AwsProxy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AwsProxy(String name, AwsProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:autostopping/awsProxy:AwsProxy", name, args == null ? AwsProxyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AwsProxy(java.lang.String name, AwsProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:autostopping/awsProxy:AwsProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AwsProxy(String name, Output<String> id, @Nullable AwsProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:autostopping/awsProxy:AwsProxy", name, state, makeResourceOptions(options, id));
+    private AwsProxy(java.lang.String name, Output<java.lang.String> id, @Nullable AwsProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:autostopping/awsProxy:AwsProxy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AwsProxyArgs makeArgs(AwsProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AwsProxyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -291,7 +298,7 @@ public class AwsProxy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AwsProxy get(String name, Output<String> id, @Nullable AwsProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AwsProxy get(java.lang.String name, Output<java.lang.String> id, @Nullable AwsProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AwsProxy(name, id, state, options);
     }
 }

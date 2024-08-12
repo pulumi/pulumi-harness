@@ -39,12 +39,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         //Sample template for Elastic Search Log Health Source
  *         var example = new MonitoredService("example", MonitoredServiceArgs.builder()
  *             .orgId("org_id")
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *                             jsonObject(
  *                                 jsonProperty("name", "FH"),
  *                                 jsonProperty("webhookUrl", "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH"),
- *                                 jsonProperty("webhookCurlCommand", "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \"eventIdentifier\": \"<string>\" (optional), \"user\": \"user{@literal @}harness.io\", \"startTime\": timeInMs, \"endTime\": timeInMs, \"eventDetail\": { \"description\": \"<String>\", \"changeEventDetailsLink\": \"urlString\" (optional), \"externalLinkToEntity\": \"urlString\" (optional), \"name\": \"changeEventName\" } }'"),
+ *                                 jsonProperty("webhookCurlCommand", "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '}{{@code  \"eventIdentifier\": \"<string>\" (optional), \"user\": \"user}{@literal @}{@code harness.io\", \"startTime\": timeInMs, \"endTime\": timeInMs, \"eventDetail\": }{{@code  \"description\": \"<String>\", \"changeEventDetailsLink\": \"urlString\" (optional), \"externalLinkToEntity\": \"urlString\" (optional), \"name\": \"changeEventName\" }}{@code  }}{@code '"),
  *                                 jsonProperty("type", "Alert")
  *                             )))
  *                         .category("Alert")
@@ -430,7 +430,7 @@ import javax.annotation.Nullable;
  *                                 jsonObject(
  *                                     jsonProperty("name", "Demo"),
  *                                     jsonProperty("identifier", "Demo"),
- *                                     jsonProperty("query", "{job=~\".+\"}"),
+ *                                     jsonProperty("query", "}{{@code job=~\".+\"}}{@code "),
  *                                     jsonProperty("groupName", "Log_Group"),
  *                                     jsonProperty("queryParams", jsonObject(
  *                                         jsonProperty("serviceInstanceField", "job")
@@ -633,7 +633,7 @@ import javax.annotation.Nullable;
  *                                         jsonProperty("serviceInstanceFieldName", "pod_name")
  *                                     ))
  *                                 )),
- *                                 jsonProperty("query", "count(up{group=\"cv\",group=\"cv\"})"),
+ *                                 jsonProperty("query", "count(up}{{@code group=\"cv\",group=\"cv\"}}{@code )"),
  *                                 jsonProperty("groupName", "met"),
  *                                 jsonProperty("isManualQuery", true)
  *                             ))),
@@ -706,8 +706,8 @@ import javax.annotation.Nullable;
  *                                     jsonProperty("metricPath", "M1"),
  *                                     jsonProperty("identifier", "metric"),
  *                                     jsonProperty("query", """
- * avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
- * avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
+ * avg:kubernetes.cpu.limits}{{@code *}}{@code .rollup(avg, 60);
+ * avg:kubernetes.cpu.limits}{{@code *}}{@code .rollup(avg, 30);
  * (a+b)/10                                    """),
  *                                     jsonProperty("isManualQuery", true),
  *                                     jsonProperty("isCustomCreatedMetric", true),
@@ -729,13 +729,13 @@ import javax.annotation.Nullable;
  *                                     jsonProperty("metricName", "dashboard_metric_cpu"),
  *                                     jsonProperty("identifier", "metric_cpu"),
  *                                     jsonProperty("query", """
- * avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
- * avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
+ * avg:kubernetes.cpu.limits}{{@code *}}{@code .rollup(avg, 60);
+ * avg:kubernetes.cpu.limits}{{@code *}}{@code .rollup(avg, 30);
  * (a+b)/10                                    """),
  *                                     jsonProperty("isManualQuery", false),
  *                                     jsonProperty("dashboardName", "dashboard"),
  *                                     jsonProperty("metricPath", "M1"),
- *                                     jsonProperty("groupingQuery", "avg:kubernetes.cpu.limits{*} by {host}.rollup(avg, 60)"),
+ *                                     jsonProperty("groupingQuery", "avg:kubernetes.cpu.limits}{{@code *}}{@code  by }{{@code host}}{@code .rollup(avg, 60)"),
  *                                     jsonProperty("metric", "kubernetes.cpu.limits"),
  *                                     jsonProperty("aggregation", "avg"),
  *                                     jsonProperty("isCustomCreatedMetric", true),
@@ -885,8 +885,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -975,7 +975,7 @@ public class MonitoredService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MonitoredService(String name) {
+    public MonitoredService(java.lang.String name) {
         this(name, MonitoredServiceArgs.Empty);
     }
     /**
@@ -983,7 +983,7 @@ public class MonitoredService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MonitoredService(String name, MonitoredServiceArgs args) {
+    public MonitoredService(java.lang.String name, MonitoredServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -992,15 +992,22 @@ public class MonitoredService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MonitoredService(String name, MonitoredServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/monitoredService:MonitoredService", name, args == null ? MonitoredServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MonitoredService(java.lang.String name, MonitoredServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/monitoredService:MonitoredService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MonitoredService(String name, Output<String> id, @Nullable MonitoredServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/monitoredService:MonitoredService", name, state, makeResourceOptions(options, id));
+    private MonitoredService(java.lang.String name, Output<java.lang.String> id, @Nullable MonitoredServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/monitoredService:MonitoredService", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MonitoredServiceArgs makeArgs(MonitoredServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MonitoredServiceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1016,7 +1023,7 @@ public class MonitoredService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MonitoredService get(String name, Output<String> id, @Nullable MonitoredServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MonitoredService get(java.lang.String name, Output<java.lang.String> id, @Nullable MonitoredServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MonitoredService(name, id, state, options);
     }
 }

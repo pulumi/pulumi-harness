@@ -118,7 +118,7 @@ class AwaitableGetEnvironmentClustersMappingResult(GetEnvironmentClustersMapping
             scope=self.scope)
 
 
-def get_environment_clusters_mapping(clusters: Optional[Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']]] = None,
+def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']]] = None,
                                      env_id: Optional[str] = None,
                                      identifier: Optional[str] = None,
                                      org_id: Optional[str] = None,
@@ -138,33 +138,33 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[pulumi.InputTyp
         org_id="orgIdentifer",
         project_id="projectIdentifier",
         env_id="exampleEnvId",
-        clusters=[harness.platform.GetEnvironmentClustersMappingClusterArgs(
-            identifier="incluster",
-            name="in-cluster",
-            agent_identifier="account.gitopsagentdev",
-            scope="ACCOUNT",
-        )])
+        clusters=[{
+            "identifier": "incluster",
+            "name": "in-cluster",
+            "agent_identifier": "account.gitopsagentdev",
+            "scope": "ACCOUNT",
+        }])
     # data source for two gitops clusters mapped to an account level env
     example2 = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
         env_id="env1",
         clusters=[
-            harness.platform.GetEnvironmentClustersMappingClusterArgs(
-                identifier="clusterA",
-                name="cluster-A",
-                agent_identifier="account.gitopsagentprod",
-                scope="ACCOUNT",
-            ),
-            harness.platform.GetEnvironmentClustersMappingClusterArgs(
-                identifier="clusterB",
-                name="cluster-B",
-                agent_identifier="account.gitopsagentprod",
-                scope="ACCOUNT",
-            ),
+            {
+                "identifier": "clusterA",
+                "name": "cluster-A",
+                "agent_identifier": "account.gitopsagentprod",
+                "scope": "ACCOUNT",
+            },
+            {
+                "identifier": "clusterB",
+                "name": "cluster-B",
+                "agent_identifier": "account.gitopsagentprod",
+                "scope": "ACCOUNT",
+            },
         ])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']] clusters: list of cluster identifiers and names
+    :param Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']] clusters: list of cluster identifiers and names
     :param str env_id: environment identifier.
     :param str identifier: identifier for the cluster mapping(can be given any value).
     :param str org_id: org_id of the environment.
@@ -190,7 +190,7 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[pulumi.InputTyp
 
 
 @_utilities.lift_output_func(get_environment_clusters_mapping)
-def get_environment_clusters_mapping_output(clusters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']]]]] = None,
+def get_environment_clusters_mapping_output(clusters: Optional[pulumi.Input[Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']]]]] = None,
                                             env_id: Optional[pulumi.Input[str]] = None,
                                             identifier: Optional[pulumi.Input[str]] = None,
                                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -210,33 +210,33 @@ def get_environment_clusters_mapping_output(clusters: Optional[pulumi.Input[Opti
         org_id="orgIdentifer",
         project_id="projectIdentifier",
         env_id="exampleEnvId",
-        clusters=[harness.platform.GetEnvironmentClustersMappingClusterArgs(
-            identifier="incluster",
-            name="in-cluster",
-            agent_identifier="account.gitopsagentdev",
-            scope="ACCOUNT",
-        )])
+        clusters=[{
+            "identifier": "incluster",
+            "name": "in-cluster",
+            "agent_identifier": "account.gitopsagentdev",
+            "scope": "ACCOUNT",
+        }])
     # data source for two gitops clusters mapped to an account level env
     example2 = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
         env_id="env1",
         clusters=[
-            harness.platform.GetEnvironmentClustersMappingClusterArgs(
-                identifier="clusterA",
-                name="cluster-A",
-                agent_identifier="account.gitopsagentprod",
-                scope="ACCOUNT",
-            ),
-            harness.platform.GetEnvironmentClustersMappingClusterArgs(
-                identifier="clusterB",
-                name="cluster-B",
-                agent_identifier="account.gitopsagentprod",
-                scope="ACCOUNT",
-            ),
+            {
+                "identifier": "clusterA",
+                "name": "cluster-A",
+                "agent_identifier": "account.gitopsagentprod",
+                "scope": "ACCOUNT",
+            },
+            {
+                "identifier": "clusterB",
+                "name": "cluster-B",
+                "agent_identifier": "account.gitopsagentprod",
+                "scope": "ACCOUNT",
+            },
         ])
     ```
 
 
-    :param Sequence[pulumi.InputType['GetEnvironmentClustersMappingClusterArgs']] clusters: list of cluster identifiers and names
+    :param Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']] clusters: list of cluster identifiers and names
     :param str env_id: environment identifier.
     :param str identifier: identifier for the cluster mapping(can be given any value).
     :param str org_id: org_id of the environment.

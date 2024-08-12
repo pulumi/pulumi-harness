@@ -280,7 +280,7 @@ public class ConnectorCustomhealthsource extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectorCustomhealthsource(String name) {
+    public ConnectorCustomhealthsource(java.lang.String name) {
         this(name, ConnectorCustomhealthsourceArgs.Empty);
     }
     /**
@@ -288,7 +288,7 @@ public class ConnectorCustomhealthsource extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectorCustomhealthsource(String name, ConnectorCustomhealthsourceArgs args) {
+    public ConnectorCustomhealthsource(java.lang.String name, ConnectorCustomhealthsourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -297,15 +297,22 @@ public class ConnectorCustomhealthsource extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectorCustomhealthsource(String name, ConnectorCustomhealthsourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource", name, args == null ? ConnectorCustomhealthsourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConnectorCustomhealthsource(java.lang.String name, ConnectorCustomhealthsourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConnectorCustomhealthsource(String name, Output<String> id, @Nullable ConnectorCustomhealthsourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource", name, state, makeResourceOptions(options, id));
+    private ConnectorCustomhealthsource(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorCustomhealthsourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConnectorCustomhealthsourceArgs makeArgs(ConnectorCustomhealthsourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConnectorCustomhealthsourceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -321,7 +328,7 @@ public class ConnectorCustomhealthsource extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectorCustomhealthsource get(String name, Output<String> id, @Nullable ConnectorCustomhealthsourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConnectorCustomhealthsource get(java.lang.String name, Output<java.lang.String> id, @Nullable ConnectorCustomhealthsourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConnectorCustomhealthsource(name, id, state, options);
     }
 }

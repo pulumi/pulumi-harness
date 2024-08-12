@@ -85,7 +85,7 @@ class AwaitableGetSecretManagerResult(GetSecretManagerResult):
 def get_secret_manager(default: Optional[bool] = None,
                        id: Optional[str] = None,
                        name: Optional[str] = None,
-                       usage_scopes: Optional[Sequence[pulumi.InputType['GetSecretManagerUsageScopeArgs']]] = None,
+                       usage_scopes: Optional[Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretManagerResult:
     """
     Data source for retrieving a Harness secret manager
@@ -94,7 +94,7 @@ def get_secret_manager(default: Optional[bool] = None,
     :param bool default: True to lookup the id of the default secret manager
     :param str id: Unique identifier of the secret manager
     :param str name: The name of the secret manager
-    :param Sequence[pulumi.InputType['GetSecretManagerUsageScopeArgs']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     __args__ = dict()
     __args__['default'] = default
@@ -115,7 +115,7 @@ def get_secret_manager(default: Optional[bool] = None,
 def get_secret_manager_output(default: Optional[pulumi.Input[Optional[bool]]] = None,
                               id: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
-                              usage_scopes: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetSecretManagerUsageScopeArgs']]]]] = None,
+                              usage_scopes: Optional[pulumi.Input[Optional[Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretManagerResult]:
     """
     Data source for retrieving a Harness secret manager
@@ -124,6 +124,6 @@ def get_secret_manager_output(default: Optional[pulumi.Input[Optional[bool]]] = 
     :param bool default: True to lookup the id of the default secret manager
     :param str id: Unique identifier of the secret manager
     :param str name: The name of the secret manager
-    :param Sequence[pulumi.InputType['GetSecretManagerUsageScopeArgs']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     ...

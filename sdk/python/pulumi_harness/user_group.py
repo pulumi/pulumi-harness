@@ -259,11 +259,11 @@ class UserGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 ldap_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupLdapSettingsArgs']]] = None,
+                 ldap_settings: Optional[pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupNotificationSettingsArgs']]] = None,
-                 permissions: Optional[pulumi.Input[pulumi.InputType['UserGroupPermissionsArgs']]] = None,
-                 saml_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupSamlSettingsArgs']]] = None,
+                 notification_settings: Optional[pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
+                 permissions: Optional[pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
+                 saml_settings: Optional[pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating a Harness user group
@@ -277,122 +277,122 @@ class UserGroup(pulumi.CustomResource):
         example = harness.UserGroup("example",
             name="example-group",
             description="This group demonstrates account level and resource level permissions.",
-            permissions=harness.UserGroupPermissionsArgs(
-                account_permissions=[
+            permissions={
+                "account_permissions": [
                     "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
                     "MANAGE_API_KEYS",
                 ],
-                app_permissions=harness.UserGroupPermissionsAppPermissionsArgs(
-                    alls=[harness.UserGroupPermissionsAppPermissionsAllArgs(
-                        actions=[
+                "app_permissions": {
+                    "alls": [{
+                        "actions": [
                             "CREATE",
                             "READ",
                             "UPDATE",
                             "DELETE",
                         ],
-                    )],
-                    deployments=[
-                        harness.UserGroupPermissionsAppPermissionsDeploymentArgs(
-                            actions=[
+                    }],
+                    "deployments": [
+                        {
+                            "actions": [
                                 "READ",
                                 "ROLLBACK_WORKFLOW",
                                 "EXECUTE_PIPELINE",
                                 "EXECUTE_WORKFLOW",
                             ],
-                            filters=["NON_PRODUCTION_ENVIRONMENTS"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsDeploymentArgs(
-                            actions=["READ"],
-                            filters=["PRODUCTION_ENVIRONMENTS"],
-                        ),
+                            "filters": ["NON_PRODUCTION_ENVIRONMENTS"],
+                        },
+                        {
+                            "actions": ["READ"],
+                            "filters": ["PRODUCTION_ENVIRONMENTS"],
+                        },
                     ],
-                    environments=[
-                        harness.UserGroupPermissionsAppPermissionsEnvironmentArgs(
-                            actions=[
+                    "environments": [
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                                 "UPDATE",
                                 "DELETE",
                             ],
-                            filters=["NON_PRODUCTION_ENVIRONMENTS"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsEnvironmentArgs(
-                            actions=["READ"],
-                            filters=["PRODUCTION_ENVIRONMENTS"],
-                        ),
+                            "filters": ["NON_PRODUCTION_ENVIRONMENTS"],
+                        },
+                        {
+                            "actions": ["READ"],
+                            "filters": ["PRODUCTION_ENVIRONMENTS"],
+                        },
                     ],
-                    pipelines=[
-                        harness.UserGroupPermissionsAppPermissionsPipelineArgs(
-                            actions=[
+                    "pipelines": [
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                                 "UPDATE",
                                 "DELETE",
                             ],
-                            filters=["NON_PRODUCTION_PIPELINES"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsPipelineArgs(
-                            actions=["READ"],
-                            filters=["PRODUCTION_PIPELINES"],
-                        ),
+                            "filters": ["NON_PRODUCTION_PIPELINES"],
+                        },
+                        {
+                            "actions": ["READ"],
+                            "filters": ["PRODUCTION_PIPELINES"],
+                        },
                     ],
-                    provisioners=[
-                        harness.UserGroupPermissionsAppPermissionsProvisionerArgs(
-                            actions=[
+                    "provisioners": [
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsProvisionerArgs(
-                            actions=[
+                        },
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                             ],
-                        ),
+                        },
                     ],
-                    services=[
-                        harness.UserGroupPermissionsAppPermissionsServiceArgs(
-                            actions=[
+                    "services": [
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsServiceArgs(
-                            actions=[
+                        },
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                        ),
+                        },
                     ],
-                    templates=[harness.UserGroupPermissionsAppPermissionsTemplateArgs(
-                        actions=[
+                    "templates": [{
+                        "actions": [
                             "CREATE",
                             "READ",
                             "UPDATE",
                             "DELETE",
                         ],
-                    )],
-                    workflows=[
-                        harness.UserGroupPermissionsAppPermissionsWorkflowArgs(
-                            actions=[
+                    }],
+                    "workflows": [
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                            filters=["NON_PRODUCTION_WORKFLOWS"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsWorkflowArgs(
-                            actions=[
+                            "filters": ["NON_PRODUCTION_WORKFLOWS"],
+                        },
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                             ],
-                            filters=[
+                            "filters": [
                                 "PRODUCTION_WORKFLOWS",
                                 "WORKFLOW_TEMPLATES",
                             ],
-                        ),
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -406,11 +406,11 @@ class UserGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the user group.
-        :param pulumi.Input[pulumi.InputType['UserGroupLdapSettingsArgs']] ldap_settings: The LDAP settings for the user group.
+        :param pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']] ldap_settings: The LDAP settings for the user group.
         :param pulumi.Input[str] name: The name of the user group.
-        :param pulumi.Input[pulumi.InputType['UserGroupNotificationSettingsArgs']] notification_settings: The notification settings of the user group.
-        :param pulumi.Input[pulumi.InputType['UserGroupPermissionsArgs']] permissions: The permissions of the user group.
-        :param pulumi.Input[pulumi.InputType['UserGroupSamlSettingsArgs']] saml_settings: The SAML settings for the user group.
+        :param pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']] notification_settings: The notification settings of the user group.
+        :param pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']] permissions: The permissions of the user group.
+        :param pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']] saml_settings: The SAML settings for the user group.
         """
         ...
     @overload
@@ -430,122 +430,122 @@ class UserGroup(pulumi.CustomResource):
         example = harness.UserGroup("example",
             name="example-group",
             description="This group demonstrates account level and resource level permissions.",
-            permissions=harness.UserGroupPermissionsArgs(
-                account_permissions=[
+            permissions={
+                "account_permissions": [
                     "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
                     "MANAGE_API_KEYS",
                 ],
-                app_permissions=harness.UserGroupPermissionsAppPermissionsArgs(
-                    alls=[harness.UserGroupPermissionsAppPermissionsAllArgs(
-                        actions=[
+                "app_permissions": {
+                    "alls": [{
+                        "actions": [
                             "CREATE",
                             "READ",
                             "UPDATE",
                             "DELETE",
                         ],
-                    )],
-                    deployments=[
-                        harness.UserGroupPermissionsAppPermissionsDeploymentArgs(
-                            actions=[
+                    }],
+                    "deployments": [
+                        {
+                            "actions": [
                                 "READ",
                                 "ROLLBACK_WORKFLOW",
                                 "EXECUTE_PIPELINE",
                                 "EXECUTE_WORKFLOW",
                             ],
-                            filters=["NON_PRODUCTION_ENVIRONMENTS"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsDeploymentArgs(
-                            actions=["READ"],
-                            filters=["PRODUCTION_ENVIRONMENTS"],
-                        ),
+                            "filters": ["NON_PRODUCTION_ENVIRONMENTS"],
+                        },
+                        {
+                            "actions": ["READ"],
+                            "filters": ["PRODUCTION_ENVIRONMENTS"],
+                        },
                     ],
-                    environments=[
-                        harness.UserGroupPermissionsAppPermissionsEnvironmentArgs(
-                            actions=[
+                    "environments": [
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                                 "UPDATE",
                                 "DELETE",
                             ],
-                            filters=["NON_PRODUCTION_ENVIRONMENTS"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsEnvironmentArgs(
-                            actions=["READ"],
-                            filters=["PRODUCTION_ENVIRONMENTS"],
-                        ),
+                            "filters": ["NON_PRODUCTION_ENVIRONMENTS"],
+                        },
+                        {
+                            "actions": ["READ"],
+                            "filters": ["PRODUCTION_ENVIRONMENTS"],
+                        },
                     ],
-                    pipelines=[
-                        harness.UserGroupPermissionsAppPermissionsPipelineArgs(
-                            actions=[
+                    "pipelines": [
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                                 "UPDATE",
                                 "DELETE",
                             ],
-                            filters=["NON_PRODUCTION_PIPELINES"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsPipelineArgs(
-                            actions=["READ"],
-                            filters=["PRODUCTION_PIPELINES"],
-                        ),
+                            "filters": ["NON_PRODUCTION_PIPELINES"],
+                        },
+                        {
+                            "actions": ["READ"],
+                            "filters": ["PRODUCTION_PIPELINES"],
+                        },
                     ],
-                    provisioners=[
-                        harness.UserGroupPermissionsAppPermissionsProvisionerArgs(
-                            actions=[
+                    "provisioners": [
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsProvisionerArgs(
-                            actions=[
+                        },
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                             ],
-                        ),
+                        },
                     ],
-                    services=[
-                        harness.UserGroupPermissionsAppPermissionsServiceArgs(
-                            actions=[
+                    "services": [
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsServiceArgs(
-                            actions=[
+                        },
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                        ),
+                        },
                     ],
-                    templates=[harness.UserGroupPermissionsAppPermissionsTemplateArgs(
-                        actions=[
+                    "templates": [{
+                        "actions": [
                             "CREATE",
                             "READ",
                             "UPDATE",
                             "DELETE",
                         ],
-                    )],
-                    workflows=[
-                        harness.UserGroupPermissionsAppPermissionsWorkflowArgs(
-                            actions=[
+                    }],
+                    "workflows": [
+                        {
+                            "actions": [
                                 "UPDATE",
                                 "DELETE",
                             ],
-                            filters=["NON_PRODUCTION_WORKFLOWS"],
-                        ),
-                        harness.UserGroupPermissionsAppPermissionsWorkflowArgs(
-                            actions=[
+                            "filters": ["NON_PRODUCTION_WORKFLOWS"],
+                        },
+                        {
+                            "actions": [
                                 "CREATE",
                                 "READ",
                             ],
-                            filters=[
+                            "filters": [
                                 "PRODUCTION_WORKFLOWS",
                                 "WORKFLOW_TEMPLATES",
                             ],
-                        ),
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -572,11 +572,11 @@ class UserGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 ldap_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupLdapSettingsArgs']]] = None,
+                 ldap_settings: Optional[pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupNotificationSettingsArgs']]] = None,
-                 permissions: Optional[pulumi.Input[pulumi.InputType['UserGroupPermissionsArgs']]] = None,
-                 saml_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupSamlSettingsArgs']]] = None,
+                 notification_settings: Optional[pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
+                 permissions: Optional[pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
+                 saml_settings: Optional[pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -607,11 +607,11 @@ class UserGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             imported_by_scim: Optional[pulumi.Input[bool]] = None,
             is_sso_linked: Optional[pulumi.Input[bool]] = None,
-            ldap_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupLdapSettingsArgs']]] = None,
+            ldap_settings: Optional[pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupNotificationSettingsArgs']]] = None,
-            permissions: Optional[pulumi.Input[pulumi.InputType['UserGroupPermissionsArgs']]] = None,
-            saml_settings: Optional[pulumi.Input[pulumi.InputType['UserGroupSamlSettingsArgs']]] = None) -> 'UserGroup':
+            notification_settings: Optional[pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
+            permissions: Optional[pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
+            saml_settings: Optional[pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -622,11 +622,11 @@ class UserGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the user group.
         :param pulumi.Input[bool] imported_by_scim: Indicates whether the user group was imported by SCIM.
         :param pulumi.Input[bool] is_sso_linked: Indicates whether the user group is linked to an SSO provider.
-        :param pulumi.Input[pulumi.InputType['UserGroupLdapSettingsArgs']] ldap_settings: The LDAP settings for the user group.
+        :param pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']] ldap_settings: The LDAP settings for the user group.
         :param pulumi.Input[str] name: The name of the user group.
-        :param pulumi.Input[pulumi.InputType['UserGroupNotificationSettingsArgs']] notification_settings: The notification settings of the user group.
-        :param pulumi.Input[pulumi.InputType['UserGroupPermissionsArgs']] permissions: The permissions of the user group.
-        :param pulumi.Input[pulumi.InputType['UserGroupSamlSettingsArgs']] saml_settings: The SAML settings for the user group.
+        :param pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']] notification_settings: The notification settings of the user group.
+        :param pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']] permissions: The permissions of the user group.
+        :param pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']] saml_settings: The SAML settings for the user group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

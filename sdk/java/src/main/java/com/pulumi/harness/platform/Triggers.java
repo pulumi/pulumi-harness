@@ -244,7 +244,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Triggers(String name) {
+    public Triggers(java.lang.String name) {
         this(name, TriggersArgs.Empty);
     }
     /**
@@ -252,7 +252,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Triggers(String name, TriggersArgs args) {
+    public Triggers(java.lang.String name, TriggersArgs args) {
         this(name, args, null);
     }
     /**
@@ -261,15 +261,22 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Triggers(String name, TriggersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/triggers:Triggers", name, args == null ? TriggersArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Triggers(java.lang.String name, TriggersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/triggers:Triggers", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Triggers(String name, Output<String> id, @Nullable TriggersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/triggers:Triggers", name, state, makeResourceOptions(options, id));
+    private Triggers(java.lang.String name, Output<java.lang.String> id, @Nullable TriggersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/triggers:Triggers", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TriggersArgs makeArgs(TriggersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TriggersArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -285,7 +292,7 @@ public class Triggers extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Triggers get(String name, Output<String> id, @Nullable TriggersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Triggers get(java.lang.String name, Output<java.lang.String> id, @Nullable TriggersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Triggers(name, id, state, options);
     }
 }

@@ -195,7 +195,7 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DbSchema(String name) {
+    public DbSchema(java.lang.String name) {
         this(name, DbSchemaArgs.Empty);
     }
     /**
@@ -203,7 +203,7 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DbSchema(String name, DbSchemaArgs args) {
+    public DbSchema(java.lang.String name, DbSchemaArgs args) {
         this(name, args, null);
     }
     /**
@@ -212,15 +212,22 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DbSchema(String name, DbSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/dbSchema:DbSchema", name, args == null ? DbSchemaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DbSchema(java.lang.String name, DbSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/dbSchema:DbSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DbSchema(String name, Output<String> id, @Nullable DbSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/dbSchema:DbSchema", name, state, makeResourceOptions(options, id));
+    private DbSchema(java.lang.String name, Output<java.lang.String> id, @Nullable DbSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/dbSchema:DbSchema", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DbSchemaArgs makeArgs(DbSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DbSchemaArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -236,7 +243,7 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DbSchema get(String name, Output<String> id, @Nullable DbSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DbSchema get(java.lang.String name, Output<java.lang.String> id, @Nullable DbSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DbSchema(name, id, state, options);
     }
 }

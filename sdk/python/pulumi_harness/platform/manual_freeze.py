@@ -672,9 +672,9 @@ class ManualFreeze(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            current_or_upcoming_windows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManualFreezeCurrentOrUpcomingWindowArgs']]]]] = None,
+            current_or_upcoming_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManualFreezeCurrentOrUpcomingWindowArgs', 'ManualFreezeCurrentOrUpcomingWindowArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            freeze_windows: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManualFreezeFreezeWindowArgs']]]]] = None,
+            freeze_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ManualFreezeFreezeWindowArgs', 'ManualFreezeFreezeWindowArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -692,9 +692,9 @@ class ManualFreeze(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier of the freeze
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManualFreezeCurrentOrUpcomingWindowArgs']]]] current_or_upcoming_windows: Current or upcoming windows
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManualFreezeCurrentOrUpcomingWindowArgs', 'ManualFreezeCurrentOrUpcomingWindowArgsDict']]]] current_or_upcoming_windows: Current or upcoming windows
         :param pulumi.Input[str] description: Description of the freeze
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManualFreezeFreezeWindowArgs']]]] freeze_windows: Freeze windows in the freeze response
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ManualFreezeFreezeWindowArgs', 'ManualFreezeFreezeWindowArgsDict']]]] freeze_windows: Freeze windows in the freeze response
         :param pulumi.Input[str] identifier: Identifier of the freeze
         :param pulumi.Input[str] name: Name of the freeze
         :param pulumi.Input[str] org_id: Organization identifier of the freeze

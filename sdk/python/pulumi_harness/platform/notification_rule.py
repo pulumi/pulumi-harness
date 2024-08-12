@@ -162,7 +162,7 @@ class NotificationRule(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request: Optional[pulumi.Input[pulumi.InputType['NotificationRuleRequestArgs']]] = None,
+                 request: Optional[pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating a Notification Rule.
@@ -179,87 +179,87 @@ class NotificationRule(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.NotificationRuleRequestArgs(
-                name="name",
-                notification_method=harness.platform.NotificationRuleRequestNotificationMethodArgs(
-                    type="Slack",
-                    spec=json.dumps({
+            request={
+                "name": "name",
+                "notification_method": {
+                    "type": "Slack",
+                    "spec": json.dumps({
                         "webhook_url": "http://myslackwebhookurl.com",
                         "user_groups": ["account.test"],
                     }),
-                ),
-                type="ServiceLevelObjective",
-                conditions=[
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ErrorBudgetBurnRate",
-                        spec=json.dumps({
+                },
+                "type": "ServiceLevelObjective",
+                "conditions": [
+                    {
+                        "type": "ErrorBudgetBurnRate",
+                        "spec": json.dumps({
                             "threshold": 1,
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ErrorBudgetRemainingPercentage",
-                        spec=json.dumps({
+                    },
+                    {
+                        "type": "ErrorBudgetRemainingPercentage",
+                        "spec": json.dumps({
                             "threshold": 30,
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ErrorBudgetRemainingMinutes",
-                        spec=json.dumps({
+                    },
+                    {
+                        "type": "ErrorBudgetRemainingMinutes",
+                        "spec": json.dumps({
                             "threshold": 300,
                         }),
-                    ),
+                    },
                 ],
-            ))
+            })
         # Sample resource for Monitored Service
         example1 = harness.platform.NotificationRule("example1",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.NotificationRuleRequestArgs(
-                name="name",
-                notification_method=harness.platform.NotificationRuleRequestNotificationMethodArgs(
-                    type="Slack",
-                    spec=json.dumps({
+            request={
+                "name": "name",
+                "notification_method": {
+                    "type": "Slack",
+                    "spec": json.dumps({
                         "webhook_url": "http://myslackwebhookurl.com",
                         "user_groups": ["account.test"],
                     }),
-                ),
-                type="MonitoredService",
-                conditions=[
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ChangeImpact",
-                        spec=json.dumps({
+                },
+                "type": "MonitoredService",
+                "conditions": [
+                    {
+                        "type": "ChangeImpact",
+                        "spec": json.dumps({
                             "threshold": 33,
                             "period": "30m",
-                            "changeCategories": [
+                            "change_categories": [
                                 "Deployment",
                                 "Infrastructure",
                             ],
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="HealthScore",
-                        spec=json.dumps({
+                    },
+                    {
+                        "type": "HealthScore",
+                        "spec": json.dumps({
                             "threshold": 33,
                             "period": "30m",
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ChangeObserved",
-                        spec=json.dumps({
-                            "changeCategories": [
+                    },
+                    {
+                        "type": "ChangeObserved",
+                        "spec": json.dumps({
+                            "change_categories": [
                                 "Deployment",
                                 "Alert",
                                 "ChaosExperiment",
                             ],
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="DeploymentImpactReport",
-                        spec=json.dumps({}),
-                    ),
+                    },
+                    {
+                        "type": "DeploymentImpactReport",
+                        "spec": json.dumps({}),
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -287,7 +287,7 @@ class NotificationRule(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier of the Notification Rule.
         :param pulumi.Input[str] org_id: Identifier of the organization in which the Notification Rule is configured.
         :param pulumi.Input[str] project_id: Identifier of the project in which the Notification Rule is configured.
-        :param pulumi.Input[pulumi.InputType['NotificationRuleRequestArgs']] request: Request for creating or updating Notification Rule.
+        :param pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']] request: Request for creating or updating Notification Rule.
         """
         ...
     @overload
@@ -310,87 +310,87 @@ class NotificationRule(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.NotificationRuleRequestArgs(
-                name="name",
-                notification_method=harness.platform.NotificationRuleRequestNotificationMethodArgs(
-                    type="Slack",
-                    spec=json.dumps({
+            request={
+                "name": "name",
+                "notification_method": {
+                    "type": "Slack",
+                    "spec": json.dumps({
                         "webhook_url": "http://myslackwebhookurl.com",
                         "user_groups": ["account.test"],
                     }),
-                ),
-                type="ServiceLevelObjective",
-                conditions=[
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ErrorBudgetBurnRate",
-                        spec=json.dumps({
+                },
+                "type": "ServiceLevelObjective",
+                "conditions": [
+                    {
+                        "type": "ErrorBudgetBurnRate",
+                        "spec": json.dumps({
                             "threshold": 1,
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ErrorBudgetRemainingPercentage",
-                        spec=json.dumps({
+                    },
+                    {
+                        "type": "ErrorBudgetRemainingPercentage",
+                        "spec": json.dumps({
                             "threshold": 30,
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ErrorBudgetRemainingMinutes",
-                        spec=json.dumps({
+                    },
+                    {
+                        "type": "ErrorBudgetRemainingMinutes",
+                        "spec": json.dumps({
                             "threshold": 300,
                         }),
-                    ),
+                    },
                 ],
-            ))
+            })
         # Sample resource for Monitored Service
         example1 = harness.platform.NotificationRule("example1",
             org_id="org_id",
             project_id="project_id",
             identifier="identifier",
-            request=harness.platform.NotificationRuleRequestArgs(
-                name="name",
-                notification_method=harness.platform.NotificationRuleRequestNotificationMethodArgs(
-                    type="Slack",
-                    spec=json.dumps({
+            request={
+                "name": "name",
+                "notification_method": {
+                    "type": "Slack",
+                    "spec": json.dumps({
                         "webhook_url": "http://myslackwebhookurl.com",
                         "user_groups": ["account.test"],
                     }),
-                ),
-                type="MonitoredService",
-                conditions=[
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ChangeImpact",
-                        spec=json.dumps({
+                },
+                "type": "MonitoredService",
+                "conditions": [
+                    {
+                        "type": "ChangeImpact",
+                        "spec": json.dumps({
                             "threshold": 33,
                             "period": "30m",
-                            "changeCategories": [
+                            "change_categories": [
                                 "Deployment",
                                 "Infrastructure",
                             ],
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="HealthScore",
-                        spec=json.dumps({
+                    },
+                    {
+                        "type": "HealthScore",
+                        "spec": json.dumps({
                             "threshold": 33,
                             "period": "30m",
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="ChangeObserved",
-                        spec=json.dumps({
-                            "changeCategories": [
+                    },
+                    {
+                        "type": "ChangeObserved",
+                        "spec": json.dumps({
+                            "change_categories": [
                                 "Deployment",
                                 "Alert",
                                 "ChaosExperiment",
                             ],
                         }),
-                    ),
-                    harness.platform.NotificationRuleRequestConditionArgs(
-                        type="DeploymentImpactReport",
-                        spec=json.dumps({}),
-                    ),
+                    },
+                    {
+                        "type": "DeploymentImpactReport",
+                        "spec": json.dumps({}),
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -431,7 +431,7 @@ class NotificationRule(pulumi.CustomResource):
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 request: Optional[pulumi.Input[pulumi.InputType['NotificationRuleRequestArgs']]] = None,
+                 request: Optional[pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -464,7 +464,7 @@ class NotificationRule(pulumi.CustomResource):
             identifier: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
-            request: Optional[pulumi.Input[pulumi.InputType['NotificationRuleRequestArgs']]] = None) -> 'NotificationRule':
+            request: Optional[pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']]] = None) -> 'NotificationRule':
         """
         Get an existing NotificationRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -475,7 +475,7 @@ class NotificationRule(pulumi.CustomResource):
         :param pulumi.Input[str] identifier: Identifier of the Notification Rule.
         :param pulumi.Input[str] org_id: Identifier of the organization in which the Notification Rule is configured.
         :param pulumi.Input[str] project_id: Identifier of the project in which the Notification Rule is configured.
-        :param pulumi.Input[pulumi.InputType['NotificationRuleRequestArgs']] request: Request for creating or updating Notification Rule.
+        :param pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']] request: Request for creating or updating Notification Rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

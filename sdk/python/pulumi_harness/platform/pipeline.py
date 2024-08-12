@@ -448,13 +448,13 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']]] = None,
-                 git_import_info: Optional[pulumi.Input[pulumi.InputType['PipelineGitImportInfoArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
+                 git_import_info: Optional[pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 pipeline_import_request: Optional[pulumi.Input[pulumi.InputType['PipelinePipelineImportRequestArgs']]] = None,
+                 pipeline_import_request: Optional[pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_applied: Optional[pulumi.Input[bool]] = None,
@@ -475,14 +475,14 @@ class Pipeline(pulumi.CustomResource):
             org_id="orgIdentifier",
             project_id="projectIdentifier",
             name="name",
-            git_details=harness.platform.PipelineGitDetailsArgs(
-                branch_name="branchName",
-                commit_message="commitMessage",
-                file_path="filePath",
-                connector_ref="connectorRef",
-                store_type="REMOTE",
-                repo_name="repoName",
-            ),
+            git_details={
+                "branch_name": "branchName",
+                "commit_message": "commitMessage",
+                "file_path": "filePath",
+                "connector_ref": "connectorRef",
+                "store_type": "REMOTE",
+                "repo_name": "repoName",
+            },
             tags={},
             yaml=\"\"\"pipeline:
             name: name
@@ -580,16 +580,16 @@ class Pipeline(pulumi.CustomResource):
             project_id="V",
             name="gitx",
             import_from_git=True,
-            git_import_info=harness.platform.PipelineGitImportInfoArgs(
-                branch_name="main",
-                file_path=".harness/gitx.yaml",
-                connector_ref="account.DoNotDeleteGithub",
-                repo_name="open-repo",
-            ),
-            pipeline_import_request=harness.platform.PipelinePipelineImportRequestArgs(
-                pipeline_name="gitx",
-                pipeline_description="Pipeline Description",
-            ))
+            git_import_info={
+                "branch_name": "main",
+                "file_path": ".harness/gitx.yaml",
+                "connector_ref": "account.DoNotDeleteGithub",
+                "repo_name": "open-repo",
+            },
+            pipeline_import_request={
+                "pipeline_name": "gitx",
+                "pipeline_description": "Pipeline Description",
+            })
         ```
 
         ## Import
@@ -603,13 +603,13 @@ class Pipeline(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
-        :param pulumi.Input[pulumi.InputType['PipelineGitImportInfoArgs']] git_import_info: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[pulumi.InputType['PipelinePipelineImportRequestArgs']] pipeline_import_request: Contains parameters for importing a pipeline
+        :param pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']] pipeline_import_request: Contains parameters for importing a pipeline
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
         :param pulumi.Input[bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
@@ -636,14 +636,14 @@ class Pipeline(pulumi.CustomResource):
             org_id="orgIdentifier",
             project_id="projectIdentifier",
             name="name",
-            git_details=harness.platform.PipelineGitDetailsArgs(
-                branch_name="branchName",
-                commit_message="commitMessage",
-                file_path="filePath",
-                connector_ref="connectorRef",
-                store_type="REMOTE",
-                repo_name="repoName",
-            ),
+            git_details={
+                "branch_name": "branchName",
+                "commit_message": "commitMessage",
+                "file_path": "filePath",
+                "connector_ref": "connectorRef",
+                "store_type": "REMOTE",
+                "repo_name": "repoName",
+            },
             tags={},
             yaml=\"\"\"pipeline:
             name: name
@@ -741,16 +741,16 @@ class Pipeline(pulumi.CustomResource):
             project_id="V",
             name="gitx",
             import_from_git=True,
-            git_import_info=harness.platform.PipelineGitImportInfoArgs(
-                branch_name="main",
-                file_path=".harness/gitx.yaml",
-                connector_ref="account.DoNotDeleteGithub",
-                repo_name="open-repo",
-            ),
-            pipeline_import_request=harness.platform.PipelinePipelineImportRequestArgs(
-                pipeline_name="gitx",
-                pipeline_description="Pipeline Description",
-            ))
+            git_import_info={
+                "branch_name": "main",
+                "file_path": ".harness/gitx.yaml",
+                "connector_ref": "account.DoNotDeleteGithub",
+                "repo_name": "open-repo",
+            },
+            pipeline_import_request={
+                "pipeline_name": "gitx",
+                "pipeline_description": "Pipeline Description",
+            })
         ```
 
         ## Import
@@ -777,13 +777,13 @@ class Pipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']]] = None,
-                 git_import_info: Optional[pulumi.Input[pulumi.InputType['PipelineGitImportInfoArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
+                 git_import_info: Optional[pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 pipeline_import_request: Optional[pulumi.Input[pulumi.InputType['PipelinePipelineImportRequestArgs']]] = None,
+                 pipeline_import_request: Optional[pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_applied: Optional[pulumi.Input[bool]] = None,
@@ -828,13 +828,13 @@ class Pipeline(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            git_details: Optional[pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']]] = None,
-            git_import_info: Optional[pulumi.Input[pulumi.InputType['PipelineGitImportInfoArgs']]] = None,
+            git_details: Optional[pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']]] = None,
+            git_import_info: Optional[pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             import_from_git: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            pipeline_import_request: Optional[pulumi.Input[pulumi.InputType['PipelinePipelineImportRequestArgs']]] = None,
+            pipeline_import_request: Optional[pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_applied: Optional[pulumi.Input[bool]] = None,
@@ -848,13 +848,13 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[pulumi.InputType['PipelineGitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
-        :param pulumi.Input[pulumi.InputType['PipelineGitImportInfoArgs']] git_import_info: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[pulumi.InputType['PipelinePipelineImportRequestArgs']] pipeline_import_request: Contains parameters for importing a pipeline
+        :param pulumi.Input[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict']] pipeline_import_request: Contains parameters for importing a pipeline
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
         :param pulumi.Input[bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.

@@ -574,7 +574,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsApplicationsApplicationArgs']]]]] = None,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -600,18 +600,18 @@ class GitOpsApplications(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.GitOpsApplications("example",
-            applications=[harness.platform.GitOpsApplicationsApplicationArgs(
-                metadatas=[harness.platform.GitOpsApplicationsApplicationMetadataArgs(
-                    annotations={},
-                    labels={
-                        "harness.io/serviceRef": "service_id",
-                        "harness.io/envRef": "env_id",
+            applications=[{
+                "metadatas": [{
+                    "annotations": {},
+                    "labels": {
+                        "harness_io_service_ref": "service_id",
+                        "harness_io_env_ref": "env_id",
                     },
-                    name="appname123",
-                )],
-                specs=[harness.platform.GitOpsApplicationsApplicationSpecArgs(
-                    sync_policies=[harness.platform.GitOpsApplicationsApplicationSpecSyncPolicyArgs(
-                        sync_options=[
+                    "name": "appname123",
+                }],
+                "specs": [{
+                    "sync_policies": [{
+                        "sync_options": [
                             "PrunePropagationPolicy=undefined",
                             "CreateNamespace=false",
                             "Validate=false",
@@ -622,18 +622,18 @@ class GitOpsApplications(pulumi.CustomResource):
                             "Replace=false",
                             "retry=false",
                         ],
-                    )],
-                    sources=[harness.platform.GitOpsApplicationsApplicationSpecSourceArgs(
-                        target_revision="master",
-                        repo_url="https://github.com/willycoll/argocd-example-apps.git",
-                        path="helm-guestbook",
-                    )],
-                    destinations=[harness.platform.GitOpsApplicationsApplicationSpecDestinationArgs(
-                        namespace="namespace-123",
-                        server="https://1.3.4.5",
-                    )],
-                )],
-            )],
+                    }],
+                    "sources": [{
+                        "target_revision": "master",
+                        "repo_url": "https://github.com/willycoll/argocd-example-apps.git",
+                        "path": "helm-guestbook",
+                    }],
+                    "destinations": [{
+                        "namespace": "namespace-123",
+                        "server": "https://1.3.4.5",
+                    }],
+                }],
+            }],
             project_id="project_id",
             org_id="org_id",
             account_id="account_id",
@@ -655,7 +655,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps application.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsApplicationsApplicationArgs']]]] applications: Definition of the GitOps application resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[str] cluster_id: Cluster identifier of the GitOps application.
         :param pulumi.Input[str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[str] kind: Kind of the GitOps application.
@@ -687,18 +687,18 @@ class GitOpsApplications(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.GitOpsApplications("example",
-            applications=[harness.platform.GitOpsApplicationsApplicationArgs(
-                metadatas=[harness.platform.GitOpsApplicationsApplicationMetadataArgs(
-                    annotations={},
-                    labels={
-                        "harness.io/serviceRef": "service_id",
-                        "harness.io/envRef": "env_id",
+            applications=[{
+                "metadatas": [{
+                    "annotations": {},
+                    "labels": {
+                        "harness_io_service_ref": "service_id",
+                        "harness_io_env_ref": "env_id",
                     },
-                    name="appname123",
-                )],
-                specs=[harness.platform.GitOpsApplicationsApplicationSpecArgs(
-                    sync_policies=[harness.platform.GitOpsApplicationsApplicationSpecSyncPolicyArgs(
-                        sync_options=[
+                    "name": "appname123",
+                }],
+                "specs": [{
+                    "sync_policies": [{
+                        "sync_options": [
                             "PrunePropagationPolicy=undefined",
                             "CreateNamespace=false",
                             "Validate=false",
@@ -709,18 +709,18 @@ class GitOpsApplications(pulumi.CustomResource):
                             "Replace=false",
                             "retry=false",
                         ],
-                    )],
-                    sources=[harness.platform.GitOpsApplicationsApplicationSpecSourceArgs(
-                        target_revision="master",
-                        repo_url="https://github.com/willycoll/argocd-example-apps.git",
-                        path="helm-guestbook",
-                    )],
-                    destinations=[harness.platform.GitOpsApplicationsApplicationSpecDestinationArgs(
-                        namespace="namespace-123",
-                        server="https://1.3.4.5",
-                    )],
-                )],
-            )],
+                    }],
+                    "sources": [{
+                        "target_revision": "master",
+                        "repo_url": "https://github.com/willycoll/argocd-example-apps.git",
+                        "path": "helm-guestbook",
+                    }],
+                    "destinations": [{
+                        "namespace": "namespace-123",
+                        "server": "https://1.3.4.5",
+                    }],
+                }],
+            }],
             project_id="project_id",
             org_id="org_id",
             account_id="account_id",
@@ -755,7 +755,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsApplicationsApplicationArgs']]]]] = None,
+                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -820,7 +820,7 @@ class GitOpsApplications(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             agent_id: Optional[pulumi.Input[str]] = None,
-            applications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsApplicationsApplicationArgs']]]]] = None,
+            applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             kind: Optional[pulumi.Input[str]] = None,
@@ -844,7 +844,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps application.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitOpsApplicationsApplicationArgs']]]] applications: Definition of the GitOps application resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[str] cluster_id: Cluster identifier of the GitOps application.
         :param pulumi.Input[str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[str] kind: Kind of the GitOps application.

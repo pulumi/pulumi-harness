@@ -123,7 +123,7 @@ def get_gitops_gnupg(account_id: Optional[str] = None,
                      identifier: Optional[str] = None,
                      org_id: Optional[str] = None,
                      project_id: Optional[str] = None,
-                     requests: Optional[Sequence[pulumi.InputType['GetGitopsGnupgRequestArgs']]] = None,
+                     requests: Optional[Sequence[Union['GetGitopsGnupgRequestArgs', 'GetGitopsGnupgRequestArgsDict']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsGnupgResult:
     """
     Data source for fetching a Harness GitOps GPG public key.
@@ -145,7 +145,7 @@ def get_gitops_gnupg(account_id: Optional[str] = None,
     :param str identifier: Identifier for the GnuPG Key.
     :param str org_id: Organization Identifier for the GnuPG Key.
     :param str project_id: Project Identifier for the GnuPG Key.
-    :param Sequence[pulumi.InputType['GetGitopsGnupgRequestArgs']] requests: GnuPGPublicKey is a representation of a GnuPG public key
+    :param Sequence[Union['GetGitopsGnupgRequestArgs', 'GetGitopsGnupgRequestArgsDict']] requests: GnuPGPublicKey is a representation of a GnuPG public key
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -173,7 +173,7 @@ def get_gitops_gnupg_output(account_id: Optional[pulumi.Input[str]] = None,
                             identifier: Optional[pulumi.Input[str]] = None,
                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            requests: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGitopsGnupgRequestArgs']]]]] = None,
+                            requests: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsGnupgRequestArgs', 'GetGitopsGnupgRequestArgsDict']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsGnupgResult]:
     """
     Data source for fetching a Harness GitOps GPG public key.
@@ -195,6 +195,6 @@ def get_gitops_gnupg_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str identifier: Identifier for the GnuPG Key.
     :param str org_id: Organization Identifier for the GnuPG Key.
     :param str project_id: Project Identifier for the GnuPG Key.
-    :param Sequence[pulumi.InputType['GetGitopsGnupgRequestArgs']] requests: GnuPGPublicKey is a representation of a GnuPG public key
+    :param Sequence[Union['GetGitopsGnupgRequestArgs', 'GetGitopsGnupgRequestArgsDict']] requests: GnuPGPublicKey is a representation of a GnuPG public key
     """
     ...

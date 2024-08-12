@@ -228,7 +228,7 @@ public class SumologicConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SumologicConnector(String name) {
+    public SumologicConnector(java.lang.String name) {
         this(name, SumologicConnectorArgs.Empty);
     }
     /**
@@ -236,7 +236,7 @@ public class SumologicConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SumologicConnector(String name, SumologicConnectorArgs args) {
+    public SumologicConnector(java.lang.String name, SumologicConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -245,15 +245,22 @@ public class SumologicConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SumologicConnector(String name, SumologicConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/sumologicConnector:SumologicConnector", name, args == null ? SumologicConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SumologicConnector(java.lang.String name, SumologicConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/sumologicConnector:SumologicConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SumologicConnector(String name, Output<String> id, @Nullable SumologicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/sumologicConnector:SumologicConnector", name, state, makeResourceOptions(options, id));
+    private SumologicConnector(java.lang.String name, Output<java.lang.String> id, @Nullable SumologicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/sumologicConnector:SumologicConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SumologicConnectorArgs makeArgs(SumologicConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SumologicConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -269,7 +276,7 @@ public class SumologicConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SumologicConnector get(String name, Output<String> id, @Nullable SumologicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SumologicConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable SumologicConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SumologicConnector(name, id, state, options);
     }
 }

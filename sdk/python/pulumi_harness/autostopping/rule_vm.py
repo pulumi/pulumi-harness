@@ -330,12 +330,12 @@ class RuleVm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmDependArgs']]]]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['RuleVmFilterArgs']]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmHttpArgs']]]]] = None,
+                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+                 filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
+                 https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmTcpArgs']]]]] = None,
+                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
                  use_spot: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -351,64 +351,64 @@ class RuleVm(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
-            filter=harness.autostopping.RuleVmFilterArgs(
-                vm_ids=["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
-                regions=["useast2"],
-            ),
-            https=[harness.autostopping.RuleVmHttpArgs(
-                proxy_id="proxy_id",
-                routings=[
-                    harness.autostopping.RuleVmHttpRoutingArgs(
-                        source_protocol="https",
-                        target_protocol="https",
-                        source_port=443,
-                        target_port=443,
-                        action="forward",
-                    ),
-                    harness.autostopping.RuleVmHttpRoutingArgs(
-                        source_protocol="http",
-                        target_protocol="http",
-                        source_port=80,
-                        target_port=80,
-                        action="forward",
-                    ),
+            filter={
+                "vm_ids": ["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
+                "regions": ["useast2"],
+            },
+            https=[{
+                "proxy_id": "proxy_id",
+                "routings": [
+                    {
+                        "source_protocol": "https",
+                        "target_protocol": "https",
+                        "source_port": 443,
+                        "target_port": 443,
+                        "action": "forward",
+                    },
+                    {
+                        "source_protocol": "http",
+                        "target_protocol": "http",
+                        "source_port": 80,
+                        "target_port": 80,
+                        "action": "forward",
+                    },
                 ],
-                healths=[harness.autostopping.RuleVmHttpHealthArgs(
-                    protocol="http",
-                    port=80,
-                    path="/",
-                    timeout=30,
-                    status_code_from=200,
-                    status_code_to=299,
-                )],
-            )],
-            tcps=[harness.autostopping.RuleVmTcpArgs(
-                proxy_id="proxy_id",
-                sshes=[harness.autostopping.RuleVmTcpSshArgs(
-                    port=22,
-                )],
-                rdps=[harness.autostopping.RuleVmTcpRdpArgs(
-                    port=3389,
-                )],
-                forward_rules=[harness.autostopping.RuleVmTcpForwardRuleArgs(
-                    port=2233,
-                )],
-            )],
-            depends=[harness.autostopping.RuleVmDependArgs(
-                rule_id=24576,
-                delay_in_sec=5,
-            )])
+                "healths": [{
+                    "protocol": "http",
+                    "port": 80,
+                    "path": "/",
+                    "timeout": 30,
+                    "status_code_from": 200,
+                    "status_code_to": 299,
+                }],
+            }],
+            tcps=[{
+                "proxy_id": "proxy_id",
+                "sshes": [{
+                    "port": 22,
+                }],
+                "rdps": [{
+                    "port": 3389,
+                }],
+                "forward_rules": [{
+                    "port": 2233,
+                }],
+            }],
+            depends=[{
+                "rule_id": 24576,
+                "delay_in_sec": 5,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmDependArgs']]]] depends: Dependent rules
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmHttpArgs']]]] https: Http routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]] https: Http routing configuration
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmTcpArgs']]]] tcps: TCP routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]] tcps: TCP routing configuration
         :param pulumi.Input[bool] use_spot: Boolean that indicates whether the selected instances should be converted to spot vm
         """
         ...
@@ -430,53 +430,53 @@ class RuleVm(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
-            filter=harness.autostopping.RuleVmFilterArgs(
-                vm_ids=["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
-                regions=["useast2"],
-            ),
-            https=[harness.autostopping.RuleVmHttpArgs(
-                proxy_id="proxy_id",
-                routings=[
-                    harness.autostopping.RuleVmHttpRoutingArgs(
-                        source_protocol="https",
-                        target_protocol="https",
-                        source_port=443,
-                        target_port=443,
-                        action="forward",
-                    ),
-                    harness.autostopping.RuleVmHttpRoutingArgs(
-                        source_protocol="http",
-                        target_protocol="http",
-                        source_port=80,
-                        target_port=80,
-                        action="forward",
-                    ),
+            filter={
+                "vm_ids": ["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
+                "regions": ["useast2"],
+            },
+            https=[{
+                "proxy_id": "proxy_id",
+                "routings": [
+                    {
+                        "source_protocol": "https",
+                        "target_protocol": "https",
+                        "source_port": 443,
+                        "target_port": 443,
+                        "action": "forward",
+                    },
+                    {
+                        "source_protocol": "http",
+                        "target_protocol": "http",
+                        "source_port": 80,
+                        "target_port": 80,
+                        "action": "forward",
+                    },
                 ],
-                healths=[harness.autostopping.RuleVmHttpHealthArgs(
-                    protocol="http",
-                    port=80,
-                    path="/",
-                    timeout=30,
-                    status_code_from=200,
-                    status_code_to=299,
-                )],
-            )],
-            tcps=[harness.autostopping.RuleVmTcpArgs(
-                proxy_id="proxy_id",
-                sshes=[harness.autostopping.RuleVmTcpSshArgs(
-                    port=22,
-                )],
-                rdps=[harness.autostopping.RuleVmTcpRdpArgs(
-                    port=3389,
-                )],
-                forward_rules=[harness.autostopping.RuleVmTcpForwardRuleArgs(
-                    port=2233,
-                )],
-            )],
-            depends=[harness.autostopping.RuleVmDependArgs(
-                rule_id=24576,
-                delay_in_sec=5,
-            )])
+                "healths": [{
+                    "protocol": "http",
+                    "port": 80,
+                    "path": "/",
+                    "timeout": 30,
+                    "status_code_from": 200,
+                    "status_code_to": 299,
+                }],
+            }],
+            tcps=[{
+                "proxy_id": "proxy_id",
+                "sshes": [{
+                    "port": 22,
+                }],
+                "rdps": [{
+                    "port": 3389,
+                }],
+                "forward_rules": [{
+                    "port": 2233,
+                }],
+            }],
+            depends=[{
+                "rule_id": 24576,
+                "delay_in_sec": 5,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -496,12 +496,12 @@ class RuleVm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmDependArgs']]]]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['RuleVmFilterArgs']]] = None,
-                 https: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmHttpArgs']]]]] = None,
+                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+                 filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
+                 https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmTcpArgs']]]]] = None,
+                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
                  use_spot: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -538,13 +538,13 @@ class RuleVm(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_connector_id: Optional[pulumi.Input[str]] = None,
             custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            depends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmDependArgs']]]]] = None,
-            filter: Optional[pulumi.Input[pulumi.InputType['RuleVmFilterArgs']]] = None,
-            https: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmHttpArgs']]]]] = None,
+            depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+            filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
+            https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[float]] = None,
             idle_time_mins: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            tcps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmTcpArgs']]]]] = None,
+            tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]]] = None,
             use_spot: Optional[pulumi.Input[bool]] = None) -> 'RuleVm':
         """
         Get an existing RuleVm resource's state with the given name, id, and optional extra
@@ -555,12 +555,12 @@ class RuleVm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmDependArgs']]]] depends: Dependent rules
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmHttpArgs']]]] https: Http routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]] https: Http routing configuration
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleVmTcpArgs']]]] tcps: TCP routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict']]]] tcps: TCP routing configuration
         :param pulumi.Input[bool] use_spot: Boolean that indicates whether the selected instances should be converted to spot vm
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

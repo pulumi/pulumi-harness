@@ -391,7 +391,7 @@ class Environment(pulumi.CustomResource):
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['EnvironmentGitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -596,13 +596,13 @@ class Environment(pulumi.CustomResource):
             description="test",
             org_id="org_id",
             project_id="project_id",
-            git_details=harness.platform.EnvironmentGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ),
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            },
             yaml=\"\"\"environment:
           name: env
           identifier: env
@@ -644,14 +644,14 @@ class Environment(pulumi.CustomResource):
             identifier="identifier",
             name="name",
             type="PreProduction",
-            git_details=harness.platform.EnvironmentGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-                import_from_git=True,
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+                "import_from_git": True,
+            })
         ```
 
         ## Import
@@ -679,7 +679,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environments
-        :param pulumi.Input[pulumi.InputType['EnvironmentGitDetailsArgs']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -891,13 +891,13 @@ class Environment(pulumi.CustomResource):
             description="test",
             org_id="org_id",
             project_id="project_id",
-            git_details=harness.platform.EnvironmentGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ),
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            },
             yaml=\"\"\"environment:
           name: env
           identifier: env
@@ -939,14 +939,14 @@ class Environment(pulumi.CustomResource):
             identifier="identifier",
             name="name",
             type="PreProduction",
-            git_details=harness.platform.EnvironmentGitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-                import_from_git=True,
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+                "import_from_git": True,
+            })
         ```
 
         ## Import
@@ -987,7 +987,7 @@ class Environment(pulumi.CustomResource):
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['EnvironmentGitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -1032,7 +1032,7 @@ class Environment(pulumi.CustomResource):
             color: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[str]] = None,
-            git_details: Optional[pulumi.Input[pulumi.InputType['EnvironmentGitDetailsArgs']]] = None,
+            git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -1050,7 +1050,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environments
-        :param pulumi.Input[pulumi.InputType['EnvironmentGitDetailsArgs']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.

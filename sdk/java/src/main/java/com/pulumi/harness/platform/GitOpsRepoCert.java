@@ -166,7 +166,7 @@ public class GitOpsRepoCert extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GitOpsRepoCert(String name) {
+    public GitOpsRepoCert(java.lang.String name) {
         this(name, GitOpsRepoCertArgs.Empty);
     }
     /**
@@ -174,7 +174,7 @@ public class GitOpsRepoCert extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GitOpsRepoCert(String name, GitOpsRepoCertArgs args) {
+    public GitOpsRepoCert(java.lang.String name, GitOpsRepoCertArgs args) {
         this(name, args, null);
     }
     /**
@@ -183,15 +183,22 @@ public class GitOpsRepoCert extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GitOpsRepoCert(String name, GitOpsRepoCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/gitOpsRepoCert:GitOpsRepoCert", name, args == null ? GitOpsRepoCertArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GitOpsRepoCert(java.lang.String name, GitOpsRepoCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/gitOpsRepoCert:GitOpsRepoCert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GitOpsRepoCert(String name, Output<String> id, @Nullable GitOpsRepoCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/gitOpsRepoCert:GitOpsRepoCert", name, state, makeResourceOptions(options, id));
+    private GitOpsRepoCert(java.lang.String name, Output<java.lang.String> id, @Nullable GitOpsRepoCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/gitOpsRepoCert:GitOpsRepoCert", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GitOpsRepoCertArgs makeArgs(GitOpsRepoCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GitOpsRepoCertArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +214,7 @@ public class GitOpsRepoCert extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GitOpsRepoCert get(String name, Output<String> id, @Nullable GitOpsRepoCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GitOpsRepoCert get(java.lang.String name, Output<java.lang.String> id, @Nullable GitOpsRepoCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GitOpsRepoCert(name, id, state, options);
     }
 }

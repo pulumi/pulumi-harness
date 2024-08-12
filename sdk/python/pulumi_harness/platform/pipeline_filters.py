@@ -255,7 +255,7 @@ class PipelineFilters(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersFilterPropertiesArgs']]] = None,
+                 filter_properties: Optional[pulumi.Input[Union['PipelineFiltersFilterPropertiesArgs', 'PipelineFiltersFilterPropertiesArgsDict']]] = None,
                  filter_visibility: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -278,15 +278,15 @@ class PipelineFilters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="PipelineSetup",
-            filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
-                name="pipeline_name",
-                description="pipeline_description",
-                pipeline_identifiers=[
+            filter_properties={
+                "name": "pipeline_name",
+                "description": "pipeline_description",
+                "pipeline_identifiers": [
                     "id1",
                     "id2",
                 ],
-                filter_type="PipelineSetup",
-            ),
+                "filter_type": "PipelineSetup",
+            },
             filter_visibility="EveryOne")
         # pipeline filter with tags
         example_with_tags = harness.platform.PipelineFilters("example_with_tags",
@@ -295,9 +295,9 @@ class PipelineFilters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="PipelineSetup",
-            filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
-                filter_type="PipelineSetup",
-                pipeline_tags=[
+            filter_properties={
+                "filter_type": "PipelineSetup",
+                "pipeline_tags": [
                     {
                         "key": "tag1",
                         "value": "123",
@@ -307,29 +307,29 @@ class PipelineFilters(pulumi.CustomResource):
                         "value": "456",
                     },
                 ],
-                module_properties=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesArgs(
-                    cd=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs(
-                        deployment_types="Kubernetes",
-                        service_names=[
+                "module_properties": {
+                    "cd": {
+                        "deployment_types": "Kubernetes",
+                        "service_names": [
                             "service1",
                             "service2",
                         ],
-                        environment_names=[
+                        "environment_names": [
                             "env1",
                             "env2",
                         ],
-                        artifact_display_names=[
+                        "artifact_display_names": [
                             "artificatname1",
                             "artifact2",
                         ],
-                    ),
-                    ci=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCiArgs(
-                        build_type="branch",
-                        branch="branch123",
-                        repo_names="repo1234",
-                    ),
-                ),
-            ))
+                    },
+                    "ci": {
+                        "build_type": "branch",
+                        "branch": "branch123",
+                        "repo_names": "repo1234",
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -354,7 +354,7 @@ class PipelineFilters(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PipelineFiltersFilterPropertiesArgs']] filter_properties: Properties of the filters entity defined in Harness.
+        :param pulumi.Input[Union['PipelineFiltersFilterPropertiesArgs', 'PipelineFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the pipeline filters.
@@ -383,15 +383,15 @@ class PipelineFilters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="PipelineSetup",
-            filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
-                name="pipeline_name",
-                description="pipeline_description",
-                pipeline_identifiers=[
+            filter_properties={
+                "name": "pipeline_name",
+                "description": "pipeline_description",
+                "pipeline_identifiers": [
                     "id1",
                     "id2",
                 ],
-                filter_type="PipelineSetup",
-            ),
+                "filter_type": "PipelineSetup",
+            },
             filter_visibility="EveryOne")
         # pipeline filter with tags
         example_with_tags = harness.platform.PipelineFilters("example_with_tags",
@@ -400,9 +400,9 @@ class PipelineFilters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="PipelineSetup",
-            filter_properties=harness.platform.PipelineFiltersFilterPropertiesArgs(
-                filter_type="PipelineSetup",
-                pipeline_tags=[
+            filter_properties={
+                "filter_type": "PipelineSetup",
+                "pipeline_tags": [
                     {
                         "key": "tag1",
                         "value": "123",
@@ -412,29 +412,29 @@ class PipelineFilters(pulumi.CustomResource):
                         "value": "456",
                     },
                 ],
-                module_properties=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesArgs(
-                    cd=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs(
-                        deployment_types="Kubernetes",
-                        service_names=[
+                "module_properties": {
+                    "cd": {
+                        "deployment_types": "Kubernetes",
+                        "service_names": [
                             "service1",
                             "service2",
                         ],
-                        environment_names=[
+                        "environment_names": [
                             "env1",
                             "env2",
                         ],
-                        artifact_display_names=[
+                        "artifact_display_names": [
                             "artificatname1",
                             "artifact2",
                         ],
-                    ),
-                    ci=harness.platform.PipelineFiltersFilterPropertiesModulePropertiesCiArgs(
-                        build_type="branch",
-                        branch="branch123",
-                        repo_names="repo1234",
-                    ),
-                ),
-            ))
+                    },
+                    "ci": {
+                        "build_type": "branch",
+                        "branch": "branch123",
+                        "repo_names": "repo1234",
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -472,7 +472,7 @@ class PipelineFilters(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersFilterPropertiesArgs']]] = None,
+                 filter_properties: Optional[pulumi.Input[Union['PipelineFiltersFilterPropertiesArgs', 'PipelineFiltersFilterPropertiesArgsDict']]] = None,
                  filter_visibility: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -511,7 +511,7 @@ class PipelineFilters(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            filter_properties: Optional[pulumi.Input[pulumi.InputType['PipelineFiltersFilterPropertiesArgs']]] = None,
+            filter_properties: Optional[pulumi.Input[Union['PipelineFiltersFilterPropertiesArgs', 'PipelineFiltersFilterPropertiesArgsDict']]] = None,
             filter_visibility: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -525,7 +525,7 @@ class PipelineFilters(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PipelineFiltersFilterPropertiesArgs']] filter_properties: Properties of the filters entity defined in Harness.
+        :param pulumi.Input[Union['PipelineFiltersFilterPropertiesArgs', 'PipelineFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[str] filter_visibility: This indicates visibility of filters. By default, everyone can view this filter.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the pipeline filters.

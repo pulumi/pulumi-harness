@@ -265,7 +265,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppDynamicsConnector(String name) {
+    public AppDynamicsConnector(java.lang.String name) {
         this(name, AppDynamicsConnectorArgs.Empty);
     }
     /**
@@ -273,7 +273,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppDynamicsConnector(String name, AppDynamicsConnectorArgs args) {
+    public AppDynamicsConnector(java.lang.String name, AppDynamicsConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -282,15 +282,22 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppDynamicsConnector(String name, AppDynamicsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/appDynamicsConnector:AppDynamicsConnector", name, args == null ? AppDynamicsConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AppDynamicsConnector(java.lang.String name, AppDynamicsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/appDynamicsConnector:AppDynamicsConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppDynamicsConnector(String name, Output<String> id, @Nullable AppDynamicsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/appDynamicsConnector:AppDynamicsConnector", name, state, makeResourceOptions(options, id));
+    private AppDynamicsConnector(java.lang.String name, Output<java.lang.String> id, @Nullable AppDynamicsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/appDynamicsConnector:AppDynamicsConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AppDynamicsConnectorArgs makeArgs(AppDynamicsConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppDynamicsConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -306,7 +313,7 @@ public class AppDynamicsConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppDynamicsConnector get(String name, Output<String> id, @Nullable AppDynamicsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppDynamicsConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable AppDynamicsConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppDynamicsConnector(name, id, state, options);
     }
 }

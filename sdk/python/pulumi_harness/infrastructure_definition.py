@@ -703,26 +703,26 @@ class InfrastructureDefinition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 aws_ami: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsAmiArgs']]] = None,
-                 aws_ecs: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsEcsArgs']]] = None,
-                 aws_lambda: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsLambdaArgs']]] = None,
-                 aws_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsSshArgs']]] = None,
-                 aws_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsWinrmArgs']]] = None,
-                 azure_vmss: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']]] = None,
-                 azure_webapp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']]] = None,
+                 aws_ami: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsAmiArgs', 'InfrastructureDefinitionAwsAmiArgsDict']]] = None,
+                 aws_ecs: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsEcsArgs', 'InfrastructureDefinitionAwsEcsArgsDict']]] = None,
+                 aws_lambda: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsLambdaArgs', 'InfrastructureDefinitionAwsLambdaArgsDict']]] = None,
+                 aws_ssh: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsSshArgs', 'InfrastructureDefinitionAwsSshArgsDict']]] = None,
+                 aws_winrm: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsWinrmArgs', 'InfrastructureDefinitionAwsWinrmArgsDict']]] = None,
+                 azure_vmss: Optional[pulumi.Input[Union['InfrastructureDefinitionAzureVmssArgs', 'InfrastructureDefinitionAzureVmssArgsDict']]] = None,
+                 azure_webapp: Optional[pulumi.Input[Union['InfrastructureDefinitionAzureWebappArgs', 'InfrastructureDefinitionAzureWebappArgsDict']]] = None,
                  cloud_provider_type: Optional[pulumi.Input[str]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']]] = None,
-                 datacenter_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']]] = None,
-                 datacenter_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']]] = None,
+                 custom: Optional[pulumi.Input[Union['InfrastructureDefinitionCustomArgs', 'InfrastructureDefinitionCustomArgsDict']]] = None,
+                 datacenter_ssh: Optional[pulumi.Input[Union['InfrastructureDefinitionDatacenterSshArgs', 'InfrastructureDefinitionDatacenterSshArgsDict']]] = None,
+                 datacenter_winrm: Optional[pulumi.Input[Union['InfrastructureDefinitionDatacenterWinrmArgs', 'InfrastructureDefinitionDatacenterWinrmArgsDict']]] = None,
                  deployment_template_uri: Optional[pulumi.Input[str]] = None,
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 kubernetes: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesArgs']]] = None,
-                 kubernetes_gcp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesGcpArgs']]] = None,
+                 kubernetes: Optional[pulumi.Input[Union['InfrastructureDefinitionKubernetesArgs', 'InfrastructureDefinitionKubernetesArgsDict']]] = None,
+                 kubernetes_gcp: Optional[pulumi.Input[Union['InfrastructureDefinitionKubernetesGcpArgs', 'InfrastructureDefinitionKubernetesGcpArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provisioner_name: Optional[pulumi.Input[str]] = None,
                  scoped_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tanzu: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionTanzuArgs']]] = None,
+                 tanzu: Optional[pulumi.Input[Union['InfrastructureDefinitionTanzuArgs', 'InfrastructureDefinitionTanzuArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating am infrastructure definition. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -736,9 +736,9 @@ class InfrastructureDefinition(pulumi.CustomResource):
         # Creating a Kubernetes infrastructure definition
         dev = harness.cloudprovider.Kubernetes("dev",
             name="k8s-dev",
-            authentication=harness.cloudprovider.KubernetesAuthenticationArgs(
-                delegate_selectors=["k8s"],
-            ))
+            authentication={
+                "delegate_selectors": ["k8s"],
+            })
         example = harness.Application("example", name="example")
         dev_environment = harness.Environment("dev",
             name="dev",
@@ -751,11 +751,11 @@ class InfrastructureDefinition(pulumi.CustomResource):
             env_id=dev_environment.id,
             cloud_provider_type="KUBERNETES_CLUSTER",
             deployment_type="KUBERNETES",
-            kubernetes=harness.InfrastructureDefinitionKubernetesArgs(
-                cloud_provider_name=dev.name,
-                namespace="dev",
-                release_name="${service.name}",
-            ))
+            kubernetes={
+                "cloud_provider_name": dev.name,
+                "namespace": "dev",
+                "release_name": "${service.name}",
+            })
         # Creating a Deployment Template for CUSTOM infrastructure type
         example_yaml = harness.YamlConfig("example_yaml",
             path="Setup/Template Library/Example Folder/deployment_template.yaml",
@@ -779,19 +779,19 @@ class InfrastructureDefinition(pulumi.CustomResource):
             cloud_provider_type="CUSTOM",
             deployment_type="CUSTOM",
             deployment_template_uri=example_yaml.name.apply(lambda name: f"Example Folder/{name}"),
-            custom=harness.InfrastructureDefinitionCustomArgs(
-                deployment_type_template_version="1",
-                variables=[
-                    harness.InfrastructureDefinitionCustomVariableArgs(
-                        name="url",
-                        value="localhost:8081",
-                    ),
-                    harness.InfrastructureDefinitionCustomVariableArgs(
-                        name="file_name",
-                        value="instances.json",
-                    ),
+            custom={
+                "deployment_type_template_version": "1",
+                "variables": [
+                    {
+                        "name": "url",
+                        "value": "localhost:8081",
+                    },
+                    {
+                        "name": "file_name",
+                        "value": "instances.json",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -805,26 +805,26 @@ class InfrastructureDefinition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The id of the application the infrastructure definition belongs to.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsAmiArgs']] aws_ami: The configuration details for Aws AMI deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsEcsArgs']] aws_ecs: The configuration details for Aws AMI deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsLambdaArgs']] aws_lambda: The configuration details for Aws Lambda deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsSshArgs']] aws_ssh: The configuration details for AWS SSH deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsWinrmArgs']] aws_winrm: The configuration details for AWS WinRM deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']] azure_vmss: The configuration details for Azure VMSS deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']] azure_webapp: The configuration details for Azure WebApp deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsAmiArgs', 'InfrastructureDefinitionAwsAmiArgsDict']] aws_ami: The configuration details for Aws AMI deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsEcsArgs', 'InfrastructureDefinitionAwsEcsArgsDict']] aws_ecs: The configuration details for Aws AMI deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsLambdaArgs', 'InfrastructureDefinitionAwsLambdaArgsDict']] aws_lambda: The configuration details for Aws Lambda deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsSshArgs', 'InfrastructureDefinitionAwsSshArgsDict']] aws_ssh: The configuration details for AWS SSH deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsWinrmArgs', 'InfrastructureDefinitionAwsWinrmArgsDict']] aws_winrm: The configuration details for AWS WinRM deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAzureVmssArgs', 'InfrastructureDefinitionAzureVmssArgsDict']] azure_vmss: The configuration details for Azure VMSS deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAzureWebappArgs', 'InfrastructureDefinitionAzureWebappArgsDict']] azure_webapp: The configuration details for Azure WebApp deployments.
         :param pulumi.Input[str] cloud_provider_type: The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']] custom: The configuration details for Custom deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']] datacenter_ssh: The configuration details for SSH datacenter deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']] datacenter_winrm: The configuration details for WinRM datacenter deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionCustomArgs', 'InfrastructureDefinitionCustomArgsDict']] custom: The configuration details for Custom deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionDatacenterSshArgs', 'InfrastructureDefinitionDatacenterSshArgsDict']] datacenter_ssh: The configuration details for SSH datacenter deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionDatacenterWinrmArgs', 'InfrastructureDefinitionDatacenterWinrmArgsDict']] datacenter_winrm: The configuration details for WinRM datacenter deployments.
         :param pulumi.Input[str] deployment_template_uri: The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
         :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         :param pulumi.Input[str] env_id: The id of the environment the infrastructure definition belongs to.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesArgs']] kubernetes: The configuration details for Kubernetes deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesGcpArgs']] kubernetes_gcp: The configuration details for Kubernetes on GCP deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionKubernetesArgs', 'InfrastructureDefinitionKubernetesArgsDict']] kubernetes: The configuration details for Kubernetes deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionKubernetesGcpArgs', 'InfrastructureDefinitionKubernetesGcpArgsDict']] kubernetes_gcp: The configuration details for Kubernetes on GCP deployments.
         :param pulumi.Input[str] name: The name of the infrastructure definition
         :param pulumi.Input[str] provisioner_name: The name of the infrastructure provisioner to use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scoped_services: The list of service names to scope this infrastructure definition to.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionTanzuArgs']] tanzu: The configuration details for PCF deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionTanzuArgs', 'InfrastructureDefinitionTanzuArgsDict']] tanzu: The configuration details for PCF deployments.
         """
         ...
     @overload
@@ -844,9 +844,9 @@ class InfrastructureDefinition(pulumi.CustomResource):
         # Creating a Kubernetes infrastructure definition
         dev = harness.cloudprovider.Kubernetes("dev",
             name="k8s-dev",
-            authentication=harness.cloudprovider.KubernetesAuthenticationArgs(
-                delegate_selectors=["k8s"],
-            ))
+            authentication={
+                "delegate_selectors": ["k8s"],
+            })
         example = harness.Application("example", name="example")
         dev_environment = harness.Environment("dev",
             name="dev",
@@ -859,11 +859,11 @@ class InfrastructureDefinition(pulumi.CustomResource):
             env_id=dev_environment.id,
             cloud_provider_type="KUBERNETES_CLUSTER",
             deployment_type="KUBERNETES",
-            kubernetes=harness.InfrastructureDefinitionKubernetesArgs(
-                cloud_provider_name=dev.name,
-                namespace="dev",
-                release_name="${service.name}",
-            ))
+            kubernetes={
+                "cloud_provider_name": dev.name,
+                "namespace": "dev",
+                "release_name": "${service.name}",
+            })
         # Creating a Deployment Template for CUSTOM infrastructure type
         example_yaml = harness.YamlConfig("example_yaml",
             path="Setup/Template Library/Example Folder/deployment_template.yaml",
@@ -887,19 +887,19 @@ class InfrastructureDefinition(pulumi.CustomResource):
             cloud_provider_type="CUSTOM",
             deployment_type="CUSTOM",
             deployment_template_uri=example_yaml.name.apply(lambda name: f"Example Folder/{name}"),
-            custom=harness.InfrastructureDefinitionCustomArgs(
-                deployment_type_template_version="1",
-                variables=[
-                    harness.InfrastructureDefinitionCustomVariableArgs(
-                        name="url",
-                        value="localhost:8081",
-                    ),
-                    harness.InfrastructureDefinitionCustomVariableArgs(
-                        name="file_name",
-                        value="instances.json",
-                    ),
+            custom={
+                "deployment_type_template_version": "1",
+                "variables": [
+                    {
+                        "name": "url",
+                        "value": "localhost:8081",
+                    },
+                    {
+                        "name": "file_name",
+                        "value": "instances.json",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -926,26 +926,26 @@ class InfrastructureDefinition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 aws_ami: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsAmiArgs']]] = None,
-                 aws_ecs: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsEcsArgs']]] = None,
-                 aws_lambda: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsLambdaArgs']]] = None,
-                 aws_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsSshArgs']]] = None,
-                 aws_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsWinrmArgs']]] = None,
-                 azure_vmss: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']]] = None,
-                 azure_webapp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']]] = None,
+                 aws_ami: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsAmiArgs', 'InfrastructureDefinitionAwsAmiArgsDict']]] = None,
+                 aws_ecs: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsEcsArgs', 'InfrastructureDefinitionAwsEcsArgsDict']]] = None,
+                 aws_lambda: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsLambdaArgs', 'InfrastructureDefinitionAwsLambdaArgsDict']]] = None,
+                 aws_ssh: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsSshArgs', 'InfrastructureDefinitionAwsSshArgsDict']]] = None,
+                 aws_winrm: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsWinrmArgs', 'InfrastructureDefinitionAwsWinrmArgsDict']]] = None,
+                 azure_vmss: Optional[pulumi.Input[Union['InfrastructureDefinitionAzureVmssArgs', 'InfrastructureDefinitionAzureVmssArgsDict']]] = None,
+                 azure_webapp: Optional[pulumi.Input[Union['InfrastructureDefinitionAzureWebappArgs', 'InfrastructureDefinitionAzureWebappArgsDict']]] = None,
                  cloud_provider_type: Optional[pulumi.Input[str]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']]] = None,
-                 datacenter_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']]] = None,
-                 datacenter_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']]] = None,
+                 custom: Optional[pulumi.Input[Union['InfrastructureDefinitionCustomArgs', 'InfrastructureDefinitionCustomArgsDict']]] = None,
+                 datacenter_ssh: Optional[pulumi.Input[Union['InfrastructureDefinitionDatacenterSshArgs', 'InfrastructureDefinitionDatacenterSshArgsDict']]] = None,
+                 datacenter_winrm: Optional[pulumi.Input[Union['InfrastructureDefinitionDatacenterWinrmArgs', 'InfrastructureDefinitionDatacenterWinrmArgsDict']]] = None,
                  deployment_template_uri: Optional[pulumi.Input[str]] = None,
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 kubernetes: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesArgs']]] = None,
-                 kubernetes_gcp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesGcpArgs']]] = None,
+                 kubernetes: Optional[pulumi.Input[Union['InfrastructureDefinitionKubernetesArgs', 'InfrastructureDefinitionKubernetesArgsDict']]] = None,
+                 kubernetes_gcp: Optional[pulumi.Input[Union['InfrastructureDefinitionKubernetesGcpArgs', 'InfrastructureDefinitionKubernetesGcpArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  provisioner_name: Optional[pulumi.Input[str]] = None,
                  scoped_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tanzu: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionTanzuArgs']]] = None,
+                 tanzu: Optional[pulumi.Input[Union['InfrastructureDefinitionTanzuArgs', 'InfrastructureDefinitionTanzuArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -995,26 +995,26 @@ class InfrastructureDefinition(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
-            aws_ami: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsAmiArgs']]] = None,
-            aws_ecs: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsEcsArgs']]] = None,
-            aws_lambda: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsLambdaArgs']]] = None,
-            aws_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsSshArgs']]] = None,
-            aws_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsWinrmArgs']]] = None,
-            azure_vmss: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']]] = None,
-            azure_webapp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']]] = None,
+            aws_ami: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsAmiArgs', 'InfrastructureDefinitionAwsAmiArgsDict']]] = None,
+            aws_ecs: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsEcsArgs', 'InfrastructureDefinitionAwsEcsArgsDict']]] = None,
+            aws_lambda: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsLambdaArgs', 'InfrastructureDefinitionAwsLambdaArgsDict']]] = None,
+            aws_ssh: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsSshArgs', 'InfrastructureDefinitionAwsSshArgsDict']]] = None,
+            aws_winrm: Optional[pulumi.Input[Union['InfrastructureDefinitionAwsWinrmArgs', 'InfrastructureDefinitionAwsWinrmArgsDict']]] = None,
+            azure_vmss: Optional[pulumi.Input[Union['InfrastructureDefinitionAzureVmssArgs', 'InfrastructureDefinitionAzureVmssArgsDict']]] = None,
+            azure_webapp: Optional[pulumi.Input[Union['InfrastructureDefinitionAzureWebappArgs', 'InfrastructureDefinitionAzureWebappArgsDict']]] = None,
             cloud_provider_type: Optional[pulumi.Input[str]] = None,
-            custom: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']]] = None,
-            datacenter_ssh: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']]] = None,
-            datacenter_winrm: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']]] = None,
+            custom: Optional[pulumi.Input[Union['InfrastructureDefinitionCustomArgs', 'InfrastructureDefinitionCustomArgsDict']]] = None,
+            datacenter_ssh: Optional[pulumi.Input[Union['InfrastructureDefinitionDatacenterSshArgs', 'InfrastructureDefinitionDatacenterSshArgsDict']]] = None,
+            datacenter_winrm: Optional[pulumi.Input[Union['InfrastructureDefinitionDatacenterWinrmArgs', 'InfrastructureDefinitionDatacenterWinrmArgsDict']]] = None,
             deployment_template_uri: Optional[pulumi.Input[str]] = None,
             deployment_type: Optional[pulumi.Input[str]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
-            kubernetes: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesArgs']]] = None,
-            kubernetes_gcp: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesGcpArgs']]] = None,
+            kubernetes: Optional[pulumi.Input[Union['InfrastructureDefinitionKubernetesArgs', 'InfrastructureDefinitionKubernetesArgsDict']]] = None,
+            kubernetes_gcp: Optional[pulumi.Input[Union['InfrastructureDefinitionKubernetesGcpArgs', 'InfrastructureDefinitionKubernetesGcpArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             provisioner_name: Optional[pulumi.Input[str]] = None,
             scoped_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            tanzu: Optional[pulumi.Input[pulumi.InputType['InfrastructureDefinitionTanzuArgs']]] = None) -> 'InfrastructureDefinition':
+            tanzu: Optional[pulumi.Input[Union['InfrastructureDefinitionTanzuArgs', 'InfrastructureDefinitionTanzuArgsDict']]] = None) -> 'InfrastructureDefinition':
         """
         Get an existing InfrastructureDefinition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1023,26 +1023,26 @@ class InfrastructureDefinition(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The id of the application the infrastructure definition belongs to.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsAmiArgs']] aws_ami: The configuration details for Aws AMI deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsEcsArgs']] aws_ecs: The configuration details for Aws AMI deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsLambdaArgs']] aws_lambda: The configuration details for Aws Lambda deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsSshArgs']] aws_ssh: The configuration details for AWS SSH deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAwsWinrmArgs']] aws_winrm: The configuration details for AWS WinRM deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureVmssArgs']] azure_vmss: The configuration details for Azure VMSS deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionAzureWebappArgs']] azure_webapp: The configuration details for Azure WebApp deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsAmiArgs', 'InfrastructureDefinitionAwsAmiArgsDict']] aws_ami: The configuration details for Aws AMI deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsEcsArgs', 'InfrastructureDefinitionAwsEcsArgsDict']] aws_ecs: The configuration details for Aws AMI deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsLambdaArgs', 'InfrastructureDefinitionAwsLambdaArgsDict']] aws_lambda: The configuration details for Aws Lambda deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsSshArgs', 'InfrastructureDefinitionAwsSshArgsDict']] aws_ssh: The configuration details for AWS SSH deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAwsWinrmArgs', 'InfrastructureDefinitionAwsWinrmArgsDict']] aws_winrm: The configuration details for AWS WinRM deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAzureVmssArgs', 'InfrastructureDefinitionAzureVmssArgsDict']] azure_vmss: The configuration details for Azure VMSS deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionAzureWebappArgs', 'InfrastructureDefinitionAzureWebappArgsDict']] azure_webapp: The configuration details for Azure WebApp deployments.
         :param pulumi.Input[str] cloud_provider_type: The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionCustomArgs']] custom: The configuration details for Custom deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterSshArgs']] datacenter_ssh: The configuration details for SSH datacenter deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionDatacenterWinrmArgs']] datacenter_winrm: The configuration details for WinRM datacenter deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionCustomArgs', 'InfrastructureDefinitionCustomArgsDict']] custom: The configuration details for Custom deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionDatacenterSshArgs', 'InfrastructureDefinitionDatacenterSshArgsDict']] datacenter_ssh: The configuration details for SSH datacenter deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionDatacenterWinrmArgs', 'InfrastructureDefinitionDatacenterWinrmArgsDict']] datacenter_winrm: The configuration details for WinRM datacenter deployments.
         :param pulumi.Input[str] deployment_template_uri: The URI of the deployment template to use. Only used if deployment_type is `CUSTOM`.
         :param pulumi.Input[str] deployment_type: The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
         :param pulumi.Input[str] env_id: The id of the environment the infrastructure definition belongs to.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesArgs']] kubernetes: The configuration details for Kubernetes deployments.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionKubernetesGcpArgs']] kubernetes_gcp: The configuration details for Kubernetes on GCP deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionKubernetesArgs', 'InfrastructureDefinitionKubernetesArgsDict']] kubernetes: The configuration details for Kubernetes deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionKubernetesGcpArgs', 'InfrastructureDefinitionKubernetesGcpArgsDict']] kubernetes_gcp: The configuration details for Kubernetes on GCP deployments.
         :param pulumi.Input[str] name: The name of the infrastructure definition
         :param pulumi.Input[str] provisioner_name: The name of the infrastructure provisioner to use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scoped_services: The list of service names to scope this infrastructure definition to.
-        :param pulumi.Input[pulumi.InputType['InfrastructureDefinitionTanzuArgs']] tanzu: The configuration details for PCF deployments.
+        :param pulumi.Input[Union['InfrastructureDefinitionTanzuArgs', 'InfrastructureDefinitionTanzuArgsDict']] tanzu: The configuration details for PCF deployments.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
