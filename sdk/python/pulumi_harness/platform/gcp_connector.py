@@ -23,6 +23,7 @@ class GcpConnectorArgs:
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
                  manual: Optional[pulumi.Input['GcpConnectorManualArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -35,6 +36,7 @@ class GcpConnectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input['GcpConnectorManualArgs'] manual: Manual credential configuration.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -52,6 +54,8 @@ class GcpConnectorArgs:
             pulumi.set(__self__, "manual", manual)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oidc_authentications is not None:
+            pulumi.set(__self__, "oidc_authentications", oidc_authentications)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
@@ -144,6 +148,18 @@ class GcpConnectorArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
+
+    @oidc_authentications.setter
+    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]):
+        pulumi.set(self, "oidc_authentications", value)
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -190,6 +206,7 @@ class _GcpConnectorState:
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]]] = None,
                  manual: Optional[pulumi.Input['GcpConnectorManualArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -202,6 +219,7 @@ class _GcpConnectorState:
         :param pulumi.Input[Sequence[pulumi.Input['GcpConnectorInheritFromDelegateArgs']]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input['GcpConnectorManualArgs'] manual: Manual credential configuration.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -220,6 +238,8 @@ class _GcpConnectorState:
             pulumi.set(__self__, "manual", manual)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oidc_authentications is not None:
+            pulumi.set(__self__, "oidc_authentications", oidc_authentications)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
@@ -312,6 +332,18 @@ class _GcpConnectorState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
+
+    @oidc_authentications.setter
+    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpConnectorOidcAuthenticationArgs']]]]):
+        pulumi.set(self, "oidc_authentications", value)
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -360,6 +392,7 @@ class GcpConnector(pulumi.CustomResource):
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
                  manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -396,6 +429,7 @@ class GcpConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']] manual: Manual credential configuration.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -451,6 +485,7 @@ class GcpConnector(pulumi.CustomResource):
                  inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
                  manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -472,6 +507,7 @@ class GcpConnector(pulumi.CustomResource):
             __props__.__dict__["inherit_from_delegates"] = inherit_from_delegates
             __props__.__dict__["manual"] = manual
             __props__.__dict__["name"] = name
+            __props__.__dict__["oidc_authentications"] = oidc_authentications
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
@@ -492,6 +528,7 @@ class GcpConnector(pulumi.CustomResource):
             inherit_from_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]]] = None,
             manual: Optional[pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'GcpConnector':
@@ -509,6 +546,7 @@ class GcpConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict']]]] inherit_from_delegates: Inherit configuration from delegate.
         :param pulumi.Input[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict']] manual: Manual credential configuration.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -524,6 +562,7 @@ class GcpConnector(pulumi.CustomResource):
         __props__.__dict__["inherit_from_delegates"] = inherit_from_delegates
         __props__.__dict__["manual"] = manual
         __props__.__dict__["name"] = name
+        __props__.__dict__["oidc_authentications"] = oidc_authentications
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
@@ -584,6 +623,14 @@ class GcpConnector(pulumi.CustomResource):
         Name of the resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> pulumi.Output[Optional[Sequence['outputs.GcpConnectorOidcAuthentication']]]:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
 
     @property
     @pulumi.getter(name="orgId")

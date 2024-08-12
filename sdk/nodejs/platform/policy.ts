@@ -48,6 +48,46 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Base branch for the new git branch.
+     */
+    public readonly gitBaseBranch!: pulumi.Output<string | undefined>;
+    /**
+     * Git branch for the policy.
+     */
+    public readonly gitBranch!: pulumi.Output<string | undefined>;
+    /**
+     * Git commit message for the policy.
+     */
+    public readonly gitCommitMsg!: pulumi.Output<string | undefined>;
+    /**
+     * The existing commit sha of the file being updated
+     */
+    public readonly gitCommitSha!: pulumi.Output<string>;
+    /**
+     * Git connector reference for the policy.
+     */
+    public readonly gitConnectorRef!: pulumi.Output<string | undefined>;
+    /**
+     * The existing file id of the file being updated, not required for bitbucket files
+     */
+    public readonly gitFileId!: pulumi.Output<string>;
+    /**
+     * Flag to import the policy from git.
+     */
+    public readonly gitImport!: pulumi.Output<boolean | undefined>;
+    /**
+     * Flag to create a new branch for the policy.
+     */
+    public readonly gitIsNewBranch!: pulumi.Output<boolean | undefined>;
+    /**
+     * Git path for the policy.
+     */
+    public readonly gitPath!: pulumi.Output<string | undefined>;
+    /**
+     * Git repository for the policy.
+     */
+    public readonly gitRepo!: pulumi.Output<string | undefined>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -86,6 +126,16 @@ export class Policy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["gitBaseBranch"] = state ? state.gitBaseBranch : undefined;
+            resourceInputs["gitBranch"] = state ? state.gitBranch : undefined;
+            resourceInputs["gitCommitMsg"] = state ? state.gitCommitMsg : undefined;
+            resourceInputs["gitCommitSha"] = state ? state.gitCommitSha : undefined;
+            resourceInputs["gitConnectorRef"] = state ? state.gitConnectorRef : undefined;
+            resourceInputs["gitFileId"] = state ? state.gitFileId : undefined;
+            resourceInputs["gitImport"] = state ? state.gitImport : undefined;
+            resourceInputs["gitIsNewBranch"] = state ? state.gitIsNewBranch : undefined;
+            resourceInputs["gitPath"] = state ? state.gitPath : undefined;
+            resourceInputs["gitRepo"] = state ? state.gitRepo : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -101,6 +151,16 @@ export class Policy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'rego'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gitBaseBranch"] = args ? args.gitBaseBranch : undefined;
+            resourceInputs["gitBranch"] = args ? args.gitBranch : undefined;
+            resourceInputs["gitCommitMsg"] = args ? args.gitCommitMsg : undefined;
+            resourceInputs["gitCommitSha"] = args ? args.gitCommitSha : undefined;
+            resourceInputs["gitConnectorRef"] = args ? args.gitConnectorRef : undefined;
+            resourceInputs["gitFileId"] = args ? args.gitFileId : undefined;
+            resourceInputs["gitImport"] = args ? args.gitImport : undefined;
+            resourceInputs["gitIsNewBranch"] = args ? args.gitIsNewBranch : undefined;
+            resourceInputs["gitPath"] = args ? args.gitPath : undefined;
+            resourceInputs["gitRepo"] = args ? args.gitRepo : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -121,6 +181,46 @@ export interface PolicyState {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Base branch for the new git branch.
+     */
+    gitBaseBranch?: pulumi.Input<string>;
+    /**
+     * Git branch for the policy.
+     */
+    gitBranch?: pulumi.Input<string>;
+    /**
+     * Git commit message for the policy.
+     */
+    gitCommitMsg?: pulumi.Input<string>;
+    /**
+     * The existing commit sha of the file being updated
+     */
+    gitCommitSha?: pulumi.Input<string>;
+    /**
+     * Git connector reference for the policy.
+     */
+    gitConnectorRef?: pulumi.Input<string>;
+    /**
+     * The existing file id of the file being updated, not required for bitbucket files
+     */
+    gitFileId?: pulumi.Input<string>;
+    /**
+     * Flag to import the policy from git.
+     */
+    gitImport?: pulumi.Input<boolean>;
+    /**
+     * Flag to create a new branch for the policy.
+     */
+    gitIsNewBranch?: pulumi.Input<boolean>;
+    /**
+     * Git path for the policy.
+     */
+    gitPath?: pulumi.Input<string>;
+    /**
+     * Git repository for the policy.
+     */
+    gitRepo?: pulumi.Input<string>;
     /**
      * Unique identifier of the resource.
      */
@@ -155,6 +255,46 @@ export interface PolicyArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Base branch for the new git branch.
+     */
+    gitBaseBranch?: pulumi.Input<string>;
+    /**
+     * Git branch for the policy.
+     */
+    gitBranch?: pulumi.Input<string>;
+    /**
+     * Git commit message for the policy.
+     */
+    gitCommitMsg?: pulumi.Input<string>;
+    /**
+     * The existing commit sha of the file being updated
+     */
+    gitCommitSha?: pulumi.Input<string>;
+    /**
+     * Git connector reference for the policy.
+     */
+    gitConnectorRef?: pulumi.Input<string>;
+    /**
+     * The existing file id of the file being updated, not required for bitbucket files
+     */
+    gitFileId?: pulumi.Input<string>;
+    /**
+     * Flag to import the policy from git.
+     */
+    gitImport?: pulumi.Input<boolean>;
+    /**
+     * Flag to create a new branch for the policy.
+     */
+    gitIsNewBranch?: pulumi.Input<boolean>;
+    /**
+     * Git path for the policy.
+     */
+    gitPath?: pulumi.Input<string>;
+    /**
+     * Git repository for the policy.
+     */
+    gitRepo?: pulumi.Input<string>;
     /**
      * Unique identifier of the resource.
      */

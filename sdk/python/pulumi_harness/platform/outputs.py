@@ -69,6 +69,7 @@ __all__ = [
     'GcpCloudCostConnectorBillingExportSpec',
     'GcpConnectorInheritFromDelegate',
     'GcpConnectorManual',
+    'GcpConnectorOidcAuthentication',
     'GitConnectorCredentials',
     'GitConnectorCredentialsHttp',
     'GitConnectorCredentialsSsh',
@@ -176,6 +177,7 @@ __all__ = [
     'NotificationRuleRequestCondition',
     'NotificationRuleRequestNotificationMethod',
     'OciHelmConnectorCredentials',
+    'OverridesGitDetails',
     'PipelineFiltersFilterProperties',
     'PipelineFiltersFilterPropertiesModuleProperties',
     'PipelineFiltersFilterPropertiesModulePropertiesCd',
@@ -283,6 +285,7 @@ __all__ = [
     'GetGcpCloudCostConnectorBillingExportSpecResult',
     'GetGcpConnectorInheritFromDelegateResult',
     'GetGcpConnectorManualResult',
+    'GetGcpConnectorOidcAuthenticationResult',
     'GetGitConnectorCredentialResult',
     'GetGitConnectorCredentialHttpResult',
     'GetGitConnectorCredentialSshResult',
@@ -356,6 +359,7 @@ __all__ = [
     'GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecResult',
     'GetNexusConnectorCredentialResult',
     'GetOciHelmConnectorCredentialResult',
+    'GetOverridesGitDetailsResult',
     'GetPermissionsPermissionResult',
     'GetPipelineFiltersFilterPropertyResult',
     'GetPipelineFiltersFilterPropertyModulePropertiesResult',
@@ -3492,6 +3496,93 @@ class GcpConnectorManual(dict):
         The delegates to connect with.
         """
         return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GcpConnectorOidcAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+        elif key == "gcpProjectId":
+            suggest = "gcp_project_id"
+        elif key == "providerId":
+            suggest = "provider_id"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "workloadPoolId":
+            suggest = "workload_pool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpConnectorOidcAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpConnectorOidcAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpConnectorOidcAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str],
+                 gcp_project_id: str,
+                 provider_id: str,
+                 service_account_email: str,
+                 workload_pool_id: str):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str gcp_project_id: The project number of the GCP project that is used to create the workload identity.
+        :param str provider_id: The OIDC provider ID value configured in GCP.
+        :param str service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
+        :param str workload_pool_id: The workload pool ID value created in GCP.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "workload_pool_id", workload_pool_id)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="gcpProjectId")
+    def gcp_project_id(self) -> str:
+        """
+        The project number of the GCP project that is used to create the workload identity.
+        """
+        return pulumi.get(self, "gcp_project_id")
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> str:
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        return pulumi.get(self, "provider_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="workloadPoolId")
+    def workload_pool_id(self) -> str:
+        """
+        The workload pool ID value created in GCP.
+        """
+        return pulumi.get(self, "workload_pool_id")
 
 
 @pulumi.output_type
@@ -10882,6 +10973,208 @@ class OciHelmConnectorCredentials(dict):
 
 
 @pulumi.output_type
+class OverridesGitDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseBranch":
+            suggest = "base_branch"
+        elif key == "commitMessage":
+            suggest = "commit_message"
+        elif key == "connectorRef":
+            suggest = "connector_ref"
+        elif key == "filePath":
+            suggest = "file_path"
+        elif key == "isHarnessCodeRepo":
+            suggest = "is_harness_code_repo"
+        elif key == "isNewBranch":
+            suggest = "is_new_branch"
+        elif key == "lastCommitId":
+            suggest = "last_commit_id"
+        elif key == "lastObjectId":
+            suggest = "last_object_id"
+        elif key == "loadFromCache":
+            suggest = "load_from_cache"
+        elif key == "loadFromFallbackBranch":
+            suggest = "load_from_fallback_branch"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "storeType":
+            suggest = "store_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OverridesGitDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OverridesGitDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OverridesGitDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_branch: Optional[str] = None,
+                 branch: Optional[str] = None,
+                 commit_message: Optional[str] = None,
+                 connector_ref: Optional[str] = None,
+                 file_path: Optional[str] = None,
+                 is_harness_code_repo: Optional[bool] = None,
+                 is_new_branch: Optional[bool] = None,
+                 last_commit_id: Optional[str] = None,
+                 last_object_id: Optional[str] = None,
+                 load_from_cache: Optional[bool] = None,
+                 load_from_fallback_branch: Optional[bool] = None,
+                 repo_name: Optional[str] = None,
+                 store_type: Optional[str] = None):
+        """
+        :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param str branch: Name of the branch.
+        :param str commit_message: Commit message used for the merge commit.
+        :param str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str file_path: File path of the Entity in the repository.
+        :param bool is_harness_code_repo: If the repo is in harness code
+        :param bool is_new_branch: If the branch being created is new
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating override.
+        :param bool load_from_cache: Load service yaml from catch
+        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param str repo_name: Name of the repository.
+        :param str store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if is_harness_code_repo is not None:
+            pulumi.set(__self__, "is_harness_code_repo", is_harness_code_repo)
+        if is_new_branch is not None:
+            pulumi.set(__self__, "is_new_branch", is_new_branch)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if load_from_cache is not None:
+            pulumi.set(__self__, "load_from_cache", load_from_cache)
+        if load_from_fallback_branch is not None:
+            pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[str]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[str]:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[str]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[str]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @property
+    @pulumi.getter(name="isHarnessCodeRepo")
+    def is_harness_code_repo(self) -> Optional[bool]:
+        """
+        If the repo is in harness code
+        """
+        return pulumi.get(self, "is_harness_code_repo")
+
+    @property
+    @pulumi.getter(name="isNewBranch")
+    def is_new_branch(self) -> Optional[bool]:
+        """
+        If the branch being created is new
+        """
+        return pulumi.get(self, "is_new_branch")
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[str]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[str]:
+        """
+        Last object identifier (for Github). To be provided only when updating override.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> Optional[bool]:
+        """
+        Load service yaml from catch
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> Optional[bool]:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[str]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[str]:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+
+@pulumi.output_type
 class PipelineFiltersFilterProperties(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16588,6 +16881,68 @@ class GetGcpConnectorManualResult(dict):
 
 
 @pulumi.output_type
+class GetGcpConnectorOidcAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str],
+                 gcp_project_id: str,
+                 provider_id: str,
+                 service_account_email: str,
+                 workload_pool_id: str):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str gcp_project_id: The project number of the GCP project that is used to create the workload identity..
+        :param str provider_id: The OIDC provider ID value configured in GCP.
+        :param str service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
+        :param str workload_pool_id: The workload pool ID value created in GCP.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "workload_pool_id", workload_pool_id)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="gcpProjectId")
+    def gcp_project_id(self) -> str:
+        """
+        The project number of the GCP project that is used to create the workload identity..
+        """
+        return pulumi.get(self, "gcp_project_id")
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> str:
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        return pulumi.get(self, "provider_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="workloadPoolId")
+    def workload_pool_id(self) -> str:
+        """
+        The workload pool ID value created in GCP.
+        """
+        return pulumi.get(self, "workload_pool_id")
+
+
+@pulumi.output_type
 class GetGitConnectorCredentialResult(dict):
     def __init__(__self__, *,
                  https: Sequence['outputs.GetGitConnectorCredentialHttpResult'],
@@ -20329,6 +20684,57 @@ class GetOciHelmConnectorCredentialResult(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetOverridesGitDetailsResult(dict):
+    def __init__(__self__, *,
+                 branch: str,
+                 load_from_cache: bool,
+                 load_from_fallback_branch: bool,
+                 repo_name: str):
+        """
+        :param str branch: Name of the branch.
+        :param bool load_from_cache: Load service yaml from fallback branch
+        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param str repo_name: Repo name of remote service override
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "load_from_cache", load_from_cache)
+        pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> bool:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> bool:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Repo name of remote service override
+        """
+        return pulumi.get(self, "repo_name")
 
 
 @pulumi.output_type

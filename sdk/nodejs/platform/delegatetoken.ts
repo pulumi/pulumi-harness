@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating delegate tokens.
+ *
+ * ## Import
+ *
+ * Import account level delegate token
+ *
+ * ```sh
+ * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <token_id>
+ * ```
+ *
+ * Import org level delegate token
+ *
+ * ```sh
+ * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<token_id>
+ * ```
+ *
+ * Import project level delegate token
+ *
+ * ```sh
+ * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<project_id>/<token_id>
+ * ```
+ */
 export class Delegatetoken extends pulumi.CustomResource {
     /**
      * Get an existing Delegatetoken resource's state with the given name, ID, and optional extra
@@ -37,31 +60,31 @@ export class Delegatetoken extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Time when the delegate token is created. This is an epoch timestamp.
+     * Time when the delegate token is created.
      */
     public readonly createdAt!: pulumi.Output<number>;
     /**
-     * created by details
+     * created by details.
      */
     public readonly createdBy!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Name of the delegate token
+     * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Org Identifier for the Entity
+     * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
      */
     public readonly tokenStatus!: pulumi.Output<string>;
     /**
-     * Value of the delegate token. Encoded in base64.
+     * Value of the delegate Token
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -114,31 +137,31 @@ export interface DelegatetokenState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Time when the delegate token is created. This is an epoch timestamp.
+     * Time when the delegate token is created.
      */
     createdAt?: pulumi.Input<number>;
     /**
-     * created by details
+     * created by details.
      */
     createdBy?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of the delegate token
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Org Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
      */
     tokenStatus?: pulumi.Input<string>;
     /**
-     * Value of the delegate token. Encoded in base64.
+     * Value of the delegate Token
      */
     value?: pulumi.Input<string>;
 }
@@ -152,31 +175,31 @@ export interface DelegatetokenArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Time when the delegate token is created. This is an epoch timestamp.
+     * Time when the delegate token is created.
      */
     createdAt?: pulumi.Input<number>;
     /**
-     * created by details
+     * created by details.
      */
     createdBy?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Name of the delegate token
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Org Identifier for the Entity
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
      */
     tokenStatus?: pulumi.Input<string>;
     /**
-     * Value of the delegate token. Encoded in base64.
+     * Value of the delegate Token
      */
     value?: pulumi.Input<string>;
 }

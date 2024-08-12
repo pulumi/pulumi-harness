@@ -29,8 +29,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupPolicy(ctx, &platform.LookupPolicyArgs{
 //				Identifier: pulumi.StringRef(testHarnessPlatformPolicy.Identifier),
-//				Name:       pulumi.StringRef(testHarnessPlatformPolicy.Name),
-//				Rego:       "package test",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -61,7 +59,7 @@ type LookupPolicyArgs struct {
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 	// Rego code for the policy.
-	Rego string `pulumi:"rego"`
+	Rego *string `pulumi:"rego"`
 }
 
 // A collection of values returned by getPolicy.
@@ -108,7 +106,7 @@ type LookupPolicyOutputArgs struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Rego code for the policy.
-	Rego pulumi.StringInput `pulumi:"rego"`
+	Rego pulumi.StringPtrInput `pulumi:"rego"`
 }
 
 func (LookupPolicyOutputArgs) ElementType() reflect.Type {

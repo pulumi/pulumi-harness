@@ -22,7 +22,7 @@ class GetGcpConnectorResult:
     """
     A collection of values returned by getGcpConnector.
     """
-    def __init__(__self__, description=None, id=None, identifier=None, inherit_from_delegates=None, manuals=None, name=None, org_id=None, project_id=None, tags=None):
+    def __init__(__self__, description=None, id=None, identifier=None, inherit_from_delegates=None, manuals=None, name=None, oidc_authentications=None, org_id=None, project_id=None, tags=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -41,6 +41,9 @@ class GetGcpConnectorResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if oidc_authentications and not isinstance(oidc_authentications, list):
+            raise TypeError("Expected argument 'oidc_authentications' to be a list")
+        pulumi.set(__self__, "oidc_authentications", oidc_authentications)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
@@ -100,6 +103,14 @@ class GetGcpConnectorResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Sequence['outputs.GetGcpConnectorOidcAuthenticationResult']:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
@@ -136,6 +147,7 @@ class AwaitableGetGcpConnectorResult(GetGcpConnectorResult):
             inherit_from_delegates=self.inherit_from_delegates,
             manuals=self.manuals,
             name=self.name,
+            oidc_authentications=self.oidc_authentications,
             org_id=self.org_id,
             project_id=self.project_id,
             tags=self.tags)
@@ -179,6 +191,7 @@ def get_gcp_connector(identifier: Optional[str] = None,
         inherit_from_delegates=pulumi.get(__ret__, 'inherit_from_delegates'),
         manuals=pulumi.get(__ret__, 'manuals'),
         name=pulumi.get(__ret__, 'name'),
+        oidc_authentications=pulumi.get(__ret__, 'oidc_authentications'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))

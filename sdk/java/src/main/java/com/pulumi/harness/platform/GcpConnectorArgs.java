@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GcpConnectorInheritFromDelegateArgs;
 import com.pulumi.harness.platform.inputs.GcpConnectorManualArgs;
+import com.pulumi.harness.platform.inputs.GcpConnectorOidcAuthenticationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -126,6 +127,21 @@ public final class GcpConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Authentication using harness oidc.
+     * 
+     */
+    @Import(name="oidcAuthentications")
+    private @Nullable Output<List<GcpConnectorOidcAuthenticationArgs>> oidcAuthentications;
+
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Optional<Output<List<GcpConnectorOidcAuthenticationArgs>>> oidcAuthentications() {
+        return Optional.ofNullable(this.oidcAuthentications);
+    }
+
+    /**
      * Unique identifier of the organization.
      * 
      */
@@ -180,6 +196,7 @@ public final class GcpConnectorArgs extends com.pulumi.resources.ResourceArgs {
         this.inheritFromDelegates = $.inheritFromDelegates;
         this.manual = $.manual;
         this.name = $.name;
+        this.oidcAuthentications = $.oidcAuthentications;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
@@ -358,6 +375,37 @@ public final class GcpConnectorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oidcAuthentications Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentications(@Nullable Output<List<GcpConnectorOidcAuthenticationArgs>> oidcAuthentications) {
+            $.oidcAuthentications = oidcAuthentications;
+            return this;
+        }
+
+        /**
+         * @param oidcAuthentications Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentications(List<GcpConnectorOidcAuthenticationArgs> oidcAuthentications) {
+            return oidcAuthentications(Output.of(oidcAuthentications));
+        }
+
+        /**
+         * @param oidcAuthentications Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentications(GcpConnectorOidcAuthenticationArgs... oidcAuthentications) {
+            return oidcAuthentications(List.of(oidcAuthentications));
         }
 
         /**

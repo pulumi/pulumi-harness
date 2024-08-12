@@ -25,13 +25,13 @@ class DelegatetokenArgs:
         """
         The set of arguments for constructing a Delegatetoken resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[int] created_at: Time when the delegate token is created. This is an epoch timestamp.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details
-        :param pulumi.Input[str] name: Name of the delegate token
-        :param pulumi.Input[str] org_id: Org Identifier for the Entity
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
-        :param pulumi.Input[str] value: Value of the delegate token. Encoded in base64.
+        :param pulumi.Input[int] created_at: Time when the delegate token is created.
+        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        :param pulumi.Input[str] value: Value of the delegate Token
         """
         pulumi.set(__self__, "account_id", account_id)
         if created_at is not None:
@@ -65,7 +65,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
         """
-        Time when the delegate token is created. This is an epoch timestamp.
+        Time when the delegate token is created.
         """
         return pulumi.get(self, "created_at")
 
@@ -77,7 +77,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        created by details
+        created by details.
         """
         return pulumi.get(self, "created_by")
 
@@ -89,7 +89,7 @@ class DelegatetokenArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the delegate token
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -101,7 +101,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Org Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -113,7 +113,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -125,7 +125,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
         """
         return pulumi.get(self, "token_status")
 
@@ -137,7 +137,7 @@ class DelegatetokenArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Value of the delegate token. Encoded in base64.
+        Value of the delegate Token
         """
         return pulumi.get(self, "value")
 
@@ -160,13 +160,13 @@ class _DelegatetokenState:
         """
         Input properties used for looking up and filtering Delegatetoken resources.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[int] created_at: Time when the delegate token is created. This is an epoch timestamp.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details
-        :param pulumi.Input[str] name: Name of the delegate token
-        :param pulumi.Input[str] org_id: Org Identifier for the Entity
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
-        :param pulumi.Input[str] value: Value of the delegate token. Encoded in base64.
+        :param pulumi.Input[int] created_at: Time when the delegate token is created.
+        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        :param pulumi.Input[str] value: Value of the delegate Token
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -201,7 +201,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[int]]:
         """
-        Time when the delegate token is created. This is an epoch timestamp.
+        Time when the delegate token is created.
         """
         return pulumi.get(self, "created_at")
 
@@ -213,7 +213,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        created by details
+        created by details.
         """
         return pulumi.get(self, "created_by")
 
@@ -225,7 +225,7 @@ class _DelegatetokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the delegate token
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -237,7 +237,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Org Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -249,7 +249,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -261,7 +261,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
         """
         return pulumi.get(self, "token_status")
 
@@ -273,7 +273,7 @@ class _DelegatetokenState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Value of the delegate token. Encoded in base64.
+        Value of the delegate Token
         """
         return pulumi.get(self, "value")
 
@@ -297,17 +297,38 @@ class Delegatetoken(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Delegatetoken resource with the given unique name, props, and options.
+        Resource for creating delegate tokens.
+
+        ## Import
+
+        Import account level delegate token
+
+        ```sh
+        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <token_id>
+        ```
+
+        Import org level delegate token
+
+        ```sh
+        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<token_id>
+        ```
+
+        Import project level delegate token
+
+        ```sh
+        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<project_id>/<token_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[int] created_at: Time when the delegate token is created. This is an epoch timestamp.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details
-        :param pulumi.Input[str] name: Name of the delegate token
-        :param pulumi.Input[str] org_id: Org Identifier for the Entity
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
-        :param pulumi.Input[str] value: Value of the delegate token. Encoded in base64.
+        :param pulumi.Input[int] created_at: Time when the delegate token is created.
+        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        :param pulumi.Input[str] value: Value of the delegate Token
         """
         ...
     @overload
@@ -316,7 +337,28 @@ class Delegatetoken(pulumi.CustomResource):
                  args: DelegatetokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Delegatetoken resource with the given unique name, props, and options.
+        Resource for creating delegate tokens.
+
+        ## Import
+
+        Import account level delegate token
+
+        ```sh
+        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <token_id>
+        ```
+
+        Import org level delegate token
+
+        ```sh
+        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<token_id>
+        ```
+
+        Import project level delegate token
+
+        ```sh
+        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<project_id>/<token_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param DelegatetokenArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -385,13 +427,13 @@ class Delegatetoken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[int] created_at: Time when the delegate token is created. This is an epoch timestamp.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details
-        :param pulumi.Input[str] name: Name of the delegate token
-        :param pulumi.Input[str] org_id: Org Identifier for the Entity
-        :param pulumi.Input[str] project_id: Project Identifier for the Entity
-        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
-        :param pulumi.Input[str] value: Value of the delegate token. Encoded in base64.
+        :param pulumi.Input[int] created_at: Time when the delegate token is created.
+        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        :param pulumi.Input[str] value: Value of the delegate Token
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -419,7 +461,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[int]:
         """
-        Time when the delegate token is created. This is an epoch timestamp.
+        Time when the delegate token is created.
         """
         return pulumi.get(self, "created_at")
 
@@ -427,7 +469,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        created by details
+        created by details.
         """
         return pulumi.get(self, "created_by")
 
@@ -435,7 +477,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the delegate token
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -443,7 +485,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Org Identifier for the Entity
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -451,7 +493,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Project Identifier for the Entity
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
@@ -459,7 +501,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> pulumi.Output[str]:
         """
-        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
         """
         return pulumi.get(self, "token_status")
 
@@ -467,7 +509,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
         """
-        Value of the delegate token. Encoded in base64.
+        Value of the delegate Token
         """
         return pulumi.get(self, "value")
 

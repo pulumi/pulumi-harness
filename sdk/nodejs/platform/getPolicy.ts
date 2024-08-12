@@ -15,12 +15,11 @@ import * as utilities from "../utilities";
  *
  * const test = harness.platform.getPolicy({
  *     identifier: testHarnessPlatformPolicy.identifier,
- *     name: testHarnessPlatformPolicy.name,
- *     rego: "package test",
  * });
  * ```
  */
-export function getPolicy(args: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
+export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPolicy:getPolicy", {
@@ -55,7 +54,7 @@ export interface GetPolicyArgs {
     /**
      * Rego code for the policy.
      */
-    rego: string;
+    rego?: string;
 }
 
 /**
@@ -106,12 +105,10 @@ export interface GetPolicyResult {
  *
  * const test = harness.platform.getPolicy({
  *     identifier: testHarnessPlatformPolicy.identifier,
- *     name: testHarnessPlatformPolicy.name,
- *     rego: "package test",
  * });
  * ```
  */
-export function getPolicyOutput(args: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
+export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
     return pulumi.output(args).apply((a: any) => getPolicy(a, opts))
 }
 
@@ -138,5 +135,5 @@ export interface GetPolicyOutputArgs {
     /**
      * Rego code for the policy.
      */
-    rego: pulumi.Input<string>;
+    rego?: pulumi.Input<string>;
 }

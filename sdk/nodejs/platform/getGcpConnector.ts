@@ -82,6 +82,10 @@ export interface GetGcpConnectorResult {
      */
     readonly name?: string;
     /**
+     * Authentication using harness oidc.
+     */
+    readonly oidcAuthentications: outputs.platform.GetGcpConnectorOidcAuthentication[];
+    /**
      * Unique identifier of the organization.
      */
     readonly orgId?: string;

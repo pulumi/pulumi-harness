@@ -694,6 +694,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/gitxWebhook",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitxWebhook:GitxWebhook": "GitxWebhook"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/helmConnector",
   "fqn": "pulumi_harness.platform",
   "classes": {
@@ -810,6 +818,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/overrides",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/overrides:Overrides": "Overrides"
   }
  },
  {

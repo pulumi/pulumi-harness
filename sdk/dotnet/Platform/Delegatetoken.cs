@@ -9,6 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating delegate tokens.
+    /// 
+    /// ## Import
+    /// 
+    /// Import account level delegate token
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;token_id&gt;
+    /// ```
+    /// 
+    /// Import org level delegate token
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;org_id&gt;/&lt;token_id&gt;
+    /// ```
+    /// 
+    /// Import project level delegate token
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;org_id&gt;/&lt;project_id&gt;/&lt;token_id&gt;
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:platform/delegatetoken:Delegatetoken")]
     public partial class Delegatetoken : global::Pulumi.CustomResource
     {
@@ -19,43 +42,43 @@ namespace Pulumi.Harness.Platform
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Time when the delegate token is created. This is an epoch timestamp.
+        /// Time when the delegate token is created.
         /// </summary>
         [Output("createdAt")]
         public Output<int> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// created by details
+        /// created by details.
         /// </summary>
         [Output("createdBy")]
         public Output<ImmutableDictionary<string, object>> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the delegate token
+        /// Name of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Org Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
         /// </summary>
         [Output("tokenStatus")]
         public Output<string> TokenStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Value of the delegate token. Encoded in base64.
+        /// Value of the delegate Token
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -114,7 +137,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Time when the delegate token is created. This is an epoch timestamp.
+        /// Time when the delegate token is created.
         /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
@@ -123,7 +146,7 @@ namespace Pulumi.Harness.Platform
         private InputMap<object>? _createdBy;
 
         /// <summary>
-        /// created by details
+        /// created by details.
         /// </summary>
         public InputMap<object> CreatedBy
         {
@@ -132,31 +155,31 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Name of the delegate token
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Org Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
         /// </summary>
         [Input("tokenStatus")]
         public Input<string>? TokenStatus { get; set; }
 
         /// <summary>
-        /// Value of the delegate token. Encoded in base64.
+        /// Value of the delegate Token
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -176,7 +199,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Time when the delegate token is created. This is an epoch timestamp.
+        /// Time when the delegate token is created.
         /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
@@ -185,7 +208,7 @@ namespace Pulumi.Harness.Platform
         private InputMap<object>? _createdBy;
 
         /// <summary>
-        /// created by details
+        /// created by details.
         /// </summary>
         public InputMap<object> CreatedBy
         {
@@ -194,31 +217,31 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Name of the delegate token
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Org Identifier for the Entity
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project Identifier for the Entity
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
         /// </summary>
         [Input("tokenStatus")]
         public Input<string>? TokenStatus { get; set; }
 
         /// <summary>
-        /// Value of the delegate token. Encoded in base64.
+        /// Value of the delegate Token
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

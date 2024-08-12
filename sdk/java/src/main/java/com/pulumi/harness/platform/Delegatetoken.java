@@ -17,6 +17,30 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating delegate tokens.
+ * 
+ * ## Import
+ * 
+ * Import account level delegate token
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;token_id&gt;
+ * ```
+ * 
+ * Import org level delegate token
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;org_id&gt;/&lt;token_id&gt;
+ * ```
+ * 
+ * Import project level delegate token
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;org_id&gt;/&lt;project_id&gt;/&lt;token_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="harness:platform/delegatetoken:Delegatetoken")
 public class Delegatetoken extends com.pulumi.resources.CustomResource {
     /**
@@ -34,98 +58,98 @@ public class Delegatetoken extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Time when the delegate token is created. This is an epoch timestamp.
+     * Time when the delegate token is created.
      * 
      */
     @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
     /**
-     * @return Time when the delegate token is created. This is an epoch timestamp.
+     * @return Time when the delegate token is created.
      * 
      */
     public Output<Integer> createdAt() {
         return this.createdAt;
     }
     /**
-     * created by details
+     * created by details.
      * 
      */
     @Export(name="createdBy", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> createdBy;
 
     /**
-     * @return created by details
+     * @return created by details.
      * 
      */
     public Output<Map<String,Object>> createdBy() {
         return this.createdBy;
     }
     /**
-     * Name of the delegate token
+     * Name of the resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the delegate token
+     * @return Name of the resource.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Org Identifier for the Entity
+     * Unique identifier of the organization.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Org Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
      * 
      */
     @Export(name="tokenStatus", refs={String.class}, tree="[0]")
     private Output<String> tokenStatus;
 
     /**
-     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
      * 
      */
     public Output<String> tokenStatus() {
         return this.tokenStatus;
     }
     /**
-     * Value of the delegate token. Encoded in base64.
+     * Value of the delegate Token
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return Value of the delegate token. Encoded in base64.
+     * @return Value of the delegate Token
      * 
      */
     public Output<String> value() {

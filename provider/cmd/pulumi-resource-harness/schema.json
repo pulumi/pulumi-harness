@@ -3633,6 +3633,41 @@
                 "secretKeyRef"
             ]
         },
+        "harness:platform/GcpConnectorOidcAuthentication:GcpConnectorOidcAuthentication": {
+            "properties": {
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The delegates to inherit the credentials from.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project number of the GCP project that is used to create the workload identity.\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The OIDC provider ID value configured in GCP.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The service account linked to workload identity pool while setting GCP workload identity provider.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "The workload pool ID value created in GCP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "delegateSelectors",
+                "gcpProjectId",
+                "providerId",
+                "serviceAccountEmail",
+                "workloadPoolId"
+            ]
+        },
         "harness:platform/GitConnectorCredentials:GitConnectorCredentials": {
             "properties": {
                 "http": {
@@ -6540,6 +6575,82 @@
                 "passwordRef"
             ]
         },
+        "harness:platform/OverridesGitDetails:OverridesGitDetails": {
+            "properties": {
+                "baseBranch": {
+                    "type": "string",
+                    "description": "Name of the default branch (this checks out a new branch titled by branch_name).\n"
+                },
+                "branch": {
+                    "type": "string",
+                    "description": "Name of the branch.\n"
+                },
+                "commitMessage": {
+                    "type": "string",
+                    "description": "Commit message used for the merge commit.\n"
+                },
+                "connectorRef": {
+                    "type": "string",
+                    "description": "Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "filePath": {
+                    "type": "string",
+                    "description": "File path of the Entity in the repository.\n"
+                },
+                "isHarnessCodeRepo": {
+                    "type": "boolean",
+                    "description": "If the repo is in harness code\n"
+                },
+                "isNewBranch": {
+                    "type": "boolean",
+                    "description": "If the branch being created is new\n"
+                },
+                "lastCommitId": {
+                    "type": "string",
+                    "description": "Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.\n"
+                },
+                "lastObjectId": {
+                    "type": "string",
+                    "description": "Last object identifier (for Github). To be provided only when updating override.\n"
+                },
+                "loadFromCache": {
+                    "type": "boolean",
+                    "description": "Load service yaml from catch\n"
+                },
+                "loadFromFallbackBranch": {
+                    "type": "boolean",
+                    "description": "Load service yaml from fallback branch\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Name of the repository.\n"
+                },
+                "storeType": {
+                    "type": "string",
+                    "description": "Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "baseBranch",
+                        "branch",
+                        "commitMessage",
+                        "connectorRef",
+                        "filePath",
+                        "isHarnessCodeRepo",
+                        "isNewBranch",
+                        "lastCommitId",
+                        "lastObjectId",
+                        "loadFromCache",
+                        "loadFromFallbackBranch",
+                        "repoName",
+                        "storeType"
+                    ]
+                }
+            }
+        },
         "harness:platform/PipelineFiltersFilterProperties:PipelineFiltersFilterProperties": {
             "properties": {
                 "description": {
@@ -9270,6 +9381,46 @@
                 }
             }
         },
+        "harness:platform/getGcpConnectorOidcAuthentication:getGcpConnectorOidcAuthentication": {
+            "properties": {
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The delegates to inherit the credentials from.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project number of the GCP project that is used to create the workload identity..\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The OIDC provider ID value configured in GCP.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The service account linked to workload identity pool while setting GCP workload identity provider.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "The workload pool ID value created in GCP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "delegateSelectors",
+                "gcpProjectId",
+                "providerId",
+                "serviceAccountEmail",
+                "workloadPoolId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harness:platform/getGitConnectorCredential:getGitConnectorCredential": {
             "properties": {
                 "https": {
@@ -11593,6 +11744,38 @@
                 "passwordRef",
                 "username",
                 "usernameRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getOverridesGitDetails:getOverridesGitDetails": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "Name of the branch.\n"
+                },
+                "loadFromCache": {
+                    "type": "boolean",
+                    "description": "Load service yaml from fallback branch\n"
+                },
+                "loadFromFallbackBranch": {
+                    "type": "boolean",
+                    "description": "Load service yaml from fallback branch\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Repo name of remote service override\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "branch",
+                "loadFromCache",
+                "loadFromFallbackBranch",
+                "repoName"
             ],
             "language": {
                 "nodejs": {
@@ -20366,6 +20549,7 @@
             }
         },
         "harness:platform/delegatetoken:Delegatetoken": {
+            "description": "Resource for creating delegate tokens.\n\n## Import\n\nImport account level delegate token\n\n```sh\n$ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken \u003ctoken_id\u003e\n```\n\nImport org level delegate token\n\n```sh\n$ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken \u003corg_id\u003e/\u003ctoken_id\u003e\n```\n\nImport project level delegate token\n\n```sh\n$ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken \u003corg_id\u003e/\u003cproject_id\u003e/\u003ctoken_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -20373,34 +20557,34 @@
                 },
                 "createdAt": {
                     "type": "integer",
-                    "description": "Time when the delegate token is created. This is an epoch timestamp.\n"
+                    "description": "Time when the delegate token is created.\n"
                 },
                 "createdBy": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "created by details\n"
+                    "description": "created by details.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the delegate token\n"
+                    "description": "Name of the resource.\n"
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Org Identifier for the Entity\n"
+                    "description": "Unique identifier of the organization.\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project Identifier for the Entity\n"
+                    "description": "Unique identifier of the project.\n"
                 },
                 "tokenStatus": {
                     "type": "string",
-                    "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed\n"
+                    "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Value of the delegate token. Encoded in base64.\n"
+                    "description": "Value of the delegate Token\n"
                 }
             },
             "required": [
@@ -20418,34 +20602,34 @@
                 },
                 "createdAt": {
                     "type": "integer",
-                    "description": "Time when the delegate token is created. This is an epoch timestamp.\n"
+                    "description": "Time when the delegate token is created.\n"
                 },
                 "createdBy": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "created by details\n"
+                    "description": "created by details.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the delegate token\n"
+                    "description": "Name of the resource.\n"
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Org Identifier for the Entity\n"
+                    "description": "Unique identifier of the organization.\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project Identifier for the Entity\n"
+                    "description": "Unique identifier of the project.\n"
                 },
                 "tokenStatus": {
                     "type": "string",
-                    "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed\n"
+                    "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Value of the delegate token. Encoded in base64.\n"
+                    "description": "Value of the delegate Token\n"
                 }
             },
             "requiredInputs": [
@@ -20460,34 +20644,34 @@
                     },
                     "createdAt": {
                         "type": "integer",
-                        "description": "Time when the delegate token is created. This is an epoch timestamp.\n"
+                        "description": "Time when the delegate token is created.\n"
                     },
                     "createdBy": {
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "created by details\n"
+                        "description": "created by details.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the delegate token\n"
+                        "description": "Name of the resource.\n"
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Org Identifier for the Entity\n"
+                        "description": "Unique identifier of the organization.\n"
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project Identifier for the Entity\n"
+                        "description": "Unique identifier of the project.\n"
                     },
                     "tokenStatus": {
                         "type": "string",
-                        "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed\n"
+                        "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.\n"
                     },
                     "value": {
                         "type": "string",
-                        "description": "Value of the delegate token. Encoded in base64.\n"
+                        "description": "Value of the delegate Token\n"
                     }
                 },
                 "type": "object"
@@ -22832,6 +23016,13 @@
                     "type": "string",
                     "description": "Name of the resource.\n"
                 },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GcpConnectorOidcAuthentication:GcpConnectorOidcAuthentication"
+                    },
+                    "description": "Authentication using harness oidc.\n"
+                },
                 "orgId": {
                     "type": "string",
                     "description": "Unique identifier of the organization.\n"
@@ -22887,6 +23078,13 @@
                     "type": "string",
                     "description": "Name of the resource.\n"
                 },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GcpConnectorOidcAuthentication:GcpConnectorOidcAuthentication"
+                    },
+                    "description": "Authentication using harness oidc.\n"
+                },
                 "orgId": {
                     "type": "string",
                     "description": "Unique identifier of the organization.\n"
@@ -22940,6 +23138,13 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the resource.\n"
+                    },
+                    "oidcAuthentications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/GcpConnectorOidcAuthentication:GcpConnectorOidcAuthentication"
+                        },
+                        "description": "Authentication using harness oidc.\n"
                     },
                     "orgId": {
                         "type": "string",
@@ -23132,6 +23337,10 @@
                     "type": "string",
                     "description": "Description of the resource.\n"
                 },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
@@ -23190,6 +23399,10 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -23251,6 +23464,10 @@
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Execute on delegate or not.\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -24928,6 +25145,170 @@
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps agent's Application Project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/gitxWebhook:GitxWebhook": {
+            "description": "Resource for creating a Harness pipeline.\n\n## Import\n\nImport an Account level Webhook\n\n```sh\n$ pulumi import harness:platform/gitxWebhook:GitxWebhook example \u003cwebhook_identifier\u003e\n```\n\nImport an Org level Webhook\n\n```sh\n$ pulumi import harness:platform/gitxWebhook:GitxWebhook example \u003cwebhook_identifier\u003e/\u003corg_id\u003e/\n```\n\nImport a Project level Webhook\n\n```sh\n$ pulumi import harness:platform/gitxWebhook:GitxWebhook example \u003cwebhook_identifier\u003e/\u003corg_id\u003e/\u003cproject_id\u003e\n```\n\n",
+            "properties": {
+                "connectorRef": {
+                    "type": "string",
+                    "description": "ConnectorRef to be used to create Gitx webhook.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "folderPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Folder Paths\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Flag to enable the webhook\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Repo Identifier for Gitx webhook.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "required": [
+                "connectorRef",
+                "identifier",
+                "name",
+                "repoName"
+            ],
+            "inputProperties": {
+                "connectorRef": {
+                    "type": "string",
+                    "description": "ConnectorRef to be used to create Gitx webhook.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "folderPaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Folder Paths\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Flag to enable the webhook\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "repoName": {
+                    "type": "string",
+                    "description": "Repo Identifier for Gitx webhook.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "connectorRef",
+                "identifier",
+                "repoName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GitxWebhook resources.\n",
+                "properties": {
+                    "connectorRef": {
+                        "type": "string",
+                        "description": "ConnectorRef to be used to create Gitx webhook.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "folderPaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Folder Paths\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "isEnabled": {
+                        "type": "boolean",
+                        "description": "Flag to enable the webhook\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "repoName": {
+                        "type": "string",
+                        "description": "Repo Identifier for Gitx webhook.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
                     }
                 },
                 "type": "object"
@@ -27120,6 +27501,178 @@
                 "type": "object"
             }
         },
+        "harness:platform/overrides:Overrides": {
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster ID to which the overrides are associated.\n"
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The environment ID to which the overrides are associated.\n"
+                },
+                "gitDetails": {
+                    "$ref": "#/types/harness:platform/OverridesGitDetails:OverridesGitDetails",
+                    "description": "Contains parameters related to creating an Entity for Git Experience.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the override entity.\n"
+                },
+                "importFromGit": {
+                    "type": "boolean",
+                    "description": "import override from git\n"
+                },
+                "infraId": {
+                    "type": "string",
+                    "description": "The infrastructure ID to which the overrides are associated.\n"
+                },
+                "isForceImport": {
+                    "type": "boolean",
+                    "description": "force import override from remote even if same file path already exist\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "serviceId": {
+                    "type": "string",
+                    "description": "The service ID to which the overrides applies.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the overrides.\n"
+                },
+                "yaml": {
+                    "type": "string",
+                    "description": "The yaml of the override entity\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "envId",
+                "gitDetails",
+                "identifier",
+                "importFromGit",
+                "infraId",
+                "isForceImport",
+                "serviceId",
+                "type",
+                "yaml"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "The cluster ID to which the overrides are associated.\n"
+                },
+                "envId": {
+                    "type": "string",
+                    "description": "The environment ID to which the overrides are associated.\n"
+                },
+                "gitDetails": {
+                    "$ref": "#/types/harness:platform/OverridesGitDetails:OverridesGitDetails",
+                    "description": "Contains parameters related to creating an Entity for Git Experience.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the override entity.\n"
+                },
+                "importFromGit": {
+                    "type": "boolean",
+                    "description": "import override from git\n"
+                },
+                "infraId": {
+                    "type": "string",
+                    "description": "The infrastructure ID to which the overrides are associated.\n"
+                },
+                "isForceImport": {
+                    "type": "boolean",
+                    "description": "force import override from remote even if same file path already exist\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "serviceId": {
+                    "type": "string",
+                    "description": "The service ID to which the overrides applies.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the overrides.\n"
+                },
+                "yaml": {
+                    "type": "string",
+                    "description": "The yaml of the override entity\n"
+                }
+            },
+            "requiredInputs": [
+                "envId",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Overrides resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "The cluster ID to which the overrides are associated.\n"
+                    },
+                    "envId": {
+                        "type": "string",
+                        "description": "The environment ID to which the overrides are associated.\n"
+                    },
+                    "gitDetails": {
+                        "$ref": "#/types/harness:platform/OverridesGitDetails:OverridesGitDetails",
+                        "description": "Contains parameters related to creating an Entity for Git Experience.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The identifier of the override entity.\n"
+                    },
+                    "importFromGit": {
+                        "type": "boolean",
+                        "description": "import override from git\n"
+                    },
+                    "infraId": {
+                        "type": "string",
+                        "description": "The infrastructure ID to which the overrides are associated.\n"
+                    },
+                    "isForceImport": {
+                        "type": "boolean",
+                        "description": "force import override from remote even if same file path already exist\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "serviceId": {
+                        "type": "string",
+                        "description": "The service ID to which the overrides applies.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the overrides.\n"
+                    },
+                    "yaml": {
+                        "type": "string",
+                        "description": "The yaml of the override entity\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:platform/pagerdutyConnector:PagerdutyConnector": {
             "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.PagerdutyConnector(\"test\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    delegateSelectors: [\"harness-delegate\"],\n    apiTokenRef: \"account.secret_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.PagerdutyConnector(\"test\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    delegate_selectors=[\"harness-delegate\"],\n    api_token_ref=\"account.secret_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.PagerdutyConnector(\"test\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        ApiTokenRef = \"account.secret_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewPagerdutyConnector(ctx, \"test\", \u0026platform.PagerdutyConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tApiTokenRef: pulumi.String(\"account.secret_id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PagerdutyConnector;\nimport com.pulumi.harness.platform.PagerdutyConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new PagerdutyConnector(\"test\", PagerdutyConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .delegateSelectors(\"harness-delegate\")\n            .apiTokenRef(\"account.secret_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:PagerdutyConnector\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      delegateSelectors:\n        - harness-delegate\n      apiTokenRef: account.secret_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level pagerduty connector \n\n```sh\n$ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example \u003cconnector_id\u003e\n```\n\nImport org level pagerduty connector \n\n```sh\n$ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level pagerduty connector \n\n```sh\n$ pulumi import harness:platform/pagerdutyConnector:PagerdutyConnector example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
             "properties": {
@@ -27571,6 +28124,46 @@
                     "type": "string",
                     "description": "Description of the resource.\n"
                 },
+                "gitBaseBranch": {
+                    "type": "string",
+                    "description": "Base branch for the new git branch.\n"
+                },
+                "gitBranch": {
+                    "type": "string",
+                    "description": "Git branch for the policy.\n"
+                },
+                "gitCommitMsg": {
+                    "type": "string",
+                    "description": "Git commit message for the policy.\n"
+                },
+                "gitCommitSha": {
+                    "type": "string",
+                    "description": "The existing commit sha of the file being updated\n"
+                },
+                "gitConnectorRef": {
+                    "type": "string",
+                    "description": "Git connector reference for the policy.\n"
+                },
+                "gitFileId": {
+                    "type": "string",
+                    "description": "The existing file id of the file being updated, not required for bitbucket files\n"
+                },
+                "gitImport": {
+                    "type": "boolean",
+                    "description": "Flag to import the policy from git.\n"
+                },
+                "gitIsNewBranch": {
+                    "type": "boolean",
+                    "description": "Flag to create a new branch for the policy.\n"
+                },
+                "gitPath": {
+                    "type": "string",
+                    "description": "Git path for the policy.\n"
+                },
+                "gitRepo": {
+                    "type": "string",
+                    "description": "Git repository for the policy.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
@@ -27600,6 +28193,8 @@
                 }
             },
             "required": [
+                "gitCommitSha",
+                "gitFileId",
                 "identifier",
                 "name",
                 "rego"
@@ -27608,6 +28203,46 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "gitBaseBranch": {
+                    "type": "string",
+                    "description": "Base branch for the new git branch.\n"
+                },
+                "gitBranch": {
+                    "type": "string",
+                    "description": "Git branch for the policy.\n"
+                },
+                "gitCommitMsg": {
+                    "type": "string",
+                    "description": "Git commit message for the policy.\n"
+                },
+                "gitCommitSha": {
+                    "type": "string",
+                    "description": "The existing commit sha of the file being updated\n"
+                },
+                "gitConnectorRef": {
+                    "type": "string",
+                    "description": "Git connector reference for the policy.\n"
+                },
+                "gitFileId": {
+                    "type": "string",
+                    "description": "The existing file id of the file being updated, not required for bitbucket files\n"
+                },
+                "gitImport": {
+                    "type": "boolean",
+                    "description": "Flag to import the policy from git.\n"
+                },
+                "gitIsNewBranch": {
+                    "type": "boolean",
+                    "description": "Flag to create a new branch for the policy.\n"
+                },
+                "gitPath": {
+                    "type": "string",
+                    "description": "Git path for the policy.\n"
+                },
+                "gitRepo": {
+                    "type": "string",
+                    "description": "Git repository for the policy.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -27648,6 +28283,46 @@
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
+                    },
+                    "gitBaseBranch": {
+                        "type": "string",
+                        "description": "Base branch for the new git branch.\n"
+                    },
+                    "gitBranch": {
+                        "type": "string",
+                        "description": "Git branch for the policy.\n"
+                    },
+                    "gitCommitMsg": {
+                        "type": "string",
+                        "description": "Git commit message for the policy.\n"
+                    },
+                    "gitCommitSha": {
+                        "type": "string",
+                        "description": "The existing commit sha of the file being updated\n"
+                    },
+                    "gitConnectorRef": {
+                        "type": "string",
+                        "description": "Git connector reference for the policy.\n"
+                    },
+                    "gitFileId": {
+                        "type": "string",
+                        "description": "The existing file id of the file being updated, not required for bitbucket files\n"
+                    },
+                    "gitImport": {
+                        "type": "boolean",
+                        "description": "Flag to import the policy from git.\n"
+                    },
+                    "gitIsNewBranch": {
+                        "type": "boolean",
+                        "description": "Flag to create a new branch for the policy.\n"
+                    },
+                    "gitPath": {
+                        "type": "string",
+                        "description": "Git path for the policy.\n"
+                    },
+                    "gitRepo": {
+                        "type": "string",
+                        "description": "Git repository for the policy.\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -38090,29 +38765,37 @@
             }
         },
         "harness:platform/getDelegatetoken:getDelegatetoken": {
+            "description": "Data Source for retrieving delegate tokens.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()\n            .identifier(\"test_token\")\n            .name(\"test token\")\n            .accountId(\"account_id\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getDelegatetoken\n      Arguments:\n        identifier: test_token\n        name: test token\n        accountId: account_id\n        orgId: org_id\n        projectId: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDelegatetoken.\n",
                 "properties": {
                     "accountId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Account Identifier for the Entity\n"
                     },
                     "createdAt": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "Time when the delegate token is created.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the resource.\n"
                     },
                     "orgId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
                     },
                     "projectId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
                     },
                     "tokenStatus": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.\n"
                     },
                     "value": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Value of the delegate Token\n"
                     }
                 },
                 "type": "object",
@@ -38125,9 +38808,11 @@
                 "description": "A collection of values returned by getDelegatetoken.\n",
                 "properties": {
                     "accountId": {
+                        "description": "Account Identifier for the Entity\n",
                         "type": "string"
                     },
                     "createdAt": {
+                        "description": "Time when the delegate token is created.\n",
                         "type": "integer"
                     },
                     "id": {
@@ -38135,18 +38820,23 @@
                         "type": "string"
                     },
                     "name": {
+                        "description": "Name of the resource.\n",
                         "type": "string"
                     },
                     "orgId": {
+                        "description": "Unique identifier of the organization.\n",
                         "type": "string"
                     },
                     "projectId": {
+                        "description": "Unique identifier of the project.\n",
                         "type": "string"
                     },
                     "tokenStatus": {
+                        "description": "Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.\n",
                         "type": "string"
                     },
                     "value": {
+                        "description": "Value of the delegate Token\n",
                         "type": "string"
                     }
                 },
@@ -39260,6 +39950,13 @@
                         "description": "Name of the resource.\n",
                         "type": "string"
                     },
+                    "oidcAuthentications": {
+                        "description": "Authentication using harness oidc.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getGcpConnectorOidcAuthentication:getGcpConnectorOidcAuthentication"
+                        },
+                        "type": "array"
+                    },
                     "orgId": {
                         "description": "Unique identifier of the organization.\n",
                         "type": "string"
@@ -39281,6 +39978,7 @@
                     "identifier",
                     "inheritFromDelegates",
                     "manuals",
+                    "oidcAuthentications",
                     "tags",
                     "id"
                 ],
@@ -40600,6 +41298,89 @@
                 "type": "object"
             }
         },
+        "harness:platform/getGitxWebhook:getGitxWebhook": {
+            "description": "Resource for creating a Harness pipeline.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGitxWebhook.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGitxWebhook.\n",
+                "properties": {
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Unique identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier of the project.\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "identifier",
+                    "name",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:platform/getHelmConnector:getHelmConnector": {
             "description": "Datasource for looking up a HTTP Helm connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getHelmConnector({\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_helm_connector(identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetHelmConnector.Invoke(new()\n    {\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupHelmConnector(ctx, \u0026platform.LookupHelmConnectorArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getHelmConnector(GetHelmConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getHelmConnector\n      Arguments:\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -41836,6 +42617,81 @@
                 "type": "object"
             }
         },
+        "harness:platform/getOverrides:getOverrides": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getOverrides.\n",
+                "properties": {
+                    "gitDetails": {
+                        "$ref": "#/types/harness:platform/getOverridesGitDetails:getOverridesGitDetails"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOverrides.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string"
+                    },
+                    "envId": {
+                        "type": "string"
+                    },
+                    "gitDetails": {
+                        "$ref": "#/types/harness:platform/getOverridesGitDetails:getOverridesGitDetails"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "infraId": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "serviceId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "yaml": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "clusterId",
+                    "envId",
+                    "gitDetails",
+                    "identifier",
+                    "infraId",
+                    "serviceId",
+                    "type",
+                    "yaml",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:platform/getPagerdutyConnector:getPagerdutyConnector": {
             "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getPagerdutyConnector({\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_pagerduty_connector(identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetPagerdutyConnector.Invoke(new()\n    {\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupPagerdutyConnector(ctx, \u0026platform.LookupPagerdutyConnectorArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getPagerdutyConnector(GetPagerdutyConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getPagerdutyConnector\n      Arguments:\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -42237,7 +43093,7 @@
             }
         },
         "harness:platform/getPolicy:getPolicy": {
-            "description": "Data source for retrieving a Harness policy.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getPolicy({\n    identifier: testHarnessPlatformPolicy.identifier,\n    name: testHarnessPlatformPolicy.name,\n    rego: \"package test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_policy(identifier=test_harness_platform_policy[\"identifier\"],\n    name=test_harness_platform_policy[\"name\"],\n    rego=\"package test\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetPolicy.Invoke(new()\n    {\n        Identifier = testHarnessPlatformPolicy.Identifier,\n        Name = testHarnessPlatformPolicy.Name,\n        Rego = \"package test\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupPolicy(ctx, \u0026platform.LookupPolicyArgs{\n\t\t\tIdentifier: pulumi.StringRef(testHarnessPlatformPolicy.Identifier),\n\t\t\tName:       pulumi.StringRef(testHarnessPlatformPolicy.Name),\n\t\t\tRego:       \"package test\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()\n            .identifier(testHarnessPlatformPolicy.identifier())\n            .name(testHarnessPlatformPolicy.name())\n            .rego(\"package test\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getPolicy\n      Arguments:\n        identifier: ${testHarnessPlatformPolicy.identifier}\n        name: ${testHarnessPlatformPolicy.name}\n        rego: package test\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source for retrieving a Harness policy.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getPolicy({\n    identifier: testHarnessPlatformPolicy.identifier,\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_policy(identifier=test_harness_platform_policy[\"identifier\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetPolicy.Invoke(new()\n    {\n        Identifier = testHarnessPlatformPolicy.Identifier,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupPolicy(ctx, \u0026platform.LookupPolicyArgs{\n\t\t\tIdentifier: pulumi.StringRef(testHarnessPlatformPolicy.Identifier),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()\n            .identifier(testHarnessPlatformPolicy.identifier())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getPolicy\n      Arguments:\n        identifier: ${testHarnessPlatformPolicy.identifier}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getPolicy.\n",
                 "properties": {
@@ -42262,10 +43118,7 @@
                         "description": "Rego code for the policy.\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "rego"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getPolicy.\n",

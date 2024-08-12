@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.PolicyArgs;
 import com.pulumi.harness.platform.inputs.PolicyState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +43,146 @@ public class Policy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Base branch for the new git branch.
+     * 
+     */
+    @Export(name="gitBaseBranch", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitBaseBranch;
+
+    /**
+     * @return Base branch for the new git branch.
+     * 
+     */
+    public Output<Optional<String>> gitBaseBranch() {
+        return Codegen.optional(this.gitBaseBranch);
+    }
+    /**
+     * Git branch for the policy.
+     * 
+     */
+    @Export(name="gitBranch", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitBranch;
+
+    /**
+     * @return Git branch for the policy.
+     * 
+     */
+    public Output<Optional<String>> gitBranch() {
+        return Codegen.optional(this.gitBranch);
+    }
+    /**
+     * Git commit message for the policy.
+     * 
+     */
+    @Export(name="gitCommitMsg", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitCommitMsg;
+
+    /**
+     * @return Git commit message for the policy.
+     * 
+     */
+    public Output<Optional<String>> gitCommitMsg() {
+        return Codegen.optional(this.gitCommitMsg);
+    }
+    /**
+     * The existing commit sha of the file being updated
+     * 
+     */
+    @Export(name="gitCommitSha", refs={String.class}, tree="[0]")
+    private Output<String> gitCommitSha;
+
+    /**
+     * @return The existing commit sha of the file being updated
+     * 
+     */
+    public Output<String> gitCommitSha() {
+        return this.gitCommitSha;
+    }
+    /**
+     * Git connector reference for the policy.
+     * 
+     */
+    @Export(name="gitConnectorRef", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitConnectorRef;
+
+    /**
+     * @return Git connector reference for the policy.
+     * 
+     */
+    public Output<Optional<String>> gitConnectorRef() {
+        return Codegen.optional(this.gitConnectorRef);
+    }
+    /**
+     * The existing file id of the file being updated, not required for bitbucket files
+     * 
+     */
+    @Export(name="gitFileId", refs={String.class}, tree="[0]")
+    private Output<String> gitFileId;
+
+    /**
+     * @return The existing file id of the file being updated, not required for bitbucket files
+     * 
+     */
+    public Output<String> gitFileId() {
+        return this.gitFileId;
+    }
+    /**
+     * Flag to import the policy from git.
+     * 
+     */
+    @Export(name="gitImport", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> gitImport;
+
+    /**
+     * @return Flag to import the policy from git.
+     * 
+     */
+    public Output<Optional<Boolean>> gitImport() {
+        return Codegen.optional(this.gitImport);
+    }
+    /**
+     * Flag to create a new branch for the policy.
+     * 
+     */
+    @Export(name="gitIsNewBranch", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> gitIsNewBranch;
+
+    /**
+     * @return Flag to create a new branch for the policy.
+     * 
+     */
+    public Output<Optional<Boolean>> gitIsNewBranch() {
+        return Codegen.optional(this.gitIsNewBranch);
+    }
+    /**
+     * Git path for the policy.
+     * 
+     */
+    @Export(name="gitPath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitPath;
+
+    /**
+     * @return Git path for the policy.
+     * 
+     */
+    public Output<Optional<String>> gitPath() {
+        return Codegen.optional(this.gitPath);
+    }
+    /**
+     * Git repository for the policy.
+     * 
+     */
+    @Export(name="gitRepo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitRepo;
+
+    /**
+     * @return Git repository for the policy.
+     * 
+     */
+    public Output<Optional<String>> gitRepo() {
+        return Codegen.optional(this.gitRepo);
     }
     /**
      * Unique identifier of the resource.

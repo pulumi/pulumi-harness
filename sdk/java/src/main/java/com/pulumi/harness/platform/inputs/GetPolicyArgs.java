@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -80,15 +79,15 @@ public final class GetPolicyArgs extends com.pulumi.resources.InvokeArgs {
      * Rego code for the policy.
      * 
      */
-    @Import(name="rego", required=true)
-    private Output<String> rego;
+    @Import(name="rego")
+    private @Nullable Output<String> rego;
 
     /**
      * @return Rego code for the policy.
      * 
      */
-    public Output<String> rego() {
-        return this.rego;
+    public Optional<Output<String>> rego() {
+        return Optional.ofNullable(this.rego);
     }
 
     private GetPolicyArgs() {}
@@ -209,7 +208,7 @@ public final class GetPolicyArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder rego(Output<String> rego) {
+        public Builder rego(@Nullable Output<String> rego) {
             $.rego = rego;
             return this;
         }
@@ -225,9 +224,6 @@ public final class GetPolicyArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetPolicyArgs build() {
-            if ($.rego == null) {
-                throw new MissingRequiredPropertyException("GetPolicyArgs", "rego");
-            }
             return $;
         }
     }

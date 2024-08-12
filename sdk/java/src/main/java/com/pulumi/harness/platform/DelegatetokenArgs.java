@@ -35,14 +35,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time when the delegate token is created. This is an epoch timestamp.
+     * Time when the delegate token is created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
     /**
-     * @return Time when the delegate token is created. This is an epoch timestamp.
+     * @return Time when the delegate token is created.
      * 
      */
     public Optional<Output<Integer>> createdAt() {
@@ -50,14 +50,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * created by details
+     * created by details.
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<Map<String,Object>> createdBy;
 
     /**
-     * @return created by details
+     * @return created by details.
      * 
      */
     public Optional<Output<Map<String,Object>>> createdBy() {
@@ -65,14 +65,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the delegate token
+     * Name of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the delegate token
+     * @return Name of the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -80,14 +80,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Org Identifier for the Entity
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Org Identifier for the Entity
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -95,14 +95,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project Identifier for the Entity
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project Identifier for the Entity
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -110,14 +110,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
      * 
      */
     @Import(name="tokenStatus")
     private @Nullable Output<String> tokenStatus;
 
     /**
-     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
      * 
      */
     public Optional<Output<String>> tokenStatus() {
@@ -125,14 +125,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value of the delegate token. Encoded in base64.
+     * Value of the delegate Token
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Value of the delegate token. Encoded in base64.
+     * @return Value of the delegate Token
      * 
      */
     public Optional<Output<String>> value() {
@@ -192,7 +192,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Time when the delegate token is created. This is an epoch timestamp.
+         * @param createdAt Time when the delegate token is created.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Time when the delegate token is created. This is an epoch timestamp.
+         * @param createdAt Time when the delegate token is created.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdBy created by details
+         * @param createdBy created by details.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdBy created by details
+         * @param createdBy created by details.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the delegate token
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the delegate token
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Org Identifier for the Entity
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Org Identifier for the Entity
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Project Identifier for the Entity
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Project Identifier for the Entity
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Value of the delegate token. Encoded in base64.
+         * @param value Value of the delegate Token
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Value of the delegate token. Encoded in base64.
+         * @param value Value of the delegate Token
          * 
          * @return builder
          * 

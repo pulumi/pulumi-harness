@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.GcpConnectorArgs;
 import com.pulumi.harness.platform.inputs.GcpConnectorState;
 import com.pulumi.harness.platform.outputs.GcpConnectorInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.GcpConnectorManual;
+import com.pulumi.harness.platform.outputs.GcpConnectorOidcAuthentication;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -141,6 +142,20 @@ public class GcpConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Authentication using harness oidc.
+     * 
+     */
+    @Export(name="oidcAuthentications", refs={List.class,GcpConnectorOidcAuthentication.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<GcpConnectorOidcAuthentication>> oidcAuthentications;
+
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Output<Optional<List<GcpConnectorOidcAuthentication>>> oidcAuthentications() {
+        return Codegen.optional(this.oidcAuthentications);
     }
     /**
      * Unique identifier of the organization.
