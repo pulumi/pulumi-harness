@@ -262,7 +262,7 @@ class EncryptedText(pulumi.CustomResource):
                  scoped_to_account: Optional[pulumi.Input[bool]] = None,
                  secret_manager_id: Optional[pulumi.Input[str]] = None,
                  secret_reference: Optional[pulumi.Input[str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EncryptedTextUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -280,12 +280,12 @@ class EncryptedText(pulumi.CustomResource):
             value="someval",
             secret_manager_id=default.id,
             usage_scopes=[
-                harness.EncryptedTextUsageScopeArgs(
-                    environment_filter_type="PRODUCTION_ENVIRONMENTS",
-                ),
-                harness.EncryptedTextUsageScopeArgs(
-                    environment_filter_type="NON_PRODUCTION_ENVIRONMENTS",
-                ),
+                {
+                    "environment_filter_type": "PRODUCTION_ENVIRONMENTS",
+                },
+                {
+                    "environment_filter_type": "NON_PRODUCTION_ENVIRONMENTS",
+                },
             ])
         ```
 
@@ -306,7 +306,7 @@ class EncryptedText(pulumi.CustomResource):
         :param pulumi.Input[bool] scoped_to_account: Boolean that indicates whether or not the secret is scoped to the account
         :param pulumi.Input[str] secret_manager_id: The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
         :param pulumi.Input[str] secret_reference: Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EncryptedTextUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[str] value: The value of the secret.
         """
         ...
@@ -330,12 +330,12 @@ class EncryptedText(pulumi.CustomResource):
             value="someval",
             secret_manager_id=default.id,
             usage_scopes=[
-                harness.EncryptedTextUsageScopeArgs(
-                    environment_filter_type="PRODUCTION_ENVIRONMENTS",
-                ),
-                harness.EncryptedTextUsageScopeArgs(
-                    environment_filter_type="NON_PRODUCTION_ENVIRONMENTS",
-                ),
+                {
+                    "environment_filter_type": "PRODUCTION_ENVIRONMENTS",
+                },
+                {
+                    "environment_filter_type": "NON_PRODUCTION_ENVIRONMENTS",
+                },
             ])
         ```
 
@@ -369,7 +369,7 @@ class EncryptedText(pulumi.CustomResource):
                  scoped_to_account: Optional[pulumi.Input[bool]] = None,
                  secret_manager_id: Optional[pulumi.Input[str]] = None,
                  secret_reference: Optional[pulumi.Input[str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EncryptedTextUsageScopeArgs']]]]] = None,
+                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -406,7 +406,7 @@ class EncryptedText(pulumi.CustomResource):
             scoped_to_account: Optional[pulumi.Input[bool]] = None,
             secret_manager_id: Optional[pulumi.Input[str]] = None,
             secret_reference: Optional[pulumi.Input[str]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EncryptedTextUsageScopeArgs']]]]] = None,
+            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
             value: Optional[pulumi.Input[str]] = None) -> 'EncryptedText':
         """
         Get an existing EncryptedText resource's state with the given name, id, and optional extra
@@ -420,7 +420,7 @@ class EncryptedText(pulumi.CustomResource):
         :param pulumi.Input[bool] scoped_to_account: Boolean that indicates whether or not the secret is scoped to the account
         :param pulumi.Input[str] secret_manager_id: The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
         :param pulumi.Input[str] secret_reference: Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EncryptedTextUsageScopeArgs']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[str] value: The value of the secret.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

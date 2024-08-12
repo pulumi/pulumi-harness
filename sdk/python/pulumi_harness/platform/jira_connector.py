@@ -415,7 +415,7 @@ class JiraConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']]] = None,
+                 auth: Optional[pulumi.Input[Union['JiraConnectorAuthArgs', 'JiraConnectorAuthArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -454,7 +454,7 @@ class JiraConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']] auth: The credentials to use for the jira authentication.
+        :param pulumi.Input[Union['JiraConnectorAuthArgs', 'JiraConnectorAuthArgsDict']] auth: The credentials to use for the jira authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -512,7 +512,7 @@ class JiraConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']]] = None,
+                 auth: Optional[pulumi.Input[Union['JiraConnectorAuthArgs', 'JiraConnectorAuthArgsDict']]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -561,7 +561,7 @@ class JiraConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth: Optional[pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']]] = None,
+            auth: Optional[pulumi.Input[Union['JiraConnectorAuthArgs', 'JiraConnectorAuthArgsDict']]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -580,7 +580,7 @@ class JiraConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['JiraConnectorAuthArgs']] auth: The credentials to use for the jira authentication.
+        :param pulumi.Input[Union['JiraConnectorAuthArgs', 'JiraConnectorAuthArgsDict']] auth: The credentials to use for the jira authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.

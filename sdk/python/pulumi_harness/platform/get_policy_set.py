@@ -171,7 +171,7 @@ def get_policy_set(action: Optional[str] = None,
                    identifier: Optional[str] = None,
                    name: Optional[str] = None,
                    org_id: Optional[str] = None,
-                   policies: Optional[Sequence[pulumi.InputType['GetPolicySetPolicyArgs']]] = None,
+                   policies: Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']]] = None,
                    project_id: Optional[str] = None,
                    type: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicySetResult:
@@ -189,10 +189,10 @@ def get_policy_set(action: Optional[str] = None,
         action="onrun",
         type="pipeline",
         enabled=True,
-        policies=[harness.platform.GetPolicySetPolicyArgs(
-            identifier="always_run",
-            severity="warning",
-        )])
+        policies=[{
+            "identifier": "always_run",
+            "severity": "warning",
+        }])
     ```
 
 
@@ -201,7 +201,7 @@ def get_policy_set(action: Optional[str] = None,
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
-    :param Sequence[pulumi.InputType['GetPolicySetPolicyArgs']] policies: List of policy identifiers / severity for the policyset.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset.
     :param str project_id: Unique identifier of the project.
     :param str type: Type of the policyset.
     """
@@ -237,7 +237,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[str]] = None,
                           identifier: Optional[pulumi.Input[str]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
                           org_id: Optional[pulumi.Input[Optional[str]]] = None,
-                          policies: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPolicySetPolicyArgs']]]]] = None,
+                          policies: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']]]]] = None,
                           project_id: Optional[pulumi.Input[Optional[str]]] = None,
                           type: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicySetResult]:
@@ -255,10 +255,10 @@ def get_policy_set_output(action: Optional[pulumi.Input[str]] = None,
         action="onrun",
         type="pipeline",
         enabled=True,
-        policies=[harness.platform.GetPolicySetPolicyArgs(
-            identifier="always_run",
-            severity="warning",
-        )])
+        policies=[{
+            "identifier": "always_run",
+            "severity": "warning",
+        }])
     ```
 
 
@@ -267,7 +267,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[str]] = None,
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
-    :param Sequence[pulumi.InputType['GetPolicySetPolicyArgs']] policies: List of policy identifiers / severity for the policyset.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset.
     :param str project_id: Unique identifier of the project.
     :param str type: Type of the policyset.
     """

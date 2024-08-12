@@ -402,7 +402,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
                  infra_id: Optional[pulumi.Input[str]] = None,
                  is_force_import: Optional[pulumi.Input[bool]] = None,
@@ -466,13 +466,13 @@ class ServiceOverridesV2(pulumi.CustomResource):
             service_id="serviceIdentifier",
             infra_id="infraIdentifier",
             type="INFRA_SERVICE_OVERRIDE",
-            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ),
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            },
             yaml=\"\"\"variables:
           - name: v1
             type: String
@@ -508,13 +508,13 @@ class ServiceOverridesV2(pulumi.CustomResource):
             infra_id="infraIdentifier",
             type="INFRA_SERVICE_OVERRIDE",
             import_from_git=True,
-            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            })
         ```
 
         ## Import
@@ -541,7 +541,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated.
         :param pulumi.Input[str] env_id: The environment ID to which the overrides are associated.
-        :param pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[bool] import_from_git: import override from git
         :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated.
         :param pulumi.Input[bool] is_force_import: force import override from remote even if same file path already exist
@@ -611,13 +611,13 @@ class ServiceOverridesV2(pulumi.CustomResource):
             service_id="serviceIdentifier",
             infra_id="infraIdentifier",
             type="INFRA_SERVICE_OVERRIDE",
-            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ),
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            },
             yaml=\"\"\"variables:
           - name: v1
             type: String
@@ -653,13 +653,13 @@ class ServiceOverridesV2(pulumi.CustomResource):
             infra_id="infraIdentifier",
             type="INFRA_SERVICE_OVERRIDE",
             import_from_git=True,
-            git_details=harness.platform.ServiceOverridesV2GitDetailsArgs(
-                store_type="REMOTE",
-                connector_ref="connector_ref",
-                repo_name="repo_name",
-                file_path="file_path",
-                branch="branch",
-            ))
+            git_details={
+                "store_type": "REMOTE",
+                "connector_ref": "connector_ref",
+                "repo_name": "repo_name",
+                "file_path": "file_path",
+                "branch": "branch",
+            })
         ```
 
         ## Import
@@ -699,7 +699,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 git_details: Optional[pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']]] = None,
+                 git_details: Optional[pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
                  infra_id: Optional[pulumi.Input[str]] = None,
                  is_force_import: Optional[pulumi.Input[bool]] = None,
@@ -745,7 +745,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
-            git_details: Optional[pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']]] = None,
+            git_details: Optional[pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             import_from_git: Optional[pulumi.Input[bool]] = None,
             infra_id: Optional[pulumi.Input[str]] = None,
@@ -764,7 +764,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The cluster ID to which the overrides are associated.
         :param pulumi.Input[str] env_id: The environment ID to which the overrides are associated.
-        :param pulumi.Input[pulumi.InputType['ServiceOverridesV2GitDetailsArgs']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[str] identifier: The identifier of the override entity.
         :param pulumi.Input[bool] import_from_git: import override from git
         :param pulumi.Input[str] infra_id: The infrastructure ID to which the overrides are associated.

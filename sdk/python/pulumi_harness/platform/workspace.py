@@ -603,7 +603,7 @@ class Workspace(pulumi.CustomResource):
                  cost_estimation_enabled: Optional[pulumi.Input[bool]] = None,
                  default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceEnvironmentVariableArgs']]]]] = None,
+                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -617,8 +617,8 @@ class Workspace(pulumi.CustomResource):
                  repository_connector: Optional[pulumi.Input[str]] = None,
                  repository_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceTerraformVariableFileArgs']]]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceTerraformVariableArgs']]]]] = None,
+                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
+                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing Workspaces
@@ -643,42 +643,42 @@ class Workspace(pulumi.CustomResource):
             provider_connector=test["id"],
             repository_connector=test["id"],
             terraform_variables=[
-                harness.platform.WorkspaceTerraformVariableArgs(
-                    key="key1",
-                    value="val1",
-                    value_type="string",
-                ),
-                harness.platform.WorkspaceTerraformVariableArgs(
-                    key="key2",
-                    value="val2",
-                    value_type="string",
-                ),
+                {
+                    "key": "key1",
+                    "value": "val1",
+                    "value_type": "string",
+                },
+                {
+                    "key": "key2",
+                    "value": "val2",
+                    "value_type": "string",
+                },
             ],
             environment_variables=[
-                harness.platform.WorkspaceEnvironmentVariableArgs(
-                    key="key1",
-                    value="val1",
-                    value_type="string",
-                ),
-                harness.platform.WorkspaceEnvironmentVariableArgs(
-                    key="key2",
-                    value="val2",
-                    value_type="string",
-                ),
+                {
+                    "key": "key1",
+                    "value": "val1",
+                    "value_type": "string",
+                },
+                {
+                    "key": "key2",
+                    "value": "val2",
+                    "value_type": "string",
+                },
             ],
             terraform_variable_files=[
-                harness.platform.WorkspaceTerraformVariableFileArgs(
-                    repository="https://github.com/org/repo",
-                    repository_branch="main",
-                    repository_path="tf/gcp/basic",
-                    repository_connector=test["id"],
-                ),
-                harness.platform.WorkspaceTerraformVariableFileArgs(
-                    repository="https://github.com/org/repo",
-                    repository_commit="349d90bb9c90f4a3482981c259080de31609e6f6",
-                    repository_path="tf/aws/basic",
-                    repository_connector=test["id"],
-                ),
+                {
+                    "repository": "https://github.com/org/repo",
+                    "repository_branch": "main",
+                    "repository_path": "tf/gcp/basic",
+                    "repository_connector": test["id"],
+                },
+                {
+                    "repository": "https://github.com/org/repo",
+                    "repository_commit": "349d90bb9c90f4a3482981c259080de31609e6f6",
+                    "repository_path": "tf/aws/basic",
+                    "repository_connector": test["id"],
+                },
             ])
         ```
 
@@ -693,7 +693,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[Mapping[str, Any]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceEnvironmentVariableArgs']]]] environment_variables: Environment variables configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -735,42 +735,42 @@ class Workspace(pulumi.CustomResource):
             provider_connector=test["id"],
             repository_connector=test["id"],
             terraform_variables=[
-                harness.platform.WorkspaceTerraformVariableArgs(
-                    key="key1",
-                    value="val1",
-                    value_type="string",
-                ),
-                harness.platform.WorkspaceTerraformVariableArgs(
-                    key="key2",
-                    value="val2",
-                    value_type="string",
-                ),
+                {
+                    "key": "key1",
+                    "value": "val1",
+                    "value_type": "string",
+                },
+                {
+                    "key": "key2",
+                    "value": "val2",
+                    "value_type": "string",
+                },
             ],
             environment_variables=[
-                harness.platform.WorkspaceEnvironmentVariableArgs(
-                    key="key1",
-                    value="val1",
-                    value_type="string",
-                ),
-                harness.platform.WorkspaceEnvironmentVariableArgs(
-                    key="key2",
-                    value="val2",
-                    value_type="string",
-                ),
+                {
+                    "key": "key1",
+                    "value": "val1",
+                    "value_type": "string",
+                },
+                {
+                    "key": "key2",
+                    "value": "val2",
+                    "value_type": "string",
+                },
             ],
             terraform_variable_files=[
-                harness.platform.WorkspaceTerraformVariableFileArgs(
-                    repository="https://github.com/org/repo",
-                    repository_branch="main",
-                    repository_path="tf/gcp/basic",
-                    repository_connector=test["id"],
-                ),
-                harness.platform.WorkspaceTerraformVariableFileArgs(
-                    repository="https://github.com/org/repo",
-                    repository_commit="349d90bb9c90f4a3482981c259080de31609e6f6",
-                    repository_path="tf/aws/basic",
-                    repository_connector=test["id"],
-                ),
+                {
+                    "repository": "https://github.com/org/repo",
+                    "repository_branch": "main",
+                    "repository_path": "tf/gcp/basic",
+                    "repository_connector": test["id"],
+                },
+                {
+                    "repository": "https://github.com/org/repo",
+                    "repository_commit": "349d90bb9c90f4a3482981c259080de31609e6f6",
+                    "repository_path": "tf/aws/basic",
+                    "repository_connector": test["id"],
+                },
             ])
         ```
 
@@ -798,7 +798,7 @@ class Workspace(pulumi.CustomResource):
                  cost_estimation_enabled: Optional[pulumi.Input[bool]] = None,
                  default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceEnvironmentVariableArgs']]]]] = None,
+                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -812,8 +812,8 @@ class Workspace(pulumi.CustomResource):
                  repository_connector: Optional[pulumi.Input[str]] = None,
                  repository_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceTerraformVariableFileArgs']]]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceTerraformVariableArgs']]]]] = None,
+                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
+                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -875,7 +875,7 @@ class Workspace(pulumi.CustomResource):
             cost_estimation_enabled: Optional[pulumi.Input[bool]] = None,
             default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceEnvironmentVariableArgs']]]]] = None,
+            environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -889,8 +889,8 @@ class Workspace(pulumi.CustomResource):
             repository_connector: Optional[pulumi.Input[str]] = None,
             repository_path: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceTerraformVariableFileArgs']]]]] = None,
-            terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceTerraformVariableArgs']]]]] = None) -> 'Workspace':
+            terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
+            terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None) -> 'Workspace':
         """
         Get an existing Workspace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -901,7 +901,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[Mapping[str, Any]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkspaceEnvironmentVariableArgs']]]] environment_variables: Environment variables configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.

@@ -236,7 +236,7 @@ public class PipelineFilters extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PipelineFilters(String name) {
+    public PipelineFilters(java.lang.String name) {
         this(name, PipelineFiltersArgs.Empty);
     }
     /**
@@ -244,7 +244,7 @@ public class PipelineFilters extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PipelineFilters(String name, PipelineFiltersArgs args) {
+    public PipelineFilters(java.lang.String name, PipelineFiltersArgs args) {
         this(name, args, null);
     }
     /**
@@ -253,15 +253,22 @@ public class PipelineFilters extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PipelineFilters(String name, PipelineFiltersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/pipelineFilters:PipelineFilters", name, args == null ? PipelineFiltersArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PipelineFilters(java.lang.String name, PipelineFiltersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/pipelineFilters:PipelineFilters", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PipelineFilters(String name, Output<String> id, @Nullable PipelineFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/pipelineFilters:PipelineFilters", name, state, makeResourceOptions(options, id));
+    private PipelineFilters(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/pipelineFilters:PipelineFilters", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PipelineFiltersArgs makeArgs(PipelineFiltersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PipelineFiltersArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -277,7 +284,7 @@ public class PipelineFilters extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PipelineFilters get(String name, Output<String> id, @Nullable PipelineFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PipelineFilters get(java.lang.String name, Output<java.lang.String> id, @Nullable PipelineFiltersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PipelineFilters(name, id, state, options);
     }
 }

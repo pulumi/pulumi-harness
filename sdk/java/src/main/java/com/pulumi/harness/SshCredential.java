@@ -158,7 +158,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SshCredential(String name) {
+    public SshCredential(java.lang.String name) {
         this(name, SshCredentialArgs.Empty);
     }
     /**
@@ -166,7 +166,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SshCredential(String name, @Nullable SshCredentialArgs args) {
+    public SshCredential(java.lang.String name, @Nullable SshCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -175,15 +175,22 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SshCredential(String name, @Nullable SshCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:index/sshCredential:SshCredential", name, args == null ? SshCredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SshCredential(java.lang.String name, @Nullable SshCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:index/sshCredential:SshCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SshCredential(String name, Output<String> id, @Nullable SshCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:index/sshCredential:SshCredential", name, state, makeResourceOptions(options, id));
+    private SshCredential(java.lang.String name, Output<java.lang.String> id, @Nullable SshCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:index/sshCredential:SshCredential", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SshCredentialArgs makeArgs(@Nullable SshCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SshCredentialArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -199,7 +206,7 @@ public class SshCredential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SshCredential get(String name, Output<String> id, @Nullable SshCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SshCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable SshCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SshCredential(name, id, state, options);
     }
 }

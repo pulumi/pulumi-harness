@@ -149,7 +149,7 @@ public class Winrm extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Winrm(String name) {
+    public Winrm(java.lang.String name) {
         this(name, WinrmArgs.Empty);
     }
     /**
@@ -157,7 +157,7 @@ public class Winrm extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Winrm(String name, WinrmArgs args) {
+    public Winrm(java.lang.String name, WinrmArgs args) {
         this(name, args, null);
     }
     /**
@@ -166,15 +166,22 @@ public class Winrm extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Winrm(String name, WinrmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:service/winrm:Winrm", name, args == null ? WinrmArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Winrm(java.lang.String name, WinrmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:service/winrm:Winrm", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Winrm(String name, Output<String> id, @Nullable WinrmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:service/winrm:Winrm", name, state, makeResourceOptions(options, id));
+    private Winrm(java.lang.String name, Output<java.lang.String> id, @Nullable WinrmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:service/winrm:Winrm", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WinrmArgs makeArgs(WinrmArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WinrmArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -190,7 +197,7 @@ public class Winrm extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Winrm get(String name, Output<String> id, @Nullable WinrmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Winrm get(java.lang.String name, Output<java.lang.String> id, @Nullable WinrmState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Winrm(name, id, state, options);
     }
 }

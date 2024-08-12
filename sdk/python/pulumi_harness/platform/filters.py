@@ -255,7 +255,7 @@ class Filters(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[pulumi.InputType['FiltersFilterPropertiesArgs']]] = None,
+                 filter_properties: Optional[pulumi.Input[Union['FiltersFilterPropertiesArgs', 'FiltersFilterPropertiesArgsDict']]] = None,
                  filter_visibility: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -276,10 +276,10 @@ class Filters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="Connector",
-            filter_properties=harness.platform.FiltersFilterPropertiesArgs(
-                tags=["foo:bar"],
-                filter_type="Connector",
-            ),
+            filter_properties={
+                "tags": ["foo:bar"],
+                "filter_type": "Connector",
+            },
             filter_visibility="EveryOne")
         ```
 
@@ -305,7 +305,7 @@ class Filters(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FiltersFilterPropertiesArgs']] filter_properties: Properties of the filter entity defined in Harness.
+        :param pulumi.Input[Union['FiltersFilterPropertiesArgs', 'FiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filter entity defined in Harness.
         :param pulumi.Input[str] filter_visibility: This indicates visibility of filter. By default, everyone can view this filter. Can either be EveryOne or OnlyCreator
         :param pulumi.Input[str] identifier: Unique identifier of the resource
         :param pulumi.Input[str] name: Name of the Filter
@@ -332,10 +332,10 @@ class Filters(pulumi.CustomResource):
             org_id="org_id",
             project_id="project_id",
             type="Connector",
-            filter_properties=harness.platform.FiltersFilterPropertiesArgs(
-                tags=["foo:bar"],
-                filter_type="Connector",
-            ),
+            filter_properties={
+                "tags": ["foo:bar"],
+                "filter_type": "Connector",
+            },
             filter_visibility="EveryOne")
         ```
 
@@ -374,7 +374,7 @@ class Filters(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[pulumi.InputType['FiltersFilterPropertiesArgs']]] = None,
+                 filter_properties: Optional[pulumi.Input[Union['FiltersFilterPropertiesArgs', 'FiltersFilterPropertiesArgsDict']]] = None,
                  filter_visibility: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -413,7 +413,7 @@ class Filters(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            filter_properties: Optional[pulumi.Input[pulumi.InputType['FiltersFilterPropertiesArgs']]] = None,
+            filter_properties: Optional[pulumi.Input[Union['FiltersFilterPropertiesArgs', 'FiltersFilterPropertiesArgsDict']]] = None,
             filter_visibility: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -427,7 +427,7 @@ class Filters(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FiltersFilterPropertiesArgs']] filter_properties: Properties of the filter entity defined in Harness.
+        :param pulumi.Input[Union['FiltersFilterPropertiesArgs', 'FiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filter entity defined in Harness.
         :param pulumi.Input[str] filter_visibility: This indicates visibility of filter. By default, everyone can view this filter. Can either be EveryOne or OnlyCreator
         :param pulumi.Input[str] identifier: Unique identifier of the resource
         :param pulumi.Input[str] name: Name of the Filter

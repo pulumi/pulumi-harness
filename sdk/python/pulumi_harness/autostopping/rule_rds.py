@@ -233,11 +233,11 @@ class RuleRds(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
-                 database: Optional[pulumi.Input[pulumi.InputType['RuleRdsDatabaseArgs']]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsDependArgs']]]]] = None,
+                 database: Optional[pulumi.Input[Union['RuleRdsDatabaseArgs', 'RuleRdsDatabaseArgsDict']]] = None,
+                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsTcpArgs']]]]] = None,
+                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Variables.
@@ -252,25 +252,25 @@ class RuleRds(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
-            database=harness.autostopping.RuleRdsDatabaseArgs(
-                id="database_id",
-                region="region",
-            ),
-            tcps=[harness.autostopping.RuleRdsTcpArgs(
-                proxy_id="proxy_id",
-                forward_rules=[harness.autostopping.RuleRdsTcpForwardRuleArgs(
-                    port=2233,
-                )],
-            )])
+            database={
+                "id": "database_id",
+                "region": "region",
+            },
+            tcps=[{
+                "proxy_id": "proxy_id",
+                "forward_rules": [{
+                    "port": 2233,
+                }],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsDependArgs']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]] depends: Dependent rules
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsTcpArgs']]]] tcps: TCP routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]] tcps: TCP routing configuration
         """
         ...
     @overload
@@ -291,16 +291,16 @@ class RuleRds(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
-            database=harness.autostopping.RuleRdsDatabaseArgs(
-                id="database_id",
-                region="region",
-            ),
-            tcps=[harness.autostopping.RuleRdsTcpArgs(
-                proxy_id="proxy_id",
-                forward_rules=[harness.autostopping.RuleRdsTcpForwardRuleArgs(
-                    port=2233,
-                )],
-            )])
+            database={
+                "id": "database_id",
+                "region": "region",
+            },
+            tcps=[{
+                "proxy_id": "proxy_id",
+                "forward_rules": [{
+                    "port": 2233,
+                }],
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -319,11 +319,11 @@ class RuleRds(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
-                 database: Optional[pulumi.Input[pulumi.InputType['RuleRdsDatabaseArgs']]] = None,
-                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsDependArgs']]]]] = None,
+                 database: Optional[pulumi.Input[Union['RuleRdsDatabaseArgs', 'RuleRdsDatabaseArgsDict']]] = None,
+                 depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsTcpArgs']]]]] = None,
+                 tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -355,12 +355,12 @@ class RuleRds(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_connector_id: Optional[pulumi.Input[str]] = None,
-            database: Optional[pulumi.Input[pulumi.InputType['RuleRdsDatabaseArgs']]] = None,
-            depends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsDependArgs']]]]] = None,
+            database: Optional[pulumi.Input[Union['RuleRdsDatabaseArgs', 'RuleRdsDatabaseArgsDict']]] = None,
+            depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[float]] = None,
             idle_time_mins: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            tcps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsTcpArgs']]]]] = None) -> 'RuleRds':
+            tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]]] = None) -> 'RuleRds':
         """
         Get an existing RuleRds resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -369,11 +369,11 @@ class RuleRds(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsDependArgs']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]] depends: Dependent rules
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRdsTcpArgs']]]] tcps: TCP routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]] tcps: TCP routing configuration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -189,7 +189,7 @@ public class NexusConnector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NexusConnector(String name) {
+    public NexusConnector(java.lang.String name) {
         this(name, NexusConnectorArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class NexusConnector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NexusConnector(String name, NexusConnectorArgs args) {
+    public NexusConnector(java.lang.String name, NexusConnectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,15 +206,22 @@ public class NexusConnector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NexusConnector(String name, NexusConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/nexusConnector:NexusConnector", name, args == null ? NexusConnectorArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NexusConnector(java.lang.String name, NexusConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/nexusConnector:NexusConnector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NexusConnector(String name, Output<String> id, @Nullable NexusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/nexusConnector:NexusConnector", name, state, makeResourceOptions(options, id));
+    private NexusConnector(java.lang.String name, Output<java.lang.String> id, @Nullable NexusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/nexusConnector:NexusConnector", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NexusConnectorArgs makeArgs(NexusConnectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NexusConnectorArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +237,7 @@ public class NexusConnector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NexusConnector get(String name, Output<String> id, @Nullable NexusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NexusConnector get(java.lang.String name, Output<java.lang.String> id, @Nullable NexusConnectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NexusConnector(name, id, state, options);
     }
 }

@@ -197,7 +197,7 @@ class Kubernetes(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  helm_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesVariableArgs']]]]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Kubernetes service. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -215,16 +215,16 @@ class Kubernetes(pulumi.CustomResource):
             helm_version="V3",
             description="Service for deploying Kubernetes manifests",
             variables=[
-                harness.service.KubernetesVariableArgs(
-                    name="test",
-                    value="test_value",
-                    type="TEXT",
-                ),
-                harness.service.KubernetesVariableArgs(
-                    name="test2",
-                    value="test_value2",
-                    type="TEXT",
-                ),
+                {
+                    "name": "test",
+                    "value": "test_value",
+                    "type": "TEXT",
+                },
+                {
+                    "name": "test2",
+                    "value": "test_value2",
+                    "type": "TEXT",
+                },
             ])
         ```
 
@@ -242,7 +242,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of th service
         :param pulumi.Input[str] helm_version: The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
         :param pulumi.Input[str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesVariableArgs']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]] variables: Variables to be used in the service
         """
         ...
     @overload
@@ -266,16 +266,16 @@ class Kubernetes(pulumi.CustomResource):
             helm_version="V3",
             description="Service for deploying Kubernetes manifests",
             variables=[
-                harness.service.KubernetesVariableArgs(
-                    name="test",
-                    value="test_value",
-                    type="TEXT",
-                ),
-                harness.service.KubernetesVariableArgs(
-                    name="test2",
-                    value="test_value2",
-                    type="TEXT",
-                ),
+                {
+                    "name": "test",
+                    "value": "test_value",
+                    "type": "TEXT",
+                },
+                {
+                    "name": "test2",
+                    "value": "test_value2",
+                    "type": "TEXT",
+                },
             ])
         ```
 
@@ -306,7 +306,7 @@ class Kubernetes(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  helm_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesVariableArgs']]]]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,7 +337,7 @@ class Kubernetes(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             helm_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesVariableArgs']]]]] = None) -> 'Kubernetes':
+            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]]] = None) -> 'Kubernetes':
         """
         Get an existing Kubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -349,7 +349,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of th service
         :param pulumi.Input[str] helm_version: The version of Helm to use. Options are `V2` and `V3`. Defaults to 'V2'. Only used when `type` is `KUBERNETES` or `HELM`.
         :param pulumi.Input[str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesVariableArgs']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesVariableArgs', 'KubernetesVariableArgsDict']]]] variables: Variables to be used in the service
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -351,7 +351,7 @@ class SecretText(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]]] = None,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -387,7 +387,7 @@ class SecretText(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]] additional_metadatas: Additional Metadata for the Secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -442,7 +442,7 @@ class SecretText(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]]] = None,
+                 additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -489,7 +489,7 @@ class SecretText(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]]] = None,
+            additional_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -506,7 +506,7 @@ class SecretText(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTextAdditionalMetadataArgs']]]] additional_metadatas: Additional Metadata for the Secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.

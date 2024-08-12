@@ -38,7 +38,7 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				CredentialsRef: pulumi.String(fmt.Sprintf("account.%v", test.Id)),
+//				CredentialsRef: pulumi.Sprintf("account.%v", test.Id),
 //			})
 //			if err != nil {
 //				return err

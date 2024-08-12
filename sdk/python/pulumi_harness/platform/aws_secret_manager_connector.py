@@ -383,7 +383,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -420,7 +420,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
         :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
@@ -476,7 +476,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -523,7 +523,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: Optional[pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']]] = None,
+            credentials: Optional[pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']]] = None,
             default: Optional[pulumi.Input[bool]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -541,7 +541,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsSecretManagerConnectorCredentialsArgs']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[Union['AwsSecretManagerConnectorCredentialsArgs', 'AwsSecretManagerConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
         :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.

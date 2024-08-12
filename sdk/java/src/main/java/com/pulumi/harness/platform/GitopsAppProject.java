@@ -146,7 +146,7 @@ public class GitopsAppProject extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GitopsAppProject(String name) {
+    public GitopsAppProject(java.lang.String name) {
         this(name, GitopsAppProjectArgs.Empty);
     }
     /**
@@ -154,7 +154,7 @@ public class GitopsAppProject extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GitopsAppProject(String name, GitopsAppProjectArgs args) {
+    public GitopsAppProject(java.lang.String name, GitopsAppProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -163,15 +163,22 @@ public class GitopsAppProject extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GitopsAppProject(String name, GitopsAppProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/gitopsAppProject:GitopsAppProject", name, args == null ? GitopsAppProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GitopsAppProject(java.lang.String name, GitopsAppProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/gitopsAppProject:GitopsAppProject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GitopsAppProject(String name, Output<String> id, @Nullable GitopsAppProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("harness:platform/gitopsAppProject:GitopsAppProject", name, state, makeResourceOptions(options, id));
+    private GitopsAppProject(java.lang.String name, Output<java.lang.String> id, @Nullable GitopsAppProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("harness:platform/gitopsAppProject:GitopsAppProject", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GitopsAppProjectArgs makeArgs(GitopsAppProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GitopsAppProjectArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -187,7 +194,7 @@ public class GitopsAppProject extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GitopsAppProject get(String name, Output<String> id, @Nullable GitopsAppProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GitopsAppProject get(java.lang.String name, Output<java.lang.String> id, @Nullable GitopsAppProjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GitopsAppProject(name, id, state, options);
     }
 }
