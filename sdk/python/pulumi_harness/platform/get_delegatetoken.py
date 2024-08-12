@@ -50,11 +50,17 @@ class GetDelegatetokenResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Account Identifier for the Entity
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[int]:
+        """
+        Time when the delegate token is created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -68,26 +74,41 @@ class GetDelegatetokenResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
+        """
+        Unique identifier of the organization.
+        """
         return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        Unique identifier of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> Optional[str]:
+        """
+        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        """
         return pulumi.get(self, "token_status")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        Value of the delegate Token
+        """
         return pulumi.get(self, "value")
 
 
@@ -116,7 +137,16 @@ def get_delegatetoken(account_id: Optional[str] = None,
                       value: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDelegatetokenResult:
     """
-    Use this data source to access information about an existing resource.
+    Data Source for retrieving delegate tokens.
+
+
+    :param str account_id: Account Identifier for the Entity
+    :param int created_at: Time when the delegate token is created.
+    :param str name: Name of the resource.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
+    :param str token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+    :param str value: Value of the delegate Token
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -150,6 +180,15 @@ def get_delegatetoken_output(account_id: Optional[pulumi.Input[str]] = None,
                              value: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDelegatetokenResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data Source for retrieving delegate tokens.
+
+
+    :param str account_id: Account Identifier for the Entity
+    :param int created_at: Time when the delegate token is created.
+    :param str name: Name of the resource.
+    :param str org_id: Unique identifier of the organization.
+    :param str project_id: Unique identifier of the project.
+    :param str token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+    :param str value: Value of the delegate Token
     """
     ...

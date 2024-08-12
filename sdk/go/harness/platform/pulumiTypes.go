@@ -8958,6 +8958,139 @@ func (o GcpConnectorManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GcpConnectorOidcAuthentication struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity.
+	GcpProjectId string `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId string `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId string `pulumi:"workloadPoolId"`
+}
+
+// GcpConnectorOidcAuthenticationInput is an input type that accepts GcpConnectorOidcAuthenticationArgs and GcpConnectorOidcAuthenticationOutput values.
+// You can construct a concrete instance of `GcpConnectorOidcAuthenticationInput` via:
+//
+//	GcpConnectorOidcAuthenticationArgs{...}
+type GcpConnectorOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToGcpConnectorOidcAuthenticationOutput() GcpConnectorOidcAuthenticationOutput
+	ToGcpConnectorOidcAuthenticationOutputWithContext(context.Context) GcpConnectorOidcAuthenticationOutput
+}
+
+type GcpConnectorOidcAuthenticationArgs struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity.
+	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId pulumi.StringInput `pulumi:"workloadPoolId"`
+}
+
+func (GcpConnectorOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GcpConnectorOidcAuthenticationArgs) ToGcpConnectorOidcAuthenticationOutput() GcpConnectorOidcAuthenticationOutput {
+	return i.ToGcpConnectorOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GcpConnectorOidcAuthenticationArgs) ToGcpConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GcpConnectorOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpConnectorOidcAuthenticationOutput)
+}
+
+// GcpConnectorOidcAuthenticationArrayInput is an input type that accepts GcpConnectorOidcAuthenticationArray and GcpConnectorOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GcpConnectorOidcAuthenticationArrayInput` via:
+//
+//	GcpConnectorOidcAuthenticationArray{ GcpConnectorOidcAuthenticationArgs{...} }
+type GcpConnectorOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGcpConnectorOidcAuthenticationArrayOutput() GcpConnectorOidcAuthenticationArrayOutput
+	ToGcpConnectorOidcAuthenticationArrayOutputWithContext(context.Context) GcpConnectorOidcAuthenticationArrayOutput
+}
+
+type GcpConnectorOidcAuthenticationArray []GcpConnectorOidcAuthenticationInput
+
+func (GcpConnectorOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GcpConnectorOidcAuthenticationArray) ToGcpConnectorOidcAuthenticationArrayOutput() GcpConnectorOidcAuthenticationArrayOutput {
+	return i.ToGcpConnectorOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GcpConnectorOidcAuthenticationArray) ToGcpConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GcpConnectorOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpConnectorOidcAuthenticationArrayOutput)
+}
+
+type GcpConnectorOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GcpConnectorOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GcpConnectorOidcAuthenticationOutput) ToGcpConnectorOidcAuthenticationOutput() GcpConnectorOidcAuthenticationOutput {
+	return o
+}
+
+func (o GcpConnectorOidcAuthenticationOutput) ToGcpConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GcpConnectorOidcAuthenticationOutput {
+	return o
+}
+
+// The delegates to inherit the credentials from.
+func (o GcpConnectorOidcAuthenticationOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GcpConnectorOidcAuthentication) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// The project number of the GCP project that is used to create the workload identity.
+func (o GcpConnectorOidcAuthenticationOutput) GcpProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpConnectorOidcAuthentication) string { return v.GcpProjectId }).(pulumi.StringOutput)
+}
+
+// The OIDC provider ID value configured in GCP.
+func (o GcpConnectorOidcAuthenticationOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpConnectorOidcAuthentication) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// The service account linked to workload identity pool while setting GCP workload identity provider.
+func (o GcpConnectorOidcAuthenticationOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpConnectorOidcAuthentication) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The workload pool ID value created in GCP.
+func (o GcpConnectorOidcAuthenticationOutput) WorkloadPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpConnectorOidcAuthentication) string { return v.WorkloadPoolId }).(pulumi.StringOutput)
+}
+
+type GcpConnectorOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpConnectorOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GcpConnectorOidcAuthenticationArrayOutput) ToGcpConnectorOidcAuthenticationArrayOutput() GcpConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GcpConnectorOidcAuthenticationArrayOutput) ToGcpConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GcpConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GcpConnectorOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GcpConnectorOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpConnectorOidcAuthentication {
+		return vs[0].([]GcpConnectorOidcAuthentication)[vs[1].(int)]
+	}).(GcpConnectorOidcAuthenticationOutput)
+}
+
 type GitConnectorCredentials struct {
 	// Authenticate using Username and password over http(s) for the connection.
 	Http *GitConnectorCredentialsHttp `pulumi:"http"`
@@ -25090,6 +25223,371 @@ func (o OciHelmConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type OverridesGitDetails struct {
+	// Name of the default branch (this checks out a new branch titled by branch_name).
+	BaseBranch *string `pulumi:"baseBranch"`
+	// Name of the branch.
+	Branch *string `pulumi:"branch"`
+	// Commit message used for the merge commit.
+	CommitMessage *string `pulumi:"commitMessage"`
+	// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ConnectorRef *string `pulumi:"connectorRef"`
+	// File path of the Entity in the repository.
+	FilePath *string `pulumi:"filePath"`
+	// If the repo is in harness code
+	IsHarnessCodeRepo *bool `pulumi:"isHarnessCodeRepo"`
+	// If the branch being created is new
+	IsNewBranch *bool `pulumi:"isNewBranch"`
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+	LastCommitId *string `pulumi:"lastCommitId"`
+	// Last object identifier (for Github). To be provided only when updating override.
+	LastObjectId *string `pulumi:"lastObjectId"`
+	// Load service yaml from catch
+	LoadFromCache *bool `pulumi:"loadFromCache"`
+	// Load service yaml from fallback branch
+	LoadFromFallbackBranch *bool `pulumi:"loadFromFallbackBranch"`
+	// Name of the repository.
+	RepoName *string `pulumi:"repoName"`
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	StoreType *string `pulumi:"storeType"`
+}
+
+// OverridesGitDetailsInput is an input type that accepts OverridesGitDetailsArgs and OverridesGitDetailsOutput values.
+// You can construct a concrete instance of `OverridesGitDetailsInput` via:
+//
+//	OverridesGitDetailsArgs{...}
+type OverridesGitDetailsInput interface {
+	pulumi.Input
+
+	ToOverridesGitDetailsOutput() OverridesGitDetailsOutput
+	ToOverridesGitDetailsOutputWithContext(context.Context) OverridesGitDetailsOutput
+}
+
+type OverridesGitDetailsArgs struct {
+	// Name of the default branch (this checks out a new branch titled by branch_name).
+	BaseBranch pulumi.StringPtrInput `pulumi:"baseBranch"`
+	// Name of the branch.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Commit message used for the merge commit.
+	CommitMessage pulumi.StringPtrInput `pulumi:"commitMessage"`
+	// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
+	// File path of the Entity in the repository.
+	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+	// If the repo is in harness code
+	IsHarnessCodeRepo pulumi.BoolPtrInput `pulumi:"isHarnessCodeRepo"`
+	// If the branch being created is new
+	IsNewBranch pulumi.BoolPtrInput `pulumi:"isNewBranch"`
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+	LastCommitId pulumi.StringPtrInput `pulumi:"lastCommitId"`
+	// Last object identifier (for Github). To be provided only when updating override.
+	LastObjectId pulumi.StringPtrInput `pulumi:"lastObjectId"`
+	// Load service yaml from catch
+	LoadFromCache pulumi.BoolPtrInput `pulumi:"loadFromCache"`
+	// Load service yaml from fallback branch
+	LoadFromFallbackBranch pulumi.BoolPtrInput `pulumi:"loadFromFallbackBranch"`
+	// Name of the repository.
+	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
+	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	StoreType pulumi.StringPtrInput `pulumi:"storeType"`
+}
+
+func (OverridesGitDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OverridesGitDetails)(nil)).Elem()
+}
+
+func (i OverridesGitDetailsArgs) ToOverridesGitDetailsOutput() OverridesGitDetailsOutput {
+	return i.ToOverridesGitDetailsOutputWithContext(context.Background())
+}
+
+func (i OverridesGitDetailsArgs) ToOverridesGitDetailsOutputWithContext(ctx context.Context) OverridesGitDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverridesGitDetailsOutput)
+}
+
+func (i OverridesGitDetailsArgs) ToOverridesGitDetailsPtrOutput() OverridesGitDetailsPtrOutput {
+	return i.ToOverridesGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i OverridesGitDetailsArgs) ToOverridesGitDetailsPtrOutputWithContext(ctx context.Context) OverridesGitDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverridesGitDetailsOutput).ToOverridesGitDetailsPtrOutputWithContext(ctx)
+}
+
+// OverridesGitDetailsPtrInput is an input type that accepts OverridesGitDetailsArgs, OverridesGitDetailsPtr and OverridesGitDetailsPtrOutput values.
+// You can construct a concrete instance of `OverridesGitDetailsPtrInput` via:
+//
+//	        OverridesGitDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OverridesGitDetailsPtrInput interface {
+	pulumi.Input
+
+	ToOverridesGitDetailsPtrOutput() OverridesGitDetailsPtrOutput
+	ToOverridesGitDetailsPtrOutputWithContext(context.Context) OverridesGitDetailsPtrOutput
+}
+
+type overridesGitDetailsPtrType OverridesGitDetailsArgs
+
+func OverridesGitDetailsPtr(v *OverridesGitDetailsArgs) OverridesGitDetailsPtrInput {
+	return (*overridesGitDetailsPtrType)(v)
+}
+
+func (*overridesGitDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OverridesGitDetails)(nil)).Elem()
+}
+
+func (i *overridesGitDetailsPtrType) ToOverridesGitDetailsPtrOutput() OverridesGitDetailsPtrOutput {
+	return i.ToOverridesGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *overridesGitDetailsPtrType) ToOverridesGitDetailsPtrOutputWithContext(ctx context.Context) OverridesGitDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverridesGitDetailsPtrOutput)
+}
+
+type OverridesGitDetailsOutput struct{ *pulumi.OutputState }
+
+func (OverridesGitDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OverridesGitDetails)(nil)).Elem()
+}
+
+func (o OverridesGitDetailsOutput) ToOverridesGitDetailsOutput() OverridesGitDetailsOutput {
+	return o
+}
+
+func (o OverridesGitDetailsOutput) ToOverridesGitDetailsOutputWithContext(ctx context.Context) OverridesGitDetailsOutput {
+	return o
+}
+
+func (o OverridesGitDetailsOutput) ToOverridesGitDetailsPtrOutput() OverridesGitDetailsPtrOutput {
+	return o.ToOverridesGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o OverridesGitDetailsOutput) ToOverridesGitDetailsPtrOutputWithContext(ctx context.Context) OverridesGitDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OverridesGitDetails) *OverridesGitDetails {
+		return &v
+	}).(OverridesGitDetailsPtrOutput)
+}
+
+// Name of the default branch (this checks out a new branch titled by branch_name).
+func (o OverridesGitDetailsOutput) BaseBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.BaseBranch }).(pulumi.StringPtrOutput)
+}
+
+// Name of the branch.
+func (o OverridesGitDetailsOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Commit message used for the merge commit.
+func (o OverridesGitDetailsOutput) CommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.CommitMessage }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o OverridesGitDetailsOutput) ConnectorRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.ConnectorRef }).(pulumi.StringPtrOutput)
+}
+
+// File path of the Entity in the repository.
+func (o OverridesGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
+}
+
+// If the repo is in harness code
+func (o OverridesGitDetailsOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *bool { return v.IsHarnessCodeRepo }).(pulumi.BoolPtrOutput)
+}
+
+// If the branch being created is new
+func (o OverridesGitDetailsOutput) IsNewBranch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *bool { return v.IsNewBranch }).(pulumi.BoolPtrOutput)
+}
+
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+func (o OverridesGitDetailsOutput) LastCommitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.LastCommitId }).(pulumi.StringPtrOutput)
+}
+
+// Last object identifier (for Github). To be provided only when updating override.
+func (o OverridesGitDetailsOutput) LastObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.LastObjectId }).(pulumi.StringPtrOutput)
+}
+
+// Load service yaml from catch
+func (o OverridesGitDetailsOutput) LoadFromCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *bool { return v.LoadFromCache }).(pulumi.BoolPtrOutput)
+}
+
+// Load service yaml from fallback branch
+func (o OverridesGitDetailsOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *bool { return v.LoadFromFallbackBranch }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the repository.
+func (o OverridesGitDetailsOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.RepoName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+func (o OverridesGitDetailsOutput) StoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverridesGitDetails) *string { return v.StoreType }).(pulumi.StringPtrOutput)
+}
+
+type OverridesGitDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (OverridesGitDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OverridesGitDetails)(nil)).Elem()
+}
+
+func (o OverridesGitDetailsPtrOutput) ToOverridesGitDetailsPtrOutput() OverridesGitDetailsPtrOutput {
+	return o
+}
+
+func (o OverridesGitDetailsPtrOutput) ToOverridesGitDetailsPtrOutputWithContext(ctx context.Context) OverridesGitDetailsPtrOutput {
+	return o
+}
+
+func (o OverridesGitDetailsPtrOutput) Elem() OverridesGitDetailsOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) OverridesGitDetails {
+		if v != nil {
+			return *v
+		}
+		var ret OverridesGitDetails
+		return ret
+	}).(OverridesGitDetailsOutput)
+}
+
+// Name of the default branch (this checks out a new branch titled by branch_name).
+func (o OverridesGitDetailsPtrOutput) BaseBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the branch.
+func (o OverridesGitDetailsPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Commit message used for the merge commit.
+func (o OverridesGitDetailsPtrOutput) CommitMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o OverridesGitDetailsPtrOutput) ConnectorRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// File path of the Entity in the repository.
+func (o OverridesGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// If the repo is in harness code
+func (o OverridesGitDetailsPtrOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsHarnessCodeRepo
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the branch being created is new
+func (o OverridesGitDetailsPtrOutput) IsNewBranch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsNewBranch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+func (o OverridesGitDetailsPtrOutput) LastCommitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastCommitId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Last object identifier (for Github). To be provided only when updating override.
+func (o OverridesGitDetailsPtrOutput) LastObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load service yaml from catch
+func (o OverridesGitDetailsPtrOutput) LoadFromCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoadFromCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Load service yaml from fallback branch
+func (o OverridesGitDetailsPtrOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoadFromFallbackBranch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of the repository.
+func (o OverridesGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+func (o OverridesGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoreType
+	}).(pulumi.StringPtrOutput)
+}
+
 type PipelineFiltersFilterProperties struct {
 	// description of the pipline filter.
 	Description *string `pulumi:"description"`
@@ -40223,6 +40721,139 @@ func (o GetGcpConnectorManualArrayOutput) Index(i pulumi.IntInput) GetGcpConnect
 	}).(GetGcpConnectorManualOutput)
 }
 
+type GetGcpConnectorOidcAuthentication struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity..
+	GcpProjectId string `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId string `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId string `pulumi:"workloadPoolId"`
+}
+
+// GetGcpConnectorOidcAuthenticationInput is an input type that accepts GetGcpConnectorOidcAuthenticationArgs and GetGcpConnectorOidcAuthenticationOutput values.
+// You can construct a concrete instance of `GetGcpConnectorOidcAuthenticationInput` via:
+//
+//	GetGcpConnectorOidcAuthenticationArgs{...}
+type GetGcpConnectorOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetGcpConnectorOidcAuthenticationOutput() GetGcpConnectorOidcAuthenticationOutput
+	ToGetGcpConnectorOidcAuthenticationOutputWithContext(context.Context) GetGcpConnectorOidcAuthenticationOutput
+}
+
+type GetGcpConnectorOidcAuthenticationArgs struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity..
+	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId pulumi.StringInput `pulumi:"workloadPoolId"`
+}
+
+func (GetGcpConnectorOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetGcpConnectorOidcAuthenticationArgs) ToGetGcpConnectorOidcAuthenticationOutput() GetGcpConnectorOidcAuthenticationOutput {
+	return i.ToGetGcpConnectorOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetGcpConnectorOidcAuthenticationArgs) ToGetGcpConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GetGcpConnectorOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpConnectorOidcAuthenticationOutput)
+}
+
+// GetGcpConnectorOidcAuthenticationArrayInput is an input type that accepts GetGcpConnectorOidcAuthenticationArray and GetGcpConnectorOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetGcpConnectorOidcAuthenticationArrayInput` via:
+//
+//	GetGcpConnectorOidcAuthenticationArray{ GetGcpConnectorOidcAuthenticationArgs{...} }
+type GetGcpConnectorOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetGcpConnectorOidcAuthenticationArrayOutput() GetGcpConnectorOidcAuthenticationArrayOutput
+	ToGetGcpConnectorOidcAuthenticationArrayOutputWithContext(context.Context) GetGcpConnectorOidcAuthenticationArrayOutput
+}
+
+type GetGcpConnectorOidcAuthenticationArray []GetGcpConnectorOidcAuthenticationInput
+
+func (GetGcpConnectorOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetGcpConnectorOidcAuthenticationArray) ToGetGcpConnectorOidcAuthenticationArrayOutput() GetGcpConnectorOidcAuthenticationArrayOutput {
+	return i.ToGetGcpConnectorOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGcpConnectorOidcAuthenticationArray) ToGetGcpConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetGcpConnectorOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpConnectorOidcAuthenticationArrayOutput)
+}
+
+type GetGcpConnectorOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetGcpConnectorOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetGcpConnectorOidcAuthenticationOutput) ToGetGcpConnectorOidcAuthenticationOutput() GetGcpConnectorOidcAuthenticationOutput {
+	return o
+}
+
+func (o GetGcpConnectorOidcAuthenticationOutput) ToGetGcpConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GetGcpConnectorOidcAuthenticationOutput {
+	return o
+}
+
+// The delegates to inherit the credentials from.
+func (o GetGcpConnectorOidcAuthenticationOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGcpConnectorOidcAuthentication) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// The project number of the GCP project that is used to create the workload identity..
+func (o GetGcpConnectorOidcAuthenticationOutput) GcpProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpConnectorOidcAuthentication) string { return v.GcpProjectId }).(pulumi.StringOutput)
+}
+
+// The OIDC provider ID value configured in GCP.
+func (o GetGcpConnectorOidcAuthenticationOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpConnectorOidcAuthentication) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// The service account linked to workload identity pool while setting GCP workload identity provider.
+func (o GetGcpConnectorOidcAuthenticationOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpConnectorOidcAuthentication) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The workload pool ID value created in GCP.
+func (o GetGcpConnectorOidcAuthenticationOutput) WorkloadPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpConnectorOidcAuthentication) string { return v.WorkloadPoolId }).(pulumi.StringOutput)
+}
+
+type GetGcpConnectorOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGcpConnectorOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetGcpConnectorOidcAuthenticationArrayOutput) ToGetGcpConnectorOidcAuthenticationArrayOutput() GetGcpConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGcpConnectorOidcAuthenticationArrayOutput) ToGetGcpConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetGcpConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGcpConnectorOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GetGcpConnectorOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGcpConnectorOidcAuthentication {
+		return vs[0].([]GetGcpConnectorOidcAuthentication)[vs[1].(int)]
+	}).(GetGcpConnectorOidcAuthenticationOutput)
+}
+
 type GetGitConnectorCredential struct {
 	// Authenticate using Username and password over http(s) for the connection.
 	Https []GetGitConnectorCredentialHttp `pulumi:"https"`
@@ -49497,6 +50128,200 @@ func (o GetOciHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetOc
 	}).(GetOciHelmConnectorCredentialOutput)
 }
 
+type GetOverridesGitDetails struct {
+	// Name of the branch.
+	Branch string `pulumi:"branch"`
+	// Load service yaml from fallback branch
+	LoadFromCache bool `pulumi:"loadFromCache"`
+	// Load service yaml from fallback branch
+	LoadFromFallbackBranch bool `pulumi:"loadFromFallbackBranch"`
+	// Repo name of remote service override
+	RepoName string `pulumi:"repoName"`
+}
+
+// GetOverridesGitDetailsInput is an input type that accepts GetOverridesGitDetailsArgs and GetOverridesGitDetailsOutput values.
+// You can construct a concrete instance of `GetOverridesGitDetailsInput` via:
+//
+//	GetOverridesGitDetailsArgs{...}
+type GetOverridesGitDetailsInput interface {
+	pulumi.Input
+
+	ToGetOverridesGitDetailsOutput() GetOverridesGitDetailsOutput
+	ToGetOverridesGitDetailsOutputWithContext(context.Context) GetOverridesGitDetailsOutput
+}
+
+type GetOverridesGitDetailsArgs struct {
+	// Name of the branch.
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Load service yaml from fallback branch
+	LoadFromCache pulumi.BoolInput `pulumi:"loadFromCache"`
+	// Load service yaml from fallback branch
+	LoadFromFallbackBranch pulumi.BoolInput `pulumi:"loadFromFallbackBranch"`
+	// Repo name of remote service override
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+}
+
+func (GetOverridesGitDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOverridesGitDetails)(nil)).Elem()
+}
+
+func (i GetOverridesGitDetailsArgs) ToGetOverridesGitDetailsOutput() GetOverridesGitDetailsOutput {
+	return i.ToGetOverridesGitDetailsOutputWithContext(context.Background())
+}
+
+func (i GetOverridesGitDetailsArgs) ToGetOverridesGitDetailsOutputWithContext(ctx context.Context) GetOverridesGitDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOverridesGitDetailsOutput)
+}
+
+func (i GetOverridesGitDetailsArgs) ToGetOverridesGitDetailsPtrOutput() GetOverridesGitDetailsPtrOutput {
+	return i.ToGetOverridesGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOverridesGitDetailsArgs) ToGetOverridesGitDetailsPtrOutputWithContext(ctx context.Context) GetOverridesGitDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOverridesGitDetailsOutput).ToGetOverridesGitDetailsPtrOutputWithContext(ctx)
+}
+
+// GetOverridesGitDetailsPtrInput is an input type that accepts GetOverridesGitDetailsArgs, GetOverridesGitDetailsPtr and GetOverridesGitDetailsPtrOutput values.
+// You can construct a concrete instance of `GetOverridesGitDetailsPtrInput` via:
+//
+//	        GetOverridesGitDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOverridesGitDetailsPtrInput interface {
+	pulumi.Input
+
+	ToGetOverridesGitDetailsPtrOutput() GetOverridesGitDetailsPtrOutput
+	ToGetOverridesGitDetailsPtrOutputWithContext(context.Context) GetOverridesGitDetailsPtrOutput
+}
+
+type getOverridesGitDetailsPtrType GetOverridesGitDetailsArgs
+
+func GetOverridesGitDetailsPtr(v *GetOverridesGitDetailsArgs) GetOverridesGitDetailsPtrInput {
+	return (*getOverridesGitDetailsPtrType)(v)
+}
+
+func (*getOverridesGitDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOverridesGitDetails)(nil)).Elem()
+}
+
+func (i *getOverridesGitDetailsPtrType) ToGetOverridesGitDetailsPtrOutput() GetOverridesGitDetailsPtrOutput {
+	return i.ToGetOverridesGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOverridesGitDetailsPtrType) ToGetOverridesGitDetailsPtrOutputWithContext(ctx context.Context) GetOverridesGitDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOverridesGitDetailsPtrOutput)
+}
+
+type GetOverridesGitDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetOverridesGitDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOverridesGitDetails)(nil)).Elem()
+}
+
+func (o GetOverridesGitDetailsOutput) ToGetOverridesGitDetailsOutput() GetOverridesGitDetailsOutput {
+	return o
+}
+
+func (o GetOverridesGitDetailsOutput) ToGetOverridesGitDetailsOutputWithContext(ctx context.Context) GetOverridesGitDetailsOutput {
+	return o
+}
+
+func (o GetOverridesGitDetailsOutput) ToGetOverridesGitDetailsPtrOutput() GetOverridesGitDetailsPtrOutput {
+	return o.ToGetOverridesGitDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOverridesGitDetailsOutput) ToGetOverridesGitDetailsPtrOutputWithContext(ctx context.Context) GetOverridesGitDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOverridesGitDetails) *GetOverridesGitDetails {
+		return &v
+	}).(GetOverridesGitDetailsPtrOutput)
+}
+
+// Name of the branch.
+func (o GetOverridesGitDetailsOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOverridesGitDetails) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Load service yaml from fallback branch
+func (o GetOverridesGitDetailsOutput) LoadFromCache() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOverridesGitDetails) bool { return v.LoadFromCache }).(pulumi.BoolOutput)
+}
+
+// Load service yaml from fallback branch
+func (o GetOverridesGitDetailsOutput) LoadFromFallbackBranch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOverridesGitDetails) bool { return v.LoadFromFallbackBranch }).(pulumi.BoolOutput)
+}
+
+// Repo name of remote service override
+func (o GetOverridesGitDetailsOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOverridesGitDetails) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+type GetOverridesGitDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOverridesGitDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOverridesGitDetails)(nil)).Elem()
+}
+
+func (o GetOverridesGitDetailsPtrOutput) ToGetOverridesGitDetailsPtrOutput() GetOverridesGitDetailsPtrOutput {
+	return o
+}
+
+func (o GetOverridesGitDetailsPtrOutput) ToGetOverridesGitDetailsPtrOutputWithContext(ctx context.Context) GetOverridesGitDetailsPtrOutput {
+	return o
+}
+
+func (o GetOverridesGitDetailsPtrOutput) Elem() GetOverridesGitDetailsOutput {
+	return o.ApplyT(func(v *GetOverridesGitDetails) GetOverridesGitDetails {
+		if v != nil {
+			return *v
+		}
+		var ret GetOverridesGitDetails
+		return ret
+	}).(GetOverridesGitDetailsOutput)
+}
+
+// Name of the branch.
+func (o GetOverridesGitDetailsPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load service yaml from fallback branch
+func (o GetOverridesGitDetailsPtrOutput) LoadFromCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOverridesGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LoadFromCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Load service yaml from fallback branch
+func (o GetOverridesGitDetailsPtrOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOverridesGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LoadFromFallbackBranch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Repo name of remote service override
+func (o GetOverridesGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOverridesGitDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetPermissionsPermission struct {
 	// Action performed by the permission
 	Action string `pulumi:"action"`
@@ -55707,6 +56532,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorInheritFromDelegateArrayInput)(nil)).Elem(), GcpConnectorInheritFromDelegateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorManualInput)(nil)).Elem(), GcpConnectorManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorManualPtrInput)(nil)).Elem(), GcpConnectorManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorOidcAuthenticationInput)(nil)).Elem(), GcpConnectorOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GcpConnectorOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsInput)(nil)).Elem(), GitConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsPtrInput)(nil)).Elem(), GitConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsHttpInput)(nil)).Elem(), GitConnectorCredentialsHttpArgs{})
@@ -55921,6 +56748,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRuleRequestNotificationMethodPtrInput)(nil)).Elem(), NotificationRuleRequestNotificationMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OciHelmConnectorCredentialsInput)(nil)).Elem(), OciHelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OciHelmConnectorCredentialsPtrInput)(nil)).Elem(), OciHelmConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OverridesGitDetailsInput)(nil)).Elem(), OverridesGitDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OverridesGitDetailsPtrInput)(nil)).Elem(), OverridesGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersFilterPropertiesInput)(nil)).Elem(), PipelineFiltersFilterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersFilterPropertiesPtrInput)(nil)).Elem(), PipelineFiltersFilterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineFiltersFilterPropertiesModulePropertiesInput)(nil)).Elem(), PipelineFiltersFilterPropertiesModulePropertiesArgs{})
@@ -56135,6 +56964,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorInheritFromDelegateArrayInput)(nil)).Elem(), GetGcpConnectorInheritFromDelegateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorManualInput)(nil)).Elem(), GetGcpConnectorManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorManualArrayInput)(nil)).Elem(), GetGcpConnectorManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorOidcAuthenticationInput)(nil)).Elem(), GetGcpConnectorOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GetGcpConnectorOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialInput)(nil)).Elem(), GetGitConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialArrayInput)(nil)).Elem(), GetGitConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialHttpInput)(nil)).Elem(), GetGitConnectorCredentialHttpArgs{})
@@ -56281,6 +57112,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNexusConnectorCredentialArrayInput)(nil)).Elem(), GetNexusConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOciHelmConnectorCredentialInput)(nil)).Elem(), GetOciHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOciHelmConnectorCredentialArrayInput)(nil)).Elem(), GetOciHelmConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOverridesGitDetailsInput)(nil)).Elem(), GetOverridesGitDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOverridesGitDetailsPtrInput)(nil)).Elem(), GetOverridesGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsPermissionInput)(nil)).Elem(), GetPermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsPermissionArrayInput)(nil)).Elem(), GetPermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPipelineFiltersFilterPropertyInput)(nil)).Elem(), GetPipelineFiltersFilterPropertyArgs{})
@@ -56492,6 +57325,8 @@ func init() {
 	pulumi.RegisterOutputType(GcpConnectorInheritFromDelegateArrayOutput{})
 	pulumi.RegisterOutputType(GcpConnectorManualOutput{})
 	pulumi.RegisterOutputType(GcpConnectorManualPtrOutput{})
+	pulumi.RegisterOutputType(GcpConnectorOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(GcpConnectorOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsHttpOutput{})
@@ -56706,6 +57541,8 @@ func init() {
 	pulumi.RegisterOutputType(NotificationRuleRequestNotificationMethodPtrOutput{})
 	pulumi.RegisterOutputType(OciHelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(OciHelmConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(OverridesGitDetailsOutput{})
+	pulumi.RegisterOutputType(OverridesGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersFilterPropertiesOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersFilterPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PipelineFiltersFilterPropertiesModulePropertiesOutput{})
@@ -56920,6 +57757,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGcpConnectorInheritFromDelegateArrayOutput{})
 	pulumi.RegisterOutputType(GetGcpConnectorManualOutput{})
 	pulumi.RegisterOutputType(GetGcpConnectorManualArrayOutput{})
+	pulumi.RegisterOutputType(GetGcpConnectorOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetGcpConnectorOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCredentialHttpOutput{})
@@ -57066,6 +57905,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNexusConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetOciHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetOciHelmConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetOverridesGitDetailsOutput{})
+	pulumi.RegisterOutputType(GetOverridesGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetPermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(GetPermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetPipelineFiltersFilterPropertyOutput{})

@@ -2406,6 +2406,29 @@ export namespace platform {
         secretKeyRef: string;
     }
 
+    export interface GcpConnectorOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+        /**
+         * The project number of the GCP project that is used to create the workload identity.
+         */
+        gcpProjectId: string;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: string;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: string;
+    }
+
     export interface GetAppDynamicsConnectorApiToken {
         /**
          * The client id used for connecting to App Dynamics.
@@ -3087,6 +3110,29 @@ export namespace platform {
          * Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: string;
+    }
+
+    export interface GetGcpConnectorOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+        /**
+         * The project number of the GCP project that is used to create the workload identity..
+         */
+        gcpProjectId: string;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: string;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: string;
     }
 
     export interface GetGitConnectorCredential {
@@ -4450,6 +4496,25 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetOverridesGitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromCache: boolean;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Repo name of remote service override
+         */
+        repoName: string;
     }
 
     export interface GetPermissionsPermission {
@@ -7328,6 +7393,61 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface OverridesGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch: string;
+        /**
+         * Name of the branch.
+         */
+        branch: string;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage: string;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef: string;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath: string;
+        /**
+         * If the repo is in harness code
+         */
+        isHarnessCodeRepo: boolean;
+        /**
+         * If the branch being created is new
+         */
+        isNewBranch: boolean;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+         */
+        lastCommitId: string;
+        /**
+         * Last object identifier (for Github). To be provided only when updating override.
+         */
+        lastObjectId: string;
+        /**
+         * Load service yaml from catch
+         */
+        loadFromCache: boolean;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch: boolean;
+        /**
+         * Name of the repository.
+         */
+        repoName: string;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType: string;
     }
 
     export interface PipelineFiltersFilterProperties {

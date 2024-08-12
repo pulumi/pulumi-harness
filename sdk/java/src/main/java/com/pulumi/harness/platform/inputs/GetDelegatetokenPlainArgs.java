@@ -16,51 +16,107 @@ public final class GetDelegatetokenPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetDelegatetokenPlainArgs Empty = new GetDelegatetokenPlainArgs();
 
+    /**
+     * Account Identifier for the Entity
+     * 
+     */
     @Import(name="accountId", required=true)
     private String accountId;
 
+    /**
+     * @return Account Identifier for the Entity
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
 
+    /**
+     * Time when the delegate token is created.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Integer createdAt;
 
+    /**
+     * @return Time when the delegate token is created.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Name of the resource.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return Name of the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * 
+     */
     @Import(name="tokenStatus")
     private @Nullable String tokenStatus;
 
+    /**
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * 
+     */
     public Optional<String> tokenStatus() {
         return Optional.ofNullable(this.tokenStatus);
     }
 
+    /**
+     * Value of the delegate Token
+     * 
+     */
     @Import(name="value")
     private @Nullable String value;
 
+    /**
+     * @return Value of the delegate Token
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
@@ -95,36 +151,78 @@ public final class GetDelegatetokenPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetDelegatetokenPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account Identifier for the Entity
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param createdAt Time when the delegate token is created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Integer createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param name Name of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
         }
 
+        /**
+         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenStatus(@Nullable String tokenStatus) {
             $.tokenStatus = tokenStatus;
             return this;
         }
 
+        /**
+         * @param value Value of the delegate Token
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable String value) {
             $.value = value;
             return this;

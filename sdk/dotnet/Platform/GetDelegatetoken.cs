@@ -11,9 +11,15 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetDelegatetoken
     {
+        /// <summary>
+        /// Data Source for retrieving delegate tokens.
+        /// </summary>
         public static Task<GetDelegatetokenResult> InvokeAsync(GetDelegatetokenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDelegatetokenResult>("harness:platform/getDelegatetoken:getDelegatetoken", args ?? new GetDelegatetokenArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data Source for retrieving delegate tokens.
+        /// </summary>
         public static Output<GetDelegatetokenResult> Invoke(GetDelegatetokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegatetokenResult>("harness:platform/getDelegatetoken:getDelegatetoken", args ?? new GetDelegatetokenInvokeArgs(), options.WithDefaults());
     }
@@ -21,24 +27,45 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetDelegatetokenArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier for the Entity
+        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Time when the delegate token is created.
+        /// </summary>
         [Input("createdAt")]
         public int? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
+        /// <summary>
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        /// </summary>
         [Input("tokenStatus")]
         public string? TokenStatus { get; set; }
 
+        /// <summary>
+        /// Value of the delegate Token
+        /// </summary>
         [Input("value")]
         public string? Value { get; set; }
 
@@ -50,24 +77,45 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetDelegatetokenInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Account Identifier for the Entity
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Time when the delegate token is created.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        /// </summary>
         [Input("tokenStatus")]
         public Input<string>? TokenStatus { get; set; }
 
+        /// <summary>
+        /// Value of the delegate Token
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
@@ -81,16 +129,37 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetDelegatetokenResult
     {
+        /// <summary>
+        /// Account Identifier for the Entity
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// Time when the delegate token is created.
+        /// </summary>
         public readonly int? CreatedAt;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        /// </summary>
         public readonly string? TokenStatus;
+        /// <summary>
+        /// Value of the delegate Token
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

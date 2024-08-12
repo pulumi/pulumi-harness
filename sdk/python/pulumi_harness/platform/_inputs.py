@@ -68,6 +68,7 @@ __all__ = [
     'GcpCloudCostConnectorBillingExportSpecArgs',
     'GcpConnectorInheritFromDelegateArgs',
     'GcpConnectorManualArgs',
+    'GcpConnectorOidcAuthenticationArgs',
     'GitConnectorCredentialsArgs',
     'GitConnectorCredentialsHttpArgs',
     'GitConnectorCredentialsSshArgs',
@@ -175,6 +176,7 @@ __all__ = [
     'NotificationRuleRequestConditionArgs',
     'NotificationRuleRequestNotificationMethodArgs',
     'OciHelmConnectorCredentialsArgs',
+    'OverridesGitDetailsArgs',
     'PipelineFiltersFilterPropertiesArgs',
     'PipelineFiltersFilterPropertiesModulePropertiesArgs',
     'PipelineFiltersFilterPropertiesModulePropertiesCdArgs',
@@ -238,6 +240,7 @@ __all__ = [
     'GetGitopsRepositoryUpdateMaskArgs',
     'GetInfrastructureGitDetailsArgs',
     'GetInputSetGitDetailsArgs',
+    'GetOverridesGitDetailsArgs',
     'GetPipelineGitDetailsArgs',
     'GetPolicySetPolicyArgs',
     'GetRepoRuleBranchBypassArgs',
@@ -3117,6 +3120,88 @@ class GcpConnectorManualArgs:
     @delegate_selectors.setter
     def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "delegate_selectors", value)
+
+
+@pulumi.input_type
+class GcpConnectorOidcAuthenticationArgs:
+    def __init__(__self__, *,
+                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 gcp_project_id: pulumi.Input[str],
+                 provider_id: pulumi.Input[str],
+                 service_account_email: pulumi.Input[str],
+                 workload_pool_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
+        :param pulumi.Input[str] gcp_project_id: The project number of the GCP project that is used to create the workload identity.
+        :param pulumi.Input[str] provider_id: The OIDC provider ID value configured in GCP.
+        :param pulumi.Input[str] service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
+        :param pulumi.Input[str] workload_pool_id: The workload pool ID value created in GCP.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "workload_pool_id", workload_pool_id)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+    @property
+    @pulumi.getter(name="gcpProjectId")
+    def gcp_project_id(self) -> pulumi.Input[str]:
+        """
+        The project number of the GCP project that is used to create the workload identity.
+        """
+        return pulumi.get(self, "gcp_project_id")
+
+    @gcp_project_id.setter
+    def gcp_project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gcp_project_id", value)
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> pulumi.Input[str]:
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        return pulumi.get(self, "provider_id")
+
+    @provider_id.setter
+    def provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "provider_id", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[str]:
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter(name="workloadPoolId")
+    def workload_pool_id(self) -> pulumi.Input[str]:
+        """
+        The workload pool ID value created in GCP.
+        """
+        return pulumi.get(self, "workload_pool_id")
+
+    @workload_pool_id.setter
+    def workload_pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workload_pool_id", value)
 
 
 @pulumi.input_type
@@ -10748,6 +10833,221 @@ class OciHelmConnectorCredentialsArgs:
 
 
 @pulumi.input_type
+class OverridesGitDetailsArgs:
+    def __init__(__self__, *,
+                 base_branch: Optional[pulumi.Input[str]] = None,
+                 branch: Optional[pulumi.Input[str]] = None,
+                 commit_message: Optional[pulumi.Input[str]] = None,
+                 connector_ref: Optional[pulumi.Input[str]] = None,
+                 file_path: Optional[pulumi.Input[str]] = None,
+                 is_harness_code_repo: Optional[pulumi.Input[bool]] = None,
+                 is_new_branch: Optional[pulumi.Input[bool]] = None,
+                 last_commit_id: Optional[pulumi.Input[str]] = None,
+                 last_object_id: Optional[pulumi.Input[str]] = None,
+                 load_from_cache: Optional[pulumi.Input[bool]] = None,
+                 load_from_fallback_branch: Optional[pulumi.Input[bool]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 store_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
+        :param pulumi.Input[str] branch: Name of the branch.
+        :param pulumi.Input[str] commit_message: Commit message used for the merge commit.
+        :param pulumi.Input[str] connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] file_path: File path of the Entity in the repository.
+        :param pulumi.Input[bool] is_harness_code_repo: If the repo is in harness code
+        :param pulumi.Input[bool] is_new_branch: If the branch being created is new
+        :param pulumi.Input[str] last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        :param pulumi.Input[str] last_object_id: Last object identifier (for Github). To be provided only when updating override.
+        :param pulumi.Input[bool] load_from_cache: Load service yaml from catch
+        :param pulumi.Input[bool] load_from_fallback_branch: Load service yaml from fallback branch
+        :param pulumi.Input[str] repo_name: Name of the repository.
+        :param pulumi.Input[str] store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        if base_branch is not None:
+            pulumi.set(__self__, "base_branch", base_branch)
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if commit_message is not None:
+            pulumi.set(__self__, "commit_message", commit_message)
+        if connector_ref is not None:
+            pulumi.set(__self__, "connector_ref", connector_ref)
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+        if is_harness_code_repo is not None:
+            pulumi.set(__self__, "is_harness_code_repo", is_harness_code_repo)
+        if is_new_branch is not None:
+            pulumi.set(__self__, "is_new_branch", is_new_branch)
+        if last_commit_id is not None:
+            pulumi.set(__self__, "last_commit_id", last_commit_id)
+        if last_object_id is not None:
+            pulumi.set(__self__, "last_object_id", last_object_id)
+        if load_from_cache is not None:
+            pulumi.set(__self__, "load_from_cache", load_from_cache)
+        if load_from_fallback_branch is not None:
+            pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if store_type is not None:
+            pulumi.set(__self__, "store_type", store_type)
+
+    @property
+    @pulumi.getter(name="baseBranch")
+    def base_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        return pulumi.get(self, "base_branch")
+
+    @base_branch.setter
+    def base_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_branch", value)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commit message used for the merge commit.
+        """
+        return pulumi.get(self, "commit_message")
+
+    @commit_message.setter
+    def commit_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commit_message", value)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        File path of the Entity in the repository.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="isHarnessCodeRepo")
+    def is_harness_code_repo(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the repo is in harness code
+        """
+        return pulumi.get(self, "is_harness_code_repo")
+
+    @is_harness_code_repo.setter
+    def is_harness_code_repo(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_harness_code_repo", value)
+
+    @property
+    @pulumi.getter(name="isNewBranch")
+    def is_new_branch(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the branch being created is new
+        """
+        return pulumi.get(self, "is_new_branch")
+
+    @is_new_branch.setter
+    def is_new_branch(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_new_branch", value)
+
+    @property
+    @pulumi.getter(name="lastCommitId")
+    def last_commit_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        """
+        return pulumi.get(self, "last_commit_id")
+
+    @last_commit_id.setter
+    def last_commit_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_commit_id", value)
+
+    @property
+    @pulumi.getter(name="lastObjectId")
+    def last_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last object identifier (for Github). To be provided only when updating override.
+        """
+        return pulumi.get(self, "last_object_id")
+
+    @last_object_id.setter
+    def last_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_object_id", value)
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Load service yaml from catch
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @load_from_cache.setter
+    def load_from_cache(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "load_from_cache", value)
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @load_from_fallback_branch.setter
+    def load_from_fallback_branch(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "load_from_fallback_branch", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the repository.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="storeType")
+    def store_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+        return pulumi.get(self, "store_type")
+
+    @store_type.setter
+    def store_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "store_type", value)
+
+
+@pulumi.input_type
 class PipelineFiltersFilterPropertiesArgs:
     def __init__(__self__, *,
                  filter_type: pulumi.Input[str],
@@ -15272,6 +15572,73 @@ class GetInputSetGitDetailsArgs:
     @store_type.setter
     def store_type(self, value: str):
         pulumi.set(self, "store_type", value)
+
+
+@pulumi.input_type
+class GetOverridesGitDetailsArgs:
+    def __init__(__self__, *,
+                 branch: str,
+                 load_from_cache: bool,
+                 load_from_fallback_branch: bool,
+                 repo_name: str):
+        """
+        :param str branch: Name of the branch.
+        :param bool load_from_cache: Load service yaml from fallback branch
+        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param str repo_name: Repo name of remote service override
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "load_from_cache", load_from_cache)
+        pulumi.set(__self__, "load_from_fallback_branch", load_from_fallback_branch)
+        pulumi.set(__self__, "repo_name", repo_name)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> str:
+        """
+        Name of the branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @branch.setter
+    def branch(self, value: str):
+        pulumi.set(self, "branch", value)
+
+    @property
+    @pulumi.getter(name="loadFromCache")
+    def load_from_cache(self) -> bool:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_cache")
+
+    @load_from_cache.setter
+    def load_from_cache(self, value: bool):
+        pulumi.set(self, "load_from_cache", value)
+
+    @property
+    @pulumi.getter(name="loadFromFallbackBranch")
+    def load_from_fallback_branch(self) -> bool:
+        """
+        Load service yaml from fallback branch
+        """
+        return pulumi.get(self, "load_from_fallback_branch")
+
+    @load_from_fallback_branch.setter
+    def load_from_fallback_branch(self, value: bool):
+        pulumi.set(self, "load_from_fallback_branch", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> str:
+        """
+        Repo name of remote service override
+        """
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: str):
+        pulumi.set(self, "repo_name", value)
 
 
 @pulumi.input_type

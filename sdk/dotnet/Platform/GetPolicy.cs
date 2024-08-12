@@ -27,14 +27,12 @@ namespace Pulumi.Harness.Platform
         ///     var test = Harness.Platform.GetPolicy.Invoke(new()
         ///     {
         ///         Identifier = testHarnessPlatformPolicy.Identifier,
-        ///         Name = testHarnessPlatformPolicy.Name,
-        ///         Rego = "package test",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs args, InvokeOptions? options = null)
+        public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("harness:platform/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
 
         /// <summary>
@@ -53,14 +51,12 @@ namespace Pulumi.Harness.Platform
         ///     var test = Harness.Platform.GetPolicy.Invoke(new()
         ///     {
         ///         Identifier = testHarnessPlatformPolicy.Identifier,
-        ///         Name = testHarnessPlatformPolicy.Name,
-        ///         Rego = "package test",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("harness:platform/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
     }
 
@@ -94,8 +90,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Rego code for the policy.
         /// </summary>
-        [Input("rego", required: true)]
-        public string Rego { get; set; } = null!;
+        [Input("rego")]
+        public string? Rego { get; set; }
 
         public GetPolicyArgs()
         {
@@ -132,8 +128,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Rego code for the policy.
         /// </summary>
-        [Input("rego", required: true)]
-        public Input<string> Rego { get; set; } = null!;
+        [Input("rego")]
+        public Input<string>? Rego { get; set; }
 
         public GetPolicyInvokeArgs()
         {

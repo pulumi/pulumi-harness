@@ -106,6 +106,8 @@ import com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCredPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepositoryPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitxWebhookArgs;
+import com.pulumi.harness.platform.inputs.GetGitxWebhookPlainArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
@@ -134,6 +136,8 @@ import com.pulumi.harness.platform.inputs.GetOciHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetOciHelmConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetOrganizationArgs;
 import com.pulumi.harness.platform.inputs.GetOrganizationPlainArgs;
+import com.pulumi.harness.platform.inputs.GetOverridesArgs;
+import com.pulumi.harness.platform.inputs.GetOverridesPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetPagerdutyConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPermissionsArgs;
@@ -264,6 +268,7 @@ import com.pulumi.harness.platform.outputs.GetGitopsGnupgResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCertResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCredResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepositoryResult;
+import com.pulumi.harness.platform.outputs.GetGitxWebhookResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
 import com.pulumi.harness.platform.outputs.GetInfrastructureResult;
@@ -278,6 +283,7 @@ import com.pulumi.harness.platform.outputs.GetNexusConnectorResult;
 import com.pulumi.harness.platform.outputs.GetNotificationRuleResult;
 import com.pulumi.harness.platform.outputs.GetOciHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetOrganizationResult;
+import com.pulumi.harness.platform.outputs.GetOverridesResult;
 import com.pulumi.harness.platform.outputs.GetPagerdutyConnectorResult;
 import com.pulumi.harness.platform.outputs.GetPermissionsResult;
 import com.pulumi.harness.platform.outputs.GetPipelineFiltersResult;
@@ -3710,15 +3716,187 @@ public final class PlatformFunctions {
     public static CompletableFuture<GetDbSchemaResult> getDbSchemaPlain(GetDbSchemaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getDbSchema:getDbSchema", TypeShape.of(GetDbSchemaResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Data Source for retrieving delegate tokens.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .identifier("test_token")
+     *             .name("test token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDelegatetokenResult> getDelegatetoken(GetDelegatetokenArgs args) {
         return getDelegatetoken(args, InvokeOptions.Empty);
     }
+    /**
+     * Data Source for retrieving delegate tokens.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .identifier("test_token")
+     *             .name("test token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDelegatetokenResult> getDelegatetokenPlain(GetDelegatetokenPlainArgs args) {
         return getDelegatetokenPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Data Source for retrieving delegate tokens.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .identifier("test_token")
+     *             .name("test token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDelegatetokenResult> getDelegatetoken(GetDelegatetokenArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getDelegatetoken:getDelegatetoken", TypeShape.of(GetDelegatetokenResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Data Source for retrieving delegate tokens.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .identifier("test_token")
+     *             .name("test token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDelegatetokenResult> getDelegatetokenPlain(GetDelegatetokenPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getDelegatetoken:getDelegatetoken", TypeShape.of(GetDelegatetokenResult.class), args, Utilities.withVersion(options));
     }
@@ -9041,6 +9219,34 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsRepository:getGitopsRepository", TypeShape.of(GetGitopsRepositoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Resource for creating a Harness pipeline.
+     * 
+     */
+    public static Output<GetGitxWebhookResult> getGitxWebhook(GetGitxWebhookArgs args) {
+        return getGitxWebhook(args, InvokeOptions.Empty);
+    }
+    /**
+     * Resource for creating a Harness pipeline.
+     * 
+     */
+    public static CompletableFuture<GetGitxWebhookResult> getGitxWebhookPlain(GetGitxWebhookPlainArgs args) {
+        return getGitxWebhookPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Resource for creating a Harness pipeline.
+     * 
+     */
+    public static Output<GetGitxWebhookResult> getGitxWebhook(GetGitxWebhookArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitxWebhook:getGitxWebhook", TypeShape.of(GetGitxWebhookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Resource for creating a Harness pipeline.
+     * 
+     */
+    public static CompletableFuture<GetGitxWebhookResult> getGitxWebhookPlain(GetGitxWebhookPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitxWebhook:getGitxWebhook", TypeShape.of(GetGitxWebhookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Datasource for looking up a HTTP Helm connector.
      * 
      * ## Example Usage
@@ -11232,6 +11438,18 @@ public final class PlatformFunctions {
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetOverridesResult> getOverrides(GetOverridesArgs args) {
+        return getOverrides(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetOverridesResult> getOverridesPlain(GetOverridesPlainArgs args) {
+        return getOverridesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetOverridesResult> getOverrides(GetOverridesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getOverrides:getOverrides", TypeShape.of(GetOverridesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetOverridesResult> getOverridesPlain(GetOverridesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getOverrides:getOverrides", TypeShape.of(GetOverridesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * ## Example Usage
      * 
@@ -12216,8 +12434,90 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
      *             .identifier(testHarnessPlatformPolicy.identifier())
-     *             .name(testHarnessPlatformPolicy.name())
-     *             .rego("package test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPolicyResult> getPolicy() {
+        return getPolicy(GetPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness policy.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPolicyResult> getPolicyPlain() {
+        return getPolicyPlain(GetPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness policy.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
+     *             .identifier(testHarnessPlatformPolicy.identifier())
      *             .build());
      * 
      *     }
@@ -12260,8 +12560,6 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
      *             .identifier(testHarnessPlatformPolicy.identifier())
-     *             .name(testHarnessPlatformPolicy.name())
-     *             .rego("package test")
      *             .build());
      * 
      *     }
@@ -12304,8 +12602,6 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
      *             .identifier(testHarnessPlatformPolicy.identifier())
-     *             .name(testHarnessPlatformPolicy.name())
-     *             .rego("package test")
      *             .build());
      * 
      *     }
@@ -12348,8 +12644,6 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
      *             .identifier(testHarnessPlatformPolicy.identifier())
-     *             .name(testHarnessPlatformPolicy.name())
-     *             .rego("package test")
      *             .build());
      * 
      *     }

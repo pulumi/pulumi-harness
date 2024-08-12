@@ -26,6 +26,26 @@ type Policy struct {
 
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Base branch for the new git branch.
+	GitBaseBranch pulumi.StringPtrOutput `pulumi:"gitBaseBranch"`
+	// Git branch for the policy.
+	GitBranch pulumi.StringPtrOutput `pulumi:"gitBranch"`
+	// Git commit message for the policy.
+	GitCommitMsg pulumi.StringPtrOutput `pulumi:"gitCommitMsg"`
+	// The existing commit sha of the file being updated
+	GitCommitSha pulumi.StringOutput `pulumi:"gitCommitSha"`
+	// Git connector reference for the policy.
+	GitConnectorRef pulumi.StringPtrOutput `pulumi:"gitConnectorRef"`
+	// The existing file id of the file being updated, not required for bitbucket files
+	GitFileId pulumi.StringOutput `pulumi:"gitFileId"`
+	// Flag to import the policy from git.
+	GitImport pulumi.BoolPtrOutput `pulumi:"gitImport"`
+	// Flag to create a new branch for the policy.
+	GitIsNewBranch pulumi.BoolPtrOutput `pulumi:"gitIsNewBranch"`
+	// Git path for the policy.
+	GitPath pulumi.StringPtrOutput `pulumi:"gitPath"`
+	// Git repository for the policy.
+	GitRepo pulumi.StringPtrOutput `pulumi:"gitRepo"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -78,6 +98,26 @@ func GetPolicy(ctx *pulumi.Context,
 type policyState struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Base branch for the new git branch.
+	GitBaseBranch *string `pulumi:"gitBaseBranch"`
+	// Git branch for the policy.
+	GitBranch *string `pulumi:"gitBranch"`
+	// Git commit message for the policy.
+	GitCommitMsg *string `pulumi:"gitCommitMsg"`
+	// The existing commit sha of the file being updated
+	GitCommitSha *string `pulumi:"gitCommitSha"`
+	// Git connector reference for the policy.
+	GitConnectorRef *string `pulumi:"gitConnectorRef"`
+	// The existing file id of the file being updated, not required for bitbucket files
+	GitFileId *string `pulumi:"gitFileId"`
+	// Flag to import the policy from git.
+	GitImport *bool `pulumi:"gitImport"`
+	// Flag to create a new branch for the policy.
+	GitIsNewBranch *bool `pulumi:"gitIsNewBranch"`
+	// Git path for the policy.
+	GitPath *string `pulumi:"gitPath"`
+	// Git repository for the policy.
+	GitRepo *string `pulumi:"gitRepo"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -95,6 +135,26 @@ type policyState struct {
 type PolicyState struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Base branch for the new git branch.
+	GitBaseBranch pulumi.StringPtrInput
+	// Git branch for the policy.
+	GitBranch pulumi.StringPtrInput
+	// Git commit message for the policy.
+	GitCommitMsg pulumi.StringPtrInput
+	// The existing commit sha of the file being updated
+	GitCommitSha pulumi.StringPtrInput
+	// Git connector reference for the policy.
+	GitConnectorRef pulumi.StringPtrInput
+	// The existing file id of the file being updated, not required for bitbucket files
+	GitFileId pulumi.StringPtrInput
+	// Flag to import the policy from git.
+	GitImport pulumi.BoolPtrInput
+	// Flag to create a new branch for the policy.
+	GitIsNewBranch pulumi.BoolPtrInput
+	// Git path for the policy.
+	GitPath pulumi.StringPtrInput
+	// Git repository for the policy.
+	GitRepo pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -116,6 +176,26 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Base branch for the new git branch.
+	GitBaseBranch *string `pulumi:"gitBaseBranch"`
+	// Git branch for the policy.
+	GitBranch *string `pulumi:"gitBranch"`
+	// Git commit message for the policy.
+	GitCommitMsg *string `pulumi:"gitCommitMsg"`
+	// The existing commit sha of the file being updated
+	GitCommitSha *string `pulumi:"gitCommitSha"`
+	// Git connector reference for the policy.
+	GitConnectorRef *string `pulumi:"gitConnectorRef"`
+	// The existing file id of the file being updated, not required for bitbucket files
+	GitFileId *string `pulumi:"gitFileId"`
+	// Flag to import the policy from git.
+	GitImport *bool `pulumi:"gitImport"`
+	// Flag to create a new branch for the policy.
+	GitIsNewBranch *bool `pulumi:"gitIsNewBranch"`
+	// Git path for the policy.
+	GitPath *string `pulumi:"gitPath"`
+	// Git repository for the policy.
+	GitRepo *string `pulumi:"gitRepo"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -134,6 +214,26 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Base branch for the new git branch.
+	GitBaseBranch pulumi.StringPtrInput
+	// Git branch for the policy.
+	GitBranch pulumi.StringPtrInput
+	// Git commit message for the policy.
+	GitCommitMsg pulumi.StringPtrInput
+	// The existing commit sha of the file being updated
+	GitCommitSha pulumi.StringPtrInput
+	// Git connector reference for the policy.
+	GitConnectorRef pulumi.StringPtrInput
+	// The existing file id of the file being updated, not required for bitbucket files
+	GitFileId pulumi.StringPtrInput
+	// Flag to import the policy from git.
+	GitImport pulumi.BoolPtrInput
+	// Flag to create a new branch for the policy.
+	GitIsNewBranch pulumi.BoolPtrInput
+	// Git path for the policy.
+	GitPath pulumi.StringPtrInput
+	// Git repository for the policy.
+	GitRepo pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -238,6 +338,56 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 // Description of the resource.
 func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Base branch for the new git branch.
+func (o PolicyOutput) GitBaseBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.GitBaseBranch }).(pulumi.StringPtrOutput)
+}
+
+// Git branch for the policy.
+func (o PolicyOutput) GitBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.GitBranch }).(pulumi.StringPtrOutput)
+}
+
+// Git commit message for the policy.
+func (o PolicyOutput) GitCommitMsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.GitCommitMsg }).(pulumi.StringPtrOutput)
+}
+
+// The existing commit sha of the file being updated
+func (o PolicyOutput) GitCommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.GitCommitSha }).(pulumi.StringOutput)
+}
+
+// Git connector reference for the policy.
+func (o PolicyOutput) GitConnectorRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.GitConnectorRef }).(pulumi.StringPtrOutput)
+}
+
+// The existing file id of the file being updated, not required for bitbucket files
+func (o PolicyOutput) GitFileId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.GitFileId }).(pulumi.StringOutput)
+}
+
+// Flag to import the policy from git.
+func (o PolicyOutput) GitImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.BoolPtrOutput { return v.GitImport }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to create a new branch for the policy.
+func (o PolicyOutput) GitIsNewBranch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.BoolPtrOutput { return v.GitIsNewBranch }).(pulumi.BoolPtrOutput)
+}
+
+// Git path for the policy.
+func (o PolicyOutput) GitPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.GitPath }).(pulumi.StringPtrOutput)
+}
+
+// Git repository for the policy.
+func (o PolicyOutput) GitRepo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.GitRepo }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the resource.

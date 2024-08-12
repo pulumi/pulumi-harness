@@ -86,6 +86,10 @@ export class GcpConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Authentication using harness oidc.
+     */
+    public readonly oidcAuthentications!: pulumi.Output<outputs.platform.GcpConnectorOidcAuthentication[] | undefined>;
+    /**
      * Unique identifier of the organization.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
@@ -118,6 +122,7 @@ export class GcpConnector extends pulumi.CustomResource {
             resourceInputs["inheritFromDelegates"] = state ? state.inheritFromDelegates : undefined;
             resourceInputs["manual"] = state ? state.manual : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["oidcAuthentications"] = state ? state.oidcAuthentications : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -133,6 +138,7 @@ export class GcpConnector extends pulumi.CustomResource {
             resourceInputs["inheritFromDelegates"] = args ? args.inheritFromDelegates : undefined;
             resourceInputs["manual"] = args ? args.manual : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oidcAuthentications"] = args ? args.oidcAuthentications : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -174,6 +180,10 @@ export interface GcpConnectorState {
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Authentication using harness oidc.
+     */
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorOidcAuthentication>[]>;
     /**
      * Unique identifier of the organization.
      */
@@ -220,6 +230,10 @@ export interface GcpConnectorArgs {
      * Name of the resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Authentication using harness oidc.
+     */
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpConnectorOidcAuthentication>[]>;
     /**
      * Unique identifier of the organization.
      */

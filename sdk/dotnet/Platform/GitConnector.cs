@@ -60,6 +60,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Output("executeOnDelegate")]
+        public Output<bool?> ExecuteOnDelegate { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
@@ -179,6 +185,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -263,6 +275,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.

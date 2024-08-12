@@ -2662,6 +2662,29 @@ export namespace platform {
         secretKeyRef: pulumi.Input<string>;
     }
 
+    export interface GcpConnectorOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The project number of the GCP project that is used to create the workload identity.
+         */
+        gcpProjectId: pulumi.Input<string>;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: pulumi.Input<string>;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: pulumi.Input<string>;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: pulumi.Input<string>;
+    }
+
     export interface GetConnectorRancherBearerToken {
         /**
          * Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -3112,6 +3135,44 @@ export namespace platform {
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType?: pulumi.Input<string>;
+    }
+
+    export interface GetOverridesGitDetails {
+        /**
+         * Name of the branch.
+         */
+        branch?: string;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromCache?: boolean;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: boolean;
+        /**
+         * Repo name of remote service override
+         */
+        repoName?: string;
+    }
+
+    export interface GetOverridesGitDetailsArgs {
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromCache?: pulumi.Input<boolean>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Repo name of remote service override
+         */
+        repoName?: pulumi.Input<string>;
     }
 
     export interface GetPipelineGitDetails {
@@ -5766,6 +5827,61 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface OverridesGitDetails {
+        /**
+         * Name of the default branch (this checks out a new branch titled by branch_name).
+         */
+        baseBranch?: pulumi.Input<string>;
+        /**
+         * Name of the branch.
+         */
+        branch?: pulumi.Input<string>;
+        /**
+         * Commit message used for the merge commit.
+         */
+        commitMessage?: pulumi.Input<string>;
+        /**
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        connectorRef?: pulumi.Input<string>;
+        /**
+         * File path of the Entity in the repository.
+         */
+        filePath?: pulumi.Input<string>;
+        /**
+         * If the repo is in harness code
+         */
+        isHarnessCodeRepo?: pulumi.Input<boolean>;
+        /**
+         * If the branch being created is new
+         */
+        isNewBranch?: pulumi.Input<boolean>;
+        /**
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+         */
+        lastCommitId?: pulumi.Input<string>;
+        /**
+         * Last object identifier (for Github). To be provided only when updating override.
+         */
+        lastObjectId?: pulumi.Input<string>;
+        /**
+         * Load service yaml from catch
+         */
+        loadFromCache?: pulumi.Input<boolean>;
+        /**
+         * Load service yaml from fallback branch
+         */
+        loadFromFallbackBranch?: pulumi.Input<boolean>;
+        /**
+         * Name of the repository.
+         */
+        repoName?: pulumi.Input<string>;
+        /**
+         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         */
+        storeType?: pulumi.Input<string>;
     }
 
     export interface PipelineFiltersFilterProperties {

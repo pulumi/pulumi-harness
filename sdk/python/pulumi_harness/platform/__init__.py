@@ -91,6 +91,7 @@ from .get_gitops_gnupg import *
 from .get_gitops_repo_cert import *
 from .get_gitops_repo_cred import *
 from .get_gitops_repository import *
+from .get_gitx_webhook import *
 from .get_helm_connector import *
 from .get_iacm_default_pipeline import *
 from .get_infrastructure import *
@@ -105,6 +106,7 @@ from .get_nexus_connector import *
 from .get_notification_rule import *
 from .get_oci_helm_connector import *
 from .get_organization import *
+from .get_overrides import *
 from .get_pagerduty_connector import *
 from .get_permissions import *
 from .get_pipeline import *
@@ -157,6 +159,7 @@ from .github_connector import *
 from .gitlab_connector import *
 from .gitops_app_project import *
 from .gitops_app_project_mapping import *
+from .gitx_webhook import *
 from .helm_connector import *
 from .iacm_default_pipeline import *
 from .infrastructure import *
@@ -172,6 +175,7 @@ from .nexus_connector import *
 from .notification_rule import *
 from .oci_helm_connector import *
 from .organization import *
+from .overrides import *
 from .pagerduty_connector import *
 from .pipeline import *
 from .pipeline_filters import *

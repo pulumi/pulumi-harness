@@ -143,9 +143,7 @@ def get_policy(identifier: Optional[str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_policy(identifier=test_harness_platform_policy["identifier"],
-        name=test_harness_platform_policy["name"],
-        rego="package test")
+    test = harness.platform.get_policy(identifier=test_harness_platform_policy["identifier"])
     ```
 
 
@@ -180,7 +178,7 @@ def get_policy_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[Optional[str]]] = None,
                       org_id: Optional[pulumi.Input[Optional[str]]] = None,
                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                      rego: Optional[pulumi.Input[str]] = None,
+                      rego: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
     """
     Data source for retrieving a Harness policy.
@@ -191,9 +189,7 @@ def get_policy_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_policy(identifier=test_harness_platform_policy["identifier"],
-        name=test_harness_platform_policy["name"],
-        rego="package test")
+    test = harness.platform.get_policy(identifier=test_harness_platform_policy["identifier"])
     ```
 
 

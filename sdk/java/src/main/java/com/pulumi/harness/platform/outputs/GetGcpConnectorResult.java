@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGcpConnectorInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.GetGcpConnectorManual;
+import com.pulumi.harness.platform.outputs.GetGcpConnectorOidcAuthentication;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -45,6 +46,11 @@ public final class GetGcpConnectorResult {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    private List<GetGcpConnectorOidcAuthentication> oidcAuthentications;
     /**
      * @return Unique identifier of the organization.
      * 
@@ -105,6 +111,13 @@ public final class GetGcpConnectorResult {
         return Optional.ofNullable(this.name);
     }
     /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public List<GetGcpConnectorOidcAuthentication> oidcAuthentications() {
+        return this.oidcAuthentications;
+    }
+    /**
      * @return Unique identifier of the organization.
      * 
      */
@@ -141,6 +154,7 @@ public final class GetGcpConnectorResult {
         private List<GetGcpConnectorInheritFromDelegate> inheritFromDelegates;
         private List<GetGcpConnectorManual> manuals;
         private @Nullable String name;
+        private List<GetGcpConnectorOidcAuthentication> oidcAuthentications;
         private @Nullable String orgId;
         private @Nullable String projectId;
         private List<String> tags;
@@ -153,6 +167,7 @@ public final class GetGcpConnectorResult {
     	      this.inheritFromDelegates = defaults.inheritFromDelegates;
     	      this.manuals = defaults.manuals;
     	      this.name = defaults.name;
+    	      this.oidcAuthentications = defaults.oidcAuthentications;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
@@ -211,6 +226,17 @@ public final class GetGcpConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder oidcAuthentications(List<GetGcpConnectorOidcAuthentication> oidcAuthentications) {
+            if (oidcAuthentications == null) {
+              throw new MissingRequiredPropertyException("GetGcpConnectorResult", "oidcAuthentications");
+            }
+            this.oidcAuthentications = oidcAuthentications;
+            return this;
+        }
+        public Builder oidcAuthentications(GetGcpConnectorOidcAuthentication... oidcAuthentications) {
+            return oidcAuthentications(List.of(oidcAuthentications));
+        }
+        @CustomType.Setter
         public Builder orgId(@Nullable String orgId) {
 
             this.orgId = orgId;
@@ -241,6 +267,7 @@ public final class GetGcpConnectorResult {
             _resultValue.inheritFromDelegates = inheritFromDelegates;
             _resultValue.manuals = manuals;
             _resultValue.name = name;
+            _resultValue.oidcAuthentications = oidcAuthentications;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;

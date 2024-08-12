@@ -13,23 +13,59 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDelegatetokenResult {
+    /**
+     * @return Account Identifier for the Entity
+     * 
+     */
     private String accountId;
+    /**
+     * @return Time when the delegate token is created.
+     * 
+     */
     private @Nullable Integer createdAt;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Name of the resource.
+     * 
+     */
     private String name;
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     private @Nullable String projectId;
+    /**
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * 
+     */
     private @Nullable String tokenStatus;
+    /**
+     * @return Value of the delegate Token
+     * 
+     */
     private @Nullable String value;
 
     private GetDelegatetokenResult() {}
+    /**
+     * @return Account Identifier for the Entity
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return Time when the delegate token is created.
+     * 
+     */
     public Optional<Integer> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
@@ -40,18 +76,38 @@ public final class GetDelegatetokenResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Name of the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * 
+     */
     public Optional<String> tokenStatus() {
         return Optional.ofNullable(this.tokenStatus);
     }
+    /**
+     * @return Value of the delegate Token
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

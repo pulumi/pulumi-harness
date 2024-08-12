@@ -78,6 +78,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        [Output("oidcAuthentications")]
+        public Output<ImmutableArray<Outputs.GcpConnectorOidcAuthentication>> OidcAuthentications { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         [Output("orgId")]
@@ -190,6 +196,18 @@ namespace Pulumi.Harness.Platform
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("oidcAuthentications")]
+        private InputList<Inputs.GcpConnectorOidcAuthenticationArgs>? _oidcAuthentications;
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        public InputList<Inputs.GcpConnectorOidcAuthenticationArgs> OidcAuthentications
+        {
+            get => _oidcAuthentications ?? (_oidcAuthentications = new InputList<Inputs.GcpConnectorOidcAuthenticationArgs>());
+            set => _oidcAuthentications = value;
+        }
+
         /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
@@ -269,6 +287,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("oidcAuthentications")]
+        private InputList<Inputs.GcpConnectorOidcAuthenticationGetArgs>? _oidcAuthentications;
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        public InputList<Inputs.GcpConnectorOidcAuthenticationGetArgs> OidcAuthentications
+        {
+            get => _oidcAuthentications ?? (_oidcAuthentications = new InputList<Inputs.GcpConnectorOidcAuthenticationGetArgs>());
+            set => _oidcAuthentications = value;
+        }
 
         /// <summary>
         /// Unique identifier of the organization.

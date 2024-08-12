@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,156 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Base branch for the new git branch.
+     * 
+     */
+    @Import(name="gitBaseBranch")
+    private @Nullable Output<String> gitBaseBranch;
+
+    /**
+     * @return Base branch for the new git branch.
+     * 
+     */
+    public Optional<Output<String>> gitBaseBranch() {
+        return Optional.ofNullable(this.gitBaseBranch);
+    }
+
+    /**
+     * Git branch for the policy.
+     * 
+     */
+    @Import(name="gitBranch")
+    private @Nullable Output<String> gitBranch;
+
+    /**
+     * @return Git branch for the policy.
+     * 
+     */
+    public Optional<Output<String>> gitBranch() {
+        return Optional.ofNullable(this.gitBranch);
+    }
+
+    /**
+     * Git commit message for the policy.
+     * 
+     */
+    @Import(name="gitCommitMsg")
+    private @Nullable Output<String> gitCommitMsg;
+
+    /**
+     * @return Git commit message for the policy.
+     * 
+     */
+    public Optional<Output<String>> gitCommitMsg() {
+        return Optional.ofNullable(this.gitCommitMsg);
+    }
+
+    /**
+     * The existing commit sha of the file being updated
+     * 
+     */
+    @Import(name="gitCommitSha")
+    private @Nullable Output<String> gitCommitSha;
+
+    /**
+     * @return The existing commit sha of the file being updated
+     * 
+     */
+    public Optional<Output<String>> gitCommitSha() {
+        return Optional.ofNullable(this.gitCommitSha);
+    }
+
+    /**
+     * Git connector reference for the policy.
+     * 
+     */
+    @Import(name="gitConnectorRef")
+    private @Nullable Output<String> gitConnectorRef;
+
+    /**
+     * @return Git connector reference for the policy.
+     * 
+     */
+    public Optional<Output<String>> gitConnectorRef() {
+        return Optional.ofNullable(this.gitConnectorRef);
+    }
+
+    /**
+     * The existing file id of the file being updated, not required for bitbucket files
+     * 
+     */
+    @Import(name="gitFileId")
+    private @Nullable Output<String> gitFileId;
+
+    /**
+     * @return The existing file id of the file being updated, not required for bitbucket files
+     * 
+     */
+    public Optional<Output<String>> gitFileId() {
+        return Optional.ofNullable(this.gitFileId);
+    }
+
+    /**
+     * Flag to import the policy from git.
+     * 
+     */
+    @Import(name="gitImport")
+    private @Nullable Output<Boolean> gitImport;
+
+    /**
+     * @return Flag to import the policy from git.
+     * 
+     */
+    public Optional<Output<Boolean>> gitImport() {
+        return Optional.ofNullable(this.gitImport);
+    }
+
+    /**
+     * Flag to create a new branch for the policy.
+     * 
+     */
+    @Import(name="gitIsNewBranch")
+    private @Nullable Output<Boolean> gitIsNewBranch;
+
+    /**
+     * @return Flag to create a new branch for the policy.
+     * 
+     */
+    public Optional<Output<Boolean>> gitIsNewBranch() {
+        return Optional.ofNullable(this.gitIsNewBranch);
+    }
+
+    /**
+     * Git path for the policy.
+     * 
+     */
+    @Import(name="gitPath")
+    private @Nullable Output<String> gitPath;
+
+    /**
+     * @return Git path for the policy.
+     * 
+     */
+    public Optional<Output<String>> gitPath() {
+        return Optional.ofNullable(this.gitPath);
+    }
+
+    /**
+     * Git repository for the policy.
+     * 
+     */
+    @Import(name="gitRepo")
+    private @Nullable Output<String> gitRepo;
+
+    /**
+     * @return Git repository for the policy.
+     * 
+     */
+    public Optional<Output<String>> gitRepo() {
+        return Optional.ofNullable(this.gitRepo);
     }
 
     /**
@@ -125,6 +276,16 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     private PolicyState(PolicyState $) {
         this.description = $.description;
+        this.gitBaseBranch = $.gitBaseBranch;
+        this.gitBranch = $.gitBranch;
+        this.gitCommitMsg = $.gitCommitMsg;
+        this.gitCommitSha = $.gitCommitSha;
+        this.gitConnectorRef = $.gitConnectorRef;
+        this.gitFileId = $.gitFileId;
+        this.gitImport = $.gitImport;
+        this.gitIsNewBranch = $.gitIsNewBranch;
+        this.gitPath = $.gitPath;
+        this.gitRepo = $.gitRepo;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -170,6 +331,216 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gitBaseBranch Base branch for the new git branch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitBaseBranch(@Nullable Output<String> gitBaseBranch) {
+            $.gitBaseBranch = gitBaseBranch;
+            return this;
+        }
+
+        /**
+         * @param gitBaseBranch Base branch for the new git branch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitBaseBranch(String gitBaseBranch) {
+            return gitBaseBranch(Output.of(gitBaseBranch));
+        }
+
+        /**
+         * @param gitBranch Git branch for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitBranch(@Nullable Output<String> gitBranch) {
+            $.gitBranch = gitBranch;
+            return this;
+        }
+
+        /**
+         * @param gitBranch Git branch for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitBranch(String gitBranch) {
+            return gitBranch(Output.of(gitBranch));
+        }
+
+        /**
+         * @param gitCommitMsg Git commit message for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitCommitMsg(@Nullable Output<String> gitCommitMsg) {
+            $.gitCommitMsg = gitCommitMsg;
+            return this;
+        }
+
+        /**
+         * @param gitCommitMsg Git commit message for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitCommitMsg(String gitCommitMsg) {
+            return gitCommitMsg(Output.of(gitCommitMsg));
+        }
+
+        /**
+         * @param gitCommitSha The existing commit sha of the file being updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitCommitSha(@Nullable Output<String> gitCommitSha) {
+            $.gitCommitSha = gitCommitSha;
+            return this;
+        }
+
+        /**
+         * @param gitCommitSha The existing commit sha of the file being updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitCommitSha(String gitCommitSha) {
+            return gitCommitSha(Output.of(gitCommitSha));
+        }
+
+        /**
+         * @param gitConnectorRef Git connector reference for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitConnectorRef(@Nullable Output<String> gitConnectorRef) {
+            $.gitConnectorRef = gitConnectorRef;
+            return this;
+        }
+
+        /**
+         * @param gitConnectorRef Git connector reference for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitConnectorRef(String gitConnectorRef) {
+            return gitConnectorRef(Output.of(gitConnectorRef));
+        }
+
+        /**
+         * @param gitFileId The existing file id of the file being updated, not required for bitbucket files
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitFileId(@Nullable Output<String> gitFileId) {
+            $.gitFileId = gitFileId;
+            return this;
+        }
+
+        /**
+         * @param gitFileId The existing file id of the file being updated, not required for bitbucket files
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitFileId(String gitFileId) {
+            return gitFileId(Output.of(gitFileId));
+        }
+
+        /**
+         * @param gitImport Flag to import the policy from git.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImport(@Nullable Output<Boolean> gitImport) {
+            $.gitImport = gitImport;
+            return this;
+        }
+
+        /**
+         * @param gitImport Flag to import the policy from git.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitImport(Boolean gitImport) {
+            return gitImport(Output.of(gitImport));
+        }
+
+        /**
+         * @param gitIsNewBranch Flag to create a new branch for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitIsNewBranch(@Nullable Output<Boolean> gitIsNewBranch) {
+            $.gitIsNewBranch = gitIsNewBranch;
+            return this;
+        }
+
+        /**
+         * @param gitIsNewBranch Flag to create a new branch for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitIsNewBranch(Boolean gitIsNewBranch) {
+            return gitIsNewBranch(Output.of(gitIsNewBranch));
+        }
+
+        /**
+         * @param gitPath Git path for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitPath(@Nullable Output<String> gitPath) {
+            $.gitPath = gitPath;
+            return this;
+        }
+
+        /**
+         * @param gitPath Git path for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitPath(String gitPath) {
+            return gitPath(Output.of(gitPath));
+        }
+
+        /**
+         * @param gitRepo Git repository for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitRepo(@Nullable Output<String> gitRepo) {
+            $.gitRepo = gitRepo;
+            return this;
+        }
+
+        /**
+         * @param gitRepo Git repository for the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitRepo(String gitRepo) {
+            return gitRepo(Output.of(gitRepo));
         }
 
         /**

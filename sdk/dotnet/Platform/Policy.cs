@@ -30,6 +30,66 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Base branch for the new git branch.
+        /// </summary>
+        [Output("gitBaseBranch")]
+        public Output<string?> GitBaseBranch { get; private set; } = null!;
+
+        /// <summary>
+        /// Git branch for the policy.
+        /// </summary>
+        [Output("gitBranch")]
+        public Output<string?> GitBranch { get; private set; } = null!;
+
+        /// <summary>
+        /// Git commit message for the policy.
+        /// </summary>
+        [Output("gitCommitMsg")]
+        public Output<string?> GitCommitMsg { get; private set; } = null!;
+
+        /// <summary>
+        /// The existing commit sha of the file being updated
+        /// </summary>
+        [Output("gitCommitSha")]
+        public Output<string> GitCommitSha { get; private set; } = null!;
+
+        /// <summary>
+        /// Git connector reference for the policy.
+        /// </summary>
+        [Output("gitConnectorRef")]
+        public Output<string?> GitConnectorRef { get; private set; } = null!;
+
+        /// <summary>
+        /// The existing file id of the file being updated, not required for bitbucket files
+        /// </summary>
+        [Output("gitFileId")]
+        public Output<string> GitFileId { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to import the policy from git.
+        /// </summary>
+        [Output("gitImport")]
+        public Output<bool?> GitImport { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag to create a new branch for the policy.
+        /// </summary>
+        [Output("gitIsNewBranch")]
+        public Output<bool?> GitIsNewBranch { get; private set; } = null!;
+
+        /// <summary>
+        /// Git path for the policy.
+        /// </summary>
+        [Output("gitPath")]
+        public Output<string?> GitPath { get; private set; } = null!;
+
+        /// <summary>
+        /// Git repository for the policy.
+        /// </summary>
+        [Output("gitRepo")]
+        public Output<string?> GitRepo { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
@@ -119,6 +179,66 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Base branch for the new git branch.
+        /// </summary>
+        [Input("gitBaseBranch")]
+        public Input<string>? GitBaseBranch { get; set; }
+
+        /// <summary>
+        /// Git branch for the policy.
+        /// </summary>
+        [Input("gitBranch")]
+        public Input<string>? GitBranch { get; set; }
+
+        /// <summary>
+        /// Git commit message for the policy.
+        /// </summary>
+        [Input("gitCommitMsg")]
+        public Input<string>? GitCommitMsg { get; set; }
+
+        /// <summary>
+        /// The existing commit sha of the file being updated
+        /// </summary>
+        [Input("gitCommitSha")]
+        public Input<string>? GitCommitSha { get; set; }
+
+        /// <summary>
+        /// Git connector reference for the policy.
+        /// </summary>
+        [Input("gitConnectorRef")]
+        public Input<string>? GitConnectorRef { get; set; }
+
+        /// <summary>
+        /// The existing file id of the file being updated, not required for bitbucket files
+        /// </summary>
+        [Input("gitFileId")]
+        public Input<string>? GitFileId { get; set; }
+
+        /// <summary>
+        /// Flag to import the policy from git.
+        /// </summary>
+        [Input("gitImport")]
+        public Input<bool>? GitImport { get; set; }
+
+        /// <summary>
+        /// Flag to create a new branch for the policy.
+        /// </summary>
+        [Input("gitIsNewBranch")]
+        public Input<bool>? GitIsNewBranch { get; set; }
+
+        /// <summary>
+        /// Git path for the policy.
+        /// </summary>
+        [Input("gitPath")]
+        public Input<string>? GitPath { get; set; }
+
+        /// <summary>
+        /// Git repository for the policy.
+        /// </summary>
+        [Input("gitRepo")]
+        public Input<string>? GitRepo { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -173,6 +293,66 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Base branch for the new git branch.
+        /// </summary>
+        [Input("gitBaseBranch")]
+        public Input<string>? GitBaseBranch { get; set; }
+
+        /// <summary>
+        /// Git branch for the policy.
+        /// </summary>
+        [Input("gitBranch")]
+        public Input<string>? GitBranch { get; set; }
+
+        /// <summary>
+        /// Git commit message for the policy.
+        /// </summary>
+        [Input("gitCommitMsg")]
+        public Input<string>? GitCommitMsg { get; set; }
+
+        /// <summary>
+        /// The existing commit sha of the file being updated
+        /// </summary>
+        [Input("gitCommitSha")]
+        public Input<string>? GitCommitSha { get; set; }
+
+        /// <summary>
+        /// Git connector reference for the policy.
+        /// </summary>
+        [Input("gitConnectorRef")]
+        public Input<string>? GitConnectorRef { get; set; }
+
+        /// <summary>
+        /// The existing file id of the file being updated, not required for bitbucket files
+        /// </summary>
+        [Input("gitFileId")]
+        public Input<string>? GitFileId { get; set; }
+
+        /// <summary>
+        /// Flag to import the policy from git.
+        /// </summary>
+        [Input("gitImport")]
+        public Input<bool>? GitImport { get; set; }
+
+        /// <summary>
+        /// Flag to create a new branch for the policy.
+        /// </summary>
+        [Input("gitIsNewBranch")]
+        public Input<bool>? GitIsNewBranch { get; set; }
+
+        /// <summary>
+        /// Git path for the policy.
+        /// </summary>
+        [Input("gitPath")]
+        public Input<string>? GitPath { get; set; }
+
+        /// <summary>
+        /// Git repository for the policy.
+        /// </summary>
+        [Input("gitRepo")]
+        public Input<string>? GitRepo { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.

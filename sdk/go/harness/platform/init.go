@@ -117,6 +117,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GitopsAppProject{}
 	case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
 		r = &GitopsAppProjectMapping{}
+	case "harness:platform/gitxWebhook:GitxWebhook":
+		r = &GitxWebhook{}
 	case "harness:platform/helmConnector:HelmConnector":
 		r = &HelmConnector{}
 	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
@@ -147,6 +149,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OciHelmConnector{}
 	case "harness:platform/organization:Organization":
 		r = &Organization{}
+	case "harness:platform/overrides:Overrides":
+		r = &Overrides{}
 	case "harness:platform/pagerdutyConnector:PagerdutyConnector":
 		r = &PagerdutyConnector{}
 	case "harness:platform/pipeline:Pipeline":
@@ -472,6 +476,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/gitxWebhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/helmConnector",
 		&module{version},
 	)
@@ -543,6 +552,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/overrides",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

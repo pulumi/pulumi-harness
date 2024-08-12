@@ -74,6 +74,8 @@ type LookupGcpConnectorResult struct {
 	Manuals []GetGcpConnectorManual `pulumi:"manuals"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications []GetGcpConnectorOidcAuthentication `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -154,6 +156,11 @@ func (o LookupGcpConnectorResultOutput) Manuals() GetGcpConnectorManualArrayOutp
 // Name of the resource.
 func (o LookupGcpConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGcpConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Authentication using harness oidc.
+func (o LookupGcpConnectorResultOutput) OidcAuthentications() GetGcpConnectorOidcAuthenticationArrayOutput {
+	return o.ApplyT(func(v LookupGcpConnectorResult) []GetGcpConnectorOidcAuthentication { return v.OidcAuthentications }).(GetGcpConnectorOidcAuthenticationArrayOutput)
 }
 
 // Unique identifier of the organization.

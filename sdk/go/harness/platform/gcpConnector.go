@@ -50,6 +50,8 @@ type GcpConnector struct {
 	Manual GcpConnectorManualPtrOutput `pulumi:"manual"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications GcpConnectorOidcAuthenticationArrayOutput `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -105,6 +107,8 @@ type gcpConnectorState struct {
 	Manual *GcpConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications []GcpConnectorOidcAuthentication `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -128,6 +132,8 @@ type GcpConnectorState struct {
 	Manual GcpConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Authentication using harness oidc.
+	OidcAuthentications GcpConnectorOidcAuthenticationArrayInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
@@ -155,6 +161,8 @@ type gcpConnectorArgs struct {
 	Manual *GcpConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications []GcpConnectorOidcAuthentication `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -179,6 +187,8 @@ type GcpConnectorArgs struct {
 	Manual GcpConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Authentication using harness oidc.
+	OidcAuthentications GcpConnectorOidcAuthenticationArrayInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
@@ -307,6 +317,11 @@ func (o GcpConnectorOutput) Manual() GcpConnectorManualPtrOutput {
 // Name of the resource.
 func (o GcpConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Authentication using harness oidc.
+func (o GcpConnectorOutput) OidcAuthentications() GcpConnectorOidcAuthenticationArrayOutput {
+	return o.ApplyT(func(v *GcpConnector) GcpConnectorOidcAuthenticationArrayOutput { return v.OidcAuthentications }).(GcpConnectorOidcAuthenticationArrayOutput)
 }
 
 // Unique identifier of the organization.

@@ -435,6 +435,11 @@ export const getGitopsRepository: typeof import("./getGitopsRepository").getGito
 export const getGitopsRepositoryOutput: typeof import("./getGitopsRepository").getGitopsRepositoryOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsRepository","getGitopsRepositoryOutput"], () => require("./getGitopsRepository"));
 
+export { GetGitxWebhookArgs, GetGitxWebhookResult, GetGitxWebhookOutputArgs } from "./getGitxWebhook";
+export const getGitxWebhook: typeof import("./getGitxWebhook").getGitxWebhook = null as any;
+export const getGitxWebhookOutput: typeof import("./getGitxWebhook").getGitxWebhookOutput = null as any;
+utilities.lazyLoad(exports, ["getGitxWebhook","getGitxWebhookOutput"], () => require("./getGitxWebhook"));
+
 export { GetHelmConnectorArgs, GetHelmConnectorResult, GetHelmConnectorOutputArgs } from "./getHelmConnector";
 export const getHelmConnector: typeof import("./getHelmConnector").getHelmConnector = null as any;
 export const getHelmConnectorOutput: typeof import("./getHelmConnector").getHelmConnectorOutput = null as any;
@@ -504,6 +509,11 @@ export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs }
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
+
+export { GetOverridesArgs, GetOverridesResult, GetOverridesOutputArgs } from "./getOverrides";
+export const getOverrides: typeof import("./getOverrides").getOverrides = null as any;
+export const getOverridesOutput: typeof import("./getOverrides").getOverridesOutput = null as any;
+utilities.lazyLoad(exports, ["getOverrides","getOverridesOutput"], () => require("./getOverrides"));
 
 export { GetPagerdutyConnectorArgs, GetPagerdutyConnectorResult, GetPagerdutyConnectorOutputArgs } from "./getPagerdutyConnector";
 export const getPagerdutyConnector: typeof import("./getPagerdutyConnector").getPagerdutyConnector = null as any;
@@ -765,6 +775,11 @@ export type GitopsAppProjectMapping = import("./gitopsAppProjectMapping").Gitops
 export const GitopsAppProjectMapping: typeof import("./gitopsAppProjectMapping").GitopsAppProjectMapping = null as any;
 utilities.lazyLoad(exports, ["GitopsAppProjectMapping"], () => require("./gitopsAppProjectMapping"));
 
+export { GitxWebhookArgs, GitxWebhookState } from "./gitxWebhook";
+export type GitxWebhook = import("./gitxWebhook").GitxWebhook;
+export const GitxWebhook: typeof import("./gitxWebhook").GitxWebhook = null as any;
+utilities.lazyLoad(exports, ["GitxWebhook"], () => require("./gitxWebhook"));
+
 export { HelmConnectorArgs, HelmConnectorState } from "./helmConnector";
 export type HelmConnector = import("./helmConnector").HelmConnector;
 export const HelmConnector: typeof import("./helmConnector").HelmConnector = null as any;
@@ -839,6 +854,11 @@ export { OrganizationArgs, OrganizationState } from "./organization";
 export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+
+export { OverridesArgs, OverridesState } from "./overrides";
+export type Overrides = import("./overrides").Overrides;
+export const Overrides: typeof import("./overrides").Overrides = null as any;
+utilities.lazyLoad(exports, ["Overrides"], () => require("./overrides"));
 
 export { PagerdutyConnectorArgs, PagerdutyConnectorState } from "./pagerdutyConnector";
 export type PagerdutyConnector = import("./pagerdutyConnector").PagerdutyConnector;
@@ -1116,6 +1136,8 @@ const _module = {
                 return new GitopsAppProject(name, <any>undefined, { urn })
             case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
                 return new GitopsAppProjectMapping(name, <any>undefined, { urn })
+            case "harness:platform/gitxWebhook:GitxWebhook":
+                return new GitxWebhook(name, <any>undefined, { urn })
             case "harness:platform/helmConnector:HelmConnector":
                 return new HelmConnector(name, <any>undefined, { urn })
             case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
@@ -1146,6 +1168,8 @@ const _module = {
                 return new OciHelmConnector(name, <any>undefined, { urn })
             case "harness:platform/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "harness:platform/overrides:Overrides":
+                return new Overrides(name, <any>undefined, { urn })
             case "harness:platform/pagerdutyConnector:PagerdutyConnector":
                 return new PagerdutyConnector(name, <any>undefined, { urn })
             case "harness:platform/pipeline:Pipeline":
@@ -1269,6 +1293,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/githubConnector", _mo
 pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProject", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMapping", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
@@ -1284,6 +1309,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/nexusConnector", _mod
 pulumi.runtime.registerResourceModule("harness", "platform/notificationRule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/ociHelmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/organization", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/overrides", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pagerdutyConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/pipelineFilters", _module)
