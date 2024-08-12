@@ -133,8 +133,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_git_connector":             {Tok: harnessResource(mainMod, "GitConnector")},
 			"harness_infrastructure_definition": {Tok: harnessResource(mainMod, "InfrastructureDefinition")},
 			"harness_platform_apikey": {
-				Tok:  harnessResource(mainMod, "PlatformApiKey"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: harnessResource(mainMod, "PlatformApiKey"),
 			},
 			"harness_platform_ccm_filters":           {Tok: harnessResource(mainMod, "PlatformCcmFilters")},
 			"harness_platform_connector_appdynamics": {Tok: harnessResource(platformMod, "AppDynamicsConnector")},
@@ -186,28 +185,31 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: harnessResource(platformMod, "EnvironmentClustersMapping")},
 			"harness_platform_environment_service_overrides": {
 				Tok: harnessResource(platformMod, "EnvironmentServiceOverrides")},
-			"harness_platform_environment_group":   {Tok: harnessResource(platformMod, "EnvironmentGroup")},
-			"harness_platform_delegatetoken":       {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"harness_platform_environment_group": {Tok: harnessResource(platformMod, "EnvironmentGroup")},
+			"harness_platform_delegatetoken": {
+				Docs: &tfbridge.DocInfo{
+					Source: "platform_delegate_token.md",
+				},
+			},
 			"harness_platform_feature_flag":        {Tok: harnessResource(platformMod, "FeatureFlag")},
 			"harness_platform_ff_api_key":          {Tok: harnessResource(platformMod, "FeatureFlagApiKey")},
 			"harness_platform_filters":             {Tok: harnessResource(platformMod, "Filters")},
 			"harness_platform_gitops_applications": {Tok: harnessResource(platformMod, "GitOpsApplications")},
-			"harness_platform_gitops_app_project": {
+			"harness_platform_gitops_gnupg":        {Tok: harnessResource(platformMod, "GitOpsGnupg")},
+			"harness_platform_gitops_repo_cert":    {Tok: harnessResource(platformMod, "GitOpsRepoCert")},
+			"harness_platform_gitops_repo_cred":    {Tok: harnessResource(platformMod, "GitOpsRepoCred")},
+			"harness_platform_manual_freeze":       {Tok: harnessResource(platformMod, "ManualFreeze")},
+			"harness_platform_monitored_service":   {Tok: harnessResource(platformMod, "MonitoredService")},
+			"harness_platform_overrides": {
 				Docs: &tfbridge.DocInfo{
 					AllowMissing: true,
 				},
 			},
-			"harness_platform_gitops_gnupg":      {Tok: harnessResource(platformMod, "GitOpsGnupg")},
-			"harness_platform_gitops_repo_cert":  {Tok: harnessResource(platformMod, "GitOpsRepoCert")},
-			"harness_platform_gitops_repo_cred":  {Tok: harnessResource(platformMod, "GitOpsRepoCred")},
-			"harness_platform_manual_freeze":     {Tok: harnessResource(platformMod, "ManualFreeze")},
-			"harness_platform_monitored_service": {Tok: harnessResource(platformMod, "MonitoredService")},
-			"harness_platform_pipeline_filters":  {Tok: harnessResource(platformMod, "PipelineFilters")},
-			"harness_platform_policy":            {Tok: harnessResource(platformMod, "Policy")},
-			"harness_platform_policyset":         {Tok: harnessResource(platformMod, "PolicySet")},
+			"harness_platform_pipeline_filters": {Tok: harnessResource(platformMod, "PipelineFilters")},
+			"harness_platform_policy":           {Tok: harnessResource(platformMod, "Policy")},
+			"harness_platform_policyset":        {Tok: harnessResource(platformMod, "PolicySet")},
 			"harness_platform_service_overrides_v2": {
-				Tok:  harnessResource(platformMod, "ServiceOverridesV2"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: harnessResource(platformMod, "ServiceOverridesV2"),
 			},
 			"harness_platform_slo":               {Tok: harnessResource(platformMod, "Slo")},
 			"harness_platform_template":          {Tok: harnessResource(platformMod, "Template")},
@@ -257,8 +259,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_environment":     {Tok: harnessDataSource(mainMod, "getEnvironment")},
 			"harness_git_connector":   {Tok: harnessDataSource(mainMod, "getGitConnector")},
 			"harness_platform_apikey": {
-				Tok:  harnessDataSource(platformMod, "getApiKey"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: harnessDataSource(platformMod, "getApiKey"),
 			},
 			"harness_platform_connector_appdynamics": {
 				Tok: harnessDataSource(platformMod, "getAppDynamicsConnector")},
@@ -317,7 +318,11 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_connector_vault": {Tok: harnessDataSource(platformMod, "getVaultConnector")},
 			"harness_platform_current_account": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"harness_platform_current_user":    {Tok: harnessDataSource(platformMod, "getCurrentUser")},
-			"harness_platform_delegatetoken":   {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"harness_platform_delegatetoken": {
+				Docs: &tfbridge.DocInfo{
+					Source: "platform_delegate_token.md",
+				},
+			},
 			"harness_platform_environment_service_overrides": {
 				Tok: harnessDataSource(platformMod, "getEnvironmentServiceOverrides")},
 			"harness_platform_filters": {Tok: harnessDataSource(platformMod, "getFilters")},
@@ -325,11 +330,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: harnessDataSource(platformMod, "getGitopsAgentDeployYaml")},
 			"harness_platform_gitops_applications": {
 				Tok: harnessDataSource(platformMod, "getGitopsApplications")},
-			"harness_platform_gitops_app_project": {
-				Docs: &tfbridge.DocInfo{
-					AllowMissing: true,
-				},
-			},
 			"harness_platform_gitops_gnupg":      {Tok: harnessDataSource(platformMod, "getGitopsGnupg")},
 			"harness_platform_gitops_repo_cert":  {Tok: harnessDataSource(platformMod, "getGitopsRepoCert")},
 			"harness_platform_gitops_repo_cred":  {Tok: harnessDataSource(platformMod, "getGitopsRepoCred")},
@@ -339,8 +339,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_policy":            {Tok: harnessDataSource(platformMod, "getPolicy")},
 			"harness_platform_policyset":         {Tok: harnessDataSource(platformMod, "getPolicySet")},
 			"harness_platform_service_overrides_v2": {
-				Tok:  harnessDataSource(platformMod, "getServiceOverridesV2"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: harnessDataSource(platformMod, "getServiceOverridesV2"),
 			},
 			"harness_platform_slo":              {Tok: harnessDataSource(platformMod, "getSlo")},
 			"harness_platform_template":         {Tok: harnessDataSource(platformMod, "getTemplate")},
@@ -359,23 +358,27 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_infrastructure":    {Tok: harnessDataSource(platformMod, "getInfrastructure")},
 			"harness_platform_input_set":         {Tok: harnessDataSource(platformMod, "getInputSet")},
 			"harness_platform_organization":      {Tok: harnessDataSource(platformMod, "getOrganization")},
-			"harness_platform_pipeline":          {Tok: harnessDataSource(platformMod, "getPipeline")},
-			"harness_platform_permissions":       {Tok: harnessDataSource(platformMod, "getPermissions")},
-			"harness_platform_project":           {Tok: harnessDataSource(platformMod, "getProject")},
-			"harness_platform_resource_group":    {Tok: harnessDataSource(platformMod, "getResourceGroup")},
-			"harness_platform_roles":             {Tok: harnessDataSource(platformMod, "getRoles")},
-			"harness_platform_role_assignments":  {Tok: harnessDataSource(platformMod, "getRoleAssignments")},
-			"harness_platform_secret_file":       {Tok: harnessDataSource(platformMod, "getSecretFile")},
-			"harness_platform_secret_sshkey":     {Tok: harnessDataSource(platformMod, "getSecretSshkey")},
-			"harness_platform_secret_text":       {Tok: harnessDataSource(platformMod, "getSecretText")},
-			"harness_platform_service":           {Tok: harnessDataSource(platformMod, "getService")},
-			"harness_platform_service_account":   {Tok: harnessDataSource(platformMod, "getServiceAccount")},
-			"harness_platform_triggers":          {Tok: harnessDataSource(platformMod, "getTriggers")},
-			"harness_platform_usergroup":         {Tok: harnessDataSource(platformMod, "getUsergroup")},
+			"harness_platform_overrides": {
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
+			"harness_platform_pipeline":         {Tok: harnessDataSource(platformMod, "getPipeline")},
+			"harness_platform_permissions":      {Tok: harnessDataSource(platformMod, "getPermissions")},
+			"harness_platform_project":          {Tok: harnessDataSource(platformMod, "getProject")},
+			"harness_platform_resource_group":   {Tok: harnessDataSource(platformMod, "getResourceGroup")},
+			"harness_platform_roles":            {Tok: harnessDataSource(platformMod, "getRoles")},
+			"harness_platform_role_assignments": {Tok: harnessDataSource(platformMod, "getRoleAssignments")},
+			"harness_platform_secret_file":      {Tok: harnessDataSource(platformMod, "getSecretFile")},
+			"harness_platform_secret_sshkey":    {Tok: harnessDataSource(platformMod, "getSecretSshkey")},
+			"harness_platform_secret_text":      {Tok: harnessDataSource(platformMod, "getSecretText")},
+			"harness_platform_service":          {Tok: harnessDataSource(platformMod, "getService")},
+			"harness_platform_service_account":  {Tok: harnessDataSource(platformMod, "getServiceAccount")},
+			"harness_platform_triggers":         {Tok: harnessDataSource(platformMod, "getTriggers")},
+			"harness_platform_usergroup":        {Tok: harnessDataSource(platformMod, "getUsergroup")},
 			// note this is renamed as it produces a conflict with the other datasource.
 			"harness_platform_workspace_output": {
-				Tok:  harnessDataSource(platformMod, "getWorkspaceOutputValue"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
+				Tok: harnessDataSource(platformMod, "getWorkspaceOutputValue"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"outputs": {Name: "outputValues"},
 				},

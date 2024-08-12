@@ -794,6 +794,16 @@
                             }
                         }
                     },
+                    "oidc_authentication": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1827,6 +1837,17 @@
                     }
                 }
             },
+            "harness_platform_gitx_webhook": {
+                "current": "harness:platform/gitxWebhook:GitxWebhook",
+                "fields": {
+                    "folder_paths": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
             },
@@ -1939,6 +1960,14 @@
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_overrides": {
+                "current": "harness:platform/overrides:Overrides",
+                "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -3425,6 +3454,16 @@
                             }
                         }
                     },
+                    "oidc_authentication": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -4256,6 +4295,14 @@
                     }
                 }
             },
+            "harness_platform_gitx_webhook": {
+                "current": "harness:platform/getGitxWebhook:getGitxWebhook",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline"
             },
@@ -4320,6 +4367,14 @@
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_overrides": {
+                "current": "harness:platform/getOverrides:getOverrides",
+                "fields": {
+                    "git_details": {
+                        "maxItemsOne": true
                     }
                 }
             },
