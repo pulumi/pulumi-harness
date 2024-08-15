@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Host attributes with values. e.g. type, region, name, ip, etc.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Attributes;
+        public readonly ImmutableDictionary<string, string>? Attributes;
         /// <summary>
         /// Hostname e.g. 87.23.66.11:80
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private ConnectorPdcHost(
-            ImmutableDictionary<string, object>? attributes,
+            ImmutableDictionary<string, string>? attributes,
 
             string hostname)
         {

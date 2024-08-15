@@ -13,14 +13,14 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class ConnectorPdcHostArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
-        private InputMap<object>? _attributes;
+        private InputMap<string>? _attributes;
 
         /// <summary>
         /// Host attributes with values. e.g. type, region, name, ip, etc.
         /// </summary>
-        public InputMap<object> Attributes
+        public InputMap<string> Attributes
         {
-            get => _attributes ?? (_attributes = new InputMap<object>());
+            get => _attributes ?? (_attributes = new InputMap<string>());
             set => _attributes = value;
         }
 

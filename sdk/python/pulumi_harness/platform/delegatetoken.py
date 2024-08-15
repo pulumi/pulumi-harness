@@ -16,7 +16,7 @@ class DelegatetokenArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  created_at: Optional[pulumi.Input[int]] = None,
-                 created_by: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 created_by: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -26,7 +26,7 @@ class DelegatetokenArgs:
         The set of arguments for constructing a Delegatetoken resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] created_by: created by details.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -75,14 +75,14 @@ class DelegatetokenArgs:
 
     @property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def created_by(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         created by details.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def created_by(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "created_by", value)
 
     @property
@@ -151,7 +151,7 @@ class _DelegatetokenState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
-                 created_by: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 created_by: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,7 @@ class _DelegatetokenState:
         Input properties used for looking up and filtering Delegatetoken resources.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] created_by: created by details.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -211,14 +211,14 @@ class _DelegatetokenState:
 
     @property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def created_by(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         created by details.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def created_by(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "created_by", value)
 
     @property
@@ -289,7 +289,7 @@ class Delegatetoken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
-                 created_by: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 created_by: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -323,7 +323,7 @@ class Delegatetoken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] created_by: created by details.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -376,7 +376,7 @@ class Delegatetoken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[int]] = None,
-                 created_by: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 created_by: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -413,7 +413,7 @@ class Delegatetoken(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[int]] = None,
-            created_by: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            created_by: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -428,7 +428,7 @@ class Delegatetoken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account Identifier for the Entity
         :param pulumi.Input[int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, Any]] created_by: created by details.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] created_by: created by details.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -467,7 +467,7 @@ class Delegatetoken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> pulumi.Output[Mapping[str, Any]]:
+    def created_by(self) -> pulumi.Output[Mapping[str, str]]:
         """
         created by details.
         """

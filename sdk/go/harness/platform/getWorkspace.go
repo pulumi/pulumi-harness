@@ -73,8 +73,8 @@ type LookupWorkspaceArgs struct {
 // A collection of values returned by getWorkspace.
 type LookupWorkspaceResult struct {
 	// If enabled cost estimation operations will be performed in this workspace
-	CostEstimationEnabled bool                   `pulumi:"costEstimationEnabled"`
-	DefaultPipelines      map[string]interface{} `pulumi:"defaultPipelines"`
+	CostEstimationEnabled bool              `pulumi:"costEstimationEnabled"`
+	DefaultPipelines      map[string]string `pulumi:"defaultPipelines"`
 	// Description of the Workspace
 	Description string `pulumi:"description"`
 	// Environment variables configured on the workspace
@@ -166,8 +166,8 @@ func (o LookupWorkspaceResultOutput) CostEstimationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) bool { return v.CostEstimationEnabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupWorkspaceResultOutput) DefaultPipelines() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) map[string]interface{} { return v.DefaultPipelines }).(pulumi.MapOutput)
+func (o LookupWorkspaceResultOutput) DefaultPipelines() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.DefaultPipelines }).(pulumi.StringMapOutput)
 }
 
 // Description of the Workspace

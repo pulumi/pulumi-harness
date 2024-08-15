@@ -14,7 +14,6 @@ import com.pulumi.harness.platform.outputs.WorkspaceEnvironmentVariable;
 import com.pulumi.harness.platform.outputs.WorkspaceTerraformVariable;
 import com.pulumi.harness.platform.outputs.WorkspaceTerraformVariableFile;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -135,14 +134,14 @@ public class Workspace extends com.pulumi.resources.CustomResource {
      * Default pipelines associated with this workspace
      * 
      */
-    @Export(name="defaultPipelines", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> defaultPipelines;
+    @Export(name="defaultPipelines", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> defaultPipelines;
 
     /**
      * @return Default pipelines associated with this workspace
      * 
      */
-    public Output<Optional<Map<String,Object>>> defaultPipelines() {
+    public Output<Optional<Map<String,String>>> defaultPipelines() {
         return Codegen.optional(this.defaultPipelines);
     }
     /**

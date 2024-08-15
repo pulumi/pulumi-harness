@@ -107,7 +107,7 @@ namespace Pulumi.Harness.Platform
         /// Default pipelines associated with this workspace
         /// </summary>
         [Output("defaultPipelines")]
-        public Output<ImmutableDictionary<string, object>?> DefaultPipelines { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> DefaultPipelines { get; private set; } = null!;
 
         /// <summary>
         /// Description of the resource.
@@ -253,14 +253,14 @@ namespace Pulumi.Harness.Platform
         public Input<bool> CostEstimationEnabled { get; set; } = null!;
 
         [Input("defaultPipelines")]
-        private InputMap<object>? _defaultPipelines;
+        private InputMap<string>? _defaultPipelines;
 
         /// <summary>
         /// Default pipelines associated with this workspace
         /// </summary>
-        public InputMap<object> DefaultPipelines
+        public InputMap<string> DefaultPipelines
         {
-            get => _defaultPipelines ?? (_defaultPipelines = new InputMap<object>());
+            get => _defaultPipelines ?? (_defaultPipelines = new InputMap<string>());
             set => _defaultPipelines = value;
         }
 
@@ -391,14 +391,14 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? CostEstimationEnabled { get; set; }
 
         [Input("defaultPipelines")]
-        private InputMap<object>? _defaultPipelines;
+        private InputMap<string>? _defaultPipelines;
 
         /// <summary>
         /// Default pipelines associated with this workspace
         /// </summary>
-        public InputMap<object> DefaultPipelines
+        public InputMap<string> DefaultPipelines
         {
-            get => _defaultPipelines ?? (_defaultPipelines = new InputMap<object>());
+            get => _defaultPipelines ?? (_defaultPipelines = new InputMap<string>());
             set => _defaultPipelines = value;
         }
 

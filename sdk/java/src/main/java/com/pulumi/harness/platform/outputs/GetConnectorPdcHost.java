@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class GetConnectorPdcHost {
      * @return Host attributes with values. e.g. type, region, name, ip, etc.
      * 
      */
-    private @Nullable Map<String,Object> attributes;
+    private @Nullable Map<String,String> attributes;
     /**
      * @return Hostname e.g. 87.23.66.11:80
      * 
@@ -29,7 +28,7 @@ public final class GetConnectorPdcHost {
      * @return Host attributes with values. e.g. type, region, name, ip, etc.
      * 
      */
-    public Map<String,Object> attributes() {
+    public Map<String,String> attributes() {
         return this.attributes == null ? Map.of() : this.attributes;
     }
     /**
@@ -49,7 +48,7 @@ public final class GetConnectorPdcHost {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> attributes;
+        private @Nullable Map<String,String> attributes;
         private String hostname;
         public Builder() {}
         public Builder(GetConnectorPdcHost defaults) {
@@ -59,7 +58,7 @@ public final class GetConnectorPdcHost {
         }
 
         @CustomType.Setter
-        public Builder attributes(@Nullable Map<String,Object> attributes) {
+        public Builder attributes(@Nullable Map<String,String> attributes) {
 
             this.attributes = attributes;
             return this;

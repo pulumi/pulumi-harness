@@ -66,7 +66,7 @@ export class Delegatetoken extends pulumi.CustomResource {
     /**
      * created by details.
      */
-    public readonly createdBy!: pulumi.Output<{[key: string]: any}>;
+    public readonly createdBy!: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the resource.
      */
@@ -143,7 +143,7 @@ export interface DelegatetokenState {
     /**
      * created by details.
      */
-    createdBy?: pulumi.Input<{[key: string]: any}>;
+    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource.
      */
@@ -181,7 +181,7 @@ export interface DelegatetokenArgs {
     /**
      * created by details.
      */
-    createdBy?: pulumi.Input<{[key: string]: any}>;
+    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource.
      */

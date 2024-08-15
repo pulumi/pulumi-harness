@@ -6,7 +6,6 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,13 +22,13 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="attributes")
-    private @Nullable Output<Map<String,Object>> attributes;
+    private @Nullable Output<Map<String,String>> attributes;
 
     /**
      * @return Host attributes with values. e.g. type, region, name, ip, etc.
      * 
      */
-    public Optional<Output<Map<String,Object>>> attributes() {
+    public Optional<Output<Map<String,String>>> attributes() {
         return Optional.ofNullable(this.attributes);
     }
 
@@ -79,7 +78,7 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder attributes(@Nullable Output<Map<String,Object>> attributes) {
+        public Builder attributes(@Nullable Output<Map<String,String>> attributes) {
             $.attributes = attributes;
             return this;
         }
@@ -90,7 +89,7 @@ public final class ConnectorPdcHostArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder attributes(Map<String,Object> attributes) {
+        public Builder attributes(Map<String,String> attributes) {
             return attributes(Output.of(attributes));
         }
 

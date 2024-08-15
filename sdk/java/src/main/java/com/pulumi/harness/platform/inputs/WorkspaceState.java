@@ -9,7 +9,6 @@ import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -42,13 +41,13 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="defaultPipelines")
-    private @Nullable Output<Map<String,Object>> defaultPipelines;
+    private @Nullable Output<Map<String,String>> defaultPipelines;
 
     /**
      * @return Default pipelines associated with this workspace
      * 
      */
-    public Optional<Output<Map<String,Object>>> defaultPipelines() {
+    public Optional<Output<Map<String,String>>> defaultPipelines() {
         return Optional.ofNullable(this.defaultPipelines);
     }
 
@@ -344,7 +343,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPipelines(@Nullable Output<Map<String,Object>> defaultPipelines) {
+        public Builder defaultPipelines(@Nullable Output<Map<String,String>> defaultPipelines) {
             $.defaultPipelines = defaultPipelines;
             return this;
         }
@@ -355,7 +354,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPipelines(Map<String,Object> defaultPipelines) {
+        public Builder defaultPipelines(Map<String,String> defaultPipelines) {
             return defaultPipelines(Output.of(defaultPipelines));
         }
 
