@@ -3123,7 +3123,7 @@
                 "attributes": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Host attributes with values. e.g. type, region, name, ip, etc.\n"
                 },
@@ -8994,7 +8994,7 @@
                 "attributes": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Host attributes with values. e.g. type, region, name, ip, etc.\n"
                 },
@@ -20562,7 +20562,7 @@
                 "createdBy": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "created by details.\n"
                 },
@@ -20607,7 +20607,7 @@
                 "createdBy": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "created by details.\n"
                 },
@@ -20649,7 +20649,7 @@
                     "createdBy": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "created by details.\n"
                     },
@@ -33519,7 +33519,7 @@
                 "defaultPipelines": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Default pipelines associated with this workspace\n"
                 },
@@ -33621,7 +33621,7 @@
                 "defaultPipelines": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Default pipelines associated with this workspace\n"
                 },
@@ -33727,7 +33727,7 @@
                     "defaultPipelines": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Default pipelines associated with this workspace\n"
                     },
@@ -46441,7 +46441,7 @@
                     },
                     "defaultPipelines": {
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "type": "object"
                     },
