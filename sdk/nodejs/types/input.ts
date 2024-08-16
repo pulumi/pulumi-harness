@@ -2340,7 +2340,7 @@ export namespace platform {
         /**
          * Host attributes with values. e.g. type, region, name, ip, etc.
          */
-        attributes?: pulumi.Input<{[key: string]: any}>;
+        attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Hostname e.g. 87.23.66.11:80
          */

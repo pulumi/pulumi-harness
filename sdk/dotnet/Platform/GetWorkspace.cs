@@ -217,7 +217,7 @@ namespace Pulumi.Harness.Platform
         /// If enabled cost estimation operations will be performed in this workspace
         /// </summary>
         public readonly bool CostEstimationEnabled;
-        public readonly ImmutableDictionary<string, object> DefaultPipelines;
+        public readonly ImmutableDictionary<string, string> DefaultPipelines;
         /// <summary>
         /// Description of the Workspace
         /// </summary>
@@ -285,7 +285,7 @@ namespace Pulumi.Harness.Platform
         private GetWorkspaceResult(
             bool costEstimationEnabled,
 
-            ImmutableDictionary<string, object> defaultPipelines,
+            ImmutableDictionary<string, string> defaultPipelines,
 
             string description,
 

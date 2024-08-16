@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -54,13 +53,13 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="createdBy")
-    private @Nullable Output<Map<String,Object>> createdBy;
+    private @Nullable Output<Map<String,String>> createdBy;
 
     /**
      * @return created by details.
      * 
      */
-    public Optional<Output<Map<String,Object>>> createdBy() {
+    public Optional<Output<Map<String,String>>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
@@ -218,7 +217,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder createdBy(@Nullable Output<Map<String,Object>> createdBy) {
+        public Builder createdBy(@Nullable Output<Map<String,String>> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
@@ -229,7 +228,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder createdBy(Map<String,Object> createdBy) {
+        public Builder createdBy(Map<String,String> createdBy) {
             return createdBy(Output.of(createdBy));
         }
 

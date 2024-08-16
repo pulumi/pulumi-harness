@@ -1953,10 +1953,10 @@ class ConnectorJdbcCredentialsArgs:
 class ConnectorPdcHostArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
-                 attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] hostname: Hostname e.g. 87.23.66.11:80
-        :param pulumi.Input[Mapping[str, Any]] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
         """
         pulumi.set(__self__, "hostname", hostname)
         if attributes is not None:
@@ -1976,14 +1976,14 @@ class ConnectorPdcHostArgs:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Host attributes with values. e.g. type, region, name, ip, etc.
         """
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "attributes", value)
 
 

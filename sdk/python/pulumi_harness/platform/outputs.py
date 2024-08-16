@@ -2360,10 +2360,10 @@ class ConnectorJdbcCredentials(dict):
 class ConnectorPdcHost(dict):
     def __init__(__self__, *,
                  hostname: str,
-                 attributes: Optional[Mapping[str, Any]] = None):
+                 attributes: Optional[Mapping[str, str]] = None):
         """
         :param str hostname: Hostname e.g. 87.23.66.11:80
-        :param Mapping[str, Any] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
+        :param Mapping[str, str] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
         """
         pulumi.set(__self__, "hostname", hostname)
         if attributes is not None:
@@ -2379,7 +2379,7 @@ class ConnectorPdcHost(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[Mapping[str, Any]]:
+    def attributes(self) -> Optional[Mapping[str, str]]:
         """
         Host attributes with values. e.g. type, region, name, ip, etc.
         """
@@ -16341,10 +16341,10 @@ class GetConnectorJdbcCredentialResult(dict):
 class GetConnectorPdcHostResult(dict):
     def __init__(__self__, *,
                  hostname: str,
-                 attributes: Optional[Mapping[str, Any]] = None):
+                 attributes: Optional[Mapping[str, str]] = None):
         """
         :param str hostname: Hostname e.g. 87.23.66.11:80
-        :param Mapping[str, Any] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
+        :param Mapping[str, str] attributes: Host attributes with values. e.g. type, region, name, ip, etc.
         """
         pulumi.set(__self__, "hostname", hostname)
         if attributes is not None:
@@ -16360,7 +16360,7 @@ class GetConnectorPdcHostResult(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[Mapping[str, Any]]:
+    def attributes(self) -> Optional[Mapping[str, str]]:
         """
         Host attributes with values. e.g. type, region, name, ip, etc.
         """

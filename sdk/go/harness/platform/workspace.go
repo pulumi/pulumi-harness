@@ -100,7 +100,7 @@ type Workspace struct {
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolOutput `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
-	DefaultPipelines pulumi.MapOutput `pulumi:"defaultPipelines"`
+	DefaultPipelines pulumi.StringMapOutput `pulumi:"defaultPipelines"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Environment variables configured on the workspace
@@ -196,7 +196,7 @@ type workspaceState struct {
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled *bool `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
-	DefaultPipelines map[string]interface{} `pulumi:"defaultPipelines"`
+	DefaultPipelines map[string]string `pulumi:"defaultPipelines"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Environment variables configured on the workspace
@@ -233,7 +233,7 @@ type WorkspaceState struct {
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolPtrInput
 	// Default pipelines associated with this workspace
-	DefaultPipelines pulumi.MapInput
+	DefaultPipelines pulumi.StringMapInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Environment variables configured on the workspace
@@ -274,7 +274,7 @@ type workspaceArgs struct {
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled bool `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
-	DefaultPipelines map[string]interface{} `pulumi:"defaultPipelines"`
+	DefaultPipelines map[string]string `pulumi:"defaultPipelines"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Environment variables configured on the workspace
@@ -312,7 +312,7 @@ type WorkspaceArgs struct {
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolInput
 	// Default pipelines associated with this workspace
-	DefaultPipelines pulumi.MapInput
+	DefaultPipelines pulumi.StringMapInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Environment variables configured on the workspace
@@ -438,8 +438,8 @@ func (o WorkspaceOutput) CostEstimationEnabled() pulumi.BoolOutput {
 }
 
 // Default pipelines associated with this workspace
-func (o WorkspaceOutput) DefaultPipelines() pulumi.MapOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.MapOutput { return v.DefaultPipelines }).(pulumi.MapOutput)
+func (o WorkspaceOutput) DefaultPipelines() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.DefaultPipelines }).(pulumi.StringMapOutput)
 }
 
 // Description of the resource.

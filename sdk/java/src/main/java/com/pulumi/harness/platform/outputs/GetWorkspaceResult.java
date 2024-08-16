@@ -9,7 +9,6 @@ import com.pulumi.harness.platform.outputs.GetWorkspaceEnvironmentVariable;
 import com.pulumi.harness.platform.outputs.GetWorkspaceTerraformVariable;
 import com.pulumi.harness.platform.outputs.GetWorkspaceTerraformVariableFile;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public final class GetWorkspaceResult {
      * 
      */
     private Boolean costEstimationEnabled;
-    private Map<String,Object> defaultPipelines;
+    private Map<String,String> defaultPipelines;
     /**
      * @return Description of the Workspace
      * 
@@ -109,7 +108,7 @@ public final class GetWorkspaceResult {
     public Boolean costEstimationEnabled() {
         return this.costEstimationEnabled;
     }
-    public Map<String,Object> defaultPipelines() {
+    public Map<String,String> defaultPipelines() {
         return this.defaultPipelines;
     }
     /**
@@ -234,7 +233,7 @@ public final class GetWorkspaceResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean costEstimationEnabled;
-        private Map<String,Object> defaultPipelines;
+        private Map<String,String> defaultPipelines;
         private String description;
         private List<GetWorkspaceEnvironmentVariable> environmentVariables;
         private String id;
@@ -285,7 +284,7 @@ public final class GetWorkspaceResult {
             return this;
         }
         @CustomType.Setter
-        public Builder defaultPipelines(Map<String,Object> defaultPipelines) {
+        public Builder defaultPipelines(Map<String,String> defaultPipelines) {
             if (defaultPipelines == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceResult", "defaultPipelines");
             }

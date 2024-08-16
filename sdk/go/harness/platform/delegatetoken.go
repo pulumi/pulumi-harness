@@ -41,7 +41,7 @@ type Delegatetoken struct {
 	// Time when the delegate token is created.
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// created by details.
-	CreatedBy pulumi.MapOutput `pulumi:"createdBy"`
+	CreatedBy pulumi.StringMapOutput `pulumi:"createdBy"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -92,7 +92,7 @@ type delegatetokenState struct {
 	// Time when the delegate token is created.
 	CreatedAt *int `pulumi:"createdAt"`
 	// created by details.
-	CreatedBy map[string]interface{} `pulumi:"createdBy"`
+	CreatedBy map[string]string `pulumi:"createdBy"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -111,7 +111,7 @@ type DelegatetokenState struct {
 	// Time when the delegate token is created.
 	CreatedAt pulumi.IntPtrInput
 	// created by details.
-	CreatedBy pulumi.MapInput
+	CreatedBy pulumi.StringMapInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -134,7 +134,7 @@ type delegatetokenArgs struct {
 	// Time when the delegate token is created.
 	CreatedAt *int `pulumi:"createdAt"`
 	// created by details.
-	CreatedBy map[string]interface{} `pulumi:"createdBy"`
+	CreatedBy map[string]string `pulumi:"createdBy"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -154,7 +154,7 @@ type DelegatetokenArgs struct {
 	// Time when the delegate token is created.
 	CreatedAt pulumi.IntPtrInput
 	// created by details.
-	CreatedBy pulumi.MapInput
+	CreatedBy pulumi.StringMapInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -265,8 +265,8 @@ func (o DelegatetokenOutput) CreatedAt() pulumi.IntOutput {
 }
 
 // created by details.
-func (o DelegatetokenOutput) CreatedBy() pulumi.MapOutput {
-	return o.ApplyT(func(v *Delegatetoken) pulumi.MapOutput { return v.CreatedBy }).(pulumi.MapOutput)
+func (o DelegatetokenOutput) CreatedBy() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Delegatetoken) pulumi.StringMapOutput { return v.CreatedBy }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource.

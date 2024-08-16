@@ -5799,7 +5799,7 @@ func (o ConnectorJdbcCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput 
 
 type ConnectorPdcHost struct {
 	// Host attributes with values. e.g. type, region, name, ip, etc.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// Hostname e.g. 87.23.66.11:80
 	Hostname string `pulumi:"hostname"`
 }
@@ -5817,7 +5817,7 @@ type ConnectorPdcHostInput interface {
 
 type ConnectorPdcHostArgs struct {
 	// Host attributes with values. e.g. type, region, name, ip, etc.
-	Attributes pulumi.MapInput `pulumi:"attributes"`
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// Hostname e.g. 87.23.66.11:80
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 }
@@ -5874,8 +5874,8 @@ func (o ConnectorPdcHostOutput) ToConnectorPdcHostOutputWithContext(ctx context.
 }
 
 // Host attributes with values. e.g. type, region, name, ip, etc.
-func (o ConnectorPdcHostOutput) Attributes() pulumi.MapOutput {
-	return o.ApplyT(func(v ConnectorPdcHost) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
+func (o ConnectorPdcHostOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ConnectorPdcHost) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 // Hostname e.g. 87.23.66.11:80
@@ -38772,7 +38772,7 @@ func (o GetConnectorJdbcCredentialArrayOutput) Index(i pulumi.IntInput) GetConne
 
 type GetConnectorPdcHost struct {
 	// Host attributes with values. e.g. type, region, name, ip, etc.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// Hostname e.g. 87.23.66.11:80
 	Hostname string `pulumi:"hostname"`
 }
@@ -38790,7 +38790,7 @@ type GetConnectorPdcHostInput interface {
 
 type GetConnectorPdcHostArgs struct {
 	// Host attributes with values. e.g. type, region, name, ip, etc.
-	Attributes pulumi.MapInput `pulumi:"attributes"`
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// Hostname e.g. 87.23.66.11:80
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 }
@@ -38847,8 +38847,8 @@ func (o GetConnectorPdcHostOutput) ToGetConnectorPdcHostOutputWithContext(ctx co
 }
 
 // Host attributes with values. e.g. type, region, name, ip, etc.
-func (o GetConnectorPdcHostOutput) Attributes() pulumi.MapOutput {
-	return o.ApplyT(func(v GetConnectorPdcHost) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
+func (o GetConnectorPdcHostOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectorPdcHost) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 // Hostname e.g. 87.23.66.11:80
