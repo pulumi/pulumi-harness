@@ -92,7 +92,7 @@ class GetWorkspaceResult:
 
     @property
     @pulumi.getter(name="defaultPipelines")
-    def default_pipelines(self) -> Mapping[str, Any]:
+    def default_pipelines(self) -> Mapping[str, str]:
         return pulumi.get(self, "default_pipelines")
 
     @property

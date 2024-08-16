@@ -2084,7 +2084,7 @@ export namespace platform {
         /**
          * Host attributes with values. e.g. type, region, name, ip, etc.
          */
-        attributes?: {[key: string]: any};
+        attributes?: {[key: string]: string};
         /**
          * Hostname e.g. 87.23.66.11:80
          */
@@ -2915,7 +2915,7 @@ export namespace platform {
         /**
          * Host attributes with values. e.g. type, region, name, ip, etc.
          */
-        attributes?: {[key: string]: any};
+        attributes?: {[key: string]: string};
         /**
          * Hostname e.g. 87.23.66.11:80
          */

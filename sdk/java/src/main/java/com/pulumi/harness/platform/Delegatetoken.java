@@ -11,7 +11,6 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.DelegatetokenArgs;
 import com.pulumi.harness.platform.inputs.DelegatetokenState;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -75,14 +74,14 @@ public class Delegatetoken extends com.pulumi.resources.CustomResource {
      * created by details.
      * 
      */
-    @Export(name="createdBy", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> createdBy;
+    @Export(name="createdBy", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> createdBy;
 
     /**
      * @return created by details.
      * 
      */
-    public Output<Map<String,Object>> createdBy() {
+    public Output<Map<String,String>> createdBy() {
         return this.createdBy;
     }
     /**

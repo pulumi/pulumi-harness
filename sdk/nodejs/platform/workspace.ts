@@ -110,7 +110,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Default pipelines associated with this workspace
      */
-    public readonly defaultPipelines!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly defaultPipelines!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Description of the resource.
      */
@@ -268,7 +268,7 @@ export interface WorkspaceState {
     /**
      * Default pipelines associated with this workspace
      */
-    defaultPipelines?: pulumi.Input<{[key: string]: any}>;
+    defaultPipelines?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Description of the resource.
      */
@@ -338,7 +338,7 @@ export interface WorkspaceArgs {
     /**
      * Default pipelines associated with this workspace
      */
-    defaultPipelines?: pulumi.Input<{[key: string]: any}>;
+    defaultPipelines?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Description of the resource.
      */

@@ -26,7 +26,7 @@ class WorkspaceArgs:
                  repository: pulumi.Input[str],
                  repository_connector: pulumi.Input[str],
                  repository_path: pulumi.Input[str],
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -45,7 +45,7 @@ class WorkspaceArgs:
         :param pulumi.Input[str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[Mapping[str, Any]] default_pipelines: Default pipelines associated with this workspace
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[str] name: Name of the resource.
@@ -198,14 +198,14 @@ class WorkspaceArgs:
 
     @property
     @pulumi.getter(name="defaultPipelines")
-    def default_pipelines(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def default_pipelines(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Default pipelines associated with this workspace
         """
         return pulumi.get(self, "default_pipelines")
 
     @default_pipelines.setter
-    def default_pipelines(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def default_pipelines(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "default_pipelines", value)
 
     @property
@@ -303,7 +303,7 @@ class WorkspaceArgs:
 class _WorkspaceState:
     def __init__(__self__, *,
                  cost_estimation_enabled: Optional[pulumi.Input[bool]] = None,
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -324,7 +324,7 @@ class _WorkspaceState:
         """
         Input properties used for looking up and filtering Workspace resources.
         :param pulumi.Input[bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
-        :param pulumi.Input[Mapping[str, Any]] default_pipelines: Default pipelines associated with this workspace
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -392,14 +392,14 @@ class _WorkspaceState:
 
     @property
     @pulumi.getter(name="defaultPipelines")
-    def default_pipelines(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def default_pipelines(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Default pipelines associated with this workspace
         """
         return pulumi.get(self, "default_pipelines")
 
     @default_pipelines.setter
-    def default_pipelines(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def default_pipelines(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "default_pipelines", value)
 
     @property
@@ -601,7 +601,7 @@ class Workspace(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cost_estimation_enabled: Optional[pulumi.Input[bool]] = None,
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -691,7 +691,7 @@ class Workspace(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
-        :param pulumi.Input[Mapping[str, Any]] default_pipelines: Default pipelines associated with this workspace
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -796,7 +796,7 @@ class Workspace(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cost_estimation_enabled: Optional[pulumi.Input[bool]] = None,
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -873,7 +873,7 @@ class Workspace(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cost_estimation_enabled: Optional[pulumi.Input[bool]] = None,
-            default_pipelines: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -899,7 +899,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
-        :param pulumi.Input[Mapping[str, Any]] default_pipelines: Default pipelines associated with this workspace
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
@@ -949,7 +949,7 @@ class Workspace(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPipelines")
-    def default_pipelines(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def default_pipelines(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Default pipelines associated with this workspace
         """

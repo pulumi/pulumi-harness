@@ -82,7 +82,7 @@ export interface GetWorkspaceResult {
      * If enabled cost estimation operations will be performed in this workspace
      */
     readonly costEstimationEnabled: boolean;
-    readonly defaultPipelines: {[key: string]: any};
+    readonly defaultPipelines: {[key: string]: string};
     /**
      * Description of the Workspace
      */

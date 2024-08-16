@@ -51,7 +51,7 @@ namespace Pulumi.Harness.Platform
         /// created by details.
         /// </summary>
         [Output("createdBy")]
-        public Output<ImmutableDictionary<string, object>> CreatedBy { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> CreatedBy { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -143,14 +143,14 @@ namespace Pulumi.Harness.Platform
         public Input<int>? CreatedAt { get; set; }
 
         [Input("createdBy")]
-        private InputMap<object>? _createdBy;
+        private InputMap<string>? _createdBy;
 
         /// <summary>
         /// created by details.
         /// </summary>
-        public InputMap<object> CreatedBy
+        public InputMap<string> CreatedBy
         {
-            get => _createdBy ?? (_createdBy = new InputMap<object>());
+            get => _createdBy ?? (_createdBy = new InputMap<string>());
             set => _createdBy = value;
         }
 
@@ -205,14 +205,14 @@ namespace Pulumi.Harness.Platform
         public Input<int>? CreatedAt { get; set; }
 
         [Input("createdBy")]
-        private InputMap<object>? _createdBy;
+        private InputMap<string>? _createdBy;
 
         /// <summary>
         /// created by details.
         /// </summary>
-        public InputMap<object> CreatedBy
+        public InputMap<string> CreatedBy
         {
-            get => _createdBy ?? (_createdBy = new InputMap<object>());
+            get => _createdBy ?? (_createdBy = new InputMap<string>());
             set => _createdBy = value;
         }
 
