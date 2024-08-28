@@ -12,36 +12,6 @@ import (
 )
 
 // Resource for managing the Harness GitOps Application Project Mappings.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupGitopsAppProjectMapping(ctx, &platform.LookupGitopsAppProjectMappingArgs{
-//				Identifier: "identifier",
-//				AccountId:  "account_id",
-//				OrgId:      "organization_id",
-//				ProjectId:  "project_id",
-//				AgentId:    "agent_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGitopsAppProjectMapping(ctx *pulumi.Context, args *LookupGitopsAppProjectMappingArgs, opts ...pulumi.InvokeOption) (*LookupGitopsAppProjectMappingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGitopsAppProjectMappingResult
@@ -58,8 +28,8 @@ type LookupGitopsAppProjectMappingArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId string `pulumi:"agentId"`
-	// Identifier of the GitOps Application Project.
-	Identifier string `pulumi:"identifier"`
+	// ArgoCD Project name which is to be mapped to the Harness project.
+	ArgoProjectName string `pulumi:"argoProjectName"`
 	// Organization identifier of the GitOps agent's Application Project.
 	OrgId string `pulumi:"orgId"`
 	// Project identifier of the GitOps agent's Application Project.
@@ -103,8 +73,8 @@ type LookupGitopsAppProjectMappingOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
-	// Identifier of the GitOps Application Project.
-	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// ArgoCD Project name which is to be mapped to the Harness project.
+	ArgoProjectName pulumi.StringInput `pulumi:"argoProjectName"`
 	// Organization identifier of the GitOps agent's Application Project.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
 	// Project identifier of the GitOps agent's Application Project.

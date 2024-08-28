@@ -177,7 +177,7 @@ export class ServiceOverridesV2 extends pulumi.CustomResource {
     /**
      * The identifier of the override entity.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<string>;
+    public readonly identifier!: pulumi.Output<string>;
     /**
      * import override from git
      */
@@ -247,6 +247,7 @@ export class ServiceOverridesV2 extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["envId"] = args ? args.envId : undefined;
             resourceInputs["gitDetails"] = args ? args.gitDetails : undefined;
+            resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["importFromGit"] = args ? args.importFromGit : undefined;
             resourceInputs["infraId"] = args ? args.infraId : undefined;
             resourceInputs["isForceImport"] = args ? args.isForceImport : undefined;
@@ -255,7 +256,6 @@ export class ServiceOverridesV2 extends pulumi.CustomResource {
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["yaml"] = args ? args.yaml : undefined;
-            resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceOverridesV2.__pulumiType, name, resourceInputs, opts);
@@ -332,6 +332,10 @@ export interface ServiceOverridesV2Args {
      * Contains parameters related to creating an Entity for Git Experience.
      */
     gitDetails?: pulumi.Input<inputs.platform.ServiceOverridesV2GitDetails>;
+    /**
+     * The identifier of the override entity.
+     */
+    identifier?: pulumi.Input<string>;
     /**
      * import override from git
      */

@@ -319,6 +319,8 @@ type serviceOverridesV2Args struct {
 	EnvId string `pulumi:"envId"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *ServiceOverridesV2GitDetails `pulumi:"gitDetails"`
+	// The identifier of the override entity.
+	Identifier *string `pulumi:"identifier"`
 	// import override from git
 	ImportFromGit *bool `pulumi:"importFromGit"`
 	// The infrastructure ID to which the overrides are associated.
@@ -345,6 +347,8 @@ type ServiceOverridesV2Args struct {
 	EnvId pulumi.StringInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails ServiceOverridesV2GitDetailsPtrInput
+	// The identifier of the override entity.
+	Identifier pulumi.StringPtrInput
 	// import override from git
 	ImportFromGit pulumi.BoolPtrInput
 	// The infrastructure ID to which the overrides are associated.

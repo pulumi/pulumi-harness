@@ -301,6 +301,12 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.ServiceOverridesV2GitDetailsArgs>? GitDetails { get; set; }
 
         /// <summary>
+        /// The identifier of the override entity.
+        /// </summary>
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
+
+        /// <summary>
         /// import override from git
         /// </summary>
         [Input("importFromGit")]

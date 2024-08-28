@@ -44,18 +44,18 @@ public final class GetGitopsAppProjectMappingPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * Identifier of the GitOps Application Project.
+     * ArgoCD Project name which is to be mapped to the Harness project.
      * 
      */
-    @Import(name="identifier", required=true)
-    private String identifier;
+    @Import(name="argoProjectName", required=true)
+    private String argoProjectName;
 
     /**
-     * @return Identifier of the GitOps Application Project.
+     * @return ArgoCD Project name which is to be mapped to the Harness project.
      * 
      */
-    public String identifier() {
-        return this.identifier;
+    public String argoProjectName() {
+        return this.argoProjectName;
     }
 
     /**
@@ -93,7 +93,7 @@ public final class GetGitopsAppProjectMappingPlainArgs extends com.pulumi.resour
     private GetGitopsAppProjectMappingPlainArgs(GetGitopsAppProjectMappingPlainArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
-        this.identifier = $.identifier;
+        this.argoProjectName = $.argoProjectName;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
     }
@@ -139,13 +139,13 @@ public final class GetGitopsAppProjectMappingPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param identifier Identifier of the GitOps Application Project.
+         * @param argoProjectName ArgoCD Project name which is to be mapped to the Harness project.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(String identifier) {
-            $.identifier = identifier;
+        public Builder argoProjectName(String argoProjectName) {
+            $.argoProjectName = argoProjectName;
             return this;
         }
 
@@ -178,8 +178,8 @@ public final class GetGitopsAppProjectMappingPlainArgs extends com.pulumi.resour
             if ($.agentId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingPlainArgs", "agentId");
             }
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingPlainArgs", "identifier");
+            if ($.argoProjectName == null) {
+                throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingPlainArgs", "argoProjectName");
             }
             if ($.orgId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingPlainArgs", "orgId");
