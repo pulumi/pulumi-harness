@@ -45,18 +45,18 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
     }
 
     /**
-     * Identifier of the GitOps Application Project.
+     * ArgoCD Project name which is to be mapped to the Harness project.
      * 
      */
-    @Import(name="identifier", required=true)
-    private Output<String> identifier;
+    @Import(name="argoProjectName", required=true)
+    private Output<String> argoProjectName;
 
     /**
-     * @return Identifier of the GitOps Application Project.
+     * @return ArgoCD Project name which is to be mapped to the Harness project.
      * 
      */
-    public Output<String> identifier() {
-        return this.identifier;
+    public Output<String> argoProjectName() {
+        return this.argoProjectName;
     }
 
     /**
@@ -94,7 +94,7 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
     private GetGitopsAppProjectMappingArgs(GetGitopsAppProjectMappingArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
-        this.identifier = $.identifier;
+        this.argoProjectName = $.argoProjectName;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
     }
@@ -160,24 +160,24 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param identifier Identifier of the GitOps Application Project.
+         * @param argoProjectName ArgoCD Project name which is to be mapped to the Harness project.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(Output<String> identifier) {
-            $.identifier = identifier;
+        public Builder argoProjectName(Output<String> argoProjectName) {
+            $.argoProjectName = argoProjectName;
             return this;
         }
 
         /**
-         * @param identifier Identifier of the GitOps Application Project.
+         * @param argoProjectName ArgoCD Project name which is to be mapped to the Harness project.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(String identifier) {
-            return identifier(Output.of(identifier));
+        public Builder argoProjectName(String argoProjectName) {
+            return argoProjectName(Output.of(argoProjectName));
         }
 
         /**
@@ -229,8 +229,8 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
             if ($.agentId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingArgs", "agentId");
             }
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingArgs", "identifier");
+            if ($.argoProjectName == null) {
+                throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingArgs", "argoProjectName");
             }
             if ($.orgId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingArgs", "orgId");

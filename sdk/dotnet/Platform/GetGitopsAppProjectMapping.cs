@@ -13,56 +13,12 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Resource for managing the Harness GitOps Application Project Mappings.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetGitopsAppProjectMapping.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///         AccountId = "account_id",
-        ///         OrgId = "organization_id",
-        ///         ProjectId = "project_id",
-        ///         AgentId = "agent_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetGitopsAppProjectMappingResult> InvokeAsync(GetGitopsAppProjectMappingArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsAppProjectMappingResult>("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args ?? new GetGitopsAppProjectMappingArgs(), options.WithDefaults());
 
         /// <summary>
         /// Resource for managing the Harness GitOps Application Project Mappings.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetGitopsAppProjectMapping.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///         AccountId = "account_id",
-        ///         OrgId = "organization_id",
-        ///         ProjectId = "project_id",
-        ///         AgentId = "agent_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetGitopsAppProjectMappingResult> Invoke(GetGitopsAppProjectMappingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAppProjectMappingResult>("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args ?? new GetGitopsAppProjectMappingInvokeArgs(), options.WithDefaults());
@@ -84,10 +40,10 @@ namespace Pulumi.Harness.Platform
         public string AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the GitOps Application Project.
+        /// ArgoCD Project name which is to be mapped to the Harness project.
         /// </summary>
-        [Input("identifier", required: true)]
-        public string Identifier { get; set; } = null!;
+        [Input("argoProjectName", required: true)]
+        public string ArgoProjectName { get; set; } = null!;
 
         /// <summary>
         /// Organization identifier of the GitOps agent's Application Project.
@@ -122,10 +78,10 @@ namespace Pulumi.Harness.Platform
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the GitOps Application Project.
+        /// ArgoCD Project name which is to be mapped to the Harness project.
         /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
+        [Input("argoProjectName", required: true)]
+        public Input<string> ArgoProjectName { get; set; } = null!;
 
         /// <summary>
         /// Organization identifier of the GitOps agent's Application Project.

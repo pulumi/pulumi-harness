@@ -28828,7 +28828,7 @@
             }
         },
         "harness:platform/repo:Repo": {
-            "description": "Resource for creating a Harness Repo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  test:\n    type: harness:platform:Repo\n    properties:\n      identifier: test_repo_123\n      name: test_repo_123\n      orgId: test_org_123\n      projectId: test_project_123\n      defaultBranch: main\n      description: test_description_123\n      isPublic: true\n      sources:\n        - repo: octocat/hello-worId\n          type: github\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport\n\n```sh\n$ pulumi import harness:platform/repo:Repo example \u003cidentifier\u003e\n```\n\nImport using the organization id\n\n```sh\n$ pulumi import harness:platform/repo:Repo example \u003corg_id\u003e/\u003cidentifier\u003e\n```\n\nImport using the organization id and the project id\n\n```sh\n$ pulumi import harness:platform/repo:Repo example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cidentifier\u003e\n```\n\n",
+            "description": "Resource for creating a Harness Repo.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  test:\n    type: harness:platform:Repo\n    properties:\n      identifier: test_repo_123\n      name: test_repo_123\n      orgId: test_org_123\n      projectId: test_project_123\n      defaultBranch: main\n      description: test_description_123\n      sources:\n        - repo: octocat/hello-worId\n          type: github\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport\n\n```sh\n$ pulumi import harness:platform/repo:Repo example \u003cidentifier\u003e\n```\n\nImport using the organization id\n\n```sh\n$ pulumi import harness:platform/repo:Repo example \u003corg_id\u003e/\u003cidentifier\u003e\n```\n\nImport using the organization id and the project id\n\n```sh\n$ pulumi import harness:platform/repo:Repo example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cidentifier\u003e\n```\n\n",
             "properties": {
                 "created": {
                     "type": "integer",
@@ -30888,6 +30888,10 @@
                 "gitDetails": {
                     "$ref": "#/types/harness:platform/ServiceOverridesV2GitDetails:ServiceOverridesV2GitDetails",
                     "description": "Contains parameters related to creating an Entity for Git Experience.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the override entity.\n"
                 },
                 "importFromGit": {
                     "type": "boolean",
@@ -40672,7 +40676,7 @@
             }
         },
         "harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping": {
-            "description": "Resource for managing the Harness GitOps Application Project Mappings.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsAppProjectMapping({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    orgId: \"organization_id\",\n    projectId: \"project_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_app_project_mapping(identifier=\"identifier\",\n    account_id=\"account_id\",\n    org_id=\"organization_id\",\n    project_id=\"project_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsAppProjectMapping.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        OrgId = \"organization_id\",\n        ProjectId = \"project_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupGitopsAppProjectMapping(ctx, \u0026platform.LookupGitopsAppProjectMappingArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  \"account_id\",\n\t\t\tOrgId:      \"organization_id\",\n\t\t\tProjectId:  \"project_id\",\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .orgId(\"organization_id\")\n            .projectId(\"project_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsAppProjectMapping\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        orgId: organization_id\n        projectId: project_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Resource for managing the Harness GitOps Application Project Mappings.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()\n            .accountId(\"account_id\")\n            .orgId(\"organization_id\")\n            .projectId(\"project_id\")\n            .agentId(\"agent_id\")\n            .argoProjName(\"argo_proj_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsAppProjectMapping\n      Arguments:\n        accountId: account_id\n        orgId: organization_id\n        projectId: project_id\n        agentId: agent_id\n        argoProjName: argo_proj_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsAppProjectMapping.\n",
                 "properties": {
@@ -40684,9 +40688,9 @@
                         "type": "string",
                         "description": "Agent identifier for which the ArgoCD and Harness project mapping is to be created.\n"
                     },
-                    "identifier": {
+                    "argoProjectName": {
                         "type": "string",
-                        "description": "Identifier of the GitOps Application Project.\n"
+                        "description": "ArgoCD Project name which is to be mapped to the Harness project.\n"
                     },
                     "orgId": {
                         "type": "string",
@@ -40701,7 +40705,7 @@
                 "required": [
                     "accountId",
                     "agentId",
-                    "identifier",
+                    "argoProjectName",
                     "orgId",
                     "projectId"
                 ]

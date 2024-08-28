@@ -64,6 +64,21 @@ public final class ServiceOverridesV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The identifier of the override entity.
+     * 
+     */
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
+
+    /**
+     * @return The identifier of the override entity.
+     * 
+     */
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
+    }
+
+    /**
      * import override from git
      * 
      */
@@ -189,6 +204,7 @@ public final class ServiceOverridesV2Args extends com.pulumi.resources.ResourceA
         this.clusterId = $.clusterId;
         this.envId = $.envId;
         this.gitDetails = $.gitDetails;
+        this.identifier = $.identifier;
         this.importFromGit = $.importFromGit;
         this.infraId = $.infraId;
         this.isForceImport = $.isForceImport;
@@ -278,6 +294,27 @@ public final class ServiceOverridesV2Args extends com.pulumi.resources.ResourceA
          */
         public Builder gitDetails(ServiceOverridesV2GitDetailsArgs gitDetails) {
             return gitDetails(Output.of(gitDetails));
+        }
+
+        /**
+         * @param identifier The identifier of the override entity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifier(@Nullable Output<String> identifier) {
+            $.identifier = identifier;
+            return this;
+        }
+
+        /**
+         * @param identifier The identifier of the override entity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifier(String identifier) {
+            return identifier(Output.of(identifier));
         }
 
         /**

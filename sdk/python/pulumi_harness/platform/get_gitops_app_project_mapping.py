@@ -118,37 +118,24 @@ class AwaitableGetGitopsAppProjectMappingResult(GetGitopsAppProjectMappingResult
 
 def get_gitops_app_project_mapping(account_id: Optional[str] = None,
                                    agent_id: Optional[str] = None,
-                                   identifier: Optional[str] = None,
+                                   argo_project_name: Optional[str] = None,
                                    org_id: Optional[str] = None,
                                    project_id: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAppProjectMappingResult:
     """
     Resource for managing the Harness GitOps Application Project Mappings.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_gitops_app_project_mapping(identifier="identifier",
-        account_id="account_id",
-        org_id="organization_id",
-        project_id="project_id",
-        agent_id="agent_id")
-    ```
-
 
     :param str account_id: Account identifier of the GitOps agent's Application Project.
     :param str agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
-    :param str identifier: Identifier of the GitOps Application Project.
+    :param str argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
     :param str org_id: Organization identifier of the GitOps agent's Application Project.
     :param str project_id: Project identifier of the GitOps agent's Application Project.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['agentId'] = agent_id
-    __args__['identifier'] = identifier
+    __args__['argoProjectName'] = argo_project_name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -167,30 +154,17 @@ def get_gitops_app_project_mapping(account_id: Optional[str] = None,
 @_utilities.lift_output_func(get_gitops_app_project_mapping)
 def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[str]] = None,
                                           agent_id: Optional[pulumi.Input[str]] = None,
-                                          identifier: Optional[pulumi.Input[str]] = None,
+                                          argo_project_name: Optional[pulumi.Input[str]] = None,
                                           org_id: Optional[pulumi.Input[str]] = None,
                                           project_id: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAppProjectMappingResult]:
     """
     Resource for managing the Harness GitOps Application Project Mappings.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_gitops_app_project_mapping(identifier="identifier",
-        account_id="account_id",
-        org_id="organization_id",
-        project_id="project_id",
-        agent_id="agent_id")
-    ```
-
 
     :param str account_id: Account identifier of the GitOps agent's Application Project.
     :param str agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
-    :param str identifier: Identifier of the GitOps Application Project.
+    :param str argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
     :param str org_id: Organization identifier of the GitOps agent's Application Project.
     :param str project_id: Project identifier of the GitOps agent's Application Project.
     """

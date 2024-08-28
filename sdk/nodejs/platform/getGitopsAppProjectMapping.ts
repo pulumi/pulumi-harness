@@ -6,21 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for managing the Harness GitOps Application Project Mappings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getGitopsAppProjectMapping({
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     orgId: "organization_id",
- *     projectId: "project_id",
- *     agentId: "agent_id",
- * });
- * ```
  */
 export function getGitopsAppProjectMapping(args: GetGitopsAppProjectMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAppProjectMappingResult> {
 
@@ -28,7 +13,7 @@ export function getGitopsAppProjectMapping(args: GetGitopsAppProjectMappingArgs,
     return pulumi.runtime.invoke("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", {
         "accountId": args.accountId,
         "agentId": args.agentId,
-        "identifier": args.identifier,
+        "argoProjectName": args.argoProjectName,
         "orgId": args.orgId,
         "projectId": args.projectId,
     }, opts);
@@ -47,9 +32,9 @@ export interface GetGitopsAppProjectMappingArgs {
      */
     agentId: string;
     /**
-     * Identifier of the GitOps Application Project.
+     * ArgoCD Project name which is to be mapped to the Harness project.
      */
-    identifier: string;
+    argoProjectName: string;
     /**
      * Organization identifier of the GitOps agent's Application Project.
      */
@@ -95,21 +80,6 @@ export interface GetGitopsAppProjectMappingResult {
 }
 /**
  * Resource for managing the Harness GitOps Application Project Mappings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getGitopsAppProjectMapping({
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     orgId: "organization_id",
- *     projectId: "project_id",
- *     agentId: "agent_id",
- * });
- * ```
  */
 export function getGitopsAppProjectMappingOutput(args: GetGitopsAppProjectMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAppProjectMappingResult> {
     return pulumi.output(args).apply((a: any) => getGitopsAppProjectMapping(a, opts))
@@ -128,9 +98,9 @@ export interface GetGitopsAppProjectMappingOutputArgs {
      */
     agentId: pulumi.Input<string>;
     /**
-     * Identifier of the GitOps Application Project.
+     * ArgoCD Project name which is to be mapped to the Harness project.
      */
-    identifier: pulumi.Input<string>;
+    argoProjectName: pulumi.Input<string>;
     /**
      * Organization identifier of the GitOps agent's Application Project.
      */

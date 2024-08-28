@@ -7963,11 +7963,11 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .identifier("identifier")
      *             .accountId("account_id")
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .agentId("agent_id")
+     *             .argoProjName("argo_proj_name")
      *             .build());
      * 
      *     }
@@ -8009,11 +8009,11 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .identifier("identifier")
      *             .accountId("account_id")
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .agentId("agent_id")
+     *             .argoProjName("argo_proj_name")
      *             .build());
      * 
      *     }
@@ -8055,11 +8055,11 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .identifier("identifier")
      *             .accountId("account_id")
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .agentId("agent_id")
+     *             .argoProjName("argo_proj_name")
      *             .build());
      * 
      *     }
@@ -8101,11 +8101,11 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .identifier("identifier")
      *             .accountId("account_id")
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .agentId("agent_id")
+     *             .argoProjName("argo_proj_name")
      *             .build());
      * 
      *     }
