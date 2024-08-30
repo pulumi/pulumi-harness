@@ -49,7 +49,7 @@ import (
 // # Import a GitOps agent app project mapping
 //
 // ```sh
-// $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_id>
+// $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_name>
 // ```
 type GitopsAppProjectMapping struct {
 	pulumi.CustomResourceState

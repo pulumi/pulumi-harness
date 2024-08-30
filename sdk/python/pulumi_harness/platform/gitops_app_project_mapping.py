@@ -231,7 +231,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         Import a GitOps agent app project mapping
 
         ```sh
-        $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_id>
+        $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -270,7 +270,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         Import a GitOps agent app project mapping
 
         ```sh
-        $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_id>
+        $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_name>
         ```
 
         :param str resource_name: The name of the resource.
