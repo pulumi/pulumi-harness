@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * Import a GitOps agent app project mapping
  *
  * ```sh
- * $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_id>
+ * $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example <organization_id>/<project_id>/<agent_id>/<appproject_name>
  * ```
  */
 export class GitopsAppProjectMapping extends pulumi.CustomResource {

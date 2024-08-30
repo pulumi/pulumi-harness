@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * Import a GitOps agent app project mapping
  * 
  * ```sh
- * $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;appproject_id&gt;
+ * $ pulumi import harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping example &lt;organization_id&gt;/&lt;project_id&gt;/&lt;agent_id&gt;/&lt;appproject_name&gt;
  * ```
  * 
  */
