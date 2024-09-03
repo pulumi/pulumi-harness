@@ -230,6 +230,7 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness environment service overrides.
+
         ## Example to create Environment Service Override at different levels (Org, Project, Account)
 
         ### Account Level
@@ -398,6 +399,7 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness environment service overrides.
+
         ## Example to create Environment Service Override at different levels (Org, Project, Account)
 
         ### Account Level

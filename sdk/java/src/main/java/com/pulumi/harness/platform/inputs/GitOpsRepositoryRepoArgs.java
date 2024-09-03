@@ -63,14 +63,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+     * Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
      * 
      */
     @Import(name="githubAppEnterpriseBaseUrl")
     private @Nullable Output<String> githubAppEnterpriseBaseUrl;
 
     /**
-     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
      * 
      */
     public Optional<Output<String>> githubAppEnterpriseBaseUrl() {
@@ -424,7 +424,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param githubAppEnterpriseBaseUrl Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+         * @param githubAppEnterpriseBaseUrl Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param githubAppEnterpriseBaseUrl Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+         * @param githubAppEnterpriseBaseUrl Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
          * 
          * @return builder
          * 

@@ -80,7 +80,7 @@ def get_service_list(org_id: Optional[str] = None,
 
     ## Example Usage
 
-    ### Project Level Service List
+    ### project level service list
 
     ```python
     import pulumi
@@ -90,7 +90,7 @@ def get_service_list(org_id: Optional[str] = None,
         project_id="project_id")
     ```
 
-    ### Organisation Level Service List
+    ### Organisation level service list
 
     ```python
     import pulumi
@@ -99,7 +99,7 @@ def get_service_list(org_id: Optional[str] = None,
     example = harness.platform.get_service_list(org_id="org_id")
     ```
 
-    ### Account Level Service List
+    ### Account level service list
 
     ```python
     import pulumi
@@ -130,7 +130,7 @@ def get_service_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
-    ### Project Level Service List
+    ### project level service list
 
     ```python
     import pulumi
@@ -140,7 +140,7 @@ def get_service_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = None
         project_id="project_id")
     ```
 
-    ### Organisation Level Service List
+    ### Organisation level service list
 
     ```python
     import pulumi
@@ -149,7 +149,7 @@ def get_service_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = None
     example = harness.platform.get_service_list(org_id="org_id")
     ```
 
-    ### Account Level Service List
+    ### Account level service list
 
     ```python
     import pulumi

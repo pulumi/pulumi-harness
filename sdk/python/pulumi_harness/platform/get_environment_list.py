@@ -80,7 +80,7 @@ def get_environment_list(org_id: Optional[str] = None,
 
     ## Example Usage
 
-    ### Project Level Environment List
+    ### project level environment list
 
     ```python
     import pulumi
@@ -90,7 +90,7 @@ def get_environment_list(org_id: Optional[str] = None,
         project_id="project_id")
     ```
 
-    ### Organisation Level Environment List
+    ### Organisation level environment list
 
     ```python
     import pulumi
@@ -99,7 +99,7 @@ def get_environment_list(org_id: Optional[str] = None,
     example = harness.platform.get_environment_list(org_id="org_id")
     ```
 
-    ### Account Level Environment List
+    ### Account level environment list
 
     ```python
     import pulumi
@@ -130,7 +130,7 @@ def get_environment_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
-    ### Project Level Environment List
+    ### project level environment list
 
     ```python
     import pulumi
@@ -140,7 +140,7 @@ def get_environment_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = 
         project_id="project_id")
     ```
 
-    ### Organisation Level Environment List
+    ### Organisation level environment list
 
     ```python
     import pulumi
@@ -149,7 +149,7 @@ def get_environment_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = 
     example = harness.platform.get_environment_list(org_id="org_id")
     ```
 
-    ### Account Level Environment List
+    ### Account level environment list
 
     ```python
     import pulumi

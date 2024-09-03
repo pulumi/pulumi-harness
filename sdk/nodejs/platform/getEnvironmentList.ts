@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Project Level Environment List
+ * ### project level environment list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Organisation Level Environment List
+ * ### Organisation level environment list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Account Level Environment List
+ * ### Account level environment list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,7 +78,7 @@ export interface GetEnvironmentListResult {
  *
  * ## Example Usage
  *
- * ### Project Level Environment List
+ * ### project level environment list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -90,7 +90,7 @@ export interface GetEnvironmentListResult {
  * });
  * ```
  *
- * ### Organisation Level Environment List
+ * ### Organisation level environment list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ export interface GetEnvironmentListResult {
  * });
  * ```
  *
- * ### Account Level Environment List
+ * ### Account level environment list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

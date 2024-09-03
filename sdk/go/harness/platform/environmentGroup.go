@@ -156,10 +156,7 @@ type EnvironmentGroup struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// project_id of the environment group.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -209,10 +206,7 @@ type environmentGroupState struct {
 	OrgId *string `pulumi:"orgId"`
 	// project_id of the environment group.
 	ProjectId *string `pulumi:"projectId"`
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -227,10 +221,7 @@ type EnvironmentGroupState struct {
 	OrgId pulumi.StringPtrInput
 	// project_id of the environment group.
 	ProjectId pulumi.StringPtrInput
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -249,10 +240,7 @@ type environmentGroupArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// project_id of the environment group.
 	ProjectId *string `pulumi:"projectId"`
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml string `pulumi:"yaml"`
 }
 
@@ -268,10 +256,7 @@ type EnvironmentGroupArgs struct {
 	OrgId pulumi.StringPtrInput
 	// project_id of the environment group.
 	ProjectId pulumi.StringPtrInput
-	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringInput
 }
 
@@ -387,10 +372,7 @@ func (o EnvironmentGroupOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentGroup) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-// connectorRef: org.connectorId.
+// Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o EnvironmentGroupOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentGroup) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

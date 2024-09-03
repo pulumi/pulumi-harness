@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Org Level Project List
+ * ### Org level Project list
  *
  * ### Without the Pagination
  *
@@ -103,7 +103,7 @@ export interface GetProjectListResult {
  *
  * ## Example Usage
  *
- * ### Org Level Project List
+ * ### Org level Project list
  *
  * ### Without the Pagination
  *

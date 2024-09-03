@@ -29,7 +29,7 @@ public final class GitOpsRepositoryRepo {
      */
     private @Nullable Boolean enableOci;
     /**
-     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
      * 
      */
     private @Nullable String githubAppEnterpriseBaseUrl;
@@ -137,7 +137,7 @@ public final class GitOpsRepositoryRepo {
         return Optional.ofNullable(this.enableOci);
     }
     /**
-     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+     * @return Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
      * 
      */
     public Optional<String> githubAppEnterpriseBaseUrl() {

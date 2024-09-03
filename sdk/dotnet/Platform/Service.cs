@@ -328,7 +328,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// Contains parameters related to Git Experience for remote entities
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
         /// </summary>
         [Output("gitDetails")]
         public Output<Outputs.ServiceGitDetails> GitDetails { get; private set; } = null!;
@@ -340,13 +340,13 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// import service from git
+        /// Flag to set if importing from Git
         /// </summary>
         [Output("importFromGit")]
         public Output<bool> ImportFromGit { get; private set; } = null!;
 
         /// <summary>
-        /// force import service from remote even if same file path already exist
+        /// Flag to set if force importing from Git
         /// </summary>
         [Output("isForceImport")]
         public Output<bool> IsForceImport { get; private set; } = null!;
@@ -376,10 +376,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        /// connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
@@ -450,7 +447,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
-        /// Contains parameters related to Git Experience for remote entities
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
         /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.ServiceGitDetailsArgs>? GitDetails { get; set; }
@@ -462,13 +459,13 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// import service from git
+        /// Flag to set if importing from Git
         /// </summary>
         [Input("importFromGit")]
         public Input<bool>? ImportFromGit { get; set; }
 
         /// <summary>
-        /// force import service from remote even if same file path already exist
+        /// Flag to set if force importing from Git
         /// </summary>
         [Input("isForceImport")]
         public Input<bool>? IsForceImport { get; set; }
@@ -504,10 +501,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        /// connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }
@@ -539,7 +533,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ForceDelete { get; set; }
 
         /// <summary>
-        /// Contains parameters related to Git Experience for remote entities
+        /// Contains Git Information for remote entities from Git for Create/Update/Import
         /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.ServiceGitDetailsGetArgs>? GitDetails { get; set; }
@@ -551,13 +545,13 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// import service from git
+        /// Flag to set if importing from Git
         /// </summary>
         [Input("importFromGit")]
         public Input<bool>? ImportFromGit { get; set; }
 
         /// <summary>
-        /// force import service from remote even if same file path already exist
+        /// Flag to set if force importing from Git
         /// </summary>
         [Input("isForceImport")]
         public Input<bool>? IsForceImport { get; set; }
@@ -593,10 +587,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        /// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        /// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        /// connectorRef: org.connectorId.
+        /// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }

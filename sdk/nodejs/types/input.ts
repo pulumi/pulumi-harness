@@ -4714,7 +4714,7 @@ export namespace platform {
          */
         enableOci?: pulumi.Input<boolean>;
         /**
-         * Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+         * Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
          */
         githubAppEnterpriseBaseUrl?: pulumi.Input<string>;
         /**
@@ -6371,11 +6371,11 @@ export namespace platform {
          */
         branch?: pulumi.Input<string>;
         /**
-         * Commit message used for the merge commit.
+         * message for the commit in Git Repo.
          */
         commitMessage?: pulumi.Input<string>;
         /**
-         * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         connectorRef?: pulumi.Input<string>;
         /**
@@ -6383,7 +6383,7 @@ export namespace platform {
          */
         filePath?: pulumi.Input<string>;
         /**
-         * If the repo is in harness code
+         * If the repo is in harness code.
          */
         isHarnessCodeRepo?: pulumi.Input<boolean>;
         /**
@@ -6391,11 +6391,11 @@ export namespace platform {
          */
         isNewBranch?: pulumi.Input<boolean>;
         /**
-         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
          */
         lastCommitId?: pulumi.Input<string>;
         /**
-         * Last object identifier (for Github). To be provided only when updating Pipeline.
+         * Last object identifier (for Github). To be provided only when updating Service.
          */
         lastObjectId?: pulumi.Input<string>;
         /**
@@ -6403,7 +6403,7 @@ export namespace platform {
          */
         loadFromCache?: pulumi.Input<boolean>;
         /**
-         * Load service yaml from fallback branch
+         * Whether the file has to be get from fallback_branch.
          */
         loadFromFallbackBranch?: pulumi.Input<boolean>;
         /**
@@ -6411,7 +6411,7 @@ export namespace platform {
          */
         repoName?: pulumi.Input<string>;
         /**
-         * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         * store type of the entity.
          */
         storeType?: pulumi.Input<string>;
     }

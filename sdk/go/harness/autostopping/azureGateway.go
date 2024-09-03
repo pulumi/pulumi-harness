@@ -76,7 +76,7 @@ type AzureGateway struct {
 	// Id of the cloud connector
 	CloudConnectorId              pulumi.StringOutput `pulumi:"cloudConnectorId"`
 	DeleteCloudResourcesOnDestroy pulumi.BoolOutput   `pulumi:"deleteCloudResourcesOnDestroy"`
-	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+	// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
 	FrontendIp pulumi.StringPtrOutput `pulumi:"frontendIp"`
 	// Hostname for the proxy
 	HostName pulumi.StringOutput `pulumi:"hostName"`
@@ -156,7 +156,7 @@ type azureGatewayState struct {
 	// Id of the cloud connector
 	CloudConnectorId              *string `pulumi:"cloudConnectorId"`
 	DeleteCloudResourcesOnDestroy *bool   `pulumi:"deleteCloudResourcesOnDestroy"`
-	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+	// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
 	FrontendIp *string `pulumi:"frontendIp"`
 	// Hostname for the proxy
 	HostName *string `pulumi:"hostName"`
@@ -186,7 +186,7 @@ type AzureGatewayState struct {
 	// Id of the cloud connector
 	CloudConnectorId              pulumi.StringPtrInput
 	DeleteCloudResourcesOnDestroy pulumi.BoolPtrInput
-	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+	// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
 	FrontendIp pulumi.StringPtrInput
 	// Hostname for the proxy
 	HostName pulumi.StringPtrInput
@@ -220,7 +220,7 @@ type azureGatewayArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId              string `pulumi:"cloudConnectorId"`
 	DeleteCloudResourcesOnDestroy bool   `pulumi:"deleteCloudResourcesOnDestroy"`
-	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+	// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
 	FrontendIp *string `pulumi:"frontendIp"`
 	// Hostname for the proxy
 	HostName string `pulumi:"hostName"`
@@ -249,7 +249,7 @@ type AzureGatewayArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId              pulumi.StringInput
 	DeleteCloudResourcesOnDestroy pulumi.BoolInput
-	// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+	// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
 	FrontendIp pulumi.StringPtrInput
 	// Hostname for the proxy
 	HostName pulumi.StringInput
@@ -378,7 +378,7 @@ func (o AzureGatewayOutput) DeleteCloudResourcesOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AzureGateway) pulumi.BoolOutput { return v.DeleteCloudResourcesOnDestroy }).(pulumi.BoolOutput)
 }
 
-// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
 func (o AzureGatewayOutput) FrontendIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureGateway) pulumi.StringPtrOutput { return v.FrontendIp }).(pulumi.StringPtrOutput)
 }

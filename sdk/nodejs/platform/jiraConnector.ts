@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Jira connector.
+ *
  * ## Example to create Jira Connector at different levels (Org, Project, Account)
  *
  * ## Import

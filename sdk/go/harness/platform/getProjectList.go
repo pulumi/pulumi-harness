@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Org Level Project List
+// ### Org level Project list
 //
 // ### Without the Pagination
 //

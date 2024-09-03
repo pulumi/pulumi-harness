@@ -47,14 +47,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Commit message used for the merge commit.
+     * message for the commit in Git Repo.
      * 
      */
     @Import(name="commitMessage")
     private @Nullable Output<String> commitMessage;
 
     /**
-     * @return Commit message used for the merge commit.
+     * @return message for the commit in Git Repo.
      * 
      */
     public Optional<Output<String>> commitMessage() {
@@ -62,14 +62,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="connectorRef")
     private @Nullable Output<String> connectorRef;
 
     /**
-     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> connectorRef() {
@@ -92,14 +92,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If the repo is in harness code
+     * If the repo is in harness code.
      * 
      */
     @Import(name="isHarnessCodeRepo")
     private @Nullable Output<Boolean> isHarnessCodeRepo;
 
     /**
-     * @return If the repo is in harness code
+     * @return If the repo is in harness code.
      * 
      */
     public Optional<Output<Boolean>> isHarnessCodeRepo() {
@@ -122,14 +122,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+     * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
      * 
      */
     @Import(name="lastCommitId")
     private @Nullable Output<String> lastCommitId;
 
     /**
-     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
      * 
      */
     public Optional<Output<String>> lastCommitId() {
@@ -137,14 +137,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Last object identifier (for Github). To be provided only when updating Pipeline.
+     * Last object identifier (for Github). To be provided only when updating Service.
      * 
      */
     @Import(name="lastObjectId")
     private @Nullable Output<String> lastObjectId;
 
     /**
-     * @return Last object identifier (for Github). To be provided only when updating Pipeline.
+     * @return Last object identifier (for Github). To be provided only when updating Service.
      * 
      */
     public Optional<Output<String>> lastObjectId() {
@@ -167,14 +167,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Load service yaml from fallback branch
+     * Whether the file has to be get from fallback_branch.
      * 
      */
     @Import(name="loadFromFallbackBranch")
     private @Nullable Output<Boolean> loadFromFallbackBranch;
 
     /**
-     * @return Load service yaml from fallback branch
+     * @return Whether the file has to be get from fallback_branch.
      * 
      */
     public Optional<Output<Boolean>> loadFromFallbackBranch() {
@@ -197,14 +197,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+     * store type of the entity.
      * 
      */
     @Import(name="storeType")
     private @Nullable Output<String> storeType;
 
     /**
-     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+     * @return store type of the entity.
      * 
      */
     public Optional<Output<String>> storeType() {
@@ -290,7 +290,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param commitMessage Commit message used for the merge commit.
+         * @param commitMessage message for the commit in Git Repo.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param commitMessage Commit message used for the merge commit.
+         * @param commitMessage message for the commit in Git Repo.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param connectorRef Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param connectorRef Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isHarnessCodeRepo If the repo is in harness code
+         * @param isHarnessCodeRepo If the repo is in harness code.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isHarnessCodeRepo If the repo is in harness code
+         * @param isHarnessCodeRepo If the repo is in harness code.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+         * @param lastCommitId Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Pipeline.
+         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Service.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Pipeline.
+         * @param lastObjectId Last object identifier (for Github). To be provided only when updating Service.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param loadFromFallbackBranch Load service yaml from fallback branch
+         * @param loadFromFallbackBranch Whether the file has to be get from fallback_branch.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param loadFromFallbackBranch Load service yaml from fallback branch
+         * @param loadFromFallbackBranch Whether the file has to be get from fallback_branch.
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         * @param storeType store type of the entity.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param storeType Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+         * @param storeType store type of the entity.
          * 
          * @return builder
          * 

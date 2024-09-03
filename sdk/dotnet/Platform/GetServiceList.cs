@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform
         /// 
         /// ## Example Usage
         /// 
-        /// ### Project Level Service List
+        /// ### project level service list
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -35,8 +35,7 @@ namespace Pulumi.Harness.Platform
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Organisation Level Service List
+        /// ### Organisation level service list
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -54,8 +53,7 @@ namespace Pulumi.Harness.Platform
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Account Level Service List
+        /// ### Account level service list
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -78,7 +76,7 @@ namespace Pulumi.Harness.Platform
         /// 
         /// ## Example Usage
         /// 
-        /// ### Project Level Service List
+        /// ### project level service list
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -97,8 +95,7 @@ namespace Pulumi.Harness.Platform
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Organisation Level Service List
+        /// ### Organisation level service list
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -116,8 +113,7 @@ namespace Pulumi.Harness.Platform
         /// });
         /// ```
         /// 
-        /// 
-        /// ### Account Level Service List
+        /// ### Account level service list
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

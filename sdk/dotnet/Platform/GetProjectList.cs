@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform
         /// 
         /// ## Example Usage
         /// 
-        /// ### Org Level Project List
+        /// ### Org level Project list
         /// 
         /// ### Without the Pagination
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.Harness.Platform
         /// 
         /// ## Example Usage
         /// 
-        /// ### Org Level Project List
+        /// ### Org level Project list
         /// 
         /// ### Without the Pagination
         /// 

@@ -22,11 +22,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Branch;
         /// <summary>
-        /// Commit message used for the merge commit.
+        /// message for the commit in Git Repo.
         /// </summary>
         public readonly string? CommitMessage;
         /// <summary>
-        /// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? ConnectorRef;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? FilePath;
         /// <summary>
-        /// If the repo is in harness code
+        /// If the repo is in harness code.
         /// </summary>
         public readonly bool? IsHarnessCodeRepo;
         /// <summary>
@@ -42,11 +42,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? IsNewBranch;
         /// <summary>
-        /// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        /// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
         /// </summary>
         public readonly string? LastCommitId;
         /// <summary>
-        /// Last object identifier (for Github). To be provided only when updating Pipeline.
+        /// Last object identifier (for Github). To be provided only when updating Service.
         /// </summary>
         public readonly string? LastObjectId;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? LoadFromCache;
         /// <summary>
-        /// Load service yaml from fallback branch
+        /// Whether the file has to be get from fallback_branch.
         /// </summary>
         public readonly bool? LoadFromFallbackBranch;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? RepoName;
         /// <summary>
-        /// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        /// store type of the entity.
         /// </summary>
         public readonly string? StoreType;
 

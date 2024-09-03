@@ -6946,7 +6946,7 @@ class GitOpsRepositoryRepo(dict):
         :param str repo: URL to the remote repository.
         :param bool enable_lfs: Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
         :param bool enable_oci: Indicates if helm-oci support must be enabled for this repo.
-        :param str github_app_enterprise_base_url: Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        :param str github_app_enterprise_base_url: Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
         :param str github_app_id: Id of the GitHub app used to access the repo.
         :param str github_app_installation_id: Installation id of the GitHub app used to access the repo.
         :param str github_app_private_key: GitHub app private key PEM data.
@@ -7038,7 +7038,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="githubAppEnterpriseBaseUrl")
     def github_app_enterprise_base_url(self) -> Optional[str]:
         """
-        Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
         """
         return pulumi.get(self, "github_app_enterprise_base_url")
 
@@ -13076,17 +13076,17 @@ class ServiceGitDetails(dict):
         """
         :param str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
         :param str branch: Name of the branch.
-        :param str commit_message: Commit message used for the merge commit.
-        :param str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str commit_message: message for the commit in Git Repo.
+        :param str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str file_path: File path of the Entity in the repository.
-        :param bool is_harness_code_repo: If the repo is in harness code
+        :param bool is_harness_code_repo: If the repo is in harness code.
         :param bool is_new_branch: If the branch being created is new
-        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
-        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
+        :param str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
+        :param str last_object_id: Last object identifier (for Github). To be provided only when updating Service.
         :param bool load_from_cache: Load service yaml from catch
-        :param bool load_from_fallback_branch: Load service yaml from fallback branch
+        :param bool load_from_fallback_branch: Whether the file has to be get from fallback_branch.
         :param str repo_name: Name of the repository.
-        :param str store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        :param str store_type: store type of the entity.
         """
         if base_branch is not None:
             pulumi.set(__self__, "base_branch", base_branch)
@@ -13135,7 +13135,7 @@ class ServiceGitDetails(dict):
     @pulumi.getter(name="commitMessage")
     def commit_message(self) -> Optional[str]:
         """
-        Commit message used for the merge commit.
+        message for the commit in Git Repo.
         """
         return pulumi.get(self, "commit_message")
 
@@ -13143,7 +13143,7 @@ class ServiceGitDetails(dict):
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> Optional[str]:
         """
-        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -13159,7 +13159,7 @@ class ServiceGitDetails(dict):
     @pulumi.getter(name="isHarnessCodeRepo")
     def is_harness_code_repo(self) -> Optional[bool]:
         """
-        If the repo is in harness code
+        If the repo is in harness code.
         """
         return pulumi.get(self, "is_harness_code_repo")
 
@@ -13175,7 +13175,7 @@ class ServiceGitDetails(dict):
     @pulumi.getter(name="lastCommitId")
     def last_commit_id(self) -> Optional[str]:
         """
-        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
         """
         return pulumi.get(self, "last_commit_id")
 
@@ -13183,7 +13183,7 @@ class ServiceGitDetails(dict):
     @pulumi.getter(name="lastObjectId")
     def last_object_id(self) -> Optional[str]:
         """
-        Last object identifier (for Github). To be provided only when updating Pipeline.
+        Last object identifier (for Github). To be provided only when updating Service.
         """
         return pulumi.get(self, "last_object_id")
 
@@ -13199,7 +13199,7 @@ class ServiceGitDetails(dict):
     @pulumi.getter(name="loadFromFallbackBranch")
     def load_from_fallback_branch(self) -> Optional[bool]:
         """
-        Load service yaml from fallback branch
+        Whether the file has to be get from fallback_branch.
         """
         return pulumi.get(self, "load_from_fallback_branch")
 
@@ -13215,7 +13215,7 @@ class ServiceGitDetails(dict):
     @pulumi.getter(name="storeType")
     def store_type(self) -> Optional[str]:
         """
-        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        store type of the entity.
         """
         return pulumi.get(self, "store_type")
 

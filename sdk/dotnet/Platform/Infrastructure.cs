@@ -11,6 +11,7 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness Infrastructure.
+    /// 
     /// ## Example to create Infrastructure at different levels (Org, Project, Account)
     /// 
     /// ### Account Level

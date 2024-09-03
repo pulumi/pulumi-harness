@@ -431,6 +431,7 @@ class Infrastructure(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness Infrastructure.
+
         ## Example to create Infrastructure at different levels (Org, Project, Account)
 
         ### Account Level
@@ -588,6 +589,7 @@ class Infrastructure(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Infrastructure.
+
         ## Example to create Infrastructure at different levels (Org, Project, Account)
 
         ### Account Level
