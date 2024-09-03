@@ -327,6 +327,7 @@ class ManualFreeze(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for Manual Deployment Freeze Window.
+
         ## Example to create Manual Freeze at different levels (Org, Project, Account)
 
         ### Account Level
@@ -478,6 +479,7 @@ class ManualFreeze(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for Manual Deployment Freeze Window.
+
         ## Example to create Manual Freeze at different levels (Org, Project, Account)
 
         ### Account Level

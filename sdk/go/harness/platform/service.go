@@ -362,13 +362,13 @@ type Service struct {
 	FetchResolvedYaml pulumi.BoolOutput `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
 	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
-	// Contains parameters related to Git Experience for remote entities
+	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails ServiceGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// import service from git
+	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolOutput `pulumi:"importFromGit"`
-	// force import service from remote even if same file path already exist
+	// Flag to set if force importing from Git
 	IsForceImport pulumi.BoolOutput `pulumi:"isForceImport"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -378,10 +378,7 @@ type Service struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringOutput `pulumi:"yaml"`
 }
 
@@ -424,13 +421,13 @@ type serviceState struct {
 	FetchResolvedYaml *bool `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
 	ForceDelete *string `pulumi:"forceDelete"`
-	// Contains parameters related to Git Experience for remote entities
+	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails *ServiceGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// import service from git
+	// Flag to set if importing from Git
 	ImportFromGit *bool `pulumi:"importFromGit"`
-	// force import service from remote even if same file path already exist
+	// Flag to set if force importing from Git
 	IsForceImport *bool `pulumi:"isForceImport"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -440,10 +437,7 @@ type serviceState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -454,13 +448,13 @@ type ServiceState struct {
 	FetchResolvedYaml pulumi.BoolPtrInput
 	// Enable this flag for force deletion of service
 	ForceDelete pulumi.StringPtrInput
-	// Contains parameters related to Git Experience for remote entities
+	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails ServiceGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// import service from git
+	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrInput
-	// force import service from remote even if same file path already exist
+	// Flag to set if force importing from Git
 	IsForceImport pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
@@ -470,10 +464,7 @@ type ServiceState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -488,13 +479,13 @@ type serviceArgs struct {
 	FetchResolvedYaml *bool `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
 	ForceDelete *string `pulumi:"forceDelete"`
-	// Contains parameters related to Git Experience for remote entities
+	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails *ServiceGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// import service from git
+	// Flag to set if importing from Git
 	ImportFromGit *bool `pulumi:"importFromGit"`
-	// force import service from remote even if same file path already exist
+	// Flag to set if force importing from Git
 	IsForceImport *bool `pulumi:"isForceImport"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -504,10 +495,7 @@ type serviceArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml *string `pulumi:"yaml"`
 }
 
@@ -519,13 +507,13 @@ type ServiceArgs struct {
 	FetchResolvedYaml pulumi.BoolPtrInput
 	// Enable this flag for force deletion of service
 	ForceDelete pulumi.StringPtrInput
-	// Contains parameters related to Git Experience for remote entities
+	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails ServiceGitDetailsPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// import service from git
+	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrInput
-	// force import service from remote even if same file path already exist
+	// Flag to set if force importing from Git
 	IsForceImport pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
@@ -535,10 +523,7 @@ type ServiceArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-	// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-	// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-	// connectorRef: org.connectorId.
+	// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	Yaml pulumi.StringPtrInput
 }
 
@@ -644,7 +629,7 @@ func (o ServiceOutput) ForceDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
 }
 
-// Contains parameters related to Git Experience for remote entities
+// Contains Git Information for remote entities from Git for Create/Update/Import
 func (o ServiceOutput) GitDetails() ServiceGitDetailsOutput {
 	return o.ApplyT(func(v *Service) ServiceGitDetailsOutput { return v.GitDetails }).(ServiceGitDetailsOutput)
 }
@@ -654,12 +639,12 @@ func (o ServiceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// import service from git
+// Flag to set if importing from Git
 func (o ServiceOutput) ImportFromGit() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.ImportFromGit }).(pulumi.BoolOutput)
 }
 
-// force import service from remote even if same file path already exist
+// Flag to set if force importing from Git
 func (o ServiceOutput) IsForceImport() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.IsForceImport }).(pulumi.BoolOutput)
 }
@@ -684,10 +669,7 @@ func (o ServiceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-// org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-// For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-// connectorRef: org.connectorId.
+// Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 func (o ServiceOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Yaml }).(pulumi.StringOutput)
 }

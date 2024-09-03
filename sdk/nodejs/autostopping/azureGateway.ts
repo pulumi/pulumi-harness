@@ -86,7 +86,7 @@ export class AzureGateway extends pulumi.CustomResource {
     public readonly cloudConnectorId!: pulumi.Output<string>;
     public readonly deleteCloudResourcesOnDestroy!: pulumi.Output<boolean>;
     /**
-     * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+     * ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
      */
     public readonly frontendIp!: pulumi.Output<string | undefined>;
     /**
@@ -214,7 +214,7 @@ export interface AzureGatewayState {
     cloudConnectorId?: pulumi.Input<string>;
     deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
     /**
-     * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+     * ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
      */
     frontendIp?: pulumi.Input<string>;
     /**
@@ -273,7 +273,7 @@ export interface AzureGatewayArgs {
     cloudConnectorId: pulumi.Input<string>;
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
     /**
-     * ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+     * ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
      */
     frontendIp?: pulumi.Input<string>;
     /**

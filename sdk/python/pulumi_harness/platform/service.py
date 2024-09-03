@@ -34,17 +34,14 @@ class ServiceArgs:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
-        :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains parameters related to Git Experience for remote entities
-        :param pulumi.Input[bool] import_from_git: import service from git
-        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
+        :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input[bool] is_force_import: Flag to set if force importing from Git
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "identifier", identifier)
         if description is not None:
@@ -122,7 +119,7 @@ class ServiceArgs:
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> Optional[pulumi.Input['ServiceGitDetailsArgs']]:
         """
-        Contains parameters related to Git Experience for remote entities
+        Contains Git Information for remote entities from Git for Create/Update/Import
         """
         return pulumi.get(self, "git_details")
 
@@ -134,7 +131,7 @@ class ServiceArgs:
     @pulumi.getter(name="importFromGit")
     def import_from_git(self) -> Optional[pulumi.Input[bool]]:
         """
-        import service from git
+        Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
@@ -146,7 +143,7 @@ class ServiceArgs:
     @pulumi.getter(name="isForceImport")
     def is_force_import(self) -> Optional[pulumi.Input[bool]]:
         """
-        force import service from remote even if same file path already exist
+        Flag to set if force importing from Git
         """
         return pulumi.get(self, "is_force_import")
 
@@ -206,10 +203,7 @@ class ServiceArgs:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -238,18 +232,15 @@ class _ServiceState:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
-        :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains parameters related to Git Experience for remote entities
+        :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[bool] import_from_git: import service from git
-        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input[bool] is_force_import: Flag to set if force importing from Git
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -316,7 +307,7 @@ class _ServiceState:
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> Optional[pulumi.Input['ServiceGitDetailsArgs']]:
         """
-        Contains parameters related to Git Experience for remote entities
+        Contains Git Information for remote entities from Git for Create/Update/Import
         """
         return pulumi.get(self, "git_details")
 
@@ -340,7 +331,7 @@ class _ServiceState:
     @pulumi.getter(name="importFromGit")
     def import_from_git(self) -> Optional[pulumi.Input[bool]]:
         """
-        import service from git
+        Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
@@ -352,7 +343,7 @@ class _ServiceState:
     @pulumi.getter(name="isForceImport")
     def is_force_import(self) -> Optional[pulumi.Input[bool]]:
         """
-        force import service from remote even if same file path already exist
+        Flag to set if force importing from Git
         """
         return pulumi.get(self, "is_force_import")
 
@@ -412,10 +403,7 @@ class _ServiceState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -702,18 +690,15 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
-        :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains parameters related to Git Experience for remote entities
+        :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[bool] import_from_git: import service from git
-        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input[bool] is_force_import: Flag to set if force importing from Git
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -1058,18 +1043,15 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
         :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
-        :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains parameters related to Git Experience for remote entities
+        :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[bool] import_from_git: import service from git
-        :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
+        :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
+        :param pulumi.Input[bool] is_force_import: Flag to set if force importing from Git
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1117,7 +1099,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> pulumi.Output['outputs.ServiceGitDetails']:
         """
-        Contains parameters related to Git Experience for remote entities
+        Contains Git Information for remote entities from Git for Create/Update/Import
         """
         return pulumi.get(self, "git_details")
 
@@ -1133,7 +1115,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="importFromGit")
     def import_from_git(self) -> pulumi.Output[bool]:
         """
-        import service from git
+        Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
@@ -1141,7 +1123,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="isForceImport")
     def is_force_import(self) -> pulumi.Output[bool]:
         """
-        force import service from remote even if same file path already exist
+        Flag to set if force importing from Git
         """
         return pulumi.get(self, "is_force_import")
 
@@ -1181,10 +1163,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[str]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

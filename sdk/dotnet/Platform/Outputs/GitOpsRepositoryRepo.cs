@@ -26,7 +26,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? EnableOci;
         /// <summary>
-        /// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        /// Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
         /// </summary>
         public readonly string? GithubAppEnterpriseBaseUrl;
         /// <summary>

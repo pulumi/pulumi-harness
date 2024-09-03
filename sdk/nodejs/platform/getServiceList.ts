@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Project Level Service List
+ * ### project level service list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Organisation Level Service List
+ * ### Organisation level service list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### Account Level Service List
+ * ### Account level service list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -78,7 +78,7 @@ export interface GetServiceListResult {
  *
  * ## Example Usage
  *
- * ### Project Level Service List
+ * ### project level service list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -90,7 +90,7 @@ export interface GetServiceListResult {
  * });
  * ```
  *
- * ### Organisation Level Service List
+ * ### Organisation level service list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -101,7 +101,7 @@ export interface GetServiceListResult {
  * });
  * ```
  *
- * ### Account Level Service List
+ * ### Account level service list
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

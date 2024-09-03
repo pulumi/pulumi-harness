@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<bool>? EnableOci { get; set; }
 
         /// <summary>
-        /// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        /// Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
         /// </summary>
         [Input("githubAppEnterpriseBaseUrl")]
         public Input<string>? GithubAppEnterpriseBaseUrl { get; set; }

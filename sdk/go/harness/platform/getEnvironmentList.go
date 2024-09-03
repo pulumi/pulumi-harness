@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Project Level Environment List
+// ### project level environment list
 //
 // ```go
 // package main
@@ -42,7 +42,7 @@ import (
 //
 // ```
 //
-// ### Organisation Level Environment List
+// ### Organisation level environment list
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ### Account Level Environment List
+// ### Account level environment list
 //
 // ```go
 // package main

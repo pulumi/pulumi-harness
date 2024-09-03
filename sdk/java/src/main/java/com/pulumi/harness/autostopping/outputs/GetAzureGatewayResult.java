@@ -35,7 +35,7 @@ public final class GetAzureGatewayResult {
     private String cloudConnectorId;
     private Boolean deleteCloudResourcesOnDestroy;
     /**
-     * @return ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+     * @return ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
      * 
      */
     private @Nullable String frontendIp;
@@ -118,7 +118,7 @@ public final class GetAzureGatewayResult {
         return this.deleteCloudResourcesOnDestroy;
     }
     /**
-     * @return ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+     * @return ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
      * 
      */
     public Optional<String> frontendIp() {

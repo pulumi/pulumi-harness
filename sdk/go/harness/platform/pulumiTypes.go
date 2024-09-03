@@ -15737,7 +15737,7 @@ type GitOpsRepositoryRepo struct {
 	EnableLfs *bool `pulumi:"enableLfs"`
 	// Indicates if helm-oci support must be enabled for this repo.
 	EnableOci *bool `pulumi:"enableOci"`
-	// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+	// Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
 	GithubAppEnterpriseBaseUrl *string `pulumi:"githubAppEnterpriseBaseUrl"`
 	// Id of the GitHub app used to access the repo.
 	GithubAppId *string `pulumi:"githubAppId"`
@@ -15791,7 +15791,7 @@ type GitOpsRepositoryRepoArgs struct {
 	EnableLfs pulumi.BoolPtrInput `pulumi:"enableLfs"`
 	// Indicates if helm-oci support must be enabled for this repo.
 	EnableOci pulumi.BoolPtrInput `pulumi:"enableOci"`
-	// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+	// Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
 	GithubAppEnterpriseBaseUrl pulumi.StringPtrInput `pulumi:"githubAppEnterpriseBaseUrl"`
 	// Id of the GitHub app used to access the repo.
 	GithubAppId pulumi.StringPtrInput `pulumi:"githubAppId"`
@@ -15893,7 +15893,7 @@ func (o GitOpsRepositoryRepoOutput) EnableOci() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitOpsRepositoryRepo) *bool { return v.EnableOci }).(pulumi.BoolPtrOutput)
 }
 
-// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+// Base URL of GitHub Enterprise installation. If left empty, this defaults to [https://api.github.com](https://api.github.com).
 func (o GitOpsRepositoryRepoOutput) GithubAppEnterpriseBaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsRepositoryRepo) *string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringPtrOutput)
 }
@@ -30088,27 +30088,27 @@ type ServiceGitDetails struct {
 	BaseBranch *string `pulumi:"baseBranch"`
 	// Name of the branch.
 	Branch *string `pulumi:"branch"`
-	// Commit message used for the merge commit.
+	// message for the commit in Git Repo.
 	CommitMessage *string `pulumi:"commitMessage"`
-	// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath *string `pulumi:"filePath"`
-	// If the repo is in harness code
+	// If the repo is in harness code.
 	IsHarnessCodeRepo *bool `pulumi:"isHarnessCodeRepo"`
 	// If the branch being created is new
 	IsNewBranch *bool `pulumi:"isNewBranch"`
-	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
 	LastCommitId *string `pulumi:"lastCommitId"`
-	// Last object identifier (for Github). To be provided only when updating Pipeline.
+	// Last object identifier (for Github). To be provided only when updating Service.
 	LastObjectId *string `pulumi:"lastObjectId"`
 	// Load service yaml from catch
 	LoadFromCache *bool `pulumi:"loadFromCache"`
-	// Load service yaml from fallback branch
+	// Whether the file has to be get from fallback_branch.
 	LoadFromFallbackBranch *bool `pulumi:"loadFromFallbackBranch"`
 	// Name of the repository.
 	RepoName *string `pulumi:"repoName"`
-	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	// store type of the entity.
 	StoreType *string `pulumi:"storeType"`
 }
 
@@ -30128,27 +30128,27 @@ type ServiceGitDetailsArgs struct {
 	BaseBranch pulumi.StringPtrInput `pulumi:"baseBranch"`
 	// Name of the branch.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// Commit message used for the merge commit.
+	// message for the commit in Git Repo.
 	CommitMessage pulumi.StringPtrInput `pulumi:"commitMessage"`
-	// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
-	// If the repo is in harness code
+	// If the repo is in harness code.
 	IsHarnessCodeRepo pulumi.BoolPtrInput `pulumi:"isHarnessCodeRepo"`
 	// If the branch being created is new
 	IsNewBranch pulumi.BoolPtrInput `pulumi:"isNewBranch"`
-	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
 	LastCommitId pulumi.StringPtrInput `pulumi:"lastCommitId"`
-	// Last object identifier (for Github). To be provided only when updating Pipeline.
+	// Last object identifier (for Github). To be provided only when updating Service.
 	LastObjectId pulumi.StringPtrInput `pulumi:"lastObjectId"`
 	// Load service yaml from catch
 	LoadFromCache pulumi.BoolPtrInput `pulumi:"loadFromCache"`
-	// Load service yaml from fallback branch
+	// Whether the file has to be get from fallback_branch.
 	LoadFromFallbackBranch pulumi.BoolPtrInput `pulumi:"loadFromFallbackBranch"`
 	// Name of the repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
-	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+	// store type of the entity.
 	StoreType pulumi.StringPtrInput `pulumi:"storeType"`
 }
 
@@ -30239,12 +30239,12 @@ func (o ServiceGitDetailsOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// Commit message used for the merge commit.
+// message for the commit in Git Repo.
 func (o ServiceGitDetailsOutput) CommitMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.CommitMessage }).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceGitDetailsOutput) ConnectorRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.ConnectorRef }).(pulumi.StringPtrOutput)
 }
@@ -30254,7 +30254,7 @@ func (o ServiceGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
-// If the repo is in harness code
+// If the repo is in harness code.
 func (o ServiceGitDetailsOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *bool { return v.IsHarnessCodeRepo }).(pulumi.BoolPtrOutput)
 }
@@ -30264,12 +30264,12 @@ func (o ServiceGitDetailsOutput) IsNewBranch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *bool { return v.IsNewBranch }).(pulumi.BoolPtrOutput)
 }
 
-// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
 func (o ServiceGitDetailsOutput) LastCommitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.LastCommitId }).(pulumi.StringPtrOutput)
 }
 
-// Last object identifier (for Github). To be provided only when updating Pipeline.
+// Last object identifier (for Github). To be provided only when updating Service.
 func (o ServiceGitDetailsOutput) LastObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.LastObjectId }).(pulumi.StringPtrOutput)
 }
@@ -30279,7 +30279,7 @@ func (o ServiceGitDetailsOutput) LoadFromCache() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *bool { return v.LoadFromCache }).(pulumi.BoolPtrOutput)
 }
 
-// Load service yaml from fallback branch
+// Whether the file has to be get from fallback_branch.
 func (o ServiceGitDetailsOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *bool { return v.LoadFromFallbackBranch }).(pulumi.BoolPtrOutput)
 }
@@ -30289,7 +30289,7 @@ func (o ServiceGitDetailsOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+// store type of the entity.
 func (o ServiceGitDetailsOutput) StoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.StoreType }).(pulumi.StringPtrOutput)
 }
@@ -30338,7 +30338,7 @@ func (o ServiceGitDetailsPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Commit message used for the merge commit.
+// message for the commit in Git Repo.
 func (o ServiceGitDetailsPtrOutput) CommitMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *string {
 		if v == nil {
@@ -30348,7 +30348,7 @@ func (o ServiceGitDetailsPtrOutput) CommitMessage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ServiceGitDetailsPtrOutput) ConnectorRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *string {
 		if v == nil {
@@ -30368,7 +30368,7 @@ func (o ServiceGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// If the repo is in harness code
+// If the repo is in harness code.
 func (o ServiceGitDetailsPtrOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *bool {
 		if v == nil {
@@ -30388,7 +30388,7 @@ func (o ServiceGitDetailsPtrOutput) IsNewBranch() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
 func (o ServiceGitDetailsPtrOutput) LastCommitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *string {
 		if v == nil {
@@ -30398,7 +30398,7 @@ func (o ServiceGitDetailsPtrOutput) LastCommitId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Last object identifier (for Github). To be provided only when updating Pipeline.
+// Last object identifier (for Github). To be provided only when updating Service.
 func (o ServiceGitDetailsPtrOutput) LastObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *string {
 		if v == nil {
@@ -30418,7 +30418,7 @@ func (o ServiceGitDetailsPtrOutput) LoadFromCache() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Load service yaml from fallback branch
+// Whether the file has to be get from fallback_branch.
 func (o ServiceGitDetailsPtrOutput) LoadFromFallbackBranch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *bool {
 		if v == nil {
@@ -30438,7 +30438,7 @@ func (o ServiceGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+// store type of the entity.
 func (o ServiceGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *string {
 		if v == nil {

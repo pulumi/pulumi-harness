@@ -11,6 +11,7 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for Manual Deployment Freeze Window.
+    /// 
     /// ## Example to create Manual Freeze at different levels (Org, Project, Account)
     /// 
     /// ### Account Level

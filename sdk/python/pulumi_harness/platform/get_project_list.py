@@ -140,7 +140,7 @@ def get_project_list(identifier: Optional[str] = None,
 
     ## Example Usage
 
-    ### Org Level Project List
+    ### Org level Project list
 
     ### Without the Pagination
 
@@ -200,7 +200,7 @@ def get_project_list_output(identifier: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
-    ### Org Level Project List
+    ### Org level Project list
 
     ### Without the Pagination
 

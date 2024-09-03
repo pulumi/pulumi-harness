@@ -55,7 +55,7 @@ namespace Pulumi.Harness.Autostopping
         public bool DeleteCloudResourcesOnDestroy { get; set; }
 
         /// <summary>
-        /// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        /// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         /// </summary>
         [Input("frontendIp")]
         public string? FrontendIp { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Harness.Autostopping
         public Input<bool> DeleteCloudResourcesOnDestroy { get; set; } = null!;
 
         /// <summary>
-        /// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        /// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         /// </summary>
         [Input("frontendIp")]
         public Input<string>? FrontendIp { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.Harness.Autostopping
         public readonly string CloudConnectorId;
         public readonly bool DeleteCloudResourcesOnDestroy;
         /// <summary>
-        /// ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        /// ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         /// </summary>
         public readonly string? FrontendIp;
         /// <summary>

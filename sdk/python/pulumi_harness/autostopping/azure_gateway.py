@@ -37,7 +37,7 @@ class AzureGatewayArgs:
         :param pulumi.Input[str] vpc: VNet in which cloud resources are hosted. Required only for creating new AppGateway
         :param pulumi.Input[str] app_gateway_id: ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         :param pulumi.Input[str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
-        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         :param pulumi.Input[str] name: Name of the proxy
         :param pulumi.Input[str] sku_size: Size of machine used for the gateway. Required only for creating new AppGateway
         :param pulumi.Input[str] subnet_id: Subnet in which cloud resources are hosted. Required only for creating new AppGateway
@@ -171,7 +171,7 @@ class AzureGatewayArgs:
     @pulumi.getter(name="frontendIp")
     def frontend_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         """
         return pulumi.get(self, "frontend_ip")
 
@@ -239,7 +239,7 @@ class _AzureGatewayState:
         :param pulumi.Input[str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
-        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         :param pulumi.Input[str] host_name: Hostname for the proxy
         :param pulumi.Input[str] identifier: Unique identifier of the resource
         :param pulumi.Input[str] name: Name of the proxy
@@ -339,7 +339,7 @@ class _AzureGatewayState:
     @pulumi.getter(name="frontendIp")
     def frontend_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         """
         return pulumi.get(self, "frontend_ip")
 
@@ -503,7 +503,7 @@ class AzureGateway(pulumi.CustomResource):
         :param pulumi.Input[str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
-        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         :param pulumi.Input[str] host_name: Hostname for the proxy
         :param pulumi.Input[str] name: Name of the proxy
         :param pulumi.Input[str] region: Region in which cloud resources are hosted
@@ -652,7 +652,7 @@ class AzureGateway(pulumi.CustomResource):
         :param pulumi.Input[str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
-        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        :param pulumi.Input[str] frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         :param pulumi.Input[str] host_name: Hostname for the proxy
         :param pulumi.Input[str] identifier: Unique identifier of the resource
         :param pulumi.Input[str] name: Name of the proxy
@@ -723,7 +723,7 @@ class AzureGateway(pulumi.CustomResource):
     @pulumi.getter(name="frontendIp")
     def frontend_ip(self) -> pulumi.Output[Optional[str]]:
         """
-        ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         """
         return pulumi.get(self, "frontend_ip")
 

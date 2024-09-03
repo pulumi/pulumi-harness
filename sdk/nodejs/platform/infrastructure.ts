@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness Infrastructure.
+ *
  * ## Example to create Infrastructure at different levels (Org, Project, Account)
  *
  * ### Account Level

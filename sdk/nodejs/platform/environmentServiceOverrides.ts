@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for creating a Harness environment service overrides.
+ *
  * ## Example to create Environment Service Override at different levels (Org, Project, Account)
  *
  * ### Account Level

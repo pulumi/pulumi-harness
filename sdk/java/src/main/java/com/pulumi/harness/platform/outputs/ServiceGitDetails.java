@@ -23,12 +23,12 @@ public final class ServiceGitDetails {
      */
     private @Nullable String branch;
     /**
-     * @return Commit message used for the merge commit.
+     * @return message for the commit in Git Repo.
      * 
      */
     private @Nullable String commitMessage;
     /**
-     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String connectorRef;
@@ -38,7 +38,7 @@ public final class ServiceGitDetails {
      */
     private @Nullable String filePath;
     /**
-     * @return If the repo is in harness code
+     * @return If the repo is in harness code.
      * 
      */
     private @Nullable Boolean isHarnessCodeRepo;
@@ -48,12 +48,12 @@ public final class ServiceGitDetails {
      */
     private @Nullable Boolean isNewBranch;
     /**
-     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
      * 
      */
     private @Nullable String lastCommitId;
     /**
-     * @return Last object identifier (for Github). To be provided only when updating Pipeline.
+     * @return Last object identifier (for Github). To be provided only when updating Service.
      * 
      */
     private @Nullable String lastObjectId;
@@ -63,7 +63,7 @@ public final class ServiceGitDetails {
      */
     private @Nullable Boolean loadFromCache;
     /**
-     * @return Load service yaml from fallback branch
+     * @return Whether the file has to be get from fallback_branch.
      * 
      */
     private @Nullable Boolean loadFromFallbackBranch;
@@ -73,7 +73,7 @@ public final class ServiceGitDetails {
      */
     private @Nullable String repoName;
     /**
-     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+     * @return store type of the entity.
      * 
      */
     private @Nullable String storeType;
@@ -94,14 +94,14 @@ public final class ServiceGitDetails {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return Commit message used for the merge commit.
+     * @return message for the commit in Git Repo.
      * 
      */
     public Optional<String> commitMessage() {
         return Optional.ofNullable(this.commitMessage);
     }
     /**
-     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> connectorRef() {
@@ -115,7 +115,7 @@ public final class ServiceGitDetails {
         return Optional.ofNullable(this.filePath);
     }
     /**
-     * @return If the repo is in harness code
+     * @return If the repo is in harness code.
      * 
      */
     public Optional<Boolean> isHarnessCodeRepo() {
@@ -129,14 +129,14 @@ public final class ServiceGitDetails {
         return Optional.ofNullable(this.isNewBranch);
     }
     /**
-     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+     * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
      * 
      */
     public Optional<String> lastCommitId() {
         return Optional.ofNullable(this.lastCommitId);
     }
     /**
-     * @return Last object identifier (for Github). To be provided only when updating Pipeline.
+     * @return Last object identifier (for Github). To be provided only when updating Service.
      * 
      */
     public Optional<String> lastObjectId() {
@@ -150,7 +150,7 @@ public final class ServiceGitDetails {
         return Optional.ofNullable(this.loadFromCache);
     }
     /**
-     * @return Load service yaml from fallback branch
+     * @return Whether the file has to be get from fallback_branch.
      * 
      */
     public Optional<Boolean> loadFromFallbackBranch() {
@@ -164,7 +164,7 @@ public final class ServiceGitDetails {
         return Optional.ofNullable(this.repoName);
     }
     /**
-     * @return Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+     * @return store type of the entity.
      * 
      */
     public Optional<String> storeType() {

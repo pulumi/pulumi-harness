@@ -25,13 +25,13 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? Branch { get; set; }
 
         /// <summary>
-        /// Commit message used for the merge commit.
+        /// message for the commit in Git Repo.
         /// </summary>
         [Input("commitMessage")]
         public Input<string>? CommitMessage { get; set; }
 
         /// <summary>
-        /// Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("connectorRef")]
         public Input<string>? ConnectorRef { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
-        /// If the repo is in harness code
+        /// If the repo is in harness code.
         /// </summary>
         [Input("isHarnessCodeRepo")]
         public Input<bool>? IsHarnessCodeRepo { get; set; }
@@ -55,13 +55,13 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<bool>? IsNewBranch { get; set; }
 
         /// <summary>
-        /// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        /// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Service.
         /// </summary>
         [Input("lastCommitId")]
         public Input<string>? LastCommitId { get; set; }
 
         /// <summary>
-        /// Last object identifier (for Github). To be provided only when updating Pipeline.
+        /// Last object identifier (for Github). To be provided only when updating Service.
         /// </summary>
         [Input("lastObjectId")]
         public Input<string>? LastObjectId { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<bool>? LoadFromCache { get; set; }
 
         /// <summary>
-        /// Load service yaml from fallback branch
+        /// Whether the file has to be get from fallback_branch.
         /// </summary>
         [Input("loadFromFallbackBranch")]
         public Input<bool>? LoadFromFallbackBranch { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? RepoName { get; set; }
 
         /// <summary>
-        /// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        /// store type of the entity.
         /// </summary>
         [Input("storeType")]
         public Input<string>? StoreType { get; set; }

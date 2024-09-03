@@ -15,7 +15,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Project Level Service List
+// ### project level service list
 //
 // ```go
 // package main
@@ -42,7 +42,7 @@ import (
 //
 // ```
 //
-// ### Organisation Level Service List
+// ### Organisation level service list
 //
 // ```go
 // package main
@@ -68,7 +68,7 @@ import (
 //
 // ```
 //
-// ### Account Level Service List
+// ### Account level service list
 //
 // ```go
 // package main

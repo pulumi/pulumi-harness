@@ -109,7 +109,7 @@ class GetAzureGatewayResult:
     @pulumi.getter(name="frontendIp")
     def frontend_ip(self) -> Optional[str]:
         """
-        ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+        ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
         """
         return pulumi.get(self, "frontend_ip")
 
@@ -231,7 +231,7 @@ def get_azure_gateway(app_gateway_id: Optional[str] = None,
     :param str azure_func_region: Region in which azure cloud function will be provisioned
     :param str certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for SSL based rules
     :param str cloud_connector_id: Id of the cloud connector
-    :param str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+    :param str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
     :param str host_name: Hostname for the proxy
     :param str name: Name of the proxy
     :param str region: Region in which cloud resources are hosted
@@ -298,7 +298,7 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[str]
     :param str azure_func_region: Region in which azure cloud function will be provisioned
     :param str certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for SSL based rules
     :param str cloud_connector_id: Id of the cloud connector
-    :param str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address for more details
+    :param str frontend_ip: ID of IP address to be used. Required only for creating new AppGateway. See [https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address](https://learn.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address) for more details
     :param str host_name: Hostname for the proxy
     :param str name: Name of the proxy
     :param str region: Region in which cloud resources are hosted

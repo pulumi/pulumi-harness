@@ -5045,7 +5045,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Environment List
+     * ### project level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5081,7 +5081,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Environment List
+     * ### Organisation level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5116,7 +5116,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Environment List
+     * ### Account level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5158,7 +5158,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Environment List
+     * ### project level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5194,7 +5194,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Environment List
+     * ### Organisation level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5229,7 +5229,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Environment List
+     * ### Account level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5271,7 +5271,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Environment List
+     * ### project level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5307,7 +5307,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Environment List
+     * ### Organisation level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5342,7 +5342,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Environment List
+     * ### Account level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5384,7 +5384,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Environment List
+     * ### project level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5420,7 +5420,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Environment List
+     * ### Organisation level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5455,7 +5455,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Environment List
+     * ### Account level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5497,7 +5497,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Environment List
+     * ### project level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5533,7 +5533,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Environment List
+     * ### Organisation level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5568,7 +5568,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Environment List
+     * ### Account level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5610,7 +5610,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Environment List
+     * ### project level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5646,7 +5646,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Environment List
+     * ### Organisation level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -5681,7 +5681,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Environment List
+     * ### Account level environment list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -13045,7 +13045,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Org Level Project List
+     * ### Org level Project list
      * 
      * ### Without the Pagination
      * 
@@ -13128,7 +13128,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Org Level Project List
+     * ### Org level Project list
      * 
      * ### Without the Pagination
      * 
@@ -13211,7 +13211,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Org Level Project List
+     * ### Org level Project list
      * 
      * ### Without the Pagination
      * 
@@ -13294,7 +13294,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Org Level Project List
+     * ### Org level Project list
      * 
      * ### Without the Pagination
      * 
@@ -15177,7 +15177,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Service List
+     * ### project level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15213,7 +15213,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Service List
+     * ### Organisation level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15248,7 +15248,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Service List
+     * ### Account level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15290,7 +15290,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Service List
+     * ### project level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15326,7 +15326,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Service List
+     * ### Organisation level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15361,7 +15361,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Service List
+     * ### Account level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15403,7 +15403,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Service List
+     * ### project level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15439,7 +15439,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Service List
+     * ### Organisation level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15474,7 +15474,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Service List
+     * ### Account level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15516,7 +15516,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Service List
+     * ### project level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15552,7 +15552,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Service List
+     * ### Organisation level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15587,7 +15587,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Service List
+     * ### Account level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15629,7 +15629,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Service List
+     * ### project level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15665,7 +15665,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Service List
+     * ### Organisation level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15700,7 +15700,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Service List
+     * ### Account level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15742,7 +15742,7 @@ public final class PlatformFunctions {
      * 
      * ## Example Usage
      * 
-     * ### Project Level Service List
+     * ### project level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15778,7 +15778,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Organisation Level Service List
+     * ### Organisation level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -15813,7 +15813,7 @@ public final class PlatformFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Account Level Service List
+     * ### Account level service list
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
