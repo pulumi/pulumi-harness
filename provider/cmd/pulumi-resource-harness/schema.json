@@ -4435,7 +4435,8 @@
                 },
                 "bearerToken": {
                     "type": "string",
-                    "description": "Bearer authentication token the cluster.\n"
+                    "description": "Bearer authentication token the cluster.\n",
+                    "secret": true
                 },
                 "clusterConnectionType": {
                     "type": "string",
@@ -23958,23 +23959,28 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps cluster.\n"
+                    "description": "Account identifier of the GitOps cluster.\n",
+                    "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps cluster.\n"
+                    "description": "Agent identifier of the GitOps cluster.\n",
+                    "willReplaceOnChanges": true
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Identifier of the GitOps cluster.\n"
+                    "description": "Identifier of the GitOps cluster.\n",
+                    "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Organization identifier of the cluster.\n"
+                    "description": "Organization identifier of the cluster.\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps cluster.\n"
+                    "description": "Project identifier of the GitOps cluster.\n",
+                    "willReplaceOnChanges": true
                 },
                 "requests": {
                     "type": "array",
@@ -23994,23 +24000,28 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps cluster.\n"
+                        "description": "Account identifier of the GitOps cluster.\n",
+                        "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps cluster.\n"
+                        "description": "Agent identifier of the GitOps cluster.\n",
+                        "willReplaceOnChanges": true
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Identifier of the GitOps cluster.\n"
+                        "description": "Identifier of the GitOps cluster.\n",
+                        "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Organization identifier of the cluster.\n"
+                        "description": "Organization identifier of the cluster.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the GitOps cluster.\n"
+                        "description": "Project identifier of the GitOps cluster.\n",
+                        "willReplaceOnChanges": true
                     },
                     "requests": {
                         "type": "array",
@@ -24404,11 +24415,13 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps repository.\n"
+                    "description": "Account identifier of the GitOps repository.\n",
+                    "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps repository.\n"
+                    "description": "Agent identifier of the GitOps repository.\n",
+                    "willReplaceOnChanges": true
                 },
                 "credsOnly": {
                     "type": "boolean",
@@ -24428,15 +24441,18 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Identifier of the GitOps repository.\n"
+                    "description": "Identifier of the GitOps repository.\n",
+                    "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Organization identifier of the GitOps repository.\n"
+                    "description": "Organization identifier of the GitOps repository.\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps repository.\n"
+                    "description": "Project identifier of the GitOps repository.\n",
+                    "willReplaceOnChanges": true
                 },
                 "refreshInterval": {
                     "type": "string",
@@ -24472,11 +24488,13 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps repository.\n"
+                        "description": "Account identifier of the GitOps repository.\n",
+                        "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps repository.\n"
+                        "description": "Agent identifier of the GitOps repository.\n",
+                        "willReplaceOnChanges": true
                     },
                     "credsOnly": {
                         "type": "boolean",
@@ -24496,15 +24514,18 @@
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Identifier of the GitOps repository.\n"
+                        "description": "Identifier of the GitOps repository.\n",
+                        "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Organization identifier of the GitOps repository.\n"
+                        "description": "Organization identifier of the GitOps repository.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the GitOps repository.\n"
+                        "description": "Project identifier of the GitOps repository.\n",
+                        "willReplaceOnChanges": true
                     },
                     "refreshInterval": {
                         "type": "string",
@@ -24981,19 +25002,23 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps project.\n"
+                    "description": "Account identifier of the GitOps project.\n",
+                    "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps project.\n"
+                    "description": "Agent identifier of the GitOps project.\n",
+                    "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Org identifier of the GitOps project.\n"
+                    "description": "Org identifier of the GitOps project.\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps repository.\n"
+                    "description": "Project identifier of the GitOps repository.\n",
+                    "willReplaceOnChanges": true
                 },
                 "projects": {
                     "type": "array",
@@ -25021,19 +25046,23 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps project.\n"
+                        "description": "Account identifier of the GitOps project.\n",
+                        "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps project.\n"
+                        "description": "Agent identifier of the GitOps project.\n",
+                        "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Org identifier of the GitOps project.\n"
+                        "description": "Org identifier of the GitOps project.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the GitOps repository.\n"
+                        "description": "Project identifier of the GitOps repository.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projects": {
                         "type": "array",
@@ -25093,15 +25122,18 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps agent's Application Project.\n"
+                    "description": "Account identifier of the GitOps agent's Application Project.\n",
+                    "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier for which the ArgoCD and Harness project mapping is to be created.\n"
+                    "description": "Agent identifier for which the ArgoCD and Harness project mapping is to be created.\n",
+                    "willReplaceOnChanges": true
                 },
                 "argoProjectName": {
                     "type": "string",
-                    "description": "ArgoCD Project name which is to be mapped to the Harness project.\n"
+                    "description": "ArgoCD Project name which is to be mapped to the Harness project.\n",
+                    "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
@@ -25124,15 +25156,18 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps agent's Application Project.\n"
+                        "description": "Account identifier of the GitOps agent's Application Project.\n",
+                        "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier for which the ArgoCD and Harness project mapping is to be created.\n"
+                        "description": "Agent identifier for which the ArgoCD and Harness project mapping is to be created.\n",
+                        "willReplaceOnChanges": true
                     },
                     "argoProjectName": {
                         "type": "string",
-                        "description": "ArgoCD Project name which is to be mapped to the Harness project.\n"
+                        "description": "ArgoCD Project name which is to be mapped to the Harness project.\n",
+                        "willReplaceOnChanges": true
                     },
                     "identifier": {
                         "type": "string",
