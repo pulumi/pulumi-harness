@@ -18,11 +18,21 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("awsClusterName")]
         public Input<string>? AwsClusterName { get; set; }
 
+        [Input("bearerToken")]
+        private Input<string>? _bearerToken;
+
         /// <summary>
         /// Bearer authentication token the cluster.
         /// </summary>
-        [Input("bearerToken")]
-        public Input<string>? BearerToken { get; set; }
+        public Input<string>? BearerToken
+        {
+            get => _bearerToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _bearerToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Identifies the authentication method used to connect to the cluster.
