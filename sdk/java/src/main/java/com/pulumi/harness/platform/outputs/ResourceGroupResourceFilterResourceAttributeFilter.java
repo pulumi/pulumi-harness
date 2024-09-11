@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ResourceGroupResourceFilterResourceAttributeFilter {
     /**
-     * @return Name of the attribute. Valid values are `category` or `type`.
+     * @return Name of the attribute. Valid values are `category`, `type` or `labels`.
      * 
      */
     private @Nullable String attributeName;
     /**
-     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax &#39;label:value&#39;
      * 
      */
     private @Nullable List<String> attributeValues;
 
     private ResourceGroupResourceFilterResourceAttributeFilter() {}
     /**
-     * @return Name of the attribute. Valid values are `category` or `type`.
+     * @return Name of the attribute. Valid values are `category`, `type` or `labels`.
      * 
      */
     public Optional<String> attributeName() {
         return Optional.ofNullable(this.attributeName);
     }
     /**
-     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax &#39;label:value&#39;
      * 
      */
     public List<String> attributeValues() {

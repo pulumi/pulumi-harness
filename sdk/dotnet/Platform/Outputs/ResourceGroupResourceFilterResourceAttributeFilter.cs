@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class ResourceGroupResourceFilterResourceAttributeFilter
     {
         /// <summary>
-        /// Name of the attribute. Valid values are `category` or `type`.
+        /// Name of the attribute. Valid values are `category`, `type` or `labels`.
         /// </summary>
         public readonly string? AttributeName;
         /// <summary>
-        /// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+        /// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
         /// </summary>
         public readonly ImmutableArray<string> AttributeValues;
 

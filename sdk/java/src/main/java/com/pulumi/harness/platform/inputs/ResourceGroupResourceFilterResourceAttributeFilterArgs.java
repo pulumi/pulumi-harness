@@ -17,14 +17,14 @@ public final class ResourceGroupResourceFilterResourceAttributeFilterArgs extend
     public static final ResourceGroupResourceFilterResourceAttributeFilterArgs Empty = new ResourceGroupResourceFilterResourceAttributeFilterArgs();
 
     /**
-     * Name of the attribute. Valid values are `category` or `type`.
+     * Name of the attribute. Valid values are `category`, `type` or `labels`.
      * 
      */
     @Import(name="attributeName")
     private @Nullable Output<String> attributeName;
 
     /**
-     * @return Name of the attribute. Valid values are `category` or `type`.
+     * @return Name of the attribute. Valid values are `category`, `type` or `labels`.
      * 
      */
     public Optional<Output<String>> attributeName() {
@@ -32,14 +32,14 @@ public final class ResourceGroupResourceFilterResourceAttributeFilterArgs extend
     }
 
     /**
-     * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+     * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax &#39;label:value&#39;
      * 
      */
     @Import(name="attributeValues")
     private @Nullable Output<List<String>> attributeValues;
 
     /**
-     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+     * @return Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax &#39;label:value&#39;
      * 
      */
     public Optional<Output<List<String>>> attributeValues() {
@@ -72,7 +72,7 @@ public final class ResourceGroupResourceFilterResourceAttributeFilterArgs extend
         }
 
         /**
-         * @param attributeName Name of the attribute. Valid values are `category` or `type`.
+         * @param attributeName Name of the attribute. Valid values are `category`, `type` or `labels`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ResourceGroupResourceFilterResourceAttributeFilterArgs extend
         }
 
         /**
-         * @param attributeName Name of the attribute. Valid values are `category` or `type`.
+         * @param attributeName Name of the attribute. Valid values are `category`, `type` or `labels`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ResourceGroupResourceFilterResourceAttributeFilterArgs extend
         }
 
         /**
-         * @param attributeValues Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+         * @param attributeValues Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax &#39;label:value&#39;
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ResourceGroupResourceFilterResourceAttributeFilterArgs extend
         }
 
         /**
-         * @param attributeValues Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+         * @param attributeValues Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax &#39;label:value&#39;
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ResourceGroupResourceFilterResourceAttributeFilterArgs extend
         }
 
         /**
-         * @param attributeValues Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+         * @param attributeValues Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax &#39;label:value&#39;
          * 
          * @return builder
          * 

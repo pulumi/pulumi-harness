@@ -3873,6 +3873,10 @@
                     },
                     "description": "Information about the GitOps application's destination.\n"
                 },
+                "project": {
+                    "type": "string",
+                    "description": "The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.\n"
+                },
                 "sources": {
                     "type": "array",
                     "items": {
@@ -7115,14 +7119,14 @@
             "properties": {
                 "attributeName": {
                     "type": "string",
-                    "description": "Name of the attribute. Valid values are `category` or `type`.\n"
+                    "description": "Name of the attribute. Valid values are `category`, `type` or `labels`.\n"
                 },
                 "attributeValues": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]\n"
+                    "description": "Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'\n"
                 }
             },
             "type": "object"
@@ -9976,6 +9980,10 @@
                         "$ref": "#/types/harness:platform/getGitopsApplicationsApplicationSpecDestination:getGitopsApplicationsApplicationSpecDestination"
                     },
                     "description": "Information about the GitOps application's destination.\n"
+                },
+                "project": {
+                    "type": "string",
+                    "description": "The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.\n"
                 },
                 "sources": {
                     "type": "array",

@@ -3434,6 +3434,10 @@ export namespace platform {
          */
         destinations: outputs.platform.GetGitopsApplicationsApplicationSpecDestination[];
         /**
+         * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         */
+        project?: string;
+        /**
          * Contains all information about the source of a GitOps application.
          */
         sources?: outputs.platform.GetGitopsApplicationsApplicationSpecSource[];
@@ -5473,6 +5477,10 @@ export namespace platform {
          * Information about the GitOps application's destination.
          */
         destinations?: outputs.platform.GitOpsApplicationsApplicationSpecDestination[];
+        /**
+         * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         */
+        project?: string;
         /**
          * Contains all information about the source of the GitOps application.
          */
@@ -7798,11 +7806,11 @@ export namespace platform {
 
     export interface ResourceGroupResourceFilterResourceAttributeFilter {
         /**
-         * Name of the attribute. Valid values are `category` or `type`.
+         * Name of the attribute. Valid values are `category`, `type` or `labels`.
          */
         attributeName?: string;
         /**
-         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
          */
         attributeValues?: string[];
     }

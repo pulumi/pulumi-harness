@@ -3686,15 +3686,19 @@ class GitOpsApplicationsApplicationMetadataOwnerReferenceArgs:
 class GitOpsApplicationsApplicationSpecArgs:
     def __init__(__self__, *,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecDestinationArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]]] = None,
                  sync_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecDestinationArgs']]] destinations: Information about the GitOps application's destination.
+        :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]] sources: Contains all information about the source of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgs']]] sync_policies: Controls when a sync will be performed in response to updates in git.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
         if sync_policies is not None:
@@ -3711,6 +3715,18 @@ class GitOpsApplicationsApplicationSpecArgs:
     @destinations.setter
     def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecDestinationArgs']]]]):
         pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -12341,8 +12357,8 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] attribute_name: Name of the attribute. Valid values are `category` or `type`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] attribute_values: Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+        :param pulumi.Input[str] attribute_name: Name of the attribute. Valid values are `category`, `type` or `labels`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] attribute_values: Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
         """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
@@ -12353,7 +12369,7 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the attribute. Valid values are `category` or `type`.
+        Name of the attribute. Valid values are `category`, `type` or `labels`.
         """
         return pulumi.get(self, "attribute_name")
 
@@ -12365,7 +12381,7 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
     @pulumi.getter(name="attributeValues")
     def attribute_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+        Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
         """
         return pulumi.get(self, "attribute_values")
 

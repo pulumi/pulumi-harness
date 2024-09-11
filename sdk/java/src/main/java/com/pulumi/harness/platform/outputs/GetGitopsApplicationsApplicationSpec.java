@@ -8,8 +8,10 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecDestination;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSource;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSyncPolicy;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -19,6 +21,11 @@ public final class GetGitopsApplicationsApplicationSpec {
      * 
      */
     private List<GetGitopsApplicationsApplicationSpecDestination> destinations;
+    /**
+     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * 
+     */
+    private @Nullable String project;
     /**
      * @return Contains all information about the source of a GitOps application.
      * 
@@ -37,6 +44,13 @@ public final class GetGitopsApplicationsApplicationSpec {
      */
     public List<GetGitopsApplicationsApplicationSpecDestination> destinations() {
         return this.destinations;
+    }
+    /**
+     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * 
+     */
+    public Optional<String> project() {
+        return Optional.ofNullable(this.project);
     }
     /**
      * @return Contains all information about the source of a GitOps application.
@@ -63,12 +77,14 @@ public final class GetGitopsApplicationsApplicationSpec {
     @CustomType.Builder
     public static final class Builder {
         private List<GetGitopsApplicationsApplicationSpecDestination> destinations;
+        private @Nullable String project;
         private @Nullable List<GetGitopsApplicationsApplicationSpecSource> sources;
         private List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
+    	      this.project = defaults.project;
     	      this.sources = defaults.sources;
     	      this.syncPolicies = defaults.syncPolicies;
         }
@@ -83,6 +99,12 @@ public final class GetGitopsApplicationsApplicationSpec {
         }
         public Builder destinations(GetGitopsApplicationsApplicationSpecDestination... destinations) {
             return destinations(List.of(destinations));
+        }
+        @CustomType.Setter
+        public Builder project(@Nullable String project) {
+
+            this.project = project;
+            return this;
         }
         @CustomType.Setter
         public Builder sources(@Nullable List<GetGitopsApplicationsApplicationSpecSource> sources) {
@@ -107,6 +129,7 @@ public final class GetGitopsApplicationsApplicationSpec {
         public GetGitopsApplicationsApplicationSpec build() {
             final var _resultValue = new GetGitopsApplicationsApplicationSpec();
             _resultValue.destinations = destinations;
+            _resultValue.project = project;
             _resultValue.sources = sources;
             _resultValue.syncPolicies = syncPolicies;
             return _resultValue;

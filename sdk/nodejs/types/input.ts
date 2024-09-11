@@ -3908,6 +3908,10 @@ export namespace platform {
          */
         destinations?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecDestination>[]>;
         /**
+         * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         */
+        project?: pulumi.Input<string>;
+        /**
          * Contains all information about the source of the GitOps application.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSource>[]>;
@@ -6232,11 +6236,11 @@ export namespace platform {
 
     export interface ResourceGroupResourceFilterResourceAttributeFilter {
         /**
-         * Name of the attribute. Valid values are `category` or `type`.
+         * Name of the attribute. Valid values are `category`, `type` or `labels`.
          */
         attributeName?: pulumi.Input<string>;
         /**
-         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+         * Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
          */
         attributeValues?: pulumi.Input<pulumi.Input<string>[]>;
     }
