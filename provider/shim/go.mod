@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.7
 
 require (
-	github.com/harness/terraform-provider-harness v0.32.8
+	github.com/harness/terraform-provider-harness v0.32.9
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/pulumi/pulumi-harness/provider v0.0.0-20221227064623-0d00513c0628
 )
