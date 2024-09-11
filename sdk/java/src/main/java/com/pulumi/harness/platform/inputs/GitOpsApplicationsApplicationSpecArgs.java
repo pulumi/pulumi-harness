@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecDestinationArgs;
 import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecSourceArgs;
 import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecSyncPolicyArgs;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,21 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
      */
     public Optional<Output<List<GitOpsApplicationsApplicationSpecDestinationArgs>>> destinations() {
         return Optional.ofNullable(this.destinations);
+    }
+
+    /**
+     * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * 
+     */
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
     }
 
     /**
@@ -67,6 +83,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
 
     private GitOpsApplicationsApplicationSpecArgs(GitOpsApplicationsApplicationSpecArgs $) {
         this.destinations = $.destinations;
+        this.project = $.project;
         this.sources = $.sources;
         this.syncPolicies = $.syncPolicies;
     }
@@ -118,6 +135,27 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
          */
         public Builder destinations(GitOpsApplicationsApplicationSpecDestinationArgs... destinations) {
             return destinations(List.of(destinations));
+        }
+
+        /**
+         * @param project The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         /**

@@ -4071,15 +4071,19 @@ class GitOpsApplicationsApplicationSpec(dict):
 
     def __init__(__self__, *,
                  destinations: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecDestination']] = None,
+                 project: Optional[str] = None,
                  sources: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSource']] = None,
                  sync_policies: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSyncPolicy']] = None):
         """
         :param Sequence['GitOpsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
+        :param str project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param Sequence['GitOpsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of the GitOps application.
         :param Sequence['GitOpsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
         if sync_policies is not None:
@@ -4092,6 +4096,14 @@ class GitOpsApplicationsApplicationSpec(dict):
         Information about the GitOps application's destination.
         """
         return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        """
+        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        """
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
@@ -12522,8 +12534,8 @@ class ResourceGroupResourceFilterResourceAttributeFilter(dict):
                  attribute_name: Optional[str] = None,
                  attribute_values: Optional[Sequence[str]] = None):
         """
-        :param str attribute_name: Name of the attribute. Valid values are `category` or `type`.
-        :param Sequence[str] attribute_values: Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+        :param str attribute_name: Name of the attribute. Valid values are `category`, `type` or `labels`.
+        :param Sequence[str] attribute_values: Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
         """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
@@ -12534,7 +12546,7 @@ class ResourceGroupResourceFilterResourceAttributeFilter(dict):
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[str]:
         """
-        Name of the attribute. Valid values are `category` or `type`.
+        Name of the attribute. Valid values are `category`, `type` or `labels`.
         """
         return pulumi.get(self, "attribute_name")
 
@@ -12542,7 +12554,7 @@ class ResourceGroupResourceFilterResourceAttributeFilter(dict):
     @pulumi.getter(name="attributeValues")
     def attribute_values(self) -> Optional[Sequence[str]]:
         """
-        Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+        Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
         """
         return pulumi.get(self, "attribute_values")
 
@@ -17734,14 +17746,18 @@ class GetGitopsApplicationsApplicationSpecResult(dict):
     def __init__(__self__, *,
                  destinations: Sequence['outputs.GetGitopsApplicationsApplicationSpecDestinationResult'],
                  sync_policies: Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyResult'],
+                 project: Optional[str] = None,
                  sources: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']] = None):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
         :param Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
+        :param str project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of a GitOps application.
         """
         pulumi.set(__self__, "destinations", destinations)
         pulumi.set(__self__, "sync_policies", sync_policies)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
 
@@ -17760,6 +17776,14 @@ class GetGitopsApplicationsApplicationSpecResult(dict):
         Controls when a sync will be performed in response to updates in git.
         """
         return pulumi.get(self, "sync_policies")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        """
+        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        """
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

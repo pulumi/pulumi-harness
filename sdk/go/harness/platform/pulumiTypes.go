@@ -10105,6 +10105,8 @@ func (o GitOpsApplicationsApplicationMetadataOwnerReferenceArrayOutput) Index(i 
 type GitOpsApplicationsApplicationSpec struct {
 	// Information about the GitOps application's destination.
 	Destinations []GitOpsApplicationsApplicationSpecDestination `pulumi:"destinations"`
+	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	Project *string `pulumi:"project"`
 	// Contains all information about the source of the GitOps application.
 	Sources []GitOpsApplicationsApplicationSpecSource `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
@@ -10125,6 +10127,8 @@ type GitOpsApplicationsApplicationSpecInput interface {
 type GitOpsApplicationsApplicationSpecArgs struct {
 	// Information about the GitOps application's destination.
 	Destinations GitOpsApplicationsApplicationSpecDestinationArrayInput `pulumi:"destinations"`
+	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Contains all information about the source of the GitOps application.
 	Sources GitOpsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
@@ -10187,6 +10191,11 @@ func (o GitOpsApplicationsApplicationSpecOutput) Destinations() GitOpsApplicatio
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) []GitOpsApplicationsApplicationSpecDestination {
 		return v.Destinations
 	}).(GitOpsApplicationsApplicationSpecDestinationArrayOutput)
+}
+
+// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+func (o GitOpsApplicationsApplicationSpecOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Contains all information about the source of the GitOps application.
@@ -28486,9 +28495,9 @@ func (o ResourceGroupResourceFilterResourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ResourceGroupResourceFilterResourceAttributeFilter struct {
-	// Name of the attribute. Valid values are `category` or `type`.
+	// Name of the attribute. Valid values are `category`, `type` or `labels`.
 	AttributeName *string `pulumi:"attributeName"`
-	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
 	AttributeValues []string `pulumi:"attributeValues"`
 }
 
@@ -28504,9 +28513,9 @@ type ResourceGroupResourceFilterResourceAttributeFilterInput interface {
 }
 
 type ResourceGroupResourceFilterResourceAttributeFilterArgs struct {
-	// Name of the attribute. Valid values are `category` or `type`.
+	// Name of the attribute. Valid values are `category`, `type` or `labels`.
 	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
-	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
 	AttributeValues pulumi.StringArrayInput `pulumi:"attributeValues"`
 }
 
@@ -28561,12 +28570,12 @@ func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) ToResourceGrou
 	return o
 }
 
-// Name of the attribute. Valid values are `category` or `type`.
+// Name of the attribute. Valid values are `category`, `type` or `labels`.
 func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
-// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING] and for `type` are [Production,PreProduction]
+// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
 func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) []string { return v.AttributeValues }).(pulumi.StringArrayOutput)
 }
@@ -43070,6 +43079,8 @@ func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceArrayOutput) Index
 type GetGitopsApplicationsApplicationSpec struct {
 	// Information about the GitOps application's destination.
 	Destinations []GetGitopsApplicationsApplicationSpecDestination `pulumi:"destinations"`
+	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	Project *string `pulumi:"project"`
 	// Contains all information about the source of a GitOps application.
 	Sources []GetGitopsApplicationsApplicationSpecSource `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
@@ -43090,6 +43101,8 @@ type GetGitopsApplicationsApplicationSpecInput interface {
 type GetGitopsApplicationsApplicationSpecArgs struct {
 	// Information about the GitOps application's destination.
 	Destinations GetGitopsApplicationsApplicationSpecDestinationArrayInput `pulumi:"destinations"`
+	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Contains all information about the source of a GitOps application.
 	Sources GetGitopsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
@@ -43152,6 +43165,11 @@ func (o GetGitopsApplicationsApplicationSpecOutput) Destinations() GetGitopsAppl
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) []GetGitopsApplicationsApplicationSpecDestination {
 		return v.Destinations
 	}).(GetGitopsApplicationsApplicationSpecDestinationArrayOutput)
+}
+
+// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+func (o GetGitopsApplicationsApplicationSpecOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Contains all information about the source of a GitOps application.
