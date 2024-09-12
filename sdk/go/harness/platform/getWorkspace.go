@@ -64,8 +64,10 @@ type LookupWorkspaceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// Repository Branch in which the code should be accessed
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
-	// Repository Commit/Tag in which the code should be accessed
-	RepositoryCommit       *string                             `pulumi:"repositoryCommit"`
+	// Repository Tag in which the code should be accessed
+	RepositoryCommit *string `pulumi:"repositoryCommit"`
+	// Repository SHA in which the code should be accessed
+	RepositorySha          *string                             `pulumi:"repositorySha"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
 }
@@ -99,12 +101,14 @@ type LookupWorkspaceResult struct {
 	Repository string `pulumi:"repository"`
 	// Repository Branch in which the code should be accessed
 	RepositoryBranch string `pulumi:"repositoryBranch"`
-	// Repository Commit/Tag in which the code should be accessed
+	// Repository Tag in which the code should be accessed
 	RepositoryCommit string `pulumi:"repositoryCommit"`
 	// Repository Connector is the reference to the connector to use for this code
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository Path is the path in which the infra code resides
-	RepositoryPath         string                              `pulumi:"repositoryPath"`
+	RepositoryPath string `pulumi:"repositoryPath"`
+	// Repository SHA in which the code should be accessed
+	RepositorySha          string                              `pulumi:"repositorySha"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
 }
@@ -136,8 +140,10 @@ type LookupWorkspaceOutputArgs struct {
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Repository Branch in which the code should be accessed
 	RepositoryBranch pulumi.StringPtrInput `pulumi:"repositoryBranch"`
-	// Repository Commit/Tag in which the code should be accessed
-	RepositoryCommit       pulumi.StringPtrInput                       `pulumi:"repositoryCommit"`
+	// Repository Tag in which the code should be accessed
+	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
+	// Repository SHA in which the code should be accessed
+	RepositorySha          pulumi.StringPtrInput                       `pulumi:"repositorySha"`
 	TerraformVariableFiles GetWorkspaceTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     GetWorkspaceTerraformVariableArrayInput     `pulumi:"terraformVariables"`
 }
@@ -230,7 +236,7 @@ func (o LookupWorkspaceResultOutput) RepositoryBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositoryBranch }).(pulumi.StringOutput)
 }
 
-// Repository Commit/Tag in which the code should be accessed
+// Repository Tag in which the code should be accessed
 func (o LookupWorkspaceResultOutput) RepositoryCommit() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositoryCommit }).(pulumi.StringOutput)
 }
@@ -243,6 +249,11 @@ func (o LookupWorkspaceResultOutput) RepositoryConnector() pulumi.StringOutput {
 // Repository Path is the path in which the infra code resides
 func (o LookupWorkspaceResultOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositoryPath }).(pulumi.StringOutput)
+}
+
+// Repository SHA in which the code should be accessed
+func (o LookupWorkspaceResultOutput) RepositorySha() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositorySha }).(pulumi.StringOutput)
 }
 
 func (o LookupWorkspaceResultOutput) TerraformVariableFiles() GetWorkspaceTerraformVariableFileArrayOutput {

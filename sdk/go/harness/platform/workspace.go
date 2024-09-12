@@ -74,7 +74,13 @@ import (
 //					},
 //					&platform.WorkspaceTerraformVariableFileArgs{
 //						Repository:          pulumi.String("https://github.com/org/repo"),
-//						RepositoryCommit:    pulumi.String("349d90bb9c90f4a3482981c259080de31609e6f6"),
+//						RepositoryCommit:    pulumi.String("v1.0.0"),
+//						RepositoryPath:      pulumi.String("tf/aws/basic"),
+//						RepositoryConnector: pulumi.Any(test.Id),
+//					},
+//					&platform.WorkspaceTerraformVariableFileArgs{
+//						Repository:          pulumi.String("https://github.com/org/repo"),
+//						RepositorySha:       pulumi.String("349d90bb9c90f4a3482981c259080de31609e6f6"),
 //						RepositoryPath:      pulumi.String("tf/aws/basic"),
 //						RepositoryConnector: pulumi.Any(test.Id),
 //					},
@@ -119,14 +125,16 @@ type Workspace struct {
 	ProvisionerVersion pulumi.StringOutput `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringOutput `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
 	RepositoryBranch pulumi.StringPtrOutput `pulumi:"repositoryBranch"`
-	// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit pulumi.StringPtrOutput `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the code.
 	RepositoryConnector pulumi.StringOutput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the code resides.
 	RepositoryPath pulumi.StringOutput `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	RepositorySha pulumi.StringPtrOutput `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
 	Tags                   pulumi.StringArrayOutput                  `pulumi:"tags"`
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayOutput `pulumi:"terraformVariableFiles"`
@@ -215,14 +223,16 @@ type workspaceState struct {
 	ProvisionerVersion *string `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository *string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
-	// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the code.
 	RepositoryConnector *string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the code resides.
 	RepositoryPath *string `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	RepositorySha *string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
 	Tags                   []string                         `pulumi:"tags"`
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
@@ -252,14 +262,16 @@ type WorkspaceState struct {
 	ProvisionerVersion pulumi.StringPtrInput
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringPtrInput
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
 	RepositoryBranch pulumi.StringPtrInput
-	// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit pulumi.StringPtrInput
 	// Repository connector is the reference to the connector used to fetch the code.
 	RepositoryConnector pulumi.StringPtrInput
 	// Repository path is the path in which the code resides.
 	RepositoryPath pulumi.StringPtrInput
+	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	RepositorySha pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags                   pulumi.StringArrayInput
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
@@ -293,14 +305,16 @@ type workspaceArgs struct {
 	ProvisionerVersion string `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
-	// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the code.
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the code resides.
 	RepositoryPath string `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	RepositorySha *string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
 	Tags                   []string                         `pulumi:"tags"`
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
@@ -331,14 +345,16 @@ type WorkspaceArgs struct {
 	ProvisionerVersion pulumi.StringInput
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringInput
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
 	RepositoryBranch pulumi.StringPtrInput
-	// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit pulumi.StringPtrInput
 	// Repository connector is the reference to the connector used to fetch the code.
 	RepositoryConnector pulumi.StringInput
 	// Repository path is the path in which the code resides.
 	RepositoryPath pulumi.StringInput
+	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	RepositorySha pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags                   pulumi.StringArrayInput
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
@@ -490,12 +506,12 @@ func (o WorkspaceOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Repository }).(pulumi.StringOutput)
 }
 
-// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
 func (o WorkspaceOutput) RepositoryBranch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositoryBranch }).(pulumi.StringPtrOutput)
 }
 
-// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
 func (o WorkspaceOutput) RepositoryCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositoryCommit }).(pulumi.StringPtrOutput)
 }
@@ -508,6 +524,11 @@ func (o WorkspaceOutput) RepositoryConnector() pulumi.StringOutput {
 // Repository path is the path in which the code resides.
 func (o WorkspaceOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.RepositoryPath }).(pulumi.StringOutput)
+}
+
+// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+func (o WorkspaceOutput) RepositorySha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositorySha }).(pulumi.StringPtrOutput)
 }
 
 // Tags to associate with the resource.

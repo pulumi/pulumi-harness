@@ -19,13 +19,13 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> Repository { get; set; } = null!;
 
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        /// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
         /// </summary>
         [Input("repositoryBranch")]
         public Input<string>? RepositoryBranch { get; set; }
 
         /// <summary>
-        /// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        /// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         /// </summary>
         [Input("repositoryCommit")]
         public Input<string>? RepositoryCommit { get; set; }
@@ -41,6 +41,12 @@ namespace Pulumi.Harness.Platform.Inputs
         /// </summary>
         [Input("repositoryPath")]
         public Input<string>? RepositoryPath { get; set; }
+
+        /// <summary>
+        /// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        /// </summary>
+        [Input("repositorySha")]
+        public Input<string>? RepositorySha { get; set; }
 
         public WorkspaceTerraformVariableFileArgs()
         {

@@ -14678,13 +14678,15 @@ class WorkspaceTerraformVariableFileArgs:
                  repository_connector: pulumi.Input[str],
                  repository_branch: Optional[pulumi.Input[str]] = None,
                  repository_commit: Optional[pulumi.Input[str]] = None,
-                 repository_path: Optional[pulumi.Input[str]] = None):
+                 repository_path: Optional[pulumi.Input[str]] = None,
+                 repository_sha: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[str] repository_connector: Repository connector is the reference to the connector used to fetch the variables.
-        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
-        :param pulumi.Input[str] repository_commit: Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        :param pulumi.Input[str] repository_commit: Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[str] repository_path: Repository path is the path in which the variables reside.
+        :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
         """
         pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "repository_connector", repository_connector)
@@ -14694,6 +14696,8 @@ class WorkspaceTerraformVariableFileArgs:
             pulumi.set(__self__, "repository_commit", repository_commit)
         if repository_path is not None:
             pulumi.set(__self__, "repository_path", repository_path)
+        if repository_sha is not None:
+            pulumi.set(__self__, "repository_sha", repository_sha)
 
     @property
     @pulumi.getter
@@ -14723,7 +14727,7 @@ class WorkspaceTerraformVariableFileArgs:
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
         """
         return pulumi.get(self, "repository_branch")
 
@@ -14735,7 +14739,7 @@ class WorkspaceTerraformVariableFileArgs:
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         """
         return pulumi.get(self, "repository_commit")
 
@@ -14754,6 +14758,18 @@ class WorkspaceTerraformVariableFileArgs:
     @repository_path.setter
     def repository_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository_path", value)
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+        return pulumi.get(self, "repository_sha")
+
+    @repository_sha.setter
+    def repository_sha(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_sha", value)
 
 
 @pulumi.input_type
@@ -16678,19 +16694,22 @@ class GetWorkspaceTerraformVariableFileArgs:
                  repository_branch: str,
                  repository_commit: str,
                  repository_connector: str,
-                 repository_path: str):
+                 repository_path: str,
+                 repository_sha: str):
         """
         :param str repository: Repository is the name of the repository to fetch the code from.
-        :param str repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
-        :param str repository_commit: Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        :param str repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        :param str repository_commit: Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         :param str repository_connector: Repository connector is the reference to the connector used to fetch the variables.
         :param str repository_path: Repository path is the path in which the variables reside.
+        :param str repository_sha: Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
         """
         pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "repository_branch", repository_branch)
         pulumi.set(__self__, "repository_commit", repository_commit)
         pulumi.set(__self__, "repository_connector", repository_connector)
         pulumi.set(__self__, "repository_path", repository_path)
+        pulumi.set(__self__, "repository_sha", repository_sha)
 
     @property
     @pulumi.getter
@@ -16708,7 +16727,7 @@ class GetWorkspaceTerraformVariableFileArgs:
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> str:
         """
-        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
         """
         return pulumi.get(self, "repository_branch")
 
@@ -16720,7 +16739,7 @@ class GetWorkspaceTerraformVariableFileArgs:
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> str:
         """
-        Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         """
         return pulumi.get(self, "repository_commit")
 
@@ -16751,5 +16770,17 @@ class GetWorkspaceTerraformVariableFileArgs:
     @repository_path.setter
     def repository_path(self, value: str):
         pulumi.set(self, "repository_path", value)
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> str:
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+        return pulumi.get(self, "repository_sha")
+
+    @repository_sha.setter
+    def repository_sha(self, value: str):
+        pulumi.set(self, "repository_sha", value)
 
 

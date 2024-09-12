@@ -18,11 +18,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Repository;
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+        /// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
         /// </summary>
         public readonly string RepositoryBranch;
         /// <summary>
-        /// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+        /// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         /// </summary>
         public readonly string RepositoryCommit;
         /// <summary>
@@ -33,6 +33,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Repository path is the path in which the variables reside.
         /// </summary>
         public readonly string RepositoryPath;
+        /// <summary>
+        /// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        /// </summary>
+        public readonly string RepositorySha;
 
         [OutputConstructor]
         private GetWorkspaceTerraformVariableFileResult(
@@ -44,13 +48,16 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string repositoryConnector,
 
-            string repositoryPath)
+            string repositoryPath,
+
+            string repositorySha)
         {
             Repository = repository;
             RepositoryBranch = repositoryBranch;
             RepositoryCommit = repositoryCommit;
             RepositoryConnector = repositoryConnector;
             RepositoryPath = repositoryPath;
+            RepositorySha = repositorySha;
         }
     }
 }

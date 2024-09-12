@@ -46,6 +46,8 @@ if typing.TYPE_CHECKING:
     cloudprovider = __cloudprovider
     import pulumi_harness.config as __config
     config = __config
+    import pulumi_harness.governance as __governance
+    governance = __governance
     import pulumi_harness.platform as __platform
     platform = __platform
     import pulumi_harness.service as __service
@@ -54,6 +56,7 @@ else:
     autostopping = _utilities.lazy_import('pulumi_harness.autostopping')
     cloudprovider = _utilities.lazy_import('pulumi_harness.cloudprovider')
     config = _utilities.lazy_import('pulumi_harness.config')
+    governance = _utilities.lazy_import('pulumi_harness.governance')
     platform = _utilities.lazy_import('pulumi_harness.platform')
     service = _utilities.lazy_import('pulumi_harness.service')
 
@@ -186,6 +189,14 @@ _utilities.register(
   "fqn": "pulumi_harness.cloudprovider",
   "classes": {
    "harness:cloudprovider/tanzu:Tanzu": "Tanzu"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "governance/ruleEnforcement",
+  "fqn": "pulumi_harness.governance",
+  "classes": {
+   "harness:governance/ruleEnforcement:RuleEnforcement": "RuleEnforcement"
   }
  },
  {

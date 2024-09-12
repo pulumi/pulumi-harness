@@ -33,6 +33,7 @@ export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions
         "projectId": args.projectId,
         "repositoryBranch": args.repositoryBranch,
         "repositoryCommit": args.repositoryCommit,
+        "repositorySha": args.repositorySha,
         "terraformVariableFiles": args.terraformVariableFiles,
         "terraformVariables": args.terraformVariables,
     }, opts);
@@ -67,9 +68,13 @@ export interface GetWorkspaceArgs {
      */
     repositoryBranch?: string;
     /**
-     * Repository Commit/Tag in which the code should be accessed
+     * Repository Tag in which the code should be accessed
      */
     repositoryCommit?: string;
+    /**
+     * Repository SHA in which the code should be accessed
+     */
+    repositorySha?: string;
     terraformVariableFiles?: inputs.platform.GetWorkspaceTerraformVariableFile[];
     terraformVariables?: inputs.platform.GetWorkspaceTerraformVariable[];
 }
@@ -132,7 +137,7 @@ export interface GetWorkspaceResult {
      */
     readonly repositoryBranch: string;
     /**
-     * Repository Commit/Tag in which the code should be accessed
+     * Repository Tag in which the code should be accessed
      */
     readonly repositoryCommit: string;
     /**
@@ -143,6 +148,10 @@ export interface GetWorkspaceResult {
      * Repository Path is the path in which the infra code resides
      */
     readonly repositoryPath: string;
+    /**
+     * Repository SHA in which the code should be accessed
+     */
+    readonly repositorySha: string;
     readonly terraformVariableFiles: outputs.platform.GetWorkspaceTerraformVariableFile[];
     readonly terraformVariables: outputs.platform.GetWorkspaceTerraformVariable[];
 }
@@ -195,9 +204,13 @@ export interface GetWorkspaceOutputArgs {
      */
     repositoryBranch?: pulumi.Input<string>;
     /**
-     * Repository Commit/Tag in which the code should be accessed
+     * Repository Tag in which the code should be accessed
      */
     repositoryCommit?: pulumi.Input<string>;
+    /**
+     * Repository SHA in which the code should be accessed
+     */
+    repositorySha?: pulumi.Input<string>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[]>;
 }

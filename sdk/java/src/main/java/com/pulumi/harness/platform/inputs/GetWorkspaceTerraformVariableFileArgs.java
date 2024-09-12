@@ -30,14 +30,14 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
     }
 
     /**
-     * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+     * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
      * 
      */
     @Import(name="repositoryBranch", required=true)
     private Output<String> repositoryBranch;
 
     /**
-     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
      * 
      */
     public Output<String> repositoryBranch() {
@@ -45,14 +45,14 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
     }
 
     /**
-     * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+     * Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
      * 
      */
     @Import(name="repositoryCommit", required=true)
     private Output<String> repositoryCommit;
 
     /**
-     * @return Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+     * @return Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
      * 
      */
     public Output<String> repositoryCommit() {
@@ -89,6 +89,21 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
         return this.repositoryPath;
     }
 
+    /**
+     * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    @Import(name="repositorySha", required=true)
+    private Output<String> repositorySha;
+
+    /**
+     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    public Output<String> repositorySha() {
+        return this.repositorySha;
+    }
+
     private GetWorkspaceTerraformVariableFileArgs() {}
 
     private GetWorkspaceTerraformVariableFileArgs(GetWorkspaceTerraformVariableFileArgs $) {
@@ -97,6 +112,7 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
         this.repositoryCommit = $.repositoryCommit;
         this.repositoryConnector = $.repositoryConnector;
         this.repositoryPath = $.repositoryPath;
+        this.repositorySha = $.repositorySha;
     }
 
     public static Builder builder() {
@@ -139,7 +155,7 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
          * 
          * @return builder
          * 
@@ -150,7 +166,7 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
          * 
          * @return builder
          * 
@@ -160,7 +176,7 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param repositoryCommit Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         * @param repositoryCommit Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
          * 
          * @return builder
          * 
@@ -171,7 +187,7 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
         }
 
         /**
-         * @param repositoryCommit Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         * @param repositoryCommit Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
          * 
          * @return builder
          * 
@@ -222,6 +238,27 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
             return repositoryPath(Output.of(repositoryPath));
         }
 
+        /**
+         * @param repositorySha Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repositorySha(Output<String> repositorySha) {
+            $.repositorySha = repositorySha;
+            return this;
+        }
+
+        /**
+         * @param repositorySha Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repositorySha(String repositorySha) {
+            return repositorySha(Output.of(repositorySha));
+        }
+
         public GetWorkspaceTerraformVariableFileArgs build() {
             if ($.repository == null) {
                 throw new MissingRequiredPropertyException("GetWorkspaceTerraformVariableFileArgs", "repository");
@@ -237,6 +274,9 @@ public final class GetWorkspaceTerraformVariableFileArgs extends com.pulumi.reso
             }
             if ($.repositoryPath == null) {
                 throw new MissingRequiredPropertyException("GetWorkspaceTerraformVariableFileArgs", "repositoryPath");
+            }
+            if ($.repositorySha == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceTerraformVariableFileArgs", "repositorySha");
             }
             return $;
         }

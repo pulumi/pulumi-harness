@@ -32,14 +32,14 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
     }
 
     /**
-     * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+     * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
      * 
      */
     @Import(name="repositoryBranch")
     private @Nullable Output<String> repositoryBranch;
 
     /**
-     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
      * 
      */
     public Optional<Output<String>> repositoryBranch() {
@@ -47,14 +47,14 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
     }
 
     /**
-     * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+     * Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
      * 
      */
     @Import(name="repositoryCommit")
     private @Nullable Output<String> repositoryCommit;
 
     /**
-     * @return Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+     * @return Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
      * 
      */
     public Optional<Output<String>> repositoryCommit() {
@@ -91,6 +91,21 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.repositoryPath);
     }
 
+    /**
+     * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    @Import(name="repositorySha")
+    private @Nullable Output<String> repositorySha;
+
+    /**
+     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    public Optional<Output<String>> repositorySha() {
+        return Optional.ofNullable(this.repositorySha);
+    }
+
     private WorkspaceTerraformVariableFileArgs() {}
 
     private WorkspaceTerraformVariableFileArgs(WorkspaceTerraformVariableFileArgs $) {
@@ -99,6 +114,7 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
         this.repositoryCommit = $.repositoryCommit;
         this.repositoryConnector = $.repositoryConnector;
         this.repositoryPath = $.repositoryPath;
+        this.repositorySha = $.repositorySha;
     }
 
     public static Builder builder() {
@@ -141,7 +157,7 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
          * 
          * @return builder
          * 
@@ -152,7 +168,7 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         * @param repositoryBranch Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
          * 
          * @return builder
          * 
@@ -162,7 +178,7 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param repositoryCommit Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         * @param repositoryCommit Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
          * 
          * @return builder
          * 
@@ -173,7 +189,7 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param repositoryCommit Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         * @param repositoryCommit Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
          * 
          * @return builder
          * 
@@ -222,6 +238,27 @@ public final class WorkspaceTerraformVariableFileArgs extends com.pulumi.resourc
          */
         public Builder repositoryPath(String repositoryPath) {
             return repositoryPath(Output.of(repositoryPath));
+        }
+
+        /**
+         * @param repositorySha Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repositorySha(@Nullable Output<String> repositorySha) {
+            $.repositorySha = repositorySha;
+            return this;
+        }
+
+        /**
+         * @param repositorySha Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repositorySha(String repositorySha) {
+            return repositorySha(Output.of(repositorySha));
         }
 
         public WorkspaceTerraformVariableFileArgs build() {

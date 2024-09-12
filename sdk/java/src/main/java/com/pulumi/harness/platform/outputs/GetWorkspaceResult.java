@@ -83,7 +83,7 @@ public final class GetWorkspaceResult {
      */
     private String repositoryBranch;
     /**
-     * @return Repository Commit/Tag in which the code should be accessed
+     * @return Repository Tag in which the code should be accessed
      * 
      */
     private String repositoryCommit;
@@ -97,6 +97,11 @@ public final class GetWorkspaceResult {
      * 
      */
     private String repositoryPath;
+    /**
+     * @return Repository SHA in which the code should be accessed
+     * 
+     */
+    private String repositorySha;
     private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
     private List<GetWorkspaceTerraformVariable> terraformVariables;
 
@@ -196,7 +201,7 @@ public final class GetWorkspaceResult {
         return this.repositoryBranch;
     }
     /**
-     * @return Repository Commit/Tag in which the code should be accessed
+     * @return Repository Tag in which the code should be accessed
      * 
      */
     public String repositoryCommit() {
@@ -215,6 +220,13 @@ public final class GetWorkspaceResult {
      */
     public String repositoryPath() {
         return this.repositoryPath;
+    }
+    /**
+     * @return Repository SHA in which the code should be accessed
+     * 
+     */
+    public String repositorySha() {
+        return this.repositorySha;
     }
     public List<GetWorkspaceTerraformVariableFile> terraformVariableFiles() {
         return this.terraformVariableFiles;
@@ -249,6 +261,7 @@ public final class GetWorkspaceResult {
         private String repositoryCommit;
         private String repositoryConnector;
         private String repositoryPath;
+        private String repositorySha;
         private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
         private List<GetWorkspaceTerraformVariable> terraformVariables;
         public Builder() {}
@@ -271,6 +284,7 @@ public final class GetWorkspaceResult {
     	      this.repositoryCommit = defaults.repositoryCommit;
     	      this.repositoryConnector = defaults.repositoryConnector;
     	      this.repositoryPath = defaults.repositoryPath;
+    	      this.repositorySha = defaults.repositorySha;
     	      this.terraformVariableFiles = defaults.terraformVariableFiles;
     	      this.terraformVariables = defaults.terraformVariables;
         }
@@ -415,6 +429,14 @@ public final class GetWorkspaceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder repositorySha(String repositorySha) {
+            if (repositorySha == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceResult", "repositorySha");
+            }
+            this.repositorySha = repositorySha;
+            return this;
+        }
+        @CustomType.Setter
         public Builder terraformVariableFiles(List<GetWorkspaceTerraformVariableFile> terraformVariableFiles) {
             if (terraformVariableFiles == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceResult", "terraformVariableFiles");
@@ -455,6 +477,7 @@ public final class GetWorkspaceResult {
             _resultValue.repositoryCommit = repositoryCommit;
             _resultValue.repositoryConnector = repositoryConnector;
             _resultValue.repositoryPath = repositoryPath;
+            _resultValue.repositorySha = repositorySha;
             _resultValue.terraformVariableFiles = terraformVariableFiles;
             _resultValue.terraformVariables = terraformVariables;
             return _resultValue;
