@@ -34519,14 +34519,16 @@ func (o WorkspaceTerraformVariableArrayOutput) Index(i pulumi.IntInput) Workspac
 type WorkspaceTerraformVariableFile struct {
 	// Repository is the name of the repository to fetch the code from.
 	Repository string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
-	// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the variables.
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath *string `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha *string `pulumi:"repositorySha"`
 }
 
 // WorkspaceTerraformVariableFileInput is an input type that accepts WorkspaceTerraformVariableFileArgs and WorkspaceTerraformVariableFileOutput values.
@@ -34543,14 +34545,16 @@ type WorkspaceTerraformVariableFileInput interface {
 type WorkspaceTerraformVariableFileArgs struct {
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringInput `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
 	RepositoryBranch pulumi.StringPtrInput `pulumi:"repositoryBranch"`
-	// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the variables.
 	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
 }
 
 func (WorkspaceTerraformVariableFileArgs) ElementType() reflect.Type {
@@ -34609,12 +34613,12 @@ func (o WorkspaceTerraformVariableFileOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkspaceTerraformVariableFile) string { return v.Repository }).(pulumi.StringOutput)
 }
 
-// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
 func (o WorkspaceTerraformVariableFileOutput) RepositoryBranch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceTerraformVariableFile) *string { return v.RepositoryBranch }).(pulumi.StringPtrOutput)
 }
 
-// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
 func (o WorkspaceTerraformVariableFileOutput) RepositoryCommit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceTerraformVariableFile) *string { return v.RepositoryCommit }).(pulumi.StringPtrOutput)
 }
@@ -34627,6 +34631,11 @@ func (o WorkspaceTerraformVariableFileOutput) RepositoryConnector() pulumi.Strin
 // Repository path is the path in which the variables reside.
 func (o WorkspaceTerraformVariableFileOutput) RepositoryPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceTerraformVariableFile) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
+}
+
+// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+func (o WorkspaceTerraformVariableFileOutput) RepositorySha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceTerraformVariableFile) *string { return v.RepositorySha }).(pulumi.StringPtrOutput)
 }
 
 type WorkspaceTerraformVariableFileArrayOutput struct{ *pulumi.OutputState }
@@ -56303,14 +56312,16 @@ func (o GetWorkspaceTerraformVariableArrayOutput) Index(i pulumi.IntInput) GetWo
 type GetWorkspaceTerraformVariableFile struct {
 	// Repository is the name of the repository to fetch the code from.
 	Repository string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
 	RepositoryBranch string `pulumi:"repositoryBranch"`
-	// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit string `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the variables.
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath string `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha string `pulumi:"repositorySha"`
 }
 
 // GetWorkspaceTerraformVariableFileInput is an input type that accepts GetWorkspaceTerraformVariableFileArgs and GetWorkspaceTerraformVariableFileOutput values.
@@ -56327,14 +56338,16 @@ type GetWorkspaceTerraformVariableFileInput interface {
 type GetWorkspaceTerraformVariableFileArgs struct {
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringInput `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
 	RepositoryBranch pulumi.StringInput `pulumi:"repositoryBranch"`
-	// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
 	RepositoryCommit pulumi.StringInput `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the variables.
 	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha pulumi.StringInput `pulumi:"repositorySha"`
 }
 
 func (GetWorkspaceTerraformVariableFileArgs) ElementType() reflect.Type {
@@ -56393,12 +56406,12 @@ func (o GetWorkspaceTerraformVariableFileOutput) Repository() pulumi.StringOutpu
 	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.Repository }).(pulumi.StringOutput)
 }
 
-// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
 func (o GetWorkspaceTerraformVariableFileOutput) RepositoryBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryBranch }).(pulumi.StringOutput)
 }
 
-// Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
 func (o GetWorkspaceTerraformVariableFileOutput) RepositoryCommit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryCommit }).(pulumi.StringOutput)
 }
@@ -56411,6 +56424,11 @@ func (o GetWorkspaceTerraformVariableFileOutput) RepositoryConnector() pulumi.St
 // Repository path is the path in which the variables reside.
 func (o GetWorkspaceTerraformVariableFileOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryPath }).(pulumi.StringOutput)
+}
+
+// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+func (o GetWorkspaceTerraformVariableFileOutput) RepositorySha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositorySha }).(pulumi.StringOutput)
 }
 
 type GetWorkspaceTerraformVariableFileArrayOutput struct{ *pulumi.OutputState }

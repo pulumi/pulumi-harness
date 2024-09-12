@@ -39,6 +39,7 @@ var moduleMap = map[string]string{
 	"platform":      platformMod,
 	"service":       serviceMod,
 	"autostopping":  autostoppingMod,
+	"governance":    "governance",
 }
 
 // harnessMember manufactures a type token for the Harness package and the given module and type.

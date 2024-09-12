@@ -280,6 +280,23 @@
                     }
                 }
             },
+            "harness_governance_rule_enforcement": {
+                "current": "harness:governance/ruleEnforcement:RuleEnforcement",
+                "fields": {
+                    "rule_ids": {
+                        "maxItemsOne": false
+                    },
+                    "rule_set_ids": {
+                        "maxItemsOne": false
+                    },
+                    "target_accounts": {
+                        "maxItemsOne": false
+                    },
+                    "target_regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_infrastructure_definition": {
                 "current": "harness:index/infrastructureDefinition:InfrastructureDefinition",
                 "fields": {
@@ -3053,6 +3070,17 @@
                         "maxItemsOne": false
                     },
                     "delegate_selectors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_governance_rule_enforcement": {
+                "current": "harness:governance/getRuleEnforcement:getRuleEnforcement",
+                "fields": {
+                    "target_accounts": {
+                        "maxItemsOne": false
+                    },
+                    "target_regions": {
                         "maxItemsOne": false
                     }
                 }

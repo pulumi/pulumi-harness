@@ -23,7 +23,7 @@ class GetWorkspaceResult:
     """
     A collection of values returned by getWorkspace.
     """
-    def __init__(__self__, cost_estimation_enabled=None, default_pipelines=None, description=None, environment_variables=None, id=None, identifier=None, name=None, org_id=None, project_id=None, provider_connector=None, provisioner_type=None, provisioner_version=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, terraform_variable_files=None, terraform_variables=None):
+    def __init__(__self__, cost_estimation_enabled=None, default_pipelines=None, description=None, environment_variables=None, id=None, identifier=None, name=None, org_id=None, project_id=None, provider_connector=None, provisioner_type=None, provisioner_version=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_sha=None, terraform_variable_files=None, terraform_variables=None):
         if cost_estimation_enabled and not isinstance(cost_estimation_enabled, bool):
             raise TypeError("Expected argument 'cost_estimation_enabled' to be a bool")
         pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
@@ -75,6 +75,9 @@ class GetWorkspaceResult:
         if repository_path and not isinstance(repository_path, str):
             raise TypeError("Expected argument 'repository_path' to be a str")
         pulumi.set(__self__, "repository_path", repository_path)
+        if repository_sha and not isinstance(repository_sha, str):
+            raise TypeError("Expected argument 'repository_sha' to be a str")
+        pulumi.set(__self__, "repository_sha", repository_sha)
         if terraform_variable_files and not isinstance(terraform_variable_files, list):
             raise TypeError("Expected argument 'terraform_variable_files' to be a list")
         pulumi.set(__self__, "terraform_variable_files", terraform_variable_files)
@@ -195,7 +198,7 @@ class GetWorkspaceResult:
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> str:
         """
-        Repository Commit/Tag in which the code should be accessed
+        Repository Tag in which the code should be accessed
         """
         return pulumi.get(self, "repository_commit")
 
@@ -214,6 +217,14 @@ class GetWorkspaceResult:
         Repository Path is the path in which the infra code resides
         """
         return pulumi.get(self, "repository_path")
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> str:
+        """
+        Repository SHA in which the code should be accessed
+        """
+        return pulumi.get(self, "repository_sha")
 
     @property
     @pulumi.getter(name="terraformVariableFiles")
@@ -249,6 +260,7 @@ class AwaitableGetWorkspaceResult(GetWorkspaceResult):
             repository_commit=self.repository_commit,
             repository_connector=self.repository_connector,
             repository_path=self.repository_path,
+            repository_sha=self.repository_sha,
             terraform_variable_files=self.terraform_variable_files,
             terraform_variables=self.terraform_variables)
 
@@ -260,6 +272,7 @@ def get_workspace(description: Optional[str] = None,
                   project_id: Optional[str] = None,
                   repository_branch: Optional[str] = None,
                   repository_commit: Optional[str] = None,
+                  repository_sha: Optional[str] = None,
                   terraform_variable_files: Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]] = None,
                   terraform_variables: Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceResult:
@@ -284,7 +297,8 @@ def get_workspace(description: Optional[str] = None,
     :param str org_id: Organization Identifier
     :param str project_id: Project Identifier
     :param str repository_branch: Repository Branch in which the code should be accessed
-    :param str repository_commit: Repository Commit/Tag in which the code should be accessed
+    :param str repository_commit: Repository Tag in which the code should be accessed
+    :param str repository_sha: Repository SHA in which the code should be accessed
     """
     __args__ = dict()
     __args__['description'] = description
@@ -294,6 +308,7 @@ def get_workspace(description: Optional[str] = None,
     __args__['projectId'] = project_id
     __args__['repositoryBranch'] = repository_branch
     __args__['repositoryCommit'] = repository_commit
+    __args__['repositorySha'] = repository_sha
     __args__['terraformVariableFiles'] = terraform_variable_files
     __args__['terraformVariables'] = terraform_variables
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -317,6 +332,7 @@ def get_workspace(description: Optional[str] = None,
         repository_commit=pulumi.get(__ret__, 'repository_commit'),
         repository_connector=pulumi.get(__ret__, 'repository_connector'),
         repository_path=pulumi.get(__ret__, 'repository_path'),
+        repository_sha=pulumi.get(__ret__, 'repository_sha'),
         terraform_variable_files=pulumi.get(__ret__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__ret__, 'terraform_variables'))
 
@@ -329,6 +345,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = No
                          project_id: Optional[pulumi.Input[str]] = None,
                          repository_branch: Optional[pulumi.Input[Optional[str]]] = None,
                          repository_commit: Optional[pulumi.Input[Optional[str]]] = None,
+                         repository_sha: Optional[pulumi.Input[Optional[str]]] = None,
                          terraform_variable_files: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]]]] = None,
                          terraform_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkspaceResult]:
@@ -353,6 +370,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = No
     :param str org_id: Organization Identifier
     :param str project_id: Project Identifier
     :param str repository_branch: Repository Branch in which the code should be accessed
-    :param str repository_commit: Repository Commit/Tag in which the code should be accessed
+    :param str repository_commit: Repository Tag in which the code should be accessed
+    :param str repository_sha: Repository SHA in which the code should be accessed
     """
     ...

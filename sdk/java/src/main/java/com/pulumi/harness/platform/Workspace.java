@@ -95,7 +95,13 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 WorkspaceTerraformVariableFileArgs.builder()
  *                     .repository("https://github.com/org/repo")
- *                     .repositoryCommit("349d90bb9c90f4a3482981c259080de31609e6f6")
+ *                     .repositoryCommit("v1.0.0")
+ *                     .repositoryPath("tf/aws/basic")
+ *                     .repositoryConnector(test.id())
+ *                     .build(),
+ *                 WorkspaceTerraformVariableFileArgs.builder()
+ *                     .repository("https://github.com/org/repo")
+ *                     .repositorySha("349d90bb9c90f4a3482981c259080de31609e6f6")
  *                     .repositoryPath("tf/aws/basic")
  *                     .repositoryConnector(test.id())
  *                     .build())
@@ -269,28 +275,28 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return this.repository;
     }
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      * 
      */
     @Export(name="repositoryBranch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repositoryBranch;
 
     /**
-     * @return Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+     * @return Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      * 
      */
     public Output<Optional<String>> repositoryBranch() {
         return Codegen.optional(this.repositoryBranch);
     }
     /**
-     * Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      * 
      */
     @Export(name="repositoryCommit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repositoryCommit;
 
     /**
-     * @return Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+     * @return Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      * 
      */
     public Output<Optional<String>> repositoryCommit() {
@@ -323,6 +329,20 @@ public class Workspace extends com.pulumi.resources.CustomResource {
      */
     public Output<String> repositoryPath() {
         return this.repositoryPath;
+    }
+    /**
+     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    @Export(name="repositorySha", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> repositorySha;
+
+    /**
+     * @return Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    public Output<Optional<String>> repositorySha() {
+        return Codegen.optional(this.repositorySha);
     }
     /**
      * Tags to associate with the resource.

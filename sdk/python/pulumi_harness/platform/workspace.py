@@ -32,6 +32,7 @@ class WorkspaceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  repository_branch: Optional[pulumi.Input[str]] = None,
                  repository_commit: Optional[pulumi.Input[str]] = None,
+                 repository_sha: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None):
@@ -49,8 +50,9 @@ class WorkspaceArgs:
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[str] name: Name of the resource.
-        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
-        :param pulumi.Input[str] repository_commit: Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        :param pulumi.Input[str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+        :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
@@ -75,6 +77,8 @@ class WorkspaceArgs:
             pulumi.set(__self__, "repository_branch", repository_branch)
         if repository_commit is not None:
             pulumi.set(__self__, "repository_commit", repository_commit)
+        if repository_sha is not None:
+            pulumi.set(__self__, "repository_sha", repository_sha)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if terraform_variable_files is not None:
@@ -248,7 +252,7 @@ class WorkspaceArgs:
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         """
         return pulumi.get(self, "repository_branch")
 
@@ -260,13 +264,25 @@ class WorkspaceArgs:
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         """
         return pulumi.get(self, "repository_commit")
 
     @repository_commit.setter
     def repository_commit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository_commit", value)
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        """
+        return pulumi.get(self, "repository_sha")
+
+    @repository_sha.setter
+    def repository_sha(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_sha", value)
 
     @property
     @pulumi.getter
@@ -318,6 +334,7 @@ class _WorkspaceState:
                  repository_commit: Optional[pulumi.Input[str]] = None,
                  repository_connector: Optional[pulumi.Input[str]] = None,
                  repository_path: Optional[pulumi.Input[str]] = None,
+                 repository_sha: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None):
@@ -333,10 +350,11 @@ class _WorkspaceState:
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[str] repository: Repository is the name of the repository to fetch the code from.
-        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
-        :param pulumi.Input[str] repository_commit: Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        :param pulumi.Input[str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[str] repository_path: Repository path is the path in which the code resides.
+        :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         if cost_estimation_enabled is not None:
@@ -371,6 +389,8 @@ class _WorkspaceState:
             pulumi.set(__self__, "repository_connector", repository_connector)
         if repository_path is not None:
             pulumi.set(__self__, "repository_path", repository_path)
+        if repository_sha is not None:
+            pulumi.set(__self__, "repository_sha", repository_sha)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if terraform_variable_files is not None:
@@ -520,7 +540,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         """
         return pulumi.get(self, "repository_branch")
 
@@ -532,7 +552,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         """
         return pulumi.get(self, "repository_commit")
 
@@ -563,6 +583,18 @@ class _WorkspaceState:
     @repository_path.setter
     def repository_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository_path", value)
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        """
+        return pulumi.get(self, "repository_sha")
+
+    @repository_sha.setter
+    def repository_sha(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_sha", value)
 
     @property
     @pulumi.getter
@@ -616,6 +648,7 @@ class Workspace(pulumi.CustomResource):
                  repository_commit: Optional[pulumi.Input[str]] = None,
                  repository_connector: Optional[pulumi.Input[str]] = None,
                  repository_path: Optional[pulumi.Input[str]] = None,
+                 repository_sha: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
@@ -675,7 +708,13 @@ class Workspace(pulumi.CustomResource):
                 },
                 {
                     "repository": "https://github.com/org/repo",
-                    "repository_commit": "349d90bb9c90f4a3482981c259080de31609e6f6",
+                    "repository_commit": "v1.0.0",
+                    "repository_path": "tf/aws/basic",
+                    "repository_connector": test["id"],
+                },
+                {
+                    "repository": "https://github.com/org/repo",
+                    "repository_sha": "349d90bb9c90f4a3482981c259080de31609e6f6",
                     "repository_path": "tf/aws/basic",
                     "repository_connector": test["id"],
                 },
@@ -700,10 +739,11 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[str] repository: Repository is the name of the repository to fetch the code from.
-        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
-        :param pulumi.Input[str] repository_commit: Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        :param pulumi.Input[str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[str] repository_path: Repository path is the path in which the code resides.
+        :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         ...
@@ -767,7 +807,13 @@ class Workspace(pulumi.CustomResource):
                 },
                 {
                     "repository": "https://github.com/org/repo",
-                    "repository_commit": "349d90bb9c90f4a3482981c259080de31609e6f6",
+                    "repository_commit": "v1.0.0",
+                    "repository_path": "tf/aws/basic",
+                    "repository_connector": test["id"],
+                },
+                {
+                    "repository": "https://github.com/org/repo",
+                    "repository_sha": "349d90bb9c90f4a3482981c259080de31609e6f6",
                     "repository_path": "tf/aws/basic",
                     "repository_connector": test["id"],
                 },
@@ -811,6 +857,7 @@ class Workspace(pulumi.CustomResource):
                  repository_commit: Optional[pulumi.Input[str]] = None,
                  repository_connector: Optional[pulumi.Input[str]] = None,
                  repository_path: Optional[pulumi.Input[str]] = None,
+                 repository_sha: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
@@ -859,6 +906,7 @@ class Workspace(pulumi.CustomResource):
             if repository_path is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_path'")
             __props__.__dict__["repository_path"] = repository_path
+            __props__.__dict__["repository_sha"] = repository_sha
             __props__.__dict__["tags"] = tags
             __props__.__dict__["terraform_variable_files"] = terraform_variable_files
             __props__.__dict__["terraform_variables"] = terraform_variables
@@ -888,6 +936,7 @@ class Workspace(pulumi.CustomResource):
             repository_commit: Optional[pulumi.Input[str]] = None,
             repository_connector: Optional[pulumi.Input[str]] = None,
             repository_path: Optional[pulumi.Input[str]] = None,
+            repository_sha: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
             terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None) -> 'Workspace':
@@ -908,10 +957,11 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[str] repository: Repository is the name of the repository to fetch the code from.
-        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
-        :param pulumi.Input[str] repository_commit: Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        :param pulumi.Input[str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[str] repository_path: Repository path is the path in which the code resides.
+        :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -934,6 +984,7 @@ class Workspace(pulumi.CustomResource):
         __props__.__dict__["repository_commit"] = repository_commit
         __props__.__dict__["repository_connector"] = repository_connector
         __props__.__dict__["repository_path"] = repository_path
+        __props__.__dict__["repository_sha"] = repository_sha
         __props__.__dict__["tags"] = tags
         __props__.__dict__["terraform_variable_files"] = terraform_variable_files
         __props__.__dict__["terraform_variables"] = terraform_variables
@@ -1033,7 +1084,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> pulumi.Output[Optional[str]]:
         """
-        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         """
         return pulumi.get(self, "repository_branch")
 
@@ -1041,7 +1092,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> pulumi.Output[Optional[str]]:
         """
-        Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         """
         return pulumi.get(self, "repository_commit")
 
@@ -1060,6 +1111,14 @@ class Workspace(pulumi.CustomResource):
         Repository path is the path in which the code resides.
         """
         return pulumi.get(self, "repository_path")
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> pulumi.Output[Optional[str]]:
+        """
+        Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        """
+        return pulumi.get(self, "repository_sha")
 
     @property
     @pulumi.getter

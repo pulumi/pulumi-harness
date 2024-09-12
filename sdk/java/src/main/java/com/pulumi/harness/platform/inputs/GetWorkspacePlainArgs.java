@@ -110,18 +110,33 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Repository Commit/Tag in which the code should be accessed
+     * Repository Tag in which the code should be accessed
      * 
      */
     @Import(name="repositoryCommit")
     private @Nullable String repositoryCommit;
 
     /**
-     * @return Repository Commit/Tag in which the code should be accessed
+     * @return Repository Tag in which the code should be accessed
      * 
      */
     public Optional<String> repositoryCommit() {
         return Optional.ofNullable(this.repositoryCommit);
+    }
+
+    /**
+     * Repository SHA in which the code should be accessed
+     * 
+     */
+    @Import(name="repositorySha")
+    private @Nullable String repositorySha;
+
+    /**
+     * @return Repository SHA in which the code should be accessed
+     * 
+     */
+    public Optional<String> repositorySha() {
+        return Optional.ofNullable(this.repositorySha);
     }
 
     @Import(name="terraformVariableFiles")
@@ -148,6 +163,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         this.projectId = $.projectId;
         this.repositoryBranch = $.repositoryBranch;
         this.repositoryCommit = $.repositoryCommit;
+        this.repositorySha = $.repositorySha;
         this.terraformVariableFiles = $.terraformVariableFiles;
         this.terraformVariables = $.terraformVariables;
     }
@@ -247,13 +263,24 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param repositoryCommit Repository Commit/Tag in which the code should be accessed
+         * @param repositoryCommit Repository Tag in which the code should be accessed
          * 
          * @return builder
          * 
          */
         public Builder repositoryCommit(@Nullable String repositoryCommit) {
             $.repositoryCommit = repositoryCommit;
+            return this;
+        }
+
+        /**
+         * @param repositorySha Repository SHA in which the code should be accessed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repositorySha(@Nullable String repositorySha) {
+            $.repositorySha = repositorySha;
             return this;
         }
 

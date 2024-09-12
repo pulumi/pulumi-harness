@@ -61,7 +61,13 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             repository: "https://github.com/org/repo",
- *             repositoryCommit: "349d90bb9c90f4a3482981c259080de31609e6f6",
+ *             repositoryCommit: "v1.0.0",
+ *             repositoryPath: "tf/aws/basic",
+ *             repositoryConnector: test.id,
+ *         },
+ *         {
+ *             repository: "https://github.com/org/repo",
+ *             repositorySha: "349d90bb9c90f4a3482981c259080de31609e6f6",
  *             repositoryPath: "tf/aws/basic",
  *             repositoryConnector: test.id,
  *         },
@@ -146,11 +152,11 @@ export class Workspace extends pulumi.CustomResource {
      */
     public readonly repository!: pulumi.Output<string>;
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      */
     public readonly repositoryBranch!: pulumi.Output<string | undefined>;
     /**
-     * Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      */
     public readonly repositoryCommit!: pulumi.Output<string | undefined>;
     /**
@@ -161,6 +167,10 @@ export class Workspace extends pulumi.CustomResource {
      * Repository path is the path in which the code resides.
      */
     public readonly repositoryPath!: pulumi.Output<string>;
+    /**
+     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     */
+    public readonly repositorySha!: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
@@ -197,6 +207,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["repositoryCommit"] = state ? state.repositoryCommit : undefined;
             resourceInputs["repositoryConnector"] = state ? state.repositoryConnector : undefined;
             resourceInputs["repositoryPath"] = state ? state.repositoryPath : undefined;
+            resourceInputs["repositorySha"] = state ? state.repositorySha : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["terraformVariableFiles"] = state ? state.terraformVariableFiles : undefined;
             resourceInputs["terraformVariables"] = state ? state.terraformVariables : undefined;
@@ -248,6 +259,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["repositoryCommit"] = args ? args.repositoryCommit : undefined;
             resourceInputs["repositoryConnector"] = args ? args.repositoryConnector : undefined;
             resourceInputs["repositoryPath"] = args ? args.repositoryPath : undefined;
+            resourceInputs["repositorySha"] = args ? args.repositorySha : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["terraformVariableFiles"] = args ? args.terraformVariableFiles : undefined;
             resourceInputs["terraformVariables"] = args ? args.terraformVariables : undefined;
@@ -304,11 +316,11 @@ export interface WorkspaceState {
      */
     repository?: pulumi.Input<string>;
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      */
     repositoryBranch?: pulumi.Input<string>;
     /**
-     * Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      */
     repositoryCommit?: pulumi.Input<string>;
     /**
@@ -319,6 +331,10 @@ export interface WorkspaceState {
      * Repository path is the path in which the code resides.
      */
     repositoryPath?: pulumi.Input<string>;
+    /**
+     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     */
+    repositorySha?: pulumi.Input<string>;
     /**
      * Tags to associate with the resource.
      */
@@ -374,11 +390,11 @@ export interface WorkspaceArgs {
      */
     repository: pulumi.Input<string>;
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
      */
     repositoryBranch?: pulumi.Input<string>;
     /**
-     * Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
      */
     repositoryCommit?: pulumi.Input<string>;
     /**
@@ -389,6 +405,10 @@ export interface WorkspaceArgs {
      * Repository path is the path in which the code resides.
      */
     repositoryPath: pulumi.Input<string>;
+    /**
+     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     */
+    repositorySha?: pulumi.Input<string>;
     /**
      * Tags to associate with the resource.
      */

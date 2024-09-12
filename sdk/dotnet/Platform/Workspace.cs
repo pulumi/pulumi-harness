@@ -78,7 +78,14 @@ namespace Pulumi.Harness.Platform
     ///             new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs
     ///             {
     ///                 Repository = "https://github.com/org/repo",
-    ///                 RepositoryCommit = "349d90bb9c90f4a3482981c259080de31609e6f6",
+    ///                 RepositoryCommit = "v1.0.0",
+    ///                 RepositoryPath = "tf/aws/basic",
+    ///                 RepositoryConnector = test.Id,
+    ///             },
+    ///             new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs
+    ///             {
+    ///                 Repository = "https://github.com/org/repo",
+    ///                 RepositorySha = "349d90bb9c90f4a3482981c259080de31609e6f6",
     ///                 RepositoryPath = "tf/aws/basic",
     ///                 RepositoryConnector = test.Id,
     ///             },
@@ -164,13 +171,13 @@ namespace Pulumi.Harness.Platform
         public Output<string> Repository { get; private set; } = null!;
 
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         /// </summary>
         [Output("repositoryBranch")]
         public Output<string?> RepositoryBranch { get; private set; } = null!;
 
         /// <summary>
-        /// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         /// </summary>
         [Output("repositoryCommit")]
         public Output<string?> RepositoryCommit { get; private set; } = null!;
@@ -186,6 +193,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("repositoryPath")]
         public Output<string> RepositoryPath { get; private set; } = null!;
+
+        /// <summary>
+        /// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// </summary>
+        [Output("repositorySha")]
+        public Output<string?> RepositorySha { get; private set; } = null!;
 
         /// <summary>
         /// Tags to associate with the resource.
@@ -325,13 +338,13 @@ namespace Pulumi.Harness.Platform
         public Input<string> Repository { get; set; } = null!;
 
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         /// </summary>
         [Input("repositoryBranch")]
         public Input<string>? RepositoryBranch { get; set; }
 
         /// <summary>
-        /// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         /// </summary>
         [Input("repositoryCommit")]
         public Input<string>? RepositoryCommit { get; set; }
@@ -347,6 +360,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("repositoryPath", required: true)]
         public Input<string> RepositoryPath { get; set; } = null!;
+
+        /// <summary>
+        /// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// </summary>
+        [Input("repositorySha")]
+        public Input<string>? RepositorySha { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -463,13 +482,13 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Repository { get; set; }
 
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.
+        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         /// </summary>
         [Input("repositoryBranch")]
         public Input<string>? RepositoryBranch { get; set; }
 
         /// <summary>
-        /// Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.
+        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         /// </summary>
         [Input("repositoryCommit")]
         public Input<string>? RepositoryCommit { get; set; }
@@ -485,6 +504,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("repositoryPath")]
         public Input<string>? RepositoryPath { get; set; }
+
+        /// <summary>
+        /// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// </summary>
+        [Input("repositorySha")]
+        public Input<string>? RepositorySha { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

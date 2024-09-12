@@ -18,12 +18,12 @@ public final class WorkspaceTerraformVariableFile {
      */
     private String repository;
     /**
-     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
      * 
      */
     private @Nullable String repositoryBranch;
     /**
-     * @return Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+     * @return Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
      * 
      */
     private @Nullable String repositoryCommit;
@@ -37,6 +37,11 @@ public final class WorkspaceTerraformVariableFile {
      * 
      */
     private @Nullable String repositoryPath;
+    /**
+     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    private @Nullable String repositorySha;
 
     private WorkspaceTerraformVariableFile() {}
     /**
@@ -47,14 +52,14 @@ public final class WorkspaceTerraformVariableFile {
         return this.repository;
     }
     /**
-     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
      * 
      */
     public Optional<String> repositoryBranch() {
         return Optional.ofNullable(this.repositoryBranch);
     }
     /**
-     * @return Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+     * @return Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
      * 
      */
     public Optional<String> repositoryCommit() {
@@ -74,6 +79,13 @@ public final class WorkspaceTerraformVariableFile {
     public Optional<String> repositoryPath() {
         return Optional.ofNullable(this.repositoryPath);
     }
+    /**
+     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * 
+     */
+    public Optional<String> repositorySha() {
+        return Optional.ofNullable(this.repositorySha);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -89,6 +101,7 @@ public final class WorkspaceTerraformVariableFile {
         private @Nullable String repositoryCommit;
         private String repositoryConnector;
         private @Nullable String repositoryPath;
+        private @Nullable String repositorySha;
         public Builder() {}
         public Builder(WorkspaceTerraformVariableFile defaults) {
     	      Objects.requireNonNull(defaults);
@@ -97,6 +110,7 @@ public final class WorkspaceTerraformVariableFile {
     	      this.repositoryCommit = defaults.repositoryCommit;
     	      this.repositoryConnector = defaults.repositoryConnector;
     	      this.repositoryPath = defaults.repositoryPath;
+    	      this.repositorySha = defaults.repositorySha;
         }
 
         @CustomType.Setter
@@ -133,6 +147,12 @@ public final class WorkspaceTerraformVariableFile {
             this.repositoryPath = repositoryPath;
             return this;
         }
+        @CustomType.Setter
+        public Builder repositorySha(@Nullable String repositorySha) {
+
+            this.repositorySha = repositorySha;
+            return this;
+        }
         public WorkspaceTerraformVariableFile build() {
             final var _resultValue = new WorkspaceTerraformVariableFile();
             _resultValue.repository = repository;
@@ -140,6 +160,7 @@ public final class WorkspaceTerraformVariableFile {
             _resultValue.repositoryCommit = repositoryCommit;
             _resultValue.repositoryConnector = repositoryConnector;
             _resultValue.repositoryPath = repositoryPath;
+            _resultValue.repositorySha = repositorySha;
             return _resultValue;
         }
     }

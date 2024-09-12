@@ -110,10 +110,16 @@ namespace Pulumi.Harness.Platform
         public string? RepositoryBranch { get; set; }
 
         /// <summary>
-        /// Repository Commit/Tag in which the code should be accessed
+        /// Repository Tag in which the code should be accessed
         /// </summary>
         [Input("repositoryCommit")]
         public string? RepositoryCommit { get; set; }
+
+        /// <summary>
+        /// Repository SHA in which the code should be accessed
+        /// </summary>
+        [Input("repositorySha")]
+        public string? RepositorySha { get; set; }
 
         [Input("terraformVariableFiles")]
         private List<Inputs.GetWorkspaceTerraformVariableFileArgs>? _terraformVariableFiles;
@@ -182,10 +188,16 @@ namespace Pulumi.Harness.Platform
         public Input<string>? RepositoryBranch { get; set; }
 
         /// <summary>
-        /// Repository Commit/Tag in which the code should be accessed
+        /// Repository Tag in which the code should be accessed
         /// </summary>
         [Input("repositoryCommit")]
         public Input<string>? RepositoryCommit { get; set; }
+
+        /// <summary>
+        /// Repository SHA in which the code should be accessed
+        /// </summary>
+        [Input("repositorySha")]
+        public Input<string>? RepositorySha { get; set; }
 
         [Input("terraformVariableFiles")]
         private InputList<Inputs.GetWorkspaceTerraformVariableFileInputArgs>? _terraformVariableFiles;
@@ -267,7 +279,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string RepositoryBranch;
         /// <summary>
-        /// Repository Commit/Tag in which the code should be accessed
+        /// Repository Tag in which the code should be accessed
         /// </summary>
         public readonly string RepositoryCommit;
         /// <summary>
@@ -278,6 +290,10 @@ namespace Pulumi.Harness.Platform
         /// Repository Path is the path in which the infra code resides
         /// </summary>
         public readonly string RepositoryPath;
+        /// <summary>
+        /// Repository SHA in which the code should be accessed
+        /// </summary>
+        public readonly string RepositorySha;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> TerraformVariableFiles;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> TerraformVariables;
 
@@ -317,6 +333,8 @@ namespace Pulumi.Harness.Platform
 
             string repositoryPath,
 
+            string repositorySha,
+
             ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> terraformVariableFiles,
 
             ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> terraformVariables)
@@ -338,6 +356,7 @@ namespace Pulumi.Harness.Platform
             RepositoryCommit = repositoryCommit;
             RepositoryConnector = repositoryConnector;
             RepositoryPath = repositoryPath;
+            RepositorySha = repositorySha;
             TerraformVariableFiles = terraformVariableFiles;
             TerraformVariables = terraformVariables;
         }

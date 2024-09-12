@@ -5326,11 +5326,11 @@ export namespace platform {
          */
         repository: string;
         /**
-         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
          */
         repositoryBranch: string;
         /**
-         * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         * Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
          */
         repositoryCommit: string;
         /**
@@ -5341,6 +5341,10 @@ export namespace platform {
          * Repository path is the path in which the variables reside.
          */
         repositoryPath: string;
+        /**
+         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         */
+        repositorySha: string;
     }
 
     export interface GitConnectorCredentials {
@@ -8439,11 +8443,11 @@ export namespace platform {
          */
         repository: string;
         /**
-         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
          */
         repositoryBranch?: string;
         /**
-         * Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.
+         * Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
          */
         repositoryCommit?: string;
         /**
@@ -8454,6 +8458,10 @@ export namespace platform {
          * Repository path is the path in which the variables reside.
          */
         repositoryPath?: string;
+        /**
+         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         */
+        repositorySha?: string;
     }
 
 }
