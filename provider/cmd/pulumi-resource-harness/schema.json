@@ -8005,11 +8005,11 @@
                 },
                 "repositoryBranch": {
                     "type": "string",
-                    "description": "Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set\n"
+                    "description": "Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set\n"
                 },
                 "repositoryCommit": {
                     "type": "string",
-                    "description": "Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.\n"
+                    "description": "Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.\n"
                 },
                 "repositoryConnector": {
                     "type": "string",
@@ -8018,6 +8018,10 @@
                 "repositoryPath": {
                     "type": "string",
                     "description": "Repository path is the path in which the variables reside.\n"
+                },
+                "repositorySha": {
+                    "type": "string",
+                    "description": "Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
                 }
             },
             "type": "object",
@@ -13241,11 +13245,11 @@
                 },
                 "repositoryBranch": {
                     "type": "string",
-                    "description": "Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit is set\n"
+                    "description": "Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set\n"
                 },
                 "repositoryCommit": {
                     "type": "string",
-                    "description": "Repository commit is commit or tag to fetch the variables from. This cannot be set if repository branch is set.\n"
+                    "description": "Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.\n"
                 },
                 "repositoryConnector": {
                     "type": "string",
@@ -13254,6 +13258,10 @@
                 "repositoryPath": {
                     "type": "string",
                     "description": "Repository path is the path in which the variables reside.\n"
+                },
+                "repositorySha": {
+                    "type": "string",
+                    "description": "Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
                 }
             },
             "type": "object",
@@ -13262,7 +13270,8 @@
                 "repositoryBranch",
                 "repositoryCommit",
                 "repositoryConnector",
-                "repositoryPath"
+                "repositoryPath",
+                "repositorySha"
             ],
             "language": {
                 "nodejs": {
@@ -15680,6 +15689,209 @@
                     "usernameSecretName": {
                         "type": "string",
                         "description": "The name of the Harness secret containing the username to authenticate to Tanzu with.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:governance/ruleEnforcement:RuleEnforcement": {
+            "description": "Resource for creating, updating, and managing rule enforcement.\n\n## Import\n\nImport governance enforcement\n\n```sh\n$ pulumi import harness:governance/ruleEnforcement:RuleEnforcement example \u003cenforcement_id\u003e\n```\n\n",
+            "properties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for rule enforcement.\n"
+                },
+                "enforcementId": {
+                    "type": "string",
+                    "description": "Id of the rule enforcement.\n"
+                },
+                "executionSchedule": {
+                    "type": "string",
+                    "description": "Execution schedule in cron format.\n"
+                },
+                "executionTimezone": {
+                    "type": "string",
+                    "description": "Timezone for the execution schedule.\n"
+                },
+                "isDryRun": {
+                    "type": "boolean",
+                    "description": "Indicates if the rule enforcement is a dry run. This by default is set to false.\n"
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the rule enforcement is enabled. This by default is set to true.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the rule enforcement.\n"
+                },
+                "ruleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of rule IDs. Either rule*ids or rule*set_ids should be provided.\n"
+                },
+                "ruleSetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of rule set IDs. Either rule*ids or rule*set_ids should be provided.\n"
+                },
+                "targetAccounts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of target account which can be either AWS Account Ids or Azure Subscription Ids or Gcp Project Ids.\n"
+                },
+                "targetRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.\n"
+                }
+            },
+            "required": [
+                "cloudProvider",
+                "enforcementId",
+                "executionSchedule",
+                "executionTimezone",
+                "name",
+                "targetAccounts"
+            ],
+            "inputProperties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for rule enforcement.\n"
+                },
+                "executionSchedule": {
+                    "type": "string",
+                    "description": "Execution schedule in cron format.\n"
+                },
+                "executionTimezone": {
+                    "type": "string",
+                    "description": "Timezone for the execution schedule.\n"
+                },
+                "isDryRun": {
+                    "type": "boolean",
+                    "description": "Indicates if the rule enforcement is a dry run. This by default is set to false.\n"
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the rule enforcement is enabled. This by default is set to true.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the rule enforcement.\n"
+                },
+                "ruleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of rule IDs. Either rule*ids or rule*set_ids should be provided.\n"
+                },
+                "ruleSetIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of rule set IDs. Either rule*ids or rule*set_ids should be provided.\n"
+                },
+                "targetAccounts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of target account which can be either AWS Account Ids or Azure Subscription Ids or Gcp Project Ids.\n"
+                },
+                "targetRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.\n"
+                }
+            },
+            "requiredInputs": [
+                "cloudProvider",
+                "executionSchedule",
+                "executionTimezone",
+                "targetAccounts"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RuleEnforcement resources.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "type": "string",
+                        "description": "The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description for rule enforcement.\n"
+                    },
+                    "enforcementId": {
+                        "type": "string",
+                        "description": "Id of the rule enforcement.\n"
+                    },
+                    "executionSchedule": {
+                        "type": "string",
+                        "description": "Execution schedule in cron format.\n"
+                    },
+                    "executionTimezone": {
+                        "type": "string",
+                        "description": "Timezone for the execution schedule.\n"
+                    },
+                    "isDryRun": {
+                        "type": "boolean",
+                        "description": "Indicates if the rule enforcement is a dry run. This by default is set to false.\n"
+                    },
+                    "isEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if the rule enforcement is enabled. This by default is set to true.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the rule enforcement.\n"
+                    },
+                    "ruleIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of rule IDs. Either rule*ids or rule*set_ids should be provided.\n"
+                    },
+                    "ruleSetIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of rule set IDs. Either rule*ids or rule*set_ids should be provided.\n"
+                    },
+                    "targetAccounts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of target account which can be either AWS Account Ids or Azure Subscription Ids or Gcp Project Ids.\n"
+                    },
+                    "targetRegions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.\n"
                     }
                 },
                 "type": "object"
@@ -33557,7 +33769,7 @@
             }
         },
         "harness:platform/workspace:Workspace": {
-            "description": "Resource for managing Workspaces\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.Workspace(\"example\", {\n    name: \"example\",\n    identifier: \"example\",\n    orgId: testHarnessPlatformOrganization.id,\n    projectId: testHarnessPlatformProject.id,\n    provisionerType: \"terraform\",\n    provisionerVersion: \"1.5.6\",\n    repository: \"https://github.com/org/repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    costEstimationEnabled: true,\n    providerConnector: test.id,\n    repositoryConnector: test.id,\n    terraformVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    environmentVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    terraformVariableFiles: [\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"main\",\n            repositoryPath: \"tf/gcp/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryCommit: \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.Workspace(\"example\",\n    name=\"example\",\n    identifier=\"example\",\n    org_id=test_harness_platform_organization[\"id\"],\n    project_id=test_harness_platform_project[\"id\"],\n    provisioner_type=\"terraform\",\n    provisioner_version=\"1.5.6\",\n    repository=\"https://github.com/org/repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    cost_estimation_enabled=True,\n    provider_connector=test[\"id\"],\n    repository_connector=test[\"id\"],\n    terraform_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    environment_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    terraform_variable_files=[\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"main\",\n            \"repository_path\": \"tf/gcp/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_commit\": \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.Workspace(\"example\", new()\n    {\n        Name = \"example\",\n        Identifier = \"example\",\n        OrgId = testHarnessPlatformOrganization.Id,\n        ProjectId = testHarnessPlatformProject.Id,\n        ProvisionerType = \"terraform\",\n        ProvisionerVersion = \"1.5.6\",\n        Repository = \"https://github.com/org/repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        CostEstimationEnabled = true,\n        ProviderConnector = test.Id,\n        RepositoryConnector = test.Id,\n        TerraformVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        EnvironmentVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        TerraformVariableFiles = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"main\",\n                RepositoryPath = \"tf/gcp/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryCommit = \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewWorkspace(ctx, \"example\", \u0026platform.WorkspaceArgs{\n\t\t\tName:                  pulumi.String(\"example\"),\n\t\t\tIdentifier:            pulumi.String(\"example\"),\n\t\t\tOrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),\n\t\t\tProjectId:             pulumi.Any(testHarnessPlatformProject.Id),\n\t\t\tProvisionerType:       pulumi.String(\"terraform\"),\n\t\t\tProvisionerVersion:    pulumi.String(\"1.5.6\"),\n\t\t\tRepository:            pulumi.String(\"https://github.com/org/repo\"),\n\t\t\tRepositoryBranch:      pulumi.String(\"main\"),\n\t\t\tRepositoryPath:        pulumi.String(\"tf/aws/basic\"),\n\t\t\tCostEstimationEnabled: pulumi.Bool(true),\n\t\t\tProviderConnector:     pulumi.Any(test.Id),\n\t\t\tRepositoryConnector:   pulumi.Any(test.Id),\n\t\t\tTerraformVariables: platform.WorkspaceTerraformVariableArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnvironmentVariables: platform.WorkspaceEnvironmentVariableArray{\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariableFiles: platform.WorkspaceTerraformVariableFileArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/gcp/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryCommit:    pulumi.String(\"349d90bb9c90f4a3482981c259080de31609e6f6\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Workspace;\nimport com.pulumi.harness.platform.WorkspaceArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Workspace(\"example\", WorkspaceArgs.builder()\n            .name(\"example\")\n            .identifier(\"example\")\n            .orgId(testHarnessPlatformOrganization.id())\n            .projectId(testHarnessPlatformProject.id())\n            .provisionerType(\"terraform\")\n            .provisionerVersion(\"1.5.6\")\n            .repository(\"https://github.com/org/repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .costEstimationEnabled(true)\n            .providerConnector(test.id())\n            .repositoryConnector(test.id())\n            .terraformVariables(            \n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .environmentVariables(            \n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .terraformVariableFiles(            \n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"main\")\n                    .repositoryPath(\"tf/gcp/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryCommit(\"349d90bb9c90f4a3482981c259080de31609e6f6\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:Workspace\n    properties:\n      name: example\n      identifier: example\n      orgId: ${testHarnessPlatformOrganization.id}\n      projectId: ${testHarnessPlatformProject.id}\n      provisionerType: terraform\n      provisionerVersion: 1.5.6\n      repository: https://github.com/org/repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      costEstimationEnabled: true\n      providerConnector: ${test.id}\n      repositoryConnector: ${test.id}\n      terraformVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      environmentVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      terraformVariableFiles:\n        - repository: https://github.com/org/repo\n          repositoryBranch: main\n          repositoryPath: tf/gcp/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositoryCommit: 349d90bb9c90f4a3482981c259080de31609e6f6\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/workspace:Workspace example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cslo_id\u003e\n```\n\n",
+            "description": "Resource for managing Workspaces\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.Workspace(\"example\", {\n    name: \"example\",\n    identifier: \"example\",\n    orgId: testHarnessPlatformOrganization.id,\n    projectId: testHarnessPlatformProject.id,\n    provisionerType: \"terraform\",\n    provisionerVersion: \"1.5.6\",\n    repository: \"https://github.com/org/repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    costEstimationEnabled: true,\n    providerConnector: test.id,\n    repositoryConnector: test.id,\n    terraformVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    environmentVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    terraformVariableFiles: [\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"main\",\n            repositoryPath: \"tf/gcp/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryCommit: \"v1.0.0\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositorySha: \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.Workspace(\"example\",\n    name=\"example\",\n    identifier=\"example\",\n    org_id=test_harness_platform_organization[\"id\"],\n    project_id=test_harness_platform_project[\"id\"],\n    provisioner_type=\"terraform\",\n    provisioner_version=\"1.5.6\",\n    repository=\"https://github.com/org/repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    cost_estimation_enabled=True,\n    provider_connector=test[\"id\"],\n    repository_connector=test[\"id\"],\n    terraform_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    environment_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    terraform_variable_files=[\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"main\",\n            \"repository_path\": \"tf/gcp/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_commit\": \"v1.0.0\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_sha\": \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.Workspace(\"example\", new()\n    {\n        Name = \"example\",\n        Identifier = \"example\",\n        OrgId = testHarnessPlatformOrganization.Id,\n        ProjectId = testHarnessPlatformProject.Id,\n        ProvisionerType = \"terraform\",\n        ProvisionerVersion = \"1.5.6\",\n        Repository = \"https://github.com/org/repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        CostEstimationEnabled = true,\n        ProviderConnector = test.Id,\n        RepositoryConnector = test.Id,\n        TerraformVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        EnvironmentVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        TerraformVariableFiles = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"main\",\n                RepositoryPath = \"tf/gcp/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryCommit = \"v1.0.0\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositorySha = \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewWorkspace(ctx, \"example\", \u0026platform.WorkspaceArgs{\n\t\t\tName:                  pulumi.String(\"example\"),\n\t\t\tIdentifier:            pulumi.String(\"example\"),\n\t\t\tOrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),\n\t\t\tProjectId:             pulumi.Any(testHarnessPlatformProject.Id),\n\t\t\tProvisionerType:       pulumi.String(\"terraform\"),\n\t\t\tProvisionerVersion:    pulumi.String(\"1.5.6\"),\n\t\t\tRepository:            pulumi.String(\"https://github.com/org/repo\"),\n\t\t\tRepositoryBranch:      pulumi.String(\"main\"),\n\t\t\tRepositoryPath:        pulumi.String(\"tf/aws/basic\"),\n\t\t\tCostEstimationEnabled: pulumi.Bool(true),\n\t\t\tProviderConnector:     pulumi.Any(test.Id),\n\t\t\tRepositoryConnector:   pulumi.Any(test.Id),\n\t\t\tTerraformVariables: platform.WorkspaceTerraformVariableArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnvironmentVariables: platform.WorkspaceEnvironmentVariableArray{\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariableFiles: platform.WorkspaceTerraformVariableFileArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/gcp/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryCommit:    pulumi.String(\"v1.0.0\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositorySha:       pulumi.String(\"349d90bb9c90f4a3482981c259080de31609e6f6\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Workspace;\nimport com.pulumi.harness.platform.WorkspaceArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Workspace(\"example\", WorkspaceArgs.builder()\n            .name(\"example\")\n            .identifier(\"example\")\n            .orgId(testHarnessPlatformOrganization.id())\n            .projectId(testHarnessPlatformProject.id())\n            .provisionerType(\"terraform\")\n            .provisionerVersion(\"1.5.6\")\n            .repository(\"https://github.com/org/repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .costEstimationEnabled(true)\n            .providerConnector(test.id())\n            .repositoryConnector(test.id())\n            .terraformVariables(            \n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .environmentVariables(            \n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .terraformVariableFiles(            \n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"main\")\n                    .repositoryPath(\"tf/gcp/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryCommit(\"v1.0.0\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositorySha(\"349d90bb9c90f4a3482981c259080de31609e6f6\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:Workspace\n    properties:\n      name: example\n      identifier: example\n      orgId: ${testHarnessPlatformOrganization.id}\n      projectId: ${testHarnessPlatformProject.id}\n      provisionerType: terraform\n      provisionerVersion: 1.5.6\n      repository: https://github.com/org/repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      costEstimationEnabled: true\n      providerConnector: ${test.id}\n      repositoryConnector: ${test.id}\n      terraformVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      environmentVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      terraformVariableFiles:\n        - repository: https://github.com/org/repo\n          repositoryBranch: main\n          repositoryPath: tf/gcp/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositoryCommit: v1.0.0\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositorySha: 349d90bb9c90f4a3482981c259080de31609e6f6\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/workspace:Workspace example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cslo_id\u003e\n```\n\n",
             "properties": {
                 "costEstimationEnabled": {
                     "type": "boolean",
@@ -33613,11 +33825,11 @@
                 },
                 "repositoryBranch": {
                     "type": "string",
-                    "description": "Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.\n"
+                    "description": "Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.\n"
                 },
                 "repositoryCommit": {
                     "type": "string",
-                    "description": "Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.\n"
+                    "description": "Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.\n"
                 },
                 "repositoryConnector": {
                     "type": "string",
@@ -33626,6 +33838,10 @@
                 "repositoryPath": {
                     "type": "string",
                     "description": "Repository path is the path in which the code resides.\n"
+                },
+                "repositorySha": {
+                    "type": "string",
+                    "description": "Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -33718,11 +33934,11 @@
                 },
                 "repositoryBranch": {
                     "type": "string",
-                    "description": "Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.\n"
+                    "description": "Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.\n"
                 },
                 "repositoryCommit": {
                     "type": "string",
-                    "description": "Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.\n"
+                    "description": "Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.\n"
                 },
                 "repositoryConnector": {
                     "type": "string",
@@ -33731,6 +33947,10 @@
                 "repositoryPath": {
                     "type": "string",
                     "description": "Repository path is the path in which the code resides.\n"
+                },
+                "repositorySha": {
+                    "type": "string",
+                    "description": "Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -33824,11 +34044,11 @@
                     },
                     "repositoryBranch": {
                         "type": "string",
-                        "description": "Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit is set.\n"
+                        "description": "Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.\n"
                     },
                     "repositoryCommit": {
                         "type": "string",
-                        "description": "Repository commit is commit or tag to fetch the code from. This cannot be set if repository branch is set.\n"
+                        "description": "Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.\n"
                     },
                     "repositoryConnector": {
                         "type": "string",
@@ -33837,6 +34057,10 @@
                     "repositoryPath": {
                         "type": "string",
                         "description": "Repository path is the path in which the code resides.\n"
+                    },
+                    "repositorySha": {
+                        "type": "string",
+                        "description": "Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -35820,6 +36044,107 @@
                 },
                 "required": [
                     "delegateIds",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:governance/getRuleEnforcement:getRuleEnforcement": {
+            "description": "Datasource for looking up a rule enforcement.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.governance.getRuleEnforcement({\n    enforcementId: \"enforcement_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.governance.get_rule_enforcement(enforcement_id=\"enforcement_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Governance.GetRuleEnforcement.Invoke(new()\n    {\n        EnforcementId = \"enforcement_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/governance\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := governance.LookupRuleEnforcement(ctx, \u0026governance.LookupRuleEnforcementArgs{\n\t\t\tEnforcementId: \"enforcement_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.governance.GovernanceFunctions;\nimport com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GovernanceFunctions.getRuleEnforcement(GetRuleEnforcementArgs.builder()\n            .enforcementId(\"enforcement_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:governance:getRuleEnforcement\n      Arguments:\n        enforcementId: enforcement_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRuleEnforcement.\n",
+                "properties": {
+                    "enforcementId": {
+                        "type": "string",
+                        "description": "Id of rule enforcement.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "enforcementId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRuleEnforcement.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "description": "The cloud provider for the rule enforcement.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description for rule enforcement.\n",
+                        "type": "string"
+                    },
+                    "enforcementId": {
+                        "description": "Id of rule enforcement.\n",
+                        "type": "string"
+                    },
+                    "executionSchedule": {
+                        "description": "Execution schedule in cron format.\n",
+                        "type": "string"
+                    },
+                    "executionTimezone": {
+                        "description": "Timezone for the execution schedule.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "isDryRun": {
+                        "description": "Indicates if the rule enforcement is a dry run.\n",
+                        "type": "boolean"
+                    },
+                    "isEnabled": {
+                        "description": "Indicates if the rule enforcement is enabled.\n",
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "description": "Name of the rule enforcement.\n",
+                        "type": "string"
+                    },
+                    "ruleIds": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "List of rule IDs.\n",
+                        "type": "object"
+                    },
+                    "ruleSetIds": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "List of rule set IDs.\n",
+                        "type": "object"
+                    },
+                    "targetAccounts": {
+                        "description": "List of target accounts.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "targetRegions": {
+                        "description": "List of target regions.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "cloudProvider",
+                    "description",
+                    "enforcementId",
+                    "executionSchedule",
+                    "executionTimezone",
+                    "isDryRun",
+                    "isEnabled",
+                    "name",
+                    "ruleIds",
+                    "ruleSetIds",
+                    "targetAccounts",
+                    "targetRegions",
                     "id"
                 ],
                 "type": "object"
@@ -46457,7 +46782,11 @@
                     },
                     "repositoryCommit": {
                         "type": "string",
-                        "description": "Repository Commit/Tag in which the code should be accessed\n"
+                        "description": "Repository Tag in which the code should be accessed\n"
+                    },
+                    "repositorySha": {
+                        "type": "string",
+                        "description": "Repository SHA in which the code should be accessed\n"
                     },
                     "terraformVariableFiles": {
                         "type": "array",
@@ -46544,7 +46873,7 @@
                         "type": "string"
                     },
                     "repositoryCommit": {
-                        "description": "Repository Commit/Tag in which the code should be accessed\n",
+                        "description": "Repository Tag in which the code should be accessed\n",
                         "type": "string"
                     },
                     "repositoryConnector": {
@@ -46553,6 +46882,10 @@
                     },
                     "repositoryPath": {
                         "description": "Repository Path is the path in which the infra code resides\n",
+                        "type": "string"
+                    },
+                    "repositorySha": {
+                        "description": "Repository SHA in which the code should be accessed\n",
                         "type": "string"
                     },
                     "terraformVariableFiles": {
@@ -46585,6 +46918,7 @@
                     "repositoryCommit",
                     "repositoryConnector",
                     "repositoryPath",
+                    "repositorySha",
                     "terraformVariables",
                     "terraformVariableFiles",
                     "id"
