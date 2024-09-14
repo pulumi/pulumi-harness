@@ -56,12 +56,12 @@ github.com/google/go-cmp v0.3.1/go.mod h1:8QqcDgzrUqlUb/G2PQTWiueGozuR1884gddMyw
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
-github.com/harness/harness-go-sdk v0.4.4 h1:ob+zPJTcMjuq+s8u5O1/SGOR+ZjqRfwGloAdKvKgd/E=
-github.com/harness/harness-go-sdk v0.4.4/go.mod h1:a/1HYTgVEuNEoh3Z3IsOHZdlUNxl94KcX57ZSNVGll0=
+github.com/harness/harness-go-sdk v0.4.5 h1:nXcZ5XNP+PFfRgo9A3yuQi5zTQbinWpooZq3VRBTN2E=
+github.com/harness/harness-go-sdk v0.4.5/go.mod h1:a/1HYTgVEuNEoh3Z3IsOHZdlUNxl94KcX57ZSNVGll0=
 github.com/harness/harness-openapi-go-client v0.0.21 h1:VtJnpQKZvCAlaCmUPbNR69OT3c5WRdhNN5TOgUwtwZ4=
 github.com/harness/harness-openapi-go-client v0.0.21/go.mod h1:u0vqYb994BJGotmEwJevF4L3BNAdU9i8ui2d22gmLPA=
-github.com/harness/terraform-provider-harness v0.33.2 h1:d24Bu5m1I/iXbVlPXufBf5ctw5YIzINMojXoFy3JtjA=
-github.com/harness/terraform-provider-harness v0.33.2/go.mod h1:q9tqsUtZpWkNVU0OZkI3sNHvdXiDqz8Hnojkj60bZ90=
+github.com/harness/terraform-provider-harness v0.33.3 h1:KF1+nms5Gp2/+PT+RTyRnjwGI/zOYqKW9LTQ4JBY1/0=
+github.com/harness/terraform-provider-harness v0.33.3/go.mod h1:Fkt9VEtVVJHkLN9Sq4E46/3TQu0KV6kXmQNMjcPLpyk=
 github.com/hashicorp/errwrap v1.0.0/go.mod h1:YH+1FKiLXxHSkmPseP+kNlulaMuP3n2brvKWEqk/Jc4=
 github.com/hashicorp/errwrap v1.1.0 h1:OxrOeh75EUXMY8TBjag2fzXGZ40LB6IKw45YeGUDY2I=
 github.com/hashicorp/errwrap v1.1.0/go.mod h1:YH+1FKiLXxHSkmPseP+kNlulaMuP3n2brvKWEqk/Jc4=
