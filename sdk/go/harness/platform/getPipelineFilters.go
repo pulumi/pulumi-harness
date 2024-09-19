@@ -56,14 +56,20 @@ type LookupPipelineFiltersResult struct {
 
 func LookupPipelineFiltersOutput(ctx *pulumi.Context, args LookupPipelineFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineFiltersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPipelineFiltersResult, error) {
+		ApplyT(func(v interface{}) (LookupPipelineFiltersResultOutput, error) {
 			args := v.(LookupPipelineFiltersArgs)
-			r, err := LookupPipelineFilters(ctx, &args, opts...)
-			var s LookupPipelineFiltersResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPipelineFiltersResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getPipelineFilters:getPipelineFilters", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPipelineFiltersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPipelineFiltersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPipelineFiltersResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPipelineFiltersResultOutput)
 }
 

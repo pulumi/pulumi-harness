@@ -46,14 +46,20 @@ type LookupSloResult struct {
 
 func LookupSloOutput(ctx *pulumi.Context, args LookupSloOutputArgs, opts ...pulumi.InvokeOption) LookupSloResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSloResult, error) {
+		ApplyT(func(v interface{}) (LookupSloResultOutput, error) {
 			args := v.(LookupSloArgs)
-			r, err := LookupSlo(ctx, &args, opts...)
-			var s LookupSloResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSloResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getSlo:getSlo", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSloResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSloResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSloResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSloResultOutput)
 }
 

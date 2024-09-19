@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving IACM default pipelines.
  */
 export function getIacmDefaultPipeline(args: GetIacmDefaultPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetIacmDefaultPipelineResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", {
         "operation": args.operation,
@@ -73,7 +72,13 @@ export interface GetIacmDefaultPipelineResult {
  * Data source for retrieving IACM default pipelines.
  */
 export function getIacmDefaultPipelineOutput(args: GetIacmDefaultPipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIacmDefaultPipelineResult> {
-    return pulumi.output(args).apply((a: any) => getIacmDefaultPipeline(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", {
+        "operation": args.operation,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "provisionerType": args.provisionerType,
+    }, opts);
 }
 
 /**

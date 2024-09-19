@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRoleAssignments(args: GetRoleAssignmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleAssignmentsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getRoleAssignments:getRoleAssignments", {
         "identifier": args.identifier,
@@ -104,7 +103,12 @@ export interface GetRoleAssignmentsResult {
  * ```
  */
 export function getRoleAssignmentsOutput(args: GetRoleAssignmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleAssignmentsResult> {
-    return pulumi.output(args).apply((a: any) => getRoleAssignments(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getRoleAssignments:getRoleAssignments", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

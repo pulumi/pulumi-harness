@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data Source for retrieving delegate tokens.
  */
 export function getDelegatetoken(args: GetDelegatetokenArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegatetokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDelegatetoken:getDelegatetoken", {
         "accountId": args.accountId,
@@ -96,7 +95,16 @@ export interface GetDelegatetokenResult {
  * Data Source for retrieving delegate tokens.
  */
 export function getDelegatetokenOutput(args: GetDelegatetokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegatetokenResult> {
-    return pulumi.output(args).apply((a: any) => getDelegatetoken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getDelegatetoken:getDelegatetoken", {
+        "accountId": args.accountId,
+        "createdAt": args.createdAt,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "tokenStatus": args.tokenStatus,
+        "value": args.value,
+    }, opts);
 }
 
 /**

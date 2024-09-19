@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPagerdutyConnector(args: GetPagerdutyConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetPagerdutyConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPagerdutyConnector:getPagerdutyConnector", {
         "identifier": args.identifier,
@@ -103,7 +102,13 @@ export interface GetPagerdutyConnectorResult {
  * ```
  */
 export function getPagerdutyConnectorOutput(args: GetPagerdutyConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPagerdutyConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getPagerdutyConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getPagerdutyConnector:getPagerdutyConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

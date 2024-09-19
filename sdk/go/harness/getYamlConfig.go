@@ -46,14 +46,20 @@ type LookupYamlConfigResult struct {
 
 func LookupYamlConfigOutput(ctx *pulumi.Context, args LookupYamlConfigOutputArgs, opts ...pulumi.InvokeOption) LookupYamlConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupYamlConfigResult, error) {
+		ApplyT(func(v interface{}) (LookupYamlConfigResultOutput, error) {
 			args := v.(LookupYamlConfigArgs)
-			r, err := LookupYamlConfig(ctx, &args, opts...)
-			var s LookupYamlConfigResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupYamlConfigResult
+			secret, err := ctx.InvokePackageRaw("harness:index/getYamlConfig:getYamlConfig", args, &rv, "", opts...)
+			if err != nil {
+				return LookupYamlConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupYamlConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupYamlConfigResultOutput), nil
+			}
+			return output, nil
 		}).(LookupYamlConfigResultOutput)
 }
 

@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDbSchema(args: GetDbSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetDbSchemaResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDbSchema:getDbSchema", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetDbSchemaResult {
  * ```
  */
 export function getDbSchemaOutput(args: GetDbSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbSchemaResult> {
-    return pulumi.output(args).apply((a: any) => getDbSchema(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getDbSchema:getDbSchema", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

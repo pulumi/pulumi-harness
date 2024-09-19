@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving the current user based on the API key.
  */
 export function getCurrentUser(opts?: pulumi.InvokeOptions): Promise<GetCurrentUserResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getCurrentUser:getCurrentUser", {
     }, opts);
@@ -79,5 +78,7 @@ export interface GetCurrentUserResult {
  * Data source for retrieving the current user based on the API key.
  */
 export function getCurrentUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentUserResult> {
-    return pulumi.output(getCurrentUser(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getCurrentUser:getCurrentUser", {
+    }, opts);
 }

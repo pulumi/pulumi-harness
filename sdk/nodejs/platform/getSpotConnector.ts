@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSpotConnector(args: GetSpotConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetSpotConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSpotConnector:getSpotConnector", {
         "identifier": args.identifier,
@@ -105,7 +104,13 @@ export interface GetSpotConnectorResult {
  * ```
  */
 export function getSpotConnectorOutput(args: GetSpotConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getSpotConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getSpotConnector:getSpotConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

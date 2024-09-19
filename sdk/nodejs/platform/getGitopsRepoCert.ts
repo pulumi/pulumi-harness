@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
  */
 export function getGitopsRepoCert(args: GetGitopsRepoCertArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsRepoCertResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsRepoCert:getGitopsRepoCert", {
         "accountId": args.accountId,
@@ -69,7 +68,13 @@ export interface GetGitopsRepoCertResult {
  * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
  */
 export function getGitopsRepoCertOutput(args: GetGitopsRepoCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsRepoCertResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsRepoCert(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsRepoCert:getGitopsRepoCert", {
+        "accountId": args.accountId,
+        "agentId": args.agentId,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

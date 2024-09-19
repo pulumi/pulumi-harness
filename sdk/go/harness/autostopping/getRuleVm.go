@@ -70,14 +70,20 @@ type LookupRuleVmResult struct {
 
 func LookupRuleVmOutput(ctx *pulumi.Context, args LookupRuleVmOutputArgs, opts ...pulumi.InvokeOption) LookupRuleVmResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRuleVmResult, error) {
+		ApplyT(func(v interface{}) (LookupRuleVmResultOutput, error) {
 			args := v.(LookupRuleVmArgs)
-			r, err := LookupRuleVm(ctx, &args, opts...)
-			var s LookupRuleVmResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRuleVmResult
+			secret, err := ctx.InvokePackageRaw("harness:autostopping/getRuleVm:getRuleVm", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRuleVmResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRuleVmResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRuleVmResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRuleVmResultOutput)
 }
 

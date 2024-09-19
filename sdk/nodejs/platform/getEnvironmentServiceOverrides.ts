@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEnvironmentServiceOverrides(args: GetEnvironmentServiceOverridesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentServiceOverridesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", {
         "envId": args.envId,
@@ -110,7 +109,14 @@ export interface GetEnvironmentServiceOverridesResult {
  * ```
  */
 export function getEnvironmentServiceOverridesOutput(args: GetEnvironmentServiceOverridesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentServiceOverridesResult> {
-    return pulumi.output(args).apply((a: any) => getEnvironmentServiceOverrides(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", {
+        "envId": args.envId,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "serviceId": args.serviceId,
+    }, opts);
 }
 
 /**

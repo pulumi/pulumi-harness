@@ -86,14 +86,20 @@ type LookupDbSchemaResult struct {
 
 func LookupDbSchemaOutput(ctx *pulumi.Context, args LookupDbSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupDbSchemaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDbSchemaResult, error) {
+		ApplyT(func(v interface{}) (LookupDbSchemaResultOutput, error) {
 			args := v.(LookupDbSchemaArgs)
-			r, err := LookupDbSchema(ctx, &args, opts...)
-			var s LookupDbSchemaResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDbSchemaResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getDbSchema:getDbSchema", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDbSchemaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDbSchemaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDbSchemaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDbSchemaResultOutput)
 }
 

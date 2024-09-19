@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for AWS Autostopping proxy
  */
 export function getAwsProxy(args: GetAwsProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsProxyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getAwsProxy:getAwsProxy", {
         "allocateStaticIp": args.allocateStaticIp,
@@ -138,7 +137,22 @@ export interface GetAwsProxyResult {
  * Data source for AWS Autostopping proxy
  */
 export function getAwsProxyOutput(args: GetAwsProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsProxyResult> {
-    return pulumi.output(args).apply((a: any) => getAwsProxy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:autostopping/getAwsProxy:getAwsProxy", {
+        "allocateStaticIp": args.allocateStaticIp,
+        "apiKey": args.apiKey,
+        "certificates": args.certificates,
+        "cloudConnectorId": args.cloudConnectorId,
+        "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
+        "hostName": args.hostName,
+        "keypair": args.keypair,
+        "machineType": args.machineType,
+        "name": args.name,
+        "region": args.region,
+        "route53HostedZoneId": args.route53HostedZoneId,
+        "securityGroups": args.securityGroups,
+        "vpc": args.vpc,
+    }, opts);
 }
 
 /**

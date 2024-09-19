@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnectorPdc(args: GetConnectorPdcArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorPdcResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getConnectorPdc:getConnectorPdc", {
         "identifier": args.identifier,
@@ -109,7 +108,13 @@ export interface GetConnectorPdcResult {
  * ```
  */
 export function getConnectorPdcOutput(args: GetConnectorPdcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorPdcResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorPdc(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getConnectorPdc:getConnectorPdc", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

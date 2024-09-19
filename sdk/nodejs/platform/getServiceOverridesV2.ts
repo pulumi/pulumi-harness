@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServiceOverridesV2(args: GetServiceOverridesV2Args, opts?: pulumi.InvokeOptions): Promise<GetServiceOverridesV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getServiceOverridesV2:getServiceOverridesV2", {
         "gitDetails": args.gitDetails,
@@ -79,7 +78,13 @@ export interface GetServiceOverridesV2Result {
  * ```
  */
 export function getServiceOverridesV2Output(args: GetServiceOverridesV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceOverridesV2Result> {
-    return pulumi.output(args).apply((a: any) => getServiceOverridesV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getServiceOverridesV2:getServiceOverridesV2", {
+        "gitDetails": args.gitDetails,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

@@ -44,14 +44,20 @@ type LookupSshCredentialResult struct {
 
 func LookupSshCredentialOutput(ctx *pulumi.Context, args LookupSshCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupSshCredentialResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSshCredentialResult, error) {
+		ApplyT(func(v interface{}) (LookupSshCredentialResultOutput, error) {
 			args := v.(LookupSshCredentialArgs)
-			r, err := LookupSshCredential(ctx, &args, opts...)
-			var s LookupSshCredentialResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSshCredentialResult
+			secret, err := ctx.InvokePackageRaw("harness:index/getSshCredential:getSshCredential", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSshCredentialResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSshCredentialResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSshCredentialResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSshCredentialResultOutput)
 }
 

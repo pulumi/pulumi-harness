@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnectorRancher(args: GetConnectorRancherArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorRancherResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getConnectorRancher:getConnectorRancher", {
         "bearerToken": args.bearerToken,
@@ -114,7 +113,14 @@ export interface GetConnectorRancherResult {
  * ```
  */
 export function getConnectorRancherOutput(args: GetConnectorRancherOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorRancherResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorRancher(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getConnectorRancher:getConnectorRancher", {
+        "bearerToken": args.bearerToken,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

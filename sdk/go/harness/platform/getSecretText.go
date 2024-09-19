@@ -90,14 +90,20 @@ type LookupSecretTextResult struct {
 
 func LookupSecretTextOutput(ctx *pulumi.Context, args LookupSecretTextOutputArgs, opts ...pulumi.InvokeOption) LookupSecretTextResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecretTextResult, error) {
+		ApplyT(func(v interface{}) (LookupSecretTextResultOutput, error) {
 			args := v.(LookupSecretTextArgs)
-			r, err := LookupSecretText(ctx, &args, opts...)
-			var s LookupSecretTextResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecretTextResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getSecretText:getSecretText", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecretTextResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecretTextResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecretTextResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecretTextResultOutput)
 }
 

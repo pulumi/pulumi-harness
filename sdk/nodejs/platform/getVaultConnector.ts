@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVaultConnector(args: GetVaultConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getVaultConnector:getVaultConnector", {
         "identifier": args.identifier,
@@ -203,7 +202,13 @@ export interface GetVaultConnectorResult {
  * ```
  */
 export function getVaultConnectorOutput(args: GetVaultConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getVaultConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getVaultConnector:getVaultConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

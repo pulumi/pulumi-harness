@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getOverrides(args: GetOverridesArgs, opts?: pulumi.InvokeOptions): Promise<GetOverridesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getOverrides:getOverrides", {
         "gitDetails": args.gitDetails,
@@ -47,7 +46,13 @@ export interface GetOverridesResult {
     readonly yaml: string;
 }
 export function getOverridesOutput(args: GetOverridesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOverridesResult> {
-    return pulumi.output(args).apply((a: any) => getOverrides(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getOverrides:getOverrides", {
+        "gitDetails": args.gitDetails,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

@@ -62,14 +62,20 @@ type LookupRuleEcsResult struct {
 
 func LookupRuleEcsOutput(ctx *pulumi.Context, args LookupRuleEcsOutputArgs, opts ...pulumi.InvokeOption) LookupRuleEcsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRuleEcsResult, error) {
+		ApplyT(func(v interface{}) (LookupRuleEcsResultOutput, error) {
 			args := v.(LookupRuleEcsArgs)
-			r, err := LookupRuleEcs(ctx, &args, opts...)
-			var s LookupRuleEcsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRuleEcsResult
+			secret, err := ctx.InvokePackageRaw("harness:autostopping/getRuleEcs:getRuleEcs", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRuleEcsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRuleEcsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRuleEcsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRuleEcsResultOutput)
 }
 

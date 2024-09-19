@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for AWS Autostopping proxy
  */
 export function getAwsAlb(args: GetAwsAlbArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsAlbResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getAwsAlb:getAwsAlb", {
         "albArn": args.albArn,
@@ -115,7 +114,19 @@ export interface GetAwsAlbResult {
  * Data source for AWS Autostopping proxy
  */
 export function getAwsAlbOutput(args: GetAwsAlbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsAlbResult> {
-    return pulumi.output(args).apply((a: any) => getAwsAlb(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:autostopping/getAwsAlb:getAwsAlb", {
+        "albArn": args.albArn,
+        "certificateId": args.certificateId,
+        "cloudConnectorId": args.cloudConnectorId,
+        "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
+        "hostName": args.hostName,
+        "name": args.name,
+        "region": args.region,
+        "route53HostedZoneId": args.route53HostedZoneId,
+        "securityGroups": args.securityGroups,
+        "vpc": args.vpc,
+    }, opts);
 }
 
 /**

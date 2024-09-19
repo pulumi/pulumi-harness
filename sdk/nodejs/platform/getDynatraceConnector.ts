@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDynatraceConnector(args: GetDynatraceConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDynatraceConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDynatraceConnector:getDynatraceConnector", {
         "identifier": args.identifier,
@@ -111,7 +110,13 @@ export interface GetDynatraceConnectorResult {
  * ```
  */
 export function getDynatraceConnectorOutput(args: GetDynatraceConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynatraceConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getDynatraceConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getDynatraceConnector:getDynatraceConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

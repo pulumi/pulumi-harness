@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness input set.
  */
 export function getInputSet(args: GetInputSetArgs, opts?: pulumi.InvokeOptions): Promise<GetInputSetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getInputSet:getInputSet", {
         "gitDetails": args.gitDetails,
@@ -101,7 +100,15 @@ export interface GetInputSetResult {
  * Data source for retrieving a Harness input set.
  */
 export function getInputSetOutput(args: GetInputSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInputSetResult> {
-    return pulumi.output(args).apply((a: any) => getInputSet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getInputSet:getInputSet", {
+        "gitDetails": args.gitDetails,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "pipelineId": args.pipelineId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

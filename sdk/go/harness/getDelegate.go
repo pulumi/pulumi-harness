@@ -94,14 +94,20 @@ type GetDelegateResult struct {
 
 func GetDelegateOutput(ctx *pulumi.Context, args GetDelegateOutputArgs, opts ...pulumi.InvokeOption) GetDelegateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDelegateResult, error) {
+		ApplyT(func(v interface{}) (GetDelegateResultOutput, error) {
 			args := v.(GetDelegateArgs)
-			r, err := GetDelegate(ctx, &args, opts...)
-			var s GetDelegateResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDelegateResult
+			secret, err := ctx.InvokePackageRaw("harness:index/getDelegate:getDelegate", args, &rv, "", opts...)
+			if err != nil {
+				return GetDelegateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDelegateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDelegateResultOutput), nil
+			}
+			return output, nil
 		}).(GetDelegateResultOutput)
 }
 

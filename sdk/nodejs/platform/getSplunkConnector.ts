@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSplunkConnector(args: GetSplunkConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetSplunkConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSplunkConnector:getSplunkConnector", {
         "identifier": args.identifier,
@@ -119,7 +118,13 @@ export interface GetSplunkConnectorResult {
  * ```
  */
 export function getSplunkConnectorOutput(args: GetSplunkConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSplunkConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getSplunkConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getSplunkConnector:getSplunkConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

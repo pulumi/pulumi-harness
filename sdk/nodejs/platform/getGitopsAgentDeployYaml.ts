@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGitopsAgentDeployYaml(args: GetGitopsAgentDeployYamlArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAgentDeployYamlResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", {
         "accountId": args.accountId,
@@ -132,7 +131,16 @@ export interface GetGitopsAgentDeployYamlResult {
  * ```
  */
 export function getGitopsAgentDeployYamlOutput(args: GetGitopsAgentDeployYamlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAgentDeployYamlResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsAgentDeployYaml(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", {
+        "accountId": args.accountId,
+        "caData": args.caData,
+        "identifier": args.identifier,
+        "namespace": args.namespace,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "proxies": args.proxies,
+    }, opts);
 }
 
 /**

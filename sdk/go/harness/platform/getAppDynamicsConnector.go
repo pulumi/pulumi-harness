@@ -90,14 +90,20 @@ type LookupAppDynamicsConnectorResult struct {
 
 func LookupAppDynamicsConnectorOutput(ctx *pulumi.Context, args LookupAppDynamicsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAppDynamicsConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAppDynamicsConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAppDynamicsConnectorResultOutput, error) {
 			args := v.(LookupAppDynamicsConnectorArgs)
-			r, err := LookupAppDynamicsConnector(ctx, &args, opts...)
-			var s LookupAppDynamicsConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAppDynamicsConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAppDynamicsConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAppDynamicsConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAppDynamicsConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAppDynamicsConnectorResultOutput)
 }
 

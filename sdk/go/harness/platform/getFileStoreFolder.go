@@ -90,14 +90,20 @@ type LookupFileStoreFolderResult struct {
 
 func LookupFileStoreFolderOutput(ctx *pulumi.Context, args LookupFileStoreFolderOutputArgs, opts ...pulumi.InvokeOption) LookupFileStoreFolderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFileStoreFolderResult, error) {
+		ApplyT(func(v interface{}) (LookupFileStoreFolderResultOutput, error) {
 			args := v.(LookupFileStoreFolderArgs)
-			r, err := LookupFileStoreFolder(ctx, &args, opts...)
-			var s LookupFileStoreFolderResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupFileStoreFolderResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getFileStoreFolder:getFileStoreFolder", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFileStoreFolderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFileStoreFolderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFileStoreFolderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFileStoreFolderResultOutput)
 }
 

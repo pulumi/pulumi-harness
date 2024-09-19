@@ -52,14 +52,20 @@ type LookupIacmDefaultPipelineResult struct {
 
 func LookupIacmDefaultPipelineOutput(ctx *pulumi.Context, args LookupIacmDefaultPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupIacmDefaultPipelineResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIacmDefaultPipelineResult, error) {
+		ApplyT(func(v interface{}) (LookupIacmDefaultPipelineResultOutput, error) {
 			args := v.(LookupIacmDefaultPipelineArgs)
-			r, err := LookupIacmDefaultPipeline(ctx, &args, opts...)
-			var s LookupIacmDefaultPipelineResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupIacmDefaultPipelineResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIacmDefaultPipelineResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIacmDefaultPipelineResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIacmDefaultPipelineResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIacmDefaultPipelineResultOutput)
 }
 

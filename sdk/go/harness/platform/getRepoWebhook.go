@@ -80,14 +80,20 @@ type LookupRepoWebhookResult struct {
 
 func LookupRepoWebhookOutput(ctx *pulumi.Context, args LookupRepoWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupRepoWebhookResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRepoWebhookResult, error) {
+		ApplyT(func(v interface{}) (LookupRepoWebhookResultOutput, error) {
 			args := v.(LookupRepoWebhookArgs)
-			r, err := LookupRepoWebhook(ctx, &args, opts...)
-			var s LookupRepoWebhookResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRepoWebhookResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getRepoWebhook:getRepoWebhook", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRepoWebhookResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRepoWebhookResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRepoWebhookResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRepoWebhookResultOutput)
 }
 

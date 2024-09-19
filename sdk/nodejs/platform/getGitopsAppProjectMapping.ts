@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Resource for managing the Harness GitOps Application Project Mappings.
  */
 export function getGitopsAppProjectMapping(args: GetGitopsAppProjectMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAppProjectMappingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", {
         "accountId": args.accountId,
@@ -82,7 +81,14 @@ export interface GetGitopsAppProjectMappingResult {
  * Resource for managing the Harness GitOps Application Project Mappings.
  */
 export function getGitopsAppProjectMappingOutput(args: GetGitopsAppProjectMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAppProjectMappingResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsAppProjectMapping(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", {
+        "accountId": args.accountId,
+        "agentId": args.agentId,
+        "argoProjectName": args.argoProjectName,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

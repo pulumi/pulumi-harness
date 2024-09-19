@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Data source for retrieving a Harness service
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getService:getService", {
         "appId": args.appId,
@@ -75,7 +74,11 @@ export interface GetServiceResult {
  * Data source for retrieving a Harness service
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply((a: any) => getService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getService:getService", {
+        "appId": args.appId,
+        "id": args.id,
+    }, opts);
 }
 
 /**

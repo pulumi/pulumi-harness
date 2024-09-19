@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSecretFile(args: GetSecretFileArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretFileResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSecretFile:getSecretFile", {
         "identifier": args.identifier,
@@ -103,7 +102,13 @@ export interface GetSecretFileResult {
  * ```
  */
 export function getSecretFileOutput(args: GetSecretFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretFileResult> {
-    return pulumi.output(args).apply((a: any) => getSecretFile(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getSecretFile:getSecretFile", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

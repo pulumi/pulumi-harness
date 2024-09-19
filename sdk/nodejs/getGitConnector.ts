@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  */
 export function getGitConnector(args?: GetGitConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGitConnectorResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getGitConnector:getGitConnector", {
         "id": args.id,
@@ -94,7 +93,12 @@ export interface GetGitConnectorResult {
  * Data source for retrieving a Harness application
  */
 export function getGitConnectorOutput(args?: GetGitConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getGitConnector(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getGitConnector:getGitConnector", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

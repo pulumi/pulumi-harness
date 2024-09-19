@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFileStoreFolder(args: GetFileStoreFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFileStoreFolderResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getFileStoreFolder:getFileStoreFolder", {
         "identifier": args.identifier,
@@ -121,7 +120,13 @@ export interface GetFileStoreFolderResult {
  * ```
  */
 export function getFileStoreFolderOutput(args: GetFileStoreFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileStoreFolderResult> {
-    return pulumi.output(args).apply((a: any) => getFileStoreFolder(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getFileStoreFolder:getFileStoreFolder", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for GCP Autostopping proxy
  */
 export function getGcpProxy(args: GetGcpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpProxyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getGcpProxy:getGcpProxy", {
         "allocateStaticIp": args.allocateStaticIp,
@@ -144,7 +143,22 @@ export interface GetGcpProxyResult {
  * Data source for GCP Autostopping proxy
  */
 export function getGcpProxyOutput(args: GetGcpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpProxyResult> {
-    return pulumi.output(args).apply((a: any) => getGcpProxy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:autostopping/getGcpProxy:getGcpProxy", {
+        "allocateStaticIp": args.allocateStaticIp,
+        "apiKey": args.apiKey,
+        "certificates": args.certificates,
+        "cloudConnectorId": args.cloudConnectorId,
+        "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
+        "hostName": args.hostName,
+        "machineType": args.machineType,
+        "name": args.name,
+        "region": args.region,
+        "securityGroups": args.securityGroups,
+        "subnetId": args.subnetId,
+        "vpc": args.vpc,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

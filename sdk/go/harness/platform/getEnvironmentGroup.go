@@ -80,14 +80,20 @@ type LookupEnvironmentGroupResult struct {
 
 func LookupEnvironmentGroupOutput(ctx *pulumi.Context, args LookupEnvironmentGroupOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupEnvironmentGroupResultOutput, error) {
 			args := v.(LookupEnvironmentGroupArgs)
-			r, err := LookupEnvironmentGroup(ctx, &args, opts...)
-			var s LookupEnvironmentGroupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnvironmentGroupResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getEnvironmentGroup:getEnvironmentGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnvironmentGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnvironmentGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnvironmentGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnvironmentGroupResultOutput)
 }
 

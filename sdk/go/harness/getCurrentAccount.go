@@ -40,14 +40,20 @@ type GetCurrentAccountResult struct {
 
 func GetCurrentAccountOutput(ctx *pulumi.Context, args GetCurrentAccountOutputArgs, opts ...pulumi.InvokeOption) GetCurrentAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCurrentAccountResult, error) {
+		ApplyT(func(v interface{}) (GetCurrentAccountResultOutput, error) {
 			args := v.(GetCurrentAccountArgs)
-			r, err := GetCurrentAccount(ctx, &args, opts...)
-			var s GetCurrentAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCurrentAccountResult
+			secret, err := ctx.InvokePackageRaw("harness:index/getCurrentAccount:getCurrentAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetCurrentAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCurrentAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCurrentAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetCurrentAccountResultOutput)
 }
 

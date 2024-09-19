@@ -88,14 +88,20 @@ type LookupRolesResult struct {
 
 func LookupRolesOutput(ctx *pulumi.Context, args LookupRolesOutputArgs, opts ...pulumi.InvokeOption) LookupRolesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRolesResult, error) {
+		ApplyT(func(v interface{}) (LookupRolesResultOutput, error) {
 			args := v.(LookupRolesArgs)
-			r, err := LookupRoles(ctx, &args, opts...)
-			var s LookupRolesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRolesResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getRoles:getRoles", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRolesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRolesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRolesResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRolesResultOutput)
 }
 

@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAzureKeyVaultConnector(args: GetAzureKeyVaultConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureKeyVaultConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", {
         "identifier": args.identifier,
@@ -127,7 +126,13 @@ export interface GetAzureKeyVaultConnectorResult {
  * ```
  */
 export function getAzureKeyVaultConnectorOutput(args: GetAzureKeyVaultConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureKeyVaultConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getAzureKeyVaultConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

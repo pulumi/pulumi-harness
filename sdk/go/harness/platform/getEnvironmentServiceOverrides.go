@@ -85,14 +85,20 @@ type LookupEnvironmentServiceOverridesResult struct {
 
 func LookupEnvironmentServiceOverridesOutput(ctx *pulumi.Context, args LookupEnvironmentServiceOverridesOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentServiceOverridesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentServiceOverridesResult, error) {
+		ApplyT(func(v interface{}) (LookupEnvironmentServiceOverridesResultOutput, error) {
 			args := v.(LookupEnvironmentServiceOverridesArgs)
-			r, err := LookupEnvironmentServiceOverrides(ctx, &args, opts...)
-			var s LookupEnvironmentServiceOverridesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnvironmentServiceOverridesResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnvironmentServiceOverridesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnvironmentServiceOverridesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnvironmentServiceOverridesResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnvironmentServiceOverridesResultOutput)
 }
 

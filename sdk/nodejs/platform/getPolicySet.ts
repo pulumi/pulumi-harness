@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPolicySet(args: GetPolicySetArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicySetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPolicySet:getPolicySet", {
         "action": args.action,
@@ -153,7 +152,17 @@ export interface GetPolicySetResult {
  * ```
  */
 export function getPolicySetOutput(args: GetPolicySetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicySetResult> {
-    return pulumi.output(args).apply((a: any) => getPolicySet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getPolicySet:getPolicySet", {
+        "action": args.action,
+        "enabled": args.enabled,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "policies": args.policies,
+        "projectId": args.projectId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

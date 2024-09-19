@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Datasource for fetching a Harness GitOps Application.
  */
 export function getGitopsApplications(args: GetGitopsApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsApplicationsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsApplications:getGitopsApplications", {
         "accountId": args.accountId,
@@ -133,7 +132,15 @@ export interface GetGitopsApplicationsResult {
  * Datasource for fetching a Harness GitOps Application.
  */
 export function getGitopsApplicationsOutput(args: GetGitopsApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsApplicationsResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsApplications(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsApplications:getGitopsApplications", {
+        "accountId": args.accountId,
+        "agentId": args.agentId,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

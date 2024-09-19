@@ -92,14 +92,20 @@ type LookupBitbucketConnectorResult struct {
 
 func LookupBitbucketConnectorOutput(ctx *pulumi.Context, args LookupBitbucketConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupBitbucketConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBitbucketConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupBitbucketConnectorResultOutput, error) {
 			args := v.(LookupBitbucketConnectorArgs)
-			r, err := LookupBitbucketConnector(ctx, &args, opts...)
-			var s LookupBitbucketConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupBitbucketConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getBitbucketConnector:getBitbucketConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBitbucketConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBitbucketConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBitbucketConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBitbucketConnectorResultOutput)
 }
 

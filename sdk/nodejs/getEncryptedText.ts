@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  */
 export function getEncryptedText(args?: GetEncryptedTextArgs, opts?: pulumi.InvokeOptions): Promise<GetEncryptedTextResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getEncryptedText:getEncryptedText", {
         "id": args.id,
@@ -63,7 +62,13 @@ export interface GetEncryptedTextResult {
  * Data source for retrieving a Harness application
  */
 export function getEncryptedTextOutput(args?: GetEncryptedTextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEncryptedTextResult> {
-    return pulumi.output(args).apply((a: any) => getEncryptedText(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getEncryptedText:getEncryptedText", {
+        "id": args.id,
+        "name": args.name,
+        "usageScopes": args.usageScopes,
+    }, opts);
 }
 
 /**

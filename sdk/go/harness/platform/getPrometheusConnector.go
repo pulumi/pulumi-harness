@@ -90,14 +90,20 @@ type LookupPrometheusConnectorResult struct {
 
 func LookupPrometheusConnectorOutput(ctx *pulumi.Context, args LookupPrometheusConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupPrometheusConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrometheusConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupPrometheusConnectorResultOutput, error) {
 			args := v.(LookupPrometheusConnectorArgs)
-			r, err := LookupPrometheusConnector(ctx, &args, opts...)
-			var s LookupPrometheusConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrometheusConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getPrometheusConnector:getPrometheusConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrometheusConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrometheusConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrometheusConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrometheusConnectorResultOutput)
 }
 

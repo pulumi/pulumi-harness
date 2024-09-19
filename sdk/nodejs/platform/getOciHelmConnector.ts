@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOciHelmConnector(args: GetOciHelmConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetOciHelmConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getOciHelmConnector:getOciHelmConnector", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetOciHelmConnectorResult {
  * ```
  */
 export function getOciHelmConnectorOutput(args: GetOciHelmConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOciHelmConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getOciHelmConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getOciHelmConnector:getOciHelmConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

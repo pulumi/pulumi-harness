@@ -86,14 +86,20 @@ type GetGitopsGnupgResult struct {
 
 func GetGitopsGnupgOutput(ctx *pulumi.Context, args GetGitopsGnupgOutputArgs, opts ...pulumi.InvokeOption) GetGitopsGnupgResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGitopsGnupgResult, error) {
+		ApplyT(func(v interface{}) (GetGitopsGnupgResultOutput, error) {
 			args := v.(GetGitopsGnupgArgs)
-			r, err := GetGitopsGnupg(ctx, &args, opts...)
-			var s GetGitopsGnupgResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGitopsGnupgResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsGnupg:getGitopsGnupg", args, &rv, "", opts...)
+			if err != nil {
+				return GetGitopsGnupgResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGitopsGnupgResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGitopsGnupgResultOutput), nil
+			}
+			return output, nil
 		}).(GetGitopsGnupgResultOutput)
 }
 

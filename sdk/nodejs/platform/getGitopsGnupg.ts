@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGitopsGnupg(args: GetGitopsGnupgArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsGnupgResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsGnupg:getGitopsGnupg", {
         "accountId": args.accountId,
@@ -115,7 +114,15 @@ export interface GetGitopsGnupgResult {
  * ```
  */
 export function getGitopsGnupgOutput(args: GetGitopsGnupgOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsGnupgResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsGnupg(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsGnupg:getGitopsGnupg", {
+        "accountId": args.accountId,
+        "agentId": args.agentId,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "requests": args.requests,
+    }, opts);
 }
 
 /**

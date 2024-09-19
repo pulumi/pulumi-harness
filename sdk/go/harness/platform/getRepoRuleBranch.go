@@ -78,14 +78,20 @@ type LookupRepoRuleBranchResult struct {
 
 func LookupRepoRuleBranchOutput(ctx *pulumi.Context, args LookupRepoRuleBranchOutputArgs, opts ...pulumi.InvokeOption) LookupRepoRuleBranchResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRepoRuleBranchResult, error) {
+		ApplyT(func(v interface{}) (LookupRepoRuleBranchResultOutput, error) {
 			args := v.(LookupRepoRuleBranchArgs)
-			r, err := LookupRepoRuleBranch(ctx, &args, opts...)
-			var s LookupRepoRuleBranchResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRepoRuleBranchResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getRepoRuleBranch:getRepoRuleBranch", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRepoRuleBranchResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRepoRuleBranchResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRepoRuleBranchResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRepoRuleBranchResultOutput)
 }
 
