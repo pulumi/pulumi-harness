@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDockerConnector(args: GetDockerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDockerConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDockerConnector:getDockerConnector", {
         "identifier": args.identifier,
@@ -117,7 +116,13 @@ export interface GetDockerConnectorResult {
  * ```
  */
 export function getDockerConnectorOutput(args: GetDockerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDockerConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getDockerConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getDockerConnector:getDockerConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

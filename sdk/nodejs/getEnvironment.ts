@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Data source for retrieving a Harness service
  */
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getEnvironment:getEnvironment", {
         "appId": args.appId,
@@ -79,7 +78,13 @@ export interface GetEnvironmentResult {
  * Data source for retrieving a Harness service
  */
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
-    return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getEnvironment:getEnvironment", {
+        "appId": args.appId,
+        "environmentId": args.environmentId,
+        "name": args.name,
+        "variableOverrides": args.variableOverrides,
+    }, opts);
 }
 
 /**

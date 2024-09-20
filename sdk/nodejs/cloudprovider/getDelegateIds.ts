@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  */
 export function getDelegateIds(args?: GetDelegateIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegateIdsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", {
         "name": args.name,
@@ -65,7 +64,13 @@ export interface GetDelegateIdsResult {
  * Use this data source to get a list of delegate ID's matching the specified search criteria.
  */
 export function getDelegateIdsOutput(args?: GetDelegateIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegateIdsResult> {
-    return pulumi.output(args).apply((a: any) => getDelegateIds(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:cloudprovider/getDelegateIds:getDelegateIds", {
+        "name": args.name,
+        "status": args.status,
+        "type": args.type,
+    }, opts);
 }
 
 /**

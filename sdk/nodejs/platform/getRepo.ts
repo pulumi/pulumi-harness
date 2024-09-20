@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRepo(args: GetRepoArgs, opts?: pulumi.InvokeOptions): Promise<GetRepoResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getRepo:getRepo", {
         "defaultBranch": args.defaultBranch,
@@ -166,7 +165,18 @@ export interface GetRepoResult {
  * ```
  */
 export function getRepoOutput(args: GetRepoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoResult> {
-    return pulumi.output(args).apply((a: any) => getRepo(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getRepo:getRepo", {
+        "defaultBranch": args.defaultBranch,
+        "description": args.description,
+        "gitIgnore": args.gitIgnore,
+        "identifier": args.identifier,
+        "license": args.license,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "readme": args.readme,
+        "sources": args.sources,
+    }, opts);
 }
 
 /**

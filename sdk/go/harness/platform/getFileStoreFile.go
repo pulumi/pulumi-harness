@@ -98,14 +98,20 @@ type LookupFileStoreFileResult struct {
 
 func LookupFileStoreFileOutput(ctx *pulumi.Context, args LookupFileStoreFileOutputArgs, opts ...pulumi.InvokeOption) LookupFileStoreFileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFileStoreFileResult, error) {
+		ApplyT(func(v interface{}) (LookupFileStoreFileResultOutput, error) {
 			args := v.(LookupFileStoreFileArgs)
-			r, err := LookupFileStoreFile(ctx, &args, opts...)
-			var s LookupFileStoreFileResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupFileStoreFileResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getFileStoreFile:getFileStoreFile", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFileStoreFileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFileStoreFileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFileStoreFileResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFileStoreFileResultOutput)
 }
 

@@ -64,14 +64,20 @@ type LookupInputSetResult struct {
 
 func LookupInputSetOutput(ctx *pulumi.Context, args LookupInputSetOutputArgs, opts ...pulumi.InvokeOption) LookupInputSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInputSetResult, error) {
+		ApplyT(func(v interface{}) (LookupInputSetResultOutput, error) {
 			args := v.(LookupInputSetArgs)
-			r, err := LookupInputSet(ctx, &args, opts...)
-			var s LookupInputSetResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupInputSetResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getInputSet:getInputSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInputSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInputSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInputSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInputSetResultOutput)
 }
 

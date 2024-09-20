@@ -86,14 +86,20 @@ type LookupAwsSecretManagerConnectorResult struct {
 
 func LookupAwsSecretManagerConnectorOutput(ctx *pulumi.Context, args LookupAwsSecretManagerConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsSecretManagerConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAwsSecretManagerConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAwsSecretManagerConnectorResultOutput, error) {
 			args := v.(LookupAwsSecretManagerConnectorArgs)
-			r, err := LookupAwsSecretManagerConnector(ctx, &args, opts...)
-			var s LookupAwsSecretManagerConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAwsSecretManagerConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAwsSecretManagerConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAwsSecretManagerConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAwsSecretManagerConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAwsSecretManagerConnectorResultOutput)
 }
 

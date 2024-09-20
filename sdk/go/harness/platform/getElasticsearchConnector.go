@@ -88,14 +88,20 @@ type LookupElasticsearchConnectorResult struct {
 
 func LookupElasticsearchConnectorOutput(ctx *pulumi.Context, args LookupElasticsearchConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupElasticsearchConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupElasticsearchConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupElasticsearchConnectorResultOutput, error) {
 			args := v.(LookupElasticsearchConnectorArgs)
-			r, err := LookupElasticsearchConnector(ctx, &args, opts...)
-			var s LookupElasticsearchConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupElasticsearchConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getElasticsearchConnector:getElasticsearchConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupElasticsearchConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupElasticsearchConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupElasticsearchConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupElasticsearchConnectorResultOutput)
 }
 

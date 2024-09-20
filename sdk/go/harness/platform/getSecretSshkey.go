@@ -84,14 +84,20 @@ type LookupSecretSshkeyResult struct {
 
 func LookupSecretSshkeyOutput(ctx *pulumi.Context, args LookupSecretSshkeyOutputArgs, opts ...pulumi.InvokeOption) LookupSecretSshkeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecretSshkeyResult, error) {
+		ApplyT(func(v interface{}) (LookupSecretSshkeyResultOutput, error) {
 			args := v.(LookupSecretSshkeyArgs)
-			r, err := LookupSecretSshkey(ctx, &args, opts...)
-			var s LookupSecretSshkeyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecretSshkeyResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getSecretSshkey:getSecretSshkey", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecretSshkeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecretSshkeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecretSshkeyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecretSshkeyResultOutput)
 }
 

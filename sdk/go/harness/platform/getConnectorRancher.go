@@ -86,14 +86,20 @@ type LookupConnectorRancherResult struct {
 
 func LookupConnectorRancherOutput(ctx *pulumi.Context, args LookupConnectorRancherOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorRancherResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectorRancherResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectorRancherResultOutput, error) {
 			args := v.(LookupConnectorRancherArgs)
-			r, err := LookupConnectorRancher(ctx, &args, opts...)
-			var s LookupConnectorRancherResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectorRancherResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getConnectorRancher:getConnectorRancher", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectorRancherResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectorRancherResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectorRancherResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectorRancherResultOutput)
 }
 

@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWorkspaceOutputValue(args: GetWorkspaceOutputValueArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceOutputValueResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", {
         "identifier": args.identifier,
@@ -89,7 +88,12 @@ export interface GetWorkspaceOutputValueResult {
  * ```
  */
 export function getWorkspaceOutputValueOutput(args: GetWorkspaceOutputValueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceOutputValueResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspaceOutputValue(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

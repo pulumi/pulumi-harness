@@ -84,14 +84,20 @@ type LookupGcpProxyResult struct {
 
 func LookupGcpProxyOutput(ctx *pulumi.Context, args LookupGcpProxyOutputArgs, opts ...pulumi.InvokeOption) LookupGcpProxyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGcpProxyResult, error) {
+		ApplyT(func(v interface{}) (LookupGcpProxyResultOutput, error) {
 			args := v.(LookupGcpProxyArgs)
-			r, err := LookupGcpProxy(ctx, &args, opts...)
-			var s LookupGcpProxyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGcpProxyResult
+			secret, err := ctx.InvokePackageRaw("harness:autostopping/getGcpProxy:getGcpProxy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGcpProxyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGcpProxyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGcpProxyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGcpProxyResultOutput)
 }
 

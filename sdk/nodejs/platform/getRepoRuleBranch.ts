@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness repo branch rule.
  */
 export function getRepoRuleBranch(args: GetRepoRuleBranchArgs, opts?: pulumi.InvokeOptions): Promise<GetRepoRuleBranchResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getRepoRuleBranch:getRepoRuleBranch", {
         "bypasses": args.bypasses,
@@ -132,7 +131,18 @@ export interface GetRepoRuleBranchResult {
  * Data source for retrieving a Harness repo branch rule.
  */
 export function getRepoRuleBranchOutput(args: GetRepoRuleBranchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoRuleBranchResult> {
-    return pulumi.output(args).apply((a: any) => getRepoRuleBranch(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getRepoRuleBranch:getRepoRuleBranch", {
+        "bypasses": args.bypasses,
+        "description": args.description,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "patterns": args.patterns,
+        "policies": args.policies,
+        "projectId": args.projectId,
+        "repoIdentifier": args.repoIdentifier,
+        "state": args.state,
+    }, opts);
 }
 
 /**

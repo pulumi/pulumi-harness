@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving an SLO.
  */
 export function getSlo(args: GetSloArgs, opts?: pulumi.InvokeOptions): Promise<GetSloResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSlo:getSlo", {
         "identifier": args.identifier,
@@ -60,7 +59,12 @@ export interface GetSloResult {
  * Data source for retrieving an SLO.
  */
 export function getSloOutput(args: GetSloOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSloResult> {
-    return pulumi.output(args).apply((a: any) => getSlo(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getSlo:getSlo", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

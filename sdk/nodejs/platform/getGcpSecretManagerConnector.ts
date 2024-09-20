@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGcpSecretManagerConnector(args: GetGcpSecretManagerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpSecretManagerConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", {
         "identifier": args.identifier,
@@ -107,7 +106,13 @@ export interface GetGcpSecretManagerConnectorResult {
  * ```
  */
 export function getGcpSecretManagerConnectorOutput(args: GetGcpSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpSecretManagerConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getGcpSecretManagerConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

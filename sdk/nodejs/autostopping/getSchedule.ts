@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a fixed schedule for Harness AutoStopping rule
  */
 export function getSchedule(args: GetScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getSchedule:getSchedule", {
         "scheduleType": args.scheduleType,
@@ -72,7 +71,10 @@ export interface GetScheduleResult {
  * Data source for retrieving a fixed schedule for Harness AutoStopping rule
  */
 export function getScheduleOutput(args: GetScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduleResult> {
-    return pulumi.output(args).apply((a: any) => getSchedule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:autostopping/getSchedule:getSchedule", {
+        "scheduleType": args.scheduleType,
+    }, opts);
 }
 
 /**

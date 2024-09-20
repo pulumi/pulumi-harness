@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNexusConnector(args: GetNexusConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetNexusConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getNexusConnector:getNexusConnector", {
         "identifier": args.identifier,
@@ -117,7 +116,13 @@ export interface GetNexusConnectorResult {
  * ```
  */
 export function getNexusConnectorOutput(args: GetNexusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNexusConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getNexusConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getNexusConnector:getNexusConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

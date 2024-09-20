@@ -50,14 +50,20 @@ type GetGitopsRepoCertResult struct {
 
 func GetGitopsRepoCertOutput(ctx *pulumi.Context, args GetGitopsRepoCertOutputArgs, opts ...pulumi.InvokeOption) GetGitopsRepoCertResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGitopsRepoCertResult, error) {
+		ApplyT(func(v interface{}) (GetGitopsRepoCertResultOutput, error) {
 			args := v.(GetGitopsRepoCertArgs)
-			r, err := GetGitopsRepoCert(ctx, &args, opts...)
-			var s GetGitopsRepoCertResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGitopsRepoCertResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsRepoCert:getGitopsRepoCert", args, &rv, "", opts...)
+			if err != nil {
+				return GetGitopsRepoCertResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGitopsRepoCertResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGitopsRepoCertResultOutput), nil
+			}
+			return output, nil
 		}).(GetGitopsRepoCertResultOutput)
 }
 

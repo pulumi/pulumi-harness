@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAwsSecretManagerConnector(args: GetAwsSecretManagerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsSecretManagerConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetAwsSecretManagerConnectorResult {
  * ```
  */
 export function getAwsSecretManagerConnectorOutput(args: GetAwsSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsSecretManagerConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getAwsSecretManagerConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

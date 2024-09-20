@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a monitored service.
  */
 export function getMonitoredService(args: GetMonitoredServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitoredServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getMonitoredService:getMonitoredService", {
         "identifier": args.identifier,
@@ -60,7 +59,12 @@ export interface GetMonitoredServiceResult {
  * Data source for retrieving a monitored service.
  */
 export function getMonitoredServiceOutput(args: GetMonitoredServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitoredServiceResult> {
-    return pulumi.output(args).apply((a: any) => getMonitoredService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getMonitoredService:getMonitoredService", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

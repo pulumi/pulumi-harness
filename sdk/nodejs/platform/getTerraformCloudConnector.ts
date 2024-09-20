@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTerraformCloudConnector(args: GetTerraformCloudConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetTerraformCloudConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", {
         "identifier": args.identifier,
@@ -103,7 +102,13 @@ export interface GetTerraformCloudConnectorResult {
  * ```
  */
 export function getTerraformCloudConnectorOutput(args: GetTerraformCloudConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTerraformCloudConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getTerraformCloudConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

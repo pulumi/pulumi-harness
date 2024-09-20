@@ -58,14 +58,20 @@ type LookupGitxWebhookResult struct {
 
 func LookupGitxWebhookOutput(ctx *pulumi.Context, args LookupGitxWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupGitxWebhookResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGitxWebhookResult, error) {
+		ApplyT(func(v interface{}) (LookupGitxWebhookResultOutput, error) {
 			args := v.(LookupGitxWebhookArgs)
-			r, err := LookupGitxWebhook(ctx, &args, opts...)
-			var s LookupGitxWebhookResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGitxWebhookResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getGitxWebhook:getGitxWebhook", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGitxWebhookResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGitxWebhookResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGitxWebhookResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGitxWebhookResultOutput)
 }
 

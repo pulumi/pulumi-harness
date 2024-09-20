@@ -62,14 +62,20 @@ type LookupDelegatetokenResult struct {
 
 func LookupDelegatetokenOutput(ctx *pulumi.Context, args LookupDelegatetokenOutputArgs, opts ...pulumi.InvokeOption) LookupDelegatetokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDelegatetokenResult, error) {
+		ApplyT(func(v interface{}) (LookupDelegatetokenResultOutput, error) {
 			args := v.(LookupDelegatetokenArgs)
-			r, err := LookupDelegatetoken(ctx, &args, opts...)
-			var s LookupDelegatetokenResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDelegatetokenResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getDelegatetoken:getDelegatetoken", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDelegatetokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDelegatetokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDelegatetokenResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDelegatetokenResultOutput)
 }
 

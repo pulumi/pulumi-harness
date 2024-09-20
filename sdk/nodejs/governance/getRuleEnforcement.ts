@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRuleEnforcement(args: GetRuleEnforcementArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleEnforcementResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:governance/getRuleEnforcement:getRuleEnforcement", {
         "enforcementId": args.enforcementId,
@@ -108,7 +107,10 @@ export interface GetRuleEnforcementResult {
  * ```
  */
 export function getRuleEnforcementOutput(args: GetRuleEnforcementOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleEnforcementResult> {
-    return pulumi.output(args).apply((a: any) => getRuleEnforcement(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:governance/getRuleEnforcement:getRuleEnforcement", {
+        "enforcementId": args.enforcementId,
+    }, opts);
 }
 
 /**

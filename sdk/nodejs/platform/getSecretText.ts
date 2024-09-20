@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSecretText(args: GetSecretTextArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretTextResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSecretText:getSecretText", {
         "additionalMetadatas": args.additionalMetadatas,
@@ -122,7 +121,14 @@ export interface GetSecretTextResult {
  * ```
  */
 export function getSecretTextOutput(args: GetSecretTextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretTextResult> {
-    return pulumi.output(args).apply((a: any) => getSecretText(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getSecretText:getSecretText", {
+        "additionalMetadatas": args.additionalMetadatas,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

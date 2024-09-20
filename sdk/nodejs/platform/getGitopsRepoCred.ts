@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGitopsRepoCred(args: GetGitopsRepoCredArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsRepoCredResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsRepoCred:getGitopsRepoCred", {
         "accountId": args.accountId,
@@ -119,7 +118,15 @@ export interface GetGitopsRepoCredResult {
  * ```
  */
 export function getGitopsRepoCredOutput(args: GetGitopsRepoCredOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsRepoCredResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsRepoCred(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsRepoCred:getGitopsRepoCred", {
+        "accountId": args.accountId,
+        "agentId": args.agentId,
+        "creds": args.creds,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

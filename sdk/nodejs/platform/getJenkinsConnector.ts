@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getJenkinsConnector(args: GetJenkinsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetJenkinsConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getJenkinsConnector:getJenkinsConnector", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetJenkinsConnectorResult {
  * ```
  */
 export function getJenkinsConnectorOutput(args: GetJenkinsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJenkinsConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getJenkinsConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getJenkinsConnector:getJenkinsConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

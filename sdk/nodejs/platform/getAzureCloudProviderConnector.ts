@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAzureCloudProviderConnector(args: GetAzureCloudProviderConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureCloudProviderConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", {
         "identifier": args.identifier,
@@ -117,7 +116,13 @@ export interface GetAzureCloudProviderConnectorResult {
  * ```
  */
 export function getAzureCloudProviderConnectorOutput(args: GetAzureCloudProviderConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureCloudProviderConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getAzureCloudProviderConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

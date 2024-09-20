@@ -42,14 +42,20 @@ type GetSsoProviderResult struct {
 
 func GetSsoProviderOutput(ctx *pulumi.Context, args GetSsoProviderOutputArgs, opts ...pulumi.InvokeOption) GetSsoProviderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSsoProviderResult, error) {
+		ApplyT(func(v interface{}) (GetSsoProviderResultOutput, error) {
 			args := v.(GetSsoProviderArgs)
-			r, err := GetSsoProvider(ctx, &args, opts...)
-			var s GetSsoProviderResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSsoProviderResult
+			secret, err := ctx.InvokePackageRaw("harness:index/getSsoProvider:getSsoProvider", args, &rv, "", opts...)
+			if err != nil {
+				return GetSsoProviderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSsoProviderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSsoProviderResultOutput), nil
+			}
+			return output, nil
 		}).(GetSsoProviderResultOutput)
 }
 

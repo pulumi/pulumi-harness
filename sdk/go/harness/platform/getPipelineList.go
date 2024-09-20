@@ -116,14 +116,20 @@ type GetPipelineListResult struct {
 
 func GetPipelineListOutput(ctx *pulumi.Context, args GetPipelineListOutputArgs, opts ...pulumi.InvokeOption) GetPipelineListResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetPipelineListResult, error) {
+		ApplyT(func(v interface{}) (GetPipelineListResultOutput, error) {
 			args := v.(GetPipelineListArgs)
-			r, err := GetPipelineList(ctx, &args, opts...)
-			var s GetPipelineListResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetPipelineListResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getPipelineList:getPipelineList", args, &rv, "", opts...)
+			if err != nil {
+				return GetPipelineListResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetPipelineListResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetPipelineListResultOutput), nil
+			}
+			return output, nil
 		}).(GetPipelineListResultOutput)
 }
 

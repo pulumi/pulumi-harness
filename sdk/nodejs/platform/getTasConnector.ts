@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTasConnector(args: GetTasConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetTasConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getTasConnector:getTasConnector", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetTasConnectorResult {
  * ```
  */
 export function getTasConnectorOutput(args: GetTasConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTasConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getTasConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getTasConnector:getTasConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

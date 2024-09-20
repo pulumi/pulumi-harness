@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAppDynamicsConnector(args: GetAppDynamicsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAppDynamicsConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", {
         "identifier": args.identifier,
@@ -121,7 +120,13 @@ export interface GetAppDynamicsConnectorResult {
  * ```
  */
 export function getAppDynamicsConnectorOutput(args: GetAppDynamicsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppDynamicsConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getAppDynamicsConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

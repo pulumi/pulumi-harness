@@ -86,14 +86,20 @@ type LookupRuleEnforcementResult struct {
 
 func LookupRuleEnforcementOutput(ctx *pulumi.Context, args LookupRuleEnforcementOutputArgs, opts ...pulumi.InvokeOption) LookupRuleEnforcementResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRuleEnforcementResult, error) {
+		ApplyT(func(v interface{}) (LookupRuleEnforcementResultOutput, error) {
 			args := v.(LookupRuleEnforcementArgs)
-			r, err := LookupRuleEnforcement(ctx, &args, opts...)
-			var s LookupRuleEnforcementResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRuleEnforcementResult
+			secret, err := ctx.InvokePackageRaw("harness:governance/getRuleEnforcement:getRuleEnforcement", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRuleEnforcementResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRuleEnforcementResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRuleEnforcementResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRuleEnforcementResultOutput)
 }
 

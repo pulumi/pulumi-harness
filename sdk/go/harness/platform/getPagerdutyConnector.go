@@ -82,14 +82,20 @@ type LookupPagerdutyConnectorResult struct {
 
 func LookupPagerdutyConnectorOutput(ctx *pulumi.Context, args LookupPagerdutyConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupPagerdutyConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPagerdutyConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupPagerdutyConnectorResultOutput, error) {
 			args := v.(LookupPagerdutyConnectorArgs)
-			r, err := LookupPagerdutyConnector(ctx, &args, opts...)
-			var s LookupPagerdutyConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPagerdutyConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPagerdutyConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPagerdutyConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPagerdutyConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPagerdutyConnectorResultOutput)
 }
 

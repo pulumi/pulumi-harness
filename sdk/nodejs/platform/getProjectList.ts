@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getProjectList(args: GetProjectListArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectListResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getProjectList:getProjectList", {
         "identifier": args.identifier,
@@ -130,7 +129,14 @@ export interface GetProjectListResult {
  * ```
  */
 export function getProjectListOutput(args: GetProjectListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectListResult> {
-    return pulumi.output(args).apply((a: any) => getProjectList(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getProjectList:getProjectList", {
+        "identifier": args.identifier,
+        "limit": args.limit,
+        "name": args.name,
+        "orgId": args.orgId,
+        "page": args.page,
+    }, opts);
 }
 
 /**

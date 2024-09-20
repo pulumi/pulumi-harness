@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCcmFilters(args: GetCcmFiltersArgs, opts?: pulumi.InvokeOptions): Promise<GetCcmFiltersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getCcmFilters:getCcmFilters", {
         "identifier": args.identifier,
@@ -111,7 +110,13 @@ export interface GetCcmFiltersResult {
  * ```
  */
 export function getCcmFiltersOutput(args: GetCcmFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCcmFiltersResult> {
-    return pulumi.output(args).apply((a: any) => getCcmFilters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getCcmFilters:getCcmFilters", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

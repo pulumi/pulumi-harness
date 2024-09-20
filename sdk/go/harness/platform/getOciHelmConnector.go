@@ -86,14 +86,20 @@ type LookupOciHelmConnectorResult struct {
 
 func LookupOciHelmConnectorOutput(ctx *pulumi.Context, args LookupOciHelmConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOciHelmConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOciHelmConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupOciHelmConnectorResultOutput, error) {
 			args := v.(LookupOciHelmConnectorArgs)
-			r, err := LookupOciHelmConnector(ctx, &args, opts...)
-			var s LookupOciHelmConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupOciHelmConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getOciHelmConnector:getOciHelmConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOciHelmConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOciHelmConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOciHelmConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOciHelmConnectorResultOutput)
 }
 

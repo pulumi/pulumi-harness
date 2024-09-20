@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAwsKmsConnector(args: GetAwsKmsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsKmsConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsKmsConnector:getAwsKmsConnector", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetAwsKmsConnectorResult {
  * ```
  */
 export function getAwsKmsConnectorOutput(args: GetAwsKmsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsKmsConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getAwsKmsConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getAwsKmsConnector:getAwsKmsConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

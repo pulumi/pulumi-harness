@@ -94,14 +94,20 @@ type GetGitopsAgentDeployYamlResult struct {
 
 func GetGitopsAgentDeployYamlOutput(ctx *pulumi.Context, args GetGitopsAgentDeployYamlOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentDeployYamlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGitopsAgentDeployYamlResult, error) {
+		ApplyT(func(v interface{}) (GetGitopsAgentDeployYamlResultOutput, error) {
 			args := v.(GetGitopsAgentDeployYamlArgs)
-			r, err := GetGitopsAgentDeployYaml(ctx, &args, opts...)
-			var s GetGitopsAgentDeployYamlResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGitopsAgentDeployYamlResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args, &rv, "", opts...)
+			if err != nil {
+				return GetGitopsAgentDeployYamlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGitopsAgentDeployYamlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGitopsAgentDeployYamlResultOutput), nil
+			}
+			return output, nil
 		}).(GetGitopsAgentDeployYamlResultOutput)
 }
 

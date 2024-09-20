@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  */
 export function getDelegate(args?: GetDelegateArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegateResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getDelegate:getDelegate", {
         "hostname": args.hostname,
@@ -129,7 +128,15 @@ export interface GetDelegateResult {
  * ```
  */
 export function getDelegateOutput(args?: GetDelegateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegateResult> {
-    return pulumi.output(args).apply((a: any) => getDelegate(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getDelegate:getDelegate", {
+        "hostname": args.hostname,
+        "id": args.id,
+        "name": args.name,
+        "status": args.status,
+        "type": args.type,
+    }, opts);
 }
 
 /**

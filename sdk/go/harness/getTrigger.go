@@ -83,14 +83,20 @@ type GetTriggerResult struct {
 
 func GetTriggerOutput(ctx *pulumi.Context, args GetTriggerOutputArgs, opts ...pulumi.InvokeOption) GetTriggerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTriggerResult, error) {
+		ApplyT(func(v interface{}) (GetTriggerResultOutput, error) {
 			args := v.(GetTriggerArgs)
-			r, err := GetTrigger(ctx, &args, opts...)
-			var s GetTriggerResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTriggerResult
+			secret, err := ctx.InvokePackageRaw("harness:index/getTrigger:getTrigger", args, &rv, "", opts...)
+			if err != nil {
+				return GetTriggerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTriggerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTriggerResultOutput), nil
+			}
+			return output, nil
 		}).(GetTriggerResultOutput)
 }
 

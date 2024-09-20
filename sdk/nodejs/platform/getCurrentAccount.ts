@@ -6,7 +6,6 @@ import * as utilities from "../utilities";
 
 export function getCurrentAccount(args?: GetCurrentAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentAccountResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getCurrentAccount:getCurrentAccount", {
         "id": args.id,
@@ -29,7 +28,11 @@ export interface GetCurrentAccountResult {
     readonly id?: string;
 }
 export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentAccountResult> {
-    return pulumi.output(args).apply((a: any) => getCurrentAccount(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getCurrentAccount:getCurrentAccount", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

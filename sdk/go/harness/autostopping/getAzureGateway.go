@@ -86,14 +86,20 @@ type LookupAzureGatewayResult struct {
 
 func LookupAzureGatewayOutput(ctx *pulumi.Context, args LookupAzureGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAzureGatewayResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureGatewayResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureGatewayResultOutput, error) {
 			args := v.(LookupAzureGatewayArgs)
-			r, err := LookupAzureGateway(ctx, &args, opts...)
-			var s LookupAzureGatewayResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureGatewayResult
+			secret, err := ctx.InvokePackageRaw("harness:autostopping/getAzureGateway:getAzureGateway", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureGatewayResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureGatewayResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureGatewayResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureGatewayResultOutput)
 }
 

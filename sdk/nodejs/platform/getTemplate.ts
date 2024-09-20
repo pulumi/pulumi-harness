@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  */
 export function getTemplate(args?: GetTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getTemplate:getTemplate", {
         "branchName": args.branchName,
@@ -198,7 +197,20 @@ export interface GetTemplateResult {
  * ```
  */
 export function getTemplateOutput(args?: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getTemplate(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getTemplate:getTemplate", {
+        "branchName": args.branchName,
+        "childType": args.childType,
+        "gitDetails": args.gitDetails,
+        "identifier": args.identifier,
+        "isStable": args.isStable,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "scope": args.scope,
+        "version": args.version,
+    }, opts);
 }
 
 /**

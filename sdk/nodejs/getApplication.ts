@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getApplication:getApplication", {
         "description": args.description,
@@ -84,7 +83,16 @@ export interface GetApplicationResult {
  * Data source for retrieving a Harness application
  */
 export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
-    return pulumi.output(args).apply((a: any) => getApplication(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getApplication:getApplication", {
+        "description": args.description,
+        "gitSyncConnectorId": args.gitSyncConnectorId,
+        "gitSyncEnabled": args.gitSyncEnabled,
+        "id": args.id,
+        "isManualTriggerAuthorized": args.isManualTriggerAuthorized,
+        "name": args.name,
+    }, opts);
 }
 
 /**

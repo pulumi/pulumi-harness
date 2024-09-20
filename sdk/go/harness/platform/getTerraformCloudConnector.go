@@ -82,14 +82,20 @@ type LookupTerraformCloudConnectorResult struct {
 
 func LookupTerraformCloudConnectorOutput(ctx *pulumi.Context, args LookupTerraformCloudConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTerraformCloudConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTerraformCloudConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupTerraformCloudConnectorResultOutput, error) {
 			args := v.(LookupTerraformCloudConnectorArgs)
-			r, err := LookupTerraformCloudConnector(ctx, &args, opts...)
-			var s LookupTerraformCloudConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupTerraformCloudConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTerraformCloudConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTerraformCloudConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTerraformCloudConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTerraformCloudConnectorResultOutput)
 }
 

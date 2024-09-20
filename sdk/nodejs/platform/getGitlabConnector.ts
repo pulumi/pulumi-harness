@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGitlabConnector(args: GetGitlabConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGitlabConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitlabConnector:getGitlabConnector", {
         "identifier": args.identifier,
@@ -125,7 +124,13 @@ export interface GetGitlabConnectorResult {
  * ```
  */
 export function getGitlabConnectorOutput(args: GetGitlabConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitlabConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getGitlabConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitlabConnector:getGitlabConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

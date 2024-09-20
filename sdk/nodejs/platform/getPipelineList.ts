@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPipelineList(args: GetPipelineListArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineListResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPipelineList:getPipelineList", {
         "identifier": args.identifier,
@@ -139,7 +138,15 @@ export interface GetPipelineListResult {
  * ```
  */
 export function getPipelineListOutput(args: GetPipelineListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineListResult> {
-    return pulumi.output(args).apply((a: any) => getPipelineList(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getPipelineList:getPipelineList", {
+        "identifier": args.identifier,
+        "limit": args.limit,
+        "name": args.name,
+        "orgId": args.orgId,
+        "page": args.page,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

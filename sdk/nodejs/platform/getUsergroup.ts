@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getUsergroup(args?: GetUsergroupArgs, opts?: pulumi.InvokeOptions): Promise<GetUsergroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getUsergroup:getUsergroup", {
         "identifier": args.identifier,
@@ -153,7 +152,15 @@ export interface GetUsergroupResult {
  * ```
  */
 export function getUsergroupOutput(args?: GetUsergroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsergroupResult> {
-    return pulumi.output(args).apply((a: any) => getUsergroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getUsergroup:getUsergroup", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "notificationConfigs": args.notificationConfigs,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

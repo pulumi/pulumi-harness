@@ -96,14 +96,20 @@ type LookupAwsConnectorResult struct {
 
 func LookupAwsConnectorOutput(ctx *pulumi.Context, args LookupAwsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAwsConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAwsConnectorResultOutput, error) {
 			args := v.(LookupAwsConnectorArgs)
-			r, err := LookupAwsConnector(ctx, &args, opts...)
-			var s LookupAwsConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAwsConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getAwsConnector:getAwsConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAwsConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAwsConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAwsConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAwsConnectorResultOutput)
 }
 

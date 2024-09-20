@@ -86,14 +86,20 @@ type LookupJenkinsConnectorResult struct {
 
 func LookupJenkinsConnectorOutput(ctx *pulumi.Context, args LookupJenkinsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupJenkinsConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupJenkinsConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupJenkinsConnectorResultOutput, error) {
 			args := v.(LookupJenkinsConnectorArgs)
-			r, err := LookupJenkinsConnector(ctx, &args, opts...)
-			var s LookupJenkinsConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupJenkinsConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getJenkinsConnector:getJenkinsConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupJenkinsConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupJenkinsConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupJenkinsConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupJenkinsConnectorResultOutput)
 }
 

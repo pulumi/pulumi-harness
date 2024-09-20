@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInfrastructure(args: GetInfrastructureArgs, opts?: pulumi.InvokeOptions): Promise<GetInfrastructureResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getInfrastructure:getInfrastructure", {
         "envId": args.envId,
@@ -133,7 +132,15 @@ export interface GetInfrastructureResult {
  * ```
  */
 export function getInfrastructureOutput(args: GetInfrastructureOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfrastructureResult> {
-    return pulumi.output(args).apply((a: any) => getInfrastructure(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getInfrastructure:getInfrastructure", {
+        "envId": args.envId,
+        "gitDetails": args.gitDetails,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

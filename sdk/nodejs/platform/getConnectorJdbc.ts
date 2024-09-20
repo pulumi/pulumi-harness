@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnectorJdbc(args: GetConnectorJdbcArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorJdbcResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getConnectorJdbc:getConnectorJdbc", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetConnectorJdbcResult {
  * ```
  */
 export function getConnectorJdbcOutput(args: GetConnectorJdbcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorJdbcResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorJdbc(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getConnectorJdbc:getConnectorJdbc", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**
