@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubernetesConnector(args: GetKubernetesConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getKubernetesConnector:getKubernetesConnector", {
         "identifier": args.identifier,
@@ -125,7 +124,13 @@ export interface GetKubernetesConnectorResult {
  * ```
  */
 export function getKubernetesConnectorOutput(args: GetKubernetesConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getKubernetesConnector:getKubernetesConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

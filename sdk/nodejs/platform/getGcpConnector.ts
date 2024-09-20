@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGcpConnector(args: GetGcpConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGcpConnector:getGcpConnector", {
         "identifier": args.identifier,
@@ -113,7 +112,13 @@ export interface GetGcpConnectorResult {
  * ```
  */
 export function getGcpConnectorOutput(args: GetGcpConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getGcpConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGcpConnector:getGcpConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

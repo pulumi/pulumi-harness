@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getManualFreeze(args: GetManualFreezeArgs, opts?: pulumi.InvokeOptions): Promise<GetManualFreezeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getManualFreeze:getManualFreeze", {
         "accountId": args.accountId,
@@ -135,7 +134,13 @@ export interface GetManualFreezeResult {
  * ```
  */
 export function getManualFreezeOutput(args: GetManualFreezeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManualFreezeResult> {
-    return pulumi.output(args).apply((a: any) => getManualFreeze(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getManualFreeze:getManualFreeze", {
+        "accountId": args.accountId,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

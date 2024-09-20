@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for Azure Autostopping proxy
  */
 export function getAzureProxy(args: GetAzureProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureProxyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getAzureProxy:getAzureProxy", {
         "allocateStaticIp": args.allocateStaticIp,
@@ -156,7 +155,24 @@ export interface GetAzureProxyResult {
  * Data source for Azure Autostopping proxy
  */
 export function getAzureProxyOutput(args: GetAzureProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureProxyResult> {
-    return pulumi.output(args).apply((a: any) => getAzureProxy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:autostopping/getAzureProxy:getAzureProxy", {
+        "allocateStaticIp": args.allocateStaticIp,
+        "apiKey": args.apiKey,
+        "certificateId": args.certificateId,
+        "certificates": args.certificates,
+        "cloudConnectorId": args.cloudConnectorId,
+        "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
+        "hostName": args.hostName,
+        "keypair": args.keypair,
+        "machineType": args.machineType,
+        "name": args.name,
+        "region": args.region,
+        "resourceGroup": args.resourceGroup,
+        "securityGroups": args.securityGroups,
+        "subnetId": args.subnetId,
+        "vpc": args.vpc,
+    }, opts);
 }
 
 /**

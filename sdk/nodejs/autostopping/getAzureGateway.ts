@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for AWS Autostopping proxy
  */
 export function getAzureGateway(args: GetAzureGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureGatewayResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getAzureGateway:getAzureGateway", {
         "appGatewayId": args.appGatewayId,
@@ -148,7 +147,22 @@ export interface GetAzureGatewayResult {
  * Data source for AWS Autostopping proxy
  */
 export function getAzureGatewayOutput(args: GetAzureGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureGatewayResult> {
-    return pulumi.output(args).apply((a: any) => getAzureGateway(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:autostopping/getAzureGateway:getAzureGateway", {
+        "appGatewayId": args.appGatewayId,
+        "azureFuncRegion": args.azureFuncRegion,
+        "certificateId": args.certificateId,
+        "cloudConnectorId": args.cloudConnectorId,
+        "deleteCloudResourcesOnDestroy": args.deleteCloudResourcesOnDestroy,
+        "frontendIp": args.frontendIp,
+        "hostName": args.hostName,
+        "name": args.name,
+        "region": args.region,
+        "resourceGroup": args.resourceGroup,
+        "skuSize": args.skuSize,
+        "subnetId": args.subnetId,
+        "vpc": args.vpc,
+    }, opts);
 }
 
 /**

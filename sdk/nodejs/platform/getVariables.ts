@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVariables(args: GetVariablesArgs, opts?: pulumi.InvokeOptions): Promise<GetVariablesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getVariables:getVariables", {
         "identifier": args.identifier,
@@ -100,7 +99,12 @@ export interface GetVariablesResult {
  * ```
  */
 export function getVariablesOutput(args: GetVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVariablesResult> {
-    return pulumi.output(args).apply((a: any) => getVariables(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getVariables:getVariables", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

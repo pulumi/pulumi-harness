@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getJiraConnector(args: GetJiraConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetJiraConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getJiraConnector:getJiraConnector", {
         "identifier": args.identifier,
@@ -125,7 +124,13 @@ export interface GetJiraConnectorResult {
  * ```
  */
 export function getJiraConnectorOutput(args: GetJiraConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJiraConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getJiraConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getJiraConnector:getJiraConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

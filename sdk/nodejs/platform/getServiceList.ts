@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  */
 export function getServiceList(args?: GetServiceListArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceListResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getServiceList:getServiceList", {
         "orgId": args.orgId,
@@ -111,7 +110,12 @@ export interface GetServiceListResult {
  * ```
  */
 export function getServiceListOutput(args?: GetServiceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceListResult> {
-    return pulumi.output(args).apply((a: any) => getServiceList(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getServiceList:getServiceList", {
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

@@ -45,7 +45,6 @@ import * as utilities from "../utilities";
  */
 export function getEnvironmentList(args?: GetEnvironmentListArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentListResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getEnvironmentList:getEnvironmentList", {
         "orgId": args.orgId,
@@ -111,7 +110,12 @@ export interface GetEnvironmentListResult {
  * ```
  */
 export function getEnvironmentListOutput(args?: GetEnvironmentListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentListResult> {
-    return pulumi.output(args).apply((a: any) => getEnvironmentList(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getEnvironmentList:getEnvironmentList", {
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

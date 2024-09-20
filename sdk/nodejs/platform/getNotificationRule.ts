@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNotificationRule(args: GetNotificationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getNotificationRule:getNotificationRule", {
         "identifier": args.identifier,
@@ -86,7 +85,12 @@ export interface GetNotificationRuleResult {
  * ```
  */
 export function getNotificationRuleOutput(args: GetNotificationRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationRuleResult> {
-    return pulumi.output(args).apply((a: any) => getNotificationRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getNotificationRule:getNotificationRule", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

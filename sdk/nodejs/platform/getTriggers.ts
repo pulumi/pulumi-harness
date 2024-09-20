@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getTriggers:getTriggers", {
         "identifier": args.identifier,
@@ -127,7 +126,15 @@ export interface GetTriggersResult {
  * ```
  */
 export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
-    return pulumi.output(args).apply((a: any) => getTriggers(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getTriggers:getTriggers", {
+        "identifier": args.identifier,
+        "ignoreError": args.ignoreError,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "targetId": args.targetId,
+    }, opts);
 }
 
 /**

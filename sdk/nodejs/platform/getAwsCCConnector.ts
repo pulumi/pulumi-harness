@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAwsCCConnector(args: GetAwsCCConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsCCConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsCCConnector:getAwsCCConnector", {
         "identifier": args.identifier,
@@ -121,7 +120,13 @@ export interface GetAwsCCConnectorResult {
  * ```
  */
 export function getAwsCCConnectorOutput(args: GetAwsCCConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsCCConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getAwsCCConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getAwsCCConnector:getAwsCCConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRoles(args: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getRoles:getRoles", {
         "allowedScopeLevels": args.allowedScopeLevels,
@@ -117,7 +116,15 @@ export interface GetRolesResult {
  * ```
  */
 export function getRolesOutput(args: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
-    return pulumi.output(args).apply((a: any) => getRoles(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getRoles:getRoles", {
+        "allowedScopeLevels": args.allowedScopeLevels,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "permissions": args.permissions,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

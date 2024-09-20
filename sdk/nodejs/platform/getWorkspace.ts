@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getWorkspace:getWorkspace", {
         "description": args.description,
@@ -172,7 +171,19 @@ export interface GetWorkspaceResult {
  * ```
  */
 export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceResult> {
-    return pulumi.output(args).apply((a: any) => getWorkspace(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getWorkspace:getWorkspace", {
+        "description": args.description,
+        "environmentVariables": args.environmentVariables,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "repositoryBranch": args.repositoryBranch,
+        "repositoryCommit": args.repositoryCommit,
+        "repositorySha": args.repositorySha,
+        "terraformVariableFiles": args.terraformVariableFiles,
+        "terraformVariables": args.terraformVariables,
+    }, opts);
 }
 
 /**

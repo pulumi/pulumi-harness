@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Data source for retrieving a yaml config.
  */
 export function getYamlConfig(args: GetYamlConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetYamlConfigResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getYamlConfig:getYamlConfig", {
         "appId": args.appId,
@@ -59,7 +58,11 @@ export interface GetYamlConfigResult {
  * Data source for retrieving a yaml config.
  */
 export function getYamlConfigOutput(args: GetYamlConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetYamlConfigResult> {
-    return pulumi.output(args).apply((a: any) => getYamlConfig(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getYamlConfig:getYamlConfig", {
+        "appId": args.appId,
+        "path": args.path,
+    }, opts);
 }
 
 /**

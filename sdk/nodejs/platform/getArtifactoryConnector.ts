@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getArtifactoryConnector(args?: GetArtifactoryConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetArtifactoryConnectorResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getArtifactoryConnector:getArtifactoryConnector", {
         "identifier": args.identifier,
@@ -114,7 +113,14 @@ export interface GetArtifactoryConnectorResult {
  * ```
  */
 export function getArtifactoryConnectorOutput(args?: GetArtifactoryConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArtifactoryConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getArtifactoryConnector(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getArtifactoryConnector:getArtifactoryConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

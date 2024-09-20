@@ -90,14 +90,20 @@ type LookupAzureProxyResult struct {
 
 func LookupAzureProxyOutput(ctx *pulumi.Context, args LookupAzureProxyOutputArgs, opts ...pulumi.InvokeOption) LookupAzureProxyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureProxyResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureProxyResultOutput, error) {
 			args := v.(LookupAzureProxyArgs)
-			r, err := LookupAzureProxy(ctx, &args, opts...)
-			var s LookupAzureProxyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureProxyResult
+			secret, err := ctx.InvokePackageRaw("harness:autostopping/getAzureProxy:getAzureProxy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureProxyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureProxyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureProxyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureProxyResultOutput)
 }
 

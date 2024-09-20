@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Datasource for looking up a Custom Health source connector.
  */
 export function getConnectorCustomhealthsource(args: GetConnectorCustomhealthsourceArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorCustomhealthsourceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", {
         "identifier": args.identifier,
@@ -107,7 +106,13 @@ export interface GetConnectorCustomhealthsourceResult {
  * Datasource for looking up a Custom Health source connector.
  */
 export function getConnectorCustomhealthsourceOutput(args: GetConnectorCustomhealthsourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorCustomhealthsourceResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorCustomhealthsource(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

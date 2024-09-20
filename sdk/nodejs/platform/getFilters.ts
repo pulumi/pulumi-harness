@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFilters(args: GetFiltersArgs, opts?: pulumi.InvokeOptions): Promise<GetFiltersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getFilters:getFilters", {
         "identifier": args.identifier,
@@ -107,7 +106,13 @@ export interface GetFiltersResult {
  * ```
  */
 export function getFiltersOutput(args: GetFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFiltersResult> {
-    return pulumi.output(args).apply((a: any) => getFilters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getFilters:getFilters", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

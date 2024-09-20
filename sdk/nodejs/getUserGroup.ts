@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  */
 export function getUserGroup(args?: GetUserGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:index/getUserGroup:getUserGroup", {
         "id": args.id,
@@ -48,7 +47,12 @@ export interface GetUserGroupResult {
  * Data source for retrieving a Harness user group
  */
 export function getUserGroupOutput(args?: GetUserGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupResult> {
-    return pulumi.output(args).apply((a: any) => getUserGroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:index/getUserGroup:getUserGroup", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getToken(args: GetTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getToken:getToken", {
         "accountId": args.accountId,
@@ -208,7 +207,24 @@ export interface GetTokenResult {
  * ```
  */
 export function getTokenOutput(args: GetTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTokenResult> {
-    return pulumi.output(args).apply((a: any) => getToken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getToken:getToken", {
+        "accountId": args.accountId,
+        "apikeyId": args.apikeyId,
+        "apikeyType": args.apikeyType,
+        "email": args.email,
+        "encodedPassword": args.encodedPassword,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "parentId": args.parentId,
+        "projectId": args.projectId,
+        "scheduledExpireTime": args.scheduledExpireTime,
+        "username": args.username,
+        "valid": args.valid,
+        "validFrom": args.validFrom,
+        "validTo": args.validTo,
+    }, opts);
 }
 
 /**

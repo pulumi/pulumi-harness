@@ -86,14 +86,20 @@ type LookupConnectorJdbcResult struct {
 
 func LookupConnectorJdbcOutput(ctx *pulumi.Context, args LookupConnectorJdbcOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorJdbcResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectorJdbcResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectorJdbcResultOutput, error) {
 			args := v.(LookupConnectorJdbcArgs)
-			r, err := LookupConnectorJdbc(ctx, &args, opts...)
-			var s LookupConnectorJdbcResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectorJdbcResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getConnectorJdbc:getConnectorJdbc", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectorJdbcResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectorJdbcResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectorJdbcResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectorJdbcResultOutput)
 }
 

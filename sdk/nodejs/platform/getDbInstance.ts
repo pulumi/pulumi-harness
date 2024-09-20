@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDbInstance(args: GetDbInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstanceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDbInstance:getDbInstance", {
         "identifier": args.identifier,
@@ -126,7 +125,14 @@ export interface GetDbInstanceResult {
  * ```
  */
 export function getDbInstanceOutput(args: GetDbInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstanceResult> {
-    return pulumi.output(args).apply((a: any) => getDbInstance(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getDbInstance:getDbInstance", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "schema": args.schema,
+    }, opts);
 }
 
 /**

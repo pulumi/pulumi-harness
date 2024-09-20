@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness Variable.
  */
 export function getRuleRds(args: GetRuleRdsArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleRdsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getRuleRds:getRuleRds", {
         "cloudConnectorId": args.cloudConnectorId,
@@ -87,7 +86,15 @@ export interface GetRuleRdsResult {
  * Data source for retrieving a Harness Variable.
  */
 export function getRuleRdsOutput(args: GetRuleRdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleRdsResult> {
-    return pulumi.output(args).apply((a: any) => getRuleRds(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:autostopping/getRuleRds:getRuleRds", {
+        "cloudConnectorId": args.cloudConnectorId,
+        "database": args.database,
+        "depends": args.depends,
+        "idleTimeMins": args.idleTimeMins,
+        "name": args.name,
+        "tcps": args.tcps,
+    }, opts);
 }
 
 /**

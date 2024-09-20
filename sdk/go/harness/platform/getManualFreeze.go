@@ -97,14 +97,20 @@ type LookupManualFreezeResult struct {
 
 func LookupManualFreezeOutput(ctx *pulumi.Context, args LookupManualFreezeOutputArgs, opts ...pulumi.InvokeOption) LookupManualFreezeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManualFreezeResult, error) {
+		ApplyT(func(v interface{}) (LookupManualFreezeResultOutput, error) {
 			args := v.(LookupManualFreezeArgs)
-			r, err := LookupManualFreeze(ctx, &args, opts...)
-			var s LookupManualFreezeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupManualFreezeResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getManualFreeze:getManualFreeze", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManualFreezeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManualFreezeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManualFreezeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManualFreezeResultOutput)
 }
 

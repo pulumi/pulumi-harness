@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTemplateFilters(args: GetTemplateFiltersArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateFiltersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getTemplateFilters:getTemplateFilters", {
         "identifier": args.identifier,
@@ -111,7 +110,13 @@ export interface GetTemplateFiltersResult {
  * ```
  */
 export function getTemplateFiltersOutput(args: GetTemplateFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateFiltersResult> {
-    return pulumi.output(args).apply((a: any) => getTemplateFilters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getTemplateFilters:getTemplateFilters", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

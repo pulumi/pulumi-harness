@@ -46,14 +46,20 @@ type LookupEncryptedTextResult struct {
 
 func LookupEncryptedTextOutput(ctx *pulumi.Context, args LookupEncryptedTextOutputArgs, opts ...pulumi.InvokeOption) LookupEncryptedTextResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEncryptedTextResult, error) {
+		ApplyT(func(v interface{}) (LookupEncryptedTextResultOutput, error) {
 			args := v.(LookupEncryptedTextArgs)
-			r, err := LookupEncryptedText(ctx, &args, opts...)
-			var s LookupEncryptedTextResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupEncryptedTextResult
+			secret, err := ctx.InvokePackageRaw("harness:index/getEncryptedText:getEncryptedText", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEncryptedTextResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEncryptedTextResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEncryptedTextResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEncryptedTextResultOutput)
 }
 

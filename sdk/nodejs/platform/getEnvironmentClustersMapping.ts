@@ -50,7 +50,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEnvironmentClustersMapping(args: GetEnvironmentClustersMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentClustersMappingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", {
         "clusters": args.clusters,
@@ -164,7 +163,14 @@ export interface GetEnvironmentClustersMappingResult {
  * ```
  */
 export function getEnvironmentClustersMappingOutput(args: GetEnvironmentClustersMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentClustersMappingResult> {
-    return pulumi.output(args).apply((a: any) => getEnvironmentClustersMapping(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", {
+        "clusters": args.clusters,
+        "envId": args.envId,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

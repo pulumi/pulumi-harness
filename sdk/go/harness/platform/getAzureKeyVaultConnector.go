@@ -94,14 +94,20 @@ type LookupAzureKeyVaultConnectorResult struct {
 
 func LookupAzureKeyVaultConnectorOutput(ctx *pulumi.Context, args LookupAzureKeyVaultConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAzureKeyVaultConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureKeyVaultConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureKeyVaultConnectorResultOutput, error) {
 			args := v.(LookupAzureKeyVaultConnectorArgs)
-			r, err := LookupAzureKeyVaultConnector(ctx, &args, opts...)
-			var s LookupAzureKeyVaultConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureKeyVaultConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureKeyVaultConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureKeyVaultConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureKeyVaultConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureKeyVaultConnectorResultOutput)
 }
 

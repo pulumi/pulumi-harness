@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKubernetesCloudCostConnector(args: GetKubernetesCloudCostConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesCloudCostConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", {
         "identifier": args.identifier,
@@ -107,7 +106,13 @@ export interface GetKubernetesCloudCostConnectorResult {
  * ```
  */
 export function getKubernetesCloudCostConnectorOutput(args: GetKubernetesCloudCostConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesCloudCostConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getKubernetesCloudCostConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

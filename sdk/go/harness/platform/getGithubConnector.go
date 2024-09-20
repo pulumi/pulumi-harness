@@ -93,14 +93,20 @@ type LookupGithubConnectorResult struct {
 
 func LookupGithubConnectorOutput(ctx *pulumi.Context, args LookupGithubConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupGithubConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGithubConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupGithubConnectorResultOutput, error) {
 			args := v.(LookupGithubConnectorArgs)
-			r, err := LookupGithubConnector(ctx, &args, opts...)
-			var s LookupGithubConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGithubConnectorResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getGithubConnector:getGithubConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGithubConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGithubConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGithubConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGithubConnectorResultOutput)
 }
 

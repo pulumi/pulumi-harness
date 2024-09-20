@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Resource for creating a Harness pipeline.
  */
 export function getGitxWebhook(args: GetGitxWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetGitxWebhookResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitxWebhook:getGitxWebhook", {
         "description": args.description,
@@ -87,7 +86,15 @@ export interface GetGitxWebhookResult {
  * Resource for creating a Harness pipeline.
  */
 export function getGitxWebhookOutput(args: GetGitxWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitxWebhookResult> {
-    return pulumi.output(args).apply((a: any) => getGitxWebhook(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitxWebhook:getGitxWebhook", {
+        "description": args.description,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

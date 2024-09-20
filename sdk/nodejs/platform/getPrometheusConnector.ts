@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrometheusConnector(args: GetPrometheusConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetPrometheusConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPrometheusConnector:getPrometheusConnector", {
         "identifier": args.identifier,
@@ -121,7 +120,13 @@ export interface GetPrometheusConnectorResult {
  * ```
  */
 export function getPrometheusConnectorOutput(args: GetPrometheusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getPrometheusConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getPrometheusConnector:getPrometheusConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

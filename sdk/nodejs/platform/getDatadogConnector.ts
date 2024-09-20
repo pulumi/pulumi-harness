@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatadogConnector(args: GetDatadogConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDatadogConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDatadogConnector:getDatadogConnector", {
         "delegateSelectors": args.delegateSelectors,
@@ -120,7 +119,14 @@ export interface GetDatadogConnectorResult {
  * ```
  */
 export function getDatadogConnectorOutput(args: GetDatadogConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatadogConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getDatadogConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getDatadogConnector:getDatadogConnector", {
+        "delegateSelectors": args.delegateSelectors,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

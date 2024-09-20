@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness Pipeline Filter.
  */
 export function getPipelineFilters(args: GetPipelineFiltersArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineFiltersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getPipelineFilters:getPipelineFilters", {
         "identifier": args.identifier,
@@ -83,7 +82,13 @@ export interface GetPipelineFiltersResult {
  * Data source for retrieving a Harness Pipeline Filter.
  */
 export function getPipelineFiltersOutput(args: GetPipelineFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineFiltersResult> {
-    return pulumi.output(args).apply((a: any) => getPipelineFilters(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getPipelineFilters:getPipelineFilters", {
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "type": args.type,
+    }, opts);
 }
 
 /**

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnectorCustomSecretManager(args: GetConnectorCustomSecretManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorCustomSecretManagerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager", {
         "delegateSelectors": args.delegateSelectors,
@@ -127,7 +126,14 @@ export interface GetConnectorCustomSecretManagerResult {
  * ```
  */
 export function getConnectorCustomSecretManagerOutput(args: GetConnectorCustomSecretManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorCustomSecretManagerResult> {
-    return pulumi.output(args).apply((a: any) => getConnectorCustomSecretManager(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager", {
+        "delegateSelectors": args.delegateSelectors,
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

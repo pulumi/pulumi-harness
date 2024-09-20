@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGitopsAgent(args: GetGitopsAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAgentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsAgent:getGitopsAgent", {
         "accountId": args.accountId,
@@ -128,7 +127,13 @@ export interface GetGitopsAgentResult {
  * ```
  */
 export function getGitopsAgentOutput(args: GetGitopsAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAgentResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsAgent(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsAgent:getGitopsAgent", {
+        "accountId": args.accountId,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

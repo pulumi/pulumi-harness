@@ -8,7 +8,6 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness Repo Webhook.
  */
 export function getRepoWebhook(args: GetRepoWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetRepoWebhookResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getRepoWebhook:getRepoWebhook", {
         "description": args.description,
@@ -135,7 +134,19 @@ export interface GetRepoWebhookResult {
  * Data source for retrieving a Harness Repo Webhook.
  */
 export function getRepoWebhookOutput(args: GetRepoWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoWebhookResult> {
-    return pulumi.output(args).apply((a: any) => getRepoWebhook(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getRepoWebhook:getRepoWebhook", {
+        "description": args.description,
+        "enabled": args.enabled,
+        "identifier": args.identifier,
+        "insecure": args.insecure,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+        "repoIdentifier": args.repoIdentifier,
+        "secret": args.secret,
+        "triggers": args.triggers,
+        "url": args.url,
+    }, opts);
 }
 
 /**

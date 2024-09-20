@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGitopsCluster(args: GetGitopsClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsCluster:getGitopsCluster", {
         "accountId": args.accountId,
@@ -114,7 +113,14 @@ export interface GetGitopsClusterResult {
  * ```
  */
 export function getGitopsClusterOutput(args: GetGitopsClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsClusterResult> {
-    return pulumi.output(args).apply((a: any) => getGitopsCluster(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getGitopsCluster:getGitopsCluster", {
+        "accountId": args.accountId,
+        "agentId": args.agentId,
+        "identifier": args.identifier,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

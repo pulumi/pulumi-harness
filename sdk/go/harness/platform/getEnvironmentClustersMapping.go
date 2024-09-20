@@ -116,14 +116,20 @@ type LookupEnvironmentClustersMappingResult struct {
 
 func LookupEnvironmentClustersMappingOutput(ctx *pulumi.Context, args LookupEnvironmentClustersMappingOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentClustersMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentClustersMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupEnvironmentClustersMappingResultOutput, error) {
 			args := v.(LookupEnvironmentClustersMappingArgs)
-			r, err := LookupEnvironmentClustersMapping(ctx, &args, opts...)
-			var s LookupEnvironmentClustersMappingResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnvironmentClustersMappingResult
+			secret, err := ctx.InvokePackageRaw("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnvironmentClustersMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnvironmentClustersMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnvironmentClustersMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnvironmentClustersMappingResultOutput)
 }
 

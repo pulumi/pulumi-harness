@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSumologicConnector(args: GetSumologicConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetSumologicConnectorResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getSumologicConnector:getSumologicConnector", {
         "identifier": args.identifier,
@@ -115,7 +114,13 @@ export interface GetSumologicConnectorResult {
  * ```
  */
 export function getSumologicConnectorOutput(args: GetSumologicConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSumologicConnectorResult> {
-    return pulumi.output(args).apply((a: any) => getSumologicConnector(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harness:platform/getSumologicConnector:getSumologicConnector", {
+        "identifier": args.identifier,
+        "name": args.name,
+        "orgId": args.orgId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**
