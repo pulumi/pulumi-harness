@@ -29,6 +29,8 @@ type GetGitopsApplicationsArgs struct {
 	// Agent identifier of the GitOps application.
 	AgentId string `pulumi:"agentId"`
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the GitOps application.
 	Name string `pulumi:"name"`
@@ -51,6 +53,8 @@ type GetGitopsApplicationsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier *string `pulumi:"identifier"`
 	// Kind of the GitOps application.
 	Kind string `pulumi:"kind"`
@@ -104,6 +108,8 @@ type GetGitopsApplicationsOutputArgs struct {
 	// Agent identifier of the GitOps application.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the GitOps application.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -158,6 +164,8 @@ func (o GetGitopsApplicationsResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identifier of the GitOps application.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsApplicationsResultOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }

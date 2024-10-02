@@ -52,7 +52,7 @@ class GetCurrentAccountResult:
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Id of the git connector.
+        Account Identifier of the current account.
         """
         return pulumi.get(self, "id")
 
@@ -74,7 +74,7 @@ def get_current_account(id: Optional[str] = None,
     Data source for retrieving information about the current Harness account
 
 
-    :param str id: Id of the git connector.
+    :param str id: Account Identifier of the current account.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -94,6 +94,6 @@ def get_current_account_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     Data source for retrieving information about the current Harness account
 
 
-    :param str id: Id of the git connector.
+    :param str id: Account Identifier of the current account.
     """
     ...

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * const _this = new harness.platform.Organization("this", {
  *     identifier: "MyOrg",
- *     name: "My Otganization",
+ *     name: "My Organization",
  *     description: "An example organization",
  *     tags: [
  *         "foo:bar",

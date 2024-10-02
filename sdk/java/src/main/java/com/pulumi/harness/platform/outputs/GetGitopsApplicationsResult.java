@@ -43,7 +43,11 @@ public final class GetGitopsApplicationsResult {
     /**
      * @return Identifier of the GitOps application.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     private @Nullable String identifier;
     /**
      * @return Kind of the GitOps application.
@@ -145,7 +149,11 @@ public final class GetGitopsApplicationsResult {
     /**
      * @return Identifier of the GitOps application.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }

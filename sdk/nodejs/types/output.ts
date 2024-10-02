@@ -4025,102 +4025,102 @@ export namespace platform {
         /**
          * Specifies whether helm-oci support should be enabled for this repo.
          */
-        enableOci?: boolean;
+        enableOci: boolean;
         /**
          * Specifies the GitHub API URL for GitHub app authentication.
          */
-        githubAppEnterpriseBaseUrl?: string;
+        githubAppEnterpriseBaseUrl: string;
         /**
          * Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
          */
-        githubAppId?: string;
+        githubAppId: string;
         /**
          * Specifies the ID of the installed GitHub App for GitHub app authentication.
          */
-        githubAppInstallationId?: string;
+        githubAppInstallationId: string;
         /**
          * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
          */
-        githubAppPrivateKey?: string;
+        githubAppPrivateKey: string;
         /**
          * Password or PAT to be used for authenticating the remote repository.
          */
-        password?: string;
+        password: string;
         /**
          * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
-        sshPrivateKey?: string;
+        sshPrivateKey: string;
         /**
          * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          */
-        tlsClientCertData?: string;
+        tlsClientCertData: string;
         /**
          * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          */
-        tlsClientCertKey?: string;
+        tlsClientCertKey: string;
         /**
          * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
          */
-        type?: string;
+        type: string;
         /**
          * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
          */
-        url?: string;
+        url: string;
         /**
          * Username to be used for authenticating the remote repository.
          */
-        username?: string;
+        username: string;
     }
 
     export interface GetGitopsRepositoryRepo {
         /**
          * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
          */
-        connectionType?: string;
+        connectionType: string;
         /**
          * Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
          */
-        enableLfs?: boolean;
+        enableLfs: boolean;
         /**
          * Indicates if helm-oci support must be enabled for this repo.
          */
-        enableOci?: boolean;
+        enableOci: boolean;
         /**
          * Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
          */
-        githubAppEnterpriseBaseUrl?: string;
+        githubAppEnterpriseBaseUrl: string;
         /**
          * Id of the GitHub app used to access the repo.
          */
-        githubAppId?: string;
+        githubAppId: string;
         /**
          * Installation id of the GitHub app used to access the repo.
          */
-        githubAppInstallationId?: string;
+        githubAppInstallationId: string;
         /**
          * GitHub app private key PEM data.
          */
-        githubAppPrivateKey?: string;
+        githubAppPrivateKey: string;
         /**
          * Indicates if the credentials were inherited from a repository credential.
          */
-        inheritedCreds?: boolean;
+        inheritedCreds: boolean;
         /**
          * Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
          */
-        insecure?: boolean;
+        insecure: boolean;
         /**
          * Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
          */
-        insecureIgnoreHostKey?: boolean;
+        insecureIgnoreHostKey: boolean;
         /**
          * Name to be used for this repo. Only used with Helm repos.
          */
-        name?: string;
+        name: string;
         /**
          * Password or PAT to be used for authenticating the remote repository.
          */
-        password?: string;
+        password: string;
         /**
          * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          */
@@ -4128,23 +4128,23 @@ export namespace platform {
         /**
          * The HTTP/HTTPS proxy used to access the repo.
          */
-        proxy?: string;
+        proxy: string;
         /**
          * URL to the remote repository.
          */
-        repo?: string;
+        repo: string;
         /**
          * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
-        sshPrivateKey?: string;
+        sshPrivateKey: string;
         /**
          * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
-        tlsClientCertData?: string;
+        tlsClientCertData: string;
         /**
          * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
-        tlsClientCertKey?: string;
+        tlsClientCertKey: string;
         /**
          * Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
          */
@@ -4152,14 +4152,7 @@ export namespace platform {
         /**
          * Username to be used for authenticating the remote repository.
          */
-        username?: string;
-    }
-
-    export interface GetGitopsRepositoryUpdateMask {
-        /**
-         * The set of field mask paths.
-         */
-        paths?: string[];
+        username: string;
     }
 
     export interface GetHelmConnectorCredential {
@@ -5482,7 +5475,7 @@ export namespace platform {
          */
         destinations?: outputs.platform.GitOpsApplicationsApplicationSpecDestination[];
         /**
-         * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         * The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
          */
         project?: string;
         /**
@@ -6280,7 +6273,7 @@ export namespace platform {
 
     export interface GitOpsRepositoryRepo {
         /**
-         * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+         * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
          */
         connectionType: string;
         /**
@@ -6310,7 +6303,7 @@ export namespace platform {
         /**
          * Indicates if the credentials were inherited from a repository credential.
          */
-        inheritedCreds?: boolean;
+        inheritedCreds: boolean;
         /**
          * Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
          */
@@ -6342,7 +6335,7 @@ export namespace platform {
         /**
          * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
-        sshPrivateKey?: string;
+        sshPrivateKey: string;
         /**
          * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */

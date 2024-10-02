@@ -187,14 +187,14 @@ public class FileStoreFolder extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Folder parent identifier on Harness File Store
+     * Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
      * 
      */
     @Export(name="parentIdentifier", refs={String.class}, tree="[0]")
     private Output<String> parentIdentifier;
 
     /**
-     * @return Folder parent identifier on Harness File Store
+     * @return Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
      * 
      */
     public Output<String> parentIdentifier() {

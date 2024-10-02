@@ -193,6 +193,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "governance/rule",
+  "fqn": "pulumi_harness.governance",
+  "classes": {
+   "harness:governance/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "governance/ruleEnforcement",
   "fqn": "pulumi_harness.governance",
   "classes": {

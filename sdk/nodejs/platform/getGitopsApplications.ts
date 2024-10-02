@@ -35,6 +35,8 @@ export interface GetGitopsApplicationsArgs {
     agentId: string;
     /**
      * Identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     identifier?: string;
     /**
@@ -77,6 +79,8 @@ export interface GetGitopsApplicationsResult {
     readonly id: string;
     /**
      * Identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly identifier?: string;
     /**
@@ -157,6 +161,8 @@ export interface GetGitopsApplicationsOutputArgs {
     agentId: pulumi.Input<string>;
     /**
      * Identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     identifier?: pulumi.Input<string>;
     /**

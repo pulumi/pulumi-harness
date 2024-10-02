@@ -21,7 +21,7 @@ public final class GitOpsApplicationsApplicationSpec {
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecDestination> destinations;
     /**
-     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * @return The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
      * 
      */
     private @Nullable String project;
@@ -45,7 +45,7 @@ public final class GitOpsApplicationsApplicationSpec {
         return this.destinations == null ? List.of() : this.destinations;
     }
     /**
-     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * @return The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
      * 
      */
     public Optional<String> project() {

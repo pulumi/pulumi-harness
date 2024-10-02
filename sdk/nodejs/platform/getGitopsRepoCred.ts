@@ -29,7 +29,6 @@ export function getGitopsRepoCred(args: GetGitopsRepoCredArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("harness:platform/getGitopsRepoCred:getGitopsRepoCred", {
         "accountId": args.accountId,
         "agentId": args.agentId,
-        "creds": args.creds,
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -48,10 +47,6 @@ export interface GetGitopsRepoCredArgs {
      * Agent identifier of the Repository Credentials.
      */
     agentId: string;
-    /**
-     * credential details.
-     */
-    creds?: inputs.platform.GetGitopsRepoCredCred[];
     /**
      * Identifier of the Repository Credentials.
      */
@@ -122,7 +117,6 @@ export function getGitopsRepoCredOutput(args: GetGitopsRepoCredOutputArgs, opts?
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsRepoCred:getGitopsRepoCred", {
         "accountId": args.accountId,
         "agentId": args.agentId,
-        "creds": args.creds,
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -141,10 +135,6 @@ export interface GetGitopsRepoCredOutputArgs {
      * Agent identifier of the Repository Credentials.
      */
     agentId: pulumi.Input<string>;
-    /**
-     * credential details.
-     */
-    creds?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsRepoCredCredArgs>[]>;
     /**
      * Identifier of the Repository Credentials.
      */

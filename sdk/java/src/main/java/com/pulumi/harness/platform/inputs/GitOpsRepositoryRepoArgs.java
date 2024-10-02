@@ -18,14 +18,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     public static final GitOpsRepositoryRepoArgs Empty = new GitOpsRepositoryRepoArgs();
 
     /**
-     * Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
+     * Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS&#34;, &#34;GITHUB*ENTERPRISE&#34;.
      * 
      */
     @Import(name="connectionType", required=true)
     private Output<String> connectionType;
 
     /**
-     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
+     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS&#34;, &#34;GITHUB*ENTERPRISE&#34;.
      * 
      */
     public Output<String> connectionType() {
@@ -361,7 +361,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionType Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
+         * @param connectionType Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS&#34;, &#34;GITHUB*ENTERPRISE&#34;.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionType Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
+         * @param connectionType Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS&#34;, &#34;GITHUB*ENTERPRISE&#34;.
          * 
          * @return builder
          * 

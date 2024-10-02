@@ -120,6 +120,7 @@ class GetGitopsApplicationsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def identifier(self) -> Optional[str]:
         """
         Identifier of the GitOps application.

@@ -338,7 +338,6 @@ __all__ = [
     'GetGitopsGnupgRequestPublickeyResult',
     'GetGitopsRepoCredCredResult',
     'GetGitopsRepositoryRepoResult',
-    'GetGitopsRepositoryUpdateMaskResult',
     'GetHelmConnectorCredentialResult',
     'GetInfrastructureGitDetailsResult',
     'GetInputSetGitDetailsResult',
@@ -4076,7 +4075,7 @@ class GitOpsApplicationsApplicationSpec(dict):
                  sync_policies: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSyncPolicy']] = None):
         """
         :param Sequence['GitOpsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
-        :param str project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        :param str project: The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         :param Sequence['GitOpsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of the GitOps application.
         :param Sequence['GitOpsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
         """
@@ -4101,7 +4100,7 @@ class GitOpsApplicationsApplicationSpec(dict):
     @pulumi.getter
     def project(self) -> Optional[str]:
         """
-        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         """
         return pulumi.get(self, "project")
 
@@ -6954,7 +6953,7 @@ class GitOpsRepositoryRepo(dict):
                  type_: Optional[str] = None,
                  username: Optional[str] = None):
         """
-        :param str connection_type: Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+        :param str connection_type: Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
         :param str repo: URL to the remote repository.
         :param bool enable_lfs: Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
         :param bool enable_oci: Indicates if helm-oci support must be enabled for this repo.
@@ -7018,7 +7017,7 @@ class GitOpsRepositoryRepo(dict):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> str:
         """
-        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
         """
         return pulumi.get(self, "connection_type")
 
@@ -19402,18 +19401,18 @@ class GetGitopsGnupgRequestPublickeyResult(dict):
 @pulumi.output_type
 class GetGitopsRepoCredCredResult(dict):
     def __init__(__self__, *,
-                 enable_oci: Optional[bool] = None,
-                 github_app_enterprise_base_url: Optional[str] = None,
-                 github_app_id: Optional[str] = None,
-                 github_app_installation_id: Optional[str] = None,
-                 github_app_private_key: Optional[str] = None,
-                 password: Optional[str] = None,
-                 ssh_private_key: Optional[str] = None,
-                 tls_client_cert_data: Optional[str] = None,
-                 tls_client_cert_key: Optional[str] = None,
-                 type: Optional[str] = None,
-                 url: Optional[str] = None,
-                 username: Optional[str] = None):
+                 enable_oci: bool,
+                 github_app_enterprise_base_url: str,
+                 github_app_id: str,
+                 github_app_installation_id: str,
+                 github_app_private_key: str,
+                 password: str,
+                 ssh_private_key: str,
+                 tls_client_cert_data: str,
+                 tls_client_cert_key: str,
+                 type: str,
+                 url: str,
+                 username: str):
         """
         :param bool enable_oci: Specifies whether helm-oci support should be enabled for this repo.
         :param str github_app_enterprise_base_url: Specifies the GitHub API URL for GitHub app authentication.
@@ -19428,34 +19427,22 @@ class GetGitopsRepoCredCredResult(dict):
         :param str url: URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         :param str username: Username to be used for authenticating the remote repository.
         """
-        if enable_oci is not None:
-            pulumi.set(__self__, "enable_oci", enable_oci)
-        if github_app_enterprise_base_url is not None:
-            pulumi.set(__self__, "github_app_enterprise_base_url", github_app_enterprise_base_url)
-        if github_app_id is not None:
-            pulumi.set(__self__, "github_app_id", github_app_id)
-        if github_app_installation_id is not None:
-            pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
-        if github_app_private_key is not None:
-            pulumi.set(__self__, "github_app_private_key", github_app_private_key)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if ssh_private_key is not None:
-            pulumi.set(__self__, "ssh_private_key", ssh_private_key)
-        if tls_client_cert_data is not None:
-            pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
-        if tls_client_cert_key is not None:
-            pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "enable_oci", enable_oci)
+        pulumi.set(__self__, "github_app_enterprise_base_url", github_app_enterprise_base_url)
+        pulumi.set(__self__, "github_app_id", github_app_id)
+        pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
+        pulumi.set(__self__, "github_app_private_key", github_app_private_key)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "ssh_private_key", ssh_private_key)
+        pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
+        pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="enableOci")
-    def enable_oci(self) -> Optional[bool]:
+    def enable_oci(self) -> bool:
         """
         Specifies whether helm-oci support should be enabled for this repo.
         """
@@ -19463,7 +19450,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter(name="githubAppEnterpriseBaseUrl")
-    def github_app_enterprise_base_url(self) -> Optional[str]:
+    def github_app_enterprise_base_url(self) -> str:
         """
         Specifies the GitHub API URL for GitHub app authentication.
         """
@@ -19471,7 +19458,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter(name="githubAppId")
-    def github_app_id(self) -> Optional[str]:
+    def github_app_id(self) -> str:
         """
         Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
         """
@@ -19479,7 +19466,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter(name="githubAppInstallationId")
-    def github_app_installation_id(self) -> Optional[str]:
+    def github_app_installation_id(self) -> str:
         """
         Specifies the ID of the installed GitHub App for GitHub app authentication.
         """
@@ -19487,7 +19474,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter(name="githubAppPrivateKey")
-    def github_app_private_key(self) -> Optional[str]:
+    def github_app_private_key(self) -> str:
         """
         github*app*private_key specifies the private key PEM data for authentication via GitHub app.
         """
@@ -19495,7 +19482,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> str:
         """
         Password or PAT to be used for authenticating the remote repository.
         """
@@ -19503,7 +19490,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter(name="sshPrivateKey")
-    def ssh_private_key(self) -> Optional[str]:
+    def ssh_private_key(self) -> str:
         """
         SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         """
@@ -19511,7 +19498,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter(name="tlsClientCertData")
-    def tls_client_cert_data(self) -> Optional[str]:
+    def tls_client_cert_data(self) -> str:
         """
         Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
         """
@@ -19519,7 +19506,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter(name="tlsClientCertKey")
-    def tls_client_cert_key(self) -> Optional[str]:
+    def tls_client_cert_key(self) -> str:
         """
         Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         """
@@ -19527,7 +19514,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> str:
         """
         Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
         """
@@ -19535,7 +19522,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter
-    def url(self) -> Optional[str]:
+    def url(self) -> str:
         """
         URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         """
@@ -19543,7 +19530,7 @@ class GetGitopsRepoCredCredResult(dict):
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[str]:
+    def username(self) -> str:
         """
         Username to be used for authenticating the remote repository.
         """
@@ -19553,29 +19540,27 @@ class GetGitopsRepoCredCredResult(dict):
 @pulumi.output_type
 class GetGitopsRepositoryRepoResult(dict):
     def __init__(__self__, *,
+                 connection_type: str,
+                 enable_lfs: bool,
+                 enable_oci: bool,
+                 github_app_enterprise_base_url: str,
+                 github_app_id: str,
+                 github_app_installation_id: str,
+                 github_app_private_key: str,
+                 inherited_creds: bool,
+                 insecure: bool,
+                 insecure_ignore_host_key: bool,
+                 name: str,
+                 password: str,
                  project: str,
+                 proxy: str,
+                 repo: str,
+                 ssh_private_key: str,
+                 tls_client_cert_data: str,
+                 tls_client_cert_key: str,
                  type_: str,
-                 connection_type: Optional[str] = None,
-                 enable_lfs: Optional[bool] = None,
-                 enable_oci: Optional[bool] = None,
-                 github_app_enterprise_base_url: Optional[str] = None,
-                 github_app_id: Optional[str] = None,
-                 github_app_installation_id: Optional[str] = None,
-                 github_app_private_key: Optional[str] = None,
-                 inherited_creds: Optional[bool] = None,
-                 insecure: Optional[bool] = None,
-                 insecure_ignore_host_key: Optional[bool] = None,
-                 name: Optional[str] = None,
-                 password: Optional[str] = None,
-                 proxy: Optional[str] = None,
-                 repo: Optional[str] = None,
-                 ssh_private_key: Optional[str] = None,
-                 tls_client_cert_data: Optional[str] = None,
-                 tls_client_cert_key: Optional[str] = None,
-                 username: Optional[str] = None):
+                 username: str):
         """
-        :param str project: The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
-        :param str type_: Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
         :param str connection_type: Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
         :param bool enable_lfs: Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
         :param bool enable_oci: Indicates if helm-oci support must be enabled for this repo.
@@ -19588,51 +19573,131 @@ class GetGitopsRepositoryRepoResult(dict):
         :param bool insecure_ignore_host_key: Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
         :param str name: Name to be used for this repo. Only used with Helm repos.
         :param str password: Password or PAT to be used for authenticating the remote repository.
+        :param str project: The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
         :param str proxy: The HTTP/HTTPS proxy used to access the repo.
         :param str repo: URL to the remote repository.
         :param str ssh_private_key: SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        :param str type_: Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
         :param str username: Username to be used for authenticating the remote repository.
         """
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "enable_lfs", enable_lfs)
+        pulumi.set(__self__, "enable_oci", enable_oci)
+        pulumi.set(__self__, "github_app_enterprise_base_url", github_app_enterprise_base_url)
+        pulumi.set(__self__, "github_app_id", github_app_id)
+        pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
+        pulumi.set(__self__, "github_app_private_key", github_app_private_key)
+        pulumi.set(__self__, "inherited_creds", inherited_creds)
+        pulumi.set(__self__, "insecure", insecure)
+        pulumi.set(__self__, "insecure_ignore_host_key", insecure_ignore_host_key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "proxy", proxy)
+        pulumi.set(__self__, "repo", repo)
+        pulumi.set(__self__, "ssh_private_key", ssh_private_key)
+        pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
+        pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
         pulumi.set(__self__, "type_", type_)
-        if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
-        if enable_lfs is not None:
-            pulumi.set(__self__, "enable_lfs", enable_lfs)
-        if enable_oci is not None:
-            pulumi.set(__self__, "enable_oci", enable_oci)
-        if github_app_enterprise_base_url is not None:
-            pulumi.set(__self__, "github_app_enterprise_base_url", github_app_enterprise_base_url)
-        if github_app_id is not None:
-            pulumi.set(__self__, "github_app_id", github_app_id)
-        if github_app_installation_id is not None:
-            pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
-        if github_app_private_key is not None:
-            pulumi.set(__self__, "github_app_private_key", github_app_private_key)
-        if inherited_creds is not None:
-            pulumi.set(__self__, "inherited_creds", inherited_creds)
-        if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
-        if insecure_ignore_host_key is not None:
-            pulumi.set(__self__, "insecure_ignore_host_key", insecure_ignore_host_key)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
-        if repo is not None:
-            pulumi.set(__self__, "repo", repo)
-        if ssh_private_key is not None:
-            pulumi.set(__self__, "ssh_private_key", ssh_private_key)
-        if tls_client_cert_data is not None:
-            pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
-        if tls_client_cert_key is not None:
-            pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> str:
+        """
+        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
+        """
+        return pulumi.get(self, "connection_type")
+
+    @property
+    @pulumi.getter(name="enableLfs")
+    def enable_lfs(self) -> bool:
+        """
+        Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+        """
+        return pulumi.get(self, "enable_lfs")
+
+    @property
+    @pulumi.getter(name="enableOci")
+    def enable_oci(self) -> bool:
+        """
+        Indicates if helm-oci support must be enabled for this repo.
+        """
+        return pulumi.get(self, "enable_oci")
+
+    @property
+    @pulumi.getter(name="githubAppEnterpriseBaseUrl")
+    def github_app_enterprise_base_url(self) -> str:
+        """
+        Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        """
+        return pulumi.get(self, "github_app_enterprise_base_url")
+
+    @property
+    @pulumi.getter(name="githubAppId")
+    def github_app_id(self) -> str:
+        """
+        Id of the GitHub app used to access the repo.
+        """
+        return pulumi.get(self, "github_app_id")
+
+    @property
+    @pulumi.getter(name="githubAppInstallationId")
+    def github_app_installation_id(self) -> str:
+        """
+        Installation id of the GitHub app used to access the repo.
+        """
+        return pulumi.get(self, "github_app_installation_id")
+
+    @property
+    @pulumi.getter(name="githubAppPrivateKey")
+    def github_app_private_key(self) -> str:
+        """
+        GitHub app private key PEM data.
+        """
+        return pulumi.get(self, "github_app_private_key")
+
+    @property
+    @pulumi.getter(name="inheritedCreds")
+    def inherited_creds(self) -> bool:
+        """
+        Indicates if the credentials were inherited from a repository credential.
+        """
+        return pulumi.get(self, "inherited_creds")
+
+    @property
+    @pulumi.getter
+    def insecure(self) -> bool:
+        """
+        Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+        """
+        return pulumi.get(self, "insecure")
+
+    @property
+    @pulumi.getter(name="insecureIgnoreHostKey")
+    def insecure_ignore_host_key(self) -> bool:
+        """
+        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
+        """
+        return pulumi.get(self, "insecure_ignore_host_key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name to be used for this repo. Only used with Helm repos.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password or PAT to be used for authenticating the remote repository.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -19644,111 +19709,7 @@ class GetGitopsRepositoryRepoResult(dict):
 
     @property
     @pulumi.getter
-    def type_(self) -> str:
-        """
-        Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
-        """
-        return pulumi.get(self, "type_")
-
-    @property
-    @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[str]:
-        """
-        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
-        """
-        return pulumi.get(self, "connection_type")
-
-    @property
-    @pulumi.getter(name="enableLfs")
-    def enable_lfs(self) -> Optional[bool]:
-        """
-        Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
-        """
-        return pulumi.get(self, "enable_lfs")
-
-    @property
-    @pulumi.getter(name="enableOci")
-    def enable_oci(self) -> Optional[bool]:
-        """
-        Indicates if helm-oci support must be enabled for this repo.
-        """
-        return pulumi.get(self, "enable_oci")
-
-    @property
-    @pulumi.getter(name="githubAppEnterpriseBaseUrl")
-    def github_app_enterprise_base_url(self) -> Optional[str]:
-        """
-        Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
-        """
-        return pulumi.get(self, "github_app_enterprise_base_url")
-
-    @property
-    @pulumi.getter(name="githubAppId")
-    def github_app_id(self) -> Optional[str]:
-        """
-        Id of the GitHub app used to access the repo.
-        """
-        return pulumi.get(self, "github_app_id")
-
-    @property
-    @pulumi.getter(name="githubAppInstallationId")
-    def github_app_installation_id(self) -> Optional[str]:
-        """
-        Installation id of the GitHub app used to access the repo.
-        """
-        return pulumi.get(self, "github_app_installation_id")
-
-    @property
-    @pulumi.getter(name="githubAppPrivateKey")
-    def github_app_private_key(self) -> Optional[str]:
-        """
-        GitHub app private key PEM data.
-        """
-        return pulumi.get(self, "github_app_private_key")
-
-    @property
-    @pulumi.getter(name="inheritedCreds")
-    def inherited_creds(self) -> Optional[bool]:
-        """
-        Indicates if the credentials were inherited from a repository credential.
-        """
-        return pulumi.get(self, "inherited_creds")
-
-    @property
-    @pulumi.getter
-    def insecure(self) -> Optional[bool]:
-        """
-        Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
-        """
-        return pulumi.get(self, "insecure")
-
-    @property
-    @pulumi.getter(name="insecureIgnoreHostKey")
-    def insecure_ignore_host_key(self) -> Optional[bool]:
-        """
-        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
-        """
-        return pulumi.get(self, "insecure_ignore_host_key")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        """
-        Name to be used for this repo. Only used with Helm repos.
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        """
-        Password or PAT to be used for authenticating the remote repository.
-        """
-        return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter
-    def proxy(self) -> Optional[str]:
+    def proxy(self) -> str:
         """
         The HTTP/HTTPS proxy used to access the repo.
         """
@@ -19756,7 +19717,7 @@ class GetGitopsRepositoryRepoResult(dict):
 
     @property
     @pulumi.getter
-    def repo(self) -> Optional[str]:
+    def repo(self) -> str:
         """
         URL to the remote repository.
         """
@@ -19764,7 +19725,7 @@ class GetGitopsRepositoryRepoResult(dict):
 
     @property
     @pulumi.getter(name="sshPrivateKey")
-    def ssh_private_key(self) -> Optional[str]:
+    def ssh_private_key(self) -> str:
         """
         SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         """
@@ -19772,7 +19733,7 @@ class GetGitopsRepositoryRepoResult(dict):
 
     @property
     @pulumi.getter(name="tlsClientCertData")
-    def tls_client_cert_data(self) -> Optional[str]:
+    def tls_client_cert_data(self) -> str:
         """
         Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         """
@@ -19780,7 +19741,7 @@ class GetGitopsRepositoryRepoResult(dict):
 
     @property
     @pulumi.getter(name="tlsClientCertKey")
-    def tls_client_cert_key(self) -> Optional[str]:
+    def tls_client_cert_key(self) -> str:
         """
         Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
         """
@@ -19788,30 +19749,19 @@ class GetGitopsRepositoryRepoResult(dict):
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[str]:
+    def type_(self) -> str:
+        """
+        Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
+        """
+        return pulumi.get(self, "type_")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
         """
         Username to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "username")
-
-
-@pulumi.output_type
-class GetGitopsRepositoryUpdateMaskResult(dict):
-    def __init__(__self__, *,
-                 paths: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] paths: The set of field mask paths.
-        """
-        if paths is not None:
-            pulumi.set(__self__, "paths", paths)
-
-    @property
-    @pulumi.getter
-    def paths(self) -> Optional[Sequence[str]]:
-        """
-        The set of field mask paths.
-        """
-        return pulumi.get(self, "paths")
 
 
 @pulumi.output_type

@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewOrganization(ctx, "this", &platform.OrganizationArgs{
 //				Identifier:  pulumi.String("MyOrg"),
-//				Name:        pulumi.String("My Otganization"),
+//				Name:        pulumi.String("My Organization"),
 //				Description: pulumi.String("An example organization"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),

@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecDestination> Destinations;
         /// <summary>
-        /// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        /// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         /// </summary>
         public readonly string? Project;
         /// <summary>

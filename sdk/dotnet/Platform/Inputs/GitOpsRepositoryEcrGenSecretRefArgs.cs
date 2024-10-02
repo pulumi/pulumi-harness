@@ -18,17 +18,37 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("awsAccessKeyId")]
         public Input<string>? AwsAccessKeyId { get; set; }
 
+        [Input("awsSecretAccessKey")]
+        private Input<string>? _awsSecretAccessKey;
+
         /// <summary>
         /// AWS secret access key.
         /// </summary>
-        [Input("awsSecretAccessKey")]
-        public Input<string>? AwsSecretAccessKey { get; set; }
+        public Input<string>? AwsSecretAccessKey
+        {
+            get => _awsSecretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsSecretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("awsSessionToken")]
+        private Input<string>? _awsSessionToken;
 
         /// <summary>
         /// AWS session token.
         /// </summary>
-        [Input("awsSessionToken")]
-        public Input<string>? AwsSessionToken { get; set; }
+        public Input<string>? AwsSessionToken
+        {
+            get => _awsSessionToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _awsSessionToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GitOpsRepositoryEcrGenSecretRefArgs()
         {

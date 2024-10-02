@@ -6,7 +6,6 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsRepositoryRepo;
-import com.pulumi.harness.platform.outputs.GetGitopsRepositoryUpdateMask;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -56,11 +55,6 @@ public final class GetGitopsRepositoryResult {
      * 
      */
     private List<GetGitopsRepositoryRepo> repos;
-    /**
-     * @return Update mask of the repository.
-     * 
-     */
-    private List<GetGitopsRepositoryUpdateMask> updateMasks;
 
     private GetGitopsRepositoryResult() {}
     /**
@@ -119,13 +113,6 @@ public final class GetGitopsRepositoryResult {
     public List<GetGitopsRepositoryRepo> repos() {
         return this.repos;
     }
-    /**
-     * @return Update mask of the repository.
-     * 
-     */
-    public List<GetGitopsRepositoryUpdateMask> updateMasks() {
-        return this.updateMasks;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -144,7 +131,6 @@ public final class GetGitopsRepositoryResult {
         private @Nullable String orgId;
         private @Nullable String projectId;
         private List<GetGitopsRepositoryRepo> repos;
-        private List<GetGitopsRepositoryUpdateMask> updateMasks;
         public Builder() {}
         public Builder(GetGitopsRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -156,7 +142,6 @@ public final class GetGitopsRepositoryResult {
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.repos = defaults.repos;
-    	      this.updateMasks = defaults.updateMasks;
         }
 
         @CustomType.Setter
@@ -222,17 +207,6 @@ public final class GetGitopsRepositoryResult {
         public Builder repos(GetGitopsRepositoryRepo... repos) {
             return repos(List.of(repos));
         }
-        @CustomType.Setter
-        public Builder updateMasks(List<GetGitopsRepositoryUpdateMask> updateMasks) {
-            if (updateMasks == null) {
-              throw new MissingRequiredPropertyException("GetGitopsRepositoryResult", "updateMasks");
-            }
-            this.updateMasks = updateMasks;
-            return this;
-        }
-        public Builder updateMasks(GetGitopsRepositoryUpdateMask... updateMasks) {
-            return updateMasks(List.of(updateMasks));
-        }
         public GetGitopsRepositoryResult build() {
             final var _resultValue = new GetGitopsRepositoryResult();
             _resultValue.accountId = accountId;
@@ -243,7 +217,6 @@ public final class GetGitopsRepositoryResult {
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.repos = repos;
-            _resultValue.updateMasks = updateMasks;
             return _resultValue;
         }
     }

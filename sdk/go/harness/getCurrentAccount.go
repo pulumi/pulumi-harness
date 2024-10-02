@@ -24,7 +24,7 @@ func GetCurrentAccount(ctx *pulumi.Context, args *GetCurrentAccountArgs, opts ..
 
 // A collection of arguments for invoking getCurrentAccount.
 type GetCurrentAccountArgs struct {
-	// Id of the git connector.
+	// Account Identifier of the current account.
 	Id *string `pulumi:"id"`
 }
 
@@ -34,7 +34,7 @@ type GetCurrentAccountResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The url of the Harness control plane.
 	Endpoint string `pulumi:"endpoint"`
-	// Id of the git connector.
+	// Account Identifier of the current account.
 	Id *string `pulumi:"id"`
 }
 
@@ -59,7 +59,7 @@ func GetCurrentAccountOutput(ctx *pulumi.Context, args GetCurrentAccountOutputAr
 
 // A collection of arguments for invoking getCurrentAccount.
 type GetCurrentAccountOutputArgs struct {
-	// Id of the git connector.
+	// Account Identifier of the current account.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -92,7 +92,7 @@ func (o GetCurrentAccountResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentAccountResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Id of the git connector.
+// Account Identifier of the current account.
 func (o GetCurrentAccountResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentAccountResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }

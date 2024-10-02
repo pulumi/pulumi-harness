@@ -6,10 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GetGitopsRepositoryUpdateMaskArgs;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,21 +44,6 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
      */
     public Output<String> agentId() {
         return this.agentId;
-    }
-
-    /**
-     * Indicates if helm-oci support must be enabled for this repo.
-     * 
-     */
-    @Import(name="enableOci")
-    private @Nullable Output<Boolean> enableOci;
-
-    /**
-     * @return Indicates if helm-oci support must be enabled for this repo.
-     * 
-     */
-    public Optional<Output<Boolean>> enableOci() {
-        return Optional.ofNullable(this.enableOci);
     }
 
     /**
@@ -109,31 +91,14 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.projectId);
     }
 
-    /**
-     * Update mask of the repository.
-     * 
-     */
-    @Import(name="updateMasks")
-    private @Nullable Output<List<GetGitopsRepositoryUpdateMaskArgs>> updateMasks;
-
-    /**
-     * @return Update mask of the repository.
-     * 
-     */
-    public Optional<Output<List<GetGitopsRepositoryUpdateMaskArgs>>> updateMasks() {
-        return Optional.ofNullable(this.updateMasks);
-    }
-
     private GetGitopsRepositoryArgs() {}
 
     private GetGitopsRepositoryArgs(GetGitopsRepositoryArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
-        this.enableOci = $.enableOci;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.updateMasks = $.updateMasks;
     }
 
     public static Builder builder() {
@@ -197,27 +162,6 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param enableOci Indicates if helm-oci support must be enabled for this repo.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableOci(@Nullable Output<Boolean> enableOci) {
-            $.enableOci = enableOci;
-            return this;
-        }
-
-        /**
-         * @param enableOci Indicates if helm-oci support must be enabled for this repo.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableOci(Boolean enableOci) {
-            return enableOci(Output.of(enableOci));
-        }
-
-        /**
          * @param identifier Identifier of the GitOps repository.
          * 
          * @return builder
@@ -278,37 +222,6 @@ public final class GetGitopsRepositoryArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
-        }
-
-        /**
-         * @param updateMasks Update mask of the repository.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(@Nullable Output<List<GetGitopsRepositoryUpdateMaskArgs>> updateMasks) {
-            $.updateMasks = updateMasks;
-            return this;
-        }
-
-        /**
-         * @param updateMasks Update mask of the repository.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(List<GetGitopsRepositoryUpdateMaskArgs> updateMasks) {
-            return updateMasks(Output.of(updateMasks));
-        }
-
-        /**
-         * @param updateMasks Update mask of the repository.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(GetGitopsRepositoryUpdateMaskArgs... updateMasks) {
-            return updateMasks(List.of(updateMasks));
         }
 
         public GetGitopsRepositoryArgs build() {

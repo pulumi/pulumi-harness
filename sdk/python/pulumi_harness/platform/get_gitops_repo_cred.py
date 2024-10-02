@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetGitopsRepoCredResult',
@@ -120,7 +119,6 @@ class AwaitableGetGitopsRepoCredResult(GetGitopsRepoCredResult):
 
 def get_gitops_repo_cred(account_id: Optional[str] = None,
                          agent_id: Optional[str] = None,
-                         creds: Optional[Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']]] = None,
                          identifier: Optional[str] = None,
                          org_id: Optional[str] = None,
                          project_id: Optional[str] = None,
@@ -144,7 +142,6 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
 
     :param str account_id: Account identifier of the Repository Credentials.
     :param str agent_id: Agent identifier of the Repository Credentials.
-    :param Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']] creds: credential details.
     :param str identifier: Identifier of the Repository Credentials.
     :param str org_id: Organization identifier of the Repository Credentials.
     :param str project_id: Project identifier of the Repository Credentials.
@@ -152,7 +149,6 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['agentId'] = agent_id
-    __args__['creds'] = creds
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
@@ -172,7 +168,6 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
 @_utilities.lift_output_func(get_gitops_repo_cred)
 def get_gitops_repo_cred_output(account_id: Optional[pulumi.Input[str]] = None,
                                 agent_id: Optional[pulumi.Input[str]] = None,
-                                creds: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']]]]] = None,
                                 identifier: Optional[pulumi.Input[str]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -196,7 +191,6 @@ def get_gitops_repo_cred_output(account_id: Optional[pulumi.Input[str]] = None,
 
     :param str account_id: Account identifier of the Repository Credentials.
     :param str agent_id: Agent identifier of the Repository Credentials.
-    :param Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']] creds: credential details.
     :param str identifier: Identifier of the Repository Credentials.
     :param str org_id: Organization identifier of the Repository Credentials.
     :param str project_id: Project identifier of the Repository Credentials.

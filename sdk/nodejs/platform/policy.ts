@@ -9,10 +9,22 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Import using the organization id
+ * Import account level policy
  *
  * ```sh
- * $ pulumi import harness:platform/policy:Policy example <organization_id>
+ * $ pulumi import harness:platform/policy:Policy example <policy_id>
+ * ```
+ *
+ * Import org level policy
+ *
+ * ```sh
+ * $ pulumi import harness:platform/policy:Policy example <org_id>/<policy_id>
+ * ```
+ *
+ * Import proj level policy
+ *
+ * ```sh
+ * $ pulumi import harness:platform/policy:Policy example <org_id>/<project_id>/<policy_id>
  * ```
  */
 export class Policy extends pulumi.CustomResource {

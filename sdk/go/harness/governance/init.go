@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "harness:governance/rule:Rule":
+		r = &Rule{}
 	case "harness:governance/ruleEnforcement:RuleEnforcement":
 		r = &RuleEnforcement{}
 	default:
@@ -36,6 +38,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"harness",
+		"governance/rule",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"harness",
 		"governance/ruleEnforcement",

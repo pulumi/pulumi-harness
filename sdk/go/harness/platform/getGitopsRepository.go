@@ -58,16 +58,12 @@ type GetGitopsRepositoryArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId string `pulumi:"agentId"`
-	// Indicates if helm-oci support must be enabled for this repo.
-	EnableOci *bool `pulumi:"enableOci"`
 	// Identifier of the GitOps repository.
 	Identifier string `pulumi:"identifier"`
 	// Organization identifier of the GitOps repository.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps repository.
 	ProjectId *string `pulumi:"projectId"`
-	// Update mask of the repository.
-	UpdateMasks []GetGitopsRepositoryUpdateMask `pulumi:"updateMasks"`
 }
 
 // A collection of values returned by getGitopsRepository.
@@ -88,8 +84,6 @@ type GetGitopsRepositoryResult struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Repo details holding application configurations.
 	Repos []GetGitopsRepositoryRepo `pulumi:"repos"`
-	// Update mask of the repository.
-	UpdateMasks []GetGitopsRepositoryUpdateMask `pulumi:"updateMasks"`
 }
 
 func GetGitopsRepositoryOutput(ctx *pulumi.Context, args GetGitopsRepositoryOutputArgs, opts ...pulumi.InvokeOption) GetGitopsRepositoryResultOutput {
@@ -117,16 +111,12 @@ type GetGitopsRepositoryOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
-	// Indicates if helm-oci support must be enabled for this repo.
-	EnableOci pulumi.BoolPtrInput `pulumi:"enableOci"`
 	// Identifier of the GitOps repository.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Organization identifier of the GitOps repository.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Project identifier of the GitOps repository.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Update mask of the repository.
-	UpdateMasks GetGitopsRepositoryUpdateMaskArrayInput `pulumi:"updateMasks"`
 }
 
 func (GetGitopsRepositoryOutputArgs) ElementType() reflect.Type {
@@ -186,11 +176,6 @@ func (o GetGitopsRepositoryResultOutput) ProjectId() pulumi.StringPtrOutput {
 // Repo details holding application configurations.
 func (o GetGitopsRepositoryResultOutput) Repos() GetGitopsRepositoryRepoArrayOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryResult) []GetGitopsRepositoryRepo { return v.Repos }).(GetGitopsRepositoryRepoArrayOutput)
-}
-
-// Update mask of the repository.
-func (o GetGitopsRepositoryResultOutput) UpdateMasks() GetGitopsRepositoryUpdateMaskArrayOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryResult) []GetGitopsRepositoryUpdateMask { return v.UpdateMasks }).(GetGitopsRepositoryUpdateMaskArrayOutput)
 }
 
 func init() {

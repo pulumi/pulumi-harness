@@ -36,35 +36,85 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("githubAppInstallationId")]
         public Input<string>? GithubAppInstallationId { get; set; }
 
+        [Input("githubAppPrivateKey")]
+        private Input<string>? _githubAppPrivateKey;
+
         /// <summary>
         /// github*app*private_key specifies the private key PEM data for authentication via GitHub app.
         /// </summary>
-        [Input("githubAppPrivateKey")]
-        public Input<string>? GithubAppPrivateKey { get; set; }
+        public Input<string>? GithubAppPrivateKey
+        {
+            get => _githubAppPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _githubAppPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("password")]
+        private Input<string>? _password;
 
         /// <summary>
         /// Password or PAT to be used for authenticating the remote repository.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("sshPrivateKey")]
+        private Input<string>? _sshPrivateKey;
 
         /// <summary>
         /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         /// </summary>
-        [Input("sshPrivateKey")]
-        public Input<string>? SshPrivateKey { get; set; }
+        public Input<string>? SshPrivateKey
+        {
+            get => _sshPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("tlsClientCertData")]
+        private Input<string>? _tlsClientCertData;
 
         /// <summary>
         /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
-        [Input("tlsClientCertData")]
-        public Input<string>? TlsClientCertData { get; set; }
+        public Input<string>? TlsClientCertData
+        {
+            get => _tlsClientCertData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tlsClientCertData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("tlsClientCertKey")]
+        private Input<string>? _tlsClientCertKey;
 
         /// <summary>
         /// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
-        [Input("tlsClientCertKey")]
-        public Input<string>? TlsClientCertKey { get; set; }
+        public Input<string>? TlsClientCertKey
+        {
+            get => _tlsClientCertKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tlsClientCertKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent

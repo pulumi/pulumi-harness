@@ -60,6 +60,9 @@ class GitOpsApplicationsArgs:
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "project_id", project_id)
         if identifier is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""identifier is deprecated: This field is deprecated and will be removed in a future release.""")
+        if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -156,6 +159,7 @@ class GitOpsApplicationsArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier of the GitOps application.
@@ -336,6 +340,9 @@ class _GitOpsApplicationsState:
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if identifier is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""identifier is deprecated: This field is deprecated and will be removed in a future release.""")
+        if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
@@ -412,6 +419,7 @@ class _GitOpsApplicationsState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier of the GitOps application.
@@ -917,6 +925,7 @@ class GitOpsApplications(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def identifier(self) -> pulumi.Output[Optional[str]]:
         """
         Identifier of the GitOps application.

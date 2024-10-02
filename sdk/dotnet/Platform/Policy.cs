@@ -14,10 +14,22 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
-    /// Import using the organization id
+    /// Import account level policy
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/policy:Policy example &lt;organization_id&gt;
+    /// $ pulumi import harness:platform/policy:Policy example &lt;policy_id&gt;
+    /// ```
+    /// 
+    /// Import org level policy
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/policy:Policy example &lt;org_id&gt;/&lt;policy_id&gt;
+    /// ```
+    /// 
+    /// Import proj level policy
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/policy:Policy example &lt;org_id&gt;/&lt;project_id&gt;/&lt;policy_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/policy:Policy")]
