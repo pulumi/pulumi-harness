@@ -3875,7 +3875,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.\n"
+                    "description": "The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.\n"
                 },
                 "sources": {
                     "type": "array",
@@ -4825,23 +4825,28 @@
                 },
                 "githubAppPrivateKey": {
                     "type": "string",
-                    "description": "github*app*private_key specifies the private key PEM data for authentication via GitHub app.\n"
+                    "description": "github*app*private_key specifies the private key PEM data for authentication via GitHub app.\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password or PAT to be used for authenticating the remote repository.\n"
+                    "description": "Password or PAT to be used for authenticating the remote repository.\n",
+                    "secret": true
                 },
                 "sshPrivateKey": {
                     "type": "string",
-                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n"
+                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n",
+                    "secret": true
                 },
                 "tlsClientCertData": {
                     "type": "string",
-                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS.\n"
+                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS.\n",
+                    "secret": true
                 },
                 "tlsClientCertKey": {
                     "type": "string",
-                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS.\n"
+                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS.\n",
+                    "secret": true
                 },
                 "type": {
                     "type": "string",
@@ -4849,7 +4854,8 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. \"https://github.com\"\n"
+                    "description": "URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. \"https://github.com\"\n",
+                    "willReplaceOnChanges": true
                 },
                 "username": {
                     "type": "string",
@@ -4903,11 +4909,13 @@
                 },
                 "awsSecretAccessKey": {
                     "type": "string",
-                    "description": "AWS secret access key.\n"
+                    "description": "AWS secret access key.\n",
+                    "secret": true
                 },
                 "awsSessionToken": {
                     "type": "string",
-                    "description": "AWS session token.\n"
+                    "description": "AWS session token.\n",
+                    "secret": true
                 }
             },
             "type": "object"
@@ -4916,7 +4924,8 @@
             "properties": {
                 "accessKey": {
                     "type": "string",
-                    "description": "GCP access key.\n"
+                    "description": "GCP access key.\n",
+                    "secret": true
                 },
                 "projectId": {
                     "type": "string",
@@ -4974,7 +4983,7 @@
             "properties": {
                 "connectionType": {
                     "type": "string",
-                    "description": "Identifies the authentication method used to connect to the repository. Possible values: \"HTTPS\" \"SSH\" \"GITHUB\" \"HTTPS*ANONYMOUS*CONNECTION_TYPE\"\n"
+                    "description": "Identifies the authentication method used to connect to the repository. Possible values: \"HTTPS\" \"SSH\" \"GITHUB\" \"HTTPS*ANONYMOUS\", \"GITHUB*ENTERPRISE\".\n"
                 },
                 "enableLfs": {
                     "type": "boolean",
@@ -4998,7 +5007,8 @@
                 },
                 "githubAppPrivateKey": {
                     "type": "string",
-                    "description": "GitHub app private key PEM data.\n"
+                    "description": "GitHub app private key PEM data.\n",
+                    "secret": true
                 },
                 "inheritedCreds": {
                     "type": "boolean",
@@ -5018,7 +5028,8 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password or PAT to be used for authenticating the remote repository.\n"
+                    "description": "Password or PAT to be used for authenticating the remote repository.\n",
+                    "secret": true
                 },
                 "project": {
                     "type": "string",
@@ -5030,19 +5041,23 @@
                 },
                 "repo": {
                     "type": "string",
-                    "description": "URL to the remote repository.\n"
+                    "description": "URL to the remote repository.\n",
+                    "willReplaceOnChanges": true
                 },
                 "sshPrivateKey": {
                     "type": "string",
-                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n"
+                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n",
+                    "secret": true
                 },
                 "tlsClientCertData": {
                     "type": "string",
-                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n"
+                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n",
+                    "secret": true
                 },
                 "tlsClientCertKey": {
                     "type": "string",
-                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n"
+                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n",
+                    "secret": true
                 },
                 "type_": {
                     "type": "string",
@@ -5062,8 +5077,10 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "connectionType",
+                        "inheritedCreds",
                         "project",
                         "repo",
+                        "sshPrivateKey",
                         "type_"
                     ]
                 }
@@ -11011,23 +11028,28 @@
                 },
                 "githubAppPrivateKey": {
                     "type": "string",
-                    "description": "github*app*private_key specifies the private key PEM data for authentication via GitHub app.\n"
+                    "description": "github*app*private_key specifies the private key PEM data for authentication via GitHub app.\n",
+                    "secret": true
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password or PAT to be used for authenticating the remote repository.\n"
+                    "description": "Password or PAT to be used for authenticating the remote repository.\n",
+                    "secret": true
                 },
                 "sshPrivateKey": {
                     "type": "string",
-                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n"
+                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n",
+                    "secret": true
                 },
                 "tlsClientCertData": {
                     "type": "string",
-                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS.\n"
+                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS.\n",
+                    "secret": true
                 },
                 "tlsClientCertKey": {
                     "type": "string",
-                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS.\n"
+                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS.\n",
+                    "secret": true
                 },
                 "type": {
                     "type": "string",
@@ -11039,10 +11061,30 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username to be used for authenticating the remote repository.\n"
+                    "description": "Username to be used for authenticating the remote repository.\n",
+                    "secret": true
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "enableOci",
+                "githubAppEnterpriseBaseUrl",
+                "githubAppId",
+                "githubAppInstallationId",
+                "githubAppPrivateKey",
+                "password",
+                "sshPrivateKey",
+                "tlsClientCertData",
+                "tlsClientCertKey",
+                "type",
+                "url",
+                "username"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "harness:platform/getGitopsRepositoryRepo:getGitopsRepositoryRepo": {
             "properties": {
@@ -11072,7 +11114,8 @@
                 },
                 "githubAppPrivateKey": {
                     "type": "string",
-                    "description": "GitHub app private key PEM data.\n"
+                    "description": "GitHub app private key PEM data.\n",
+                    "secret": true
                 },
                 "inheritedCreds": {
                     "type": "boolean",
@@ -11092,7 +11135,8 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "Password or PAT to be used for authenticating the remote repository.\n"
+                    "description": "Password or PAT to be used for authenticating the remote repository.\n",
+                    "secret": true
                 },
                 "project": {
                     "type": "string",
@@ -11108,15 +11152,18 @@
                 },
                 "sshPrivateKey": {
                     "type": "string",
-                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n"
+                    "description": "SSH Key in PEM format for authenticating the repository. Used only for Git repository.\n",
+                    "secret": true
                 },
                 "tlsClientCertData": {
                     "type": "string",
-                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n"
+                    "description": "Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n",
+                    "secret": true
                 },
                 "tlsClientCertKey": {
                     "type": "string",
-                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n"
+                    "description": "Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.\n",
+                    "secret": true
                 },
                 "type_": {
                     "type": "string",
@@ -11124,31 +11171,38 @@
                 },
                 "username": {
                     "type": "string",
-                    "description": "Username to be used for authenticating the remote repository.\n"
+                    "description": "Username to be used for authenticating the remote repository.\n",
+                    "secret": true
                 }
             },
             "type": "object",
             "required": [
+                "connectionType",
+                "enableLfs",
+                "enableOci",
+                "githubAppEnterpriseBaseUrl",
+                "githubAppId",
+                "githubAppInstallationId",
+                "githubAppPrivateKey",
+                "inheritedCreds",
+                "insecure",
+                "insecureIgnoreHostKey",
+                "name",
+                "password",
                 "project",
-                "type_"
+                "proxy",
+                "repo",
+                "sshPrivateKey",
+                "tlsClientCertData",
+                "tlsClientCertKey",
+                "type_",
+                "username"
             ],
             "language": {
                 "nodejs": {
                     "requiredInputs": []
                 }
             }
-        },
-        "harness:platform/getGitopsRepositoryUpdateMask:getGitopsRepositoryUpdateMask": {
-            "properties": {
-                "paths": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The set of field mask paths.\n"
-                }
-            },
-            "type": "object"
         },
         "harness:platform/getHelmConnectorCredential:getHelmConnectorCredential": {
             "properties": {
@@ -15689,6 +15743,85 @@
                     "usernameSecretName": {
                         "type": "string",
                         "description": "The name of the Harness secret containing the username to authenticate to Tanzu with.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:governance/rule:Rule": {
+            "description": "Resource for creating, updating, and managing rule.\n\n## Import\n\nImport governance enforcement\n\n```sh\n$ pulumi import harness:governance/rule:Rule example \u003crule_id\u003e\n```\n\n",
+            "properties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider for the rule. It should be either AWS, AZURE or GCP.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for rule.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the rule.\n"
+                },
+                "ruleId": {
+                    "type": "string",
+                    "description": "Id of the rule.\n"
+                },
+                "rulesYaml": {
+                    "type": "string",
+                    "description": "The policy YAML of the rule\n"
+                }
+            },
+            "required": [
+                "cloudProvider",
+                "name",
+                "ruleId",
+                "rulesYaml"
+            ],
+            "inputProperties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider for the rule. It should be either AWS, AZURE or GCP.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for rule.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the rule.\n"
+                },
+                "rulesYaml": {
+                    "type": "string",
+                    "description": "The policy YAML of the rule\n"
+                }
+            },
+            "requiredInputs": [
+                "cloudProvider",
+                "rulesYaml"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Rule resources.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "type": "string",
+                        "description": "The cloud provider for the rule. It should be either AWS, AZURE or GCP.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description for rule.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the rule.\n"
+                    },
+                    "ruleId": {
+                        "type": "string",
+                        "description": "Id of the rule.\n"
+                    },
+                    "rulesYaml": {
+                        "type": "string",
+                        "description": "The policy YAML of the rule\n"
                     }
                 },
                 "type": "object"
@@ -22603,7 +22736,7 @@
                 },
                 "parentIdentifier": {
                     "type": "string",
-                    "description": "File parent identifier on Harness File Store\n"
+                    "description": "File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.\n"
                 },
                 "path": {
                     "type": "string",
@@ -22668,7 +22801,7 @@
                 },
                 "parentIdentifier": {
                     "type": "string",
-                    "description": "File parent identifier on Harness File Store\n"
+                    "description": "File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -22742,7 +22875,7 @@
                     },
                     "parentIdentifier": {
                         "type": "string",
-                        "description": "File parent identifier on Harness File Store\n"
+                        "description": "File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.\n"
                     },
                     "path": {
                         "type": "string",
@@ -22802,7 +22935,7 @@
                 },
                 "parentIdentifier": {
                     "type": "string",
-                    "description": "Folder parent identifier on Harness File Store\n"
+                    "description": "Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.\n"
                 },
                 "path": {
                     "type": "string",
@@ -22849,7 +22982,7 @@
                 },
                 "parentIdentifier": {
                     "type": "string",
-                    "description": "Folder parent identifier on Harness File Store\n"
+                    "description": "Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -22907,7 +23040,7 @@
                     },
                     "parentIdentifier": {
                         "type": "string",
-                        "description": "Folder parent identifier on Harness File Store\n"
+                        "description": "Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.\n"
                     },
                     "path": {
                         "type": "string",
@@ -23921,7 +24054,8 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Identifier of the GitOps application.\n"
+                    "description": "Identifier of the GitOps application.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "kind": {
                     "type": "string",
@@ -24003,7 +24137,8 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Identifier of the GitOps application.\n"
+                    "description": "Identifier of the GitOps application.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "kind": {
                     "type": "string",
@@ -24086,7 +24221,8 @@
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Identifier of the GitOps application.\n"
+                        "description": "Identifier of the GitOps application.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "kind": {
                         "type": "string",
@@ -24491,11 +24627,13 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the Repository Credentials.\n"
+                    "description": "Account identifier of the Repository Credentials.\n",
+                    "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the Repository Credentials.\n"
+                    "description": "Agent identifier of the Repository Credentials.\n",
+                    "willReplaceOnChanges": true
                 },
                 "creds": {
                     "type": "array",
@@ -24506,15 +24644,18 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Identifier of the Repository Credentials.\n"
+                    "description": "Identifier of the Repository Credentials.\n",
+                    "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Organization identifier of the Repository Credentials.\n"
+                    "description": "Organization identifier of the Repository Credentials.\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the Repository Credentials.\n"
+                    "description": "Project identifier of the Repository Credentials.\n",
+                    "willReplaceOnChanges": true
                 },
                 "upsert": {
                     "type": "boolean",
@@ -24531,11 +24672,13 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the Repository Credentials.\n"
+                        "description": "Account identifier of the Repository Credentials.\n",
+                        "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the Repository Credentials.\n"
+                        "description": "Agent identifier of the Repository Credentials.\n",
+                        "willReplaceOnChanges": true
                     },
                     "creds": {
                         "type": "array",
@@ -24546,15 +24689,18 @@
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Identifier of the Repository Credentials.\n"
+                        "description": "Identifier of the Repository Credentials.\n",
+                        "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Organization identifier of the Repository Credentials.\n"
+                        "description": "Organization identifier of the Repository Credentials.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the Repository Credentials.\n"
+                        "description": "Project identifier of the Repository Credentials.\n",
+                        "willReplaceOnChanges": true
                     },
                     "upsert": {
                         "type": "boolean",
@@ -27678,7 +27824,7 @@
             }
         },
         "harness:platform/organization:Organization": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst _this = new harness.platform.Organization(\"this\", {\n    identifier: \"MyOrg\",\n    name: \"My Otganization\",\n    description: \"An example organization\",\n    tags: [\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nthis = harness.platform.Organization(\"this\",\n    identifier=\"MyOrg\",\n    name=\"My Otganization\",\n    description=\"An example organization\",\n    tags=[\n        \"foo:bar\",\n        \"baz:qux\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Harness.Platform.Organization(\"this\", new()\n    {\n        Identifier = \"MyOrg\",\n        Name = \"My Otganization\",\n        Description = \"An example organization\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"baz:qux\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewOrganization(ctx, \"this\", \u0026platform.OrganizationArgs{\n\t\t\tIdentifier:  pulumi.String(\"MyOrg\"),\n\t\t\tName:        pulumi.String(\"My Otganization\"),\n\t\t\tDescription: pulumi.String(\"An example organization\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"baz:qux\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Organization;\nimport com.pulumi.harness.platform.OrganizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new Organization(\"this\", OrganizationArgs.builder()\n            .identifier(\"MyOrg\")\n            .name(\"My Otganization\")\n            .description(\"An example organization\")\n            .tags(            \n                \"foo:bar\",\n                \"baz:qux\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: harness:platform:Organization\n    properties:\n      identifier: MyOrg\n      name: My Otganization\n      description: An example organization\n      tags:\n        - foo:bar\n        - baz:qux\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport using organization id\n\n```sh\n$ pulumi import harness:platform/organization:Organization example \u003corganization_id\u003e\n```\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst _this = new harness.platform.Organization(\"this\", {\n    identifier: \"MyOrg\",\n    name: \"My Organization\",\n    description: \"An example organization\",\n    tags: [\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nthis = harness.platform.Organization(\"this\",\n    identifier=\"MyOrg\",\n    name=\"My Organization\",\n    description=\"An example organization\",\n    tags=[\n        \"foo:bar\",\n        \"baz:qux\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = new Harness.Platform.Organization(\"this\", new()\n    {\n        Identifier = \"MyOrg\",\n        Name = \"My Organization\",\n        Description = \"An example organization\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"baz:qux\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewOrganization(ctx, \"this\", \u0026platform.OrganizationArgs{\n\t\t\tIdentifier:  pulumi.String(\"MyOrg\"),\n\t\t\tName:        pulumi.String(\"My Organization\"),\n\t\t\tDescription: pulumi.String(\"An example organization\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"baz:qux\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Organization;\nimport com.pulumi.harness.platform.OrganizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var this_ = new Organization(\"this\", OrganizationArgs.builder()\n            .identifier(\"MyOrg\")\n            .name(\"My Organization\")\n            .description(\"An example organization\")\n            .tags(            \n                \"foo:bar\",\n                \"baz:qux\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  this:\n    type: harness:platform:Organization\n    properties:\n      identifier: MyOrg\n      name: My Organization\n      description: An example organization\n      tags:\n        - foo:bar\n        - baz:qux\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport using organization id\n\n```sh\n$ pulumi import harness:platform/organization:Organization example \u003corganization_id\u003e\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -28373,7 +28519,7 @@
             }
         },
         "harness:platform/policy:Policy": {
-            "description": "Resource for creating a Harness Policy.\n\n## Import\n\nImport using the organization id\n\n```sh\n$ pulumi import harness:platform/policy:Policy example \u003corganization_id\u003e\n```\n\n",
+            "description": "Resource for creating a Harness Policy.\n\n## Import\n\nImport account level policy\n\n```sh\n$ pulumi import harness:platform/policy:Policy example \u003cpolicy_id\u003e\n```\n\nImport org level policy\n\n```sh\n$ pulumi import harness:platform/policy:Policy example \u003corg_id\u003e/\u003cpolicy_id\u003e\n```\n\nImport proj level policy\n\n```sh\n$ pulumi import harness:platform/policy:Policy example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cpolicy_id\u003e\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -36049,6 +36195,60 @@
                 "type": "object"
             }
         },
+        "harness:governance/getRule:getRule": {
+            "description": "Datasource for looking up a rule.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.governance.getRule({\n    ruleId: \"rule_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.governance.get_rule(rule_id=\"rule_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Governance.GetRule.Invoke(new()\n    {\n        RuleId = \"rule_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/governance\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := governance.LookupRule(ctx, \u0026governance.LookupRuleArgs{\n\t\t\tRuleId: \"rule_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.governance.GovernanceFunctions;\nimport com.pulumi.harness.governance.inputs.GetRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GovernanceFunctions.getRule(GetRuleArgs.builder()\n            .ruleId(\"rule_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:governance:getRule\n      Arguments:\n        ruleId: rule_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRule.\n",
+                "properties": {
+                    "ruleId": {
+                        "type": "string",
+                        "description": "Id of rule.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ruleId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRule.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "description": "The cloud provider for the rule.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description for rule.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the rule.\n",
+                        "type": "string"
+                    },
+                    "ruleId": {
+                        "description": "Id of rule.\n",
+                        "type": "string"
+                    },
+                    "rulesYaml": {
+                        "description": "Policy YAML of the rule.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "cloudProvider",
+                    "description",
+                    "name",
+                    "ruleId",
+                    "rulesYaml",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:governance/getRuleEnforcement:getRuleEnforcement": {
             "description": "Datasource for looking up a rule enforcement.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.governance.getRuleEnforcement({\n    enforcementId: \"enforcement_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.governance.get_rule_enforcement(enforcement_id=\"enforcement_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Governance.GetRuleEnforcement.Invoke(new()\n    {\n        EnforcementId = \"enforcement_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/governance\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := governance.LookupRuleEnforcement(ctx, \u0026governance.LookupRuleEnforcementArgs{\n\t\t\tEnforcementId: \"enforcement_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.governance.GovernanceFunctions;\nimport com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GovernanceFunctions.getRuleEnforcement(GetRuleEnforcementArgs.builder()\n            .enforcementId(\"enforcement_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:governance:getRuleEnforcement\n      Arguments:\n        enforcementId: enforcement_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -36220,7 +36420,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "Id of the git connector.\n"
+                        "description": "Account Identifier of the current account.\n"
                     }
                 },
                 "type": "object"
@@ -36237,7 +36437,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "Id of the git connector.\n",
+                        "description": "Account Identifier of the current account.\n",
                         "type": "string"
                     }
                 },
@@ -41137,7 +41337,8 @@
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Identifier of the GitOps application.\n"
+                        "description": "Identifier of the GitOps application.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "name": {
                         "type": "string",
@@ -41188,6 +41389,7 @@
                         "type": "string"
                     },
                     "identifier": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Identifier of the GitOps application.\n",
                         "type": "string"
                     },
@@ -41496,13 +41698,6 @@
                         "type": "string",
                         "description": "Agent identifier of the Repository Credentials.\n"
                     },
-                    "creds": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/harness:platform/getGitopsRepoCredCred:getGitopsRepoCredCred"
-                        },
-                        "description": "credential details.\n"
-                    },
                     "identifier": {
                         "type": "string",
                         "description": "Identifier of the Repository Credentials.\n"
@@ -41581,10 +41776,6 @@
                         "type": "string",
                         "description": "Agent identifier of the GitOps repository.\n"
                     },
-                    "enableOci": {
-                        "type": "boolean",
-                        "description": "Indicates if helm-oci support must be enabled for this repo.\n"
-                    },
                     "identifier": {
                         "type": "string",
                         "description": "Identifier of the GitOps repository.\n"
@@ -41596,13 +41787,6 @@
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps repository.\n"
-                    },
-                    "updateMasks": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/harness:platform/getGitopsRepositoryUpdateMask:getGitopsRepositoryUpdateMask"
-                        },
-                        "description": "Update mask of the repository.\n"
                     }
                 },
                 "type": "object",
@@ -41649,13 +41833,6 @@
                             "$ref": "#/types/harness:platform/getGitopsRepositoryRepo:getGitopsRepositoryRepo"
                         },
                         "type": "array"
-                    },
-                    "updateMasks": {
-                        "description": "Update mask of the repository.\n",
-                        "items": {
-                            "$ref": "#/types/harness:platform/getGitopsRepositoryUpdateMask:getGitopsRepositoryUpdateMask"
-                        },
-                        "type": "array"
                     }
                 },
                 "required": [
@@ -41664,7 +41841,6 @@
                     "enableOci",
                     "identifier",
                     "repos",
-                    "updateMasks",
                     "id"
                 ],
                 "type": "object"
