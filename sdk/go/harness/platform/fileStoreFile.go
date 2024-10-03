@@ -97,7 +97,7 @@ type FileStoreFile struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// File parent identifier on Harness File Store
+	// File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
 	ParentIdentifier pulumi.StringOutput `pulumi:"parentIdentifier"`
 	// Harness File Store file path
 	Path pulumi.StringOutput `pulumi:"path"`
@@ -165,7 +165,7 @@ type fileStoreFileState struct {
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// File parent identifier on Harness File Store
+	// File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
 	ParentIdentifier *string `pulumi:"parentIdentifier"`
 	// Harness File Store file path
 	Path *string `pulumi:"path"`
@@ -198,7 +198,7 @@ type FileStoreFileState struct {
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// File parent identifier on Harness File Store
+	// File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
 	ParentIdentifier pulumi.StringPtrInput
 	// Harness File Store file path
 	Path pulumi.StringPtrInput
@@ -229,7 +229,7 @@ type fileStoreFileArgs struct {
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// File parent identifier on Harness File Store
+	// File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
 	ParentIdentifier string `pulumi:"parentIdentifier"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -255,7 +255,7 @@ type FileStoreFileArgs struct {
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// File parent identifier on Harness File Store
+	// File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
 	ParentIdentifier pulumi.StringInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
@@ -405,7 +405,7 @@ func (o FileStoreFileOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileStoreFile) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// File parent identifier on Harness File Store
+// File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
 func (o FileStoreFileOutput) ParentIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileStoreFile) pulumi.StringOutput { return v.ParentIdentifier }).(pulumi.StringOutput)
 }

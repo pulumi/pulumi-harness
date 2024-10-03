@@ -28,7 +28,7 @@ namespace Pulumi.Harness
     public sealed class GetCurrentAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the git connector.
+        /// Account Identifier of the current account.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -42,7 +42,7 @@ namespace Pulumi.Harness
     public sealed class GetCurrentAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the git connector.
+        /// Account Identifier of the current account.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -66,7 +66,7 @@ namespace Pulumi.Harness
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// Id of the git connector.
+        /// Account Identifier of the current account.
         /// </summary>
         public readonly string? Id;
 

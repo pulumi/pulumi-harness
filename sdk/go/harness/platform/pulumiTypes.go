@@ -10105,7 +10105,7 @@ func (o GitOpsApplicationsApplicationMetadataOwnerReferenceArrayOutput) Index(i 
 type GitOpsApplicationsApplicationSpec struct {
 	// Information about the GitOps application's destination.
 	Destinations []GitOpsApplicationsApplicationSpecDestination `pulumi:"destinations"`
-	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project *string `pulumi:"project"`
 	// Contains all information about the source of the GitOps application.
 	Sources []GitOpsApplicationsApplicationSpecSource `pulumi:"sources"`
@@ -10127,7 +10127,7 @@ type GitOpsApplicationsApplicationSpecInput interface {
 type GitOpsApplicationsApplicationSpecArgs struct {
 	// Information about the GitOps application's destination.
 	Destinations GitOpsApplicationsApplicationSpecDestinationArrayInput `pulumi:"destinations"`
-	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Contains all information about the source of the GitOps application.
 	Sources GitOpsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
@@ -10193,7 +10193,7 @@ func (o GitOpsApplicationsApplicationSpecOutput) Destinations() GitOpsApplicatio
 	}).(GitOpsApplicationsApplicationSpecDestinationArrayOutput)
 }
 
-// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 func (o GitOpsApplicationsApplicationSpecOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -15740,7 +15740,7 @@ func (o GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefPtrOutput) Namesp
 }
 
 type GitOpsRepositoryRepo struct {
-	// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+	// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
 	ConnectionType string `pulumi:"connectionType"`
 	// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
 	EnableLfs *bool `pulumi:"enableLfs"`
@@ -15794,7 +15794,7 @@ type GitOpsRepositoryRepoInput interface {
 }
 
 type GitOpsRepositoryRepoArgs struct {
-	// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+	// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
 	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
 	// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
 	EnableLfs pulumi.BoolPtrInput `pulumi:"enableLfs"`
@@ -15887,7 +15887,7 @@ func (o GitOpsRepositoryRepoOutput) ToGitOpsRepositoryRepoOutputWithContext(ctx 
 	return o
 }
 
-// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
 func (o GitOpsRepositoryRepoOutput) ConnectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GitOpsRepositoryRepo) string { return v.ConnectionType }).(pulumi.StringOutput)
 }
@@ -46990,29 +46990,29 @@ func (o GetGitopsGnupgRequestPublickeyArrayOutput) Index(i pulumi.IntInput) GetG
 
 type GetGitopsRepoCredCred struct {
 	// Specifies whether helm-oci support should be enabled for this repo.
-	EnableOci *bool `pulumi:"enableOci"`
+	EnableOci bool `pulumi:"enableOci"`
 	// Specifies the GitHub API URL for GitHub app authentication.
-	GithubAppEnterpriseBaseUrl *string `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppEnterpriseBaseUrl string `pulumi:"githubAppEnterpriseBaseUrl"`
 	// Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
-	GithubAppId *string `pulumi:"githubAppId"`
+	GithubAppId string `pulumi:"githubAppId"`
 	// Specifies the ID of the installed GitHub App for GitHub app authentication.
-	GithubAppInstallationId *string `pulumi:"githubAppInstallationId"`
+	GithubAppInstallationId string `pulumi:"githubAppInstallationId"`
 	// github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-	GithubAppPrivateKey *string `pulumi:"githubAppPrivateKey"`
+	GithubAppPrivateKey string `pulumi:"githubAppPrivateKey"`
 	// Password or PAT to be used for authenticating the remote repository.
-	Password *string `pulumi:"password"`
+	Password string `pulumi:"password"`
 	// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-	SshPrivateKey *string `pulumi:"sshPrivateKey"`
+	SshPrivateKey string `pulumi:"sshPrivateKey"`
 	// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
-	TlsClientCertData *string `pulumi:"tlsClientCertData"`
+	TlsClientCertData string `pulumi:"tlsClientCertData"`
 	// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
-	TlsClientCertKey *string `pulumi:"tlsClientCertKey"`
+	TlsClientCertKey string `pulumi:"tlsClientCertKey"`
 	// Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 	// URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
-	Url *string `pulumi:"url"`
+	Url string `pulumi:"url"`
 	// Username to be used for authenticating the remote repository.
-	Username *string `pulumi:"username"`
+	Username string `pulumi:"username"`
 }
 
 // GetGitopsRepoCredCredInput is an input type that accepts GetGitopsRepoCredCredArgs and GetGitopsRepoCredCredOutput values.
@@ -47028,29 +47028,29 @@ type GetGitopsRepoCredCredInput interface {
 
 type GetGitopsRepoCredCredArgs struct {
 	// Specifies whether helm-oci support should be enabled for this repo.
-	EnableOci pulumi.BoolPtrInput `pulumi:"enableOci"`
+	EnableOci pulumi.BoolInput `pulumi:"enableOci"`
 	// Specifies the GitHub API URL for GitHub app authentication.
-	GithubAppEnterpriseBaseUrl pulumi.StringPtrInput `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppEnterpriseBaseUrl pulumi.StringInput `pulumi:"githubAppEnterpriseBaseUrl"`
 	// Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
-	GithubAppId pulumi.StringPtrInput `pulumi:"githubAppId"`
+	GithubAppId pulumi.StringInput `pulumi:"githubAppId"`
 	// Specifies the ID of the installed GitHub App for GitHub app authentication.
-	GithubAppInstallationId pulumi.StringPtrInput `pulumi:"githubAppInstallationId"`
+	GithubAppInstallationId pulumi.StringInput `pulumi:"githubAppInstallationId"`
 	// github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-	GithubAppPrivateKey pulumi.StringPtrInput `pulumi:"githubAppPrivateKey"`
+	GithubAppPrivateKey pulumi.StringInput `pulumi:"githubAppPrivateKey"`
 	// Password or PAT to be used for authenticating the remote repository.
-	Password pulumi.StringPtrInput `pulumi:"password"`
+	Password pulumi.StringInput `pulumi:"password"`
 	// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-	SshPrivateKey pulumi.StringPtrInput `pulumi:"sshPrivateKey"`
+	SshPrivateKey pulumi.StringInput `pulumi:"sshPrivateKey"`
 	// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
-	TlsClientCertData pulumi.StringPtrInput `pulumi:"tlsClientCertData"`
+	TlsClientCertData pulumi.StringInput `pulumi:"tlsClientCertData"`
 	// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
-	TlsClientCertKey pulumi.StringPtrInput `pulumi:"tlsClientCertKey"`
+	TlsClientCertKey pulumi.StringInput `pulumi:"tlsClientCertKey"`
 	// Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
 	// URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Url pulumi.StringInput `pulumi:"url"`
 	// Username to be used for authenticating the remote repository.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GetGitopsRepoCredCredArgs) ElementType() reflect.Type {
@@ -47105,63 +47105,63 @@ func (o GetGitopsRepoCredCredOutput) ToGetGitopsRepoCredCredOutputWithContext(ct
 }
 
 // Specifies whether helm-oci support should be enabled for this repo.
-func (o GetGitopsRepoCredCredOutput) EnableOci() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *bool { return v.EnableOci }).(pulumi.BoolPtrOutput)
+func (o GetGitopsRepoCredCredOutput) EnableOci() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) bool { return v.EnableOci }).(pulumi.BoolOutput)
 }
 
 // Specifies the GitHub API URL for GitHub app authentication.
-func (o GetGitopsRepoCredCredOutput) GithubAppEnterpriseBaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) GithubAppEnterpriseBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringOutput)
 }
 
 // Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
-func (o GetGitopsRepoCredCredOutput) GithubAppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.GithubAppId }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) GithubAppId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.GithubAppId }).(pulumi.StringOutput)
 }
 
 // Specifies the ID of the installed GitHub App for GitHub app authentication.
-func (o GetGitopsRepoCredCredOutput) GithubAppInstallationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.GithubAppInstallationId }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) GithubAppInstallationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.GithubAppInstallationId }).(pulumi.StringOutput)
 }
 
 // github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-func (o GetGitopsRepoCredCredOutput) GithubAppPrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.GithubAppPrivateKey }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) GithubAppPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.GithubAppPrivateKey }).(pulumi.StringOutput)
 }
 
 // Password or PAT to be used for authenticating the remote repository.
-func (o GetGitopsRepoCredCredOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.Password }).(pulumi.StringOutput)
 }
 
 // SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-func (o GetGitopsRepoCredCredOutput) SshPrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.SshPrivateKey }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) SshPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.SshPrivateKey }).(pulumi.StringOutput)
 }
 
 // Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
-func (o GetGitopsRepoCredCredOutput) TlsClientCertData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.TlsClientCertData }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) TlsClientCertData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.TlsClientCertData }).(pulumi.StringOutput)
 }
 
 // Private key in PEM format for authenticating at the repo server. This is used for mTLS.
-func (o GetGitopsRepoCredCredOutput) TlsClientCertKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.TlsClientCertKey }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) TlsClientCertKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.TlsClientCertKey }).(pulumi.StringOutput)
 }
 
 // Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-func (o GetGitopsRepoCredCredOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
-func (o GetGitopsRepoCredCredOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.Url }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.Url }).(pulumi.StringOutput)
 }
 
 // Username to be used for authenticating the remote repository.
-func (o GetGitopsRepoCredCredOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCredCred) *string { return v.Username }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCredCredOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCredCred) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type GetGitopsRepoCredCredArrayOutput struct{ *pulumi.OutputState }
@@ -47186,45 +47186,45 @@ func (o GetGitopsRepoCredCredArrayOutput) Index(i pulumi.IntInput) GetGitopsRepo
 
 type GetGitopsRepositoryRepo struct {
 	// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
-	ConnectionType *string `pulumi:"connectionType"`
+	ConnectionType string `pulumi:"connectionType"`
 	// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
-	EnableLfs *bool `pulumi:"enableLfs"`
+	EnableLfs bool `pulumi:"enableLfs"`
 	// Indicates if helm-oci support must be enabled for this repo.
-	EnableOci *bool `pulumi:"enableOci"`
+	EnableOci bool `pulumi:"enableOci"`
 	// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
-	GithubAppEnterpriseBaseUrl *string `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppEnterpriseBaseUrl string `pulumi:"githubAppEnterpriseBaseUrl"`
 	// Id of the GitHub app used to access the repo.
-	GithubAppId *string `pulumi:"githubAppId"`
+	GithubAppId string `pulumi:"githubAppId"`
 	// Installation id of the GitHub app used to access the repo.
-	GithubAppInstallationId *string `pulumi:"githubAppInstallationId"`
+	GithubAppInstallationId string `pulumi:"githubAppInstallationId"`
 	// GitHub app private key PEM data.
-	GithubAppPrivateKey *string `pulumi:"githubAppPrivateKey"`
+	GithubAppPrivateKey string `pulumi:"githubAppPrivateKey"`
 	// Indicates if the credentials were inherited from a repository credential.
-	InheritedCreds *bool `pulumi:"inheritedCreds"`
+	InheritedCreds bool `pulumi:"inheritedCreds"`
 	// Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
-	Insecure *bool `pulumi:"insecure"`
+	Insecure bool `pulumi:"insecure"`
 	// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
-	InsecureIgnoreHostKey *bool `pulumi:"insecureIgnoreHostKey"`
+	InsecureIgnoreHostKey bool `pulumi:"insecureIgnoreHostKey"`
 	// Name to be used for this repo. Only used with Helm repos.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Password or PAT to be used for authenticating the remote repository.
-	Password *string `pulumi:"password"`
+	Password string `pulumi:"password"`
 	// The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
 	Project string `pulumi:"project"`
 	// The HTTP/HTTPS proxy used to access the repo.
-	Proxy *string `pulumi:"proxy"`
+	Proxy string `pulumi:"proxy"`
 	// URL to the remote repository.
-	Repo *string `pulumi:"repo"`
+	Repo string `pulumi:"repo"`
 	// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-	SshPrivateKey *string `pulumi:"sshPrivateKey"`
+	SshPrivateKey string `pulumi:"sshPrivateKey"`
 	// Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
-	TlsClientCertData *string `pulumi:"tlsClientCertData"`
+	TlsClientCertData string `pulumi:"tlsClientCertData"`
 	// Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
-	TlsClientCertKey *string `pulumi:"tlsClientCertKey"`
+	TlsClientCertKey string `pulumi:"tlsClientCertKey"`
 	// Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
 	Type_ string `pulumi:"type_"`
 	// Username to be used for authenticating the remote repository.
-	Username *string `pulumi:"username"`
+	Username string `pulumi:"username"`
 }
 
 // GetGitopsRepositoryRepoInput is an input type that accepts GetGitopsRepositoryRepoArgs and GetGitopsRepositoryRepoOutput values.
@@ -47240,45 +47240,45 @@ type GetGitopsRepositoryRepoInput interface {
 
 type GetGitopsRepositoryRepoArgs struct {
 	// Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
-	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
 	// Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
-	EnableLfs pulumi.BoolPtrInput `pulumi:"enableLfs"`
+	EnableLfs pulumi.BoolInput `pulumi:"enableLfs"`
 	// Indicates if helm-oci support must be enabled for this repo.
-	EnableOci pulumi.BoolPtrInput `pulumi:"enableOci"`
+	EnableOci pulumi.BoolInput `pulumi:"enableOci"`
 	// Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
-	GithubAppEnterpriseBaseUrl pulumi.StringPtrInput `pulumi:"githubAppEnterpriseBaseUrl"`
+	GithubAppEnterpriseBaseUrl pulumi.StringInput `pulumi:"githubAppEnterpriseBaseUrl"`
 	// Id of the GitHub app used to access the repo.
-	GithubAppId pulumi.StringPtrInput `pulumi:"githubAppId"`
+	GithubAppId pulumi.StringInput `pulumi:"githubAppId"`
 	// Installation id of the GitHub app used to access the repo.
-	GithubAppInstallationId pulumi.StringPtrInput `pulumi:"githubAppInstallationId"`
+	GithubAppInstallationId pulumi.StringInput `pulumi:"githubAppInstallationId"`
 	// GitHub app private key PEM data.
-	GithubAppPrivateKey pulumi.StringPtrInput `pulumi:"githubAppPrivateKey"`
+	GithubAppPrivateKey pulumi.StringInput `pulumi:"githubAppPrivateKey"`
 	// Indicates if the credentials were inherited from a repository credential.
-	InheritedCreds pulumi.BoolPtrInput `pulumi:"inheritedCreds"`
+	InheritedCreds pulumi.BoolInput `pulumi:"inheritedCreds"`
 	// Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
-	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	Insecure pulumi.BoolInput `pulumi:"insecure"`
 	// Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
-	InsecureIgnoreHostKey pulumi.BoolPtrInput `pulumi:"insecureIgnoreHostKey"`
+	InsecureIgnoreHostKey pulumi.BoolInput `pulumi:"insecureIgnoreHostKey"`
 	// Name to be used for this repo. Only used with Helm repos.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// Password or PAT to be used for authenticating the remote repository.
-	Password pulumi.StringPtrInput `pulumi:"password"`
+	Password pulumi.StringInput `pulumi:"password"`
 	// The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The HTTP/HTTPS proxy used to access the repo.
-	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
+	Proxy pulumi.StringInput `pulumi:"proxy"`
 	// URL to the remote repository.
-	Repo pulumi.StringPtrInput `pulumi:"repo"`
+	Repo pulumi.StringInput `pulumi:"repo"`
 	// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-	SshPrivateKey pulumi.StringPtrInput `pulumi:"sshPrivateKey"`
+	SshPrivateKey pulumi.StringInput `pulumi:"sshPrivateKey"`
 	// Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
-	TlsClientCertData pulumi.StringPtrInput `pulumi:"tlsClientCertData"`
+	TlsClientCertData pulumi.StringInput `pulumi:"tlsClientCertData"`
 	// Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
-	TlsClientCertKey pulumi.StringPtrInput `pulumi:"tlsClientCertKey"`
+	TlsClientCertKey pulumi.StringInput `pulumi:"tlsClientCertKey"`
 	// Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
 	Type_ pulumi.StringInput `pulumi:"type_"`
 	// Username to be used for authenticating the remote repository.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GetGitopsRepositoryRepoArgs) ElementType() reflect.Type {
@@ -47333,63 +47333,63 @@ func (o GetGitopsRepositoryRepoOutput) ToGetGitopsRepositoryRepoOutputWithContex
 }
 
 // Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS_ANONYMOUS_CONNECTION_TYPE"
-func (o GetGitopsRepositoryRepoOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.ConnectionType }).(pulumi.StringOutput)
 }
 
 // Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
-func (o GetGitopsRepositoryRepoOutput) EnableLfs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.EnableLfs }).(pulumi.BoolPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) EnableLfs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) bool { return v.EnableLfs }).(pulumi.BoolOutput)
 }
 
 // Indicates if helm-oci support must be enabled for this repo.
-func (o GetGitopsRepositoryRepoOutput) EnableOci() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.EnableOci }).(pulumi.BoolPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) EnableOci() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) bool { return v.EnableOci }).(pulumi.BoolOutput)
 }
 
 // Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
-func (o GetGitopsRepositoryRepoOutput) GithubAppEnterpriseBaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) GithubAppEnterpriseBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.GithubAppEnterpriseBaseUrl }).(pulumi.StringOutput)
 }
 
 // Id of the GitHub app used to access the repo.
-func (o GetGitopsRepositoryRepoOutput) GithubAppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppId }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) GithubAppId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.GithubAppId }).(pulumi.StringOutput)
 }
 
 // Installation id of the GitHub app used to access the repo.
-func (o GetGitopsRepositoryRepoOutput) GithubAppInstallationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppInstallationId }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) GithubAppInstallationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.GithubAppInstallationId }).(pulumi.StringOutput)
 }
 
 // GitHub app private key PEM data.
-func (o GetGitopsRepositoryRepoOutput) GithubAppPrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.GithubAppPrivateKey }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) GithubAppPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.GithubAppPrivateKey }).(pulumi.StringOutput)
 }
 
 // Indicates if the credentials were inherited from a repository credential.
-func (o GetGitopsRepositoryRepoOutput) InheritedCreds() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.InheritedCreds }).(pulumi.BoolPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) InheritedCreds() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) bool { return v.InheritedCreds }).(pulumi.BoolOutput)
 }
 
 // Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
-func (o GetGitopsRepositoryRepoOutput) Insecure() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) Insecure() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) bool { return v.Insecure }).(pulumi.BoolOutput)
 }
 
 // Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
-func (o GetGitopsRepositoryRepoOutput) InsecureIgnoreHostKey() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *bool { return v.InsecureIgnoreHostKey }).(pulumi.BoolPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) InsecureIgnoreHostKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) bool { return v.InsecureIgnoreHostKey }).(pulumi.BoolOutput)
 }
 
 // Name to be used for this repo. Only used with Helm repos.
-func (o GetGitopsRepositoryRepoOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Password or PAT to be used for authenticating the remote repository.
-func (o GetGitopsRepositoryRepoOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Password }).(pulumi.StringOutput)
 }
 
 // The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
@@ -47398,28 +47398,28 @@ func (o GetGitopsRepositoryRepoOutput) Project() pulumi.StringOutput {
 }
 
 // The HTTP/HTTPS proxy used to access the repo.
-func (o GetGitopsRepositoryRepoOutput) Proxy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) Proxy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Proxy }).(pulumi.StringOutput)
 }
 
 // URL to the remote repository.
-func (o GetGitopsRepositoryRepoOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Repo }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Repo }).(pulumi.StringOutput)
 }
 
 // SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-func (o GetGitopsRepositoryRepoOutput) SshPrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.SshPrivateKey }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) SshPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.SshPrivateKey }).(pulumi.StringOutput)
 }
 
 // Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
-func (o GetGitopsRepositoryRepoOutput) TlsClientCertData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.TlsClientCertData }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) TlsClientCertData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.TlsClientCertData }).(pulumi.StringOutput)
 }
 
 // Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
-func (o GetGitopsRepositoryRepoOutput) TlsClientCertKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.TlsClientCertKey }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) TlsClientCertKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.TlsClientCertKey }).(pulumi.StringOutput)
 }
 
 // Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
@@ -47428,8 +47428,8 @@ func (o GetGitopsRepositoryRepoOutput) Type_() pulumi.StringOutput {
 }
 
 // Username to be used for authenticating the remote repository.
-func (o GetGitopsRepositoryRepoOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryRepo) *string { return v.Username }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepositoryRepoOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepositoryRepo) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type GetGitopsRepositoryRepoArrayOutput struct{ *pulumi.OutputState }
@@ -47450,103 +47450,6 @@ func (o GetGitopsRepositoryRepoArrayOutput) Index(i pulumi.IntInput) GetGitopsRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsRepositoryRepo {
 		return vs[0].([]GetGitopsRepositoryRepo)[vs[1].(int)]
 	}).(GetGitopsRepositoryRepoOutput)
-}
-
-type GetGitopsRepositoryUpdateMask struct {
-	// The set of field mask paths.
-	Paths []string `pulumi:"paths"`
-}
-
-// GetGitopsRepositoryUpdateMaskInput is an input type that accepts GetGitopsRepositoryUpdateMaskArgs and GetGitopsRepositoryUpdateMaskOutput values.
-// You can construct a concrete instance of `GetGitopsRepositoryUpdateMaskInput` via:
-//
-//	GetGitopsRepositoryUpdateMaskArgs{...}
-type GetGitopsRepositoryUpdateMaskInput interface {
-	pulumi.Input
-
-	ToGetGitopsRepositoryUpdateMaskOutput() GetGitopsRepositoryUpdateMaskOutput
-	ToGetGitopsRepositoryUpdateMaskOutputWithContext(context.Context) GetGitopsRepositoryUpdateMaskOutput
-}
-
-type GetGitopsRepositoryUpdateMaskArgs struct {
-	// The set of field mask paths.
-	Paths pulumi.StringArrayInput `pulumi:"paths"`
-}
-
-func (GetGitopsRepositoryUpdateMaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsRepositoryUpdateMask)(nil)).Elem()
-}
-
-func (i GetGitopsRepositoryUpdateMaskArgs) ToGetGitopsRepositoryUpdateMaskOutput() GetGitopsRepositoryUpdateMaskOutput {
-	return i.ToGetGitopsRepositoryUpdateMaskOutputWithContext(context.Background())
-}
-
-func (i GetGitopsRepositoryUpdateMaskArgs) ToGetGitopsRepositoryUpdateMaskOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsRepositoryUpdateMaskOutput)
-}
-
-// GetGitopsRepositoryUpdateMaskArrayInput is an input type that accepts GetGitopsRepositoryUpdateMaskArray and GetGitopsRepositoryUpdateMaskArrayOutput values.
-// You can construct a concrete instance of `GetGitopsRepositoryUpdateMaskArrayInput` via:
-//
-//	GetGitopsRepositoryUpdateMaskArray{ GetGitopsRepositoryUpdateMaskArgs{...} }
-type GetGitopsRepositoryUpdateMaskArrayInput interface {
-	pulumi.Input
-
-	ToGetGitopsRepositoryUpdateMaskArrayOutput() GetGitopsRepositoryUpdateMaskArrayOutput
-	ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(context.Context) GetGitopsRepositoryUpdateMaskArrayOutput
-}
-
-type GetGitopsRepositoryUpdateMaskArray []GetGitopsRepositoryUpdateMaskInput
-
-func (GetGitopsRepositoryUpdateMaskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsRepositoryUpdateMask)(nil)).Elem()
-}
-
-func (i GetGitopsRepositoryUpdateMaskArray) ToGetGitopsRepositoryUpdateMaskArrayOutput() GetGitopsRepositoryUpdateMaskArrayOutput {
-	return i.ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(context.Background())
-}
-
-func (i GetGitopsRepositoryUpdateMaskArray) ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsRepositoryUpdateMaskArrayOutput)
-}
-
-type GetGitopsRepositoryUpdateMaskOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsRepositoryUpdateMaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGitopsRepositoryUpdateMask)(nil)).Elem()
-}
-
-func (o GetGitopsRepositoryUpdateMaskOutput) ToGetGitopsRepositoryUpdateMaskOutput() GetGitopsRepositoryUpdateMaskOutput {
-	return o
-}
-
-func (o GetGitopsRepositoryUpdateMaskOutput) ToGetGitopsRepositoryUpdateMaskOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskOutput {
-	return o
-}
-
-// The set of field mask paths.
-func (o GetGitopsRepositoryUpdateMaskOutput) Paths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGitopsRepositoryUpdateMask) []string { return v.Paths }).(pulumi.StringArrayOutput)
-}
-
-type GetGitopsRepositoryUpdateMaskArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGitopsRepositoryUpdateMaskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGitopsRepositoryUpdateMask)(nil)).Elem()
-}
-
-func (o GetGitopsRepositoryUpdateMaskArrayOutput) ToGetGitopsRepositoryUpdateMaskArrayOutput() GetGitopsRepositoryUpdateMaskArrayOutput {
-	return o
-}
-
-func (o GetGitopsRepositoryUpdateMaskArrayOutput) ToGetGitopsRepositoryUpdateMaskArrayOutputWithContext(ctx context.Context) GetGitopsRepositoryUpdateMaskArrayOutput {
-	return o
-}
-
-func (o GetGitopsRepositoryUpdateMaskArrayOutput) Index(i pulumi.IntInput) GetGitopsRepositoryUpdateMaskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsRepositoryUpdateMask {
-		return vs[0].([]GetGitopsRepositoryUpdateMask)[vs[1].(int)]
-	}).(GetGitopsRepositoryUpdateMaskOutput)
 }
 
 type GetHelmConnectorCredential struct {
@@ -57106,8 +57009,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepoCredCredArrayInput)(nil)).Elem(), GetGitopsRepoCredCredArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryRepoInput)(nil)).Elem(), GetGitopsRepositoryRepoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryRepoArrayInput)(nil)).Elem(), GetGitopsRepositoryRepoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryUpdateMaskInput)(nil)).Elem(), GetGitopsRepositoryUpdateMaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsRepositoryUpdateMaskArrayInput)(nil)).Elem(), GetGitopsRepositoryUpdateMaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureGitDetailsInput)(nil)).Elem(), GetInfrastructureGitDetailsArgs{})
@@ -57899,8 +57800,6 @@ func init() {
 	pulumi.RegisterOutputType(GetGitopsRepoCredCredArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepositoryRepoOutput{})
 	pulumi.RegisterOutputType(GetGitopsRepositoryRepoArrayOutput{})
-	pulumi.RegisterOutputType(GetGitopsRepositoryUpdateMaskOutput{})
-	pulumi.RegisterOutputType(GetGitopsRepositoryUpdateMaskArrayOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureGitDetailsOutput{})

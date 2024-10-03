@@ -29,11 +29,9 @@ export function getGitopsRepository(args: GetGitopsRepositoryArgs, opts?: pulumi
     return pulumi.runtime.invoke("harness:platform/getGitopsRepository:getGitopsRepository", {
         "accountId": args.accountId,
         "agentId": args.agentId,
-        "enableOci": args.enableOci,
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "updateMasks": args.updateMasks,
     }, opts);
 }
 
@@ -50,10 +48,6 @@ export interface GetGitopsRepositoryArgs {
      */
     agentId: string;
     /**
-     * Indicates if helm-oci support must be enabled for this repo.
-     */
-    enableOci?: boolean;
-    /**
      * Identifier of the GitOps repository.
      */
     identifier: string;
@@ -65,10 +59,6 @@ export interface GetGitopsRepositoryArgs {
      * Project identifier of the GitOps repository.
      */
     projectId?: string;
-    /**
-     * Update mask of the repository.
-     */
-    updateMasks?: inputs.platform.GetGitopsRepositoryUpdateMask[];
 }
 
 /**
@@ -107,10 +97,6 @@ export interface GetGitopsRepositoryResult {
      * Repo details holding application configurations.
      */
     readonly repos: outputs.platform.GetGitopsRepositoryRepo[];
-    /**
-     * Update mask of the repository.
-     */
-    readonly updateMasks: outputs.platform.GetGitopsRepositoryUpdateMask[];
 }
 /**
  * Data source for fetching a Harness GitOps Repository.
@@ -135,11 +121,9 @@ export function getGitopsRepositoryOutput(args: GetGitopsRepositoryOutputArgs, o
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsRepository:getGitopsRepository", {
         "accountId": args.accountId,
         "agentId": args.agentId,
-        "enableOci": args.enableOci,
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "updateMasks": args.updateMasks,
     }, opts);
 }
 
@@ -156,10 +140,6 @@ export interface GetGitopsRepositoryOutputArgs {
      */
     agentId: pulumi.Input<string>;
     /**
-     * Indicates if helm-oci support must be enabled for this repo.
-     */
-    enableOci?: pulumi.Input<boolean>;
-    /**
      * Identifier of the GitOps repository.
      */
     identifier: pulumi.Input<string>;
@@ -171,8 +151,4 @@ export interface GetGitopsRepositoryOutputArgs {
      * Project identifier of the GitOps repository.
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * Update mask of the repository.
-     */
-    updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsRepositoryUpdateMaskArgs>[]>;
 }

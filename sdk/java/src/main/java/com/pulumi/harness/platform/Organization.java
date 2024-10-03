@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var this_ = new Organization("this", OrganizationArgs.builder()
  *             .identifier("MyOrg")
- *             .name("My Otganization")
+ *             .name("My Organization")
  *             .description("An example organization")
  *             .tags(            
  *                 "foo:bar",

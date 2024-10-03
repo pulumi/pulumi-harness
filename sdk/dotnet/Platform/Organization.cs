@@ -23,7 +23,7 @@ namespace Pulumi.Harness.Platform
     ///     var @this = new Harness.Platform.Organization("this", new()
     ///     {
     ///         Identifier = "MyOrg",
-    ///         Name = "My Otganization",
+    ///         Name = "My Organization",
     ///         Description = "An example organization",
     ///         Tags = new[]
     ///         {

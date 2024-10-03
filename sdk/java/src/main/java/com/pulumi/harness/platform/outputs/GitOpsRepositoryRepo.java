@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitOpsRepositoryRepo {
     /**
-     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
+     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS&#34;, &#34;GITHUB*ENTERPRISE&#34;.
      * 
      */
     private String connectionType;
@@ -116,7 +116,7 @@ public final class GitOpsRepositoryRepo {
 
     private GitOpsRepositoryRepo() {}
     /**
-     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS*CONNECTION_TYPE&#34;
+     * @return Identifies the authentication method used to connect to the repository. Possible values: &#34;HTTPS&#34; &#34;SSH&#34; &#34;GITHUB&#34; &#34;HTTPS*ANONYMOUS&#34;, &#34;GITHUB*ENTERPRISE&#34;.
      * 
      */
     public String connectionType() {

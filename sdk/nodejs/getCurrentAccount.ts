@@ -20,7 +20,7 @@ export function getCurrentAccount(args?: GetCurrentAccountArgs, opts?: pulumi.In
  */
 export interface GetCurrentAccountArgs {
     /**
-     * Id of the git connector.
+     * Account Identifier of the current account.
      */
     id?: string;
 }
@@ -38,7 +38,7 @@ export interface GetCurrentAccountResult {
      */
     readonly endpoint: string;
     /**
-     * Id of the git connector.
+     * Account Identifier of the current account.
      */
     readonly id?: string;
 }
@@ -58,7 +58,7 @@ export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts
  */
 export interface GetCurrentAccountOutputArgs {
     /**
-     * Id of the git connector.
+     * Account Identifier of the current account.
      */
     id?: pulumi.Input<string>;
 }

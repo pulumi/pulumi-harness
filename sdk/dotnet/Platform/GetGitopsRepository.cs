@@ -84,12 +84,6 @@ namespace Pulumi.Harness.Platform
         public string AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if helm-oci support must be enabled for this repo.
-        /// </summary>
-        [Input("enableOci")]
-        public bool? EnableOci { get; set; }
-
-        /// <summary>
         /// Identifier of the GitOps repository.
         /// </summary>
         [Input("identifier", required: true)]
@@ -106,18 +100,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
-
-        [Input("updateMasks")]
-        private List<Inputs.GetGitopsRepositoryUpdateMaskArgs>? _updateMasks;
-
-        /// <summary>
-        /// Update mask of the repository.
-        /// </summary>
-        public List<Inputs.GetGitopsRepositoryUpdateMaskArgs> UpdateMasks
-        {
-            get => _updateMasks ?? (_updateMasks = new List<Inputs.GetGitopsRepositoryUpdateMaskArgs>());
-            set => _updateMasks = value;
-        }
 
         public GetGitopsRepositoryArgs()
         {
@@ -140,12 +122,6 @@ namespace Pulumi.Harness.Platform
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if helm-oci support must be enabled for this repo.
-        /// </summary>
-        [Input("enableOci")]
-        public Input<bool>? EnableOci { get; set; }
-
-        /// <summary>
         /// Identifier of the GitOps repository.
         /// </summary>
         [Input("identifier", required: true)]
@@ -162,18 +138,6 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
-
-        [Input("updateMasks")]
-        private InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs>? _updateMasks;
-
-        /// <summary>
-        /// Update mask of the repository.
-        /// </summary>
-        public InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs> UpdateMasks
-        {
-            get => _updateMasks ?? (_updateMasks = new InputList<Inputs.GetGitopsRepositoryUpdateMaskInputArgs>());
-            set => _updateMasks = value;
-        }
 
         public GetGitopsRepositoryInvokeArgs()
         {
@@ -217,10 +181,6 @@ namespace Pulumi.Harness.Platform
         /// Repo details holding application configurations.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsRepositoryRepoResult> Repos;
-        /// <summary>
-        /// Update mask of the repository.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetGitopsRepositoryUpdateMaskResult> UpdateMasks;
 
         [OutputConstructor]
         private GetGitopsRepositoryResult(
@@ -238,9 +198,7 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
-            ImmutableArray<Outputs.GetGitopsRepositoryRepoResult> repos,
-
-            ImmutableArray<Outputs.GetGitopsRepositoryUpdateMaskResult> updateMasks)
+            ImmutableArray<Outputs.GetGitopsRepositoryRepoResult> repos)
         {
             AccountId = accountId;
             AgentId = agentId;
@@ -250,7 +208,6 @@ namespace Pulumi.Harness.Platform
             OrgId = orgId;
             ProjectId = projectId;
             Repos = repos;
-            UpdateMasks = updateMasks;
         }
     }
 }

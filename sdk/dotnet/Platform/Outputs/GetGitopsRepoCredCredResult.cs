@@ -16,77 +16,77 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Specifies whether helm-oci support should be enabled for this repo.
         /// </summary>
-        public readonly bool? EnableOci;
+        public readonly bool EnableOci;
         /// <summary>
         /// Specifies the GitHub API URL for GitHub app authentication.
         /// </summary>
-        public readonly string? GithubAppEnterpriseBaseUrl;
+        public readonly string GithubAppEnterpriseBaseUrl;
         /// <summary>
         /// Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
         /// </summary>
-        public readonly string? GithubAppId;
+        public readonly string GithubAppId;
         /// <summary>
         /// Specifies the ID of the installed GitHub App for GitHub app authentication.
         /// </summary>
-        public readonly string? GithubAppInstallationId;
+        public readonly string GithubAppInstallationId;
         /// <summary>
         /// github*app*private_key specifies the private key PEM data for authentication via GitHub app.
         /// </summary>
-        public readonly string? GithubAppPrivateKey;
+        public readonly string GithubAppPrivateKey;
         /// <summary>
         /// Password or PAT to be used for authenticating the remote repository.
         /// </summary>
-        public readonly string? Password;
+        public readonly string Password;
         /// <summary>
         /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
         /// </summary>
-        public readonly string? SshPrivateKey;
+        public readonly string SshPrivateKey;
         /// <summary>
         /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
-        public readonly string? TlsClientCertData;
+        public readonly string TlsClientCertData;
         /// <summary>
         /// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
         /// </summary>
-        public readonly string? TlsClientCertKey;
+        public readonly string TlsClientCertKey;
         /// <summary>
         /// Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
         /// <summary>
         /// URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
         /// <summary>
         /// Username to be used for authenticating the remote repository.
         /// </summary>
-        public readonly string? Username;
+        public readonly string Username;
 
         [OutputConstructor]
         private GetGitopsRepoCredCredResult(
-            bool? enableOci,
+            bool enableOci,
 
-            string? githubAppEnterpriseBaseUrl,
+            string githubAppEnterpriseBaseUrl,
 
-            string? githubAppId,
+            string githubAppId,
 
-            string? githubAppInstallationId,
+            string githubAppInstallationId,
 
-            string? githubAppPrivateKey,
+            string githubAppPrivateKey,
 
-            string? password,
+            string password,
 
-            string? sshPrivateKey,
+            string sshPrivateKey,
 
-            string? tlsClientCertData,
+            string tlsClientCertData,
 
-            string? tlsClientCertKey,
+            string tlsClientCertKey,
 
-            string? type,
+            string type,
 
-            string? url,
+            string url,
 
-            string? username)
+            string username)
         {
             EnableOci = enableOci;
             GithubAppEnterpriseBaseUrl = githubAppEnterpriseBaseUrl;

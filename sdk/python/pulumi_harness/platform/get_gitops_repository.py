@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetGitopsRepositoryResult',
@@ -23,7 +22,7 @@ class GetGitopsRepositoryResult:
     """
     A collection of values returned by getGitopsRepository.
     """
-    def __init__(__self__, account_id=None, agent_id=None, enable_oci=None, id=None, identifier=None, org_id=None, project_id=None, repos=None, update_masks=None):
+    def __init__(__self__, account_id=None, agent_id=None, enable_oci=None, id=None, identifier=None, org_id=None, project_id=None, repos=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -48,9 +47,6 @@ class GetGitopsRepositoryResult:
         if repos and not isinstance(repos, list):
             raise TypeError("Expected argument 'repos' to be a list")
         pulumi.set(__self__, "repos", repos)
-        if update_masks and not isinstance(update_masks, list):
-            raise TypeError("Expected argument 'update_masks' to be a list")
-        pulumi.set(__self__, "update_masks", update_masks)
 
     @property
     @pulumi.getter(name="accountId")
@@ -116,14 +112,6 @@ class GetGitopsRepositoryResult:
         """
         return pulumi.get(self, "repos")
 
-    @property
-    @pulumi.getter(name="updateMasks")
-    def update_masks(self) -> Sequence['outputs.GetGitopsRepositoryUpdateMaskResult']:
-        """
-        Update mask of the repository.
-        """
-        return pulumi.get(self, "update_masks")
-
 
 class AwaitableGetGitopsRepositoryResult(GetGitopsRepositoryResult):
     # pylint: disable=using-constant-test
@@ -138,17 +126,14 @@ class AwaitableGetGitopsRepositoryResult(GetGitopsRepositoryResult):
             identifier=self.identifier,
             org_id=self.org_id,
             project_id=self.project_id,
-            repos=self.repos,
-            update_masks=self.update_masks)
+            repos=self.repos)
 
 
 def get_gitops_repository(account_id: Optional[str] = None,
                           agent_id: Optional[str] = None,
-                          enable_oci: Optional[bool] = None,
                           identifier: Optional[str] = None,
                           org_id: Optional[str] = None,
                           project_id: Optional[str] = None,
-                          update_masks: Optional[Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsRepositoryResult:
     """
     Data source for fetching a Harness GitOps Repository.
@@ -169,20 +154,16 @@ def get_gitops_repository(account_id: Optional[str] = None,
 
     :param str account_id: Account identifier of the GitOps repository.
     :param str agent_id: Agent identifier of the GitOps repository.
-    :param bool enable_oci: Indicates if helm-oci support must be enabled for this repo.
     :param str identifier: Identifier of the GitOps repository.
     :param str org_id: Organization identifier of the GitOps repository.
     :param str project_id: Project identifier of the GitOps repository.
-    :param Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']] update_masks: Update mask of the repository.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['agentId'] = agent_id
-    __args__['enableOci'] = enable_oci
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    __args__['updateMasks'] = update_masks
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsRepository:getGitopsRepository', __args__, opts=opts, typ=GetGitopsRepositoryResult).value
 
@@ -194,18 +175,15 @@ def get_gitops_repository(account_id: Optional[str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        repos=pulumi.get(__ret__, 'repos'),
-        update_masks=pulumi.get(__ret__, 'update_masks'))
+        repos=pulumi.get(__ret__, 'repos'))
 
 
 @_utilities.lift_output_func(get_gitops_repository)
 def get_gitops_repository_output(account_id: Optional[pulumi.Input[str]] = None,
                                  agent_id: Optional[pulumi.Input[str]] = None,
-                                 enable_oci: Optional[pulumi.Input[Optional[bool]]] = None,
                                  identifier: Optional[pulumi.Input[str]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 update_masks: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']]]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsRepositoryResult]:
     """
     Data source for fetching a Harness GitOps Repository.
@@ -226,10 +204,8 @@ def get_gitops_repository_output(account_id: Optional[pulumi.Input[str]] = None,
 
     :param str account_id: Account identifier of the GitOps repository.
     :param str agent_id: Agent identifier of the GitOps repository.
-    :param bool enable_oci: Indicates if helm-oci support must be enabled for this repo.
     :param str identifier: Identifier of the GitOps repository.
     :param str org_id: Organization identifier of the GitOps repository.
     :param str project_id: Project identifier of the GitOps repository.
-    :param Sequence[Union['GetGitopsRepositoryUpdateMaskArgs', 'GetGitopsRepositoryUpdateMaskArgsDict']] update_masks: Update mask of the repository.
     """
     ...

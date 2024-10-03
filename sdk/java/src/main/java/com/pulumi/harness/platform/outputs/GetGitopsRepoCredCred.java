@@ -4,11 +4,10 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsRepoCredCred {
@@ -16,147 +15,147 @@ public final class GetGitopsRepoCredCred {
      * @return Specifies whether helm-oci support should be enabled for this repo.
      * 
      */
-    private @Nullable Boolean enableOci;
+    private Boolean enableOci;
     /**
      * @return Specifies the GitHub API URL for GitHub app authentication.
      * 
      */
-    private @Nullable String githubAppEnterpriseBaseUrl;
+    private String githubAppEnterpriseBaseUrl;
     /**
      * @return Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
      * 
      */
-    private @Nullable String githubAppId;
+    private String githubAppId;
     /**
      * @return Specifies the ID of the installed GitHub App for GitHub app authentication.
      * 
      */
-    private @Nullable String githubAppInstallationId;
+    private String githubAppInstallationId;
     /**
      * @return github*app*private_key specifies the private key PEM data for authentication via GitHub app.
      * 
      */
-    private @Nullable String githubAppPrivateKey;
+    private String githubAppPrivateKey;
     /**
      * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
-    private @Nullable String password;
+    private String password;
     /**
      * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
-    private @Nullable String sshPrivateKey;
+    private String sshPrivateKey;
     /**
      * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
-    private @Nullable String tlsClientCertData;
+    private String tlsClientCertData;
     /**
      * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
-    private @Nullable String tlsClientCertKey;
+    private String tlsClientCertKey;
     /**
      * @return Type specifies the type of the repoCreds.Can be either &#39;git&#39; or &#39;helm. &#39;git&#39; is assumed if empty or absent
      * 
      */
-    private @Nullable String type;
+    private String type;
     /**
      * @return URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. &#34;https://github.com&#34;
      * 
      */
-    private @Nullable String url;
+    private String url;
     /**
      * @return Username to be used for authenticating the remote repository.
      * 
      */
-    private @Nullable String username;
+    private String username;
 
     private GetGitopsRepoCredCred() {}
     /**
      * @return Specifies whether helm-oci support should be enabled for this repo.
      * 
      */
-    public Optional<Boolean> enableOci() {
-        return Optional.ofNullable(this.enableOci);
+    public Boolean enableOci() {
+        return this.enableOci;
     }
     /**
      * @return Specifies the GitHub API URL for GitHub app authentication.
      * 
      */
-    public Optional<String> githubAppEnterpriseBaseUrl() {
-        return Optional.ofNullable(this.githubAppEnterpriseBaseUrl);
+    public String githubAppEnterpriseBaseUrl() {
+        return this.githubAppEnterpriseBaseUrl;
     }
     /**
      * @return Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
      * 
      */
-    public Optional<String> githubAppId() {
-        return Optional.ofNullable(this.githubAppId);
+    public String githubAppId() {
+        return this.githubAppId;
     }
     /**
      * @return Specifies the ID of the installed GitHub App for GitHub app authentication.
      * 
      */
-    public Optional<String> githubAppInstallationId() {
-        return Optional.ofNullable(this.githubAppInstallationId);
+    public String githubAppInstallationId() {
+        return this.githubAppInstallationId;
     }
     /**
      * @return github*app*private_key specifies the private key PEM data for authentication via GitHub app.
      * 
      */
-    public Optional<String> githubAppPrivateKey() {
-        return Optional.ofNullable(this.githubAppPrivateKey);
+    public String githubAppPrivateKey() {
+        return this.githubAppPrivateKey;
     }
     /**
      * @return Password or PAT to be used for authenticating the remote repository.
      * 
      */
-    public Optional<String> password() {
-        return Optional.ofNullable(this.password);
+    public String password() {
+        return this.password;
     }
     /**
      * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
      * 
      */
-    public Optional<String> sshPrivateKey() {
-        return Optional.ofNullable(this.sshPrivateKey);
+    public String sshPrivateKey() {
+        return this.sshPrivateKey;
     }
     /**
      * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
-    public Optional<String> tlsClientCertData() {
-        return Optional.ofNullable(this.tlsClientCertData);
+    public String tlsClientCertData() {
+        return this.tlsClientCertData;
     }
     /**
      * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS.
      * 
      */
-    public Optional<String> tlsClientCertKey() {
-        return Optional.ofNullable(this.tlsClientCertKey);
+    public String tlsClientCertKey() {
+        return this.tlsClientCertKey;
     }
     /**
      * @return Type specifies the type of the repoCreds.Can be either &#39;git&#39; or &#39;helm. &#39;git&#39; is assumed if empty or absent
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
     /**
      * @return URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. &#34;https://github.com&#34;
      * 
      */
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
+    public String url() {
+        return this.url;
     }
     /**
      * @return Username to be used for authenticating the remote repository.
      * 
      */
-    public Optional<String> username() {
-        return Optional.ofNullable(this.username);
+    public String username() {
+        return this.username;
     }
 
     public static Builder builder() {
@@ -168,18 +167,18 @@ public final class GetGitopsRepoCredCred {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean enableOci;
-        private @Nullable String githubAppEnterpriseBaseUrl;
-        private @Nullable String githubAppId;
-        private @Nullable String githubAppInstallationId;
-        private @Nullable String githubAppPrivateKey;
-        private @Nullable String password;
-        private @Nullable String sshPrivateKey;
-        private @Nullable String tlsClientCertData;
-        private @Nullable String tlsClientCertKey;
-        private @Nullable String type;
-        private @Nullable String url;
-        private @Nullable String username;
+        private Boolean enableOci;
+        private String githubAppEnterpriseBaseUrl;
+        private String githubAppId;
+        private String githubAppInstallationId;
+        private String githubAppPrivateKey;
+        private String password;
+        private String sshPrivateKey;
+        private String tlsClientCertData;
+        private String tlsClientCertKey;
+        private String type;
+        private String url;
+        private String username;
         public Builder() {}
         public Builder(GetGitopsRepoCredCred defaults) {
     	      Objects.requireNonNull(defaults);
@@ -198,74 +197,98 @@ public final class GetGitopsRepoCredCred {
         }
 
         @CustomType.Setter
-        public Builder enableOci(@Nullable Boolean enableOci) {
-
+        public Builder enableOci(Boolean enableOci) {
+            if (enableOci == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "enableOci");
+            }
             this.enableOci = enableOci;
             return this;
         }
         @CustomType.Setter
-        public Builder githubAppEnterpriseBaseUrl(@Nullable String githubAppEnterpriseBaseUrl) {
-
+        public Builder githubAppEnterpriseBaseUrl(String githubAppEnterpriseBaseUrl) {
+            if (githubAppEnterpriseBaseUrl == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "githubAppEnterpriseBaseUrl");
+            }
             this.githubAppEnterpriseBaseUrl = githubAppEnterpriseBaseUrl;
             return this;
         }
         @CustomType.Setter
-        public Builder githubAppId(@Nullable String githubAppId) {
-
+        public Builder githubAppId(String githubAppId) {
+            if (githubAppId == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "githubAppId");
+            }
             this.githubAppId = githubAppId;
             return this;
         }
         @CustomType.Setter
-        public Builder githubAppInstallationId(@Nullable String githubAppInstallationId) {
-
+        public Builder githubAppInstallationId(String githubAppInstallationId) {
+            if (githubAppInstallationId == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "githubAppInstallationId");
+            }
             this.githubAppInstallationId = githubAppInstallationId;
             return this;
         }
         @CustomType.Setter
-        public Builder githubAppPrivateKey(@Nullable String githubAppPrivateKey) {
-
+        public Builder githubAppPrivateKey(String githubAppPrivateKey) {
+            if (githubAppPrivateKey == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "githubAppPrivateKey");
+            }
             this.githubAppPrivateKey = githubAppPrivateKey;
             return this;
         }
         @CustomType.Setter
-        public Builder password(@Nullable String password) {
-
+        public Builder password(String password) {
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "password");
+            }
             this.password = password;
             return this;
         }
         @CustomType.Setter
-        public Builder sshPrivateKey(@Nullable String sshPrivateKey) {
-
+        public Builder sshPrivateKey(String sshPrivateKey) {
+            if (sshPrivateKey == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "sshPrivateKey");
+            }
             this.sshPrivateKey = sshPrivateKey;
             return this;
         }
         @CustomType.Setter
-        public Builder tlsClientCertData(@Nullable String tlsClientCertData) {
-
+        public Builder tlsClientCertData(String tlsClientCertData) {
+            if (tlsClientCertData == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "tlsClientCertData");
+            }
             this.tlsClientCertData = tlsClientCertData;
             return this;
         }
         @CustomType.Setter
-        public Builder tlsClientCertKey(@Nullable String tlsClientCertKey) {
-
+        public Builder tlsClientCertKey(String tlsClientCertKey) {
+            if (tlsClientCertKey == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "tlsClientCertKey");
+            }
             this.tlsClientCertKey = tlsClientCertKey;
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "type");
+            }
             this.type = type;
             return this;
         }
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-
+        public Builder url(String url) {
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "url");
+            }
             this.url = url;
             return this;
         }
         @CustomType.Setter
-        public Builder username(@Nullable String username) {
-
+        public Builder username(String username) {
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCredCred", "username");
+            }
             this.username = username;
             return this;
         }

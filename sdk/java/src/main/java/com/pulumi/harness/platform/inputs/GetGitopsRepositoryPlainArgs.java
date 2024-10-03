@@ -5,10 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GetGitopsRepositoryUpdateMask;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,21 +43,6 @@ public final class GetGitopsRepositoryPlainArgs extends com.pulumi.resources.Inv
      */
     public String agentId() {
         return this.agentId;
-    }
-
-    /**
-     * Indicates if helm-oci support must be enabled for this repo.
-     * 
-     */
-    @Import(name="enableOci")
-    private @Nullable Boolean enableOci;
-
-    /**
-     * @return Indicates if helm-oci support must be enabled for this repo.
-     * 
-     */
-    public Optional<Boolean> enableOci() {
-        return Optional.ofNullable(this.enableOci);
     }
 
     /**
@@ -108,31 +90,14 @@ public final class GetGitopsRepositoryPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.projectId);
     }
 
-    /**
-     * Update mask of the repository.
-     * 
-     */
-    @Import(name="updateMasks")
-    private @Nullable List<GetGitopsRepositoryUpdateMask> updateMasks;
-
-    /**
-     * @return Update mask of the repository.
-     * 
-     */
-    public Optional<List<GetGitopsRepositoryUpdateMask>> updateMasks() {
-        return Optional.ofNullable(this.updateMasks);
-    }
-
     private GetGitopsRepositoryPlainArgs() {}
 
     private GetGitopsRepositoryPlainArgs(GetGitopsRepositoryPlainArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
-        this.enableOci = $.enableOci;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.updateMasks = $.updateMasks;
     }
 
     public static Builder builder() {
@@ -176,17 +141,6 @@ public final class GetGitopsRepositoryPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param enableOci Indicates if helm-oci support must be enabled for this repo.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder enableOci(@Nullable Boolean enableOci) {
-            $.enableOci = enableOci;
-            return this;
-        }
-
-        /**
          * @param identifier Identifier of the GitOps repository.
          * 
          * @return builder
@@ -217,27 +171,6 @@ public final class GetGitopsRepositoryPlainArgs extends com.pulumi.resources.Inv
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
-        }
-
-        /**
-         * @param updateMasks Update mask of the repository.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(@Nullable List<GetGitopsRepositoryUpdateMask> updateMasks) {
-            $.updateMasks = updateMasks;
-            return this;
-        }
-
-        /**
-         * @param updateMasks Update mask of the repository.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateMasks(GetGitopsRepositoryUpdateMask... updateMasks) {
-            return updateMasks(List.of(updateMasks));
         }
 
         public GetGitopsRepositoryPlainArgs build() {

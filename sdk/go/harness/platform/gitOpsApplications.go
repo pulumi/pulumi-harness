@@ -111,6 +111,8 @@ type GitOpsApplications struct {
 	// Cluster identifier of the GitOps application.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier pulumi.StringPtrOutput `pulumi:"identifier"`
 	// Kind of the GitOps application.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
@@ -195,6 +197,8 @@ type gitOpsApplicationsState struct {
 	// Cluster identifier of the GitOps application.
 	ClusterId *string `pulumi:"clusterId"`
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier *string `pulumi:"identifier"`
 	// Kind of the GitOps application.
 	Kind *string `pulumi:"kind"`
@@ -232,6 +236,8 @@ type GitOpsApplicationsState struct {
 	// Cluster identifier of the GitOps application.
 	ClusterId pulumi.StringPtrInput
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier pulumi.StringPtrInput
 	// Kind of the GitOps application.
 	Kind pulumi.StringPtrInput
@@ -273,6 +279,8 @@ type gitOpsApplicationsArgs struct {
 	// Cluster identifier of the GitOps application.
 	ClusterId string `pulumi:"clusterId"`
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier *string `pulumi:"identifier"`
 	// Kind of the GitOps application.
 	Kind *string `pulumi:"kind"`
@@ -311,6 +319,8 @@ type GitOpsApplicationsArgs struct {
 	// Cluster identifier of the GitOps application.
 	ClusterId pulumi.StringInput
 	// Identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	Identifier pulumi.StringPtrInput
 	// Kind of the GitOps application.
 	Kind pulumi.StringPtrInput
@@ -446,6 +456,8 @@ func (o GitOpsApplicationsOutput) ClusterId() pulumi.StringOutput {
 }
 
 // Identifier of the GitOps application.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsApplicationsOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
 }

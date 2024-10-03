@@ -126,7 +126,7 @@ export class FileStoreFile extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * File parent identifier on Harness File Store
+     * File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
      */
     public readonly parentIdentifier!: pulumi.Output<string>;
     /**
@@ -248,7 +248,7 @@ export interface FileStoreFileState {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * File parent identifier on Harness File Store
+     * File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
      */
     parentIdentifier?: pulumi.Input<string>;
     /**
@@ -302,7 +302,7 @@ export interface FileStoreFileArgs {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * File parent identifier on Harness File Store
+     * File parent identifier on Harness File Store. If the folder is at the root level, the parentIdentifier will be `Root`.
      */
     parentIdentifier: pulumi.Input<string>;
     /**

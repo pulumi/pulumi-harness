@@ -58,8 +58,6 @@ type GetGitopsRepoCredArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId string `pulumi:"agentId"`
-	// credential details.
-	Creds []GetGitopsRepoCredCred `pulumi:"creds"`
 	// Identifier of the Repository Credentials.
 	Identifier string `pulumi:"identifier"`
 	// Organization identifier of the Repository Credentials.
@@ -111,8 +109,6 @@ type GetGitopsRepoCredOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
-	// credential details.
-	Creds GetGitopsRepoCredCredArrayInput `pulumi:"creds"`
 	// Identifier of the Repository Credentials.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Organization identifier of the Repository Credentials.

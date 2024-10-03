@@ -48,14 +48,22 @@ public final class GetGitopsApplicationsPlainArgs extends com.pulumi.resources.I
     /**
      * Identifier of the GitOps application.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     @Import(name="identifier")
     private @Nullable String identifier;
 
     /**
      * @return Identifier of the GitOps application.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }
@@ -161,7 +169,11 @@ public final class GetGitopsApplicationsPlainArgs extends com.pulumi.resources.I
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder identifier(@Nullable String identifier) {
             $.identifier = identifier;
             return this;

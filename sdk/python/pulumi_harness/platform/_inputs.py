@@ -236,8 +236,6 @@ __all__ = [
     'GetGitopsAgentDeployYamlProxyArgs',
     'GetGitopsGnupgRequestArgs',
     'GetGitopsGnupgRequestPublickeyArgs',
-    'GetGitopsRepoCredCredArgs',
-    'GetGitopsRepositoryUpdateMaskArgs',
     'GetInfrastructureGitDetailsArgs',
     'GetInputSetGitDetailsArgs',
     'GetOverridesGitDetailsArgs',
@@ -3691,7 +3689,7 @@ class GitOpsApplicationsApplicationSpecArgs:
                  sync_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecDestinationArgs']]] destinations: Information about the GitOps application's destination.
-        :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]] sources: Contains all information about the source of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgs']]] sync_policies: Controls when a sync will be performed in response to updates in git.
         """
@@ -3720,7 +3718,7 @@ class GitOpsApplicationsApplicationSpecArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         """
         return pulumi.get(self, "project")
 
@@ -6698,7 +6696,7 @@ class GitOpsRepositoryRepoArgs:
                  type_: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] connection_type: Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+        :param pulumi.Input[str] connection_type: Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
         :param pulumi.Input[str] repo: URL to the remote repository.
         :param pulumi.Input[bool] enable_lfs: Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
         :param pulumi.Input[bool] enable_oci: Indicates if helm-oci support must be enabled for this repo.
@@ -6762,7 +6760,7 @@ class GitOpsRepositoryRepoArgs:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Input[str]:
         """
-        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
         """
         return pulumi.get(self, "connection_type")
 
@@ -15143,228 +15141,6 @@ class GetGitopsGnupgRequestPublickeyArgs:
     @trust.setter
     def trust(self, value: Optional[str]):
         pulumi.set(self, "trust", value)
-
-
-@pulumi.input_type
-class GetGitopsRepoCredCredArgs:
-    def __init__(__self__, *,
-                 enable_oci: Optional[bool] = None,
-                 github_app_enterprise_base_url: Optional[str] = None,
-                 github_app_id: Optional[str] = None,
-                 github_app_installation_id: Optional[str] = None,
-                 github_app_private_key: Optional[str] = None,
-                 password: Optional[str] = None,
-                 ssh_private_key: Optional[str] = None,
-                 tls_client_cert_data: Optional[str] = None,
-                 tls_client_cert_key: Optional[str] = None,
-                 type: Optional[str] = None,
-                 url: Optional[str] = None,
-                 username: Optional[str] = None):
-        """
-        :param bool enable_oci: Specifies whether helm-oci support should be enabled for this repo.
-        :param str github_app_enterprise_base_url: Specifies the GitHub API URL for GitHub app authentication.
-        :param str github_app_id: Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
-        :param str github_app_installation_id: Specifies the ID of the installed GitHub App for GitHub app authentication.
-        :param str github_app_private_key: github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-        :param str password: Password or PAT to be used for authenticating the remote repository.
-        :param str ssh_private_key: SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
-        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server. This is used for mTLS.
-        :param str type: Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-        :param str url: URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
-        :param str username: Username to be used for authenticating the remote repository.
-        """
-        if enable_oci is not None:
-            pulumi.set(__self__, "enable_oci", enable_oci)
-        if github_app_enterprise_base_url is not None:
-            pulumi.set(__self__, "github_app_enterprise_base_url", github_app_enterprise_base_url)
-        if github_app_id is not None:
-            pulumi.set(__self__, "github_app_id", github_app_id)
-        if github_app_installation_id is not None:
-            pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
-        if github_app_private_key is not None:
-            pulumi.set(__self__, "github_app_private_key", github_app_private_key)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if ssh_private_key is not None:
-            pulumi.set(__self__, "ssh_private_key", ssh_private_key)
-        if tls_client_cert_data is not None:
-            pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
-        if tls_client_cert_key is not None:
-            pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="enableOci")
-    def enable_oci(self) -> Optional[bool]:
-        """
-        Specifies whether helm-oci support should be enabled for this repo.
-        """
-        return pulumi.get(self, "enable_oci")
-
-    @enable_oci.setter
-    def enable_oci(self, value: Optional[bool]):
-        pulumi.set(self, "enable_oci", value)
-
-    @property
-    @pulumi.getter(name="githubAppEnterpriseBaseUrl")
-    def github_app_enterprise_base_url(self) -> Optional[str]:
-        """
-        Specifies the GitHub API URL for GitHub app authentication.
-        """
-        return pulumi.get(self, "github_app_enterprise_base_url")
-
-    @github_app_enterprise_base_url.setter
-    def github_app_enterprise_base_url(self, value: Optional[str]):
-        pulumi.set(self, "github_app_enterprise_base_url", value)
-
-    @property
-    @pulumi.getter(name="githubAppId")
-    def github_app_id(self) -> Optional[str]:
-        """
-        Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
-        """
-        return pulumi.get(self, "github_app_id")
-
-    @github_app_id.setter
-    def github_app_id(self, value: Optional[str]):
-        pulumi.set(self, "github_app_id", value)
-
-    @property
-    @pulumi.getter(name="githubAppInstallationId")
-    def github_app_installation_id(self) -> Optional[str]:
-        """
-        Specifies the ID of the installed GitHub App for GitHub app authentication.
-        """
-        return pulumi.get(self, "github_app_installation_id")
-
-    @github_app_installation_id.setter
-    def github_app_installation_id(self, value: Optional[str]):
-        pulumi.set(self, "github_app_installation_id", value)
-
-    @property
-    @pulumi.getter(name="githubAppPrivateKey")
-    def github_app_private_key(self) -> Optional[str]:
-        """
-        github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-        """
-        return pulumi.get(self, "github_app_private_key")
-
-    @github_app_private_key.setter
-    def github_app_private_key(self, value: Optional[str]):
-        pulumi.set(self, "github_app_private_key", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[str]:
-        """
-        Password or PAT to be used for authenticating the remote repository.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[str]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="sshPrivateKey")
-    def ssh_private_key(self) -> Optional[str]:
-        """
-        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-        """
-        return pulumi.get(self, "ssh_private_key")
-
-    @ssh_private_key.setter
-    def ssh_private_key(self, value: Optional[str]):
-        pulumi.set(self, "ssh_private_key", value)
-
-    @property
-    @pulumi.getter(name="tlsClientCertData")
-    def tls_client_cert_data(self) -> Optional[str]:
-        """
-        Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
-        """
-        return pulumi.get(self, "tls_client_cert_data")
-
-    @tls_client_cert_data.setter
-    def tls_client_cert_data(self, value: Optional[str]):
-        pulumi.set(self, "tls_client_cert_data", value)
-
-    @property
-    @pulumi.getter(name="tlsClientCertKey")
-    def tls_client_cert_key(self) -> Optional[str]:
-        """
-        Private key in PEM format for authenticating at the repo server. This is used for mTLS.
-        """
-        return pulumi.get(self, "tls_client_cert_key")
-
-    @tls_client_cert_key.setter
-    def tls_client_cert_key(self, value: Optional[str]):
-        pulumi.set(self, "tls_client_cert_key", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[str]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[str]:
-        """
-        URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[str]):
-        pulumi.set(self, "url", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[str]:
-        """
-        Username to be used for authenticating the remote repository.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[str]):
-        pulumi.set(self, "username", value)
-
-
-@pulumi.input_type
-class GetGitopsRepositoryUpdateMaskArgs:
-    def __init__(__self__, *,
-                 paths: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] paths: The set of field mask paths.
-        """
-        if paths is not None:
-            pulumi.set(__self__, "paths", paths)
-
-    @property
-    @pulumi.getter
-    def paths(self) -> Optional[Sequence[str]]:
-        """
-        The set of field mask paths.
-        """
-        return pulumi.get(self, "paths")
-
-    @paths.setter
-    def paths(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "paths", value)
 
 
 @pulumi.input_type

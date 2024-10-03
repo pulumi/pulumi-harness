@@ -35,14 +35,14 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
     }
 
     /**
-     * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+     * @return The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
      * 
      */
     public Optional<Output<String>> project() {
@@ -138,7 +138,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param project The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         * @param project The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param project The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         * @param project The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
          * 
          * @return builder
          * 

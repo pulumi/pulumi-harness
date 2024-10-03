@@ -173,7 +173,7 @@ class Organization(pulumi.CustomResource):
 
         this = harness.platform.Organization("this",
             identifier="MyOrg",
-            name="My Otganization",
+            name="My Organization",
             description="An example organization",
             tags=[
                 "foo:bar",
@@ -211,7 +211,7 @@ class Organization(pulumi.CustomResource):
 
         this = harness.platform.Organization("this",
             identifier="MyOrg",
-            name="My Otganization",
+            name="My Organization",
             description="An example organization",
             tags=[
                 "foo:bar",

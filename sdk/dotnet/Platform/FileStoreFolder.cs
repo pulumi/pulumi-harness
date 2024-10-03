@@ -107,7 +107,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Folder parent identifier on Harness File Store
+        /// Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
         /// </summary>
         [Output("parentIdentifier")]
         public Output<string> ParentIdentifier { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Folder parent identifier on Harness File Store
+        /// Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
         /// </summary>
         [Input("parentIdentifier", required: true)]
         public Input<string> ParentIdentifier { get; set; } = null!;
@@ -288,7 +288,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Folder parent identifier on Harness File Store
+        /// Folder parent identifier on Harness File Store. If the file is at the root level, the parent_identifier will be `Root`.
         /// </summary>
         [Input("parentIdentifier")]
         public Input<string>? ParentIdentifier { get; set; }

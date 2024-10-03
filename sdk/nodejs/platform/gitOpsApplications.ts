@@ -114,6 +114,8 @@ export class GitOpsApplications extends pulumi.CustomResource {
     public readonly clusterId!: pulumi.Output<string>;
     /**
      * Identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly identifier!: pulumi.Output<string | undefined>;
     /**
@@ -260,6 +262,8 @@ export interface GitOpsApplicationsState {
     clusterId?: pulumi.Input<string>;
     /**
      * Identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     identifier?: pulumi.Input<string>;
     /**
@@ -334,6 +338,8 @@ export interface GitOpsApplicationsArgs {
     clusterId: pulumi.Input<string>;
     /**
      * Identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     identifier?: pulumi.Input<string>;
     /**

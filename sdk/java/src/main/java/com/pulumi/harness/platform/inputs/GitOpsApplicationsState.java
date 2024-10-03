@@ -81,14 +81,22 @@ public final class GitOpsApplicationsState extends com.pulumi.resources.Resource
     /**
      * Identifier of the GitOps application.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
      * @return Identifier of the GitOps application.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
     }
@@ -412,7 +420,11 @@ public final class GitOpsApplicationsState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
@@ -423,7 +435,11 @@ public final class GitOpsApplicationsState extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }

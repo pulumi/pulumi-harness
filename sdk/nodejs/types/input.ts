@@ -2889,122 +2889,6 @@ export namespace platform {
         trust?: pulumi.Input<string>;
     }
 
-    export interface GetGitopsRepoCredCred {
-        /**
-         * Specifies whether helm-oci support should be enabled for this repo.
-         */
-        enableOci?: boolean;
-        /**
-         * Specifies the GitHub API URL for GitHub app authentication.
-         */
-        githubAppEnterpriseBaseUrl?: string;
-        /**
-         * Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
-         */
-        githubAppId?: string;
-        /**
-         * Specifies the ID of the installed GitHub App for GitHub app authentication.
-         */
-        githubAppInstallationId?: string;
-        /**
-         * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-         */
-        githubAppPrivateKey?: string;
-        /**
-         * Password or PAT to be used for authenticating the remote repository.
-         */
-        password?: string;
-        /**
-         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-         */
-        sshPrivateKey?: string;
-        /**
-         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
-         */
-        tlsClientCertData?: string;
-        /**
-         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
-         */
-        tlsClientCertKey?: string;
-        /**
-         * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-         */
-        type?: string;
-        /**
-         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
-         */
-        url?: string;
-        /**
-         * Username to be used for authenticating the remote repository.
-         */
-        username?: string;
-    }
-
-    export interface GetGitopsRepoCredCredArgs {
-        /**
-         * Specifies whether helm-oci support should be enabled for this repo.
-         */
-        enableOci?: pulumi.Input<boolean>;
-        /**
-         * Specifies the GitHub API URL for GitHub app authentication.
-         */
-        githubAppEnterpriseBaseUrl?: pulumi.Input<string>;
-        /**
-         * Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
-         */
-        githubAppId?: pulumi.Input<string>;
-        /**
-         * Specifies the ID of the installed GitHub App for GitHub app authentication.
-         */
-        githubAppInstallationId?: pulumi.Input<string>;
-        /**
-         * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
-         */
-        githubAppPrivateKey?: pulumi.Input<string>;
-        /**
-         * Password or PAT to be used for authenticating the remote repository.
-         */
-        password?: pulumi.Input<string>;
-        /**
-         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
-         */
-        sshPrivateKey?: pulumi.Input<string>;
-        /**
-         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
-         */
-        tlsClientCertData?: pulumi.Input<string>;
-        /**
-         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
-         */
-        tlsClientCertKey?: pulumi.Input<string>;
-        /**
-         * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
-         */
-        url?: pulumi.Input<string>;
-        /**
-         * Username to be used for authenticating the remote repository.
-         */
-        username?: pulumi.Input<string>;
-    }
-
-    export interface GetGitopsRepositoryUpdateMask {
-        /**
-         * The set of field mask paths.
-         */
-        paths?: string[];
-    }
-
-    export interface GetGitopsRepositoryUpdateMaskArgs {
-        /**
-         * The set of field mask paths.
-         */
-        paths?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
     export interface GetInfrastructureGitDetails {
         /**
          * Name of the branch.
@@ -3916,7 +3800,7 @@ export namespace platform {
          */
         destinations?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecDestination>[]>;
         /**
-         * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         * The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
          */
         project?: pulumi.Input<string>;
         /**
@@ -4714,7 +4598,7 @@ export namespace platform {
 
     export interface GitOpsRepositoryRepo {
         /**
-         * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS*CONNECTION_TYPE"
+         * Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
          */
         connectionType: pulumi.Input<string>;
         /**

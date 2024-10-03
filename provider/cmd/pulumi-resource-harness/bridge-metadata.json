@@ -280,6 +280,9 @@
                     }
                 }
             },
+            "harness_governance_rule": {
+                "current": "harness:governance/rule:Rule"
+            },
             "harness_governance_rule_enforcement": {
                 "current": "harness:governance/ruleEnforcement:RuleEnforcement",
                 "fields": {
@@ -3074,6 +3077,9 @@
                     }
                 }
             },
+            "harness_governance_rule": {
+                "current": "harness:governance/getRule:getRule"
+            },
             "harness_governance_rule_enforcement": {
                 "current": "harness:governance/getRuleEnforcement:getRuleEnforcement",
                 "fields": {
@@ -4310,16 +4316,6 @@
                 "fields": {
                     "repo": {
                         "maxItemsOne": false
-                    },
-                    "update_mask": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "paths": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
                     }
                 }
             },
