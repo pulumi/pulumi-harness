@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -297,9 +302,6 @@ def get_gitops_applications(account_id: Optional[str] = None,
         skip_repo_validation=pulumi.get(__ret__, 'skip_repo_validation'),
         upsert=pulumi.get(__ret__, 'upsert'),
         validate=pulumi.get(__ret__, 'validate'))
-
-
-@_utilities.lift_output_func(get_gitops_applications)
 def get_gitops_applications_output(account_id: Optional[pulumi.Input[str]] = None,
                                    agent_id: Optional[pulumi.Input[str]] = None,
                                    identifier: Optional[pulumi.Input[Optional[str]]] = None,
@@ -318,4 +320,31 @@ def get_gitops_applications_output(account_id: Optional[pulumi.Input[str]] = Non
     :param str org_id: Organization identifier of the GitOps application.
     :param str project_id: Project identifier of the GitOps application.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['agentId'] = agent_id
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsApplications:getGitopsApplications', __args__, opts=opts, typ=GetGitopsApplicationsResult)
+    return __ret__.apply(lambda __response__: GetGitopsApplicationsResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        agent_id=pulumi.get(__response__, 'agent_id'),
+        applications=pulumi.get(__response__, 'applications'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        kind=pulumi.get(__response__, 'kind'),
+        name=pulumi.get(__response__, 'name'),
+        options_remove_existing_finalizers=pulumi.get(__response__, 'options_remove_existing_finalizers'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project=pulumi.get(__response__, 'project'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        repo_id=pulumi.get(__response__, 'repo_id'),
+        request_cascade=pulumi.get(__response__, 'request_cascade'),
+        request_propagation_policy=pulumi.get(__response__, 'request_propagation_policy'),
+        skip_repo_validation=pulumi.get(__response__, 'skip_repo_validation'),
+        upsert=pulumi.get(__response__, 'upsert'),
+        validate=pulumi.get(__response__, 'validate')))

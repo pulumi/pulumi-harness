@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -223,11 +228,25 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         signup_action=pulumi.get(__ret__, 'signup_action'),
         token=pulumi.get(__ret__, 'token'),
         uuid=pulumi.get(__ret__, 'uuid'))
-
-
-@_utilities.lift_output_func(get_current_user)
 def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
     Data source for retrieving the current user based on the API key.
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult)
+    return __ret__.apply(lambda __response__: GetCurrentUserResult(
+        admin=pulumi.get(__response__, 'admin'),
+        billing_frequency=pulumi.get(__response__, 'billing_frequency'),
+        default_account_id=pulumi.get(__response__, 'default_account_id'),
+        edition=pulumi.get(__response__, 'edition'),
+        email=pulumi.get(__response__, 'email'),
+        email_verified=pulumi.get(__response__, 'email_verified'),
+        id=pulumi.get(__response__, 'id'),
+        intent=pulumi.get(__response__, 'intent'),
+        is_two_factor_auth_enabled=pulumi.get(__response__, 'is_two_factor_auth_enabled'),
+        locked=pulumi.get(__response__, 'locked'),
+        name=pulumi.get(__response__, 'name'),
+        signup_action=pulumi.get(__response__, 'signup_action'),
+        token=pulumi.get(__response__, 'token'),
+        uuid=pulumi.get(__response__, 'uuid')))

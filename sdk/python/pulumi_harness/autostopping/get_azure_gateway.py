@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -273,9 +278,6 @@ def get_azure_gateway(app_gateway_id: Optional[str] = None,
         sku_size=pulumi.get(__ret__, 'sku_size'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         vpc=pulumi.get(__ret__, 'vpc'))
-
-
-@_utilities.lift_output_func(get_azure_gateway)
 def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
                              azure_func_region: Optional[pulumi.Input[str]] = None,
                              certificate_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -307,4 +309,35 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[str]
     :param str subnet_id: Subnet in which cloud resources are hosted
     :param str vpc: VPC in which cloud resources are hosted
     """
-    ...
+    __args__ = dict()
+    __args__['appGatewayId'] = app_gateway_id
+    __args__['azureFuncRegion'] = azure_func_region
+    __args__['certificateId'] = certificate_id
+    __args__['cloudConnectorId'] = cloud_connector_id
+    __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
+    __args__['frontendIp'] = frontend_ip
+    __args__['hostName'] = host_name
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['resourceGroup'] = resource_group
+    __args__['skuSize'] = sku_size
+    __args__['subnetId'] = subnet_id
+    __args__['vpc'] = vpc
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getAzureGateway:getAzureGateway', __args__, opts=opts, typ=GetAzureGatewayResult)
+    return __ret__.apply(lambda __response__: GetAzureGatewayResult(
+        app_gateway_id=pulumi.get(__response__, 'app_gateway_id'),
+        azure_func_region=pulumi.get(__response__, 'azure_func_region'),
+        certificate_id=pulumi.get(__response__, 'certificate_id'),
+        cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
+        delete_cloud_resources_on_destroy=pulumi.get(__response__, 'delete_cloud_resources_on_destroy'),
+        frontend_ip=pulumi.get(__response__, 'frontend_ip'),
+        host_name=pulumi.get(__response__, 'host_name'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        resource_group=pulumi.get(__response__, 'resource_group'),
+        sku_size=pulumi.get(__response__, 'sku_size'),
+        subnet_id=pulumi.get(__response__, 'subnet_id'),
+        vpc=pulumi.get(__response__, 'vpc')))

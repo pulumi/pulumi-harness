@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -303,9 +308,6 @@ def get_template(branch_name: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         template_yaml=pulumi.get(__ret__, 'template_yaml'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_template)
 def get_template_output(branch_name: Optional[pulumi.Input[Optional[str]]] = None,
                         child_type: Optional[pulumi.Input[Optional[str]]] = None,
                         git_details: Optional[pulumi.Input[Optional[Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict']]]] = None,
@@ -352,4 +354,33 @@ def get_template_output(branch_name: Optional[pulumi.Input[Optional[str]]] = Non
     :param str scope: Scope of template.
     :param str version: Version Label for Template.
     """
-    ...
+    __args__ = dict()
+    __args__['branchName'] = branch_name
+    __args__['childType'] = child_type
+    __args__['gitDetails'] = git_details
+    __args__['identifier'] = identifier
+    __args__['isStable'] = is_stable
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['scope'] = scope
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getTemplate:getTemplate', __args__, opts=opts, typ=GetTemplateResult)
+    return __ret__.apply(lambda __response__: GetTemplateResult(
+        branch_name=pulumi.get(__response__, 'branch_name'),
+        child_type=pulumi.get(__response__, 'child_type'),
+        connector_ref=pulumi.get(__response__, 'connector_ref'),
+        description=pulumi.get(__response__, 'description'),
+        git_details=pulumi.get(__response__, 'git_details'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        is_stable=pulumi.get(__response__, 'is_stable'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        scope=pulumi.get(__response__, 'scope'),
+        store_type=pulumi.get(__response__, 'store_type'),
+        tags=pulumi.get(__response__, 'tags'),
+        template_yaml=pulumi.get(__response__, 'template_yaml'),
+        version=pulumi.get(__response__, 'version')))

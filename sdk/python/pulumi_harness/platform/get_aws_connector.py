@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -260,9 +265,6 @@ def get_aws_connector(identifier: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_aws_connector)
 def get_aws_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -286,4 +288,26 @@ def get_aws_connector_output(identifier: Optional[pulumi.Input[str]] = None,
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getAwsConnector:getAwsConnector', __args__, opts=opts, typ=GetAwsConnectorResult)
+    return __ret__.apply(lambda __response__: GetAwsConnectorResult(
+        cross_account_accesses=pulumi.get(__response__, 'cross_account_accesses'),
+        description=pulumi.get(__response__, 'description'),
+        equal_jitter_backoff_strategies=pulumi.get(__response__, 'equal_jitter_backoff_strategies'),
+        fixed_delay_backoff_strategies=pulumi.get(__response__, 'fixed_delay_backoff_strategies'),
+        full_jitter_backoff_strategies=pulumi.get(__response__, 'full_jitter_backoff_strategies'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        inherit_from_delegates=pulumi.get(__response__, 'inherit_from_delegates'),
+        irsas=pulumi.get(__response__, 'irsas'),
+        manuals=pulumi.get(__response__, 'manuals'),
+        name=pulumi.get(__response__, 'name'),
+        oidc_authentications=pulumi.get(__response__, 'oidc_authentications'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        tags=pulumi.get(__response__, 'tags')))

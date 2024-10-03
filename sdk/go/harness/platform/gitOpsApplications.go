@@ -33,7 +33,7 @@ import (
 //					&platform.GitOpsApplicationsApplicationArgs{
 //						Metadatas: platform.GitOpsApplicationsApplicationMetadataArray{
 //							&platform.GitOpsApplicationsApplicationMetadataArgs{
-//								Annotations: nil,
+//								Annotations: pulumi.StringMap{},
 //								Labels: pulumi.StringMap{
 //									"harness.io/serviceRef": pulumi.String("service_id"),
 //									"harness.io/envRef":     pulumi.String("env_id"),

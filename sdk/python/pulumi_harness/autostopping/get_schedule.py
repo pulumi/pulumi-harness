@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -164,9 +169,6 @@ def get_schedule(schedule_type: Optional[str] = None,
         schedule_type=pulumi.get(__ret__, 'schedule_type'),
         starting_from=pulumi.get(__ret__, 'starting_from'),
         time_zone=pulumi.get(__ret__, 'time_zone'))
-
-
-@_utilities.lift_output_func(get_schedule)
 def get_schedule_output(schedule_type: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScheduleResult]:
     """
@@ -175,4 +177,17 @@ def get_schedule_output(schedule_type: Optional[pulumi.Input[str]] = None,
 
     :param str schedule_type: Type of the schedule. Valid values are `uptime` and `downtime`
     """
-    ...
+    __args__ = dict()
+    __args__['scheduleType'] = schedule_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getSchedule:getSchedule', __args__, opts=opts, typ=GetScheduleResult)
+    return __ret__.apply(lambda __response__: GetScheduleResult(
+        ending_on=pulumi.get(__response__, 'ending_on'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        repeats=pulumi.get(__response__, 'repeats'),
+        rules=pulumi.get(__response__, 'rules'),
+        schedule_type=pulumi.get(__response__, 'schedule_type'),
+        starting_from=pulumi.get(__response__, 'starting_from'),
+        time_zone=pulumi.get(__response__, 'time_zone')))

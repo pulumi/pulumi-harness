@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -225,9 +230,6 @@ def get_api_key(account_id: Optional[str] = None,
         parent_id=pulumi.get(__ret__, 'parent_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_api_key)
 def get_api_key_output(account_id: Optional[pulumi.Input[str]] = None,
                        apikey_type: Optional[pulumi.Input[str]] = None,
                        default_time_to_expire_token: Optional[pulumi.Input[Optional[int]]] = None,
@@ -265,4 +267,26 @@ def get_api_key_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str parent_id: Parent Entity Identifier of the API Key
     :param str project_id: Unique identifier of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['apikeyType'] = apikey_type
+    __args__['defaultTimeToExpireToken'] = default_time_to_expire_token
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['parentId'] = parent_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getApiKey:getApiKey', __args__, opts=opts, typ=GetApiKeyResult)
+    return __ret__.apply(lambda __response__: GetApiKeyResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        apikey_type=pulumi.get(__response__, 'apikey_type'),
+        default_time_to_expire_token=pulumi.get(__response__, 'default_time_to_expire_token'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        parent_id=pulumi.get(__response__, 'parent_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        tags=pulumi.get(__response__, 'tags')))

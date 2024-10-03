@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -161,9 +166,6 @@ def get_environment_service_overrides(env_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         service_id=pulumi.get(__ret__, 'service_id'),
         yaml=pulumi.get(__ret__, 'yaml'))
-
-
-@_utilities.lift_output_func(get_environment_service_overrides)
 def get_environment_service_overrides_output(env_id: Optional[pulumi.Input[str]] = None,
                                              identifier: Optional[pulumi.Input[Optional[str]]] = None,
                                              org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -192,4 +194,19 @@ def get_environment_service_overrides_output(env_id: Optional[pulumi.Input[str]]
     :param str project_id: Unique identifier of the project.
     :param str service_id: The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
     """
-    ...
+    __args__ = dict()
+    __args__['envId'] = env_id
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['serviceId'] = service_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides', __args__, opts=opts, typ=GetEnvironmentServiceOverridesResult)
+    return __ret__.apply(lambda __response__: GetEnvironmentServiceOverridesResult(
+        env_id=pulumi.get(__response__, 'env_id'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        yaml=pulumi.get(__response__, 'yaml')))

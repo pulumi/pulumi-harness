@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -250,9 +255,6 @@ def get_manual_freeze(account_id: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         yaml=pulumi.get(__ret__, 'yaml'))
-
-
-@_utilities.lift_output_func(get_manual_freeze)
 def get_manual_freeze_output(account_id: Optional[pulumi.Input[str]] = None,
                              identifier: Optional[pulumi.Input[str]] = None,
                              org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -279,4 +281,25 @@ def get_manual_freeze_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str org_id: Organization identifier of the freeze
     :param str project_id: Project identifier of the freeze
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getManualFreeze:getManualFreeze', __args__, opts=opts, typ=GetManualFreezeResult)
+    return __ret__.apply(lambda __response__: GetManualFreezeResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        current_or_upcoming_windows=pulumi.get(__response__, 'current_or_upcoming_windows'),
+        description=pulumi.get(__response__, 'description'),
+        freeze_windows=pulumi.get(__response__, 'freeze_windows'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        scope=pulumi.get(__response__, 'scope'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type'),
+        yaml=pulumi.get(__response__, 'yaml')))

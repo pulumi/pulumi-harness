@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -211,9 +216,6 @@ def get_rule_vm(cloud_connector_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         tcps=pulumi.get(__ret__, 'tcps'),
         use_spot=pulumi.get(__ret__, 'use_spot'))
-
-
-@_utilities.lift_output_func(get_rule_vm)
 def get_rule_vm_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
                        custom_domains: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        depends: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict']]]]] = None,
@@ -237,4 +239,27 @@ def get_rule_vm_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
     :param Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict']] tcps: TCP routing configuration
     :param bool use_spot: Boolean that indicates whether the selected instances should be converted to spot vm
     """
-    ...
+    __args__ = dict()
+    __args__['cloudConnectorId'] = cloud_connector_id
+    __args__['customDomains'] = custom_domains
+    __args__['depends'] = depends
+    __args__['filter'] = filter
+    __args__['https'] = https
+    __args__['idleTimeMins'] = idle_time_mins
+    __args__['name'] = name
+    __args__['tcps'] = tcps
+    __args__['useSpot'] = use_spot
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleVm:getRuleVm', __args__, opts=opts, typ=GetRuleVmResult)
+    return __ret__.apply(lambda __response__: GetRuleVmResult(
+        cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
+        custom_domains=pulumi.get(__response__, 'custom_domains'),
+        depends=pulumi.get(__response__, 'depends'),
+        filter=pulumi.get(__response__, 'filter'),
+        https=pulumi.get(__response__, 'https'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        idle_time_mins=pulumi.get(__response__, 'idle_time_mins'),
+        name=pulumi.get(__response__, 'name'),
+        tcps=pulumi.get(__response__, 'tcps'),
+        use_spot=pulumi.get(__response__, 'use_spot')))

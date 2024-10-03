@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -255,9 +260,6 @@ def get_repo_webhook(description: Optional[str] = None,
         secret=pulumi.get(__ret__, 'secret'),
         triggers=pulumi.get(__ret__, 'triggers'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_repo_webhook)
 def get_repo_webhook_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                             enabled: Optional[pulumi.Input[bool]] = None,
                             identifier: Optional[pulumi.Input[str]] = None,
@@ -284,4 +286,31 @@ def get_repo_webhook_output(description: Optional[pulumi.Input[Optional[str]]] =
     :param Sequence[str] triggers: List of triggers of the webhook (keep empty for all triggers).
     :param str url: URL that's called by the webhook.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['enabled'] = enabled
+    __args__['identifier'] = identifier
+    __args__['insecure'] = insecure
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['repoIdentifier'] = repo_identifier
+    __args__['secret'] = secret
+    __args__['triggers'] = triggers
+    __args__['url'] = url
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getRepoWebhook:getRepoWebhook', __args__, opts=opts, typ=GetRepoWebhookResult)
+    return __ret__.apply(lambda __response__: GetRepoWebhookResult(
+        created=pulumi.get(__response__, 'created'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        has_secret=pulumi.get(__response__, 'has_secret'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        insecure=pulumi.get(__response__, 'insecure'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        repo_identifier=pulumi.get(__response__, 'repo_identifier'),
+        secret=pulumi.get(__response__, 'secret'),
+        triggers=pulumi.get(__response__, 'triggers'),
+        url=pulumi.get(__response__, 'url')))

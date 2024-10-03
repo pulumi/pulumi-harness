@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -179,9 +184,6 @@ def get_rule_ecs(cloud_connector_id: Optional[str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_rule_ecs)
 def get_rule_ecs_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
                         container: Optional[pulumi.Input[Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict']]]] = None,
                         custom_domains: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -201,4 +203,23 @@ def get_rule_ecs_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
     :param int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param str name: Name of the rule
     """
-    ...
+    __args__ = dict()
+    __args__['cloudConnectorId'] = cloud_connector_id
+    __args__['container'] = container
+    __args__['customDomains'] = custom_domains
+    __args__['depends'] = depends
+    __args__['https'] = https
+    __args__['idleTimeMins'] = idle_time_mins
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleEcs:getRuleEcs', __args__, opts=opts, typ=GetRuleEcsResult)
+    return __ret__.apply(lambda __response__: GetRuleEcsResult(
+        cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
+        container=pulumi.get(__response__, 'container'),
+        custom_domains=pulumi.get(__response__, 'custom_domains'),
+        depends=pulumi.get(__response__, 'depends'),
+        https=pulumi.get(__response__, 'https'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        idle_time_mins=pulumi.get(__response__, 'idle_time_mins'),
+        name=pulumi.get(__response__, 'name')))

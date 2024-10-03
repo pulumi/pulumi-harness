@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -186,9 +191,6 @@ def get_project_list(identifier: Optional[str] = None,
         page=pulumi.get(__ret__, 'page'),
         projects=pulumi.get(__ret__, 'projects'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_project_list)
 def get_project_list_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                             limit: Optional[pulumi.Input[Optional[int]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -227,4 +229,21 @@ def get_project_list_output(identifier: Optional[pulumi.Input[Optional[str]]] = 
     :param str org_id: Unique identifier of the organization.
     :param int page: Optional pagination parameter indicating the page number when retrieving entities.
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['limit'] = limit
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['page'] = page
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getProjectList:getProjectList', __args__, opts=opts, typ=GetProjectListResult)
+    return __ret__.apply(lambda __response__: GetProjectListResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        limit=pulumi.get(__response__, 'limit'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        page=pulumi.get(__response__, 'page'),
+        projects=pulumi.get(__response__, 'projects'),
+        tags=pulumi.get(__response__, 'tags')))

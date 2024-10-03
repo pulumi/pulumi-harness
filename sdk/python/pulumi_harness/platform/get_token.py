@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -336,9 +341,6 @@ def get_token(account_id: Optional[str] = None,
         valid=pulumi.get(__ret__, 'valid'),
         valid_from=pulumi.get(__ret__, 'valid_from'),
         valid_to=pulumi.get(__ret__, 'valid_to'))
-
-
-@_utilities.lift_output_func(get_token)
 def get_token_output(account_id: Optional[pulumi.Input[str]] = None,
                      apikey_id: Optional[pulumi.Input[str]] = None,
                      apikey_type: Optional[pulumi.Input[str]] = None,
@@ -389,4 +391,40 @@ def get_token_output(account_id: Optional[pulumi.Input[str]] = None,
     :param int valid_from: This is the time from which the Token is valid. The time is in milliseconds
     :param int valid_to: This is the time till which the Token is valid. The time is in milliseconds
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['apikeyId'] = apikey_id
+    __args__['apikeyType'] = apikey_type
+    __args__['email'] = email
+    __args__['encodedPassword'] = encoded_password
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['parentId'] = parent_id
+    __args__['projectId'] = project_id
+    __args__['scheduledExpireTime'] = scheduled_expire_time
+    __args__['username'] = username
+    __args__['valid'] = valid
+    __args__['validFrom'] = valid_from
+    __args__['validTo'] = valid_to
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getToken:getToken', __args__, opts=opts, typ=GetTokenResult)
+    return __ret__.apply(lambda __response__: GetTokenResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        apikey_id=pulumi.get(__response__, 'apikey_id'),
+        apikey_type=pulumi.get(__response__, 'apikey_type'),
+        description=pulumi.get(__response__, 'description'),
+        email=pulumi.get(__response__, 'email'),
+        encoded_password=pulumi.get(__response__, 'encoded_password'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        parent_id=pulumi.get(__response__, 'parent_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        scheduled_expire_time=pulumi.get(__response__, 'scheduled_expire_time'),
+        tags=pulumi.get(__response__, 'tags'),
+        username=pulumi.get(__response__, 'username'),
+        valid=pulumi.get(__response__, 'valid'),
+        valid_from=pulumi.get(__response__, 'valid_from'),
+        valid_to=pulumi.get(__response__, 'valid_to')))
