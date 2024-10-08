@@ -1,9 +1,9 @@
 package harness
 
 import (
+	"bytes"
 	"fmt"
-	"path"
-
+	"os"
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
@@ -63,6 +63,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:          "https://www.pulumi.com",
 		Repository:        "https://github.com/pulumi/pulumi-harness",
 		GitHubOrg:         "harness",
+		DocRules:          &tfbridge.DocRuleInfo{EditRules: editRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"endpoint": {
 				Default: &tfbridge.DefaultInfo{
@@ -418,6 +419,31 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+
+		tfbridge.DocsEdit{
+			Path: "index.md",
+			Edit: func(_ string, content []byte) ([]byte, error) {
+				input, err := os.ReadFile("provider/installation-replaces/example-input.md")
+				if err != nil {
+					return nil, err
+				}
+				replace, err := os.ReadFile("provider/installation-replaces/example-desired.md")
+				if err != nil {
+					return nil, err
+				}
+				b := bytes.ReplaceAll(
+					content,
+					input,
+					replace)
+				return b, nil
+			},
+		},
+	)
 }
 
 //go:embed cmd/pulumi-resource-harness/bridge-metadata.json
