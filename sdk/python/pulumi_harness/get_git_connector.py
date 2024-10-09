@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -219,9 +224,6 @@ def get_git_connector(id: Optional[str] = None,
         url_type=pulumi.get(__ret__, 'url_type'),
         username=pulumi.get(__ret__, 'username'),
         webhook_url=pulumi.get(__ret__, 'webhook_url'))
-
-
-@_utilities.lift_output_func(get_git_connector)
 def get_git_connector_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitConnectorResult]:
@@ -232,4 +234,22 @@ def get_git_connector_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: Id of the git connector.
     :param str name: The name of the git connector.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:index/getGitConnector:getGitConnector', __args__, opts=opts, typ=GetGitConnectorResult)
+    return __ret__.apply(lambda __response__: GetGitConnectorResult(
+        branch=pulumi.get(__response__, 'branch'),
+        commit_details=pulumi.get(__response__, 'commit_details'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
+        generate_webhook_url=pulumi.get(__response__, 'generate_webhook_url'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        password_secret_id=pulumi.get(__response__, 'password_secret_id'),
+        ssh_setting_id=pulumi.get(__response__, 'ssh_setting_id'),
+        url=pulumi.get(__response__, 'url'),
+        url_type=pulumi.get(__response__, 'url_type'),
+        username=pulumi.get(__response__, 'username'),
+        webhook_url=pulumi.get(__response__, 'webhook_url')))

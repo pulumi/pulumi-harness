@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -133,9 +138,6 @@ def get_rule(rule_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         rule_id=pulumi.get(__ret__, 'rule_id'),
         rules_yaml=pulumi.get(__ret__, 'rules_yaml'))
-
-
-@_utilities.lift_output_func(get_rule)
 def get_rule_output(rule_id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleResult]:
     """
@@ -153,4 +155,14 @@ def get_rule_output(rule_id: Optional[pulumi.Input[str]] = None,
 
     :param str rule_id: Id of rule.
     """
-    ...
+    __args__ = dict()
+    __args__['ruleId'] = rule_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:governance/getRule:getRule', __args__, opts=opts, typ=GetRuleResult)
+    return __ret__.apply(lambda __response__: GetRuleResult(
+        cloud_provider=pulumi.get(__response__, 'cloud_provider'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        rule_id=pulumi.get(__response__, 'rule_id'),
+        rules_yaml=pulumi.get(__response__, 'rules_yaml')))

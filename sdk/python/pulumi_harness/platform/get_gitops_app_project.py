@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -144,9 +149,6 @@ def get_gitops_app_project(account_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         query_name=pulumi.get(__ret__, 'query_name'))
-
-
-@_utilities.lift_output_func(get_gitops_app_project)
 def get_gitops_app_project_output(account_id: Optional[pulumi.Input[str]] = None,
                                   agent_id: Optional[pulumi.Input[str]] = None,
                                   org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -171,4 +173,18 @@ def get_gitops_app_project_output(account_id: Optional[pulumi.Input[str]] = None
     :param str project_id: Project identifier of the GitOps repository.
     :param str query_name: Identifier for the GitOps project.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['agentId'] = agent_id
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['queryName'] = query_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsAppProject:getGitopsAppProject', __args__, opts=opts, typ=GetGitopsAppProjectResult)
+    return __ret__.apply(lambda __response__: GetGitopsAppProjectResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        agent_id=pulumi.get(__response__, 'agent_id'),
+        id=pulumi.get(__response__, 'id'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        query_name=pulumi.get(__response__, 'query_name')))

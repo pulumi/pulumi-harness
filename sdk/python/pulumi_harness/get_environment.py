@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -148,9 +153,6 @@ def get_environment(app_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'),
         variable_overrides=pulumi.get(__ret__, 'variable_overrides'))
-
-
-@_utilities.lift_output_func(get_environment)
 def get_environment_output(app_id: Optional[pulumi.Input[str]] = None,
                            environment_id: Optional[pulumi.Input[Optional[str]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -165,4 +167,18 @@ def get_environment_output(app_id: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the environment.
     :param Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict']] variable_overrides: Override for a service variable
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['environmentId'] = environment_id
+    __args__['name'] = name
+    __args__['variableOverrides'] = variable_overrides
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:index/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult)
+    return __ret__.apply(lambda __response__: GetEnvironmentResult(
+        app_id=pulumi.get(__response__, 'app_id'),
+        description=pulumi.get(__response__, 'description'),
+        environment_id=pulumi.get(__response__, 'environment_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        type=pulumi.get(__response__, 'type'),
+        variable_overrides=pulumi.get(__response__, 'variable_overrides')))

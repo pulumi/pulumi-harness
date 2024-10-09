@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -168,9 +173,6 @@ def get_delegatetoken(account_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         token_status=pulumi.get(__ret__, 'token_status'),
         value=pulumi.get(__ret__, 'value'))
-
-
-@_utilities.lift_output_func(get_delegatetoken)
 def get_delegatetoken_output(account_id: Optional[pulumi.Input[str]] = None,
                              created_at: Optional[pulumi.Input[Optional[int]]] = None,
                              name: Optional[pulumi.Input[str]] = None,
@@ -191,4 +193,22 @@ def get_delegatetoken_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
     :param str value: Value of the delegate Token
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['createdAt'] = created_at
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['tokenStatus'] = token_status
+    __args__['value'] = value
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getDelegatetoken:getDelegatetoken', __args__, opts=opts, typ=GetDelegatetokenResult)
+    return __ret__.apply(lambda __response__: GetDelegatetokenResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        token_status=pulumi.get(__response__, 'token_status'),
+        value=pulumi.get(__response__, 'value')))

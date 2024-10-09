@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -166,9 +171,6 @@ def get_service(app_id: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         template_uri=pulumi.get(__ret__, 'template_uri'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_service)
 def get_service_output(app_id: Optional[pulumi.Input[str]] = None,
                        id: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
@@ -179,4 +181,18 @@ def get_service_output(app_id: Optional[pulumi.Input[str]] = None,
     :param str app_id: The id of the application the service belongs to
     :param str id: Unique identifier of the application
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:index/getService:getService', __args__, opts=opts, typ=GetServiceResult)
+    return __ret__.apply(lambda __response__: GetServiceResult(
+        app_id=pulumi.get(__response__, 'app_id'),
+        artifact_type=pulumi.get(__response__, 'artifact_type'),
+        description=pulumi.get(__response__, 'description'),
+        helm_version=pulumi.get(__response__, 'helm_version'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        tags=pulumi.get(__response__, 'tags'),
+        template_uri=pulumi.get(__response__, 'template_uri'),
+        type=pulumi.get(__response__, 'type')))

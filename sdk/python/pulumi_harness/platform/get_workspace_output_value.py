@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -126,9 +131,6 @@ def get_workspace_output_value(identifier: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         output_values=pulumi.get(__ret__, 'output_values'),
         project_id=pulumi.get(__ret__, 'project_id'))
-
-
-@_utilities.lift_output_func(get_workspace_output_value)
 def get_workspace_output_value_output(identifier: Optional[pulumi.Input[str]] = None,
                                       org_id: Optional[pulumi.Input[str]] = None,
                                       project_id: Optional[pulumi.Input[str]] = None,
@@ -152,4 +154,15 @@ def get_workspace_output_value_output(identifier: Optional[pulumi.Input[str]] = 
     :param str org_id: Organization identifier of the organization the workspace resides in.
     :param str project_id: Project identifier of the project the workspace resides in.
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue', __args__, opts=opts, typ=GetWorkspaceOutputValueResult)
+    return __ret__.apply(lambda __response__: GetWorkspaceOutputValueResult(
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        output_values=pulumi.get(__response__, 'output_values'),
+        project_id=pulumi.get(__response__, 'project_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -229,9 +234,6 @@ def get_policy_set(action: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_policy_set)
 def get_policy_set_output(action: Optional[pulumi.Input[str]] = None,
                           enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                           identifier: Optional[pulumi.Input[str]] = None,
@@ -271,4 +273,26 @@ def get_policy_set_output(action: Optional[pulumi.Input[str]] = None,
     :param str project_id: Unique identifier of the project.
     :param str type: Type of the policyset.
     """
-    ...
+    __args__ = dict()
+    __args__['action'] = action
+    __args__['enabled'] = enabled
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['policies'] = policies
+    __args__['projectId'] = project_id
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getPolicySet:getPolicySet', __args__, opts=opts, typ=GetPolicySetResult)
+    return __ret__.apply(lambda __response__: GetPolicySetResult(
+        action=pulumi.get(__response__, 'action'),
+        description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        policies=pulumi.get(__response__, 'policies'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -152,9 +157,6 @@ def get_gitx_webhook(description: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_gitx_webhook)
 def get_gitx_webhook_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                             identifier: Optional[pulumi.Input[str]] = None,
                             name: Optional[pulumi.Input[str]] = None,
@@ -173,4 +175,20 @@ def get_gitx_webhook_output(description: Optional[pulumi.Input[Optional[str]]] =
     :param str project_id: Unique identifier of the project.
     :param Sequence[str] tags: Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitxWebhook:getGitxWebhook', __args__, opts=opts, typ=GetGitxWebhookResult)
+    return __ret__.apply(lambda __response__: GetGitxWebhookResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -299,9 +304,6 @@ def get_azure_proxy(allocate_static_ip: Optional[bool] = None,
         security_groups=pulumi.get(__ret__, 'security_groups'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         vpc=pulumi.get(__ret__, 'vpc'))
-
-
-@_utilities.lift_output_func(get_azure_proxy)
 def get_azure_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bool]]] = None,
                            api_key: Optional[pulumi.Input[str]] = None,
                            certificate_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -335,4 +337,39 @@ def get_azure_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bo
     :param str subnet_id: Subnet in which cloud resources are hosted
     :param str vpc: VPC in which cloud resources are hosted
     """
-    ...
+    __args__ = dict()
+    __args__['allocateStaticIp'] = allocate_static_ip
+    __args__['apiKey'] = api_key
+    __args__['certificateId'] = certificate_id
+    __args__['certificates'] = certificates
+    __args__['cloudConnectorId'] = cloud_connector_id
+    __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
+    __args__['hostName'] = host_name
+    __args__['keypair'] = keypair
+    __args__['machineType'] = machine_type
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['resourceGroup'] = resource_group
+    __args__['securityGroups'] = security_groups
+    __args__['subnetId'] = subnet_id
+    __args__['vpc'] = vpc
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getAzureProxy:getAzureProxy', __args__, opts=opts, typ=GetAzureProxyResult)
+    return __ret__.apply(lambda __response__: GetAzureProxyResult(
+        allocate_static_ip=pulumi.get(__response__, 'allocate_static_ip'),
+        api_key=pulumi.get(__response__, 'api_key'),
+        certificate_id=pulumi.get(__response__, 'certificate_id'),
+        certificates=pulumi.get(__response__, 'certificates'),
+        cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
+        delete_cloud_resources_on_destroy=pulumi.get(__response__, 'delete_cloud_resources_on_destroy'),
+        host_name=pulumi.get(__response__, 'host_name'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        keypair=pulumi.get(__response__, 'keypair'),
+        machine_type=pulumi.get(__response__, 'machine_type'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        resource_group=pulumi.get(__response__, 'resource_group'),
+        security_groups=pulumi.get(__response__, 'security_groups'),
+        subnet_id=pulumi.get(__response__, 'subnet_id'),
+        vpc=pulumi.get(__response__, 'vpc')))

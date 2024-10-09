@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -335,9 +340,6 @@ def get_workspace(description: Optional[str] = None,
         repository_sha=pulumi.get(__ret__, 'repository_sha'),
         terraform_variable_files=pulumi.get(__ret__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__ret__, 'terraform_variables'))
-
-
-@_utilities.lift_output_func(get_workspace)
 def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                          environment_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']]]]] = None,
                          identifier: Optional[pulumi.Input[str]] = None,
@@ -373,4 +375,37 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = No
     :param str repository_commit: Repository Tag in which the code should be accessed
     :param str repository_sha: Repository SHA in which the code should be accessed
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['environmentVariables'] = environment_variables
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['repositoryBranch'] = repository_branch
+    __args__['repositoryCommit'] = repository_commit
+    __args__['repositorySha'] = repository_sha
+    __args__['terraformVariableFiles'] = terraform_variable_files
+    __args__['terraformVariables'] = terraform_variables
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getWorkspace:getWorkspace', __args__, opts=opts, typ=GetWorkspaceResult)
+    return __ret__.apply(lambda __response__: GetWorkspaceResult(
+        cost_estimation_enabled=pulumi.get(__response__, 'cost_estimation_enabled'),
+        default_pipelines=pulumi.get(__response__, 'default_pipelines'),
+        description=pulumi.get(__response__, 'description'),
+        environment_variables=pulumi.get(__response__, 'environment_variables'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        provider_connector=pulumi.get(__response__, 'provider_connector'),
+        provisioner_type=pulumi.get(__response__, 'provisioner_type'),
+        provisioner_version=pulumi.get(__response__, 'provisioner_version'),
+        repository=pulumi.get(__response__, 'repository'),
+        repository_branch=pulumi.get(__response__, 'repository_branch'),
+        repository_commit=pulumi.get(__response__, 'repository_commit'),
+        repository_connector=pulumi.get(__response__, 'repository_connector'),
+        repository_path=pulumi.get(__response__, 'repository_path'),
+        repository_sha=pulumi.get(__response__, 'repository_sha'),
+        terraform_variable_files=pulumi.get(__response__, 'terraform_variable_files'),
+        terraform_variables=pulumi.get(__response__, 'terraform_variables')))

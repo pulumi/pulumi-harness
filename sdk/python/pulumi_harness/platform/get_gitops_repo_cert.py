@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -120,9 +125,6 @@ def get_gitops_repo_cert(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-
-
-@_utilities.lift_output_func(get_gitops_repo_cert)
 def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[str]] = None,
                                 agent_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -137,4 +139,16 @@ def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str org_id: Organization identifier of the GitOps repository certificate.
     :param str project_id: Project identifier of the GitOps repository certificate.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['agentId'] = agent_id
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsRepoCert:getGitopsRepoCert', __args__, opts=opts, typ=GetGitopsRepoCertResult)
+    return __ret__.apply(lambda __response__: GetGitopsRepoCertResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        agent_id=pulumi.get(__response__, 'agent_id'),
+        id=pulumi.get(__response__, 'id'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id')))

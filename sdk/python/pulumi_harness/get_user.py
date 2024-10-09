@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -153,9 +158,6 @@ def get_user(email: Optional[str] = None,
         is_two_factor_auth_enabled=pulumi.get(__ret__, 'is_two_factor_auth_enabled'),
         is_user_locked=pulumi.get(__ret__, 'is_user_locked'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
@@ -166,4 +168,17 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     :param str email: The email of the user.
     :param str id: Unique identifier of the user
     """
-    ...
+    __args__ = dict()
+    __args__['email'] = email
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        is_email_verified=pulumi.get(__response__, 'is_email_verified'),
+        is_imported_from_identity_provider=pulumi.get(__response__, 'is_imported_from_identity_provider'),
+        is_password_expired=pulumi.get(__response__, 'is_password_expired'),
+        is_two_factor_auth_enabled=pulumi.get(__response__, 'is_two_factor_auth_enabled'),
+        is_user_locked=pulumi.get(__response__, 'is_user_locked'),
+        name=pulumi.get(__response__, 'name')))

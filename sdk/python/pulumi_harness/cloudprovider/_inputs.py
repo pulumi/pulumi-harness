@@ -4,22 +4,51 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AwsAssumeCrossAccountRoleArgs',
+    'AwsAssumeCrossAccountRoleArgsDict',
     'AwsUsageScopeArgs',
+    'AwsUsageScopeArgsDict',
     'DatacenterUsageScopeArgs',
+    'DatacenterUsageScopeArgsDict',
     'GcpUsageScopeArgs',
+    'GcpUsageScopeArgsDict',
     'KubernetesAuthenticationArgs',
+    'KubernetesAuthenticationArgsDict',
     'KubernetesAuthenticationOidcArgs',
+    'KubernetesAuthenticationOidcArgsDict',
     'KubernetesAuthenticationServiceAccountArgs',
+    'KubernetesAuthenticationServiceAccountArgsDict',
     'KubernetesAuthenticationUsernamePasswordArgs',
+    'KubernetesAuthenticationUsernamePasswordArgsDict',
     'KubernetesUsageScopeArgs',
+    'KubernetesUsageScopeArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AwsAssumeCrossAccountRoleArgsDict(TypedDict):
+        role_arn: pulumi.Input[str]
+        """
+        This is an IAM role in the target deployment AWS account.
+        """
+        external_id: NotRequired[pulumi.Input[str]]
+        """
+        If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+elif False:
+    AwsAssumeCrossAccountRoleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsAssumeCrossAccountRoleArgs:
@@ -58,6 +87,23 @@ class AwsAssumeCrossAccountRoleArgs:
     def external_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_id", value)
 
+
+if not MYPY:
+    class AwsUsageScopeArgsDict(TypedDict):
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the application to scope to. If empty then this scope applies to all applications.
+        """
+        environment_filter_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+        """
+        environment_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+        """
+elif False:
+    AwsUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsUsageScopeArgs:
@@ -114,6 +160,23 @@ class AwsUsageScopeArgs:
         pulumi.set(self, "environment_id", value)
 
 
+if not MYPY:
+    class DatacenterUsageScopeArgsDict(TypedDict):
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the application to scope to. If empty then this scope applies to all applications.
+        """
+        environment_filter_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+        """
+        environment_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+        """
+elif False:
+    DatacenterUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DatacenterUsageScopeArgs:
     def __init__(__self__, *,
@@ -169,6 +232,23 @@ class DatacenterUsageScopeArgs:
         pulumi.set(self, "environment_id", value)
 
 
+if not MYPY:
+    class GcpUsageScopeArgsDict(TypedDict):
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the application to scope to. If empty then this scope applies to all applications.
+        """
+        environment_filter_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+        """
+        environment_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+        """
+elif False:
+    GcpUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpUsageScopeArgs:
     def __init__(__self__, *,
@@ -223,6 +303,27 @@ class GcpUsageScopeArgs:
     def environment_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment_id", value)
 
+
+if not MYPY:
+    class KubernetesAuthenticationArgsDict(TypedDict):
+        delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Delegate selectors to inherit the GCP credentials from.
+        """
+        oidc: NotRequired[pulumi.Input['KubernetesAuthenticationOidcArgsDict']]
+        """
+        Service account configuration for connecting to the Kubernetes cluster
+        """
+        service_account: NotRequired[pulumi.Input['KubernetesAuthenticationServiceAccountArgsDict']]
+        """
+        Username and password for authentication to the cluster
+        """
+        username_password: NotRequired[pulumi.Input['KubernetesAuthenticationUsernamePasswordArgsDict']]
+        """
+        Username and password for authentication to the cluster
+        """
+elif False:
+    KubernetesAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesAuthenticationArgs:
@@ -294,6 +395,39 @@ class KubernetesAuthenticationArgs:
     def username_password(self, value: Optional[pulumi.Input['KubernetesAuthenticationUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
+
+if not MYPY:
+    class KubernetesAuthenticationOidcArgsDict(TypedDict):
+        client_id_secret_name: pulumi.Input[str]
+        """
+        Name of the Harness secret containing the client ID for the cluster.
+        """
+        identity_provider_url: pulumi.Input[str]
+        """
+        URL of the identity provider to use.
+        """
+        master_url: pulumi.Input[str]
+        """
+        URL of the Kubernetes master to connect to.
+        """
+        password_secret_name: pulumi.Input[str]
+        """
+        Name of the Harness secret containing the password for the cluster.
+        """
+        username: pulumi.Input[str]
+        """
+        Username for authentication to the cluster. This can be the username itself or the ID of a harness secret.
+        """
+        client_secret_secret_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Harness secret containing the client secret for the cluster.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Scopes to request from the identity provider.
+        """
+elif False:
+    KubernetesAuthenticationOidcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesAuthenticationOidcArgs:
@@ -409,6 +543,23 @@ class KubernetesAuthenticationOidcArgs:
         pulumi.set(self, "scopes", value)
 
 
+if not MYPY:
+    class KubernetesAuthenticationServiceAccountArgsDict(TypedDict):
+        master_url: pulumi.Input[str]
+        """
+        URL of the Kubernetes master to connect to.
+        """
+        service_account_token_secret_name: pulumi.Input[str]
+        """
+        Name of the Harness secret containing the service account token for the cluster.
+        """
+        ca_certificate_secret_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Harness secret containing the CA certificate for the cluster.
+        """
+elif False:
+    KubernetesAuthenticationServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubernetesAuthenticationServiceAccountArgs:
     def __init__(__self__, *,
@@ -461,6 +612,27 @@ class KubernetesAuthenticationServiceAccountArgs:
     def ca_certificate_secret_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ca_certificate_secret_name", value)
 
+
+if not MYPY:
+    class KubernetesAuthenticationUsernamePasswordArgsDict(TypedDict):
+        master_url: pulumi.Input[str]
+        """
+        URL of the Kubernetes master to connect to.
+        """
+        password_secret_name: pulumi.Input[str]
+        """
+        Name of the Harness secret containing the password for the cluster.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username for authentication to the cluster
+        """
+        username_secret_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Harness secret containing the username for authentication to the cluster
+        """
+elif False:
+    KubernetesAuthenticationUsernamePasswordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesAuthenticationUsernamePasswordArgs:
@@ -530,6 +702,23 @@ class KubernetesAuthenticationUsernamePasswordArgs:
     def username_secret_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_secret_name", value)
 
+
+if not MYPY:
+    class KubernetesUsageScopeArgsDict(TypedDict):
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the application to scope to. If empty then this scope applies to all applications.
+        """
+        environment_filter_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
+        """
+        environment_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
+        """
+elif False:
+    KubernetesUsageScopeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesUsageScopeArgs:
