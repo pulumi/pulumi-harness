@@ -64,13 +64,13 @@ import (
 // # Import org level file
 //
 // ```sh
-// $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id><identifier>
+// $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<identifier>
 // ```
 //
 // # Import org level file
 //
 // ```sh
-// $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id><project_id><identifier>
+// $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<project_id>/<identifier>
 // ```
 type FileStoreFile struct {
 	pulumi.CustomResourceState

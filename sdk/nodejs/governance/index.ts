@@ -15,6 +15,11 @@ export const getRuleEnforcement: typeof import("./getRuleEnforcement").getRuleEn
 export const getRuleEnforcementOutput: typeof import("./getRuleEnforcement").getRuleEnforcementOutput = null as any;
 utilities.lazyLoad(exports, ["getRuleEnforcement","getRuleEnforcementOutput"], () => require("./getRuleEnforcement"));
 
+export { GetRuleSetArgs, GetRuleSetResult, GetRuleSetOutputArgs } from "./getRuleSet";
+export const getRuleSet: typeof import("./getRuleSet").getRuleSet = null as any;
+export const getRuleSetOutput: typeof import("./getRuleSet").getRuleSetOutput = null as any;
+utilities.lazyLoad(exports, ["getRuleSet","getRuleSetOutput"], () => require("./getRuleSet"));
+
 export { RuleArgs, RuleState } from "./rule";
 export type Rule = import("./rule").Rule;
 export const Rule: typeof import("./rule").Rule = null as any;
@@ -25,6 +30,11 @@ export type RuleEnforcement = import("./ruleEnforcement").RuleEnforcement;
 export const RuleEnforcement: typeof import("./ruleEnforcement").RuleEnforcement = null as any;
 utilities.lazyLoad(exports, ["RuleEnforcement"], () => require("./ruleEnforcement"));
 
+export { RuleSetArgs, RuleSetState } from "./ruleSet";
+export type RuleSet = import("./ruleSet").RuleSet;
+export const RuleSet: typeof import("./ruleSet").RuleSet = null as any;
+utilities.lazyLoad(exports, ["RuleSet"], () => require("./ruleSet"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -34,6 +44,8 @@ const _module = {
                 return new Rule(name, <any>undefined, { urn })
             case "harness:governance/ruleEnforcement:RuleEnforcement":
                 return new RuleEnforcement(name, <any>undefined, { urn })
+            case "harness:governance/ruleSet:RuleSet":
+                return new RuleSet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -41,3 +53,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("harness", "governance/rule", _module)
 pulumi.runtime.registerResourceModule("harness", "governance/ruleEnforcement", _module)
+pulumi.runtime.registerResourceModule("harness", "governance/ruleSet", _module)

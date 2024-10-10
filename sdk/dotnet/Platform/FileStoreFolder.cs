@@ -52,13 +52,13 @@ namespace Pulumi.Harness.Platform
     /// Import org level folder
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example &lt;org_id&gt;&lt;identifier&gt;
+    /// $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example &lt;org_id&gt;/&lt;identifier&gt;
     /// ```
     /// 
     /// Import org level folder
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example &lt;org_id&gt;&lt;project_id&gt;&lt;identifier&gt;
+    /// $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example &lt;org_id&gt;/&lt;project_id&gt;/&lt;identifier&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/fileStoreFolder:FileStoreFolder")]

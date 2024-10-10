@@ -362,13 +362,13 @@ class FileStoreFolder(pulumi.CustomResource):
         Import org level folder
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id><identifier>
+        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id>/<identifier>
         ```
 
         Import org level folder
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id><project_id><identifier>
+        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id>/<project_id>/<identifier>
         ```
 
         :param str resource_name: The name of the resource.
@@ -421,13 +421,13 @@ class FileStoreFolder(pulumi.CustomResource):
         Import org level folder
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id><identifier>
+        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id>/<identifier>
         ```
 
         Import org level folder
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id><project_id><identifier>
+        $ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example <org_id>/<project_id>/<identifier>
         ```
 
         :param str resource_name: The name of the resource.
