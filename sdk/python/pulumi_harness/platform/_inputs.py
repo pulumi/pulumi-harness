@@ -4,257 +4,521 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AppDynamicsConnectorApiTokenArgs',
+    'AppDynamicsConnectorApiTokenArgsDict',
     'AppDynamicsConnectorUsernamePasswordArgs',
+    'AppDynamicsConnectorUsernamePasswordArgsDict',
     'ArtifactoryConnectorCredentialsArgs',
+    'ArtifactoryConnectorCredentialsArgsDict',
     'AwsCCConnectorCrossAccountAccessArgs',
+    'AwsCCConnectorCrossAccountAccessArgsDict',
     'AwsConnectorCrossAccountAccessArgs',
+    'AwsConnectorCrossAccountAccessArgsDict',
     'AwsConnectorEqualJitterBackoffStrategyArgs',
+    'AwsConnectorEqualJitterBackoffStrategyArgsDict',
     'AwsConnectorFixedDelayBackoffStrategyArgs',
+    'AwsConnectorFixedDelayBackoffStrategyArgsDict',
     'AwsConnectorFullJitterBackoffStrategyArgs',
+    'AwsConnectorFullJitterBackoffStrategyArgsDict',
     'AwsConnectorInheritFromDelegateArgs',
+    'AwsConnectorInheritFromDelegateArgsDict',
     'AwsConnectorIrsaArgs',
+    'AwsConnectorIrsaArgsDict',
     'AwsConnectorManualArgs',
+    'AwsConnectorManualArgsDict',
     'AwsConnectorOidcAuthenticationArgs',
+    'AwsConnectorOidcAuthenticationArgsDict',
     'AwsKmsConnectorCredentialsArgs',
+    'AwsKmsConnectorCredentialsArgsDict',
     'AwsKmsConnectorCredentialsAssumeRoleArgs',
+    'AwsKmsConnectorCredentialsAssumeRoleArgsDict',
     'AwsKmsConnectorCredentialsManualArgs',
+    'AwsKmsConnectorCredentialsManualArgsDict',
     'AwsSecretManagerConnectorCredentialsArgs',
+    'AwsSecretManagerConnectorCredentialsArgsDict',
     'AwsSecretManagerConnectorCredentialsAssumeRoleArgs',
+    'AwsSecretManagerConnectorCredentialsAssumeRoleArgsDict',
     'AwsSecretManagerConnectorCredentialsManualArgs',
+    'AwsSecretManagerConnectorCredentialsManualArgsDict',
     'AzureCloudCostConnectorBillingExportSpecArgs',
+    'AzureCloudCostConnectorBillingExportSpecArgsDict',
     'AzureCloudProviderConnectorCredentialsArgs',
+    'AzureCloudProviderConnectorCredentialsArgsDict',
     'AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs',
+    'AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgsDict',
     'AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs',
+    'AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgsDict',
     'AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs',
+    'AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgsDict',
     'AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs',
+    'AzureCloudProviderConnectorCredentialsAzureManualDetailsArgsDict',
     'AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs',
+    'AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgsDict',
     'AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs',
+    'AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgsDict',
     'AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs',
+    'AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgsDict',
     'BitbucketConnectorApiAuthenticationArgs',
+    'BitbucketConnectorApiAuthenticationArgsDict',
     'BitbucketConnectorCredentialsArgs',
+    'BitbucketConnectorCredentialsArgsDict',
     'BitbucketConnectorCredentialsHttpArgs',
+    'BitbucketConnectorCredentialsHttpArgsDict',
     'BitbucketConnectorCredentialsSshArgs',
+    'BitbucketConnectorCredentialsSshArgsDict',
     'ConnectorCustomSecretManagerTemplateInputArgs',
+    'ConnectorCustomSecretManagerTemplateInputArgsDict',
     'ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs',
+    'ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgsDict',
     'ConnectorCustomhealthsourceHeaderArgs',
+    'ConnectorCustomhealthsourceHeaderArgsDict',
     'ConnectorCustomhealthsourceParamArgs',
+    'ConnectorCustomhealthsourceParamArgsDict',
     'ConnectorJdbcCredentialsArgs',
+    'ConnectorJdbcCredentialsArgsDict',
     'ConnectorPdcHostArgs',
+    'ConnectorPdcHostArgsDict',
     'ConnectorRancherBearerTokenArgs',
+    'ConnectorRancherBearerTokenArgsDict',
     'DbSchemaSchemaSourceArgs',
+    'DbSchemaSchemaSourceArgsDict',
     'DockerConnectorCredentialsArgs',
+    'DockerConnectorCredentialsArgsDict',
     'ElasticsearchConnectorApiTokenArgs',
+    'ElasticsearchConnectorApiTokenArgsDict',
     'ElasticsearchConnectorNoAuthenticationArgs',
+    'ElasticsearchConnectorNoAuthenticationArgsDict',
     'ElasticsearchConnectorUsernamePasswordArgs',
+    'ElasticsearchConnectorUsernamePasswordArgsDict',
     'EnvironmentClustersMappingClusterArgs',
+    'EnvironmentClustersMappingClusterArgsDict',
     'EnvironmentGitDetailsArgs',
+    'EnvironmentGitDetailsArgsDict',
     'FeatureFlagEnvironmentArgs',
+    'FeatureFlagEnvironmentArgsDict',
     'FeatureFlagEnvironmentAddTargetRuleArgs',
+    'FeatureFlagEnvironmentAddTargetRuleArgsDict',
     'FeatureFlagTagArgs',
+    'FeatureFlagTagArgsDict',
     'FeatureFlagTargetGroupRuleArgs',
+    'FeatureFlagTargetGroupRuleArgsDict',
     'FeatureFlagVariationArgs',
+    'FeatureFlagVariationArgsDict',
     'FileStoreFileCreatedByArgs',
+    'FileStoreFileCreatedByArgsDict',
     'FileStoreFileLastModifiedByArgs',
+    'FileStoreFileLastModifiedByArgsDict',
     'FileStoreFolderCreatedByArgs',
+    'FileStoreFolderCreatedByArgsDict',
     'FileStoreFolderLastModifiedByArgs',
+    'FileStoreFolderLastModifiedByArgsDict',
     'FiltersFilterPropertiesArgs',
+    'FiltersFilterPropertiesArgsDict',
     'GcpCloudCostConnectorBillingExportSpecArgs',
+    'GcpCloudCostConnectorBillingExportSpecArgsDict',
     'GcpConnectorInheritFromDelegateArgs',
+    'GcpConnectorInheritFromDelegateArgsDict',
     'GcpConnectorManualArgs',
+    'GcpConnectorManualArgsDict',
     'GcpConnectorOidcAuthenticationArgs',
+    'GcpConnectorOidcAuthenticationArgsDict',
     'GitConnectorCredentialsArgs',
+    'GitConnectorCredentialsArgsDict',
     'GitConnectorCredentialsHttpArgs',
+    'GitConnectorCredentialsHttpArgsDict',
     'GitConnectorCredentialsSshArgs',
+    'GitConnectorCredentialsSshArgsDict',
     'GitOpsAgentMetadataArgs',
+    'GitOpsAgentMetadataArgsDict',
     'GitOpsApplicationsApplicationArgs',
+    'GitOpsApplicationsApplicationArgsDict',
     'GitOpsApplicationsApplicationMetadataArgs',
+    'GitOpsApplicationsApplicationMetadataArgsDict',
     'GitOpsApplicationsApplicationMetadataOwnerReferenceArgs',
+    'GitOpsApplicationsApplicationMetadataOwnerReferenceArgsDict',
     'GitOpsApplicationsApplicationSpecArgs',
+    'GitOpsApplicationsApplicationSpecArgsDict',
     'GitOpsApplicationsApplicationSpecDestinationArgs',
+    'GitOpsApplicationsApplicationSpecDestinationArgsDict',
     'GitOpsApplicationsApplicationSpecSourceArgs',
+    'GitOpsApplicationsApplicationSpecSourceArgsDict',
     'GitOpsApplicationsApplicationSpecSourceDirectoryArgs',
+    'GitOpsApplicationsApplicationSpecSourceDirectoryArgsDict',
     'GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgs',
+    'GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgsDict',
     'GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs',
+    'GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgsDict',
     'GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs',
+    'GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgsDict',
     'GitOpsApplicationsApplicationSpecSourceHelmArgs',
+    'GitOpsApplicationsApplicationSpecSourceHelmArgsDict',
     'GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs',
+    'GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgsDict',
     'GitOpsApplicationsApplicationSpecSourceHelmParameterArgs',
+    'GitOpsApplicationsApplicationSpecSourceHelmParameterArgsDict',
     'GitOpsApplicationsApplicationSpecSourceKsonnetArgs',
+    'GitOpsApplicationsApplicationSpecSourceKsonnetArgsDict',
     'GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgs',
+    'GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgsDict',
     'GitOpsApplicationsApplicationSpecSourceKustomizeArgs',
+    'GitOpsApplicationsApplicationSpecSourceKustomizeArgsDict',
     'GitOpsApplicationsApplicationSpecSourcePluginArgs',
+    'GitOpsApplicationsApplicationSpecSourcePluginArgsDict',
     'GitOpsApplicationsApplicationSpecSourcePluginEnvArgs',
+    'GitOpsApplicationsApplicationSpecSourcePluginEnvArgsDict',
     'GitOpsApplicationsApplicationSpecSyncPolicyArgs',
+    'GitOpsApplicationsApplicationSpecSyncPolicyArgsDict',
     'GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgs',
+    'GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgsDict',
     'GitOpsApplicationsApplicationSpecSyncPolicyRetryArgs',
+    'GitOpsApplicationsApplicationSpecSyncPolicyRetryArgsDict',
     'GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs',
+    'GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgsDict',
     'GitOpsClusterRequestArgs',
+    'GitOpsClusterRequestArgsDict',
     'GitOpsClusterRequestClusterArgs',
+    'GitOpsClusterRequestClusterArgsDict',
     'GitOpsClusterRequestClusterConfigArgs',
+    'GitOpsClusterRequestClusterConfigArgsDict',
     'GitOpsClusterRequestClusterConfigExecProviderConfigArgs',
+    'GitOpsClusterRequestClusterConfigExecProviderConfigArgsDict',
     'GitOpsClusterRequestClusterConfigTlsClientConfigArgs',
+    'GitOpsClusterRequestClusterConfigTlsClientConfigArgsDict',
     'GitOpsClusterRequestClusterInfoArgs',
+    'GitOpsClusterRequestClusterInfoArgsDict',
     'GitOpsClusterRequestClusterInfoCacheInfoArgs',
+    'GitOpsClusterRequestClusterInfoCacheInfoArgsDict',
     'GitOpsClusterRequestClusterInfoConnectionStateArgs',
+    'GitOpsClusterRequestClusterInfoConnectionStateArgsDict',
     'GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs',
+    'GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgsDict',
     'GitOpsClusterRequestClusterRefreshRequestedAtArgs',
+    'GitOpsClusterRequestClusterRefreshRequestedAtArgsDict',
     'GitOpsGnupgRequestArgs',
+    'GitOpsGnupgRequestArgsDict',
     'GitOpsGnupgRequestPublickeyArgs',
+    'GitOpsGnupgRequestPublickeyArgsDict',
     'GitOpsRepoCertRequestArgs',
+    'GitOpsRepoCertRequestArgsDict',
     'GitOpsRepoCertRequestCertificateArgs',
+    'GitOpsRepoCertRequestCertificateArgsDict',
     'GitOpsRepoCertRequestCertificateItemArgs',
+    'GitOpsRepoCertRequestCertificateItemArgsDict',
     'GitOpsRepoCertRequestCertificateMetadataArgs',
+    'GitOpsRepoCertRequestCertificateMetadataArgsDict',
     'GitOpsRepoCredCredArgs',
+    'GitOpsRepoCredCredArgsDict',
     'GitOpsRepositoryEcrGenArgs',
+    'GitOpsRepositoryEcrGenArgsDict',
     'GitOpsRepositoryEcrGenJwtAuthArgs',
+    'GitOpsRepositoryEcrGenJwtAuthArgsDict',
     'GitOpsRepositoryEcrGenSecretRefArgs',
+    'GitOpsRepositoryEcrGenSecretRefArgsDict',
     'GitOpsRepositoryGcrGenArgs',
+    'GitOpsRepositoryGcrGenArgsDict',
     'GitOpsRepositoryGcrGenWorkloadIdentityArgs',
+    'GitOpsRepositoryGcrGenWorkloadIdentityArgsDict',
     'GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgs',
+    'GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgsDict',
     'GitOpsRepositoryRepoArgs',
+    'GitOpsRepositoryRepoArgsDict',
     'GitOpsRepositoryUpdateMaskArgs',
+    'GitOpsRepositoryUpdateMaskArgsDict',
     'GithubConnectorApiAuthenticationArgs',
+    'GithubConnectorApiAuthenticationArgsDict',
     'GithubConnectorApiAuthenticationGithubAppArgs',
+    'GithubConnectorApiAuthenticationGithubAppArgsDict',
     'GithubConnectorCredentialsArgs',
+    'GithubConnectorCredentialsArgsDict',
     'GithubConnectorCredentialsHttpArgs',
+    'GithubConnectorCredentialsHttpArgsDict',
     'GithubConnectorCredentialsHttpAnonymouseArgs',
+    'GithubConnectorCredentialsHttpAnonymouseArgsDict',
     'GithubConnectorCredentialsHttpGithubAppArgs',
+    'GithubConnectorCredentialsHttpGithubAppArgsDict',
     'GithubConnectorCredentialsSshArgs',
+    'GithubConnectorCredentialsSshArgsDict',
     'GitlabConnectorApiAuthenticationArgs',
+    'GitlabConnectorApiAuthenticationArgsDict',
     'GitlabConnectorCredentialsArgs',
+    'GitlabConnectorCredentialsArgsDict',
     'GitlabConnectorCredentialsHttpArgs',
+    'GitlabConnectorCredentialsHttpArgsDict',
     'GitlabConnectorCredentialsSshArgs',
+    'GitlabConnectorCredentialsSshArgsDict',
     'GitopsAppProjectProjectArgs',
+    'GitopsAppProjectProjectArgsDict',
     'GitopsAppProjectProjectMetadataArgs',
+    'GitopsAppProjectProjectMetadataArgsDict',
     'GitopsAppProjectProjectMetadataManagedFieldArgs',
+    'GitopsAppProjectProjectMetadataManagedFieldArgsDict',
     'GitopsAppProjectProjectSpecArgs',
+    'GitopsAppProjectProjectSpecArgsDict',
     'GitopsAppProjectProjectSpecClusterResourceBlacklistArgs',
+    'GitopsAppProjectProjectSpecClusterResourceBlacklistArgsDict',
     'GitopsAppProjectProjectSpecClusterResourceWhitelistArgs',
+    'GitopsAppProjectProjectSpecClusterResourceWhitelistArgsDict',
     'GitopsAppProjectProjectSpecDestinationArgs',
+    'GitopsAppProjectProjectSpecDestinationArgsDict',
     'GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs',
+    'GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgsDict',
     'GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs',
+    'GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgsDict',
     'GitopsAppProjectProjectSpecOrphanedResourceArgs',
+    'GitopsAppProjectProjectSpecOrphanedResourceArgsDict',
     'GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs',
+    'GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgsDict',
     'GitopsAppProjectProjectSpecRoleArgs',
+    'GitopsAppProjectProjectSpecRoleArgsDict',
     'GitopsAppProjectProjectSpecRoleJwtTokenArgs',
+    'GitopsAppProjectProjectSpecRoleJwtTokenArgsDict',
     'GitopsAppProjectProjectSpecSignatureKeyArgs',
+    'GitopsAppProjectProjectSpecSignatureKeyArgsDict',
     'GitopsAppProjectProjectSpecSyncWindowArgs',
+    'GitopsAppProjectProjectSpecSyncWindowArgsDict',
     'HelmConnectorCredentialsArgs',
+    'HelmConnectorCredentialsArgsDict',
     'InfrastructureGitDetailsArgs',
+    'InfrastructureGitDetailsArgsDict',
     'InputSetGitDetailsArgs',
+    'InputSetGitDetailsArgsDict',
     'InputSetGitImportInfoArgs',
+    'InputSetGitImportInfoArgsDict',
     'InputSetInputSetImportRequestArgs',
+    'InputSetInputSetImportRequestArgsDict',
     'JenkinsConnectorAuthArgs',
+    'JenkinsConnectorAuthArgsDict',
     'JenkinsConnectorAuthJenkinsBearerTokenArgs',
+    'JenkinsConnectorAuthJenkinsBearerTokenArgsDict',
     'JenkinsConnectorAuthJenkinsUserNamePasswordArgs',
+    'JenkinsConnectorAuthJenkinsUserNamePasswordArgsDict',
     'JiraConnectorAuthArgs',
+    'JiraConnectorAuthArgsDict',
     'JiraConnectorAuthPersonalAccessTokenArgs',
+    'JiraConnectorAuthPersonalAccessTokenArgsDict',
     'JiraConnectorAuthUsernamePasswordArgs',
+    'JiraConnectorAuthUsernamePasswordArgsDict',
     'KubernetesConnectorClientKeyCertArgs',
+    'KubernetesConnectorClientKeyCertArgsDict',
     'KubernetesConnectorInheritFromDelegateArgs',
+    'KubernetesConnectorInheritFromDelegateArgsDict',
     'KubernetesConnectorOpenidConnectArgs',
+    'KubernetesConnectorOpenidConnectArgsDict',
     'KubernetesConnectorServiceAccountArgs',
+    'KubernetesConnectorServiceAccountArgsDict',
     'KubernetesConnectorUsernamePasswordArgs',
+    'KubernetesConnectorUsernamePasswordArgsDict',
     'ManualFreezeCurrentOrUpcomingWindowArgs',
+    'ManualFreezeCurrentOrUpcomingWindowArgsDict',
     'ManualFreezeFreezeWindowArgs',
+    'ManualFreezeFreezeWindowArgsDict',
     'ManualFreezeFreezeWindowRecurrenceArgs',
+    'ManualFreezeFreezeWindowRecurrenceArgsDict',
     'ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs',
+    'ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgsDict',
     'MonitoredServiceRequestArgs',
+    'MonitoredServiceRequestArgsDict',
     'MonitoredServiceRequestChangeSourceArgs',
+    'MonitoredServiceRequestChangeSourceArgsDict',
     'MonitoredServiceRequestDependencyArgs',
+    'MonitoredServiceRequestDependencyArgsDict',
     'MonitoredServiceRequestHealthSourceArgs',
+    'MonitoredServiceRequestHealthSourceArgsDict',
     'MonitoredServiceRequestNotificationRuleRefArgs',
+    'MonitoredServiceRequestNotificationRuleRefArgsDict',
     'NexusConnectorCredentialsArgs',
+    'NexusConnectorCredentialsArgsDict',
     'NotificationRuleRequestArgs',
+    'NotificationRuleRequestArgsDict',
     'NotificationRuleRequestConditionArgs',
+    'NotificationRuleRequestConditionArgsDict',
     'NotificationRuleRequestNotificationMethodArgs',
+    'NotificationRuleRequestNotificationMethodArgsDict',
     'OciHelmConnectorCredentialsArgs',
+    'OciHelmConnectorCredentialsArgsDict',
     'OverridesGitDetailsArgs',
+    'OverridesGitDetailsArgsDict',
     'PipelineFiltersFilterPropertiesArgs',
+    'PipelineFiltersFilterPropertiesArgsDict',
     'PipelineFiltersFilterPropertiesModulePropertiesArgs',
+    'PipelineFiltersFilterPropertiesModulePropertiesArgsDict',
     'PipelineFiltersFilterPropertiesModulePropertiesCdArgs',
+    'PipelineFiltersFilterPropertiesModulePropertiesCdArgsDict',
     'PipelineFiltersFilterPropertiesModulePropertiesCiArgs',
+    'PipelineFiltersFilterPropertiesModulePropertiesCiArgsDict',
     'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgs',
+    'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgsDict',
     'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequestArgs',
+    'PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequestArgsDict',
     'PipelineGitDetailsArgs',
+    'PipelineGitDetailsArgsDict',
     'PipelineGitImportInfoArgs',
+    'PipelineGitImportInfoArgsDict',
     'PipelinePipelineImportRequestArgs',
+    'PipelinePipelineImportRequestArgsDict',
     'PolicySetPolicyArgs',
+    'PolicySetPolicyArgsDict',
     'PrometheusConnectorHeaderArgs',
+    'PrometheusConnectorHeaderArgsDict',
     'RepoRuleBranchBypassArgs',
+    'RepoRuleBranchBypassArgsDict',
     'RepoRuleBranchPatternArgs',
+    'RepoRuleBranchPatternArgsDict',
     'RepoRuleBranchPolicyArgs',
+    'RepoRuleBranchPolicyArgsDict',
     'RepoSourceArgs',
+    'RepoSourceArgsDict',
     'ResourceGroupIncludedScopeArgs',
+    'ResourceGroupIncludedScopeArgsDict',
     'ResourceGroupResourceFilterArgs',
+    'ResourceGroupResourceFilterArgsDict',
     'ResourceGroupResourceFilterResourceArgs',
+    'ResourceGroupResourceFilterResourceArgsDict',
     'ResourceGroupResourceFilterResourceAttributeFilterArgs',
+    'ResourceGroupResourceFilterResourceAttributeFilterArgsDict',
     'RoleAssignmentsPrincipalArgs',
+    'RoleAssignmentsPrincipalArgsDict',
     'SecretSshkeyKerberosArgs',
+    'SecretSshkeyKerberosArgsDict',
     'SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs',
+    'SecretSshkeyKerberosTgtKeyTabFilePathSpecArgsDict',
     'SecretSshkeyKerberosTgtPasswordSpecArgs',
+    'SecretSshkeyKerberosTgtPasswordSpecArgsDict',
     'SecretSshkeySshArgs',
+    'SecretSshkeySshArgsDict',
     'SecretSshkeySshSshPasswordCredentialArgs',
+    'SecretSshkeySshSshPasswordCredentialArgsDict',
     'SecretSshkeySshSshkeyPathCredentialArgs',
+    'SecretSshkeySshSshkeyPathCredentialArgsDict',
     'SecretSshkeySshSshkeyReferenceCredentialArgs',
+    'SecretSshkeySshSshkeyReferenceCredentialArgsDict',
     'SecretTextAdditionalMetadataArgs',
+    'SecretTextAdditionalMetadataArgsDict',
     'SecretTextAdditionalMetadataValueArgs',
+    'SecretTextAdditionalMetadataValueArgsDict',
     'ServiceGitDetailsArgs',
+    'ServiceGitDetailsArgsDict',
     'ServiceNowConnectorAuthArgs',
+    'ServiceNowConnectorAuthArgsDict',
     'ServiceNowConnectorAuthAdfsArgs',
+    'ServiceNowConnectorAuthAdfsArgsDict',
     'ServiceNowConnectorAuthRefreshTokenArgs',
+    'ServiceNowConnectorAuthRefreshTokenArgsDict',
     'ServiceNowConnectorAuthUsernamePasswordArgs',
+    'ServiceNowConnectorAuthUsernamePasswordArgsDict',
     'ServiceOverridesV2GitDetailsArgs',
+    'ServiceOverridesV2GitDetailsArgsDict',
     'SloRequestArgs',
+    'SloRequestArgsDict',
     'SloRequestNotificationRuleRefArgs',
+    'SloRequestNotificationRuleRefArgsDict',
     'SloRequestSloTargetArgs',
+    'SloRequestSloTargetArgsDict',
     'SpotConnectorPermanentTokenArgs',
+    'SpotConnectorPermanentTokenArgsDict',
     'TasConnectorCredentialsArgs',
+    'TasConnectorCredentialsArgsDict',
     'TasConnectorCredentialsTasManualDetailsArgs',
+    'TasConnectorCredentialsTasManualDetailsArgsDict',
     'TemplateFiltersFilterPropertiesArgs',
+    'TemplateFiltersFilterPropertiesArgsDict',
     'TemplateGitDetailsArgs',
+    'TemplateGitDetailsArgsDict',
     'TemplateGitImportDetailsArgs',
+    'TemplateGitImportDetailsArgsDict',
     'TemplateTemplateImportRequestArgs',
+    'TemplateTemplateImportRequestArgsDict',
     'TerraformCloudConnectorCredentialsArgs',
+    'TerraformCloudConnectorCredentialsArgsDict',
     'TerraformCloudConnectorCredentialsApiTokenArgs',
+    'TerraformCloudConnectorCredentialsApiTokenArgsDict',
     'UserRoleBindingArgs',
+    'UserRoleBindingArgsDict',
     'UsergroupNotificationConfigArgs',
+    'UsergroupNotificationConfigArgsDict',
     'VariablesSpecArgs',
+    'VariablesSpecArgsDict',
     'WorkspaceEnvironmentVariableArgs',
+    'WorkspaceEnvironmentVariableArgsDict',
     'WorkspaceTerraformVariableArgs',
+    'WorkspaceTerraformVariableArgsDict',
     'WorkspaceTerraformVariableFileArgs',
+    'WorkspaceTerraformVariableFileArgsDict',
     'GetConnectorRancherBearerTokenArgs',
+    'GetConnectorRancherBearerTokenArgsDict',
     'GetEnvironmentClustersMappingClusterArgs',
+    'GetEnvironmentClustersMappingClusterArgsDict',
     'GetEnvironmentGitDetailsArgs',
+    'GetEnvironmentGitDetailsArgsDict',
     'GetGitopsAgentDeployYamlProxyArgs',
+    'GetGitopsAgentDeployYamlProxyArgsDict',
     'GetGitopsGnupgRequestArgs',
+    'GetGitopsGnupgRequestArgsDict',
     'GetGitopsGnupgRequestPublickeyArgs',
+    'GetGitopsGnupgRequestPublickeyArgsDict',
     'GetInfrastructureGitDetailsArgs',
+    'GetInfrastructureGitDetailsArgsDict',
     'GetInputSetGitDetailsArgs',
+    'GetInputSetGitDetailsArgsDict',
     'GetOverridesGitDetailsArgs',
+    'GetOverridesGitDetailsArgsDict',
     'GetPipelineGitDetailsArgs',
+    'GetPipelineGitDetailsArgsDict',
     'GetPolicySetPolicyArgs',
+    'GetPolicySetPolicyArgsDict',
     'GetRepoRuleBranchBypassArgs',
+    'GetRepoRuleBranchBypassArgsDict',
     'GetRepoRuleBranchPatternArgs',
+    'GetRepoRuleBranchPatternArgsDict',
     'GetRepoRuleBranchPolicyArgs',
+    'GetRepoRuleBranchPolicyArgsDict',
     'GetRepoSourceArgs',
+    'GetRepoSourceArgsDict',
     'GetSecretTextAdditionalMetadataArgs',
+    'GetSecretTextAdditionalMetadataArgsDict',
     'GetSecretTextAdditionalMetadataValueArgs',
+    'GetSecretTextAdditionalMetadataValueArgsDict',
     'GetServiceGitDetailsArgs',
+    'GetServiceGitDetailsArgsDict',
     'GetServiceOverridesV2GitDetailsArgs',
+    'GetServiceOverridesV2GitDetailsArgsDict',
     'GetTemplateGitDetailsArgs',
+    'GetTemplateGitDetailsArgsDict',
     'GetUsergroupNotificationConfigArgs',
+    'GetUsergroupNotificationConfigArgsDict',
     'GetWorkspaceEnvironmentVariableArgs',
+    'GetWorkspaceEnvironmentVariableArgsDict',
     'GetWorkspaceTerraformVariableArgs',
+    'GetWorkspaceTerraformVariableArgsDict',
     'GetWorkspaceTerraformVariableFileArgs',
+    'GetWorkspaceTerraformVariableFileArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AppDynamicsConnectorApiTokenArgsDict(TypedDict):
+        client_id: pulumi.Input[str]
+        """
+        The client id used for connecting to App Dynamics.
+        """
+        client_secret_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the App Dynamics client secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    AppDynamicsConnectorApiTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppDynamicsConnectorApiTokenArgs:
@@ -293,6 +557,19 @@ class AppDynamicsConnectorApiTokenArgs:
         pulumi.set(self, "client_secret_ref", value)
 
 
+if not MYPY:
+    class AppDynamicsConnectorUsernamePasswordArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: pulumi.Input[str]
+        """
+        Username to use for authentication.
+        """
+elif False:
+    AppDynamicsConnectorUsernamePasswordArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AppDynamicsConnectorUsernamePasswordArgs:
     def __init__(__self__, *,
@@ -329,6 +606,23 @@ class AppDynamicsConnectorUsernamePasswordArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class ArtifactoryConnectorCredentialsArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ArtifactoryConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ArtifactoryConnectorCredentialsArgs:
@@ -384,6 +678,19 @@ class ArtifactoryConnectorCredentialsArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class AwsCCConnectorCrossAccountAccessArgsDict(TypedDict):
+        external_id: pulumi.Input[str]
+        """
+        The external id of the role to use for cross-account access. This is a random unique value to provide additional secure authentication.
+        """
+        role_arn: pulumi.Input[str]
+        """
+        The ARN of the role to use for cross-account access.
+        """
+elif False:
+    AwsCCConnectorCrossAccountAccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsCCConnectorCrossAccountAccessArgs:
     def __init__(__self__, *,
@@ -420,6 +727,19 @@ class AwsCCConnectorCrossAccountAccessArgs:
     def role_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "role_arn", value)
 
+
+if not MYPY:
+    class AwsConnectorCrossAccountAccessArgsDict(TypedDict):
+        role_arn: pulumi.Input[str]
+        """
+        The Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target AWS account.
+        """
+        external_id: NotRequired[pulumi.Input[str]]
+        """
+        If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+elif False:
+    AwsConnectorCrossAccountAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsConnectorCrossAccountAccessArgs:
@@ -458,6 +778,23 @@ class AwsConnectorCrossAccountAccessArgs:
     def external_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_id", value)
 
+
+if not MYPY:
+    class AwsConnectorEqualJitterBackoffStrategyArgsDict(TypedDict):
+        base_delay: NotRequired[pulumi.Input[int]]
+        """
+        Base delay.
+        """
+        max_backoff_time: NotRequired[pulumi.Input[int]]
+        """
+        Max BackOff Time.
+        """
+        retry_count: NotRequired[pulumi.Input[int]]
+        """
+        Retry Count.
+        """
+elif False:
+    AwsConnectorEqualJitterBackoffStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsConnectorEqualJitterBackoffStrategyArgs:
@@ -514,6 +851,19 @@ class AwsConnectorEqualJitterBackoffStrategyArgs:
         pulumi.set(self, "retry_count", value)
 
 
+if not MYPY:
+    class AwsConnectorFixedDelayBackoffStrategyArgsDict(TypedDict):
+        fixed_backoff: NotRequired[pulumi.Input[int]]
+        """
+        Fixed Backoff.
+        """
+        retry_count: NotRequired[pulumi.Input[int]]
+        """
+        Retry Count.
+        """
+elif False:
+    AwsConnectorFixedDelayBackoffStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsConnectorFixedDelayBackoffStrategyArgs:
     def __init__(__self__, *,
@@ -552,6 +902,23 @@ class AwsConnectorFixedDelayBackoffStrategyArgs:
     def retry_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retry_count", value)
 
+
+if not MYPY:
+    class AwsConnectorFullJitterBackoffStrategyArgsDict(TypedDict):
+        base_delay: NotRequired[pulumi.Input[int]]
+        """
+        Base delay.
+        """
+        max_backoff_time: NotRequired[pulumi.Input[int]]
+        """
+        Max BackOff Time.
+        """
+        retry_count: NotRequired[pulumi.Input[int]]
+        """
+        Retry Count.
+        """
+elif False:
+    AwsConnectorFullJitterBackoffStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsConnectorFullJitterBackoffStrategyArgs:
@@ -608,6 +975,19 @@ class AwsConnectorFullJitterBackoffStrategyArgs:
         pulumi.set(self, "retry_count", value)
 
 
+if not MYPY:
+    class AwsConnectorInheritFromDelegateArgsDict(TypedDict):
+        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The delegates to inherit the credentials from.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Test Region to perform Connection test of AWS Connector.
+        """
+elif False:
+    AwsConnectorInheritFromDelegateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsConnectorInheritFromDelegateArgs:
     def __init__(__self__, *,
@@ -646,6 +1026,19 @@ class AwsConnectorInheritFromDelegateArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class AwsConnectorIrsaArgsDict(TypedDict):
+        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The delegates to inherit the credentials from.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Test Region to perform Connection test of AWS Connector.
+        """
+elif False:
+    AwsConnectorIrsaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsConnectorIrsaArgs:
     def __init__(__self__, *,
@@ -683,6 +1076,31 @@ class AwsConnectorIrsaArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class AwsConnectorManualArgsDict(TypedDict):
+        secret_key_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS access key.
+        """
+        access_key_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Connect only use delegates with these tags.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Test Region to perform Connection test of AWS Connector.
+        """
+elif False:
+    AwsConnectorManualArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsConnectorManualArgs:
@@ -770,6 +1188,23 @@ class AwsConnectorManualArgs:
         pulumi.set(self, "region", value)
 
 
+if not MYPY:
+    class AwsConnectorOidcAuthenticationArgsDict(TypedDict):
+        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The delegates to inherit the credentials from.
+        """
+        iam_role_arn: pulumi.Input[str]
+        """
+        The IAM Role to assume the credentials from.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    AwsConnectorOidcAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsConnectorOidcAuthenticationArgs:
     def __init__(__self__, *,
@@ -822,6 +1257,23 @@ class AwsConnectorOidcAuthenticationArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class AwsKmsConnectorCredentialsArgsDict(TypedDict):
+        assume_role: NotRequired[pulumi.Input['AwsKmsConnectorCredentialsAssumeRoleArgsDict']]
+        """
+        Connect using STS assume role.
+        """
+        inherit_from_delegate: NotRequired[pulumi.Input[bool]]
+        """
+        Inherit the credentials from from the delegate.
+        """
+        manual: NotRequired[pulumi.Input['AwsKmsConnectorCredentialsManualArgsDict']]
+        """
+        Specify the AWS key and secret used for authenticating.
+        """
+elif False:
+    AwsKmsConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsKmsConnectorCredentialsArgs:
@@ -878,6 +1330,23 @@ class AwsKmsConnectorCredentialsArgs:
         pulumi.set(self, "manual", value)
 
 
+if not MYPY:
+    class AwsKmsConnectorCredentialsAssumeRoleArgsDict(TypedDict):
+        duration: pulumi.Input[int]
+        """
+        The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+        """
+        role_arn: pulumi.Input[str]
+        """
+        The ARN of the role to assume.
+        """
+        external_id: NotRequired[pulumi.Input[str]]
+        """
+        If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+elif False:
+    AwsKmsConnectorCredentialsAssumeRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsKmsConnectorCredentialsAssumeRoleArgs:
     def __init__(__self__, *,
@@ -931,6 +1400,19 @@ class AwsKmsConnectorCredentialsAssumeRoleArgs:
         pulumi.set(self, "external_id", value)
 
 
+if not MYPY:
+    class AwsKmsConnectorCredentialsManualArgsDict(TypedDict):
+        access_key_ref: pulumi.Input[str]
+        """
+        The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        secret_key_ref: pulumi.Input[str]
+        """
+        The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    AwsKmsConnectorCredentialsManualArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsKmsConnectorCredentialsManualArgs:
     def __init__(__self__, *,
@@ -967,6 +1449,23 @@ class AwsKmsConnectorCredentialsManualArgs:
     def secret_key_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_key_ref", value)
 
+
+if not MYPY:
+    class AwsSecretManagerConnectorCredentialsArgsDict(TypedDict):
+        assume_role: NotRequired[pulumi.Input['AwsSecretManagerConnectorCredentialsAssumeRoleArgsDict']]
+        """
+        Connect using STS assume role.
+        """
+        inherit_from_delegate: NotRequired[pulumi.Input[bool]]
+        """
+        Inherit the credentials from from the delegate.
+        """
+        manual: NotRequired[pulumi.Input['AwsSecretManagerConnectorCredentialsManualArgsDict']]
+        """
+        Specify the AWS key and secret used for authenticating.
+        """
+elif False:
+    AwsSecretManagerConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsSecretManagerConnectorCredentialsArgs:
@@ -1023,6 +1522,23 @@ class AwsSecretManagerConnectorCredentialsArgs:
         pulumi.set(self, "manual", value)
 
 
+if not MYPY:
+    class AwsSecretManagerConnectorCredentialsAssumeRoleArgsDict(TypedDict):
+        duration: pulumi.Input[int]
+        """
+        The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the client request body. The minimum value is 1 hour.
+        """
+        role_arn: pulumi.Input[str]
+        """
+        The ARN of the role to assume.
+        """
+        external_id: NotRequired[pulumi.Input[str]]
+        """
+        If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        """
+elif False:
+    AwsSecretManagerConnectorCredentialsAssumeRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsSecretManagerConnectorCredentialsAssumeRoleArgs:
     def __init__(__self__, *,
@@ -1075,6 +1591,23 @@ class AwsSecretManagerConnectorCredentialsAssumeRoleArgs:
     def external_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "external_id", value)
 
+
+if not MYPY:
+    class AwsSecretManagerConnectorCredentialsManualArgsDict(TypedDict):
+        secret_key_ref: pulumi.Input[str]
+        """
+        The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        access_key_plain_text: NotRequired[pulumi.Input[str]]
+        """
+        The plain text AWS access key.
+        """
+        access_key_ref: NotRequired[pulumi.Input[str]]
+        """
+        The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    AwsSecretManagerConnectorCredentialsManualArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsSecretManagerConnectorCredentialsManualArgs:
@@ -1129,6 +1662,31 @@ class AwsSecretManagerConnectorCredentialsManualArgs:
     def access_key_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_key_ref", value)
 
+
+if not MYPY:
+    class AzureCloudCostConnectorBillingExportSpecArgsDict(TypedDict):
+        container_name: pulumi.Input[str]
+        """
+        Name of the container.
+        """
+        directory_name: pulumi.Input[str]
+        """
+        Name of the directory.
+        """
+        report_name: pulumi.Input[str]
+        """
+        Name of the report.
+        """
+        storage_account_name: pulumi.Input[str]
+        """
+        Name of the storage account.
+        """
+        subscription_id: pulumi.Input[str]
+        """
+        Subsription Id.
+        """
+elif False:
+    AzureCloudCostConnectorBillingExportSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AzureCloudCostConnectorBillingExportSpecArgs:
@@ -1212,6 +1770,23 @@ class AzureCloudCostConnectorBillingExportSpecArgs:
         pulumi.set(self, "subscription_id", value)
 
 
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type can either be InheritFromDelegate or ManualConfig.
+        """
+        azure_inherit_from_delegate_details: NotRequired[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgsDict']]
+        """
+        Authenticate to Azure Cloud Provider using details inheriting from delegate.
+        """
+        azure_manual_details: NotRequired[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureManualDetailsArgsDict']]
+        """
+        Authenticate to Azure Cloud Provider using manual details.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsArgs:
     def __init__(__self__, *,
@@ -1266,6 +1841,15 @@ class AzureCloudProviderConnectorCredentialsArgs:
         pulumi.set(self, "azure_manual_details", value)
 
 
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgsDict(TypedDict):
+        auth: NotRequired[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgsDict']]
+        """
+        Auth to authenticate to Azure Cloud Provider using details inheriting from delegate.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs:
     def __init__(__self__, *,
@@ -1288,6 +1872,19 @@ class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs:
     def auth(self, value: Optional[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs']]):
         pulumi.set(self, "auth", value)
 
+
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type can either be SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+        """
+        azure_msi_auth_ua: NotRequired[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgsDict']]
+        """
+        Azure UserAssigned MSI auth details.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs:
@@ -1327,6 +1924,15 @@ class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthA
         pulumi.set(self, "azure_msi_auth_ua", value)
 
 
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Client Id of the ManagedIdentity resource.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs:
     def __init__(__self__, *,
@@ -1349,6 +1955,23 @@ class AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthA
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
 
+
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsAzureManualDetailsArgsDict(TypedDict):
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        Application ID of the Azure App.
+        """
+        auth: NotRequired[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgsDict']]
+        """
+        Contains Azure auth details.
+        """
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        The Azure Active Directory (AAD) directory ID where you created your application.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsAzureManualDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs:
@@ -1405,6 +2028,23 @@ class AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs:
         pulumi.set(self, "tenant_id", value)
 
 
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgsDict(TypedDict):
+        azure_client_key_cert: NotRequired[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgsDict']]
+        """
+        Azure client key certificate details.
+        """
+        azure_client_secret_key: NotRequired[pulumi.Input['AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgsDict']]
+        """
+        Azure Client Secret Key details.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type can either be Certificate or Secret.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs:
     def __init__(__self__, *,
@@ -1460,6 +2100,15 @@ class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgsDict(TypedDict):
+        certificate_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference of the secret for the certificate. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs:
     def __init__(__self__, *,
@@ -1483,6 +2132,15 @@ class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKey
         pulumi.set(self, "certificate_ref", value)
 
 
+if not MYPY:
+    class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgsDict(TypedDict):
+        secret_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference of the secret for the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs:
     def __init__(__self__, *,
@@ -1505,6 +2163,23 @@ class AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSec
     def secret_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_ref", value)
 
+
+if not MYPY:
+    class BitbucketConnectorApiAuthenticationArgsDict(TypedDict):
+        token_ref: pulumi.Input[str]
+        """
+        Personal access token for interacting with the BitBucket api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username used for connecting to the api.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Harness secret containing the username. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    BitbucketConnectorApiAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BitbucketConnectorApiAuthenticationArgs:
@@ -1560,6 +2235,19 @@ class BitbucketConnectorApiAuthenticationArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class BitbucketConnectorCredentialsArgsDict(TypedDict):
+        http: NotRequired[pulumi.Input['BitbucketConnectorCredentialsHttpArgsDict']]
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        ssh: NotRequired[pulumi.Input['BitbucketConnectorCredentialsSshArgsDict']]
+        """
+        Authenticate using SSH for the connection.
+        """
+elif False:
+    BitbucketConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BitbucketConnectorCredentialsArgs:
     def __init__(__self__, *,
@@ -1598,6 +2286,23 @@ class BitbucketConnectorCredentialsArgs:
     def ssh(self, value: Optional[pulumi.Input['BitbucketConnectorCredentialsSshArgs']]):
         pulumi.set(self, "ssh", value)
 
+
+if not MYPY:
+    class BitbucketConnectorCredentialsHttpArgsDict(TypedDict):
+        password_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    BitbucketConnectorCredentialsHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BitbucketConnectorCredentialsHttpArgs:
@@ -1654,6 +2359,15 @@ class BitbucketConnectorCredentialsHttpArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class BitbucketConnectorCredentialsSshArgsDict(TypedDict):
+        ssh_key_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    BitbucketConnectorCredentialsSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BitbucketConnectorCredentialsSshArgs:
     def __init__(__self__, *,
@@ -1676,6 +2390,12 @@ class BitbucketConnectorCredentialsSshArgs:
         pulumi.set(self, "ssh_key_ref", value)
 
 
+if not MYPY:
+    class ConnectorCustomSecretManagerTemplateInputArgsDict(TypedDict):
+        environment_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgsDict']]]]
+elif False:
+    ConnectorCustomSecretManagerTemplateInputArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectorCustomSecretManagerTemplateInputArgs:
     def __init__(__self__, *,
@@ -1692,6 +2412,21 @@ class ConnectorCustomSecretManagerTemplateInputArgs:
     def environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs']]]]):
         pulumi.set(self, "environment_variables", value)
 
+
+if not MYPY:
+    class ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        : Name of the resource.
+        """
+        type: pulumi.Input[str]
+        """
+        : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+        """
+        value: pulumi.Input[str]
+        default: NotRequired[pulumi.Input[bool]]
+elif False:
+    ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs:
@@ -1752,6 +2487,27 @@ class ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs:
     def default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "default", value)
 
+
+if not MYPY:
+    class ConnectorCustomhealthsourceHeaderArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key.
+        """
+        encrypted_value_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value.
+        """
+        value_encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Encrypted value.
+        """
+elif False:
+    ConnectorCustomhealthsourceHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectorCustomhealthsourceHeaderArgs:
@@ -1823,6 +2579,27 @@ class ConnectorCustomhealthsourceHeaderArgs:
         pulumi.set(self, "value_encrypted", value)
 
 
+if not MYPY:
+    class ConnectorCustomhealthsourceParamArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key.
+        """
+        encrypted_value_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value.
+        """
+        value_encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Encrypted value.
+        """
+elif False:
+    ConnectorCustomhealthsourceParamArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectorCustomhealthsourceParamArgs:
     def __init__(__self__, *,
@@ -1893,6 +2670,23 @@ class ConnectorCustomhealthsourceParamArgs:
         pulumi.set(self, "value_encrypted", value)
 
 
+if not MYPY:
+    class ConnectorJdbcCredentialsArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username to use for the database server.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ConnectorJdbcCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectorJdbcCredentialsArgs:
     def __init__(__self__, *,
@@ -1947,6 +2741,19 @@ class ConnectorJdbcCredentialsArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class ConnectorPdcHostArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        Hostname e.g. 87.23.66.11:80
+        """
+        attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Host attributes with values. e.g. type, region, name, ip, etc.
+        """
+elif False:
+    ConnectorPdcHostArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectorPdcHostArgs:
     def __init__(__self__, *,
@@ -1985,6 +2792,15 @@ class ConnectorPdcHostArgs:
         pulumi.set(self, "attributes", value)
 
 
+if not MYPY:
+    class ConnectorRancherBearerTokenArgsDict(TypedDict):
+        bearer_token_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ConnectorRancherBearerTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectorRancherBearerTokenArgs:
     def __init__(__self__, *,
@@ -2006,6 +2822,23 @@ class ConnectorRancherBearerTokenArgs:
     def bearer_token_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "bearer_token_ref", value)
 
+
+if not MYPY:
+    class DbSchemaSchemaSourceArgsDict(TypedDict):
+        connector: pulumi.Input[str]
+        """
+        Connector to repository at which to find details about the database schema
+        """
+        location: pulumi.Input[str]
+        """
+        The path within the specified repository at which to find details about the database schema
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        If connector url is of account, which repository to connect to using the connector
+        """
+elif False:
+    DbSchemaSchemaSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbSchemaSchemaSourceArgs:
@@ -2059,6 +2892,23 @@ class DbSchemaSchemaSourceArgs:
     def repo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo", value)
 
+
+if not MYPY:
+    class DockerConnectorCredentialsArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        The reference to the Harness secret containing the password to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username to use for the docker registry.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        The reference to the Harness secret containing the username to use for the docker registry. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    DockerConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DockerConnectorCredentialsArgs:
@@ -2114,6 +2964,19 @@ class DockerConnectorCredentialsArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class ElasticsearchConnectorApiTokenArgsDict(TypedDict):
+        client_id: pulumi.Input[str]
+        """
+        The client id used for connecting to ElasticSearch.
+        """
+        client_secret_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the ElasticSearch client secret. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ElasticsearchConnectorApiTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElasticsearchConnectorApiTokenArgs:
     def __init__(__self__, *,
@@ -2151,11 +3014,30 @@ class ElasticsearchConnectorApiTokenArgs:
         pulumi.set(self, "client_secret_ref", value)
 
 
+if not MYPY:
+    class ElasticsearchConnectorNoAuthenticationArgsDict(TypedDict):
+        pass
+elif False:
+    ElasticsearchConnectorNoAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElasticsearchConnectorNoAuthenticationArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class ElasticsearchConnectorUsernamePasswordArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: pulumi.Input[str]
+        """
+        Username to use for authentication.
+        """
+elif False:
+    ElasticsearchConnectorUsernamePasswordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElasticsearchConnectorUsernamePasswordArgs:
@@ -2193,6 +3075,27 @@ class ElasticsearchConnectorUsernamePasswordArgs:
     def username(self, value: pulumi.Input[str]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class EnvironmentClustersMappingClusterArgsDict(TypedDict):
+        agent_identifier: NotRequired[pulumi.Input[str]]
+        """
+        agent identifier of the cluster (include scope prefix)
+        """
+        identifier: NotRequired[pulumi.Input[str]]
+        """
+        identifier of the cluster
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        name of the cluster
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
+        """
+elif False:
+    EnvironmentClustersMappingClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnvironmentClustersMappingClusterArgs:
@@ -2264,6 +3167,79 @@ class EnvironmentClustersMappingClusterArgs:
     def scope(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scope", value)
 
+
+if not MYPY:
+    class EnvironmentGitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        message for the commit in Git Repo.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        import_from_git: NotRequired[pulumi.Input[bool]]
+        """
+        Flag to set if importing from Git
+        """
+        is_force_import: NotRequired[pulumi.Input[bool]]
+        """
+        Flag to set if force importing from Git
+        """
+        is_harnesscode_repo: NotRequired[pulumi.Input[bool]]
+        """
+        If the gitProvider is HarnessCode
+        """
+        is_new_branch: NotRequired[pulumi.Input[bool]]
+        """
+        If a new branch creation is requested.
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Environment.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating Environment.
+        """
+        load_from_cache: NotRequired[pulumi.Input[str]]
+        """
+        If the Entity is to be fetched from cache
+        """
+        load_from_fallback_branch: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the file has to be get from fallback_branch.
+        """
+        parent_entity_connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        parent_entity_repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository where parent entity lies.
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        store type of the entity.
+        """
+elif False:
+    EnvironmentGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnvironmentGitDetailsArgs:
@@ -2544,6 +3520,31 @@ class EnvironmentGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class FeatureFlagEnvironmentArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        Identifier of the Environment
+        """
+        add_target_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentAddTargetRuleArgsDict']]]]
+        """
+        The targeting rules for the flag
+        """
+        default_off_variation: NotRequired[pulumi.Input[str]]
+        """
+        Default variation to be served when flag is 'off'
+        """
+        default_on_variation: NotRequired[pulumi.Input[str]]
+        """
+        Default variation to be served when flag is 'on'
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State of the flag in this environment. Possible values are 'on' and 'off'
+        """
+elif False:
+    FeatureFlagEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFlagEnvironmentArgs:
     def __init__(__self__, *,
@@ -2630,6 +3631,19 @@ class FeatureFlagEnvironmentArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class FeatureFlagEnvironmentAddTargetRuleArgsDict(TypedDict):
+        targets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The targets of the rule
+        """
+        variation: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the variation. Valid values are `enabled`, `disabled`
+        """
+elif False:
+    FeatureFlagEnvironmentAddTargetRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFlagEnvironmentAddTargetRuleArgs:
     def __init__(__self__, *,
@@ -2669,6 +3683,15 @@ class FeatureFlagEnvironmentAddTargetRuleArgs:
         pulumi.set(self, "variation", value)
 
 
+if not MYPY:
+    class FeatureFlagTagArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the tag
+        """
+elif False:
+    FeatureFlagTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFlagTagArgs:
     def __init__(__self__, *,
@@ -2690,6 +3713,27 @@ class FeatureFlagTagArgs:
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
 
+
+if not MYPY:
+    class FeatureFlagTargetGroupRuleArgsDict(TypedDict):
+        attribute: NotRequired[pulumi.Input[str]]
+        """
+        The attribute to use in the clause.  This can be any target attribute
+        """
+        negate: NotRequired[pulumi.Input[bool]]
+        """
+        Is the operation negated?
+        """
+        op: NotRequired[pulumi.Input[str]]
+        """
+        The type of operation such as equals, starts_with, contains
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The values that are compared against the operator
+        """
+elif False:
+    FeatureFlagTargetGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureFlagTargetGroupRuleArgs:
@@ -2762,6 +3806,27 @@ class FeatureFlagTargetGroupRuleArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class FeatureFlagVariationArgsDict(TypedDict):
+        description: pulumi.Input[str]
+        """
+        The description of the variation
+        """
+        identifier: pulumi.Input[str]
+        """
+        The identifier of the variation
+        """
+        name: pulumi.Input[str]
+        """
+        The user friendly name of the variation
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the variation
+        """
+elif False:
+    FeatureFlagVariationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FeatureFlagVariationArgs:
     def __init__(__self__, *,
@@ -2829,6 +3894,19 @@ class FeatureFlagVariationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class FileStoreFileCreatedByArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[str]]
+        """
+        User email
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        User name
+        """
+elif False:
+    FileStoreFileCreatedByArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FileStoreFileCreatedByArgs:
     def __init__(__self__, *,
@@ -2867,6 +3945,19 @@ class FileStoreFileCreatedByArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class FileStoreFileLastModifiedByArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[str]]
+        """
+        User email
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        User name
+        """
+elif False:
+    FileStoreFileLastModifiedByArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FileStoreFileLastModifiedByArgs:
@@ -2907,6 +3998,19 @@ class FileStoreFileLastModifiedByArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class FileStoreFolderCreatedByArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[str]]
+        """
+        User email
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        User name
+        """
+elif False:
+    FileStoreFolderCreatedByArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FileStoreFolderCreatedByArgs:
     def __init__(__self__, *,
@@ -2945,6 +4049,19 @@ class FileStoreFolderCreatedByArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class FileStoreFolderLastModifiedByArgsDict(TypedDict):
+        email: NotRequired[pulumi.Input[str]]
+        """
+        User email
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        User name
+        """
+elif False:
+    FileStoreFolderLastModifiedByArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FileStoreFolderLastModifiedByArgs:
@@ -2985,6 +4102,19 @@ class FileStoreFolderLastModifiedByArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class FiltersFilterPropertiesArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        """
+        Corresponding Entity of the filter. Currently supported types are {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+elif False:
+    FiltersFilterPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FiltersFilterPropertiesArgs:
     def __init__(__self__, *,
@@ -3023,6 +4153,19 @@ class FiltersFilterPropertiesArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class GcpCloudCostConnectorBillingExportSpecArgsDict(TypedDict):
+        data_set_id: pulumi.Input[str]
+        """
+        Data Set Id.
+        """
+        table_id: pulumi.Input[str]
+        """
+        Table Id.
+        """
+elif False:
+    GcpCloudCostConnectorBillingExportSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpCloudCostConnectorBillingExportSpecArgs:
     def __init__(__self__, *,
@@ -3060,6 +4203,15 @@ class GcpCloudCostConnectorBillingExportSpecArgs:
         pulumi.set(self, "table_id", value)
 
 
+if not MYPY:
+    class GcpConnectorInheritFromDelegateArgsDict(TypedDict):
+        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The delegates to inherit the credentials from.
+        """
+elif False:
+    GcpConnectorInheritFromDelegateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpConnectorInheritFromDelegateArgs:
     def __init__(__self__, *,
@@ -3081,6 +4233,19 @@ class GcpConnectorInheritFromDelegateArgs:
     def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "delegate_selectors", value)
 
+
+if not MYPY:
+    class GcpConnectorManualArgsDict(TypedDict):
+        secret_key_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The delegates to connect with.
+        """
+elif False:
+    GcpConnectorManualArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpConnectorManualArgs:
@@ -3119,6 +4284,31 @@ class GcpConnectorManualArgs:
     def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
+
+if not MYPY:
+    class GcpConnectorOidcAuthenticationArgsDict(TypedDict):
+        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The delegates to inherit the credentials from.
+        """
+        gcp_project_id: pulumi.Input[str]
+        """
+        The project number of the GCP project that is used to create the workload identity.
+        """
+        provider_id: pulumi.Input[str]
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        service_account_email: pulumi.Input[str]
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        workload_pool_id: pulumi.Input[str]
+        """
+        The workload pool ID value created in GCP.
+        """
+elif False:
+    GcpConnectorOidcAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpConnectorOidcAuthenticationArgs:
@@ -3202,6 +4392,19 @@ class GcpConnectorOidcAuthenticationArgs:
         pulumi.set(self, "workload_pool_id", value)
 
 
+if not MYPY:
+    class GitConnectorCredentialsArgsDict(TypedDict):
+        http: NotRequired[pulumi.Input['GitConnectorCredentialsHttpArgsDict']]
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        ssh: NotRequired[pulumi.Input['GitConnectorCredentialsSshArgsDict']]
+        """
+        Authenticate using SSH for the connection.
+        """
+elif False:
+    GitConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitConnectorCredentialsArgs:
     def __init__(__self__, *,
@@ -3240,6 +4443,23 @@ class GitConnectorCredentialsArgs:
     def ssh(self, value: Optional[pulumi.Input['GitConnectorCredentialsSshArgs']]):
         pulumi.set(self, "ssh", value)
 
+
+if not MYPY:
+    class GitConnectorCredentialsHttpArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GitConnectorCredentialsHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitConnectorCredentialsHttpArgs:
@@ -3295,6 +4515,15 @@ class GitConnectorCredentialsHttpArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class GitConnectorCredentialsSshArgsDict(TypedDict):
+        ssh_key_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GitConnectorCredentialsSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitConnectorCredentialsSshArgs:
     def __init__(__self__, *,
@@ -3316,6 +4545,23 @@ class GitConnectorCredentialsSshArgs:
     def ssh_key_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "ssh_key_ref", value)
 
+
+if not MYPY:
+    class GitOpsAgentMetadataArgsDict(TypedDict):
+        high_availability: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the agent is deployed in HA mode.
+        """
+        is_namespaced: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the agent is namespaced.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes namespace where the agent should be installed.
+        """
+elif False:
+    GitOpsAgentMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsAgentMetadataArgs:
@@ -3372,6 +4618,19 @@ class GitOpsAgentMetadataArgs:
         pulumi.set(self, "namespace", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationArgsDict(TypedDict):
+        metadatas: pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationMetadataArgsDict']]]
+        """
+        Metadata corresponding to the resources. This includes all the objects a user must create.
+        """
+        specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecArgsDict']]]]
+        """
+        Specifications of the GitOps application. This includes the repository URL, application definition, source, destination and sync policy.
+        """
+elif False:
+    GitOpsApplicationsApplicationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationArgs:
     def __init__(__self__, *,
@@ -3409,6 +4668,51 @@ class GitOpsApplicationsApplicationArgs:
     def specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecArgs']]]]):
         pulumi.set(self, "specs", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationMetadataArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations are unstructured key value pairs corresponding to a resource. External tools set these to store and retrieve arbitrary metadata.
+        """
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the cluster corresponding to the object. API server ignores this if set in any create or update request.
+        """
+        finalizers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Before the object is removed from the register, it must be empty. Each element serves as a unique identifier for the component that is accountable for removing that entry from the list. Entries in this list can only be removed if the object's deletionTimestamp is not null. The processing and removal of finalizers can happen in any sequence. No order is enforced as it may block the finalizers. Finalizers is a shared field that can be reordered by any actor with authority. If the finalizer list is processed in order, this could result in a scenario where the component in charge of the list's first finalizer is waiting for a signal (generated by a field value, an external system, or another) produced by a component in charge of the list's later finalizer.
+        """
+        generate_name: NotRequired[pulumi.Input[str]]
+        """
+        An optional prefix that the server will only apply if the Name field is empty to create a unique name. The name returned to the client will differ from the name passed if this field is used. A unique suffix will be added to this value as well. The supplied value must adhere to the same validation guidelines as the Name field and may be reduced by the suffix length necessary to ensure that it is unique on the server. The server will NOT return a 409 if this field is supplied and the created name already exists; instead, it will either return 201 Created or 500 with Reason ServerTimeout, indicating that a unique name could not be found in the allotted time and the client should try again later.
+        """
+        generation: NotRequired[pulumi.Input[str]]
+        """
+        A sequence number representing a specific generation of the desired state. This is a read-only value populated by the system.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name must be unique within a namespace. It is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Name cannot be updated.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace of the GitOps application. An empty namespace is equivalent to the namespace of the GitOps agent.
+        """
+        owner_references: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationMetadataOwnerReferenceArgsDict']]]]
+        """
+        List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        UID is the unique identifier in time and space value for this object. It is generated by the server on successful creation of a resource and is not allowed to change on PUT operations.
+        """
+elif False:
+    GitOpsApplicationsApplicationMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationMetadataArgs:
@@ -3577,6 +4881,35 @@ class GitOpsApplicationsApplicationMetadataArgs:
         pulumi.set(self, "uid", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationMetadataOwnerReferenceArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        API version of the referent.
+        """
+        block_owner_deletion: NotRequired[pulumi.Input[bool]]
+        """
+        If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+        """
+        controller: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the reference points to the managing controller.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Kind of the referent.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the referent.
+        """
+        uid: NotRequired[pulumi.Input[str]]
+        """
+        UID of the referent.
+        """
+elif False:
+    GitOpsApplicationsApplicationMetadataOwnerReferenceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationMetadataOwnerReferenceArgs:
     def __init__(__self__, *,
@@ -3680,6 +5013,27 @@ class GitOpsApplicationsApplicationMetadataOwnerReferenceArgs:
         pulumi.set(self, "uid", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecArgsDict(TypedDict):
+        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecDestinationArgsDict']]]]
+        """
+        Information about the GitOps application's destination.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
+        """
+        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgsDict']]]]
+        """
+        Contains all information about the source of the GitOps application.
+        """
+        sync_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgsDict']]]]
+        """
+        Controls when a sync will be performed in response to updates in git.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecArgs:
     def __init__(__self__, *,
@@ -3751,6 +5105,23 @@ class GitOpsApplicationsApplicationSpecArgs:
         pulumi.set(self, "sync_policies", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecDestinationArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        URL of the target cluster and must be set to the kubernetes control plane API.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Target namespace of the GitOps application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
+        """
+        server: NotRequired[pulumi.Input[str]]
+        """
+        URL of the target cluster server for the GitOps application.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecDestinationArgs:
     def __init__(__self__, *,
@@ -3805,6 +5176,47 @@ class GitOpsApplicationsApplicationSpecDestinationArgs:
     def server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceArgsDict(TypedDict):
+        repo_url: pulumi.Input[str]
+        """
+        URL to the repository (git or helm) that contains the GitOps application manifests.
+        """
+        target_revision: pulumi.Input[str]
+        """
+        Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
+        """
+        chart: NotRequired[pulumi.Input[str]]
+        """
+        Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
+        """
+        directories: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceDirectoryArgsDict']]]]
+        """
+        Options for applications of type plain YAML or Jsonnet.
+        """
+        helms: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmArgsDict']]]]
+        """
+        Holds helm specific options.
+        """
+        ksonnets: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceKsonnetArgsDict']]]]
+        """
+        Ksonnet specific options.
+        """
+        kustomizes: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceKustomizeArgsDict']]]]
+        """
+        Options specific to a GitOps application source specific to Kustomize.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
+        """
+        plugins: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourcePluginArgsDict']]]]
+        """
+        Options specific to config management plugins.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceArgs:
@@ -3955,6 +5367,27 @@ class GitOpsApplicationsApplicationSpecSourceArgs:
         pulumi.set(self, "plugins", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceDirectoryArgsDict(TypedDict):
+        exclude: NotRequired[pulumi.Input[str]]
+        """
+        Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
+        """
+        include: NotRequired[pulumi.Input[str]]
+        """
+        Glob pattern to match paths against that should be explicitly included during manifest generation.
+        """
+        jsonnets: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgsDict']]]]
+        """
+        Options specific to applications of type Jsonnet.
+        """
+        recurse: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates to scan a directory recursively for manifests.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceDirectoryArgs:
     def __init__(__self__, *,
@@ -4026,6 +5459,23 @@ class GitOpsApplicationsApplicationSpecSourceDirectoryArgs:
         pulumi.set(self, "recurse", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgsDict(TypedDict):
+        ext_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgsDict']]]]
+        """
+        List of jsonnet external variables.
+        """
+        libs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Additional library search dirs.
+        """
+        tlas: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgsDict']]]]
+        """
+        List of jsonnet top-level arguments(TLAS).
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgs:
     def __init__(__self__, *,
@@ -4080,6 +5530,23 @@ class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetArgs:
     def tlas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs']]]]):
         pulumi.set(self, "tlas", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[bool]]
+        """
+        Code of the external variables of jsonnet application.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the external variables of jsonnet application.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the external variables of jsonnet application.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs:
@@ -4136,6 +5603,23 @@ class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[bool]]
+        """
+        Code of the TLAS of the jsonnet application.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the TLAS of the jsonnet application.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the TLAS of the jsonnet application.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs:
     def __init__(__self__, *,
@@ -4190,6 +5674,39 @@ class GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceHelmArgsDict(TypedDict):
+        file_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgsDict']]]]
+        """
+        File parameters to the helm template.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmParameterArgsDict']]]]
+        """
+        List of helm parameters which are passed to the helm template command upon manifest generation.
+        """
+        pass_credentials: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if to pass credentials to all domains (helm's --pass-credentials)
+        """
+        release_name: NotRequired[pulumi.Input[str]]
+        """
+        Helm release name to use. If omitted it will use the GitOps application name.
+        """
+        value_files: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of helm value files to use when generating a template.
+        """
+        values: NotRequired[pulumi.Input[str]]
+        """
+        Helm values to be passed to helm template, typically defined as a block.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Helm version to use for templating (either "2" or "3")
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceHelmArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceHelmArgs:
@@ -4310,6 +5827,19 @@ class GitOpsApplicationsApplicationSpecSourceHelmArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the helm parameter.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to the file containing the values of the helm parameter.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs:
     def __init__(__self__, *,
@@ -4348,6 +5878,23 @@ class GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceHelmParameterArgsDict(TypedDict):
+        force_string: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if helm should interpret booleans and numbers as strings.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the helm parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the Helm parameter.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceHelmParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs:
@@ -4404,6 +5951,19 @@ class GitOpsApplicationsApplicationSpecSourceHelmParameterArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceKsonnetArgsDict(TypedDict):
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        Ksonnet application environment name.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgsDict']]]]
+        """
+        List of ksonnet component parameter override values.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceKsonnetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceKsonnetArgs:
     def __init__(__self__, *,
@@ -4442,6 +6002,23 @@ class GitOpsApplicationsApplicationSpecSourceKsonnetArgs:
     def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgsDict(TypedDict):
+        component: NotRequired[pulumi.Input[str]]
+        """
+        Component of the parameter of the ksonnet application.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the parameter of the ksonnet application.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the parameter of the ksonnet application.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgs:
@@ -4497,6 +6074,43 @@ class GitOpsApplicationsApplicationSpecSourceKsonnetParameterArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourceKustomizeArgsDict(TypedDict):
+        common_annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        List of additional annotations to add to rendered manifests.
+        """
+        common_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        List of additional labels to add to rendered manifests.
+        """
+        force_common_annotations: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if to force applying common annotations to resources for kustomize apps.
+        """
+        force_common_labels: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if to force apply common labels to resources for kustomize apps.
+        """
+        images: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of kustomize image override specifications.
+        """
+        name_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Prefix prepended to resources for kustomize apps.
+        """
+        name_suffix: NotRequired[pulumi.Input[str]]
+        """
+        Suffix appended to resources for kustomize apps.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of kustomize to use for rendering manifests.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourceKustomizeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourceKustomizeArgs:
@@ -4633,6 +6247,19 @@ class GitOpsApplicationsApplicationSpecSourceKustomizeArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourcePluginArgsDict(TypedDict):
+        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourcePluginEnvArgsDict']]]]
+        """
+        Entry in the GitOps application's environment.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the plugin.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourcePluginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourcePluginArgs:
     def __init__(__self__, *,
@@ -4672,6 +6299,19 @@ class GitOpsApplicationsApplicationSpecSourcePluginArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSourcePluginEnvArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the variable, usually expressed in uppercase.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the variable.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSourcePluginEnvArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSourcePluginEnvArgs:
     def __init__(__self__, *,
@@ -4710,6 +6350,23 @@ class GitOpsApplicationsApplicationSpecSourcePluginEnvArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSyncPolicyArgsDict(TypedDict):
+        automateds: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgsDict']]]]
+        """
+        Controls the behavior of an automated sync.
+        """
+        retries: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyRetryArgsDict']]]]
+        """
+        Contains information about the strategy to apply when a sync failed.
+        """
+        sync_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Options allow you to specify whole app sync-options.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSyncPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSyncPolicyArgs:
@@ -4766,6 +6423,23 @@ class GitOpsApplicationsApplicationSpecSyncPolicyArgs:
         pulumi.set(self, "sync_options", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgsDict(TypedDict):
+        allow_empty: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates to allows apps to have zero live resources (default: false).
+        """
+        prune: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false).
+        """
+        self_heal: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to revert resources back to their desired state upon modification in the cluster (default: false).
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgs:
     def __init__(__self__, *,
@@ -4821,6 +6495,19 @@ class GitOpsApplicationsApplicationSpecSyncPolicyAutomatedArgs:
         pulumi.set(self, "self_heal", value)
 
 
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSyncPolicyRetryArgsDict(TypedDict):
+        backoffs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgsDict']]]]
+        """
+        Backoff strategy to use on subsequent retries for failing syncs.
+        """
+        limit: NotRequired[pulumi.Input[str]]
+        """
+        Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSyncPolicyRetryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSyncPolicyRetryArgs:
     def __init__(__self__, *,
@@ -4859,6 +6546,23 @@ class GitOpsApplicationsApplicationSpecSyncPolicyRetryArgs:
     def limit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "limit", value)
 
+
+if not MYPY:
+    class GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgsDict(TypedDict):
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        Amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h").
+        """
+        factor: NotRequired[pulumi.Input[str]]
+        """
+        Factor to multiply the base duration after each failed retry.
+        """
+        max_duration: NotRequired[pulumi.Input[str]]
+        """
+        Maximum amount of time allowed of the backoff strategy.
+        """
+elif False:
+    GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs:
@@ -4914,6 +6618,27 @@ class GitOpsApplicationsApplicationSpecSyncPolicyRetryBackoffArgs:
     def max_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_duration", value)
 
+
+if not MYPY:
+    class GitOpsClusterRequestArgsDict(TypedDict):
+        clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterArgsDict']]]]
+        """
+        GitOps cluster details.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
+        """
+        updated_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Fields which are updated.
+        """
+        upsert: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the GitOps cluster should be updated if existing and inserted if not.
+        """
+elif False:
+    GitOpsClusterRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsClusterRequestArgs:
@@ -4985,6 +6710,55 @@ class GitOpsClusterRequestArgs:
     def upsert(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "upsert", value)
 
+
+if not MYPY:
+    class GitOpsClusterRequestClusterArgsDict(TypedDict):
+        configs: pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigArgsDict']]]
+        """
+        GitOps cluster config.
+        """
+        server: pulumi.Input[str]
+        """
+        API server URL of the kubernetes cluster.
+        """
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations for cluster secret metadata.
+        """
+        cluster_resources: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if cluster level resources should be managed. This setting is used only if cluster is connected in a namespaced mode.
+        """
+        infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterInfoArgsDict']]]]
+        """
+        Information about cluster cache and state.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for cluster secret metadata.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the cluster. If omitted, the server address will be used.
+        """
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of namespaces which are accessible in that cluster. Cluster level resources will be ignored if namespace list is not empty.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The ArgoCD project name corresponding to this GitOps cluster. An empty string means that the GitOps cluster belongs to the default project created by Harness.
+        """
+        refresh_requested_ats: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterRefreshRequestedAtArgsDict']]]]
+        """
+        Time when cluster cache refresh has been requested.
+        """
+        shard: NotRequired[pulumi.Input[str]]
+        """
+        Shard number to be managed by a specific application controller pod. Calculated on the fly by the application controller if not specified.
+        """
+elif False:
+    GitOpsClusterRequestClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsClusterRequestClusterArgs:
@@ -5167,6 +6941,43 @@ class GitOpsClusterRequestClusterArgs:
         pulumi.set(self, "shard", value)
 
 
+if not MYPY:
+    class GitOpsClusterRequestClusterConfigArgsDict(TypedDict):
+        aws_cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
+        """
+        bearer_token: NotRequired[pulumi.Input[str]]
+        """
+        Bearer authentication token the cluster.
+        """
+        cluster_connection_type: NotRequired[pulumi.Input[str]]
+        """
+        Identifies the authentication method used to connect to the cluster.
+        """
+        exec_provider_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigExecProviderConfigArgsDict']]]]
+        """
+        Configuration for an exec provider.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password of the server of the cluster.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Optional role ARN. If set then used for AWS IAM Authenticator.
+        """
+        tls_client_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigTlsClientConfigArgsDict']]]]
+        """
+        Settings to enable transport layer security.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username of the server of the cluster.
+        """
+elif False:
+    GitOpsClusterRequestClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsClusterRequestClusterConfigArgs:
     def __init__(__self__, *,
@@ -5302,6 +7113,31 @@ class GitOpsClusterRequestClusterConfigArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class GitOpsClusterRequestClusterConfigExecProviderConfigArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Preferred input version of the ExecInfo.
+        """
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Arguments to pass to the command when executing it.
+        """
+        command: NotRequired[pulumi.Input[str]]
+        """
+        Command to execute.
+        """
+        env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Additional environment variables to expose to the process.
+        """
+        install_hint: NotRequired[pulumi.Input[str]]
+        """
+        Message displayed when the executable is not found.
+        """
+elif False:
+    GitOpsClusterRequestClusterConfigExecProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsClusterRequestClusterConfigExecProviderConfigArgs:
     def __init__(__self__, *,
@@ -5388,6 +7224,31 @@ class GitOpsClusterRequestClusterConfigExecProviderConfigArgs:
     def install_hint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "install_hint", value)
 
+
+if not MYPY:
+    class GitOpsClusterRequestClusterConfigTlsClientConfigArgsDict(TypedDict):
+        ca_data: NotRequired[pulumi.Input[str]]
+        """
+        CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
+        """
+        cert_data: NotRequired[pulumi.Input[str]]
+        """
+        Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
+        """
+        insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the TLS connection to the cluster should be insecure.
+        """
+        key_data: NotRequired[pulumi.Input[str]]
+        """
+        Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
+        """
+        server_name: NotRequired[pulumi.Input[str]]
+        """
+        Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
+        """
+elif False:
+    GitOpsClusterRequestClusterConfigTlsClientConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsClusterRequestClusterConfigTlsClientConfigArgs:
@@ -5476,6 +7337,31 @@ class GitOpsClusterRequestClusterConfigTlsClientConfigArgs:
         pulumi.set(self, "server_name", value)
 
 
+if not MYPY:
+    class GitOpsClusterRequestClusterInfoArgsDict(TypedDict):
+        api_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of API versions supported by the cluster.
+        """
+        applications_count: NotRequired[pulumi.Input[str]]
+        """
+        Number of applications managed by Argo CD on the cluster.
+        """
+        cache_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterInfoCacheInfoArgsDict']]]]
+        """
+        Information about the cluster cache.
+        """
+        connection_states: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterInfoConnectionStateArgsDict']]]]
+        """
+        Information about the connection to the cluster.
+        """
+        server_version: NotRequired[pulumi.Input[str]]
+        """
+        Kubernetes version of the cluster.
+        """
+elif False:
+    GitOpsClusterRequestClusterInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsClusterRequestClusterInfoArgs:
     def __init__(__self__, *,
@@ -5563,6 +7449,23 @@ class GitOpsClusterRequestClusterInfoArgs:
         pulumi.set(self, "server_version", value)
 
 
+if not MYPY:
+    class GitOpsClusterRequestClusterInfoCacheInfoArgsDict(TypedDict):
+        apis_count: NotRequired[pulumi.Input[str]]
+        """
+        Number of observed kubernetes API count.
+        """
+        last_cache_sync_time: NotRequired[pulumi.Input[str]]
+        """
+        Time of most recent cache synchronization.
+        """
+        resources_count: NotRequired[pulumi.Input[str]]
+        """
+        Number of observed kubernetes resources.
+        """
+elif False:
+    GitOpsClusterRequestClusterInfoCacheInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsClusterRequestClusterInfoCacheInfoArgs:
     def __init__(__self__, *,
@@ -5617,6 +7520,23 @@ class GitOpsClusterRequestClusterInfoCacheInfoArgs:
     def resources_count(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resources_count", value)
 
+
+if not MYPY:
+    class GitOpsClusterRequestClusterInfoConnectionStateArgsDict(TypedDict):
+        attempted_ats: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgsDict']]]]
+        """
+        Time when cluster cache refresh has been requested.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        Information about the connection status.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Current status indicator of the connection.
+        """
+elif False:
+    GitOpsClusterRequestClusterInfoConnectionStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsClusterRequestClusterInfoConnectionStateArgs:
@@ -5673,6 +7593,19 @@ class GitOpsClusterRequestClusterInfoConnectionStateArgs:
         pulumi.set(self, "status", value)
 
 
+if not MYPY:
+    class GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+        """
+elif False:
+    GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs:
     def __init__(__self__, *,
@@ -5711,6 +7644,19 @@ class GitOpsClusterRequestClusterInfoConnectionStateAttemptedAtArgs:
     def seconds(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seconds", value)
 
+
+if not MYPY:
+    class GitOpsClusterRequestClusterRefreshRequestedAtArgsDict(TypedDict):
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive. This field may be limited in precision depending on context.
+        """
+        seconds: NotRequired[pulumi.Input[str]]
+        """
+        Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+        """
+elif False:
+    GitOpsClusterRequestClusterRefreshRequestedAtArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsClusterRequestClusterRefreshRequestedAtArgs:
@@ -5751,6 +7697,19 @@ class GitOpsClusterRequestClusterRefreshRequestedAtArgs:
         pulumi.set(self, "seconds", value)
 
 
+if not MYPY:
+    class GitOpsGnupgRequestArgsDict(TypedDict):
+        upsert: pulumi.Input[bool]
+        """
+        Indicates if the GnuPG Key should be inserted if not present or updated if present.
+        """
+        publickeys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsGnupgRequestPublickeyArgsDict']]]]
+        """
+        Public key details.
+        """
+elif False:
+    GitOpsGnupgRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsGnupgRequestArgs:
     def __init__(__self__, *,
@@ -5788,6 +7747,35 @@ class GitOpsGnupgRequestArgs:
     def publickeys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsGnupgRequestPublickeyArgs']]]]):
         pulumi.set(self, "publickeys", value)
 
+
+if not MYPY:
+    class GitOpsGnupgRequestPublickeyArgsDict(TypedDict):
+        key_data: pulumi.Input[str]
+        """
+        KeyData holds the raw key data, in base64 encoded format.
+        """
+        fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        Fingerprint is the fingerprint of the key
+        """
+        key_id: NotRequired[pulumi.Input[str]]
+        """
+        KeyID specifies the key ID, in hexadecimal string format.
+        """
+        owner: NotRequired[pulumi.Input[str]]
+        """
+        Owner holds the owner identification, e.g. a name and e-mail address
+        """
+        sub_type: NotRequired[pulumi.Input[str]]
+        """
+        SubType holds the key's sub type
+        """
+        trust: NotRequired[pulumi.Input[str]]
+        """
+        Trust holds the level of trust assigned to this key
+        """
+elif False:
+    GitOpsGnupgRequestPublickeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsGnupgRequestPublickeyArgs:
@@ -5891,6 +7879,19 @@ class GitOpsGnupgRequestPublickeyArgs:
         pulumi.set(self, "trust", value)
 
 
+if not MYPY:
+    class GitOpsRepoCertRequestArgsDict(TypedDict):
+        certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestCertificateArgsDict']]]]
+        """
+        certificates details.
+        """
+        upsert: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the GitOps repository certificate should be updated if existing and inserted if not.
+        """
+elif False:
+    GitOpsRepoCertRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepoCertRequestArgs:
     def __init__(__self__, *,
@@ -5930,6 +7931,19 @@ class GitOpsRepoCertRequestArgs:
         pulumi.set(self, "upsert", value)
 
 
+if not MYPY:
+    class GitOpsRepoCertRequestCertificateArgsDict(TypedDict):
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestCertificateItemArgsDict']]]]
+        """
+        List of certificates to be processed.
+        """
+        metadatas: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestCertificateMetadataArgsDict']]]]
+        """
+        metadata details
+        """
+elif False:
+    GitOpsRepoCertRequestCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepoCertRequestCertificateArgs:
     def __init__(__self__, *,
@@ -5968,6 +7982,31 @@ class GitOpsRepoCertRequestCertificateArgs:
     def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestCertificateMetadataArgs']]]]):
         pulumi.set(self, "metadatas", value)
 
+
+if not MYPY:
+    class GitOpsRepoCertRequestCertificateItemArgsDict(TypedDict):
+        cert_data: NotRequired[pulumi.Input[str]]
+        """
+        CertData contains the actual certificate data, dependent on the certificate type. The value should be base64 encoded
+        """
+        cert_info: NotRequired[pulumi.Input[str]]
+        """
+        CertInfo will hold additional certificate info, dependent on the certificate type .
+        """
+        cert_sub_type: NotRequired[pulumi.Input[str]]
+        """
+        CertSubType specifies the sub type of the cert, i.e. ssh-rsa.
+        """
+        cert_type: NotRequired[pulumi.Input[str]]
+        """
+        CertType specifies the type of the certificate - currently one of https or ssh.
+        """
+        server_name: NotRequired[pulumi.Input[str]]
+        """
+        ServerName specifies the DNS name of the server this certificate is intended.
+        """
+elif False:
+    GitOpsRepoCertRequestCertificateItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsRepoCertRequestCertificateItemArgs:
@@ -6056,6 +8095,27 @@ class GitOpsRepoCertRequestCertificateItemArgs:
         pulumi.set(self, "server_name", value)
 
 
+if not MYPY:
+    class GitOpsRepoCertRequestCertificateMetadataArgsDict(TypedDict):
+        continue_: NotRequired[pulumi.Input[str]]
+        """
+        continue may be set if the user set a limit on the number of items returned.
+        """
+        remaining_item_count: NotRequired[pulumi.Input[str]]
+        """
+        subsequent items in the list.
+        """
+        resource_version: NotRequired[pulumi.Input[str]]
+        """
+        Identifies the server's internal version.
+        """
+        self_link: NotRequired[pulumi.Input[str]]
+        """
+        selfLink is a URL representing this object.
+        """
+elif False:
+    GitOpsRepoCertRequestCertificateMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepoCertRequestCertificateMetadataArgs:
     def __init__(__self__, *,
@@ -6126,6 +8186,59 @@ class GitOpsRepoCertRequestCertificateMetadataArgs:
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
 
+
+if not MYPY:
+    class GitOpsRepoCredCredArgsDict(TypedDict):
+        enable_oci: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether helm-oci support should be enabled for this repo.
+        """
+        github_app_enterprise_base_url: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the GitHub API URL for GitHub app authentication.
+        """
+        github_app_id: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        """
+        github_app_installation_id: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the ID of the installed GitHub App for GitHub app authentication.
+        """
+        github_app_private_key: NotRequired[pulumi.Input[str]]
+        """
+        github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password or PAT to be used for authenticating the remote repository.
+        """
+        ssh_private_key: NotRequired[pulumi.Input[str]]
+        """
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        """
+        tls_client_cert_data: NotRequired[pulumi.Input[str]]
+        """
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        """
+        tls_client_cert_key: NotRequired[pulumi.Input[str]]
+        """
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to be used for authenticating the remote repository.
+        """
+elif False:
+    GitOpsRepoCredCredArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsRepoCredCredArgs:
@@ -6326,6 +8439,23 @@ class GitOpsRepoCredCredArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class GitOpsRepositoryEcrGenArgsDict(TypedDict):
+        jwt_auth: NotRequired[pulumi.Input['GitOpsRepositoryEcrGenJwtAuthArgsDict']]
+        """
+        JWT authentication specific configuration.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        AWS region.
+        """
+        secret_ref: NotRequired[pulumi.Input['GitOpsRepositoryEcrGenSecretRefArgsDict']]
+        """
+        Secret reference to the AWS credentials.
+        """
+elif False:
+    GitOpsRepositoryEcrGenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepositoryEcrGenArgs:
     def __init__(__self__, *,
@@ -6380,6 +8510,23 @@ class GitOpsRepositoryEcrGenArgs:
     def secret_ref(self, value: Optional[pulumi.Input['GitOpsRepositoryEcrGenSecretRefArgs']]):
         pulumi.set(self, "secret_ref", value)
 
+
+if not MYPY:
+    class GitOpsRepositoryEcrGenJwtAuthArgsDict(TypedDict):
+        audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the ServiceAccount resource being referred to.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        """
+elif False:
+    GitOpsRepositoryEcrGenJwtAuthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsRepositoryEcrGenJwtAuthArgs:
@@ -6436,6 +8583,23 @@ class GitOpsRepositoryEcrGenJwtAuthArgs:
         pulumi.set(self, "namespace", value)
 
 
+if not MYPY:
+    class GitOpsRepositoryEcrGenSecretRefArgsDict(TypedDict):
+        aws_access_key_id: NotRequired[pulumi.Input[str]]
+        """
+        AWS access key id.
+        """
+        aws_secret_access_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS secret access key.
+        """
+        aws_session_token: NotRequired[pulumi.Input[str]]
+        """
+        AWS session token.
+        """
+elif False:
+    GitOpsRepositoryEcrGenSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepositoryEcrGenSecretRefArgs:
     def __init__(__self__, *,
@@ -6491,6 +8655,23 @@ class GitOpsRepositoryEcrGenSecretRefArgs:
         pulumi.set(self, "aws_session_token", value)
 
 
+if not MYPY:
+    class GitOpsRepositoryGcrGenArgsDict(TypedDict):
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        GCP access key.
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        GCP project id.
+        """
+        workload_identity: NotRequired[pulumi.Input['GitOpsRepositoryGcrGenWorkloadIdentityArgsDict']]
+        """
+        GCP workload identity.
+        """
+elif False:
+    GitOpsRepositoryGcrGenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepositoryGcrGenArgs:
     def __init__(__self__, *,
@@ -6545,6 +8726,27 @@ class GitOpsRepositoryGcrGenArgs:
     def workload_identity(self, value: Optional[pulumi.Input['GitOpsRepositoryGcrGenWorkloadIdentityArgs']]):
         pulumi.set(self, "workload_identity", value)
 
+
+if not MYPY:
+    class GitOpsRepositoryGcrGenWorkloadIdentityArgsDict(TypedDict):
+        cluster_location: NotRequired[pulumi.Input[str]]
+        """
+        Cluster location.
+        """
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        Cluster name.
+        """
+        cluster_project_id: NotRequired[pulumi.Input[str]]
+        """
+        Cluster project id.
+        """
+        service_account_ref: NotRequired[pulumi.Input['GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgsDict']]
+        """
+        Service account reference.
+        """
+elif False:
+    GitOpsRepositoryGcrGenWorkloadIdentityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsRepositoryGcrGenWorkloadIdentityArgs:
@@ -6617,6 +8819,23 @@ class GitOpsRepositoryGcrGenWorkloadIdentityArgs:
         pulumi.set(self, "service_account_ref", value)
 
 
+if not MYPY:
+    class GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgsDict(TypedDict):
+        audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the ServiceAccount resource being referred to.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        """
+elif False:
+    GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgs:
     def __init__(__self__, *,
@@ -6671,6 +8890,91 @@ class GitOpsRepositoryGcrGenWorkloadIdentityServiceAccountRefArgs:
     def namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "namespace", value)
 
+
+if not MYPY:
+    class GitOpsRepositoryRepoArgsDict(TypedDict):
+        connection_type: pulumi.Input[str]
+        """
+        Identifies the authentication method used to connect to the repository. Possible values: "HTTPS" "SSH" "GITHUB" "HTTPS*ANONYMOUS", "GITHUB*ENTERPRISE".
+        """
+        repo: pulumi.Input[str]
+        """
+        URL to the remote repository.
+        """
+        enable_lfs: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if git-lfs support must be enabled for this repo. This is valid only for Git repositories.
+        """
+        enable_oci: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if helm-oci support must be enabled for this repo.
+        """
+        github_app_enterprise_base_url: NotRequired[pulumi.Input[str]]
+        """
+        Base URL of GitHub Enterprise installation. If left empty, this defaults to https://api.github.com.
+        """
+        github_app_id: NotRequired[pulumi.Input[str]]
+        """
+        Id of the GitHub app used to access the repo.
+        """
+        github_app_installation_id: NotRequired[pulumi.Input[str]]
+        """
+        Installation id of the GitHub app used to access the repo.
+        """
+        github_app_private_key: NotRequired[pulumi.Input[str]]
+        """
+        GitHub app private key PEM data.
+        """
+        inherited_creds: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the credentials were inherited from a repository credential.
+        """
+        insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if the connection to the repository ignores any errors when verifying TLS certificates or SSH host keys.
+        """
+        insecure_ignore_host_key: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates if InsecureIgnoreHostKey should be used. Insecure is favored used only for git repos. Deprecated.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name to be used for this repo. Only used with Helm repos.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password or PAT to be used for authenticating the remote repository.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
+        """
+        proxy: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP/HTTPS proxy used to access the repo.
+        """
+        ssh_private_key: NotRequired[pulumi.Input[str]]
+        """
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        """
+        tls_client_cert_data: NotRequired[pulumi.Input[str]]
+        """
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        """
+        tls_client_cert_key: NotRequired[pulumi.Input[str]]
+        """
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        """
+        type_: NotRequired[pulumi.Input[str]]
+        """
+        Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to be used for authenticating the remote repository.
+        """
+elif False:
+    GitOpsRepositoryRepoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitOpsRepositoryRepoArgs:
@@ -6997,6 +9301,15 @@ class GitOpsRepositoryRepoArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class GitOpsRepositoryUpdateMaskArgsDict(TypedDict):
+        paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The set of field mask paths.
+        """
+elif False:
+    GitOpsRepositoryUpdateMaskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitOpsRepositoryUpdateMaskArgs:
     def __init__(__self__, *,
@@ -7019,6 +9332,19 @@ class GitOpsRepositoryUpdateMaskArgs:
     def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "paths", value)
 
+
+if not MYPY:
+    class GithubConnectorApiAuthenticationArgsDict(TypedDict):
+        github_app: NotRequired[pulumi.Input['GithubConnectorApiAuthenticationGithubAppArgsDict']]
+        """
+        Configuration for using the github app for interacting with the github api.
+        """
+        token_ref: NotRequired[pulumi.Input[str]]
+        """
+        Personal access token for interacting with the github api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GithubConnectorApiAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GithubConnectorApiAuthenticationArgs:
@@ -7058,6 +9384,31 @@ class GithubConnectorApiAuthenticationArgs:
     def token_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token_ref", value)
 
+
+if not MYPY:
+    class GithubConnectorApiAuthenticationGithubAppArgsDict(TypedDict):
+        private_key_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        Enter the GitHub App ID from the GitHub App General tab.
+        """
+        application_id_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        installation_id: NotRequired[pulumi.Input[str]]
+        """
+        Enter the Installation ID located in the URL of the installed GitHub App.
+        """
+        installation_id_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GithubConnectorApiAuthenticationGithubAppArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GithubConnectorApiAuthenticationGithubAppArgs:
@@ -7145,6 +9496,19 @@ class GithubConnectorApiAuthenticationGithubAppArgs:
         pulumi.set(self, "installation_id_ref", value)
 
 
+if not MYPY:
+    class GithubConnectorCredentialsArgsDict(TypedDict):
+        http: NotRequired[pulumi.Input['GithubConnectorCredentialsHttpArgsDict']]
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        ssh: NotRequired[pulumi.Input['GithubConnectorCredentialsSshArgsDict']]
+        """
+        Authenticate using SSH for the connection.
+        """
+elif False:
+    GithubConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GithubConnectorCredentialsArgs:
     def __init__(__self__, *,
@@ -7183,6 +9547,31 @@ class GithubConnectorCredentialsArgs:
     def ssh(self, value: Optional[pulumi.Input['GithubConnectorCredentialsSshArgs']]):
         pulumi.set(self, "ssh", value)
 
+
+if not MYPY:
+    class GithubConnectorCredentialsHttpArgsDict(TypedDict):
+        anonymouses: NotRequired[pulumi.Input[Sequence[pulumi.Input['GithubConnectorCredentialsHttpAnonymouseArgsDict']]]]
+        """
+        Configuration for using the http anonymous github for interacting with the github api.
+        """
+        github_app: NotRequired[pulumi.Input['GithubConnectorCredentialsHttpGithubAppArgsDict']]
+        """
+        Configuration for using the github app for interacting with the github api.
+        """
+        token_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GithubConnectorCredentialsHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GithubConnectorCredentialsHttpArgs:
@@ -7271,11 +9660,42 @@ class GithubConnectorCredentialsHttpArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class GithubConnectorCredentialsHttpAnonymouseArgsDict(TypedDict):
+        pass
+elif False:
+    GithubConnectorCredentialsHttpAnonymouseArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GithubConnectorCredentialsHttpAnonymouseArgs:
     def __init__(__self__):
         pass
 
+
+if not MYPY:
+    class GithubConnectorCredentialsHttpGithubAppArgsDict(TypedDict):
+        private_key_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the private key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        Enter the GitHub App ID from the GitHub App General tab.
+        """
+        application_id_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing application id To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        installation_id: NotRequired[pulumi.Input[str]]
+        """
+        Enter the Installation ID located in the URL of the installed GitHub App.
+        """
+        installation_id_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing installation id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GithubConnectorCredentialsHttpGithubAppArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GithubConnectorCredentialsHttpGithubAppArgs:
@@ -7363,6 +9783,15 @@ class GithubConnectorCredentialsHttpGithubAppArgs:
         pulumi.set(self, "installation_id_ref", value)
 
 
+if not MYPY:
+    class GithubConnectorCredentialsSshArgsDict(TypedDict):
+        ssh_key_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GithubConnectorCredentialsSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GithubConnectorCredentialsSshArgs:
     def __init__(__self__, *,
@@ -7385,6 +9814,15 @@ class GithubConnectorCredentialsSshArgs:
         pulumi.set(self, "ssh_key_ref", value)
 
 
+if not MYPY:
+    class GitlabConnectorApiAuthenticationArgsDict(TypedDict):
+        token_ref: pulumi.Input[str]
+        """
+        Personal access token for interacting with the gitlab api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GitlabConnectorApiAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitlabConnectorApiAuthenticationArgs:
     def __init__(__self__, *,
@@ -7406,6 +9844,19 @@ class GitlabConnectorApiAuthenticationArgs:
     def token_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "token_ref", value)
 
+
+if not MYPY:
+    class GitlabConnectorCredentialsArgsDict(TypedDict):
+        http: NotRequired[pulumi.Input['GitlabConnectorCredentialsHttpArgsDict']]
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        ssh: NotRequired[pulumi.Input['GitlabConnectorCredentialsSshArgsDict']]
+        """
+        Authenticate using SSH for the connection.
+        """
+elif False:
+    GitlabConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitlabConnectorCredentialsArgs:
@@ -7445,6 +9896,27 @@ class GitlabConnectorCredentialsArgs:
     def ssh(self, value: Optional[pulumi.Input['GitlabConnectorCredentialsSshArgs']]):
         pulumi.set(self, "ssh", value)
 
+
+if not MYPY:
+    class GitlabConnectorCredentialsHttpArgsDict(TypedDict):
+        password_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        token_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GitlabConnectorCredentialsHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitlabConnectorCredentialsHttpArgs:
@@ -7517,6 +9989,15 @@ class GitlabConnectorCredentialsHttpArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class GitlabConnectorCredentialsSshArgsDict(TypedDict):
+        ssh_key_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    GitlabConnectorCredentialsSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitlabConnectorCredentialsSshArgs:
     def __init__(__self__, *,
@@ -7538,6 +10019,19 @@ class GitlabConnectorCredentialsSshArgs:
     def ssh_key_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "ssh_key_ref", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectArgsDict(TypedDict):
+        metadatas: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgsDict']]]
+        """
+        Metadata details for the GitOps project.
+        """
+        specs: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgsDict']]]
+        """
+        Specification details for the GitOps project.
+        """
+elif False:
+    GitopsAppProjectProjectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectArgs:
@@ -7575,6 +10069,43 @@ class GitopsAppProjectProjectArgs:
     def specs(self, value: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]]):
         pulumi.set(self, "specs", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectMetadataArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations associated with the GitOps project.
+        """
+        cluster_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the cluster associated with the GitOps project.
+        """
+        finalizers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Finalizers associated with the GitOps project.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels associated with the GitOps project.
+        """
+        managed_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgsDict']]]]
+        """
+        Managed fields associated with the GitOps project.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the GitOps project.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace of the GitOps project.
+        """
+        resource_version: NotRequired[pulumi.Input[str]]
+        """
+        Resource Version for the GitOps project
+        """
+elif False:
+    GitopsAppProjectProjectMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectMetadataArgs:
@@ -7711,6 +10242,39 @@ class GitopsAppProjectProjectMetadataArgs:
         pulumi.set(self, "resource_version", value)
 
 
+if not MYPY:
+    class GitopsAppProjectProjectMetadataManagedFieldArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        API version of the operation performed.
+        """
+        fields_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the fields in the GitOps project.
+        """
+        fields_v1: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Raw fields associated with the GitOps project.
+        """
+        manager: NotRequired[pulumi.Input[str]]
+        """
+        Manager responsible for the operation.
+        """
+        operation: NotRequired[pulumi.Input[str]]
+        """
+        Operation type performed on the GitOps project.
+        """
+        subresource: NotRequired[pulumi.Input[str]]
+        """
+        Subresource associated with the GitOps project.
+        """
+        time: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Timestamp of the operation.
+        """
+elif False:
+    GitopsAppProjectProjectMetadataManagedFieldArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitopsAppProjectProjectMetadataManagedFieldArgs:
     def __init__(__self__, *,
@@ -7829,6 +10393,55 @@ class GitopsAppProjectProjectMetadataManagedFieldArgs:
     def time(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "time", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectSpecArgsDict(TypedDict):
+        cluster_resource_blacklists: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceBlacklistArgsDict']]]]
+        """
+        Cluster resource blacklist for the GitOps project.
+        """
+        cluster_resource_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgsDict']]]]
+        """
+        Cluster resource whitelist for the GitOps project.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the GitOps project.
+        """
+        destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgsDict']]]]
+        """
+        Destinations for deployment of the GitOps project.
+        """
+        namespace_resource_blacklists: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgsDict']]]]
+        """
+        Namespace resource blacklist for the GitOps project.
+        """
+        namespace_resource_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgsDict']]]]
+        """
+        Namespace resource whitelist for the GitOps project.
+        """
+        orphaned_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgsDict']]]]
+        """
+        Orphaned resources configuration for the GitOps project.
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgsDict']]]]
+        """
+        Roles associated with the GitOps project.
+        """
+        signature_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgsDict']]]]
+        """
+        Signature keys for the GitOps project.
+        """
+        source_repos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source repositories for the GitOps project.
+        """
+        sync_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgsDict']]]]
+        """
+        Synchronization windows for the GitOps project.
+        """
+elif False:
+    GitopsAppProjectProjectSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectSpecArgs:
@@ -8013,6 +10626,19 @@ class GitopsAppProjectProjectSpecArgs:
         pulumi.set(self, "sync_windows", value)
 
 
+if not MYPY:
+    class GitopsAppProjectProjectSpecClusterResourceBlacklistArgsDict(TypedDict):
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Group of the cluster resource blacklist.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Kind of the cluster resource blacklist.
+        """
+elif False:
+    GitopsAppProjectProjectSpecClusterResourceBlacklistArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitopsAppProjectProjectSpecClusterResourceBlacklistArgs:
     def __init__(__self__, *,
@@ -8052,6 +10678,19 @@ class GitopsAppProjectProjectSpecClusterResourceBlacklistArgs:
         pulumi.set(self, "kind", value)
 
 
+if not MYPY:
+    class GitopsAppProjectProjectSpecClusterResourceWhitelistArgsDict(TypedDict):
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Group of the cluster resource whitelist.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Kind of the cluster resource whitelist.
+        """
+elif False:
+    GitopsAppProjectProjectSpecClusterResourceWhitelistArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitopsAppProjectProjectSpecClusterResourceWhitelistArgs:
     def __init__(__self__, *,
@@ -8090,6 +10729,23 @@ class GitopsAppProjectProjectSpecClusterResourceWhitelistArgs:
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectSpecDestinationArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the destination.
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace of the destination.
+        """
+        server: NotRequired[pulumi.Input[str]]
+        """
+        Server URL of the destination.
+        """
+elif False:
+    GitopsAppProjectProjectSpecDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectSpecDestinationArgs:
@@ -8146,6 +10802,19 @@ class GitopsAppProjectProjectSpecDestinationArgs:
         pulumi.set(self, "server", value)
 
 
+if not MYPY:
+    class GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgsDict(TypedDict):
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Group of the namespace resource blacklist.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Kind of the namespace resource blacklist.
+        """
+elif False:
+    GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs:
     def __init__(__self__, *,
@@ -8184,6 +10853,19 @@ class GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs:
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgsDict(TypedDict):
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Group of the namespace resource whitelist.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Kind of the namespace resource whitelist.
+        """
+elif False:
+    GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs:
@@ -8224,6 +10906,19 @@ class GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs:
         pulumi.set(self, "kind", value)
 
 
+if not MYPY:
+    class GitopsAppProjectProjectSpecOrphanedResourceArgsDict(TypedDict):
+        ignores: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgsDict']]]]
+        """
+        List of ignored orphaned resources.
+        """
+        warn: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to warn about orphaned resources.
+        """
+elif False:
+    GitopsAppProjectProjectSpecOrphanedResourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitopsAppProjectProjectSpecOrphanedResourceArgs:
     def __init__(__self__, *,
@@ -8262,6 +10957,23 @@ class GitopsAppProjectProjectSpecOrphanedResourceArgs:
     def warn(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "warn", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgsDict(TypedDict):
+        group: NotRequired[pulumi.Input[str]]
+        """
+        Group of the ignored orphaned resource.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Kind of the ignored orphaned resource.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the ignored orphaned resource.
+        """
+elif False:
+    GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs:
@@ -8317,6 +11029,31 @@ class GitopsAppProjectProjectSpecOrphanedResourceIgnoreArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectSpecRoleArgsDict(TypedDict):
+        description: pulumi.Input[str]
+        """
+        Description of the role.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of the role.
+        """
+        groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Groups associated with the role.
+        """
+        jwt_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleJwtTokenArgsDict']]]]
+        """
+        JWT tokens associated with the role.
+        """
+        policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policies associated with the role.
+        """
+elif False:
+    GitopsAppProjectProjectSpecRoleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectSpecRoleArgs:
@@ -8403,6 +11140,23 @@ class GitopsAppProjectProjectSpecRoleArgs:
         pulumi.set(self, "policies", value)
 
 
+if not MYPY:
+    class GitopsAppProjectProjectSpecRoleJwtTokenArgsDict(TypedDict):
+        exp: NotRequired[pulumi.Input[str]]
+        """
+        Expiration time of the JWT token.
+        """
+        iat: NotRequired[pulumi.Input[str]]
+        """
+        Issued At time of the JWT token.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the JWT token.
+        """
+elif False:
+    GitopsAppProjectProjectSpecRoleJwtTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitopsAppProjectProjectSpecRoleJwtTokenArgs:
     def __init__(__self__, *,
@@ -8458,6 +11212,15 @@ class GitopsAppProjectProjectSpecRoleJwtTokenArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class GitopsAppProjectProjectSpecSignatureKeyArgsDict(TypedDict):
+        key_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of the signature key.
+        """
+elif False:
+    GitopsAppProjectProjectSpecSignatureKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GitopsAppProjectProjectSpecSignatureKeyArgs:
     def __init__(__self__, *,
@@ -8480,6 +11243,43 @@ class GitopsAppProjectProjectSpecSignatureKeyArgs:
     def key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_id", value)
 
+
+if not MYPY:
+    class GitopsAppProjectProjectSpecSyncWindowArgsDict(TypedDict):
+        applications: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Applications associated with synchronization window.
+        """
+        clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Clusters associated with synchronization window.
+        """
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        Duration of synchronization window.
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Kind of synchronization window.
+        """
+        manual_sync: NotRequired[pulumi.Input[bool]]
+        """
+        Whether manual synchronization is enabled.
+        """
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Namespaces associated with synchronization window.
+        """
+        schedule: NotRequired[pulumi.Input[str]]
+        """
+        Schedule of synchronization window.
+        """
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        Time zone of synchronization window.
+        """
+elif False:
+    GitopsAppProjectProjectSpecSyncWindowArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GitopsAppProjectProjectSpecSyncWindowArgs:
@@ -8616,6 +11416,23 @@ class GitopsAppProjectProjectSpecSyncWindowArgs:
         pulumi.set(self, "time_zone", value)
 
 
+if not MYPY:
+    class HelmConnectorCredentialsArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    HelmConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HelmConnectorCredentialsArgs:
     def __init__(__self__, *,
@@ -8669,6 +11486,79 @@ class HelmConnectorCredentialsArgs:
     def username_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_ref", value)
 
+
+if not MYPY:
+    class InfrastructureGitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        message for the commit in Git Repo.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        import_from_git: NotRequired[pulumi.Input[bool]]
+        """
+        Flag to set if importing from Git
+        """
+        is_force_import: NotRequired[pulumi.Input[bool]]
+        """
+        Flag to set if force importing from Git
+        """
+        is_harnesscode_repo: NotRequired[pulumi.Input[bool]]
+        """
+        If the gitProvider is HarnessCode
+        """
+        is_new_branch: NotRequired[pulumi.Input[bool]]
+        """
+        If a new branch creation is requested.
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Infrastructures.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating Infrastructures.
+        """
+        load_from_cache: NotRequired[pulumi.Input[str]]
+        """
+        If the Entity is to be fetched from cache
+        """
+        load_from_fallback_branch: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the file has to be get from fallback_branch.
+        """
+        parent_entity_connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Parent Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        parent_entity_repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository where parent entity lies.
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        store type of the entity.
+        """
+elif False:
+    InfrastructureGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InfrastructureGitDetailsArgs:
@@ -8949,6 +11839,55 @@ class InfrastructureGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class InputSetGitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        parent_entity_connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Connector reference for Parent Entity (Pipeline). To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        parent_entity_repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Repository name for Parent Entity (Pipeline).
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    InputSetGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InputSetGitDetailsArgs:
     def __init__(__self__, *,
@@ -9132,6 +12071,28 @@ class InputSetGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class InputSetGitImportInfoArgsDict(TypedDict):
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        is_force_import: NotRequired[pulumi.Input[bool]]
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+elif False:
+    InputSetGitImportInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InputSetGitImportInfoArgs:
     def __init__(__self__, *,
@@ -9215,6 +12176,19 @@ class InputSetGitImportInfoArgs:
         pulumi.set(self, "repo_name", value)
 
 
+if not MYPY:
+    class InputSetInputSetImportRequestArgsDict(TypedDict):
+        input_set_description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the input set.
+        """
+        input_set_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the input set.
+        """
+elif False:
+    InputSetInputSetImportRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InputSetInputSetImportRequestArgs:
     def __init__(__self__, *,
@@ -9253,6 +12227,23 @@ class InputSetInputSetImportRequestArgs:
     def input_set_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "input_set_name", value)
 
+
+if not MYPY:
+    class JenkinsConnectorAuthArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Can be one of UsernamePassword, Anonymous, Bearer Token(HTTP Header)
+        """
+        jenkins_bearer_token: NotRequired[pulumi.Input['JenkinsConnectorAuthJenkinsBearerTokenArgsDict']]
+        """
+        Authenticate to App Dynamics using bearer token.
+        """
+        jenkins_user_name_password: NotRequired[pulumi.Input['JenkinsConnectorAuthJenkinsUserNamePasswordArgsDict']]
+        """
+        Authenticate to App Dynamics using user name and password.
+        """
+elif False:
+    JenkinsConnectorAuthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JenkinsConnectorAuthArgs:
@@ -9308,6 +12299,15 @@ class JenkinsConnectorAuthArgs:
         pulumi.set(self, "jenkins_user_name_password", value)
 
 
+if not MYPY:
+    class JenkinsConnectorAuthJenkinsBearerTokenArgsDict(TypedDict):
+        token_ref: pulumi.Input[str]
+        """
+        Reference of the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    JenkinsConnectorAuthJenkinsBearerTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JenkinsConnectorAuthJenkinsBearerTokenArgs:
     def __init__(__self__, *,
@@ -9329,6 +12329,23 @@ class JenkinsConnectorAuthJenkinsBearerTokenArgs:
     def token_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "token_ref", value)
 
+
+if not MYPY:
+    class JenkinsConnectorAuthJenkinsUserNamePasswordArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.To reference a secret at the project scope, use directly without any prefix.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Username reference to use for authentication.
+        """
+elif False:
+    JenkinsConnectorAuthJenkinsUserNamePasswordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JenkinsConnectorAuthJenkinsUserNamePasswordArgs:
@@ -9384,6 +12401,23 @@ class JenkinsConnectorAuthJenkinsUserNamePasswordArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class JiraConnectorAuthArgsDict(TypedDict):
+        auth_type: pulumi.Input[str]
+        """
+        Authentication types for Jira connector
+        """
+        personal_access_token: NotRequired[pulumi.Input['JiraConnectorAuthPersonalAccessTokenArgsDict']]
+        """
+        Authenticate using personal access token.
+        """
+        username_password: NotRequired[pulumi.Input['JiraConnectorAuthUsernamePasswordArgsDict']]
+        """
+        Authenticate using username password.
+        """
+elif False:
+    JiraConnectorAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JiraConnectorAuthArgs:
     def __init__(__self__, *,
@@ -9438,6 +12472,15 @@ class JiraConnectorAuthArgs:
         pulumi.set(self, "username_password", value)
 
 
+if not MYPY:
+    class JiraConnectorAuthPersonalAccessTokenArgsDict(TypedDict):
+        pat_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the personal access token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    JiraConnectorAuthPersonalAccessTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class JiraConnectorAuthPersonalAccessTokenArgs:
     def __init__(__self__, *,
@@ -9459,6 +12502,23 @@ class JiraConnectorAuthPersonalAccessTokenArgs:
     def pat_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "pat_ref", value)
 
+
+if not MYPY:
+    class JiraConnectorAuthUsernamePasswordArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    JiraConnectorAuthUsernamePasswordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class JiraConnectorAuthUsernamePasswordArgs:
@@ -9513,6 +12573,35 @@ class JiraConnectorAuthUsernamePasswordArgs:
     def username_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_ref", value)
 
+
+if not MYPY:
+    class KubernetesConnectorClientKeyCertArgsDict(TypedDict):
+        client_cert_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the client certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        client_key_algorithm: pulumi.Input[str]
+        """
+        The algorithm used to generate the client key for the connector. Valid values are RSA, EC
+        """
+        client_key_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the client key for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        master_url: pulumi.Input[str]
+        """
+        The URL of the Kubernetes cluster.
+        """
+        ca_cert_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        client_key_passphrase_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing the client key passphrase for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    KubernetesConnectorClientKeyCertArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesConnectorClientKeyCertArgs:
@@ -9613,6 +12702,15 @@ class KubernetesConnectorClientKeyCertArgs:
         pulumi.set(self, "client_key_passphrase_ref", value)
 
 
+if not MYPY:
+    class KubernetesConnectorInheritFromDelegateArgsDict(TypedDict):
+        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Selectors to use for the delegate.
+        """
+elif False:
+    KubernetesConnectorInheritFromDelegateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubernetesConnectorInheritFromDelegateArgs:
     def __init__(__self__, *,
@@ -9634,6 +12732,43 @@ class KubernetesConnectorInheritFromDelegateArgs:
     def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "delegate_selectors", value)
 
+
+if not MYPY:
+    class KubernetesConnectorOpenidConnectArgsDict(TypedDict):
+        client_id_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the client ID for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        issuer_url: pulumi.Input[str]
+        """
+        The URL of the OpenID Connect issuer.
+        """
+        master_url: pulumi.Input[str]
+        """
+        The URL of the Kubernetes cluster.
+        """
+        password_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Scopes to request for the connector.
+        """
+        secret_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing the client secret for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username for the connector.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    KubernetesConnectorOpenidConnectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesConnectorOpenidConnectArgs:
@@ -9766,6 +12901,23 @@ class KubernetesConnectorOpenidConnectArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class KubernetesConnectorServiceAccountArgsDict(TypedDict):
+        master_url: pulumi.Input[str]
+        """
+        The URL of the Kubernetes cluster.
+        """
+        service_account_token_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the service account token for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        ca_cert_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing the CA certificate for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    KubernetesConnectorServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KubernetesConnectorServiceAccountArgs:
     def __init__(__self__, *,
@@ -9818,6 +12970,27 @@ class KubernetesConnectorServiceAccountArgs:
     def ca_cert_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ca_cert_ref", value)
 
+
+if not MYPY:
+    class KubernetesConnectorUsernamePasswordArgsDict(TypedDict):
+        master_url: pulumi.Input[str]
+        """
+        The URL of the Kubernetes cluster.
+        """
+        password_ref: pulumi.Input[str]
+        """
+        Reference to the secret containing the password for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username for the connector.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the secret containing the username for the connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    KubernetesConnectorUsernamePasswordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesConnectorUsernamePasswordArgs:
@@ -9888,6 +13061,19 @@ class KubernetesConnectorUsernamePasswordArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class ManualFreezeCurrentOrUpcomingWindowArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[int]]
+        """
+        End time of the freeze
+        """
+        start_time: NotRequired[pulumi.Input[int]]
+        """
+        Start time of the freeze
+        """
+elif False:
+    ManualFreezeCurrentOrUpcomingWindowArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManualFreezeCurrentOrUpcomingWindowArgs:
     def __init__(__self__, *,
@@ -9926,6 +13112,31 @@ class ManualFreezeCurrentOrUpcomingWindowArgs:
     def start_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "start_time", value)
 
+
+if not MYPY:
+    class ManualFreezeFreezeWindowArgsDict(TypedDict):
+        duration: NotRequired[pulumi.Input[str]]
+        """
+        Duration of the freeze
+        """
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        End time of the freeze
+        """
+        recurrences: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceArgsDict']]]]
+        """
+        Recurrence of the freeze window
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        Start time of the freeze
+        """
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        Timezone
+        """
+elif False:
+    ManualFreezeFreezeWindowArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ManualFreezeFreezeWindowArgs:
@@ -10014,6 +13225,19 @@ class ManualFreezeFreezeWindowArgs:
         pulumi.set(self, "time_zone", value)
 
 
+if not MYPY:
+    class ManualFreezeFreezeWindowRecurrenceArgsDict(TypedDict):
+        recurrence_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgsDict']]]]
+        """
+        Used to filter resources on their attributes
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Recurrence type(Daily, Weekly, Monthly, Yearly)
+        """
+elif False:
+    ManualFreezeFreezeWindowRecurrenceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManualFreezeFreezeWindowRecurrenceArgs:
     def __init__(__self__, *,
@@ -10053,6 +13277,19 @@ class ManualFreezeFreezeWindowRecurrenceArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgsDict(TypedDict):
+        until: NotRequired[pulumi.Input[str]]
+        """
+        Recurrence until timestamp
+        """
+        value: NotRequired[pulumi.Input[int]]
+        """
+        Value of n, for n months recurrence
+        """
+elif False:
+    ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs:
     def __init__(__self__, *,
@@ -10091,6 +13328,67 @@ class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs:
     def value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class MonitoredServiceRequestArgsDict(TypedDict):
+        environment_ref: pulumi.Input[str]
+        """
+        Environment in which the service is deployed.
+        """
+        name: pulumi.Input[str]
+        """
+        Name for the monitored service.
+        """
+        service_ref: pulumi.Input[str]
+        """
+        Service reference for the monitored service.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the monitored service.
+        """
+        change_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestChangeSourceArgsDict']]]]
+        """
+        Set of change sources for the monitored service.
+        """
+        dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestDependencyArgsDict']]]]
+        """
+        Dependencies of the monitored service.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description for the monitored service.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable the monitored service.
+        """
+        environment_ref_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Environment reference list for the monitored service.
+        """
+        health_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestHealthSourceArgsDict']]]]
+        """
+        Set of health sources for the monitored service.
+        """
+        notification_rule_refs: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitoredServiceRequestNotificationRuleRefArgsDict']]]]
+        """
+        Notification rule references for the monitored service.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags for the monitored service. comma-separated key value string pairs.
+        """
+        template_ref: NotRequired[pulumi.Input[str]]
+        """
+        Template reference for the monitored service.
+        """
+        version_label: NotRequired[pulumi.Input[str]]
+        """
+        Template version label for the monitored service.
+        """
+elif False:
+    MonitoredServiceRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitoredServiceRequestArgs:
@@ -10323,6 +13621,35 @@ class MonitoredServiceRequestArgs:
         pulumi.set(self, "version_label", value)
 
 
+if not MYPY:
+    class MonitoredServiceRequestChangeSourceArgsDict(TypedDict):
+        category: pulumi.Input[str]
+        """
+        Category of the change source.
+        """
+        identifier: pulumi.Input[str]
+        """
+        Identifier of the change source.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of the change source.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the change source.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable the change source.
+        """
+        spec: NotRequired[pulumi.Input[str]]
+        """
+        Specification of the change source. Depends on the type of the change source.
+        """
+elif False:
+    MonitoredServiceRequestChangeSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitoredServiceRequestChangeSourceArgs:
     def __init__(__self__, *,
@@ -10422,6 +13749,23 @@ class MonitoredServiceRequestChangeSourceArgs:
         pulumi.set(self, "spec", value)
 
 
+if not MYPY:
+    class MonitoredServiceRequestDependencyArgsDict(TypedDict):
+        monitored_service_identifier: pulumi.Input[str]
+        """
+        Monitored service identifier of the dependency.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the service dependency.
+        """
+        dependency_metadata: NotRequired[pulumi.Input[str]]
+        """
+        Dependency metadata for the monitored service.
+        """
+elif False:
+    MonitoredServiceRequestDependencyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitoredServiceRequestDependencyArgs:
     def __init__(__self__, *,
@@ -10474,6 +13818,31 @@ class MonitoredServiceRequestDependencyArgs:
     def dependency_metadata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dependency_metadata", value)
 
+
+if not MYPY:
+    class MonitoredServiceRequestHealthSourceArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        Identifier of the health source.
+        """
+        name: pulumi.Input[str]
+        """
+        Name of the health source.
+        """
+        spec: pulumi.Input[str]
+        """
+        Specification of the health source. Depends on the type of the health source.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the health source.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the health source.
+        """
+elif False:
+    MonitoredServiceRequestHealthSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitoredServiceRequestHealthSourceArgs:
@@ -10558,6 +13927,19 @@ class MonitoredServiceRequestHealthSourceArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class MonitoredServiceRequestNotificationRuleRefArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable or disable notification rule reference for the monitored service.
+        """
+        notification_rule_ref: pulumi.Input[str]
+        """
+        Notification rule reference for the monitored service.
+        """
+elif False:
+    MonitoredServiceRequestNotificationRuleRefArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitoredServiceRequestNotificationRuleRefArgs:
     def __init__(__self__, *,
@@ -10594,6 +13976,23 @@ class MonitoredServiceRequestNotificationRuleRefArgs:
     def notification_rule_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "notification_rule_ref", value)
 
+
+if not MYPY:
+    class NexusConnectorCredentialsArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}. To reference a secret at the project scope, use directly without any prefix.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    NexusConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NexusConnectorCredentialsArgs:
@@ -10648,6 +14047,27 @@ class NexusConnectorCredentialsArgs:
     def username_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_ref", value)
 
+
+if not MYPY:
+    class NotificationRuleRequestArgsDict(TypedDict):
+        conditions: pulumi.Input[Sequence[pulumi.Input['NotificationRuleRequestConditionArgsDict']]]
+        """
+        Notification Rule conditions specification.
+        """
+        name: pulumi.Input[str]
+        """
+        Name for the Notification Rule.
+        """
+        notification_method: pulumi.Input['NotificationRuleRequestNotificationMethodArgsDict']
+        """
+        Notification Method specifications.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the Notification Rule.
+        """
+elif False:
+    NotificationRuleRequestArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NotificationRuleRequestArgs:
@@ -10716,6 +14136,19 @@ class NotificationRuleRequestArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class NotificationRuleRequestConditionArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of the condition.
+        """
+        spec: NotRequired[pulumi.Input[str]]
+        """
+        Specification of the notification condition. Depends on the type of the notification condition.
+        """
+elif False:
+    NotificationRuleRequestConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationRuleRequestConditionArgs:
     def __init__(__self__, *,
@@ -10754,6 +14187,19 @@ class NotificationRuleRequestConditionArgs:
         pulumi.set(self, "spec", value)
 
 
+if not MYPY:
+    class NotificationRuleRequestNotificationMethodArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of the Notification Method.
+        """
+        spec: NotRequired[pulumi.Input[str]]
+        """
+        Specification of the notification method. Depends on the type of the notification method.
+        """
+elif False:
+    NotificationRuleRequestNotificationMethodArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NotificationRuleRequestNotificationMethodArgs:
     def __init__(__self__, *,
@@ -10791,6 +14237,23 @@ class NotificationRuleRequestNotificationMethodArgs:
     def spec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec", value)
 
+
+if not MYPY:
+    class OciHelmConnectorCredentialsArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    OciHelmConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OciHelmConnectorCredentialsArgs:
@@ -10845,6 +14308,63 @@ class OciHelmConnectorCredentialsArgs:
     def username_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_ref", value)
 
+
+if not MYPY:
+    class OverridesGitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        is_harness_code_repo: NotRequired[pulumi.Input[bool]]
+        """
+        If the repo is in harness code
+        """
+        is_new_branch: NotRequired[pulumi.Input[bool]]
+        """
+        If the branch being created is new
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating override.
+        """
+        load_from_cache: NotRequired[pulumi.Input[bool]]
+        """
+        Load service yaml from catch
+        """
+        load_from_fallback_branch: NotRequired[pulumi.Input[bool]]
+        """
+        Load service yaml from fallback branch
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    OverridesGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OverridesGitDetailsArgs:
@@ -11061,6 +14581,39 @@ class OverridesGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class PipelineFiltersFilterPropertiesArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        """
+        Corresponding Entity of the filters. Currently supported types are {Connector, DelegateProfile, Delegate, PipelineSetup, PipelineExecution, Deployment, Audit, Template, EnvironmentGroup, FileStore, CCMRecommendation, Anomaly, Environment}.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        description of the pipline filter.
+        """
+        module_properties: NotRequired[pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesArgsDict']]
+        """
+        module properties of the pipline filter.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the pipeline filter.
+        """
+        pipeline_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Pipeline identifiers to filter on.
+        """
+        pipeline_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
+        """
+        Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+elif False:
+    PipelineFiltersFilterPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineFiltersFilterPropertiesArgs:
     def __init__(__self__, *,
@@ -11179,6 +14732,19 @@ class PipelineFiltersFilterPropertiesArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class PipelineFiltersFilterPropertiesModulePropertiesArgsDict(TypedDict):
+        cd: NotRequired[pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesCdArgsDict']]
+        """
+        CD related properties to be filtered on.
+        """
+        ci: NotRequired[pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesCiArgsDict']]
+        """
+        CI related properties to be filtered on.
+        """
+elif False:
+    PipelineFiltersFilterPropertiesModulePropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineFiltersFilterPropertiesModulePropertiesArgs:
     def __init__(__self__, *,
@@ -11217,6 +14783,27 @@ class PipelineFiltersFilterPropertiesModulePropertiesArgs:
     def ci(self, value: Optional[pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesCiArgs']]):
         pulumi.set(self, "ci", value)
 
+
+if not MYPY:
+    class PipelineFiltersFilterPropertiesModulePropertiesCdArgsDict(TypedDict):
+        artifact_display_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Artifact display names of the CD pipeline.
+        """
+        deployment_types: NotRequired[pulumi.Input[str]]
+        """
+        Deployment type of the CD pipeline, eg. Kubernetes
+        """
+        environment_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Environment names of the CD pipeline.
+        """
+        service_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Service names of the CD pipeline.
+        """
+elif False:
+    PipelineFiltersFilterPropertiesModulePropertiesCdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
@@ -11288,6 +14875,31 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
     def service_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_names", value)
 
+
+if not MYPY:
+    class PipelineFiltersFilterPropertiesModulePropertiesCiArgsDict(TypedDict):
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Branch which was used while building.
+        """
+        build_type: NotRequired[pulumi.Input[str]]
+        """
+        Build type of the pipeline. Possible values: branch.
+        """
+        ci_execution_info: NotRequired[pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgsDict']]
+        """
+        CI execution info for the pipeline.
+        """
+        repo_names: NotRequired[pulumi.Input[str]]
+        """
+        name of the repository used in the pipeline.
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Tags to associate with the CI pipeline resource.
+        """
+elif False:
+    PipelineFiltersFilterPropertiesModulePropertiesCiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineFiltersFilterPropertiesModulePropertiesCiArgs:
@@ -11376,6 +14988,19 @@ class PipelineFiltersFilterPropertiesModulePropertiesCiArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgsDict(TypedDict):
+        event: NotRequired[pulumi.Input[str]]
+        """
+        Event for the ci execution, Possible values: pullRequest.
+        """
+        pull_request: NotRequired[pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequestArgsDict']]
+        """
+        The pull request details of the CI pipeline.
+        """
+elif False:
+    PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgs:
     def __init__(__self__, *,
@@ -11415,6 +15040,19 @@ class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoArgs:
         pulumi.set(self, "pull_request", value)
 
 
+if not MYPY:
+    class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequestArgsDict(TypedDict):
+        source_branch: NotRequired[pulumi.Input[str]]
+        """
+        Source branch of the pull request.
+        """
+        target_branch: NotRequired[pulumi.Input[str]]
+        """
+        Target branch of the pull request.
+        """
+elif False:
+    PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullRequestArgs:
     def __init__(__self__, *,
@@ -11453,6 +15091,47 @@ class PipelineFiltersFilterPropertiesModulePropertiesCiCiExecutionInfoPullReques
     def target_branch(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_branch", value)
 
+
+if not MYPY:
+    class PipelineGitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    PipelineGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PipelineGitDetailsArgs:
@@ -11605,6 +15284,27 @@ class PipelineGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class PipelineGitImportInfoArgsDict(TypedDict):
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+elif False:
+    PipelineGitImportInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelineGitImportInfoArgs:
     def __init__(__self__, *,
@@ -11676,6 +15376,19 @@ class PipelineGitImportInfoArgs:
         pulumi.set(self, "repo_name", value)
 
 
+if not MYPY:
+    class PipelinePipelineImportRequestArgsDict(TypedDict):
+        pipeline_description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the pipeline.
+        """
+        pipeline_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the pipeline.
+        """
+elif False:
+    PipelinePipelineImportRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PipelinePipelineImportRequestArgs:
     def __init__(__self__, *,
@@ -11715,6 +15428,19 @@ class PipelinePipelineImportRequestArgs:
         pulumi.set(self, "pipeline_name", value)
 
 
+if not MYPY:
+    class PolicySetPolicyArgsDict(TypedDict):
+        identifier: pulumi.Input[str]
+        """
+        Account Identifier of the account
+        """
+        severity: pulumi.Input[str]
+        """
+        Policy failure response - 'warning' for continuation, 'error' for exit
+        """
+elif False:
+    PolicySetPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PolicySetPolicyArgs:
     def __init__(__self__, *,
@@ -11751,6 +15477,27 @@ class PolicySetPolicyArgs:
     def severity(self, value: pulumi.Input[str]):
         pulumi.set(self, "severity", value)
 
+
+if not MYPY:
+    class PrometheusConnectorHeaderArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key.
+        """
+        encrypted_value_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the Harness secret containing the encrypted value. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value.
+        """
+        value_encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Encrypted value.
+        """
+elif False:
+    PrometheusConnectorHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PrometheusConnectorHeaderArgs:
@@ -11822,6 +15569,19 @@ class PrometheusConnectorHeaderArgs:
         pulumi.set(self, "value_encrypted", value)
 
 
+if not MYPY:
+    class RepoRuleBranchBypassArgsDict(TypedDict):
+        repo_owners: NotRequired[pulumi.Input[bool]]
+        """
+        Allow users with repository edit permission to bypass.
+        """
+        user_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of user ids with who can bypass.
+        """
+elif False:
+    RepoRuleBranchBypassArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepoRuleBranchBypassArgs:
     def __init__(__self__, *,
@@ -11860,6 +15620,23 @@ class RepoRuleBranchBypassArgs:
     def user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "user_ids", value)
 
+
+if not MYPY:
+    class RepoRuleBranchPatternArgsDict(TypedDict):
+        default_branch: NotRequired[pulumi.Input[bool]]
+        """
+        Should rule apply to default branch of the repository.
+        """
+        excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Globstar branch patterns on which rules will NOT be applied.
+        """
+        includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Globstar branch patterns on which rules will be applied.
+        """
+elif False:
+    RepoRuleBranchPatternArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepoRuleBranchPatternArgs:
@@ -11915,6 +15692,55 @@ class RepoRuleBranchPatternArgs:
     def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
+
+if not MYPY:
+    class RepoRuleBranchPolicyArgsDict(TypedDict):
+        allow_merge_strategies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+        """
+        block_branch_creation: NotRequired[pulumi.Input[bool]]
+        """
+        Only allow users with bypass permission to create matching branches.
+        """
+        block_branch_deletion: NotRequired[pulumi.Input[bool]]
+        """
+        Only allow users with bypass permission to delete matching branches.
+        """
+        delete_branch_on_merge: NotRequired[pulumi.Input[bool]]
+        """
+        Automatically delete the source branch of a pull request after it is merged.
+        """
+        require_code_owners: NotRequired[pulumi.Input[bool]]
+        """
+        Require approval on pull requests from one reviewer for each codeowner rule.
+        """
+        require_latest_commit_approval: NotRequired[pulumi.Input[bool]]
+        """
+        Require re-approval when there are new changes in the pull request.
+        """
+        require_minimum_approval_count: NotRequired[pulumi.Input[int]]
+        """
+        Require approval on pull requests from a minimum number of reviewers.
+        """
+        require_no_change_request: NotRequired[pulumi.Input[bool]]
+        """
+        Require all request for changes have been resolved.
+        """
+        require_pull_request: NotRequired[pulumi.Input[bool]]
+        """
+        Do not allow any changes to matching branches without a pull request.
+        """
+        require_resolve_all_comments: NotRequired[pulumi.Input[bool]]
+        """
+        All comments on a pull request must be resolved before it can be merged.
+        """
+        require_status_checks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Selected status checks must pass before a pull request can be merged.
+        """
+elif False:
+    RepoRuleBranchPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepoRuleBranchPolicyArgs:
@@ -12099,6 +15925,31 @@ class RepoRuleBranchPolicyArgs:
         pulumi.set(self, "require_status_checks", value)
 
 
+if not MYPY:
+    class RepoSourceArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        The host URL for the import source.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password for authentication when importing.
+        """
+        repo: NotRequired[pulumi.Input[str]]
+        """
+        The full identifier of the repository on the SCM provider's platform.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username for authentication when importing.
+        """
+elif False:
+    RepoSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RepoSourceArgs:
     def __init__(__self__, *,
@@ -12186,6 +16037,27 @@ class RepoSourceArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class ResourceGroupIncludedScopeArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        """
+        Can be one of these 2 EXCLUDING*CHILD*SCOPES or INCLUDING*CHILD*SCOPES
+        """
+        account_id: NotRequired[pulumi.Input[str]]
+        """
+        Account Identifier of the account
+        """
+        org_id: NotRequired[pulumi.Input[str]]
+        """
+        Organization Identifier
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project Identifier
+        """
+elif False:
+    ResourceGroupIncludedScopeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourceGroupIncludedScopeArgs:
     def __init__(__self__, *,
@@ -12256,6 +16128,19 @@ class ResourceGroupIncludedScopeArgs:
         pulumi.set(self, "project_id", value)
 
 
+if not MYPY:
+    class ResourceGroupResourceFilterArgsDict(TypedDict):
+        include_all_resources: NotRequired[pulumi.Input[bool]]
+        """
+        Include all resource or not
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterResourceArgsDict']]]]
+        """
+        Resources for a resource group
+        """
+elif False:
+    ResourceGroupResourceFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourceGroupResourceFilterArgs:
     def __init__(__self__, *,
@@ -12294,6 +16179,23 @@ class ResourceGroupResourceFilterArgs:
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
+
+if not MYPY:
+    class ResourceGroupResourceFilterResourceArgsDict(TypedDict):
+        resource_type: pulumi.Input[str]
+        """
+        Type of the resource
+        """
+        attribute_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ResourceGroupResourceFilterResourceAttributeFilterArgsDict']]]]
+        """
+        Used to filter resources on their attributes
+        """
+        identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of the identifiers
+        """
+elif False:
+    ResourceGroupResourceFilterResourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ResourceGroupResourceFilterResourceArgs:
@@ -12349,6 +16251,19 @@ class ResourceGroupResourceFilterResourceArgs:
         pulumi.set(self, "identifiers", value)
 
 
+if not MYPY:
+    class ResourceGroupResourceFilterResourceAttributeFilterArgsDict(TypedDict):
+        attribute_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the attribute. Valid values are `category`, `type` or `labels`.
+        """
+        attribute_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
+        """
+elif False:
+    ResourceGroupResourceFilterResourceAttributeFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ResourceGroupResourceFilterResourceAttributeFilterArgs:
     def __init__(__self__, *,
@@ -12387,6 +16302,23 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
     def attribute_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "attribute_values", value)
 
+
+if not MYPY:
+    class RoleAssignmentsPrincipalArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type.
+        """
+        identifier: NotRequired[pulumi.Input[str]]
+        """
+        Identifier.
+        """
+        scope_level: NotRequired[pulumi.Input[str]]
+        """
+        Scope level.
+        """
+elif False:
+    RoleAssignmentsPrincipalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RoleAssignmentsPrincipalArgs:
@@ -12441,6 +16373,31 @@ class RoleAssignmentsPrincipalArgs:
     def scope_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scope_level", value)
 
+
+if not MYPY:
+    class SecretSshkeyKerberosArgsDict(TypedDict):
+        principal: pulumi.Input[str]
+        """
+        Username to use for authentication.
+        """
+        realm: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication.
+        """
+        tgt_generation_method: NotRequired[pulumi.Input[str]]
+        """
+        Method to generate tgt
+        """
+        tgt_key_tab_file_path_spec: NotRequired[pulumi.Input['SecretSshkeyKerberosTgtKeyTabFilePathSpecArgsDict']]
+        """
+        Authenticate to App Dynamics using username and password.
+        """
+        tgt_password_spec: NotRequired[pulumi.Input['SecretSshkeyKerberosTgtPasswordSpecArgsDict']]
+        """
+        Authenticate to App Dynamics using username and password.
+        """
+elif False:
+    SecretSshkeyKerberosArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretSshkeyKerberosArgs:
@@ -12527,6 +16484,15 @@ class SecretSshkeyKerberosArgs:
         pulumi.set(self, "tgt_password_spec", value)
 
 
+if not MYPY:
+    class SecretSshkeyKerberosTgtKeyTabFilePathSpecArgsDict(TypedDict):
+        key_path: NotRequired[pulumi.Input[str]]
+        """
+        key path
+        """
+elif False:
+    SecretSshkeyKerberosTgtKeyTabFilePathSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs:
     def __init__(__self__, *,
@@ -12550,6 +16516,15 @@ class SecretSshkeyKerberosTgtKeyTabFilePathSpecArgs:
         pulumi.set(self, "key_path", value)
 
 
+if not MYPY:
+    class SecretSshkeyKerberosTgtPasswordSpecArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
+        """
+elif False:
+    SecretSshkeyKerberosTgtPasswordSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretSshkeyKerberosTgtPasswordSpecArgs:
     def __init__(__self__, *,
@@ -12572,6 +16547,27 @@ class SecretSshkeyKerberosTgtPasswordSpecArgs:
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
 
+
+if not MYPY:
+    class SecretSshkeySshArgsDict(TypedDict):
+        credential_type: pulumi.Input[str]
+        """
+        This specifies SSH credential type as Password, KeyPath or KeyReference
+        """
+        ssh_password_credential: NotRequired[pulumi.Input['SecretSshkeySshSshPasswordCredentialArgsDict']]
+        """
+        SSH credential of type keyReference
+        """
+        sshkey_path_credential: NotRequired[pulumi.Input['SecretSshkeySshSshkeyPathCredentialArgsDict']]
+        """
+        SSH credential of type keyPath
+        """
+        sshkey_reference_credential: NotRequired[pulumi.Input['SecretSshkeySshSshkeyReferenceCredentialArgsDict']]
+        """
+        SSH credential of type keyReference
+        """
+elif False:
+    SecretSshkeySshArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretSshkeySshArgs:
@@ -12643,6 +16639,19 @@ class SecretSshkeySshArgs:
         pulumi.set(self, "sshkey_reference_credential", value)
 
 
+if not MYPY:
+    class SecretSshkeySshSshPasswordCredentialArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        SSH Password. To reference a password at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a password at the account scope, prefix 'account` to the expression: account.{identifier}
+        """
+        user_name: pulumi.Input[str]
+        """
+        SSH Username.
+        """
+elif False:
+    SecretSshkeySshSshPasswordCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretSshkeySshSshPasswordCredentialArgs:
     def __init__(__self__, *,
@@ -12679,6 +16688,23 @@ class SecretSshkeySshSshPasswordCredentialArgs:
     def user_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "user_name", value)
 
+
+if not MYPY:
+    class SecretSshkeySshSshkeyPathCredentialArgsDict(TypedDict):
+        key_path: pulumi.Input[str]
+        """
+        Path of the key file.
+        """
+        user_name: pulumi.Input[str]
+        """
+        SSH Username.
+        """
+        encrypted_passphrase: NotRequired[pulumi.Input[str]]
+        """
+        Encrypted Passphrase . To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
+        """
+elif False:
+    SecretSshkeySshSshkeyPathCredentialArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretSshkeySshSshkeyPathCredentialArgs:
@@ -12733,6 +16759,23 @@ class SecretSshkeySshSshkeyPathCredentialArgs:
         pulumi.set(self, "encrypted_passphrase", value)
 
 
+if not MYPY:
+    class SecretSshkeySshSshkeyReferenceCredentialArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        SSH key. To reference a key at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a key at the account scope, prefix 'account` to the expression: account.{identifier}
+        """
+        user_name: pulumi.Input[str]
+        """
+        SSH Username.
+        """
+        encrypted_passphrase: NotRequired[pulumi.Input[str]]
+        """
+        Encrypted Passphrase. To reference a encryptedPassphrase at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a encryptedPassPhrase at the account scope, prefix 'account` to the expression: account.{identifier}
+        """
+elif False:
+    SecretSshkeySshSshkeyReferenceCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretSshkeySshSshkeyReferenceCredentialArgs:
     def __init__(__self__, *,
@@ -12786,6 +16829,12 @@ class SecretSshkeySshSshkeyReferenceCredentialArgs:
         pulumi.set(self, "encrypted_passphrase", value)
 
 
+if not MYPY:
+    class SecretTextAdditionalMetadataArgsDict(TypedDict):
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecretTextAdditionalMetadataValueArgsDict']]]]
+elif False:
+    SecretTextAdditionalMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretTextAdditionalMetadataArgs:
     def __init__(__self__, *,
@@ -12803,6 +16852,12 @@ class SecretTextAdditionalMetadataArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class SecretTextAdditionalMetadataValueArgsDict(TypedDict):
+        version: NotRequired[pulumi.Input[str]]
+elif False:
+    SecretTextAdditionalMetadataValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretTextAdditionalMetadataValueArgs:
     def __init__(__self__, *,
@@ -12819,6 +16874,63 @@ class SecretTextAdditionalMetadataValueArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class ServiceGitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        is_harness_code_repo: NotRequired[pulumi.Input[bool]]
+        """
+        If the repo is in harness code
+        """
+        is_new_branch: NotRequired[pulumi.Input[bool]]
+        """
+        If the branch being created is new
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        load_from_cache: NotRequired[pulumi.Input[bool]]
+        """
+        Load service yaml from catch
+        """
+        load_from_fallback_branch: NotRequired[pulumi.Input[bool]]
+        """
+        Load service yaml from fallback branch
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    ServiceGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceGitDetailsArgs:
@@ -13035,6 +17147,27 @@ class ServiceGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class ServiceNowConnectorAuthArgsDict(TypedDict):
+        auth_type: pulumi.Input[str]
+        """
+        Authentication types for Jira connector
+        """
+        adfs: NotRequired[pulumi.Input['ServiceNowConnectorAuthAdfsArgsDict']]
+        """
+        Authenticate using adfs client credentials with certificate.
+        """
+        refresh_token: NotRequired[pulumi.Input['ServiceNowConnectorAuthRefreshTokenArgsDict']]
+        """
+        Authenticate using refresh token grant type.
+        """
+        username_password: NotRequired[pulumi.Input['ServiceNowConnectorAuthUsernamePasswordArgsDict']]
+        """
+        Authenticate using username password.
+        """
+elif False:
+    ServiceNowConnectorAuthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceNowConnectorAuthArgs:
     def __init__(__self__, *,
@@ -13104,6 +17237,31 @@ class ServiceNowConnectorAuthArgs:
     def username_password(self, value: Optional[pulumi.Input['ServiceNowConnectorAuthUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
+
+if not MYPY:
+    class ServiceNowConnectorAuthAdfsArgsDict(TypedDict):
+        adfs_url: pulumi.Input[str]
+        """
+        asdf URL.
+        """
+        certificate_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the certificate to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        client_id_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the clientIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        private_key_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the privateKeyRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        resource_id_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the resourceIdRef to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ServiceNowConnectorAuthAdfsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceNowConnectorAuthAdfsArgs:
@@ -13186,6 +17344,31 @@ class ServiceNowConnectorAuthAdfsArgs:
     def resource_id_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "resource_id_ref", value)
 
+
+if not MYPY:
+    class ServiceNowConnectorAuthRefreshTokenArgsDict(TypedDict):
+        client_id_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the client id to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        refresh_token_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the refresh token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        token_url: pulumi.Input[str]
+        """
+        Token url to use for authentication.
+        """
+        client_secret_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the client secret to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        Scope string to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ServiceNowConnectorAuthRefreshTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceNowConnectorAuthRefreshTokenArgs:
@@ -13271,6 +17454,23 @@ class ServiceNowConnectorAuthRefreshTokenArgs:
         pulumi.set(self, "scope", value)
 
 
+if not MYPY:
+    class ServiceNowConnectorAuthUsernamePasswordArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ServiceNowConnectorAuthUsernamePasswordArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceNowConnectorAuthUsernamePasswordArgs:
     def __init__(__self__, *,
@@ -13324,6 +17524,63 @@ class ServiceNowConnectorAuthUsernamePasswordArgs:
     def username_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username_ref", value)
 
+
+if not MYPY:
+    class ServiceOverridesV2GitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        is_harness_code_repo: NotRequired[pulumi.Input[bool]]
+        """
+        If the repo is in harness code
+        """
+        is_new_branch: NotRequired[pulumi.Input[bool]]
+        """
+        If the branch being created is new
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating override.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating override.
+        """
+        load_from_cache: NotRequired[pulumi.Input[bool]]
+        """
+        Load service yaml from catch
+        """
+        load_from_fallback_branch: NotRequired[pulumi.Input[bool]]
+        """
+        Load service yaml from fallback branch
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    ServiceOverridesV2GitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceOverridesV2GitDetailsArgs:
@@ -13540,6 +17797,43 @@ class ServiceOverridesV2GitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class SloRequestArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name for the SLO.
+        """
+        slo_target: pulumi.Input['SloRequestSloTargetArgsDict']
+        """
+        SLO Target specification.
+        """
+        spec: pulumi.Input[str]
+        """
+        Specification of the SLO.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the SLO.
+        """
+        user_journey_refs: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        User journey reference list for the SLO.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description for the SLO.
+        """
+        notification_rule_refs: NotRequired[pulumi.Input[Sequence[pulumi.Input['SloRequestNotificationRuleRefArgsDict']]]]
+        """
+        Notification rule references for the SLO.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags for the SLO. comma-separated key value string pairs.
+        """
+elif False:
+    SloRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloRequestArgs:
     def __init__(__self__, *,
@@ -13670,6 +17964,19 @@ class SloRequestArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class SloRequestNotificationRuleRefArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable or disable notification rule reference for the SLO.
+        """
+        notification_rule_ref: pulumi.Input[str]
+        """
+        Notification rule reference for the SLO.
+        """
+elif False:
+    SloRequestNotificationRuleRefArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloRequestNotificationRuleRefArgs:
     def __init__(__self__, *,
@@ -13706,6 +18013,23 @@ class SloRequestNotificationRuleRefArgs:
     def notification_rule_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "notification_rule_ref", value)
 
+
+if not MYPY:
+    class SloRequestSloTargetArgsDict(TypedDict):
+        slo_target_percentage: pulumi.Input[float]
+        """
+        Target percentage for the SLO.
+        """
+        spec: pulumi.Input[str]
+        """
+        Specification of the SLO Target.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the SLO target.
+        """
+elif False:
+    SloRequestSloTargetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloRequestSloTargetArgs:
@@ -13758,6 +18082,31 @@ class SloRequestSloTargetArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class SpotConnectorPermanentTokenArgsDict(TypedDict):
+        api_token_ref: pulumi.Input[str]
+        """
+        Reference to the Harness secret containing the permanent api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Connect only using delegates with these tags.
+        """
+        execute_on_delegate: NotRequired[pulumi.Input[bool]]
+        """
+        Execute on delegate or not.
+        """
+        spot_account_id: NotRequired[pulumi.Input[str]]
+        """
+        Spot account id.
+        """
+        spot_account_id_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the Harness secret containing the spot account id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    SpotConnectorPermanentTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SpotConnectorPermanentTokenArgs:
@@ -13845,6 +18194,19 @@ class SpotConnectorPermanentTokenArgs:
         pulumi.set(self, "spot_account_id_ref", value)
 
 
+if not MYPY:
+    class TasConnectorCredentialsArgsDict(TypedDict):
+        tas_manual_details: pulumi.Input['TasConnectorCredentialsTasManualDetailsArgsDict']
+        """
+        Authenticate to Tas using manual details.
+        """
+        type: pulumi.Input[str]
+        """
+        Type can be ManualConfig.
+        """
+elif False:
+    TasConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TasConnectorCredentialsArgs:
     def __init__(__self__, *,
@@ -13881,6 +18243,31 @@ class TasConnectorCredentialsArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class TasConnectorCredentialsTasManualDetailsArgsDict(TypedDict):
+        endpoint_url: pulumi.Input[str]
+        """
+        URL of the Tas server.
+        """
+        password_ref: pulumi.Input[str]
+        """
+        Reference of the secret for the password. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        reference_token: NotRequired[pulumi.Input[str]]
+        """
+        Reference of the secret for the token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    TasConnectorCredentialsTasManualDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TasConnectorCredentialsTasManualDetailsArgs:
@@ -13967,6 +18354,19 @@ class TasConnectorCredentialsTasManualDetailsArgs:
         pulumi.set(self, "username_ref", value)
 
 
+if not MYPY:
+    class TemplateFiltersFilterPropertiesArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        """
+        Corresponding Entity of the filters. Currently supported types are {TemplateSetup, TemplateExecution, Template}.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags to associate with the resource. Tags should be in the form `name:value`.
+        """
+elif False:
+    TemplateFiltersFilterPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TemplateFiltersFilterPropertiesArgs:
     def __init__(__self__, *,
@@ -14004,6 +18404,47 @@ class TemplateFiltersFilterPropertiesArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+
+if not MYPY:
+    class TemplateGitDetailsArgsDict(TypedDict):
+        base_branch: NotRequired[pulumi.Input[str]]
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        commit_message: NotRequired[pulumi.Input[str]]
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        last_commit_id: NotRequired[pulumi.Input[str]]
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        last_object_id: NotRequired[pulumi.Input[str]]
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    TemplateGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TemplateGitDetailsArgs:
@@ -14156,6 +18597,28 @@ class TemplateGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class TemplateGitImportDetailsArgsDict(TypedDict):
+        branch_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the branch.
+        """
+        connector_ref: NotRequired[pulumi.Input[str]]
+        """
+        Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        file_path: NotRequired[pulumi.Input[str]]
+        """
+        File path of the Entity in the repository.
+        """
+        is_force_import: NotRequired[pulumi.Input[bool]]
+        repo_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the repository.
+        """
+elif False:
+    TemplateGitImportDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TemplateGitImportDetailsArgs:
     def __init__(__self__, *,
@@ -14239,6 +18702,23 @@ class TemplateGitImportDetailsArgs:
         pulumi.set(self, "repo_name", value)
 
 
+if not MYPY:
+    class TemplateTemplateImportRequestArgsDict(TypedDict):
+        template_description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the template.
+        """
+        template_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the template.
+        """
+        template_version: NotRequired[pulumi.Input[str]]
+        """
+        Version of the template.
+        """
+elif False:
+    TemplateTemplateImportRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TemplateTemplateImportRequestArgs:
     def __init__(__self__, *,
@@ -14294,6 +18774,15 @@ class TemplateTemplateImportRequestArgs:
         pulumi.set(self, "template_version", value)
 
 
+if not MYPY:
+    class TerraformCloudConnectorCredentialsArgsDict(TypedDict):
+        api_token: pulumi.Input['TerraformCloudConnectorCredentialsApiTokenArgsDict']
+        """
+        API token credentials to use for authentication.
+        """
+elif False:
+    TerraformCloudConnectorCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TerraformCloudConnectorCredentialsArgs:
     def __init__(__self__, *,
@@ -14316,6 +18805,15 @@ class TerraformCloudConnectorCredentialsArgs:
         pulumi.set(self, "api_token", value)
 
 
+if not MYPY:
+    class TerraformCloudConnectorCredentialsApiTokenArgsDict(TypedDict):
+        api_token_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the API token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    TerraformCloudConnectorCredentialsApiTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TerraformCloudConnectorCredentialsApiTokenArgs:
     def __init__(__self__, *,
@@ -14337,6 +18835,31 @@ class TerraformCloudConnectorCredentialsApiTokenArgs:
     def api_token_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "api_token_ref", value)
 
+
+if not MYPY:
+    class UserRoleBindingArgsDict(TypedDict):
+        managed_role: NotRequired[pulumi.Input[bool]]
+        """
+        Managed Role of the user.
+        """
+        resource_group_identifier: NotRequired[pulumi.Input[str]]
+        """
+        Resource Group Identifier of the user.
+        """
+        resource_group_name: NotRequired[pulumi.Input[str]]
+        """
+        Resource Group Name of the user.
+        """
+        role_identifier: NotRequired[pulumi.Input[str]]
+        """
+        Role Identifier of the user.
+        """
+        role_name: NotRequired[pulumi.Input[str]]
+        """
+        Role Name Identifier of the user.
+        """
+elif False:
+    UserRoleBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserRoleBindingArgs:
@@ -14424,6 +18947,35 @@ class UserRoleBindingArgs:
     def role_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role_name", value)
 
+
+if not MYPY:
+    class UsergroupNotificationConfigArgsDict(TypedDict):
+        group_email: NotRequired[pulumi.Input[str]]
+        """
+        Group email.
+        """
+        microsoft_teams_webhook_url: NotRequired[pulumi.Input[str]]
+        """
+        Url of Microsoft teams webhook.
+        """
+        pager_duty_key: NotRequired[pulumi.Input[str]]
+        """
+        Pager duty key.
+        """
+        send_email_to_all_users: NotRequired[pulumi.Input[bool]]
+        """
+        Send email to all the group members.
+        """
+        slack_webhook_url: NotRequired[pulumi.Input[str]]
+        """
+        Url of slack webhook.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
+        """
+elif False:
+    UsergroupNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UsergroupNotificationConfigArgs:
@@ -14528,6 +19080,19 @@ class UsergroupNotificationConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class VariablesSpecArgsDict(TypedDict):
+        fixed_value: pulumi.Input[str]
+        """
+        FixedValue of the variable
+        """
+        value_type: pulumi.Input[str]
+        """
+        Type of Value of the Variable. For now only FIXED is supported
+        """
+elif False:
+    VariablesSpecArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VariablesSpecArgs:
     def __init__(__self__, *,
@@ -14564,6 +19129,23 @@ class VariablesSpecArgs:
     def value_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "value_type", value)
 
+
+if not MYPY:
+    class WorkspaceEnvironmentVariableArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key is the identifier for the variable. Must be unique within the workspace.
+        """
+        value: pulumi.Input[str]
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        value_type: pulumi.Input[str]
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+elif False:
+    WorkspaceEnvironmentVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkspaceEnvironmentVariableArgs:
@@ -14617,6 +19199,23 @@ class WorkspaceEnvironmentVariableArgs:
         pulumi.set(self, "value_type", value)
 
 
+if not MYPY:
+    class WorkspaceTerraformVariableArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key is the identifier for the variable. Must be unique within the workspace.
+        """
+        value: pulumi.Input[str]
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        value_type: pulumi.Input[str]
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+elif False:
+    WorkspaceTerraformVariableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WorkspaceTerraformVariableArgs:
     def __init__(__self__, *,
@@ -14668,6 +19267,35 @@ class WorkspaceTerraformVariableArgs:
     def value_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "value_type", value)
 
+
+if not MYPY:
+    class WorkspaceTerraformVariableFileArgsDict(TypedDict):
+        repository: pulumi.Input[str]
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        repository_connector: pulumi.Input[str]
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        repository_branch: NotRequired[pulumi.Input[str]]
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        """
+        repository_commit: NotRequired[pulumi.Input[str]]
+        """
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        """
+        repository_path: NotRequired[pulumi.Input[str]]
+        """
+        Repository path is the path in which the variables reside.
+        """
+        repository_sha: NotRequired[pulumi.Input[str]]
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+elif False:
+    WorkspaceTerraformVariableFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkspaceTerraformVariableFileArgs:
@@ -14770,6 +19398,19 @@ class WorkspaceTerraformVariableFileArgs:
         pulumi.set(self, "repository_sha", value)
 
 
+if not MYPY:
+    class GetConnectorRancherBearerTokenArgsDict(TypedDict):
+        password_ref: str
+        """
+        Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        rancher_url: str
+        """
+        The URL of the Rancher cluster.
+        """
+elif False:
+    GetConnectorRancherBearerTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetConnectorRancherBearerTokenArgs:
     def __init__(__self__, *,
@@ -14806,6 +19447,27 @@ class GetConnectorRancherBearerTokenArgs:
     def rancher_url(self, value: str):
         pulumi.set(self, "rancher_url", value)
 
+
+if not MYPY:
+    class GetEnvironmentClustersMappingClusterArgsDict(TypedDict):
+        agent_identifier: NotRequired[str]
+        """
+        agent identifier of the cluster (include scope prefix)
+        """
+        identifier: NotRequired[str]
+        """
+        identifier of the cluster
+        """
+        name: NotRequired[str]
+        """
+        name of the cluster
+        """
+        scope: NotRequired[str]
+        """
+        scope at which the cluster exists in harness gitops, one of "ACCOUNT", "ORGANIZATION", "PROJECT". Scope of environment to which clusters are being mapped must be lower or equal to in hierarchy than the scope of the cluster
+        """
+elif False:
+    GetEnvironmentClustersMappingClusterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetEnvironmentClustersMappingClusterArgs:
@@ -14878,6 +19540,23 @@ class GetEnvironmentClustersMappingClusterArgs:
         pulumi.set(self, "scope", value)
 
 
+if not MYPY:
+    class GetEnvironmentGitDetailsArgsDict(TypedDict):
+        branch: str
+        """
+        Name of the branch.
+        """
+        load_from_fallback_branch: bool
+        """
+        Load environment yaml from fallback branch
+        """
+        repo_name: str
+        """
+        Repo name of remote environment
+        """
+elif False:
+    GetEnvironmentGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetEnvironmentGitDetailsArgs:
     def __init__(__self__, *,
@@ -14929,6 +19608,27 @@ class GetEnvironmentGitDetailsArgs:
     def repo_name(self, value: str):
         pulumi.set(self, "repo_name", value)
 
+
+if not MYPY:
+    class GetGitopsAgentDeployYamlProxyArgsDict(TypedDict):
+        http: NotRequired[str]
+        """
+        HTTP proxy settings for the GitOps agent.
+        """
+        https: NotRequired[str]
+        """
+        HTTPS proxy settings for the GitOps agent.
+        """
+        password: NotRequired[str]
+        """
+        Password for the proxy.
+        """
+        username: NotRequired[str]
+        """
+        Username for the proxy.
+        """
+elif False:
+    GetGitopsAgentDeployYamlProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetGitopsAgentDeployYamlProxyArgs:
@@ -15001,6 +19701,19 @@ class GetGitopsAgentDeployYamlProxyArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class GetGitopsGnupgRequestArgsDict(TypedDict):
+        publickeys: NotRequired[Sequence['GetGitopsGnupgRequestPublickeyArgsDict']]
+        """
+        Public key details.
+        """
+        upsert: NotRequired[bool]
+        """
+        Indicates if the GnuPG Key should be inserted if not present or updated if present.
+        """
+elif False:
+    GetGitopsGnupgRequestArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetGitopsGnupgRequestArgs:
     def __init__(__self__, *,
@@ -15039,6 +19752,35 @@ class GetGitopsGnupgRequestArgs:
     def upsert(self, value: Optional[bool]):
         pulumi.set(self, "upsert", value)
 
+
+if not MYPY:
+    class GetGitopsGnupgRequestPublickeyArgsDict(TypedDict):
+        fingerprint: NotRequired[str]
+        """
+        Fingerprint is the fingerprint of the key
+        """
+        key_data: NotRequired[str]
+        """
+        KeyData holds the raw key data, in base64 encoded format.
+        """
+        key_id: NotRequired[str]
+        """
+        KeyID specifies the key ID, in hexadecimal string format.
+        """
+        owner: NotRequired[str]
+        """
+        Owner holds the owner identification, e.g. a name and e-mail address
+        """
+        sub_type: NotRequired[str]
+        """
+        SubType holds the key's sub type
+        """
+        trust: NotRequired[str]
+        """
+        Trust holds the level of trust assigned to this key
+        """
+elif False:
+    GetGitopsGnupgRequestPublickeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetGitopsGnupgRequestPublickeyArgs:
@@ -15143,6 +19885,27 @@ class GetGitopsGnupgRequestPublickeyArgs:
         pulumi.set(self, "trust", value)
 
 
+if not MYPY:
+    class GetInfrastructureGitDetailsArgsDict(TypedDict):
+        branch: str
+        """
+        Name of the branch.
+        """
+        load_from_cache: str
+        """
+        If the Entity is to be fetched from cache
+        """
+        load_from_fallback_branch: bool
+        """
+        Load Infrastructure yaml from fallback branch
+        """
+        repo_name: str
+        """
+        Repo name of remote Infrastructure
+        """
+elif False:
+    GetInfrastructureGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetInfrastructureGitDetailsArgs:
     def __init__(__self__, *,
@@ -15209,6 +19972,55 @@ class GetInfrastructureGitDetailsArgs:
     def repo_name(self, value: str):
         pulumi.set(self, "repo_name", value)
 
+
+if not MYPY:
+    class GetInputSetGitDetailsArgsDict(TypedDict):
+        base_branch: str
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch_name: str
+        """
+        Name of the branch.
+        """
+        commit_message: str
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: str
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity.
+        """
+        file_path: str
+        """
+        File path of the Entity in the repository.
+        """
+        last_commit_id: str
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        last_object_id: str
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        parent_entity_connector_ref: str
+        """
+        Connector reference for Parent Entity (Pipeline).
+        """
+        parent_entity_repo_name: str
+        """
+        Repository name for Parent Entity (Pipeline).
+        """
+        repo_name: str
+        """
+        Name of the repository.
+        """
+        store_type: str
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    GetInputSetGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetInputSetGitDetailsArgs:
@@ -15382,6 +20194,27 @@ class GetInputSetGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class GetOverridesGitDetailsArgsDict(TypedDict):
+        branch: str
+        """
+        Name of the branch.
+        """
+        load_from_cache: bool
+        """
+        Load service yaml from fallback branch
+        """
+        load_from_fallback_branch: bool
+        """
+        Load service yaml from fallback branch
+        """
+        repo_name: str
+        """
+        Repo name of remote service override
+        """
+elif False:
+    GetOverridesGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetOverridesGitDetailsArgs:
     def __init__(__self__, *,
@@ -15448,6 +20281,47 @@ class GetOverridesGitDetailsArgs:
     def repo_name(self, value: str):
         pulumi.set(self, "repo_name", value)
 
+
+if not MYPY:
+    class GetPipelineGitDetailsArgsDict(TypedDict):
+        base_branch: str
+        """
+        Name of the default branch (this checks out a new branch titled by branch_name).
+        """
+        branch_name: str
+        """
+        Name of the branch.
+        """
+        commit_message: str
+        """
+        Commit message used for the merge commit.
+        """
+        connector_ref: str
+        """
+        Identifier of the Harness Connector used for CRUD operations on the Entity.
+        """
+        file_path: str
+        """
+        File path of the Entity in the repository.
+        """
+        last_commit_id: str
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        last_object_id: str
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        repo_name: str
+        """
+        Name of the repository.
+        """
+        store_type: str
+        """
+        Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
+        """
+elif False:
+    GetPipelineGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetPipelineGitDetailsArgs:
@@ -15591,6 +20465,19 @@ class GetPipelineGitDetailsArgs:
         pulumi.set(self, "store_type", value)
 
 
+if not MYPY:
+    class GetPolicySetPolicyArgsDict(TypedDict):
+        identifier: str
+        """
+        Account Identifier of the account
+        """
+        severity: str
+        """
+        Policy failure response - 'warning' for continuation, 'error' for exit
+        """
+elif False:
+    GetPolicySetPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetPolicySetPolicyArgs:
     def __init__(__self__, *,
@@ -15627,6 +20514,19 @@ class GetPolicySetPolicyArgs:
     def severity(self, value: str):
         pulumi.set(self, "severity", value)
 
+
+if not MYPY:
+    class GetRepoRuleBranchBypassArgsDict(TypedDict):
+        repo_owners: NotRequired[bool]
+        """
+        Allow users with repository edit permission to bypass.
+        """
+        user_ids: NotRequired[Sequence[str]]
+        """
+        List of user ids with who can bypass.
+        """
+elif False:
+    GetRepoRuleBranchBypassArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRepoRuleBranchBypassArgs:
@@ -15666,6 +20566,23 @@ class GetRepoRuleBranchBypassArgs:
     def user_ids(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "user_ids", value)
 
+
+if not MYPY:
+    class GetRepoRuleBranchPatternArgsDict(TypedDict):
+        default_branch: NotRequired[bool]
+        """
+        Should rule apply to default branch of the repository.
+        """
+        excludes: NotRequired[Sequence[str]]
+        """
+        Globstar branch patterns on which rules will NOT be applied.
+        """
+        includes: NotRequired[Sequence[str]]
+        """
+        Globstar branch patterns on which rules will be applied.
+        """
+elif False:
+    GetRepoRuleBranchPatternArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRepoRuleBranchPatternArgs:
@@ -15721,6 +20638,55 @@ class GetRepoRuleBranchPatternArgs:
     def includes(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "includes", value)
 
+
+if not MYPY:
+    class GetRepoRuleBranchPolicyArgsDict(TypedDict):
+        allow_merge_strategies: NotRequired[Sequence[str]]
+        """
+        Limit which merge strategies are available to merge a pull request(Any of squash, rebase, merge).
+        """
+        block_branch_creation: NotRequired[bool]
+        """
+        Only allow users with bypass permission to create matching branches.
+        """
+        block_branch_deletion: NotRequired[bool]
+        """
+        Only allow users with bypass permission to delete matching branches.
+        """
+        delete_branch_on_merge: NotRequired[bool]
+        """
+        Automatically delete the source branch of a pull request after it is merged.
+        """
+        require_code_owners: NotRequired[bool]
+        """
+        Require approval on pull requests from one reviewer for each codeowner rule.
+        """
+        require_latest_commit_approval: NotRequired[bool]
+        """
+        Require re-approval when there are new changes in the pull request.
+        """
+        require_minimum_approval_count: NotRequired[int]
+        """
+        Require approval on pull requests from a minimum number of reviewers.
+        """
+        require_no_change_request: NotRequired[bool]
+        """
+        Require all request for changes have been resolved.
+        """
+        require_pull_request: NotRequired[bool]
+        """
+        Do not allow any changes to matching branches without a pull request.
+        """
+        require_resolve_all_comments: NotRequired[bool]
+        """
+        All comments on a pull request must be resolved before it can be merged.
+        """
+        require_status_checks: NotRequired[Sequence[str]]
+        """
+        Selected status checks must pass before a pull request can be merged.
+        """
+elif False:
+    GetRepoRuleBranchPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRepoRuleBranchPolicyArgs:
@@ -15905,6 +20871,31 @@ class GetRepoRuleBranchPolicyArgs:
         pulumi.set(self, "require_status_checks", value)
 
 
+if not MYPY:
+    class GetRepoSourceArgsDict(TypedDict):
+        host: NotRequired[str]
+        """
+        The host URL for the import source.
+        """
+        password: NotRequired[str]
+        """
+        The password for authentication when importing.
+        """
+        repo: NotRequired[str]
+        """
+        The full identifier of the repository on the SCM provider's platform.
+        """
+        type: NotRequired[str]
+        """
+        The type of SCM provider (github, gitlab, bitbucket, stash, gitea, gogs) when importing.
+        """
+        username: NotRequired[str]
+        """
+        The username for authentication when importing.
+        """
+elif False:
+    GetRepoSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRepoSourceArgs:
     def __init__(__self__, *,
@@ -15992,6 +20983,12 @@ class GetRepoSourceArgs:
         pulumi.set(self, "username", value)
 
 
+if not MYPY:
+    class GetSecretTextAdditionalMetadataArgsDict(TypedDict):
+        values: NotRequired[Sequence['GetSecretTextAdditionalMetadataValueArgsDict']]
+elif False:
+    GetSecretTextAdditionalMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSecretTextAdditionalMetadataArgs:
     def __init__(__self__, *,
@@ -16009,6 +21006,12 @@ class GetSecretTextAdditionalMetadataArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class GetSecretTextAdditionalMetadataValueArgsDict(TypedDict):
+        version: NotRequired[str]
+elif False:
+    GetSecretTextAdditionalMetadataValueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetSecretTextAdditionalMetadataValueArgs:
     def __init__(__self__, *,
@@ -16025,6 +21028,23 @@ class GetSecretTextAdditionalMetadataValueArgs:
     def version(self, value: Optional[str]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class GetServiceGitDetailsArgsDict(TypedDict):
+        branch: str
+        """
+        Name of the branch.
+        """
+        load_from_fallback_branch: bool
+        """
+        Load service yaml from fallback branch
+        """
+        repo_name: str
+        """
+        Repo name of remote service
+        """
+elif False:
+    GetServiceGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServiceGitDetailsArgs:
@@ -16077,6 +21097,27 @@ class GetServiceGitDetailsArgs:
     def repo_name(self, value: str):
         pulumi.set(self, "repo_name", value)
 
+
+if not MYPY:
+    class GetServiceOverridesV2GitDetailsArgsDict(TypedDict):
+        branch: str
+        """
+        Name of the branch.
+        """
+        load_from_cache: bool
+        """
+        Load service yaml from fallback branch
+        """
+        load_from_fallback_branch: bool
+        """
+        Load service yaml from fallback branch
+        """
+        repo_name: str
+        """
+        Repo name of remote service override
+        """
+elif False:
+    GetServiceOverridesV2GitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetServiceOverridesV2GitDetailsArgs:
@@ -16144,6 +21185,39 @@ class GetServiceOverridesV2GitDetailsArgs:
     def repo_name(self, value: str):
         pulumi.set(self, "repo_name", value)
 
+
+if not MYPY:
+    class GetTemplateGitDetailsArgsDict(TypedDict):
+        last_commit_id: str
+        """
+        Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
+        """
+        last_object_id: str
+        """
+        Last object identifier (for Github). To be provided only when updating Pipeline.
+        """
+        branch_name: NotRequired[str]
+        """
+        Name of the branch.
+        """
+        file_path: NotRequired[str]
+        """
+        File path of the Entity in the repository.
+        """
+        file_url: NotRequired[str]
+        """
+        File url of the Entity in the repository.
+        """
+        repo_name: NotRequired[str]
+        """
+        Name of the repository.
+        """
+        repo_url: NotRequired[str]
+        """
+        Repo url of the Entity in the repository.
+        """
+elif False:
+    GetTemplateGitDetailsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetTemplateGitDetailsArgs:
@@ -16262,6 +21336,35 @@ class GetTemplateGitDetailsArgs:
         pulumi.set(self, "repo_url", value)
 
 
+if not MYPY:
+    class GetUsergroupNotificationConfigArgsDict(TypedDict):
+        group_email: str
+        """
+        Group email.
+        """
+        microsoft_teams_webhook_url: str
+        """
+        Url of Microsoft teams webhook.
+        """
+        pager_duty_key: str
+        """
+        Pager duty key.
+        """
+        send_email_to_all_users: bool
+        """
+        Send email to all the group members.
+        """
+        slack_webhook_url: str
+        """
+        Url of slack webhook.
+        """
+        type: str
+        """
+        Can be one of EMAIL, SLACK, PAGERDUTY, MSTEAMS.
+        """
+elif False:
+    GetUsergroupNotificationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetUsergroupNotificationConfigArgs:
     def __init__(__self__, *,
@@ -16359,6 +21462,23 @@ class GetUsergroupNotificationConfigArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class GetWorkspaceEnvironmentVariableArgsDict(TypedDict):
+        key: str
+        """
+        Key is the identifier for the variable`
+        """
+        value: str
+        """
+        value is the value of the variable
+        """
+        value_type: str
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+elif False:
+    GetWorkspaceEnvironmentVariableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetWorkspaceEnvironmentVariableArgs:
     def __init__(__self__, *,
@@ -16411,6 +21531,23 @@ class GetWorkspaceEnvironmentVariableArgs:
         pulumi.set(self, "value_type", value)
 
 
+if not MYPY:
+    class GetWorkspaceTerraformVariableArgsDict(TypedDict):
+        key: str
+        """
+        Key is the identifier for the variable`
+        """
+        value: str
+        """
+        value is the value of the variable
+        """
+        value_type: str
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+elif False:
+    GetWorkspaceTerraformVariableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetWorkspaceTerraformVariableArgs:
     def __init__(__self__, *,
@@ -16462,6 +21599,35 @@ class GetWorkspaceTerraformVariableArgs:
     def value_type(self, value: str):
         pulumi.set(self, "value_type", value)
 
+
+if not MYPY:
+    class GetWorkspaceTerraformVariableFileArgsDict(TypedDict):
+        repository: str
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        repository_branch: str
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        """
+        repository_commit: str
+        """
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        """
+        repository_connector: str
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        repository_path: str
+        """
+        Repository path is the path in which the variables reside.
+        """
+        repository_sha: str
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+elif False:
+    GetWorkspaceTerraformVariableFileArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetWorkspaceTerraformVariableFileArgs:

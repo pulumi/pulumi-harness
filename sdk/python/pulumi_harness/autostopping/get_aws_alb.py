@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -221,9 +226,6 @@ def get_aws_alb(alb_arn: Optional[str] = None,
         route53_hosted_zone_id=pulumi.get(__ret__, 'route53_hosted_zone_id'),
         security_groups=pulumi.get(__ret__, 'security_groups'),
         vpc=pulumi.get(__ret__, 'vpc'))
-
-
-@_utilities.lift_output_func(get_aws_alb)
 def get_aws_alb_output(alb_arn: Optional[pulumi.Input[Optional[str]]] = None,
                        certificate_id: Optional[pulumi.Input[Optional[str]]] = None,
                        cloud_connector_id: Optional[pulumi.Input[str]] = None,
@@ -248,4 +250,29 @@ def get_aws_alb_output(alb_arn: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
     :param str vpc: VPC in which cloud resources are hosted
     """
-    ...
+    __args__ = dict()
+    __args__['albArn'] = alb_arn
+    __args__['certificateId'] = certificate_id
+    __args__['cloudConnectorId'] = cloud_connector_id
+    __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
+    __args__['hostName'] = host_name
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['route53HostedZoneId'] = route53_hosted_zone_id
+    __args__['securityGroups'] = security_groups
+    __args__['vpc'] = vpc
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getAwsAlb:getAwsAlb', __args__, opts=opts, typ=GetAwsAlbResult)
+    return __ret__.apply(lambda __response__: GetAwsAlbResult(
+        alb_arn=pulumi.get(__response__, 'alb_arn'),
+        certificate_id=pulumi.get(__response__, 'certificate_id'),
+        cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
+        delete_cloud_resources_on_destroy=pulumi.get(__response__, 'delete_cloud_resources_on_destroy'),
+        host_name=pulumi.get(__response__, 'host_name'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        route53_hosted_zone_id=pulumi.get(__response__, 'route53_hosted_zone_id'),
+        security_groups=pulumi.get(__response__, 'security_groups'),
+        vpc=pulumi.get(__response__, 'vpc')))

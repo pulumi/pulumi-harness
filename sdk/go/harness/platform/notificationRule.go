@@ -133,7 +133,7 @@ import (
 //				return err
 //			}
 //			json7 := string(tmpJSON7)
-//			tmpJSON8, err := json.Marshal(nil)
+//			tmpJSON8, err := json.Marshal(map[string]interface{}{})
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -213,9 +218,6 @@ def get_db_instance(identifier: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         schema=pulumi.get(__ret__, 'schema'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_db_instance)
 def get_db_instance_output(identifier: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            org_id: Optional[pulumi.Input[str]] = None,
@@ -244,4 +246,23 @@ def get_db_instance_output(identifier: Optional[pulumi.Input[str]] = None,
     :param str project_id: Unique identifier of the project.
     :param str schema: The identifier of the parent database schema
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['schema'] = schema
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getDbInstance:getDbInstance', __args__, opts=opts, typ=GetDbInstanceResult)
+    return __ret__.apply(lambda __response__: GetDbInstanceResult(
+        branch=pulumi.get(__response__, 'branch'),
+        connector=pulumi.get(__response__, 'connector'),
+        context=pulumi.get(__response__, 'context'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        schema=pulumi.get(__response__, 'schema'),
+        tags=pulumi.get(__response__, 'tags')))

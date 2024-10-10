@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -224,9 +229,6 @@ def get_rule_enforcement(enforcement_id: Optional[str] = None,
         rule_set_ids=pulumi.get(__ret__, 'rule_set_ids'),
         target_accounts=pulumi.get(__ret__, 'target_accounts'),
         target_regions=pulumi.get(__ret__, 'target_regions'))
-
-
-@_utilities.lift_output_func(get_rule_enforcement)
 def get_rule_enforcement_output(enforcement_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleEnforcementResult]:
     """
@@ -244,4 +246,21 @@ def get_rule_enforcement_output(enforcement_id: Optional[pulumi.Input[str]] = No
 
     :param str enforcement_id: Id of rule enforcement.
     """
-    ...
+    __args__ = dict()
+    __args__['enforcementId'] = enforcement_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:governance/getRuleEnforcement:getRuleEnforcement', __args__, opts=opts, typ=GetRuleEnforcementResult)
+    return __ret__.apply(lambda __response__: GetRuleEnforcementResult(
+        cloud_provider=pulumi.get(__response__, 'cloud_provider'),
+        description=pulumi.get(__response__, 'description'),
+        enforcement_id=pulumi.get(__response__, 'enforcement_id'),
+        execution_schedule=pulumi.get(__response__, 'execution_schedule'),
+        execution_timezone=pulumi.get(__response__, 'execution_timezone'),
+        id=pulumi.get(__response__, 'id'),
+        is_dry_run=pulumi.get(__response__, 'is_dry_run'),
+        is_enabled=pulumi.get(__response__, 'is_enabled'),
+        name=pulumi.get(__response__, 'name'),
+        rule_ids=pulumi.get(__response__, 'rule_ids'),
+        rule_set_ids=pulumi.get(__response__, 'rule_set_ids'),
+        target_accounts=pulumi.get(__response__, 'target_accounts'),
+        target_regions=pulumi.get(__response__, 'target_regions')))

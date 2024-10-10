@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -225,9 +230,6 @@ def get_delegate(hostname: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_delegate)
 def get_delegate_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
                         id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -255,4 +257,24 @@ def get_delegate_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: The status of the delegate to query for. Valid values are DELETED, ENABLED, WAITING*FOR*APPROVAL
     :param str type: The type of the delegate to query for. Valid values are DOCKER, ECS, HELM*DELEGATE, KUBERNETES, SHELL*SCRIPT
     """
-    ...
+    __args__ = dict()
+    __args__['hostname'] = hostname
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['status'] = status
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:index/getDelegate:getDelegate', __args__, opts=opts, typ=GetDelegateResult)
+    return __ret__.apply(lambda __response__: GetDelegateResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        description=pulumi.get(__response__, 'description'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        last_heartbeat=pulumi.get(__response__, 'last_heartbeat'),
+        name=pulumi.get(__response__, 'name'),
+        polling_mode_enabled=pulumi.get(__response__, 'polling_mode_enabled'),
+        profile_id=pulumi.get(__response__, 'profile_id'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
+        version=pulumi.get(__response__, 'version')))

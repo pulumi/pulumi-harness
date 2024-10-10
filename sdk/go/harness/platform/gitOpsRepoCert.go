@@ -34,7 +34,7 @@ import (
 //						Certificates: platform.GitOpsRepoCertRequestCertificateArray{
 //							&platform.GitOpsRepoCertRequestCertificateArgs{
 //								Metadatas: platform.GitOpsRepoCertRequestCertificateMetadataArray{
-//									nil,
+//									&platform.GitOpsRepoCertRequestCertificateMetadataArgs{},
 //								},
 //								Items: platform.GitOpsRepoCertRequestCertificateItemArray{
 //									&platform.GitOpsRepoCertRequestCertificateItemArgs{

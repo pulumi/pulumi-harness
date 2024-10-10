@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -254,9 +259,6 @@ def get_repo_rule_branch(bypasses: Optional[Sequence[Union['GetRepoRuleBranchByp
         state=pulumi.get(__ret__, 'state'),
         updated=pulumi.get(__ret__, 'updated'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-
-
-@_utilities.lift_output_func(get_repo_rule_branch)
 def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']]]] = None,
                                 description: Optional[pulumi.Input[Optional[str]]] = None,
                                 identifier: Optional[pulumi.Input[str]] = None,
@@ -281,4 +283,30 @@ def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[Union['
     :param str repo_identifier: Repo identifier of the repository.
     :param str state: State of the rule (active, disable, monitor).
     """
-    ...
+    __args__ = dict()
+    __args__['bypasses'] = bypasses
+    __args__['description'] = description
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['patterns'] = patterns
+    __args__['policies'] = policies
+    __args__['projectId'] = project_id
+    __args__['repoIdentifier'] = repo_identifier
+    __args__['state'] = state
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getRepoRuleBranch:getRepoRuleBranch', __args__, opts=opts, typ=GetRepoRuleBranchResult)
+    return __ret__.apply(lambda __response__: GetRepoRuleBranchResult(
+        bypasses=pulumi.get(__response__, 'bypasses'),
+        created=pulumi.get(__response__, 'created'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        patterns=pulumi.get(__response__, 'patterns'),
+        policies=pulumi.get(__response__, 'policies'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        repo_identifier=pulumi.get(__response__, 'repo_identifier'),
+        state=pulumi.get(__response__, 'state'),
+        updated=pulumi.get(__response__, 'updated'),
+        updated_by=pulumi.get(__response__, 'updated_by')))

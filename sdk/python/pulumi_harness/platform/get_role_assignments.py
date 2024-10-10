@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -179,9 +184,6 @@ def get_role_assignments(identifier: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         resource_group_identifier=pulumi.get(__ret__, 'resource_group_identifier'),
         role_identifier=pulumi.get(__ret__, 'role_identifier'))
-
-
-@_utilities.lift_output_func(get_role_assignments)
 def get_role_assignments_output(identifier: Optional[pulumi.Input[str]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -203,4 +205,19 @@ def get_role_assignments_output(identifier: Optional[pulumi.Input[str]] = None,
     :param str org_id: Org identifier.
     :param str project_id: Project Identifier
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getRoleAssignments:getRoleAssignments', __args__, opts=opts, typ=GetRoleAssignmentsResult)
+    return __ret__.apply(lambda __response__: GetRoleAssignmentsResult(
+        disabled=pulumi.get(__response__, 'disabled'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        managed=pulumi.get(__response__, 'managed'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        principals=pulumi.get(__response__, 'principals'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        resource_group_identifier=pulumi.get(__response__, 'resource_group_identifier'),
+        role_identifier=pulumi.get(__response__, 'role_identifier')))

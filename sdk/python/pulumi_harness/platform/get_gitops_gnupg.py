@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -165,9 +170,6 @@ def get_gitops_gnupg(account_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         requests=pulumi.get(__ret__, 'requests'))
-
-
-@_utilities.lift_output_func(get_gitops_gnupg)
 def get_gitops_gnupg_output(account_id: Optional[pulumi.Input[str]] = None,
                             agent_id: Optional[pulumi.Input[str]] = None,
                             identifier: Optional[pulumi.Input[str]] = None,
@@ -197,4 +199,20 @@ def get_gitops_gnupg_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str project_id: Project Identifier for the GnuPG Key.
     :param Sequence[Union['GetGitopsGnupgRequestArgs', 'GetGitopsGnupgRequestArgsDict']] requests: GnuPGPublicKey is a representation of a GnuPG public key
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['agentId'] = agent_id
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['requests'] = requests
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsGnupg:getGitopsGnupg', __args__, opts=opts, typ=GetGitopsGnupgResult)
+    return __ret__.apply(lambda __response__: GetGitopsGnupgResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        agent_id=pulumi.get(__response__, 'agent_id'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        requests=pulumi.get(__response__, 'requests')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -504,9 +509,6 @@ def get_vault_connector(identifier: Optional[str] = None,
         vault_k8s_auth_role=pulumi.get(__ret__, 'vault_k8s_auth_role'),
         vault_url=pulumi.get(__ret__, 'vault_url'),
         xvault_aws_iam_server_id=pulumi.get(__ret__, 'xvault_aws_iam_server_id'))
-
-
-@_utilities.lift_output_func(get_vault_connector)
 def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -528,4 +530,45 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getVaultConnector:getVaultConnector', __args__, opts=opts, typ=GetVaultConnectorResult)
+    return __ret__.apply(lambda __response__: GetVaultConnectorResult(
+        access_type=pulumi.get(__response__, 'access_type'),
+        app_role_id=pulumi.get(__response__, 'app_role_id'),
+        auth_token=pulumi.get(__response__, 'auth_token'),
+        aws_region=pulumi.get(__response__, 'aws_region'),
+        base_path=pulumi.get(__response__, 'base_path'),
+        default=pulumi.get(__response__, 'default'),
+        delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        is_read_only=pulumi.get(__response__, 'is_read_only'),
+        k8s_auth_endpoint=pulumi.get(__response__, 'k8s_auth_endpoint'),
+        name=pulumi.get(__response__, 'name'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        read_only=pulumi.get(__response__, 'read_only'),
+        renew_app_role_token=pulumi.get(__response__, 'renew_app_role_token'),
+        renewal_interval_minutes=pulumi.get(__response__, 'renewal_interval_minutes'),
+        secret_engine_manually_configured=pulumi.get(__response__, 'secret_engine_manually_configured'),
+        secret_engine_name=pulumi.get(__response__, 'secret_engine_name'),
+        secret_engine_version=pulumi.get(__response__, 'secret_engine_version'),
+        secret_id=pulumi.get(__response__, 'secret_id'),
+        service_account_token_path=pulumi.get(__response__, 'service_account_token_path'),
+        sink_path=pulumi.get(__response__, 'sink_path'),
+        tags=pulumi.get(__response__, 'tags'),
+        use_aws_iam=pulumi.get(__response__, 'use_aws_iam'),
+        use_k8s_auth=pulumi.get(__response__, 'use_k8s_auth'),
+        use_vault_agent=pulumi.get(__response__, 'use_vault_agent'),
+        vault_aws_iam_role=pulumi.get(__response__, 'vault_aws_iam_role'),
+        vault_k8s_auth_role=pulumi.get(__response__, 'vault_k8s_auth_role'),
+        vault_url=pulumi.get(__response__, 'vault_url'),
+        xvault_aws_iam_server_id=pulumi.get(__response__, 'xvault_aws_iam_server_id')))
