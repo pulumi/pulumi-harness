@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -196,9 +201,6 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         proxies=pulumi.get(__ret__, 'proxies'),
         yaml=pulumi.get(__ret__, 'yaml'))
-
-
-@_utilities.lift_output_func(get_gitops_agent_deploy_yaml)
 def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] = None,
                                         ca_data: Optional[pulumi.Input[Optional[str]]] = None,
                                         identifier: Optional[pulumi.Input[str]] = None,
@@ -232,4 +234,23 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] 
     :param str project_id: Project identifier of the GitOps agent.
     :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['caData'] = ca_data
+    __args__['identifier'] = identifier
+    __args__['namespace'] = namespace
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['proxies'] = proxies
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml', __args__, opts=opts, typ=GetGitopsAgentDeployYamlResult)
+    return __ret__.apply(lambda __response__: GetGitopsAgentDeployYamlResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        ca_data=pulumi.get(__response__, 'ca_data'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        proxies=pulumi.get(__response__, 'proxies'),
+        yaml=pulumi.get(__response__, 'yaml')))

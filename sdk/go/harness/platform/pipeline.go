@@ -41,7 +41,7 @@ import (
 //					StoreType:     pulumi.String("REMOTE"),
 //					RepoName:      pulumi.String("repoName"),
 //				},
-//				Tags: nil,
+//				Tags: pulumi.StringArray{},
 //				Yaml: pulumi.String(`pipeline:
 //	    name: name
 //	    identifier: identifier

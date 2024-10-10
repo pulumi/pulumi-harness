@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetEnvironmentList(ctx, nil, nil)
+//			_, err := platform.GetEnvironmentList(ctx, &platform.GetEnvironmentListArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

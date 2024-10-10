@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -115,9 +120,6 @@ def get_notification_rule(identifier: Optional[str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-
-
-@_utilities.lift_output_func(get_notification_rule)
 def get_notification_rule_output(identifier: Optional[pulumi.Input[str]] = None,
                                  org_id: Optional[pulumi.Input[str]] = None,
                                  project_id: Optional[pulumi.Input[str]] = None,
@@ -141,4 +143,14 @@ def get_notification_rule_output(identifier: Optional[pulumi.Input[str]] = None,
     :param str org_id: Identifier of the organization in which the Notification Rule is configured.
     :param str project_id: Identifier of the project in which the Notification Rule is configured.
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getNotificationRule:getNotificationRule', __args__, opts=opts, typ=GetNotificationRuleResult)
+    return __ret__.apply(lambda __response__: GetNotificationRuleResult(
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id')))

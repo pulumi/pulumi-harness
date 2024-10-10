@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -117,9 +122,6 @@ def get_delegate_ids(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_delegate_ids)
 def get_delegate_ids_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
                             type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -132,4 +134,15 @@ def get_delegate_ids_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: The status of the delegate to query for. Valid values are DELETED, ENABLED, WAITING*FOR*APPROVAL
     :param str type: The type of the delegate to query for. Valid values are DOCKER, ECS, HELM*DELEGATE, KUBERNETES, SHELL*SCRIPT
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['status'] = status
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:cloudprovider/getDelegateIds:getDelegateIds', __args__, opts=opts, typ=GetDelegateIdsResult)
+    return __ret__.apply(lambda __response__: GetDelegateIdsResult(
+        delegate_ids=pulumi.get(__response__, 'delegate_ids'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type')))

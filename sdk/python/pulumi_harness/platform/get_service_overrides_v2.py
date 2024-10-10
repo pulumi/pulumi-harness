@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -175,9 +180,6 @@ def get_service_overrides_v2(git_details: Optional[Union['GetServiceOverridesV2G
         service_id=pulumi.get(__ret__, 'service_id'),
         type=pulumi.get(__ret__, 'type'),
         yaml=pulumi.get(__ret__, 'yaml'))
-
-
-@_utilities.lift_output_func(get_service_overrides_v2)
 def get_service_overrides_v2_output(git_details: Optional[pulumi.Input[Optional[Union['GetServiceOverridesV2GitDetailsArgs', 'GetServiceOverridesV2GitDetailsArgsDict']]]] = None,
                                     identifier: Optional[pulumi.Input[str]] = None,
                                     org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -197,4 +199,22 @@ def get_service_overrides_v2_output(git_details: Optional[pulumi.Input[Optional[
         project_id="projectIdentifier")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['gitDetails'] = git_details
+    __args__['identifier'] = identifier
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getServiceOverridesV2:getServiceOverridesV2', __args__, opts=opts, typ=GetServiceOverridesV2Result)
+    return __ret__.apply(lambda __response__: GetServiceOverridesV2Result(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        env_id=pulumi.get(__response__, 'env_id'),
+        git_details=pulumi.get(__response__, 'git_details'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        infra_id=pulumi.get(__response__, 'infra_id'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        type=pulumi.get(__response__, 'type'),
+        yaml=pulumi.get(__response__, 'yaml')))

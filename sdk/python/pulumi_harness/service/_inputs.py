@@ -4,22 +4,55 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AmiVariableArgs',
+    'AmiVariableArgsDict',
     'CodedeployVariableArgs',
+    'CodedeployVariableArgsDict',
     'EcsVariableArgs',
+    'EcsVariableArgsDict',
     'HelmVariableArgs',
+    'HelmVariableArgsDict',
     'KubernetesVariableArgs',
+    'KubernetesVariableArgsDict',
     'LambdaVariableArgs',
+    'LambdaVariableArgsDict',
     'SshVariableArgs',
+    'SshVariableArgsDict',
     'TanzuVariableArgs',
+    'TanzuVariableArgsDict',
     'WinrmVariableArgs',
+    'WinrmVariableArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AmiVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    AmiVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AmiVariableArgs:
@@ -73,6 +106,23 @@ class AmiVariableArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class CodedeployVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    CodedeployVariableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CodedeployVariableArgs:
     def __init__(__self__, *,
@@ -124,6 +174,23 @@ class CodedeployVariableArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class EcsVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    EcsVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EcsVariableArgs:
@@ -177,6 +244,23 @@ class EcsVariableArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class HelmVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    HelmVariableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HelmVariableArgs:
     def __init__(__self__, *,
@@ -228,6 +312,23 @@ class HelmVariableArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class KubernetesVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    KubernetesVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KubernetesVariableArgs:
@@ -281,6 +382,23 @@ class KubernetesVariableArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class LambdaVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    LambdaVariableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LambdaVariableArgs:
     def __init__(__self__, *,
@@ -332,6 +450,23 @@ class LambdaVariableArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SshVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    SshVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SshVariableArgs:
@@ -385,6 +520,23 @@ class SshVariableArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class TanzuVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    TanzuVariableArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TanzuVariableArgs:
     def __init__(__self__, *,
@@ -436,6 +588,23 @@ class TanzuVariableArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class WinrmVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the variable
+        """
+        type: pulumi.Input[str]
+        """
+        Type of the variable. Options are 'TEXT' and 'ENCRYPTED_TEXT'
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the variable
+        """
+elif False:
+    WinrmVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WinrmVariableArgs:

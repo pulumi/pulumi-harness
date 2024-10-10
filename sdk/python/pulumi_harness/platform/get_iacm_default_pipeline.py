@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -133,9 +138,6 @@ def get_iacm_default_pipeline(operation: Optional[str] = None,
         pipeline=pulumi.get(__ret__, 'pipeline'),
         project_id=pulumi.get(__ret__, 'project_id'),
         provisioner_type=pulumi.get(__ret__, 'provisioner_type'))
-
-
-@_utilities.lift_output_func(get_iacm_default_pipeline)
 def get_iacm_default_pipeline_output(operation: Optional[pulumi.Input[str]] = None,
                                      org_id: Optional[pulumi.Input[str]] = None,
                                      project_id: Optional[pulumi.Input[str]] = None,
@@ -150,4 +152,17 @@ def get_iacm_default_pipeline_output(operation: Optional[pulumi.Input[str]] = No
     :param str project_id: Project identifier of the project the default pipelines resides in.
     :param str provisioner_type: The provisioner associated with this default.
     """
-    ...
+    __args__ = dict()
+    __args__['operation'] = operation
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['provisionerType'] = provisioner_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline', __args__, opts=opts, typ=GetIacmDefaultPipelineResult)
+    return __ret__.apply(lambda __response__: GetIacmDefaultPipelineResult(
+        id=pulumi.get(__response__, 'id'),
+        operation=pulumi.get(__response__, 'operation'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        pipeline=pulumi.get(__response__, 'pipeline'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        provisioner_type=pulumi.get(__response__, 'provisioner_type')))

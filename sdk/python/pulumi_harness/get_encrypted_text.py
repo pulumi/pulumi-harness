@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -106,9 +111,6 @@ def get_encrypted_text(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         secret_manager_id=pulumi.get(__ret__, 'secret_manager_id'),
         usage_scopes=pulumi.get(__ret__, 'usage_scopes'))
-
-
-@_utilities.lift_output_func(get_encrypted_text)
 def get_encrypted_text_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               usage_scopes: Optional[pulumi.Input[Optional[Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict']]]]] = None,
@@ -121,4 +123,14 @@ def get_encrypted_text_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: The name of the encrypted secret
     :param Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['usageScopes'] = usage_scopes
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:index/getEncryptedText:getEncryptedText', __args__, opts=opts, typ=GetEncryptedTextResult)
+    return __ret__.apply(lambda __response__: GetEncryptedTextResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        secret_manager_id=pulumi.get(__response__, 'secret_manager_id'),
+        usage_scopes=pulumi.get(__response__, 'usage_scopes')))

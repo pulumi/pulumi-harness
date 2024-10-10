@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -291,9 +296,6 @@ def get_repo(default_branch: Optional[str] = None,
         readme=pulumi.get(__ret__, 'readme'),
         sources=pulumi.get(__ret__, 'sources'),
         updated=pulumi.get(__ret__, 'updated'))
-
-
-@_utilities.lift_output_func(get_repo)
 def get_repo_output(default_branch: Optional[pulumi.Input[Optional[str]]] = None,
                     description: Optional[pulumi.Input[Optional[str]]] = None,
                     git_ignore: Optional[pulumi.Input[Optional[str]]] = None,
@@ -329,4 +331,32 @@ def get_repo_output(default_branch: Optional[pulumi.Input[Optional[str]]] = None
     :param bool readme: Repository should be created with readme file.
     :param Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']] sources: Configuration for importing an existing repository from SCM provider.
     """
-    ...
+    __args__ = dict()
+    __args__['defaultBranch'] = default_branch
+    __args__['description'] = description
+    __args__['gitIgnore'] = git_ignore
+    __args__['identifier'] = identifier
+    __args__['license'] = license
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['readme'] = readme
+    __args__['sources'] = sources
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getRepo:getRepo', __args__, opts=opts, typ=GetRepoResult)
+    return __ret__.apply(lambda __response__: GetRepoResult(
+        created=pulumi.get(__response__, 'created'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        default_branch=pulumi.get(__response__, 'default_branch'),
+        description=pulumi.get(__response__, 'description'),
+        git_ignore=pulumi.get(__response__, 'git_ignore'),
+        git_url=pulumi.get(__response__, 'git_url'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        license=pulumi.get(__response__, 'license'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        path=pulumi.get(__response__, 'path'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        readme=pulumi.get(__response__, 'readme'),
+        sources=pulumi.get(__response__, 'sources'),
+        updated=pulumi.get(__response__, 'updated')))

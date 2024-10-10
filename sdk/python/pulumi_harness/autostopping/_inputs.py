@@ -4,54 +4,115 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AwsProxyCertificatesArgs',
+    'AwsProxyCertificatesArgsDict',
     'AzureProxyCertificatesArgs',
+    'AzureProxyCertificatesArgsDict',
     'GcpProxyCertificatesArgs',
+    'GcpProxyCertificatesArgsDict',
     'RuleEcsContainerArgs',
+    'RuleEcsContainerArgsDict',
     'RuleEcsDependArgs',
+    'RuleEcsDependArgsDict',
     'RuleEcsHttpArgs',
+    'RuleEcsHttpArgsDict',
     'RuleRdsDatabaseArgs',
+    'RuleRdsDatabaseArgsDict',
     'RuleRdsDependArgs',
+    'RuleRdsDependArgsDict',
     'RuleRdsTcpArgs',
+    'RuleRdsTcpArgsDict',
     'RuleRdsTcpForwardRuleArgs',
+    'RuleRdsTcpForwardRuleArgsDict',
     'RuleVmDependArgs',
+    'RuleVmDependArgsDict',
     'RuleVmFilterArgs',
+    'RuleVmFilterArgsDict',
     'RuleVmFilterTagArgs',
+    'RuleVmFilterTagArgsDict',
     'RuleVmHttpArgs',
+    'RuleVmHttpArgsDict',
     'RuleVmHttpHealthArgs',
+    'RuleVmHttpHealthArgsDict',
     'RuleVmHttpRoutingArgs',
+    'RuleVmHttpRoutingArgsDict',
     'RuleVmTcpArgs',
+    'RuleVmTcpArgsDict',
     'RuleVmTcpForwardRuleArgs',
+    'RuleVmTcpForwardRuleArgsDict',
     'RuleVmTcpRdpArgs',
+    'RuleVmTcpRdpArgsDict',
     'RuleVmTcpSshArgs',
+    'RuleVmTcpSshArgsDict',
     'ScheduleRepeatArgs',
+    'ScheduleRepeatArgsDict',
     'GetAwsProxyCertificatesArgs',
+    'GetAwsProxyCertificatesArgsDict',
     'GetAzureProxyCertificatesArgs',
+    'GetAzureProxyCertificatesArgsDict',
     'GetGcpProxyCertificatesArgs',
+    'GetGcpProxyCertificatesArgsDict',
     'GetRuleEcsContainerArgs',
+    'GetRuleEcsContainerArgsDict',
     'GetRuleEcsDependArgs',
+    'GetRuleEcsDependArgsDict',
     'GetRuleEcsHttpArgs',
+    'GetRuleEcsHttpArgsDict',
     'GetRuleRdsDatabaseArgs',
+    'GetRuleRdsDatabaseArgsDict',
     'GetRuleRdsDependArgs',
+    'GetRuleRdsDependArgsDict',
     'GetRuleRdsTcpArgs',
+    'GetRuleRdsTcpArgsDict',
     'GetRuleRdsTcpForwardRuleArgs',
+    'GetRuleRdsTcpForwardRuleArgsDict',
     'GetRuleVmDependArgs',
+    'GetRuleVmDependArgsDict',
     'GetRuleVmFilterArgs',
+    'GetRuleVmFilterArgsDict',
     'GetRuleVmFilterTagArgs',
+    'GetRuleVmFilterTagArgsDict',
     'GetRuleVmHttpArgs',
+    'GetRuleVmHttpArgsDict',
     'GetRuleVmHttpHealthArgs',
+    'GetRuleVmHttpHealthArgsDict',
     'GetRuleVmHttpRoutingArgs',
+    'GetRuleVmHttpRoutingArgsDict',
     'GetRuleVmTcpArgs',
+    'GetRuleVmTcpArgsDict',
     'GetRuleVmTcpForwardRuleArgs',
+    'GetRuleVmTcpForwardRuleArgsDict',
     'GetRuleVmTcpRdpArgs',
+    'GetRuleVmTcpRdpArgsDict',
     'GetRuleVmTcpSshArgs',
+    'GetRuleVmTcpSshArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AwsProxyCertificatesArgsDict(TypedDict):
+        cert_secret_id: pulumi.Input[str]
+        """
+        Certificate secret ID
+        """
+        key_secret_id: pulumi.Input[str]
+        """
+        Private key secret ID
+        """
+elif False:
+    AwsProxyCertificatesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsProxyCertificatesArgs:
@@ -90,6 +151,19 @@ class AwsProxyCertificatesArgs:
         pulumi.set(self, "key_secret_id", value)
 
 
+if not MYPY:
+    class AzureProxyCertificatesArgsDict(TypedDict):
+        cert_secret_id: pulumi.Input[str]
+        """
+        ID of certificate secret uploaded to vault
+        """
+        key_secret_id: pulumi.Input[str]
+        """
+        ID of certificate key uploaded to vault
+        """
+elif False:
+    AzureProxyCertificatesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureProxyCertificatesArgs:
     def __init__(__self__, *,
@@ -127,6 +201,19 @@ class AzureProxyCertificatesArgs:
         pulumi.set(self, "key_secret_id", value)
 
 
+if not MYPY:
+    class GcpProxyCertificatesArgsDict(TypedDict):
+        cert_secret_id: pulumi.Input[str]
+        """
+        Certificate secret ID
+        """
+        key_secret_id: pulumi.Input[str]
+        """
+        Private key secret ID
+        """
+elif False:
+    GcpProxyCertificatesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpProxyCertificatesArgs:
     def __init__(__self__, *,
@@ -163,6 +250,27 @@ class GcpProxyCertificatesArgs:
     def key_secret_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_secret_id", value)
 
+
+if not MYPY:
+    class RuleEcsContainerArgsDict(TypedDict):
+        cluster: pulumi.Input[str]
+        """
+        Name of cluster in which service belong to
+        """
+        region: pulumi.Input[str]
+        """
+        Region of cluster
+        """
+        service: pulumi.Input[str]
+        """
+        Name of service to be onboarded
+        """
+        task_count: NotRequired[pulumi.Input[int]]
+        """
+        Desired number of tasks on warming up a rule
+        """
+elif False:
+    RuleEcsContainerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleEcsContainerArgs:
@@ -232,6 +340,19 @@ class RuleEcsContainerArgs:
         pulumi.set(self, "task_count", value)
 
 
+if not MYPY:
+    class RuleEcsDependArgsDict(TypedDict):
+        rule_id: pulumi.Input[int]
+        """
+        Rule id of the dependent rule
+        """
+        delay_in_sec: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+elif False:
+    RuleEcsDependArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleEcsDependArgs:
     def __init__(__self__, *,
@@ -270,6 +391,15 @@ class RuleEcsDependArgs:
         pulumi.set(self, "delay_in_sec", value)
 
 
+if not MYPY:
+    class RuleEcsHttpArgsDict(TypedDict):
+        proxy_id: pulumi.Input[str]
+        """
+        Id of the proxy
+        """
+elif False:
+    RuleEcsHttpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleEcsHttpArgs:
     def __init__(__self__, *,
@@ -291,6 +421,19 @@ class RuleEcsHttpArgs:
     def proxy_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "proxy_id", value)
 
+
+if not MYPY:
+    class RuleRdsDatabaseArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        ID of the database
+        """
+        region: pulumi.Input[str]
+        """
+        Region to which database belong to
+        """
+elif False:
+    RuleRdsDatabaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleRdsDatabaseArgs:
@@ -328,6 +471,19 @@ class RuleRdsDatabaseArgs:
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class RuleRdsDependArgsDict(TypedDict):
+        rule_id: pulumi.Input[int]
+        """
+        Rule id of the dependent rule
+        """
+        delay_in_sec: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+elif False:
+    RuleRdsDependArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleRdsDependArgs:
@@ -367,6 +523,19 @@ class RuleRdsDependArgs:
         pulumi.set(self, "delay_in_sec", value)
 
 
+if not MYPY:
+    class RuleRdsTcpArgsDict(TypedDict):
+        proxy_id: pulumi.Input[str]
+        """
+        Id of the Proxy
+        """
+        forward_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpForwardRuleArgsDict']]]]
+        """
+        Additional tcp forwarding rules
+        """
+elif False:
+    RuleRdsTcpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleRdsTcpArgs:
     def __init__(__self__, *,
@@ -404,6 +573,19 @@ class RuleRdsTcpArgs:
     def forward_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpForwardRuleArgs']]]]):
         pulumi.set(self, "forward_rules", value)
 
+
+if not MYPY:
+    class RuleRdsTcpForwardRuleArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Port to listen on the vm
+        """
+        connect_on: NotRequired[pulumi.Input[int]]
+        """
+        Port to listen on the proxy
+        """
+elif False:
+    RuleRdsTcpForwardRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleRdsTcpForwardRuleArgs:
@@ -443,6 +625,19 @@ class RuleRdsTcpForwardRuleArgs:
         pulumi.set(self, "connect_on", value)
 
 
+if not MYPY:
+    class RuleVmDependArgsDict(TypedDict):
+        rule_id: pulumi.Input[int]
+        """
+        Rule id of the dependent rule
+        """
+        delay_in_sec: NotRequired[pulumi.Input[int]]
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+elif False:
+    RuleVmDependArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleVmDependArgs:
     def __init__(__self__, *,
@@ -480,6 +675,27 @@ class RuleVmDependArgs:
     def delay_in_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delay_in_sec", value)
 
+
+if not MYPY:
+    class RuleVmFilterArgsDict(TypedDict):
+        vm_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Ids of instances that needs to be managed using the AutoStopping rules
+        """
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Regions of instances that needs to be managed using the AutoStopping rules
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleVmFilterTagArgsDict']]]]
+        """
+        Tags of instances that needs to be managed using the AutoStopping rules
+        """
+        zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zones of instances that needs to be managed using the AutoStopping rules
+        """
+elif False:
+    RuleVmFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleVmFilterArgs:
@@ -551,6 +767,13 @@ class RuleVmFilterArgs:
         pulumi.set(self, "zones", value)
 
 
+if not MYPY:
+    class RuleVmFilterTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    RuleVmFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleVmFilterTagArgs:
     def __init__(__self__, *,
@@ -577,6 +800,23 @@ class RuleVmFilterTagArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class RuleVmHttpArgsDict(TypedDict):
+        proxy_id: pulumi.Input[str]
+        """
+        Id of the proxy
+        """
+        healths: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpHealthArgsDict']]]]
+        """
+        Health Check Details
+        """
+        routings: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpRoutingArgsDict']]]]
+        """
+        Routing configuration used to access the instances
+        """
+elif False:
+    RuleVmHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleVmHttpArgs:
@@ -631,6 +871,35 @@ class RuleVmHttpArgs:
     def routings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpRoutingArgs']]]]):
         pulumi.set(self, "routings", value)
 
+
+if not MYPY:
+    class RuleVmHttpHealthArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Health check port on the VM
+        """
+        protocol: pulumi.Input[str]
+        """
+        Protocol can be http or https
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        API path to use for health check
+        """
+        status_code_from: NotRequired[pulumi.Input[int]]
+        """
+        Lower limit for acceptable status code
+        """
+        status_code_to: NotRequired[pulumi.Input[int]]
+        """
+        Upper limit for acceptable status code
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        Health check timeout
+        """
+elif False:
+    RuleVmHttpHealthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleVmHttpHealthArgs:
@@ -733,6 +1002,31 @@ class RuleVmHttpHealthArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class RuleVmHttpRoutingArgsDict(TypedDict):
+        source_protocol: pulumi.Input[str]
+        """
+        Source protocol of the proxy can be http or https
+        """
+        target_protocol: pulumi.Input[str]
+        """
+        Target protocol of the instance can be http or https
+        """
+        action: NotRequired[pulumi.Input[str]]
+        """
+        Organization Identifier for the Entity
+        """
+        source_port: NotRequired[pulumi.Input[int]]
+        """
+        Port on the proxy
+        """
+        target_port: NotRequired[pulumi.Input[int]]
+        """
+        Port on the VM
+        """
+elif False:
+    RuleVmHttpRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleVmHttpRoutingArgs:
     def __init__(__self__, *,
@@ -818,6 +1112,27 @@ class RuleVmHttpRoutingArgs:
         pulumi.set(self, "target_port", value)
 
 
+if not MYPY:
+    class RuleVmTcpArgsDict(TypedDict):
+        proxy_id: pulumi.Input[str]
+        """
+        Id of the Proxy
+        """
+        forward_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpForwardRuleArgsDict']]]]
+        """
+        Additional tcp forwarding rules
+        """
+        rdps: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpRdpArgsDict']]]]
+        """
+        RDP configuration
+        """
+        sshes: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuleVmTcpSshArgsDict']]]]
+        """
+        SSH configuration
+        """
+elif False:
+    RuleVmTcpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleVmTcpArgs:
     def __init__(__self__, *,
@@ -888,6 +1203,19 @@ class RuleVmTcpArgs:
         pulumi.set(self, "sshes", value)
 
 
+if not MYPY:
+    class RuleVmTcpForwardRuleArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        Port to listen on the vm
+        """
+        connect_on: NotRequired[pulumi.Input[int]]
+        """
+        Port to listen on the proxy
+        """
+elif False:
+    RuleVmTcpForwardRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleVmTcpForwardRuleArgs:
     def __init__(__self__, *,
@@ -925,6 +1253,19 @@ class RuleVmTcpForwardRuleArgs:
     def connect_on(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connect_on", value)
 
+
+if not MYPY:
+    class RuleVmTcpRdpArgsDict(TypedDict):
+        connect_on: NotRequired[pulumi.Input[int]]
+        """
+        Port to listen on the proxy
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port to listen on the vm
+        """
+elif False:
+    RuleVmTcpRdpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleVmTcpRdpArgs:
@@ -965,6 +1306,19 @@ class RuleVmTcpRdpArgs:
         pulumi.set(self, "port", value)
 
 
+if not MYPY:
+    class RuleVmTcpSshArgsDict(TypedDict):
+        connect_on: NotRequired[pulumi.Input[int]]
+        """
+        Port to listen on the proxy
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        Port to listen on the vm
+        """
+elif False:
+    RuleVmTcpSshArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleVmTcpSshArgs:
     def __init__(__self__, *,
@@ -1003,6 +1357,23 @@ class RuleVmTcpSshArgs:
     def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class ScheduleRepeatArgsDict(TypedDict):
+        days: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        """
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        Ending time of schedule action on the day. Defaults to 24:00Hrs unless specified. Accepted format is HH:MM. Eg : 20:00 for 8pm
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        Starting time of schedule action on the day. Defaults to 00:00Hrs unless specified. Accepted format is HH:MM. Eg : 13:15 for 01:15pm
+        """
+elif False:
+    ScheduleRepeatArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScheduleRepeatArgs:
@@ -1058,6 +1429,19 @@ class ScheduleRepeatArgs:
         pulumi.set(self, "start_time", value)
 
 
+if not MYPY:
+    class GetAwsProxyCertificatesArgsDict(TypedDict):
+        cert_secret_id: str
+        """
+        Certificate secret ID
+        """
+        key_secret_id: str
+        """
+        Private key secret ID
+        """
+elif False:
+    GetAwsProxyCertificatesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetAwsProxyCertificatesArgs:
     def __init__(__self__, *,
@@ -1094,6 +1478,19 @@ class GetAwsProxyCertificatesArgs:
     def key_secret_id(self, value: str):
         pulumi.set(self, "key_secret_id", value)
 
+
+if not MYPY:
+    class GetAzureProxyCertificatesArgsDict(TypedDict):
+        cert_secret_id: str
+        """
+        ID of certificate secret uploaded to vault
+        """
+        key_secret_id: str
+        """
+        ID of certificate key uploaded to vault
+        """
+elif False:
+    GetAzureProxyCertificatesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetAzureProxyCertificatesArgs:
@@ -1132,6 +1529,19 @@ class GetAzureProxyCertificatesArgs:
         pulumi.set(self, "key_secret_id", value)
 
 
+if not MYPY:
+    class GetGcpProxyCertificatesArgsDict(TypedDict):
+        cert_secret_id: str
+        """
+        Certificate secret ID
+        """
+        key_secret_id: str
+        """
+        Private key secret ID
+        """
+elif False:
+    GetGcpProxyCertificatesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetGcpProxyCertificatesArgs:
     def __init__(__self__, *,
@@ -1168,6 +1578,27 @@ class GetGcpProxyCertificatesArgs:
     def key_secret_id(self, value: str):
         pulumi.set(self, "key_secret_id", value)
 
+
+if not MYPY:
+    class GetRuleEcsContainerArgsDict(TypedDict):
+        cluster: str
+        """
+        Name of cluster in which service belong to
+        """
+        region: str
+        """
+        Region of cluster
+        """
+        service: str
+        """
+        Name of service to be onboarded
+        """
+        task_count: NotRequired[int]
+        """
+        Desired number of tasks on warming up a rule
+        """
+elif False:
+    GetRuleEcsContainerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleEcsContainerArgs:
@@ -1237,6 +1668,19 @@ class GetRuleEcsContainerArgs:
         pulumi.set(self, "task_count", value)
 
 
+if not MYPY:
+    class GetRuleEcsDependArgsDict(TypedDict):
+        rule_id: int
+        """
+        Rule id of the dependent rule
+        """
+        delay_in_sec: NotRequired[int]
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+elif False:
+    GetRuleEcsDependArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleEcsDependArgs:
     def __init__(__self__, *,
@@ -1275,6 +1719,15 @@ class GetRuleEcsDependArgs:
         pulumi.set(self, "delay_in_sec", value)
 
 
+if not MYPY:
+    class GetRuleEcsHttpArgsDict(TypedDict):
+        proxy_id: str
+        """
+        Id of the proxy
+        """
+elif False:
+    GetRuleEcsHttpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleEcsHttpArgs:
     def __init__(__self__, *,
@@ -1296,6 +1749,19 @@ class GetRuleEcsHttpArgs:
     def proxy_id(self, value: str):
         pulumi.set(self, "proxy_id", value)
 
+
+if not MYPY:
+    class GetRuleRdsDatabaseArgsDict(TypedDict):
+        id: str
+        """
+        ID of the database
+        """
+        region: str
+        """
+        Region to which database belong to
+        """
+elif False:
+    GetRuleRdsDatabaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleRdsDatabaseArgs:
@@ -1333,6 +1799,19 @@ class GetRuleRdsDatabaseArgs:
     def region(self, value: str):
         pulumi.set(self, "region", value)
 
+
+if not MYPY:
+    class GetRuleRdsDependArgsDict(TypedDict):
+        rule_id: int
+        """
+        Rule id of the dependent rule
+        """
+        delay_in_sec: NotRequired[int]
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+elif False:
+    GetRuleRdsDependArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleRdsDependArgs:
@@ -1372,6 +1851,19 @@ class GetRuleRdsDependArgs:
         pulumi.set(self, "delay_in_sec", value)
 
 
+if not MYPY:
+    class GetRuleRdsTcpArgsDict(TypedDict):
+        proxy_id: str
+        """
+        Id of the Proxy
+        """
+        forward_rules: NotRequired[Sequence['GetRuleRdsTcpForwardRuleArgsDict']]
+        """
+        Additional tcp forwarding rules
+        """
+elif False:
+    GetRuleRdsTcpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleRdsTcpArgs:
     def __init__(__self__, *,
@@ -1409,6 +1901,19 @@ class GetRuleRdsTcpArgs:
     def forward_rules(self, value: Optional[Sequence['GetRuleRdsTcpForwardRuleArgs']]):
         pulumi.set(self, "forward_rules", value)
 
+
+if not MYPY:
+    class GetRuleRdsTcpForwardRuleArgsDict(TypedDict):
+        port: int
+        """
+        Port to listen on the vm
+        """
+        connect_on: NotRequired[int]
+        """
+        Port to listen on the proxy
+        """
+elif False:
+    GetRuleRdsTcpForwardRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleRdsTcpForwardRuleArgs:
@@ -1448,6 +1953,19 @@ class GetRuleRdsTcpForwardRuleArgs:
         pulumi.set(self, "connect_on", value)
 
 
+if not MYPY:
+    class GetRuleVmDependArgsDict(TypedDict):
+        rule_id: int
+        """
+        Rule id of the dependent rule
+        """
+        delay_in_sec: NotRequired[int]
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+elif False:
+    GetRuleVmDependArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleVmDependArgs:
     def __init__(__self__, *,
@@ -1485,6 +2003,27 @@ class GetRuleVmDependArgs:
     def delay_in_sec(self, value: Optional[int]):
         pulumi.set(self, "delay_in_sec", value)
 
+
+if not MYPY:
+    class GetRuleVmFilterArgsDict(TypedDict):
+        vm_ids: Sequence[str]
+        """
+        Ids of instances that needs to be managed using the AutoStopping rules
+        """
+        regions: NotRequired[Sequence[str]]
+        """
+        Regions of instances that needs to be managed using the AutoStopping rules
+        """
+        tags: NotRequired[Sequence['GetRuleVmFilterTagArgsDict']]
+        """
+        Tags of instances that needs to be managed using the AutoStopping rules
+        """
+        zones: NotRequired[Sequence[str]]
+        """
+        Zones of instances that needs to be managed using the AutoStopping rules
+        """
+elif False:
+    GetRuleVmFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleVmFilterArgs:
@@ -1556,6 +2095,13 @@ class GetRuleVmFilterArgs:
         pulumi.set(self, "zones", value)
 
 
+if not MYPY:
+    class GetRuleVmFilterTagArgsDict(TypedDict):
+        key: str
+        value: str
+elif False:
+    GetRuleVmFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleVmFilterTagArgs:
     def __init__(__self__, *,
@@ -1582,6 +2128,23 @@ class GetRuleVmFilterTagArgs:
     def value(self, value: str):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetRuleVmHttpArgsDict(TypedDict):
+        proxy_id: str
+        """
+        Id of the proxy
+        """
+        healths: NotRequired[Sequence['GetRuleVmHttpHealthArgsDict']]
+        """
+        Health Check Details
+        """
+        routings: NotRequired[Sequence['GetRuleVmHttpRoutingArgsDict']]
+        """
+        Routing configuration used to access the instances
+        """
+elif False:
+    GetRuleVmHttpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleVmHttpArgs:
@@ -1636,6 +2199,35 @@ class GetRuleVmHttpArgs:
     def routings(self, value: Optional[Sequence['GetRuleVmHttpRoutingArgs']]):
         pulumi.set(self, "routings", value)
 
+
+if not MYPY:
+    class GetRuleVmHttpHealthArgsDict(TypedDict):
+        port: int
+        """
+        Health check port on the VM
+        """
+        protocol: str
+        """
+        Protocol can be http or https
+        """
+        path: NotRequired[str]
+        """
+        API path to use for health check
+        """
+        status_code_from: NotRequired[int]
+        """
+        Lower limit for acceptable status code
+        """
+        status_code_to: NotRequired[int]
+        """
+        Upper limit for acceptable status code
+        """
+        timeout: NotRequired[int]
+        """
+        Health check timeout
+        """
+elif False:
+    GetRuleVmHttpHealthArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleVmHttpHealthArgs:
@@ -1738,6 +2330,31 @@ class GetRuleVmHttpHealthArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class GetRuleVmHttpRoutingArgsDict(TypedDict):
+        source_protocol: str
+        """
+        Source protocol of the proxy can be http or https
+        """
+        target_protocol: str
+        """
+        Target protocol of the instance can be http or https
+        """
+        action: NotRequired[str]
+        """
+        Organization Identifier for the Entity
+        """
+        source_port: NotRequired[int]
+        """
+        Port on the proxy
+        """
+        target_port: NotRequired[int]
+        """
+        Port on the VM
+        """
+elif False:
+    GetRuleVmHttpRoutingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleVmHttpRoutingArgs:
     def __init__(__self__, *,
@@ -1823,6 +2440,27 @@ class GetRuleVmHttpRoutingArgs:
         pulumi.set(self, "target_port", value)
 
 
+if not MYPY:
+    class GetRuleVmTcpArgsDict(TypedDict):
+        proxy_id: str
+        """
+        Id of the Proxy
+        """
+        forward_rules: NotRequired[Sequence['GetRuleVmTcpForwardRuleArgsDict']]
+        """
+        Additional tcp forwarding rules
+        """
+        rdps: NotRequired[Sequence['GetRuleVmTcpRdpArgsDict']]
+        """
+        RDP configuration
+        """
+        sshes: NotRequired[Sequence['GetRuleVmTcpSshArgsDict']]
+        """
+        SSH configuration
+        """
+elif False:
+    GetRuleVmTcpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleVmTcpArgs:
     def __init__(__self__, *,
@@ -1893,6 +2531,19 @@ class GetRuleVmTcpArgs:
         pulumi.set(self, "sshes", value)
 
 
+if not MYPY:
+    class GetRuleVmTcpForwardRuleArgsDict(TypedDict):
+        port: int
+        """
+        Port to listen on the vm
+        """
+        connect_on: NotRequired[int]
+        """
+        Port to listen on the proxy
+        """
+elif False:
+    GetRuleVmTcpForwardRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRuleVmTcpForwardRuleArgs:
     def __init__(__self__, *,
@@ -1930,6 +2581,19 @@ class GetRuleVmTcpForwardRuleArgs:
     def connect_on(self, value: Optional[int]):
         pulumi.set(self, "connect_on", value)
 
+
+if not MYPY:
+    class GetRuleVmTcpRdpArgsDict(TypedDict):
+        connect_on: NotRequired[int]
+        """
+        Port to listen on the proxy
+        """
+        port: NotRequired[int]
+        """
+        Port to listen on the vm
+        """
+elif False:
+    GetRuleVmTcpRdpArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleVmTcpRdpArgs:
@@ -1969,6 +2633,19 @@ class GetRuleVmTcpRdpArgs:
     def port(self, value: Optional[int]):
         pulumi.set(self, "port", value)
 
+
+if not MYPY:
+    class GetRuleVmTcpSshArgsDict(TypedDict):
+        connect_on: NotRequired[int]
+        """
+        Port to listen on the proxy
+        """
+        port: NotRequired[int]
+        """
+        Port to listen on the vm
+        """
+elif False:
+    GetRuleVmTcpSshArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRuleVmTcpSshArgs:

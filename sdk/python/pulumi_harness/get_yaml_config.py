@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -114,9 +119,6 @@ def get_yaml_config(app_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         path=pulumi.get(__ret__, 'path'))
-
-
-@_utilities.lift_output_func(get_yaml_config)
 def get_yaml_config_output(app_id: Optional[pulumi.Input[Optional[str]]] = None,
                            path: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetYamlConfigResult]:
@@ -127,4 +129,14 @@ def get_yaml_config_output(app_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str app_id: Unique identifier of the application. This is not required for account level resources (i.e. cloud providers, connectors, etc.).
     :param str path: Path to the yaml file.
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['path'] = path
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:index/getYamlConfig:getYamlConfig', __args__, opts=opts, typ=GetYamlConfigResult)
+    return __ret__.apply(lambda __response__: GetYamlConfigResult(
+        app_id=pulumi.get(__response__, 'app_id'),
+        content=pulumi.get(__response__, 'content'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        path=pulumi.get(__response__, 'path')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -203,9 +208,6 @@ def get_triggers(identifier: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         target_id=pulumi.get(__ret__, 'target_id'),
         yaml=pulumi.get(__ret__, 'yaml'))
-
-
-@_utilities.lift_output_func(get_triggers)
 def get_triggers_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                         ignore_error: Optional[pulumi.Input[Optional[bool]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -236,4 +238,23 @@ def get_triggers_output(identifier: Optional[pulumi.Input[Optional[str]]] = None
     :param str project_id: Unique identifier of the project.
     :param str target_id: Identifier of the target pipeline
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['ignoreError'] = ignore_error
+    __args__['name'] = name
+    __args__['orgId'] = org_id
+    __args__['projectId'] = project_id
+    __args__['targetId'] = target_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:platform/getTriggers:getTriggers', __args__, opts=opts, typ=GetTriggersResult)
+    return __ret__.apply(lambda __response__: GetTriggersResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        ignore_error=pulumi.get(__response__, 'ignore_error'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        tags=pulumi.get(__response__, 'tags'),
+        target_id=pulumi.get(__response__, 'target_id'),
+        yaml=pulumi.get(__response__, 'yaml')))

@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetServiceList(ctx, nil, nil)
+//			_, err := platform.GetServiceList(ctx, &platform.GetServiceListArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

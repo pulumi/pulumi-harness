@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -267,9 +272,6 @@ def get_aws_proxy(allocate_static_ip: Optional[bool] = None,
         route53_hosted_zone_id=pulumi.get(__ret__, 'route53_hosted_zone_id'),
         security_groups=pulumi.get(__ret__, 'security_groups'),
         vpc=pulumi.get(__ret__, 'vpc'))
-
-
-@_utilities.lift_output_func(get_aws_proxy)
 def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bool]]] = None,
                          api_key: Optional[pulumi.Input[str]] = None,
                          certificates: Optional[pulumi.Input[Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict']]]] = None,
@@ -299,4 +301,35 @@ def get_aws_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bool
     :param Sequence[str] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
     :param str vpc: VPC in which cloud resources are hosted
     """
-    ...
+    __args__ = dict()
+    __args__['allocateStaticIp'] = allocate_static_ip
+    __args__['apiKey'] = api_key
+    __args__['certificates'] = certificates
+    __args__['cloudConnectorId'] = cloud_connector_id
+    __args__['deleteCloudResourcesOnDestroy'] = delete_cloud_resources_on_destroy
+    __args__['hostName'] = host_name
+    __args__['keypair'] = keypair
+    __args__['machineType'] = machine_type
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['route53HostedZoneId'] = route53_hosted_zone_id
+    __args__['securityGroups'] = security_groups
+    __args__['vpc'] = vpc
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getAwsProxy:getAwsProxy', __args__, opts=opts, typ=GetAwsProxyResult)
+    return __ret__.apply(lambda __response__: GetAwsProxyResult(
+        allocate_static_ip=pulumi.get(__response__, 'allocate_static_ip'),
+        api_key=pulumi.get(__response__, 'api_key'),
+        certificates=pulumi.get(__response__, 'certificates'),
+        cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
+        delete_cloud_resources_on_destroy=pulumi.get(__response__, 'delete_cloud_resources_on_destroy'),
+        host_name=pulumi.get(__response__, 'host_name'),
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        keypair=pulumi.get(__response__, 'keypair'),
+        machine_type=pulumi.get(__response__, 'machine_type'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        route53_hosted_zone_id=pulumi.get(__response__, 'route53_hosted_zone_id'),
+        security_groups=pulumi.get(__response__, 'security_groups'),
+        vpc=pulumi.get(__response__, 'vpc')))
