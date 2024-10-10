@@ -16270,8 +16270,8 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
                  attribute_name: Optional[pulumi.Input[str]] = None,
                  attribute_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] attribute_name: Name of the attribute. Valid values are `category`, `type` or `labels`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] attribute_values: Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
+        :param pulumi.Input[str] attribute_name: Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] attribute_values: Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
         """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
@@ -16282,7 +16282,7 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
     @pulumi.getter(name="attributeName")
     def attribute_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the attribute. Valid values are `category`, `type` or `labels`.
+        Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
         """
         return pulumi.get(self, "attribute_name")
 
@@ -16294,7 +16294,7 @@ class ResourceGroupResourceFilterResourceAttributeFilterArgs:
     @pulumi.getter(name="attributeValues")
     def attribute_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
+        Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
         """
         return pulumi.get(self, "attribute_values")
 

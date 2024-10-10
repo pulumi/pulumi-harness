@@ -247,6 +247,9 @@
             "harness_cloudprovider_tanzu": {
                 "current": "harness:cloudprovider/tanzu:Tanzu"
             },
+            "harness_cluster_orchestrator": {
+                "current": "harness:cluster/orchestrator:Orchestrator"
+            },
             "harness_delegate_approval": {
                 "current": "harness:index/delegateApproval:DelegateApproval"
             },
@@ -296,6 +299,14 @@
                         "maxItemsOne": false
                     },
                     "target_regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_governance_rule_set": {
+                "current": "harness:governance/ruleSet:RuleSet",
+                "fields": {
+                    "rule_ids": {
                         "maxItemsOne": false
                     }
                 }
@@ -3036,6 +3047,9 @@
                     }
                 }
             },
+            "harness_cluster_orchestrator": {
+                "current": "harness:cluster/getOrchestrator:getOrchestrator"
+            },
             "harness_current_account": {
                 "current": "harness:index/getCurrentAccount:getCurrentAccount"
             },
@@ -3087,6 +3101,14 @@
                         "maxItemsOne": false
                     },
                     "target_regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_governance_rule_set": {
+                "current": "harness:governance/getRuleSet:getRuleSet",
+                "fields": {
+                    "rule_ids": {
                         "maxItemsOne": false
                     }
                 }

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Rule{}
 	case "harness:governance/ruleEnforcement:RuleEnforcement":
 		r = &RuleEnforcement{}
+	case "harness:governance/ruleSet:RuleSet":
+		r = &RuleSet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"governance/ruleEnforcement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"governance/ruleSet",
 		&module{version},
 	)
 }

@@ -44,6 +44,8 @@ if typing.TYPE_CHECKING:
     autostopping = __autostopping
     import pulumi_harness.cloudprovider as __cloudprovider
     cloudprovider = __cloudprovider
+    import pulumi_harness.cluster as __cluster
+    cluster = __cluster
     import pulumi_harness.config as __config
     config = __config
     import pulumi_harness.governance as __governance
@@ -55,6 +57,7 @@ if typing.TYPE_CHECKING:
 else:
     autostopping = _utilities.lazy_import('pulumi_harness.autostopping')
     cloudprovider = _utilities.lazy_import('pulumi_harness.cloudprovider')
+    cluster = _utilities.lazy_import('pulumi_harness.cluster')
     config = _utilities.lazy_import('pulumi_harness.config')
     governance = _utilities.lazy_import('pulumi_harness.governance')
     platform = _utilities.lazy_import('pulumi_harness.platform')
@@ -193,6 +196,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "cluster/orchestrator",
+  "fqn": "pulumi_harness.cluster",
+  "classes": {
+   "harness:cluster/orchestrator:Orchestrator": "Orchestrator"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "governance/rule",
   "fqn": "pulumi_harness.governance",
   "classes": {
@@ -205,6 +216,14 @@ _utilities.register(
   "fqn": "pulumi_harness.governance",
   "classes": {
    "harness:governance/ruleEnforcement:RuleEnforcement": "RuleEnforcement"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "governance/ruleSet",
+  "fqn": "pulumi_harness.governance",
+  "classes": {
+   "harness:governance/ruleSet:RuleSet": "RuleSet"
   }
  },
  {

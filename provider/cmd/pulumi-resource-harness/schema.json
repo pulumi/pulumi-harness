@@ -3886,7 +3886,14 @@
                     "description": "Controls when a sync will be performed in response to updates in git.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "project"
+                    ]
+                }
+            }
         },
         "harness:platform/GitOpsApplicationsApplicationSpecDestination:GitOpsApplicationsApplicationSpecDestination": {
             "properties": {
@@ -7130,14 +7137,14 @@
             "properties": {
                 "attributeName": {
                     "type": "string",
-                    "description": "Name of the attribute. Valid values are `category`, `type` or `labels`.\n"
+                    "description": "Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.\n"
                 },
                 "attributeValues": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'\n"
+                    "description": "Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.\n"
                 }
             },
             "type": "object"
@@ -15742,6 +15749,64 @@
                 "type": "object"
             }
         },
+        "harness:cluster/orchestrator:Orchestrator": {
+            "description": "Resource for creating ClusterOrchestrators.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.cluster.Orchestrator(\"test\", {\n    name: \"name\",\n    clusterEndpoint: \"http://test.test.com\",\n    k8sConnectorId: \"test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.cluster.Orchestrator(\"test\",\n    name=\"name\",\n    cluster_endpoint=\"http://test.test.com\",\n    k8s_connector_id=\"test\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Cluster.Orchestrator(\"test\", new()\n    {\n        Name = \"name\",\n        ClusterEndpoint = \"http://test.test.com\",\n        K8sConnectorId = \"test\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/cluster\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cluster.NewOrchestrator(ctx, \"test\", \u0026cluster.OrchestratorArgs{\n\t\t\tName:            pulumi.String(\"name\"),\n\t\t\tClusterEndpoint: pulumi.String(\"http://test.test.com\"),\n\t\t\tK8sConnectorId:  pulumi.String(\"test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.cluster.Orchestrator;\nimport com.pulumi.harness.cluster.OrchestratorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new Orchestrator(\"test\", OrchestratorArgs.builder()\n            .name(\"name\")\n            .clusterEndpoint(\"http://test.test.com\")\n            .k8sConnectorId(\"test\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:cluster:Orchestrator\n    properties:\n      name: name\n      clusterEndpoint: http://test.test.com\n      k8sConnectorId: test\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport using the Harness aws cloud provider id.\n\n```sh\n$ pulumi import harness:cluster/orchestrator:Orchestrator example \u003cprovider_id\u003e\n```\n\n",
+            "properties": {
+                "clusterEndpoint": {
+                    "type": "string",
+                    "description": "Endpoint of the k8s cluster being onboarded under the orchestrator\n"
+                },
+                "k8sConnectorId": {
+                    "type": "string",
+                    "description": "ID of the Harness Kubernetes Connector Being used\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Orchestrator\n"
+                }
+            },
+            "required": [
+                "clusterEndpoint",
+                "k8sConnectorId",
+                "name"
+            ],
+            "inputProperties": {
+                "clusterEndpoint": {
+                    "type": "string",
+                    "description": "Endpoint of the k8s cluster being onboarded under the orchestrator\n"
+                },
+                "k8sConnectorId": {
+                    "type": "string",
+                    "description": "ID of the Harness Kubernetes Connector Being used\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Orchestrator\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterEndpoint",
+                "k8sConnectorId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Orchestrator resources.\n",
+                "properties": {
+                    "clusterEndpoint": {
+                        "type": "string",
+                        "description": "Endpoint of the k8s cluster being onboarded under the orchestrator\n"
+                    },
+                    "k8sConnectorId": {
+                        "type": "string",
+                        "description": "ID of the Harness Kubernetes Connector Being used\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Orchestrator\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:governance/rule:Rule": {
             "description": "Resource for creating, updating, and managing rule.\n\n## Import\n\nImport governance enforcement\n\n```sh\n$ pulumi import harness:governance/rule:Rule example \u003crule_id\u003e\n```\n\n",
             "properties": {
@@ -16019,6 +16084,94 @@
                             "type": "string"
                         },
                         "description": "List of target regions. For GCP it should be left empty but is required in case of AWS or Azure.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:governance/ruleSet:RuleSet": {
+            "description": "Resource for creating, updating, and managing rule.\n",
+            "properties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider for the rule set. It should be either AWS, AZURE or GCP.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for rule set.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the rule set.\n"
+                },
+                "ruleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of rule IDs\n"
+                },
+                "ruleSetId": {
+                    "type": "string",
+                    "description": "Id of the rule.\n"
+                }
+            },
+            "required": [
+                "cloudProvider",
+                "name",
+                "ruleIds",
+                "ruleSetId"
+            ],
+            "inputProperties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider for the rule set. It should be either AWS, AZURE or GCP.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description for rule set.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the rule set.\n"
+                },
+                "ruleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of rule IDs\n"
+                }
+            },
+            "requiredInputs": [
+                "cloudProvider",
+                "ruleIds"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RuleSet resources.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "type": "string",
+                        "description": "The cloud provider for the rule set. It should be either AWS, AZURE or GCP.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description for rule set.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the rule set.\n"
+                    },
+                    "ruleIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of rule IDs\n"
+                    },
+                    "ruleSetId": {
+                        "type": "string",
+                        "description": "Id of the rule.\n"
                     }
                 },
                 "type": "object"
@@ -22676,7 +22829,7 @@
             }
         },
         "harness:platform/fileStoreFile:FileStoreFile": {
-            "description": "Resource for creating files in Harness.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Create file\nconst example = new harness.platform.FileStoreFile(\"example\", {\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"description\",\n    tags: [\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parentIdentifier: \"parent_identifier\",\n    fileContentPath: \"file_content_path\",\n    mimeType: \"mime_type\",\n    fileUsage: \"MANIFEST_FILE|CONFIG|SCRIPT\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Create file\nexample = harness.platform.FileStoreFile(\"example\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"description\",\n    tags=[\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parent_identifier=\"parent_identifier\",\n    file_content_path=\"file_content_path\",\n    mime_type=\"mime_type\",\n    file_usage=\"MANIFEST_FILE|CONFIG|SCRIPT\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create file\n    var example = new Harness.Platform.FileStoreFile(\"example\", new()\n    {\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"description\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"baz:qux\",\n        },\n        ParentIdentifier = \"parent_identifier\",\n        FileContentPath = \"file_content_path\",\n        MimeType = \"mime_type\",\n        FileUsage = \"MANIFEST_FILE|CONFIG|SCRIPT\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create file\n\t\t_, err := platform.NewFileStoreFile(ctx, \"example\", \u0026platform.FileStoreFileArgs{\n\t\t\tOrgId:       pulumi.String(\"org_id\"),\n\t\t\tProjectId:   pulumi.String(\"project_id\"),\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"description\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"baz:qux\"),\n\t\t\t},\n\t\t\tParentIdentifier: pulumi.String(\"parent_identifier\"),\n\t\t\tFileContentPath:  pulumi.String(\"file_content_path\"),\n\t\t\tMimeType:         pulumi.String(\"mime_type\"),\n\t\t\tFileUsage:        pulumi.String(\"MANIFEST_FILE|CONFIG|SCRIPT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.FileStoreFile;\nimport com.pulumi.harness.platform.FileStoreFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create file\n        var example = new FileStoreFile(\"example\", FileStoreFileArgs.builder()\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"description\")\n            .tags(            \n                \"foo:bar\",\n                \"baz:qux\")\n            .parentIdentifier(\"parent_identifier\")\n            .fileContentPath(\"file_content_path\")\n            .mimeType(\"mime_type\")\n            .fileUsage(\"MANIFEST_FILE|CONFIG|SCRIPT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create file\n  example:\n    type: harness:platform:FileStoreFile\n    properties:\n      orgId: org_id\n      projectId: project_id\n      identifier: identifier\n      name: name\n      description: description\n      tags:\n        - foo:bar\n        - baz:qux\n      parentIdentifier: parent_identifier\n      fileContentPath: file_content_path\n      mimeType: mime_type\n      fileUsage: MANIFEST_FILE|CONFIG|SCRIPT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level file\n\n```sh\n$ pulumi import harness:platform/fileStoreFile:FileStoreFile example \u003cidentifier\u003e\n```\n\nImport org level file\n\n```sh\n$ pulumi import harness:platform/fileStoreFile:FileStoreFile example \u003corg_id\u003e\u003cidentifier\u003e\n```\n\nImport org level file\n\n```sh\n$ pulumi import harness:platform/fileStoreFile:FileStoreFile example \u003corg_id\u003e\u003cproject_id\u003e\u003cidentifier\u003e\n```\n\n",
+            "description": "Resource for creating files in Harness.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Create file\nconst example = new harness.platform.FileStoreFile(\"example\", {\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"description\",\n    tags: [\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parentIdentifier: \"parent_identifier\",\n    fileContentPath: \"file_content_path\",\n    mimeType: \"mime_type\",\n    fileUsage: \"MANIFEST_FILE|CONFIG|SCRIPT\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Create file\nexample = harness.platform.FileStoreFile(\"example\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"description\",\n    tags=[\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parent_identifier=\"parent_identifier\",\n    file_content_path=\"file_content_path\",\n    mime_type=\"mime_type\",\n    file_usage=\"MANIFEST_FILE|CONFIG|SCRIPT\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create file\n    var example = new Harness.Platform.FileStoreFile(\"example\", new()\n    {\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"description\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"baz:qux\",\n        },\n        ParentIdentifier = \"parent_identifier\",\n        FileContentPath = \"file_content_path\",\n        MimeType = \"mime_type\",\n        FileUsage = \"MANIFEST_FILE|CONFIG|SCRIPT\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create file\n\t\t_, err := platform.NewFileStoreFile(ctx, \"example\", \u0026platform.FileStoreFileArgs{\n\t\t\tOrgId:       pulumi.String(\"org_id\"),\n\t\t\tProjectId:   pulumi.String(\"project_id\"),\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"description\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"baz:qux\"),\n\t\t\t},\n\t\t\tParentIdentifier: pulumi.String(\"parent_identifier\"),\n\t\t\tFileContentPath:  pulumi.String(\"file_content_path\"),\n\t\t\tMimeType:         pulumi.String(\"mime_type\"),\n\t\t\tFileUsage:        pulumi.String(\"MANIFEST_FILE|CONFIG|SCRIPT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.FileStoreFile;\nimport com.pulumi.harness.platform.FileStoreFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create file\n        var example = new FileStoreFile(\"example\", FileStoreFileArgs.builder()\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"description\")\n            .tags(            \n                \"foo:bar\",\n                \"baz:qux\")\n            .parentIdentifier(\"parent_identifier\")\n            .fileContentPath(\"file_content_path\")\n            .mimeType(\"mime_type\")\n            .fileUsage(\"MANIFEST_FILE|CONFIG|SCRIPT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create file\n  example:\n    type: harness:platform:FileStoreFile\n    properties:\n      orgId: org_id\n      projectId: project_id\n      identifier: identifier\n      name: name\n      description: description\n      tags:\n        - foo:bar\n        - baz:qux\n      parentIdentifier: parent_identifier\n      fileContentPath: file_content_path\n      mimeType: mime_type\n      fileUsage: MANIFEST_FILE|CONFIG|SCRIPT\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level file\n\n```sh\n$ pulumi import harness:platform/fileStoreFile:FileStoreFile example \u003cidentifier\u003e\n```\n\nImport org level file\n\n```sh\n$ pulumi import harness:platform/fileStoreFile:FileStoreFile example \u003corg_id\u003e/\u003cidentifier\u003e\n```\n\nImport org level file\n\n```sh\n$ pulumi import harness:platform/fileStoreFile:FileStoreFile example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cidentifier\u003e\n```\n\n",
             "properties": {
                 "content": {
                     "type": "string",
@@ -22891,7 +23044,7 @@
             }
         },
         "harness:platform/fileStoreFolder:FileStoreFolder": {
-            "description": "Resource for creating folders in Harness.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Create folder\nconst example = new harness.platform.FileStoreFolder(\"example\", {\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"description\",\n    tags: [\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parentIdentifier: \"parent_identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Create folder\nexample = harness.platform.FileStoreFolder(\"example\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"description\",\n    tags=[\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parent_identifier=\"parent_identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create folder\n    var example = new Harness.Platform.FileStoreFolder(\"example\", new()\n    {\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"description\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"baz:qux\",\n        },\n        ParentIdentifier = \"parent_identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create folder\n\t\t_, err := platform.NewFileStoreFolder(ctx, \"example\", \u0026platform.FileStoreFolderArgs{\n\t\t\tOrgId:       pulumi.String(\"org_id\"),\n\t\t\tProjectId:   pulumi.String(\"project_id\"),\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"description\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"baz:qux\"),\n\t\t\t},\n\t\t\tParentIdentifier: pulumi.String(\"parent_identifier\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.FileStoreFolder;\nimport com.pulumi.harness.platform.FileStoreFolderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create folder\n        var example = new FileStoreFolder(\"example\", FileStoreFolderArgs.builder()\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"description\")\n            .tags(            \n                \"foo:bar\",\n                \"baz:qux\")\n            .parentIdentifier(\"parent_identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create folder\n  example:\n    type: harness:platform:FileStoreFolder\n    properties:\n      orgId: org_id\n      projectId: project_id\n      identifier: identifier\n      name: name\n      description: description\n      tags:\n        - foo:bar\n        - baz:qux\n      parentIdentifier: parent_identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level folder\n\n```sh\n$ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example \u003cidentifier\u003e\n```\n\nImport org level folder\n\n```sh\n$ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example \u003corg_id\u003e\u003cidentifier\u003e\n```\n\nImport org level folder\n\n```sh\n$ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example \u003corg_id\u003e\u003cproject_id\u003e\u003cidentifier\u003e\n```\n\n",
+            "description": "Resource for creating folders in Harness.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Create folder\nconst example = new harness.platform.FileStoreFolder(\"example\", {\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"description\",\n    tags: [\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parentIdentifier: \"parent_identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Create folder\nexample = harness.platform.FileStoreFolder(\"example\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"description\",\n    tags=[\n        \"foo:bar\",\n        \"baz:qux\",\n    ],\n    parent_identifier=\"parent_identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create folder\n    var example = new Harness.Platform.FileStoreFolder(\"example\", new()\n    {\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"description\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"baz:qux\",\n        },\n        ParentIdentifier = \"parent_identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create folder\n\t\t_, err := platform.NewFileStoreFolder(ctx, \"example\", \u0026platform.FileStoreFolderArgs{\n\t\t\tOrgId:       pulumi.String(\"org_id\"),\n\t\t\tProjectId:   pulumi.String(\"project_id\"),\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"description\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"baz:qux\"),\n\t\t\t},\n\t\t\tParentIdentifier: pulumi.String(\"parent_identifier\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.FileStoreFolder;\nimport com.pulumi.harness.platform.FileStoreFolderArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create folder\n        var example = new FileStoreFolder(\"example\", FileStoreFolderArgs.builder()\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"description\")\n            .tags(            \n                \"foo:bar\",\n                \"baz:qux\")\n            .parentIdentifier(\"parent_identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create folder\n  example:\n    type: harness:platform:FileStoreFolder\n    properties:\n      orgId: org_id\n      projectId: project_id\n      identifier: identifier\n      name: name\n      description: description\n      tags:\n        - foo:bar\n        - baz:qux\n      parentIdentifier: parent_identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level folder\n\n```sh\n$ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example \u003cidentifier\u003e\n```\n\nImport org level folder\n\n```sh\n$ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example \u003corg_id\u003e/\u003cidentifier\u003e\n```\n\nImport org level folder\n\n```sh\n$ pulumi import harness:platform/fileStoreFolder:FileStoreFolder example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cidentifier\u003e\n```\n\n",
             "properties": {
                 "createdBies": {
                     "type": "array",
@@ -24424,19 +24577,23 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Identifier for the GnuPG Key.\n"
+                    "description": "Account Identifier for the GnuPG Key.\n",
+                    "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier for the GnuPG Key.\n"
+                    "description": "Agent identifier for the GnuPG Key.\n",
+                    "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Organization Identifier for the GnuPG Key.\n"
+                    "description": "Organization Identifier for the GnuPG Key.\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project Identifier for the GnuPG Key.\n"
+                    "description": "Project Identifier for the GnuPG Key.\n",
+                    "willReplaceOnChanges": true
                 },
                 "requests": {
                     "type": "array",
@@ -24456,11 +24613,13 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account Identifier for the GnuPG Key.\n"
+                        "description": "Account Identifier for the GnuPG Key.\n",
+                        "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier for the GnuPG Key.\n"
+                        "description": "Agent identifier for the GnuPG Key.\n",
+                        "willReplaceOnChanges": true
                     },
                     "identifier": {
                         "type": "string",
@@ -24468,11 +24627,13 @@
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Organization Identifier for the GnuPG Key.\n"
+                        "description": "Organization Identifier for the GnuPG Key.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project Identifier for the GnuPG Key.\n"
+                        "description": "Project Identifier for the GnuPG Key.\n",
+                        "willReplaceOnChanges": true
                     },
                     "requests": {
                         "type": "array",
@@ -24520,19 +24681,23 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps repository certificate.\n"
+                    "description": "Account identifier of the GitOps repository certificate.\n",
+                    "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps repository certificate.\n"
+                    "description": "Agent identifier of the GitOps repository certificate.\n",
+                    "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Organization identifier of the GitOps repository certificate.\n"
+                    "description": "Organization identifier of the GitOps repository certificate.\n",
+                    "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps repository certificate.\n"
+                    "description": "Project identifier of the GitOps repository certificate.\n",
+                    "willReplaceOnChanges": true
                 },
                 "requests": {
                     "type": "array",
@@ -24552,19 +24717,23 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps repository certificate.\n"
+                        "description": "Account identifier of the GitOps repository certificate.\n",
+                        "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps repository certificate.\n"
+                        "description": "Agent identifier of the GitOps repository certificate.\n",
+                        "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Organization identifier of the GitOps repository certificate.\n"
+                        "description": "Organization identifier of the GitOps repository certificate.\n",
+                        "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the GitOps repository certificate.\n"
+                        "description": "Project identifier of the GitOps repository certificate.\n",
+                        "willReplaceOnChanges": true
                     },
                     "requests": {
                         "type": "array",
@@ -36189,6 +36358,58 @@
                 "type": "object"
             }
         },
+        "harness:cluster/getOrchestrator:getOrchestrator": {
+            "description": "Data source for retrieving a Harness ClusterOrchestrator.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.cluster.ClusterFunctions;\nimport com.pulumi.harness.cluster.inputs.GetOrchestratorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = ClusterFunctions.getOrchestrator(GetOrchestratorArgs.builder()\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:cluster:getOrchestrator\n      Arguments:\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrchestrator.\n",
+                "properties": {
+                    "clusterEndpoint": {
+                        "type": "string",
+                        "description": "Endpoint of the k8s cluster being onboarded under the orchestrator\n"
+                    },
+                    "k8sConnectorId": {
+                        "type": "string",
+                        "description": "ID of the Harness Kubernetes Connector Being used\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Orchestrator\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clusterEndpoint",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrchestrator.\n",
+                "properties": {
+                    "clusterEndpoint": {
+                        "description": "Endpoint of the k8s cluster being onboarded under the orchestrator\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "k8sConnectorId": {
+                        "description": "ID of the Harness Kubernetes Connector Being used\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the Orchestrator\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "clusterEndpoint",
+                    "name",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:governance/getRule:getRule": {
             "description": "Datasource for looking up a rule.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.governance.getRule({\n    ruleId: \"rule_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.governance.get_rule(rule_id=\"rule_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Governance.GetRule.Invoke(new()\n    {\n        RuleId = \"rule_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/governance\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := governance.LookupRule(ctx, \u0026governance.LookupRuleArgs{\n\t\t\tRuleId: \"rule_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.governance.GovernanceFunctions;\nimport com.pulumi.harness.governance.inputs.GetRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GovernanceFunctions.getRule(GetRuleArgs.builder()\n            .ruleId(\"rule_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:governance:getRule\n      Arguments:\n        ruleId: rule_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -36339,6 +36560,63 @@
                     "ruleSetIds",
                     "targetAccounts",
                     "targetRegions",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:governance/getRuleSet:getRuleSet": {
+            "description": "Datasource for looking up a rule.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRuleSet.\n",
+                "properties": {
+                    "ruleSetId": {
+                        "type": "string",
+                        "description": "Id of rule set.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ruleSetId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRuleSet.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "description": "The cloud provider for the rule set.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description for rule set.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the rule set.\n",
+                        "type": "string"
+                    },
+                    "ruleIds": {
+                        "description": "List of target regions.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "ruleSetId": {
+                        "description": "Id of rule set.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "cloudProvider",
+                    "description",
+                    "name",
+                    "ruleIds",
+                    "ruleSetId",
                     "id"
                 ],
                 "type": "object"
