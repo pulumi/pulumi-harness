@@ -39,6 +39,7 @@ var moduleMap = map[string]string{
 	"platform":      platformMod,
 	"service":       serviceMod,
 	"autostopping":  autostoppingMod,
+	"cluster":       "cluster",
 	"governance":    "governance",
 }
 
