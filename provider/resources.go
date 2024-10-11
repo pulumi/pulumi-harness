@@ -2,9 +2,7 @@ package harness
 
 import (
 	"fmt"
-	"path/filepath"
-	"strings"
-	"unicode"
+	"path"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -23,58 +21,28 @@ import (
 const (
 	mainPkg = "harness"
 	mainMod = "index"
-	// applicationMod       = "Application"
+
 	cloudProviderMod = "cloudprovider"
 	platformMod      = "platform"
 	serviceMod       = "service"
 	autostoppingMod  = "autostopping"
 )
 
-var namespaceMap = map[string]string{
-	"harness": "Harness",
+var modules = []string{
+	cloudProviderMod,
+	platformMod,
+	serviceMod,
+	autostoppingMod,
+	"cluster",
+	"governance",
 }
 
-var moduleMap = map[string]string{
-	"cloudprovider": cloudProviderMod,
-	"platform":      platformMod,
-	"service":       serviceMod,
-	"autostopping":  autostoppingMod,
-	"governance":    "governance",
-}
-
-// harnessMember manufactures a type token for the Harness package and the given module and type.
-func harnessMember(moduleTitle string, fn string, mem string) tokens.ModuleMember {
-	moduleName := strings.ToLower(moduleTitle)
-	namespaceMap[moduleName] = moduleTitle
-	if fn != "" {
-		moduleName += "/" + fn
-	}
-	return tokens.ModuleMember(mainPkg + ":" + moduleName + ":" + mem)
-}
-
-// harnessType manufactures a type token for the Launch Darkly package and the given module and type.
-func harnessType(mod string, fn string, typ string) tokens.Type {
-	return tokens.Type(harnessMember(mod, fn, typ))
-}
-
-func harnessTypeDefaultFile(mod string, typ string) tokens.Type {
-	fn := string(unicode.ToLower(rune(typ[0]))) + typ[1:]
-	return harnessType(mod, fn, typ)
-}
-
-// harnessDataSource manufactures a standard resource token given a module and resource name.
-// It automatically uses the Launch Darkly package and names the file by simply lower casing the data
-// source's first character.
 func harnessDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return harnessMember(mod, fn, res)
+	return tfbridge.MakeDataSource(mainPkg, mod, res)
 }
 
-// harnessResource manufactures a standard resource token given a module and resource name.
-// It automatically uses the Launch Darkly package and names the file by simply lower casing the resource's
-// first character.
 func harnessResource(mod string, res string) tokens.Type {
-	return harnessTypeDefaultFile(mod, res)
+	return tfbridge.MakeResource(mainPkg, mod, res)
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
@@ -220,23 +188,9 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_service_overrides_v2": {
 				Tok: harnessResource(platformMod, "ServiceOverridesV2"),
 			},
-			"harness_platform_slo":               {Tok: harnessResource(platformMod, "Slo")},
-			"harness_platform_template":          {Tok: harnessResource(platformMod, "Template")},
-			"harness_platform_template_filters":  {Tok: harnessResource(platformMod, "TemplateFilters")},
-			"harness_platform_token":             {Tok: harnessResource(platformMod, "Token")},
-			"harness_platform_user":              {Tok: harnessResource(platformMod, "User")},
 			"harness_platform_gitops_agent":      {Tok: harnessResource(platformMod, "GitOpsAgent")},
 			"harness_platform_gitops_cluster":    {Tok: harnessResource(platformMod, "GitOpsCluster")},
 			"harness_platform_gitops_repository": {Tok: harnessResource(platformMod, "GitOpsRepository")},
-			"harness_platform_infrastructure":    {Tok: harnessResource(platformMod, "Infrastructure")},
-			"harness_platform_input_set":         {Tok: harnessResource(platformMod, "InputSet")},
-			"harness_platform_organization":      {Tok: harnessResource(platformMod, "Organization")},
-			"harness_platform_pipeline":          {Tok: harnessResource(platformMod, "Pipeline")},
-			"harness_platform_project":           {Tok: harnessResource(platformMod, "Project")},
-			"harness_platform_resource_group":    {Tok: harnessResource(platformMod, "ResourceGroup")},
-			"harness_platform_roles":             {Tok: harnessResource(platformMod, "Roles")},
-			"harness_platform_role_assignments":  {Tok: harnessResource(platformMod, "RoleAssignments")},
-			"harness_platform_secret_file":       {Tok: harnessResource(platformMod, "SecretFile")},
 			"harness_platform_secret_sshkey":     {Tok: harnessResource(platformMod, "SecretSshkey")},
 			"harness_platform_secret_text":       {Tok: harnessResource(platformMod, "SecretText")},
 			"harness_platform_service":           {Tok: harnessResource(platformMod, "Service")},
@@ -440,7 +394,7 @@ func Provider() tfbridge.ProviderInfo {
 			RespectSchemaVersion: true,
 		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -459,21 +413,7 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	makeToken := func(mod, name string) (string, error) {
-		if name == "" {
-			name = mod
-		}
-		if m, e, ok := strings.Cut(mod, "~"); ok {
-			mod = m
-			if strings.HasPrefix(name, "get") {
-				name = "get" + e + name[3:]
-			} else {
-				name = e + name
-			}
-		}
-		return harnessResource(mod, name).String(), nil
-	}
-	prov.MustComputeTokens(tks.MappedModules("harness_", "", moduleMap, makeToken))
+	prov.MustComputeTokens(tks.KnownModules("harness_", "", modules, tks.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 

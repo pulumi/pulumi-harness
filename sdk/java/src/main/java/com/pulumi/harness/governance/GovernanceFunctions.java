@@ -12,8 +12,11 @@ import com.pulumi.harness.governance.inputs.GetRuleArgs;
 import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
 import com.pulumi.harness.governance.inputs.GetRuleEnforcementPlainArgs;
 import com.pulumi.harness.governance.inputs.GetRulePlainArgs;
+import com.pulumi.harness.governance.inputs.GetRuleSetArgs;
+import com.pulumi.harness.governance.inputs.GetRuleSetPlainArgs;
 import com.pulumi.harness.governance.outputs.GetRuleEnforcementResult;
 import com.pulumi.harness.governance.outputs.GetRuleResult;
+import com.pulumi.harness.governance.outputs.GetRuleSetResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class GovernanceFunctions {
@@ -352,5 +355,33 @@ public final class GovernanceFunctions {
      */
     public static CompletableFuture<GetRuleEnforcementResult> getRuleEnforcementPlain(GetRuleEnforcementPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:governance/getRuleEnforcement:getRuleEnforcement", TypeShape.of(GetRuleEnforcementResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up a rule.
+     * 
+     */
+    public static Output<GetRuleSetResult> getRuleSet(GetRuleSetArgs args) {
+        return getRuleSet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up a rule.
+     * 
+     */
+    public static CompletableFuture<GetRuleSetResult> getRuleSetPlain(GetRuleSetPlainArgs args) {
+        return getRuleSetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up a rule.
+     * 
+     */
+    public static Output<GetRuleSetResult> getRuleSet(GetRuleSetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:governance/getRuleSet:getRuleSet", TypeShape.of(GetRuleSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up a rule.
+     * 
+     */
+    public static CompletableFuture<GetRuleSetResult> getRuleSetPlain(GetRuleSetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:governance/getRuleSet:getRuleSet", TypeShape.of(GetRuleSetResult.class), args, Utilities.withVersion(options));
     }
 }

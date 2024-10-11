@@ -28495,9 +28495,9 @@ func (o ResourceGroupResourceFilterResourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ResourceGroupResourceFilterResourceAttributeFilter struct {
-	// Name of the attribute. Valid values are `category`, `type` or `labels`.
+	// Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
 	AttributeName *string `pulumi:"attributeName"`
-	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
 	AttributeValues []string `pulumi:"attributeValues"`
 }
 
@@ -28513,9 +28513,9 @@ type ResourceGroupResourceFilterResourceAttributeFilterInput interface {
 }
 
 type ResourceGroupResourceFilterResourceAttributeFilterArgs struct {
-	// Name of the attribute. Valid values are `category`, `type` or `labels`.
+	// Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
 	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
-	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
+	// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
 	AttributeValues pulumi.StringArrayInput `pulumi:"attributeValues"`
 }
 
@@ -28570,12 +28570,12 @@ func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) ToResourceGrou
 	return o
 }
 
-// Name of the attribute. Valid values are `category`, `type` or `labels`.
+// Name of the attribute. Valid values are `category`, `type`, `labels`, `tag` or `tags`.
 func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
 }
 
-// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction] and for `labels`, it can be using the syntax 'label:value'
+// Value of the attributes.Valid values for `category` are [ARTIFACTORY,CLOUD*COST,CLOUD*PROVIDER,CODE*REPO,MONITORING,SECRET*MANAGER,TICKETING], for `type` are [Production,PreProduction], for `labels`, it can be using the syntax 'label:value', for `tag` or `tags` it can be any string.
 func (o ResourceGroupResourceFilterResourceAttributeFilterOutput) AttributeValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceGroupResourceFilterResourceAttributeFilter) []string { return v.AttributeValues }).(pulumi.StringArrayOutput)
 }

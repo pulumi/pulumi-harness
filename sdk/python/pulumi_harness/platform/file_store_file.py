@@ -502,13 +502,13 @@ class FileStoreFile(pulumi.CustomResource):
         Import org level file
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id><identifier>
+        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<identifier>
         ```
 
         Import org level file
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id><project_id><identifier>
+        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<project_id>/<identifier>
         ```
 
         :param str resource_name: The name of the resource.
@@ -568,13 +568,13 @@ class FileStoreFile(pulumi.CustomResource):
         Import org level file
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id><identifier>
+        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<identifier>
         ```
 
         Import org level file
 
         ```sh
-        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id><project_id><identifier>
+        $ pulumi import harness:platform/fileStoreFile:FileStoreFile example <org_id>/<project_id>/<identifier>
         ```
 
         :param str resource_name: The name of the resource.
