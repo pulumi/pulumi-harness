@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsAppProjectResult {
     /**
-     * @return Account identifier of the GitOps project.
+     * @return Account identifier of the GitOps Agent where argo project resides.
      * 
      */
     private String accountId;
     /**
-     * @return Agent identifier of the GitOps project.
+     * @return Agent identifier of the agent where argo project resides(include scope prefix)
      * 
      */
     private String agentId;
@@ -28,31 +28,31 @@ public final class GetGitopsAppProjectResult {
      */
     private String id;
     /**
-     * @return Org identifier of the GitOps project.
+     * @return Org identifier of the GitOps Agent where argo project resides.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Project identifier of the GitOps repository.
+     * @return Project identifier of the Gitops Agent where argo project resides.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Identifier for the GitOps project.
+     * @return Identifier for the GitOps Argo project.
      * 
      */
     private String queryName;
 
     private GetGitopsAppProjectResult() {}
     /**
-     * @return Account identifier of the GitOps project.
+     * @return Account identifier of the GitOps Agent where argo project resides.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Agent identifier of the GitOps project.
+     * @return Agent identifier of the agent where argo project resides(include scope prefix)
      * 
      */
     public String agentId() {
@@ -66,21 +66,21 @@ public final class GetGitopsAppProjectResult {
         return this.id;
     }
     /**
-     * @return Org identifier of the GitOps project.
+     * @return Org identifier of the GitOps Agent where argo project resides.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Project identifier of the GitOps repository.
+     * @return Project identifier of the Gitops Agent where argo project resides.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Identifier for the GitOps project.
+     * @return Identifier for the GitOps Argo project.
      * 
      */
     public String queryName() {

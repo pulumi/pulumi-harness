@@ -16,7 +16,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
      */
     private String component;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the parameter of the ksonnet application.
      * 
      */
     private String name;
@@ -35,7 +35,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
         return this.component;
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the parameter of the ksonnet application.
      * 
      */
     public String name() {

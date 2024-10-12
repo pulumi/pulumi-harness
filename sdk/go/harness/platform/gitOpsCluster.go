@@ -38,7 +38,7 @@ type GitOpsCluster struct {
 
 	// Account identifier of the GitOps cluster.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Agent identifier of the GitOps cluster.
+	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -91,7 +91,7 @@ func GetGitOpsCluster(ctx *pulumi.Context,
 type gitOpsClusterState struct {
 	// Account identifier of the GitOps cluster.
 	AccountId *string `pulumi:"accountId"`
-	// Agent identifier of the GitOps cluster.
+	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId *string `pulumi:"agentId"`
 	// Identifier of the GitOps cluster.
 	Identifier *string `pulumi:"identifier"`
@@ -106,7 +106,7 @@ type gitOpsClusterState struct {
 type GitOpsClusterState struct {
 	// Account identifier of the GitOps cluster.
 	AccountId pulumi.StringPtrInput
-	// Agent identifier of the GitOps cluster.
+	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringPtrInput
 	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringPtrInput
@@ -125,7 +125,7 @@ func (GitOpsClusterState) ElementType() reflect.Type {
 type gitOpsClusterArgs struct {
 	// Account identifier of the GitOps cluster.
 	AccountId string `pulumi:"accountId"`
-	// Agent identifier of the GitOps cluster.
+	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId string `pulumi:"agentId"`
 	// Identifier of the GitOps cluster.
 	Identifier string `pulumi:"identifier"`
@@ -141,7 +141,7 @@ type gitOpsClusterArgs struct {
 type GitOpsClusterArgs struct {
 	// Account identifier of the GitOps cluster.
 	AccountId pulumi.StringInput
-	// Agent identifier of the GitOps cluster.
+	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringInput
 	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringInput
@@ -245,7 +245,7 @@ func (o GitOpsClusterOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Agent identifier of the GitOps cluster.
+// Agent identifier of the GitOps cluster. (include scope prefix)
 func (o GitOpsClusterOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }

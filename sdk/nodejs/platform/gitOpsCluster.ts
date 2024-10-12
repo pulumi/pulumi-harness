@@ -62,7 +62,7 @@ export class GitOpsCluster extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Agent identifier of the GitOps cluster.
+     * Agent identifier of the GitOps cluster. (include scope prefix)
      */
     public readonly agentId!: pulumi.Output<string>;
     /**
@@ -133,7 +133,7 @@ export interface GitOpsClusterState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Agent identifier of the GitOps cluster.
+     * Agent identifier of the GitOps cluster. (include scope prefix)
      */
     agentId?: pulumi.Input<string>;
     /**
@@ -163,7 +163,7 @@ export interface GitOpsClusterArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Agent identifier of the GitOps cluster.
+     * Agent identifier of the GitOps cluster. (include scope prefix)
      */
     agentId: pulumi.Input<string>;
     /**

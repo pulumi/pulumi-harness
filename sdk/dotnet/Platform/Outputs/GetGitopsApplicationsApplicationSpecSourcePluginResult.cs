@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult> Envs;
         /// <summary>
-        /// Name of the GitOps application.
+        /// Name of the plugin.
         /// </summary>
         public readonly string Name;
 

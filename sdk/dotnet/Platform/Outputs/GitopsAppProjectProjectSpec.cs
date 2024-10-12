@@ -18,19 +18,19 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecClusterResourceBlacklist> ClusterResourceBlacklists;
         /// <summary>
-        /// Cluster resource whitelist for the GitOps project.
+        /// Cluster resource whitelist for the Argo project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecClusterResourceWhitelist> ClusterResourceWhitelists;
         /// <summary>
-        /// Description of the GitOps project.
+        /// Description of the Argo project.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Destinations for deployment of the GitOps project.
+        /// Allowed destinations for applications in this Argo project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecDestination> Destinations;
         /// <summary>
-        /// Namespace resource blacklist for the GitOps project.
+        /// Namespace resource blacklist for the Argo project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecNamespaceResourceBlacklist> NamespaceResourceBlacklists;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecNamespaceResourceWhitelist> NamespaceResourceWhitelists;
         /// <summary>
-        /// Orphaned resources configuration for the GitOps project.
+        /// OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecOrphanedResource> OrphanedResources;
         /// <summary>
-        /// Roles associated with the GitOps project.
+        /// Roles associated with the Argo project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecRole> Roles;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecSignatureKey> SignatureKeys;
         /// <summary>
-        /// Source repositories for the GitOps project.
+        /// Allowed Source repositories for the Argo project.
         /// </summary>
         public readonly ImmutableArray<string> SourceRepos;
         /// <summary>

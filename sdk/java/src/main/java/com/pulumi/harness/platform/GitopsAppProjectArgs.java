@@ -20,14 +20,14 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
     public static final GitopsAppProjectArgs Empty = new GitopsAppProjectArgs();
 
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps project/agent.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account identifier of the GitOps project.
+     * @return Account identifier of the GitOps project/agent.
      * 
      */
     public Output<String> accountId() {
@@ -35,14 +35,14 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the GitOps project. Project is created on agent scope.
      * 
      */
     @Import(name="agentId", required=true)
     private Output<String> agentId;
 
     /**
-     * @return Agent identifier of the GitOps project.
+     * @return Agent identifier of the GitOps project. Project is created on agent scope.
      * 
      */
     public Output<String> agentId() {
@@ -50,14 +50,14 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps agent for which project is created.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Org identifier of the GitOps project.
+     * @return Org identifier of the GitOps agent for which project is created.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -65,14 +65,14 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the GitOps agent for which project is created.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project identifier of the GitOps repository.
+     * @return Project identifier of the GitOps agent for which project is created.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -110,14 +110,14 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * Indicates if the GitOps project should be updated if existing and inserted if not.
      * 
      */
     @Import(name="upsert")
     private @Nullable Output<Boolean> upsert;
 
     /**
-     * @return Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * @return Indicates if the GitOps project should be updated if existing and inserted if not.
      * 
      */
     public Optional<Output<Boolean>> upsert() {
@@ -155,7 +155,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Account identifier of the GitOps project.
+         * @param accountId Account identifier of the GitOps project/agent.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Account identifier of the GitOps project.
+         * @param accountId Account identifier of the GitOps project/agent.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps project.
+         * @param agentId Agent identifier of the GitOps project. Project is created on agent scope.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps project.
+         * @param agentId Agent identifier of the GitOps project. Project is created on agent scope.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param orgId Org identifier of the GitOps project.
+         * @param orgId Org identifier of the GitOps agent for which project is created.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param orgId Org identifier of the GitOps project.
+         * @param orgId Org identifier of the GitOps agent for which project is created.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId Project identifier of the GitOps repository.
+         * @param projectId Project identifier of the GitOps agent for which project is created.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId Project identifier of the GitOps repository.
+         * @param projectId Project identifier of the GitOps agent for which project is created.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
+         * @param upsert Indicates if the GitOps project should be updated if existing and inserted if not.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class GitopsAppProjectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param upsert Indicates if the GitOps repository should be updated if existing and inserted if not.
+         * @param upsert Indicates if the GitOps project should be updated if existing and inserted if not.
          * 
          * @return builder
          * 

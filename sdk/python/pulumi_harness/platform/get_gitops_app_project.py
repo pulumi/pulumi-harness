@@ -50,7 +50,7 @@ class GetGitopsAppProjectResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        Account identifier of the GitOps project.
+        Account identifier of the GitOps Agent where argo project resides.
         """
         return pulumi.get(self, "account_id")
 
@@ -58,7 +58,7 @@ class GetGitopsAppProjectResult:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> str:
         """
-        Agent identifier of the GitOps project.
+        Agent identifier of the agent where argo project resides(include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
@@ -74,7 +74,7 @@ class GetGitopsAppProjectResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[str]:
         """
-        Org identifier of the GitOps project.
+        Org identifier of the GitOps Agent where argo project resides.
         """
         return pulumi.get(self, "org_id")
 
@@ -82,7 +82,7 @@ class GetGitopsAppProjectResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Project identifier of the GitOps repository.
+        Project identifier of the Gitops Agent where argo project resides.
         """
         return pulumi.get(self, "project_id")
 
@@ -90,7 +90,7 @@ class GetGitopsAppProjectResult:
     @pulumi.getter(name="queryName")
     def query_name(self) -> str:
         """
-        Identifier for the GitOps project.
+        Identifier for the GitOps Argo project.
         """
         return pulumi.get(self, "query_name")
 
@@ -127,11 +127,11 @@ def get_gitops_app_project(account_id: Optional[str] = None,
     ```
 
 
-    :param str account_id: Account identifier of the GitOps project.
-    :param str agent_id: Agent identifier of the GitOps project.
-    :param str org_id: Org identifier of the GitOps project.
-    :param str project_id: Project identifier of the GitOps repository.
-    :param str query_name: Identifier for the GitOps project.
+    :param str account_id: Account identifier of the GitOps Agent where argo project resides.
+    :param str agent_id: Agent identifier of the agent where argo project resides(include scope prefix)
+    :param str org_id: Org identifier of the GitOps Agent where argo project resides.
+    :param str project_id: Project identifier of the Gitops Agent where argo project resides.
+    :param str query_name: Identifier for the GitOps Argo project.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -167,11 +167,11 @@ def get_gitops_app_project_output(account_id: Optional[pulumi.Input[str]] = None
     ```
 
 
-    :param str account_id: Account identifier of the GitOps project.
-    :param str agent_id: Agent identifier of the GitOps project.
-    :param str org_id: Org identifier of the GitOps project.
-    :param str project_id: Project identifier of the GitOps repository.
-    :param str query_name: Identifier for the GitOps project.
+    :param str account_id: Account identifier of the GitOps Agent where argo project resides.
+    :param str agent_id: Agent identifier of the agent where argo project resides(include scope prefix)
+    :param str org_id: Org identifier of the GitOps Agent where argo project resides.
+    :param str project_id: Project identifier of the Gitops Agent where argo project resides.
+    :param str query_name: Identifier for the GitOps Argo project.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

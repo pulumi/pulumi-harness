@@ -49,31 +49,31 @@ func LookupGitopsAppProject(ctx *pulumi.Context, args *LookupGitopsAppProjectArg
 
 // A collection of arguments for invoking getGitopsAppProject.
 type LookupGitopsAppProjectArgs struct {
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps Agent where argo project resides.
 	AccountId string `pulumi:"accountId"`
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the agent where argo project resides(include scope prefix)
 	AgentId string `pulumi:"agentId"`
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps Agent where argo project resides.
 	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the GitOps repository.
+	// Project identifier of the Gitops Agent where argo project resides.
 	ProjectId *string `pulumi:"projectId"`
-	// Identifier for the GitOps project.
+	// Identifier for the GitOps Argo project.
 	QueryName *string `pulumi:"queryName"`
 }
 
 // A collection of values returned by getGitopsAppProject.
 type LookupGitopsAppProjectResult struct {
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps Agent where argo project resides.
 	AccountId string `pulumi:"accountId"`
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the agent where argo project resides(include scope prefix)
 	AgentId string `pulumi:"agentId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps Agent where argo project resides.
 	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the GitOps repository.
+	// Project identifier of the Gitops Agent where argo project resides.
 	ProjectId *string `pulumi:"projectId"`
-	// Identifier for the GitOps project.
+	// Identifier for the GitOps Argo project.
 	QueryName string `pulumi:"queryName"`
 }
 
@@ -98,15 +98,15 @@ func LookupGitopsAppProjectOutput(ctx *pulumi.Context, args LookupGitopsAppProje
 
 // A collection of arguments for invoking getGitopsAppProject.
 type LookupGitopsAppProjectOutputArgs struct {
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps Agent where argo project resides.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the agent where argo project resides(include scope prefix)
 	AgentId pulumi.StringInput `pulumi:"agentId"`
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps Agent where argo project resides.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Project identifier of the GitOps repository.
+	// Project identifier of the Gitops Agent where argo project resides.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Identifier for the GitOps project.
+	// Identifier for the GitOps Argo project.
 	QueryName pulumi.StringPtrInput `pulumi:"queryName"`
 }
 
@@ -129,12 +129,12 @@ func (o LookupGitopsAppProjectResultOutput) ToLookupGitopsAppProjectResultOutput
 	return o
 }
 
-// Account identifier of the GitOps project.
+// Account identifier of the GitOps Agent where argo project resides.
 func (o LookupGitopsAppProjectResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Agent identifier of the GitOps project.
+// Agent identifier of the agent where argo project resides(include scope prefix)
 func (o LookupGitopsAppProjectResultOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectResult) string { return v.AgentId }).(pulumi.StringOutput)
 }
@@ -144,17 +144,17 @@ func (o LookupGitopsAppProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Org identifier of the GitOps project.
+// Org identifier of the GitOps Agent where argo project resides.
 func (o LookupGitopsAppProjectResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Project identifier of the GitOps repository.
+// Project identifier of the Gitops Agent where argo project resides.
 func (o LookupGitopsAppProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Identifier for the GitOps project.
+// Identifier for the GitOps Argo project.
 func (o LookupGitopsAppProjectResultOutput) QueryName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectResult) string { return v.QueryName }).(pulumi.StringOutput)
 }

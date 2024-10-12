@@ -17,7 +17,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla
      */
     private Boolean code;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the TLAS of the jsonnet application.
      * 
      */
     private String name;
@@ -36,7 +36,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla
         return this.code;
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the TLAS of the jsonnet application.
      * 
      */
     public String name() {

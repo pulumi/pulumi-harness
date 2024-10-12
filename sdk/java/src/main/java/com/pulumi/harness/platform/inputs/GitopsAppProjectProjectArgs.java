@@ -17,14 +17,14 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
     public static final GitopsAppProjectProjectArgs Empty = new GitopsAppProjectProjectArgs();
 
     /**
-     * Metadata details for the GitOps project.
+     * K8s object metadata for the Argo project.
      * 
      */
     @Import(name="metadatas", required=true)
     private Output<List<GitopsAppProjectProjectMetadataArgs>> metadatas;
 
     /**
-     * @return Metadata details for the GitOps project.
+     * @return K8s object metadata for the Argo project.
      * 
      */
     public Output<List<GitopsAppProjectProjectMetadataArgs>> metadatas() {
@@ -32,14 +32,14 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Specification details for the GitOps project.
+     * Specification details for the Argo project.
      * 
      */
     @Import(name="specs", required=true)
     private Output<List<GitopsAppProjectProjectSpecArgs>> specs;
 
     /**
-     * @return Specification details for the GitOps project.
+     * @return Specification details for the Argo project.
      * 
      */
     public Output<List<GitopsAppProjectProjectSpecArgs>> specs() {
@@ -72,7 +72,7 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param metadatas Metadata details for the GitOps project.
+         * @param metadatas K8s object metadata for the Argo project.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param metadatas Metadata details for the GitOps project.
+         * @param metadatas K8s object metadata for the Argo project.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param metadatas Metadata details for the GitOps project.
+         * @param metadatas K8s object metadata for the Argo project.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param specs Specification details for the GitOps project.
+         * @param specs Specification details for the Argo project.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param specs Specification details for the GitOps project.
+         * @param specs Specification details for the Argo project.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class GitopsAppProjectProjectArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param specs Specification details for the GitOps project.
+         * @param specs Specification details for the Argo project.
          * 
          * @return builder
          * 

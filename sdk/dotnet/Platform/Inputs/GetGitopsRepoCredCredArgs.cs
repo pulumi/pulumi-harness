@@ -10,53 +10,33 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform.Inputs
 {
 
-    public sealed class GitOpsRepoCredCredArgs : global::Pulumi.ResourceArgs
+    public sealed class GetGitopsRepoCredCredInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether helm-oci support should be enabled for this repo.
         /// </summary>
-        [Input("enableOci")]
-        public Input<bool>? EnableOci { get; set; }
+        [Input("enableOci", required: true)]
+        public Input<bool> EnableOci { get; set; } = null!;
 
         /// <summary>
         /// Specifies the GitHub API URL for GitHub app authentication.
         /// </summary>
-        [Input("githubAppEnterpriseBaseUrl")]
-        public Input<string>? GithubAppEnterpriseBaseUrl { get; set; }
-
-        [Input("githubAppId")]
-        private Input<string>? _githubAppId;
+        [Input("githubAppEnterpriseBaseUrl", required: true)]
+        public Input<string> GithubAppEnterpriseBaseUrl { get; set; } = null!;
 
         /// <summary>
         /// Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
         /// </summary>
-        public Input<string>? GithubAppId
-        {
-            get => _githubAppId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _githubAppId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("githubAppInstallationId")]
-        private Input<string>? _githubAppInstallationId;
+        [Input("githubAppId", required: true)]
+        public Input<string> GithubAppId { get; set; } = null!;
 
         /// <summary>
         /// Specifies the ID of the installed GitHub App for GitHub app authentication.
         /// </summary>
-        public Input<string>? GithubAppInstallationId
-        {
-            get => _githubAppInstallationId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _githubAppInstallationId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("githubAppInstallationId", required: true)]
+        public Input<string> GithubAppInstallationId { get; set; } = null!;
 
-        [Input("githubAppPrivateKey")]
+        [Input("githubAppPrivateKey", required: true)]
         private Input<string>? _githubAppPrivateKey;
 
         /// <summary>
@@ -72,7 +52,7 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
-        [Input("password")]
+        [Input("password", required: true)]
         private Input<string>? _password;
 
         /// <summary>
@@ -88,7 +68,7 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
-        [Input("sshPrivateKey")]
+        [Input("sshPrivateKey", required: true)]
         private Input<string>? _sshPrivateKey;
 
         /// <summary>
@@ -104,7 +84,7 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
-        [Input("tlsClientCertData")]
+        [Input("tlsClientCertData", required: true)]
         private Input<string>? _tlsClientCertData;
 
         /// <summary>
@@ -120,7 +100,7 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
-        [Input("tlsClientCertKey")]
+        [Input("tlsClientCertKey", required: true)]
         private Input<string>? _tlsClientCertKey;
 
         /// <summary>
@@ -139,24 +119,34 @@ namespace Pulumi.Harness.Platform.Inputs
         /// <summary>
         /// Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         /// <summary>
         /// URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
+
+        [Input("username", required: true)]
+        private Input<string>? _username;
 
         /// <summary>
         /// Username to be used for authenticating the remote repository.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
-        public GitOpsRepoCredCredArgs()
+        public GetGitopsRepoCredCredInputArgs()
         {
         }
-        public static new GitOpsRepoCredCredArgs Empty => new GitOpsRepoCredCredArgs();
+        public static new GetGitopsRepoCredCredInputArgs Empty => new GetGitopsRepoCredCredInputArgs();
     }
 }

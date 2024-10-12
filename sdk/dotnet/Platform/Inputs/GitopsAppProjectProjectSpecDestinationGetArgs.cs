@@ -13,19 +13,19 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitopsAppProjectProjectSpecDestinationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the destination.
+        /// Name of the destination cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Namespace of the destination.
+        /// Permitted Namespaces for deployment in the destination cluster.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         /// <summary>
-        /// Server URL of the destination.
+        /// Server URL of the destination cluster.
         /// </summary>
         [Input("server")]
         public Input<string>? Server { get; set; }

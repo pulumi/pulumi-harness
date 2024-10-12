@@ -28,7 +28,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsAppProjectProjectSpecClusterResourceWhitelistArgs>? _clusterResourceWhitelists;
 
         /// <summary>
-        /// Cluster resource whitelist for the GitOps project.
+        /// Cluster resource whitelist for the Argo project.
         /// </summary>
         public InputList<Inputs.GitopsAppProjectProjectSpecClusterResourceWhitelistArgs> ClusterResourceWhitelists
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Description of the GitOps project.
+        /// Description of the Argo project.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsAppProjectProjectSpecDestinationArgs>? _destinations;
 
         /// <summary>
-        /// Destinations for deployment of the GitOps project.
+        /// Allowed destinations for applications in this Argo project.
         /// </summary>
         public InputList<Inputs.GitopsAppProjectProjectSpecDestinationArgs> Destinations
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs>? _namespaceResourceBlacklists;
 
         /// <summary>
-        /// Namespace resource blacklist for the GitOps project.
+        /// Namespace resource blacklist for the Argo project.
         /// </summary>
         public InputList<Inputs.GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs> NamespaceResourceBlacklists
         {
@@ -82,7 +82,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsAppProjectProjectSpecOrphanedResourceArgs>? _orphanedResources;
 
         /// <summary>
-        /// Orphaned resources configuration for the GitOps project.
+        /// OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
         /// </summary>
         public InputList<Inputs.GitopsAppProjectProjectSpecOrphanedResourceArgs> OrphanedResources
         {
@@ -94,7 +94,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsAppProjectProjectSpecRoleArgs>? _roles;
 
         /// <summary>
-        /// Roles associated with the GitOps project.
+        /// Roles associated with the Argo project.
         /// </summary>
         public InputList<Inputs.GitopsAppProjectProjectSpecRoleArgs> Roles
         {
@@ -118,7 +118,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<string>? _sourceRepos;
 
         /// <summary>
-        /// Source repositories for the GitOps project.
+        /// Allowed Source repositories for the Argo project.
         /// </summary>
         public InputList<string> SourceRepos
         {

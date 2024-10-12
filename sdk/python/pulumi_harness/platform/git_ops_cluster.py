@@ -30,7 +30,7 @@ class GitOpsClusterArgs:
         """
         The set of arguments for constructing a GitOpsCluster resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
@@ -62,7 +62,7 @@ class GitOpsClusterArgs:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Input[str]:
         """
-        Agent identifier of the GitOps cluster.
+        Agent identifier of the GitOps cluster. (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
@@ -131,7 +131,7 @@ class _GitOpsClusterState:
         """
         Input properties used for looking up and filtering GitOpsCluster resources.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
@@ -166,7 +166,7 @@ class _GitOpsClusterState:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Agent identifier of the GitOps cluster.
+        Agent identifier of the GitOps cluster. (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
@@ -261,7 +261,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
@@ -362,7 +362,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster.
+        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
@@ -392,7 +392,7 @@ class GitOpsCluster(pulumi.CustomResource):
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[str]:
         """
-        Agent identifier of the GitOps cluster.
+        Agent identifier of the GitOps cluster. (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 

@@ -6,7 +6,9 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetGitopsRepoCredCredArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -44,6 +46,21 @@ public final class GetGitopsRepoCredArgs extends com.pulumi.resources.InvokeArgs
      */
     public Output<String> agentId() {
         return this.agentId;
+    }
+
+    /**
+     * credential details.
+     * 
+     */
+    @Import(name="creds")
+    private @Nullable Output<List<GetGitopsRepoCredCredArgs>> creds;
+
+    /**
+     * @return credential details.
+     * 
+     */
+    public Optional<Output<List<GetGitopsRepoCredCredArgs>>> creds() {
+        return Optional.ofNullable(this.creds);
     }
 
     /**
@@ -96,6 +113,7 @@ public final class GetGitopsRepoCredArgs extends com.pulumi.resources.InvokeArgs
     private GetGitopsRepoCredArgs(GetGitopsRepoCredArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
+        this.creds = $.creds;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -159,6 +177,37 @@ public final class GetGitopsRepoCredArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder agentId(String agentId) {
             return agentId(Output.of(agentId));
+        }
+
+        /**
+         * @param creds credential details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creds(@Nullable Output<List<GetGitopsRepoCredCredArgs>> creds) {
+            $.creds = creds;
+            return this;
+        }
+
+        /**
+         * @param creds credential details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creds(List<GetGitopsRepoCredCredArgs> creds) {
+            return creds(Output.of(creds));
+        }
+
+        /**
+         * @param creds credential details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creds(GetGitopsRepoCredCredArgs... creds) {
+            return creds(List.of(creds));
         }
 
         /**
