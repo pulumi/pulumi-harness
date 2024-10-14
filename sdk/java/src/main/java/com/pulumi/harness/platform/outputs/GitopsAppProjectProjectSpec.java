@@ -27,22 +27,22 @@ public final class GitopsAppProjectProjectSpec {
      */
     private @Nullable List<GitopsAppProjectProjectSpecClusterResourceBlacklist> clusterResourceBlacklists;
     /**
-     * @return Cluster resource whitelist for the GitOps project.
+     * @return Cluster resource whitelist for the Argo project.
      * 
      */
     private @Nullable List<GitopsAppProjectProjectSpecClusterResourceWhitelist> clusterResourceWhitelists;
     /**
-     * @return Description of the GitOps project.
+     * @return Description of the Argo project.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Destinations for deployment of the GitOps project.
+     * @return Allowed destinations for applications in this Argo project.
      * 
      */
     private @Nullable List<GitopsAppProjectProjectSpecDestination> destinations;
     /**
-     * @return Namespace resource blacklist for the GitOps project.
+     * @return Namespace resource blacklist for the Argo project.
      * 
      */
     private @Nullable List<GitopsAppProjectProjectSpecNamespaceResourceBlacklist> namespaceResourceBlacklists;
@@ -52,12 +52,12 @@ public final class GitopsAppProjectProjectSpec {
      */
     private @Nullable List<GitopsAppProjectProjectSpecNamespaceResourceWhitelist> namespaceResourceWhitelists;
     /**
-     * @return Orphaned resources configuration for the GitOps project.
+     * @return OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
      * 
      */
     private @Nullable List<GitopsAppProjectProjectSpecOrphanedResource> orphanedResources;
     /**
-     * @return Roles associated with the GitOps project.
+     * @return Roles associated with the Argo project.
      * 
      */
     private @Nullable List<GitopsAppProjectProjectSpecRole> roles;
@@ -67,7 +67,7 @@ public final class GitopsAppProjectProjectSpec {
      */
     private @Nullable List<GitopsAppProjectProjectSpecSignatureKey> signatureKeys;
     /**
-     * @return Source repositories for the GitOps project.
+     * @return Allowed Source repositories for the Argo project.
      * 
      */
     private @Nullable List<String> sourceRepos;
@@ -86,28 +86,28 @@ public final class GitopsAppProjectProjectSpec {
         return this.clusterResourceBlacklists == null ? List.of() : this.clusterResourceBlacklists;
     }
     /**
-     * @return Cluster resource whitelist for the GitOps project.
+     * @return Cluster resource whitelist for the Argo project.
      * 
      */
     public List<GitopsAppProjectProjectSpecClusterResourceWhitelist> clusterResourceWhitelists() {
         return this.clusterResourceWhitelists == null ? List.of() : this.clusterResourceWhitelists;
     }
     /**
-     * @return Description of the GitOps project.
+     * @return Description of the Argo project.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Destinations for deployment of the GitOps project.
+     * @return Allowed destinations for applications in this Argo project.
      * 
      */
     public List<GitopsAppProjectProjectSpecDestination> destinations() {
         return this.destinations == null ? List.of() : this.destinations;
     }
     /**
-     * @return Namespace resource blacklist for the GitOps project.
+     * @return Namespace resource blacklist for the Argo project.
      * 
      */
     public List<GitopsAppProjectProjectSpecNamespaceResourceBlacklist> namespaceResourceBlacklists() {
@@ -121,14 +121,14 @@ public final class GitopsAppProjectProjectSpec {
         return this.namespaceResourceWhitelists == null ? List.of() : this.namespaceResourceWhitelists;
     }
     /**
-     * @return Orphaned resources configuration for the GitOps project.
+     * @return OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
      * 
      */
     public List<GitopsAppProjectProjectSpecOrphanedResource> orphanedResources() {
         return this.orphanedResources == null ? List.of() : this.orphanedResources;
     }
     /**
-     * @return Roles associated with the GitOps project.
+     * @return Roles associated with the Argo project.
      * 
      */
     public List<GitopsAppProjectProjectSpecRole> roles() {
@@ -142,7 +142,7 @@ public final class GitopsAppProjectProjectSpec {
         return this.signatureKeys == null ? List.of() : this.signatureKeys;
     }
     /**
-     * @return Source repositories for the GitOps project.
+     * @return Allowed Source repositories for the Argo project.
      * 
      */
     public List<String> sourceRepos() {

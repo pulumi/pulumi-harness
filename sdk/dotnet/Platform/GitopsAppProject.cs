@@ -36,25 +36,25 @@ namespace Pulumi.Harness.Platform
     public partial class GitopsAppProject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account identifier of the GitOps project.
+        /// Account identifier of the GitOps project/agent.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the GitOps project.
+        /// Agent identifier of the GitOps project. Project is created on agent scope.
         /// </summary>
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
-        /// Org identifier of the GitOps project.
+        /// Org identifier of the GitOps agent for which project is created.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Project identifier of the GitOps repository.
+        /// Project identifier of the GitOps agent for which project is created.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> QueryName { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
+        /// Indicates if the GitOps project should be updated if existing and inserted if not.
         /// </summary>
         [Output("upsert")]
         public Output<bool?> Upsert { get; private set; } = null!;
@@ -125,25 +125,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GitopsAppProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account identifier of the GitOps project.
+        /// Account identifier of the GitOps project/agent.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the GitOps project.
+        /// Agent identifier of the GitOps project. Project is created on agent scope.
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Org identifier of the GitOps project.
+        /// Org identifier of the GitOps agent for which project is created.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the GitOps repository.
+        /// Project identifier of the GitOps agent for which project is created.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? QueryName { get; set; }
 
         /// <summary>
-        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
+        /// Indicates if the GitOps project should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }
@@ -181,25 +181,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GitopsAppProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account identifier of the GitOps project.
+        /// Account identifier of the GitOps project/agent.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Agent identifier of the GitOps project.
+        /// Agent identifier of the GitOps project. Project is created on agent scope.
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
 
         /// <summary>
-        /// Org identifier of the GitOps project.
+        /// Org identifier of the GitOps agent for which project is created.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the GitOps repository.
+        /// Project identifier of the GitOps agent for which project is created.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? QueryName { get; set; }
 
         /// <summary>
-        /// Indicates if the GitOps repository should be updated if existing and inserted if not.
+        /// Indicates if the GitOps project should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }

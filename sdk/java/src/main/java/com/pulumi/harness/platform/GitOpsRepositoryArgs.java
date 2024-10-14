@@ -192,14 +192,22 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
     /**
      * Update mask of the repository.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     @Import(name="updateMasks")
     private @Nullable Output<List<GitOpsRepositoryUpdateMaskArgs>> updateMasks;
 
     /**
      * @return Update mask of the repository.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public Optional<Output<List<GitOpsRepositoryUpdateMaskArgs>>> updateMasks() {
         return Optional.ofNullable(this.updateMasks);
     }
@@ -503,7 +511,11 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder updateMasks(@Nullable Output<List<GitOpsRepositoryUpdateMaskArgs>> updateMasks) {
             $.updateMasks = updateMasks;
             return this;
@@ -514,7 +526,11 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder updateMasks(List<GitOpsRepositoryUpdateMaskArgs> updateMasks) {
             return updateMasks(Output.of(updateMasks));
         }
@@ -524,7 +540,11 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder updateMasks(GitOpsRepositoryUpdateMaskArgs... updateMasks) {
             return updateMasks(List.of(updateMasks));
         }

@@ -18,7 +18,7 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
      */
     private List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the plugin.
      * 
      */
     private String name;
@@ -32,7 +32,7 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
         return this.envs;
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the plugin.
      * 
      */
     public String name() {

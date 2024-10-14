@@ -62,31 +62,31 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsAppProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account identifier of the GitOps project.
+        /// Account identifier of the GitOps Agent where argo project resides.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the GitOps project.
+        /// Agent identifier of the agent where argo project resides(include scope prefix)
         /// </summary>
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Org identifier of the GitOps project.
+        /// Org identifier of the GitOps Agent where argo project resides.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the GitOps repository.
+        /// Project identifier of the Gitops Agent where argo project resides.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
         /// <summary>
-        /// Identifier for the GitOps project.
+        /// Identifier for the GitOps Argo project.
         /// </summary>
         [Input("queryName")]
         public string? QueryName { get; set; }
@@ -100,31 +100,31 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsAppProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account identifier of the GitOps project.
+        /// Account identifier of the GitOps Agent where argo project resides.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the GitOps project.
+        /// Agent identifier of the agent where argo project resides(include scope prefix)
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Org identifier of the GitOps project.
+        /// Org identifier of the GitOps Agent where argo project resides.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the GitOps repository.
+        /// Project identifier of the Gitops Agent where argo project resides.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Identifier for the GitOps project.
+        /// Identifier for the GitOps Argo project.
         /// </summary>
         [Input("queryName")]
         public Input<string>? QueryName { get; set; }
@@ -140,11 +140,11 @@ namespace Pulumi.Harness.Platform
     public sealed class GetGitopsAppProjectResult
     {
         /// <summary>
-        /// Account identifier of the GitOps project.
+        /// Account identifier of the GitOps Agent where argo project resides.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Agent identifier of the GitOps project.
+        /// Agent identifier of the agent where argo project resides(include scope prefix)
         /// </summary>
         public readonly string AgentId;
         /// <summary>
@@ -152,15 +152,15 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Org identifier of the GitOps project.
+        /// Org identifier of the GitOps Agent where argo project resides.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Project identifier of the GitOps repository.
+        /// Project identifier of the Gitops Agent where argo project resides.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Identifier for the GitOps project.
+        /// Identifier for the GitOps Argo project.
         /// </summary>
         public readonly string QueryName;
 

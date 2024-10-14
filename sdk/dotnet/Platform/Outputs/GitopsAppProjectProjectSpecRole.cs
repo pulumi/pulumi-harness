@@ -30,7 +30,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Policies associated with the role.
+        /// Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
         /// </summary>
         public readonly ImmutableArray<string> Policies;
 

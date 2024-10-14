@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult
     {
         /// <summary>
-        /// Name of the GitOps application.
+        /// Name of the variable, usually expressed in uppercase.
         /// </summary>
         public readonly string Name;
         /// <summary>

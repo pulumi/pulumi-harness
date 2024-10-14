@@ -60,6 +60,8 @@ type GitOpsRepository struct {
 	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayOutput `pulumi:"repos"`
 	// Update mask of the repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	UpdateMasks GitOpsRepositoryUpdateMaskArrayOutput `pulumi:"updateMasks"`
 	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrOutput `pulumi:"upsert"`
@@ -131,6 +133,8 @@ type gitOpsRepositoryState struct {
 	// Repo details holding application configurations.
 	Repos []GitOpsRepositoryRepo `pulumi:"repos"`
 	// Update mask of the repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	UpdateMasks []GitOpsRepositoryUpdateMask `pulumi:"updateMasks"`
 	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
@@ -161,6 +165,8 @@ type GitOpsRepositoryState struct {
 	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayInput
 	// Update mask of the repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	UpdateMasks GitOpsRepositoryUpdateMaskArrayInput
 	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
@@ -195,6 +201,8 @@ type gitOpsRepositoryArgs struct {
 	// Repo details holding application configurations.
 	Repos []GitOpsRepositoryRepo `pulumi:"repos"`
 	// Update mask of the repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	UpdateMasks []GitOpsRepositoryUpdateMask `pulumi:"updateMasks"`
 	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
@@ -226,6 +234,8 @@ type GitOpsRepositoryArgs struct {
 	// Repo details holding application configurations.
 	Repos GitOpsRepositoryRepoArrayInput
 	// Update mask of the repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	UpdateMasks GitOpsRepositoryUpdateMaskArrayInput
 	// Indicates if the GitOps repository should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
@@ -375,6 +385,8 @@ func (o GitOpsRepositoryOutput) Repos() GitOpsRepositoryRepoArrayOutput {
 }
 
 // Update mask of the repository.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsRepositoryOutput) UpdateMasks() GitOpsRepositoryUpdateMaskArrayOutput {
 	return o.ApplyT(func(v *GitOpsRepository) GitOpsRepositoryUpdateMaskArrayOutput { return v.UpdateMasks }).(GitOpsRepositoryUpdateMaskArrayOutput)
 }

@@ -467,6 +467,8 @@ __all__ = [
     'GetGitopsGnupgRequestArgsDict',
     'GetGitopsGnupgRequestPublickeyArgs',
     'GetGitopsGnupgRequestPublickeyArgsDict',
+    'GetGitopsRepoCredCredArgs',
+    'GetGitopsRepoCredCredArgsDict',
     'GetInfrastructureGitDetailsArgs',
     'GetInfrastructureGitDetailsArgsDict',
     'GetInputSetGitDetailsArgs',
@@ -10024,11 +10026,11 @@ if not MYPY:
     class GitopsAppProjectProjectArgsDict(TypedDict):
         metadatas: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgsDict']]]
         """
-        Metadata details for the GitOps project.
+        K8s object metadata for the Argo project.
         """
         specs: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgsDict']]]
         """
-        Specification details for the GitOps project.
+        Specification details for the Argo project.
         """
 elif False:
     GitopsAppProjectProjectArgsDict: TypeAlias = Mapping[str, Any]
@@ -10039,8 +10041,8 @@ class GitopsAppProjectProjectArgs:
                  metadatas: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]],
                  specs: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]] metadatas: Metadata details for the GitOps project.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]] specs: Specification details for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]] metadatas: K8s object metadata for the Argo project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]] specs: Specification details for the Argo project.
         """
         pulumi.set(__self__, "metadatas", metadatas)
         pulumi.set(__self__, "specs", specs)
@@ -10049,7 +10051,7 @@ class GitopsAppProjectProjectArgs:
     @pulumi.getter
     def metadatas(self) -> pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataArgs']]]:
         """
-        Metadata details for the GitOps project.
+        K8s object metadata for the Argo project.
         """
         return pulumi.get(self, "metadatas")
 
@@ -10061,7 +10063,7 @@ class GitopsAppProjectProjectArgs:
     @pulumi.getter
     def specs(self) -> pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecArgs']]]:
         """
-        Specification details for the GitOps project.
+        Specification details for the Argo project.
         """
         return pulumi.get(self, "specs")
 
@@ -10098,7 +10100,7 @@ if not MYPY:
         """
         namespace: NotRequired[pulumi.Input[str]]
         """
-        Namespace of the GitOps project.
+        Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
         """
         resource_version: NotRequired[pulumi.Input[str]]
         """
@@ -10125,7 +10127,7 @@ class GitopsAppProjectProjectMetadataArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with the GitOps project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectMetadataManagedFieldArgs']]] managed_fields: Managed fields associated with the GitOps project.
         :param pulumi.Input[str] name: Name of the GitOps project.
-        :param pulumi.Input[str] namespace: Namespace of the GitOps project.
+        :param pulumi.Input[str] namespace: Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
         :param pulumi.Input[str] resource_version: Resource Version for the GitOps project
         """
         if annotations is not None:
@@ -10221,7 +10223,7 @@ class GitopsAppProjectProjectMetadataArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Namespace of the GitOps project.
+        Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
         """
         return pulumi.get(self, "namespace")
 
@@ -10402,19 +10404,19 @@ if not MYPY:
         """
         cluster_resource_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgsDict']]]]
         """
-        Cluster resource whitelist for the GitOps project.
+        Cluster resource whitelist for the Argo project.
         """
         description: NotRequired[pulumi.Input[str]]
         """
-        Description of the GitOps project.
+        Description of the Argo project.
         """
         destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgsDict']]]]
         """
-        Destinations for deployment of the GitOps project.
+        Allowed destinations for applications in this Argo project.
         """
         namespace_resource_blacklists: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgsDict']]]]
         """
-        Namespace resource blacklist for the GitOps project.
+        Namespace resource blacklist for the Argo project.
         """
         namespace_resource_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgsDict']]]]
         """
@@ -10422,11 +10424,11 @@ if not MYPY:
         """
         orphaned_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgsDict']]]]
         """
-        Orphaned resources configuration for the GitOps project.
+        OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
         """
         roles: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgsDict']]]]
         """
-        Roles associated with the GitOps project.
+        Roles associated with the Argo project.
         """
         signature_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgsDict']]]]
         """
@@ -10434,7 +10436,7 @@ if not MYPY:
         """
         source_repos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Source repositories for the GitOps project.
+        Allowed Source repositories for the Argo project.
         """
         sync_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgsDict']]]]
         """
@@ -10459,15 +10461,15 @@ class GitopsAppProjectProjectSpecArgs:
                  sync_windows: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceBlacklistArgs']]] cluster_resource_blacklists: Cluster resource blacklist for the GitOps project.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs']]] cluster_resource_whitelists: Cluster resource whitelist for the GitOps project.
-        :param pulumi.Input[str] description: Description of the GitOps project.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgs']]] destinations: Destinations for deployment of the GitOps project.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]] namespace_resource_blacklists: Namespace resource blacklist for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs']]] cluster_resource_whitelists: Cluster resource whitelist for the Argo project.
+        :param pulumi.Input[str] description: Description of the Argo project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgs']]] destinations: Allowed destinations for applications in this Argo project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]] namespace_resource_blacklists: Namespace resource blacklist for the Argo project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs']]] namespace_resource_whitelists: Namespace resource whitelist for the GitOps project.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]] orphaned_resources: Orphaned resources configuration for the GitOps project.
-        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]] roles: Roles associated with the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]] orphaned_resources: OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
+        :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]] roles: Roles associated with the Argo project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]] signature_keys: Signature keys for the GitOps project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_repos: Source repositories for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_repos: Allowed Source repositories for the Argo project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]] sync_windows: Synchronization windows for the GitOps project.
         """
         if cluster_resource_blacklists is not None:
@@ -10509,7 +10511,7 @@ class GitopsAppProjectProjectSpecArgs:
     @pulumi.getter(name="clusterResourceWhitelists")
     def cluster_resource_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs']]]]:
         """
-        Cluster resource whitelist for the GitOps project.
+        Cluster resource whitelist for the Argo project.
         """
         return pulumi.get(self, "cluster_resource_whitelists")
 
@@ -10521,7 +10523,7 @@ class GitopsAppProjectProjectSpecArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the GitOps project.
+        Description of the Argo project.
         """
         return pulumi.get(self, "description")
 
@@ -10533,7 +10535,7 @@ class GitopsAppProjectProjectSpecArgs:
     @pulumi.getter
     def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecDestinationArgs']]]]:
         """
-        Destinations for deployment of the GitOps project.
+        Allowed destinations for applications in this Argo project.
         """
         return pulumi.get(self, "destinations")
 
@@ -10545,7 +10547,7 @@ class GitopsAppProjectProjectSpecArgs:
     @pulumi.getter(name="namespaceResourceBlacklists")
     def namespace_resource_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]]]:
         """
-        Namespace resource blacklist for the GitOps project.
+        Namespace resource blacklist for the Argo project.
         """
         return pulumi.get(self, "namespace_resource_blacklists")
 
@@ -10569,7 +10571,7 @@ class GitopsAppProjectProjectSpecArgs:
     @pulumi.getter(name="orphanedResources")
     def orphaned_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]]]:
         """
-        Orphaned resources configuration for the GitOps project.
+        OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
         """
         return pulumi.get(self, "orphaned_resources")
 
@@ -10581,7 +10583,7 @@ class GitopsAppProjectProjectSpecArgs:
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]]]:
         """
-        Roles associated with the GitOps project.
+        Roles associated with the Argo project.
         """
         return pulumi.get(self, "roles")
 
@@ -10605,7 +10607,7 @@ class GitopsAppProjectProjectSpecArgs:
     @pulumi.getter(name="sourceRepos")
     def source_repos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Source repositories for the GitOps project.
+        Allowed Source repositories for the Argo project.
         """
         return pulumi.get(self, "source_repos")
 
@@ -10734,15 +10736,15 @@ if not MYPY:
     class GitopsAppProjectProjectSpecDestinationArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[str]]
         """
-        Name of the destination.
+        Name of the destination cluster.
         """
         namespace: NotRequired[pulumi.Input[str]]
         """
-        Namespace of the destination.
+        Permitted Namespaces for deployment in the destination cluster.
         """
         server: NotRequired[pulumi.Input[str]]
         """
-        Server URL of the destination.
+        Server URL of the destination cluster.
         """
 elif False:
     GitopsAppProjectProjectSpecDestinationArgsDict: TypeAlias = Mapping[str, Any]
@@ -10754,9 +10756,9 @@ class GitopsAppProjectProjectSpecDestinationArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  server: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the destination.
-        :param pulumi.Input[str] namespace: Namespace of the destination.
-        :param pulumi.Input[str] server: Server URL of the destination.
+        :param pulumi.Input[str] name: Name of the destination cluster.
+        :param pulumi.Input[str] namespace: Permitted Namespaces for deployment in the destination cluster.
+        :param pulumi.Input[str] server: Server URL of the destination cluster.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -10769,7 +10771,7 @@ class GitopsAppProjectProjectSpecDestinationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the destination.
+        Name of the destination cluster.
         """
         return pulumi.get(self, "name")
 
@@ -10781,7 +10783,7 @@ class GitopsAppProjectProjectSpecDestinationArgs:
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        Namespace of the destination.
+        Permitted Namespaces for deployment in the destination cluster.
         """
         return pulumi.get(self, "namespace")
 
@@ -10793,7 +10795,7 @@ class GitopsAppProjectProjectSpecDestinationArgs:
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[str]]:
         """
-        Server URL of the destination.
+        Server URL of the destination cluster.
         """
         return pulumi.get(self, "server")
 
@@ -11050,7 +11052,7 @@ if not MYPY:
         """
         policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Policies associated with the role.
+        Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
         """
 elif False:
     GitopsAppProjectProjectSpecRoleArgsDict: TypeAlias = Mapping[str, Any]
@@ -11068,7 +11070,7 @@ class GitopsAppProjectProjectSpecRoleArgs:
         :param pulumi.Input[str] name: Name of the role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] groups: Groups associated with the role.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleJwtTokenArgs']]] jwt_tokens: JWT tokens associated with the role.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: Policies associated with the role.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
@@ -11131,7 +11133,7 @@ class GitopsAppProjectProjectSpecRoleArgs:
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Policies associated with the role.
+        Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
         """
         return pulumi.get(self, "policies")
 
@@ -19883,6 +19885,246 @@ class GetGitopsGnupgRequestPublickeyArgs:
     @trust.setter
     def trust(self, value: Optional[str]):
         pulumi.set(self, "trust", value)
+
+
+if not MYPY:
+    class GetGitopsRepoCredCredArgsDict(TypedDict):
+        enable_oci: bool
+        """
+        Specifies whether helm-oci support should be enabled for this repo.
+        """
+        github_app_enterprise_base_url: str
+        """
+        Specifies the GitHub API URL for GitHub app authentication.
+        """
+        github_app_id: str
+        """
+        Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        """
+        github_app_installation_id: str
+        """
+        Specifies the ID of the installed GitHub App for GitHub app authentication.
+        """
+        github_app_private_key: str
+        """
+        github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        """
+        password: str
+        """
+        Password or PAT to be used for authenticating the remote repository.
+        """
+        ssh_private_key: str
+        """
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        """
+        tls_client_cert_data: str
+        """
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        """
+        tls_client_cert_key: str
+        """
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+        """
+        type: str
+        """
+        Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        """
+        url: str
+        """
+        URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+        """
+        username: str
+        """
+        Username to be used for authenticating the remote repository.
+        """
+elif False:
+    GetGitopsRepoCredCredArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGitopsRepoCredCredArgs:
+    def __init__(__self__, *,
+                 enable_oci: bool,
+                 github_app_enterprise_base_url: str,
+                 github_app_id: str,
+                 github_app_installation_id: str,
+                 github_app_private_key: str,
+                 password: str,
+                 ssh_private_key: str,
+                 tls_client_cert_data: str,
+                 tls_client_cert_key: str,
+                 type: str,
+                 url: str,
+                 username: str):
+        """
+        :param bool enable_oci: Specifies whether helm-oci support should be enabled for this repo.
+        :param str github_app_enterprise_base_url: Specifies the GitHub API URL for GitHub app authentication.
+        :param str github_app_id: Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        :param str github_app_installation_id: Specifies the ID of the installed GitHub App for GitHub app authentication.
+        :param str github_app_private_key: github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        :param str password: Password or PAT to be used for authenticating the remote repository.
+        :param str ssh_private_key: SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        :param str tls_client_cert_data: Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        :param str tls_client_cert_key: Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+        :param str type: Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        :param str url: URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+        :param str username: Username to be used for authenticating the remote repository.
+        """
+        pulumi.set(__self__, "enable_oci", enable_oci)
+        pulumi.set(__self__, "github_app_enterprise_base_url", github_app_enterprise_base_url)
+        pulumi.set(__self__, "github_app_id", github_app_id)
+        pulumi.set(__self__, "github_app_installation_id", github_app_installation_id)
+        pulumi.set(__self__, "github_app_private_key", github_app_private_key)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "ssh_private_key", ssh_private_key)
+        pulumi.set(__self__, "tls_client_cert_data", tls_client_cert_data)
+        pulumi.set(__self__, "tls_client_cert_key", tls_client_cert_key)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="enableOci")
+    def enable_oci(self) -> bool:
+        """
+        Specifies whether helm-oci support should be enabled for this repo.
+        """
+        return pulumi.get(self, "enable_oci")
+
+    @enable_oci.setter
+    def enable_oci(self, value: bool):
+        pulumi.set(self, "enable_oci", value)
+
+    @property
+    @pulumi.getter(name="githubAppEnterpriseBaseUrl")
+    def github_app_enterprise_base_url(self) -> str:
+        """
+        Specifies the GitHub API URL for GitHub app authentication.
+        """
+        return pulumi.get(self, "github_app_enterprise_base_url")
+
+    @github_app_enterprise_base_url.setter
+    def github_app_enterprise_base_url(self, value: str):
+        pulumi.set(self, "github_app_enterprise_base_url", value)
+
+    @property
+    @pulumi.getter(name="githubAppId")
+    def github_app_id(self) -> str:
+        """
+        Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+        """
+        return pulumi.get(self, "github_app_id")
+
+    @github_app_id.setter
+    def github_app_id(self, value: str):
+        pulumi.set(self, "github_app_id", value)
+
+    @property
+    @pulumi.getter(name="githubAppInstallationId")
+    def github_app_installation_id(self) -> str:
+        """
+        Specifies the ID of the installed GitHub App for GitHub app authentication.
+        """
+        return pulumi.get(self, "github_app_installation_id")
+
+    @github_app_installation_id.setter
+    def github_app_installation_id(self, value: str):
+        pulumi.set(self, "github_app_installation_id", value)
+
+    @property
+    @pulumi.getter(name="githubAppPrivateKey")
+    def github_app_private_key(self) -> str:
+        """
+        github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        """
+        return pulumi.get(self, "github_app_private_key")
+
+    @github_app_private_key.setter
+    def github_app_private_key(self, value: str):
+        pulumi.set(self, "github_app_private_key", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password or PAT to be used for authenticating the remote repository.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: str):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="sshPrivateKey")
+    def ssh_private_key(self) -> str:
+        """
+        SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        """
+        return pulumi.get(self, "ssh_private_key")
+
+    @ssh_private_key.setter
+    def ssh_private_key(self, value: str):
+        pulumi.set(self, "ssh_private_key", value)
+
+    @property
+    @pulumi.getter(name="tlsClientCertData")
+    def tls_client_cert_data(self) -> str:
+        """
+        Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        """
+        return pulumi.get(self, "tls_client_cert_data")
+
+    @tls_client_cert_data.setter
+    def tls_client_cert_data(self, value: str):
+        pulumi.set(self, "tls_client_cert_data", value)
+
+    @property
+    @pulumi.getter(name="tlsClientCertKey")
+    def tls_client_cert_key(self) -> str:
+        """
+        Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+        """
+        return pulumi.get(self, "tls_client_cert_key")
+
+    @tls_client_cert_key.setter
+    def tls_client_cert_key(self, value: str):
+        pulumi.set(self, "tls_client_cert_key", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: str):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username to be used for authenticating the remote repository.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: str):
+        pulumi.set(self, "username", value)
 
 
 if not MYPY:

@@ -34,7 +34,7 @@ public final class GitopsAppProjectProjectSpecRole {
      */
     private String name;
     /**
-     * @return Policies associated with the role.
+     * @return Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
      * 
      */
     private @Nullable List<String> policies;
@@ -69,7 +69,7 @@ public final class GitopsAppProjectProjectSpecRole {
         return this.name;
     }
     /**
-     * @return Policies associated with the role.
+     * @return Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
      * 
      */
     public List<String> policies() {

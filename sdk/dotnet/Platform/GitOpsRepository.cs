@@ -240,6 +240,7 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Update mask of the repository.
         /// </summary>
+        [Obsolete(@"This field is deprecated and will be removed in a future release.")]
         public InputList<Inputs.GitOpsRepositoryUpdateMaskArgs> UpdateMasks
         {
             get => _updateMasks ?? (_updateMasks = new InputList<Inputs.GitOpsRepositoryUpdateMaskArgs>());
@@ -339,6 +340,7 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Update mask of the repository.
         /// </summary>
+        [Obsolete(@"This field is deprecated and will be removed in a future release.")]
         public InputList<Inputs.GitOpsRepositoryUpdateMaskGetArgs> UpdateMasks
         {
             get => _updateMasks ?? (_updateMasks = new InputList<Inputs.GitOpsRepositoryUpdateMaskGetArgs>());

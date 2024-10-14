@@ -34,14 +34,14 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Agent identifier of the GitOps cluster.
+     * Agent identifier of the GitOps cluster. (include scope prefix)
      * 
      */
     @Import(name="agentId", required=true)
     private Output<String> agentId;
 
     /**
-     * @return Agent identifier of the GitOps cluster.
+     * @return Agent identifier of the GitOps cluster. (include scope prefix)
      * 
      */
     public Output<String> agentId() {
@@ -159,7 +159,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps cluster.
+         * @param agentId Agent identifier of the GitOps cluster. (include scope prefix)
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class GitOpsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps cluster.
+         * @param agentId Agent identifier of the GitOps cluster. (include scope prefix)
          * 
          * @return builder
          * 

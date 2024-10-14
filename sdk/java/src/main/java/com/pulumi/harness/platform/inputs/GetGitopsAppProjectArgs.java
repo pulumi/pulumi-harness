@@ -17,14 +17,14 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
     public static final GetGitopsAppProjectArgs Empty = new GetGitopsAppProjectArgs();
 
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps Agent where argo project resides.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account identifier of the GitOps project.
+     * @return Account identifier of the GitOps Agent where argo project resides.
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the agent where argo project resides(include scope prefix)
      * 
      */
     @Import(name="agentId", required=true)
     private Output<String> agentId;
 
     /**
-     * @return Agent identifier of the GitOps project.
+     * @return Agent identifier of the agent where argo project resides(include scope prefix)
      * 
      */
     public Output<String> agentId() {
@@ -47,14 +47,14 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps Agent where argo project resides.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Org identifier of the GitOps project.
+     * @return Org identifier of the GitOps Agent where argo project resides.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -62,14 +62,14 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the Gitops Agent where argo project resides.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project identifier of the GitOps repository.
+     * @return Project identifier of the Gitops Agent where argo project resides.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -77,14 +77,14 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      * 
      */
     @Import(name="queryName")
     private @Nullable Output<String> queryName;
 
     /**
-     * @return Identifier for the GitOps project.
+     * @return Identifier for the GitOps Argo project.
      * 
      */
     public Optional<Output<String>> queryName() {
@@ -120,7 +120,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param accountId Account identifier of the GitOps project.
+         * @param accountId Account identifier of the GitOps Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param accountId Account identifier of the GitOps project.
+         * @param accountId Account identifier of the GitOps Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps project.
+         * @param agentId Agent identifier of the agent where argo project resides(include scope prefix)
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps project.
+         * @param agentId Agent identifier of the agent where argo project resides(include scope prefix)
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param orgId Org identifier of the GitOps project.
+         * @param orgId Org identifier of the GitOps Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param orgId Org identifier of the GitOps project.
+         * @param orgId Org identifier of the GitOps Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param projectId Project identifier of the GitOps repository.
+         * @param projectId Project identifier of the Gitops Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param projectId Project identifier of the GitOps repository.
+         * @param projectId Project identifier of the Gitops Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param queryName Identifier for the GitOps project.
+         * @param queryName Identifier for the GitOps Argo project.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetGitopsAppProjectArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param queryName Identifier for the GitOps project.
+         * @param queryName Identifier for the GitOps Argo project.
          * 
          * @return builder
          * 

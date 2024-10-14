@@ -104,6 +104,8 @@ export class GitOpsRepository extends pulumi.CustomResource {
     public readonly repos!: pulumi.Output<outputs.platform.GitOpsRepositoryRepo[]>;
     /**
      * Update mask of the repository.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly updateMasks!: pulumi.Output<outputs.platform.GitOpsRepositoryUpdateMask[] | undefined>;
     /**
@@ -221,6 +223,8 @@ export interface GitOpsRepositoryState {
     repos?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryRepo>[]>;
     /**
      * Update mask of the repository.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[]>;
     /**
@@ -280,6 +284,8 @@ export interface GitOpsRepositoryArgs {
     repos: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryRepo>[]>;
     /**
      * Update mask of the repository.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[]>;
     /**

@@ -16,14 +16,14 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
     public static final GitopsAppProjectProjectSpecDestinationArgs Empty = new GitopsAppProjectProjectSpecDestinationArgs();
 
     /**
-     * Name of the destination.
+     * Name of the destination cluster.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the destination.
+     * @return Name of the destination cluster.
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,14 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
     }
 
     /**
-     * Namespace of the destination.
+     * Permitted Namespaces for deployment in the destination cluster.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Namespace of the destination.
+     * @return Permitted Namespaces for deployment in the destination cluster.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -46,14 +46,14 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
     }
 
     /**
-     * Server URL of the destination.
+     * Server URL of the destination cluster.
      * 
      */
     @Import(name="server")
     private @Nullable Output<String> server;
 
     /**
-     * @return Server URL of the destination.
+     * @return Server URL of the destination cluster.
      * 
      */
     public Optional<Output<String>> server() {
@@ -87,7 +87,7 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
         }
 
         /**
-         * @param name Name of the destination.
+         * @param name Name of the destination cluster.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
         }
 
         /**
-         * @param name Name of the destination.
+         * @param name Name of the destination cluster.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
         }
 
         /**
-         * @param namespace Namespace of the destination.
+         * @param namespace Permitted Namespaces for deployment in the destination cluster.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
         }
 
         /**
-         * @param namespace Namespace of the destination.
+         * @param namespace Permitted Namespaces for deployment in the destination cluster.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
         }
 
         /**
-         * @param server Server URL of the destination.
+         * @param server Server URL of the destination cluster.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GitopsAppProjectProjectSpecDestinationArgs extends com.pulumi
         }
 
         /**
-         * @param server Server URL of the destination.
+         * @param server Server URL of the destination cluster.
          * 
          * @return builder
          * 

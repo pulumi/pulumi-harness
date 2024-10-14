@@ -14,15 +14,15 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitopsAppProjectProjectSpecDestination
     {
         /// <summary>
-        /// Name of the destination.
+        /// Name of the destination cluster.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Namespace of the destination.
+        /// Permitted Namespaces for deployment in the destination cluster.
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
-        /// Server URL of the destination.
+        /// Server URL of the destination cluster.
         /// </summary>
         public readonly string? Server;
 

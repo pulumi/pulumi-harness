@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitopsAppProjectProject
     {
         /// <summary>
-        /// Metadata details for the GitOps project.
+        /// K8s object metadata for the Argo project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectMetadata> Metadatas;
         /// <summary>
-        /// Specification details for the GitOps project.
+        /// Specification details for the Argo project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpec> Specs;
 
