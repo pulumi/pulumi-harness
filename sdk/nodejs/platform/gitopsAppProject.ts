@@ -58,19 +58,19 @@ export class GitopsAppProject extends pulumi.CustomResource {
     }
 
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps project/agent.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the GitOps project. Project is created on agent scope.
      */
     public readonly agentId!: pulumi.Output<string>;
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps agent for which project is created.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the GitOps agent for which project is created.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -82,7 +82,7 @@ export class GitopsAppProject extends pulumi.CustomResource {
      */
     public readonly queryName!: pulumi.Output<string>;
     /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * Indicates if the GitOps project should be updated if existing and inserted if not.
      */
     public readonly upsert!: pulumi.Output<boolean | undefined>;
 
@@ -135,19 +135,19 @@ export class GitopsAppProject extends pulumi.CustomResource {
  */
 export interface GitopsAppProjectState {
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps project/agent.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the GitOps project. Project is created on agent scope.
      */
     agentId?: pulumi.Input<string>;
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps agent for which project is created.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the GitOps agent for which project is created.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -159,7 +159,7 @@ export interface GitopsAppProjectState {
      */
     queryName?: pulumi.Input<string>;
     /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * Indicates if the GitOps project should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }
@@ -169,19 +169,19 @@ export interface GitopsAppProjectState {
  */
 export interface GitopsAppProjectArgs {
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps project/agent.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the GitOps project. Project is created on agent scope.
      */
     agentId: pulumi.Input<string>;
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps agent for which project is created.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the GitOps agent for which project is created.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface GitopsAppProjectArgs {
      */
     queryName?: pulumi.Input<string>;
     /**
-     * Indicates if the GitOps repository should be updated if existing and inserted if not.
+     * Indicates if the GitOps project should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }

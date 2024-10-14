@@ -17909,9 +17909,9 @@ func (o GitlabConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutp
 }
 
 type GitopsAppProjectProject struct {
-	// Metadata details for the GitOps project.
+	// K8s object metadata for the Argo project.
 	Metadatas []GitopsAppProjectProjectMetadata `pulumi:"metadatas"`
-	// Specification details for the GitOps project.
+	// Specification details for the Argo project.
 	Specs []GitopsAppProjectProjectSpec `pulumi:"specs"`
 }
 
@@ -17927,9 +17927,9 @@ type GitopsAppProjectProjectInput interface {
 }
 
 type GitopsAppProjectProjectArgs struct {
-	// Metadata details for the GitOps project.
+	// K8s object metadata for the Argo project.
 	Metadatas GitopsAppProjectProjectMetadataArrayInput `pulumi:"metadatas"`
-	// Specification details for the GitOps project.
+	// Specification details for the Argo project.
 	Specs GitopsAppProjectProjectSpecArrayInput `pulumi:"specs"`
 }
 
@@ -17984,12 +17984,12 @@ func (o GitopsAppProjectProjectOutput) ToGitopsAppProjectProjectOutputWithContex
 	return o
 }
 
-// Metadata details for the GitOps project.
+// K8s object metadata for the Argo project.
 func (o GitopsAppProjectProjectOutput) Metadatas() GitopsAppProjectProjectMetadataArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProject) []GitopsAppProjectProjectMetadata { return v.Metadatas }).(GitopsAppProjectProjectMetadataArrayOutput)
 }
 
-// Specification details for the GitOps project.
+// Specification details for the Argo project.
 func (o GitopsAppProjectProjectOutput) Specs() GitopsAppProjectProjectSpecArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProject) []GitopsAppProjectProjectSpec { return v.Specs }).(GitopsAppProjectProjectSpecArrayOutput)
 }
@@ -18027,7 +18027,7 @@ type GitopsAppProjectProjectMetadata struct {
 	ManagedFields []GitopsAppProjectProjectMetadataManagedField `pulumi:"managedFields"`
 	// Name of the GitOps project.
 	Name *string `pulumi:"name"`
-	// Namespace of the GitOps project.
+	// Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
 	Namespace *string `pulumi:"namespace"`
 	// Resource Version for the GitOps project
 	ResourceVersion *string `pulumi:"resourceVersion"`
@@ -18057,7 +18057,7 @@ type GitopsAppProjectProjectMetadataArgs struct {
 	ManagedFields GitopsAppProjectProjectMetadataManagedFieldArrayInput `pulumi:"managedFields"`
 	// Name of the GitOps project.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Namespace of the GitOps project.
+	// Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Resource Version for the GitOps project
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
@@ -18146,7 +18146,7 @@ func (o GitopsAppProjectProjectMetadataOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Namespace of the GitOps project.
+// Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
 func (o GitopsAppProjectProjectMetadataOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -18330,23 +18330,23 @@ func (o GitopsAppProjectProjectMetadataManagedFieldArrayOutput) Index(i pulumi.I
 type GitopsAppProjectProjectSpec struct {
 	// Cluster resource blacklist for the GitOps project.
 	ClusterResourceBlacklists []GitopsAppProjectProjectSpecClusterResourceBlacklist `pulumi:"clusterResourceBlacklists"`
-	// Cluster resource whitelist for the GitOps project.
+	// Cluster resource whitelist for the Argo project.
 	ClusterResourceWhitelists []GitopsAppProjectProjectSpecClusterResourceWhitelist `pulumi:"clusterResourceWhitelists"`
-	// Description of the GitOps project.
+	// Description of the Argo project.
 	Description *string `pulumi:"description"`
-	// Destinations for deployment of the GitOps project.
+	// Allowed destinations for applications in this Argo project.
 	Destinations []GitopsAppProjectProjectSpecDestination `pulumi:"destinations"`
-	// Namespace resource blacklist for the GitOps project.
+	// Namespace resource blacklist for the Argo project.
 	NamespaceResourceBlacklists []GitopsAppProjectProjectSpecNamespaceResourceBlacklist `pulumi:"namespaceResourceBlacklists"`
 	// Namespace resource whitelist for the GitOps project.
 	NamespaceResourceWhitelists []GitopsAppProjectProjectSpecNamespaceResourceWhitelist `pulumi:"namespaceResourceWhitelists"`
-	// Orphaned resources configuration for the GitOps project.
+	// OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
 	OrphanedResources []GitopsAppProjectProjectSpecOrphanedResource `pulumi:"orphanedResources"`
-	// Roles associated with the GitOps project.
+	// Roles associated with the Argo project.
 	Roles []GitopsAppProjectProjectSpecRole `pulumi:"roles"`
 	// Signature keys for the GitOps project.
 	SignatureKeys []GitopsAppProjectProjectSpecSignatureKey `pulumi:"signatureKeys"`
-	// Source repositories for the GitOps project.
+	// Allowed Source repositories for the Argo project.
 	SourceRepos []string `pulumi:"sourceRepos"`
 	// Synchronization windows for the GitOps project.
 	SyncWindows []GitopsAppProjectProjectSpecSyncWindow `pulumi:"syncWindows"`
@@ -18366,23 +18366,23 @@ type GitopsAppProjectProjectSpecInput interface {
 type GitopsAppProjectProjectSpecArgs struct {
 	// Cluster resource blacklist for the GitOps project.
 	ClusterResourceBlacklists GitopsAppProjectProjectSpecClusterResourceBlacklistArrayInput `pulumi:"clusterResourceBlacklists"`
-	// Cluster resource whitelist for the GitOps project.
+	// Cluster resource whitelist for the Argo project.
 	ClusterResourceWhitelists GitopsAppProjectProjectSpecClusterResourceWhitelistArrayInput `pulumi:"clusterResourceWhitelists"`
-	// Description of the GitOps project.
+	// Description of the Argo project.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Destinations for deployment of the GitOps project.
+	// Allowed destinations for applications in this Argo project.
 	Destinations GitopsAppProjectProjectSpecDestinationArrayInput `pulumi:"destinations"`
-	// Namespace resource blacklist for the GitOps project.
+	// Namespace resource blacklist for the Argo project.
 	NamespaceResourceBlacklists GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayInput `pulumi:"namespaceResourceBlacklists"`
 	// Namespace resource whitelist for the GitOps project.
 	NamespaceResourceWhitelists GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayInput `pulumi:"namespaceResourceWhitelists"`
-	// Orphaned resources configuration for the GitOps project.
+	// OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
 	OrphanedResources GitopsAppProjectProjectSpecOrphanedResourceArrayInput `pulumi:"orphanedResources"`
-	// Roles associated with the GitOps project.
+	// Roles associated with the Argo project.
 	Roles GitopsAppProjectProjectSpecRoleArrayInput `pulumi:"roles"`
 	// Signature keys for the GitOps project.
 	SignatureKeys GitopsAppProjectProjectSpecSignatureKeyArrayInput `pulumi:"signatureKeys"`
-	// Source repositories for the GitOps project.
+	// Allowed Source repositories for the Argo project.
 	SourceRepos pulumi.StringArrayInput `pulumi:"sourceRepos"`
 	// Synchronization windows for the GitOps project.
 	SyncWindows GitopsAppProjectProjectSpecSyncWindowArrayInput `pulumi:"syncWindows"`
@@ -18446,24 +18446,24 @@ func (o GitopsAppProjectProjectSpecOutput) ClusterResourceBlacklists() GitopsApp
 	}).(GitopsAppProjectProjectSpecClusterResourceBlacklistArrayOutput)
 }
 
-// Cluster resource whitelist for the GitOps project.
+// Cluster resource whitelist for the Argo project.
 func (o GitopsAppProjectProjectSpecOutput) ClusterResourceWhitelists() GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecClusterResourceWhitelist {
 		return v.ClusterResourceWhitelists
 	}).(GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput)
 }
 
-// Description of the GitOps project.
+// Description of the Argo project.
 func (o GitopsAppProjectProjectSpecOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Destinations for deployment of the GitOps project.
+// Allowed destinations for applications in this Argo project.
 func (o GitopsAppProjectProjectSpecOutput) Destinations() GitopsAppProjectProjectSpecDestinationArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecDestination { return v.Destinations }).(GitopsAppProjectProjectSpecDestinationArrayOutput)
 }
 
-// Namespace resource blacklist for the GitOps project.
+// Namespace resource blacklist for the Argo project.
 func (o GitopsAppProjectProjectSpecOutput) NamespaceResourceBlacklists() GitopsAppProjectProjectSpecNamespaceResourceBlacklistArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecNamespaceResourceBlacklist {
 		return v.NamespaceResourceBlacklists
@@ -18477,14 +18477,14 @@ func (o GitopsAppProjectProjectSpecOutput) NamespaceResourceWhitelists() GitopsA
 	}).(GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayOutput)
 }
 
-// Orphaned resources configuration for the GitOps project.
+// OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
 func (o GitopsAppProjectProjectSpecOutput) OrphanedResources() GitopsAppProjectProjectSpecOrphanedResourceArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecOrphanedResource {
 		return v.OrphanedResources
 	}).(GitopsAppProjectProjectSpecOrphanedResourceArrayOutput)
 }
 
-// Roles associated with the GitOps project.
+// Roles associated with the Argo project.
 func (o GitopsAppProjectProjectSpecOutput) Roles() GitopsAppProjectProjectSpecRoleArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecRole { return v.Roles }).(GitopsAppProjectProjectSpecRoleArrayOutput)
 }
@@ -18494,7 +18494,7 @@ func (o GitopsAppProjectProjectSpecOutput) SignatureKeys() GitopsAppProjectProje
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecSignatureKey { return v.SignatureKeys }).(GitopsAppProjectProjectSpecSignatureKeyArrayOutput)
 }
 
-// Source repositories for the GitOps project.
+// Allowed Source repositories for the Argo project.
 func (o GitopsAppProjectProjectSpecOutput) SourceRepos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []string { return v.SourceRepos }).(pulumi.StringArrayOutput)
 }
@@ -18737,11 +18737,11 @@ func (o GitopsAppProjectProjectSpecClusterResourceWhitelistArrayOutput) Index(i 
 }
 
 type GitopsAppProjectProjectSpecDestination struct {
-	// Name of the destination.
+	// Name of the destination cluster.
 	Name *string `pulumi:"name"`
-	// Namespace of the destination.
+	// Permitted Namespaces for deployment in the destination cluster.
 	Namespace *string `pulumi:"namespace"`
-	// Server URL of the destination.
+	// Server URL of the destination cluster.
 	Server *string `pulumi:"server"`
 }
 
@@ -18757,11 +18757,11 @@ type GitopsAppProjectProjectSpecDestinationInput interface {
 }
 
 type GitopsAppProjectProjectSpecDestinationArgs struct {
-	// Name of the destination.
+	// Name of the destination cluster.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Namespace of the destination.
+	// Permitted Namespaces for deployment in the destination cluster.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// Server URL of the destination.
+	// Server URL of the destination cluster.
 	Server pulumi.StringPtrInput `pulumi:"server"`
 }
 
@@ -18816,17 +18816,17 @@ func (o GitopsAppProjectProjectSpecDestinationOutput) ToGitopsAppProjectProjectS
 	return o
 }
 
-// Name of the destination.
+// Name of the destination cluster.
 func (o GitopsAppProjectProjectSpecDestinationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpecDestination) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Namespace of the destination.
+// Permitted Namespaces for deployment in the destination cluster.
 func (o GitopsAppProjectProjectSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-// Server URL of the destination.
+// Server URL of the destination cluster.
 func (o GitopsAppProjectProjectSpecDestinationOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
@@ -19295,7 +19295,7 @@ type GitopsAppProjectProjectSpecRole struct {
 	JwtTokens []GitopsAppProjectProjectSpecRoleJwtToken `pulumi:"jwtTokens"`
 	// Name of the role.
 	Name string `pulumi:"name"`
-	// Policies associated with the role.
+	// Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
 	Policies []string `pulumi:"policies"`
 }
 
@@ -19319,7 +19319,7 @@ type GitopsAppProjectProjectSpecRoleArgs struct {
 	JwtTokens GitopsAppProjectProjectSpecRoleJwtTokenArrayInput `pulumi:"jwtTokens"`
 	// Name of the role.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Policies associated with the role.
+	// Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
 	Policies pulumi.StringArrayInput `pulumi:"policies"`
 }
 
@@ -19394,7 +19394,7 @@ func (o GitopsAppProjectProjectSpecRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpecRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Policies associated with the role.
+// Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
 func (o GitopsAppProjectProjectSpecRoleOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpecRole) []string { return v.Policies }).(pulumi.StringArrayOutput)
 }
@@ -43088,7 +43088,7 @@ func (o GetGitopsApplicationsApplicationMetadataOwnerReferenceArrayOutput) Index
 type GetGitopsApplicationsApplicationSpec struct {
 	// Information about the GitOps application's destination.
 	Destinations []GetGitopsApplicationsApplicationSpecDestination `pulumi:"destinations"`
-	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project *string `pulumi:"project"`
 	// Contains all information about the source of a GitOps application.
 	Sources []GetGitopsApplicationsApplicationSpecSource `pulumi:"sources"`
@@ -43110,7 +43110,7 @@ type GetGitopsApplicationsApplicationSpecInput interface {
 type GetGitopsApplicationsApplicationSpecArgs struct {
 	// Information about the GitOps application's destination.
 	Destinations GetGitopsApplicationsApplicationSpecDestinationArrayInput `pulumi:"destinations"`
-	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Contains all information about the source of a GitOps application.
 	Sources GetGitopsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
@@ -43176,7 +43176,7 @@ func (o GetGitopsApplicationsApplicationSpecOutput) Destinations() GetGitopsAppl
 	}).(GetGitopsApplicationsApplicationSpecDestinationArrayOutput)
 }
 
-// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 func (o GetGitopsApplicationsApplicationSpecOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -43757,7 +43757,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput) I
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar struct {
 	// Code of the external variables of jsonnet application.
 	Code bool `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the external variables of jsonnet application.
 	Name string `pulumi:"name"`
 	// Value of the external variables of jsonnet application.
 	Value string `pulumi:"value"`
@@ -43777,7 +43777,7 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarInput inter
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs struct {
 	// Code of the external variables of jsonnet application.
 	Code pulumi.BoolInput `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the external variables of jsonnet application.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Value of the external variables of jsonnet application.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -43839,7 +43839,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) 
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) bool { return v.Code }).(pulumi.BoolOutput)
 }
 
-// Name of the GitOps application.
+// Name of the external variables of jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -43872,7 +43872,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOut
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla struct {
 	// Code of the TLAS of the jsonnet application.
 	Code bool `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the TLAS of the jsonnet application.
 	Name string `pulumi:"name"`
 	// Value of the TLAS of the jsonnet application.
 	Value string `pulumi:"value"`
@@ -43892,7 +43892,7 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaInput interfac
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs struct {
 	// Code of the TLAS of the jsonnet application.
 	Code pulumi.BoolInput `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the TLAS of the jsonnet application.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Value of the TLAS of the jsonnet application.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -43954,7 +43954,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Cod
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) bool { return v.Code }).(pulumi.BoolOutput)
 }
 
-// Name of the GitOps application.
+// Name of the TLAS of the jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -44140,7 +44140,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmArrayOutput) Index(i pulum
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameter struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name string `pulumi:"name"`
 	// Path to the file containing the values of the helm parameter.
 	Path string `pulumi:"path"`
@@ -44158,7 +44158,7 @@ type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterInput interface 
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Path to the file containing the values of the helm parameter.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -44215,7 +44215,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) ToGet
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -44248,7 +44248,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput) 
 type GetGitopsApplicationsApplicationSpecSourceHelmParameter struct {
 	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString bool `pulumi:"forceString"`
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name string `pulumi:"name"`
 	// Value of the helm parameter.
 	Value string `pulumi:"value"`
@@ -44268,7 +44268,7 @@ type GetGitopsApplicationsApplicationSpecSourceHelmParameterInput interface {
 type GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs struct {
 	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString pulumi.BoolInput `pulumi:"forceString"`
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Value of the helm parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -44330,7 +44330,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) ForceStri
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) bool { return v.ForceString }).(pulumi.BoolOutput)
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -44471,7 +44471,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetArrayOutput) Index(i pu
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameter struct {
 	// Component of the parameter of the ksonnet application.
 	Component string `pulumi:"component"`
-	// Name of the GitOps application.
+	// Name of the parameter of the ksonnet application.
 	Name string `pulumi:"name"`
 	// Value of the parameter of the ksonnet application.
 	Value string `pulumi:"value"`
@@ -44491,7 +44491,7 @@ type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterInput interface {
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs struct {
 	// Component of the parameter of the ksonnet application.
 	Component pulumi.StringInput `pulumi:"component"`
-	// Name of the GitOps application.
+	// Name of the parameter of the ksonnet application.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Value of the parameter of the ksonnet application.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -44553,7 +44553,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Compon
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) string { return v.Component }).(pulumi.StringOutput)
 }
 
-// Name of the GitOps application.
+// Name of the parameter of the ksonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -44748,7 +44748,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeArrayOutput) Index(i 
 type GetGitopsApplicationsApplicationSpecSourcePlugin struct {
 	// Entry in the GitOps application's environment.
 	Envs []GetGitopsApplicationsApplicationSpecSourcePluginEnv `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name string `pulumi:"name"`
 }
 
@@ -44766,7 +44766,7 @@ type GetGitopsApplicationsApplicationSpecSourcePluginInput interface {
 type GetGitopsApplicationsApplicationSpecSourcePluginArgs struct {
 	// Entry in the GitOps application's environment.
 	Envs GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayInput `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -44828,7 +44828,7 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Envs() GetGitops
 	}).(GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayOutput)
 }
 
-// Name of the GitOps application.
+// Name of the plugin.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePlugin) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -44854,7 +44854,7 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput) Index(i pul
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnv struct {
-	// Name of the GitOps application.
+	// Name of the variable, usually expressed in uppercase.
 	Name string `pulumi:"name"`
 	// Value of the variable.
 	Value string `pulumi:"value"`
@@ -44872,7 +44872,7 @@ type GetGitopsApplicationsApplicationSpecSourcePluginEnvInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs struct {
-	// Name of the GitOps application.
+	// Name of the variable, usually expressed in uppercase.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Value of the variable.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -44929,7 +44929,7 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) ToGetGitopsAp
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the variable, usually expressed in uppercase.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) string { return v.Name }).(pulumi.StringOutput)
 }

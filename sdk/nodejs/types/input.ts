@@ -2889,6 +2889,108 @@ export namespace platform {
         trust?: pulumi.Input<string>;
     }
 
+    export interface GetGitopsRepoCredCred {
+        /**
+         * Specifies whether helm-oci support should be enabled for this repo.
+         */
+        enableOci?: boolean;
+        /**
+         * Specifies the GitHub API URL for GitHub app authentication.
+         */
+        githubAppEnterpriseBaseUrl?: string;
+        /**
+         * Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+         */
+        githubAppId?: string;
+        /**
+         * Specifies the ID of the installed GitHub App for GitHub app authentication.
+         */
+        githubAppInstallationId?: string;
+        /**
+         * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+         */
+        githubAppPrivateKey?: string;
+        /**
+         * Password or PAT to be used for authenticating the remote repository.
+         */
+        password?: string;
+        /**
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         */
+        sshPrivateKey?: string;
+        /**
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+         */
+        tlsClientCertData?: string;
+        /**
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+         */
+        tlsClientCertKey?: string;
+        /**
+         * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+         */
+        type?: string;
+        /**
+         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+         */
+        url?: string;
+        /**
+         * Username to be used for authenticating the remote repository.
+         */
+        username?: string;
+    }
+
+    export interface GetGitopsRepoCredCredArgs {
+        /**
+         * Specifies whether helm-oci support should be enabled for this repo.
+         */
+        enableOci?: pulumi.Input<boolean>;
+        /**
+         * Specifies the GitHub API URL for GitHub app authentication.
+         */
+        githubAppEnterpriseBaseUrl?: pulumi.Input<string>;
+        /**
+         * Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
+         */
+        githubAppId?: pulumi.Input<string>;
+        /**
+         * Specifies the ID of the installed GitHub App for GitHub app authentication.
+         */
+        githubAppInstallationId?: pulumi.Input<string>;
+        /**
+         * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+         */
+        githubAppPrivateKey?: pulumi.Input<string>;
+        /**
+         * Password or PAT to be used for authenticating the remote repository.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         */
+        sshPrivateKey?: pulumi.Input<string>;
+        /**
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+         */
+        tlsClientCertData?: pulumi.Input<string>;
+        /**
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+         */
+        tlsClientCertKey?: pulumi.Input<string>;
+        /**
+         * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * URL of the remote repository. Make sure you pass at least an org, this will not work if you just provide the host, for eg. "https://github.com"
+         */
+        url?: pulumi.Input<string>;
+        /**
+         * Username to be used for authenticating the remote repository.
+         */
+        username?: pulumi.Input<string>;
+    }
+
     export interface GetInfrastructureGitDetails {
         /**
          * Name of the branch.
@@ -4833,11 +4935,11 @@ export namespace platform {
 
     export interface GitopsAppProjectProject {
         /**
-         * Metadata details for the GitOps project.
+         * K8s object metadata for the Argo project.
          */
         metadatas: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectMetadata>[]>;
         /**
-         * Specification details for the GitOps project.
+         * Specification details for the Argo project.
          */
         specs: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpec>[]>;
     }
@@ -4868,7 +4970,7 @@ export namespace platform {
          */
         name?: pulumi.Input<string>;
         /**
-         * Namespace of the GitOps project.
+         * Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
          */
         namespace?: pulumi.Input<string>;
         /**
@@ -4914,19 +5016,19 @@ export namespace platform {
          */
         clusterResourceBlacklists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecClusterResourceBlacklist>[]>;
         /**
-         * Cluster resource whitelist for the GitOps project.
+         * Cluster resource whitelist for the Argo project.
          */
         clusterResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecClusterResourceWhitelist>[]>;
         /**
-         * Description of the GitOps project.
+         * Description of the Argo project.
          */
         description?: pulumi.Input<string>;
         /**
-         * Destinations for deployment of the GitOps project.
+         * Allowed destinations for applications in this Argo project.
          */
         destinations?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecDestination>[]>;
         /**
-         * Namespace resource blacklist for the GitOps project.
+         * Namespace resource blacklist for the Argo project.
          */
         namespaceResourceBlacklists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecNamespaceResourceBlacklist>[]>;
         /**
@@ -4934,11 +5036,11 @@ export namespace platform {
          */
         namespaceResourceWhitelists?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecNamespaceResourceWhitelist>[]>;
         /**
-         * Orphaned resources configuration for the GitOps project.
+         * OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
          */
         orphanedResources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecOrphanedResource>[]>;
         /**
-         * Roles associated with the GitOps project.
+         * Roles associated with the Argo project.
          */
         roles?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecRole>[]>;
         /**
@@ -4946,7 +5048,7 @@ export namespace platform {
          */
         signatureKeys?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecSignatureKey>[]>;
         /**
-         * Source repositories for the GitOps project.
+         * Allowed Source repositories for the Argo project.
          */
         sourceRepos?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -4979,15 +5081,15 @@ export namespace platform {
 
     export interface GitopsAppProjectProjectSpecDestination {
         /**
-         * Name of the destination.
+         * Name of the destination cluster.
          */
         name?: pulumi.Input<string>;
         /**
-         * Namespace of the destination.
+         * Permitted Namespaces for deployment in the destination cluster.
          */
         namespace?: pulumi.Input<string>;
         /**
-         * Server URL of the destination.
+         * Server URL of the destination cluster.
          */
         server?: pulumi.Input<string>;
     }
@@ -5058,7 +5160,7 @@ export namespace platform {
          */
         name: pulumi.Input<string>;
         /**
-         * Policies associated with the role.
+         * Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
          */
         policies?: pulumi.Input<pulumi.Input<string>[]>;
     }

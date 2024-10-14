@@ -3434,7 +3434,7 @@ export namespace platform {
          */
         destinations: outputs.platform.GetGitopsApplicationsApplicationSpecDestination[];
         /**
-         * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+         * The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
          */
         project?: string;
         /**
@@ -3541,7 +3541,7 @@ export namespace platform {
          */
         code: boolean;
         /**
-         * Name of the GitOps application.
+         * Name of the external variables of jsonnet application.
          */
         name: string;
         /**
@@ -3556,7 +3556,7 @@ export namespace platform {
          */
         code: boolean;
         /**
-         * Name of the GitOps application.
+         * Name of the TLAS of the jsonnet application.
          */
         name: string;
         /**
@@ -3598,7 +3598,7 @@ export namespace platform {
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
         /**
-         * Name of the GitOps application.
+         * Name of the helm parameter.
          */
         name: string;
         /**
@@ -3613,7 +3613,7 @@ export namespace platform {
          */
         forceString: boolean;
         /**
-         * Name of the GitOps application.
+         * Name of the helm parameter.
          */
         name: string;
         /**
@@ -3639,7 +3639,7 @@ export namespace platform {
          */
         component: string;
         /**
-         * Name of the GitOps application.
+         * Name of the parameter of the ksonnet application.
          */
         name: string;
         /**
@@ -3689,14 +3689,14 @@ export namespace platform {
          */
         envs: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnv[];
         /**
-         * Name of the GitOps application.
+         * Name of the plugin.
          */
         name: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourcePluginEnv {
         /**
-         * Name of the GitOps application.
+         * Name of the variable, usually expressed in uppercase.
          */
         name: string;
         /**
@@ -6138,31 +6138,31 @@ export namespace platform {
         /**
          * Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
          */
-        githubAppId?: string;
+        githubAppId: string;
         /**
          * Specifies the ID of the installed GitHub App for GitHub app authentication.
          */
-        githubAppInstallationId?: string;
+        githubAppInstallationId: string;
         /**
          * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
          */
-        githubAppPrivateKey?: string;
+        githubAppPrivateKey: string;
         /**
          * Password or PAT to be used for authenticating the remote repository.
          */
-        password?: string;
+        password: string;
         /**
          * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
          */
-        sshPrivateKey?: string;
+        sshPrivateKey: string;
         /**
          * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
          */
-        tlsClientCertData?: string;
+        tlsClientCertData: string;
         /**
          * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
          */
-        tlsClientCertKey?: string;
+        tlsClientCertKey: string;
         /**
          * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
          */
@@ -6291,15 +6291,15 @@ export namespace platform {
         /**
          * Id of the GitHub app used to access the repo.
          */
-        githubAppId?: string;
+        githubAppId: string;
         /**
          * Installation id of the GitHub app used to access the repo.
          */
-        githubAppInstallationId?: string;
+        githubAppInstallationId: string;
         /**
          * GitHub app private key PEM data.
          */
-        githubAppPrivateKey?: string;
+        githubAppPrivateKey: string;
         /**
          * Indicates if the credentials were inherited from a repository credential.
          */
@@ -6319,7 +6319,7 @@ export namespace platform {
         /**
          * Password or PAT to be used for authenticating the remote repository.
          */
-        password?: string;
+        password: string;
         /**
          * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          */
@@ -6339,11 +6339,11 @@ export namespace platform {
         /**
          * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
-        tlsClientCertData?: string;
+        tlsClientCertData: string;
         /**
          * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
          */
-        tlsClientCertKey?: string;
+        tlsClientCertKey: string;
         /**
          * Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
          */
@@ -6508,11 +6508,11 @@ export namespace platform {
 
     export interface GitopsAppProjectProject {
         /**
-         * Metadata details for the GitOps project.
+         * K8s object metadata for the Argo project.
          */
         metadatas: outputs.platform.GitopsAppProjectProjectMetadata[];
         /**
-         * Specification details for the GitOps project.
+         * Specification details for the Argo project.
          */
         specs: outputs.platform.GitopsAppProjectProjectSpec[];
     }
@@ -6543,7 +6543,7 @@ export namespace platform {
          */
         name?: string;
         /**
-         * Namespace of the GitOps project.
+         * Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
          */
         namespace?: string;
         /**
@@ -6589,19 +6589,19 @@ export namespace platform {
          */
         clusterResourceBlacklists?: outputs.platform.GitopsAppProjectProjectSpecClusterResourceBlacklist[];
         /**
-         * Cluster resource whitelist for the GitOps project.
+         * Cluster resource whitelist for the Argo project.
          */
         clusterResourceWhitelists?: outputs.platform.GitopsAppProjectProjectSpecClusterResourceWhitelist[];
         /**
-         * Description of the GitOps project.
+         * Description of the Argo project.
          */
         description?: string;
         /**
-         * Destinations for deployment of the GitOps project.
+         * Allowed destinations for applications in this Argo project.
          */
         destinations?: outputs.platform.GitopsAppProjectProjectSpecDestination[];
         /**
-         * Namespace resource blacklist for the GitOps project.
+         * Namespace resource blacklist for the Argo project.
          */
         namespaceResourceBlacklists?: outputs.platform.GitopsAppProjectProjectSpecNamespaceResourceBlacklist[];
         /**
@@ -6609,11 +6609,11 @@ export namespace platform {
          */
         namespaceResourceWhitelists?: outputs.platform.GitopsAppProjectProjectSpecNamespaceResourceWhitelist[];
         /**
-         * Orphaned resources configuration for the GitOps project.
+         * OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
          */
         orphanedResources?: outputs.platform.GitopsAppProjectProjectSpecOrphanedResource[];
         /**
-         * Roles associated with the GitOps project.
+         * Roles associated with the Argo project.
          */
         roles?: outputs.platform.GitopsAppProjectProjectSpecRole[];
         /**
@@ -6621,7 +6621,7 @@ export namespace platform {
          */
         signatureKeys?: outputs.platform.GitopsAppProjectProjectSpecSignatureKey[];
         /**
-         * Source repositories for the GitOps project.
+         * Allowed Source repositories for the Argo project.
          */
         sourceRepos?: string[];
         /**
@@ -6654,15 +6654,15 @@ export namespace platform {
 
     export interface GitopsAppProjectProjectSpecDestination {
         /**
-         * Name of the destination.
+         * Name of the destination cluster.
          */
         name?: string;
         /**
-         * Namespace of the destination.
+         * Permitted Namespaces for deployment in the destination cluster.
          */
         namespace?: string;
         /**
-         * Server URL of the destination.
+         * Server URL of the destination cluster.
          */
         server?: string;
     }
@@ -6733,7 +6733,7 @@ export namespace platform {
          */
         name: string;
         /**
-         * Policies associated with the role.
+         * Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
          */
         policies?: string[];
     }

@@ -5,7 +5,9 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetGitopsRepoCredCred;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -43,6 +45,21 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
      */
     public String agentId() {
         return this.agentId;
+    }
+
+    /**
+     * credential details.
+     * 
+     */
+    @Import(name="creds")
+    private @Nullable List<GetGitopsRepoCredCred> creds;
+
+    /**
+     * @return credential details.
+     * 
+     */
+    public Optional<List<GetGitopsRepoCredCred>> creds() {
+        return Optional.ofNullable(this.creds);
     }
 
     /**
@@ -95,6 +112,7 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
     private GetGitopsRepoCredPlainArgs(GetGitopsRepoCredPlainArgs $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
+        this.creds = $.creds;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -138,6 +156,27 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
         public Builder agentId(String agentId) {
             $.agentId = agentId;
             return this;
+        }
+
+        /**
+         * @param creds credential details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creds(@Nullable List<GetGitopsRepoCredCred> creds) {
+            $.creds = creds;
+            return this;
+        }
+
+        /**
+         * @param creds credential details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creds(GetGitopsRepoCredCred... creds) {
+            return creds(List.of(creds));
         }
 
         /**

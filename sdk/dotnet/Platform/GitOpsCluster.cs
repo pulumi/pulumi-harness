@@ -42,7 +42,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the GitOps cluster.
+        /// Agent identifier of the GitOps cluster. (include scope prefix)
         /// </summary>
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the GitOps cluster.
+        /// Agent identifier of the GitOps cluster. (include scope prefix)
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Agent identifier of the GitOps cluster.
+        /// Agent identifier of the GitOps cluster. (include scope prefix)
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }

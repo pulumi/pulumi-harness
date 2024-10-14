@@ -41,14 +41,14 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
-     * Cluster resource whitelist for the GitOps project.
+     * Cluster resource whitelist for the Argo project.
      * 
      */
     @Import(name="clusterResourceWhitelists")
     private @Nullable Output<List<GitopsAppProjectProjectSpecClusterResourceWhitelistArgs>> clusterResourceWhitelists;
 
     /**
-     * @return Cluster resource whitelist for the GitOps project.
+     * @return Cluster resource whitelist for the Argo project.
      * 
      */
     public Optional<Output<List<GitopsAppProjectProjectSpecClusterResourceWhitelistArgs>>> clusterResourceWhitelists() {
@@ -56,14 +56,14 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
-     * Description of the GitOps project.
+     * Description of the Argo project.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the GitOps project.
+     * @return Description of the Argo project.
      * 
      */
     public Optional<Output<String>> description() {
@@ -71,14 +71,14 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
-     * Destinations for deployment of the GitOps project.
+     * Allowed destinations for applications in this Argo project.
      * 
      */
     @Import(name="destinations")
     private @Nullable Output<List<GitopsAppProjectProjectSpecDestinationArgs>> destinations;
 
     /**
-     * @return Destinations for deployment of the GitOps project.
+     * @return Allowed destinations for applications in this Argo project.
      * 
      */
     public Optional<Output<List<GitopsAppProjectProjectSpecDestinationArgs>>> destinations() {
@@ -86,14 +86,14 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
-     * Namespace resource blacklist for the GitOps project.
+     * Namespace resource blacklist for the Argo project.
      * 
      */
     @Import(name="namespaceResourceBlacklists")
     private @Nullable Output<List<GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs>> namespaceResourceBlacklists;
 
     /**
-     * @return Namespace resource blacklist for the GitOps project.
+     * @return Namespace resource blacklist for the Argo project.
      * 
      */
     public Optional<Output<List<GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs>>> namespaceResourceBlacklists() {
@@ -116,14 +116,14 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
-     * Orphaned resources configuration for the GitOps project.
+     * OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
      * 
      */
     @Import(name="orphanedResources")
     private @Nullable Output<List<GitopsAppProjectProjectSpecOrphanedResourceArgs>> orphanedResources;
 
     /**
-     * @return Orphaned resources configuration for the GitOps project.
+     * @return OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
      * 
      */
     public Optional<Output<List<GitopsAppProjectProjectSpecOrphanedResourceArgs>>> orphanedResources() {
@@ -131,14 +131,14 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
-     * Roles associated with the GitOps project.
+     * Roles associated with the Argo project.
      * 
      */
     @Import(name="roles")
     private @Nullable Output<List<GitopsAppProjectProjectSpecRoleArgs>> roles;
 
     /**
-     * @return Roles associated with the GitOps project.
+     * @return Roles associated with the Argo project.
      * 
      */
     public Optional<Output<List<GitopsAppProjectProjectSpecRoleArgs>>> roles() {
@@ -161,14 +161,14 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
-     * Source repositories for the GitOps project.
+     * Allowed Source repositories for the Argo project.
      * 
      */
     @Import(name="sourceRepos")
     private @Nullable Output<List<String>> sourceRepos;
 
     /**
-     * @return Source repositories for the GitOps project.
+     * @return Allowed Source repositories for the Argo project.
      * 
      */
     public Optional<Output<List<String>>> sourceRepos() {
@@ -256,7 +256,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param clusterResourceWhitelists Cluster resource whitelist for the GitOps project.
+         * @param clusterResourceWhitelists Cluster resource whitelist for the Argo project.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param clusterResourceWhitelists Cluster resource whitelist for the GitOps project.
+         * @param clusterResourceWhitelists Cluster resource whitelist for the Argo project.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param clusterResourceWhitelists Cluster resource whitelist for the GitOps project.
+         * @param clusterResourceWhitelists Cluster resource whitelist for the Argo project.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description Description of the GitOps project.
+         * @param description Description of the Argo project.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description Description of the GitOps project.
+         * @param description Description of the Argo project.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param destinations Destinations for deployment of the GitOps project.
+         * @param destinations Allowed destinations for applications in this Argo project.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param destinations Destinations for deployment of the GitOps project.
+         * @param destinations Allowed destinations for applications in this Argo project.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param destinations Destinations for deployment of the GitOps project.
+         * @param destinations Allowed destinations for applications in this Argo project.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param namespaceResourceBlacklists Namespace resource blacklist for the GitOps project.
+         * @param namespaceResourceBlacklists Namespace resource blacklist for the Argo project.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param namespaceResourceBlacklists Namespace resource blacklist for the GitOps project.
+         * @param namespaceResourceBlacklists Namespace resource blacklist for the Argo project.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param namespaceResourceBlacklists Namespace resource blacklist for the GitOps project.
+         * @param namespaceResourceBlacklists Namespace resource blacklist for the Argo project.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param orphanedResources Orphaned resources configuration for the GitOps project.
+         * @param orphanedResources OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param orphanedResources Orphaned resources configuration for the GitOps project.
+         * @param orphanedResources OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param orphanedResources Orphaned resources configuration for the GitOps project.
+         * @param orphanedResources OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param roles Roles associated with the GitOps project.
+         * @param roles Roles associated with the Argo project.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param roles Roles associated with the GitOps project.
+         * @param roles Roles associated with the Argo project.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param roles Roles associated with the GitOps project.
+         * @param roles Roles associated with the Argo project.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sourceRepos Source repositories for the GitOps project.
+         * @param sourceRepos Allowed Source repositories for the Argo project.
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sourceRepos Source repositories for the GitOps project.
+         * @param sourceRepos Allowed Source repositories for the Argo project.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sourceRepos Source repositories for the GitOps project.
+         * @param sourceRepos Allowed Source repositories for the Argo project.
          * 
          * @return builder
          * 

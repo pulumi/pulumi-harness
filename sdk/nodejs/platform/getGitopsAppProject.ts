@@ -33,23 +33,23 @@ export function getGitopsAppProject(args: GetGitopsAppProjectArgs, opts?: pulumi
  */
 export interface GetGitopsAppProjectArgs {
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps Agent where argo project resides.
      */
     accountId: string;
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the agent where argo project resides(include scope prefix)
      */
     agentId: string;
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps Agent where argo project resides.
      */
     orgId?: string;
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the Gitops Agent where argo project resides.
      */
     projectId?: string;
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      */
     queryName?: string;
 }
@@ -59,11 +59,11 @@ export interface GetGitopsAppProjectArgs {
  */
 export interface GetGitopsAppProjectResult {
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps Agent where argo project resides.
      */
     readonly accountId: string;
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the agent where argo project resides(include scope prefix)
      */
     readonly agentId: string;
     /**
@@ -71,15 +71,15 @@ export interface GetGitopsAppProjectResult {
      */
     readonly id: string;
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps Agent where argo project resides.
      */
     readonly orgId?: string;
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the Gitops Agent where argo project resides.
      */
     readonly projectId?: string;
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      */
     readonly queryName: string;
 }
@@ -112,23 +112,23 @@ export function getGitopsAppProjectOutput(args: GetGitopsAppProjectOutputArgs, o
  */
 export interface GetGitopsAppProjectOutputArgs {
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps Agent where argo project resides.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the agent where argo project resides(include scope prefix)
      */
     agentId: pulumi.Input<string>;
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps Agent where argo project resides.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the Gitops Agent where argo project resides.
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      */
     queryName?: pulumi.Input<string>;
 }

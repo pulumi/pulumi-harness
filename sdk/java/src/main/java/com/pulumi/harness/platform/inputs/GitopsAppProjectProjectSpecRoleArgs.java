@@ -79,14 +79,14 @@ public final class GitopsAppProjectProjectSpecRoleArgs extends com.pulumi.resour
     }
 
     /**
-     * Policies associated with the role.
+     * Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
      * 
      */
     @Import(name="policies")
     private @Nullable Output<List<String>> policies;
 
     /**
-     * @return Policies associated with the role.
+     * @return Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
      * 
      */
     public Optional<Output<List<String>>> policies() {
@@ -226,7 +226,7 @@ public final class GitopsAppProjectProjectSpecRoleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param policies Policies associated with the role.
+         * @param policies Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class GitopsAppProjectProjectSpecRoleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param policies Policies associated with the role.
+         * @param policies Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class GitopsAppProjectProjectSpecRoleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param policies Policies associated with the role.
+         * @param policies Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
          * 
          * @return builder
          * 

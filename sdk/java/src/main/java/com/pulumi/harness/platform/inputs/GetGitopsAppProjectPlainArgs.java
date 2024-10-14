@@ -16,14 +16,14 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
     public static final GetGitopsAppProjectPlainArgs Empty = new GetGitopsAppProjectPlainArgs();
 
     /**
-     * Account identifier of the GitOps project.
+     * Account identifier of the GitOps Agent where argo project resides.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Account identifier of the GitOps project.
+     * @return Account identifier of the GitOps Agent where argo project resides.
      * 
      */
     public String accountId() {
@@ -31,14 +31,14 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Agent identifier of the GitOps project.
+     * Agent identifier of the agent where argo project resides(include scope prefix)
      * 
      */
     @Import(name="agentId", required=true)
     private String agentId;
 
     /**
-     * @return Agent identifier of the GitOps project.
+     * @return Agent identifier of the agent where argo project resides(include scope prefix)
      * 
      */
     public String agentId() {
@@ -46,14 +46,14 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Org identifier of the GitOps project.
+     * Org identifier of the GitOps Agent where argo project resides.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return Org identifier of the GitOps project.
+     * @return Org identifier of the GitOps Agent where argo project resides.
      * 
      */
     public Optional<String> orgId() {
@@ -61,14 +61,14 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Project identifier of the GitOps repository.
+     * Project identifier of the Gitops Agent where argo project resides.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return Project identifier of the GitOps repository.
+     * @return Project identifier of the Gitops Agent where argo project resides.
      * 
      */
     public Optional<String> projectId() {
@@ -76,14 +76,14 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      * 
      */
     @Import(name="queryName")
     private @Nullable String queryName;
 
     /**
-     * @return Identifier for the GitOps project.
+     * @return Identifier for the GitOps Argo project.
      * 
      */
     public Optional<String> queryName() {
@@ -119,7 +119,7 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param accountId Account identifier of the GitOps project.
+         * @param accountId Account identifier of the GitOps Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps project.
+         * @param agentId Agent identifier of the agent where argo project resides(include scope prefix)
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param orgId Org identifier of the GitOps project.
+         * @param orgId Org identifier of the GitOps Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param projectId Project identifier of the GitOps repository.
+         * @param projectId Project identifier of the Gitops Agent where argo project resides.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param queryName Identifier for the GitOps project.
+         * @param queryName Identifier for the GitOps Argo project.
          * 
          * @return builder
          * 

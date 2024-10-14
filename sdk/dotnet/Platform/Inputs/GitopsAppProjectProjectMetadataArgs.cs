@@ -73,7 +73,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Namespace of the GitOps project.
+        /// Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

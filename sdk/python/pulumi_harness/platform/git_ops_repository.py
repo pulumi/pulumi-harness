@@ -70,6 +70,9 @@ class GitOpsRepositoryArgs:
         if refresh_interval is not None:
             pulumi.set(__self__, "refresh_interval", refresh_interval)
         if update_masks is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""update_masks is deprecated: This field is deprecated and will be removed in a future release.""")
+        if update_masks is not None:
             pulumi.set(__self__, "update_masks", update_masks)
         if upsert is not None:
             pulumi.set(__self__, "upsert", upsert)
@@ -209,6 +212,7 @@ class GitOpsRepositoryArgs:
 
     @property
     @pulumi.getter(name="updateMasks")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def update_masks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]:
         """
         Update mask of the repository.
@@ -287,6 +291,9 @@ class _GitOpsRepositoryState:
             pulumi.set(__self__, "refresh_interval", refresh_interval)
         if repos is not None:
             pulumi.set(__self__, "repos", repos)
+        if update_masks is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""update_masks is deprecated: This field is deprecated and will be removed in a future release.""")
         if update_masks is not None:
             pulumi.set(__self__, "update_masks", update_masks)
         if upsert is not None:
@@ -427,6 +434,7 @@ class _GitOpsRepositoryState:
 
     @property
     @pulumi.getter(name="updateMasks")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def update_masks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryUpdateMaskArgs']]]]:
         """
         Update mask of the repository.
@@ -751,6 +759,7 @@ class GitOpsRepository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateMasks")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def update_masks(self) -> pulumi.Output[Optional[Sequence['outputs.GitOpsRepositoryUpdateMask']]]:
         """
         Update mask of the repository.

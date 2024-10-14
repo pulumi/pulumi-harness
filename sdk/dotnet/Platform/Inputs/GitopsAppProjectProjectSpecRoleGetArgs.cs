@@ -52,7 +52,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<string>? _policies;
 
         /// <summary>
-        /// Policies associated with the role.
+        /// Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
         /// </summary>
         public InputList<string> Policies
         {

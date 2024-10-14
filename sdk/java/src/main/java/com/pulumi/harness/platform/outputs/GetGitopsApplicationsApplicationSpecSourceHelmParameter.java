@@ -17,7 +17,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
      */
     private Boolean forceString;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the helm parameter.
      * 
      */
     private String name;
@@ -36,7 +36,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
         return this.forceString;
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the helm parameter.
      * 
      */
     public String name() {

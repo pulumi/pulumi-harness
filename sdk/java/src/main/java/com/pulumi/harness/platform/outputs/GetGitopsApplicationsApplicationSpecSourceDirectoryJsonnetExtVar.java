@@ -17,7 +17,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExt
      */
     private Boolean code;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the external variables of jsonnet application.
      * 
      */
     private String name;
@@ -36,7 +36,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExt
         return this.code;
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the external variables of jsonnet application.
      * 
      */
     public String name() {

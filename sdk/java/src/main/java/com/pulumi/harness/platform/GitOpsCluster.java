@@ -57,14 +57,14 @@ public class GitOpsCluster extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Agent identifier of the GitOps cluster.
+     * Agent identifier of the GitOps cluster. (include scope prefix)
      * 
      */
     @Export(name="agentId", refs={String.class}, tree="[0]")
     private Output<String> agentId;
 
     /**
-     * @return Agent identifier of the GitOps cluster.
+     * @return Agent identifier of the GitOps cluster. (include scope prefix)
      * 
      */
     public Output<String> agentId() {

@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitopsAppProjectProjectSpecDestination {
     /**
-     * @return Name of the destination.
+     * @return Name of the destination cluster.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Namespace of the destination.
+     * @return Permitted Namespaces for deployment in the destination cluster.
      * 
      */
     private @Nullable String namespace;
     /**
-     * @return Server URL of the destination.
+     * @return Server URL of the destination cluster.
      * 
      */
     private @Nullable String server;
 
     private GitopsAppProjectProjectSpecDestination() {}
     /**
-     * @return Name of the destination.
+     * @return Name of the destination cluster.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Namespace of the destination.
+     * @return Permitted Namespaces for deployment in the destination cluster.
      * 
      */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
     /**
-     * @return Server URL of the destination.
+     * @return Server URL of the destination cluster.
      * 
      */
     public Optional<String> server() {

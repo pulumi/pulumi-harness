@@ -24,17 +24,37 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("githubAppEnterpriseBaseUrl")]
         public Input<string>? GithubAppEnterpriseBaseUrl { get; set; }
 
+        [Input("githubAppId")]
+        private Input<string>? _githubAppId;
+
         /// <summary>
         /// Specifies the Github App ID of the app used to access the repo for GitHub app authentication.
         /// </summary>
-        [Input("githubAppId")]
-        public Input<string>? GithubAppId { get; set; }
+        public Input<string>? GithubAppId
+        {
+            get => _githubAppId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _githubAppId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("githubAppInstallationId")]
+        private Input<string>? _githubAppInstallationId;
 
         /// <summary>
         /// Specifies the ID of the installed GitHub App for GitHub app authentication.
         /// </summary>
-        [Input("githubAppInstallationId")]
-        public Input<string>? GithubAppInstallationId { get; set; }
+        public Input<string>? GithubAppInstallationId
+        {
+            get => _githubAppInstallationId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _githubAppInstallationId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("githubAppPrivateKey")]
         private Input<string>? _githubAppPrivateKey;

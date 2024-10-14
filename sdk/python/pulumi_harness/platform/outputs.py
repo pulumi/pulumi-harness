@@ -7773,8 +7773,8 @@ class GitopsAppProjectProject(dict):
                  metadatas: Sequence['outputs.GitopsAppProjectProjectMetadata'],
                  specs: Sequence['outputs.GitopsAppProjectProjectSpec']):
         """
-        :param Sequence['GitopsAppProjectProjectMetadataArgs'] metadatas: Metadata details for the GitOps project.
-        :param Sequence['GitopsAppProjectProjectSpecArgs'] specs: Specification details for the GitOps project.
+        :param Sequence['GitopsAppProjectProjectMetadataArgs'] metadatas: K8s object metadata for the Argo project.
+        :param Sequence['GitopsAppProjectProjectSpecArgs'] specs: Specification details for the Argo project.
         """
         pulumi.set(__self__, "metadatas", metadatas)
         pulumi.set(__self__, "specs", specs)
@@ -7783,7 +7783,7 @@ class GitopsAppProjectProject(dict):
     @pulumi.getter
     def metadatas(self) -> Sequence['outputs.GitopsAppProjectProjectMetadata']:
         """
-        Metadata details for the GitOps project.
+        K8s object metadata for the Argo project.
         """
         return pulumi.get(self, "metadatas")
 
@@ -7791,7 +7791,7 @@ class GitopsAppProjectProject(dict):
     @pulumi.getter
     def specs(self) -> Sequence['outputs.GitopsAppProjectProjectSpec']:
         """
-        Specification details for the GitOps project.
+        Specification details for the Argo project.
         """
         return pulumi.get(self, "specs")
 
@@ -7835,7 +7835,7 @@ class GitopsAppProjectProjectMetadata(dict):
         :param Mapping[str, str] labels: Labels associated with the GitOps project.
         :param Sequence['GitopsAppProjectProjectMetadataManagedFieldArgs'] managed_fields: Managed fields associated with the GitOps project.
         :param str name: Name of the GitOps project.
-        :param str namespace: Namespace of the GitOps project.
+        :param str namespace: Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
         :param str resource_version: Resource Version for the GitOps project
         """
         if annotations is not None:
@@ -7907,7 +7907,7 @@ class GitopsAppProjectProjectMetadata(dict):
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         """
-        Namespace of the GitOps project.
+        Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
         """
         return pulumi.get(self, "namespace")
 
@@ -8079,15 +8079,15 @@ class GitopsAppProjectProjectSpec(dict):
                  sync_windows: Optional[Sequence['outputs.GitopsAppProjectProjectSpecSyncWindow']] = None):
         """
         :param Sequence['GitopsAppProjectProjectSpecClusterResourceBlacklistArgs'] cluster_resource_blacklists: Cluster resource blacklist for the GitOps project.
-        :param Sequence['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs'] cluster_resource_whitelists: Cluster resource whitelist for the GitOps project.
-        :param str description: Description of the GitOps project.
-        :param Sequence['GitopsAppProjectProjectSpecDestinationArgs'] destinations: Destinations for deployment of the GitOps project.
-        :param Sequence['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs'] namespace_resource_blacklists: Namespace resource blacklist for the GitOps project.
+        :param Sequence['GitopsAppProjectProjectSpecClusterResourceWhitelistArgs'] cluster_resource_whitelists: Cluster resource whitelist for the Argo project.
+        :param str description: Description of the Argo project.
+        :param Sequence['GitopsAppProjectProjectSpecDestinationArgs'] destinations: Allowed destinations for applications in this Argo project.
+        :param Sequence['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs'] namespace_resource_blacklists: Namespace resource blacklist for the Argo project.
         :param Sequence['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs'] namespace_resource_whitelists: Namespace resource whitelist for the GitOps project.
-        :param Sequence['GitopsAppProjectProjectSpecOrphanedResourceArgs'] orphaned_resources: Orphaned resources configuration for the GitOps project.
-        :param Sequence['GitopsAppProjectProjectSpecRoleArgs'] roles: Roles associated with the GitOps project.
+        :param Sequence['GitopsAppProjectProjectSpecOrphanedResourceArgs'] orphaned_resources: OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
+        :param Sequence['GitopsAppProjectProjectSpecRoleArgs'] roles: Roles associated with the Argo project.
         :param Sequence['GitopsAppProjectProjectSpecSignatureKeyArgs'] signature_keys: Signature keys for the GitOps project.
-        :param Sequence[str] source_repos: Source repositories for the GitOps project.
+        :param Sequence[str] source_repos: Allowed Source repositories for the Argo project.
         :param Sequence['GitopsAppProjectProjectSpecSyncWindowArgs'] sync_windows: Synchronization windows for the GitOps project.
         """
         if cluster_resource_blacklists is not None:
@@ -8125,7 +8125,7 @@ class GitopsAppProjectProjectSpec(dict):
     @pulumi.getter(name="clusterResourceWhitelists")
     def cluster_resource_whitelists(self) -> Optional[Sequence['outputs.GitopsAppProjectProjectSpecClusterResourceWhitelist']]:
         """
-        Cluster resource whitelist for the GitOps project.
+        Cluster resource whitelist for the Argo project.
         """
         return pulumi.get(self, "cluster_resource_whitelists")
 
@@ -8133,7 +8133,7 @@ class GitopsAppProjectProjectSpec(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Description of the GitOps project.
+        Description of the Argo project.
         """
         return pulumi.get(self, "description")
 
@@ -8141,7 +8141,7 @@ class GitopsAppProjectProjectSpec(dict):
     @pulumi.getter
     def destinations(self) -> Optional[Sequence['outputs.GitopsAppProjectProjectSpecDestination']]:
         """
-        Destinations for deployment of the GitOps project.
+        Allowed destinations for applications in this Argo project.
         """
         return pulumi.get(self, "destinations")
 
@@ -8149,7 +8149,7 @@ class GitopsAppProjectProjectSpec(dict):
     @pulumi.getter(name="namespaceResourceBlacklists")
     def namespace_resource_blacklists(self) -> Optional[Sequence['outputs.GitopsAppProjectProjectSpecNamespaceResourceBlacklist']]:
         """
-        Namespace resource blacklist for the GitOps project.
+        Namespace resource blacklist for the Argo project.
         """
         return pulumi.get(self, "namespace_resource_blacklists")
 
@@ -8165,7 +8165,7 @@ class GitopsAppProjectProjectSpec(dict):
     @pulumi.getter(name="orphanedResources")
     def orphaned_resources(self) -> Optional[Sequence['outputs.GitopsAppProjectProjectSpecOrphanedResource']]:
         """
-        Orphaned resources configuration for the GitOps project.
+        OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
         """
         return pulumi.get(self, "orphaned_resources")
 
@@ -8173,7 +8173,7 @@ class GitopsAppProjectProjectSpec(dict):
     @pulumi.getter
     def roles(self) -> Optional[Sequence['outputs.GitopsAppProjectProjectSpecRole']]:
         """
-        Roles associated with the GitOps project.
+        Roles associated with the Argo project.
         """
         return pulumi.get(self, "roles")
 
@@ -8189,7 +8189,7 @@ class GitopsAppProjectProjectSpec(dict):
     @pulumi.getter(name="sourceRepos")
     def source_repos(self) -> Optional[Sequence[str]]:
         """
-        Source repositories for the GitOps project.
+        Allowed Source repositories for the Argo project.
         """
         return pulumi.get(self, "source_repos")
 
@@ -8271,9 +8271,9 @@ class GitopsAppProjectProjectSpecDestination(dict):
                  namespace: Optional[str] = None,
                  server: Optional[str] = None):
         """
-        :param str name: Name of the destination.
-        :param str namespace: Namespace of the destination.
-        :param str server: Server URL of the destination.
+        :param str name: Name of the destination cluster.
+        :param str namespace: Permitted Namespaces for deployment in the destination cluster.
+        :param str server: Server URL of the destination cluster.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -8286,7 +8286,7 @@ class GitopsAppProjectProjectSpecDestination(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the destination.
+        Name of the destination cluster.
         """
         return pulumi.get(self, "name")
 
@@ -8294,7 +8294,7 @@ class GitopsAppProjectProjectSpecDestination(dict):
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         """
-        Namespace of the destination.
+        Permitted Namespaces for deployment in the destination cluster.
         """
         return pulumi.get(self, "namespace")
 
@@ -8302,7 +8302,7 @@ class GitopsAppProjectProjectSpecDestination(dict):
     @pulumi.getter
     def server(self) -> Optional[str]:
         """
-        Server URL of the destination.
+        Server URL of the destination cluster.
         """
         return pulumi.get(self, "server")
 
@@ -8473,7 +8473,7 @@ class GitopsAppProjectProjectSpecRole(dict):
         :param str name: Name of the role.
         :param Sequence[str] groups: Groups associated with the role.
         :param Sequence['GitopsAppProjectProjectSpecRoleJwtTokenArgs'] jwt_tokens: JWT tokens associated with the role.
-        :param Sequence[str] policies: Policies associated with the role.
+        :param Sequence[str] policies: Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
@@ -8520,7 +8520,7 @@ class GitopsAppProjectProjectSpecRole(dict):
     @pulumi.getter
     def policies(self) -> Optional[Sequence[str]]:
         """
-        Policies associated with the role.
+        Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.
         """
         return pulumi.get(self, "policies")
 
@@ -17769,7 +17769,7 @@ class GetGitopsApplicationsApplicationSpecResult(dict):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
         :param Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
-        :param str project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        :param str project: The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of a GitOps application.
         """
         pulumi.set(__self__, "destinations", destinations)
@@ -17799,7 +17799,7 @@ class GetGitopsApplicationsApplicationSpecResult(dict):
     @pulumi.getter
     def project(self) -> Optional[str]:
         """
-        The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
+        The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         """
         return pulumi.get(self, "project")
 
@@ -18058,7 +18058,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
                  value: str):
         """
         :param bool code: Code of the external variables of jsonnet application.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the external variables of jsonnet application.
         :param str value: Value of the external variables of jsonnet application.
         """
         pulumi.set(__self__, "code", code)
@@ -18077,7 +18077,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the GitOps application.
+        Name of the external variables of jsonnet application.
         """
         return pulumi.get(self, "name")
 
@@ -18098,7 +18098,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
                  value: str):
         """
         :param bool code: Code of the TLAS of the jsonnet application.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the TLAS of the jsonnet application.
         :param str value: Value of the TLAS of the jsonnet application.
         """
         pulumi.set(__self__, "code", code)
@@ -18117,7 +18117,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the GitOps application.
+        Name of the TLAS of the jsonnet application.
         """
         return pulumi.get(self, "name")
 
@@ -18220,7 +18220,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
                  name: str,
                  path: str):
         """
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the helm parameter.
         :param str path: Path to the file containing the values of the helm parameter.
         """
         pulumi.set(__self__, "name", name)
@@ -18230,7 +18230,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the GitOps application.
+        Name of the helm parameter.
         """
         return pulumi.get(self, "name")
 
@@ -18251,7 +18251,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
                  value: str):
         """
         :param bool force_string: Indicates if helm should interpret booleans and numbers as strings.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the helm parameter.
         :param str value: Value of the helm parameter.
         """
         pulumi.set(__self__, "force_string", force_string)
@@ -18270,7 +18270,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the GitOps application.
+        Name of the helm parameter.
         """
         return pulumi.get(self, "name")
 
@@ -18320,7 +18320,7 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
                  value: str):
         """
         :param str component: Component of the parameter of the ksonnet application.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the parameter of the ksonnet application.
         :param str value: Value of the parameter of the ksonnet application.
         """
         pulumi.set(__self__, "component", component)
@@ -18339,7 +18339,7 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the GitOps application.
+        Name of the parameter of the ksonnet application.
         """
         return pulumi.get(self, "name")
 
@@ -18454,7 +18454,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
                  name: str):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs'] envs: Entry in the GitOps application's environment.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the plugin.
         """
         pulumi.set(__self__, "envs", envs)
         pulumi.set(__self__, "name", name)
@@ -18471,7 +18471,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the GitOps application.
+        Name of the plugin.
         """
         return pulumi.get(self, "name")
 
@@ -18482,7 +18482,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(dict):
                  name: str,
                  value: str):
         """
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the variable, usually expressed in uppercase.
         :param str value: Value of the variable.
         """
         pulumi.set(__self__, "name", name)
@@ -18492,7 +18492,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the GitOps application.
+        Name of the variable, usually expressed in uppercase.
         """
         return pulumi.get(self, "name")
 

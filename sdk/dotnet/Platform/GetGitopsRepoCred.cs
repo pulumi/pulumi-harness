@@ -83,6 +83,18 @@ namespace Pulumi.Harness.Platform
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
 
+        [Input("creds")]
+        private List<Inputs.GetGitopsRepoCredCredArgs>? _creds;
+
+        /// <summary>
+        /// credential details.
+        /// </summary>
+        public List<Inputs.GetGitopsRepoCredCredArgs> Creds
+        {
+            get => _creds ?? (_creds = new List<Inputs.GetGitopsRepoCredCredArgs>());
+            set => _creds = value;
+        }
+
         /// <summary>
         /// Identifier of the Repository Credentials.
         /// </summary>
@@ -120,6 +132,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
+
+        [Input("creds")]
+        private InputList<Inputs.GetGitopsRepoCredCredInputArgs>? _creds;
+
+        /// <summary>
+        /// credential details.
+        /// </summary>
+        public InputList<Inputs.GetGitopsRepoCredCredInputArgs> Creds
+        {
+            get => _creds ?? (_creds = new InputList<Inputs.GetGitopsRepoCredCredInputArgs>());
+            set => _creds = value;
+        }
 
         /// <summary>
         /// Identifier of the Repository Credentials.

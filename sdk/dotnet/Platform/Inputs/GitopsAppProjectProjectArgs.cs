@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsAppProjectProjectMetadataArgs>? _metadatas;
 
         /// <summary>
-        /// Metadata details for the GitOps project.
+        /// K8s object metadata for the Argo project.
         /// </summary>
         public InputList<Inputs.GitopsAppProjectProjectMetadataArgs> Metadatas
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsAppProjectProjectSpecArgs>? _specs;
 
         /// <summary>
-        /// Specification details for the GitOps project.
+        /// Specification details for the Argo project.
         /// </summary>
         public InputList<Inputs.GitopsAppProjectProjectSpecArgs> Specs
         {

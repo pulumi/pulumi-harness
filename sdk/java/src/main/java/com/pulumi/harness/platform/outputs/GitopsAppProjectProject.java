@@ -13,26 +13,26 @@ import java.util.Objects;
 @CustomType
 public final class GitopsAppProjectProject {
     /**
-     * @return Metadata details for the GitOps project.
+     * @return K8s object metadata for the Argo project.
      * 
      */
     private List<GitopsAppProjectProjectMetadata> metadatas;
     /**
-     * @return Specification details for the GitOps project.
+     * @return Specification details for the Argo project.
      * 
      */
     private List<GitopsAppProjectProjectSpec> specs;
 
     private GitopsAppProjectProject() {}
     /**
-     * @return Metadata details for the GitOps project.
+     * @return K8s object metadata for the Argo project.
      * 
      */
     public List<GitopsAppProjectProjectMetadata> metadatas() {
         return this.metadatas;
     }
     /**
-     * @return Specification details for the GitOps project.
+     * @return Specification details for the Argo project.
      * 
      */
     public List<GitopsAppProjectProjectSpec> specs() {

@@ -36,19 +36,19 @@ import (
 type GitopsAppProject struct {
 	pulumi.CustomResourceState
 
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps project/agent.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the GitOps project. Project is created on agent scope.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps agent for which project is created.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// Project identifier of the GitOps repository.
+	// Project identifier of the GitOps agent for which project is created.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// GitOps project configuration.
 	Projects GitopsAppProjectProjectArrayOutput `pulumi:"projects"`
 	// Identifier for the GitOps project.
 	QueryName pulumi.StringOutput `pulumi:"queryName"`
-	// Indicates if the GitOps repository should be updated if existing and inserted if not.
+	// Indicates if the GitOps project should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrOutput `pulumi:"upsert"`
 }
 
@@ -91,36 +91,36 @@ func GetGitopsAppProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GitopsAppProject resources.
 type gitopsAppProjectState struct {
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps project/agent.
 	AccountId *string `pulumi:"accountId"`
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the GitOps project. Project is created on agent scope.
 	AgentId *string `pulumi:"agentId"`
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps agent for which project is created.
 	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the GitOps repository.
+	// Project identifier of the GitOps agent for which project is created.
 	ProjectId *string `pulumi:"projectId"`
 	// GitOps project configuration.
 	Projects []GitopsAppProjectProject `pulumi:"projects"`
 	// Identifier for the GitOps project.
 	QueryName *string `pulumi:"queryName"`
-	// Indicates if the GitOps repository should be updated if existing and inserted if not.
+	// Indicates if the GitOps project should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 }
 
 type GitopsAppProjectState struct {
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps project/agent.
 	AccountId pulumi.StringPtrInput
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the GitOps project. Project is created on agent scope.
 	AgentId pulumi.StringPtrInput
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps agent for which project is created.
 	OrgId pulumi.StringPtrInput
-	// Project identifier of the GitOps repository.
+	// Project identifier of the GitOps agent for which project is created.
 	ProjectId pulumi.StringPtrInput
 	// GitOps project configuration.
 	Projects GitopsAppProjectProjectArrayInput
 	// Identifier for the GitOps project.
 	QueryName pulumi.StringPtrInput
-	// Indicates if the GitOps repository should be updated if existing and inserted if not.
+	// Indicates if the GitOps project should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 }
 
@@ -129,37 +129,37 @@ func (GitopsAppProjectState) ElementType() reflect.Type {
 }
 
 type gitopsAppProjectArgs struct {
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps project/agent.
 	AccountId string `pulumi:"accountId"`
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the GitOps project. Project is created on agent scope.
 	AgentId string `pulumi:"agentId"`
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps agent for which project is created.
 	OrgId *string `pulumi:"orgId"`
-	// Project identifier of the GitOps repository.
+	// Project identifier of the GitOps agent for which project is created.
 	ProjectId *string `pulumi:"projectId"`
 	// GitOps project configuration.
 	Projects []GitopsAppProjectProject `pulumi:"projects"`
 	// Identifier for the GitOps project.
 	QueryName *string `pulumi:"queryName"`
-	// Indicates if the GitOps repository should be updated if existing and inserted if not.
+	// Indicates if the GitOps project should be updated if existing and inserted if not.
 	Upsert *bool `pulumi:"upsert"`
 }
 
 // The set of arguments for constructing a GitopsAppProject resource.
 type GitopsAppProjectArgs struct {
-	// Account identifier of the GitOps project.
+	// Account identifier of the GitOps project/agent.
 	AccountId pulumi.StringInput
-	// Agent identifier of the GitOps project.
+	// Agent identifier of the GitOps project. Project is created on agent scope.
 	AgentId pulumi.StringInput
-	// Org identifier of the GitOps project.
+	// Org identifier of the GitOps agent for which project is created.
 	OrgId pulumi.StringPtrInput
-	// Project identifier of the GitOps repository.
+	// Project identifier of the GitOps agent for which project is created.
 	ProjectId pulumi.StringPtrInput
 	// GitOps project configuration.
 	Projects GitopsAppProjectProjectArrayInput
 	// Identifier for the GitOps project.
 	QueryName pulumi.StringPtrInput
-	// Indicates if the GitOps repository should be updated if existing and inserted if not.
+	// Indicates if the GitOps project should be updated if existing and inserted if not.
 	Upsert pulumi.BoolPtrInput
 }
 
@@ -250,22 +250,22 @@ func (o GitopsAppProjectOutput) ToGitopsAppProjectOutputWithContext(ctx context.
 	return o
 }
 
-// Account identifier of the GitOps project.
+// Account identifier of the GitOps project/agent.
 func (o GitopsAppProjectOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitopsAppProject) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Agent identifier of the GitOps project.
+// Agent identifier of the GitOps project. Project is created on agent scope.
 func (o GitopsAppProjectOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitopsAppProject) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
 
-// Org identifier of the GitOps project.
+// Org identifier of the GitOps agent for which project is created.
 func (o GitopsAppProjectOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitopsAppProject) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Project identifier of the GitOps repository.
+// Project identifier of the GitOps agent for which project is created.
 func (o GitopsAppProjectOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitopsAppProject) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -280,7 +280,7 @@ func (o GitopsAppProjectOutput) QueryName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitopsAppProject) pulumi.StringOutput { return v.QueryName }).(pulumi.StringOutput)
 }
 
-// Indicates if the GitOps repository should be updated if existing and inserted if not.
+// Indicates if the GitOps project should be updated if existing and inserted if not.
 func (o GitopsAppProjectOutput) Upsert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitopsAppProject) pulumi.BoolPtrOutput { return v.Upsert }).(pulumi.BoolPtrOutput)
 }

@@ -109,14 +109,14 @@ public final class GitopsAppProjectProjectMetadataArgs extends com.pulumi.resour
     }
 
     /**
-     * Namespace of the GitOps project.
+     * Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return Namespace of the GitOps project.
+     * @return Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -316,7 +316,7 @@ public final class GitopsAppProjectProjectMetadataArgs extends com.pulumi.resour
         }
 
         /**
-         * @param namespace Namespace of the GitOps project.
+         * @param namespace Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class GitopsAppProjectProjectMetadataArgs extends com.pulumi.resour
         }
 
         /**
-         * @param namespace Namespace of the GitOps project.
+         * @param namespace Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
          * 
          * @return builder
          * 

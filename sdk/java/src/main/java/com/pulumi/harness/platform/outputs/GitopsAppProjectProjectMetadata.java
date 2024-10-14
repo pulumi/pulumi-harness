@@ -45,7 +45,7 @@ public final class GitopsAppProjectProjectMetadata {
      */
     private @Nullable String name;
     /**
-     * @return Namespace of the GitOps project.
+     * @return Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
      * 
      */
     private @Nullable String namespace;
@@ -99,7 +99,7 @@ public final class GitopsAppProjectProjectMetadata {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Namespace of the GitOps project.
+     * @return Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
      * 
      */
     public Optional<String> namespace() {

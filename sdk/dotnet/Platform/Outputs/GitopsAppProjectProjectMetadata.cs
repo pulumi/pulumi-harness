@@ -38,7 +38,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Namespace of the GitOps project.
+        /// Namespace of the GitOps project. This must be the same as the namespace where the agent is installed
         /// </summary>
         public readonly string? Namespace;
         /// <summary>
