@@ -4818,11 +4818,13 @@
                 },
                 "githubAppId": {
                     "type": "string",
-                    "description": "Specifies the Github App ID of the app used to access the repo for GitHub app authentication.\n"
+                    "description": "Specifies the Github App ID of the app used to access the repo for GitHub app authentication.\n",
+                    "secret": true
                 },
                 "githubAppInstallationId": {
                     "type": "string",
-                    "description": "Specifies the ID of the installed GitHub App for GitHub app authentication.\n"
+                    "description": "Specifies the ID of the installed GitHub App for GitHub app authentication.\n",
+                    "secret": true
                 },
                 "githubAppPrivateKey": {
                     "type": "string",
@@ -4863,7 +4865,20 @@
                     "description": "Username to be used for authenticating the remote repository.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "githubAppId",
+                        "githubAppInstallationId",
+                        "githubAppPrivateKey",
+                        "password",
+                        "sshPrivateKey",
+                        "tlsClientCertData",
+                        "tlsClientCertKey"
+                    ]
+                }
+            }
         },
         "harness:platform/GitOpsRepositoryEcrGen:GitOpsRepositoryEcrGen": {
             "properties": {
@@ -5000,11 +5015,13 @@
                 },
                 "githubAppId": {
                     "type": "string",
-                    "description": "Id of the GitHub app used to access the repo.\n"
+                    "description": "Id of the GitHub app used to access the repo.\n",
+                    "secret": true
                 },
                 "githubAppInstallationId": {
                     "type": "string",
-                    "description": "Installation id of the GitHub app used to access the repo.\n"
+                    "description": "Installation id of the GitHub app used to access the repo.\n",
+                    "secret": true
                 },
                 "githubAppPrivateKey": {
                     "type": "string",
@@ -5078,10 +5095,16 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "connectionType",
+                        "githubAppId",
+                        "githubAppInstallationId",
+                        "githubAppPrivateKey",
                         "inheritedCreds",
+                        "password",
                         "project",
                         "repo",
                         "sshPrivateKey",
+                        "tlsClientCertData",
+                        "tlsClientCertKey",
                         "type_"
                     ]
                 }
@@ -5289,14 +5312,14 @@
                     "items": {
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectMetadata:GitopsAppProjectProjectMetadata"
                     },
-                    "description": "Metadata details for the GitOps project.\n"
+                    "description": "K8s object metadata for the Argo project.\n"
                 },
                 "specs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpec:GitopsAppProjectProjectSpec"
                     },
-                    "description": "Specification details for the GitOps project.\n"
+                    "description": "Specification details for the Argo project.\n"
                 }
             },
             "type": "object",
@@ -5345,7 +5368,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Namespace of the GitOps project.\n"
+                    "description": "Namespace of the GitOps project. This must be the same as the namespace where the agent is installed\n"
                 },
                 "resourceVersion": {
                     "type": "string",
@@ -5429,25 +5452,25 @@
                     "items": {
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecClusterResourceWhitelist:GitopsAppProjectProjectSpecClusterResourceWhitelist"
                     },
-                    "description": "Cluster resource whitelist for the GitOps project.\n"
+                    "description": "Cluster resource whitelist for the Argo project.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description of the GitOps project.\n"
+                    "description": "Description of the Argo project.\n"
                 },
                 "destinations": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecDestination:GitopsAppProjectProjectSpecDestination"
                     },
-                    "description": "Destinations for deployment of the GitOps project.\n"
+                    "description": "Allowed destinations for applications in this Argo project.\n"
                 },
                 "namespaceResourceBlacklists": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecNamespaceResourceBlacklist:GitopsAppProjectProjectSpecNamespaceResourceBlacklist"
                     },
-                    "description": "Namespace resource blacklist for the GitOps project.\n"
+                    "description": "Namespace resource blacklist for the Argo project.\n"
                 },
                 "namespaceResourceWhitelists": {
                     "type": "array",
@@ -5461,14 +5484,14 @@
                     "items": {
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecOrphanedResource:GitopsAppProjectProjectSpecOrphanedResource"
                     },
-                    "description": "Orphaned resources configuration for the GitOps project.\n"
+                    "description": "OrphanedResources specifies if agent should monitor orphaned resources of apps in this project\n"
                 },
                 "roles": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecRole:GitopsAppProjectProjectSpecRole"
                     },
-                    "description": "Roles associated with the GitOps project.\n"
+                    "description": "Roles associated with the Argo project.\n"
                 },
                 "signatureKeys": {
                     "type": "array",
@@ -5482,7 +5505,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Source repositories for the GitOps project.\n"
+                    "description": "Allowed Source repositories for the Argo project.\n"
                 },
                 "syncWindows": {
                     "type": "array",
@@ -5531,15 +5554,15 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the destination.\n"
+                    "description": "Name of the destination cluster.\n"
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "Namespace of the destination.\n"
+                    "description": "Permitted Namespaces for deployment in the destination cluster.\n"
                 },
                 "server": {
                     "type": "string",
-                    "description": "Server URL of the destination.\n"
+                    "description": "Server URL of the destination cluster.\n"
                 }
             },
             "type": "object"
@@ -5632,7 +5655,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Policies associated with the role.\n"
+                    "description": "Policies associated with the role. These are argo RBAC policies and may not necessarily reflect in harness.\n"
                 }
             },
             "type": "object",
@@ -10005,7 +10028,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.\n"
+                    "description": "The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.\n"
                 },
                 "sources": {
                     "type": "array",
@@ -10210,7 +10233,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the external variables of jsonnet application.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10237,7 +10260,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the TLAS of the jsonnet application.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10316,7 +10339,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the helm parameter.\n"
                 },
                 "path": {
                     "type": "string",
@@ -10342,7 +10365,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the helm parameter.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10394,7 +10417,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the parameter of the ksonnet application.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10485,7 +10508,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the plugin.\n"
                 }
             },
             "type": "object",
@@ -10503,7 +10526,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the variable, usually expressed in uppercase.\n"
                 },
                 "value": {
                     "type": "string",
@@ -24432,7 +24455,7 @@
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps cluster.\n"
+                    "description": "Agent identifier of the GitOps cluster. (include scope prefix)\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -24467,7 +24490,7 @@
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps cluster.\n",
+                    "description": "Agent identifier of the GitOps cluster. (include scope prefix)\n",
                     "willReplaceOnChanges": true
                 },
                 "identifier": {
@@ -24508,7 +24531,7 @@
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps cluster.\n",
+                        "description": "Agent identifier of the GitOps cluster. (include scope prefix)\n",
                         "willReplaceOnChanges": true
                     },
                     "identifier": {
@@ -24928,7 +24951,8 @@
                     "items": {
                         "$ref": "#/types/harness:platform/GitOpsRepositoryUpdateMask:GitOpsRepositoryUpdateMask"
                     },
-                    "description": "Update mask of the repository.\n"
+                    "description": "Update mask of the repository.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "upsert": {
                     "type": "boolean",
@@ -24999,7 +25023,8 @@
                     "items": {
                         "$ref": "#/types/harness:platform/GitOpsRepositoryUpdateMask:GitOpsRepositoryUpdateMask"
                     },
-                    "description": "Update mask of the repository.\n"
+                    "description": "Update mask of the repository.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "upsert": {
                     "type": "boolean",
@@ -25072,7 +25097,8 @@
                         "items": {
                             "$ref": "#/types/harness:platform/GitOpsRepositoryUpdateMask:GitOpsRepositoryUpdateMask"
                         },
-                        "description": "Update mask of the repository.\n"
+                        "description": "Update mask of the repository.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "upsert": {
                         "type": "boolean",
@@ -25492,19 +25518,19 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps project.\n"
+                    "description": "Account identifier of the GitOps project/agent.\n"
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps project.\n"
+                    "description": "Agent identifier of the GitOps project. Project is created on agent scope.\n"
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Org identifier of the GitOps project.\n"
+                    "description": "Org identifier of the GitOps agent for which project is created.\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps repository.\n"
+                    "description": "Project identifier of the GitOps agent for which project is created.\n"
                 },
                 "projects": {
                     "type": "array",
@@ -25519,7 +25545,7 @@
                 },
                 "upsert": {
                     "type": "boolean",
-                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                    "description": "Indicates if the GitOps project should be updated if existing and inserted if not.\n"
                 }
             },
             "required": [
@@ -25531,22 +25557,22 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps project.\n",
+                    "description": "Account identifier of the GitOps project/agent.\n",
                     "willReplaceOnChanges": true
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps project.\n",
+                    "description": "Agent identifier of the GitOps project. Project is created on agent scope.\n",
                     "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Org identifier of the GitOps project.\n",
+                    "description": "Org identifier of the GitOps agent for which project is created.\n",
                     "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps repository.\n",
+                    "description": "Project identifier of the GitOps agent for which project is created.\n",
                     "willReplaceOnChanges": true
                 },
                 "projects": {
@@ -25562,7 +25588,7 @@
                 },
                 "upsert": {
                     "type": "boolean",
-                    "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                    "description": "Indicates if the GitOps project should be updated if existing and inserted if not.\n"
                 }
             },
             "requiredInputs": [
@@ -25575,22 +25601,22 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps project.\n",
+                        "description": "Account identifier of the GitOps project/agent.\n",
                         "willReplaceOnChanges": true
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps project.\n",
+                        "description": "Agent identifier of the GitOps project. Project is created on agent scope.\n",
                         "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Org identifier of the GitOps project.\n",
+                        "description": "Org identifier of the GitOps agent for which project is created.\n",
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the GitOps repository.\n",
+                        "description": "Project identifier of the GitOps agent for which project is created.\n",
                         "willReplaceOnChanges": true
                     },
                     "projects": {
@@ -25606,7 +25632,7 @@
                     },
                     "upsert": {
                         "type": "boolean",
-                        "description": "Indicates if the GitOps repository should be updated if existing and inserted if not.\n"
+                        "description": "Indicates if the GitOps project should be updated if existing and inserted if not.\n"
                     }
                 },
                 "type": "object"
@@ -41453,23 +41479,23 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps project.\n"
+                        "description": "Account identifier of the GitOps Agent where argo project resides.\n"
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps project.\n"
+                        "description": "Agent identifier of the agent where argo project resides(include scope prefix)\n"
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Org identifier of the GitOps project.\n"
+                        "description": "Org identifier of the GitOps Agent where argo project resides.\n"
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the GitOps repository.\n"
+                        "description": "Project identifier of the Gitops Agent where argo project resides.\n"
                     },
                     "queryName": {
                         "type": "string",
-                        "description": "Identifier for the GitOps project.\n"
+                        "description": "Identifier for the GitOps Argo project.\n"
                     }
                 },
                 "type": "object",
@@ -41482,11 +41508,11 @@
                 "description": "A collection of values returned by getGitopsAppProject.\n",
                 "properties": {
                     "accountId": {
-                        "description": "Account identifier of the GitOps project.\n",
+                        "description": "Account identifier of the GitOps Agent where argo project resides.\n",
                         "type": "string"
                     },
                     "agentId": {
-                        "description": "Agent identifier of the GitOps project.\n",
+                        "description": "Agent identifier of the agent where argo project resides(include scope prefix)\n",
                         "type": "string"
                     },
                     "id": {
@@ -41494,15 +41520,15 @@
                         "type": "string"
                     },
                     "orgId": {
-                        "description": "Org identifier of the GitOps project.\n",
+                        "description": "Org identifier of the GitOps Agent where argo project resides.\n",
                         "type": "string"
                     },
                     "projectId": {
-                        "description": "Project identifier of the GitOps repository.\n",
+                        "description": "Project identifier of the Gitops Agent where argo project resides.\n",
                         "type": "string"
                     },
                     "queryName": {
-                        "description": "Identifier for the GitOps project.\n",
+                        "description": "Identifier for the GitOps Argo project.\n",
                         "type": "string"
                     }
                 },
@@ -41969,6 +41995,13 @@
                     "agentId": {
                         "type": "string",
                         "description": "Agent identifier of the Repository Credentials.\n"
+                    },
+                    "creds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getGitopsRepoCredCred:getGitopsRepoCredCred"
+                        },
+                        "description": "credential details.\n"
                     },
                     "identifier": {
                         "type": "string",

@@ -4928,5 +4928,73 @@
             }
         }
     },
-    "auto-settings": {}
+    "auto-settings": {
+        "resources": {
+            "harness_platform_gitops_agent": {
+                "maxItemsOneOverrides": {
+                    "metadata": false
+                }
+            },
+            "harness_platform_gitops_app_project": {
+                "maxItemsOneOverrides": {
+                    "project": false,
+                    "project.$.metadata": false,
+                    "project.$.spec": false
+                }
+            },
+            "harness_platform_gitops_applications": {
+                "maxItemsOneOverrides": {
+                    "application": false,
+                    "application.$.metadata": false,
+                    "application.$.spec": false,
+                    "application.$.spec.$.sync_policy": false,
+                    "application.$.spec.$.sync_policy.$.automated": false,
+                    "application.$.spec.$.sync_policy.$.retry": false,
+                    "application.$.spec.$.sync_policy.$.retry.$.backoff": false
+                }
+            },
+            "harness_platform_gitops_cluster": {
+                "maxItemsOneOverrides": {
+                    "request": false,
+                    "request.$.cluster": false,
+                    "request.$.cluster.$.config": false,
+                    "request.$.cluster.$.config.$.exec_provider_config": false,
+                    "request.$.cluster.$.config.$.tls_client_config": false,
+                    "request.$.cluster.$.refresh_requested_at": false
+                }
+            },
+            "harness_platform_gitops_repo_cert": {
+                "maxItemsOneOverrides": {
+                    "request": false,
+                    "request.$.certificates.$.metadata": false
+                }
+            },
+            "harness_platform_gitops_repo_cred": {
+                "maxItemsOneOverrides": {
+                    "creds": false
+                }
+            },
+            "harness_platform_gitops_repository": {
+                "maxItemsOneOverrides": {
+                    "repo": false
+                }
+            }
+        },
+        "datasources": {
+            "harness_platform_gitops_applications": {
+                "maxItemsOneOverrides": {
+                    "application.$.metadata": false,
+                    "application.$.spec.$.source.$.helm": false
+                }
+            },
+            "harness_platform_gitops_cluster": {
+                "maxItemsOneOverrides": {
+                    "request.$.cluster": false,
+                    "request.$.cluster.$.config": false,
+                    "request.$.cluster.$.config.$.tls_client_config": false,
+                    "request.$.cluster.$.refresh_requested_at": false
+                }
+            }
+        }
+    }
 }
