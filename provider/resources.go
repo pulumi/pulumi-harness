@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
@@ -431,6 +432,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 
 // In the upstream example, two providers are defined in the same code block.
 // Pulumi Convert is not set up to handle this case, so this edit breaks the example up into two separate code blocks.
+// This can be removed when https://github.com/pulumi/pulumi/issues/17596 is implemented.
 var fixInstallationExample = tfbridge.DocsEdit{
 	Path: "index.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
