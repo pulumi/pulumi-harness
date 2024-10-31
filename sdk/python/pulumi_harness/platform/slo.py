@@ -200,15 +200,15 @@ class Slo(pulumi.CustomResource):
                     "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {
-                            "day_of_month": 5,
+                            "dayOfMonth": 5,
                         },
                     }),
                 },
                 "type": "Simple",
                 "spec": json.dumps({
-                    "monitored_service_ref": "monitoredServiceRef",
-                    "service_level_indicator_type": "Availability",
-                    "service_level_indicators": [{
+                    "monitoredServiceRef": "monitoredServiceRef",
+                    "serviceLevelIndicatorType": "Availability",
+                    "serviceLevelIndicators": [{
                         "name": "name",
                         "identifier": "identifier",
                         "type": "Window",
@@ -216,10 +216,10 @@ class Slo(pulumi.CustomResource):
                             "type": "Threshold",
                             "spec": {
                                 "metric1": "metric1",
-                                "threshold_value": 10,
-                                "threshold_type": ">",
+                                "thresholdValue": 10,
+                                "thresholdType": ">",
                             },
-                            "sli_missing_data_type": "Good",
+                            "sliMissingDataType": "Good",
                         },
                     }],
                 }),
@@ -299,15 +299,15 @@ class Slo(pulumi.CustomResource):
                     "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {
-                            "day_of_month": 5,
+                            "dayOfMonth": 5,
                         },
                     }),
                 },
                 "type": "Simple",
                 "spec": json.dumps({
-                    "monitored_service_ref": "monitoredServiceRef",
-                    "service_level_indicator_type": "Availability",
-                    "service_level_indicators": [{
+                    "monitoredServiceRef": "monitoredServiceRef",
+                    "serviceLevelIndicatorType": "Availability",
+                    "serviceLevelIndicators": [{
                         "name": "name",
                         "identifier": "identifier",
                         "type": "Window",
@@ -315,10 +315,10 @@ class Slo(pulumi.CustomResource):
                             "type": "Threshold",
                             "spec": {
                                 "metric1": "metric1",
-                                "threshold_value": 10,
-                                "threshold_type": ">",
+                                "thresholdValue": 10,
+                                "thresholdType": ">",
                             },
-                            "sli_missing_data_type": "Good",
+                            "sliMissingDataType": "Good",
                         },
                     }],
                 }),
