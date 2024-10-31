@@ -200,20 +200,20 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "ElasticSearch",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "error_4xx",
                                 "identifier": "error_4xx_id",
                                 "query": "Bad Request",
                                 "index": "index",
-                                "group_name": "Logs_Group",
-                                "query_params": {
+                                "groupName": "Logs_Group",
+                                "queryParams": {
                                     "index": "index",
-                                    "service_instance_field": "serviceInstanceIdentifier",
-                                    "time_stamp_identifier": "timeStampIdentifier",
-                                    "time_stamp_format": "timeStampFormat",
-                                    "message_identifier": "messageIdentifier",
+                                    "serviceInstanceField": "serviceInstanceIdentifier",
+                                    "timeStampIdentifier": "timeStampIdentifier",
+                                    "timeStampFormat": "timeStampFormat",
+                                    "messageIdentifier": "messageIdentifier",
                                 },
                             },
                             {
@@ -240,8 +240,8 @@ class MonitoredService(pulumi.CustomResource):
                         "type": "PagerDuty",
                         "enabled": True,
                         "spec": json.dumps({
-                            "connector_ref": "account.pd",
-                            "pager_duty_service_id": "P0N21OB",
+                            "connectorRef": "account.pd",
+                            "pagerDutyServiceId": "P0N21OB",
                         }),
                         "category": "Alert",
                     },
@@ -252,8 +252,8 @@ class MonitoredService(pulumi.CustomResource):
                         "enabled": True,
                         "spec": json.dumps({
                             "name": "FH",
-                            "webhook_url": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
-                            "webhook_curl_command": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
+                            "webhookUrl": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
+                            "webhookCurlCommand": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
                             "type": "Alert",
                         }),
                         "category": "Alert",
@@ -286,7 +286,7 @@ class MonitoredService(pulumi.CustomResource):
                         "category": "Alert",
                         "spec": json.dumps({
                             "type": "Alert",
-                            "authorization_token": "abc",
+                            "authorizationToken": "abc",
                         }),
                     },
                 ],
@@ -322,24 +322,24 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "SumologicMetrics",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "metric_cpu",
                                 "identifier": "metric_cpu",
                                 "query": "metric=cpu",
-                                "group_name": "g1",
-                                "query_params": {
-                                    "service_instance_field": "_sourcehost",
+                                "groupName": "g1",
+                                "queryParams": {
+                                    "serviceInstanceField": "_sourcehost",
                                 },
-                                "risk_profile": {
-                                    "risk_category": "Performance_Other",
-                                    "threshold_types": ["ACT_WHEN_HIGHER"],
+                                "riskProfile": {
+                                    "riskCategory": "Performance_Other",
+                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
                                 },
-                                "live_monitoring_enabled": "true",
-                                "continuous_verification_enabled": "true",
-                                "sli_enabled": "false",
-                                "metric_thresholds": [
+                                "liveMonitoringEnabled": "true",
+                                "continuousVerificationEnabled": "true",
+                                "sliEnabled": "false",
+                                "metricThresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -348,11 +348,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greater_than": 100,
+                                                "greaterThan": 100,
                                             },
                                         },
-                                        "metric_type": "Custom",
-                                        "metric_name": "metric_cpu",
+                                        "metricType": "Custom",
+                                        "metricName": "metric_cpu",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -414,15 +414,15 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "SumologicLogs",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "log1",
                                 "identifier": "log1",
                                 "query": "*",
-                                "group_name": "Logs Group",
-                                "query_params": {
-                                    "service_instance_field": "_sourcehost",
+                                "groupName": "Logs Group",
+                                "queryParams": {
+                                    "serviceInstanceField": "_sourcehost",
                                 },
                             },
                             {
@@ -459,23 +459,23 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "SplunkSignalFXMetrics",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "metric_infra_cpu",
                                 "identifier": "metric_infra_cpu",
                                 "query": "***",
-                                "group_name": "g",
-                                "risk_profile": {
-                                    "risk_category": "Errors",
-                                    "threshold_types": [
+                                "groupName": "g",
+                                "riskProfile": {
+                                    "riskCategory": "Errors",
+                                    "thresholdTypes": [
                                         "ACT_WHEN_HIGHER",
                                         "ACT_WHEN_LOWER",
                                     ],
                                 },
-                                "live_monitoring_enabled": "true",
-                                "continuous_verification_enabled": "true",
-                                "sli_enabled": "false",
+                                "liveMonitoringEnabled": "true",
+                                "continuousVerificationEnabled": "true",
+                                "sliEnabled": "false",
                             },
                             {
                                 "name": "name2",
@@ -548,15 +548,15 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "GrafanaLokiLogs",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "Demo",
                                 "identifier": "Demo",
                                 "query": "{job=~\\".+\\"}",
-                                "group_name": "Log_Group",
-                                "query_params": {
-                                    "service_instance_field": "job",
+                                "groupName": "Log_Group",
+                                "queryParams": {
+                                    "serviceInstanceField": "job",
                                 },
                             },
                             {
@@ -596,28 +596,28 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "AzureMetrics",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "metric",
                                 "identifier": "metric",
                                 "query": "default",
-                                "group_name": "g1",
-                                "query_params": {
-                                    "service_instance_field": "host",
+                                "groupName": "g1",
+                                "queryParams": {
+                                    "serviceInstanceField": "host",
                                     "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
-                                    "health_source_metric_name": "cpuUsagePercentage",
-                                    "health_source_metric_namespace": "insights.container/nodes",
-                                    "aggregation_type": "average",
+                                    "healthSourceMetricName": "cpuUsagePercentage",
+                                    "healthSourceMetricNamespace": "insights.container/nodes",
+                                    "aggregationType": "average",
                                 },
-                                "risk_profile": {
-                                    "risk_category": "Performance_Other",
-                                    "threshold_types": ["ACT_WHEN_HIGHER"],
+                                "riskProfile": {
+                                    "riskCategory": "Performance_Other",
+                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
                                 },
-                                "live_monitoring_enabled": "true",
-                                "continuous_verification_enabled": "true",
-                                "sli_enabled": "false",
-                                "metric_thresholds": [
+                                "liveMonitoringEnabled": "true",
+                                "continuousVerificationEnabled": "true",
+                                "sliEnabled": "false",
+                                "metricThresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -626,11 +626,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greater_than": 100,
+                                                "greaterThan": 100,
                                             },
                                         },
                                         "metrictype": "Custom",
-                                        "metric_name": "metric",
+                                        "metricName": "metric",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -695,20 +695,20 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "AzureLogs",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [{
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [{
                             "name": "name2",
                             "identifier": "identifier2",
-                            "group_name": "g2",
+                            "groupName": "g2",
                             "query": "*",
-                            "query_params": {
-                                "service_instance_field": "Name",
-                                "time_stamp_identifier": "StartedTime",
-                                "message_identifier": "Image",
+                            "queryParams": {
+                                "serviceInstanceField": "Name",
+                                "timeStampIdentifier": "StartedTime",
+                                "messageIdentifier": "Image",
                                 "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
                             },
-                            "live_monitoring_enabled": "false",
-                            "continuous_verification_enabled": "false",
+                            "liveMonitoringEnabled": "false",
+                            "continuousVerificationEnabled": "false",
                         }],
                     }),
                 }],
@@ -733,30 +733,30 @@ class MonitoredService(pulumi.CustomResource):
                     "identifier": "prometheus_metrics",
                     "type": "Prometheus",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "metric_definitions": [{
+                        "connectorRef": "connectorRef",
+                        "metricDefinitions": [{
                             "identifier": "Prometheus_Metric",
-                            "metric_name": "Prometheus Metric",
-                            "risk_profile": {
-                                "risk_category": "Performance_Other",
-                                "threshold_types": ["ACT_WHEN_HIGHER"],
+                            "metricName": "Prometheus Metric",
+                            "riskProfile": {
+                                "riskCategory": "Performance_Other",
+                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "live_monitoring": {
+                                "liveMonitoring": {
                                     "enabled": True,
                                 },
-                                "deployment_verification": {
+                                "deploymentVerification": {
                                     "enabled": True,
-                                    "service_instance_field_name": "pod_name",
+                                    "serviceInstanceFieldName": "pod_name",
                                 },
                             },
                             "query": "count(up{group=\\"cv\\",group=\\"cv\\"})",
-                            "group_name": "met",
-                            "is_manual_query": True,
+                            "groupName": "met",
+                            "isManualQuery": True,
                         }],
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Custom",
-                            "metric_thresholds": [
+                            "metricThresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -765,11 +765,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greater_than": 100,
+                                            "greaterThan": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metric_name": "Prometheus Metric",
+                                    "metricName": "Prometheus Metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -813,29 +813,29 @@ class MonitoredService(pulumi.CustomResource):
                     "identifier": "ddm",
                     "type": "DatadogMetrics",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
+                        "connectorRef": "connectorRef",
                         "feature": "Datadog Cloud Metrics",
-                        "metric_definitions": [
+                        "metricDefinitions": [
                             {
-                                "metric_name": "metric",
-                                "metric_path": "M1",
+                                "metricName": "metric",
+                                "metricPath": "M1",
                                 "identifier": "metric",
                                 "query": \"\"\"avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
         avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
         (a+b)/10\"\"\",
-                                "is_manual_query": True,
-                                "is_custom_created_metric": True,
-                                "risk_profile": {
-                                    "risk_category": "Performance_Other",
-                                    "threshold_types": ["ACT_WHEN_HIGHER"],
+                                "isManualQuery": True,
+                                "isCustomCreatedMetric": True,
+                                "riskProfile": {
+                                    "riskCategory": "Performance_Other",
+                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
                                 },
                                 "analysis": {
-                                    "live_monitoring": {
+                                    "liveMonitoring": {
                                         "enabled": True,
                                     },
-                                    "deployment_verification": {
+                                    "deploymentVerification": {
                                         "enabled": True,
-                                        "service_instance_field_name": "pod",
+                                        "serviceInstanceFieldName": "pod",
                                     },
                                 },
                             },
@@ -867,9 +867,9 @@ class MonitoredService(pulumi.CustomResource):
                                 },
                             },
                         ],
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Custom",
-                            "metric_thresholds": [
+                            "metricThresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -878,11 +878,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greater_than": 100,
+                                            "greaterThan": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metric_name": "metric",
+                                    "metricName": "metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -926,38 +926,38 @@ class MonitoredService(pulumi.CustomResource):
                     "identifier": "identifier",
                     "type": "NewRelic",
                     "spec": json.dumps({
-                        "connector_ref": "account.Newrelicautomation_do_not_delete",
+                        "connectorRef": "account.Newrelicautomation_do_not_delete",
                         "feature": "apm",
-                        "application_id": "107019083",
-                        "application_name": "My Application",
-                        "metric_data": {
-                            "performance": True,
+                        "applicationId": "107019083",
+                        "applicationName": "My Application",
+                        "metricData": {
+                            "Performance": True,
                         },
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Performance",
                         }],
-                        "new_relic_metric_definitions": [{
+                        "newRelicMetricDefinitions": [{
                             "identifier": "New_Relic_Metric",
-                            "metric_name": "New Relic Metric",
-                            "risk_profile": {
-                                "risk_category": "Performance_Other",
-                                "threshold_types": ["ACT_WHEN_HIGHER"],
+                            "metricName": "New Relic Metric",
+                            "riskProfile": {
+                                "riskCategory": "Performance_Other",
+                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "deployment_verification": {
+                                "deploymentVerification": {
                                     "enabled": True,
                                 },
                             },
-                            "group_name": "group1",
+                            "groupName": "group1",
                             "nrql": "SELECT count(apm.service.instance.count) FROM Metric WHERE appName LIKE 'My Application' TIMESERIES",
-                            "response_mapping": {
-                                "metric_value_json_path": "$.['timeSeries'].[*].['results'].[*].['count']",
-                                "timestamp_json_path": "$.['timeSeries'].[*].['beginTimeSeconds']",
+                            "responseMapping": {
+                                "metricValueJsonPath": "$.['timeSeries'].[*].['results'].[*].['count']",
+                                "timestampJsonPath": "$.['timeSeries'].[*].['beginTimeSeconds']",
                             },
                         }],
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Custom",
-                            "metric_thresholds": [
+                            "metricThresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -966,11 +966,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greater_than": 100,
+                                            "greaterThan": 100,
                                         },
                                     },
-                                    "metric_type": "Custom",
-                                    "metric_name": "New Relic Metric",
+                                    "metricType": "Custom",
+                                    "metricName": "New Relic Metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -1060,20 +1060,20 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "ElasticSearch",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "error_4xx",
                                 "identifier": "error_4xx_id",
                                 "query": "Bad Request",
                                 "index": "index",
-                                "group_name": "Logs_Group",
-                                "query_params": {
+                                "groupName": "Logs_Group",
+                                "queryParams": {
                                     "index": "index",
-                                    "service_instance_field": "serviceInstanceIdentifier",
-                                    "time_stamp_identifier": "timeStampIdentifier",
-                                    "time_stamp_format": "timeStampFormat",
-                                    "message_identifier": "messageIdentifier",
+                                    "serviceInstanceField": "serviceInstanceIdentifier",
+                                    "timeStampIdentifier": "timeStampIdentifier",
+                                    "timeStampFormat": "timeStampFormat",
+                                    "messageIdentifier": "messageIdentifier",
                                 },
                             },
                             {
@@ -1100,8 +1100,8 @@ class MonitoredService(pulumi.CustomResource):
                         "type": "PagerDuty",
                         "enabled": True,
                         "spec": json.dumps({
-                            "connector_ref": "account.pd",
-                            "pager_duty_service_id": "P0N21OB",
+                            "connectorRef": "account.pd",
+                            "pagerDutyServiceId": "P0N21OB",
                         }),
                         "category": "Alert",
                     },
@@ -1112,8 +1112,8 @@ class MonitoredService(pulumi.CustomResource):
                         "enabled": True,
                         "spec": json.dumps({
                             "name": "FH",
-                            "webhook_url": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
-                            "webhook_curl_command": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
+                            "webhookUrl": "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
+                            "webhookCurlCommand": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \\"eventIdentifier\\": \\"<string>\\" (optional), \\"user\\": \\"user@harness.io\\", \\"startTime\\": timeInMs, \\"endTime\\": timeInMs, \\"eventDetail\\": { \\"description\\": \\"<String>\\", \\"changeEventDetailsLink\\": \\"urlString\\" (optional), \\"externalLinkToEntity\\": \\"urlString\\" (optional), \\"name\\": \\"changeEventName\\" } }'",
                             "type": "Alert",
                         }),
                         "category": "Alert",
@@ -1146,7 +1146,7 @@ class MonitoredService(pulumi.CustomResource):
                         "category": "Alert",
                         "spec": json.dumps({
                             "type": "Alert",
-                            "authorization_token": "abc",
+                            "authorizationToken": "abc",
                         }),
                     },
                 ],
@@ -1182,24 +1182,24 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "SumologicMetrics",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "metric_cpu",
                                 "identifier": "metric_cpu",
                                 "query": "metric=cpu",
-                                "group_name": "g1",
-                                "query_params": {
-                                    "service_instance_field": "_sourcehost",
+                                "groupName": "g1",
+                                "queryParams": {
+                                    "serviceInstanceField": "_sourcehost",
                                 },
-                                "risk_profile": {
-                                    "risk_category": "Performance_Other",
-                                    "threshold_types": ["ACT_WHEN_HIGHER"],
+                                "riskProfile": {
+                                    "riskCategory": "Performance_Other",
+                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
                                 },
-                                "live_monitoring_enabled": "true",
-                                "continuous_verification_enabled": "true",
-                                "sli_enabled": "false",
-                                "metric_thresholds": [
+                                "liveMonitoringEnabled": "true",
+                                "continuousVerificationEnabled": "true",
+                                "sliEnabled": "false",
+                                "metricThresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -1208,11 +1208,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greater_than": 100,
+                                                "greaterThan": 100,
                                             },
                                         },
-                                        "metric_type": "Custom",
-                                        "metric_name": "metric_cpu",
+                                        "metricType": "Custom",
+                                        "metricName": "metric_cpu",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -1274,15 +1274,15 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "SumologicLogs",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "log1",
                                 "identifier": "log1",
                                 "query": "*",
-                                "group_name": "Logs Group",
-                                "query_params": {
-                                    "service_instance_field": "_sourcehost",
+                                "groupName": "Logs Group",
+                                "queryParams": {
+                                    "serviceInstanceField": "_sourcehost",
                                 },
                             },
                             {
@@ -1319,23 +1319,23 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "SplunkSignalFXMetrics",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "metric_infra_cpu",
                                 "identifier": "metric_infra_cpu",
                                 "query": "***",
-                                "group_name": "g",
-                                "risk_profile": {
-                                    "risk_category": "Errors",
-                                    "threshold_types": [
+                                "groupName": "g",
+                                "riskProfile": {
+                                    "riskCategory": "Errors",
+                                    "thresholdTypes": [
                                         "ACT_WHEN_HIGHER",
                                         "ACT_WHEN_LOWER",
                                     ],
                                 },
-                                "live_monitoring_enabled": "true",
-                                "continuous_verification_enabled": "true",
-                                "sli_enabled": "false",
+                                "liveMonitoringEnabled": "true",
+                                "continuousVerificationEnabled": "true",
+                                "sliEnabled": "false",
                             },
                             {
                                 "name": "name2",
@@ -1408,15 +1408,15 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "GrafanaLokiLogs",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "Demo",
                                 "identifier": "Demo",
                                 "query": "{job=~\\".+\\"}",
-                                "group_name": "Log_Group",
-                                "query_params": {
-                                    "service_instance_field": "job",
+                                "groupName": "Log_Group",
+                                "queryParams": {
+                                    "serviceInstanceField": "job",
                                 },
                             },
                             {
@@ -1456,28 +1456,28 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "AzureMetrics",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
                             {
                                 "name": "metric",
                                 "identifier": "metric",
                                 "query": "default",
-                                "group_name": "g1",
-                                "query_params": {
-                                    "service_instance_field": "host",
+                                "groupName": "g1",
+                                "queryParams": {
+                                    "serviceInstanceField": "host",
                                     "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
-                                    "health_source_metric_name": "cpuUsagePercentage",
-                                    "health_source_metric_namespace": "insights.container/nodes",
-                                    "aggregation_type": "average",
+                                    "healthSourceMetricName": "cpuUsagePercentage",
+                                    "healthSourceMetricNamespace": "insights.container/nodes",
+                                    "aggregationType": "average",
                                 },
-                                "risk_profile": {
-                                    "risk_category": "Performance_Other",
-                                    "threshold_types": ["ACT_WHEN_HIGHER"],
+                                "riskProfile": {
+                                    "riskCategory": "Performance_Other",
+                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
                                 },
-                                "live_monitoring_enabled": "true",
-                                "continuous_verification_enabled": "true",
-                                "sli_enabled": "false",
-                                "metric_thresholds": [
+                                "liveMonitoringEnabled": "true",
+                                "continuousVerificationEnabled": "true",
+                                "sliEnabled": "false",
+                                "metricThresholds": [
                                     {
                                         "type": "IgnoreThreshold",
                                         "spec": {
@@ -1486,11 +1486,11 @@ class MonitoredService(pulumi.CustomResource):
                                         "criteria": {
                                             "type": "Absolute",
                                             "spec": {
-                                                "greater_than": 100,
+                                                "greaterThan": 100,
                                             },
                                         },
                                         "metrictype": "Custom",
-                                        "metric_name": "metric",
+                                        "metricName": "metric",
                                     },
                                     {
                                         "type": "FailImmediately",
@@ -1555,20 +1555,20 @@ class MonitoredService(pulumi.CustomResource):
                     "type": "AzureLogs",
                     "version": "v2",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "query_definitions": [{
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [{
                             "name": "name2",
                             "identifier": "identifier2",
-                            "group_name": "g2",
+                            "groupName": "g2",
                             "query": "*",
-                            "query_params": {
-                                "service_instance_field": "Name",
-                                "time_stamp_identifier": "StartedTime",
-                                "message_identifier": "Image",
+                            "queryParams": {
+                                "serviceInstanceField": "Name",
+                                "timeStampIdentifier": "StartedTime",
+                                "messageIdentifier": "Image",
                                 "index": "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
                             },
-                            "live_monitoring_enabled": "false",
-                            "continuous_verification_enabled": "false",
+                            "liveMonitoringEnabled": "false",
+                            "continuousVerificationEnabled": "false",
                         }],
                     }),
                 }],
@@ -1593,30 +1593,30 @@ class MonitoredService(pulumi.CustomResource):
                     "identifier": "prometheus_metrics",
                     "type": "Prometheus",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
-                        "metric_definitions": [{
+                        "connectorRef": "connectorRef",
+                        "metricDefinitions": [{
                             "identifier": "Prometheus_Metric",
-                            "metric_name": "Prometheus Metric",
-                            "risk_profile": {
-                                "risk_category": "Performance_Other",
-                                "threshold_types": ["ACT_WHEN_HIGHER"],
+                            "metricName": "Prometheus Metric",
+                            "riskProfile": {
+                                "riskCategory": "Performance_Other",
+                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "live_monitoring": {
+                                "liveMonitoring": {
                                     "enabled": True,
                                 },
-                                "deployment_verification": {
+                                "deploymentVerification": {
                                     "enabled": True,
-                                    "service_instance_field_name": "pod_name",
+                                    "serviceInstanceFieldName": "pod_name",
                                 },
                             },
                             "query": "count(up{group=\\"cv\\",group=\\"cv\\"})",
-                            "group_name": "met",
-                            "is_manual_query": True,
+                            "groupName": "met",
+                            "isManualQuery": True,
                         }],
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Custom",
-                            "metric_thresholds": [
+                            "metricThresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -1625,11 +1625,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greater_than": 100,
+                                            "greaterThan": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metric_name": "Prometheus Metric",
+                                    "metricName": "Prometheus Metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -1673,29 +1673,29 @@ class MonitoredService(pulumi.CustomResource):
                     "identifier": "ddm",
                     "type": "DatadogMetrics",
                     "spec": json.dumps({
-                        "connector_ref": "connectorRef",
+                        "connectorRef": "connectorRef",
                         "feature": "Datadog Cloud Metrics",
-                        "metric_definitions": [
+                        "metricDefinitions": [
                             {
-                                "metric_name": "metric",
-                                "metric_path": "M1",
+                                "metricName": "metric",
+                                "metricPath": "M1",
                                 "identifier": "metric",
                                 "query": \"\"\"avg:kubernetes.cpu.limits{*}.rollup(avg, 60);
         avg:kubernetes.cpu.limits{*}.rollup(avg, 30);
         (a+b)/10\"\"\",
-                                "is_manual_query": True,
-                                "is_custom_created_metric": True,
-                                "risk_profile": {
-                                    "risk_category": "Performance_Other",
-                                    "threshold_types": ["ACT_WHEN_HIGHER"],
+                                "isManualQuery": True,
+                                "isCustomCreatedMetric": True,
+                                "riskProfile": {
+                                    "riskCategory": "Performance_Other",
+                                    "thresholdTypes": ["ACT_WHEN_HIGHER"],
                                 },
                                 "analysis": {
-                                    "live_monitoring": {
+                                    "liveMonitoring": {
                                         "enabled": True,
                                     },
-                                    "deployment_verification": {
+                                    "deploymentVerification": {
                                         "enabled": True,
-                                        "service_instance_field_name": "pod",
+                                        "serviceInstanceFieldName": "pod",
                                     },
                                 },
                             },
@@ -1727,9 +1727,9 @@ class MonitoredService(pulumi.CustomResource):
                                 },
                             },
                         ],
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Custom",
-                            "metric_thresholds": [
+                            "metricThresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -1738,11 +1738,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greater_than": 100,
+                                            "greaterThan": 100,
                                         },
                                     },
                                     "metrictype": "Custom",
-                                    "metric_name": "metric",
+                                    "metricName": "metric",
                                 },
                                 {
                                     "type": "FailImmediately",
@@ -1786,38 +1786,38 @@ class MonitoredService(pulumi.CustomResource):
                     "identifier": "identifier",
                     "type": "NewRelic",
                     "spec": json.dumps({
-                        "connector_ref": "account.Newrelicautomation_do_not_delete",
+                        "connectorRef": "account.Newrelicautomation_do_not_delete",
                         "feature": "apm",
-                        "application_id": "107019083",
-                        "application_name": "My Application",
-                        "metric_data": {
-                            "performance": True,
+                        "applicationId": "107019083",
+                        "applicationName": "My Application",
+                        "metricData": {
+                            "Performance": True,
                         },
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Performance",
                         }],
-                        "new_relic_metric_definitions": [{
+                        "newRelicMetricDefinitions": [{
                             "identifier": "New_Relic_Metric",
-                            "metric_name": "New Relic Metric",
-                            "risk_profile": {
-                                "risk_category": "Performance_Other",
-                                "threshold_types": ["ACT_WHEN_HIGHER"],
+                            "metricName": "New Relic Metric",
+                            "riskProfile": {
+                                "riskCategory": "Performance_Other",
+                                "thresholdTypes": ["ACT_WHEN_HIGHER"],
                             },
                             "analysis": {
-                                "deployment_verification": {
+                                "deploymentVerification": {
                                     "enabled": True,
                                 },
                             },
-                            "group_name": "group1",
+                            "groupName": "group1",
                             "nrql": "SELECT count(apm.service.instance.count) FROM Metric WHERE appName LIKE 'My Application' TIMESERIES",
-                            "response_mapping": {
-                                "metric_value_json_path": "$.['timeSeries'].[*].['results'].[*].['count']",
-                                "timestamp_json_path": "$.['timeSeries'].[*].['beginTimeSeconds']",
+                            "responseMapping": {
+                                "metricValueJsonPath": "$.['timeSeries'].[*].['results'].[*].['count']",
+                                "timestampJsonPath": "$.['timeSeries'].[*].['beginTimeSeconds']",
                             },
                         }],
-                        "metric_packs": [{
+                        "metricPacks": [{
                             "identifier": "Custom",
-                            "metric_thresholds": [
+                            "metricThresholds": [
                                 {
                                     "type": "IgnoreThreshold",
                                     "spec": {
@@ -1826,11 +1826,11 @@ class MonitoredService(pulumi.CustomResource):
                                     "criteria": {
                                         "type": "Absolute",
                                         "spec": {
-                                            "greater_than": 100,
+                                            "greaterThan": 100,
                                         },
                                     },
-                                    "metric_type": "Custom",
-                                    "metric_name": "New Relic Metric",
+                                    "metricType": "Custom",
+                                    "metricName": "New Relic Metric",
                                 },
                                 {
                                     "type": "FailImmediately",

@@ -236,7 +236,7 @@ class NotificationRule(pulumi.CustomResource):
                         "spec": json.dumps({
                             "threshold": 33,
                             "period": "30m",
-                            "change_categories": [
+                            "changeCategories": [
                                 "Deployment",
                                 "Infrastructure",
                             ],
@@ -252,7 +252,7 @@ class NotificationRule(pulumi.CustomResource):
                     {
                         "type": "ChangeObserved",
                         "spec": json.dumps({
-                            "change_categories": [
+                            "changeCategories": [
                                 "Deployment",
                                 "Alert",
                                 "ChaosExperiment",
@@ -367,7 +367,7 @@ class NotificationRule(pulumi.CustomResource):
                         "spec": json.dumps({
                             "threshold": 33,
                             "period": "30m",
-                            "change_categories": [
+                            "changeCategories": [
                                 "Deployment",
                                 "Infrastructure",
                             ],
@@ -383,7 +383,7 @@ class NotificationRule(pulumi.CustomResource):
                     {
                         "type": "ChangeObserved",
                         "spec": json.dumps({
-                            "change_categories": [
+                            "changeCategories": [
                                 "Deployment",
                                 "Alert",
                                 "ChaosExperiment",

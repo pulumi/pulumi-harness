@@ -617,8 +617,8 @@ class GitOpsApplications(pulumi.CustomResource):
                 "metadatas": [{
                     "annotations": {},
                     "labels": {
-                        "harness_io_service_ref": "service_id",
-                        "harness_io_env_ref": "env_id",
+                        "harness.io/serviceRef": "service_id",
+                        "harness.io/envRef": "env_id",
                     },
                     "name": "appname123",
                 }],
@@ -704,8 +704,8 @@ class GitOpsApplications(pulumi.CustomResource):
                 "metadatas": [{
                     "annotations": {},
                     "labels": {
-                        "harness_io_service_ref": "service_id",
-                        "harness_io_env_ref": "env_id",
+                        "harness.io/serviceRef": "service_id",
+                        "harness.io/envRef": "env_id",
                     },
                     "name": "appname123",
                 }],
