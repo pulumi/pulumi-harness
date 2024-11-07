@@ -371,6 +371,8 @@ __all__ = [
     'PolicySetPolicyArgsDict',
     'PrometheusConnectorHeaderArgs',
     'PrometheusConnectorHeaderArgsDict',
+    'ProviderSpecArgs',
+    'ProviderSpecArgsDict',
     'RepoRuleBranchBypassArgs',
     'RepoRuleBranchBypassArgsDict',
     'RepoRuleBranchPatternArgs',
@@ -5025,9 +5027,13 @@ if not MYPY:
         """
         The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
         """
-        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgsDict']]]]
+        source: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgsDict']]]]
         """
         Contains all information about the source of the GitOps application.
+        """
+        sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgsDict']]]]
+        """
+        List of sources for the GitOps application. Multi Source support
         """
         sync_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgsDict']]]]
         """
@@ -5041,18 +5047,22 @@ class GitOpsApplicationsApplicationSpecArgs:
     def __init__(__self__, *,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecDestinationArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]]] = None,
                  sync_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecDestinationArgs']]] destinations: Information about the GitOps application's destination.
         :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
-        :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]] sources: Contains all information about the source of the GitOps application.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]] source: Contains all information about the source of the GitOps application.
+        :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]] sources: List of sources for the GitOps application. Multi Source support
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSyncPolicyArgs']]] sync_policies: Controls when a sync will be performed in response to updates in git.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
         if sync_policies is not None:
@@ -5084,9 +5094,21 @@ class GitOpsApplicationsApplicationSpecArgs:
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]]]:
+    def source(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]]]:
         """
         Contains all information about the source of the GitOps application.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceArgs']]]]:
+        """
+        List of sources for the GitOps application. Multi Source support
         """
         return pulumi.get(self, "sources")
 
@@ -5217,6 +5239,10 @@ if not MYPY:
         """
         Options specific to config management plugins.
         """
+        ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference name to be used in other source spec, used for multi-source applications.
+        """
 elif False:
     GitOpsApplicationsApplicationSpecSourceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -5231,7 +5257,8 @@ class GitOpsApplicationsApplicationSpecSourceArgs:
                  ksonnets: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceKsonnetArgs']]]] = None,
                  kustomizes: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceKustomizeArgs']]]] = None,
                  path: Optional[pulumi.Input[str]] = None,
-                 plugins: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourcePluginArgs']]]] = None):
+                 plugins: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourcePluginArgs']]]] = None,
+                 ref: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] repo_url: URL to the repository (git or helm) that contains the GitOps application manifests.
         :param pulumi.Input[str] target_revision: Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
@@ -5242,6 +5269,7 @@ class GitOpsApplicationsApplicationSpecSourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceKustomizeArgs']]] kustomizes: Options specific to a GitOps application source specific to Kustomize.
         :param pulumi.Input[str] path: Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourcePluginArgs']]] plugins: Options specific to config management plugins.
+        :param pulumi.Input[str] ref: Reference name to be used in other source spec, used for multi-source applications.
         """
         pulumi.set(__self__, "repo_url", repo_url)
         pulumi.set(__self__, "target_revision", target_revision)
@@ -5259,6 +5287,8 @@ class GitOpsApplicationsApplicationSpecSourceArgs:
             pulumi.set(__self__, "path", path)
         if plugins is not None:
             pulumi.set(__self__, "plugins", plugins)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
 
     @property
     @pulumi.getter(name="repoUrl")
@@ -5367,6 +5397,18 @@ class GitOpsApplicationsApplicationSpecSourceArgs:
     @plugins.setter
     def plugins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourcePluginArgs']]]]):
         pulumi.set(self, "plugins", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference name to be used in other source spec, used for multi-source applications.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ref", value)
 
 
 if not MYPY:
@@ -14800,6 +14842,10 @@ if not MYPY:
         """
         Environment names of the CD pipeline.
         """
+        service_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Service identifiers of the CD pipeline.
+        """
         service_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Service names of the CD pipeline.
@@ -14813,11 +14859,13 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
                  artifact_display_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_types: Optional[pulumi.Input[str]] = None,
                  environment_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] artifact_display_names: Artifact display names of the CD pipeline.
         :param pulumi.Input[str] deployment_types: Deployment type of the CD pipeline, eg. Kubernetes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_names: Environment names of the CD pipeline.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_identifiers: Service identifiers of the CD pipeline.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_names: Service names of the CD pipeline.
         """
         if artifact_display_names is not None:
@@ -14826,6 +14874,8 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
             pulumi.set(__self__, "deployment_types", deployment_types)
         if environment_names is not None:
             pulumi.set(__self__, "environment_names", environment_names)
+        if service_identifiers is not None:
+            pulumi.set(__self__, "service_identifiers", service_identifiers)
         if service_names is not None:
             pulumi.set(__self__, "service_names", service_names)
 
@@ -14864,6 +14914,18 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
     @environment_names.setter
     def environment_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "environment_names", value)
+
+    @property
+    @pulumi.getter(name="serviceIdentifiers")
+    def service_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Service identifiers of the CD pipeline.
+        """
+        return pulumi.get(self, "service_identifiers")
+
+    @service_identifiers.setter
+    def service_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "service_identifiers", value)
 
     @property
     @pulumi.getter(name="serviceNames")
@@ -15569,6 +15631,137 @@ class PrometheusConnectorHeaderArgs:
     @value_encrypted.setter
     def value_encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "value_encrypted", value)
+
+
+if not MYPY:
+    class ProviderSpecArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of the provider entity.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Client Id of the OAuth app to connect
+        """
+        client_secret_ref: NotRequired[pulumi.Input[str]]
+        """
+        Client Secret Ref of the OAuth app to connect
+        """
+        delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Delegate selectors to fetch the access token
+        """
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        Host domain of the provider.
+        """
+        secret_manager_ref: NotRequired[pulumi.Input[str]]
+        """
+        Secret Manager Ref to store the access/refresh tokens
+        """
+elif False:
+    ProviderSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProviderSpecArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret_ref: Optional[pulumi.Input[str]] = None,
+                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 secret_manager_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: The type of the provider entity.
+        :param pulumi.Input[str] client_id: Client Id of the OAuth app to connect
+        :param pulumi.Input[str] client_secret_ref: Client Secret Ref of the OAuth app to connect
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Delegate selectors to fetch the access token
+        :param pulumi.Input[str] domain: Host domain of the provider.
+        :param pulumi.Input[str] secret_manager_ref: Secret Manager Ref to store the access/refresh tokens
+        """
+        pulumi.set(__self__, "type", type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret_ref is not None:
+            pulumi.set(__self__, "client_secret_ref", client_secret_ref)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if secret_manager_ref is not None:
+            pulumi.set(__self__, "secret_manager_ref", secret_manager_ref)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the provider entity.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client Id of the OAuth app to connect
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecretRef")
+    def client_secret_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client Secret Ref of the OAuth app to connect
+        """
+        return pulumi.get(self, "client_secret_ref")
+
+    @client_secret_ref.setter
+    def client_secret_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret_ref", value)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Delegate selectors to fetch the access token
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host domain of the provider.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="secretManagerRef")
+    def secret_manager_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret Manager Ref to store the access/refresh tokens
+        """
+        return pulumi.get(self, "secret_manager_ref")
+
+    @secret_manager_ref.setter
+    def secret_manager_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_manager_ref", value)
 
 
 if not MYPY:

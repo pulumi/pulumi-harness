@@ -30,11 +30,23 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("source")]
+        private InputList<Inputs.GitOpsApplicationsApplicationSpecSourceGetArgs>? _source;
+
+        /// <summary>
+        /// Contains all information about the source of the GitOps application.
+        /// </summary>
+        public InputList<Inputs.GitOpsApplicationsApplicationSpecSourceGetArgs> Source
+        {
+            get => _source ?? (_source = new InputList<Inputs.GitOpsApplicationsApplicationSpecSourceGetArgs>());
+            set => _source = value;
+        }
+
         [Input("sources")]
         private InputList<Inputs.GitOpsApplicationsApplicationSpecSourceGetArgs>? _sources;
 
         /// <summary>
-        /// Contains all information about the source of the GitOps application.
+        /// List of sources for the GitOps application. Multi Source support
         /// </summary>
         public InputList<Inputs.GitOpsApplicationsApplicationSpecSourceGetArgs> Sources
         {

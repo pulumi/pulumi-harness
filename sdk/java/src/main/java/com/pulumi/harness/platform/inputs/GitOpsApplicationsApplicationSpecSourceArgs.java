@@ -128,6 +128,21 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
     }
 
     /**
+     * Reference name to be used in other source spec, used for multi-source applications.
+     * 
+     */
+    @Import(name="ref")
+    private @Nullable Output<String> ref;
+
+    /**
+     * @return Reference name to be used in other source spec, used for multi-source applications.
+     * 
+     */
+    public Optional<Output<String>> ref() {
+        return Optional.ofNullable(this.ref);
+    }
+
+    /**
      * URL to the repository (git or helm) that contains the GitOps application manifests.
      * 
      */
@@ -167,6 +182,7 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
         this.kustomizes = $.kustomizes;
         this.path = $.path;
         this.plugins = $.plugins;
+        this.ref = $.ref;
         this.repoUrl = $.repoUrl;
         this.targetRevision = $.targetRevision;
     }
@@ -384,6 +400,27 @@ public final class GitOpsApplicationsApplicationSpecSourceArgs extends com.pulum
          */
         public Builder plugins(GitOpsApplicationsApplicationSpecSourcePluginArgs... plugins) {
             return plugins(List.of(plugins));
+        }
+
+        /**
+         * @param ref Reference name to be used in other source spec, used for multi-source applications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ref(@Nullable Output<String> ref) {
+            $.ref = ref;
+            return this;
+        }
+
+        /**
+         * @param ref Reference name to be used in other source spec, used for multi-source applications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ref(String ref) {
+            return ref(Output.of(ref));
         }
 
         /**

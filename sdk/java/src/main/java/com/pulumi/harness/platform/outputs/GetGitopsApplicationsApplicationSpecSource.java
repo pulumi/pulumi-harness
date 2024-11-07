@@ -13,7 +13,6 @@ import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecS
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSource {
@@ -31,7 +30,7 @@ public final class GetGitopsApplicationsApplicationSpecSource {
      * @return Holds helm specific options.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceHelm> helms;
+    private List<GetGitopsApplicationsApplicationSpecSourceHelm> helms;
     /**
      * @return Ksonnet specific options.
      * 
@@ -52,6 +51,11 @@ public final class GetGitopsApplicationsApplicationSpecSource {
      * 
      */
     private List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins;
+    /**
+     * @return Reference name to be used in other source spec, used for multi-source applications.
+     * 
+     */
+    private String ref;
     /**
      * @return URL to the repository (git or helm) that contains the GitOps application manifests.
      * 
@@ -83,7 +87,7 @@ public final class GetGitopsApplicationsApplicationSpecSource {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceHelm> helms() {
-        return this.helms == null ? List.of() : this.helms;
+        return this.helms;
     }
     /**
      * @return Ksonnet specific options.
@@ -114,6 +118,13 @@ public final class GetGitopsApplicationsApplicationSpecSource {
         return this.plugins;
     }
     /**
+     * @return Reference name to be used in other source spec, used for multi-source applications.
+     * 
+     */
+    public String ref() {
+        return this.ref;
+    }
+    /**
      * @return URL to the repository (git or helm) that contains the GitOps application manifests.
      * 
      */
@@ -139,11 +150,12 @@ public final class GetGitopsApplicationsApplicationSpecSource {
     public static final class Builder {
         private String chart;
         private List<GetGitopsApplicationsApplicationSpecSourceDirectory> directories;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceHelm> helms;
+        private List<GetGitopsApplicationsApplicationSpecSourceHelm> helms;
         private List<GetGitopsApplicationsApplicationSpecSourceKsonnet> ksonnets;
         private List<GetGitopsApplicationsApplicationSpecSourceKustomize> kustomizes;
         private String path;
         private List<GetGitopsApplicationsApplicationSpecSourcePlugin> plugins;
+        private String ref;
         private String repoUrl;
         private String targetRevision;
         public Builder() {}
@@ -156,6 +168,7 @@ public final class GetGitopsApplicationsApplicationSpecSource {
     	      this.kustomizes = defaults.kustomizes;
     	      this.path = defaults.path;
     	      this.plugins = defaults.plugins;
+    	      this.ref = defaults.ref;
     	      this.repoUrl = defaults.repoUrl;
     	      this.targetRevision = defaults.targetRevision;
         }
@@ -180,8 +193,10 @@ public final class GetGitopsApplicationsApplicationSpecSource {
             return directories(List.of(directories));
         }
         @CustomType.Setter
-        public Builder helms(@Nullable List<GetGitopsApplicationsApplicationSpecSourceHelm> helms) {
-
+        public Builder helms(List<GetGitopsApplicationsApplicationSpecSourceHelm> helms) {
+            if (helms == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "helms");
+            }
             this.helms = helms;
             return this;
         }
@@ -230,6 +245,14 @@ public final class GetGitopsApplicationsApplicationSpecSource {
             return plugins(List.of(plugins));
         }
         @CustomType.Setter
+        public Builder ref(String ref) {
+            if (ref == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "ref");
+            }
+            this.ref = ref;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repoUrl(String repoUrl) {
             if (repoUrl == null) {
               throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSource", "repoUrl");
@@ -254,6 +277,7 @@ public final class GetGitopsApplicationsApplicationSpecSource {
             _resultValue.kustomizes = kustomizes;
             _resultValue.path = path;
             _resultValue.plugins = plugins;
+            _resultValue.ref = ref;
             _resultValue.repoUrl = repoUrl;
             _resultValue.targetRevision = targetRevision;
             return _resultValue;

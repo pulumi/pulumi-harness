@@ -123,11 +123,13 @@ type GitOpsApplications struct {
 	// Organization identifier of the GitOps application.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
-	Project pulumi.StringPtrOutput `pulumi:"project"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Project identifier of the GitOps application.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Repository identifier of the GitOps application.
+	// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
 	RepoId pulumi.StringPtrOutput `pulumi:"repoId"`
+	// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+	RepoIds pulumi.StringArrayOutput `pulumi:"repoIds"`
 	// Request cascade to delete the GitOps application.
 	RequestCascade pulumi.BoolPtrOutput `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
@@ -212,8 +214,10 @@ type gitOpsApplicationsState struct {
 	Project *string `pulumi:"project"`
 	// Project identifier of the GitOps application.
 	ProjectId *string `pulumi:"projectId"`
-	// Repository identifier of the GitOps application.
+	// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
 	RepoId *string `pulumi:"repoId"`
+	// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+	RepoIds []string `pulumi:"repoIds"`
 	// Request cascade to delete the GitOps application.
 	RequestCascade *bool `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
@@ -251,8 +255,10 @@ type GitOpsApplicationsState struct {
 	Project pulumi.StringPtrInput
 	// Project identifier of the GitOps application.
 	ProjectId pulumi.StringPtrInput
-	// Repository identifier of the GitOps application.
+	// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
 	RepoId pulumi.StringPtrInput
+	// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+	RepoIds pulumi.StringArrayInput
 	// Request cascade to delete the GitOps application.
 	RequestCascade pulumi.BoolPtrInput
 	// Request propagation policy to delete the GitOps application.
@@ -294,8 +300,10 @@ type gitOpsApplicationsArgs struct {
 	Project *string `pulumi:"project"`
 	// Project identifier of the GitOps application.
 	ProjectId string `pulumi:"projectId"`
-	// Repository identifier of the GitOps application.
+	// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
 	RepoId *string `pulumi:"repoId"`
+	// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+	RepoIds []string `pulumi:"repoIds"`
 	// Request cascade to delete the GitOps application.
 	RequestCascade *bool `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
@@ -334,8 +342,10 @@ type GitOpsApplicationsArgs struct {
 	Project pulumi.StringPtrInput
 	// Project identifier of the GitOps application.
 	ProjectId pulumi.StringInput
-	// Repository identifier of the GitOps application.
+	// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
 	RepoId pulumi.StringPtrInput
+	// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+	RepoIds pulumi.StringArrayInput
 	// Request cascade to delete the GitOps application.
 	RequestCascade pulumi.BoolPtrInput
 	// Request propagation policy to delete the GitOps application.
@@ -483,8 +493,8 @@ func (o GitOpsApplicationsOutput) OrgId() pulumi.StringOutput {
 }
 
 // The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
-func (o GitOpsApplicationsOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
+func (o GitOpsApplicationsOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Project identifier of the GitOps application.
@@ -492,9 +502,14 @@ func (o GitOpsApplicationsOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Repository identifier of the GitOps application.
+// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
 func (o GitOpsApplicationsOutput) RepoId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringPtrOutput { return v.RepoId }).(pulumi.StringPtrOutput)
+}
+
+// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+func (o GitOpsApplicationsOutput) RepoIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringArrayOutput { return v.RepoIds }).(pulumi.StringArrayOutput)
 }
 
 // Request cascade to delete the GitOps application.

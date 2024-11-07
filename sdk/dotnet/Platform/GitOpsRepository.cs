@@ -60,6 +60,12 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.GitOpsRepositoryEcrGen?> EcrGen { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
         /// GCR access token generator specific configuration.
         /// </summary>
         [Output("gcrGen")]
@@ -186,6 +192,12 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.GitOpsRepositoryEcrGenArgs>? EcrGen { get; set; }
 
         /// <summary>
+        /// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// GCR access token generator specific configuration.
         /// </summary>
         [Input("gcrGen")]
@@ -284,6 +296,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("ecrGen")]
         public Input<Inputs.GitOpsRepositoryEcrGenGetArgs>? EcrGen { get; set; }
+
+        /// <summary>
+        /// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// GCR access token generator specific configuration.

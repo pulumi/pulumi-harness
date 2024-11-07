@@ -82,6 +82,21 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
      * GCR access token generator specific configuration.
      * 
      */
@@ -233,6 +248,7 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
         this.agentId = $.agentId;
         this.credsOnly = $.credsOnly;
         this.ecrGen = $.ecrGen;
+        this.forceDelete = $.forceDelete;
         this.gcrGen = $.gcrGen;
         this.genType = $.genType;
         this.identifier = $.identifier;
@@ -344,6 +360,27 @@ public final class GitOpsRepositoryState extends com.pulumi.resources.ResourceAr
          */
         public Builder ecrGen(GitOpsRepositoryEcrGenArgs ecrGen) {
             return ecrGen(Output.of(ecrGen));
+        }
+
+        /**
+         * @param forceDelete Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**

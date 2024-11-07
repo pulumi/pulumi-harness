@@ -4,11 +4,12 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnv;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
@@ -16,12 +17,12 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
      * @return Entry in the GitOps application&#39;s environment.
      * 
      */
-    private List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs;
+    private @Nullable List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs;
     /**
-     * @return Name of the plugin.
+     * @return Name of the GitOps application.
      * 
      */
-    private String name;
+    private @Nullable String name;
 
     private GetGitopsApplicationsApplicationSpecSourcePlugin() {}
     /**
@@ -29,14 +30,14 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs() {
-        return this.envs;
+        return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return Name of the plugin.
+     * @return Name of the GitOps application.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     public static Builder builder() {
@@ -48,8 +49,8 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs;
-        private String name;
+        private @Nullable List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs;
+        private @Nullable String name;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourcePlugin defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,10 +59,8 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
         }
 
         @CustomType.Setter
-        public Builder envs(List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs) {
-            if (envs == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourcePlugin", "envs");
-            }
+        public Builder envs(@Nullable List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -69,10 +68,8 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
             return envs(List.of(envs));
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourcePlugin", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

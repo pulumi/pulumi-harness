@@ -4,10 +4,11 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
@@ -15,39 +16,39 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
      * @return Indicates if helm should interpret booleans and numbers as strings.
      * 
      */
-    private Boolean forceString;
+    private @Nullable Boolean forceString;
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the GitOps application.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return Value of the helm parameter.
+     * @return Value of the Helm parameter.
      * 
      */
-    private String value;
+    private @Nullable String value;
 
     private GetGitopsApplicationsApplicationSpecSourceHelmParameter() {}
     /**
      * @return Indicates if helm should interpret booleans and numbers as strings.
      * 
      */
-    public Boolean forceString() {
-        return this.forceString;
+    public Optional<Boolean> forceString() {
+        return Optional.ofNullable(this.forceString);
     }
     /**
-     * @return Name of the helm parameter.
+     * @return Name of the GitOps application.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return Value of the helm parameter.
+     * @return Value of the Helm parameter.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -59,9 +60,9 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean forceString;
-        private String name;
-        private String value;
+        private @Nullable Boolean forceString;
+        private @Nullable String name;
+        private @Nullable String value;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceHelmParameter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,26 +72,20 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
         }
 
         @CustomType.Setter
-        public Builder forceString(Boolean forceString) {
-            if (forceString == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelmParameter", "forceString");
-            }
+        public Builder forceString(@Nullable Boolean forceString) {
+
             this.forceString = forceString;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelmParameter", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelmParameter", "value");
-            }
+        public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

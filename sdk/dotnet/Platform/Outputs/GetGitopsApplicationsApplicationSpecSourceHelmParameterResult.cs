@@ -16,23 +16,23 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Indicates if helm should interpret booleans and numbers as strings.
         /// </summary>
-        public readonly bool ForceString;
+        public readonly bool? ForceString;
         /// <summary>
-        /// Name of the helm parameter.
+        /// Name of the GitOps application.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// Value of the helm parameter.
+        /// Value of the Helm parameter.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(
-            bool forceString,
+            bool? forceString,
 
-            string name,
+            string? name,
 
-            string value)
+            string? value)
         {
             ForceString = forceString;
             Name = name;

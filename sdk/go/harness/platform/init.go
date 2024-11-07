@@ -165,6 +165,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Project{}
 	case "harness:platform/prometheusConnector:PrometheusConnector":
 		r = &PrometheusConnector{}
+	case "harness:platform/provider:Provider":
+		r = &Provider{}
 	case "harness:platform/repo:Repo":
 		r = &Repo{}
 	case "harness:platform/repoRuleBranch:RepoRuleBranch":
@@ -592,6 +594,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/prometheusConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/provider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

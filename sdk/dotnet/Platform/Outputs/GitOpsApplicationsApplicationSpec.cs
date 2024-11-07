@@ -24,6 +24,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Contains all information about the source of the GitOps application.
         /// </summary>
+        public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> Source;
+        /// <summary>
+        /// List of sources for the GitOps application. Multi Source support
+        /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> Sources;
         /// <summary>
         /// Controls when a sync will be performed in response to updates in git.
@@ -36,12 +40,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? project,
 
+            ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> source,
+
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSource> sources,
 
             ImmutableArray<Outputs.GitOpsApplicationsApplicationSpecSyncPolicy> syncPolicies)
         {
             Destinations = destinations;
             Project = project;
+            Source = source;
             Sources = sources;
             SyncPolicies = syncPolicies;
         }

@@ -44,6 +44,8 @@ type GitOpsRepository struct {
 	CredsOnly pulumi.BoolPtrOutput `pulumi:"credsOnly"`
 	// ECR access token generator specific configuration.
 	EcrGen GitOpsRepositoryEcrGenPtrOutput `pulumi:"ecrGen"`
+	// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// GCR access token generator specific configuration.
 	GcrGen GitOpsRepositoryGcrGenPtrOutput `pulumi:"gcrGen"`
 	// Default: "UNSET"
@@ -117,6 +119,8 @@ type gitOpsRepositoryState struct {
 	CredsOnly *bool `pulumi:"credsOnly"`
 	// ECR access token generator specific configuration.
 	EcrGen *GitOpsRepositoryEcrGen `pulumi:"ecrGen"`
+	// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// GCR access token generator specific configuration.
 	GcrGen *GitOpsRepositoryGcrGen `pulumi:"gcrGen"`
 	// Default: "UNSET"
@@ -149,6 +153,8 @@ type GitOpsRepositoryState struct {
 	CredsOnly pulumi.BoolPtrInput
 	// ECR access token generator specific configuration.
 	EcrGen GitOpsRepositoryEcrGenPtrInput
+	// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete pulumi.BoolPtrInput
 	// GCR access token generator specific configuration.
 	GcrGen GitOpsRepositoryGcrGenPtrInput
 	// Default: "UNSET"
@@ -185,6 +191,8 @@ type gitOpsRepositoryArgs struct {
 	CredsOnly *bool `pulumi:"credsOnly"`
 	// ECR access token generator specific configuration.
 	EcrGen *GitOpsRepositoryEcrGen `pulumi:"ecrGen"`
+	// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// GCR access token generator specific configuration.
 	GcrGen *GitOpsRepositoryGcrGen `pulumi:"gcrGen"`
 	// Default: "UNSET"
@@ -218,6 +226,8 @@ type GitOpsRepositoryArgs struct {
 	CredsOnly pulumi.BoolPtrInput
 	// ECR access token generator specific configuration.
 	EcrGen GitOpsRepositoryEcrGenPtrInput
+	// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete pulumi.BoolPtrInput
 	// GCR access token generator specific configuration.
 	GcrGen GitOpsRepositoryGcrGenPtrInput
 	// Default: "UNSET"
@@ -346,6 +356,11 @@ func (o GitOpsRepositoryOutput) CredsOnly() pulumi.BoolPtrOutput {
 // ECR access token generator specific configuration.
 func (o GitOpsRepositoryOutput) EcrGen() GitOpsRepositoryEcrGenPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) GitOpsRepositoryEcrGenPtrOutput { return v.EcrGen }).(GitOpsRepositoryEcrGenPtrOutput)
+}
+
+// Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+func (o GitOpsRepositoryOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitOpsRepository) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
 // GCR access token generator specific configuration.

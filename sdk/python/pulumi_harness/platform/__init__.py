@@ -117,6 +117,7 @@ from .get_policy_set import *
 from .get_project import *
 from .get_project_list import *
 from .get_prometheus_connector import *
+from .get_provider import *
 from .get_repo import *
 from .get_repo_rule_branch import *
 from .get_repo_webhook import *
@@ -183,6 +184,7 @@ from .policy import *
 from .policy_set import *
 from .project import *
 from .prometheus_connector import *
+from .provider import *
 from .repo import *
 from .repo_rule_branch import *
 from .repo_webhook import *

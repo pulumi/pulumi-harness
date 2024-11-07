@@ -241,14 +241,14 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> project;
+    private Output<String> project;
 
     /**
      * @return The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      * 
      */
-    public Output<Optional<String>> project() {
-        return Codegen.optional(this.project);
+    public Output<String> project() {
+        return this.project;
     }
     /**
      * Project identifier of the GitOps application.
@@ -265,18 +265,32 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Repository identifier of the GitOps application.
+     * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      * 
      */
     @Export(name="repoId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoId;
 
     /**
-     * @return Repository identifier of the GitOps application.
+     * @return Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      * 
      */
     public Output<Optional<String>> repoId() {
         return Codegen.optional(this.repoId);
+    }
+    /**
+     * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     * 
+     */
+    @Export(name="repoIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> repoIds;
+
+    /**
+     * @return List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     * 
+     */
+    public Output<Optional<List<String>>> repoIds() {
+        return Codegen.optional(this.repoIds);
     }
     /**
      * Request cascade to delete the GitOps application.

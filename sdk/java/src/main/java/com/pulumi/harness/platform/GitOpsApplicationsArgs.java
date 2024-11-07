@@ -193,18 +193,33 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Repository identifier of the GitOps application.
+     * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      * 
      */
     @Import(name="repoId")
     private @Nullable Output<String> repoId;
 
     /**
-     * @return Repository identifier of the GitOps application.
+     * @return Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      * 
      */
     public Optional<Output<String>> repoId() {
         return Optional.ofNullable(this.repoId);
+    }
+
+    /**
+     * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     * 
+     */
+    @Import(name="repoIds")
+    private @Nullable Output<List<String>> repoIds;
+
+    /**
+     * @return List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     * 
+     */
+    public Optional<Output<List<String>>> repoIds() {
+        return Optional.ofNullable(this.repoIds);
     }
 
     /**
@@ -297,6 +312,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         this.project = $.project;
         this.projectId = $.projectId;
         this.repoId = $.repoId;
+        this.repoIds = $.repoIds;
         this.requestCascade = $.requestCascade;
         this.requestPropagationPolicy = $.requestPropagationPolicy;
         this.skipRepoValidation = $.skipRepoValidation;
@@ -572,7 +588,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param repoId Repository identifier of the GitOps application.
+         * @param repoId Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
          * 
          * @return builder
          * 
@@ -583,13 +599,44 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param repoId Repository identifier of the GitOps application.
+         * @param repoId Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
          * 
          * @return builder
          * 
          */
         public Builder repoId(String repoId) {
             return repoId(Output.of(repoId));
+        }
+
+        /**
+         * @param repoIds List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repoIds(@Nullable Output<List<String>> repoIds) {
+            $.repoIds = repoIds;
+            return this;
+        }
+
+        /**
+         * @param repoIds List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repoIds(List<String> repoIds) {
+            return repoIds(Output.of(repoIds));
+        }
+
+        /**
+         * @param repoIds List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repoIds(String... repoIds) {
+            return repoIds(List.of(repoIds));
         }
 
         /**

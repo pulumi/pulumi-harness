@@ -4,12 +4,13 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
@@ -17,42 +18,42 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
      * @return List of additional annotations to add to rendered manifests.
      * 
      */
-    private Map<String,String> commonAnnotations;
+    private @Nullable Map<String,String> commonAnnotations;
     /**
      * @return List of additional labels to add to rendered manifests.
      * 
      */
-    private Map<String,String> commonLabels;
+    private @Nullable Map<String,String> commonLabels;
     /**
      * @return Indicates if to force applying common annotations to resources for kustomize apps.
      * 
      */
-    private Boolean forceCommonAnnotations;
+    private @Nullable Boolean forceCommonAnnotations;
     /**
      * @return Indicates if to force apply common labels to resources for kustomize apps.
      * 
      */
-    private Boolean forceCommonLabels;
+    private @Nullable Boolean forceCommonLabels;
     /**
      * @return List of kustomize image override specifications.
      * 
      */
-    private List<String> images;
+    private @Nullable List<String> images;
     /**
      * @return Prefix prepended to resources for kustomize apps.
      * 
      */
-    private String namePrefix;
+    private @Nullable String namePrefix;
     /**
      * @return Suffix appended to resources for kustomize apps.
      * 
      */
-    private String nameSuffix;
+    private @Nullable String nameSuffix;
     /**
      * @return Version of kustomize to use for rendering manifests.
      * 
      */
-    private String version;
+    private @Nullable String version;
 
     private GetGitopsApplicationsApplicationSpecSourceKustomize() {}
     /**
@@ -60,56 +61,56 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
      * 
      */
     public Map<String,String> commonAnnotations() {
-        return this.commonAnnotations;
+        return this.commonAnnotations == null ? Map.of() : this.commonAnnotations;
     }
     /**
      * @return List of additional labels to add to rendered manifests.
      * 
      */
     public Map<String,String> commonLabels() {
-        return this.commonLabels;
+        return this.commonLabels == null ? Map.of() : this.commonLabels;
     }
     /**
      * @return Indicates if to force applying common annotations to resources for kustomize apps.
      * 
      */
-    public Boolean forceCommonAnnotations() {
-        return this.forceCommonAnnotations;
+    public Optional<Boolean> forceCommonAnnotations() {
+        return Optional.ofNullable(this.forceCommonAnnotations);
     }
     /**
      * @return Indicates if to force apply common labels to resources for kustomize apps.
      * 
      */
-    public Boolean forceCommonLabels() {
-        return this.forceCommonLabels;
+    public Optional<Boolean> forceCommonLabels() {
+        return Optional.ofNullable(this.forceCommonLabels);
     }
     /**
      * @return List of kustomize image override specifications.
      * 
      */
     public List<String> images() {
-        return this.images;
+        return this.images == null ? List.of() : this.images;
     }
     /**
      * @return Prefix prepended to resources for kustomize apps.
      * 
      */
-    public String namePrefix() {
-        return this.namePrefix;
+    public Optional<String> namePrefix() {
+        return Optional.ofNullable(this.namePrefix);
     }
     /**
      * @return Suffix appended to resources for kustomize apps.
      * 
      */
-    public String nameSuffix() {
-        return this.nameSuffix;
+    public Optional<String> nameSuffix() {
+        return Optional.ofNullable(this.nameSuffix);
     }
     /**
      * @return Version of kustomize to use for rendering manifests.
      * 
      */
-    public String version() {
-        return this.version;
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -121,14 +122,14 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,String> commonAnnotations;
-        private Map<String,String> commonLabels;
-        private Boolean forceCommonAnnotations;
-        private Boolean forceCommonLabels;
-        private List<String> images;
-        private String namePrefix;
-        private String nameSuffix;
-        private String version;
+        private @Nullable Map<String,String> commonAnnotations;
+        private @Nullable Map<String,String> commonLabels;
+        private @Nullable Boolean forceCommonAnnotations;
+        private @Nullable Boolean forceCommonLabels;
+        private @Nullable List<String> images;
+        private @Nullable String namePrefix;
+        private @Nullable String nameSuffix;
+        private @Nullable String version;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceKustomize defaults) {
     	      Objects.requireNonNull(defaults);
@@ -143,42 +144,32 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
         }
 
         @CustomType.Setter
-        public Builder commonAnnotations(Map<String,String> commonAnnotations) {
-            if (commonAnnotations == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "commonAnnotations");
-            }
+        public Builder commonAnnotations(@Nullable Map<String,String> commonAnnotations) {
+
             this.commonAnnotations = commonAnnotations;
             return this;
         }
         @CustomType.Setter
-        public Builder commonLabels(Map<String,String> commonLabels) {
-            if (commonLabels == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "commonLabels");
-            }
+        public Builder commonLabels(@Nullable Map<String,String> commonLabels) {
+
             this.commonLabels = commonLabels;
             return this;
         }
         @CustomType.Setter
-        public Builder forceCommonAnnotations(Boolean forceCommonAnnotations) {
-            if (forceCommonAnnotations == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "forceCommonAnnotations");
-            }
+        public Builder forceCommonAnnotations(@Nullable Boolean forceCommonAnnotations) {
+
             this.forceCommonAnnotations = forceCommonAnnotations;
             return this;
         }
         @CustomType.Setter
-        public Builder forceCommonLabels(Boolean forceCommonLabels) {
-            if (forceCommonLabels == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "forceCommonLabels");
-            }
+        public Builder forceCommonLabels(@Nullable Boolean forceCommonLabels) {
+
             this.forceCommonLabels = forceCommonLabels;
             return this;
         }
         @CustomType.Setter
-        public Builder images(List<String> images) {
-            if (images == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "images");
-            }
+        public Builder images(@Nullable List<String> images) {
+
             this.images = images;
             return this;
         }
@@ -186,26 +177,20 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
             return images(List.of(images));
         }
         @CustomType.Setter
-        public Builder namePrefix(String namePrefix) {
-            if (namePrefix == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "namePrefix");
-            }
+        public Builder namePrefix(@Nullable String namePrefix) {
+
             this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
-        public Builder nameSuffix(String nameSuffix) {
-            if (nameSuffix == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "nameSuffix");
-            }
+        public Builder nameSuffix(@Nullable String nameSuffix) {
+
             this.nameSuffix = nameSuffix;
             return this;
         }
         @CustomType.Setter
-        public Builder version(String version) {
-            if (version == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKustomize", "version");
-            }
+        public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

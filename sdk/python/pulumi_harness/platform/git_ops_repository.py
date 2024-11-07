@@ -27,6 +27,7 @@ class GitOpsRepositoryArgs:
                  repos: pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]],
                  creds_only: Optional[pulumi.Input[bool]] = None,
                  ecr_gen: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  gcr_gen: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']] = None,
                  gen_type: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,7 @@ class GitOpsRepositoryArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepositoryRepoArgs']]] repos: Repo details holding application configurations.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
         :param pulumi.Input['GitOpsRepositoryEcrGenArgs'] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input['GitOpsRepositoryGcrGenArgs'] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[str] gen_type: Default: "UNSET"
                Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
@@ -59,6 +61,8 @@ class GitOpsRepositoryArgs:
             pulumi.set(__self__, "creds_only", creds_only)
         if ecr_gen is not None:
             pulumi.set(__self__, "ecr_gen", ecr_gen)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if gcr_gen is not None:
             pulumi.set(__self__, "gcr_gen", gcr_gen)
         if gen_type is not None:
@@ -148,6 +152,18 @@ class GitOpsRepositoryArgs:
     @ecr_gen.setter
     def ecr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]):
         pulumi.set(self, "ecr_gen", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter(name="gcrGen")
@@ -243,6 +259,7 @@ class _GitOpsRepositoryState:
                  agent_id: Optional[pulumi.Input[str]] = None,
                  creds_only: Optional[pulumi.Input[bool]] = None,
                  ecr_gen: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  gcr_gen: Optional[pulumi.Input['GitOpsRepositoryGcrGenArgs']] = None,
                  gen_type: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -258,6 +275,7 @@ class _GitOpsRepositoryState:
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
         :param pulumi.Input['GitOpsRepositoryEcrGenArgs'] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input['GitOpsRepositoryGcrGenArgs'] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[str] gen_type: Default: "UNSET"
                Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
@@ -277,6 +295,8 @@ class _GitOpsRepositoryState:
             pulumi.set(__self__, "creds_only", creds_only)
         if ecr_gen is not None:
             pulumi.set(__self__, "ecr_gen", ecr_gen)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if gcr_gen is not None:
             pulumi.set(__self__, "gcr_gen", gcr_gen)
         if gen_type is not None:
@@ -346,6 +366,18 @@ class _GitOpsRepositoryState:
     @ecr_gen.setter
     def ecr_gen(self, value: Optional[pulumi.Input['GitOpsRepositoryEcrGenArgs']]):
         pulumi.set(self, "ecr_gen", value)
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @property
     @pulumi.getter(name="gcrGen")
@@ -467,6 +499,7 @@ class GitOpsRepository(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  creds_only: Optional[pulumi.Input[bool]] = None,
                  ecr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  gcr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
                  gen_type: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -506,6 +539,7 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
         :param pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[str] gen_type: Default: "UNSET"
                Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
@@ -565,6 +599,7 @@ class GitOpsRepository(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  creds_only: Optional[pulumi.Input[bool]] = None,
                  ecr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  gcr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
                  gen_type: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -591,6 +626,7 @@ class GitOpsRepository(pulumi.CustomResource):
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["creds_only"] = creds_only
             __props__.__dict__["ecr_gen"] = ecr_gen
+            __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["gcr_gen"] = gcr_gen
             __props__.__dict__["gen_type"] = gen_type
             if identifier is None and not opts.urn:
@@ -618,6 +654,7 @@ class GitOpsRepository(pulumi.CustomResource):
             agent_id: Optional[pulumi.Input[str]] = None,
             creds_only: Optional[pulumi.Input[bool]] = None,
             ecr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             gcr_gen: Optional[pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
             gen_type: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -638,6 +675,7 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[bool] creds_only: Indicates if to operate on credential set instead of repository.
         :param pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[str] gen_type: Default: "UNSET"
                Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
@@ -657,6 +695,7 @@ class GitOpsRepository(pulumi.CustomResource):
         __props__.__dict__["agent_id"] = agent_id
         __props__.__dict__["creds_only"] = creds_only
         __props__.__dict__["ecr_gen"] = ecr_gen
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["gcr_gen"] = gcr_gen
         __props__.__dict__["gen_type"] = gen_type
         __props__.__dict__["identifier"] = identifier
@@ -699,6 +738,14 @@ class GitOpsRepository(pulumi.CustomResource):
         ECR access token generator specific configuration.
         """
         return pulumi.get(self, "ecr_gen")
+
+    @property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+        """
+        return pulumi.get(self, "force_delete")
 
     @property
     @pulumi.getter(name="gcrGen")

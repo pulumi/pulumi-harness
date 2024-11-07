@@ -54,6 +54,11 @@ public final class GitOpsApplicationsApplicationSpecSource {
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourcePlugin> plugins;
     /**
+     * @return Reference name to be used in other source spec, used for multi-source applications.
+     * 
+     */
+    private @Nullable String ref;
+    /**
      * @return URL to the repository (git or helm) that contains the GitOps application manifests.
      * 
      */
@@ -115,6 +120,13 @@ public final class GitOpsApplicationsApplicationSpecSource {
         return this.plugins == null ? List.of() : this.plugins;
     }
     /**
+     * @return Reference name to be used in other source spec, used for multi-source applications.
+     * 
+     */
+    public Optional<String> ref() {
+        return Optional.ofNullable(this.ref);
+    }
+    /**
      * @return URL to the repository (git or helm) that contains the GitOps application manifests.
      * 
      */
@@ -145,6 +157,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceKustomize> kustomizes;
         private @Nullable String path;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourcePlugin> plugins;
+        private @Nullable String ref;
         private String repoUrl;
         private String targetRevision;
         public Builder() {}
@@ -157,6 +170,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
     	      this.kustomizes = defaults.kustomizes;
     	      this.path = defaults.path;
     	      this.plugins = defaults.plugins;
+    	      this.ref = defaults.ref;
     	      this.repoUrl = defaults.repoUrl;
     	      this.targetRevision = defaults.targetRevision;
         }
@@ -219,6 +233,12 @@ public final class GitOpsApplicationsApplicationSpecSource {
             return plugins(List.of(plugins));
         }
         @CustomType.Setter
+        public Builder ref(@Nullable String ref) {
+
+            this.ref = ref;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repoUrl(String repoUrl) {
             if (repoUrl == null) {
               throw new MissingRequiredPropertyException("GitOpsApplicationsApplicationSpecSource", "repoUrl");
@@ -243,6 +263,7 @@ public final class GitOpsApplicationsApplicationSpecSource {
             _resultValue.kustomizes = kustomizes;
             _resultValue.path = path;
             _resultValue.plugins = plugins;
+            _resultValue.ref = ref;
             _resultValue.repoUrl = repoUrl;
             _resultValue.targetRevision = targetRevision;
             return _resultValue;

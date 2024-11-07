@@ -29,6 +29,11 @@ public final class GitOpsApplicationsApplicationSpec {
      * @return Contains all information about the source of the GitOps application.
      * 
      */
+    private @Nullable List<GitOpsApplicationsApplicationSpecSource> source;
+    /**
+     * @return List of sources for the GitOps application. Multi Source support
+     * 
+     */
     private @Nullable List<GitOpsApplicationsApplicationSpecSource> sources;
     /**
      * @return Controls when a sync will be performed in response to updates in git.
@@ -55,6 +60,13 @@ public final class GitOpsApplicationsApplicationSpec {
      * @return Contains all information about the source of the GitOps application.
      * 
      */
+    public List<GitOpsApplicationsApplicationSpecSource> source() {
+        return this.source == null ? List.of() : this.source;
+    }
+    /**
+     * @return List of sources for the GitOps application. Multi Source support
+     * 
+     */
     public List<GitOpsApplicationsApplicationSpecSource> sources() {
         return this.sources == null ? List.of() : this.sources;
     }
@@ -77,6 +89,7 @@ public final class GitOpsApplicationsApplicationSpec {
     public static final class Builder {
         private @Nullable List<GitOpsApplicationsApplicationSpecDestination> destinations;
         private @Nullable String project;
+        private @Nullable List<GitOpsApplicationsApplicationSpecSource> source;
         private @Nullable List<GitOpsApplicationsApplicationSpecSource> sources;
         private @Nullable List<GitOpsApplicationsApplicationSpecSyncPolicy> syncPolicies;
         public Builder() {}
@@ -84,6 +97,7 @@ public final class GitOpsApplicationsApplicationSpec {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
     	      this.project = defaults.project;
+    	      this.source = defaults.source;
     	      this.sources = defaults.sources;
     	      this.syncPolicies = defaults.syncPolicies;
         }
@@ -102,6 +116,15 @@ public final class GitOpsApplicationsApplicationSpec {
 
             this.project = project;
             return this;
+        }
+        @CustomType.Setter
+        public Builder source(@Nullable List<GitOpsApplicationsApplicationSpecSource> source) {
+
+            this.source = source;
+            return this;
+        }
+        public Builder source(GitOpsApplicationsApplicationSpecSource... source) {
+            return source(List.of(source));
         }
         @CustomType.Setter
         public Builder sources(@Nullable List<GitOpsApplicationsApplicationSpecSource> sources) {
@@ -125,6 +148,7 @@ public final class GitOpsApplicationsApplicationSpec {
             final var _resultValue = new GitOpsApplicationsApplicationSpec();
             _resultValue.destinations = destinations;
             _resultValue.project = project;
+            _resultValue.source = source;
             _resultValue.sources = sources;
             _resultValue.syncPolicies = syncPolicies;
             return _resultValue;

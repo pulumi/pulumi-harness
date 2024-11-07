@@ -62,6 +62,21 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
     }
 
     /**
+     * Service identifiers of the CD pipeline.
+     * 
+     */
+    @Import(name="serviceIdentifiers")
+    private @Nullable Output<List<String>> serviceIdentifiers;
+
+    /**
+     * @return Service identifiers of the CD pipeline.
+     * 
+     */
+    public Optional<Output<List<String>>> serviceIdentifiers() {
+        return Optional.ofNullable(this.serviceIdentifiers);
+    }
+
+    /**
      * Service names of the CD pipeline.
      * 
      */
@@ -82,6 +97,7 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
         this.artifactDisplayNames = $.artifactDisplayNames;
         this.deploymentTypes = $.deploymentTypes;
         this.environmentNames = $.environmentNames;
+        this.serviceIdentifiers = $.serviceIdentifiers;
         this.serviceNames = $.serviceNames;
     }
 
@@ -184,6 +200,37 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
          */
         public Builder environmentNames(String... environmentNames) {
             return environmentNames(List.of(environmentNames));
+        }
+
+        /**
+         * @param serviceIdentifiers Service identifiers of the CD pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceIdentifiers(@Nullable Output<List<String>> serviceIdentifiers) {
+            $.serviceIdentifiers = serviceIdentifiers;
+            return this;
+        }
+
+        /**
+         * @param serviceIdentifiers Service identifiers of the CD pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceIdentifiers(List<String> serviceIdentifiers) {
+            return serviceIdentifiers(Output.of(serviceIdentifiers));
+        }
+
+        /**
+         * @param serviceIdentifiers Service identifiers of the CD pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceIdentifiers(String... serviceIdentifiers) {
+            return serviceIdentifiers(List.of(serviceIdentifiers));
         }
 
         /**

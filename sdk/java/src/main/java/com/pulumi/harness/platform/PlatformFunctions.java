@@ -158,6 +158,8 @@ import com.pulumi.harness.platform.inputs.GetProjectListPlainArgs;
 import com.pulumi.harness.platform.inputs.GetProjectPlainArgs;
 import com.pulumi.harness.platform.inputs.GetPrometheusConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetPrometheusConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetProviderArgs;
+import com.pulumi.harness.platform.inputs.GetProviderPlainArgs;
 import com.pulumi.harness.platform.inputs.GetRepoArgs;
 import com.pulumi.harness.platform.inputs.GetRepoPlainArgs;
 import com.pulumi.harness.platform.inputs.GetRepoRuleBranchArgs;
@@ -294,6 +296,7 @@ import com.pulumi.harness.platform.outputs.GetPolicySetResult;
 import com.pulumi.harness.platform.outputs.GetProjectListResult;
 import com.pulumi.harness.platform.outputs.GetProjectResult;
 import com.pulumi.harness.platform.outputs.GetPrometheusConnectorResult;
+import com.pulumi.harness.platform.outputs.GetProviderResult;
 import com.pulumi.harness.platform.outputs.GetRepoResult;
 import com.pulumi.harness.platform.outputs.GetRepoRuleBranchResult;
 import com.pulumi.harness.platform.outputs.GetRepoWebhookResult;
@@ -13539,6 +13542,18 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetPrometheusConnectorResult> getPrometheusConnectorPlain(GetPrometheusConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getPrometheusConnector:getPrometheusConnector", TypeShape.of(GetPrometheusConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetProviderResult> getProvider(GetProviderArgs args) {
+        return getProvider(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetProviderResult> getProviderPlain(GetProviderPlainArgs args) {
+        return getProviderPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetProviderResult> getProvider(GetProviderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getProvider:getProvider", TypeShape.of(GetProviderResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetProviderResult> getProviderPlain(GetProviderPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getProvider:getProvider", TypeShape.of(GetProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness repo.

@@ -96,14 +96,14 @@ public class FileStoreFile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> content;
+    private Output<String> content;
 
     /**
      * @return File content stored on Harness File Store
      * 
      */
-    public Output<Optional<String>> content() {
-        return Codegen.optional(this.content);
+    public Output<String> content() {
+        return this.content;
     }
     /**
      * Created by
@@ -138,14 +138,14 @@ public class FileStoreFile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="fileContentPath", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> fileContentPath;
+    private Output<String> fileContentPath;
 
     /**
      * @return File content path to be upladed on Harness File Store
      * 
      */
-    public Output<Optional<String>> fileContentPath() {
-        return Codegen.optional(this.fileContentPath);
+    public Output<String> fileContentPath() {
+        return this.fileContentPath;
     }
     /**
      * File usage. Valid options are ManifestFile, Config, Script

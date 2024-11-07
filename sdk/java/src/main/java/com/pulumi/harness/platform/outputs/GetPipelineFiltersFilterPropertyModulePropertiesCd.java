@@ -27,6 +27,11 @@ public final class GetPipelineFiltersFilterPropertyModulePropertiesCd {
      */
     private List<String> environmentNames;
     /**
+     * @return Service identifiers of the CD pipeline.
+     * 
+     */
+    private List<String> serviceIdentifiers;
+    /**
      * @return Service names of the CD pipeline.
      * 
      */
@@ -55,6 +60,13 @@ public final class GetPipelineFiltersFilterPropertyModulePropertiesCd {
         return this.environmentNames;
     }
     /**
+     * @return Service identifiers of the CD pipeline.
+     * 
+     */
+    public List<String> serviceIdentifiers() {
+        return this.serviceIdentifiers;
+    }
+    /**
      * @return Service names of the CD pipeline.
      * 
      */
@@ -74,6 +86,7 @@ public final class GetPipelineFiltersFilterPropertyModulePropertiesCd {
         private List<String> artifactDisplayNames;
         private String deploymentTypes;
         private List<String> environmentNames;
+        private List<String> serviceIdentifiers;
         private List<String> serviceNames;
         public Builder() {}
         public Builder(GetPipelineFiltersFilterPropertyModulePropertiesCd defaults) {
@@ -81,6 +94,7 @@ public final class GetPipelineFiltersFilterPropertyModulePropertiesCd {
     	      this.artifactDisplayNames = defaults.artifactDisplayNames;
     	      this.deploymentTypes = defaults.deploymentTypes;
     	      this.environmentNames = defaults.environmentNames;
+    	      this.serviceIdentifiers = defaults.serviceIdentifiers;
     	      this.serviceNames = defaults.serviceNames;
         }
 
@@ -115,6 +129,17 @@ public final class GetPipelineFiltersFilterPropertyModulePropertiesCd {
             return environmentNames(List.of(environmentNames));
         }
         @CustomType.Setter
+        public Builder serviceIdentifiers(List<String> serviceIdentifiers) {
+            if (serviceIdentifiers == null) {
+              throw new MissingRequiredPropertyException("GetPipelineFiltersFilterPropertyModulePropertiesCd", "serviceIdentifiers");
+            }
+            this.serviceIdentifiers = serviceIdentifiers;
+            return this;
+        }
+        public Builder serviceIdentifiers(String... serviceIdentifiers) {
+            return serviceIdentifiers(List.of(serviceIdentifiers));
+        }
+        @CustomType.Setter
         public Builder serviceNames(List<String> serviceNames) {
             if (serviceNames == null) {
               throw new MissingRequiredPropertyException("GetPipelineFiltersFilterPropertyModulePropertiesCd", "serviceNames");
@@ -130,6 +155,7 @@ public final class GetPipelineFiltersFilterPropertyModulePropertiesCd {
             _resultValue.artifactDisplayNames = artifactDisplayNames;
             _resultValue.deploymentTypes = deploymentTypes;
             _resultValue.environmentNames = environmentNames;
+            _resultValue.serviceIdentifiers = serviceIdentifiers;
             _resultValue.serviceNames = serviceNames;
             return _resultValue;
         }
