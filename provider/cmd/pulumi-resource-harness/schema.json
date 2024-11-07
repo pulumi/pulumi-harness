@@ -3871,12 +3871,19 @@
                     "type": "string",
                     "description": "The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.\n"
                 },
-                "sources": {
+                "source": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/GitOpsApplicationsApplicationSpecSource:GitOpsApplicationsApplicationSpecSource"
                     },
                     "description": "Contains all information about the source of the GitOps application.\n"
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GitOpsApplicationsApplicationSpecSource:GitOpsApplicationsApplicationSpecSource"
+                    },
+                    "description": "List of sources for the GitOps application. Multi Source support\n"
                 },
                 "syncPolicies": {
                     "type": "array",
@@ -3956,6 +3963,10 @@
                         "$ref": "#/types/harness:platform/GitOpsApplicationsApplicationSpecSourcePlugin:GitOpsApplicationsApplicationSpecSourcePlugin"
                     },
                     "description": "Options specific to config management plugins.\n"
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "Reference name to be used in other source spec, used for multi-source applications.\n"
                 },
                 "repoUrl": {
                     "type": "string",
@@ -6778,6 +6789,13 @@
                     },
                     "description": "Environment names of the CD pipeline.\n"
                 },
+                "serviceIdentifiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Service identifiers of the CD pipeline.\n"
+                },
                 "serviceNames": {
                     "type": "array",
                     "items": {
@@ -6968,6 +6986,41 @@
             "type": "object",
             "required": [
                 "key"
+            ]
+        },
+        "harness:platform/ProviderSpec:ProviderSpec": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "Client Id of the OAuth app to connect\n"
+                },
+                "clientSecretRef": {
+                    "type": "string",
+                    "description": "Client Secret Ref of the OAuth app to connect\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Delegate selectors to fetch the access token\n"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Host domain of the provider.\n"
+                },
+                "secretManagerRef": {
+                    "type": "string",
+                    "description": "Secret Manager Ref to store the access/refresh tokens\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the provider entity.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
             ]
         },
         "harness:platform/RepoRuleBranchBypass:RepoRuleBranchBypass": {
@@ -10030,12 +10083,19 @@
                     "type": "string",
                     "description": "The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.\n"
                 },
-                "sources": {
+                "source": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/getGitopsApplicationsApplicationSpecSource:getGitopsApplicationsApplicationSpecSource"
                     },
                     "description": "Contains all information about the source of a GitOps application.\n"
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getGitopsApplicationsApplicationSpecSource:getGitopsApplicationsApplicationSpecSource"
+                    },
+                    "description": "List of sources for the GitOps application. Multi Source support\n"
                 },
                 "syncPolicies": {
                     "type": "array",
@@ -10048,6 +10108,7 @@
             "type": "object",
             "required": [
                 "destinations",
+                "sources",
                 "syncPolicies"
             ],
             "language": {
@@ -10128,6 +10189,10 @@
                     },
                     "description": "Options specific to config management plugins.\n"
                 },
+                "ref": {
+                    "type": "string",
+                    "description": "Reference name to be used in other source spec, used for multi-source applications.\n"
+                },
                 "repoUrl": {
                     "type": "string",
                     "description": "URL to the repository (git or helm) that contains the GitOps application manifests.\n"
@@ -10141,10 +10206,12 @@
             "required": [
                 "chart",
                 "directories",
+                "helms",
                 "ksonnets",
                 "kustomizes",
                 "path",
                 "plugins",
+                "ref",
                 "repoUrl",
                 "targetRevision"
             ],
@@ -10176,18 +10243,7 @@
                     "description": "Indicates to scan a directory recursively for manifests.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "exclude",
-                "include",
-                "jsonnets",
-                "recurse"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceDirectoryJsonnet:getGitopsApplicationsApplicationSpecSourceDirectoryJsonnet": {
             "properties": {
@@ -10213,17 +10269,7 @@
                     "description": "List of jsonnet top-level arguments(TLAS).\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "extVars",
-                "libs",
-                "tlas"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar:getGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar": {
             "properties": {
@@ -10233,24 +10279,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the external variables of jsonnet application.\n"
+                    "description": "Name of the GitOps application.\n"
                 },
                 "value": {
                     "type": "string",
                     "description": "Value of the external variables of jsonnet application.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "code",
-                "name",
-                "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla:getGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla": {
             "properties": {
@@ -10260,24 +10296,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the TLAS of the jsonnet application.\n"
+                    "description": "Name of the GitOps application.\n"
                 },
                 "value": {
                     "type": "string",
                     "description": "Value of the TLAS of the jsonnet application.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "code",
-                "name",
-                "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceHelm:getGitopsApplicationsApplicationSpecSourceHelm": {
             "properties": {
@@ -10319,43 +10345,20 @@
                     "description": "Helm version to use for templating (either \"2\" or \"3\")\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "fileParameters",
-                "parameters",
-                "passCredentials",
-                "releaseName",
-                "valueFiles",
-                "values",
-                "version"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceHelmFileParameter:getGitopsApplicationsApplicationSpecSourceHelmFileParameter": {
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the helm parameter.\n"
+                    "description": "Name of the GitOps application.\n"
                 },
                 "path": {
                     "type": "string",
                     "description": "Path to the file containing the values of the helm parameter.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "name",
-                "path"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceHelmParameter:getGitopsApplicationsApplicationSpecSourceHelmParameter": {
             "properties": {
@@ -10365,24 +10368,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the helm parameter.\n"
+                    "description": "Name of the GitOps application.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Value of the helm parameter.\n"
+                    "description": "Value of the Helm parameter.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "forceString",
-                "name",
-                "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceKsonnet:getGitopsApplicationsApplicationSpecSourceKsonnet": {
             "properties": {
@@ -10398,16 +10391,7 @@
                     "description": "List of ksonnet component parameter override values.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "environment",
-                "parameters"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceKsonnetParameter:getGitopsApplicationsApplicationSpecSourceKsonnetParameter": {
             "properties": {
@@ -10417,24 +10401,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the parameter of the ksonnet application.\n"
+                    "description": "Name of the GitOps application.\n"
                 },
                 "value": {
                     "type": "string",
                     "description": "Value of the parameter of the ksonnet application.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "component",
-                "name",
-                "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourceKustomize:getGitopsApplicationsApplicationSpecSourceKustomize": {
             "properties": {
@@ -10480,22 +10454,7 @@
                     "description": "Version of kustomize to use for rendering manifests.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "commonAnnotations",
-                "commonLabels",
-                "forceCommonAnnotations",
-                "forceCommonLabels",
-                "images",
-                "namePrefix",
-                "nameSuffix",
-                "version"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourcePlugin:getGitopsApplicationsApplicationSpecSourcePlugin": {
             "properties": {
@@ -10508,41 +10467,23 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the plugin.\n"
+                    "description": "Name of the GitOps application.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "envs",
-                "name"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSourcePluginEnv:getGitopsApplicationsApplicationSpecSourcePluginEnv": {
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the variable, usually expressed in uppercase.\n"
+                    "description": "Name of the GitOps application.\n"
                 },
                 "value": {
                     "type": "string",
                     "description": "Value of the variable.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "name",
-                "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplicationSpecSyncPolicy:getGitopsApplicationsApplicationSpecSyncPolicy": {
             "properties": {
@@ -12025,6 +11966,13 @@
                     },
                     "description": "Environment names of the CD pipeline.\n"
                 },
+                "serviceIdentifiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Service identifiers of the CD pipeline.\n"
+                },
                 "serviceNames": {
                     "type": "array",
                     "items": {
@@ -12038,6 +11986,7 @@
                 "artifactDisplayNames",
                 "deploymentTypes",
                 "environmentNames",
+                "serviceIdentifiers",
                 "serviceNames"
             ],
             "language": {
@@ -22925,7 +22874,9 @@
                 }
             },
             "required": [
+                "content",
                 "createdBies",
+                "fileContentPath",
                 "fileUsage",
                 "identifier",
                 "lastModifiedAt",
@@ -24253,7 +24204,14 @@
                 },
                 "repoId": {
                     "type": "string",
-                    "description": "Repository identifier of the GitOps application.\n"
+                    "description": "Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.\n"
+                },
+                "repoIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.\n"
                 },
                 "requestCascade": {
                     "type": "boolean",
@@ -24283,6 +24241,7 @@
                 "clusterId",
                 "name",
                 "orgId",
+                "project",
                 "projectId"
             ],
             "inputProperties": {
@@ -24336,7 +24295,14 @@
                 },
                 "repoId": {
                     "type": "string",
-                    "description": "Repository identifier of the GitOps application.\n"
+                    "description": "Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.\n"
+                },
+                "repoIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.\n"
                 },
                 "requestCascade": {
                     "type": "boolean",
@@ -24420,7 +24386,14 @@
                     },
                     "repoId": {
                         "type": "string",
-                        "description": "Repository identifier of the GitOps application.\n"
+                        "description": "Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.\n"
+                    },
+                    "repoIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.\n"
                     },
                     "requestCascade": {
                         "type": "boolean",
@@ -24915,6 +24888,10 @@
                     "$ref": "#/types/harness:platform/GitOpsRepositoryEcrGen:GitOpsRepositoryEcrGen",
                     "description": "ECR access token generator specific configuration.\n"
                 },
+                "forceDelete": {
+                    "type": "boolean",
+                    "description": "Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.\n"
+                },
                 "gcrGen": {
                     "$ref": "#/types/harness:platform/GitOpsRepositoryGcrGen:GitOpsRepositoryGcrGen",
                     "description": "GCR access token generator specific configuration.\n"
@@ -24983,6 +24960,10 @@
                 "ecrGen": {
                     "$ref": "#/types/harness:platform/GitOpsRepositoryEcrGen:GitOpsRepositoryEcrGen",
                     "description": "ECR access token generator specific configuration.\n"
+                },
+                "forceDelete": {
+                    "type": "boolean",
+                    "description": "Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.\n"
                 },
                 "gcrGen": {
                     "$ref": "#/types/harness:platform/GitOpsRepositoryGcrGen:GitOpsRepositoryGcrGen",
@@ -25057,6 +25038,10 @@
                     "ecrGen": {
                         "$ref": "#/types/harness:platform/GitOpsRepositoryEcrGen:GitOpsRepositoryEcrGen",
                         "description": "ECR access token generator specific configuration.\n"
+                    },
+                    "forceDelete": {
+                        "type": "boolean",
+                        "description": "Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.\n"
                     },
                     "gcrGen": {
                         "$ref": "#/types/harness:platform/GitOpsRepositoryGcrGen:GitOpsRepositoryGcrGen",
@@ -29412,6 +29397,95 @@
                     "userName": {
                         "type": "string",
                         "description": "User name.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/provider:Provider": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the provider entity.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the provider entity.\n"
+                },
+                "lastModifiedAt": {
+                    "type": "integer",
+                    "description": "The last modified time of the provider entity.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the provider entity.\n"
+                },
+                "spec": {
+                    "$ref": "#/types/harness:platform/ProviderSpec:ProviderSpec",
+                    "description": "Contains parameters related to the provider entity.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the provider entity.\n"
+                }
+            },
+            "required": [
+                "identifier",
+                "lastModifiedAt",
+                "name",
+                "spec",
+                "type"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the provider entity.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The identifier of the provider entity.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the provider entity.\n"
+                },
+                "spec": {
+                    "$ref": "#/types/harness:platform/ProviderSpec:ProviderSpec",
+                    "description": "Contains parameters related to the provider entity.\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier",
+                "spec"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Provider resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the provider entity.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "The identifier of the provider entity.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "lastModifiedAt": {
+                        "type": "integer",
+                        "description": "The last modified time of the provider entity.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the provider entity.\n"
+                    },
+                    "spec": {
+                        "$ref": "#/types/harness:platform/ProviderSpec:ProviderSpec",
+                        "description": "Contains parameters related to the provider entity.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the provider entity.\n"
                     }
                 },
                 "type": "object"
@@ -44392,6 +44466,37 @@
                     "tags",
                     "url",
                     "userName",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getProvider:getProvider": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getProvider.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProvider.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "identifier",
                     "id"
                 ],
                 "type": "object"

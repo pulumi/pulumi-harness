@@ -188,6 +188,11 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_pipeline_filters": {Tok: harnessResource(platformMod, "PipelineFilters")},
 			"harness_platform_policy":           {Tok: harnessResource(platformMod, "Policy")},
 			"harness_platform_policyset":        {Tok: harnessResource(platformMod, "PolicySet")},
+			"harness_platform_provider": {
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
 			"harness_platform_service_overrides_v2": {
 				Tok: harnessResource(platformMod, "ServiceOverridesV2"),
 			},
@@ -352,9 +357,14 @@ func Provider() tfbridge.ProviderInfo {
 					AllowMissing: true,
 				},
 			},
-			"harness_platform_pipeline":         {Tok: harnessDataSource(platformMod, "getPipeline")},
-			"harness_platform_permissions":      {Tok: harnessDataSource(platformMod, "getPermissions")},
-			"harness_platform_project":          {Tok: harnessDataSource(platformMod, "getProject")},
+			"harness_platform_pipeline":    {Tok: harnessDataSource(platformMod, "getPipeline")},
+			"harness_platform_permissions": {Tok: harnessDataSource(platformMod, "getPermissions")},
+			"harness_platform_project":     {Tok: harnessDataSource(platformMod, "getProject")},
+			"harness_platform_provider": {
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
 			"harness_platform_resource_group":   {Tok: harnessDataSource(platformMod, "getResourceGroup")},
 			"harness_platform_roles":            {Tok: harnessDataSource(platformMod, "getRoles")},
 			"harness_platform_role_assignments": {Tok: harnessDataSource(platformMod, "getRoleAssignments")},

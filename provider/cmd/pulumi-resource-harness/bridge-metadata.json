@@ -1653,6 +1653,82 @@
                                                     }
                                                 }
                                             },
+                                            "sources": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "directory": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "jsonnet": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "ext_vars": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "libs": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "tlas": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "helm": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "file_parameters": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "value_files": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "ksonnet": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "kustomize": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "images": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "plugin": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "env": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "sync_policy": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -1681,6 +1757,9 @@
                                 }
                             }
                         }
+                    },
+                    "repo_ids": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2040,6 +2119,9 @@
                                                         "environment_names": {
                                                             "maxItemsOne": false
                                                         },
+                                                        "service_identifiers": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "service_names": {
                                                             "maxItemsOne": false
                                                         }
@@ -2107,6 +2189,21 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_provider": {
+                "current": "harness:platform/provider:Provider",
+                "fields": {
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4202,6 +4299,82 @@
                                                     }
                                                 }
                                             },
+                                            "sources": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "directory": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "jsonnet": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "ext_vars": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "libs": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "tlas": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "helm": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "file_parameters": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "value_files": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "ksonnet": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "parameters": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "kustomize": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "images": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "plugin": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "env": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "sync_policy": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -4471,6 +4644,9 @@
                                                         "environment_names": {
                                                             "maxItemsOne": false
                                                         },
+                                                        "service_identifiers": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "service_names": {
                                                             "maxItemsOne": false
                                                         }
@@ -4562,6 +4738,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "harness_platform_provider": {
+                "current": "harness:platform/getProvider:getProvider"
             },
             "harness_platform_repo": {
                 "current": "harness:platform/getRepo:getRepo",
@@ -4947,6 +5126,7 @@
                     "application": false,
                     "application.$.metadata": false,
                     "application.$.spec": false,
+                    "application.$.spec.$.source": false,
                     "application.$.spec.$.sync_policy": false,
                     "application.$.spec.$.sync_policy.$.automated": false,
                     "application.$.spec.$.sync_policy.$.retry": false,
