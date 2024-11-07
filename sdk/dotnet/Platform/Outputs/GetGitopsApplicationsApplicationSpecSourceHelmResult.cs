@@ -24,11 +24,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Indicates if to pass credentials to all domains (helm's --pass-credentials)
         /// </summary>
-        public readonly bool PassCredentials;
+        public readonly bool? PassCredentials;
         /// <summary>
         /// Helm release name to use. If omitted it will use the GitOps application name.
         /// </summary>
-        public readonly string ReleaseName;
+        public readonly string? ReleaseName;
         /// <summary>
         /// List of helm value files to use when generating a template.
         /// </summary>
@@ -36,11 +36,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Helm values to be passed to helm template, typically defined as a block.
         /// </summary>
-        public readonly string Values;
+        public readonly string? Values;
         /// <summary>
         /// Helm version to use for templating (either "2" or "3")
         /// </summary>
-        public readonly string Version;
+        public readonly string? Version;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceHelmResult(
@@ -48,15 +48,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult> parameters,
 
-            bool passCredentials,
+            bool? passCredentials,
 
-            string releaseName,
+            string? releaseName,
 
             ImmutableArray<string> valueFiles,
 
-            string values,
+            string? values,
 
-            string version)
+            string? version)
         {
             FileParameters = fileParameters;
             Parameters = parameters;

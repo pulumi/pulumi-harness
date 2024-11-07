@@ -76,13 +76,13 @@ type FileStoreFile struct {
 	pulumi.CustomResourceState
 
 	// File content stored on Harness File Store
-	Content pulumi.StringPtrOutput `pulumi:"content"`
+	Content pulumi.StringOutput `pulumi:"content"`
 	// Created by
 	CreatedBies FileStoreFileCreatedByArrayOutput `pulumi:"createdBies"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// File content path to be upladed on Harness File Store
-	FileContentPath pulumi.StringPtrOutput `pulumi:"fileContentPath"`
+	FileContentPath pulumi.StringOutput `pulumi:"fileContentPath"`
 	// File usage. Valid options are ManifestFile, Config, Script
 	FileUsage pulumi.StringOutput `pulumi:"fileUsage"`
 	// Unique identifier of the resource.
@@ -351,8 +351,8 @@ func (o FileStoreFileOutput) ToFileStoreFileOutputWithContext(ctx context.Contex
 }
 
 // File content stored on Harness File Store
-func (o FileStoreFileOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileStoreFile) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
+func (o FileStoreFileOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileStoreFile) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
 
 // Created by
@@ -366,8 +366,8 @@ func (o FileStoreFileOutput) Description() pulumi.StringPtrOutput {
 }
 
 // File content path to be upladed on Harness File Store
-func (o FileStoreFileOutput) FileContentPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileStoreFile) pulumi.StringPtrOutput { return v.FileContentPath }).(pulumi.StringPtrOutput)
+func (o FileStoreFileOutput) FileContentPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileStoreFile) pulumi.StringOutput { return v.FileContentPath }).(pulumi.StringOutput)
 }
 
 // File usage. Valid options are ManifestFile, Config, Script

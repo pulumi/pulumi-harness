@@ -85,6 +85,12 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
+        /// Reference name to be used in other source spec, used for multi-source applications.
+        /// </summary>
+        [Input("ref")]
+        public Input<string>? Ref { get; set; }
+
+        /// <summary>
         /// URL to the repository (git or helm) that contains the GitOps application manifests.
         /// </summary>
         [Input("repoUrl", required: true)]

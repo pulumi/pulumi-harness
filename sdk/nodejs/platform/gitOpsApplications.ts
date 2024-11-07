@@ -137,15 +137,19 @@ export class GitOpsApplications extends pulumi.CustomResource {
     /**
      * The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
      */
-    public readonly project!: pulumi.Output<string | undefined>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Project identifier of the GitOps application.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * Repository identifier of the GitOps application.
+     * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      */
     public readonly repoId!: pulumi.Output<string | undefined>;
+    /**
+     * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     */
+    public readonly repoIds!: pulumi.Output<string[] | undefined>;
     /**
      * Request cascade to delete the GitOps application.
      */
@@ -192,6 +196,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["repoId"] = state ? state.repoId : undefined;
+            resourceInputs["repoIds"] = state ? state.repoIds : undefined;
             resourceInputs["requestCascade"] = state ? state.requestCascade : undefined;
             resourceInputs["requestPropagationPolicy"] = state ? state.requestPropagationPolicy : undefined;
             resourceInputs["skipRepoValidation"] = state ? state.skipRepoValidation : undefined;
@@ -229,6 +234,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["repoId"] = args ? args.repoId : undefined;
+            resourceInputs["repoIds"] = args ? args.repoIds : undefined;
             resourceInputs["requestCascade"] = args ? args.requestCascade : undefined;
             resourceInputs["requestPropagationPolicy"] = args ? args.requestPropagationPolicy : undefined;
             resourceInputs["skipRepoValidation"] = args ? args.skipRepoValidation : undefined;
@@ -291,9 +297,13 @@ export interface GitOpsApplicationsState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Repository identifier of the GitOps application.
+     * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      */
     repoId?: pulumi.Input<string>;
+    /**
+     * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     */
+    repoIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Request cascade to delete the GitOps application.
      */
@@ -367,9 +377,13 @@ export interface GitOpsApplicationsArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * Repository identifier of the GitOps application.
+     * Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
      */
     repoId?: pulumi.Input<string>;
+    /**
+     * List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     */
+    repoIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Request cascade to delete the GitOps application.
      */

@@ -3908,6 +3908,10 @@ export namespace platform {
         /**
          * Contains all information about the source of the GitOps application.
          */
+        source?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSource>[]>;
+        /**
+         * List of sources for the GitOps application. Multi Source support
+         */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSource>[]>;
         /**
          * Controls when a sync will be performed in response to updates in git.
@@ -3959,6 +3963,10 @@ export namespace platform {
          * Options specific to config management plugins.
          */
         plugins?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsApplicationsApplicationSpecSourcePlugin>[]>;
+        /**
+         * Reference name to be used in other source spec, used for multi-source applications.
+         */
+        ref?: pulumi.Input<string>;
         /**
          * URL to the repository (git or helm) that contains the GitOps application manifests.
          */
@@ -5938,6 +5946,10 @@ export namespace platform {
          */
         environmentNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Service identifiers of the CD pipeline.
+         */
+        serviceIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Service names of the CD pipeline.
          */
         serviceNames?: pulumi.Input<pulumi.Input<string>[]>;
@@ -6085,6 +6097,33 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted?: pulumi.Input<boolean>;
+    }
+
+    export interface ProviderSpec {
+        /**
+         * Client Id of the OAuth app to connect
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * Client Secret Ref of the OAuth app to connect
+         */
+        clientSecretRef?: pulumi.Input<string>;
+        /**
+         * Delegate selectors to fetch the access token
+         */
+        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Host domain of the provider.
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * Secret Manager Ref to store the access/refresh tokens
+         */
+        secretManagerRef?: pulumi.Input<string>;
+        /**
+         * The type of the provider entity.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface RepoRuleBranchBypass {

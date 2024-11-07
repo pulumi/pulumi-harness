@@ -3440,7 +3440,11 @@ export namespace platform {
         /**
          * Contains all information about the source of a GitOps application.
          */
-        sources?: outputs.platform.GetGitopsApplicationsApplicationSpecSource[];
+        source?: outputs.platform.GetGitopsApplicationsApplicationSpecSource[];
+        /**
+         * List of sources for the GitOps application. Multi Source support
+         */
+        sources: outputs.platform.GetGitopsApplicationsApplicationSpecSource[];
         /**
          * Controls when a sync will be performed in response to updates in git.
          */
@@ -3474,7 +3478,7 @@ export namespace platform {
         /**
          * Holds helm specific options.
          */
-        helms?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelm[];
+        helms: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelm[];
         /**
          * Ksonnet specific options.
          */
@@ -3492,6 +3496,10 @@ export namespace platform {
          */
         plugins: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePlugin[];
         /**
+         * Reference name to be used in other source spec, used for multi-source applications.
+         */
+        ref: string;
+        /**
          * URL to the repository (git or helm) that contains the GitOps application manifests.
          */
         repoUrl: string;
@@ -3505,204 +3513,204 @@ export namespace platform {
         /**
          * Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
          */
-        exclude: string;
+        exclude?: string;
         /**
          * Glob pattern to match paths against that should be explicitly included during manifest generation.
          */
-        include: string;
+        include?: string;
         /**
          * Options specific to applications of type Jsonnet.
          */
-        jsonnets: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet[];
+        jsonnets?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet[];
         /**
          * Indicates to scan a directory recursively for manifests.
          */
-        recurse: boolean;
+        recurse?: boolean;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet {
         /**
          * List of jsonnet external variables.
          */
-        extVars: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar[];
+        extVars?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar[];
         /**
          * Additional library search dirs.
          */
-        libs: string[];
+        libs?: string[];
         /**
          * List of jsonnet top-level arguments(TLAS).
          */
-        tlas: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla[];
+        tlas?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla[];
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar {
         /**
          * Code of the external variables of jsonnet application.
          */
-        code: boolean;
+        code?: boolean;
         /**
-         * Name of the external variables of jsonnet application.
+         * Name of the GitOps application.
          */
-        name: string;
+        name?: string;
         /**
          * Value of the external variables of jsonnet application.
          */
-        value: string;
+        value?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla {
         /**
          * Code of the TLAS of the jsonnet application.
          */
-        code: boolean;
+        code?: boolean;
         /**
-         * Name of the TLAS of the jsonnet application.
+         * Name of the GitOps application.
          */
-        name: string;
+        name?: string;
         /**
          * Value of the TLAS of the jsonnet application.
          */
-        value: string;
+        value?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelm {
         /**
          * File parameters to the helm template.
          */
-        fileParameters: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmFileParameter[];
+        fileParameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmFileParameter[];
         /**
          * List of helm parameters which are passed to the helm template command upon manifest generation.
          */
-        parameters: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmParameter[];
+        parameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmParameter[];
         /**
          * Indicates if to pass credentials to all domains (helm's --pass-credentials)
          */
-        passCredentials: boolean;
+        passCredentials?: boolean;
         /**
          * Helm release name to use. If omitted it will use the GitOps application name.
          */
-        releaseName: string;
+        releaseName?: string;
         /**
          * List of helm value files to use when generating a template.
          */
-        valueFiles: string[];
+        valueFiles?: string[];
         /**
          * Helm values to be passed to helm template, typically defined as a block.
          */
-        values: string;
+        values?: string;
         /**
          * Helm version to use for templating (either "2" or "3")
          */
-        version: string;
+        version?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
         /**
-         * Name of the helm parameter.
+         * Name of the GitOps application.
          */
-        name: string;
+        name?: string;
         /**
          * Path to the file containing the values of the helm parameter.
          */
-        path: string;
+        path?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelmParameter {
         /**
          * Indicates if helm should interpret booleans and numbers as strings.
          */
-        forceString: boolean;
+        forceString?: boolean;
         /**
-         * Name of the helm parameter.
+         * Name of the GitOps application.
          */
-        name: string;
+        name?: string;
         /**
-         * Value of the helm parameter.
+         * Value of the Helm parameter.
          */
-        value: string;
+        value?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceKsonnet {
         /**
          * Ksonnet application environment name.
          */
-        environment: string;
+        environment?: string;
         /**
          * List of ksonnet component parameter override values.
          */
-        parameters: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnetParameter[];
+        parameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceKsonnetParameter[];
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
         /**
          * Component of the parameter of the ksonnet application.
          */
-        component: string;
+        component?: string;
         /**
-         * Name of the parameter of the ksonnet application.
+         * Name of the GitOps application.
          */
-        name: string;
+        name?: string;
         /**
          * Value of the parameter of the ksonnet application.
          */
-        value: string;
+        value?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourceKustomize {
         /**
          * List of additional annotations to add to rendered manifests.
          */
-        commonAnnotations: {[key: string]: string};
+        commonAnnotations?: {[key: string]: string};
         /**
          * List of additional labels to add to rendered manifests.
          */
-        commonLabels: {[key: string]: string};
+        commonLabels?: {[key: string]: string};
         /**
          * Indicates if to force applying common annotations to resources for kustomize apps.
          */
-        forceCommonAnnotations: boolean;
+        forceCommonAnnotations?: boolean;
         /**
          * Indicates if to force apply common labels to resources for kustomize apps.
          */
-        forceCommonLabels: boolean;
+        forceCommonLabels?: boolean;
         /**
          * List of kustomize image override specifications.
          */
-        images: string[];
+        images?: string[];
         /**
          * Prefix prepended to resources for kustomize apps.
          */
-        namePrefix: string;
+        namePrefix?: string;
         /**
          * Suffix appended to resources for kustomize apps.
          */
-        nameSuffix: string;
+        nameSuffix?: string;
         /**
          * Version of kustomize to use for rendering manifests.
          */
-        version: string;
+        version?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourcePlugin {
         /**
          * Entry in the GitOps application's environment.
          */
-        envs: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnv[];
+        envs?: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnv[];
         /**
-         * Name of the plugin.
+         * Name of the GitOps application.
          */
-        name: string;
+        name?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourcePluginEnv {
         /**
-         * Name of the variable, usually expressed in uppercase.
+         * Name of the GitOps application.
          */
-        name: string;
+        name?: string;
         /**
          * Value of the variable.
          */
-        value: string;
+        value?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSyncPolicy {
@@ -4601,6 +4609,10 @@ export namespace platform {
          */
         environmentNames: string[];
         /**
+         * Service identifiers of the CD pipeline.
+         */
+        serviceIdentifiers: string[];
+        /**
          * Service names of the CD pipeline.
          */
         serviceNames: string[];
@@ -5481,6 +5493,10 @@ export namespace platform {
         /**
          * Contains all information about the source of the GitOps application.
          */
+        source?: outputs.platform.GitOpsApplicationsApplicationSpecSource[];
+        /**
+         * List of sources for the GitOps application. Multi Source support
+         */
         sources?: outputs.platform.GitOpsApplicationsApplicationSpecSource[];
         /**
          * Controls when a sync will be performed in response to updates in git.
@@ -5532,6 +5548,10 @@ export namespace platform {
          * Options specific to config management plugins.
          */
         plugins?: outputs.platform.GitOpsApplicationsApplicationSpecSourcePlugin[];
+        /**
+         * Reference name to be used in other source spec, used for multi-source applications.
+         */
+        ref?: string;
         /**
          * URL to the repository (git or helm) that contains the GitOps application manifests.
          */
@@ -7511,6 +7531,10 @@ export namespace platform {
          */
         environmentNames?: string[];
         /**
+         * Service identifiers of the CD pipeline.
+         */
+        serviceIdentifiers?: string[];
+        /**
          * Service names of the CD pipeline.
          */
         serviceNames?: string[];
@@ -7658,6 +7682,33 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted?: boolean;
+    }
+
+    export interface ProviderSpec {
+        /**
+         * Client Id of the OAuth app to connect
+         */
+        clientId?: string;
+        /**
+         * Client Secret Ref of the OAuth app to connect
+         */
+        clientSecretRef?: string;
+        /**
+         * Delegate selectors to fetch the access token
+         */
+        delegateSelectors?: string[];
+        /**
+         * Host domain of the provider.
+         */
+        domain?: string;
+        /**
+         * Secret Manager Ref to store the access/refresh tokens
+         */
+        secretManagerRef?: string;
+        /**
+         * The type of the provider entity.
+         */
+        type: string;
     }
 
     export interface RepoRuleBranchBypass {

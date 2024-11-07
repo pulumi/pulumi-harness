@@ -30,7 +30,12 @@ public final class GetGitopsApplicationsApplicationSpec {
      * @return Contains all information about the source of a GitOps application.
      * 
      */
-    private @Nullable List<GetGitopsApplicationsApplicationSpecSource> sources;
+    private @Nullable List<GetGitopsApplicationsApplicationSpecSource> source;
+    /**
+     * @return List of sources for the GitOps application. Multi Source support
+     * 
+     */
+    private List<GetGitopsApplicationsApplicationSpecSource> sources;
     /**
      * @return Controls when a sync will be performed in response to updates in git.
      * 
@@ -56,8 +61,15 @@ public final class GetGitopsApplicationsApplicationSpec {
      * @return Contains all information about the source of a GitOps application.
      * 
      */
+    public List<GetGitopsApplicationsApplicationSpecSource> source() {
+        return this.source == null ? List.of() : this.source;
+    }
+    /**
+     * @return List of sources for the GitOps application. Multi Source support
+     * 
+     */
     public List<GetGitopsApplicationsApplicationSpecSource> sources() {
-        return this.sources == null ? List.of() : this.sources;
+        return this.sources;
     }
     /**
      * @return Controls when a sync will be performed in response to updates in git.
@@ -78,13 +90,15 @@ public final class GetGitopsApplicationsApplicationSpec {
     public static final class Builder {
         private List<GetGitopsApplicationsApplicationSpecDestination> destinations;
         private @Nullable String project;
-        private @Nullable List<GetGitopsApplicationsApplicationSpecSource> sources;
+        private @Nullable List<GetGitopsApplicationsApplicationSpecSource> source;
+        private List<GetGitopsApplicationsApplicationSpecSource> sources;
         private List<GetGitopsApplicationsApplicationSpecSyncPolicy> syncPolicies;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinations = defaults.destinations;
     	      this.project = defaults.project;
+    	      this.source = defaults.source;
     	      this.sources = defaults.sources;
     	      this.syncPolicies = defaults.syncPolicies;
         }
@@ -107,8 +121,19 @@ public final class GetGitopsApplicationsApplicationSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder sources(@Nullable List<GetGitopsApplicationsApplicationSpecSource> sources) {
+        public Builder source(@Nullable List<GetGitopsApplicationsApplicationSpecSource> source) {
 
+            this.source = source;
+            return this;
+        }
+        public Builder source(GetGitopsApplicationsApplicationSpecSource... source) {
+            return source(List.of(source));
+        }
+        @CustomType.Setter
+        public Builder sources(List<GetGitopsApplicationsApplicationSpecSource> sources) {
+            if (sources == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpec", "sources");
+            }
             this.sources = sources;
             return this;
         }
@@ -130,6 +155,7 @@ public final class GetGitopsApplicationsApplicationSpec {
             final var _resultValue = new GetGitopsApplicationsApplicationSpec();
             _resultValue.destinations = destinations;
             _resultValue.project = project;
+            _resultValue.source = source;
             _resultValue.sources = sources;
             _resultValue.syncPolicies = syncPolicies;
             return _resultValue;

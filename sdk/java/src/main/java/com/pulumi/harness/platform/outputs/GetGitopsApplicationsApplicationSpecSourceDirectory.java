@@ -4,12 +4,13 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceDirectory {
@@ -17,51 +18,51 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectory {
      * @return Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
      * 
      */
-    private String exclude;
+    private @Nullable String exclude;
     /**
      * @return Glob pattern to match paths against that should be explicitly included during manifest generation.
      * 
      */
-    private String include;
+    private @Nullable String include;
     /**
      * @return Options specific to applications of type Jsonnet.
      * 
      */
-    private List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet> jsonnets;
+    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet> jsonnets;
     /**
      * @return Indicates to scan a directory recursively for manifests.
      * 
      */
-    private Boolean recurse;
+    private @Nullable Boolean recurse;
 
     private GetGitopsApplicationsApplicationSpecSourceDirectory() {}
     /**
      * @return Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
      * 
      */
-    public String exclude() {
-        return this.exclude;
+    public Optional<String> exclude() {
+        return Optional.ofNullable(this.exclude);
     }
     /**
      * @return Glob pattern to match paths against that should be explicitly included during manifest generation.
      * 
      */
-    public String include() {
-        return this.include;
+    public Optional<String> include() {
+        return Optional.ofNullable(this.include);
     }
     /**
      * @return Options specific to applications of type Jsonnet.
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet> jsonnets() {
-        return this.jsonnets;
+        return this.jsonnets == null ? List.of() : this.jsonnets;
     }
     /**
      * @return Indicates to scan a directory recursively for manifests.
      * 
      */
-    public Boolean recurse() {
-        return this.recurse;
+    public Optional<Boolean> recurse() {
+        return Optional.ofNullable(this.recurse);
     }
 
     public static Builder builder() {
@@ -73,10 +74,10 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectory {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String exclude;
-        private String include;
-        private List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet> jsonnets;
-        private Boolean recurse;
+        private @Nullable String exclude;
+        private @Nullable String include;
+        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet> jsonnets;
+        private @Nullable Boolean recurse;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceDirectory defaults) {
     	      Objects.requireNonNull(defaults);
@@ -87,26 +88,20 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectory {
         }
 
         @CustomType.Setter
-        public Builder exclude(String exclude) {
-            if (exclude == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectory", "exclude");
-            }
+        public Builder exclude(@Nullable String exclude) {
+
             this.exclude = exclude;
             return this;
         }
         @CustomType.Setter
-        public Builder include(String include) {
-            if (include == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectory", "include");
-            }
+        public Builder include(@Nullable String include) {
+
             this.include = include;
             return this;
         }
         @CustomType.Setter
-        public Builder jsonnets(List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet> jsonnets) {
-            if (jsonnets == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectory", "jsonnets");
-            }
+        public Builder jsonnets(@Nullable List<GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet> jsonnets) {
+
             this.jsonnets = jsonnets;
             return this;
         }
@@ -114,10 +109,8 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectory {
             return jsonnets(List.of(jsonnets));
         }
         @CustomType.Setter
-        public Builder recurse(Boolean recurse) {
-            if (recurse == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectory", "recurse");
-            }
+        public Builder recurse(@Nullable Boolean recurse) {
+
             this.recurse = recurse;
             return this;
         }

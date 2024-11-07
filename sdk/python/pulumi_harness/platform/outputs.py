@@ -194,6 +194,7 @@ __all__ = [
     'PipelinePipelineImportRequest',
     'PolicySetPolicy',
     'PrometheusConnectorHeader',
+    'ProviderSpec',
     'RepoRuleBranchBypass',
     'RepoRuleBranchPattern',
     'RepoRuleBranchPolicy',
@@ -4076,18 +4077,22 @@ class GitOpsApplicationsApplicationSpec(dict):
     def __init__(__self__, *,
                  destinations: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecDestination']] = None,
                  project: Optional[str] = None,
+                 source: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSource']] = None,
                  sources: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSource']] = None,
                  sync_policies: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSyncPolicy']] = None):
         """
         :param Sequence['GitOpsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
         :param str project: The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
-        :param Sequence['GitOpsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of the GitOps application.
+        :param Sequence['GitOpsApplicationsApplicationSpecSourceArgs'] source: Contains all information about the source of the GitOps application.
+        :param Sequence['GitOpsApplicationsApplicationSpecSourceArgs'] sources: List of sources for the GitOps application. Multi Source support
         :param Sequence['GitOpsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
         if sync_policies is not None:
@@ -4111,9 +4116,17 @@ class GitOpsApplicationsApplicationSpec(dict):
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSource']]:
+    def source(self) -> Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSource']]:
         """
         Contains all information about the source of the GitOps application.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSource']]:
+        """
+        List of sources for the GitOps application. Multi Source support
         """
         return pulumi.get(self, "sources")
 
@@ -4199,7 +4212,8 @@ class GitOpsApplicationsApplicationSpecSource(dict):
                  ksonnets: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourceKsonnet']] = None,
                  kustomizes: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourceKustomize']] = None,
                  path: Optional[str] = None,
-                 plugins: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourcePlugin']] = None):
+                 plugins: Optional[Sequence['outputs.GitOpsApplicationsApplicationSpecSourcePlugin']] = None,
+                 ref: Optional[str] = None):
         """
         :param str repo_url: URL to the repository (git or helm) that contains the GitOps application manifests.
         :param str target_revision: Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
@@ -4210,6 +4224,7 @@ class GitOpsApplicationsApplicationSpecSource(dict):
         :param Sequence['GitOpsApplicationsApplicationSpecSourceKustomizeArgs'] kustomizes: Options specific to a GitOps application source specific to Kustomize.
         :param str path: Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         :param Sequence['GitOpsApplicationsApplicationSpecSourcePluginArgs'] plugins: Options specific to config management plugins.
+        :param str ref: Reference name to be used in other source spec, used for multi-source applications.
         """
         pulumi.set(__self__, "repo_url", repo_url)
         pulumi.set(__self__, "target_revision", target_revision)
@@ -4227,6 +4242,8 @@ class GitOpsApplicationsApplicationSpecSource(dict):
             pulumi.set(__self__, "path", path)
         if plugins is not None:
             pulumi.set(__self__, "plugins", plugins)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
 
     @property
     @pulumi.getter(name="repoUrl")
@@ -4299,6 +4316,14 @@ class GitOpsApplicationsApplicationSpecSource(dict):
         Options specific to config management plugins.
         """
         return pulumi.get(self, "plugins")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[str]:
+        """
+        Reference name to be used in other source spec, used for multi-source applications.
+        """
+        return pulumi.get(self, "ref")
 
 
 @pulumi.output_type
@@ -11345,6 +11370,8 @@ class PipelineFiltersFilterPropertiesModulePropertiesCd(dict):
             suggest = "deployment_types"
         elif key == "environmentNames":
             suggest = "environment_names"
+        elif key == "serviceIdentifiers":
+            suggest = "service_identifiers"
         elif key == "serviceNames":
             suggest = "service_names"
 
@@ -11363,11 +11390,13 @@ class PipelineFiltersFilterPropertiesModulePropertiesCd(dict):
                  artifact_display_names: Optional[Sequence[str]] = None,
                  deployment_types: Optional[str] = None,
                  environment_names: Optional[Sequence[str]] = None,
+                 service_identifiers: Optional[Sequence[str]] = None,
                  service_names: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] artifact_display_names: Artifact display names of the CD pipeline.
         :param str deployment_types: Deployment type of the CD pipeline, eg. Kubernetes
         :param Sequence[str] environment_names: Environment names of the CD pipeline.
+        :param Sequence[str] service_identifiers: Service identifiers of the CD pipeline.
         :param Sequence[str] service_names: Service names of the CD pipeline.
         """
         if artifact_display_names is not None:
@@ -11376,6 +11405,8 @@ class PipelineFiltersFilterPropertiesModulePropertiesCd(dict):
             pulumi.set(__self__, "deployment_types", deployment_types)
         if environment_names is not None:
             pulumi.set(__self__, "environment_names", environment_names)
+        if service_identifiers is not None:
+            pulumi.set(__self__, "service_identifiers", service_identifiers)
         if service_names is not None:
             pulumi.set(__self__, "service_names", service_names)
 
@@ -11402,6 +11433,14 @@ class PipelineFiltersFilterPropertiesModulePropertiesCd(dict):
         Environment names of the CD pipeline.
         """
         return pulumi.get(self, "environment_names")
+
+    @property
+    @pulumi.getter(name="serviceIdentifiers")
+    def service_identifiers(self) -> Optional[Sequence[str]]:
+        """
+        Service identifiers of the CD pipeline.
+        """
+        return pulumi.get(self, "service_identifiers")
 
     @property
     @pulumi.getter(name="serviceNames")
@@ -11974,6 +12013,107 @@ class PrometheusConnectorHeader(dict):
         Encrypted value.
         """
         return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class ProviderSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecretRef":
+            suggest = "client_secret_ref"
+        elif key == "delegateSelectors":
+            suggest = "delegate_selectors"
+        elif key == "secretManagerRef":
+            suggest = "secret_manager_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProviderSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProviderSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProviderSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 client_id: Optional[str] = None,
+                 client_secret_ref: Optional[str] = None,
+                 delegate_selectors: Optional[Sequence[str]] = None,
+                 domain: Optional[str] = None,
+                 secret_manager_ref: Optional[str] = None):
+        """
+        :param str type: The type of the provider entity.
+        :param str client_id: Client Id of the OAuth app to connect
+        :param str client_secret_ref: Client Secret Ref of the OAuth app to connect
+        :param Sequence[str] delegate_selectors: Delegate selectors to fetch the access token
+        :param str domain: Host domain of the provider.
+        :param str secret_manager_ref: Secret Manager Ref to store the access/refresh tokens
+        """
+        pulumi.set(__self__, "type", type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret_ref is not None:
+            pulumi.set(__self__, "client_secret_ref", client_secret_ref)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if secret_manager_ref is not None:
+            pulumi.set(__self__, "secret_manager_ref", secret_manager_ref)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the provider entity.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        Client Id of the OAuth app to connect
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecretRef")
+    def client_secret_ref(self) -> Optional[str]:
+        """
+        Client Secret Ref of the OAuth app to connect
+        """
+        return pulumi.get(self, "client_secret_ref")
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[Sequence[str]]:
+        """
+        Delegate selectors to fetch the access token
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        Host domain of the provider.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="secretManagerRef")
+    def secret_manager_ref(self) -> Optional[str]:
+        """
+        Secret Manager Ref to store the access/refresh tokens
+        """
+        return pulumi.get(self, "secret_manager_ref")
 
 
 @pulumi.output_type
@@ -17763,21 +17903,24 @@ class GetGitopsApplicationsApplicationMetadataOwnerReferenceResult(dict):
 class GetGitopsApplicationsApplicationSpecResult(dict):
     def __init__(__self__, *,
                  destinations: Sequence['outputs.GetGitopsApplicationsApplicationSpecDestinationResult'],
+                 sources: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult'],
                  sync_policies: Sequence['outputs.GetGitopsApplicationsApplicationSpecSyncPolicyResult'],
                  project: Optional[str] = None,
-                 sources: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']] = None):
+                 source: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']] = None):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecDestinationArgs'] destinations: Information about the GitOps application's destination.
+        :param Sequence['GetGitopsApplicationsApplicationSpecSourceArgs'] sources: List of sources for the GitOps application. Multi Source support
         :param Sequence['GetGitopsApplicationsApplicationSpecSyncPolicyArgs'] sync_policies: Controls when a sync will be performed in response to updates in git.
         :param str project: The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
-        :param Sequence['GetGitopsApplicationsApplicationSpecSourceArgs'] sources: Contains all information about the source of a GitOps application.
+        :param Sequence['GetGitopsApplicationsApplicationSpecSourceArgs'] source: Contains all information about the source of a GitOps application.
         """
         pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "sources", sources)
         pulumi.set(__self__, "sync_policies", sync_policies)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -17786,6 +17929,14 @@ class GetGitopsApplicationsApplicationSpecResult(dict):
         Information about the GitOps application's destination.
         """
         return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']:
+        """
+        List of sources for the GitOps application. Multi Source support
+        """
+        return pulumi.get(self, "sources")
 
     @property
     @pulumi.getter(name="syncPolicies")
@@ -17805,11 +17956,11 @@ class GetGitopsApplicationsApplicationSpecResult(dict):
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']]:
+    def source(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceResult']]:
         """
         Contains all information about the source of a GitOps application.
         """
-        return pulumi.get(self, "sources")
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type
@@ -17857,34 +18008,36 @@ class GetGitopsApplicationsApplicationSpecSourceResult(dict):
     def __init__(__self__, *,
                  chart: str,
                  directories: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryResult'],
+                 helms: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmResult'],
                  ksonnets: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetResult'],
                  kustomizes: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKustomizeResult'],
                  path: str,
                  plugins: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult'],
+                 ref: str,
                  repo_url: str,
-                 target_revision: str,
-                 helms: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmResult']] = None):
+                 target_revision: str):
         """
         :param str chart: Helm chart name, and must be specified for the GitOps applications sourced from a helm repo.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryArgs'] directories: Options for applications of type plain YAML or Jsonnet.
+        :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmArgs'] helms: Holds helm specific options.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetArgs'] ksonnets: Ksonnet specific options.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceKustomizeArgs'] kustomizes: Options specific to a GitOps application source specific to Kustomize.
         :param str path: Directory path within the git repository, and is only valid for the GitOps applications sourced from git.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourcePluginArgs'] plugins: Options specific to config management plugins.
+        :param str ref: Reference name to be used in other source spec, used for multi-source applications.
         :param str repo_url: URL to the repository (git or helm) that contains the GitOps application manifests.
         :param str target_revision: Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
-        :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmArgs'] helms: Holds helm specific options.
         """
         pulumi.set(__self__, "chart", chart)
         pulumi.set(__self__, "directories", directories)
+        pulumi.set(__self__, "helms", helms)
         pulumi.set(__self__, "ksonnets", ksonnets)
         pulumi.set(__self__, "kustomizes", kustomizes)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "plugins", plugins)
+        pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_url", repo_url)
         pulumi.set(__self__, "target_revision", target_revision)
-        if helms is not None:
-            pulumi.set(__self__, "helms", helms)
 
     @property
     @pulumi.getter
@@ -17901,6 +18054,14 @@ class GetGitopsApplicationsApplicationSpecSourceResult(dict):
         Options for applications of type plain YAML or Jsonnet.
         """
         return pulumi.get(self, "directories")
+
+    @property
+    @pulumi.getter
+    def helms(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmResult']:
+        """
+        Holds helm specific options.
+        """
+        return pulumi.get(self, "helms")
 
     @property
     @pulumi.getter
@@ -17935,6 +18096,14 @@ class GetGitopsApplicationsApplicationSpecSourceResult(dict):
         return pulumi.get(self, "plugins")
 
     @property
+    @pulumi.getter
+    def ref(self) -> str:
+        """
+        Reference name to be used in other source spec, used for multi-source applications.
+        """
+        return pulumi.get(self, "ref")
+
+    @property
     @pulumi.getter(name="repoUrl")
     def repo_url(self) -> str:
         """
@@ -17950,36 +18119,32 @@ class GetGitopsApplicationsApplicationSpecSourceResult(dict):
         """
         return pulumi.get(self, "target_revision")
 
-    @property
-    @pulumi.getter
-    def helms(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmResult']]:
-        """
-        Holds helm specific options.
-        """
-        return pulumi.get(self, "helms")
-
 
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
     def __init__(__self__, *,
-                 exclude: str,
-                 include: str,
-                 jsonnets: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult'],
-                 recurse: bool):
+                 exclude: Optional[str] = None,
+                 include: Optional[str] = None,
+                 jsonnets: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult']] = None,
+                 recurse: Optional[bool] = None):
         """
         :param str exclude: Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
         :param str include: Glob pattern to match paths against that should be explicitly included during manifest generation.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArgs'] jsonnets: Options specific to applications of type Jsonnet.
         :param bool recurse: Indicates to scan a directory recursively for manifests.
         """
-        pulumi.set(__self__, "exclude", exclude)
-        pulumi.set(__self__, "include", include)
-        pulumi.set(__self__, "jsonnets", jsonnets)
-        pulumi.set(__self__, "recurse", recurse)
+        if exclude is not None:
+            pulumi.set(__self__, "exclude", exclude)
+        if include is not None:
+            pulumi.set(__self__, "include", include)
+        if jsonnets is not None:
+            pulumi.set(__self__, "jsonnets", jsonnets)
+        if recurse is not None:
+            pulumi.set(__self__, "recurse", recurse)
 
     @property
     @pulumi.getter
-    def exclude(self) -> str:
+    def exclude(self) -> Optional[str]:
         """
         Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
         """
@@ -17987,7 +18152,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 
     @property
     @pulumi.getter
-    def include(self) -> str:
+    def include(self) -> Optional[str]:
         """
         Glob pattern to match paths against that should be explicitly included during manifest generation.
         """
@@ -17995,7 +18160,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 
     @property
     @pulumi.getter
-    def jsonnets(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult']:
+    def jsonnets(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult']]:
         """
         Options specific to applications of type Jsonnet.
         """
@@ -18003,7 +18168,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 
     @property
     @pulumi.getter
-    def recurse(self) -> bool:
+    def recurse(self) -> Optional[bool]:
         """
         Indicates to scan a directory recursively for manifests.
         """
@@ -18013,21 +18178,24 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
     def __init__(__self__, *,
-                 ext_vars: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult'],
-                 libs: Sequence[str],
-                 tlas: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']):
+                 ext_vars: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult']] = None,
+                 libs: Optional[Sequence[str]] = None,
+                 tlas: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']] = None):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs'] ext_vars: List of jsonnet external variables.
         :param Sequence[str] libs: Additional library search dirs.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs'] tlas: List of jsonnet top-level arguments(TLAS).
         """
-        pulumi.set(__self__, "ext_vars", ext_vars)
-        pulumi.set(__self__, "libs", libs)
-        pulumi.set(__self__, "tlas", tlas)
+        if ext_vars is not None:
+            pulumi.set(__self__, "ext_vars", ext_vars)
+        if libs is not None:
+            pulumi.set(__self__, "libs", libs)
+        if tlas is not None:
+            pulumi.set(__self__, "tlas", tlas)
 
     @property
     @pulumi.getter(name="extVars")
-    def ext_vars(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult']:
+    def ext_vars(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult']]:
         """
         List of jsonnet external variables.
         """
@@ -18035,7 +18203,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
 
     @property
     @pulumi.getter
-    def libs(self) -> Sequence[str]:
+    def libs(self) -> Optional[Sequence[str]]:
         """
         Additional library search dirs.
         """
@@ -18043,7 +18211,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
 
     @property
     @pulumi.getter
-    def tlas(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']:
+    def tlas(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult']]:
         """
         List of jsonnet top-level arguments(TLAS).
         """
@@ -18053,21 +18221,24 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dict):
     def __init__(__self__, *,
-                 code: bool,
-                 name: str,
-                 value: str):
+                 code: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param bool code: Code of the external variables of jsonnet application.
-        :param str name: Name of the external variables of jsonnet application.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the external variables of jsonnet application.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def code(self) -> bool:
+    def code(self) -> Optional[bool]:
         """
         Code of the external variables of jsonnet application.
         """
@@ -18075,15 +18246,15 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the external variables of jsonnet application.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         Value of the external variables of jsonnet application.
         """
@@ -18093,21 +18264,24 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
     def __init__(__self__, *,
-                 code: bool,
-                 name: str,
-                 value: str):
+                 code: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param bool code: Code of the TLAS of the jsonnet application.
-        :param str name: Name of the TLAS of the jsonnet application.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the TLAS of the jsonnet application.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def code(self) -> bool:
+    def code(self) -> Optional[bool]:
         """
         Code of the TLAS of the jsonnet application.
         """
@@ -18115,15 +18289,15 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the TLAS of the jsonnet application.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         Value of the TLAS of the jsonnet application.
         """
@@ -18133,13 +18307,13 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
     def __init__(__self__, *,
-                 file_parameters: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult'],
-                 parameters: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult'],
-                 pass_credentials: bool,
-                 release_name: str,
-                 value_files: Sequence[str],
-                 values: str,
-                 version: str):
+                 file_parameters: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult']] = None,
+                 parameters: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult']] = None,
+                 pass_credentials: Optional[bool] = None,
+                 release_name: Optional[str] = None,
+                 value_files: Optional[Sequence[str]] = None,
+                 values: Optional[str] = None,
+                 version: Optional[str] = None):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs'] file_parameters: File parameters to the helm template.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs'] parameters: List of helm parameters which are passed to the helm template command upon manifest generation.
@@ -18149,17 +18323,24 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
         :param str values: Helm values to be passed to helm template, typically defined as a block.
         :param str version: Helm version to use for templating (either "2" or "3")
         """
-        pulumi.set(__self__, "file_parameters", file_parameters)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "pass_credentials", pass_credentials)
-        pulumi.set(__self__, "release_name", release_name)
-        pulumi.set(__self__, "value_files", value_files)
-        pulumi.set(__self__, "values", values)
-        pulumi.set(__self__, "version", version)
+        if file_parameters is not None:
+            pulumi.set(__self__, "file_parameters", file_parameters)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if pass_credentials is not None:
+            pulumi.set(__self__, "pass_credentials", pass_credentials)
+        if release_name is not None:
+            pulumi.set(__self__, "release_name", release_name)
+        if value_files is not None:
+            pulumi.set(__self__, "value_files", value_files)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="fileParameters")
-    def file_parameters(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult']:
+    def file_parameters(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult']]:
         """
         File parameters to the helm template.
         """
@@ -18167,7 +18348,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult']:
+    def parameters(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult']]:
         """
         List of helm parameters which are passed to the helm template command upon manifest generation.
         """
@@ -18175,7 +18356,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter(name="passCredentials")
-    def pass_credentials(self) -> bool:
+    def pass_credentials(self) -> Optional[bool]:
         """
         Indicates if to pass credentials to all domains (helm's --pass-credentials)
         """
@@ -18183,7 +18364,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter(name="releaseName")
-    def release_name(self) -> str:
+    def release_name(self) -> Optional[str]:
         """
         Helm release name to use. If omitted it will use the GitOps application name.
         """
@@ -18191,7 +18372,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter(name="valueFiles")
-    def value_files(self) -> Sequence[str]:
+    def value_files(self) -> Optional[Sequence[str]]:
         """
         List of helm value files to use when generating a template.
         """
@@ -18199,7 +18380,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> str:
+    def values(self) -> Optional[str]:
         """
         Helm values to be passed to helm template, typically defined as a block.
         """
@@ -18207,7 +18388,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> Optional[str]:
         """
         Helm version to use for templating (either "2" or "3")
         """
@@ -18217,26 +18398,28 @@ class GetGitopsApplicationsApplicationSpecSourceHelmResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
     def __init__(__self__, *,
-                 name: str,
-                 path: str):
+                 name: Optional[str] = None,
+                 path: Optional[str] = None):
         """
-        :param str name: Name of the helm parameter.
+        :param str name: Name of the GitOps application.
         :param str path: Path to the file containing the values of the helm parameter.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "path", path)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the helm parameter.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def path(self) -> str:
+    def path(self) -> Optional[str]:
         """
         Path to the file containing the values of the helm parameter.
         """
@@ -18246,21 +18429,24 @@ class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
     def __init__(__self__, *,
-                 force_string: bool,
-                 name: str,
-                 value: str):
+                 force_string: Optional[bool] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param bool force_string: Indicates if helm should interpret booleans and numbers as strings.
-        :param str name: Name of the helm parameter.
-        :param str value: Value of the helm parameter.
+        :param str name: Name of the GitOps application.
+        :param str value: Value of the Helm parameter.
         """
-        pulumi.set(__self__, "force_string", force_string)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        if force_string is not None:
+            pulumi.set(__self__, "force_string", force_string)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="forceString")
-    def force_string(self) -> bool:
+    def force_string(self) -> Optional[bool]:
         """
         Indicates if helm should interpret booleans and numbers as strings.
         """
@@ -18268,17 +18454,17 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the helm parameter.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
-        Value of the helm parameter.
+        Value of the Helm parameter.
         """
         return pulumi.get(self, "value")
 
@@ -18286,18 +18472,20 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceKsonnetResult(dict):
     def __init__(__self__, *,
-                 environment: str,
-                 parameters: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']):
+                 environment: Optional[str] = None,
+                 parameters: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']] = None):
         """
         :param str environment: Ksonnet application environment name.
         :param Sequence['GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs'] parameters: List of ksonnet component parameter override values.
         """
-        pulumi.set(__self__, "environment", environment)
-        pulumi.set(__self__, "parameters", parameters)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
 
     @property
     @pulumi.getter
-    def environment(self) -> str:
+    def environment(self) -> Optional[str]:
         """
         Ksonnet application environment name.
         """
@@ -18305,7 +18493,7 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetResult(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']:
+    def parameters(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult']]:
         """
         List of ksonnet component parameter override values.
         """
@@ -18315,21 +18503,24 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
     def __init__(__self__, *,
-                 component: str,
-                 name: str,
-                 value: str):
+                 component: Optional[str] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
         """
         :param str component: Component of the parameter of the ksonnet application.
-        :param str name: Name of the parameter of the ksonnet application.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the parameter of the ksonnet application.
         """
-        pulumi.set(__self__, "component", component)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        if component is not None:
+            pulumi.set(__self__, "component", component)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def component(self) -> str:
+    def component(self) -> Optional[str]:
         """
         Component of the parameter of the ksonnet application.
         """
@@ -18337,15 +18528,15 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the parameter of the ksonnet application.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         Value of the parameter of the ksonnet application.
         """
@@ -18355,14 +18546,14 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
     def __init__(__self__, *,
-                 common_annotations: Mapping[str, str],
-                 common_labels: Mapping[str, str],
-                 force_common_annotations: bool,
-                 force_common_labels: bool,
-                 images: Sequence[str],
-                 name_prefix: str,
-                 name_suffix: str,
-                 version: str):
+                 common_annotations: Optional[Mapping[str, str]] = None,
+                 common_labels: Optional[Mapping[str, str]] = None,
+                 force_common_annotations: Optional[bool] = None,
+                 force_common_labels: Optional[bool] = None,
+                 images: Optional[Sequence[str]] = None,
+                 name_prefix: Optional[str] = None,
+                 name_suffix: Optional[str] = None,
+                 version: Optional[str] = None):
         """
         :param Mapping[str, str] common_annotations: List of additional annotations to add to rendered manifests.
         :param Mapping[str, str] common_labels: List of additional labels to add to rendered manifests.
@@ -18373,18 +18564,26 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
         :param str name_suffix: Suffix appended to resources for kustomize apps.
         :param str version: Version of kustomize to use for rendering manifests.
         """
-        pulumi.set(__self__, "common_annotations", common_annotations)
-        pulumi.set(__self__, "common_labels", common_labels)
-        pulumi.set(__self__, "force_common_annotations", force_common_annotations)
-        pulumi.set(__self__, "force_common_labels", force_common_labels)
-        pulumi.set(__self__, "images", images)
-        pulumi.set(__self__, "name_prefix", name_prefix)
-        pulumi.set(__self__, "name_suffix", name_suffix)
-        pulumi.set(__self__, "version", version)
+        if common_annotations is not None:
+            pulumi.set(__self__, "common_annotations", common_annotations)
+        if common_labels is not None:
+            pulumi.set(__self__, "common_labels", common_labels)
+        if force_common_annotations is not None:
+            pulumi.set(__self__, "force_common_annotations", force_common_annotations)
+        if force_common_labels is not None:
+            pulumi.set(__self__, "force_common_labels", force_common_labels)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if name_suffix is not None:
+            pulumi.set(__self__, "name_suffix", name_suffix)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="commonAnnotations")
-    def common_annotations(self) -> Mapping[str, str]:
+    def common_annotations(self) -> Optional[Mapping[str, str]]:
         """
         List of additional annotations to add to rendered manifests.
         """
@@ -18392,7 +18591,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="commonLabels")
-    def common_labels(self) -> Mapping[str, str]:
+    def common_labels(self) -> Optional[Mapping[str, str]]:
         """
         List of additional labels to add to rendered manifests.
         """
@@ -18400,7 +18599,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="forceCommonAnnotations")
-    def force_common_annotations(self) -> bool:
+    def force_common_annotations(self) -> Optional[bool]:
         """
         Indicates if to force applying common annotations to resources for kustomize apps.
         """
@@ -18408,7 +18607,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="forceCommonLabels")
-    def force_common_labels(self) -> bool:
+    def force_common_labels(self) -> Optional[bool]:
         """
         Indicates if to force apply common labels to resources for kustomize apps.
         """
@@ -18416,7 +18615,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter
-    def images(self) -> Sequence[str]:
+    def images(self) -> Optional[Sequence[str]]:
         """
         List of kustomize image override specifications.
         """
@@ -18424,7 +18623,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> str:
+    def name_prefix(self) -> Optional[str]:
         """
         Prefix prepended to resources for kustomize apps.
         """
@@ -18432,7 +18631,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter(name="nameSuffix")
-    def name_suffix(self) -> str:
+    def name_suffix(self) -> Optional[str]:
         """
         Suffix appended to resources for kustomize apps.
         """
@@ -18440,7 +18639,7 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> str:
+    def version(self) -> Optional[str]:
         """
         Version of kustomize to use for rendering manifests.
         """
@@ -18450,18 +18649,20 @@ class GetGitopsApplicationsApplicationSpecSourceKustomizeResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
     def __init__(__self__, *,
-                 envs: Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult'],
-                 name: str):
+                 envs: Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult']] = None,
+                 name: Optional[str] = None):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs'] envs: Entry in the GitOps application's environment.
-        :param str name: Name of the plugin.
+        :param str name: Name of the GitOps application.
         """
-        pulumi.set(__self__, "envs", envs)
-        pulumi.set(__self__, "name", name)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def envs(self) -> Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult']:
+    def envs(self) -> Optional[Sequence['outputs.GetGitopsApplicationsApplicationSpecSourcePluginEnvResult']]:
         """
         Entry in the GitOps application's environment.
         """
@@ -18469,9 +18670,9 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the plugin.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
@@ -18479,26 +18680,28 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
 @pulumi.output_type
 class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(dict):
     def __init__(__self__, *,
-                 name: str,
-                 value: str):
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param str name: Name of the variable, usually expressed in uppercase.
+        :param str name: Name of the GitOps application.
         :param str value: Value of the variable.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the variable, usually expressed in uppercase.
+        Name of the GitOps application.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> Optional[str]:
         """
         Value of the variable.
         """
@@ -20933,16 +21136,19 @@ class GetPipelineFiltersFilterPropertyModulePropertiesCdResult(dict):
                  artifact_display_names: Sequence[str],
                  deployment_types: str,
                  environment_names: Sequence[str],
+                 service_identifiers: Sequence[str],
                  service_names: Sequence[str]):
         """
         :param Sequence[str] artifact_display_names: Artifact display names of the CD pipeline.
         :param str deployment_types: Deployment type of the CD pipeline, eg. Kubernetes
         :param Sequence[str] environment_names: Environment names of the CD pipeline.
+        :param Sequence[str] service_identifiers: Service identifiers of the CD pipeline.
         :param Sequence[str] service_names: Service names of the CD pipeline.
         """
         pulumi.set(__self__, "artifact_display_names", artifact_display_names)
         pulumi.set(__self__, "deployment_types", deployment_types)
         pulumi.set(__self__, "environment_names", environment_names)
+        pulumi.set(__self__, "service_identifiers", service_identifiers)
         pulumi.set(__self__, "service_names", service_names)
 
     @property
@@ -20968,6 +21174,14 @@ class GetPipelineFiltersFilterPropertyModulePropertiesCdResult(dict):
         Environment names of the CD pipeline.
         """
         return pulumi.get(self, "environment_names")
+
+    @property
+    @pulumi.getter(name="serviceIdentifiers")
+    def service_identifiers(self) -> Sequence[str]:
+        """
+        Service identifiers of the CD pipeline.
+        """
+        return pulumi.get(self, "service_identifiers")
 
     @property
     @pulumi.getter(name="serviceNames")

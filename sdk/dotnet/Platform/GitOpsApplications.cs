@@ -165,7 +165,7 @@ namespace Pulumi.Harness.Platform
         /// The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         /// </summary>
         [Output("project")]
-        public Output<string?> Project { get; private set; } = null!;
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Project identifier of the GitOps application.
@@ -174,10 +174,16 @@ namespace Pulumi.Harness.Platform
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Repository identifier of the GitOps application.
+        /// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         /// </summary>
         [Output("repoId")]
         public Output<string?> RepoId { get; private set; } = null!;
+
+        /// <summary>
+        /// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        /// </summary>
+        [Output("repoIds")]
+        public Output<ImmutableArray<string>> RepoIds { get; private set; } = null!;
 
         /// <summary>
         /// Request cascade to delete the GitOps application.
@@ -329,10 +335,22 @@ namespace Pulumi.Harness.Platform
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Repository identifier of the GitOps application.
+        /// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         /// </summary>
         [Input("repoId")]
         public Input<string>? RepoId { get; set; }
+
+        [Input("repoIds")]
+        private InputList<string>? _repoIds;
+
+        /// <summary>
+        /// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        /// </summary>
+        public InputList<string> RepoIds
+        {
+            get => _repoIds ?? (_repoIds = new InputList<string>());
+            set => _repoIds = value;
+        }
 
         /// <summary>
         /// Request cascade to delete the GitOps application.
@@ -445,10 +463,22 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Repository identifier of the GitOps application.
+        /// Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         /// </summary>
         [Input("repoId")]
         public Input<string>? RepoId { get; set; }
+
+        [Input("repoIds")]
+        private InputList<string>? _repoIds;
+
+        /// <summary>
+        /// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        /// </summary>
+        public InputList<string> RepoIds
+        {
+            get => _repoIds ?? (_repoIds = new InputList<string>());
+            set => _repoIds = value;
+        }
 
         /// <summary>
         /// Request cascade to delete the GitOps application.

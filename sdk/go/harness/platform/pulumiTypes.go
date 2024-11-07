@@ -10108,6 +10108,8 @@ type GitOpsApplicationsApplicationSpec struct {
 	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project *string `pulumi:"project"`
 	// Contains all information about the source of the GitOps application.
+	Source []GitOpsApplicationsApplicationSpecSource `pulumi:"source"`
+	// List of sources for the GitOps application. Multi Source support
 	Sources []GitOpsApplicationsApplicationSpecSource `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
 	SyncPolicies []GitOpsApplicationsApplicationSpecSyncPolicy `pulumi:"syncPolicies"`
@@ -10130,6 +10132,8 @@ type GitOpsApplicationsApplicationSpecArgs struct {
 	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Contains all information about the source of the GitOps application.
+	Source GitOpsApplicationsApplicationSpecSourceArrayInput `pulumi:"source"`
+	// List of sources for the GitOps application. Multi Source support
 	Sources GitOpsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
 	SyncPolicies GitOpsApplicationsApplicationSpecSyncPolicyArrayInput `pulumi:"syncPolicies"`
@@ -10199,6 +10203,11 @@ func (o GitOpsApplicationsApplicationSpecOutput) Project() pulumi.StringPtrOutpu
 }
 
 // Contains all information about the source of the GitOps application.
+func (o GitOpsApplicationsApplicationSpecOutput) Source() GitOpsApplicationsApplicationSpecSourceArrayOutput {
+	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) []GitOpsApplicationsApplicationSpecSource { return v.Source }).(GitOpsApplicationsApplicationSpecSourceArrayOutput)
+}
+
+// List of sources for the GitOps application. Multi Source support
 func (o GitOpsApplicationsApplicationSpecOutput) Sources() GitOpsApplicationsApplicationSpecSourceArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpec) []GitOpsApplicationsApplicationSpecSource { return v.Sources }).(GitOpsApplicationsApplicationSpecSourceArrayOutput)
 }
@@ -10360,6 +10369,8 @@ type GitOpsApplicationsApplicationSpecSource struct {
 	Path *string `pulumi:"path"`
 	// Options specific to config management plugins.
 	Plugins []GitOpsApplicationsApplicationSpecSourcePlugin `pulumi:"plugins"`
+	// Reference name to be used in other source spec, used for multi-source applications.
+	Ref *string `pulumi:"ref"`
 	// URL to the repository (git or helm) that contains the GitOps application manifests.
 	RepoUrl string `pulumi:"repoUrl"`
 	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
@@ -10392,6 +10403,8 @@ type GitOpsApplicationsApplicationSpecSourceArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Options specific to config management plugins.
 	Plugins GitOpsApplicationsApplicationSpecSourcePluginArrayInput `pulumi:"plugins"`
+	// Reference name to be used in other source spec, used for multi-source applications.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
 	// URL to the repository (git or helm) that contains the GitOps application manifests.
 	RepoUrl pulumi.StringInput `pulumi:"repoUrl"`
 	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
@@ -10492,6 +10505,11 @@ func (o GitOpsApplicationsApplicationSpecSourceOutput) Plugins() GitOpsApplicati
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) []GitOpsApplicationsApplicationSpecSourcePlugin {
 		return v.Plugins
 	}).(GitOpsApplicationsApplicationSpecSourcePluginArrayOutput)
+}
+
+// Reference name to be used in other source spec, used for multi-source applications.
+func (o GitOpsApplicationsApplicationSpecSourceOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSource) *string { return v.Ref }).(pulumi.StringPtrOutput)
 }
 
 // URL to the repository (git or helm) that contains the GitOps application manifests.
@@ -26017,6 +26035,8 @@ type PipelineFiltersFilterPropertiesModulePropertiesCd struct {
 	DeploymentTypes *string `pulumi:"deploymentTypes"`
 	// Environment names of the CD pipeline.
 	EnvironmentNames []string `pulumi:"environmentNames"`
+	// Service identifiers of the CD pipeline.
+	ServiceIdentifiers []string `pulumi:"serviceIdentifiers"`
 	// Service names of the CD pipeline.
 	ServiceNames []string `pulumi:"serviceNames"`
 }
@@ -26039,6 +26059,8 @@ type PipelineFiltersFilterPropertiesModulePropertiesCdArgs struct {
 	DeploymentTypes pulumi.StringPtrInput `pulumi:"deploymentTypes"`
 	// Environment names of the CD pipeline.
 	EnvironmentNames pulumi.StringArrayInput `pulumi:"environmentNames"`
+	// Service identifiers of the CD pipeline.
+	ServiceIdentifiers pulumi.StringArrayInput `pulumi:"serviceIdentifiers"`
 	// Service names of the CD pipeline.
 	ServiceNames pulumi.StringArrayInput `pulumi:"serviceNames"`
 }
@@ -26135,6 +26157,11 @@ func (o PipelineFiltersFilterPropertiesModulePropertiesCdOutput) EnvironmentName
 	return o.ApplyT(func(v PipelineFiltersFilterPropertiesModulePropertiesCd) []string { return v.EnvironmentNames }).(pulumi.StringArrayOutput)
 }
 
+// Service identifiers of the CD pipeline.
+func (o PipelineFiltersFilterPropertiesModulePropertiesCdOutput) ServiceIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineFiltersFilterPropertiesModulePropertiesCd) []string { return v.ServiceIdentifiers }).(pulumi.StringArrayOutput)
+}
+
 // Service names of the CD pipeline.
 func (o PipelineFiltersFilterPropertiesModulePropertiesCdOutput) ServiceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineFiltersFilterPropertiesModulePropertiesCd) []string { return v.ServiceNames }).(pulumi.StringArrayOutput)
@@ -26191,6 +26218,16 @@ func (o PipelineFiltersFilterPropertiesModulePropertiesCdPtrOutput) EnvironmentN
 			return nil
 		}
 		return v.EnvironmentNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Service identifiers of the CD pipeline.
+func (o PipelineFiltersFilterPropertiesModulePropertiesCdPtrOutput) ServiceIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineFiltersFilterPropertiesModulePropertiesCd) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceIdentifiers
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -27604,6 +27641,238 @@ func (o PrometheusConnectorHeaderArrayOutput) Index(i pulumi.IntInput) Prometheu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusConnectorHeader {
 		return vs[0].([]PrometheusConnectorHeader)[vs[1].(int)]
 	}).(PrometheusConnectorHeaderOutput)
+}
+
+type ProviderSpec struct {
+	// Client Id of the OAuth app to connect
+	ClientId *string `pulumi:"clientId"`
+	// Client Secret Ref of the OAuth app to connect
+	ClientSecretRef *string `pulumi:"clientSecretRef"`
+	// Delegate selectors to fetch the access token
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// Host domain of the provider.
+	Domain *string `pulumi:"domain"`
+	// Secret Manager Ref to store the access/refresh tokens
+	SecretManagerRef *string `pulumi:"secretManagerRef"`
+	// The type of the provider entity.
+	Type string `pulumi:"type"`
+}
+
+// ProviderSpecInput is an input type that accepts ProviderSpecArgs and ProviderSpecOutput values.
+// You can construct a concrete instance of `ProviderSpecInput` via:
+//
+//	ProviderSpecArgs{...}
+type ProviderSpecInput interface {
+	pulumi.Input
+
+	ToProviderSpecOutput() ProviderSpecOutput
+	ToProviderSpecOutputWithContext(context.Context) ProviderSpecOutput
+}
+
+type ProviderSpecArgs struct {
+	// Client Id of the OAuth app to connect
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client Secret Ref of the OAuth app to connect
+	ClientSecretRef pulumi.StringPtrInput `pulumi:"clientSecretRef"`
+	// Delegate selectors to fetch the access token
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// Host domain of the provider.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// Secret Manager Ref to store the access/refresh tokens
+	SecretManagerRef pulumi.StringPtrInput `pulumi:"secretManagerRef"`
+	// The type of the provider entity.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ProviderSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderSpec)(nil)).Elem()
+}
+
+func (i ProviderSpecArgs) ToProviderSpecOutput() ProviderSpecOutput {
+	return i.ToProviderSpecOutputWithContext(context.Background())
+}
+
+func (i ProviderSpecArgs) ToProviderSpecOutputWithContext(ctx context.Context) ProviderSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderSpecOutput)
+}
+
+func (i ProviderSpecArgs) ToProviderSpecPtrOutput() ProviderSpecPtrOutput {
+	return i.ToProviderSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderSpecArgs) ToProviderSpecPtrOutputWithContext(ctx context.Context) ProviderSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderSpecOutput).ToProviderSpecPtrOutputWithContext(ctx)
+}
+
+// ProviderSpecPtrInput is an input type that accepts ProviderSpecArgs, ProviderSpecPtr and ProviderSpecPtrOutput values.
+// You can construct a concrete instance of `ProviderSpecPtrInput` via:
+//
+//	        ProviderSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderSpecPtrInput interface {
+	pulumi.Input
+
+	ToProviderSpecPtrOutput() ProviderSpecPtrOutput
+	ToProviderSpecPtrOutputWithContext(context.Context) ProviderSpecPtrOutput
+}
+
+type providerSpecPtrType ProviderSpecArgs
+
+func ProviderSpecPtr(v *ProviderSpecArgs) ProviderSpecPtrInput {
+	return (*providerSpecPtrType)(v)
+}
+
+func (*providerSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderSpec)(nil)).Elem()
+}
+
+func (i *providerSpecPtrType) ToProviderSpecPtrOutput() ProviderSpecPtrOutput {
+	return i.ToProviderSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *providerSpecPtrType) ToProviderSpecPtrOutputWithContext(ctx context.Context) ProviderSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderSpecPtrOutput)
+}
+
+type ProviderSpecOutput struct{ *pulumi.OutputState }
+
+func (ProviderSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderSpec)(nil)).Elem()
+}
+
+func (o ProviderSpecOutput) ToProviderSpecOutput() ProviderSpecOutput {
+	return o
+}
+
+func (o ProviderSpecOutput) ToProviderSpecOutputWithContext(ctx context.Context) ProviderSpecOutput {
+	return o
+}
+
+func (o ProviderSpecOutput) ToProviderSpecPtrOutput() ProviderSpecPtrOutput {
+	return o.ToProviderSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderSpecOutput) ToProviderSpecPtrOutputWithContext(ctx context.Context) ProviderSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderSpec) *ProviderSpec {
+		return &v
+	}).(ProviderSpecPtrOutput)
+}
+
+// Client Id of the OAuth app to connect
+func (o ProviderSpecOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSpec) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Client Secret Ref of the OAuth app to connect
+func (o ProviderSpecOutput) ClientSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSpec) *string { return v.ClientSecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Delegate selectors to fetch the access token
+func (o ProviderSpecOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProviderSpec) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// Host domain of the provider.
+func (o ProviderSpecOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSpec) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Secret Manager Ref to store the access/refresh tokens
+func (o ProviderSpecOutput) SecretManagerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSpec) *string { return v.SecretManagerRef }).(pulumi.StringPtrOutput)
+}
+
+// The type of the provider entity.
+func (o ProviderSpecOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderSpec) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ProviderSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderSpec)(nil)).Elem()
+}
+
+func (o ProviderSpecPtrOutput) ToProviderSpecPtrOutput() ProviderSpecPtrOutput {
+	return o
+}
+
+func (o ProviderSpecPtrOutput) ToProviderSpecPtrOutputWithContext(ctx context.Context) ProviderSpecPtrOutput {
+	return o
+}
+
+func (o ProviderSpecPtrOutput) Elem() ProviderSpecOutput {
+	return o.ApplyT(func(v *ProviderSpec) ProviderSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderSpec
+		return ret
+	}).(ProviderSpecOutput)
+}
+
+// Client Id of the OAuth app to connect
+func (o ProviderSpecPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client Secret Ref of the OAuth app to connect
+func (o ProviderSpecPtrOutput) ClientSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delegate selectors to fetch the access token
+func (o ProviderSpecPtrOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProviderSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegateSelectors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Host domain of the provider.
+func (o ProviderSpecPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret Manager Ref to store the access/refresh tokens
+func (o ProviderSpecPtrOutput) SecretManagerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManagerRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the provider entity.
+func (o ProviderSpecPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type RepoRuleBranchBypass struct {
@@ -43091,6 +43360,8 @@ type GetGitopsApplicationsApplicationSpec struct {
 	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project *string `pulumi:"project"`
 	// Contains all information about the source of a GitOps application.
+	Source []GetGitopsApplicationsApplicationSpecSource `pulumi:"source"`
+	// List of sources for the GitOps application. Multi Source support
 	Sources []GetGitopsApplicationsApplicationSpecSource `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
 	SyncPolicies []GetGitopsApplicationsApplicationSpecSyncPolicy `pulumi:"syncPolicies"`
@@ -43113,6 +43384,8 @@ type GetGitopsApplicationsApplicationSpecArgs struct {
 	// The ArgoCD project name corresponding to this GitOps application. Value must match mappings of ArgoCD projects to harness project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Contains all information about the source of a GitOps application.
+	Source GetGitopsApplicationsApplicationSpecSourceArrayInput `pulumi:"source"`
+	// List of sources for the GitOps application. Multi Source support
 	Sources GetGitopsApplicationsApplicationSpecSourceArrayInput `pulumi:"sources"`
 	// Controls when a sync will be performed in response to updates in git.
 	SyncPolicies GetGitopsApplicationsApplicationSpecSyncPolicyArrayInput `pulumi:"syncPolicies"`
@@ -43182,6 +43455,13 @@ func (o GetGitopsApplicationsApplicationSpecOutput) Project() pulumi.StringPtrOu
 }
 
 // Contains all information about the source of a GitOps application.
+func (o GetGitopsApplicationsApplicationSpecOutput) Source() GetGitopsApplicationsApplicationSpecSourceArrayOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) []GetGitopsApplicationsApplicationSpecSource {
+		return v.Source
+	}).(GetGitopsApplicationsApplicationSpecSourceArrayOutput)
+}
+
+// List of sources for the GitOps application. Multi Source support
 func (o GetGitopsApplicationsApplicationSpecOutput) Sources() GetGitopsApplicationsApplicationSpecSourceArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpec) []GetGitopsApplicationsApplicationSpecSource {
 		return v.Sources
@@ -43345,6 +43625,8 @@ type GetGitopsApplicationsApplicationSpecSource struct {
 	Path string `pulumi:"path"`
 	// Options specific to config management plugins.
 	Plugins []GetGitopsApplicationsApplicationSpecSourcePlugin `pulumi:"plugins"`
+	// Reference name to be used in other source spec, used for multi-source applications.
+	Ref string `pulumi:"ref"`
 	// URL to the repository (git or helm) that contains the GitOps application manifests.
 	RepoUrl string `pulumi:"repoUrl"`
 	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
@@ -43377,6 +43659,8 @@ type GetGitopsApplicationsApplicationSpecSourceArgs struct {
 	Path pulumi.StringInput `pulumi:"path"`
 	// Options specific to config management plugins.
 	Plugins GetGitopsApplicationsApplicationSpecSourcePluginArrayInput `pulumi:"plugins"`
+	// Reference name to be used in other source spec, used for multi-source applications.
+	Ref pulumi.StringInput `pulumi:"ref"`
 	// URL to the repository (git or helm) that contains the GitOps application manifests.
 	RepoUrl pulumi.StringInput `pulumi:"repoUrl"`
 	// Revision of the source to sync the GitOps application to. In case of git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag of the chart's version.
@@ -43479,6 +43763,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceOutput) Plugins() GetGitopsApp
 	}).(GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput)
 }
 
+// Reference name to be used in other source spec, used for multi-source applications.
+func (o GetGitopsApplicationsApplicationSpecSourceOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) string { return v.Ref }).(pulumi.StringOutput)
+}
+
 // URL to the repository (git or helm) that contains the GitOps application manifests.
 func (o GetGitopsApplicationsApplicationSpecSourceOutput) RepoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSource) string { return v.RepoUrl }).(pulumi.StringOutput)
@@ -43511,13 +43800,13 @@ func (o GetGitopsApplicationsApplicationSpecSourceArrayOutput) Index(i pulumi.In
 
 type GetGitopsApplicationsApplicationSpecSourceDirectory struct {
 	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
-	Exclude string `pulumi:"exclude"`
+	Exclude *string `pulumi:"exclude"`
 	// Glob pattern to match paths against that should be explicitly included during manifest generation.
-	Include string `pulumi:"include"`
+	Include *string `pulumi:"include"`
 	// Options specific to applications of type Jsonnet.
 	Jsonnets []GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnet `pulumi:"jsonnets"`
 	// Indicates to scan a directory recursively for manifests.
-	Recurse bool `pulumi:"recurse"`
+	Recurse *bool `pulumi:"recurse"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceDirectoryInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceDirectoryArgs and GetGitopsApplicationsApplicationSpecSourceDirectoryOutput values.
@@ -43533,13 +43822,13 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryInput interface {
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryArgs struct {
 	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
-	Exclude pulumi.StringInput `pulumi:"exclude"`
+	Exclude pulumi.StringPtrInput `pulumi:"exclude"`
 	// Glob pattern to match paths against that should be explicitly included during manifest generation.
-	Include pulumi.StringInput `pulumi:"include"`
+	Include pulumi.StringPtrInput `pulumi:"include"`
 	// Options specific to applications of type Jsonnet.
 	Jsonnets GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayInput `pulumi:"jsonnets"`
 	// Indicates to scan a directory recursively for manifests.
-	Recurse pulumi.BoolInput `pulumi:"recurse"`
+	Recurse pulumi.BoolPtrInput `pulumi:"recurse"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceDirectoryArgs) ElementType() reflect.Type {
@@ -43594,13 +43883,13 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) ToGetGitopsAp
 }
 
 // Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Exclude() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) string { return v.Exclude }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Exclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) *string { return v.Exclude }).(pulumi.StringPtrOutput)
 }
 
 // Glob pattern to match paths against that should be explicitly included during manifest generation.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Include() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) string { return v.Include }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Include() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) *string { return v.Include }).(pulumi.StringPtrOutput)
 }
 
 // Options specific to applications of type Jsonnet.
@@ -43611,8 +43900,8 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Jsonnets() Ge
 }
 
 // Indicates to scan a directory recursively for manifests.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Recurse() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) bool { return v.Recurse }).(pulumi.BoolOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryOutput) Recurse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectory) *bool { return v.Recurse }).(pulumi.BoolPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryArrayOutput struct{ *pulumi.OutputState }
@@ -43756,11 +44045,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput) I
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar struct {
 	// Code of the external variables of jsonnet application.
-	Code bool `pulumi:"code"`
-	// Name of the external variables of jsonnet application.
-	Name string `pulumi:"name"`
+	Code *bool `pulumi:"code"`
+	// Name of the GitOps application.
+	Name *string `pulumi:"name"`
 	// Value of the external variables of jsonnet application.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs and GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput values.
@@ -43776,11 +44065,11 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarInput inter
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs struct {
 	// Code of the external variables of jsonnet application.
-	Code pulumi.BoolInput `pulumi:"code"`
-	// Name of the external variables of jsonnet application.
-	Name pulumi.StringInput `pulumi:"name"`
+	Code pulumi.BoolPtrInput `pulumi:"code"`
+	// Name of the GitOps application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the external variables of jsonnet application.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs) ElementType() reflect.Type {
@@ -43835,18 +44124,18 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) 
 }
 
 // Code of the external variables of jsonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Code() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) bool { return v.Code }).(pulumi.BoolOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Code() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the external variables of jsonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) string { return v.Name }).(pulumi.StringOutput)
+// Name of the GitOps application.
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Value of the external variables of jsonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) string { return v.Value }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOutput struct{ *pulumi.OutputState }
@@ -43871,11 +44160,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOut
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla struct {
 	// Code of the TLAS of the jsonnet application.
-	Code bool `pulumi:"code"`
-	// Name of the TLAS of the jsonnet application.
-	Name string `pulumi:"name"`
+	Code *bool `pulumi:"code"`
+	// Name of the GitOps application.
+	Name *string `pulumi:"name"`
 	// Value of the TLAS of the jsonnet application.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs and GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput values.
@@ -43891,11 +44180,11 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaInput interfac
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs struct {
 	// Code of the TLAS of the jsonnet application.
-	Code pulumi.BoolInput `pulumi:"code"`
-	// Name of the TLAS of the jsonnet application.
-	Name pulumi.StringInput `pulumi:"name"`
+	Code pulumi.BoolPtrInput `pulumi:"code"`
+	// Name of the GitOps application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the TLAS of the jsonnet application.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs) ElementType() reflect.Type {
@@ -43950,18 +44239,18 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) ToG
 }
 
 // Code of the TLAS of the jsonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Code() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) bool { return v.Code }).(pulumi.BoolOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Code() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the TLAS of the jsonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) string { return v.Name }).(pulumi.StringOutput)
+// Name of the GitOps application.
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Value of the TLAS of the jsonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) string { return v.Value }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayOutput struct{ *pulumi.OutputState }
@@ -43990,15 +44279,15 @@ type GetGitopsApplicationsApplicationSpecSourceHelm struct {
 	// List of helm parameters which are passed to the helm template command upon manifest generation.
 	Parameters []GetGitopsApplicationsApplicationSpecSourceHelmParameter `pulumi:"parameters"`
 	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
-	PassCredentials bool `pulumi:"passCredentials"`
+	PassCredentials *bool `pulumi:"passCredentials"`
 	// Helm release name to use. If omitted it will use the GitOps application name.
-	ReleaseName string `pulumi:"releaseName"`
+	ReleaseName *string `pulumi:"releaseName"`
 	// List of helm value files to use when generating a template.
 	ValueFiles []string `pulumi:"valueFiles"`
 	// Helm values to be passed to helm template, typically defined as a block.
-	Values string `pulumi:"values"`
+	Values *string `pulumi:"values"`
 	// Helm version to use for templating (either "2" or "3")
-	Version string `pulumi:"version"`
+	Version *string `pulumi:"version"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceHelmInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceHelmArgs and GetGitopsApplicationsApplicationSpecSourceHelmOutput values.
@@ -44018,15 +44307,15 @@ type GetGitopsApplicationsApplicationSpecSourceHelmArgs struct {
 	// List of helm parameters which are passed to the helm template command upon manifest generation.
 	Parameters GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
 	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
-	PassCredentials pulumi.BoolInput `pulumi:"passCredentials"`
+	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
 	// Helm release name to use. If omitted it will use the GitOps application name.
-	ReleaseName pulumi.StringInput `pulumi:"releaseName"`
+	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
 	// List of helm value files to use when generating a template.
 	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
 	// Helm values to be passed to helm template, typically defined as a block.
-	Values pulumi.StringInput `pulumi:"values"`
+	Values pulumi.StringPtrInput `pulumi:"values"`
 	// Helm version to use for templating (either "2" or "3")
-	Version pulumi.StringInput `pulumi:"version"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceHelmArgs) ElementType() reflect.Type {
@@ -44095,13 +44384,13 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Parameters() GetGi
 }
 
 // Indicates if to pass credentials to all domains (helm's --pass-credentials)
-func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) PassCredentials() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) bool { return v.PassCredentials }).(pulumi.BoolOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) PassCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *bool { return v.PassCredentials }).(pulumi.BoolPtrOutput)
 }
 
 // Helm release name to use. If omitted it will use the GitOps application name.
-func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) ReleaseName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) string { return v.ReleaseName }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
 }
 
 // List of helm value files to use when generating a template.
@@ -44110,13 +44399,13 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) ValueFiles() pulum
 }
 
 // Helm values to be passed to helm template, typically defined as a block.
-func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Values() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) string { return v.Values }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *string { return v.Values }).(pulumi.StringPtrOutput)
 }
 
 // Helm version to use for templating (either "2" or "3")
-func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) string { return v.Version }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmArrayOutput struct{ *pulumi.OutputState }
@@ -44140,10 +44429,10 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmArrayOutput) Index(i pulum
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameter struct {
-	// Name of the helm parameter.
-	Name string `pulumi:"name"`
+	// Name of the GitOps application.
+	Name *string `pulumi:"name"`
 	// Path to the file containing the values of the helm parameter.
-	Path string `pulumi:"path"`
+	Path *string `pulumi:"path"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceHelmFileParameterInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs and GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput values.
@@ -44158,10 +44447,10 @@ type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterInput interface 
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs struct {
-	// Name of the helm parameter.
-	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the GitOps application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to the file containing the values of the helm parameter.
-	Path pulumi.StringInput `pulumi:"path"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs) ElementType() reflect.Type {
@@ -44215,14 +44504,14 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) ToGet
 	return o
 }
 
-// Name of the helm parameter.
-func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) string { return v.Name }).(pulumi.StringOutput)
+// Name of the GitOps application.
+func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Path to the file containing the values of the helm parameter.
-func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) string { return v.Path }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput struct{ *pulumi.OutputState }
@@ -44247,11 +44536,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput) 
 
 type GetGitopsApplicationsApplicationSpecSourceHelmParameter struct {
 	// Indicates if helm should interpret booleans and numbers as strings.
-	ForceString bool `pulumi:"forceString"`
-	// Name of the helm parameter.
-	Name string `pulumi:"name"`
-	// Value of the helm parameter.
-	Value string `pulumi:"value"`
+	ForceString *bool `pulumi:"forceString"`
+	// Name of the GitOps application.
+	Name *string `pulumi:"name"`
+	// Value of the Helm parameter.
+	Value *string `pulumi:"value"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceHelmParameterInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs and GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput values.
@@ -44267,11 +44556,11 @@ type GetGitopsApplicationsApplicationSpecSourceHelmParameterInput interface {
 
 type GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs struct {
 	// Indicates if helm should interpret booleans and numbers as strings.
-	ForceString pulumi.BoolInput `pulumi:"forceString"`
-	// Name of the helm parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Value of the helm parameter.
-	Value pulumi.StringInput `pulumi:"value"`
+	ForceString pulumi.BoolPtrInput `pulumi:"forceString"`
+	// Name of the GitOps application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the Helm parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs) ElementType() reflect.Type {
@@ -44326,18 +44615,18 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) ToGetGito
 }
 
 // Indicates if helm should interpret booleans and numbers as strings.
-func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) ForceString() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) bool { return v.ForceString }).(pulumi.BoolOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) ForceString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *bool { return v.ForceString }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the helm parameter.
-func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) string { return v.Name }).(pulumi.StringOutput)
+// Name of the GitOps application.
+func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Value of the helm parameter.
-func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) string { return v.Value }).(pulumi.StringOutput)
+// Value of the Helm parameter.
+func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayOutput struct{ *pulumi.OutputState }
@@ -44362,7 +44651,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayOutput) Inde
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnet struct {
 	// Ksonnet application environment name.
-	Environment string `pulumi:"environment"`
+	Environment *string `pulumi:"environment"`
 	// List of ksonnet component parameter override values.
 	Parameters []GetGitopsApplicationsApplicationSpecSourceKsonnetParameter `pulumi:"parameters"`
 }
@@ -44380,7 +44669,7 @@ type GetGitopsApplicationsApplicationSpecSourceKsonnetInput interface {
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnetArgs struct {
 	// Ksonnet application environment name.
-	Environment pulumi.StringInput `pulumi:"environment"`
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
 	// List of ksonnet component parameter override values.
 	Parameters GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArrayInput `pulumi:"parameters"`
 }
@@ -44437,8 +44726,8 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetOutput) ToGetGitopsAppl
 }
 
 // Ksonnet application environment name.
-func (o GetGitopsApplicationsApplicationSpecSourceKsonnetOutput) Environment() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnet) string { return v.Environment }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKsonnetOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnet) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
 // List of ksonnet component parameter override values.
@@ -44470,11 +44759,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetArrayOutput) Index(i pu
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameter struct {
 	// Component of the parameter of the ksonnet application.
-	Component string `pulumi:"component"`
-	// Name of the parameter of the ksonnet application.
-	Name string `pulumi:"name"`
+	Component *string `pulumi:"component"`
+	// Name of the GitOps application.
+	Name *string `pulumi:"name"`
 	// Value of the parameter of the ksonnet application.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceKsonnetParameterInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs and GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput values.
@@ -44490,11 +44779,11 @@ type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterInput interface {
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs struct {
 	// Component of the parameter of the ksonnet application.
-	Component pulumi.StringInput `pulumi:"component"`
-	// Name of the parameter of the ksonnet application.
-	Name pulumi.StringInput `pulumi:"name"`
+	Component pulumi.StringPtrInput `pulumi:"component"`
+	// Name of the GitOps application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the parameter of the ksonnet application.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs) ElementType() reflect.Type {
@@ -44549,18 +44838,18 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) ToGetG
 }
 
 // Component of the parameter of the ksonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Component() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) string { return v.Component }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Component() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
-// Name of the parameter of the ksonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) string { return v.Name }).(pulumi.StringOutput)
+// Name of the GitOps application.
+func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Value of the parameter of the ksonnet application.
-func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) string { return v.Value }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArrayOutput struct{ *pulumi.OutputState }
@@ -44589,17 +44878,17 @@ type GetGitopsApplicationsApplicationSpecSourceKustomize struct {
 	// List of additional labels to add to rendered manifests.
 	CommonLabels map[string]string `pulumi:"commonLabels"`
 	// Indicates if to force applying common annotations to resources for kustomize apps.
-	ForceCommonAnnotations bool `pulumi:"forceCommonAnnotations"`
+	ForceCommonAnnotations *bool `pulumi:"forceCommonAnnotations"`
 	// Indicates if to force apply common labels to resources for kustomize apps.
-	ForceCommonLabels bool `pulumi:"forceCommonLabels"`
+	ForceCommonLabels *bool `pulumi:"forceCommonLabels"`
 	// List of kustomize image override specifications.
 	Images []string `pulumi:"images"`
 	// Prefix prepended to resources for kustomize apps.
-	NamePrefix string `pulumi:"namePrefix"`
+	NamePrefix *string `pulumi:"namePrefix"`
 	// Suffix appended to resources for kustomize apps.
-	NameSuffix string `pulumi:"nameSuffix"`
+	NameSuffix *string `pulumi:"nameSuffix"`
 	// Version of kustomize to use for rendering manifests.
-	Version string `pulumi:"version"`
+	Version *string `pulumi:"version"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourceKustomizeInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourceKustomizeArgs and GetGitopsApplicationsApplicationSpecSourceKustomizeOutput values.
@@ -44619,17 +44908,17 @@ type GetGitopsApplicationsApplicationSpecSourceKustomizeArgs struct {
 	// List of additional labels to add to rendered manifests.
 	CommonLabels pulumi.StringMapInput `pulumi:"commonLabels"`
 	// Indicates if to force applying common annotations to resources for kustomize apps.
-	ForceCommonAnnotations pulumi.BoolInput `pulumi:"forceCommonAnnotations"`
+	ForceCommonAnnotations pulumi.BoolPtrInput `pulumi:"forceCommonAnnotations"`
 	// Indicates if to force apply common labels to resources for kustomize apps.
-	ForceCommonLabels pulumi.BoolInput `pulumi:"forceCommonLabels"`
+	ForceCommonLabels pulumi.BoolPtrInput `pulumi:"forceCommonLabels"`
 	// List of kustomize image override specifications.
 	Images pulumi.StringArrayInput `pulumi:"images"`
 	// Prefix prepended to resources for kustomize apps.
-	NamePrefix pulumi.StringInput `pulumi:"namePrefix"`
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Suffix appended to resources for kustomize apps.
-	NameSuffix pulumi.StringInput `pulumi:"nameSuffix"`
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
 	// Version of kustomize to use for rendering manifests.
-	Version pulumi.StringInput `pulumi:"version"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourceKustomizeArgs) ElementType() reflect.Type {
@@ -44696,13 +44985,13 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) CommonLabels(
 }
 
 // Indicates if to force applying common annotations to resources for kustomize apps.
-func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) bool { return v.ForceCommonAnnotations }).(pulumi.BoolOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *bool { return v.ForceCommonAnnotations }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates if to force apply common labels to resources for kustomize apps.
-func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) bool { return v.ForceCommonLabels }).(pulumi.BoolOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *bool { return v.ForceCommonLabels }).(pulumi.BoolPtrOutput)
 }
 
 // List of kustomize image override specifications.
@@ -44711,18 +45000,18 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) Images() pulu
 }
 
 // Prefix prepended to resources for kustomize apps.
-func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NamePrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) string { return v.NamePrefix }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
 
 // Suffix appended to resources for kustomize apps.
-func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NameSuffix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) string { return v.NameSuffix }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
 // Version of kustomize to use for rendering manifests.
-func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) string { return v.Version }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourceKustomizeArrayOutput struct{ *pulumi.OutputState }
@@ -44748,8 +45037,8 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeArrayOutput) Index(i 
 type GetGitopsApplicationsApplicationSpecSourcePlugin struct {
 	// Entry in the GitOps application's environment.
 	Envs []GetGitopsApplicationsApplicationSpecSourcePluginEnv `pulumi:"envs"`
-	// Name of the plugin.
-	Name string `pulumi:"name"`
+	// Name of the GitOps application.
+	Name *string `pulumi:"name"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourcePluginInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourcePluginArgs and GetGitopsApplicationsApplicationSpecSourcePluginOutput values.
@@ -44766,8 +45055,8 @@ type GetGitopsApplicationsApplicationSpecSourcePluginInput interface {
 type GetGitopsApplicationsApplicationSpecSourcePluginArgs struct {
 	// Entry in the GitOps application's environment.
 	Envs GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayInput `pulumi:"envs"`
-	// Name of the plugin.
-	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the GitOps application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourcePluginArgs) ElementType() reflect.Type {
@@ -44828,9 +45117,9 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Envs() GetGitops
 	}).(GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayOutput)
 }
 
-// Name of the plugin.
-func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePlugin) string { return v.Name }).(pulumi.StringOutput)
+// Name of the GitOps application.
+func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePlugin) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput struct{ *pulumi.OutputState }
@@ -44854,10 +45143,10 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput) Index(i pul
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnv struct {
-	// Name of the variable, usually expressed in uppercase.
-	Name string `pulumi:"name"`
+	// Name of the GitOps application.
+	Name *string `pulumi:"name"`
 	// Value of the variable.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // GetGitopsApplicationsApplicationSpecSourcePluginEnvInput is an input type that accepts GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs and GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput values.
@@ -44872,10 +45161,10 @@ type GetGitopsApplicationsApplicationSpecSourcePluginEnvInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs struct {
-	// Name of the variable, usually expressed in uppercase.
-	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the GitOps application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the variable.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs) ElementType() reflect.Type {
@@ -44929,14 +45218,14 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) ToGetGitopsAp
 	return o
 }
 
-// Name of the variable, usually expressed in uppercase.
-func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) string { return v.Name }).(pulumi.StringOutput)
+// Name of the GitOps application.
+func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Value of the variable.
-func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) string { return v.Value }).(pulumi.StringOutput)
+func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayOutput struct{ *pulumi.OutputState }
@@ -50628,6 +50917,8 @@ type GetPipelineFiltersFilterPropertyModulePropertiesCd struct {
 	DeploymentTypes string `pulumi:"deploymentTypes"`
 	// Environment names of the CD pipeline.
 	EnvironmentNames []string `pulumi:"environmentNames"`
+	// Service identifiers of the CD pipeline.
+	ServiceIdentifiers []string `pulumi:"serviceIdentifiers"`
 	// Service names of the CD pipeline.
 	ServiceNames []string `pulumi:"serviceNames"`
 }
@@ -50650,6 +50941,8 @@ type GetPipelineFiltersFilterPropertyModulePropertiesCdArgs struct {
 	DeploymentTypes pulumi.StringInput `pulumi:"deploymentTypes"`
 	// Environment names of the CD pipeline.
 	EnvironmentNames pulumi.StringArrayInput `pulumi:"environmentNames"`
+	// Service identifiers of the CD pipeline.
+	ServiceIdentifiers pulumi.StringArrayInput `pulumi:"serviceIdentifiers"`
 	// Service names of the CD pipeline.
 	ServiceNames pulumi.StringArrayInput `pulumi:"serviceNames"`
 }
@@ -50693,6 +50986,11 @@ func (o GetPipelineFiltersFilterPropertyModulePropertiesCdOutput) DeploymentType
 // Environment names of the CD pipeline.
 func (o GetPipelineFiltersFilterPropertyModulePropertiesCdOutput) EnvironmentNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPipelineFiltersFilterPropertyModulePropertiesCd) []string { return v.EnvironmentNames }).(pulumi.StringArrayOutput)
+}
+
+// Service identifiers of the CD pipeline.
+func (o GetPipelineFiltersFilterPropertyModulePropertiesCdOutput) ServiceIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPipelineFiltersFilterPropertyModulePropertiesCd) []string { return v.ServiceIdentifiers }).(pulumi.StringArrayOutput)
 }
 
 // Service names of the CD pipeline.
@@ -56711,6 +57009,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySetPolicyArrayInput)(nil)).Elem(), PolicySetPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusConnectorHeaderInput)(nil)).Elem(), PrometheusConnectorHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusConnectorHeaderArrayInput)(nil)).Elem(), PrometheusConnectorHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSpecInput)(nil)).Elem(), ProviderSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSpecPtrInput)(nil)).Elem(), ProviderSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoRuleBranchBypassInput)(nil)).Elem(), RepoRuleBranchBypassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoRuleBranchBypassArrayInput)(nil)).Elem(), RepoRuleBranchBypassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoRuleBranchPatternInput)(nil)).Elem(), RepoRuleBranchPatternArgs{})
@@ -57502,6 +57802,8 @@ func init() {
 	pulumi.RegisterOutputType(PolicySetPolicyArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusConnectorHeaderOutput{})
 	pulumi.RegisterOutputType(PrometheusConnectorHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ProviderSpecOutput{})
+	pulumi.RegisterOutputType(ProviderSpecPtrOutput{})
 	pulumi.RegisterOutputType(RepoRuleBranchBypassOutput{})
 	pulumi.RegisterOutputType(RepoRuleBranchBypassArrayOutput{})
 	pulumi.RegisterOutputType(RepoRuleBranchPatternOutput{})

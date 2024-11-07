@@ -26,6 +26,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<string> EnvironmentNames;
         /// <summary>
+        /// Service identifiers of the CD pipeline.
+        /// </summary>
+        public readonly ImmutableArray<string> ServiceIdentifiers;
+        /// <summary>
         /// Service names of the CD pipeline.
         /// </summary>
         public readonly ImmutableArray<string> ServiceNames;
@@ -38,11 +42,14 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<string> environmentNames,
 
+            ImmutableArray<string> serviceIdentifiers,
+
             ImmutableArray<string> serviceNames)
         {
             ArtifactDisplayNames = artifactDisplayNames;
             DeploymentTypes = deploymentTypes;
             EnvironmentNames = environmentNames;
+            ServiceIdentifiers = serviceIdentifiers;
             ServiceNames = serviceNames;
         }
     }

@@ -4,10 +4,11 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla {
@@ -15,39 +16,39 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla
      * @return Code of the TLAS of the jsonnet application.
      * 
      */
-    private Boolean code;
+    private @Nullable Boolean code;
     /**
-     * @return Name of the TLAS of the jsonnet application.
+     * @return Name of the GitOps application.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return Value of the TLAS of the jsonnet application.
      * 
      */
-    private String value;
+    private @Nullable String value;
 
     private GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla() {}
     /**
      * @return Code of the TLAS of the jsonnet application.
      * 
      */
-    public Boolean code() {
-        return this.code;
+    public Optional<Boolean> code() {
+        return Optional.ofNullable(this.code);
     }
     /**
-     * @return Name of the TLAS of the jsonnet application.
+     * @return Name of the GitOps application.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return Value of the TLAS of the jsonnet application.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -59,9 +60,9 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean code;
-        private String name;
-        private String value;
+        private @Nullable Boolean code;
+        private @Nullable String name;
+        private @Nullable String value;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,26 +72,20 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla
         }
 
         @CustomType.Setter
-        public Builder code(Boolean code) {
-            if (code == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla", "code");
-            }
+        public Builder code(@Nullable Boolean code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla", "value");
-            }
+        public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

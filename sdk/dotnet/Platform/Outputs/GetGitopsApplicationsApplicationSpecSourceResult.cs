@@ -42,6 +42,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult> Plugins;
         /// <summary>
+        /// Reference name to be used in other source spec, used for multi-source applications.
+        /// </summary>
+        public readonly string Ref;
+        /// <summary>
         /// URL to the repository (git or helm) that contains the GitOps application manifests.
         /// </summary>
         public readonly string RepoUrl;
@@ -66,6 +70,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourcePluginResult> plugins,
 
+            string @ref,
+
             string repoUrl,
 
             string targetRevision)
@@ -77,6 +83,7 @@ namespace Pulumi.Harness.Platform.Outputs
             Kustomizes = kustomizes;
             Path = path;
             Plugins = plugins;
+            Ref = @ref;
             RepoUrl = repoUrl;
             TargetRevision = targetRevision;
         }

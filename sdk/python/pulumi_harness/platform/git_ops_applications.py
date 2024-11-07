@@ -33,6 +33,7 @@ class GitOpsApplicationsArgs:
                  options_remove_existing_finalizers: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
+                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  skip_repo_validation: Optional[pulumi.Input[bool]] = None,
@@ -51,7 +52,8 @@ class GitOpsApplicationsArgs:
         :param pulumi.Input[str] name: Name of the GitOps application.
         :param pulumi.Input[bool] options_remove_existing_finalizers: Options to remove existing finalizers to delete the GitOps application.
         :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
-        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
+        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repo_ids: List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
@@ -79,6 +81,8 @@ class GitOpsApplicationsArgs:
             pulumi.set(__self__, "project", project)
         if repo_id is not None:
             pulumi.set(__self__, "repo_id", repo_id)
+        if repo_ids is not None:
+            pulumi.set(__self__, "repo_ids", repo_ids)
         if request_cascade is not None:
             pulumi.set(__self__, "request_cascade", request_cascade)
         if request_propagation_policy is not None:
@@ -227,13 +231,25 @@ class GitOpsApplicationsArgs:
     @pulumi.getter(name="repoId")
     def repo_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository identifier of the GitOps application.
+        Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         """
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
     def repo_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_id", value)
+
+    @property
+    @pulumi.getter(name="repoIds")
+    def repo_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        """
+        return pulumi.get(self, "repo_ids")
+
+    @repo_ids.setter
+    def repo_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "repo_ids", value)
 
     @property
     @pulumi.getter(name="requestCascade")
@@ -311,6 +327,7 @@ class _GitOpsApplicationsState:
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
+                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  skip_repo_validation: Optional[pulumi.Input[bool]] = None,
@@ -329,7 +346,8 @@ class _GitOpsApplicationsState:
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
         :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
-        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
+        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repo_ids: List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
@@ -363,6 +381,8 @@ class _GitOpsApplicationsState:
             pulumi.set(__self__, "project_id", project_id)
         if repo_id is not None:
             pulumi.set(__self__, "repo_id", repo_id)
+        if repo_ids is not None:
+            pulumi.set(__self__, "repo_ids", repo_ids)
         if request_cascade is not None:
             pulumi.set(__self__, "request_cascade", request_cascade)
         if request_propagation_policy is not None:
@@ -511,13 +531,25 @@ class _GitOpsApplicationsState:
     @pulumi.getter(name="repoId")
     def repo_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Repository identifier of the GitOps application.
+        Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         """
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
     def repo_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_id", value)
+
+    @property
+    @pulumi.getter(name="repoIds")
+    def repo_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        """
+        return pulumi.get(self, "repo_ids")
+
+    @repo_ids.setter
+    def repo_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "repo_ids", value)
 
     @property
     @pulumi.getter(name="requestCascade")
@@ -597,6 +629,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
+                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  skip_repo_validation: Optional[pulumi.Input[bool]] = None,
@@ -677,7 +710,8 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
         :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
-        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
+        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repo_ids: List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
@@ -778,6 +812,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  repo_id: Optional[pulumi.Input[str]] = None,
+                 repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_cascade: Optional[pulumi.Input[bool]] = None,
                  request_propagation_policy: Optional[pulumi.Input[str]] = None,
                  skip_repo_validation: Optional[pulumi.Input[bool]] = None,
@@ -816,6 +851,7 @@ class GitOpsApplications(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["repo_id"] = repo_id
+            __props__.__dict__["repo_ids"] = repo_ids
             __props__.__dict__["request_cascade"] = request_cascade
             __props__.__dict__["request_propagation_policy"] = request_propagation_policy
             __props__.__dict__["skip_repo_validation"] = skip_repo_validation
@@ -843,6 +879,7 @@ class GitOpsApplications(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             repo_id: Optional[pulumi.Input[str]] = None,
+            repo_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             request_cascade: Optional[pulumi.Input[bool]] = None,
             request_propagation_policy: Optional[pulumi.Input[str]] = None,
             skip_repo_validation: Optional[pulumi.Input[bool]] = None,
@@ -866,7 +903,8 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
         :param pulumi.Input[str] project: The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
-        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application.
+        :param pulumi.Input[str] repo_id: Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repo_ids: List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
         :param pulumi.Input[bool] request_cascade: Request cascade to delete the GitOps application.
         :param pulumi.Input[str] request_propagation_policy: Request propagation policy to delete the GitOps application.
         :param pulumi.Input[bool] skip_repo_validation: Indicates if the GitOps application should skip validate repository definition exists.
@@ -889,6 +927,7 @@ class GitOpsApplications(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["repo_id"] = repo_id
+        __props__.__dict__["repo_ids"] = repo_ids
         __props__.__dict__["request_cascade"] = request_cascade
         __props__.__dict__["request_propagation_policy"] = request_propagation_policy
         __props__.__dict__["skip_repo_validation"] = skip_repo_validation
@@ -971,7 +1010,7 @@ class GitOpsApplications(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Output[Optional[str]]:
+    def project(self) -> pulumi.Output[str]:
         """
         The ArgoCD project name corresponding to this GitOps application. An empty string means that the GitOps application belongs to the default project created by Harness.
         """
@@ -989,9 +1028,17 @@ class GitOpsApplications(pulumi.CustomResource):
     @pulumi.getter(name="repoId")
     def repo_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Repository identifier of the GitOps application.
+        Repository identifier of the GitOps application. When using skipRepoValidation, this field is not required.
         """
         return pulumi.get(self, "repo_id")
+
+    @property
+    @pulumi.getter(name="repoIds")
+    def repo_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        """
+        return pulumi.get(self, "repo_ids")
 
     @property
     @pulumi.getter(name="requestCascade")

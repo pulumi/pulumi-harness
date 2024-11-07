@@ -84,7 +84,7 @@ export class FileStoreFile extends pulumi.CustomResource {
     /**
      * File content stored on Harness File Store
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    public readonly content!: pulumi.Output<string>;
     /**
      * Created by
      */
@@ -96,7 +96,7 @@ export class FileStoreFile extends pulumi.CustomResource {
     /**
      * File content path to be upladed on Harness File Store
      */
-    public readonly fileContentPath!: pulumi.Output<string | undefined>;
+    public readonly fileContentPath!: pulumi.Output<string>;
     /**
      * File usage. Valid options are ManifestFile, Config, Script
      */

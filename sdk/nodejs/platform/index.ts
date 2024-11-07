@@ -565,6 +565,11 @@ export const getPrometheusConnector: typeof import("./getPrometheusConnector").g
 export const getPrometheusConnectorOutput: typeof import("./getPrometheusConnector").getPrometheusConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getPrometheusConnector","getPrometheusConnectorOutput"], () => require("./getPrometheusConnector"));
 
+export { GetProviderArgs, GetProviderResult, GetProviderOutputArgs } from "./getProvider";
+export const getProvider: typeof import("./getProvider").getProvider = null as any;
+export const getProviderOutput: typeof import("./getProvider").getProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getProvider","getProviderOutput"], () => require("./getProvider"));
+
 export { GetRepoArgs, GetRepoResult, GetRepoOutputArgs } from "./getRepo";
 export const getRepo: typeof import("./getRepo").getRepo = null as any;
 export const getRepoOutput: typeof import("./getRepo").getRepoOutput = null as any;
@@ -895,6 +900,11 @@ export type PrometheusConnector = import("./prometheusConnector").PrometheusConn
 export const PrometheusConnector: typeof import("./prometheusConnector").PrometheusConnector = null as any;
 utilities.lazyLoad(exports, ["PrometheusConnector"], () => require("./prometheusConnector"));
 
+export { ProviderArgs, ProviderState } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
 export { RepoArgs, RepoState } from "./repo";
 export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
@@ -1184,6 +1194,8 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "harness:platform/prometheusConnector:PrometheusConnector":
                 return new PrometheusConnector(name, <any>undefined, { urn })
+            case "harness:platform/provider:Provider":
+                return new Provider(name, <any>undefined, { urn })
             case "harness:platform/repo:Repo":
                 return new Repo(name, <any>undefined, { urn })
             case "harness:platform/repoRuleBranch:RepoRuleBranch":
@@ -1317,6 +1329,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/policy", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/policySet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/project", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/prometheusConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/provider", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/repo", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/repoRuleBranch", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/repoWebhook", _module)

@@ -28,6 +28,11 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
      */
     private @Nullable List<String> environmentNames;
     /**
+     * @return Service identifiers of the CD pipeline.
+     * 
+     */
+    private @Nullable List<String> serviceIdentifiers;
+    /**
      * @return Service names of the CD pipeline.
      * 
      */
@@ -56,6 +61,13 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
         return this.environmentNames == null ? List.of() : this.environmentNames;
     }
     /**
+     * @return Service identifiers of the CD pipeline.
+     * 
+     */
+    public List<String> serviceIdentifiers() {
+        return this.serviceIdentifiers == null ? List.of() : this.serviceIdentifiers;
+    }
+    /**
      * @return Service names of the CD pipeline.
      * 
      */
@@ -75,6 +87,7 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
         private @Nullable List<String> artifactDisplayNames;
         private @Nullable String deploymentTypes;
         private @Nullable List<String> environmentNames;
+        private @Nullable List<String> serviceIdentifiers;
         private @Nullable List<String> serviceNames;
         public Builder() {}
         public Builder(PipelineFiltersFilterPropertiesModulePropertiesCd defaults) {
@@ -82,6 +95,7 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
     	      this.artifactDisplayNames = defaults.artifactDisplayNames;
     	      this.deploymentTypes = defaults.deploymentTypes;
     	      this.environmentNames = defaults.environmentNames;
+    	      this.serviceIdentifiers = defaults.serviceIdentifiers;
     	      this.serviceNames = defaults.serviceNames;
         }
 
@@ -110,6 +124,15 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
             return environmentNames(List.of(environmentNames));
         }
         @CustomType.Setter
+        public Builder serviceIdentifiers(@Nullable List<String> serviceIdentifiers) {
+
+            this.serviceIdentifiers = serviceIdentifiers;
+            return this;
+        }
+        public Builder serviceIdentifiers(String... serviceIdentifiers) {
+            return serviceIdentifiers(List.of(serviceIdentifiers));
+        }
+        @CustomType.Setter
         public Builder serviceNames(@Nullable List<String> serviceNames) {
 
             this.serviceNames = serviceNames;
@@ -123,6 +146,7 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
             _resultValue.artifactDisplayNames = artifactDisplayNames;
             _resultValue.deploymentTypes = deploymentTypes;
             _resultValue.environmentNames = environmentNames;
+            _resultValue.serviceIdentifiers = serviceIdentifiers;
             _resultValue.serviceNames = serviceNames;
             return _resultValue;
         }

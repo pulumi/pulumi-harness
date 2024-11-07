@@ -4,9 +4,10 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
@@ -14,39 +15,39 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
      * @return Component of the parameter of the ksonnet application.
      * 
      */
-    private String component;
+    private @Nullable String component;
     /**
-     * @return Name of the parameter of the ksonnet application.
+     * @return Name of the GitOps application.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return Value of the parameter of the ksonnet application.
      * 
      */
-    private String value;
+    private @Nullable String value;
 
     private GetGitopsApplicationsApplicationSpecSourceKsonnetParameter() {}
     /**
      * @return Component of the parameter of the ksonnet application.
      * 
      */
-    public String component() {
-        return this.component;
+    public Optional<String> component() {
+        return Optional.ofNullable(this.component);
     }
     /**
-     * @return Name of the parameter of the ksonnet application.
+     * @return Name of the GitOps application.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return Value of the parameter of the ksonnet application.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -58,9 +59,9 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String component;
-        private String name;
-        private String value;
+        private @Nullable String component;
+        private @Nullable String name;
+        private @Nullable String value;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceKsonnetParameter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,26 +71,20 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
         }
 
         @CustomType.Setter
-        public Builder component(String component) {
-            if (component == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKsonnetParameter", "component");
-            }
+        public Builder component(@Nullable String component) {
+
             this.component = component;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKsonnetParameter", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceKsonnetParameter", "value");
-            }
+        public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

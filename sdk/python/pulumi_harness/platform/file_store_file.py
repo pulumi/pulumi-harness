@@ -702,7 +702,7 @@ class FileStoreFile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> pulumi.Output[Optional[str]]:
+    def content(self) -> pulumi.Output[str]:
         """
         File content stored on Harness File Store
         """
@@ -726,7 +726,7 @@ class FileStoreFile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fileContentPath")
-    def file_content_path(self) -> pulumi.Output[Optional[str]]:
+    def file_content_path(self) -> pulumi.Output[str]:
         """
         File content path to be upladed on Harness File Store
         """

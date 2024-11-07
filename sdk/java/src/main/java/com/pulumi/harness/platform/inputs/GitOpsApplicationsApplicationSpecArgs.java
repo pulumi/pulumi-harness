@@ -53,11 +53,26 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
      * Contains all information about the source of the GitOps application.
      * 
      */
+    @Import(name="source")
+    private @Nullable Output<List<GitOpsApplicationsApplicationSpecSourceArgs>> source;
+
+    /**
+     * @return Contains all information about the source of the GitOps application.
+     * 
+     */
+    public Optional<Output<List<GitOpsApplicationsApplicationSpecSourceArgs>>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
+    /**
+     * List of sources for the GitOps application. Multi Source support
+     * 
+     */
     @Import(name="sources")
     private @Nullable Output<List<GitOpsApplicationsApplicationSpecSourceArgs>> sources;
 
     /**
-     * @return Contains all information about the source of the GitOps application.
+     * @return List of sources for the GitOps application. Multi Source support
      * 
      */
     public Optional<Output<List<GitOpsApplicationsApplicationSpecSourceArgs>>> sources() {
@@ -84,6 +99,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
     private GitOpsApplicationsApplicationSpecArgs(GitOpsApplicationsApplicationSpecArgs $) {
         this.destinations = $.destinations;
         this.project = $.project;
+        this.source = $.source;
         this.sources = $.sources;
         this.syncPolicies = $.syncPolicies;
     }
@@ -159,7 +175,38 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sources Contains all information about the source of the GitOps application.
+         * @param source Contains all information about the source of the GitOps application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<List<GitOpsApplicationsApplicationSpecSourceArgs>> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source Contains all information about the source of the GitOps application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(List<GitOpsApplicationsApplicationSpecSourceArgs> source) {
+            return source(Output.of(source));
+        }
+
+        /**
+         * @param source Contains all information about the source of the GitOps application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(GitOpsApplicationsApplicationSpecSourceArgs... source) {
+            return source(List.of(source));
+        }
+
+        /**
+         * @param sources List of sources for the GitOps application. Multi Source support
          * 
          * @return builder
          * 
@@ -170,7 +217,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sources Contains all information about the source of the GitOps application.
+         * @param sources List of sources for the GitOps application. Multi Source support
          * 
          * @return builder
          * 
@@ -180,7 +227,7 @@ public final class GitOpsApplicationsApplicationSpecArgs extends com.pulumi.reso
         }
 
         /**
-         * @param sources Contains all information about the source of the GitOps application.
+         * @param sources List of sources for the GitOps application. Multi Source support
          * 
          * @return builder
          * 

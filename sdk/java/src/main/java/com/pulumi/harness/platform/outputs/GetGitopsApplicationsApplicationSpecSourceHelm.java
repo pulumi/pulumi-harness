@@ -4,13 +4,14 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameter;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameter;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceHelm {
@@ -18,37 +19,37 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelm {
      * @return File parameters to the helm template.
      * 
      */
-    private List<GetGitopsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
+    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
     /**
      * @return List of helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
-    private List<GetGitopsApplicationsApplicationSpecSourceHelmParameter> parameters;
+    private @Nullable List<GetGitopsApplicationsApplicationSpecSourceHelmParameter> parameters;
     /**
      * @return Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
      * 
      */
-    private Boolean passCredentials;
+    private @Nullable Boolean passCredentials;
     /**
      * @return Helm release name to use. If omitted it will use the GitOps application name.
      * 
      */
-    private String releaseName;
+    private @Nullable String releaseName;
     /**
      * @return List of helm value files to use when generating a template.
      * 
      */
-    private List<String> valueFiles;
+    private @Nullable List<String> valueFiles;
     /**
      * @return Helm values to be passed to helm template, typically defined as a block.
      * 
      */
-    private String values;
+    private @Nullable String values;
     /**
      * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
      * 
      */
-    private String version;
+    private @Nullable String version;
 
     private GetGitopsApplicationsApplicationSpecSourceHelm() {}
     /**
@@ -56,49 +57,49 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelm {
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters() {
-        return this.fileParameters;
+        return this.fileParameters == null ? List.of() : this.fileParameters;
     }
     /**
      * @return List of helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
     public List<GetGitopsApplicationsApplicationSpecSourceHelmParameter> parameters() {
-        return this.parameters;
+        return this.parameters == null ? List.of() : this.parameters;
     }
     /**
      * @return Indicates if to pass credentials to all domains (helm&#39;s --pass-credentials)
      * 
      */
-    public Boolean passCredentials() {
-        return this.passCredentials;
+    public Optional<Boolean> passCredentials() {
+        return Optional.ofNullable(this.passCredentials);
     }
     /**
      * @return Helm release name to use. If omitted it will use the GitOps application name.
      * 
      */
-    public String releaseName() {
-        return this.releaseName;
+    public Optional<String> releaseName() {
+        return Optional.ofNullable(this.releaseName);
     }
     /**
      * @return List of helm value files to use when generating a template.
      * 
      */
     public List<String> valueFiles() {
-        return this.valueFiles;
+        return this.valueFiles == null ? List.of() : this.valueFiles;
     }
     /**
      * @return Helm values to be passed to helm template, typically defined as a block.
      * 
      */
-    public String values() {
-        return this.values;
+    public Optional<String> values() {
+        return Optional.ofNullable(this.values);
     }
     /**
      * @return Helm version to use for templating (either &#34;2&#34; or &#34;3&#34;)
      * 
      */
-    public String version() {
-        return this.version;
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -110,13 +111,13 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelm {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetGitopsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
-        private List<GetGitopsApplicationsApplicationSpecSourceHelmParameter> parameters;
-        private Boolean passCredentials;
-        private String releaseName;
-        private List<String> valueFiles;
-        private String values;
-        private String version;
+        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
+        private @Nullable List<GetGitopsApplicationsApplicationSpecSourceHelmParameter> parameters;
+        private @Nullable Boolean passCredentials;
+        private @Nullable String releaseName;
+        private @Nullable List<String> valueFiles;
+        private @Nullable String values;
+        private @Nullable String version;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceHelm defaults) {
     	      Objects.requireNonNull(defaults);
@@ -130,10 +131,8 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelm {
         }
 
         @CustomType.Setter
-        public Builder fileParameters(List<GetGitopsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters) {
-            if (fileParameters == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelm", "fileParameters");
-            }
+        public Builder fileParameters(@Nullable List<GetGitopsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters) {
+
             this.fileParameters = fileParameters;
             return this;
         }
@@ -141,10 +140,8 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelm {
             return fileParameters(List.of(fileParameters));
         }
         @CustomType.Setter
-        public Builder parameters(List<GetGitopsApplicationsApplicationSpecSourceHelmParameter> parameters) {
-            if (parameters == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelm", "parameters");
-            }
+        public Builder parameters(@Nullable List<GetGitopsApplicationsApplicationSpecSourceHelmParameter> parameters) {
+
             this.parameters = parameters;
             return this;
         }
@@ -152,26 +149,20 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelm {
             return parameters(List.of(parameters));
         }
         @CustomType.Setter
-        public Builder passCredentials(Boolean passCredentials) {
-            if (passCredentials == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelm", "passCredentials");
-            }
+        public Builder passCredentials(@Nullable Boolean passCredentials) {
+
             this.passCredentials = passCredentials;
             return this;
         }
         @CustomType.Setter
-        public Builder releaseName(String releaseName) {
-            if (releaseName == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelm", "releaseName");
-            }
+        public Builder releaseName(@Nullable String releaseName) {
+
             this.releaseName = releaseName;
             return this;
         }
         @CustomType.Setter
-        public Builder valueFiles(List<String> valueFiles) {
-            if (valueFiles == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelm", "valueFiles");
-            }
+        public Builder valueFiles(@Nullable List<String> valueFiles) {
+
             this.valueFiles = valueFiles;
             return this;
         }
@@ -179,18 +170,14 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelm {
             return valueFiles(List.of(valueFiles));
         }
         @CustomType.Setter
-        public Builder values(String values) {
-            if (values == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelm", "values");
-            }
+        public Builder values(@Nullable String values) {
+
             this.values = values;
             return this;
         }
         @CustomType.Setter
-        public Builder version(String version) {
-            if (version == null) {
-              throw new MissingRequiredPropertyException("GetGitopsApplicationsApplicationSpecSourceHelm", "version");
-            }
+        public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

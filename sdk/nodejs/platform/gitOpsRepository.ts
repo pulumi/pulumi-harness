@@ -74,6 +74,10 @@ export class GitOpsRepository extends pulumi.CustomResource {
      */
     public readonly ecrGen!: pulumi.Output<outputs.platform.GitOpsRepositoryEcrGen | undefined>;
     /**
+     * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+     */
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    /**
      * GCR access token generator specific configuration.
      */
     public readonly gcrGen!: pulumi.Output<outputs.platform.GitOpsRepositoryGcrGen | undefined>;
@@ -130,6 +134,7 @@ export class GitOpsRepository extends pulumi.CustomResource {
             resourceInputs["agentId"] = state ? state.agentId : undefined;
             resourceInputs["credsOnly"] = state ? state.credsOnly : undefined;
             resourceInputs["ecrGen"] = state ? state.ecrGen : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["gcrGen"] = state ? state.gcrGen : undefined;
             resourceInputs["genType"] = state ? state.genType : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
@@ -157,6 +162,7 @@ export class GitOpsRepository extends pulumi.CustomResource {
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["credsOnly"] = args ? args.credsOnly : undefined;
             resourceInputs["ecrGen"] = args ? args.ecrGen : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["gcrGen"] = args ? args.gcrGen : undefined;
             resourceInputs["genType"] = args ? args.genType : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
@@ -192,6 +198,10 @@ export interface GitOpsRepositoryState {
      * ECR access token generator specific configuration.
      */
     ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen>;
+    /**
+     * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * GCR access token generator specific configuration.
      */
@@ -253,6 +263,10 @@ export interface GitOpsRepositoryArgs {
      * ECR access token generator specific configuration.
      */
     ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen>;
+    /**
+     * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * GCR access token generator specific configuration.
      */

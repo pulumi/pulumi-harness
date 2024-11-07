@@ -924,6 +924,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/provider",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/provider:Provider": "Provider"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/repo",
   "fqn": "pulumi_harness.platform",
   "classes": {

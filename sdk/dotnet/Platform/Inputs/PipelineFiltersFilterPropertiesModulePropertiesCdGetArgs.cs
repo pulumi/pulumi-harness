@@ -42,6 +42,18 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _environmentNames = value;
         }
 
+        [Input("serviceIdentifiers")]
+        private InputList<string>? _serviceIdentifiers;
+
+        /// <summary>
+        /// Service identifiers of the CD pipeline.
+        /// </summary>
+        public InputList<string> ServiceIdentifiers
+        {
+            get => _serviceIdentifiers ?? (_serviceIdentifiers = new InputList<string>());
+            set => _serviceIdentifiers = value;
+        }
+
         [Input("serviceNames")]
         private InputList<string>? _serviceNames;
 

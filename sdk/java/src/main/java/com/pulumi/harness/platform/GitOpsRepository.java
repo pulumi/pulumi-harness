@@ -103,6 +103,20 @@ public class GitOpsRepository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ecrGen);
     }
     /**
+     * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
+    }
+    /**
      * GCR access token generator specific configuration.
      * 
      */

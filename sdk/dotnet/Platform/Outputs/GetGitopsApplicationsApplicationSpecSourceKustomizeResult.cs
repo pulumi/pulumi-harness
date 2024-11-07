@@ -16,19 +16,19 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// List of additional annotations to add to rendered manifests.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> CommonAnnotations;
+        public readonly ImmutableDictionary<string, string>? CommonAnnotations;
         /// <summary>
         /// List of additional labels to add to rendered manifests.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> CommonLabels;
+        public readonly ImmutableDictionary<string, string>? CommonLabels;
         /// <summary>
         /// Indicates if to force applying common annotations to resources for kustomize apps.
         /// </summary>
-        public readonly bool ForceCommonAnnotations;
+        public readonly bool? ForceCommonAnnotations;
         /// <summary>
         /// Indicates if to force apply common labels to resources for kustomize apps.
         /// </summary>
-        public readonly bool ForceCommonLabels;
+        public readonly bool? ForceCommonLabels;
         /// <summary>
         /// List of kustomize image override specifications.
         /// </summary>
@@ -36,33 +36,33 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Prefix prepended to resources for kustomize apps.
         /// </summary>
-        public readonly string NamePrefix;
+        public readonly string? NamePrefix;
         /// <summary>
         /// Suffix appended to resources for kustomize apps.
         /// </summary>
-        public readonly string NameSuffix;
+        public readonly string? NameSuffix;
         /// <summary>
         /// Version of kustomize to use for rendering manifests.
         /// </summary>
-        public readonly string Version;
+        public readonly string? Version;
 
         [OutputConstructor]
         private GetGitopsApplicationsApplicationSpecSourceKustomizeResult(
-            ImmutableDictionary<string, string> commonAnnotations,
+            ImmutableDictionary<string, string>? commonAnnotations,
 
-            ImmutableDictionary<string, string> commonLabels,
+            ImmutableDictionary<string, string>? commonLabels,
 
-            bool forceCommonAnnotations,
+            bool? forceCommonAnnotations,
 
-            bool forceCommonLabels,
+            bool? forceCommonLabels,
 
             ImmutableArray<string> images,
 
-            string namePrefix,
+            string? namePrefix,
 
-            string nameSuffix,
+            string? nameSuffix,
 
-            string version)
+            string? version)
         {
             CommonAnnotations = commonAnnotations;
             CommonLabels = commonLabels;

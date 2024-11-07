@@ -71,7 +71,7 @@ namespace Pulumi.Harness.Platform
         /// File content stored on Harness File Store
         /// </summary>
         [Output("content")]
-        public Output<string?> Content { get; private set; } = null!;
+        public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
         /// Created by
@@ -89,7 +89,7 @@ namespace Pulumi.Harness.Platform
         /// File content path to be upladed on Harness File Store
         /// </summary>
         [Output("fileContentPath")]
-        public Output<string?> FileContentPath { get; private set; } = null!;
+        public Output<string> FileContentPath { get; private set; } = null!;
 
         /// <summary>
         /// File usage. Valid options are ManifestFile, Config, Script
