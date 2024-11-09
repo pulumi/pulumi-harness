@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Data source for retrieving information on the current Harness account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const current = harness.platform.getCurrentAccount({});
+ * ```
+ */
 export function getCurrentAccount(args?: GetCurrentAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -16,6 +28,9 @@ export function getCurrentAccount(args?: GetCurrentAccountArgs, opts?: pulumi.In
  * A collection of arguments for invoking getCurrentAccount.
  */
 export interface GetCurrentAccountArgs {
+    /**
+     * Id of the account.
+     */
     id?: string;
 }
 
@@ -23,10 +38,31 @@ export interface GetCurrentAccountArgs {
  * A collection of values returned by getCurrentAccount.
  */
 export interface GetCurrentAccountResult {
+    /**
+     * Id of the account.
+     */
     readonly accountId: string;
+    /**
+     * The url of the Harness control plane.
+     */
     readonly endpoint: string;
+    /**
+     * Id of the account.
+     */
     readonly id?: string;
 }
+/**
+ * Data source for retrieving information on the current Harness account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const current = harness.platform.getCurrentAccount({});
+ * ```
+ */
 export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,5 +75,8 @@ export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts
  * A collection of arguments for invoking getCurrentAccount.
  */
 export interface GetCurrentAccountOutputArgs {
+    /**
+     * Id of the account.
+     */
     id?: pulumi.Input<string>;
 }

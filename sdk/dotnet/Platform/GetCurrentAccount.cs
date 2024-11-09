@@ -11,9 +11,45 @@ namespace Pulumi.Harness.Platform
 {
     public static class GetCurrentAccount
     {
+        /// <summary>
+        /// Data source for retrieving information on the current Harness account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Harness.Platform.GetCurrentAccount.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetCurrentAccountResult> InvokeAsync(GetCurrentAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCurrentAccountResult>("harness:platform/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Data source for retrieving information on the current Harness account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Harness.Platform.GetCurrentAccount.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetCurrentAccountResult> Invoke(GetCurrentAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentAccountResult>("harness:platform/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountInvokeArgs(), options.WithDefaults());
     }
@@ -21,6 +57,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetCurrentAccountArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Id of the account.
+        /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
@@ -32,6 +71,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetCurrentAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Id of the account.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
@@ -45,8 +87,17 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetCurrentAccountResult
     {
+        /// <summary>
+        /// Id of the account.
+        /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// The url of the Harness control plane.
+        /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// Id of the account.
+        /// </summary>
         public readonly string? Id;
 
         [OutputConstructor]

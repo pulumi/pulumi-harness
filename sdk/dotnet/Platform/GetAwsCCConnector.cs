@@ -142,7 +142,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         /// </summary>
         public readonly ImmutableArray<string> FeaturesEnableds;
         /// <summary>

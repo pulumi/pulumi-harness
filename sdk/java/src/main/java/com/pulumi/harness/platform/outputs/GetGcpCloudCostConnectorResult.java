@@ -25,7 +25,7 @@ public final class GetGcpCloudCostConnectorResult {
      */
     private String description;
     /**
-     * @return Indicates which features to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     private List<String> featuresEnableds;
@@ -86,7 +86,7 @@ public final class GetGcpCloudCostConnectorResult {
         return this.description;
     }
     /**
-     * @return Indicates which features to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     public List<String> featuresEnableds() {

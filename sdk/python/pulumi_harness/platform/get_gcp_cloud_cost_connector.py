@@ -82,7 +82,7 @@ class GetGcpCloudCostConnectorResult:
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> Sequence[str]:
         """
-        Indicates which features to enable among Billing, Optimization, and Visibility.
+        Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 
