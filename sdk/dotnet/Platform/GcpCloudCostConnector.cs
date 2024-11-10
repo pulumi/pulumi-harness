@@ -36,6 +36,7 @@ namespace Pulumi.Harness.Platform
     ///             "BILLING",
     ///             "VISIBILITY",
     ///             "OPTIMIZATION",
+    ///             "GOVERNANCE",
     ///         },
     ///         GcpProjectId = "gcp_project_id",
     ///         ServiceAccountEmail = "service_account_email",

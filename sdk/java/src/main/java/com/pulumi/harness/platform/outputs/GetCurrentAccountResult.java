@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCurrentAccountResult {
+    /**
+     * @return Id of the account.
+     * 
+     */
     private String accountId;
+    /**
+     * @return The url of the Harness control plane.
+     * 
+     */
     private String endpoint;
+    /**
+     * @return Id of the account.
+     * 
+     */
     private @Nullable String id;
 
     private GetCurrentAccountResult() {}
+    /**
+     * @return Id of the account.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }
+    /**
+     * @return The url of the Harness control plane.
+     * 
+     */
     public String endpoint() {
         return this.endpoint;
     }
+    /**
+     * @return Id of the account.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

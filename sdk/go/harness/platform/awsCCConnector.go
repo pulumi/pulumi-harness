@@ -85,7 +85,7 @@ type AwsCCConnector struct {
 	CrossAccountAccess AwsCCConnectorCrossAccountAccessOutput `pulumi:"crossAccountAccess"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 	FeaturesEnableds pulumi.StringArrayOutput `pulumi:"featuresEnableds"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -151,7 +151,7 @@ type awsCCConnectorState struct {
 	CrossAccountAccess *AwsCCConnectorCrossAccountAccess `pulumi:"crossAccountAccess"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -176,7 +176,7 @@ type AwsCCConnectorState struct {
 	CrossAccountAccess AwsCCConnectorCrossAccountAccessPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 	FeaturesEnableds pulumi.StringArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -205,7 +205,7 @@ type awsCCConnectorArgs struct {
 	CrossAccountAccess AwsCCConnectorCrossAccountAccess `pulumi:"crossAccountAccess"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -231,7 +231,7 @@ type AwsCCConnectorArgs struct {
 	CrossAccountAccess AwsCCConnectorCrossAccountAccessInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 	FeaturesEnableds pulumi.StringArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -351,7 +351,7 @@ func (o AwsCCConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 func (o AwsCCConnectorOutput) FeaturesEnableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsCCConnector) pulumi.StringArrayOutput { return v.FeaturesEnableds }).(pulumi.StringArrayOutput)
 }

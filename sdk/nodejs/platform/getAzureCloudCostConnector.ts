@@ -65,7 +65,7 @@ export interface GetAzureCloudCostConnectorResult {
      */
     readonly description: string;
     /**
-     * Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      */
     readonly featuresEnableds: string[];
     /**
