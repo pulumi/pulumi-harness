@@ -138,7 +138,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Indicates which feature to enable among Billing, Optimization, and Visibility.
+        /// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         /// </summary>
         public readonly ImmutableArray<string> FeaturesEnableds;
         /// <summary>

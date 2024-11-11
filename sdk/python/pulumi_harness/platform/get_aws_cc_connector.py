@@ -93,7 +93,7 @@ class GetAwsCCConnectorResult:
     @pulumi.getter(name="featuresEnableds")
     def features_enableds(self) -> Sequence[str]:
         """
-        The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+        The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         """
         return pulumi.get(self, "features_enableds")
 

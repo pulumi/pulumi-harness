@@ -68,7 +68,7 @@ type LookupAwsCCConnectorResult struct {
 	CrossAccountAccesses []GetAwsCCConnectorCrossAccountAccess `pulumi:"crossAccountAccesses"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
-	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+	// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -155,7 +155,7 @@ func (o LookupAwsCCConnectorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
 func (o LookupAwsCCConnectorResultOutput) FeaturesEnableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) []string { return v.FeaturesEnableds }).(pulumi.StringArrayOutput)
 }

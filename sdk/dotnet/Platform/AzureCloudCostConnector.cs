@@ -36,6 +36,7 @@ namespace Pulumi.Harness.Platform
     ///             "BILLING",
     ///             "VISIBILITY",
     ///             "OPTIMIZATION",
+    ///             "GOVERNANCE",
     ///         },
     ///         TenantId = "tenant_id",
     ///         SubscriptionId = "subscription_id",

@@ -66,7 +66,7 @@ type LookupAzureCloudCostConnectorResult struct {
 	BillingExportSpecs []GetAzureCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpecs"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
-	// Indicates which feature to enable among Billing, Optimization, and Visibility.
+	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 	FeaturesEnableds []string `pulumi:"featuresEnableds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -148,7 +148,7 @@ func (o LookupAzureCloudCostConnectorResultOutput) Description() pulumi.StringOu
 	return o.ApplyT(func(v LookupAzureCloudCostConnectorResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Indicates which feature to enable among Billing, Optimization, and Visibility.
+// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
 func (o LookupAzureCloudCostConnectorResultOutput) FeaturesEnableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAzureCloudCostConnectorResult) []string { return v.FeaturesEnableds }).(pulumi.StringArrayOutput)
 }

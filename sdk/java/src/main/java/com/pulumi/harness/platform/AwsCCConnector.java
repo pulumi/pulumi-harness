@@ -135,14 +135,14 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      * 
      */
     @Export(name="featuresEnableds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> featuresEnableds;
 
     /**
-     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      * 
      */
     public Output<List<String>> featuresEnableds() {

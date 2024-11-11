@@ -15,9 +15,17 @@ public final class GetCurrentAccountArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetCurrentAccountArgs Empty = new GetCurrentAccountArgs();
 
+    /**
+     * Id of the account.
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return Id of the account.
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
@@ -46,11 +54,23 @@ public final class GetCurrentAccountArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetCurrentAccountArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param id Id of the account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id Id of the account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

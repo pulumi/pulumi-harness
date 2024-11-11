@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *         "BILLING",
  *         "VISIBILITY",
  *         "OPTIMIZATION",
+ *         "GOVERNANCE",
  *     ],
  *     gcpProjectId: "gcp_project_id",
  *     serviceAccountEmail: "service_account_email",
