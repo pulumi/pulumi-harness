@@ -53,7 +53,8 @@ import javax.annotation.Nullable;
  *             .featuresEnableds(            
  *                 "BILLING",
  *                 "VISIBILITY",
- *                 "OPTIMIZATION")
+ *                 "OPTIMIZATION",
+ *                 "GOVERNANCE")
  *             .gcpProjectId("gcp_project_id")
  *             .serviceAccountEmail("service_account_email")
  *             .billingExportSpec(GcpCloudCostConnectorBillingExportSpecArgs.builder()

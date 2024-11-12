@@ -25,7 +25,7 @@ public final class GetAzureCloudCostConnectorResult {
      */
     private String description;
     /**
-     * @return Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     private List<String> featuresEnableds;
@@ -86,7 +86,7 @@ public final class GetAzureCloudCostConnectorResult {
         return this.description;
     }
     /**
-     * @return Indicates which feature to enable among Billing, Optimization, and Visibility.
+     * @return Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
      * 
      */
     public List<String> featuresEnableds() {

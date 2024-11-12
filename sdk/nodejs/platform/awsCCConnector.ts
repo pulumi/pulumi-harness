@@ -96,7 +96,7 @@ export class AwsCCConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      */
     public readonly featuresEnableds!: pulumi.Output<string[]>;
     /**
@@ -200,7 +200,7 @@ export interface AwsCCConnectorState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      */
     featuresEnableds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -250,7 +250,7 @@ export interface AwsCCConnectorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      */
     featuresEnableds: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -39,6 +39,7 @@ import (
 //					pulumi.String("BILLING"),
 //					pulumi.String("VISIBILITY"),
 //					pulumi.String("OPTIMIZATION"),
+//					pulumi.String("GOVERNANCE"),
 //				},
 //				GcpProjectId:        pulumi.String("gcp_project_id"),
 //				ServiceAccountEmail: pulumi.String("service_account_email"),

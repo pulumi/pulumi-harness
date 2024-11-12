@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *         "BILLING",
  *         "VISIBILITY",
  *         "OPTIMIZATION",
+ *         "GOVERNANCE",
  *     ],
  *     tenantId: "tenant_id",
  *     subscriptionId: "subscription_id",

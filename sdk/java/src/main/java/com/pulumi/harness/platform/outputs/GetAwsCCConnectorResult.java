@@ -30,7 +30,7 @@ public final class GetAwsCCConnectorResult {
      */
     private String description;
     /**
-     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      * 
      */
     private List<String> featuresEnableds;
@@ -98,7 +98,7 @@ public final class GetAwsCCConnectorResult {
         return this.description;
     }
     /**
-     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      * 
      */
     public List<String> featuresEnableds() {
