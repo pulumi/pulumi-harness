@@ -63,14 +63,14 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      * 
      */
     @Import(name="featuresEnableds")
     private @Nullable Output<List<String>> featuresEnableds;
 
     /**
-     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * @return The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      * 
      */
     public Optional<Output<List<String>>> featuresEnableds() {
@@ -280,7 +280,7 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param featuresEnableds The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+         * @param featuresEnableds The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param featuresEnableds The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+         * @param featuresEnableds The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param featuresEnableds The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+         * @param featuresEnableds The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
          * 
          * @return builder
          * 

@@ -92,7 +92,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         /// </summary>
         [Output("featuresEnableds")]
         public Output<ImmutableArray<string>> FeaturesEnableds { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _featuresEnableds;
 
         /// <summary>
-        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         /// </summary>
         public InputList<string> FeaturesEnableds
         {
@@ -294,7 +294,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _featuresEnableds;
 
         /// <summary>
-        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+        /// The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         /// </summary>
         public InputList<string> FeaturesEnableds
         {

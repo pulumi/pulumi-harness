@@ -69,7 +69,7 @@ export interface GetAwsCCConnectorResult {
      */
     readonly description: string;
     /**
-     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY.
+     * The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
      */
     readonly featuresEnableds: string[];
     /**

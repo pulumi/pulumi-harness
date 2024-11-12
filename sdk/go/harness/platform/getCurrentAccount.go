@@ -11,6 +11,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for retrieving information on the current Harness account.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.GetCurrentAccount(ctx, &platform.GetCurrentAccountArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCurrentAccount(ctx *pulumi.Context, args *GetCurrentAccountArgs, opts ...pulumi.InvokeOption) (*GetCurrentAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentAccountResult
@@ -23,14 +48,18 @@ func GetCurrentAccount(ctx *pulumi.Context, args *GetCurrentAccountArgs, opts ..
 
 // A collection of arguments for invoking getCurrentAccount.
 type GetCurrentAccountArgs struct {
+	// Id of the account.
 	Id *string `pulumi:"id"`
 }
 
 // A collection of values returned by getCurrentAccount.
 type GetCurrentAccountResult struct {
-	AccountId string  `pulumi:"accountId"`
-	Endpoint  string  `pulumi:"endpoint"`
-	Id        *string `pulumi:"id"`
+	// Id of the account.
+	AccountId string `pulumi:"accountId"`
+	// The url of the Harness control plane.
+	Endpoint string `pulumi:"endpoint"`
+	// Id of the account.
+	Id *string `pulumi:"id"`
 }
 
 func GetCurrentAccountOutput(ctx *pulumi.Context, args GetCurrentAccountOutputArgs, opts ...pulumi.InvokeOption) GetCurrentAccountResultOutput {
@@ -54,6 +83,7 @@ func GetCurrentAccountOutput(ctx *pulumi.Context, args GetCurrentAccountOutputAr
 
 // A collection of arguments for invoking getCurrentAccount.
 type GetCurrentAccountOutputArgs struct {
+	// Id of the account.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -76,14 +106,17 @@ func (o GetCurrentAccountResultOutput) ToGetCurrentAccountResultOutputWithContex
 	return o
 }
 
+// Id of the account.
 func (o GetCurrentAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// The url of the Harness control plane.
 func (o GetCurrentAccountResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentAccountResult) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// Id of the account.
 func (o GetCurrentAccountResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCurrentAccountResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }

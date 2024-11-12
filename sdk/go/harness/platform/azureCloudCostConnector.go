@@ -39,6 +39,7 @@ import (
 //					pulumi.String("BILLING"),
 //					pulumi.String("VISIBILITY"),
 //					pulumi.String("OPTIMIZATION"),
+//					pulumi.String("GOVERNANCE"),
 //				},
 //				TenantId:       pulumi.String("tenant_id"),
 //				SubscriptionId: pulumi.String("subscription_id"),

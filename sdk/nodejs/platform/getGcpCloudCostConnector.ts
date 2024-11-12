@@ -65,7 +65,7 @@ export interface GetGcpCloudCostConnectorResult {
      */
     readonly description: string;
     /**
-     * Indicates which features to enable among Billing, Optimization, and Visibility.
+     * Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      */
     readonly featuresEnableds: string[];
     /**

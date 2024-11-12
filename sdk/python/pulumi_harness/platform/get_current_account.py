@@ -40,16 +40,25 @@ class GetCurrentAccountResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        Id of the account.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def endpoint(self) -> str:
+        """
+        The url of the Harness control plane.
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        Id of the account.
+        """
         return pulumi.get(self, "id")
 
 
@@ -67,7 +76,19 @@ class AwaitableGetCurrentAccountResult(GetCurrentAccountResult):
 def get_current_account(id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentAccountResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for retrieving information on the current Harness account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    current = harness.platform.get_current_account()
+    ```
+
+
+    :param str id: Id of the account.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -81,7 +102,19 @@ def get_current_account(id: Optional[str] = None,
 def get_current_account_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentAccountResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data source for retrieving information on the current Harness account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    current = harness.platform.get_current_account()
+    ```
+
+
+    :param str id: Id of the account.
     """
     __args__ = dict()
     __args__['id'] = id

@@ -53,7 +53,8 @@ import javax.annotation.Nullable;
  *             .featuresEnableds(            
  *                 "BILLING",
  *                 "VISIBILITY",
- *                 "OPTIMIZATION")
+ *                 "OPTIMIZATION",
+ *                 "GOVERNANCE")
  *             .tenantId("tenant_id")
  *             .subscriptionId("subscription_id")
  *             .billingExportSpec(AzureCloudCostConnectorBillingExportSpecArgs.builder()
