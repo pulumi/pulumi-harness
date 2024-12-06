@@ -159,7 +159,7 @@ def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[str]
                                           argo_project_name: Optional[pulumi.Input[str]] = None,
                                           org_id: Optional[pulumi.Input[str]] = None,
                                           project_id: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAppProjectMappingResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAppProjectMappingResult]:
     """
     Resource for managing the Harness GitOps Application Project Mappings.
 
@@ -176,7 +176,7 @@ def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[str]
     __args__['argoProjectName'] = argo_project_name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping', __args__, opts=opts, typ=GetGitopsAppProjectMappingResult)
     return __ret__.apply(lambda __response__: GetGitopsAppProjectMappingResult(
         account_id=pulumi.get(__response__, 'account_id'),

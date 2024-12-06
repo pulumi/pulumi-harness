@@ -92,7 +92,7 @@ export interface GetGitConnectorResult {
 /**
  * Data source for retrieving a Harness application
  */
-export function getGitConnectorOutput(args?: GetGitConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitConnectorResult> {
+export function getGitConnectorOutput(args?: GetGitConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitConnectorResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getGitConnector:getGitConnector", {

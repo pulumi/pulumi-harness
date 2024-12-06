@@ -99,7 +99,7 @@ export interface GetInputSetResult {
 /**
  * Data source for retrieving a Harness input set.
  */
-export function getInputSetOutput(args: GetInputSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInputSetResult> {
+export function getInputSetOutput(args: GetInputSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInputSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getInputSet:getInputSet", {
         "gitDetails": args.gitDetails,

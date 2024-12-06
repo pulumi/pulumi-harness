@@ -113,7 +113,7 @@ export interface GetGitopsGnupgResult {
  * });
  * ```
  */
-export function getGitopsGnupgOutput(args: GetGitopsGnupgOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsGnupgResult> {
+export function getGitopsGnupgOutput(args: GetGitopsGnupgOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsGnupgResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsGnupg:getGitopsGnupg", {
         "accountId": args.accountId,

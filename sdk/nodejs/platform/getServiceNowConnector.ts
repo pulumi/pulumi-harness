@@ -123,7 +123,7 @@ export interface GetServiceNowConnectorResult {
  * });
  * ```
  */
-export function getServiceNowConnectorOutput(args: GetServiceNowConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceNowConnectorResult> {
+export function getServiceNowConnectorOutput(args: GetServiceNowConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceNowConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getServiceNowConnector:getServiceNowConnector", {
         "identifier": args.identifier,

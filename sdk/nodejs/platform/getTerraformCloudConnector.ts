@@ -101,7 +101,7 @@ export interface GetTerraformCloudConnectorResult {
  * });
  * ```
  */
-export function getTerraformCloudConnectorOutput(args: GetTerraformCloudConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTerraformCloudConnectorResult> {
+export function getTerraformCloudConnectorOutput(args: GetTerraformCloudConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTerraformCloudConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", {
         "identifier": args.identifier,

@@ -109,7 +109,7 @@ export interface GetDynatraceConnectorResult {
  * });
  * ```
  */
-export function getDynatraceConnectorOutput(args: GetDynatraceConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynatraceConnectorResult> {
+export function getDynatraceConnectorOutput(args: GetDynatraceConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDynatraceConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDynatraceConnector:getDynatraceConnector", {
         "identifier": args.identifier,

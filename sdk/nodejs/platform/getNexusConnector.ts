@@ -115,7 +115,7 @@ export interface GetNexusConnectorResult {
  * });
  * ```
  */
-export function getNexusConnectorOutput(args: GetNexusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNexusConnectorResult> {
+export function getNexusConnectorOutput(args: GetNexusConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNexusConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getNexusConnector:getNexusConnector", {
         "identifier": args.identifier,

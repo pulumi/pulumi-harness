@@ -58,7 +58,7 @@ export interface GetOrchestratorResult {
 /**
  * Data source for retrieving a Harness ClusterOrchestrator.
  */
-export function getOrchestratorOutput(args: GetOrchestratorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrchestratorResult> {
+export function getOrchestratorOutput(args: GetOrchestratorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrchestratorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:cluster/getOrchestrator:getOrchestrator", {
         "clusterEndpoint": args.clusterEndpoint,

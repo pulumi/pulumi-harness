@@ -208,7 +208,7 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] 
                                         org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         proxies: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']]]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAgentDeployYamlResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAgentDeployYamlResult]:
     """
     Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
 
@@ -242,7 +242,7 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] 
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['proxies'] = proxies
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml', __args__, opts=opts, typ=GetGitopsAgentDeployYamlResult)
     return __ret__.apply(lambda __response__: GetGitopsAgentDeployYamlResult(
         account_id=pulumi.get(__response__, 'account_id'),

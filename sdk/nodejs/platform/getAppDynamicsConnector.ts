@@ -119,7 +119,7 @@ export interface GetAppDynamicsConnectorResult {
  * });
  * ```
  */
-export function getAppDynamicsConnectorOutput(args: GetAppDynamicsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppDynamicsConnectorResult> {
+export function getAppDynamicsConnectorOutput(args: GetAppDynamicsConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppDynamicsConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", {
         "identifier": args.identifier,

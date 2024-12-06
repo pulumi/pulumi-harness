@@ -305,7 +305,7 @@ def get_repo_output(default_branch: Optional[pulumi.Input[Optional[str]]] = None
                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
                     readme: Optional[pulumi.Input[Optional[bool]]] = None,
                     sources: Optional[pulumi.Input[Optional[Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepoResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepoResult]:
     """
     Data source for retrieving a Harness repo.
 
@@ -341,7 +341,7 @@ def get_repo_output(default_branch: Optional[pulumi.Input[Optional[str]]] = None
     __args__['projectId'] = project_id
     __args__['readme'] = readme
     __args__['sources'] = sources
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getRepo:getRepo', __args__, opts=opts, typ=GetRepoResult)
     return __ret__.apply(lambda __response__: GetRepoResult(
         created=pulumi.get(__response__, 'created'),

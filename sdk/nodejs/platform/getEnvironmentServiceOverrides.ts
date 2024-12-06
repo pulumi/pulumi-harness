@@ -108,7 +108,7 @@ export interface GetEnvironmentServiceOverridesResult {
  * });
  * ```
  */
-export function getEnvironmentServiceOverridesOutput(args: GetEnvironmentServiceOverridesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentServiceOverridesResult> {
+export function getEnvironmentServiceOverridesOutput(args: GetEnvironmentServiceOverridesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentServiceOverridesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", {
         "envId": args.envId,

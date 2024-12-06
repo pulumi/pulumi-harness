@@ -105,7 +105,7 @@ export interface GetConnectorCustomhealthsourceResult {
 /**
  * Datasource for looking up a Custom Health source connector.
  */
-export function getConnectorCustomhealthsourceOutput(args: GetConnectorCustomhealthsourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorCustomhealthsourceResult> {
+export function getConnectorCustomhealthsourceOutput(args: GetConnectorCustomhealthsourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorCustomhealthsourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", {
         "identifier": args.identifier,

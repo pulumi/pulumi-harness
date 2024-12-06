@@ -117,7 +117,7 @@ export interface GetGitopsRepoCredResult {
  * });
  * ```
  */
-export function getGitopsRepoCredOutput(args: GetGitopsRepoCredOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsRepoCredResult> {
+export function getGitopsRepoCredOutput(args: GetGitopsRepoCredOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsRepoCredResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsRepoCred:getGitopsRepoCred", {
         "accountId": args.accountId,

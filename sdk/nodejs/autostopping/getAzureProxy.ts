@@ -154,7 +154,7 @@ export interface GetAzureProxyResult {
 /**
  * Data source for Azure Autostopping proxy
  */
-export function getAzureProxyOutput(args: GetAzureProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureProxyResult> {
+export function getAzureProxyOutput(args: GetAzureProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getAzureProxy:getAzureProxy", {
         "allocateStaticIp": args.allocateStaticIp,

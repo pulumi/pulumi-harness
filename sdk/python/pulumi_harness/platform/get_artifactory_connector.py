@@ -204,7 +204,7 @@ def get_artifactory_connector_output(identifier: Optional[pulumi.Input[Optional[
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
                                      org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetArtifactoryConnectorResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetArtifactoryConnectorResult]:
     """
     Resource for looking up an App Dynamics connector.
 
@@ -228,7 +228,7 @@ def get_artifactory_connector_output(identifier: Optional[pulumi.Input[Optional[
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getArtifactoryConnector:getArtifactoryConnector', __args__, opts=opts, typ=GetArtifactoryConnectorResult)
     return __ret__.apply(lambda __response__: GetArtifactoryConnectorResult(
         credentials=pulumi.get(__response__, 'credentials'),

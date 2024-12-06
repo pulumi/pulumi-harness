@@ -96,7 +96,7 @@ export interface GetGitopsAppProjectResult {
  * });
  * ```
  */
-export function getGitopsAppProjectOutput(args: GetGitopsAppProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAppProjectResult> {
+export function getGitopsAppProjectOutput(args: GetGitopsAppProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAppProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsAppProject:getGitopsAppProject", {
         "accountId": args.accountId,

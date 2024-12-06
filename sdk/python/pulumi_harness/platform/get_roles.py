@@ -198,7 +198,7 @@ def get_roles_output(allowed_scope_levels: Optional[pulumi.Input[Optional[Sequen
                      org_id: Optional[pulumi.Input[Optional[str]]] = None,
                      permissions: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRolesResult]:
     """
     ## Example Usage
 
@@ -226,7 +226,7 @@ def get_roles_output(allowed_scope_levels: Optional[pulumi.Input[Optional[Sequen
     __args__['orgId'] = org_id
     __args__['permissions'] = permissions
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult)
     return __ret__.apply(lambda __response__: GetRolesResult(
         allowed_scope_levels=pulumi.get(__response__, 'allowed_scope_levels'),

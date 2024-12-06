@@ -350,7 +350,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = No
                          repository_sha: Optional[pulumi.Input[Optional[str]]] = None,
                          terraform_variable_files: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]]]] = None,
                          terraform_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkspaceResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceResult]:
     """
     Data source for retrieving workspaces.
 
@@ -386,7 +386,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[str]]] = No
     __args__['repositorySha'] = repository_sha
     __args__['terraformVariableFiles'] = terraform_variable_files
     __args__['terraformVariables'] = terraform_variables
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getWorkspace:getWorkspace', __args__, opts=opts, typ=GetWorkspaceResult)
     return __ret__.apply(lambda __response__: GetWorkspaceResult(
         cost_estimation_enabled=pulumi.get(__response__, 'cost_estimation_enabled'),

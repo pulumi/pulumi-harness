@@ -126,7 +126,7 @@ def get_environment_list(org_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'))
 def get_environment_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentListResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentListResult]:
     """
     Data source for retrieving Harness environment list.
 
@@ -163,7 +163,7 @@ def get_environment_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = 
     __args__ = dict()
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getEnvironmentList:getEnvironmentList', __args__, opts=opts, typ=GetEnvironmentListResult)
     return __ret__.apply(lambda __response__: GetEnvironmentListResult(
         environments=pulumi.get(__response__, 'environments'),

@@ -115,7 +115,7 @@ export interface GetRolesResult {
  * });
  * ```
  */
-export function getRolesOutput(args: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+export function getRolesOutput(args: GetRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getRoles:getRoles", {
         "allowedScopeLevels": args.allowedScopeLevels,

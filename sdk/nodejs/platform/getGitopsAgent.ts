@@ -126,7 +126,7 @@ export interface GetGitopsAgentResult {
  * });
  * ```
  */
-export function getGitopsAgentOutput(args: GetGitopsAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAgentResult> {
+export function getGitopsAgentOutput(args: GetGitopsAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsAgent:getGitopsAgent", {
         "accountId": args.accountId,

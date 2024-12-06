@@ -289,7 +289,7 @@ def get_gcp_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bool
                          subnet_id: Optional[pulumi.Input[str]] = None,
                          vpc: Optional[pulumi.Input[str]] = None,
                          zone: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGcpProxyResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpProxyResult]:
     """
     Data source for GCP Autostopping proxy
 
@@ -320,7 +320,7 @@ def get_gcp_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bool
     __args__['subnetId'] = subnet_id
     __args__['vpc'] = vpc
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getGcpProxy:getGcpProxy', __args__, opts=opts, typ=GetGcpProxyResult)
     return __ret__.apply(lambda __response__: GetGcpProxyResult(
         allocate_static_ip=pulumi.get(__response__, 'allocate_static_ip'),

@@ -115,7 +115,7 @@ export interface GetGcpCloudCostConnectorResult {
  * });
  * ```
  */
-export function getGcpCloudCostConnectorOutput(args: GetGcpCloudCostConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpCloudCostConnectorResult> {
+export function getGcpCloudCostConnectorOutput(args: GetGcpCloudCostConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpCloudCostConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGcpCloudCostConnector:getGcpCloudCostConnector", {
         "identifier": args.identifier,

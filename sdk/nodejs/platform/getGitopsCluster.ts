@@ -112,7 +112,7 @@ export interface GetGitopsClusterResult {
  * });
  * ```
  */
-export function getGitopsClusterOutput(args: GetGitopsClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsClusterResult> {
+export function getGitopsClusterOutput(args: GetGitopsClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsCluster:getGitopsCluster", {
         "accountId": args.accountId,
