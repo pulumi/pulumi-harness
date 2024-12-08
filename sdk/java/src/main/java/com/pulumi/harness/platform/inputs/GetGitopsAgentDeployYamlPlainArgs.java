@@ -20,16 +20,24 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
     /**
      * Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public String accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -157,8 +165,12 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(String accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -240,9 +252,6 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
         }
 
         public GetGitopsAgentDeployYamlPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsAgentDeployYamlPlainArgs", "accountId");
-            }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAgentDeployYamlPlainArgs", "identifier");
             }

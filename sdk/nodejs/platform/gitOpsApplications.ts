@@ -98,6 +98,8 @@ export class GitOpsApplications extends pulumi.CustomResource {
 
     /**
      * Account identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -204,9 +206,6 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["validate"] = state ? state.validate : undefined;
         } else {
             const args = argsOrState as GitOpsApplicationsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
@@ -252,6 +251,8 @@ export class GitOpsApplications extends pulumi.CustomResource {
 export interface GitOpsApplicationsState {
     /**
      * Account identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -332,8 +333,10 @@ export interface GitOpsApplicationsState {
 export interface GitOpsApplicationsArgs {
     /**
      * Account identifier of the GitOps application.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the GitOps application.
      */

@@ -79,6 +79,8 @@ export class GitOpsAgent extends pulumi.CustomResource {
 
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -109,6 +111,10 @@ export class GitOpsAgent extends pulumi.CustomResource {
      * Organization identifier of the GitOps agent.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
+    /**
+     * Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     */
+    public /*out*/ readonly prefixedIdentifier!: pulumi.Output<string>;
     /**
      * Project identifier of the GitOps agent.
      */
@@ -144,14 +150,12 @@ export class GitOpsAgent extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["operator"] = state ? state.operator : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["prefixedIdentifier"] = state ? state.prefixedIdentifier : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as GitOpsAgentArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -169,6 +173,7 @@ export class GitOpsAgent extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["agentToken"] = undefined /*out*/;
+            resourceInputs["prefixedIdentifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GitOpsAgent.__pulumiType, name, resourceInputs, opts);
@@ -181,6 +186,8 @@ export class GitOpsAgent extends pulumi.CustomResource {
 export interface GitOpsAgentState {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -212,6 +219,10 @@ export interface GitOpsAgentState {
      */
     orgId?: pulumi.Input<string>;
     /**
+     * Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     */
+    prefixedIdentifier?: pulumi.Input<string>;
+    /**
      * Project identifier of the GitOps agent.
      */
     projectId?: pulumi.Input<string>;
@@ -232,8 +243,10 @@ export interface GitOpsAgentState {
 export interface GitOpsAgentArgs {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Description of the GitOps agent.
      */

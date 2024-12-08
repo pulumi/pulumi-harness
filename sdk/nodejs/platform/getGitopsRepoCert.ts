@@ -23,12 +23,14 @@ export function getGitopsRepoCert(args: GetGitopsRepoCertArgs, opts?: pulumi.Inv
 export interface GetGitopsRepoCertArgs {
     /**
      * Account identifier of the GitOps repository certificate.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Agent identifier of the GitOps repository certificate.
      */
-    agentId?: string;
+    agentId: string;
     /**
      * Organization identifier of the GitOps repository certificate.
      */
@@ -45,12 +47,14 @@ export interface GetGitopsRepoCertArgs {
 export interface GetGitopsRepoCertResult {
     /**
      * Account identifier of the GitOps repository certificate.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
      * Agent identifier of the GitOps repository certificate.
      */
-    readonly agentId?: string;
+    readonly agentId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -83,12 +87,14 @@ export function getGitopsRepoCertOutput(args: GetGitopsRepoCertOutputArgs, opts?
 export interface GetGitopsRepoCertOutputArgs {
     /**
      * Account identifier of the GitOps repository certificate.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the GitOps repository certificate.
      */
-    agentId?: pulumi.Input<string>;
+    agentId: pulumi.Input<string>;
     /**
      * Organization identifier of the GitOps repository certificate.
      */

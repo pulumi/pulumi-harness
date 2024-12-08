@@ -161,8 +161,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps repository certificate.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Agent identifier of the GitOps repository certificate.

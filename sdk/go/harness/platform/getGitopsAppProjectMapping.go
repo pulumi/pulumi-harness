@@ -25,7 +25,9 @@ func LookupGitopsAppProjectMapping(ctx *pulumi.Context, args *LookupGitopsAppPro
 // A collection of arguments for invoking getGitopsAppProjectMapping.
 type LookupGitopsAppProjectMappingArgs struct {
 	// Account identifier of the GitOps agent's Application Project.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId string `pulumi:"agentId"`
 	// ArgoCD Project name which is to be mapped to the Harness project.
@@ -39,6 +41,8 @@ type LookupGitopsAppProjectMappingArgs struct {
 // A collection of values returned by getGitopsAppProjectMapping.
 type LookupGitopsAppProjectMappingResult struct {
 	// Account identifier of the GitOps agent's Application Project.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId string `pulumi:"agentId"`
@@ -76,7 +80,9 @@ func LookupGitopsAppProjectMappingOutput(ctx *pulumi.Context, args LookupGitopsA
 // A collection of arguments for invoking getGitopsAppProjectMapping.
 type LookupGitopsAppProjectMappingOutputArgs struct {
 	// Account identifier of the GitOps agent's Application Project.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// ArgoCD Project name which is to be mapped to the Harness project.
@@ -107,6 +113,8 @@ func (o LookupGitopsAppProjectMappingResultOutput) ToLookupGitopsAppProjectMappi
 }
 
 // Account identifier of the GitOps agent's Application Project.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o LookupGitopsAppProjectMappingResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectMappingResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

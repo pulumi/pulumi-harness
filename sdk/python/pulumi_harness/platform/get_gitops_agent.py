@@ -27,7 +27,7 @@ class GetGitopsAgentResult:
     """
     A collection of values returned by getGitopsAgent.
     """
-    def __init__(__self__, account_id=None, agent_token=None, description=None, id=None, identifier=None, metadatas=None, name=None, operator=None, org_id=None, project_id=None, tags=None, type=None):
+    def __init__(__self__, account_id=None, agent_token=None, description=None, id=None, identifier=None, is_authenticated=None, metadatas=None, name=None, operator=None, org_id=None, prefixed_identifier=None, project_id=None, tags=None, type=None, with_credentials=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,6 +43,9 @@ class GetGitopsAgentResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if is_authenticated and not isinstance(is_authenticated, bool):
+            raise TypeError("Expected argument 'is_authenticated' to be a bool")
+        pulumi.set(__self__, "is_authenticated", is_authenticated)
         if metadatas and not isinstance(metadatas, list):
             raise TypeError("Expected argument 'metadatas' to be a list")
         pulumi.set(__self__, "metadatas", metadatas)
@@ -55,6 +58,9 @@ class GetGitopsAgentResult:
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
+        if prefixed_identifier and not isinstance(prefixed_identifier, str):
+            raise TypeError("Expected argument 'prefixed_identifier' to be a str")
+        pulumi.set(__self__, "prefixed_identifier", prefixed_identifier)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
@@ -64,9 +70,13 @@ class GetGitopsAgentResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if with_credentials and not isinstance(with_credentials, bool):
+            raise TypeError("Expected argument 'with_credentials' to be a bool")
+        pulumi.set(__self__, "with_credentials", with_credentials)
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
         """
         Account identifier of the GitOps agent.
@@ -106,6 +116,14 @@ class GetGitopsAgentResult:
         return pulumi.get(self, "identifier")
 
     @property
+    @pulumi.getter(name="isAuthenticated")
+    def is_authenticated(self) -> bool:
+        """
+        This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \\n\\nSet with_credentials to true to allow computing of this field.\\n\\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        """
+        return pulumi.get(self, "is_authenticated")
+
+    @property
     @pulumi.getter
     def metadatas(self) -> Sequence['outputs.GetGitopsAgentMetadataResult']:
         """
@@ -138,6 +156,14 @@ class GetGitopsAgentResult:
         return pulumi.get(self, "org_id")
 
     @property
+    @pulumi.getter(name="prefixedIdentifier")
+    def prefixed_identifier(self) -> str:
+        """
+        Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+        """
+        return pulumi.get(self, "prefixed_identifier")
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
@@ -162,6 +188,14 @@ class GetGitopsAgentResult:
         """
         return pulumi.get(self, "type")
 
+    @property
+    @pulumi.getter(name="withCredentials")
+    def with_credentials(self) -> Optional[bool]:
+        """
+        Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        """
+        return pulumi.get(self, "with_credentials")
+
 
 class AwaitableGetGitopsAgentResult(GetGitopsAgentResult):
     # pylint: disable=using-constant-test
@@ -174,46 +208,40 @@ class AwaitableGetGitopsAgentResult(GetGitopsAgentResult):
             description=self.description,
             id=self.id,
             identifier=self.identifier,
+            is_authenticated=self.is_authenticated,
             metadatas=self.metadatas,
             name=self.name,
             operator=self.operator,
             org_id=self.org_id,
+            prefixed_identifier=self.prefixed_identifier,
             project_id=self.project_id,
             tags=self.tags,
-            type=self.type)
+            type=self.type,
+            with_credentials=self.with_credentials)
 
 
 def get_gitops_agent(account_id: Optional[str] = None,
                      identifier: Optional[str] = None,
                      org_id: Optional[str] = None,
                      project_id: Optional[str] = None,
+                     with_credentials: Optional[bool] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentResult:
     """
     Datasource for fetching a Harness GitOps Agent.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_gitops_agent(identifier="identifier",
-        account_id="account_id",
-        project_id="project_id",
-        org_id="org_id")
-    ```
 
 
     :param str account_id: Account identifier of the GitOps agent.
     :param str identifier: Identifier of the GitOps agent.
     :param str org_id: Organization identifier of the GitOps agent.
     :param str project_id: Project identifier of the GitOps agent.
+    :param bool with_credentials: Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['withCredentials'] = with_credentials
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsAgent:getGitopsAgent', __args__, opts=opts, typ=GetGitopsAgentResult).value
 
@@ -223,44 +251,38 @@ def get_gitops_agent(account_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        is_authenticated=pulumi.get(__ret__, 'is_authenticated'),
         metadatas=pulumi.get(__ret__, 'metadatas'),
         name=pulumi.get(__ret__, 'name'),
         operator=pulumi.get(__ret__, 'operator'),
         org_id=pulumi.get(__ret__, 'org_id'),
+        prefixed_identifier=pulumi.get(__ret__, 'prefixed_identifier'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
-        type=pulumi.get(__ret__, 'type'))
-def get_gitops_agent_output(account_id: Optional[pulumi.Input[str]] = None,
+        type=pulumi.get(__ret__, 'type'),
+        with_credentials=pulumi.get(__ret__, 'with_credentials'))
+def get_gitops_agent_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                             identifier: Optional[pulumi.Input[str]] = None,
                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            with_credentials: Optional[pulumi.Input[Optional[bool]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsAgentResult]:
     """
     Datasource for fetching a Harness GitOps Agent.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_gitops_agent(identifier="identifier",
-        account_id="account_id",
-        project_id="project_id",
-        org_id="org_id")
-    ```
 
 
     :param str account_id: Account identifier of the GitOps agent.
     :param str identifier: Identifier of the GitOps agent.
     :param str org_id: Organization identifier of the GitOps agent.
     :param str project_id: Project identifier of the GitOps agent.
+    :param bool with_credentials: Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['withCredentials'] = with_credentials
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsAgent:getGitopsAgent', __args__, opts=opts, typ=GetGitopsAgentResult)
     return __ret__.apply(lambda __response__: GetGitopsAgentResult(
@@ -269,10 +291,13 @@ def get_gitops_agent_output(account_id: Optional[pulumi.Input[str]] = None,
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        is_authenticated=pulumi.get(__response__, 'is_authenticated'),
         metadatas=pulumi.get(__response__, 'metadatas'),
         name=pulumi.get(__response__, 'name'),
         operator=pulumi.get(__response__, 'operator'),
         org_id=pulumi.get(__response__, 'org_id'),
+        prefixed_identifier=pulumi.get(__response__, 'prefixed_identifier'),
         project_id=pulumi.get(__response__, 'project_id'),
         tags=pulumi.get(__response__, 'tags'),
-        type=pulumi.get(__response__, 'type')))
+        type=pulumi.get(__response__, 'type'),
+        with_credentials=pulumi.get(__response__, 'with_credentials')))

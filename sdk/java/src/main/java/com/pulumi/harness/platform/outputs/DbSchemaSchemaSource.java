@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DbSchemaSchemaSource {
     /**
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * 
+     */
+    private @Nullable String archivePath;
+    /**
      * @return Connector to repository at which to find details about the database schema
      * 
      */
@@ -29,6 +34,13 @@ public final class DbSchemaSchemaSource {
     private @Nullable String repo;
 
     private DbSchemaSchemaSource() {}
+    /**
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * 
+     */
+    public Optional<String> archivePath() {
+        return Optional.ofNullable(this.archivePath);
+    }
     /**
      * @return Connector to repository at which to find details about the database schema
      * 
@@ -60,17 +72,25 @@ public final class DbSchemaSchemaSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String archivePath;
         private String connector;
         private String location;
         private @Nullable String repo;
         public Builder() {}
         public Builder(DbSchemaSchemaSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.archivePath = defaults.archivePath;
     	      this.connector = defaults.connector;
     	      this.location = defaults.location;
     	      this.repo = defaults.repo;
         }
 
+        @CustomType.Setter
+        public Builder archivePath(@Nullable String archivePath) {
+
+            this.archivePath = archivePath;
+            return this;
+        }
         @CustomType.Setter
         public Builder connector(String connector) {
             if (connector == null) {
@@ -95,6 +115,7 @@ public final class DbSchemaSchemaSource {
         }
         public DbSchemaSchemaSource build() {
             final var _resultValue = new DbSchemaSchemaSource();
+            _resultValue.archivePath = archivePath;
             _resultValue.connector = connector;
             _resultValue.location = location;
             _resultValue.repo = repo;

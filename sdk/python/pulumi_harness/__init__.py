@@ -756,6 +756,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/infraModule",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/infraModule:InfraModule": "InfraModule"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/infrastructure",
   "fqn": "pulumi_harness.platform",
   "classes": {

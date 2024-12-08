@@ -12,35 +12,6 @@ import (
 )
 
 // Datasource for fetching a Harness GitOps Agent.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetGitopsAgent(ctx, &platform.GetGitopsAgentArgs{
-//				Identifier: "identifier",
-//				AccountId:  "account_id",
-//				ProjectId:  pulumi.StringRef("project_id"),
-//				OrgId:      pulumi.StringRef("org_id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetGitopsAgent(ctx *pulumi.Context, args *GetGitopsAgentArgs, opts ...pulumi.InvokeOption) (*GetGitopsAgentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsAgentResult
@@ -54,18 +25,24 @@ func GetGitopsAgent(ctx *pulumi.Context, args *GetGitopsAgentArgs, opts ...pulum
 // A collection of arguments for invoking getGitopsAgent.
 type GetGitopsAgentArgs struct {
 	// Account identifier of the GitOps agent.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Identifier of the GitOps agent.
 	Identifier string `pulumi:"identifier"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps agent.
 	ProjectId *string `pulumi:"projectId"`
+	// Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+	WithCredentials *bool `pulumi:"withCredentials"`
 }
 
 // A collection of values returned by getGitopsAgent.
 type GetGitopsAgentResult struct {
 	// Account identifier of the GitOps agent.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent token to be used for authentication of the agent with Harness.
 	AgentToken string `pulumi:"agentToken"`
@@ -75,6 +52,8 @@ type GetGitopsAgentResult struct {
 	Id string `pulumi:"id"`
 	// Identifier of the GitOps agent.
 	Identifier string `pulumi:"identifier"`
+	// This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet withCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+	IsAuthenticated bool `pulumi:"isAuthenticated"`
 	// Metadata of the agent.
 	Metadatas []GetGitopsAgentMetadata `pulumi:"metadatas"`
 	// Name of the GitOps agent.
@@ -83,6 +62,8 @@ type GetGitopsAgentResult struct {
 	Operator string `pulumi:"operator"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
+	// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+	PrefixedIdentifier string `pulumi:"prefixedIdentifier"`
 	// Project identifier of the GitOps agent.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
@@ -90,6 +71,8 @@ type GetGitopsAgentResult struct {
 	// Default: "AGENT*TYPE*UNSET"
 	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
 	Type string `pulumi:"type"`
+	// Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+	WithCredentials *bool `pulumi:"withCredentials"`
 }
 
 func GetGitopsAgentOutput(ctx *pulumi.Context, args GetGitopsAgentOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentResultOutput {
@@ -114,13 +97,17 @@ func GetGitopsAgentOutput(ctx *pulumi.Context, args GetGitopsAgentOutputArgs, op
 // A collection of arguments for invoking getGitopsAgent.
 type GetGitopsAgentOutputArgs struct {
 	// Account identifier of the GitOps agent.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Identifier of the GitOps agent.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Organization identifier of the GitOps agent.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Project identifier of the GitOps agent.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+	WithCredentials pulumi.BoolPtrInput `pulumi:"withCredentials"`
 }
 
 func (GetGitopsAgentOutputArgs) ElementType() reflect.Type {
@@ -143,6 +130,8 @@ func (o GetGitopsAgentResultOutput) ToGetGitopsAgentResultOutputWithContext(ctx 
 }
 
 // Account identifier of the GitOps agent.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsAgentResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -167,6 +156,11 @@ func (o GetGitopsAgentResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet withCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+func (o GetGitopsAgentResultOutput) IsAuthenticated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsAgentResult) bool { return v.IsAuthenticated }).(pulumi.BoolOutput)
+}
+
 // Metadata of the agent.
 func (o GetGitopsAgentResultOutput) Metadatas() GetGitopsAgentMetadataArrayOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) []GetGitopsAgentMetadata { return v.Metadatas }).(GetGitopsAgentMetadataArrayOutput)
@@ -187,6 +181,11 @@ func (o GetGitopsAgentResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+func (o GetGitopsAgentResultOutput) PrefixedIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.PrefixedIdentifier }).(pulumi.StringOutput)
+}
+
 // Project identifier of the GitOps agent.
 func (o GetGitopsAgentResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
@@ -201,6 +200,11 @@ func (o GetGitopsAgentResultOutput) Tags() pulumi.StringMapOutput {
 // Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
 func (o GetGitopsAgentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+func (o GetGitopsAgentResultOutput) WithCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentResult) *bool { return v.WithCredentials }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

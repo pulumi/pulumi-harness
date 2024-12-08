@@ -74,6 +74,8 @@ type GitOpsAgent struct {
 	pulumi.CustomResourceState
 
 	// Account identifier of the GitOps agent.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent token to be used for authentication of the agent with Harness.
 	AgentToken pulumi.StringOutput `pulumi:"agentToken"`
@@ -89,6 +91,8 @@ type GitOpsAgent struct {
 	Operator pulumi.StringPtrOutput `pulumi:"operator"`
 	// Organization identifier of the GitOps agent.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
+	// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+	PrefixedIdentifier pulumi.StringOutput `pulumi:"prefixedIdentifier"`
 	// Project identifier of the GitOps agent.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
@@ -105,9 +109,6 @@ func NewGitOpsAgent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -138,6 +139,8 @@ func GetGitOpsAgent(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitOpsAgent resources.
 type gitOpsAgentState struct {
 	// Account identifier of the GitOps agent.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent token to be used for authentication of the agent with Harness.
 	AgentToken *string `pulumi:"agentToken"`
@@ -153,6 +156,8 @@ type gitOpsAgentState struct {
 	Operator *string `pulumi:"operator"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
+	// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+	PrefixedIdentifier *string `pulumi:"prefixedIdentifier"`
 	// Project identifier of the GitOps agent.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
@@ -164,6 +169,8 @@ type gitOpsAgentState struct {
 
 type GitOpsAgentState struct {
 	// Account identifier of the GitOps agent.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent token to be used for authentication of the agent with Harness.
 	AgentToken pulumi.StringPtrInput
@@ -179,6 +186,8 @@ type GitOpsAgentState struct {
 	Operator pulumi.StringPtrInput
 	// Organization identifier of the GitOps agent.
 	OrgId pulumi.StringPtrInput
+	// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+	PrefixedIdentifier pulumi.StringPtrInput
 	// Project identifier of the GitOps agent.
 	ProjectId pulumi.StringPtrInput
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
@@ -194,7 +203,9 @@ func (GitOpsAgentState) ElementType() reflect.Type {
 
 type gitOpsAgentArgs struct {
 	// Account identifier of the GitOps agent.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Description of the GitOps agent.
 	Description *string `pulumi:"description"`
 	// Identifier of the GitOps agent.
@@ -219,7 +230,9 @@ type gitOpsAgentArgs struct {
 // The set of arguments for constructing a GitOpsAgent resource.
 type GitOpsAgentArgs struct {
 	// Account identifier of the GitOps agent.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Description of the GitOps agent.
 	Description pulumi.StringPtrInput
 	// Identifier of the GitOps agent.
@@ -329,6 +342,8 @@ func (o GitOpsAgentOutput) ToGitOpsAgentOutputWithContext(ctx context.Context) G
 }
 
 // Account identifier of the GitOps agent.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsAgentOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsAgent) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -366,6 +381,11 @@ func (o GitOpsAgentOutput) Operator() pulumi.StringPtrOutput {
 // Organization identifier of the GitOps agent.
 func (o GitOpsAgentOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsAgent) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
+}
+
+// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+func (o GitOpsAgentOutput) PrefixedIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *GitOpsAgent) pulumi.StringOutput { return v.PrefixedIdentifier }).(pulumi.StringOutput)
 }
 
 // Project identifier of the GitOps agent.

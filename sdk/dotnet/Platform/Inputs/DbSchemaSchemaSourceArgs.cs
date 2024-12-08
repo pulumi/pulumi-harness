@@ -13,6 +13,12 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class DbSchemaSchemaSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If connector type is artifactory, path to the archive file which contains the changeLog
+        /// </summary>
+        [Input("archivePath")]
+        public Input<string>? ArchivePath { get; set; }
+
+        /// <summary>
         /// Connector to repository at which to find details about the database schema
         /// </summary>
         [Input("connector", required: true)]

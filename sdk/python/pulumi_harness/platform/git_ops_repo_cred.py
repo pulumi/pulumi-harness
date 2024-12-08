@@ -21,26 +21,30 @@ __all__ = ['GitOpsRepoCredArgs', 'GitOpsRepoCred']
 @pulumi.input_type
 class GitOpsRepoCredArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  agent_id: pulumi.Input[str],
                  identifier: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  creds: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a GitOpsRepoCred resource.
-        :param pulumi.Input[str] account_id: Account identifier of the Repository Credentials.
         :param pulumi.Input[str] agent_id: Agent identifier of the Repository Credentials.
         :param pulumi.Input[str] identifier: Identifier of the Repository Credentials.
+        :param pulumi.Input[str] account_id: Account identifier of the Repository Credentials.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCredCredArgs']]] creds: credential details.
         :param pulumi.Input[str] org_id: Organization identifier of the Repository Credentials.
         :param pulumi.Input[str] project_id: Project identifier of the Repository Credentials.
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "identifier", identifier)
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if creds is not None:
             pulumi.set(__self__, "creds", creds)
         if org_id is not None:
@@ -49,18 +53,6 @@ class GitOpsRepoCredArgs:
             pulumi.set(__self__, "project_id", project_id)
         if upsert is not None:
             pulumi.set(__self__, "upsert", upsert)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier of the Repository Credentials.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="agentId")
@@ -85,6 +77,19 @@ class GitOpsRepoCredArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account identifier of the Repository Credentials.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -156,6 +161,9 @@ class _GitOpsRepoCredState:
         :param pulumi.Input[bool] upsert: Indicates if the GitOps repository credential should be updated if existing and inserted if not.
         """
         if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
@@ -172,6 +180,7 @@ class _GitOpsRepoCredState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account identifier of the Repository Credentials.
@@ -409,8 +418,6 @@ class GitOpsRepoCred(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GitOpsRepoCredArgs.__new__(GitOpsRepoCredArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
@@ -469,6 +476,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> pulumi.Output[str]:
         """
         Account identifier of the Repository Credentials.

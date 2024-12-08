@@ -8,20 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Datasource for fetching a Harness GitOps Agent.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getGitopsAgent({
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     projectId: "project_id",
- *     orgId: "org_id",
- * });
- * ```
  */
 export function getGitopsAgent(args: GetGitopsAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +16,7 @@ export function getGitopsAgent(args: GetGitopsAgentArgs, opts?: pulumi.InvokeOpt
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "withCredentials": args.withCredentials,
     }, opts);
 }
 
@@ -39,8 +26,10 @@ export function getGitopsAgent(args: GetGitopsAgentArgs, opts?: pulumi.InvokeOpt
 export interface GetGitopsAgentArgs {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Identifier of the GitOps agent.
      */
@@ -53,6 +42,10 @@ export interface GetGitopsAgentArgs {
      * Project identifier of the GitOps agent.
      */
     projectId?: string;
+    /**
+     * Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     */
+    withCredentials?: boolean;
 }
 
 /**
@@ -61,6 +54,8 @@ export interface GetGitopsAgentArgs {
 export interface GetGitopsAgentResult {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -80,6 +75,10 @@ export interface GetGitopsAgentResult {
      */
     readonly identifier: string;
     /**
+     * This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet withCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     */
+    readonly isAuthenticated: boolean;
+    /**
      * Metadata of the agent.
      */
     readonly metadatas: outputs.platform.GetGitopsAgentMetadata[];
@@ -96,6 +95,10 @@ export interface GetGitopsAgentResult {
      */
     readonly orgId?: string;
     /**
+     * Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     */
+    readonly prefixedIdentifier: string;
+    /**
      * Project identifier of the GitOps agent.
      */
     readonly projectId?: string;
@@ -108,23 +111,13 @@ export interface GetGitopsAgentResult {
      * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
      */
     readonly type: string;
+    /**
+     * Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     */
+    readonly withCredentials?: boolean;
 }
 /**
  * Datasource for fetching a Harness GitOps Agent.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getGitopsAgent({
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     projectId: "project_id",
- *     orgId: "org_id",
- * });
- * ```
  */
 export function getGitopsAgentOutput(args: GetGitopsAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -133,6 +126,7 @@ export function getGitopsAgentOutput(args: GetGitopsAgentOutputArgs, opts?: pulu
         "identifier": args.identifier,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "withCredentials": args.withCredentials,
     }, opts);
 }
 
@@ -142,8 +136,10 @@ export function getGitopsAgentOutput(args: GetGitopsAgentOutputArgs, opts?: pulu
 export interface GetGitopsAgentOutputArgs {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Identifier of the GitOps agent.
      */
@@ -156,4 +152,8 @@ export interface GetGitopsAgentOutputArgs {
      * Project identifier of the GitOps agent.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     */
+    withCredentials?: pulumi.Input<boolean>;
 }

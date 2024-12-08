@@ -44,56 +44,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/gitopsAppProject:GitopsAppProject")
 public class GitopsAppProject extends com.pulumi.resources.CustomResource {
     /**
-     * Account identifier of the GitOps project/agent.
+     * Account identifier of the GitOps Agent where argo project will exist.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account identifier of the GitOps project/agent.
+     * @return Account identifier of the GitOps Agent where argo project will exist.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Agent identifier of the GitOps project. Project is created on agent scope.
+     * Agent identifier of the agent where argo project will exist (include scope prefix)
      * 
      */
     @Export(name="agentId", refs={String.class}, tree="[0]")
     private Output<String> agentId;
 
     /**
-     * @return Agent identifier of the GitOps project. Project is created on agent scope.
+     * @return Agent identifier of the agent where argo project will exist (include scope prefix)
      * 
      */
     public Output<String> agentId() {
         return this.agentId;
     }
     /**
-     * Org identifier of the GitOps agent for which project is created.
+     * Org identifier of the GitOps Agent where argo project is to be created.
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Org identifier of the GitOps agent for which project is created.
+     * @return Org identifier of the GitOps Agent where argo project is to be created.
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Project identifier of the GitOps agent for which project is created.
+     * Project identifier of the Gitops Agent where argo project is to be created.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Project identifier of the GitOps agent for which project is created.
+     * @return Project identifier of the Gitops Agent where argo project is to be created.
      * 
      */
     public Output<Optional<String>> projectId() {
@@ -114,28 +118,28 @@ public class GitopsAppProject extends com.pulumi.resources.CustomResource {
         return this.projects;
     }
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      * 
      */
     @Export(name="queryName", refs={String.class}, tree="[0]")
     private Output<String> queryName;
 
     /**
-     * @return Identifier for the GitOps project.
+     * @return Identifier for the GitOps Argo project.
      * 
      */
     public Output<String> queryName() {
         return this.queryName;
     }
     /**
-     * Indicates if the GitOps project should be updated if existing and inserted if not.
+     * Indicates if the argo project should be updated if existing and inserted if not.
      * 
      */
     @Export(name="upsert", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> upsert;
 
     /**
-     * @return Indicates if the GitOps project should be updated if existing and inserted if not.
+     * @return Indicates if the argo project should be updated if existing and inserted if not.
      * 
      */
     public Output<Optional<Boolean>> upsert() {

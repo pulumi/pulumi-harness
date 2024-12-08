@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.GetGitopsGnupg(ctx, &platform.GetGitopsGnupgArgs{
-//				AccountId:  "account_id",
+//				AccountId:  pulumi.StringRef("account_id"),
 //				AgentId:    "agent_id",
 //				Identifier: "identifier",
 //			}, nil)
@@ -53,7 +53,9 @@ func GetGitopsGnupg(ctx *pulumi.Context, args *GetGitopsGnupgArgs, opts ...pulum
 // A collection of arguments for invoking getGitopsGnupg.
 type GetGitopsGnupgArgs struct {
 	// Account Identifier for the GnuPG Key.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier for the GnuPG Key.
 	AgentId string `pulumi:"agentId"`
 	// Identifier for the GnuPG Key.
@@ -69,6 +71,8 @@ type GetGitopsGnupgArgs struct {
 // A collection of values returned by getGitopsGnupg.
 type GetGitopsGnupgResult struct {
 	// Account Identifier for the GnuPG Key.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier for the GnuPG Key.
 	AgentId string `pulumi:"agentId"`
@@ -106,7 +110,9 @@ func GetGitopsGnupgOutput(ctx *pulumi.Context, args GetGitopsGnupgOutputArgs, op
 // A collection of arguments for invoking getGitopsGnupg.
 type GetGitopsGnupgOutputArgs struct {
 	// Account Identifier for the GnuPG Key.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier for the GnuPG Key.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Identifier for the GnuPG Key.
@@ -139,6 +145,8 @@ func (o GetGitopsGnupgResultOutput) ToGetGitopsGnupgResultOutputWithContext(ctx 
 }
 
 // Account Identifier for the GnuPG Key.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsGnupgResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsGnupgResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

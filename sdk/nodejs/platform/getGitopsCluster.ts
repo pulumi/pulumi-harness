@@ -41,8 +41,10 @@ export function getGitopsCluster(args: GetGitopsClusterArgs, opts?: pulumi.Invok
 export interface GetGitopsClusterArgs {
     /**
      * Account identifier of the GitOps cluster.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Agent identifier of the GitOps cluster.
      */
@@ -67,6 +69,8 @@ export interface GetGitopsClusterArgs {
 export interface GetGitopsClusterResult {
     /**
      * Account identifier of the GitOps cluster.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -129,8 +133,10 @@ export function getGitopsClusterOutput(args: GetGitopsClusterOutputArgs, opts?: 
 export interface GetGitopsClusterOutputArgs {
     /**
      * Account identifier of the GitOps cluster.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the GitOps cluster.
      */

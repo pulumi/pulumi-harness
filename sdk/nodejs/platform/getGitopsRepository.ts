@@ -41,8 +41,10 @@ export function getGitopsRepository(args: GetGitopsRepositoryArgs, opts?: pulumi
 export interface GetGitopsRepositoryArgs {
     /**
      * Account identifier of the GitOps repository.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Agent identifier of the GitOps repository.
      */
@@ -67,6 +69,8 @@ export interface GetGitopsRepositoryArgs {
 export interface GetGitopsRepositoryResult {
     /**
      * Account identifier of the GitOps repository.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -133,8 +137,10 @@ export function getGitopsRepositoryOutput(args: GetGitopsRepositoryOutputArgs, o
 export interface GetGitopsRepositoryOutputArgs {
     /**
      * Account identifier of the GitOps repository.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the GitOps repository.
      */

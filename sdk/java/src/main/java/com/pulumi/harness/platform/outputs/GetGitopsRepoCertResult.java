@@ -15,13 +15,17 @@ public final class GetGitopsRepoCertResult {
     /**
      * @return Account identifier of the GitOps repository certificate.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     private String accountId;
     /**
      * @return Agent identifier of the GitOps repository certificate.
      * 
      */
-    private @Nullable String agentId;
+    private String agentId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -42,7 +46,11 @@ public final class GetGitopsRepoCertResult {
     /**
      * @return Account identifier of the GitOps repository certificate.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public String accountId() {
         return this.accountId;
     }
@@ -50,8 +58,8 @@ public final class GetGitopsRepoCertResult {
      * @return Agent identifier of the GitOps repository certificate.
      * 
      */
-    public Optional<String> agentId() {
-        return Optional.ofNullable(this.agentId);
+    public String agentId() {
+        return this.agentId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -85,7 +93,7 @@ public final class GetGitopsRepoCertResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable String agentId;
+        private String agentId;
         private String id;
         private @Nullable String orgId;
         private @Nullable String projectId;
@@ -108,8 +116,10 @@ public final class GetGitopsRepoCertResult {
             return this;
         }
         @CustomType.Setter
-        public Builder agentId(@Nullable String agentId) {
-
+        public Builder agentId(String agentId) {
+            if (agentId == null) {
+              throw new MissingRequiredPropertyException("GetGitopsRepoCertResult", "agentId");
+            }
             this.agentId = agentId;
             return this;
         }

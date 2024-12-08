@@ -21,12 +21,12 @@ __all__ = ['GitOpsApplicationsArgs', 'GitOpsApplications']
 @pulumi.input_type
 class GitOpsApplicationsArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  agent_id: pulumi.Input[str],
                  applications: pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]],
                  cluster_id: pulumi.Input[str],
                  org_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,12 +41,12 @@ class GitOpsApplicationsArgs:
                  validate: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a GitOpsApplications resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps application.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[str] cluster_id: Cluster identifier of the GitOps application.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps application.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps application.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps application.
         :param pulumi.Input[str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[str] kind: Kind of the GitOps application.
         :param pulumi.Input[str] name: Name of the GitOps application.
@@ -60,12 +60,16 @@ class GitOpsApplicationsArgs:
         :param pulumi.Input[bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
         :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "applications", applications)
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "project_id", project_id)
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if identifier is not None:
             warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
             pulumi.log.warn("""identifier is deprecated: This field is deprecated and will be removed in a future release.""")
@@ -93,18 +97,6 @@ class GitOpsApplicationsArgs:
             pulumi.set(__self__, "upsert", upsert)
         if validate is not None:
             pulumi.set(__self__, "validate", validate)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier of the GitOps application.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="agentId")
@@ -165,6 +157,19 @@ class GitOpsApplicationsArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account identifier of the GitOps application.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -355,6 +360,9 @@ class _GitOpsApplicationsState:
         :param pulumi.Input[bool] validate: Indicates if the GitOps application yaml has to be validated.
         """
         if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
@@ -396,6 +404,7 @@ class _GitOpsApplicationsState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account identifier of the GitOps application.
@@ -827,8 +836,6 @@ class GitOpsApplications(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GitOpsApplicationsArgs.__new__(GitOpsApplicationsArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
@@ -937,6 +944,7 @@ class GitOpsApplications(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> pulumi.Output[str]:
         """
         Account identifier of the GitOps application.

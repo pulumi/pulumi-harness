@@ -51,6 +51,7 @@ class GetGitopsAppProjectMappingResult:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
         """
         Account identifier of the GitOps agent's Application Project.
@@ -154,7 +155,7 @@ def get_gitops_app_project_mapping(account_id: Optional[str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[str]] = None,
+def get_gitops_app_project_mapping_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                           agent_id: Optional[pulumi.Input[str]] = None,
                                           argo_project_name: Optional[pulumi.Input[str]] = None,
                                           org_id: Optional[pulumi.Input[str]] = None,

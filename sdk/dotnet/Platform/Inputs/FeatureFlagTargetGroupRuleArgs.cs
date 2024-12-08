@@ -15,8 +15,14 @@ namespace Pulumi.Harness.Platform.Inputs
         /// <summary>
         /// The attribute to use in the clause.  This can be any target attribute
         /// </summary>
-        [Input("attribute")]
-        public Input<string>? Attribute { get; set; }
+        [Input("attribute", required: true)]
+        public Input<string> Attribute { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// Is the operation negated?
@@ -27,10 +33,10 @@ namespace Pulumi.Harness.Platform.Inputs
         /// <summary>
         /// The type of operation such as equals, starts_with, contains
         /// </summary>
-        [Input("op")]
-        public Input<string>? Op { get; set; }
+        [Input("op", required: true)]
+        public Input<string> Op { get; set; } = null!;
 
-        [Input("values")]
+        [Input("values", required: true)]
         private InputList<string>? _values;
 
         /// <summary>

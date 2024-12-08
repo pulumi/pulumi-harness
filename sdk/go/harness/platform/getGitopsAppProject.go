@@ -50,7 +50,9 @@ func LookupGitopsAppProject(ctx *pulumi.Context, args *LookupGitopsAppProjectArg
 // A collection of arguments for invoking getGitopsAppProject.
 type LookupGitopsAppProjectArgs struct {
 	// Account identifier of the GitOps Agent where argo project resides.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the agent where argo project resides(include scope prefix)
 	AgentId string `pulumi:"agentId"`
 	// Org identifier of the GitOps Agent where argo project resides.
@@ -64,6 +66,8 @@ type LookupGitopsAppProjectArgs struct {
 // A collection of values returned by getGitopsAppProject.
 type LookupGitopsAppProjectResult struct {
 	// Account identifier of the GitOps Agent where argo project resides.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the agent where argo project resides(include scope prefix)
 	AgentId string `pulumi:"agentId"`
@@ -99,7 +103,9 @@ func LookupGitopsAppProjectOutput(ctx *pulumi.Context, args LookupGitopsAppProje
 // A collection of arguments for invoking getGitopsAppProject.
 type LookupGitopsAppProjectOutputArgs struct {
 	// Account identifier of the GitOps Agent where argo project resides.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier of the agent where argo project resides(include scope prefix)
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Org identifier of the GitOps Agent where argo project resides.
@@ -130,6 +136,8 @@ func (o LookupGitopsAppProjectResultOutput) ToLookupGitopsAppProjectResultOutput
 }
 
 // Account identifier of the GitOps Agent where argo project resides.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o LookupGitopsAppProjectResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitopsAppProjectResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

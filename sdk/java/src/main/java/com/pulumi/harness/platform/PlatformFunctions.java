@@ -112,6 +112,8 @@ import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelinePlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
+import com.pulumi.harness.platform.inputs.GetInfraModulePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
 import com.pulumi.harness.platform.inputs.GetInfrastructurePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInputSetArgs;
@@ -273,6 +275,7 @@ import com.pulumi.harness.platform.outputs.GetGitopsRepositoryResult;
 import com.pulumi.harness.platform.outputs.GetGitxWebhookResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
+import com.pulumi.harness.platform.outputs.GetInfraModuleResult;
 import com.pulumi.harness.platform.outputs.GetInfrastructureResult;
 import com.pulumi.harness.platform.outputs.GetInputSetResult;
 import com.pulumi.harness.platform.outputs.GetJenkinsConnectorResult;
@@ -7634,88 +7637,12 @@ public final class PlatformFunctions {
     /**
      * Datasource for fetching a Harness GitOps Agent.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgent(GetGitopsAgentArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGitopsAgentResult> getGitopsAgent(GetGitopsAgentArgs args) {
         return getGitopsAgent(args, InvokeOptions.Empty);
     }
     /**
      * Datasource for fetching a Harness GitOps Agent.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgent(GetGitopsAgentArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGitopsAgentResult> getGitopsAgentPlain(GetGitopsAgentPlainArgs args) {
@@ -7724,88 +7651,12 @@ public final class PlatformFunctions {
     /**
      * Datasource for fetching a Harness GitOps Agent.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgent(GetGitopsAgentArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetGitopsAgentResult> getGitopsAgent(GetGitopsAgentArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:platform/getGitopsAgent:getGitopsAgent", TypeShape.of(GetGitopsAgentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for fetching a Harness GitOps Agent.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgent(GetGitopsAgentArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGitopsAgentResult> getGitopsAgentPlain(GetGitopsAgentPlainArgs args, InvokeOptions options) {
@@ -9666,6 +9517,182 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetIacmDefaultPipelineResult> getIacmDefaultPipelinePlain(GetIacmDefaultPipelinePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", TypeShape.of(GetIacmDefaultPipelineResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
+     *             .identifier("identifier")
+     *             .name("name")
+     *             .system("system")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInfraModuleResult> getInfraModule(GetInfraModuleArgs args) {
+        return getInfraModule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
+     *             .identifier("identifier")
+     *             .name("name")
+     *             .system("system")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInfraModuleResult> getInfraModulePlain(GetInfraModulePlainArgs args) {
+        return getInfraModulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
+     *             .identifier("identifier")
+     *             .name("name")
+     *             .system("system")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInfraModuleResult> getInfraModule(GetInfraModuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraModule:getInfraModule", TypeShape.of(GetInfraModuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving modules from the module registry.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
+     *             .identifier("identifier")
+     *             .name("name")
+     *             .system("system")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInfraModuleResult> getInfraModulePlain(GetInfraModulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraModule:getInfraModule", TypeShape.of(GetInfraModuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Infrastructure.

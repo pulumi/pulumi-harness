@@ -34,8 +34,10 @@ export function getGitopsAppProject(args: GetGitopsAppProjectArgs, opts?: pulumi
 export interface GetGitopsAppProjectArgs {
     /**
      * Account identifier of the GitOps Agent where argo project resides.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Agent identifier of the agent where argo project resides(include scope prefix)
      */
@@ -60,6 +62,8 @@ export interface GetGitopsAppProjectArgs {
 export interface GetGitopsAppProjectResult {
     /**
      * Account identifier of the GitOps Agent where argo project resides.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -113,8 +117,10 @@ export function getGitopsAppProjectOutput(args: GetGitopsAppProjectOutputArgs, o
 export interface GetGitopsAppProjectOutputArgs {
     /**
      * Account identifier of the GitOps Agent where argo project resides.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the agent where argo project resides(include scope prefix)
      */

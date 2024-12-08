@@ -91,7 +91,11 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
     /**
      * Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
@@ -199,6 +203,20 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
+    }
+    /**
+     * Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     * 
+     */
+    @Export(name="prefixedIdentifier", refs={String.class}, tree="[0]")
+    private Output<String> prefixedIdentifier;
+
+    /**
+     * @return Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     * 
+     */
+    public Output<String> prefixedIdentifier() {
+        return this.prefixedIdentifier;
     }
     /**
      * Project identifier of the GitOps agent.

@@ -18,16 +18,24 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
     /**
      * Account identifier of the GitOps Agent where argo project resides.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account identifier of the GitOps Agent where argo project resides.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public String accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -123,8 +131,12 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(String accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -174,9 +186,6 @@ public final class GetGitopsAppProjectPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetGitopsAppProjectPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsAppProjectPlainArgs", "accountId");
-            }
             if ($.agentId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAppProjectPlainArgs", "agentId");
             }

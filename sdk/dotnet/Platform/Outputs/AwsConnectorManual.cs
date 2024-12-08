@@ -33,6 +33,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string SecretKeyRef;
+        /// <summary>
+        /// Reference to the Harness secret containing the aws session token.
+        /// </summary>
+        public readonly string? SessionTokenRef;
 
         [OutputConstructor]
         private AwsConnectorManual(
@@ -44,13 +48,16 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? region,
 
-            string secretKeyRef)
+            string secretKeyRef,
+
+            string? sessionTokenRef)
         {
             AccessKey = accessKey;
             AccessKeyRef = accessKeyRef;
             DelegateSelectors = delegateSelectors;
             Region = region;
             SecretKeyRef = secretKeyRef;
+            SessionTokenRef = sessionTokenRef;
         }
     }
 }
