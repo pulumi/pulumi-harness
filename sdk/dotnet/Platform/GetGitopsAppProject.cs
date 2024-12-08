@@ -64,8 +64,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps Agent where argo project resides.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Agent identifier of the agent where argo project resides(include scope prefix)
@@ -102,8 +102,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps Agent where argo project resides.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Agent identifier of the agent where argo project resides(include scope prefix)

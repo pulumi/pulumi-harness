@@ -53,6 +53,7 @@ class GetGitopsRepoCredResult:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
         """
         Account identifier of the Repository Credentials.
@@ -172,7 +173,7 @@ def get_gitops_repo_cred(account_id: Optional[str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_gitops_repo_cred_output(account_id: Optional[pulumi.Input[str]] = None,
+def get_gitops_repo_cred_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 agent_id: Optional[pulumi.Input[str]] = None,
                                 creds: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']]]]] = None,
                                 identifier: Optional[pulumi.Input[str]] = None,

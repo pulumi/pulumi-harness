@@ -48,6 +48,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("secretKeyRef", required: true)]
         public Input<string> SecretKeyRef { get; set; } = null!;
 
+        /// <summary>
+        /// Reference to the Harness secret containing the aws session token.
+        /// </summary>
+        [Input("sessionTokenRef")]
+        public Input<string>? SessionTokenRef { get; set; }
+
         public AwsConnectorManualGetArgs()
         {
         }

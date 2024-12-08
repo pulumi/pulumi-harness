@@ -18,31 +18,39 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
     /**
      * Account identifier of the GitOps repository certificate.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account identifier of the GitOps repository certificate.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public String accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
      * Agent identifier of the GitOps repository certificate.
      * 
      */
-    @Import(name="agentId")
-    private @Nullable String agentId;
+    @Import(name="agentId", required=true)
+    private String agentId;
 
     /**
      * @return Agent identifier of the GitOps repository certificate.
      * 
      */
-    public Optional<String> agentId() {
-        return Optional.ofNullable(this.agentId);
+    public String agentId() {
+        return this.agentId;
     }
 
     /**
@@ -107,8 +115,12 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(String accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -119,7 +131,7 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder agentId(@Nullable String agentId) {
+        public Builder agentId(String agentId) {
             $.agentId = agentId;
             return this;
         }
@@ -147,8 +159,8 @@ public final class GetGitopsRepoCertPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetGitopsRepoCertPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsRepoCertPlainArgs", "accountId");
+            if ($.agentId == null) {
+                throw new MissingRequiredPropertyException("GetGitopsRepoCertPlainArgs", "agentId");
             }
             return $;
         }

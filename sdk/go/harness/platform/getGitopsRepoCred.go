@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.GetGitopsRepoCred(ctx, &platform.GetGitopsRepoCredArgs{
 //				Identifier: "identifier",
-//				AccountId:  "account_id",
+//				AccountId:  pulumi.StringRef("account_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				AgentId:    "agent_id",
@@ -55,7 +55,9 @@ func GetGitopsRepoCred(ctx *pulumi.Context, args *GetGitopsRepoCredArgs, opts ..
 // A collection of arguments for invoking getGitopsRepoCred.
 type GetGitopsRepoCredArgs struct {
 	// Account identifier of the Repository Credentials.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId string `pulumi:"agentId"`
 	// credential details.
@@ -71,6 +73,8 @@ type GetGitopsRepoCredArgs struct {
 // A collection of values returned by getGitopsRepoCred.
 type GetGitopsRepoCredResult struct {
 	// Account identifier of the Repository Credentials.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId string `pulumi:"agentId"`
@@ -108,7 +112,9 @@ func GetGitopsRepoCredOutput(ctx *pulumi.Context, args GetGitopsRepoCredOutputAr
 // A collection of arguments for invoking getGitopsRepoCred.
 type GetGitopsRepoCredOutputArgs struct {
 	// Account identifier of the Repository Credentials.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// credential details.
@@ -141,6 +147,8 @@ func (o GetGitopsRepoCredResultOutput) ToGetGitopsRepoCredResultOutputWithContex
 }
 
 // Account identifier of the Repository Credentials.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsRepoCredResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsRepoCredResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

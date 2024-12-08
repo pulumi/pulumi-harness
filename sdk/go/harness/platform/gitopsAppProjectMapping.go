@@ -55,6 +55,8 @@ type GitopsAppProjectMapping struct {
 	pulumi.CustomResourceState
 
 	// Account identifier of the GitOps agent's Application Project.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
@@ -75,9 +77,6 @@ func NewGitopsAppProjectMapping(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
@@ -114,6 +113,8 @@ func GetGitopsAppProjectMapping(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitopsAppProjectMapping resources.
 type gitopsAppProjectMappingState struct {
 	// Account identifier of the GitOps agent's Application Project.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId *string `pulumi:"agentId"`
@@ -129,6 +130,8 @@ type gitopsAppProjectMappingState struct {
 
 type GitopsAppProjectMappingState struct {
 	// Account identifier of the GitOps agent's Application Project.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId pulumi.StringPtrInput
@@ -148,7 +151,9 @@ func (GitopsAppProjectMappingState) ElementType() reflect.Type {
 
 type gitopsAppProjectMappingArgs struct {
 	// Account identifier of the GitOps agent's Application Project.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId string `pulumi:"agentId"`
 	// ArgoCD Project name which is to be mapped to the Harness project.
@@ -162,7 +167,9 @@ type gitopsAppProjectMappingArgs struct {
 // The set of arguments for constructing a GitopsAppProjectMapping resource.
 type GitopsAppProjectMappingArgs struct {
 	// Account identifier of the GitOps agent's Application Project.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Agent identifier for which the ArgoCD and Harness project mapping is to be created.
 	AgentId pulumi.StringInput
 	// ArgoCD Project name which is to be mapped to the Harness project.
@@ -261,6 +268,8 @@ func (o GitopsAppProjectMappingOutput) ToGitopsAppProjectMappingOutputWithContex
 }
 
 // Account identifier of the GitOps agent's Application Project.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitopsAppProjectMappingOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitopsAppProjectMapping) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

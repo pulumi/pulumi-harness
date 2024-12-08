@@ -17,6 +17,21 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
     public static final DbSchemaSchemaSourceArgs Empty = new DbSchemaSchemaSourceArgs();
 
     /**
+     * If connector type is artifactory, path to the archive file which contains the changeLog
+     * 
+     */
+    @Import(name="archivePath")
+    private @Nullable Output<String> archivePath;
+
+    /**
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * 
+     */
+    public Optional<Output<String>> archivePath() {
+        return Optional.ofNullable(this.archivePath);
+    }
+
+    /**
      * Connector to repository at which to find details about the database schema
      * 
      */
@@ -64,6 +79,7 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
     private DbSchemaSchemaSourceArgs() {}
 
     private DbSchemaSchemaSourceArgs(DbSchemaSchemaSourceArgs $) {
+        this.archivePath = $.archivePath;
         this.connector = $.connector;
         this.location = $.location;
         this.repo = $.repo;
@@ -85,6 +101,27 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
 
         public Builder(DbSchemaSchemaSourceArgs defaults) {
             $ = new DbSchemaSchemaSourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param archivePath If connector type is artifactory, path to the archive file which contains the changeLog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archivePath(@Nullable Output<String> archivePath) {
+            $.archivePath = archivePath;
+            return this;
+        }
+
+        /**
+         * @param archivePath If connector type is artifactory, path to the archive file which contains the changeLog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archivePath(String archivePath) {
+            return archivePath(Output.of(archivePath));
         }
 
         /**

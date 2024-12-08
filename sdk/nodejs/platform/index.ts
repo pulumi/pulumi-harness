@@ -450,6 +450,11 @@ export const getIacmDefaultPipeline: typeof import("./getIacmDefaultPipeline").g
 export const getIacmDefaultPipelineOutput: typeof import("./getIacmDefaultPipeline").getIacmDefaultPipelineOutput = null as any;
 utilities.lazyLoad(exports, ["getIacmDefaultPipeline","getIacmDefaultPipelineOutput"], () => require("./getIacmDefaultPipeline"));
 
+export { GetInfraModuleArgs, GetInfraModuleResult, GetInfraModuleOutputArgs } from "./getInfraModule";
+export const getInfraModule: typeof import("./getInfraModule").getInfraModule = null as any;
+export const getInfraModuleOutput: typeof import("./getInfraModule").getInfraModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraModule","getInfraModuleOutput"], () => require("./getInfraModule"));
+
 export { GetInfrastructureArgs, GetInfrastructureResult, GetInfrastructureOutputArgs } from "./getInfrastructure";
 export const getInfrastructure: typeof import("./getInfrastructure").getInfrastructure = null as any;
 export const getInfrastructureOutput: typeof import("./getInfrastructure").getInfrastructureOutput = null as any;
@@ -794,6 +799,11 @@ export { IacmDefaultPipelineArgs, IacmDefaultPipelineState } from "./iacmDefault
 export type IacmDefaultPipeline = import("./iacmDefaultPipeline").IacmDefaultPipeline;
 export const IacmDefaultPipeline: typeof import("./iacmDefaultPipeline").IacmDefaultPipeline = null as any;
 utilities.lazyLoad(exports, ["IacmDefaultPipeline"], () => require("./iacmDefaultPipeline"));
+
+export { InfraModuleArgs, InfraModuleState } from "./infraModule";
+export type InfraModule = import("./infraModule").InfraModule;
+export const InfraModule: typeof import("./infraModule").InfraModule = null as any;
+utilities.lazyLoad(exports, ["InfraModule"], () => require("./infraModule"));
 
 export { InfrastructureArgs, InfrastructureState } from "./infrastructure";
 export type Infrastructure = import("./infrastructure").Infrastructure;
@@ -1152,6 +1162,8 @@ const _module = {
                 return new HelmConnector(name, <any>undefined, { urn })
             case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
                 return new IacmDefaultPipeline(name, <any>undefined, { urn })
+            case "harness:platform/infraModule:InfraModule":
+                return new InfraModule(name, <any>undefined, { urn })
             case "harness:platform/infrastructure:Infrastructure":
                 return new Infrastructure(name, <any>undefined, { urn })
             case "harness:platform/inputSet:InputSet":
@@ -1308,6 +1320,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMappi
 pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraModule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/jenkinsConnector", _module)

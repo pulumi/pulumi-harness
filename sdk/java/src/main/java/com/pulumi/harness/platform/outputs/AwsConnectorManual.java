@@ -38,6 +38,11 @@ public final class AwsConnectorManual {
      * 
      */
     private String secretKeyRef;
+    /**
+     * @return Reference to the Harness secret containing the aws session token.
+     * 
+     */
+    private @Nullable String sessionTokenRef;
 
     private AwsConnectorManual() {}
     /**
@@ -75,6 +80,13 @@ public final class AwsConnectorManual {
     public String secretKeyRef() {
         return this.secretKeyRef;
     }
+    /**
+     * @return Reference to the Harness secret containing the aws session token.
+     * 
+     */
+    public Optional<String> sessionTokenRef() {
+        return Optional.ofNullable(this.sessionTokenRef);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -90,6 +102,7 @@ public final class AwsConnectorManual {
         private @Nullable List<String> delegateSelectors;
         private @Nullable String region;
         private String secretKeyRef;
+        private @Nullable String sessionTokenRef;
         public Builder() {}
         public Builder(AwsConnectorManual defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,6 +111,7 @@ public final class AwsConnectorManual {
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.region = defaults.region;
     	      this.secretKeyRef = defaults.secretKeyRef;
+    	      this.sessionTokenRef = defaults.sessionTokenRef;
         }
 
         @CustomType.Setter
@@ -135,6 +149,12 @@ public final class AwsConnectorManual {
             this.secretKeyRef = secretKeyRef;
             return this;
         }
+        @CustomType.Setter
+        public Builder sessionTokenRef(@Nullable String sessionTokenRef) {
+
+            this.sessionTokenRef = sessionTokenRef;
+            return this;
+        }
         public AwsConnectorManual build() {
             final var _resultValue = new AwsConnectorManual();
             _resultValue.accessKey = accessKey;
@@ -142,6 +162,7 @@ public final class AwsConnectorManual {
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.region = region;
             _resultValue.secretKeyRef = secretKeyRef;
+            _resultValue.sessionTokenRef = sessionTokenRef;
             return _resultValue;
         }
     }

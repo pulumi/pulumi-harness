@@ -1752,6 +1752,10 @@ export namespace platform {
          * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: string;
+        /**
+         * Reference to the Harness secret containing the aws session token.
+         */
+        sessionTokenRef?: string;
     }
 
     export interface AwsConnectorOidcAuthentication {
@@ -2100,6 +2104,10 @@ export namespace platform {
 
     export interface DbSchemaSchemaSource {
         /**
+         * If connector type is artifactory, path to the archive file which contains the changeLog
+         */
+        archivePath?: string;
+        /**
          * Connector to repository at which to find details about the database schema
          */
         connector: string;
@@ -2289,6 +2297,10 @@ export namespace platform {
          * The attribute to use in the clause.  This can be any target attribute
          */
         attribute: string;
+        /**
+         * The ID of this resource.
+         */
+        id: string;
         /**
          * Is the operation negated?
          */
@@ -2576,6 +2588,10 @@ export namespace platform {
          * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: string;
+        /**
+         * Reference to the Harness secret containing the aws session token.
+         */
+        sessionTokenRef?: string;
     }
 
     export interface GetAwsConnectorOidcAuthentication {
@@ -2934,6 +2950,10 @@ export namespace platform {
     }
 
     export interface GetDbSchemaSchemaSource {
+        /**
+         * If connector type is artifactory, path to the archive file which contains the changeLog
+         */
+        archivePath: string;
         /**
          * Connector to repository at which to find details about the database schema
          */

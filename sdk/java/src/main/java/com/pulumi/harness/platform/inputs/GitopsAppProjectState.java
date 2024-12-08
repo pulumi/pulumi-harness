@@ -19,29 +19,37 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
     public static final GitopsAppProjectState Empty = new GitopsAppProjectState();
 
     /**
-     * Account identifier of the GitOps project/agent.
+     * Account identifier of the GitOps Agent where argo project will exist.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account identifier of the GitOps project/agent.
+     * @return Account identifier of the GitOps Agent where argo project will exist.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Agent identifier of the GitOps project. Project is created on agent scope.
+     * Agent identifier of the agent where argo project will exist (include scope prefix)
      * 
      */
     @Import(name="agentId")
     private @Nullable Output<String> agentId;
 
     /**
-     * @return Agent identifier of the GitOps project. Project is created on agent scope.
+     * @return Agent identifier of the agent where argo project will exist (include scope prefix)
      * 
      */
     public Optional<Output<String>> agentId() {
@@ -49,14 +57,14 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Org identifier of the GitOps agent for which project is created.
+     * Org identifier of the GitOps Agent where argo project is to be created.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Org identifier of the GitOps agent for which project is created.
+     * @return Org identifier of the GitOps Agent where argo project is to be created.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -64,14 +72,14 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Project identifier of the GitOps agent for which project is created.
+     * Project identifier of the Gitops Agent where argo project is to be created.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project identifier of the GitOps agent for which project is created.
+     * @return Project identifier of the Gitops Agent where argo project is to be created.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -94,14 +102,14 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      * 
      */
     @Import(name="queryName")
     private @Nullable Output<String> queryName;
 
     /**
-     * @return Identifier for the GitOps project.
+     * @return Identifier for the GitOps Argo project.
      * 
      */
     public Optional<Output<String>> queryName() {
@@ -109,14 +117,14 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates if the GitOps project should be updated if existing and inserted if not.
+     * Indicates if the argo project should be updated if existing and inserted if not.
      * 
      */
     @Import(name="upsert")
     private @Nullable Output<Boolean> upsert;
 
     /**
-     * @return Indicates if the GitOps project should be updated if existing and inserted if not.
+     * @return Indicates if the argo project should be updated if existing and inserted if not.
      * 
      */
     public Optional<Output<Boolean>> upsert() {
@@ -154,28 +162,36 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Account identifier of the GitOps project/agent.
+         * @param accountId Account identifier of the GitOps Agent where argo project will exist.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Account identifier of the GitOps project/agent.
+         * @param accountId Account identifier of the GitOps Agent where argo project will exist.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps project. Project is created on agent scope.
+         * @param agentId Agent identifier of the agent where argo project will exist (include scope prefix)
          * 
          * @return builder
          * 
@@ -186,7 +202,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param agentId Agent identifier of the GitOps project. Project is created on agent scope.
+         * @param agentId Agent identifier of the agent where argo project will exist (include scope prefix)
          * 
          * @return builder
          * 
@@ -196,7 +212,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orgId Org identifier of the GitOps agent for which project is created.
+         * @param orgId Org identifier of the GitOps Agent where argo project is to be created.
          * 
          * @return builder
          * 
@@ -207,7 +223,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param orgId Org identifier of the GitOps agent for which project is created.
+         * @param orgId Org identifier of the GitOps Agent where argo project is to be created.
          * 
          * @return builder
          * 
@@ -217,7 +233,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectId Project identifier of the GitOps agent for which project is created.
+         * @param projectId Project identifier of the Gitops Agent where argo project is to be created.
          * 
          * @return builder
          * 
@@ -228,7 +244,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param projectId Project identifier of the GitOps agent for which project is created.
+         * @param projectId Project identifier of the Gitops Agent where argo project is to be created.
          * 
          * @return builder
          * 
@@ -269,7 +285,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryName Identifier for the GitOps project.
+         * @param queryName Identifier for the GitOps Argo project.
          * 
          * @return builder
          * 
@@ -280,7 +296,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryName Identifier for the GitOps project.
+         * @param queryName Identifier for the GitOps Argo project.
          * 
          * @return builder
          * 
@@ -290,7 +306,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upsert Indicates if the GitOps project should be updated if existing and inserted if not.
+         * @param upsert Indicates if the argo project should be updated if existing and inserted if not.
          * 
          * @return builder
          * 
@@ -301,7 +317,7 @@ public final class GitopsAppProjectState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param upsert Indicates if the GitOps project should be updated if existing and inserted if not.
+         * @param upsert Indicates if the argo project should be updated if existing and inserted if not.
          * 
          * @return builder
          * 

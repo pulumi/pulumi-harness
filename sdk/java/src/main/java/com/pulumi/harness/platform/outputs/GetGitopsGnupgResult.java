@@ -17,7 +17,11 @@ public final class GetGitopsGnupgResult {
     /**
      * @return Account Identifier for the GnuPG Key.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     private String accountId;
     /**
      * @return Agent identifier for the GnuPG Key.
@@ -54,7 +58,11 @@ public final class GetGitopsGnupgResult {
     /**
      * @return Account Identifier for the GnuPG Key.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public String accountId() {
         return this.accountId;
     }

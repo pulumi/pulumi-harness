@@ -25,9 +25,11 @@ func GetGitopsRepoCert(ctx *pulumi.Context, args *GetGitopsRepoCertArgs, opts ..
 // A collection of arguments for invoking getGitopsRepoCert.
 type GetGitopsRepoCertArgs struct {
 	// Account identifier of the GitOps repository certificate.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository certificate.
-	AgentId *string `pulumi:"agentId"`
+	AgentId string `pulumi:"agentId"`
 	// Organization identifier of the GitOps repository certificate.
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier of the GitOps repository certificate.
@@ -37,9 +39,11 @@ type GetGitopsRepoCertArgs struct {
 // A collection of values returned by getGitopsRepoCert.
 type GetGitopsRepoCertResult struct {
 	// Account identifier of the GitOps repository certificate.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository certificate.
-	AgentId *string `pulumi:"agentId"`
+	AgentId string `pulumi:"agentId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Organization identifier of the GitOps repository certificate.
@@ -70,9 +74,11 @@ func GetGitopsRepoCertOutput(ctx *pulumi.Context, args GetGitopsRepoCertOutputAr
 // A collection of arguments for invoking getGitopsRepoCert.
 type GetGitopsRepoCertOutputArgs struct {
 	// Account identifier of the GitOps repository certificate.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository certificate.
-	AgentId pulumi.StringPtrInput `pulumi:"agentId"`
+	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Organization identifier of the GitOps repository certificate.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Project identifier of the GitOps repository certificate.
@@ -99,13 +105,15 @@ func (o GetGitopsRepoCertResultOutput) ToGetGitopsRepoCertResultOutputWithContex
 }
 
 // Account identifier of the GitOps repository certificate.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsRepoCertResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsRepoCertResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // Agent identifier of the GitOps repository certificate.
-func (o GetGitopsRepoCertResultOutput) AgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGitopsRepoCertResult) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+func (o GetGitopsRepoCertResultOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGitopsRepoCertResult) string { return v.AgentId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

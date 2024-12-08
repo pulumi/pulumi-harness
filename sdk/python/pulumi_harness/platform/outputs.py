@@ -954,6 +954,8 @@ class AwsConnectorManual(dict):
             suggest = "access_key_ref"
         elif key == "delegateSelectors":
             suggest = "delegate_selectors"
+        elif key == "sessionTokenRef":
+            suggest = "session_token_ref"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsConnectorManual. Access the value via the '{suggest}' property getter instead.")
@@ -971,13 +973,15 @@ class AwsConnectorManual(dict):
                  access_key: Optional[str] = None,
                  access_key_ref: Optional[str] = None,
                  delegate_selectors: Optional[Sequence[str]] = None,
-                 region: Optional[str] = None):
+                 region: Optional[str] = None,
+                 session_token_ref: Optional[str] = None):
         """
         :param str secret_key_ref: Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str access_key: AWS access key.
         :param str access_key_ref: Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param Sequence[str] delegate_selectors: Connect only use delegates with these tags.
         :param str region: Test Region to perform Connection test of AWS Connector.
+        :param str session_token_ref: Reference to the Harness secret containing the aws session token.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
         if access_key is not None:
@@ -988,6 +992,8 @@ class AwsConnectorManual(dict):
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if session_token_ref is not None:
+            pulumi.set(__self__, "session_token_ref", session_token_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -1028,6 +1034,14 @@ class AwsConnectorManual(dict):
         Test Region to perform Connection test of AWS Connector.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="sessionTokenRef")
+    def session_token_ref(self) -> Optional[str]:
+        """
+        Reference to the Harness secret containing the aws session token.
+        """
+        return pulumi.get(self, "session_token_ref")
 
 
 @pulumi.output_type
@@ -2428,17 +2442,38 @@ class ConnectorRancherBearerToken(dict):
 
 @pulumi.output_type
 class DbSchemaSchemaSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archivePath":
+            suggest = "archive_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbSchemaSchemaSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbSchemaSchemaSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbSchemaSchemaSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  connector: str,
                  location: str,
+                 archive_path: Optional[str] = None,
                  repo: Optional[str] = None):
         """
         :param str connector: Connector to repository at which to find details about the database schema
         :param str location: The path within the specified repository at which to find details about the database schema
+        :param str archive_path: If connector type is artifactory, path to the archive file which contains the changeLog
         :param str repo: If connector url is of account, which repository to connect to using the connector
         """
         pulumi.set(__self__, "connector", connector)
         pulumi.set(__self__, "location", location)
+        if archive_path is not None:
+            pulumi.set(__self__, "archive_path", archive_path)
         if repo is not None:
             pulumi.set(__self__, "repo", repo)
 
@@ -2457,6 +2492,14 @@ class DbSchemaSchemaSource(dict):
         The path within the specified repository at which to find details about the database schema
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="archivePath")
+    def archive_path(self) -> Optional[str]:
+        """
+        If connector type is artifactory, path to the archive file which contains the changeLog
+        """
+        return pulumi.get(self, "archive_path")
 
     @property
     @pulumi.getter
@@ -3097,32 +3140,57 @@ class FeatureFlagTag(dict):
 @pulumi.output_type
 class FeatureFlagTargetGroupRule(dict):
     def __init__(__self__, *,
-                 attribute: Optional[str] = None,
-                 negate: Optional[bool] = None,
-                 op: Optional[str] = None,
-                 values: Optional[Sequence[str]] = None):
+                 attribute: str,
+                 op: str,
+                 values: Sequence[str],
+                 id: Optional[str] = None,
+                 negate: Optional[bool] = None):
         """
         :param str attribute: The attribute to use in the clause.  This can be any target attribute
-        :param bool negate: Is the operation negated?
         :param str op: The type of operation such as equals, starts_with, contains
         :param Sequence[str] values: The values that are compared against the operator
+        :param str id: The ID of this resource.
+        :param bool negate: Is the operation negated?
         """
-        if attribute is not None:
-            pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "values", values)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if negate is not None:
             pulumi.set(__self__, "negate", negate)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def attribute(self) -> Optional[str]:
+    def attribute(self) -> str:
         """
         The attribute to use in the clause.  This can be any target attribute
         """
         return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        The type of operation such as equals, starts_with, contains
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The values that are compared against the operator
+        """
+        return pulumi.get(self, "values")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -3131,22 +3199,6 @@ class FeatureFlagTargetGroupRule(dict):
         Is the operation negated?
         """
         return pulumi.get(self, "negate")
-
-    @property
-    @pulumi.getter
-    def op(self) -> Optional[str]:
-        """
-        The type of operation such as equals, starts_with, contains
-        """
-        return pulumi.get(self, "op")
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence[str]]:
-        """
-        The values that are compared against the operator
-        """
-        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -15545,7 +15597,8 @@ class GetAwsConnectorManualResult(dict):
                  delegate_selectors: Sequence[str],
                  secret_key_ref: str,
                  access_key_plain_text: Optional[str] = None,
-                 region: Optional[str] = None):
+                 region: Optional[str] = None,
+                 session_token_ref: Optional[str] = None):
         """
         :param str access_key: AWS access key.
         :param str access_key_ref: Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -15553,6 +15606,7 @@ class GetAwsConnectorManualResult(dict):
         :param str secret_key_ref: Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str access_key_plain_text: The plain text AWS access key.
         :param str region: AWS Region to perform Connection test of Connector.
+        :param str session_token_ref: Reference to the Harness secret containing the aws session token.
         """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "access_key_ref", access_key_ref)
@@ -15562,6 +15616,8 @@ class GetAwsConnectorManualResult(dict):
             pulumi.set(__self__, "access_key_plain_text", access_key_plain_text)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if session_token_ref is not None:
+            pulumi.set(__self__, "session_token_ref", session_token_ref)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -15610,6 +15666,14 @@ class GetAwsConnectorManualResult(dict):
         AWS Region to perform Connection test of Connector.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="sessionTokenRef")
+    def session_token_ref(self) -> Optional[str]:
+        """
+        Reference to the Harness secret containing the aws session token.
+        """
+        return pulumi.get(self, "session_token_ref")
 
 
 @pulumi.output_type
@@ -16569,17 +16633,28 @@ class GetConnectorRancherBearerTokenResult(dict):
 @pulumi.output_type
 class GetDbSchemaSchemaSourceResult(dict):
     def __init__(__self__, *,
+                 archive_path: str,
                  connector: str,
                  location: str,
                  repo: str):
         """
+        :param str archive_path: If connector type is artifactory, path to the archive file which contains the changeLog
         :param str connector: Connector to repository at which to find details about the database schema
         :param str location: The path within the specified repository at which to find details about the database schema
         :param str repo: If connector url is of account, which repository to connect to using the connector
         """
+        pulumi.set(__self__, "archive_path", archive_path)
         pulumi.set(__self__, "connector", connector)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter(name="archivePath")
+    def archive_path(self) -> str:
+        """
+        If connector type is artifactory, path to the archive file which contains the changeLog
+        """
+        return pulumi.get(self, "archive_path")
 
     @property
     @pulumi.getter

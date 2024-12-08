@@ -17,7 +17,11 @@ public final class GetGitopsClusterResult {
     /**
      * @return Account identifier of the GitOps cluster.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     private String accountId;
     /**
      * @return Agent identifier of the GitOps cluster.
@@ -54,7 +58,11 @@ public final class GetGitopsClusterResult {
     /**
      * @return Account identifier of the GitOps cluster.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public String accountId() {
         return this.accountId;
     }

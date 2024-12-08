@@ -37,6 +37,8 @@ type GitOpsRepository struct {
 	pulumi.CustomResourceState
 
 	// Account identifier of the GitOps repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
@@ -76,9 +78,6 @@ func NewGitOpsRepository(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
@@ -112,6 +111,8 @@ func GetGitOpsRepository(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitOpsRepository resources.
 type gitOpsRepositoryState struct {
 	// Account identifier of the GitOps repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId *string `pulumi:"agentId"`
@@ -146,6 +147,8 @@ type gitOpsRepositoryState struct {
 
 type GitOpsRepositoryState struct {
 	// Account identifier of the GitOps repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps repository.
 	AgentId pulumi.StringPtrInput
@@ -184,7 +187,9 @@ func (GitOpsRepositoryState) ElementType() reflect.Type {
 
 type gitOpsRepositoryArgs struct {
 	// Account identifier of the GitOps repository.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId string `pulumi:"agentId"`
 	// Indicates if to operate on credential set instead of repository.
@@ -219,7 +224,9 @@ type gitOpsRepositoryArgs struct {
 // The set of arguments for constructing a GitOpsRepository resource.
 type GitOpsRepositoryArgs struct {
 	// Account identifier of the GitOps repository.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps repository.
 	AgentId pulumi.StringInput
 	// Indicates if to operate on credential set instead of repository.
@@ -339,6 +346,8 @@ func (o GitOpsRepositoryOutput) ToGitOpsRepositoryOutputWithContext(ctx context.
 }
 
 // Account identifier of the GitOps repository.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsRepositoryOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

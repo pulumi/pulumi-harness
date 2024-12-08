@@ -43,8 +43,10 @@ export function getGitopsAgentDeployYaml(args: GetGitopsAgentDeployYamlArgs, opt
 export interface GetGitopsAgentDeployYamlArgs {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * CA data of the GitOps agent, base64 encoded content of ca chain.
      */
@@ -77,6 +79,8 @@ export interface GetGitopsAgentDeployYamlArgs {
 export interface GetGitopsAgentDeployYamlResult {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -149,8 +153,10 @@ export function getGitopsAgentDeployYamlOutput(args: GetGitopsAgentDeployYamlOut
 export interface GetGitopsAgentDeployYamlOutputArgs {
     /**
      * Account identifier of the GitOps agent.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * CA data of the GitOps agent, base64 encoded content of ca chain.
      */

@@ -1641,6 +1641,8 @@ type AwsConnectorManual struct {
 	Region *string `pulumi:"region"`
 	// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef string `pulumi:"secretKeyRef"`
+	// Reference to the Harness secret containing the aws session token.
+	SessionTokenRef *string `pulumi:"sessionTokenRef"`
 }
 
 // AwsConnectorManualInput is an input type that accepts AwsConnectorManualArgs and AwsConnectorManualOutput values.
@@ -1665,6 +1667,8 @@ type AwsConnectorManualArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+	// Reference to the Harness secret containing the aws session token.
+	SessionTokenRef pulumi.StringPtrInput `pulumi:"sessionTokenRef"`
 }
 
 func (AwsConnectorManualArgs) ElementType() reflect.Type {
@@ -1769,6 +1773,11 @@ func (o AwsConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
 }
 
+// Reference to the Harness secret containing the aws session token.
+func (o AwsConnectorManualOutput) SessionTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsConnectorManual) *string { return v.SessionTokenRef }).(pulumi.StringPtrOutput)
+}
+
 type AwsConnectorManualPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsConnectorManualPtrOutput) ElementType() reflect.Type {
@@ -1840,6 +1849,16 @@ func (o AwsConnectorManualPtrOutput) SecretKeyRef() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.SecretKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the Harness secret containing the aws session token.
+func (o AwsConnectorManualPtrOutput) SessionTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsConnectorManual) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTokenRef
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6041,6 +6060,8 @@ func (o ConnectorRancherBearerTokenPtrOutput) BearerTokenRef() pulumi.StringPtrO
 }
 
 type DbSchemaSchemaSource struct {
+	// If connector type is artifactory, path to the archive file which contains the changeLog
+	ArchivePath *string `pulumi:"archivePath"`
 	// Connector to repository at which to find details about the database schema
 	Connector string `pulumi:"connector"`
 	// The path within the specified repository at which to find details about the database schema
@@ -6061,6 +6082,8 @@ type DbSchemaSchemaSourceInput interface {
 }
 
 type DbSchemaSchemaSourceArgs struct {
+	// If connector type is artifactory, path to the archive file which contains the changeLog
+	ArchivePath pulumi.StringPtrInput `pulumi:"archivePath"`
 	// Connector to repository at which to find details about the database schema
 	Connector pulumi.StringInput `pulumi:"connector"`
 	// The path within the specified repository at which to find details about the database schema
@@ -6146,6 +6169,11 @@ func (o DbSchemaSchemaSourceOutput) ToDbSchemaSchemaSourcePtrOutputWithContext(c
 	}).(DbSchemaSchemaSourcePtrOutput)
 }
 
+// If connector type is artifactory, path to the archive file which contains the changeLog
+func (o DbSchemaSchemaSourceOutput) ArchivePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSchemaSchemaSource) *string { return v.ArchivePath }).(pulumi.StringPtrOutput)
+}
+
 // Connector to repository at which to find details about the database schema
 func (o DbSchemaSchemaSourceOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v DbSchemaSchemaSource) string { return v.Connector }).(pulumi.StringOutput)
@@ -6183,6 +6211,16 @@ func (o DbSchemaSchemaSourcePtrOutput) Elem() DbSchemaSchemaSourceOutput {
 		var ret DbSchemaSchemaSource
 		return ret
 	}).(DbSchemaSchemaSourceOutput)
+}
+
+// If connector type is artifactory, path to the archive file which contains the changeLog
+func (o DbSchemaSchemaSourcePtrOutput) ArchivePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaSchemaSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchivePath
+	}).(pulumi.StringPtrOutput)
 }
 
 // Connector to repository at which to find details about the database schema
@@ -7723,11 +7761,13 @@ func (o FeatureFlagTagArrayOutput) Index(i pulumi.IntInput) FeatureFlagTagOutput
 
 type FeatureFlagTargetGroupRule struct {
 	// The attribute to use in the clause.  This can be any target attribute
-	Attribute *string `pulumi:"attribute"`
+	Attribute string `pulumi:"attribute"`
+	// The ID of this resource.
+	Id *string `pulumi:"id"`
 	// Is the operation negated?
 	Negate *bool `pulumi:"negate"`
 	// The type of operation such as equals, starts_with, contains
-	Op *string `pulumi:"op"`
+	Op string `pulumi:"op"`
 	// The values that are compared against the operator
 	Values []string `pulumi:"values"`
 }
@@ -7745,11 +7785,13 @@ type FeatureFlagTargetGroupRuleInput interface {
 
 type FeatureFlagTargetGroupRuleArgs struct {
 	// The attribute to use in the clause.  This can be any target attribute
-	Attribute pulumi.StringPtrInput `pulumi:"attribute"`
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// The ID of this resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Is the operation negated?
 	Negate pulumi.BoolPtrInput `pulumi:"negate"`
 	// The type of operation such as equals, starts_with, contains
-	Op pulumi.StringPtrInput `pulumi:"op"`
+	Op pulumi.StringInput `pulumi:"op"`
 	// The values that are compared against the operator
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -7806,8 +7848,13 @@ func (o FeatureFlagTargetGroupRuleOutput) ToFeatureFlagTargetGroupRuleOutputWith
 }
 
 // The attribute to use in the clause.  This can be any target attribute
-func (o FeatureFlagTargetGroupRuleOutput) Attribute() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FeatureFlagTargetGroupRule) *string { return v.Attribute }).(pulumi.StringPtrOutput)
+func (o FeatureFlagTargetGroupRuleOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFlagTargetGroupRule) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o FeatureFlagTargetGroupRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFlagTargetGroupRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Is the operation negated?
@@ -7816,8 +7863,8 @@ func (o FeatureFlagTargetGroupRuleOutput) Negate() pulumi.BoolPtrOutput {
 }
 
 // The type of operation such as equals, starts_with, contains
-func (o FeatureFlagTargetGroupRuleOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FeatureFlagTargetGroupRule) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o FeatureFlagTargetGroupRuleOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFlagTargetGroupRule) string { return v.Op }).(pulumi.StringOutput)
 }
 
 // The values that are compared against the operator
@@ -36027,6 +36074,8 @@ type GetAwsConnectorManual struct {
 	Region *string `pulumi:"region"`
 	// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef string `pulumi:"secretKeyRef"`
+	// Reference to the Harness secret containing the aws session token.
+	SessionTokenRef *string `pulumi:"sessionTokenRef"`
 }
 
 // GetAwsConnectorManualInput is an input type that accepts GetAwsConnectorManualArgs and GetAwsConnectorManualOutput values.
@@ -36053,6 +36102,8 @@ type GetAwsConnectorManualArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
+	// Reference to the Harness secret containing the aws session token.
+	SessionTokenRef pulumi.StringPtrInput `pulumi:"sessionTokenRef"`
 }
 
 func (GetAwsConnectorManualArgs) ElementType() reflect.Type {
@@ -36134,6 +36185,11 @@ func (o GetAwsConnectorManualOutput) Region() pulumi.StringPtrOutput {
 // Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
+}
+
+// Reference to the Harness secret containing the aws session token.
+func (o GetAwsConnectorManualOutput) SessionTokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAwsConnectorManual) *string { return v.SessionTokenRef }).(pulumi.StringPtrOutput)
 }
 
 type GetAwsConnectorManualArrayOutput struct{ *pulumi.OutputState }
@@ -39320,6 +39376,8 @@ func (o GetConnectorRancherBearerTokenPtrOutput) RancherUrl() pulumi.StringPtrOu
 }
 
 type GetDbSchemaSchemaSource struct {
+	// If connector type is artifactory, path to the archive file which contains the changeLog
+	ArchivePath string `pulumi:"archivePath"`
 	// Connector to repository at which to find details about the database schema
 	Connector string `pulumi:"connector"`
 	// The path within the specified repository at which to find details about the database schema
@@ -39340,6 +39398,8 @@ type GetDbSchemaSchemaSourceInput interface {
 }
 
 type GetDbSchemaSchemaSourceArgs struct {
+	// If connector type is artifactory, path to the archive file which contains the changeLog
+	ArchivePath pulumi.StringInput `pulumi:"archivePath"`
 	// Connector to repository at which to find details about the database schema
 	Connector pulumi.StringInput `pulumi:"connector"`
 	// The path within the specified repository at which to find details about the database schema
@@ -39397,6 +39457,11 @@ func (o GetDbSchemaSchemaSourceOutput) ToGetDbSchemaSchemaSourceOutput() GetDbSc
 
 func (o GetDbSchemaSchemaSourceOutput) ToGetDbSchemaSchemaSourceOutputWithContext(ctx context.Context) GetDbSchemaSchemaSourceOutput {
 	return o
+}
+
+// If connector type is artifactory, path to the archive file which contains the changeLog
+func (o GetDbSchemaSchemaSourceOutput) ArchivePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaSchemaSource) string { return v.ArchivePath }).(pulumi.StringOutput)
 }
 
 // Connector to repository at which to find details about the database schema

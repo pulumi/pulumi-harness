@@ -25,7 +25,9 @@ func GetGitopsApplications(ctx *pulumi.Context, args *GetGitopsApplicationsArgs,
 // A collection of arguments for invoking getGitopsApplications.
 type GetGitopsApplicationsArgs struct {
 	// Account identifier of the GitOps application.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId string `pulumi:"agentId"`
 	// Identifier of the GitOps application.
@@ -43,6 +45,8 @@ type GetGitopsApplicationsArgs struct {
 // A collection of values returned by getGitopsApplications.
 type GetGitopsApplicationsResult struct {
 	// Account identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId string `pulumi:"agentId"`
@@ -104,7 +108,9 @@ func GetGitopsApplicationsOutput(ctx *pulumi.Context, args GetGitopsApplications
 // A collection of arguments for invoking getGitopsApplications.
 type GetGitopsApplicationsOutputArgs struct {
 	// Account identifier of the GitOps application.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Identifier of the GitOps application.
@@ -139,6 +145,8 @@ func (o GetGitopsApplicationsResultOutput) ToGetGitopsApplicationsResultOutputWi
 }
 
 // Account identifier of the GitOps application.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsApplicationsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

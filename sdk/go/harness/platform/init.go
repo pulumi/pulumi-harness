@@ -123,6 +123,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HelmConnector{}
 	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
 		r = &IacmDefaultPipeline{}
+	case "harness:platform/infraModule:InfraModule":
+		r = &InfraModule{}
 	case "harness:platform/infrastructure:Infrastructure":
 		r = &Infrastructure{}
 	case "harness:platform/inputSet:InputSet":
@@ -489,6 +491,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/iacmDefaultPipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/infraModule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

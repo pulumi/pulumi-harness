@@ -2665,6 +2665,10 @@
                 "secretKeyRef": {
                     "type": "string",
                     "description": "Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "sessionTokenRef": {
+                    "type": "string",
+                    "description": "Reference to the Harness secret containing the aws session token.\n"
                 }
             },
             "type": "object",
@@ -3145,6 +3149,10 @@
         },
         "harness:platform/DbSchemaSchemaSource:DbSchemaSchemaSource": {
             "properties": {
+                "archivePath": {
+                    "type": "string",
+                    "description": "If connector type is artifactory, path to the archive file which contains the changeLog\n"
+                },
                 "connector": {
                     "type": "string",
                     "description": "Connector to repository at which to find details about the database schema\n"
@@ -3412,33 +3420,39 @@
             "properties": {
                 "attribute": {
                     "type": "string",
-                    "description": "The attribute to use in the clause.  This can be any target attribute\n",
-                    "willReplaceOnChanges": true
+                    "description": "The attribute to use in the clause.  This can be any target attribute\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
                 },
                 "negate": {
                     "type": "boolean",
-                    "description": "Is the operation negated?\n",
-                    "willReplaceOnChanges": true
+                    "description": "Is the operation negated?\n"
                 },
                 "op": {
                     "type": "string",
-                    "description": "The type of operation such as equals, starts_with, contains\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of operation such as equals, starts_with, contains\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The values that are compared against the operator\n",
-                    "willReplaceOnChanges": true
+                    "description": "The values that are compared against the operator\n"
                 }
             },
             "type": "object",
+            "required": [
+                "attribute",
+                "op",
+                "values"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
                         "attribute",
+                        "id",
                         "negate",
                         "op",
                         "values"
@@ -8391,6 +8405,10 @@
                 "secretKeyRef": {
                     "type": "string",
                     "description": "Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "sessionTokenRef": {
+                    "type": "string",
+                    "description": "Reference to the Harness secret containing the aws session token.\n"
                 }
             },
             "type": "object",
@@ -9135,6 +9153,10 @@
         },
         "harness:platform/getDbSchemaSchemaSource:getDbSchemaSchemaSource": {
             "properties": {
+                "archivePath": {
+                    "type": "string",
+                    "description": "If connector type is artifactory, path to the archive file which contains the changeLog\n"
+                },
                 "connector": {
                     "type": "string",
                     "description": "Connector to repository at which to find details about the database schema\n"
@@ -9150,6 +9172,7 @@
             },
             "type": "object",
             "required": [
+                "archivePath",
                 "connector",
                 "location",
                 "repo"
@@ -22696,8 +22719,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of targets to exclude from the target group\n",
-                    "willReplaceOnChanges": true
+                    "description": "A list of targets to exclude from the target group\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -22709,8 +22731,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of targets to include in the target group\n",
-                    "willReplaceOnChanges": true
+                    "description": "A list of targets to include in the target group\n"
                 },
                 "name": {
                     "type": "string",
@@ -22759,8 +22780,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of targets to exclude from the target group\n",
-                        "willReplaceOnChanges": true
+                        "description": "A list of targets to exclude from the target group\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -22772,8 +22792,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of targets to include in the target group\n",
-                        "willReplaceOnChanges": true
+                        "description": "A list of targets to include in the target group\n"
                     },
                     "name": {
                         "type": "string",
@@ -23985,7 +24004,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps agent.\n"
+                    "description": "Account identifier of the GitOps agent.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentToken": {
                     "type": "string",
@@ -24018,6 +24038,10 @@
                     "type": "string",
                     "description": "Organization identifier of the GitOps agent.\n"
                 },
+                "prefixedIdentifier": {
+                    "type": "string",
+                    "description": "Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent\n"
+                },
                 "projectId": {
                     "type": "string",
                     "description": "Project identifier of the GitOps agent.\n"
@@ -24039,12 +24063,14 @@
                 "agentToken",
                 "identifier",
                 "name",
+                "prefixedIdentifier",
                 "type"
             ],
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps agent.\n"
+                    "description": "Account identifier of the GitOps agent.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "description": {
                     "type": "string",
@@ -24090,7 +24116,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "identifier",
                 "type"
             ],
@@ -24099,7 +24124,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps agent.\n"
+                        "description": "Account identifier of the GitOps agent.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentToken": {
                         "type": "string",
@@ -24132,6 +24158,10 @@
                         "type": "string",
                         "description": "Organization identifier of the GitOps agent.\n"
                     },
+                    "prefixedIdentifier": {
+                        "type": "string",
+                        "description": "Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent\n"
+                    },
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps agent.\n"
@@ -24156,7 +24186,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps application.\n"
+                    "description": "Account identifier of the GitOps application.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24247,7 +24278,8 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps application.\n"
+                    "description": "Account identifier of the GitOps application.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24326,7 +24358,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "applications",
                 "clusterId",
@@ -24338,7 +24369,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps application.\n"
+                        "description": "Account identifier of the GitOps application.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -24424,7 +24456,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps cluster.\n"
+                    "description": "Account identifier of the GitOps cluster.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24459,7 +24492,7 @@
                 "accountId": {
                     "type": "string",
                     "description": "Account identifier of the GitOps cluster.\n",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24490,7 +24523,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "identifier"
             ],
@@ -24500,7 +24532,7 @@
                     "accountId": {
                         "type": "string",
                         "description": "Account identifier of the GitOps cluster.\n",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -24538,7 +24570,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account Identifier for the GnuPG Key.\n"
+                    "description": "Account Identifier for the GnuPG Key.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24574,7 +24607,7 @@
                 "accountId": {
                     "type": "string",
                     "description": "Account Identifier for the GnuPG Key.\n",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24600,7 +24633,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "requests"
             ],
@@ -24610,7 +24642,7 @@
                     "accountId": {
                         "type": "string",
                         "description": "Account Identifier for the GnuPG Key.\n",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -24647,7 +24679,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps repository certificate.\n"
+                    "description": "Account identifier of the GitOps repository certificate.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24678,7 +24711,7 @@
                 "accountId": {
                     "type": "string",
                     "description": "Account identifier of the GitOps repository certificate.\n",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24704,7 +24737,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "requests"
             ],
@@ -24714,7 +24746,7 @@
                     "accountId": {
                         "type": "string",
                         "description": "Account identifier of the GitOps repository certificate.\n",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -24747,7 +24779,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the Repository Credentials.\n"
+                    "description": "Account identifier of the Repository Credentials.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24787,7 +24820,7 @@
                 "accountId": {
                     "type": "string",
                     "description": "Account identifier of the Repository Credentials.\n",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24803,8 +24836,7 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Identifier of the Repository Credentials.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Identifier of the Repository Credentials.\n"
                 },
                 "orgId": {
                     "type": "string",
@@ -24822,7 +24854,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "identifier"
             ],
@@ -24832,7 +24863,7 @@
                     "accountId": {
                         "type": "string",
                         "description": "Account identifier of the Repository Credentials.\n",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -24848,8 +24879,7 @@
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Identifier of the Repository Credentials.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Identifier of the Repository Credentials.\n"
                     },
                     "orgId": {
                         "type": "string",
@@ -24874,7 +24904,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps repository.\n"
+                    "description": "Account identifier of the GitOps repository.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -24946,7 +24977,7 @@
                 "accountId": {
                     "type": "string",
                     "description": "Account identifier of the GitOps repository.\n",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -25013,7 +25044,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "identifier",
                 "repos"
@@ -25024,7 +25054,7 @@
                     "accountId": {
                         "type": "string",
                         "description": "Account identifier of the GitOps repository.\n",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -25503,19 +25533,20 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps project/agent.\n"
+                    "description": "Account identifier of the GitOps Agent where argo project will exist.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps project. Project is created on agent scope.\n"
+                    "description": "Agent identifier of the agent where argo project will exist (include scope prefix)\n"
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Org identifier of the GitOps agent for which project is created.\n"
+                    "description": "Org identifier of the GitOps Agent where argo project is to be created.\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps agent for which project is created.\n"
+                    "description": "Project identifier of the Gitops Agent where argo project is to be created.\n"
                 },
                 "projects": {
                     "type": "array",
@@ -25526,11 +25557,11 @@
                 },
                 "queryName": {
                     "type": "string",
-                    "description": "Identifier for the GitOps project.\n"
+                    "description": "Identifier for the GitOps Argo project.\n"
                 },
                 "upsert": {
                     "type": "boolean",
-                    "description": "Indicates if the GitOps project should be updated if existing and inserted if not.\n"
+                    "description": "Indicates if the argo project should be updated if existing and inserted if not.\n"
                 }
             },
             "required": [
@@ -25542,22 +25573,22 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps project/agent.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Account identifier of the GitOps Agent where argo project will exist.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
-                    "description": "Agent identifier of the GitOps project. Project is created on agent scope.\n",
+                    "description": "Agent identifier of the agent where argo project will exist (include scope prefix)\n",
                     "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Org identifier of the GitOps agent for which project is created.\n",
+                    "description": "Org identifier of the GitOps Agent where argo project is to be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project identifier of the GitOps agent for which project is created.\n",
+                    "description": "Project identifier of the Gitops Agent where argo project is to be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "projects": {
@@ -25569,15 +25600,14 @@
                 },
                 "queryName": {
                     "type": "string",
-                    "description": "Identifier for the GitOps project.\n"
+                    "description": "Identifier for the GitOps Argo project.\n"
                 },
                 "upsert": {
                     "type": "boolean",
-                    "description": "Indicates if the GitOps project should be updated if existing and inserted if not.\n"
+                    "description": "Indicates if the argo project should be updated if existing and inserted if not.\n"
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "projects"
             ],
@@ -25586,22 +25616,22 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps project/agent.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Account identifier of the GitOps Agent where argo project will exist.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
-                        "description": "Agent identifier of the GitOps project. Project is created on agent scope.\n",
+                        "description": "Agent identifier of the agent where argo project will exist (include scope prefix)\n",
                         "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Org identifier of the GitOps agent for which project is created.\n",
+                        "description": "Org identifier of the GitOps Agent where argo project is to be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project identifier of the GitOps agent for which project is created.\n",
+                        "description": "Project identifier of the Gitops Agent where argo project is to be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "projects": {
@@ -25613,11 +25643,11 @@
                     },
                     "queryName": {
                         "type": "string",
-                        "description": "Identifier for the GitOps project.\n"
+                        "description": "Identifier for the GitOps Argo project.\n"
                     },
                     "upsert": {
                         "type": "boolean",
-                        "description": "Indicates if the GitOps project should be updated if existing and inserted if not.\n"
+                        "description": "Indicates if the argo project should be updated if existing and inserted if not.\n"
                     }
                 },
                 "type": "object"
@@ -25628,7 +25658,8 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account identifier of the GitOps agent's Application Project.\n"
+                    "description": "Account identifier of the GitOps agent's Application Project.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -25663,7 +25694,7 @@
                 "accountId": {
                     "type": "string",
                     "description": "Account identifier of the GitOps agent's Application Project.\n",
-                    "willReplaceOnChanges": true
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release."
                 },
                 "agentId": {
                     "type": "string",
@@ -25685,7 +25716,6 @@
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "agentId",
                 "argoProjectName",
                 "orgId",
@@ -25697,7 +25727,7 @@
                     "accountId": {
                         "type": "string",
                         "description": "Account identifier of the GitOps agent's Application Project.\n",
-                        "willReplaceOnChanges": true
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -26138,6 +26168,196 @@
                     "provisionerType": {
                         "type": "string",
                         "description": "The provisioner associated with this default.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/infraModule:InfraModule": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.InfraModule(\"example\", {\n    description: \"example\",\n    name: \"name\",\n    system: \"provider\",\n    repository: \"https://github.com/org/repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    repositoryConnector: test.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.InfraModule(\"example\",\n    description=\"example\",\n    name=\"name\",\n    system=\"provider\",\n    repository=\"https://github.com/org/repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    repository_connector=test[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.InfraModule(\"example\", new()\n    {\n        Description = \"example\",\n        Name = \"name\",\n        System = \"provider\",\n        Repository = \"https://github.com/org/repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        RepositoryConnector = test.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewInfraModule(ctx, \"example\", \u0026platform.InfraModuleArgs{\n\t\t\tDescription:         pulumi.String(\"example\"),\n\t\t\tName:                pulumi.String(\"name\"),\n\t\t\tSystem:              pulumi.String(\"provider\"),\n\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.InfraModule;\nimport com.pulumi.harness.platform.InfraModuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfraModule(\"example\", InfraModuleArgs.builder()\n            .description(\"example\")\n            .name(\"name\")\n            .system(\"provider\")\n            .repository(\"https://github.com/org/repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .repositoryConnector(test.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:InfraModule\n    properties:\n      description: example\n      name: name\n      system: provider\n      repository: https://github.com/org/repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      repositoryConnector: ${test.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/infraModule:InfraModule example \u003corg_id\u003e/\u003cmodule_id\u003e\n```\n\n",
+            "properties": {
+                "created": {
+                    "type": "integer",
+                    "description": "Timestamp when the module was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the module.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the module.\n"
+                },
+                "repository": {
+                    "type": "string",
+                    "description": "For account connectors, the repository where the module can be found\n"
+                },
+                "repositoryBranch": {
+                    "type": "string",
+                    "description": "Name of the branch to fetch the code from. This cannot be set if repository commit is set.\n"
+                },
+                "repositoryCommit": {
+                    "type": "string",
+                    "description": "Tag to fetch the code from. This cannot be set if repository branch is set.\n"
+                },
+                "repositoryConnector": {
+                    "type": "string",
+                    "description": "Reference to the connector to be used to fetch the code.\n"
+                },
+                "repositoryPath": {
+                    "type": "string",
+                    "description": "Path to the module within the repository.\n"
+                },
+                "repositoryUrl": {
+                    "type": "string",
+                    "description": "URL of the repository where the module is stored.\n"
+                },
+                "synced": {
+                    "type": "integer",
+                    "description": "Timestamp when the module was last synced.\n"
+                },
+                "system": {
+                    "type": "string",
+                    "description": "Provider of the module.\n"
+                },
+                "tags": {
+                    "type": "string",
+                    "description": "Git tags associated with the module.\n"
+                },
+                "versions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of versions of the module.\n"
+                }
+            },
+            "required": [
+                "created",
+                "name",
+                "repositoryUrl",
+                "synced",
+                "system",
+                "tags",
+                "versions"
+            ],
+            "inputProperties": {
+                "created": {
+                    "type": "integer",
+                    "description": "Timestamp when the module was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the module.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the module.\n"
+                },
+                "repository": {
+                    "type": "string",
+                    "description": "For account connectors, the repository where the module can be found\n"
+                },
+                "repositoryBranch": {
+                    "type": "string",
+                    "description": "Name of the branch to fetch the code from. This cannot be set if repository commit is set.\n"
+                },
+                "repositoryCommit": {
+                    "type": "string",
+                    "description": "Tag to fetch the code from. This cannot be set if repository branch is set.\n"
+                },
+                "repositoryConnector": {
+                    "type": "string",
+                    "description": "Reference to the connector to be used to fetch the code.\n"
+                },
+                "repositoryPath": {
+                    "type": "string",
+                    "description": "Path to the module within the repository.\n"
+                },
+                "repositoryUrl": {
+                    "type": "string",
+                    "description": "URL of the repository where the module is stored.\n"
+                },
+                "synced": {
+                    "type": "integer",
+                    "description": "Timestamp when the module was last synced.\n"
+                },
+                "system": {
+                    "type": "string",
+                    "description": "Provider of the module.\n"
+                },
+                "tags": {
+                    "type": "string",
+                    "description": "Git tags associated with the module.\n"
+                },
+                "versions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of versions of the module.\n"
+                }
+            },
+            "requiredInputs": [
+                "system"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InfraModule resources.\n",
+                "properties": {
+                    "created": {
+                        "type": "integer",
+                        "description": "Timestamp when the module was created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the module.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the module.\n"
+                    },
+                    "repository": {
+                        "type": "string",
+                        "description": "For account connectors, the repository where the module can be found\n"
+                    },
+                    "repositoryBranch": {
+                        "type": "string",
+                        "description": "Name of the branch to fetch the code from. This cannot be set if repository commit is set.\n"
+                    },
+                    "repositoryCommit": {
+                        "type": "string",
+                        "description": "Tag to fetch the code from. This cannot be set if repository branch is set.\n"
+                    },
+                    "repositoryConnector": {
+                        "type": "string",
+                        "description": "Reference to the connector to be used to fetch the code.\n"
+                    },
+                    "repositoryPath": {
+                        "type": "string",
+                        "description": "Path to the module within the repository.\n"
+                    },
+                    "repositoryUrl": {
+                        "type": "string",
+                        "description": "URL of the repository where the module is stored.\n"
+                    },
+                    "synced": {
+                        "type": "integer",
+                        "description": "Timestamp when the module was last synced.\n"
+                    },
+                    "system": {
+                        "type": "string",
+                        "description": "Provider of the module.\n"
+                    },
+                    "tags": {
+                        "type": "string",
+                        "description": "Git tags associated with the module.\n"
+                    },
+                    "versions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of versions of the module.\n"
                     }
                 },
                 "type": "object"
@@ -41354,13 +41574,14 @@
             }
         },
         "harness:platform/getGitopsAgent:getGitopsAgent": {
-            "description": "Datasource for fetching a Harness GitOps Agent.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsAgent({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_agent(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsAgent.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsAgent(ctx, \u0026platform.GetGitopsAgentArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  \"account_id\",\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAgent(GetGitopsAgentArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsAgent\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Datasource for fetching a Harness GitOps Agent.\n\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsAgent.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps agent.\n"
+                        "description": "Account identifier of the GitOps agent.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "identifier": {
                         "type": "string",
@@ -41373,11 +41594,14 @@
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps agent.\n"
+                    },
+                    "withCredentials": {
+                        "type": "boolean",
+                        "description": "Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "identifier"
                 ]
             },
@@ -41385,6 +41609,7 @@
                 "description": "A collection of values returned by getGitopsAgent.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps agent.\n",
                         "type": "string"
                     },
@@ -41403,6 +41628,10 @@
                     "identifier": {
                         "description": "Identifier of the GitOps agent.\n",
                         "type": "string"
+                    },
+                    "isAuthenticated": {
+                        "description": "This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \\n\\nSet with_credentials to true to allow computing of this field.\\n\\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions\n",
+                        "type": "boolean"
                     },
                     "metadatas": {
                         "description": "Metadata of the agent.\n",
@@ -41423,6 +41652,10 @@
                         "description": "Organization identifier of the GitOps agent.\n",
                         "type": "string"
                     },
+                    "prefixedIdentifier": {
+                        "description": "Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent\n",
+                        "type": "string"
+                    },
                     "projectId": {
                         "description": "Project identifier of the GitOps agent.\n",
                         "type": "string"
@@ -41437,6 +41670,10 @@
                     "type": {
                         "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"CONNECTED*ARGO*PROVIDER\" \"MANAGED*ARGO*PROVIDER\"\n",
                         "type": "string"
+                    },
+                    "withCredentials": {
+                        "description": "Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions\n",
+                        "type": "boolean"
                     }
                 },
                 "required": [
@@ -41444,9 +41681,11 @@
                     "agentToken",
                     "description",
                     "identifier",
+                    "isAuthenticated",
                     "metadatas",
                     "name",
                     "operator",
+                    "prefixedIdentifier",
                     "tags",
                     "type",
                     "id"
@@ -41455,13 +41694,14 @@
             }
         },
         "harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml": {
-            "description": "Datasource for fetching a Harness Gitops Agent deployment manifest YAML.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsAgentDeployYaml({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    namespace: \"namespace\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_agent_deploy_yaml(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    namespace=\"namespace\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsAgentDeployYaml.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        Namespace = \"namespace\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsAgentDeployYaml(ctx, \u0026platform.GetGitopsAgentDeployYamlArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  \"account_id\",\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tNamespace:  \"namespace\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAgentDeployYaml(GetGitopsAgentDeployYamlArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .namespace(\"namespace\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsAgentDeployYaml\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        namespace: namespace\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Datasource for fetching a Harness Gitops Agent deployment manifest YAML.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsAgentDeployYaml({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    namespace: \"namespace\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_agent_deploy_yaml(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    namespace=\"namespace\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsAgentDeployYaml.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        Namespace = \"namespace\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsAgentDeployYaml(ctx, \u0026platform.GetGitopsAgentDeployYamlArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  pulumi.StringRef(\"account_id\"),\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tNamespace:  \"namespace\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAgentDeployYaml(GetGitopsAgentDeployYamlArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .namespace(\"namespace\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsAgentDeployYaml\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        namespace: namespace\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsAgentDeployYaml.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps agent.\n"
+                        "description": "Account identifier of the GitOps agent.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "caData": {
                         "type": "string",
@@ -41493,7 +41733,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "identifier",
                     "namespace"
                 ]
@@ -41502,6 +41741,7 @@
                 "description": "A collection of values returned by getGitopsAgentDeployYaml.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps agent.\n",
                         "type": "string"
                     },
@@ -41558,7 +41798,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps Agent where argo project resides.\n"
+                        "description": "Account identifier of the GitOps Agent where argo project resides.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -41579,7 +41820,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "agentId"
                 ]
             },
@@ -41587,6 +41827,7 @@
                 "description": "A collection of values returned by getGitopsAppProject.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps Agent where argo project resides.\n",
                         "type": "string"
                     },
@@ -41627,7 +41868,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps agent's Application Project.\n"
+                        "description": "Account identifier of the GitOps agent's Application Project.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -41648,7 +41890,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "agentId",
                     "argoProjectName",
                     "orgId",
@@ -41659,6 +41900,7 @@
                 "description": "A collection of values returned by getGitopsAppProjectMapping.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps agent's Application Project.\n",
                         "type": "string"
                     },
@@ -41706,7 +41948,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps application.\n"
+                        "description": "Account identifier of the GitOps application.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -41732,7 +41975,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "agentId",
                     "name",
                     "orgId",
@@ -41743,6 +41985,7 @@
                 "description": "A collection of values returned by getGitopsApplications.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps application.\n",
                         "type": "string"
                     },
@@ -41842,13 +42085,14 @@
             }
         },
         "harness:platform/getGitopsCluster:getGitopsCluster": {
-            "description": "Data source for fetching a Harness GitOps Cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsCluster({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_cluster(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsCluster.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsCluster(ctx, \u0026platform.GetGitopsClusterArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  \"account_id\",\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsCluster(GetGitopsClusterArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsCluster\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source for fetching a Harness GitOps Cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsCluster({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_cluster(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsCluster.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsCluster(ctx, \u0026platform.GetGitopsClusterArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  pulumi.StringRef(\"account_id\"),\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsCluster(GetGitopsClusterArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsCluster\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsCluster.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps cluster.\n"
+                        "description": "Account identifier of the GitOps cluster.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -41869,7 +42113,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "agentId",
                     "identifier"
                 ]
@@ -41878,6 +42121,7 @@
                 "description": "A collection of values returned by getGitopsCluster.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps cluster.\n",
                         "type": "string"
                     },
@@ -41920,13 +42164,14 @@
             }
         },
         "harness:platform/getGitopsGnupg:getGitopsGnupg": {
-            "description": "Data source for fetching a Harness GitOps GPG public key.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsGnupg({\n    accountId: \"account_id\",\n    agentId: \"agent_id\",\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_gnupg(account_id=\"account_id\",\n    agent_id=\"agent_id\",\n    identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsGnupg.Invoke(new()\n    {\n        AccountId = \"account_id\",\n        AgentId = \"agent_id\",\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsGnupg(ctx, \u0026platform.GetGitopsGnupgArgs{\n\t\t\tAccountId:  \"account_id\",\n\t\t\tAgentId:    \"agent_id\",\n\t\t\tIdentifier: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsGnupg(GetGitopsGnupgArgs.builder()\n            .accountId(\"account_id\")\n            .agentId(\"agent_id\")\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsGnupg\n      Arguments:\n        accountId: account_id\n        agentId: agent_id\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source for fetching a Harness GitOps GPG public key.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsGnupg({\n    accountId: \"account_id\",\n    agentId: \"agent_id\",\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_gnupg(account_id=\"account_id\",\n    agent_id=\"agent_id\",\n    identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsGnupg.Invoke(new()\n    {\n        AccountId = \"account_id\",\n        AgentId = \"agent_id\",\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsGnupg(ctx, \u0026platform.GetGitopsGnupgArgs{\n\t\t\tAccountId:  pulumi.StringRef(\"account_id\"),\n\t\t\tAgentId:    \"agent_id\",\n\t\t\tIdentifier: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsGnupg(GetGitopsGnupgArgs.builder()\n            .accountId(\"account_id\")\n            .agentId(\"agent_id\")\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsGnupg\n      Arguments:\n        accountId: account_id\n        agentId: agent_id\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsGnupg.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account Identifier for the GnuPG Key.\n"
+                        "description": "Account Identifier for the GnuPG Key.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -41954,7 +42199,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "agentId",
                     "identifier"
                 ]
@@ -41963,6 +42207,7 @@
                 "description": "A collection of values returned by getGitopsGnupg.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account Identifier for the GnuPG Key.\n",
                         "type": "string"
                     },
@@ -42011,7 +42256,8 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps repository certificate.\n"
+                        "description": "Account identifier of the GitOps repository certificate.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -42028,13 +42274,14 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId"
+                    "agentId"
                 ]
             },
             "outputs": {
                 "description": "A collection of values returned by getGitopsRepoCert.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps repository certificate.\n",
                         "type": "string"
                     },
@@ -42057,19 +42304,21 @@
                 },
                 "required": [
                     "accountId",
+                    "agentId",
                     "id"
                 ],
                 "type": "object"
             }
         },
         "harness:platform/getGitopsRepoCred:getGitopsRepoCred": {
-            "description": "Data source for fetching a GitOps Repository Credentials.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getGitopsRepoCred({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_gitops_repo_cred(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetGitopsRepoCred.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsRepoCred(ctx, \u0026platform.GetGitopsRepoCredArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  \"account_id\",\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getGitopsRepoCred(GetGitopsRepoCredArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getGitopsRepoCred\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source for fetching a GitOps Repository Credentials.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getGitopsRepoCred({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_gitops_repo_cred(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetGitopsRepoCred.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsRepoCred(ctx, \u0026platform.GetGitopsRepoCredArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  pulumi.StringRef(\"account_id\"),\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsRepoCredArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getGitopsRepoCred(GetGitopsRepoCredArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getGitopsRepoCred\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsRepoCred.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the Repository Credentials.\n"
+                        "description": "Account identifier of the Repository Credentials.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -42097,7 +42346,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "agentId",
                     "identifier"
                 ]
@@ -42106,6 +42354,7 @@
                 "description": "A collection of values returned by getGitopsRepoCred.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the Repository Credentials.\n",
                         "type": "string"
                     },
@@ -42148,13 +42397,14 @@
             }
         },
         "harness:platform/getGitopsRepository:getGitopsRepository": {
-            "description": "Data source for fetching a Harness GitOps Repository.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsRepository({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_repository(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsRepository.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsRepository(ctx, \u0026platform.GetGitopsRepositoryArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  \"account_id\",\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsRepository\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source for fetching a Harness GitOps Repository.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsRepository({\n    identifier: \"identifier\",\n    accountId: \"account_id\",\n    projectId: \"project_id\",\n    orgId: \"org_id\",\n    agentId: \"agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_repository(identifier=\"identifier\",\n    account_id=\"account_id\",\n    project_id=\"project_id\",\n    org_id=\"org_id\",\n    agent_id=\"agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsRepository.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        AccountId = \"account_id\",\n        ProjectId = \"project_id\",\n        OrgId = \"org_id\",\n        AgentId = \"agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.GetGitopsRepository(ctx, \u0026platform.GetGitopsRepositoryArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tAccountId:  pulumi.StringRef(\"account_id\"),\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tAgentId:    \"agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsRepository(GetGitopsRepositoryArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .agentId(\"agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: harness:platform:getGitopsRepository\n      Arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        agentId: agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGitopsRepository.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps repository.\n"
+                        "description": "Account identifier of the GitOps repository.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
                         "type": "string",
@@ -42175,7 +42425,6 @@
                 },
                 "type": "object",
                 "required": [
-                    "accountId",
                     "agentId",
                     "identifier"
                 ]
@@ -42184,6 +42433,7 @@
                 "description": "A collection of values returned by getGitopsRepository.\n",
                 "properties": {
                     "accountId": {
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps repository.\n",
                         "type": "string"
                     },
@@ -42473,6 +42723,145 @@
                     "projectId",
                     "provisionerType",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getInfraModule:getInfraModule": {
+            "description": "Data source for retrieving modules from the module registry.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetInfraModuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .system(\"system\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      Function: harness:platform:getInfraModule\n      Arguments:\n        identifier: identifier\n        name: name\n        system: system\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInfraModule.\n",
+                "properties": {
+                    "created": {
+                        "type": "integer",
+                        "description": "Timestamp when the module was created\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the module\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Identifier of the module\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the module\n"
+                    },
+                    "repository": {
+                        "type": "string",
+                        "description": "For account connectors, the repository where the module is stored\n"
+                    },
+                    "repositoryBranch": {
+                        "type": "string",
+                        "description": "Repository Branch in which the module should be accessed\n"
+                    },
+                    "repositoryCommit": {
+                        "type": "string",
+                        "description": "Repository Commit in which the module should be accessed\n"
+                    },
+                    "repositoryConnector": {
+                        "type": "string",
+                        "description": "Repository Connector is the reference to the connector for the repository\n"
+                    },
+                    "repositoryPath": {
+                        "type": "string",
+                        "description": "Repository Path is the path in which the module resides\n"
+                    },
+                    "repositoryUrl": {
+                        "type": "string",
+                        "description": "URL where the module is stored\n"
+                    },
+                    "synced": {
+                        "type": "integer",
+                        "description": "Timestamp when the module was last synced\n"
+                    },
+                    "system": {
+                        "type": "string",
+                        "description": "Provider of the module\n"
+                    },
+                    "tags": {
+                        "type": "string",
+                        "description": "Tags associated with the module\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "system"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInfraModule.\n",
+                "properties": {
+                    "created": {
+                        "description": "Timestamp when the module was created\n",
+                        "type": "integer"
+                    },
+                    "description": {
+                        "description": "Description of the module\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Identifier of the module\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the module\n",
+                        "type": "string"
+                    },
+                    "repository": {
+                        "description": "For account connectors, the repository where the module is stored\n",
+                        "type": "string"
+                    },
+                    "repositoryBranch": {
+                        "description": "Repository Branch in which the module should be accessed\n",
+                        "type": "string"
+                    },
+                    "repositoryCommit": {
+                        "description": "Repository Commit in which the module should be accessed\n",
+                        "type": "string"
+                    },
+                    "repositoryConnector": {
+                        "description": "Repository Connector is the reference to the connector for the repository\n",
+                        "type": "string"
+                    },
+                    "repositoryPath": {
+                        "description": "Repository Path is the path in which the module resides\n",
+                        "type": "string"
+                    },
+                    "repositoryUrl": {
+                        "description": "URL where the module is stored\n",
+                        "type": "string"
+                    },
+                    "synced": {
+                        "description": "Timestamp when the module was last synced\n",
+                        "type": "integer"
+                    },
+                    "system": {
+                        "description": "Provider of the module\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Tags associated with the module\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "created",
+                    "description",
+                    "id",
+                    "name",
+                    "repository",
+                    "repositoryBranch",
+                    "repositoryCommit",
+                    "repositoryConnector",
+                    "repositoryPath",
+                    "repositoryUrl",
+                    "synced",
+                    "system",
+                    "tags"
                 ],
                 "type": "object"
             }
