@@ -120,7 +120,7 @@ export interface GetGitopsRepositoryResult {
  * });
  * ```
  */
-export function getGitopsRepositoryOutput(args: GetGitopsRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsRepositoryResult> {
+export function getGitopsRepositoryOutput(args: GetGitopsRepositoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsRepository:getGitopsRepository", {
         "accountId": args.accountId,

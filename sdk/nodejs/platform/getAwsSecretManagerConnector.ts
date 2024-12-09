@@ -111,7 +111,7 @@ export interface GetAwsSecretManagerConnectorResult {
  * });
  * ```
  */
-export function getAwsSecretManagerConnectorOutput(args: GetAwsSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsSecretManagerConnectorResult> {
+export function getAwsSecretManagerConnectorOutput(args: GetAwsSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsSecretManagerConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", {
         "identifier": args.identifier,

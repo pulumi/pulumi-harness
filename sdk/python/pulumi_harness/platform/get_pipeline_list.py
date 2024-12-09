@@ -213,7 +213,7 @@ def get_pipeline_list_output(identifier: Optional[pulumi.Input[Optional[str]]] =
                              org_id: Optional[pulumi.Input[str]] = None,
                              page: Optional[pulumi.Input[Optional[int]]] = None,
                              project_id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPipelineListResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineListResult]:
     """
     Data source for retrieving a Harness pipeline list.
 
@@ -254,7 +254,7 @@ def get_pipeline_list_output(identifier: Optional[pulumi.Input[Optional[str]]] =
     __args__['orgId'] = org_id
     __args__['page'] = page
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getPipelineList:getPipelineList', __args__, opts=opts, typ=GetPipelineListResult)
     return __ret__.apply(lambda __response__: GetPipelineListResult(
         description=pulumi.get(__response__, 'description'),

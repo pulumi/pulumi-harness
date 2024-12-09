@@ -71,7 +71,7 @@ export interface GetGitopsRepoCertResult {
 /**
  * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
  */
-export function getGitopsRepoCertOutput(args: GetGitopsRepoCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsRepoCertResult> {
+export function getGitopsRepoCertOutput(args: GetGitopsRepoCertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsRepoCertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsRepoCert:getGitopsRepoCert", {
         "accountId": args.accountId,

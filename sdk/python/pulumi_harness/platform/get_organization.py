@@ -128,7 +128,7 @@ def get_organization(identifier: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'))
 def get_organization_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     ## Example Usage
 
@@ -146,7 +146,7 @@ def get_organization_output(identifier: Optional[pulumi.Input[Optional[str]]] = 
     __args__ = dict()
     __args__['identifier'] = identifier
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult)
     return __ret__.apply(lambda __response__: GetOrganizationResult(
         description=pulumi.get(__response__, 'description'),

@@ -115,7 +115,7 @@ export interface GetElasticsearchConnectorResult {
  * });
  * ```
  */
-export function getElasticsearchConnectorOutput(args: GetElasticsearchConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticsearchConnectorResult> {
+export function getElasticsearchConnectorOutput(args: GetElasticsearchConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticsearchConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getElasticsearchConnector:getElasticsearchConnector", {
         "identifier": args.identifier,

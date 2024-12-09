@@ -125,7 +125,7 @@ def get_delegate_ids(name: Optional[str] = None,
 def get_delegate_ids_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
                             type: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDelegateIdsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegateIdsResult]:
     """
     Use this data source to get a list of delegate ID's matching the specified search criteria.
 
@@ -138,7 +138,7 @@ def get_delegate_ids_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['name'] = name
     __args__['status'] = status
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:cloudprovider/getDelegateIds:getDelegateIds', __args__, opts=opts, typ=GetDelegateIdsResult)
     return __ret__.apply(lambda __response__: GetDelegateIdsResult(
         delegate_ids=pulumi.get(__response__, 'delegate_ids'),

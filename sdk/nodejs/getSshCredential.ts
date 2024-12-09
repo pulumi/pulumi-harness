@@ -57,7 +57,7 @@ export interface GetSshCredentialResult {
 /**
  * Data source for retrieving an SSH credential.
  */
-export function getSshCredentialOutput(args?: GetSshCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshCredentialResult> {
+export function getSshCredentialOutput(args?: GetSshCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSshCredentialResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getSshCredential:getSshCredential", {

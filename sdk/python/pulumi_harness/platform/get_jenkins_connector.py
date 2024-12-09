@@ -204,7 +204,7 @@ def get_jenkins_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJenkinsConnectorResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJenkinsConnectorResult]:
     """
     Datasource for looking up a Jenkins connector.
 
@@ -228,7 +228,7 @@ def get_jenkins_connector_output(identifier: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getJenkinsConnector:getJenkinsConnector', __args__, opts=opts, typ=GetJenkinsConnectorResult)
     return __ret__.apply(lambda __response__: GetJenkinsConnectorResult(
         auths=pulumi.get(__response__, 'auths'),

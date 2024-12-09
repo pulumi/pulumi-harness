@@ -191,7 +191,7 @@ def get_rule_ecs_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
                         https: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict']]]]] = None,
                         idle_time_mins: Optional[pulumi.Input[Optional[int]]] = None,
                         name: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleEcsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEcsResult]:
     """
     Data source for retrieving a Harness Variable.
 
@@ -211,7 +211,7 @@ def get_rule_ecs_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
     __args__['https'] = https
     __args__['idleTimeMins'] = idle_time_mins
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleEcs:getRuleEcs', __args__, opts=opts, typ=GetRuleEcsResult)
     return __ret__.apply(lambda __response__: GetRuleEcsResult(
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),

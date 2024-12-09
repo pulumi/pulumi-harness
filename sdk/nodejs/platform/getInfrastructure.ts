@@ -131,7 +131,7 @@ export interface GetInfrastructureResult {
  * });
  * ```
  */
-export function getInfrastructureOutput(args: GetInfrastructureOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfrastructureResult> {
+export function getInfrastructureOutput(args: GetInfrastructureOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfrastructureResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getInfrastructure:getInfrastructure", {
         "envId": args.envId,

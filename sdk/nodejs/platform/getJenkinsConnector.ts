@@ -111,7 +111,7 @@ export interface GetJenkinsConnectorResult {
  * });
  * ```
  */
-export function getJenkinsConnectorOutput(args: GetJenkinsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJenkinsConnectorResult> {
+export function getJenkinsConnectorOutput(args: GetJenkinsConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJenkinsConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getJenkinsConnector:getJenkinsConnector", {
         "identifier": args.identifier,

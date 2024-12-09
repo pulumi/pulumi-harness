@@ -123,7 +123,7 @@ def get_notification_rule(identifier: Optional[str] = None,
 def get_notification_rule_output(identifier: Optional[pulumi.Input[str]] = None,
                                  org_id: Optional[pulumi.Input[str]] = None,
                                  project_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationRuleResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationRuleResult]:
     """
     Data source for retrieving a Notification Rule.
 
@@ -147,7 +147,7 @@ def get_notification_rule_output(identifier: Optional[pulumi.Input[str]] = None,
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getNotificationRule:getNotificationRule', __args__, opts=opts, typ=GetNotificationRuleResult)
     return __ret__.apply(lambda __response__: GetNotificationRuleResult(
         id=pulumi.get(__response__, 'id'),

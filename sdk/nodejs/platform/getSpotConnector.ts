@@ -103,7 +103,7 @@ export interface GetSpotConnectorResult {
  * });
  * ```
  */
-export function getSpotConnectorOutput(args: GetSpotConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpotConnectorResult> {
+export function getSpotConnectorOutput(args: GetSpotConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpotConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSpotConnector:getSpotConnector", {
         "identifier": args.identifier,

@@ -136,7 +136,7 @@ export interface GetAwsProxyResult {
 /**
  * Data source for AWS Autostopping proxy
  */
-export function getAwsProxyOutput(args: GetAwsProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsProxyResult> {
+export function getAwsProxyOutput(args: GetAwsProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getAwsProxy:getAwsProxy", {
         "allocateStaticIp": args.allocateStaticIp,

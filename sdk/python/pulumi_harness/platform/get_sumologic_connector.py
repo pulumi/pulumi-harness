@@ -216,7 +216,7 @@ def get_sumologic_connector_output(identifier: Optional[pulumi.Input[str]] = Non
                                    name: Optional[pulumi.Input[Optional[str]]] = None,
                                    org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSumologicConnectorResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSumologicConnectorResult]:
     """
     Datasource for looking up a Sumologic connector.
 
@@ -240,7 +240,7 @@ def get_sumologic_connector_output(identifier: Optional[pulumi.Input[str]] = Non
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getSumologicConnector:getSumologicConnector', __args__, opts=opts, typ=GetSumologicConnectorResult)
     return __ret__.apply(lambda __response__: GetSumologicConnectorResult(
         access_id_ref=pulumi.get(__response__, 'access_id_ref'),

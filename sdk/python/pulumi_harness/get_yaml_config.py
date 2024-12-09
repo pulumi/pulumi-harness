@@ -121,7 +121,7 @@ def get_yaml_config(app_id: Optional[str] = None,
         path=pulumi.get(__ret__, 'path'))
 def get_yaml_config_output(app_id: Optional[pulumi.Input[Optional[str]]] = None,
                            path: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetYamlConfigResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetYamlConfigResult]:
     """
     Data source for retrieving a yaml config.
 
@@ -132,7 +132,7 @@ def get_yaml_config_output(app_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['path'] = path
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getYamlConfig:getYamlConfig', __args__, opts=opts, typ=GetYamlConfigResult)
     return __ret__.apply(lambda __response__: GetYamlConfigResult(
         app_id=pulumi.get(__response__, 'app_id'),

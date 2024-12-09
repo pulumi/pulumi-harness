@@ -63,7 +63,7 @@ export interface GetDelegateIdsResult {
 /**
  * Use this data source to get a list of delegate ID's matching the specified search criteria.
  */
-export function getDelegateIdsOutput(args?: GetDelegateIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegateIdsResult> {
+export function getDelegateIdsOutput(args?: GetDelegateIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDelegateIdsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:cloudprovider/getDelegateIds:getDelegateIds", {

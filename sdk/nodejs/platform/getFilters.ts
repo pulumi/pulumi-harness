@@ -105,7 +105,7 @@ export interface GetFiltersResult {
  * });
  * ```
  */
-export function getFiltersOutput(args: GetFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFiltersResult> {
+export function getFiltersOutput(args: GetFiltersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFiltersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getFilters:getFilters", {
         "identifier": args.identifier,

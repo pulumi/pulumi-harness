@@ -230,7 +230,7 @@ def get_rule_enforcement(enforcement_id: Optional[str] = None,
         target_accounts=pulumi.get(__ret__, 'target_accounts'),
         target_regions=pulumi.get(__ret__, 'target_regions'))
 def get_rule_enforcement_output(enforcement_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleEnforcementResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEnforcementResult]:
     """
     Datasource for looking up a rule enforcement.
 
@@ -248,7 +248,7 @@ def get_rule_enforcement_output(enforcement_id: Optional[pulumi.Input[str]] = No
     """
     __args__ = dict()
     __args__['enforcementId'] = enforcement_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:governance/getRuleEnforcement:getRuleEnforcement', __args__, opts=opts, typ=GetRuleEnforcementResult)
     return __ret__.apply(lambda __response__: GetRuleEnforcementResult(
         cloud_provider=pulumi.get(__response__, 'cloud_provider'),

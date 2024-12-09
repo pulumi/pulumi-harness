@@ -269,7 +269,7 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[int]]] = Non
                             synced: Optional[pulumi.Input[Optional[int]]] = None,
                             system: Optional[pulumi.Input[str]] = None,
                             tags: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInfraModuleResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraModuleResult]:
     """
     Data source for retrieving modules from the module registry.
 
@@ -302,7 +302,7 @@ def get_infra_module_output(created: Optional[pulumi.Input[Optional[int]]] = Non
     __args__['synced'] = synced
     __args__['system'] = system
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getInfraModule:getInfraModule', __args__, opts=opts, typ=GetInfraModuleResult)
     return __ret__.apply(lambda __response__: GetInfraModuleResult(
         created=pulumi.get(__response__, 'created'),

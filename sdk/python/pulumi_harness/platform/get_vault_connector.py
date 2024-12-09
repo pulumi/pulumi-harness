@@ -513,7 +513,7 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVaultConnectorResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVaultConnectorResult]:
     """
     ## Example Usage
 
@@ -535,7 +535,7 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getVaultConnector:getVaultConnector', __args__, opts=opts, typ=GetVaultConnectorResult)
     return __ret__.apply(lambda __response__: GetVaultConnectorResult(
         access_type=pulumi.get(__response__, 'access_type'),

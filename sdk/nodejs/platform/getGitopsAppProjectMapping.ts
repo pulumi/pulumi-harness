@@ -84,7 +84,7 @@ export interface GetGitopsAppProjectMappingResult {
 /**
  * Resource for managing the Harness GitOps Application Project Mappings.
  */
-export function getGitopsAppProjectMappingOutput(args: GetGitopsAppProjectMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAppProjectMappingResult> {
+export function getGitopsAppProjectMappingOutput(args: GetGitopsAppProjectMappingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAppProjectMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", {
         "accountId": args.accountId,

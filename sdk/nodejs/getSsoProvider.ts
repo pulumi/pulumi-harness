@@ -50,7 +50,7 @@ export interface GetSsoProviderResult {
 /**
  * Data source for retrieving an SSO providers
  */
-export function getSsoProviderOutput(args?: GetSsoProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSsoProviderResult> {
+export function getSsoProviderOutput(args?: GetSsoProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSsoProviderResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getSsoProvider:getSsoProvider", {

@@ -56,7 +56,7 @@ export interface GetRuleSetResult {
 /**
  * Datasource for looking up a rule.
  */
-export function getRuleSetOutput(args: GetRuleSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleSetResult> {
+export function getRuleSetOutput(args: GetRuleSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:governance/getRuleSet:getRuleSet", {
         "ruleSetId": args.ruleSetId,

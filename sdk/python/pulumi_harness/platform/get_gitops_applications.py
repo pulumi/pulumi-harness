@@ -309,7 +309,7 @@ def get_gitops_applications_output(account_id: Optional[pulumi.Input[Optional[st
                                    name: Optional[pulumi.Input[str]] = None,
                                    org_id: Optional[pulumi.Input[str]] = None,
                                    project_id: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsApplicationsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsApplicationsResult]:
     """
     Datasource for fetching a Harness GitOps Application.
 
@@ -328,7 +328,7 @@ def get_gitops_applications_output(account_id: Optional[pulumi.Input[Optional[st
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsApplications:getGitopsApplications', __args__, opts=opts, typ=GetGitopsApplicationsResult)
     return __ret__.apply(lambda __response__: GetGitopsApplicationsResult(
         account_id=pulumi.get(__response__, 'account_id'),

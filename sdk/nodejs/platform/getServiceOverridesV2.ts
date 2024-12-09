@@ -77,7 +77,7 @@ export interface GetServiceOverridesV2Result {
  * });
  * ```
  */
-export function getServiceOverridesV2Output(args: GetServiceOverridesV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceOverridesV2Result> {
+export function getServiceOverridesV2Output(args: GetServiceOverridesV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceOverridesV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getServiceOverridesV2:getServiceOverridesV2", {
         "gitDetails": args.gitDetails,

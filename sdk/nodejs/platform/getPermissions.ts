@@ -80,7 +80,7 @@ export interface GetPermissionsResult {
  * });
  * ```
  */
-export function getPermissionsOutput(args?: GetPermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsResult> {
+export function getPermissionsOutput(args?: GetPermissionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPermissionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getPermissions:getPermissions", {
