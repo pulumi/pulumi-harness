@@ -130,7 +130,7 @@ def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[Optional[str]]
                                 agent_id: Optional[pulumi.Input[str]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsRepoCertResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsRepoCertResult]:
     """
     Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
 
@@ -145,7 +145,7 @@ def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[Optional[str]]
     __args__['agentId'] = agent_id
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsRepoCert:getGitopsRepoCert', __args__, opts=opts, typ=GetGitopsRepoCertResult)
     return __ret__.apply(lambda __response__: GetGitopsRepoCertResult(
         account_id=pulumi.get(__response__, 'account_id'),

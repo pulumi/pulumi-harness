@@ -118,7 +118,7 @@ export interface GetEnvironmentResult {
  * });
  * ```
  */
-export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
+export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getEnvironment:getEnvironment", {
         "gitDetails": args.gitDetails,

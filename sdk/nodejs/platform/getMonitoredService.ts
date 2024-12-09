@@ -58,7 +58,7 @@ export interface GetMonitoredServiceResult {
 /**
  * Data source for retrieving a monitored service.
  */
-export function getMonitoredServiceOutput(args: GetMonitoredServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitoredServiceResult> {
+export function getMonitoredServiceOutput(args: GetMonitoredServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitoredServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getMonitoredService:getMonitoredService", {
         "identifier": args.identifier,

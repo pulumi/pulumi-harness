@@ -118,7 +118,7 @@ def get_secret_manager_output(default: Optional[pulumi.Input[Optional[bool]]] = 
                               id: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               usage_scopes: Optional[pulumi.Input[Optional[Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretManagerResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretManagerResult]:
     """
     Data source for retrieving a Harness secret manager
 
@@ -133,7 +133,7 @@ def get_secret_manager_output(default: Optional[pulumi.Input[Optional[bool]]] = 
     __args__['id'] = id
     __args__['name'] = name
     __args__['usageScopes'] = usage_scopes
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getSecretManager:getSecretManager', __args__, opts=opts, typ=GetSecretManagerResult)
     return __ret__.apply(lambda __response__: GetSecretManagerResult(
         default=pulumi.get(__response__, 'default'),

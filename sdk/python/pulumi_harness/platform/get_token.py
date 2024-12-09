@@ -356,7 +356,7 @@ def get_token_output(account_id: Optional[pulumi.Input[str]] = None,
                      valid: Optional[pulumi.Input[Optional[bool]]] = None,
                      valid_from: Optional[pulumi.Input[Optional[int]]] = None,
                      valid_to: Optional[pulumi.Input[Optional[int]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTokenResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenResult]:
     """
     Data source for retrieving a Harness ApiKey Token.
 
@@ -407,7 +407,7 @@ def get_token_output(account_id: Optional[pulumi.Input[str]] = None,
     __args__['valid'] = valid
     __args__['validFrom'] = valid_from
     __args__['validTo'] = valid_to
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getToken:getToken', __args__, opts=opts, typ=GetTokenResult)
     return __ret__.apply(lambda __response__: GetTokenResult(
         account_id=pulumi.get(__response__, 'account_id'),

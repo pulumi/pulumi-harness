@@ -235,7 +235,7 @@ def get_delegate_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         type: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDelegateResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegateResult]:
     """
     Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
 
@@ -263,7 +263,7 @@ def get_delegate_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['name'] = name
     __args__['status'] = status
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getDelegate:getDelegate', __args__, opts=opts, typ=GetDelegateResult)
     return __ret__.apply(lambda __response__: GetDelegateResult(
         account_id=pulumi.get(__response__, 'account_id'),

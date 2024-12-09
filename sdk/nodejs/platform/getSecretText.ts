@@ -120,7 +120,7 @@ export interface GetSecretTextResult {
  * });
  * ```
  */
-export function getSecretTextOutput(args: GetSecretTextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretTextResult> {
+export function getSecretTextOutput(args: GetSecretTextOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretTextResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSecretText:getSecretText", {
         "additionalMetadatas": args.additionalMetadatas,

@@ -95,7 +95,7 @@ def get_sso_provider(id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_sso_provider_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSsoProviderResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSsoProviderResult]:
     """
     Data source for retrieving an SSO providers
 
@@ -106,7 +106,7 @@ def get_sso_provider_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getSsoProvider:getSsoProvider', __args__, opts=opts, typ=GetSsoProviderResult)
     return __ret__.apply(lambda __response__: GetSsoProviderResult(
         id=pulumi.get(__response__, 'id'),

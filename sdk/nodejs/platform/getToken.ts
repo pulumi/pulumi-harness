@@ -206,7 +206,7 @@ export interface GetTokenResult {
  * });
  * ```
  */
-export function getTokenOutput(args: GetTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTokenResult> {
+export function getTokenOutput(args: GetTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getToken:getToken", {
         "accountId": args.accountId,

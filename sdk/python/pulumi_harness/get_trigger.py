@@ -141,7 +141,7 @@ def get_trigger_output(app_id: Optional[pulumi.Input[Optional[str]]] = None,
                        description: Optional[pulumi.Input[Optional[str]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTriggerResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTriggerResult]:
     """
     Data source for retrieving a Harness trigger.
 
@@ -167,7 +167,7 @@ def get_trigger_output(app_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['description'] = description
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getTrigger:getTrigger', __args__, opts=opts, typ=GetTriggerResult)
     return __ret__.apply(lambda __response__: GetTriggerResult(
         app_id=pulumi.get(__response__, 'app_id'),

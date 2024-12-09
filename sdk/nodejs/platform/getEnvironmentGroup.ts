@@ -97,7 +97,7 @@ export interface GetEnvironmentGroupResult {
  * });
  * ```
  */
-export function getEnvironmentGroupOutput(args: GetEnvironmentGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentGroupResult> {
+export function getEnvironmentGroupOutput(args: GetEnvironmentGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getEnvironmentGroup:getEnvironmentGroup", {
         "color": args.color,

@@ -164,7 +164,7 @@ export interface GetRepoResult {
  * });
  * ```
  */
-export function getRepoOutput(args: GetRepoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoResult> {
+export function getRepoOutput(args: GetRepoOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getRepo:getRepo", {
         "defaultBranch": args.defaultBranch,

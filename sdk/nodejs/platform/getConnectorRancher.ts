@@ -112,7 +112,7 @@ export interface GetConnectorRancherResult {
  * });
  * ```
  */
-export function getConnectorRancherOutput(args: GetConnectorRancherOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorRancherResult> {
+export function getConnectorRancherOutput(args: GetConnectorRancherOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorRancherResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getConnectorRancher:getConnectorRancher", {
         "bearerToken": args.bearerToken,

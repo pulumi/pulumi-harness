@@ -319,7 +319,7 @@ def get_azure_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bo
                            security_groups: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            subnet_id: Optional[pulumi.Input[str]] = None,
                            vpc: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAzureProxyResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureProxyResult]:
     """
     Data source for Azure Autostopping proxy
 
@@ -353,7 +353,7 @@ def get_azure_proxy_output(allocate_static_ip: Optional[pulumi.Input[Optional[bo
     __args__['securityGroups'] = security_groups
     __args__['subnetId'] = subnet_id
     __args__['vpc'] = vpc
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getAzureProxy:getAzureProxy', __args__, opts=opts, typ=GetAzureProxyResult)
     return __ret__.apply(lambda __response__: GetAzureProxyResult(
         allocate_static_ip=pulumi.get(__response__, 'allocate_static_ip'),

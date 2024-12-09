@@ -112,7 +112,7 @@ def get_monitored_service(identifier: Optional[str] = None,
 def get_monitored_service_output(identifier: Optional[pulumi.Input[str]] = None,
                                  org_id: Optional[pulumi.Input[str]] = None,
                                  project_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMonitoredServiceResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitoredServiceResult]:
     """
     Data source for retrieving a monitored service.
 
@@ -125,7 +125,7 @@ def get_monitored_service_output(identifier: Optional[pulumi.Input[str]] = None,
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getMonitoredService:getMonitoredService', __args__, opts=opts, typ=GetMonitoredServiceResult)
     return __ret__.apply(lambda __response__: GetMonitoredServiceResult(
         id=pulumi.get(__response__, 'id'),

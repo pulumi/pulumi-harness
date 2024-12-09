@@ -190,7 +190,7 @@ def get_kubernetes_cloud_cost_connector_output(identifier: Optional[pulumi.Input
                                                name: Optional[pulumi.Input[Optional[str]]] = None,
                                                org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesCloudCostConnectorResult]:
+                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesCloudCostConnectorResult]:
     """
     Datasource for looking up a Kubernetes Cloud Cost connector.
 
@@ -214,7 +214,7 @@ def get_kubernetes_cloud_cost_connector_output(identifier: Optional[pulumi.Input
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector', __args__, opts=opts, typ=GetKubernetesCloudCostConnectorResult)
     return __ret__.apply(lambda __response__: GetKubernetesCloudCostConnectorResult(
         connector_ref=pulumi.get(__response__, 'connector_ref'),

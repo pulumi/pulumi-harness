@@ -45,7 +45,7 @@ export interface GetCurrentAccountResult {
 /**
  * Data source for retrieving information about the current Harness account
  */
-export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentAccountResult> {
+export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getCurrentAccount:getCurrentAccount", {

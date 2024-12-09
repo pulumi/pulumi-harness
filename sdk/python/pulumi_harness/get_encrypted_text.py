@@ -114,7 +114,7 @@ def get_encrypted_text(id: Optional[str] = None,
 def get_encrypted_text_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               usage_scopes: Optional[pulumi.Input[Optional[Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict']]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEncryptedTextResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEncryptedTextResult]:
     """
     Data source for retrieving a Harness application
 
@@ -127,7 +127,7 @@ def get_encrypted_text_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['id'] = id
     __args__['name'] = name
     __args__['usageScopes'] = usage_scopes
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getEncryptedText:getEncryptedText', __args__, opts=opts, typ=GetEncryptedTextResult)
     return __ret__.apply(lambda __response__: GetEncryptedTextResult(
         id=pulumi.get(__response__, 'id'),

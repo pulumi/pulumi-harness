@@ -94,7 +94,7 @@ export interface GetDelegatetokenResult {
 /**
  * Data Source for retrieving delegate tokens.
  */
-export function getDelegatetokenOutput(args: GetDelegatetokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegatetokenResult> {
+export function getDelegatetokenOutput(args: GetDelegatetokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDelegatetokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDelegatetoken:getDelegatetoken", {
         "accountId": args.accountId,

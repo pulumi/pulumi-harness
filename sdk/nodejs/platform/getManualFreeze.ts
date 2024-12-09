@@ -133,7 +133,7 @@ export interface GetManualFreezeResult {
  * });
  * ```
  */
-export function getManualFreezeOutput(args: GetManualFreezeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManualFreezeResult> {
+export function getManualFreezeOutput(args: GetManualFreezeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManualFreezeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getManualFreeze:getManualFreeze", {
         "accountId": args.accountId,

@@ -118,7 +118,7 @@ export interface GetDatadogConnectorResult {
  * });
  * ```
  */
-export function getDatadogConnectorOutput(args: GetDatadogConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatadogConnectorResult> {
+export function getDatadogConnectorOutput(args: GetDatadogConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatadogConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDatadogConnector:getDatadogConnector", {
         "delegateSelectors": args.delegateSelectors,

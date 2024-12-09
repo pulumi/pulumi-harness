@@ -291,7 +291,7 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[str]
                              sku_size: Optional[pulumi.Input[Optional[str]]] = None,
                              subnet_id: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAzureGatewayResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureGatewayResult]:
     """
     Data source for AWS Autostopping proxy
 
@@ -323,7 +323,7 @@ def get_azure_gateway_output(app_gateway_id: Optional[pulumi.Input[Optional[str]
     __args__['skuSize'] = sku_size
     __args__['subnetId'] = subnet_id
     __args__['vpc'] = vpc
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getAzureGateway:getAzureGateway', __args__, opts=opts, typ=GetAzureGatewayResult)
     return __ret__.apply(lambda __response__: GetAzureGatewayResult(
         app_gateway_id=pulumi.get(__response__, 'app_gateway_id'),

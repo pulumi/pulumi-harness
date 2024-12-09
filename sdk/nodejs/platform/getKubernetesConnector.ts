@@ -123,7 +123,7 @@ export interface GetKubernetesConnectorResult {
  * });
  * ```
  */
-export function getKubernetesConnectorOutput(args: GetKubernetesConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesConnectorResult> {
+export function getKubernetesConnectorOutput(args: GetKubernetesConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getKubernetesConnector:getKubernetesConnector", {
         "identifier": args.identifier,

@@ -197,7 +197,7 @@ def get_environment_clusters_mapping_output(clusters: Optional[pulumi.Input[Opti
                                             identifier: Optional[pulumi.Input[str]] = None,
                                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentClustersMappingResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentClustersMappingResult]:
     """
     Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
 
@@ -250,7 +250,7 @@ def get_environment_clusters_mapping_output(clusters: Optional[pulumi.Input[Opti
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping', __args__, opts=opts, typ=GetEnvironmentClustersMappingResult)
     return __ret__.apply(lambda __response__: GetEnvironmentClustersMappingResult(
         clusters=pulumi.get(__response__, 'clusters'),

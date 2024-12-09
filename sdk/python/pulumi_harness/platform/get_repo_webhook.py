@@ -270,7 +270,7 @@ def get_repo_webhook_output(description: Optional[pulumi.Input[Optional[str]]] =
                             secret: Optional[pulumi.Input[Optional[str]]] = None,
                             triggers: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             url: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepoWebhookResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepoWebhookResult]:
     """
     Data source for retrieving a Harness Repo Webhook.
 
@@ -297,7 +297,7 @@ def get_repo_webhook_output(description: Optional[pulumi.Input[Optional[str]]] =
     __args__['secret'] = secret
     __args__['triggers'] = triggers
     __args__['url'] = url
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getRepoWebhook:getRepoWebhook', __args__, opts=opts, typ=GetRepoWebhookResult)
     return __ret__.apply(lambda __response__: GetRepoWebhookResult(
         created=pulumi.get(__response__, 'created'),

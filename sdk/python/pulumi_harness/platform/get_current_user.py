@@ -228,12 +228,12 @@ def get_current_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
         signup_action=pulumi.get(__ret__, 'signup_action'),
         token=pulumi.get(__ret__, 'token'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_current_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCurrentUserResult]:
+def get_current_user_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
     Data source for retrieving the current user based on the API key.
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getCurrentUser:getCurrentUser', __args__, opts=opts, typ=GetCurrentUserResult)
     return __ret__.apply(lambda __response__: GetCurrentUserResult(
         admin=pulumi.get(__response__, 'admin'),

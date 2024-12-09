@@ -139,7 +139,7 @@ export interface GetGitopsApplicationsResult {
 /**
  * Datasource for fetching a Harness GitOps Application.
  */
-export function getGitopsApplicationsOutput(args: GetGitopsApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsApplicationsResult> {
+export function getGitopsApplicationsOutput(args: GetGitopsApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsApplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsApplications:getGitopsApplications", {
         "accountId": args.accountId,
