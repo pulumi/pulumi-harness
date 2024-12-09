@@ -1961,6 +1961,14 @@
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
             },
+            "harness_platform_infra_module": {
+                "current": "harness:platform/infraModule:InfraModule",
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_infrastructure": {
                 "current": "harness:platform/infrastructure:Infrastructure",
                 "fields": {
@@ -4524,6 +4532,9 @@
             },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline"
+            },
+            "harness_platform_infra_module": {
+                "current": "harness:platform/getInfraModule:getInfraModule"
             },
             "harness_platform_infrastructure": {
                 "current": "harness:platform/getInfrastructure:getInfrastructure",
