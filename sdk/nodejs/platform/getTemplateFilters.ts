@@ -109,7 +109,7 @@ export interface GetTemplateFiltersResult {
  * });
  * ```
  */
-export function getTemplateFiltersOutput(args: GetTemplateFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateFiltersResult> {
+export function getTemplateFiltersOutput(args: GetTemplateFiltersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateFiltersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getTemplateFilters:getTemplateFilters", {
         "identifier": args.identifier,

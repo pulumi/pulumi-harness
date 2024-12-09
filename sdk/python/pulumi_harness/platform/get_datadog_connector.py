@@ -220,7 +220,7 @@ def get_datadog_connector_output(delegate_selectors: Optional[pulumi.Input[Optio
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatadogConnectorResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatadogConnectorResult]:
     """
     Datasource for looking up a Datadog connector.
 
@@ -246,7 +246,7 @@ def get_datadog_connector_output(delegate_selectors: Optional[pulumi.Input[Optio
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDatadogConnector:getDatadogConnector', __args__, opts=opts, typ=GetDatadogConnectorResult)
     return __ret__.apply(lambda __response__: GetDatadogConnectorResult(
         api_key_ref=pulumi.get(__response__, 'api_key_ref'),

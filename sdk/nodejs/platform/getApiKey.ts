@@ -145,7 +145,7 @@ export interface GetApiKeyResult {
  * });
  * ```
  */
-export function getApiKeyOutput(args: GetApiKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiKeyResult> {
+export function getApiKeyOutput(args: GetApiKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getApiKey:getApiKey", {
         "accountId": args.accountId,

@@ -115,7 +115,7 @@ export interface GetDockerConnectorResult {
  * });
  * ```
  */
-export function getDockerConnectorOutput(args: GetDockerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDockerConnectorResult> {
+export function getDockerConnectorOutput(args: GetDockerConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDockerConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDockerConnector:getDockerConnector", {
         "identifier": args.identifier,

@@ -85,7 +85,7 @@ export interface GetGitxWebhookResult {
 /**
  * Resource for creating a Harness pipeline.
  */
-export function getGitxWebhookOutput(args: GetGitxWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitxWebhookResult> {
+export function getGitxWebhookOutput(args: GetGitxWebhookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitxWebhookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitxWebhook:getGitxWebhook", {
         "description": args.description,

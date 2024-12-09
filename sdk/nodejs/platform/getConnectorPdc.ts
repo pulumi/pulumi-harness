@@ -107,7 +107,7 @@ export interface GetConnectorPdcResult {
  * });
  * ```
  */
-export function getConnectorPdcOutput(args: GetConnectorPdcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorPdcResult> {
+export function getConnectorPdcOutput(args: GetConnectorPdcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorPdcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getConnectorPdc:getConnectorPdc", {
         "identifier": args.identifier,

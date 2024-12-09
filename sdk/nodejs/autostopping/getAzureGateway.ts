@@ -146,7 +146,7 @@ export interface GetAzureGatewayResult {
 /**
  * Data source for AWS Autostopping proxy
  */
-export function getAzureGatewayOutput(args: GetAzureGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureGatewayResult> {
+export function getAzureGatewayOutput(args: GetAzureGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getAzureGateway:getAzureGateway", {
         "appGatewayId": args.appGatewayId,

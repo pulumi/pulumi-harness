@@ -45,7 +45,7 @@ export interface GetOverridesResult {
     readonly type: string;
     readonly yaml: string;
 }
-export function getOverridesOutput(args: GetOverridesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOverridesResult> {
+export function getOverridesOutput(args: GetOverridesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOverridesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getOverrides:getOverrides", {
         "gitDetails": args.gitDetails,

@@ -236,7 +236,7 @@ def get_aws_alb_output(alb_arn: Optional[pulumi.Input[Optional[str]]] = None,
                        route53_hosted_zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                        security_groups: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        vpc: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsAlbResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsAlbResult]:
     """
     Data source for AWS Autostopping proxy
 
@@ -261,7 +261,7 @@ def get_aws_alb_output(alb_arn: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['route53HostedZoneId'] = route53_hosted_zone_id
     __args__['securityGroups'] = security_groups
     __args__['vpc'] = vpc
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getAwsAlb:getAwsAlb', __args__, opts=opts, typ=GetAwsAlbResult)
     return __ret__.apply(lambda __response__: GetAwsAlbResult(
         alb_arn=pulumi.get(__response__, 'alb_arn'),

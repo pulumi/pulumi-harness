@@ -107,7 +107,7 @@ export interface GetSecretSshkeyResult {
  * });
  * ```
  */
-export function getSecretSshkeyOutput(args: GetSecretSshkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretSshkeyResult> {
+export function getSecretSshkeyOutput(args: GetSecretSshkeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretSshkeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSecretSshkey:getSecretSshkey", {
         "identifier": args.identifier,

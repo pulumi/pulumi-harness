@@ -72,13 +72,13 @@ def get_provider(identifier: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'))
 def get_provider_output(identifier: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProviderResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProviderResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getProvider:getProvider', __args__, opts=opts, typ=GetProviderResult)
     return __ret__.apply(lambda __response__: GetProviderResult(
         id=pulumi.get(__response__, 'id'),

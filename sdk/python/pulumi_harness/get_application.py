@@ -150,7 +150,7 @@ def get_application_output(description: Optional[pulumi.Input[Optional[str]]] = 
                            id: Optional[pulumi.Input[Optional[str]]] = None,
                            is_manual_trigger_authorized: Optional[pulumi.Input[Optional[bool]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationResult]:
     """
     Data source for retrieving a Harness application
 
@@ -169,7 +169,7 @@ def get_application_output(description: Optional[pulumi.Input[Optional[str]]] = 
     __args__['id'] = id
     __args__['isManualTriggerAuthorized'] = is_manual_trigger_authorized
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult)
     return __ret__.apply(lambda __response__: GetApplicationResult(
         description=pulumi.get(__response__, 'description'),

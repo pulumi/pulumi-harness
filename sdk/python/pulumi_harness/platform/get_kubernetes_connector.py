@@ -243,7 +243,7 @@ def get_kubernetes_connector_output(identifier: Optional[pulumi.Input[str]] = No
                                     name: Optional[pulumi.Input[Optional[str]]] = None,
                                     org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesConnectorResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesConnectorResult]:
     """
     Datasource for looking up a Kubernetes connector.
 
@@ -267,7 +267,7 @@ def get_kubernetes_connector_output(identifier: Optional[pulumi.Input[str]] = No
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getKubernetesConnector:getKubernetesConnector', __args__, opts=opts, typ=GetKubernetesConnectorResult)
     return __ret__.apply(lambda __response__: GetKubernetesConnectorResult(
         client_key_certs=pulumi.get(__response__, 'client_key_certs'),

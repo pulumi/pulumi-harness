@@ -112,7 +112,7 @@ export interface GetArtifactoryConnectorResult {
  * });
  * ```
  */
-export function getArtifactoryConnectorOutput(args?: GetArtifactoryConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArtifactoryConnectorResult> {
+export function getArtifactoryConnectorOutput(args?: GetArtifactoryConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetArtifactoryConnectorResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getArtifactoryConnector:getArtifactoryConnector", {

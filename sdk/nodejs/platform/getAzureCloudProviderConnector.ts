@@ -115,7 +115,7 @@ export interface GetAzureCloudProviderConnectorResult {
  * });
  * ```
  */
-export function getAzureCloudProviderConnectorOutput(args: GetAzureCloudProviderConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureCloudProviderConnectorResult> {
+export function getAzureCloudProviderConnectorOutput(args: GetAzureCloudProviderConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureCloudProviderConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", {
         "identifier": args.identifier,

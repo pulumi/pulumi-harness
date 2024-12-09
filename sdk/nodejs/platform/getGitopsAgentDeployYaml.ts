@@ -134,7 +134,7 @@ export interface GetGitopsAgentDeployYamlResult {
  * });
  * ```
  */
-export function getGitopsAgentDeployYamlOutput(args: GetGitopsAgentDeployYamlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitopsAgentDeployYamlResult> {
+export function getGitopsAgentDeployYamlOutput(args: GetGitopsAgentDeployYamlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAgentDeployYamlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", {
         "accountId": args.accountId,

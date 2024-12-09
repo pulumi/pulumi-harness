@@ -66,7 +66,7 @@ export interface GetSecretManagerResult {
 /**
  * Data source for retrieving a Harness secret manager
  */
-export function getSecretManagerOutput(args?: GetSecretManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretManagerResult> {
+export function getSecretManagerOutput(args?: GetSecretManagerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretManagerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getSecretManager:getSecretManager", {

@@ -112,7 +112,7 @@ def get_orchestrator(cluster_endpoint: Optional[str] = None,
 def get_orchestrator_output(cluster_endpoint: Optional[pulumi.Input[str]] = None,
                             k8s_connector_id: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrchestratorResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrchestratorResult]:
     """
     Data source for retrieving a Harness ClusterOrchestrator.
 
@@ -125,7 +125,7 @@ def get_orchestrator_output(cluster_endpoint: Optional[pulumi.Input[str]] = None
     __args__['clusterEndpoint'] = cluster_endpoint
     __args__['k8sConnectorId'] = k8s_connector_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:cluster/getOrchestrator:getOrchestrator', __args__, opts=opts, typ=GetOrchestratorResult)
     return __ret__.apply(lambda __response__: GetOrchestratorResult(
         cluster_endpoint=pulumi.get(__response__, 'cluster_endpoint'),

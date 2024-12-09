@@ -84,7 +84,7 @@ export interface GetNotificationRuleResult {
  * });
  * ```
  */
-export function getNotificationRuleOutput(args: GetNotificationRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationRuleResult> {
+export function getNotificationRuleOutput(args: GetNotificationRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getNotificationRule:getNotificationRule", {
         "identifier": args.identifier,

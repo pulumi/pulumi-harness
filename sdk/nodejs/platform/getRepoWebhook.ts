@@ -133,7 +133,7 @@ export interface GetRepoWebhookResult {
 /**
  * Data source for retrieving a Harness Repo Webhook.
  */
-export function getRepoWebhookOutput(args: GetRepoWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoWebhookResult> {
+export function getRepoWebhookOutput(args: GetRepoWebhookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepoWebhookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getRepoWebhook:getRepoWebhook", {
         "description": args.description,

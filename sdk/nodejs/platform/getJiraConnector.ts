@@ -123,7 +123,7 @@ export interface GetJiraConnectorResult {
  * });
  * ```
  */
-export function getJiraConnectorOutput(args: GetJiraConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJiraConnectorResult> {
+export function getJiraConnectorOutput(args: GetJiraConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJiraConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getJiraConnector:getJiraConnector", {
         "identifier": args.identifier,

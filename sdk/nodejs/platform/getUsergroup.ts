@@ -151,7 +151,7 @@ export interface GetUsergroupResult {
  * });
  * ```
  */
-export function getUsergroupOutput(args?: GetUsergroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsergroupResult> {
+export function getUsergroupOutput(args?: GetUsergroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsergroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getUsergroup:getUsergroup", {

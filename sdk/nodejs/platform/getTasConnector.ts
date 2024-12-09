@@ -111,7 +111,7 @@ export interface GetTasConnectorResult {
  * });
  * ```
  */
-export function getTasConnectorOutput(args: GetTasConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTasConnectorResult> {
+export function getTasConnectorOutput(args: GetTasConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTasConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getTasConnector:getTasConnector", {
         "identifier": args.identifier,

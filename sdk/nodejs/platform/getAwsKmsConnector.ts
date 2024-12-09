@@ -111,7 +111,7 @@ export interface GetAwsKmsConnectorResult {
  * });
  * ```
  */
-export function getAwsKmsConnectorOutput(args: GetAwsKmsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsKmsConnectorResult> {
+export function getAwsKmsConnectorOutput(args: GetAwsKmsConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsKmsConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAwsKmsConnector:getAwsKmsConnector", {
         "identifier": args.identifier,

@@ -144,7 +144,7 @@ export interface GetInfraModuleResult {
 /**
  * Data source for retrieving modules from the module registry.
  */
-export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInfraModuleResult> {
+export function getInfraModuleOutput(args: GetInfraModuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfraModuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getInfraModule:getInfraModule", {
         "created": args.created,

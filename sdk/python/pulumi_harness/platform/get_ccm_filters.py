@@ -181,7 +181,7 @@ def get_ccm_filters_output(identifier: Optional[pulumi.Input[str]] = None,
                            org_id: Optional[pulumi.Input[Optional[str]]] = None,
                            project_id: Optional[pulumi.Input[Optional[str]]] = None,
                            type: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCcmFiltersResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCcmFiltersResult]:
     """
     Data source for retrieving a Harness CCM Filter.
 
@@ -208,7 +208,7 @@ def get_ccm_filters_output(identifier: Optional[pulumi.Input[str]] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getCcmFilters:getCcmFilters', __args__, opts=opts, typ=GetCcmFiltersResult)
     return __ret__.apply(lambda __response__: GetCcmFiltersResult(
         filter_properties=pulumi.get(__response__, 'filter_properties'),

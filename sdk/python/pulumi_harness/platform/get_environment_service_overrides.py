@@ -171,7 +171,7 @@ def get_environment_service_overrides_output(env_id: Optional[pulumi.Input[str]]
                                              org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                              project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                              service_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentServiceOverridesResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentServiceOverridesResult]:
     """
     Data source for Harness environment service overrides.
 
@@ -200,7 +200,7 @@ def get_environment_service_overrides_output(env_id: Optional[pulumi.Input[str]]
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['serviceId'] = service_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides', __args__, opts=opts, typ=GetEnvironmentServiceOverridesResult)
     return __ret__.apply(lambda __response__: GetEnvironmentServiceOverridesResult(
         env_id=pulumi.get(__response__, 'env_id'),

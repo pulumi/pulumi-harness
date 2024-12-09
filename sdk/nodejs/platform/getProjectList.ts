@@ -128,7 +128,7 @@ export interface GetProjectListResult {
  * });
  * ```
  */
-export function getProjectListOutput(args: GetProjectListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectListResult> {
+export function getProjectListOutput(args: GetProjectListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getProjectList:getProjectList", {
         "identifier": args.identifier,

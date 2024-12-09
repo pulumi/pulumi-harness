@@ -124,7 +124,7 @@ export interface GetDbInstanceResult {
  * });
  * ```
  */
-export function getDbInstanceOutput(args: GetDbInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstanceResult> {
+export function getDbInstanceOutput(args: GetDbInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDbInstance:getDbInstance", {
         "identifier": args.identifier,

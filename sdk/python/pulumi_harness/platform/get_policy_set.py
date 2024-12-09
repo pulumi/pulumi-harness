@@ -242,7 +242,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[str]] = None,
                           policies: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']]]]] = None,
                           project_id: Optional[pulumi.Input[Optional[str]]] = None,
                           type: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicySetResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicySetResult]:
     """
     Data source for retrieving a Harness policyset.
 
@@ -282,7 +282,7 @@ def get_policy_set_output(action: Optional[pulumi.Input[str]] = None,
     __args__['policies'] = policies
     __args__['projectId'] = project_id
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getPolicySet:getPolicySet', __args__, opts=opts, typ=GetPolicySetResult)
     return __ret__.apply(lambda __response__: GetPolicySetResult(
         action=pulumi.get(__response__, 'action'),

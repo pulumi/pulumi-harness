@@ -100,7 +100,7 @@ export interface GetTriggerResult {
  * });
  * ```
  */
-export function getTriggerOutput(args?: GetTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggerResult> {
+export function getTriggerOutput(args?: GetTriggerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTriggerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getTrigger:getTrigger", {

@@ -180,7 +180,7 @@ def get_delegatetoken_output(account_id: Optional[pulumi.Input[str]] = None,
                              project_id: Optional[pulumi.Input[Optional[str]]] = None,
                              token_status: Optional[pulumi.Input[Optional[str]]] = None,
                              value: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDelegatetokenResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegatetokenResult]:
     """
     Data Source for retrieving delegate tokens.
 
@@ -201,7 +201,7 @@ def get_delegatetoken_output(account_id: Optional[pulumi.Input[str]] = None,
     __args__['projectId'] = project_id
     __args__['tokenStatus'] = token_status
     __args__['value'] = value
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDelegatetoken:getDelegatetoken', __args__, opts=opts, typ=GetDelegatetokenResult)
     return __ret__.apply(lambda __response__: GetDelegatetokenResult(
         account_id=pulumi.get(__response__, 'account_id'),

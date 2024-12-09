@@ -123,7 +123,7 @@ export interface GetGitlabConnectorResult {
  * });
  * ```
  */
-export function getGitlabConnectorOutput(args: GetGitlabConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitlabConnectorResult> {
+export function getGitlabConnectorOutput(args: GetGitlabConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitlabConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitlabConnector:getGitlabConnector", {
         "identifier": args.identifier,

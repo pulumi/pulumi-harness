@@ -113,7 +113,7 @@ export interface GetSumologicConnectorResult {
  * });
  * ```
  */
-export function getSumologicConnectorOutput(args: GetSumologicConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSumologicConnectorResult> {
+export function getSumologicConnectorOutput(args: GetSumologicConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSumologicConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSumologicConnector:getSumologicConnector", {
         "identifier": args.identifier,

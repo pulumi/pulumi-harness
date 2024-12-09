@@ -109,7 +109,7 @@ export interface GetEnvironmentListResult {
  * const example = harness.platform.getEnvironmentList({});
  * ```
  */
-export function getEnvironmentListOutput(args?: GetEnvironmentListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentListResult> {
+export function getEnvironmentListOutput(args?: GetEnvironmentListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentListResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getEnvironmentList:getEnvironmentList", {

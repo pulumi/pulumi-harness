@@ -135,7 +135,7 @@ export interface GetFileStoreFileResult {
  * });
  * ```
  */
-export function getFileStoreFileOutput(args: GetFileStoreFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileStoreFileResult> {
+export function getFileStoreFileOutput(args: GetFileStoreFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFileStoreFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getFileStoreFile:getFileStoreFile", {
         "identifier": args.identifier,

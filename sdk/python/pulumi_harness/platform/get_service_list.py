@@ -126,7 +126,7 @@ def get_service_list(org_id: Optional[str] = None,
         services=pulumi.get(__ret__, 'services'))
 def get_service_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = None,
                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceListResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceListResult]:
     """
     Data source for retrieving Harness service list.
 
@@ -163,7 +163,7 @@ def get_service_list_output(org_id: Optional[pulumi.Input[Optional[str]]] = None
     __args__ = dict()
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getServiceList:getServiceList', __args__, opts=opts, typ=GetServiceListResult)
     return __ret__.apply(lambda __response__: GetServiceListResult(
         id=pulumi.get(__response__, 'id'),
