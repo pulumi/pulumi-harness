@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,16 +19,24 @@ public final class GetGitopsAgentPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public String accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -75,6 +84,21 @@ public final class GetGitopsAgentPlainArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    @Import(name="withCredentials")
+    private @Nullable Boolean withCredentials;
+
+    /**
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    public Optional<Boolean> withCredentials() {
+        return Optional.ofNullable(this.withCredentials);
+    }
+
     private GetGitopsAgentPlainArgs() {}
 
     private GetGitopsAgentPlainArgs(GetGitopsAgentPlainArgs $) {
@@ -82,6 +106,7 @@ public final class GetGitopsAgentPlainArgs extends com.pulumi.resources.InvokeAr
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.withCredentials = $.withCredentials;
     }
 
     public static Builder builder() {
@@ -107,8 +132,12 @@ public final class GetGitopsAgentPlainArgs extends com.pulumi.resources.InvokeAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(String accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -146,10 +175,18 @@ public final class GetGitopsAgentPlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
+        /**
+         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withCredentials(@Nullable Boolean withCredentials) {
+            $.withCredentials = withCredentials;
+            return this;
+        }
+
         public GetGitopsAgentPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsAgentPlainArgs", "accountId");
-            }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAgentPlainArgs", "identifier");
             }

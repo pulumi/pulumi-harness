@@ -21,38 +21,30 @@ __all__ = ['GitOpsRepoCertArgs', 'GitOpsRepoCert']
 @pulumi.input_type
 class GitOpsRepoCertArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  agent_id: pulumi.Input[str],
                  requests: pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GitOpsRepoCert resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps repository certificate.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps repository certificate.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]] requests: Repository Certificate create/update request.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps repository certificate.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps repository certificate.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps repository certificate.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "requests", requests)
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier of the GitOps repository certificate.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="agentId")
@@ -77,6 +69,19 @@ class GitOpsRepoCertArgs:
     @requests.setter
     def requests(self, value: pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]]):
         pulumi.set(self, "requests", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account identifier of the GitOps repository certificate.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -120,6 +125,9 @@ class _GitOpsRepoCertState:
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsRepoCertRequestArgs']]] requests: Repository Certificate create/update request.
         """
         if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
@@ -132,6 +140,7 @@ class _GitOpsRepoCertState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account identifier of the GitOps repository certificate.
@@ -337,8 +346,6 @@ class GitOpsRepoCert(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GitOpsRepoCertArgs.__new__(GitOpsRepoCertArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
@@ -389,6 +396,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> pulumi.Output[str]:
         """
         Account identifier of the GitOps repository certificate.

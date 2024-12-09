@@ -59,6 +59,7 @@ class GetGitopsAgentDeployYamlResult:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
         """
         Account identifier of the GitOps agent.
@@ -201,7 +202,7 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         proxies=pulumi.get(__ret__, 'proxies'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[str]] = None,
+def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         ca_data: Optional[pulumi.Input[Optional[str]]] = None,
                                         identifier: Optional[pulumi.Input[str]] = None,
                                         namespace: Optional[pulumi.Input[str]] = None,

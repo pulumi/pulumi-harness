@@ -14,6 +14,10 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetDbSchemaSchemaSourceResult
     {
         /// <summary>
+        /// If connector type is artifactory, path to the archive file which contains the changeLog
+        /// </summary>
+        public readonly string ArchivePath;
+        /// <summary>
         /// Connector to repository at which to find details about the database schema
         /// </summary>
         public readonly string Connector;
@@ -28,12 +32,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GetDbSchemaSchemaSourceResult(
+            string archivePath,
+
             string connector,
 
             string location,
 
             string repo)
         {
+            ArchivePath = archivePath;
             Connector = connector;
             Location = location;
             Repo = repo;

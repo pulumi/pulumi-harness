@@ -58,19 +58,21 @@ export class GitopsAppProject extends pulumi.CustomResource {
     }
 
     /**
-     * Account identifier of the GitOps project/agent.
+     * Account identifier of the GitOps Agent where argo project will exist.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Agent identifier of the GitOps project. Project is created on agent scope.
+     * Agent identifier of the agent where argo project will exist (include scope prefix)
      */
     public readonly agentId!: pulumi.Output<string>;
     /**
-     * Org identifier of the GitOps agent for which project is created.
+     * Org identifier of the GitOps Agent where argo project is to be created.
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Project identifier of the GitOps agent for which project is created.
+     * Project identifier of the Gitops Agent where argo project is to be created.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
@@ -78,11 +80,11 @@ export class GitopsAppProject extends pulumi.CustomResource {
      */
     public readonly projects!: pulumi.Output<outputs.platform.GitopsAppProjectProject[]>;
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      */
     public readonly queryName!: pulumi.Output<string>;
     /**
-     * Indicates if the GitOps project should be updated if existing and inserted if not.
+     * Indicates if the argo project should be updated if existing and inserted if not.
      */
     public readonly upsert!: pulumi.Output<boolean | undefined>;
 
@@ -108,9 +110,6 @@ export class GitopsAppProject extends pulumi.CustomResource {
             resourceInputs["upsert"] = state ? state.upsert : undefined;
         } else {
             const args = argsOrState as GitopsAppProjectArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
@@ -135,19 +134,21 @@ export class GitopsAppProject extends pulumi.CustomResource {
  */
 export interface GitopsAppProjectState {
     /**
-     * Account identifier of the GitOps project/agent.
+     * Account identifier of the GitOps Agent where argo project will exist.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Agent identifier of the GitOps project. Project is created on agent scope.
+     * Agent identifier of the agent where argo project will exist (include scope prefix)
      */
     agentId?: pulumi.Input<string>;
     /**
-     * Org identifier of the GitOps agent for which project is created.
+     * Org identifier of the GitOps Agent where argo project is to be created.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the GitOps agent for which project is created.
+     * Project identifier of the Gitops Agent where argo project is to be created.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -155,11 +156,11 @@ export interface GitopsAppProjectState {
      */
     projects?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProject>[]>;
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      */
     queryName?: pulumi.Input<string>;
     /**
-     * Indicates if the GitOps project should be updated if existing and inserted if not.
+     * Indicates if the argo project should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }
@@ -169,19 +170,21 @@ export interface GitopsAppProjectState {
  */
 export interface GitopsAppProjectArgs {
     /**
-     * Account identifier of the GitOps project/agent.
+     * Account identifier of the GitOps Agent where argo project will exist.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
-     * Agent identifier of the GitOps project. Project is created on agent scope.
+     * Agent identifier of the agent where argo project will exist (include scope prefix)
      */
     agentId: pulumi.Input<string>;
     /**
-     * Org identifier of the GitOps agent for which project is created.
+     * Org identifier of the GitOps Agent where argo project is to be created.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project identifier of the GitOps agent for which project is created.
+     * Project identifier of the Gitops Agent where argo project is to be created.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -189,11 +192,11 @@ export interface GitopsAppProjectArgs {
      */
     projects: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProject>[]>;
     /**
-     * Identifier for the GitOps project.
+     * Identifier for the GitOps Argo project.
      */
     queryName?: pulumi.Input<string>;
     /**
-     * Indicates if the GitOps project should be updated if existing and inserted if not.
+     * Indicates if the argo project should be updated if existing and inserted if not.
      */
     upsert?: pulumi.Input<boolean>;
 }

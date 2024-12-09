@@ -17,7 +17,11 @@ public final class GetGitopsAgentDeployYamlResult {
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     private String accountId;
     /**
      * @return CA data of the GitOps agent, base64 encoded content of ca chain.
@@ -64,7 +68,11 @@ public final class GetGitopsAgentDeployYamlResult {
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public String accountId() {
         return this.accountId;
     }

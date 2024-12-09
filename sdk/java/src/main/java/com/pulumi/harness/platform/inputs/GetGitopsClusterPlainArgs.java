@@ -18,16 +18,24 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
     /**
      * Account identifier of the GitOps cluster.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account identifier of the GitOps cluster.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public String accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -123,8 +131,12 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(String accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -174,9 +186,6 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetGitopsClusterPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsClusterPlainArgs", "accountId");
-            }
             if ($.agentId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsClusterPlainArgs", "agentId");
             }

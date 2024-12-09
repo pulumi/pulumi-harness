@@ -74,8 +74,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps agent.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// CA data of the GitOps agent, base64 encoded content of ca chain.
@@ -130,8 +130,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps agent.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// CA data of the GitOps agent, base64 encoded content of ca chain.

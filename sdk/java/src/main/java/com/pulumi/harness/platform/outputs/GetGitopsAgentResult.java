@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsAgentMetadata;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,11 @@ public final class GetGitopsAgentResult {
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     private String accountId;
     /**
      * @return Agent token to be used for authentication of the agent with Harness.
@@ -41,6 +46,11 @@ public final class GetGitopsAgentResult {
      */
     private String identifier;
     /**
+     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet with_credentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    private Boolean isAuthenticated;
+    /**
      * @return Metadata of the agent.
      * 
      */
@@ -61,6 +71,11 @@ public final class GetGitopsAgentResult {
      */
     private @Nullable String orgId;
     /**
+     * @return Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     * 
+     */
+    private String prefixedIdentifier;
+    /**
      * @return Project identifier of the GitOps agent.
      * 
      */
@@ -76,12 +91,21 @@ public final class GetGitopsAgentResult {
      * 
      */
     private String type;
+    /**
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    private @Nullable Boolean withCredentials;
 
     private GetGitopsAgentResult() {}
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public String accountId() {
         return this.accountId;
     }
@@ -114,6 +138,13 @@ public final class GetGitopsAgentResult {
         return this.identifier;
     }
     /**
+     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet with_credentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    public Boolean isAuthenticated() {
+        return this.isAuthenticated;
+    }
+    /**
      * @return Metadata of the agent.
      * 
      */
@@ -142,6 +173,13 @@ public final class GetGitopsAgentResult {
         return Optional.ofNullable(this.orgId);
     }
     /**
+     * @return Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     * 
+     */
+    public String prefixedIdentifier() {
+        return this.prefixedIdentifier;
+    }
+    /**
      * @return Project identifier of the GitOps agent.
      * 
      */
@@ -163,6 +201,13 @@ public final class GetGitopsAgentResult {
     public String type() {
         return this.type;
     }
+    /**
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    public Optional<Boolean> withCredentials() {
+        return Optional.ofNullable(this.withCredentials);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -178,13 +223,16 @@ public final class GetGitopsAgentResult {
         private String description;
         private String id;
         private String identifier;
+        private Boolean isAuthenticated;
         private List<GetGitopsAgentMetadata> metadatas;
         private String name;
         private String operator;
         private @Nullable String orgId;
+        private String prefixedIdentifier;
         private @Nullable String projectId;
         private Map<String,String> tags;
         private String type;
+        private @Nullable Boolean withCredentials;
         public Builder() {}
         public Builder(GetGitopsAgentResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -193,13 +241,16 @@ public final class GetGitopsAgentResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.isAuthenticated = defaults.isAuthenticated;
     	      this.metadatas = defaults.metadatas;
     	      this.name = defaults.name;
     	      this.operator = defaults.operator;
     	      this.orgId = defaults.orgId;
+    	      this.prefixedIdentifier = defaults.prefixedIdentifier;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
     	      this.type = defaults.type;
+    	      this.withCredentials = defaults.withCredentials;
         }
 
         @CustomType.Setter
@@ -243,6 +294,14 @@ public final class GetGitopsAgentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder isAuthenticated(Boolean isAuthenticated) {
+            if (isAuthenticated == null) {
+              throw new MissingRequiredPropertyException("GetGitopsAgentResult", "isAuthenticated");
+            }
+            this.isAuthenticated = isAuthenticated;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metadatas(List<GetGitopsAgentMetadata> metadatas) {
             if (metadatas == null) {
               throw new MissingRequiredPropertyException("GetGitopsAgentResult", "metadatas");
@@ -276,6 +335,14 @@ public final class GetGitopsAgentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder prefixedIdentifier(String prefixedIdentifier) {
+            if (prefixedIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetGitopsAgentResult", "prefixedIdentifier");
+            }
+            this.prefixedIdentifier = prefixedIdentifier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
 
             this.projectId = projectId;
@@ -297,6 +364,12 @@ public final class GetGitopsAgentResult {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder withCredentials(@Nullable Boolean withCredentials) {
+
+            this.withCredentials = withCredentials;
+            return this;
+        }
         public GetGitopsAgentResult build() {
             final var _resultValue = new GetGitopsAgentResult();
             _resultValue.accountId = accountId;
@@ -304,13 +377,16 @@ public final class GetGitopsAgentResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.isAuthenticated = isAuthenticated;
             _resultValue.metadatas = metadatas;
             _resultValue.name = name;
             _resultValue.operator = operator;
             _resultValue.orgId = orgId;
+            _resultValue.prefixedIdentifier = prefixedIdentifier;
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;
             _resultValue.type = type;
+            _resultValue.withCredentials = withCredentials;
             return _resultValue;
         }
     }

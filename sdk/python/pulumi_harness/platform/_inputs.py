@@ -1103,6 +1103,10 @@ if not MYPY:
         """
         Test Region to perform Connection test of AWS Connector.
         """
+        session_token_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to the Harness secret containing the aws session token.
+        """
 elif False:
     AwsConnectorManualArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1113,13 +1117,15 @@ class AwsConnectorManualArgs:
                  access_key: Optional[pulumi.Input[str]] = None,
                  access_key_ref: Optional[pulumi.Input[str]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 session_token_ref: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] secret_key_ref: Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] access_key: AWS access key.
         :param pulumi.Input[str] access_key_ref: Reference to the Harness secret containing the aws access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Connect only use delegates with these tags.
         :param pulumi.Input[str] region: Test Region to perform Connection test of AWS Connector.
+        :param pulumi.Input[str] session_token_ref: Reference to the Harness secret containing the aws session token.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
         if access_key is not None:
@@ -1130,6 +1136,8 @@ class AwsConnectorManualArgs:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if session_token_ref is not None:
+            pulumi.set(__self__, "session_token_ref", session_token_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
@@ -1190,6 +1198,18 @@ class AwsConnectorManualArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="sessionTokenRef")
+    def session_token_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the Harness secret containing the aws session token.
+        """
+        return pulumi.get(self, "session_token_ref")
+
+    @session_token_ref.setter
+    def session_token_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_token_ref", value)
 
 
 if not MYPY:
@@ -2837,6 +2857,10 @@ if not MYPY:
         """
         The path within the specified repository at which to find details about the database schema
         """
+        archive_path: NotRequired[pulumi.Input[str]]
+        """
+        If connector type is artifactory, path to the archive file which contains the changeLog
+        """
         repo: NotRequired[pulumi.Input[str]]
         """
         If connector url is of account, which repository to connect to using the connector
@@ -2849,14 +2873,18 @@ class DbSchemaSchemaSourceArgs:
     def __init__(__self__, *,
                  connector: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 archive_path: Optional[pulumi.Input[str]] = None,
                  repo: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] connector: Connector to repository at which to find details about the database schema
         :param pulumi.Input[str] location: The path within the specified repository at which to find details about the database schema
+        :param pulumi.Input[str] archive_path: If connector type is artifactory, path to the archive file which contains the changeLog
         :param pulumi.Input[str] repo: If connector url is of account, which repository to connect to using the connector
         """
         pulumi.set(__self__, "connector", connector)
         pulumi.set(__self__, "location", location)
+        if archive_path is not None:
+            pulumi.set(__self__, "archive_path", archive_path)
         if repo is not None:
             pulumi.set(__self__, "repo", repo)
 
@@ -2883,6 +2911,18 @@ class DbSchemaSchemaSourceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="archivePath")
+    def archive_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        If connector type is artifactory, path to the archive file which contains the changeLog
+        """
+        return pulumi.get(self, "archive_path")
+
+    @archive_path.setter
+    def archive_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "archive_path", value)
 
     @property
     @pulumi.getter
@@ -3720,21 +3760,25 @@ class FeatureFlagTagArgs:
 
 if not MYPY:
     class FeatureFlagTargetGroupRuleArgsDict(TypedDict):
-        attribute: NotRequired[pulumi.Input[str]]
+        attribute: pulumi.Input[str]
         """
         The attribute to use in the clause.  This can be any target attribute
+        """
+        op: pulumi.Input[str]
+        """
+        The type of operation such as equals, starts_with, contains
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The values that are compared against the operator
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of this resource.
         """
         negate: NotRequired[pulumi.Input[bool]]
         """
         Is the operation negated?
-        """
-        op: NotRequired[pulumi.Input[str]]
-        """
-        The type of operation such as equals, starts_with, contains
-        """
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        The values that are compared against the operator
         """
 elif False:
     FeatureFlagTargetGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -3742,36 +3786,73 @@ elif False:
 @pulumi.input_type
 class FeatureFlagTargetGroupRuleArgs:
     def __init__(__self__, *,
-                 attribute: Optional[pulumi.Input[str]] = None,
-                 negate: Optional[pulumi.Input[bool]] = None,
-                 op: Optional[pulumi.Input[str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 attribute: pulumi.Input[str],
+                 op: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 id: Optional[pulumi.Input[str]] = None,
+                 negate: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] attribute: The attribute to use in the clause.  This can be any target attribute
-        :param pulumi.Input[bool] negate: Is the operation negated?
         :param pulumi.Input[str] op: The type of operation such as equals, starts_with, contains
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values that are compared against the operator
+        :param pulumi.Input[str] id: The ID of this resource.
+        :param pulumi.Input[bool] negate: Is the operation negated?
         """
-        if attribute is not None:
-            pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "values", values)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if negate is not None:
             pulumi.set(__self__, "negate", negate)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def attribute(self) -> Optional[pulumi.Input[str]]:
+    def attribute(self) -> pulumi.Input[str]:
         """
         The attribute to use in the clause.  This can be any target attribute
         """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: Optional[pulumi.Input[str]]):
+    def attribute(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        The type of operation such as equals, starts_with, contains
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The values that are compared against the operator
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -3784,30 +3865,6 @@ class FeatureFlagTargetGroupRuleArgs:
     @negate.setter
     def negate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negate", value)
-
-    @property
-    @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of operation such as equals, starts_with, contains
-        """
-        return pulumi.get(self, "op")
-
-    @op.setter
-    def op(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "op", value)
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The values that are compared against the operator
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "values", value)
 
 
 if not MYPY:

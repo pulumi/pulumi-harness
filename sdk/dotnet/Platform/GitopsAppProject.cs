@@ -36,25 +36,25 @@ namespace Pulumi.Harness.Platform
     public partial class GitopsAppProject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account identifier of the GitOps project/agent.
+        /// Account identifier of the GitOps Agent where argo project will exist.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Agent identifier of the GitOps project. Project is created on agent scope.
+        /// Agent identifier of the agent where argo project will exist (include scope prefix)
         /// </summary>
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
-        /// Org identifier of the GitOps agent for which project is created.
+        /// Org identifier of the GitOps Agent where argo project is to be created.
         /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Project identifier of the GitOps agent for which project is created.
+        /// Project identifier of the Gitops Agent where argo project is to be created.
         /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
@@ -66,13 +66,13 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<Outputs.GitopsAppProjectProject>> Projects { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier for the GitOps project.
+        /// Identifier for the GitOps Argo project.
         /// </summary>
         [Output("queryName")]
         public Output<string> QueryName { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the GitOps project should be updated if existing and inserted if not.
+        /// Indicates if the argo project should be updated if existing and inserted if not.
         /// </summary>
         [Output("upsert")]
         public Output<bool?> Upsert { get; private set; } = null!;
@@ -125,25 +125,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GitopsAppProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account identifier of the GitOps project/agent.
+        /// Account identifier of the GitOps Agent where argo project will exist.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Agent identifier of the GitOps project. Project is created on agent scope.
+        /// Agent identifier of the agent where argo project will exist (include scope prefix)
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Org identifier of the GitOps agent for which project is created.
+        /// Org identifier of the GitOps Agent where argo project is to be created.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the GitOps agent for which project is created.
+        /// Project identifier of the Gitops Agent where argo project is to be created.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -161,13 +161,13 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Identifier for the GitOps project.
+        /// Identifier for the GitOps Argo project.
         /// </summary>
         [Input("queryName")]
         public Input<string>? QueryName { get; set; }
 
         /// <summary>
-        /// Indicates if the GitOps project should be updated if existing and inserted if not.
+        /// Indicates if the argo project should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }
@@ -181,25 +181,25 @@ namespace Pulumi.Harness.Platform
     public sealed class GitopsAppProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account identifier of the GitOps project/agent.
+        /// Account identifier of the GitOps Agent where argo project will exist.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Agent identifier of the GitOps project. Project is created on agent scope.
+        /// Agent identifier of the agent where argo project will exist (include scope prefix)
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
 
         /// <summary>
-        /// Org identifier of the GitOps agent for which project is created.
+        /// Org identifier of the GitOps Agent where argo project is to be created.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project identifier of the GitOps agent for which project is created.
+        /// Project identifier of the Gitops Agent where argo project is to be created.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -217,13 +217,13 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Identifier for the GitOps project.
+        /// Identifier for the GitOps Argo project.
         /// </summary>
         [Input("queryName")]
         public Input<string>? QueryName { get; set; }
 
         /// <summary>
-        /// Indicates if the GitOps project should be updated if existing and inserted if not.
+        /// Indicates if the argo project should be updated if existing and inserted if not.
         /// </summary>
         [Input("upsert")]
         public Input<bool>? Upsert { get; set; }

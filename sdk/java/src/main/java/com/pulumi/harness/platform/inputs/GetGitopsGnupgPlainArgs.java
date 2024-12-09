@@ -20,16 +20,24 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * Account Identifier for the GnuPG Key.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return Account Identifier for the GnuPG Key.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public String accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -141,8 +149,12 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(String accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -213,9 +225,6 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetGitopsGnupgPlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsGnupgPlainArgs", "accountId");
-            }
             if ($.agentId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsGnupgPlainArgs", "agentId");
             }

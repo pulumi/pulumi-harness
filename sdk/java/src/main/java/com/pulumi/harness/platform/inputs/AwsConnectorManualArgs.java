@@ -92,6 +92,21 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         return this.secretKeyRef;
     }
 
+    /**
+     * Reference to the Harness secret containing the aws session token.
+     * 
+     */
+    @Import(name="sessionTokenRef")
+    private @Nullable Output<String> sessionTokenRef;
+
+    /**
+     * @return Reference to the Harness secret containing the aws session token.
+     * 
+     */
+    public Optional<Output<String>> sessionTokenRef() {
+        return Optional.ofNullable(this.sessionTokenRef);
+    }
+
     private AwsConnectorManualArgs() {}
 
     private AwsConnectorManualArgs(AwsConnectorManualArgs $) {
@@ -100,6 +115,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         this.delegateSelectors = $.delegateSelectors;
         this.region = $.region;
         this.secretKeyRef = $.secretKeyRef;
+        this.sessionTokenRef = $.sessionTokenRef;
     }
 
     public static Builder builder() {
@@ -233,6 +249,27 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
          */
         public Builder secretKeyRef(String secretKeyRef) {
             return secretKeyRef(Output.of(secretKeyRef));
+        }
+
+        /**
+         * @param sessionTokenRef Reference to the Harness secret containing the aws session token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionTokenRef(@Nullable Output<String> sessionTokenRef) {
+            $.sessionTokenRef = sessionTokenRef;
+            return this;
+        }
+
+        /**
+         * @param sessionTokenRef Reference to the Harness secret containing the aws session token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionTokenRef(String sessionTokenRef) {
+            return sessionTokenRef(Output.of(sessionTokenRef));
         }
 
         public AwsConnectorManualArgs build() {

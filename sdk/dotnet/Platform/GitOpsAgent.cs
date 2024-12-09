@@ -115,6 +115,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
+        /// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+        /// </summary>
+        [Output("prefixedIdentifier")]
+        public Output<string> PrefixedIdentifier { get; private set; } = null!;
+
+        /// <summary>
         /// Project identifier of the GitOps agent.
         /// </summary>
         [Output("projectId")]
@@ -183,8 +189,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps agent.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Description of the GitOps agent.
@@ -314,6 +320,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+        /// </summary>
+        [Input("prefixedIdentifier")]
+        public Input<string>? PrefixedIdentifier { get; set; }
 
         /// <summary>
         /// Project identifier of the GitOps agent.

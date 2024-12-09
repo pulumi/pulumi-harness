@@ -21,9 +21,9 @@ __all__ = ['GitOpsAgentArgs', 'GitOpsAgent']
 @pulumi.input_type
 class GitOpsAgentArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  identifier: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,10 +33,10 @@ class GitOpsAgentArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GitOpsAgent resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent.
         :param pulumi.Input[str] identifier: Identifier of the GitOps agent.
         :param pulumi.Input[str] type: Default: "AGENT*TYPE*UNSET"
                Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent.
         :param pulumi.Input[str] description: Description of the GitOps agent.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]] metadatas: Metadata of the agent.
         :param pulumi.Input[str] name: Name of the GitOps agent.
@@ -45,9 +45,13 @@ class GitOpsAgentArgs:
         :param pulumi.Input[str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "type", type)
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if metadatas is not None:
@@ -62,18 +66,6 @@ class GitOpsAgentArgs:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier of the GitOps agent.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -99,6 +91,19 @@ class GitOpsAgentArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account identifier of the GitOps agent.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -196,6 +201,7 @@ class _GitOpsAgentState:
                  name: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 prefixed_identifier: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -209,11 +215,15 @@ class _GitOpsAgentState:
         :param pulumi.Input[str] name: Name of the GitOps agent.
         :param pulumi.Input[str] operator: The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.
+        :param pulumi.Input[str] prefixed_identifier: Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
         :param pulumi.Input[str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         :param pulumi.Input[str] type: Default: "AGENT*TYPE*UNSET"
                Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         """
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if agent_token is not None:
@@ -230,6 +240,8 @@ class _GitOpsAgentState:
             pulumi.set(__self__, "operator", operator)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if prefixed_identifier is not None:
+            pulumi.set(__self__, "prefixed_identifier", prefixed_identifier)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
@@ -239,6 +251,7 @@ class _GitOpsAgentState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account identifier of the GitOps agent.
@@ -332,6 +345,18 @@ class _GitOpsAgentState:
     @org_id.setter
     def org_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="prefixedIdentifier")
+    def prefixed_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+        """
+        return pulumi.get(self, "prefixed_identifier")
+
+    @prefixed_identifier.setter
+    def prefixed_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefixed_identifier", value)
 
     @property
     @pulumi.getter(name="projectId")
@@ -525,8 +550,6 @@ class GitOpsAgent(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GitOpsAgentArgs.__new__(GitOpsAgentArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             if identifier is None and not opts.urn:
@@ -542,6 +565,7 @@ class GitOpsAgent(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["agent_token"] = None
+            __props__.__dict__["prefixed_identifier"] = None
         super(GitOpsAgent, __self__).__init__(
             'harness:platform/gitOpsAgent:GitOpsAgent',
             resource_name,
@@ -560,6 +584,7 @@ class GitOpsAgent(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             operator: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
+            prefixed_identifier: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'GitOpsAgent':
@@ -578,6 +603,7 @@ class GitOpsAgent(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the GitOps agent.
         :param pulumi.Input[str] operator: The Operator to use for the Harness GitOps agent. Enum: "ARGO" "FLAMINGO"
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent.
+        :param pulumi.Input[str] prefixed_identifier: Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
         :param pulumi.Input[str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         :param pulumi.Input[str] type: Default: "AGENT*TYPE*UNSET"
@@ -595,6 +621,7 @@ class GitOpsAgent(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["operator"] = operator
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["prefixed_identifier"] = prefixed_identifier
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
@@ -602,6 +629,7 @@ class GitOpsAgent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> pulumi.Output[str]:
         """
         Account identifier of the GitOps agent.
@@ -663,6 +691,14 @@ class GitOpsAgent(pulumi.CustomResource):
         Organization identifier of the GitOps agent.
         """
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="prefixedIdentifier")
+    def prefixed_identifier(self) -> pulumi.Output[str]:
+        """
+        Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+        """
+        return pulumi.get(self, "prefixed_identifier")
 
     @property
     @pulumi.getter(name="projectId")

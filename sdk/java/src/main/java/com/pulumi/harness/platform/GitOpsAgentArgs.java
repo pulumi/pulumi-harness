@@ -22,16 +22,24 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -209,8 +217,12 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(Output<String> accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -220,7 +232,11 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -427,9 +443,6 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GitOpsAgentArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GitOpsAgentArgs", "accountId");
-            }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GitOpsAgentArgs", "identifier");
             }

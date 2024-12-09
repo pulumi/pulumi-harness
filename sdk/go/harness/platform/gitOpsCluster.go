@@ -37,6 +37,8 @@ type GitOpsCluster struct {
 	pulumi.CustomResourceState
 
 	// Account identifier of the GitOps cluster.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
@@ -57,9 +59,6 @@ func NewGitOpsCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
@@ -90,6 +89,8 @@ func GetGitOpsCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitOpsCluster resources.
 type gitOpsClusterState struct {
 	// Account identifier of the GitOps cluster.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId *string `pulumi:"agentId"`
@@ -105,6 +106,8 @@ type gitOpsClusterState struct {
 
 type GitOpsClusterState struct {
 	// Account identifier of the GitOps cluster.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringPtrInput
@@ -124,7 +127,9 @@ func (GitOpsClusterState) ElementType() reflect.Type {
 
 type gitOpsClusterArgs struct {
 	// Account identifier of the GitOps cluster.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId string `pulumi:"agentId"`
 	// Identifier of the GitOps cluster.
@@ -140,7 +145,9 @@ type gitOpsClusterArgs struct {
 // The set of arguments for constructing a GitOpsCluster resource.
 type GitOpsClusterArgs struct {
 	// Account identifier of the GitOps cluster.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringInput
 	// Identifier of the GitOps cluster.
@@ -241,6 +248,8 @@ func (o GitOpsClusterOutput) ToGitOpsClusterOutputWithContext(ctx context.Contex
 }
 
 // Account identifier of the GitOps cluster.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsClusterOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

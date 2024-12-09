@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,7 +18,12 @@ public final class FeatureFlagTargetGroupRule {
      * @return The attribute to use in the clause.  This can be any target attribute
      * 
      */
-    private @Nullable String attribute;
+    private String attribute;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    private @Nullable String id;
     /**
      * @return Is the operation negated?
      * 
@@ -27,20 +33,27 @@ public final class FeatureFlagTargetGroupRule {
      * @return The type of operation such as equals, starts_with, contains
      * 
      */
-    private @Nullable String op;
+    private String op;
     /**
      * @return The values that are compared against the operator
      * 
      */
-    private @Nullable List<String> values;
+    private List<String> values;
 
     private FeatureFlagTargetGroupRule() {}
     /**
      * @return The attribute to use in the clause.  This can be any target attribute
      * 
      */
-    public Optional<String> attribute() {
-        return Optional.ofNullable(this.attribute);
+    public String attribute() {
+        return this.attribute;
+    }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
      * @return Is the operation negated?
@@ -53,15 +66,15 @@ public final class FeatureFlagTargetGroupRule {
      * @return The type of operation such as equals, starts_with, contains
      * 
      */
-    public Optional<String> op() {
-        return Optional.ofNullable(this.op);
+    public String op() {
+        return this.op;
     }
     /**
      * @return The values that are compared against the operator
      * 
      */
     public List<String> values() {
-        return this.values == null ? List.of() : this.values;
+        return this.values;
     }
 
     public static Builder builder() {
@@ -73,23 +86,33 @@ public final class FeatureFlagTargetGroupRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String attribute;
+        private String attribute;
+        private @Nullable String id;
         private @Nullable Boolean negate;
-        private @Nullable String op;
-        private @Nullable List<String> values;
+        private String op;
+        private List<String> values;
         public Builder() {}
         public Builder(FeatureFlagTargetGroupRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
+    	      this.id = defaults.id;
     	      this.negate = defaults.negate;
     	      this.op = defaults.op;
     	      this.values = defaults.values;
         }
 
         @CustomType.Setter
-        public Builder attribute(@Nullable String attribute) {
-
+        public Builder attribute(String attribute) {
+            if (attribute == null) {
+              throw new MissingRequiredPropertyException("FeatureFlagTargetGroupRule", "attribute");
+            }
             this.attribute = attribute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(@Nullable String id) {
+
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -99,14 +122,18 @@ public final class FeatureFlagTargetGroupRule {
             return this;
         }
         @CustomType.Setter
-        public Builder op(@Nullable String op) {
-
+        public Builder op(String op) {
+            if (op == null) {
+              throw new MissingRequiredPropertyException("FeatureFlagTargetGroupRule", "op");
+            }
             this.op = op;
             return this;
         }
         @CustomType.Setter
-        public Builder values(@Nullable List<String> values) {
-
+        public Builder values(List<String> values) {
+            if (values == null) {
+              throw new MissingRequiredPropertyException("FeatureFlagTargetGroupRule", "values");
+            }
             this.values = values;
             return this;
         }
@@ -116,6 +143,7 @@ public final class FeatureFlagTargetGroupRule {
         public FeatureFlagTargetGroupRule build() {
             final var _resultValue = new FeatureFlagTargetGroupRule();
             _resultValue.attribute = attribute;
+            _resultValue.id = id;
             _resultValue.negate = negate;
             _resultValue.op = op;
             _resultValue.values = values;

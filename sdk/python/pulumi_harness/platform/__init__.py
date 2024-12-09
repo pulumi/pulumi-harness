@@ -94,6 +94,7 @@ from .get_gitops_repository import *
 from .get_gitx_webhook import *
 from .get_helm_connector import *
 from .get_iacm_default_pipeline import *
+from .get_infra_module import *
 from .get_infrastructure import *
 from .get_input_set import *
 from .get_jenkins_connector import *
@@ -163,6 +164,7 @@ from .gitops_app_project_mapping import *
 from .gitx_webhook import *
 from .helm_connector import *
 from .iacm_default_pipeline import *
+from .infra_module import *
 from .infrastructure import *
 from .input_set import *
 from .jenkins_connector import *

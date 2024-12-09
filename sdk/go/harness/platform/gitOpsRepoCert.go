@@ -84,6 +84,8 @@ type GitOpsRepoCert struct {
 	pulumi.CustomResourceState
 
 	// Account identifier of the GitOps repository certificate.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository certificate.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
@@ -102,9 +104,6 @@ func NewGitOpsRepoCert(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
@@ -135,6 +134,8 @@ func GetGitOpsRepoCert(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitOpsRepoCert resources.
 type gitOpsRepoCertState struct {
 	// Account identifier of the GitOps repository certificate.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository certificate.
 	AgentId *string `pulumi:"agentId"`
@@ -148,6 +149,8 @@ type gitOpsRepoCertState struct {
 
 type GitOpsRepoCertState struct {
 	// Account identifier of the GitOps repository certificate.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps repository certificate.
 	AgentId pulumi.StringPtrInput
@@ -165,7 +168,9 @@ func (GitOpsRepoCertState) ElementType() reflect.Type {
 
 type gitOpsRepoCertArgs struct {
 	// Account identifier of the GitOps repository certificate.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository certificate.
 	AgentId string `pulumi:"agentId"`
 	// Organization identifier of the GitOps repository certificate.
@@ -179,7 +184,9 @@ type gitOpsRepoCertArgs struct {
 // The set of arguments for constructing a GitOpsRepoCert resource.
 type GitOpsRepoCertArgs struct {
 	// Account identifier of the GitOps repository certificate.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps repository certificate.
 	AgentId pulumi.StringInput
 	// Organization identifier of the GitOps repository certificate.
@@ -278,6 +285,8 @@ func (o GitOpsRepoCertOutput) ToGitOpsRepoCertOutputWithContext(ctx context.Cont
 }
 
 // Account identifier of the GitOps repository certificate.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsRepoCertOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepoCert) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

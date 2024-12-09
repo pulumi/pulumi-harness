@@ -85,6 +85,7 @@ class GetGitopsApplicationsResult:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
         """
         Account identifier of the GitOps application.
@@ -302,7 +303,7 @@ def get_gitops_applications(account_id: Optional[str] = None,
         skip_repo_validation=pulumi.get(__ret__, 'skip_repo_validation'),
         upsert=pulumi.get(__ret__, 'upsert'),
         validate=pulumi.get(__ret__, 'validate'))
-def get_gitops_applications_output(account_id: Optional[pulumi.Input[str]] = None,
+def get_gitops_applications_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    agent_id: Optional[pulumi.Input[str]] = None,
                                    identifier: Optional[pulumi.Input[Optional[str]]] = None,
                                    name: Optional[pulumi.Input[str]] = None,

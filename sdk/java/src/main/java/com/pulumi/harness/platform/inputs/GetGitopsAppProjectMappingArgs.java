@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,16 +19,24 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
     /**
      * Account identifier of the GitOps agent&#39;s Application Project.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier of the GitOps agent&#39;s Application Project.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -122,8 +132,12 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(Output<String> accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -133,7 +147,11 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -223,9 +241,6 @@ public final class GetGitopsAppProjectMappingArgs extends com.pulumi.resources.I
         }
 
         public GetGitopsAppProjectMappingArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingArgs", "accountId");
-            }
             if ($.agentId == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAppProjectMappingArgs", "agentId");
             }

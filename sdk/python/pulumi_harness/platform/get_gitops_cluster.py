@@ -52,6 +52,7 @@ class GetGitopsClusterResult:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
         """
         Account identifier of the GitOps cluster.
@@ -168,7 +169,7 @@ def get_gitops_cluster(account_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         requests=pulumi.get(__ret__, 'requests'))
-def get_gitops_cluster_output(account_id: Optional[pulumi.Input[str]] = None,
+def get_gitops_cluster_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                               agent_id: Optional[pulumi.Input[str]] = None,
                               identifier: Optional[pulumi.Input[str]] = None,
                               org_id: Optional[pulumi.Input[Optional[str]]] = None,

@@ -42,8 +42,10 @@ export function getGitopsRepoCred(args: GetGitopsRepoCredArgs, opts?: pulumi.Inv
 export interface GetGitopsRepoCredArgs {
     /**
      * Account identifier of the Repository Credentials.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Agent identifier of the Repository Credentials.
      */
@@ -72,6 +74,8 @@ export interface GetGitopsRepoCredArgs {
 export interface GetGitopsRepoCredResult {
     /**
      * Account identifier of the Repository Credentials.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -135,8 +139,10 @@ export function getGitopsRepoCredOutput(args: GetGitopsRepoCredOutputArgs, opts?
 export interface GetGitopsRepoCredOutputArgs {
     /**
      * Account identifier of the Repository Credentials.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the Repository Credentials.
      */

@@ -21,14 +21,22 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     /**
      * Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -139,6 +147,21 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     * 
+     */
+    @Import(name="prefixedIdentifier")
+    private @Nullable Output<String> prefixedIdentifier;
+
+    /**
+     * @return Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+     * 
+     */
+    public Optional<Output<String>> prefixedIdentifier() {
+        return Optional.ofNullable(this.prefixedIdentifier);
+    }
+
+    /**
      * Project identifier of the GitOps agent.
      * 
      */
@@ -196,6 +219,7 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.operator = $.operator;
         this.orgId = $.orgId;
+        this.prefixedIdentifier = $.prefixedIdentifier;
         this.projectId = $.projectId;
         this.tags = $.tags;
         this.type = $.type;
@@ -224,7 +248,11 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -235,7 +263,11 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -395,6 +427,27 @@ public final class GitOpsAgentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        /**
+         * @param prefixedIdentifier Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixedIdentifier(@Nullable Output<String> prefixedIdentifier) {
+            $.prefixedIdentifier = prefixedIdentifier;
+            return this;
+        }
+
+        /**
+         * @param prefixedIdentifier Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefixedIdentifier(String prefixedIdentifier) {
+            return prefixedIdentifier(Output.of(prefixedIdentifier));
         }
 
         /**

@@ -84,6 +84,8 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
 
     /**
      * Account identifier of the Repository Credentials.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -133,9 +135,6 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
             resourceInputs["upsert"] = state ? state.upsert : undefined;
         } else {
             const args = argsOrState as GitOpsRepoCredArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
@@ -161,6 +160,8 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
 export interface GitOpsRepoCredState {
     /**
      * Account identifier of the Repository Credentials.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -195,8 +196,10 @@ export interface GitOpsRepoCredState {
 export interface GitOpsRepoCredArgs {
     /**
      * Account identifier of the Repository Credentials.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the Repository Credentials.
      */

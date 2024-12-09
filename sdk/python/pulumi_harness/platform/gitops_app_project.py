@@ -21,26 +21,30 @@ __all__ = ['GitopsAppProjectArgs', 'GitopsAppProject']
 @pulumi.input_type
 class GitopsAppProjectArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  agent_id: pulumi.Input[str],
                  projects: pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  query_name: Optional[pulumi.Input[str]] = None,
                  upsert: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a GitopsAppProject resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps project/agent.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps project. Project is created on agent scope.
+        :param pulumi.Input[str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]] projects: GitOps project configuration.
-        :param pulumi.Input[str] org_id: Org identifier of the GitOps agent for which project is created.
-        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent for which project is created.
-        :param pulumi.Input[str] query_name: Identifier for the GitOps project.
-        :param pulumi.Input[bool] upsert: Indicates if the GitOps project should be updated if existing and inserted if not.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps Agent where argo project will exist.
+        :param pulumi.Input[str] org_id: Org identifier of the GitOps Agent where argo project is to be created.
+        :param pulumi.Input[str] project_id: Project identifier of the Gitops Agent where argo project is to be created.
+        :param pulumi.Input[str] query_name: Identifier for the GitOps Argo project.
+        :param pulumi.Input[bool] upsert: Indicates if the argo project should be updated if existing and inserted if not.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "projects", projects)
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
@@ -51,22 +55,10 @@ class GitopsAppProjectArgs:
             pulumi.set(__self__, "upsert", upsert)
 
     @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier of the GitOps project/agent.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
-
-    @property
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Input[str]:
         """
-        Agent identifier of the GitOps project. Project is created on agent scope.
+        Agent identifier of the agent where argo project will exist (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
@@ -87,10 +79,23 @@ class GitopsAppProjectArgs:
         pulumi.set(self, "projects", value)
 
     @property
+    @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account identifier of the GitOps Agent where argo project will exist.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Org identifier of the GitOps agent for which project is created.
+        Org identifier of the GitOps Agent where argo project is to be created.
         """
         return pulumi.get(self, "org_id")
 
@@ -102,7 +107,7 @@ class GitopsAppProjectArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project identifier of the GitOps agent for which project is created.
+        Project identifier of the Gitops Agent where argo project is to be created.
         """
         return pulumi.get(self, "project_id")
 
@@ -114,7 +119,7 @@ class GitopsAppProjectArgs:
     @pulumi.getter(name="queryName")
     def query_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier for the GitOps project.
+        Identifier for the GitOps Argo project.
         """
         return pulumi.get(self, "query_name")
 
@@ -126,7 +131,7 @@ class GitopsAppProjectArgs:
     @pulumi.getter
     def upsert(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if the GitOps project should be updated if existing and inserted if not.
+        Indicates if the argo project should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
@@ -147,14 +152,17 @@ class _GitopsAppProjectState:
                  upsert: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering GitopsAppProject resources.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps project/agent.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps project. Project is created on agent scope.
-        :param pulumi.Input[str] org_id: Org identifier of the GitOps agent for which project is created.
-        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent for which project is created.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps Agent where argo project will exist.
+        :param pulumi.Input[str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
+        :param pulumi.Input[str] org_id: Org identifier of the GitOps Agent where argo project is to be created.
+        :param pulumi.Input[str] project_id: Project identifier of the Gitops Agent where argo project is to be created.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectArgs']]] projects: GitOps project configuration.
-        :param pulumi.Input[str] query_name: Identifier for the GitOps project.
-        :param pulumi.Input[bool] upsert: Indicates if the GitOps project should be updated if existing and inserted if not.
+        :param pulumi.Input[str] query_name: Identifier for the GitOps Argo project.
+        :param pulumi.Input[bool] upsert: Indicates if the argo project should be updated if existing and inserted if not.
         """
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if agent_id is not None:
@@ -172,9 +180,10 @@ class _GitopsAppProjectState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account identifier of the GitOps project/agent.
+        Account identifier of the GitOps Agent where argo project will exist.
         """
         return pulumi.get(self, "account_id")
 
@@ -186,7 +195,7 @@ class _GitopsAppProjectState:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Agent identifier of the GitOps project. Project is created on agent scope.
+        Agent identifier of the agent where argo project will exist (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
@@ -198,7 +207,7 @@ class _GitopsAppProjectState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Org identifier of the GitOps agent for which project is created.
+        Org identifier of the GitOps Agent where argo project is to be created.
         """
         return pulumi.get(self, "org_id")
 
@@ -210,7 +219,7 @@ class _GitopsAppProjectState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Project identifier of the GitOps agent for which project is created.
+        Project identifier of the Gitops Agent where argo project is to be created.
         """
         return pulumi.get(self, "project_id")
 
@@ -234,7 +243,7 @@ class _GitopsAppProjectState:
     @pulumi.getter(name="queryName")
     def query_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier for the GitOps project.
+        Identifier for the GitOps Argo project.
         """
         return pulumi.get(self, "query_name")
 
@@ -246,7 +255,7 @@ class _GitopsAppProjectState:
     @pulumi.getter
     def upsert(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if the GitOps project should be updated if existing and inserted if not.
+        Indicates if the argo project should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 
@@ -293,13 +302,13 @@ class GitopsAppProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps project/agent.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps project. Project is created on agent scope.
-        :param pulumi.Input[str] org_id: Org identifier of the GitOps agent for which project is created.
-        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent for which project is created.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps Agent where argo project will exist.
+        :param pulumi.Input[str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
+        :param pulumi.Input[str] org_id: Org identifier of the GitOps Agent where argo project is to be created.
+        :param pulumi.Input[str] project_id: Project identifier of the Gitops Agent where argo project is to be created.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]] projects: GitOps project configuration.
-        :param pulumi.Input[str] query_name: Identifier for the GitOps project.
-        :param pulumi.Input[bool] upsert: Indicates if the GitOps project should be updated if existing and inserted if not.
+        :param pulumi.Input[str] query_name: Identifier for the GitOps Argo project.
+        :param pulumi.Input[bool] upsert: Indicates if the argo project should be updated if existing and inserted if not.
         """
         ...
     @overload
@@ -361,8 +370,6 @@ class GitopsAppProject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GitopsAppProjectArgs.__new__(GitopsAppProjectArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
@@ -398,13 +405,13 @@ class GitopsAppProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps project/agent.
-        :param pulumi.Input[str] agent_id: Agent identifier of the GitOps project. Project is created on agent scope.
-        :param pulumi.Input[str] org_id: Org identifier of the GitOps agent for which project is created.
-        :param pulumi.Input[str] project_id: Project identifier of the GitOps agent for which project is created.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps Agent where argo project will exist.
+        :param pulumi.Input[str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
+        :param pulumi.Input[str] org_id: Org identifier of the GitOps Agent where argo project is to be created.
+        :param pulumi.Input[str] project_id: Project identifier of the Gitops Agent where argo project is to be created.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]] projects: GitOps project configuration.
-        :param pulumi.Input[str] query_name: Identifier for the GitOps project.
-        :param pulumi.Input[bool] upsert: Indicates if the GitOps project should be updated if existing and inserted if not.
+        :param pulumi.Input[str] query_name: Identifier for the GitOps Argo project.
+        :param pulumi.Input[bool] upsert: Indicates if the argo project should be updated if existing and inserted if not.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -421,9 +428,10 @@ class GitopsAppProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> pulumi.Output[str]:
         """
-        Account identifier of the GitOps project/agent.
+        Account identifier of the GitOps Agent where argo project will exist.
         """
         return pulumi.get(self, "account_id")
 
@@ -431,7 +439,7 @@ class GitopsAppProject(pulumi.CustomResource):
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[str]:
         """
-        Agent identifier of the GitOps project. Project is created on agent scope.
+        Agent identifier of the agent where argo project will exist (include scope prefix)
         """
         return pulumi.get(self, "agent_id")
 
@@ -439,7 +447,7 @@ class GitopsAppProject(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Org identifier of the GitOps agent for which project is created.
+        Org identifier of the GitOps Agent where argo project is to be created.
         """
         return pulumi.get(self, "org_id")
 
@@ -447,7 +455,7 @@ class GitopsAppProject(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Project identifier of the GitOps agent for which project is created.
+        Project identifier of the Gitops Agent where argo project is to be created.
         """
         return pulumi.get(self, "project_id")
 
@@ -463,7 +471,7 @@ class GitopsAppProject(pulumi.CustomResource):
     @pulumi.getter(name="queryName")
     def query_name(self) -> pulumi.Output[str]:
         """
-        Identifier for the GitOps project.
+        Identifier for the GitOps Argo project.
         """
         return pulumi.get(self, "query_name")
 
@@ -471,7 +479,7 @@ class GitopsAppProject(pulumi.CustomResource):
     @pulumi.getter
     def upsert(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates if the GitOps project should be updated if existing and inserted if not.
+        Indicates if the argo project should be updated if existing and inserted if not.
         """
         return pulumi.get(self, "upsert")
 

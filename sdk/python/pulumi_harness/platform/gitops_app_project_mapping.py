@@ -19,36 +19,28 @@ __all__ = ['GitopsAppProjectMappingArgs', 'GitopsAppProjectMapping']
 @pulumi.input_type
 class GitopsAppProjectMappingArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  agent_id: pulumi.Input[str],
                  argo_project_name: pulumi.Input[str],
                  org_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str]):
+                 project_id: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GitopsAppProjectMapping resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent's Application Project.
         :param pulumi.Input[str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
         :param pulumi.Input[str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps agent's Application Project.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps agent's Application Project.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "argo_project_name", argo_project_name)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "project_id", project_id)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier of the GitOps agent's Application Project.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
 
     @property
     @pulumi.getter(name="agentId")
@@ -98,6 +90,19 @@ class GitopsAppProjectMappingArgs:
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
 
+    @property
+    @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account identifier of the GitOps agent's Application Project.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
 
 @pulumi.input_type
 class _GitopsAppProjectMappingState:
@@ -118,6 +123,9 @@ class _GitopsAppProjectMappingState:
         :param pulumi.Input[str] project_id: Project identifier of the GitOps agent's Application Project.
         """
         if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
@@ -132,6 +140,7 @@ class _GitopsAppProjectMappingState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account identifier of the GitOps agent's Application Project.
@@ -307,8 +316,6 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GitopsAppProjectMappingArgs.__new__(GitopsAppProjectMappingArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
@@ -367,6 +374,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> pulumi.Output[str]:
         """
         Account identifier of the GitOps agent's Application Project.

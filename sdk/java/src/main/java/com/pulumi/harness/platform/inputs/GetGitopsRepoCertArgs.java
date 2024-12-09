@@ -19,31 +19,39 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
     /**
      * Account identifier of the GitOps repository certificate.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier of the GitOps repository certificate.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
      * Agent identifier of the GitOps repository certificate.
      * 
      */
-    @Import(name="agentId")
-    private @Nullable Output<String> agentId;
+    @Import(name="agentId", required=true)
+    private Output<String> agentId;
 
     /**
      * @return Agent identifier of the GitOps repository certificate.
      * 
      */
-    public Optional<Output<String>> agentId() {
-        return Optional.ofNullable(this.agentId);
+    public Output<String> agentId() {
+        return this.agentId;
     }
 
     /**
@@ -108,8 +116,12 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(Output<String> accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -119,7 +131,11 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -130,7 +146,7 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder agentId(@Nullable Output<String> agentId) {
+        public Builder agentId(Output<String> agentId) {
             $.agentId = agentId;
             return this;
         }
@@ -188,8 +204,8 @@ public final class GetGitopsRepoCertArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetGitopsRepoCertArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsRepoCertArgs", "accountId");
+            if ($.agentId == null) {
+                throw new MissingRequiredPropertyException("GetGitopsRepoCertArgs", "agentId");
             }
             return $;
         }

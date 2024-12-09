@@ -45,6 +45,7 @@ class GetGitopsRepoCertResult:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
         """
         Account identifier of the GitOps repository certificate.
@@ -53,7 +54,7 @@ class GetGitopsRepoCertResult:
 
     @property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[str]:
+    def agent_id(self) -> str:
         """
         Agent identifier of the GitOps repository certificate.
         """
@@ -125,8 +126,8 @@ def get_gitops_repo_cert(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[str]] = None,
-                                agent_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_gitops_repo_cert_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                agent_id: Optional[pulumi.Input[str]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGitopsRepoCertResult]:
