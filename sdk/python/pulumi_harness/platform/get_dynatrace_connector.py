@@ -203,7 +203,7 @@ def get_dynatrace_connector_output(identifier: Optional[pulumi.Input[str]] = Non
                                    name: Optional[pulumi.Input[Optional[str]]] = None,
                                    org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDynatraceConnectorResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDynatraceConnectorResult]:
     """
     Datasource for looking up a Dynatrace connector.
 
@@ -227,7 +227,7 @@ def get_dynatrace_connector_output(identifier: Optional[pulumi.Input[str]] = Non
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDynatraceConnector:getDynatraceConnector', __args__, opts=opts, typ=GetDynatraceConnectorResult)
     return __ret__.apply(lambda __response__: GetDynatraceConnectorResult(
         api_token_ref=pulumi.get(__response__, 'api_token_ref'),

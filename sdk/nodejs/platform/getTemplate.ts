@@ -196,7 +196,7 @@ export interface GetTemplateResult {
  * });
  * ```
  */
-export function getTemplateOutput(args?: GetTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateResult> {
+export function getTemplateOutput(args?: GetTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getTemplate:getTemplate", {

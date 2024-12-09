@@ -109,7 +109,7 @@ export interface GetCcmFiltersResult {
  * });
  * ```
  */
-export function getCcmFiltersOutput(args: GetCcmFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCcmFiltersResult> {
+export function getCcmFiltersOutput(args: GetCcmFiltersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCcmFiltersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getCcmFilters:getCcmFilters", {
         "identifier": args.identifier,

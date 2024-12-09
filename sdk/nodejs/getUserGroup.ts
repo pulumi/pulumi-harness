@@ -46,7 +46,7 @@ export interface GetUserGroupResult {
 /**
  * Data source for retrieving a Harness user group
  */
-export function getUserGroupOutput(args?: GetUserGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupResult> {
+export function getUserGroupOutput(args?: GetUserGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getUserGroup:getUserGroup", {

@@ -81,7 +81,7 @@ export interface GetPipelineFiltersResult {
 /**
  * Data source for retrieving a Harness Pipeline Filter.
  */
-export function getPipelineFiltersOutput(args: GetPipelineFiltersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineFiltersResult> {
+export function getPipelineFiltersOutput(args: GetPipelineFiltersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineFiltersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getPipelineFilters:getPipelineFilters", {
         "identifier": args.identifier,

@@ -106,7 +106,7 @@ export interface GetRuleEnforcementResult {
  * });
  * ```
  */
-export function getRuleEnforcementOutput(args: GetRuleEnforcementOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleEnforcementResult> {
+export function getRuleEnforcementOutput(args: GetRuleEnforcementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleEnforcementResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:governance/getRuleEnforcement:getRuleEnforcement", {
         "enforcementId": args.enforcementId,

@@ -119,7 +119,7 @@ export interface GetAwsCCConnectorResult {
  * });
  * ```
  */
-export function getAwsCCConnectorOutput(args: GetAwsCCConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsCCConnectorResult> {
+export function getAwsCCConnectorOutput(args: GetAwsCCConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsCCConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAwsCCConnector:getAwsCCConnector", {
         "identifier": args.identifier,

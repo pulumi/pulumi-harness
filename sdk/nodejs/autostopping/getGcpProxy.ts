@@ -142,7 +142,7 @@ export interface GetGcpProxyResult {
 /**
  * Data source for GCP Autostopping proxy
  */
-export function getGcpProxyOutput(args: GetGcpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpProxyResult> {
+export function getGcpProxyOutput(args: GetGcpProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getGcpProxy:getGcpProxy", {
         "allocateStaticIp": args.allocateStaticIp,

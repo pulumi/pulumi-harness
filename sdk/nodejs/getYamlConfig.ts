@@ -57,7 +57,7 @@ export interface GetYamlConfigResult {
 /**
  * Data source for retrieving a yaml config.
  */
-export function getYamlConfigOutput(args: GetYamlConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetYamlConfigResult> {
+export function getYamlConfigOutput(args: GetYamlConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetYamlConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getYamlConfig:getYamlConfig", {
         "appId": args.appId,

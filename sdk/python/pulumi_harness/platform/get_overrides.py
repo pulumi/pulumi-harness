@@ -173,7 +173,7 @@ def get_overrides_output(git_details: Optional[pulumi.Input[Optional[Union['GetO
                          identifier: Optional[pulumi.Input[str]] = None,
                          org_id: Optional[pulumi.Input[Optional[str]]] = None,
                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOverridesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOverridesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -182,7 +182,7 @@ def get_overrides_output(git_details: Optional[pulumi.Input[Optional[Union['GetO
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getOverrides:getOverrides', __args__, opts=opts, typ=GetOverridesResult)
     return __ret__.apply(lambda __response__: GetOverridesResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

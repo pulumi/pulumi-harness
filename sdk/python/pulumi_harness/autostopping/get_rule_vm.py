@@ -225,7 +225,7 @@ def get_rule_vm_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        tcps: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict']]]]] = None,
                        use_spot: Optional[pulumi.Input[Optional[bool]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleVmResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleVmResult]:
     """
     Data source for retrieving a Harness Variable.
 
@@ -249,7 +249,7 @@ def get_rule_vm_output(cloud_connector_id: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['tcps'] = tcps
     __args__['useSpot'] = use_spot
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleVm:getRuleVm', __args__, opts=opts, typ=GetRuleVmResult)
     return __ret__.apply(lambda __response__: GetRuleVmResult(
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),

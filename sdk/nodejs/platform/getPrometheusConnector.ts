@@ -119,7 +119,7 @@ export interface GetPrometheusConnectorResult {
  * });
  * ```
  */
-export function getPrometheusConnectorOutput(args: GetPrometheusConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusConnectorResult> {
+export function getPrometheusConnectorOutput(args: GetPrometheusConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrometheusConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getPrometheusConnector:getPrometheusConnector", {
         "identifier": args.identifier,

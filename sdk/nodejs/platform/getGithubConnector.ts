@@ -124,7 +124,7 @@ export interface GetGithubConnectorResult {
  * });
  * ```
  */
-export function getGithubConnectorOutput(args: GetGithubConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGithubConnectorResult> {
+export function getGithubConnectorOutput(args: GetGithubConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGithubConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGithubConnector:getGithubConnector", {
         "identifier": args.identifier,

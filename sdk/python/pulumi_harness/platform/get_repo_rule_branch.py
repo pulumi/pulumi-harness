@@ -268,7 +268,7 @@ def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[Union['
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 repo_identifier: Optional[pulumi.Input[str]] = None,
                                 state: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepoRuleBranchResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepoRuleBranchResult]:
     """
     Data source for retrieving a Harness repo branch rule.
 
@@ -293,7 +293,7 @@ def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[Union['
     __args__['projectId'] = project_id
     __args__['repoIdentifier'] = repo_identifier
     __args__['state'] = state
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getRepoRuleBranch:getRepoRuleBranch', __args__, opts=opts, typ=GetRepoRuleBranchResult)
     return __ret__.apply(lambda __response__: GetRepoRuleBranchResult(
         bypasses=pulumi.get(__response__, 'bypasses'),

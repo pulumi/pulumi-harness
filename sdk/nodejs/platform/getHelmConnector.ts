@@ -111,7 +111,7 @@ export interface GetHelmConnectorResult {
  * });
  * ```
  */
-export function getHelmConnectorOutput(args: GetHelmConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHelmConnectorResult> {
+export function getHelmConnectorOutput(args: GetHelmConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHelmConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getHelmConnector:getHelmConnector", {
         "identifier": args.identifier,

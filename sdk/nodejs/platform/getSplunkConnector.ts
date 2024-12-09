@@ -117,7 +117,7 @@ export interface GetSplunkConnectorResult {
  * });
  * ```
  */
-export function getSplunkConnectorOutput(args: GetSplunkConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSplunkConnectorResult> {
+export function getSplunkConnectorOutput(args: GetSplunkConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSplunkConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSplunkConnector:getSplunkConnector", {
         "identifier": args.identifier,

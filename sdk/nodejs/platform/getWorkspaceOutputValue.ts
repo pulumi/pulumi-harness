@@ -87,7 +87,7 @@ export interface GetWorkspaceOutputValueResult {
  * });
  * ```
  */
-export function getWorkspaceOutputValueOutput(args: GetWorkspaceOutputValueOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceOutputValueResult> {
+export function getWorkspaceOutputValueOutput(args: GetWorkspaceOutputValueOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceOutputValueResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", {
         "identifier": args.identifier,

@@ -157,7 +157,7 @@ def get_environment_output(app_id: Optional[pulumi.Input[str]] = None,
                            environment_id: Optional[pulumi.Input[Optional[str]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            variable_overrides: Optional[pulumi.Input[Optional[Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict']]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
     Data source for retrieving a Harness service
 
@@ -172,7 +172,7 @@ def get_environment_output(app_id: Optional[pulumi.Input[str]] = None,
     __args__['environmentId'] = environment_id
     __args__['name'] = name
     __args__['variableOverrides'] = variable_overrides
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult)
     return __ret__.apply(lambda __response__: GetEnvironmentResult(
         app_id=pulumi.get(__response__, 'app_id'),

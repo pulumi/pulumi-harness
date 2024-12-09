@@ -113,7 +113,7 @@ export interface GetAwsAlbResult {
 /**
  * Data source for AWS Autostopping proxy
  */
-export function getAwsAlbOutput(args: GetAwsAlbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsAlbResult> {
+export function getAwsAlbOutput(args: GetAwsAlbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsAlbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getAwsAlb:getAwsAlb", {
         "albArn": args.albArn,

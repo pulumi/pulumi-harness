@@ -184,7 +184,7 @@ def get_service_overrides_v2_output(git_details: Optional[pulumi.Input[Optional[
                                     identifier: Optional[pulumi.Input[str]] = None,
                                     org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceOverridesV2Result]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceOverridesV2Result]:
     """
     Data source for Harness service overrides V2.
 
@@ -204,7 +204,7 @@ def get_service_overrides_v2_output(git_details: Optional[pulumi.Input[Optional[
     __args__['identifier'] = identifier
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getServiceOverridesV2:getServiceOverridesV2', __args__, opts=opts, typ=GetServiceOverridesV2Result)
     return __ret__.apply(lambda __response__: GetServiceOverridesV2Result(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

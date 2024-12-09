@@ -137,7 +137,7 @@ export interface GetPipelineListResult {
  * });
  * ```
  */
-export function getPipelineListOutput(args: GetPipelineListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineListResult> {
+export function getPipelineListOutput(args: GetPipelineListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getPipelineList:getPipelineList", {
         "identifier": args.identifier,

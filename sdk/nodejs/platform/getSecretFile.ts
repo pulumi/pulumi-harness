@@ -101,7 +101,7 @@ export interface GetSecretFileResult {
  * });
  * ```
  */
-export function getSecretFileOutput(args: GetSecretFileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretFileResult> {
+export function getSecretFileOutput(args: GetSecretFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSecretFile:getSecretFile", {
         "identifier": args.identifier,

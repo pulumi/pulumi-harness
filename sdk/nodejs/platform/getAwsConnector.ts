@@ -131,7 +131,7 @@ export interface GetAwsConnectorResult {
  * });
  * ```
  */
-export function getAwsConnectorOutput(args: GetAwsConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsConnectorResult> {
+export function getAwsConnectorOutput(args: GetAwsConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAwsConnector:getAwsConnector", {
         "identifier": args.identifier,

@@ -82,7 +82,7 @@ def get_user_group(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'))
 def get_user_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserGroupResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupResult]:
     """
     Data source for retrieving a Harness user group
 
@@ -93,7 +93,7 @@ def get_user_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:index/getUserGroup:getUserGroup', __args__, opts=opts, typ=GetUserGroupResult)
     return __ret__.apply(lambda __response__: GetUserGroupResult(
         id=pulumi.get(__response__, 'id'),

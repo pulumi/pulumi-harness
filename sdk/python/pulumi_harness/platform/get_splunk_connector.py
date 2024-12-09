@@ -229,7 +229,7 @@ def get_splunk_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                 name: Optional[pulumi.Input[Optional[str]]] = None,
                                 org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSplunkConnectorResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSplunkConnectorResult]:
     """
     Datasource for looking up a Splunk connector.
 
@@ -253,7 +253,7 @@ def get_splunk_connector_output(identifier: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getSplunkConnector:getSplunkConnector', __args__, opts=opts, typ=GetSplunkConnectorResult)
     return __ret__.apply(lambda __response__: GetSplunkConnectorResult(
         account_id=pulumi.get(__response__, 'account_id'),
