@@ -77,6 +77,8 @@ export class GitOpsGnupg extends pulumi.CustomResource {
 
     /**
      * Account Identifier for the GnuPG Key.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -121,9 +123,6 @@ export class GitOpsGnupg extends pulumi.CustomResource {
             resourceInputs["requests"] = state ? state.requests : undefined;
         } else {
             const args = argsOrState as GitOpsGnupgArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
@@ -148,6 +147,8 @@ export class GitOpsGnupg extends pulumi.CustomResource {
 export interface GitOpsGnupgState {
     /**
      * Account Identifier for the GnuPG Key.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -178,8 +179,10 @@ export interface GitOpsGnupgState {
 export interface GitOpsGnupgArgs {
     /**
      * Account Identifier for the GnuPG Key.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier for the GnuPG Key.
      */

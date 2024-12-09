@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.GetGitopsAgentDeployYaml(ctx, &platform.GetGitopsAgentDeployYamlArgs{
 //				Identifier: "identifier",
-//				AccountId:  "account_id",
+//				AccountId:  pulumi.StringRef("account_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				Namespace:  "namespace",
@@ -55,7 +55,9 @@ func GetGitopsAgentDeployYaml(ctx *pulumi.Context, args *GetGitopsAgentDeployYam
 // A collection of arguments for invoking getGitopsAgentDeployYaml.
 type GetGitopsAgentDeployYamlArgs struct {
 	// Account identifier of the GitOps agent.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// CA data of the GitOps agent, base64 encoded content of ca chain.
 	CaData *string `pulumi:"caData"`
 	// Identifier of the GitOps agent.
@@ -73,6 +75,8 @@ type GetGitopsAgentDeployYamlArgs struct {
 // A collection of values returned by getGitopsAgentDeployYaml.
 type GetGitopsAgentDeployYamlResult struct {
 	// Account identifier of the GitOps agent.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// CA data of the GitOps agent, base64 encoded content of ca chain.
 	CaData *string `pulumi:"caData"`
@@ -114,7 +118,9 @@ func GetGitopsAgentDeployYamlOutput(ctx *pulumi.Context, args GetGitopsAgentDepl
 // A collection of arguments for invoking getGitopsAgentDeployYaml.
 type GetGitopsAgentDeployYamlOutputArgs struct {
 	// Account identifier of the GitOps agent.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// CA data of the GitOps agent, base64 encoded content of ca chain.
 	CaData pulumi.StringPtrInput `pulumi:"caData"`
 	// Identifier of the GitOps agent.
@@ -149,6 +155,8 @@ func (o GetGitopsAgentDeployYamlResultOutput) ToGetGitopsAgentDeployYamlResultOu
 }
 
 // Account identifier of the GitOps agent.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsAgentDeployYamlResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

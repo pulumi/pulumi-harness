@@ -83,6 +83,8 @@ export class GitOpsRepoCert extends pulumi.CustomResource {
 
     /**
      * Account identifier of the GitOps repository certificate.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -122,9 +124,6 @@ export class GitOpsRepoCert extends pulumi.CustomResource {
             resourceInputs["requests"] = state ? state.requests : undefined;
         } else {
             const args = argsOrState as GitOpsRepoCertArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
@@ -148,6 +147,8 @@ export class GitOpsRepoCert extends pulumi.CustomResource {
 export interface GitOpsRepoCertState {
     /**
      * Account identifier of the GitOps repository certificate.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -174,8 +175,10 @@ export interface GitOpsRepoCertState {
 export interface GitOpsRepoCertArgs {
     /**
      * Account identifier of the GitOps repository certificate.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier of the GitOps repository certificate.
      */

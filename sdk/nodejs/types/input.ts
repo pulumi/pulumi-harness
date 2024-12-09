@@ -2008,6 +2008,10 @@ export namespace platform {
          * Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: pulumi.Input<string>;
+        /**
+         * Reference to the Harness secret containing the aws session token.
+         */
+        sessionTokenRef?: pulumi.Input<string>;
     }
 
     export interface AwsConnectorOidcAuthentication {
@@ -2356,6 +2360,10 @@ export namespace platform {
 
     export interface DbSchemaSchemaSource {
         /**
+         * If connector type is artifactory, path to the archive file which contains the changeLog
+         */
+        archivePath?: pulumi.Input<string>;
+        /**
          * Connector to repository at which to find details about the database schema
          */
         connector: pulumi.Input<string>;
@@ -2544,7 +2552,11 @@ export namespace platform {
         /**
          * The attribute to use in the clause.  This can be any target attribute
          */
-        attribute?: pulumi.Input<string>;
+        attribute: pulumi.Input<string>;
+        /**
+         * The ID of this resource.
+         */
+        id?: pulumi.Input<string>;
         /**
          * Is the operation negated?
          */
@@ -2552,11 +2564,11 @@ export namespace platform {
         /**
          * The type of operation such as equals, starts_with, contains
          */
-        op?: pulumi.Input<string>;
+        op: pulumi.Input<string>;
         /**
          * The values that are compared against the operator
          */
-        values?: pulumi.Input<pulumi.Input<string>[]>;
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface FeatureFlagVariation {

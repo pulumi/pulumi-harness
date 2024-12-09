@@ -16,7 +16,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// The attribute to use in the clause.  This can be any target attribute
         /// </summary>
-        public readonly string? Attribute;
+        public readonly string Attribute;
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
+        public readonly string? Id;
         /// <summary>
         /// Is the operation negated?
         /// </summary>
@@ -24,7 +28,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// The type of operation such as equals, starts_with, contains
         /// </summary>
-        public readonly string? Op;
+        public readonly string Op;
         /// <summary>
         /// The values that are compared against the operator
         /// </summary>
@@ -32,15 +36,18 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private FeatureFlagTargetGroupRule(
-            string? attribute,
+            string attribute,
+
+            string? id,
 
             bool? negate,
 
-            string? op,
+            string op,
 
             ImmutableArray<string> values)
         {
             Attribute = attribute;
+            Id = id;
             Negate = negate;
             Op = op;
             Values = values;

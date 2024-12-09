@@ -74,6 +74,8 @@ type GitOpsGnupg struct {
 	pulumi.CustomResourceState
 
 	// Account Identifier for the GnuPG Key.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier for the GnuPG Key.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
@@ -94,9 +96,6 @@ func NewGitOpsGnupg(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
@@ -127,6 +126,8 @@ func GetGitOpsGnupg(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitOpsGnupg resources.
 type gitOpsGnupgState struct {
 	// Account Identifier for the GnuPG Key.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier for the GnuPG Key.
 	AgentId *string `pulumi:"agentId"`
@@ -142,6 +143,8 @@ type gitOpsGnupgState struct {
 
 type GitOpsGnupgState struct {
 	// Account Identifier for the GnuPG Key.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent identifier for the GnuPG Key.
 	AgentId pulumi.StringPtrInput
@@ -161,7 +164,9 @@ func (GitOpsGnupgState) ElementType() reflect.Type {
 
 type gitOpsGnupgArgs struct {
 	// Account Identifier for the GnuPG Key.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier for the GnuPG Key.
 	AgentId string `pulumi:"agentId"`
 	// Organization Identifier for the GnuPG Key.
@@ -175,7 +180,9 @@ type gitOpsGnupgArgs struct {
 // The set of arguments for constructing a GitOpsGnupg resource.
 type GitOpsGnupgArgs struct {
 	// Account Identifier for the GnuPG Key.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Agent identifier for the GnuPG Key.
 	AgentId pulumi.StringInput
 	// Organization Identifier for the GnuPG Key.
@@ -274,6 +281,8 @@ func (o GitOpsGnupgOutput) ToGitOpsGnupgOutputWithContext(ctx context.Context) G
 }
 
 // Account Identifier for the GnuPG Key.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsGnupgOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsGnupg) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

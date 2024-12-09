@@ -24,8 +24,10 @@ export function getGitopsAppProjectMapping(args: GetGitopsAppProjectMappingArgs,
 export interface GetGitopsAppProjectMappingArgs {
     /**
      * Account identifier of the GitOps agent's Application Project.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Agent identifier for which the ArgoCD and Harness project mapping is to be created.
      */
@@ -50,6 +52,8 @@ export interface GetGitopsAppProjectMappingArgs {
 export interface GetGitopsAppProjectMappingResult {
     /**
      * Account identifier of the GitOps agent's Application Project.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -97,8 +101,10 @@ export function getGitopsAppProjectMappingOutput(args: GetGitopsAppProjectMappin
 export interface GetGitopsAppProjectMappingOutputArgs {
     /**
      * Account identifier of the GitOps agent's Application Project.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier for which the ArgoCD and Harness project mapping is to be created.
      */

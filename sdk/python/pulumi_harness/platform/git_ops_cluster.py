@@ -21,42 +21,34 @@ __all__ = ['GitOpsClusterArgs', 'GitOpsCluster']
 @pulumi.input_type
 class GitOpsClusterArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
                  agent_id: pulumi.Input[str],
                  identifier: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  requests: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]]] = None):
         """
         The set of arguments for constructing a GitOpsCluster resource.
-        :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
+        :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create or update request.
         """
-        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "identifier", identifier)
+        if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if requests is not None:
             pulumi.set(__self__, "requests", requests)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
-        """
-        Account identifier of the GitOps cluster.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="agentId")
@@ -81,6 +73,19 @@ class GitOpsClusterArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[str]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Account identifier of the GitOps cluster.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -138,6 +143,9 @@ class _GitOpsClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create or update request.
         """
         if account_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
+        if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
@@ -152,6 +160,7 @@ class _GitOpsClusterState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account identifier of the GitOps cluster.
@@ -326,8 +335,6 @@ class GitOpsCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GitOpsClusterArgs.__new__(GitOpsClusterArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
@@ -382,6 +389,7 @@ class GitOpsCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> pulumi.Output[str]:
         """
         Account identifier of the GitOps cluster.

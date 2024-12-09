@@ -154,8 +154,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account Identifier for the GnuPG Key.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Agent identifier for the GnuPG Key.

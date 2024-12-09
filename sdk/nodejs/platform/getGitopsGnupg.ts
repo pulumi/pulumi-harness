@@ -40,8 +40,10 @@ export function getGitopsGnupg(args: GetGitopsGnupgArgs, opts?: pulumi.InvokeOpt
 export interface GetGitopsGnupgArgs {
     /**
      * Account Identifier for the GnuPG Key.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * Agent identifier for the GnuPG Key.
      */
@@ -70,6 +72,8 @@ export interface GetGitopsGnupgArgs {
 export interface GetGitopsGnupgResult {
     /**
      * Account Identifier for the GnuPG Key.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
     /**
@@ -131,8 +135,10 @@ export function getGitopsGnupgOutput(args: GetGitopsGnupgOutputArgs, opts?: pulu
 export interface GetGitopsGnupgOutputArgs {
     /**
      * Account Identifier for the GnuPG Key.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier for the GnuPG Key.
      */

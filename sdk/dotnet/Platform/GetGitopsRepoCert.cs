@@ -30,14 +30,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps repository certificate.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Agent identifier of the GitOps repository certificate.
         /// </summary>
-        [Input("agentId")]
-        public string? AgentId { get; set; }
+        [Input("agentId", required: true)]
+        public string AgentId { get; set; } = null!;
 
         /// <summary>
         /// Organization identifier of the GitOps repository certificate.
@@ -62,14 +62,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps repository certificate.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Agent identifier of the GitOps repository certificate.
         /// </summary>
-        [Input("agentId")]
-        public Input<string>? AgentId { get; set; }
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Organization identifier of the GitOps repository certificate.
@@ -100,7 +100,7 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Agent identifier of the GitOps repository certificate.
         /// </summary>
-        public readonly string? AgentId;
+        public readonly string AgentId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -118,7 +118,7 @@ namespace Pulumi.Harness.Platform
         private GetGitopsRepoCertResult(
             string accountId,
 
-            string? agentId,
+            string agentId,
 
             string id,
 

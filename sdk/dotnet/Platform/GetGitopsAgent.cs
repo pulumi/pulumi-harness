@@ -13,54 +13,12 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Datasource for fetching a Harness GitOps Agent.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetGitopsAgent.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///         AccountId = "account_id",
-        ///         ProjectId = "project_id",
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetGitopsAgentResult> InvokeAsync(GetGitopsAgentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsAgentResult>("harness:platform/getGitopsAgent:getGitopsAgent", args ?? new GetGitopsAgentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Datasource for fetching a Harness GitOps Agent.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetGitopsAgent.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///         AccountId = "account_id",
-        ///         ProjectId = "project_id",
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetGitopsAgentResult> Invoke(GetGitopsAgentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentResult>("harness:platform/getGitopsAgent:getGitopsAgent", args ?? new GetGitopsAgentInvokeArgs(), options.WithDefaults());
@@ -72,8 +30,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps agent.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps agent.
@@ -93,6 +51,12 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
+        /// <summary>
+        /// Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// </summary>
+        [Input("withCredentials")]
+        public bool? WithCredentials { get; set; }
+
         public GetGitopsAgentArgs()
         {
         }
@@ -104,8 +68,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Account identifier of the GitOps agent.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps agent.
@@ -124,6 +88,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// </summary>
+        [Input("withCredentials")]
+        public Input<bool>? WithCredentials { get; set; }
 
         public GetGitopsAgentInvokeArgs()
         {
@@ -156,6 +126,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
+        /// This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet with_credentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// </summary>
+        public readonly bool IsAuthenticated;
+        /// <summary>
         /// Metadata of the agent.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsAgentMetadataResult> Metadatas;
@@ -172,6 +146,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
+        /// Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
+        /// </summary>
+        public readonly string PrefixedIdentifier;
+        /// <summary>
         /// Project identifier of the GitOps agent.
         /// </summary>
         public readonly string? ProjectId;
@@ -184,6 +162,10 @@ namespace Pulumi.Harness.Platform
         /// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Specify whether to retrieve the gitops agent's token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+        /// </summary>
+        public readonly bool? WithCredentials;
 
         [OutputConstructor]
         private GetGitopsAgentResult(
@@ -197,6 +179,8 @@ namespace Pulumi.Harness.Platform
 
             string identifier,
 
+            bool isAuthenticated,
+
             ImmutableArray<Outputs.GetGitopsAgentMetadataResult> metadatas,
 
             string name,
@@ -205,24 +189,31 @@ namespace Pulumi.Harness.Platform
 
             string? orgId,
 
+            string prefixedIdentifier,
+
             string? projectId,
 
             ImmutableDictionary<string, string> tags,
 
-            string type)
+            string type,
+
+            bool? withCredentials)
         {
             AccountId = accountId;
             AgentToken = agentToken;
             Description = description;
             Id = id;
             Identifier = identifier;
+            IsAuthenticated = isAuthenticated;
             Metadatas = metadatas;
             Name = name;
             Operator = @operator;
             OrgId = orgId;
+            PrefixedIdentifier = prefixedIdentifier;
             ProjectId = projectId;
             Tags = tags;
             Type = type;
+            WithCredentials = withCredentials;
         }
     }
 }

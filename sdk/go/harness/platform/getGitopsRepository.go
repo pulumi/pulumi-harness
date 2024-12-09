@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.GetGitopsRepository(ctx, &platform.GetGitopsRepositoryArgs{
 //				Identifier: "identifier",
-//				AccountId:  "account_id",
+//				AccountId:  pulumi.StringRef("account_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				AgentId:    "agent_id",
@@ -55,7 +55,9 @@ func GetGitopsRepository(ctx *pulumi.Context, args *GetGitopsRepositoryArgs, opt
 // A collection of arguments for invoking getGitopsRepository.
 type GetGitopsRepositoryArgs struct {
 	// Account identifier of the GitOps repository.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId string `pulumi:"agentId"`
 	// Identifier of the GitOps repository.
@@ -69,6 +71,8 @@ type GetGitopsRepositoryArgs struct {
 // A collection of values returned by getGitopsRepository.
 type GetGitopsRepositoryResult struct {
 	// Account identifier of the GitOps repository.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId string `pulumi:"agentId"`
@@ -108,7 +112,9 @@ func GetGitopsRepositoryOutput(ctx *pulumi.Context, args GetGitopsRepositoryOutp
 // A collection of arguments for invoking getGitopsRepository.
 type GetGitopsRepositoryOutputArgs struct {
 	// Account identifier of the GitOps repository.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier of the GitOps repository.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Identifier of the GitOps repository.
@@ -139,6 +145,8 @@ func (o GetGitopsRepositoryResultOutput) ToGetGitopsRepositoryResultOutputWithCo
 }
 
 // Account identifier of the GitOps repository.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsRepositoryResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsRepositoryResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

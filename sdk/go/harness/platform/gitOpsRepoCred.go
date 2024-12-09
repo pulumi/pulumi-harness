@@ -81,6 +81,8 @@ type GitOpsRepoCred struct {
 	pulumi.CustomResourceState
 
 	// Account identifier of the Repository Credentials.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
@@ -103,9 +105,6 @@ func NewGitOpsRepoCred(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
@@ -136,6 +135,8 @@ func GetGitOpsRepoCred(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitOpsRepoCred resources.
 type gitOpsRepoCredState struct {
 	// Account identifier of the Repository Credentials.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId *string `pulumi:"agentId"`
@@ -153,6 +154,8 @@ type gitOpsRepoCredState struct {
 
 type GitOpsRepoCredState struct {
 	// Account identifier of the Repository Credentials.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringPtrInput
@@ -174,7 +177,9 @@ func (GitOpsRepoCredState) ElementType() reflect.Type {
 
 type gitOpsRepoCredArgs struct {
 	// Account identifier of the Repository Credentials.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the Repository Credentials.
 	AgentId string `pulumi:"agentId"`
 	// credential details.
@@ -192,7 +197,9 @@ type gitOpsRepoCredArgs struct {
 // The set of arguments for constructing a GitOpsRepoCred resource.
 type GitOpsRepoCredArgs struct {
 	// Account identifier of the Repository Credentials.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Agent identifier of the Repository Credentials.
 	AgentId pulumi.StringInput
 	// credential details.
@@ -295,6 +302,8 @@ func (o GitOpsRepoCredOutput) ToGitOpsRepoCredOutputWithContext(ctx context.Cont
 }
 
 // Account identifier of the Repository Credentials.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsRepoCredOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsRepoCred) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,16 +20,24 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier of the GitOps agent.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release.
+     * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -76,6 +85,21 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    @Import(name="withCredentials")
+    private @Nullable Output<Boolean> withCredentials;
+
+    /**
+     * @return Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * 
+     */
+    public Optional<Output<Boolean>> withCredentials() {
+        return Optional.ofNullable(this.withCredentials);
+    }
+
     private GetGitopsAgentArgs() {}
 
     private GetGitopsAgentArgs(GetGitopsAgentArgs $) {
@@ -83,6 +107,7 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.withCredentials = $.withCredentials;
     }
 
     public static Builder builder() {
@@ -108,8 +133,12 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
-        public Builder accountId(Output<String> accountId) {
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -119,7 +148,11 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -187,10 +220,28 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withCredentials(@Nullable Output<Boolean> withCredentials) {
+            $.withCredentials = withCredentials;
+            return this;
+        }
+
+        /**
+         * @param withCredentials Specify whether to retrieve the gitops agent&#39;s token. (The field agent_token will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withCredentials(Boolean withCredentials) {
+            return withCredentials(Output.of(withCredentials));
+        }
+
         public GetGitopsAgentArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetGitopsAgentArgs", "accountId");
-            }
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("GetGitopsAgentArgs", "identifier");
             }

@@ -103,6 +103,8 @@ type GitOpsApplications struct {
 	pulumi.CustomResourceState
 
 	// Account identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
@@ -149,9 +151,6 @@ func NewGitOpsApplications(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
@@ -191,6 +190,8 @@ func GetGitOpsApplications(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GitOpsApplications resources.
 type gitOpsApplicationsState struct {
 	// Account identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId *string `pulumi:"agentId"`
@@ -232,6 +233,8 @@ type gitOpsApplicationsState struct {
 
 type GitOpsApplicationsState struct {
 	// Account identifier of the GitOps application.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps application.
 	AgentId pulumi.StringPtrInput
@@ -277,7 +280,9 @@ func (GitOpsApplicationsState) ElementType() reflect.Type {
 
 type gitOpsApplicationsArgs struct {
 	// Account identifier of the GitOps application.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
 	AgentId string `pulumi:"agentId"`
 	// Definition of the GitOps application resource.
@@ -319,7 +324,9 @@ type gitOpsApplicationsArgs struct {
 // The set of arguments for constructing a GitOpsApplications resource.
 type GitOpsApplicationsArgs struct {
 	// Account identifier of the GitOps application.
-	AccountId pulumi.StringInput
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps application.
 	AgentId pulumi.StringInput
 	// Definition of the GitOps application resource.
@@ -446,6 +453,8 @@ func (o GitOpsApplicationsOutput) ToGitOpsApplicationsOutputWithContext(ctx cont
 }
 
 // Account identifier of the GitOps application.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GitOpsApplicationsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

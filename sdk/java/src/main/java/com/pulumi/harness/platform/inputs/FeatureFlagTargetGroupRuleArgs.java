@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -21,15 +22,30 @@ public final class FeatureFlagTargetGroupRuleArgs extends com.pulumi.resources.R
      * The attribute to use in the clause.  This can be any target attribute
      * 
      */
-    @Import(name="attribute")
-    private @Nullable Output<String> attribute;
+    @Import(name="attribute", required=true)
+    private Output<String> attribute;
 
     /**
      * @return The attribute to use in the clause.  This can be any target attribute
      * 
      */
-    public Optional<Output<String>> attribute() {
-        return Optional.ofNullable(this.attribute);
+    public Output<String> attribute() {
+        return this.attribute;
+    }
+
+    /**
+     * The ID of this resource.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return The ID of this resource.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
     }
 
     /**
@@ -51,36 +67,37 @@ public final class FeatureFlagTargetGroupRuleArgs extends com.pulumi.resources.R
      * The type of operation such as equals, starts_with, contains
      * 
      */
-    @Import(name="op")
-    private @Nullable Output<String> op;
+    @Import(name="op", required=true)
+    private Output<String> op;
 
     /**
      * @return The type of operation such as equals, starts_with, contains
      * 
      */
-    public Optional<Output<String>> op() {
-        return Optional.ofNullable(this.op);
+    public Output<String> op() {
+        return this.op;
     }
 
     /**
      * The values that are compared against the operator
      * 
      */
-    @Import(name="values")
-    private @Nullable Output<List<String>> values;
+    @Import(name="values", required=true)
+    private Output<List<String>> values;
 
     /**
      * @return The values that are compared against the operator
      * 
      */
-    public Optional<Output<List<String>>> values() {
-        return Optional.ofNullable(this.values);
+    public Output<List<String>> values() {
+        return this.values;
     }
 
     private FeatureFlagTargetGroupRuleArgs() {}
 
     private FeatureFlagTargetGroupRuleArgs(FeatureFlagTargetGroupRuleArgs $) {
         this.attribute = $.attribute;
+        this.id = $.id;
         this.negate = $.negate;
         this.op = $.op;
         this.values = $.values;
@@ -110,7 +127,7 @@ public final class FeatureFlagTargetGroupRuleArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder attribute(@Nullable Output<String> attribute) {
+        public Builder attribute(Output<String> attribute) {
             $.attribute = attribute;
             return this;
         }
@@ -123,6 +140,27 @@ public final class FeatureFlagTargetGroupRuleArgs extends com.pulumi.resources.R
          */
         public Builder attribute(String attribute) {
             return attribute(Output.of(attribute));
+        }
+
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         /**
@@ -152,7 +190,7 @@ public final class FeatureFlagTargetGroupRuleArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder op(@Nullable Output<String> op) {
+        public Builder op(Output<String> op) {
             $.op = op;
             return this;
         }
@@ -173,7 +211,7 @@ public final class FeatureFlagTargetGroupRuleArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder values(@Nullable Output<List<String>> values) {
+        public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
@@ -199,6 +237,15 @@ public final class FeatureFlagTargetGroupRuleArgs extends com.pulumi.resources.R
         }
 
         public FeatureFlagTargetGroupRuleArgs build() {
+            if ($.attribute == null) {
+                throw new MissingRequiredPropertyException("FeatureFlagTargetGroupRuleArgs", "attribute");
+            }
+            if ($.op == null) {
+                throw new MissingRequiredPropertyException("FeatureFlagTargetGroupRuleArgs", "op");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("FeatureFlagTargetGroupRuleArgs", "values");
+            }
             return $;
         }
     }

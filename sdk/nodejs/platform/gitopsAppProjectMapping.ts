@@ -60,6 +60,8 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
 
     /**
      * Account identifier of the GitOps agent's Application Project.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -104,9 +106,6 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
             resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as GitopsAppProjectMappingArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
@@ -137,6 +136,8 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
 export interface GitopsAppProjectMappingState {
     /**
      * Account identifier of the GitOps agent's Application Project.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -167,8 +168,10 @@ export interface GitopsAppProjectMappingState {
 export interface GitopsAppProjectMappingArgs {
     /**
      * Account identifier of the GitOps agent's Application Project.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Agent identifier for which the ArgoCD and Harness project mapping is to be created.
      */

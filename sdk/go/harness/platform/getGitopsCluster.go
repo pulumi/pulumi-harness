@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.GetGitopsCluster(ctx, &platform.GetGitopsClusterArgs{
 //				Identifier: "identifier",
-//				AccountId:  "account_id",
+//				AccountId:  pulumi.StringRef("account_id"),
 //				ProjectId:  pulumi.StringRef("project_id"),
 //				OrgId:      pulumi.StringRef("org_id"),
 //				AgentId:    "agent_id",
@@ -55,7 +55,9 @@ func GetGitopsCluster(ctx *pulumi.Context, args *GetGitopsClusterArgs, opts ...p
 // A collection of arguments for invoking getGitopsCluster.
 type GetGitopsClusterArgs struct {
 	// Account identifier of the GitOps cluster.
-	AccountId string `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster.
 	AgentId string `pulumi:"agentId"`
 	// Identifier of the GitOps cluster.
@@ -69,6 +71,8 @@ type GetGitopsClusterArgs struct {
 // A collection of values returned by getGitopsCluster.
 type GetGitopsClusterResult struct {
 	// Account identifier of the GitOps cluster.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster.
 	AgentId string `pulumi:"agentId"`
@@ -106,7 +110,9 @@ func GetGitopsClusterOutput(ctx *pulumi.Context, args GetGitopsClusterOutputArgs
 // A collection of arguments for invoking getGitopsCluster.
 type GetGitopsClusterOutputArgs struct {
 	// Account identifier of the GitOps cluster.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster.
 	AgentId pulumi.StringInput `pulumi:"agentId"`
 	// Identifier of the GitOps cluster.
@@ -137,6 +143,8 @@ func (o GetGitopsClusterResultOutput) ToGetGitopsClusterResultOutputWithContext(
 }
 
 // Account identifier of the GitOps cluster.
+//
+// Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsClusterResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsClusterResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

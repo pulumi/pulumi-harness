@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetDbSchemaSchemaSource {
     /**
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * 
+     */
+    private String archivePath;
+    /**
      * @return Connector to repository at which to find details about the database schema
      * 
      */
@@ -27,6 +32,13 @@ public final class GetDbSchemaSchemaSource {
     private String repo;
 
     private GetDbSchemaSchemaSource() {}
+    /**
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * 
+     */
+    public String archivePath() {
+        return this.archivePath;
+    }
     /**
      * @return Connector to repository at which to find details about the database schema
      * 
@@ -58,17 +70,27 @@ public final class GetDbSchemaSchemaSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String archivePath;
         private String connector;
         private String location;
         private String repo;
         public Builder() {}
         public Builder(GetDbSchemaSchemaSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.archivePath = defaults.archivePath;
     	      this.connector = defaults.connector;
     	      this.location = defaults.location;
     	      this.repo = defaults.repo;
         }
 
+        @CustomType.Setter
+        public Builder archivePath(String archivePath) {
+            if (archivePath == null) {
+              throw new MissingRequiredPropertyException("GetDbSchemaSchemaSource", "archivePath");
+            }
+            this.archivePath = archivePath;
+            return this;
+        }
         @CustomType.Setter
         public Builder connector(String connector) {
             if (connector == null) {
@@ -95,6 +117,7 @@ public final class GetDbSchemaSchemaSource {
         }
         public GetDbSchemaSchemaSource build() {
             final var _resultValue = new GetDbSchemaSchemaSource();
+            _resultValue.archivePath = archivePath;
             _resultValue.connector = connector;
             _resultValue.location = location;
             _resultValue.repo = repo;
