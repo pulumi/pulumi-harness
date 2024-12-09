@@ -98,7 +98,7 @@ export interface GetVariablesResult {
  * });
  * ```
  */
-export function getVariablesOutput(args: GetVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVariablesResult> {
+export function getVariablesOutput(args: GetVariablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVariablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getVariables:getVariables", {
         "identifier": args.identifier,

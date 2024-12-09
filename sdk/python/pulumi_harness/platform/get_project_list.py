@@ -196,7 +196,7 @@ def get_project_list_output(identifier: Optional[pulumi.Input[Optional[str]]] = 
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             org_id: Optional[pulumi.Input[str]] = None,
                             page: Optional[pulumi.Input[Optional[int]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectListResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectListResult]:
     """
     Data source for retrieving Harness project list.
 
@@ -235,7 +235,7 @@ def get_project_list_output(identifier: Optional[pulumi.Input[Optional[str]]] = 
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['page'] = page
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getProjectList:getProjectList', __args__, opts=opts, typ=GetProjectListResult)
     return __ret__.apply(lambda __response__: GetProjectListResult(
         description=pulumi.get(__response__, 'description'),

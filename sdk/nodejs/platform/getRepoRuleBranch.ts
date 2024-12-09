@@ -130,7 +130,7 @@ export interface GetRepoRuleBranchResult {
 /**
  * Data source for retrieving a Harness repo branch rule.
  */
-export function getRepoRuleBranchOutput(args: GetRepoRuleBranchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoRuleBranchResult> {
+export function getRepoRuleBranchOutput(args: GetRepoRuleBranchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepoRuleBranchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getRepoRuleBranch:getRepoRuleBranch", {
         "bypasses": args.bypasses,

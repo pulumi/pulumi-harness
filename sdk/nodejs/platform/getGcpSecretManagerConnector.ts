@@ -105,7 +105,7 @@ export interface GetGcpSecretManagerConnectorResult {
  * });
  * ```
  */
-export function getGcpSecretManagerConnectorOutput(args: GetGcpSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpSecretManagerConnectorResult> {
+export function getGcpSecretManagerConnectorOutput(args: GetGcpSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpSecretManagerConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", {
         "identifier": args.identifier,

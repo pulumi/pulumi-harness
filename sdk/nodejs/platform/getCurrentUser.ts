@@ -77,7 +77,7 @@ export interface GetCurrentUserResult {
 /**
  * Data source for retrieving the current user based on the API key.
  */
-export function getCurrentUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCurrentUserResult> {
+export function getCurrentUserOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getCurrentUser:getCurrentUser", {
     }, opts);

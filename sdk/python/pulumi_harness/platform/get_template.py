@@ -318,7 +318,7 @@ def get_template_output(branch_name: Optional[pulumi.Input[Optional[str]]] = Non
                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
                         scope: Optional[pulumi.Input[Optional[str]]] = None,
                         version: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplateResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplateResult]:
     """
     Data source for retrieving a Harness pipeline.
 
@@ -365,7 +365,7 @@ def get_template_output(branch_name: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['projectId'] = project_id
     __args__['scope'] = scope
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getTemplate:getTemplate', __args__, opts=opts, typ=GetTemplateResult)
     return __ret__.apply(lambda __response__: GetTemplateResult(
         branch_name=pulumi.get(__response__, 'branch_name'),

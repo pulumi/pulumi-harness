@@ -111,7 +111,7 @@ export interface GetDbSchemaResult {
  * });
  * ```
  */
-export function getDbSchemaOutput(args: GetDbSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbSchemaResult> {
+export function getDbSchemaOutput(args: GetDbSchemaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDbSchema:getDbSchema", {
         "identifier": args.identifier,

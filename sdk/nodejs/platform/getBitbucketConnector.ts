@@ -123,7 +123,7 @@ export interface GetBitbucketConnectorResult {
  * });
  * ```
  */
-export function getBitbucketConnectorOutput(args: GetBitbucketConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBitbucketConnectorResult> {
+export function getBitbucketConnectorOutput(args: GetBitbucketConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBitbucketConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getBitbucketConnector:getBitbucketConnector", {
         "identifier": args.identifier,

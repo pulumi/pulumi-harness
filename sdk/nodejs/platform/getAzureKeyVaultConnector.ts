@@ -125,7 +125,7 @@ export interface GetAzureKeyVaultConnectorResult {
  * });
  * ```
  */
-export function getAzureKeyVaultConnectorOutput(args: GetAzureKeyVaultConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureKeyVaultConnectorResult> {
+export function getAzureKeyVaultConnectorOutput(args: GetAzureKeyVaultConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureKeyVaultConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", {
         "identifier": args.identifier,

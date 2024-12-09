@@ -115,7 +115,7 @@ export interface GetAzureCloudCostConnectorResult {
  * });
  * ```
  */
-export function getAzureCloudCostConnectorOutput(args: GetAzureCloudCostConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureCloudCostConnectorResult> {
+export function getAzureCloudCostConnectorOutput(args: GetAzureCloudCostConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureCloudCostConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector", {
         "identifier": args.identifier,

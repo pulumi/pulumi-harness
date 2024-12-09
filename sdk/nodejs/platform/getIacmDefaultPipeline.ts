@@ -71,7 +71,7 @@ export interface GetIacmDefaultPipelineResult {
 /**
  * Data source for retrieving IACM default pipelines.
  */
-export function getIacmDefaultPipelineOutput(args: GetIacmDefaultPipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIacmDefaultPipelineResult> {
+export function getIacmDefaultPipelineOutput(args: GetIacmDefaultPipelineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIacmDefaultPipelineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", {
         "operation": args.operation,

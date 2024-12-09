@@ -290,7 +290,7 @@ def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
                          notification_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetUsergroupNotificationConfigArgs', 'GetUsergroupNotificationConfigArgsDict']]]]] = None,
                          org_id: Optional[pulumi.Input[Optional[str]]] = None,
                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsergroupResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsergroupResult]:
     """
     ## Example Usage
 
@@ -319,7 +319,7 @@ def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['notificationConfigs'] = notification_configs
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getUsergroup:getUsergroup', __args__, opts=opts, typ=GetUsergroupResult)
     return __ret__.apply(lambda __response__: GetUsergroupResult(
         description=pulumi.get(__response__, 'description'),

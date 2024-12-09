@@ -201,7 +201,7 @@ export interface GetVaultConnectorResult {
  * });
  * ```
  */
-export function getVaultConnectorOutput(args: GetVaultConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultConnectorResult> {
+export function getVaultConnectorOutput(args: GetVaultConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVaultConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getVaultConnector:getVaultConnector", {
         "identifier": args.identifier,

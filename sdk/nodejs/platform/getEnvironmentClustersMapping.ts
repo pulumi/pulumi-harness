@@ -162,7 +162,7 @@ export interface GetEnvironmentClustersMappingResult {
  * });
  * ```
  */
-export function getEnvironmentClustersMappingOutput(args: GetEnvironmentClustersMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentClustersMappingResult> {
+export function getEnvironmentClustersMappingOutput(args: GetEnvironmentClustersMappingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentClustersMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", {
         "clusters": args.clusters,

@@ -111,7 +111,7 @@ export interface GetGcpConnectorResult {
  * });
  * ```
  */
-export function getGcpConnectorOutput(args: GetGcpConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpConnectorResult> {
+export function getGcpConnectorOutput(args: GetGcpConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGcpConnector:getGcpConnector", {
         "identifier": args.identifier,

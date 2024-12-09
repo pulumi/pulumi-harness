@@ -204,7 +204,7 @@ def get_input_set_output(git_details: Optional[pulumi.Input[Optional[Union['GetI
                          org_id: Optional[pulumi.Input[str]] = None,
                          pipeline_id: Optional[pulumi.Input[str]] = None,
                          project_id: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInputSetResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInputSetResult]:
     """
     Data source for retrieving a Harness input set.
 
@@ -223,7 +223,7 @@ def get_input_set_output(git_details: Optional[pulumi.Input[Optional[Union['GetI
     __args__['orgId'] = org_id
     __args__['pipelineId'] = pipeline_id
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getInputSet:getInputSet', __args__, opts=opts, typ=GetInputSetResult)
     return __ret__.apply(lambda __response__: GetInputSetResult(
         description=pulumi.get(__response__, 'description'),

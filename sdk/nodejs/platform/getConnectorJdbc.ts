@@ -111,7 +111,7 @@ export interface GetConnectorJdbcResult {
  * });
  * ```
  */
-export function getConnectorJdbcOutput(args: GetConnectorJdbcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorJdbcResult> {
+export function getConnectorJdbcOutput(args: GetConnectorJdbcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorJdbcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getConnectorJdbc:getConnectorJdbc", {
         "identifier": args.identifier,

@@ -130,7 +130,7 @@ def get_rule_set(rule_set_id: Optional[str] = None,
         rule_ids=pulumi.get(__ret__, 'rule_ids'),
         rule_set_id=pulumi.get(__ret__, 'rule_set_id'))
 def get_rule_set_output(rule_set_id: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleSetResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleSetResult]:
     """
     Datasource for looking up a rule.
 
@@ -139,7 +139,7 @@ def get_rule_set_output(rule_set_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['ruleSetId'] = rule_set_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:governance/getRuleSet:getRuleSet', __args__, opts=opts, typ=GetRuleSetResult)
     return __ret__.apply(lambda __response__: GetRuleSetResult(
         cloud_provider=pulumi.get(__response__, 'cloud_provider'),

@@ -94,7 +94,7 @@ export interface GetRuleEcsResult {
 /**
  * Data source for retrieving a Harness Variable.
  */
-export function getRuleEcsOutput(args: GetRuleEcsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleEcsResult> {
+export function getRuleEcsOutput(args: GetRuleEcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleEcsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getRuleEcs:getRuleEcs", {
         "cloudConnectorId": args.cloudConnectorId,

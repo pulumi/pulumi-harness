@@ -28,7 +28,7 @@ export interface GetProviderResult {
     readonly id: string;
     readonly identifier: string;
 }
-export function getProviderOutput(args: GetProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProviderResult> {
+export function getProviderOutput(args: GetProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProviderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getProvider:getProvider", {
         "identifier": args.identifier,

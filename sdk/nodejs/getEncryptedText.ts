@@ -61,7 +61,7 @@ export interface GetEncryptedTextResult {
 /**
  * Data source for retrieving a Harness application
  */
-export function getEncryptedTextOutput(args?: GetEncryptedTextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEncryptedTextResult> {
+export function getEncryptedTextOutput(args?: GetEncryptedTextOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEncryptedTextResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:index/getEncryptedText:getEncryptedText", {

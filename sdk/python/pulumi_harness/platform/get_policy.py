@@ -181,7 +181,7 @@ def get_policy_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
                       org_id: Optional[pulumi.Input[Optional[str]]] = None,
                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
                       rego: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyResult]:
     """
     Data source for retrieving a Harness policy.
 
@@ -207,7 +207,7 @@ def get_policy_output(identifier: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['rego'] = rego
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult)
     return __ret__.apply(lambda __response__: GetPolicyResult(
         description=pulumi.get(__response__, 'description'),

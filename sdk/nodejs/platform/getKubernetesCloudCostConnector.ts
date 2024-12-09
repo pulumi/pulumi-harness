@@ -105,7 +105,7 @@ export interface GetKubernetesCloudCostConnectorResult {
  * });
  * ```
  */
-export function getKubernetesCloudCostConnectorOutput(args: GetKubernetesCloudCostConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesCloudCostConnectorResult> {
+export function getKubernetesCloudCostConnectorOutput(args: GetKubernetesCloudCostConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesCloudCostConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", {
         "identifier": args.identifier,

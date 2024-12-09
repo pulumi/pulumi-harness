@@ -109,7 +109,7 @@ export interface GetServiceListResult {
  * const example = harness.platform.getServiceList({});
  * ```
  */
-export function getServiceListOutput(args?: GetServiceListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceListResult> {
+export function getServiceListOutput(args?: GetServiceListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceListResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getServiceList:getServiceList", {

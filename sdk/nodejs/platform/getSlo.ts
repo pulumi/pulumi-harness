@@ -58,7 +58,7 @@ export interface GetSloResult {
 /**
  * Data source for retrieving an SLO.
  */
-export function getSloOutput(args: GetSloOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSloResult> {
+export function getSloOutput(args: GetSloOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSloResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getSlo:getSlo", {
         "identifier": args.identifier,
