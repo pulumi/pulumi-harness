@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public static Output<GetAwsAlbResult> Invoke(GetAwsAlbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsAlbResult>("harness:autostopping/getAwsAlb:getAwsAlb", args ?? new GetAwsAlbInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for AWS Autostopping proxy
+        /// </summary>
+        public static Output<GetAwsAlbResult> Invoke(GetAwsAlbInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsAlbResult>("harness:autostopping/getAwsAlb:getAwsAlb", args ?? new GetAwsAlbInvokeArgs(), options.WithDefaults());
     }
 
 

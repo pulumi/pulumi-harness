@@ -92,21 +92,11 @@ type LookupTriggersResult struct {
 }
 
 func LookupTriggersOutput(ctx *pulumi.Context, args LookupTriggersOutputArgs, opts ...pulumi.InvokeOption) LookupTriggersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTriggersResultOutput, error) {
 			args := v.(LookupTriggersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTriggersResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getTriggers:getTriggers", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTriggersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTriggersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTriggersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getTriggers:getTriggers", args, LookupTriggersResultOutput{}, options).(LookupTriggersResultOutput), nil
 		}).(LookupTriggersResultOutput)
 }
 

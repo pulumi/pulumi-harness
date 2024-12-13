@@ -22,6 +22,12 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetSecretManagerResult> Invoke(GetSecretManagerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretManagerResult>("harness:index/getSecretManager:getSecretManager", args ?? new GetSecretManagerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness secret manager
+        /// </summary>
+        public static Output<GetSecretManagerResult> Invoke(GetSecretManagerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretManagerResult>("harness:index/getSecretManager:getSecretManager", args ?? new GetSecretManagerInvokeArgs(), options.WithDefaults());
     }
 
 

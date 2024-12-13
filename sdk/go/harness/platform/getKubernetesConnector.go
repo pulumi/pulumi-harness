@@ -91,21 +91,11 @@ type LookupKubernetesConnectorResult struct {
 }
 
 func LookupKubernetesConnectorOutput(ctx *pulumi.Context, args LookupKubernetesConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKubernetesConnectorResultOutput, error) {
 			args := v.(LookupKubernetesConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupKubernetesConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getKubernetesConnector:getKubernetesConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKubernetesConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKubernetesConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKubernetesConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getKubernetesConnector:getKubernetesConnector", args, LookupKubernetesConnectorResultOutput{}, options).(LookupKubernetesConnectorResultOutput), nil
 		}).(LookupKubernetesConnectorResultOutput)
 }
 

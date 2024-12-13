@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitopsApplicationsResult> Invoke(GetGitopsApplicationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for fetching a Harness GitOps Application.
+        /// </summary>
+        public static Output<GetGitopsApplicationsResult> Invoke(GetGitopsApplicationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsInvokeArgs(), options.WithDefaults());
     }
 
 

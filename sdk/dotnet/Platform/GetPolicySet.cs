@@ -82,6 +82,42 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetPolicySetResult> Invoke(GetPolicySetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicySetResult>("harness:platform/getPolicySet:getPolicySet", args ?? new GetPolicySetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness policyset.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetPolicySet.Invoke(new()
+        ///     {
+        ///         Identifier = "harness_platform_policyset.test.identifier",
+        ///         Name = "harness_platform_policyset.test.name",
+        ///         Action = "onrun",
+        ///         Type = "pipeline",
+        ///         Enabled = true,
+        ///         Policies = new[]
+        ///         {
+        ///             new Harness.Platform.Inputs.GetPolicySetPolicyInputArgs
+        ///             {
+        ///                 Identifier = "always_run",
+        ///                 Severity = "warning",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicySetResult> Invoke(GetPolicySetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicySetResult>("harness:platform/getPolicySet:getPolicySet", args ?? new GetPolicySetInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -66,6 +66,34 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitopsRepositoryResult> Invoke(GetGitopsRepositoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsRepositoryResult>("harness:platform/getGitopsRepository:getGitopsRepository", args ?? new GetGitopsRepositoryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for fetching a Harness GitOps Repository.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsRepository.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         AgentId = "agent_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGitopsRepositoryResult> Invoke(GetGitopsRepositoryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitopsRepositoryResult>("harness:platform/getGitopsRepository:getGitopsRepository", args ?? new GetGitopsRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -84,21 +84,11 @@ type GetCcmFiltersResult struct {
 }
 
 func GetCcmFiltersOutput(ctx *pulumi.Context, args GetCcmFiltersOutputArgs, opts ...pulumi.InvokeOption) GetCcmFiltersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCcmFiltersResultOutput, error) {
 			args := v.(GetCcmFiltersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCcmFiltersResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getCcmFilters:getCcmFilters", args, &rv, "", opts...)
-			if err != nil {
-				return GetCcmFiltersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCcmFiltersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCcmFiltersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getCcmFilters:getCcmFilters", args, GetCcmFiltersResultOutput{}, options).(GetCcmFiltersResultOutput), nil
 		}).(GetCcmFiltersResultOutput)
 }
 

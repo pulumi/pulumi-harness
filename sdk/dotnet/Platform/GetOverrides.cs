@@ -16,6 +16,9 @@ namespace Pulumi.Harness.Platform
 
         public static Output<GetOverridesResult> Invoke(GetOverridesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOverridesResult>("harness:platform/getOverrides:getOverrides", args ?? new GetOverridesInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetOverridesResult> Invoke(GetOverridesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOverridesResult>("harness:platform/getOverrides:getOverrides", args ?? new GetOverridesInvokeArgs(), options.WithDefaults());
     }
 
 

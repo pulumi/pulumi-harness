@@ -97,21 +97,11 @@ type GetGitopsAgentDeployYamlResult struct {
 }
 
 func GetGitopsAgentDeployYamlOutput(ctx *pulumi.Context, args GetGitopsAgentDeployYamlOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentDeployYamlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGitopsAgentDeployYamlResultOutput, error) {
 			args := v.(GetGitopsAgentDeployYamlArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGitopsAgentDeployYamlResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args, &rv, "", opts...)
-			if err != nil {
-				return GetGitopsAgentDeployYamlResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGitopsAgentDeployYamlResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGitopsAgentDeployYamlResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args, GetGitopsAgentDeployYamlResultOutput{}, options).(GetGitopsAgentDeployYamlResultOutput), nil
 		}).(GetGitopsAgentDeployYamlResultOutput)
 }
 

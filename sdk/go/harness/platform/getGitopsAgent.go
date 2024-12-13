@@ -76,21 +76,11 @@ type GetGitopsAgentResult struct {
 }
 
 func GetGitopsAgentOutput(ctx *pulumi.Context, args GetGitopsAgentOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGitopsAgentResultOutput, error) {
 			args := v.(GetGitopsAgentArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGitopsAgentResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsAgent:getGitopsAgent", args, &rv, "", opts...)
-			if err != nil {
-				return GetGitopsAgentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGitopsAgentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGitopsAgentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getGitopsAgent:getGitopsAgent", args, GetGitopsAgentResultOutput{}, options).(GetGitopsAgentResultOutput), nil
 		}).(GetGitopsAgentResultOutput)
 }
 

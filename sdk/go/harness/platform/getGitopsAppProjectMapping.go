@@ -59,21 +59,11 @@ type LookupGitopsAppProjectMappingResult struct {
 }
 
 func LookupGitopsAppProjectMappingOutput(ctx *pulumi.Context, args LookupGitopsAppProjectMappingOutputArgs, opts ...pulumi.InvokeOption) LookupGitopsAppProjectMappingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGitopsAppProjectMappingResultOutput, error) {
 			args := v.(LookupGitopsAppProjectMappingArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupGitopsAppProjectMappingResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGitopsAppProjectMappingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGitopsAppProjectMappingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGitopsAppProjectMappingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args, LookupGitopsAppProjectMappingResultOutput{}, options).(LookupGitopsAppProjectMappingResultOutput), nil
 		}).(LookupGitopsAppProjectMappingResultOutput)
 }
 

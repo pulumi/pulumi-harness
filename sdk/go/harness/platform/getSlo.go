@@ -45,21 +45,11 @@ type LookupSloResult struct {
 }
 
 func LookupSloOutput(ctx *pulumi.Context, args LookupSloOutputArgs, opts ...pulumi.InvokeOption) LookupSloResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSloResultOutput, error) {
 			args := v.(LookupSloArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSloResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getSlo:getSlo", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSloResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSloResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSloResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getSlo:getSlo", args, LookupSloResultOutput{}, options).(LookupSloResultOutput), nil
 		}).(LookupSloResultOutput)
 }
 

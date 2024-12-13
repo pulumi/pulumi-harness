@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public static Output<GetAzureGatewayResult> Invoke(GetAzureGatewayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureGatewayResult>("harness:autostopping/getAzureGateway:getAzureGateway", args ?? new GetAzureGatewayInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for AWS Autostopping proxy
+        /// </summary>
+        public static Output<GetAzureGatewayResult> Invoke(GetAzureGatewayInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureGatewayResult>("harness:autostopping/getAzureGateway:getAzureGateway", args ?? new GetAzureGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

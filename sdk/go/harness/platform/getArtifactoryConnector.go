@@ -85,21 +85,11 @@ type LookupArtifactoryConnectorResult struct {
 }
 
 func LookupArtifactoryConnectorOutput(ctx *pulumi.Context, args LookupArtifactoryConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupArtifactoryConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupArtifactoryConnectorResultOutput, error) {
 			args := v.(LookupArtifactoryConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupArtifactoryConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupArtifactoryConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupArtifactoryConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupArtifactoryConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args, LookupArtifactoryConnectorResultOutput{}, options).(LookupArtifactoryConnectorResultOutput), nil
 		}).(LookupArtifactoryConnectorResultOutput)
 }
 

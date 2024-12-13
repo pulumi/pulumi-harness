@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public static Output<GetRuleRdsResult> Invoke(GetRuleRdsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleRdsResult>("harness:autostopping/getRuleRds:getRuleRds", args ?? new GetRuleRdsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness Variable.
+        /// </summary>
+        public static Output<GetRuleRdsResult> Invoke(GetRuleRdsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRuleRdsResult>("harness:autostopping/getRuleRds:getRuleRds", args ?? new GetRuleRdsInvokeArgs(), options.WithDefaults());
     }
 
 

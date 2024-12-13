@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetCurrentUserResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("harness:platform/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving the current user based on the API key.
+        /// </summary>
+        public static Output<GetCurrentUserResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentUserResult>("harness:platform/getCurrentUser:getCurrentUser", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

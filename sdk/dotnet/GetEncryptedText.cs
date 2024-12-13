@@ -22,6 +22,12 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetEncryptedTextResult> Invoke(GetEncryptedTextInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEncryptedTextResult>("harness:index/getEncryptedText:getEncryptedText", args ?? new GetEncryptedTextInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness application
+        /// </summary>
+        public static Output<GetEncryptedTextResult> Invoke(GetEncryptedTextInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEncryptedTextResult>("harness:index/getEncryptedText:getEncryptedText", args ?? new GetEncryptedTextInvokeArgs(), options.WithDefaults());
     }
 
 

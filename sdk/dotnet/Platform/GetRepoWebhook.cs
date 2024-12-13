@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetRepoWebhookResult> Invoke(GetRepoWebhookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepoWebhookResult>("harness:platform/getRepoWebhook:getRepoWebhook", args ?? new GetRepoWebhookInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness Repo Webhook.
+        /// </summary>
+        public static Output<GetRepoWebhookResult> Invoke(GetRepoWebhookInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepoWebhookResult>("harness:platform/getRepoWebhook:getRepoWebhook", args ?? new GetRepoWebhookInvokeArgs(), options.WithDefaults());
     }
 
 

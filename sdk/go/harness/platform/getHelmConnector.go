@@ -85,21 +85,11 @@ type LookupHelmConnectorResult struct {
 }
 
 func LookupHelmConnectorOutput(ctx *pulumi.Context, args LookupHelmConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupHelmConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHelmConnectorResultOutput, error) {
 			args := v.(LookupHelmConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupHelmConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getHelmConnector:getHelmConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHelmConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHelmConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHelmConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getHelmConnector:getHelmConnector", args, LookupHelmConnectorResultOutput{}, options).(LookupHelmConnectorResultOutput), nil
 		}).(LookupHelmConnectorResultOutput)
 }
 

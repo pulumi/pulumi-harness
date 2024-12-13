@@ -79,21 +79,11 @@ type LookupVariablesResult struct {
 }
 
 func LookupVariablesOutput(ctx *pulumi.Context, args LookupVariablesOutputArgs, opts ...pulumi.InvokeOption) LookupVariablesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVariablesResultOutput, error) {
 			args := v.(LookupVariablesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupVariablesResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getVariables:getVariables", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVariablesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVariablesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVariablesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getVariables:getVariables", args, LookupVariablesResultOutput{}, options).(LookupVariablesResultOutput), nil
 		}).(LookupVariablesResultOutput)
 }
 

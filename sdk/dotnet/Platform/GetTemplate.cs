@@ -96,6 +96,49 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetTemplateResult> Invoke(GetTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateResult>("harness:platform/getTemplate:getTemplate", args ?? new GetTemplateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness pipeline.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     //For account level template
+        ///     var example = Harness.Platform.GetTemplate.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         Version = "version",
+        ///     });
+        /// 
+        ///     //For org level template
+        ///     var example1 = Harness.Platform.GetTemplate.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         Version = "version",
+        ///         OrgId = "org_id",
+        ///     });
+        /// 
+        ///     //For project level template
+        ///     var example2 = Harness.Platform.GetTemplate.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         Version = "version",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTemplateResult> Invoke(GetTemplateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTemplateResult>("harness:platform/getTemplate:getTemplate", args ?? new GetTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

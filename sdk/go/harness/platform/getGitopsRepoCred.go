@@ -91,21 +91,11 @@ type GetGitopsRepoCredResult struct {
 }
 
 func GetGitopsRepoCredOutput(ctx *pulumi.Context, args GetGitopsRepoCredOutputArgs, opts ...pulumi.InvokeOption) GetGitopsRepoCredResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGitopsRepoCredResultOutput, error) {
 			args := v.(GetGitopsRepoCredArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGitopsRepoCredResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsRepoCred:getGitopsRepoCred", args, &rv, "", opts...)
-			if err != nil {
-				return GetGitopsRepoCredResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGitopsRepoCredResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGitopsRepoCredResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getGitopsRepoCred:getGitopsRepoCred", args, GetGitopsRepoCredResultOutput{}, options).(GetGitopsRepoCredResultOutput), nil
 		}).(GetGitopsRepoCredResultOutput)
 }
 

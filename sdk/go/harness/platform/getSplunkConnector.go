@@ -89,21 +89,11 @@ type LookupSplunkConnectorResult struct {
 }
 
 func LookupSplunkConnectorOutput(ctx *pulumi.Context, args LookupSplunkConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupSplunkConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSplunkConnectorResultOutput, error) {
 			args := v.(LookupSplunkConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSplunkConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getSplunkConnector:getSplunkConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSplunkConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSplunkConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSplunkConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getSplunkConnector:getSplunkConnector", args, LookupSplunkConnectorResultOutput{}, options).(LookupSplunkConnectorResultOutput), nil
 		}).(LookupSplunkConnectorResultOutput)
 }
 

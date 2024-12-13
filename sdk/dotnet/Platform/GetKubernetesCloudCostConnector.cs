@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetKubernetesCloudCostConnectorResult> Invoke(GetKubernetesCloudCostConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesCloudCostConnectorResult>("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", args ?? new GetKubernetesCloudCostConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a Kubernetes Cloud Cost connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetKubernetesCloudCostConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKubernetesCloudCostConnectorResult> Invoke(GetKubernetesCloudCostConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesCloudCostConnectorResult>("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", args ?? new GetKubernetesCloudCostConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

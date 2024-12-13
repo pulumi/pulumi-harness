@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetMonitoredServiceResult> Invoke(GetMonitoredServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMonitoredServiceResult>("harness:platform/getMonitoredService:getMonitoredService", args ?? new GetMonitoredServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a monitored service.
+        /// </summary>
+        public static Output<GetMonitoredServiceResult> Invoke(GetMonitoredServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMonitoredServiceResult>("harness:platform/getMonitoredService:getMonitoredService", args ?? new GetMonitoredServiceInvokeArgs(), options.WithDefaults());
     }
 
 

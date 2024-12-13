@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetInputSetResult> Invoke(GetInputSetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInputSetResult>("harness:platform/getInputSet:getInputSet", args ?? new GetInputSetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness input set.
+        /// </summary>
+        public static Output<GetInputSetResult> Invoke(GetInputSetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInputSetResult>("harness:platform/getInputSet:getInputSet", args ?? new GetInputSetInvokeArgs(), options.WithDefaults());
     }
 
 

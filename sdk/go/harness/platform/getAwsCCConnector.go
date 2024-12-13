@@ -89,21 +89,11 @@ type LookupAwsCCConnectorResult struct {
 }
 
 func LookupAwsCCConnectorOutput(ctx *pulumi.Context, args LookupAwsCCConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsCCConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAwsCCConnectorResultOutput, error) {
 			args := v.(LookupAwsCCConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAwsCCConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getAwsCCConnector:getAwsCCConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAwsCCConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAwsCCConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAwsCCConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getAwsCCConnector:getAwsCCConnector", args, LookupAwsCCConnectorResultOutput{}, options).(LookupAwsCCConnectorResultOutput), nil
 		}).(LookupAwsCCConnectorResultOutput)
 }
 

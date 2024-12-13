@@ -54,6 +54,28 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGcpSecretManagerConnectorResult> Invoke(GetGcpSecretManagerConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpSecretManagerConnectorResult>("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", args ?? new GetGcpSecretManagerConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGcpSecretManagerConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGcpSecretManagerConnectorResult> Invoke(GetGcpSecretManagerConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGcpSecretManagerConnectorResult>("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", args ?? new GetGcpSecretManagerConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

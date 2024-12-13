@@ -60,6 +60,31 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetPermissionsResult> Invoke(GetPermissionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsResult>("harness:platform/getPermissions:getPermissions", args ?? new GetPermissionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving permissions.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetPermissions.Invoke(new()
+        ///     {
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPermissionsResult> Invoke(GetPermissionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPermissionsResult>("harness:platform/getPermissions:getPermissions", args ?? new GetPermissionsInvokeArgs(), options.WithDefaults());
     }
 
 

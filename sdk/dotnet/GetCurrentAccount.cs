@@ -22,6 +22,12 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetCurrentAccountResult> Invoke(GetCurrentAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentAccountResult>("harness:index/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving information about the current Harness account
+        /// </summary>
+        public static Output<GetCurrentAccountResult> Invoke(GetCurrentAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentAccountResult>("harness:index/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountInvokeArgs(), options.WithDefaults());
     }
 
 

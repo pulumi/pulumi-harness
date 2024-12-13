@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetSecretTextResult> Invoke(GetSecretTextInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretTextResult>("harness:platform/getSecretText:getSecretText", args ?? new GetSecretTextInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// DataSource for looking up secret of type secret text.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetSecretText.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecretTextResult> Invoke(GetSecretTextInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretTextResult>("harness:platform/getSecretText:getSecretText", args ?? new GetSecretTextInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -109,21 +109,11 @@ type LookupRepoResult struct {
 }
 
 func LookupRepoOutput(ctx *pulumi.Context, args LookupRepoOutputArgs, opts ...pulumi.InvokeOption) LookupRepoResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRepoResultOutput, error) {
 			args := v.(LookupRepoArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRepoResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getRepo:getRepo", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRepoResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRepoResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRepoResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getRepo:getRepo", args, LookupRepoResultOutput{}, options).(LookupRepoResultOutput), nil
 		}).(LookupRepoResultOutput)
 }
 

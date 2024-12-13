@@ -60,6 +60,31 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetFiltersResult> Invoke(GetFiltersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFiltersResult>("harness:platform/getFilters:getFilters", args ?? new GetFiltersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetFilters.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///         Type = "Connector",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFiltersResult> Invoke(GetFiltersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFiltersResult>("harness:platform/getFilters:getFilters", args ?? new GetFiltersInvokeArgs(), options.WithDefaults());
     }
 
 

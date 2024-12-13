@@ -117,21 +117,11 @@ type GetServiceListResult struct {
 }
 
 func GetServiceListOutput(ctx *pulumi.Context, args GetServiceListOutputArgs, opts ...pulumi.InvokeOption) GetServiceListResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServiceListResultOutput, error) {
 			args := v.(GetServiceListArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServiceListResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getServiceList:getServiceList", args, &rv, "", opts...)
-			if err != nil {
-				return GetServiceListResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServiceListResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServiceListResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getServiceList:getServiceList", args, GetServiceListResultOutput{}, options).(GetServiceListResultOutput), nil
 		}).(GetServiceListResultOutput)
 }
 
