@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetAwsCCConnectorResult> Invoke(GetAwsCCConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsCCConnectorResult>("harness:platform/getAwsCCConnector:getAwsCCConnector", args ?? new GetAwsCCConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up an AWS Cloud Cost connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetAwsCCConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAwsCCConnectorResult> Invoke(GetAwsCCConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsCCConnectorResult>("harness:platform/getAwsCCConnector:getAwsCCConnector", args ?? new GetAwsCCConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

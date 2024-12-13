@@ -62,6 +62,32 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetNotificationRuleResult> Invoke(GetNotificationRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotificationRuleResult>("harness:platform/getNotificationRule:getNotificationRule", args ?? new GetNotificationRuleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Notification Rule.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetNotificationRule.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNotificationRuleResult> Invoke(GetNotificationRuleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNotificationRuleResult>("harness:platform/getNotificationRule:getNotificationRule", args ?? new GetNotificationRuleInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetHelmConnectorResult> Invoke(GetHelmConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHelmConnectorResult>("harness:platform/getHelmConnector:getHelmConnector", args ?? new GetHelmConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a HTTP Helm connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetHelmConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHelmConnectorResult> Invoke(GetHelmConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHelmConnectorResult>("harness:platform/getHelmConnector:getHelmConnector", args ?? new GetHelmConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

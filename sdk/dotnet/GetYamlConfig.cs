@@ -22,6 +22,12 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetYamlConfigResult> Invoke(GetYamlConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetYamlConfigResult>("harness:index/getYamlConfig:getYamlConfig", args ?? new GetYamlConfigInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a yaml config.
+        /// </summary>
+        public static Output<GetYamlConfigResult> Invoke(GetYamlConfigInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetYamlConfigResult>("harness:index/getYamlConfig:getYamlConfig", args ?? new GetYamlConfigInvokeArgs(), options.WithDefaults());
     }
 
 

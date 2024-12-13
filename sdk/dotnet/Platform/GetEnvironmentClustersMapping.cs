@@ -134,6 +134,68 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetEnvironmentClustersMappingResult> Invoke(GetEnvironmentClustersMappingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentClustersMappingResult>("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args ?? new GetEnvironmentClustersMappingInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving Harness Gitops clusters mapped to Harness Environment.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // data source for gitops clusters mapped to a project level env
+        ///     var example = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
+        ///     {
+        ///         Identifier = "mycustomidentifier",
+        ///         OrgId = "orgIdentifer",
+        ///         ProjectId = "projectIdentifier",
+        ///         EnvId = "exampleEnvId",
+        ///         Clusters = new[]
+        ///         {
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "incluster",
+        ///                 Name = "in-cluster",
+        ///                 AgentIdentifier = "account.gitopsagentdev",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     // data source for two gitops clusters mapped to an account level env
+        ///     var example2 = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
+        ///     {
+        ///         Identifier = "mycustomidentifier",
+        ///         EnvId = "env1",
+        ///         Clusters = new[]
+        ///         {
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "clusterA",
+        ///                 Name = "cluster-A",
+        ///                 AgentIdentifier = "account.gitopsagentprod",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
+        ///             {
+        ///                 Identifier = "clusterB",
+        ///                 Name = "cluster-B",
+        ///                 AgentIdentifier = "account.gitopsagentprod",
+        ///                 Scope = "ACCOUNT",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEnvironmentClustersMappingResult> Invoke(GetEnvironmentClustersMappingInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentClustersMappingResult>("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args ?? new GetEnvironmentClustersMappingInvokeArgs(), options.WithDefaults());
     }
 
 

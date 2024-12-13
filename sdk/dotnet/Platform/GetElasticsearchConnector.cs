@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetElasticsearchConnectorResult> Invoke(GetElasticsearchConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetElasticsearchConnectorResult>("harness:platform/getElasticsearchConnector:getElasticsearchConnector", args ?? new GetElasticsearchConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up an ElasticSearch connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetElasticsearchConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetElasticsearchConnectorResult> Invoke(GetElasticsearchConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetElasticsearchConnectorResult>("harness:platform/getElasticsearchConnector:getElasticsearchConnector", args ?? new GetElasticsearchConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

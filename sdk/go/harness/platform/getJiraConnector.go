@@ -91,21 +91,11 @@ type LookupJiraConnectorResult struct {
 }
 
 func LookupJiraConnectorOutput(ctx *pulumi.Context, args LookupJiraConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupJiraConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupJiraConnectorResultOutput, error) {
 			args := v.(LookupJiraConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupJiraConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getJiraConnector:getJiraConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupJiraConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupJiraConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupJiraConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getJiraConnector:getJiraConnector", args, LookupJiraConnectorResultOutput{}, options).(LookupJiraConnectorResultOutput), nil
 		}).(LookupJiraConnectorResultOutput)
 }
 

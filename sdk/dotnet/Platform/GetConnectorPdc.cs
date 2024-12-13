@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetConnectorPdcResult> Invoke(GetConnectorPdcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorPdcResult>("harness:platform/getConnectorPdc:getConnectorPdc", args ?? new GetConnectorPdcInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a Physical data center connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetConnectorPdc.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectorPdcResult> Invoke(GetConnectorPdcInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorPdcResult>("harness:platform/getConnectorPdc:getConnectorPdc", args ?? new GetConnectorPdcInvokeArgs(), options.WithDefaults());
     }
 
 

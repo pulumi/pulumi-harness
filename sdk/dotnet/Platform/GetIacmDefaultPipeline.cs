@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetIacmDefaultPipelineResult> Invoke(GetIacmDefaultPipelineInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIacmDefaultPipelineResult>("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args ?? new GetIacmDefaultPipelineInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving IACM default pipelines.
+        /// </summary>
+        public static Output<GetIacmDefaultPipelineResult> Invoke(GetIacmDefaultPipelineInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIacmDefaultPipelineResult>("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args ?? new GetIacmDefaultPipelineInvokeArgs(), options.WithDefaults());
     }
 
 

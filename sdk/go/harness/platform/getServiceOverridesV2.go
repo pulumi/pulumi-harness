@@ -75,21 +75,11 @@ type LookupServiceOverridesV2Result struct {
 }
 
 func LookupServiceOverridesV2Output(ctx *pulumi.Context, args LookupServiceOverridesV2OutputArgs, opts ...pulumi.InvokeOption) LookupServiceOverridesV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceOverridesV2ResultOutput, error) {
 			args := v.(LookupServiceOverridesV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceOverridesV2Result
-			secret, err := ctx.InvokePackageRaw("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceOverridesV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceOverridesV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceOverridesV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args, LookupServiceOverridesV2ResultOutput{}, options).(LookupServiceOverridesV2ResultOutput), nil
 		}).(LookupServiceOverridesV2ResultOutput)
 }
 

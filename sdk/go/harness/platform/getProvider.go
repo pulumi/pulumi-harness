@@ -34,21 +34,11 @@ type LookupProviderResult struct {
 }
 
 func LookupProviderOutput(ctx *pulumi.Context, args LookupProviderOutputArgs, opts ...pulumi.InvokeOption) LookupProviderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProviderResultOutput, error) {
 			args := v.(LookupProviderArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupProviderResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getProvider:getProvider", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProviderResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProviderResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProviderResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getProvider:getProvider", args, LookupProviderResultOutput{}, options).(LookupProviderResultOutput), nil
 		}).(LookupProviderResultOutput)
 }
 

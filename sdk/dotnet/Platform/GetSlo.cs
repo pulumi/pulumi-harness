@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetSloResult> Invoke(GetSloInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSloResult>("harness:platform/getSlo:getSlo", args ?? new GetSloInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving an SLO.
+        /// </summary>
+        public static Output<GetSloResult> Invoke(GetSloInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSloResult>("harness:platform/getSlo:getSlo", args ?? new GetSloInvokeArgs(), options.WithDefaults());
     }
 
 

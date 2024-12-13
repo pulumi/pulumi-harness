@@ -70,6 +70,36 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetApiKeyResult> Invoke(GetApiKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness ApiKey.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetApiKey.Invoke(new()
+        ///     {
+        ///         Identifier = "test_apikey",
+        ///         Name = "test_apikey",
+        ///         ParentId = "parent_id",
+        ///         ApikeyType = "USER",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApiKeyResult> Invoke(GetApiKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyInvokeArgs(), options.WithDefaults());
     }
 
 

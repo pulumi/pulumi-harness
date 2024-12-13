@@ -91,21 +91,11 @@ type LookupServiceNowConnectorResult struct {
 }
 
 func LookupServiceNowConnectorOutput(ctx *pulumi.Context, args LookupServiceNowConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupServiceNowConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServiceNowConnectorResultOutput, error) {
 			args := v.(LookupServiceNowConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupServiceNowConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getServiceNowConnector:getServiceNowConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupServiceNowConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupServiceNowConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupServiceNowConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getServiceNowConnector:getServiceNowConnector", args, LookupServiceNowConnectorResultOutput{}, options).(LookupServiceNowConnectorResultOutput), nil
 		}).(LookupServiceNowConnectorResultOutput)
 }
 

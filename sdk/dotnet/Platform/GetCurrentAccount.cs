@@ -52,6 +52,27 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetCurrentAccountResult> Invoke(GetCurrentAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCurrentAccountResult>("harness:platform/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving information on the current Harness account.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Harness.Platform.GetCurrentAccount.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCurrentAccountResult> Invoke(GetCurrentAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCurrentAccountResult>("harness:platform/getCurrentAccount:getCurrentAccount", args ?? new GetCurrentAccountInvokeArgs(), options.WithDefaults());
     }
 
 

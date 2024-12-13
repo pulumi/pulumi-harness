@@ -56,6 +56,29 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitopsAppProjectResult> Invoke(GetGitopsAppProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAppProjectResult>("harness:platform/getGitopsAppProject:getGitopsAppProject", args ?? new GetGitopsAppProjectInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsAppProject.Invoke(new()
+        ///     {
+        ///         AgentId = "agent_id",
+        ///         QueryName = "query_name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGitopsAppProjectResult> Invoke(GetGitopsAppProjectInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAppProjectResult>("harness:platform/getGitopsAppProject:getGitopsAppProject", args ?? new GetGitopsAppProjectInvokeArgs(), options.WithDefaults());
     }
 
 

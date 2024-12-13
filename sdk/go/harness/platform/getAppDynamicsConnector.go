@@ -89,21 +89,11 @@ type LookupAppDynamicsConnectorResult struct {
 }
 
 func LookupAppDynamicsConnectorOutput(ctx *pulumi.Context, args LookupAppDynamicsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAppDynamicsConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppDynamicsConnectorResultOutput, error) {
 			args := v.(LookupAppDynamicsConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppDynamicsConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppDynamicsConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppDynamicsConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppDynamicsConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args, LookupAppDynamicsConnectorResultOutput{}, options).(LookupAppDynamicsConnectorResultOutput), nil
 		}).(LookupAppDynamicsConnectorResultOutput)
 }
 

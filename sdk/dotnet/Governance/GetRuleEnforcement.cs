@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Governance
         /// </summary>
         public static Output<GetRuleEnforcementResult> Invoke(GetRuleEnforcementInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleEnforcementResult>("harness:governance/getRuleEnforcement:getRuleEnforcement", args ?? new GetRuleEnforcementInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a rule enforcement.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Governance.GetRuleEnforcement.Invoke(new()
+        ///     {
+        ///         EnforcementId = "enforcement_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRuleEnforcementResult> Invoke(GetRuleEnforcementInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRuleEnforcementResult>("harness:governance/getRuleEnforcement:getRuleEnforcement", args ?? new GetRuleEnforcementInvokeArgs(), options.WithDefaults());
     }
 
 

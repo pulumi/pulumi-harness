@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetJenkinsConnectorResult> Invoke(GetJenkinsConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJenkinsConnectorResult>("harness:platform/getJenkinsConnector:getJenkinsConnector", args ?? new GetJenkinsConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a Jenkins connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetJenkinsConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetJenkinsConnectorResult> Invoke(GetJenkinsConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetJenkinsConnectorResult>("harness:platform/getJenkinsConnector:getJenkinsConnector", args ?? new GetJenkinsConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -87,21 +87,11 @@ type LookupGcpCloudCostConnectorResult struct {
 }
 
 func LookupGcpCloudCostConnectorOutput(ctx *pulumi.Context, args LookupGcpCloudCostConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupGcpCloudCostConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGcpCloudCostConnectorResultOutput, error) {
 			args := v.(LookupGcpCloudCostConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupGcpCloudCostConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getGcpCloudCostConnector:getGcpCloudCostConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGcpCloudCostConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGcpCloudCostConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGcpCloudCostConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getGcpCloudCostConnector:getGcpCloudCostConnector", args, LookupGcpCloudCostConnectorResultOutput{}, options).(LookupGcpCloudCostConnectorResultOutput), nil
 		}).(LookupGcpCloudCostConnectorResultOutput)
 }
 

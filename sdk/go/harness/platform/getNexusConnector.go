@@ -87,21 +87,11 @@ type LookupNexusConnectorResult struct {
 }
 
 func LookupNexusConnectorOutput(ctx *pulumi.Context, args LookupNexusConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupNexusConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNexusConnectorResultOutput, error) {
 			args := v.(LookupNexusConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupNexusConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getNexusConnector:getNexusConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNexusConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNexusConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNexusConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getNexusConnector:getNexusConnector", args, LookupNexusConnectorResultOutput{}, options).(LookupNexusConnectorResultOutput), nil
 		}).(LookupNexusConnectorResultOutput)
 }
 

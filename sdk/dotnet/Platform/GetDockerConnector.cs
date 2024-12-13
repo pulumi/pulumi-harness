@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetDockerConnectorResult> Invoke(GetDockerConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDockerConnectorResult>("harness:platform/getDockerConnector:getDockerConnector", args ?? new GetDockerConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a Datadog connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetDockerConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDockerConnectorResult> Invoke(GetDockerConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDockerConnectorResult>("harness:platform/getDockerConnector:getDockerConnector", args ?? new GetDockerConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

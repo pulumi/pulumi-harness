@@ -64,6 +64,33 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetEnvironmentServiceOverridesResult> Invoke(GetEnvironmentServiceOverridesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentServiceOverridesResult>("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", args ?? new GetEnvironmentServiceOverridesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for Harness environment service overrides.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetEnvironmentServiceOverrides.Invoke(new()
+        ///     {
+        ///         OrgId = "orgIdentifier",
+        ///         ProjectId = "projectIdentifier",
+        ///         EnvId = "environmentIdentifier",
+        ///         ServiceId = "serviceIdentifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEnvironmentServiceOverridesResult> Invoke(GetEnvironmentServiceOverridesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentServiceOverridesResult>("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", args ?? new GetEnvironmentServiceOverridesInvokeArgs(), options.WithDefaults());
     }
 
 

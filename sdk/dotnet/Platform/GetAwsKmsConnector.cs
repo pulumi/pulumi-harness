@@ -54,6 +54,28 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetAwsKmsConnectorResult> Invoke(GetAwsKmsConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetAwsKmsConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAwsKmsConnectorResult> Invoke(GetAwsKmsConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsKmsConnectorResult>("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args ?? new GetAwsKmsConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -47,21 +47,11 @@ type GetSecretManagerResult struct {
 }
 
 func GetSecretManagerOutput(ctx *pulumi.Context, args GetSecretManagerOutputArgs, opts ...pulumi.InvokeOption) GetSecretManagerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSecretManagerResultOutput, error) {
 			args := v.(GetSecretManagerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSecretManagerResult
-			secret, err := ctx.InvokePackageRaw("harness:index/getSecretManager:getSecretManager", args, &rv, "", opts...)
-			if err != nil {
-				return GetSecretManagerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSecretManagerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSecretManagerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:index/getSecretManager:getSecretManager", args, GetSecretManagerResultOutput{}, options).(GetSecretManagerResultOutput), nil
 		}).(GetSecretManagerResultOutput)
 }
 

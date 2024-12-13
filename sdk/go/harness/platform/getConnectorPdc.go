@@ -83,21 +83,11 @@ type LookupConnectorPdcResult struct {
 }
 
 func LookupConnectorPdcOutput(ctx *pulumi.Context, args LookupConnectorPdcOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorPdcResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorPdcResultOutput, error) {
 			args := v.(LookupConnectorPdcArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectorPdcResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getConnectorPdc:getConnectorPdc", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectorPdcResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectorPdcResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectorPdcResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getConnectorPdc:getConnectorPdc", args, LookupConnectorPdcResultOutput{}, options).(LookupConnectorPdcResultOutput), nil
 		}).(LookupConnectorPdcResultOutput)
 }
 

@@ -134,6 +134,68 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetServiceListResult> Invoke(GetServiceListInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceListResult>("harness:platform/getServiceList:getServiceList", args ?? new GetServiceListInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving Harness service list.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Project Level Service List
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
+        ///     {
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ### Organisation Level Service List
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetServiceList.Invoke(new()
+        ///     {
+        ///         OrgId = "org_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ### Account Level Service List
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetServiceList.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceListResult> Invoke(GetServiceListInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceListResult>("harness:platform/getServiceList:getServiceList", args ?? new GetServiceListInvokeArgs(), options.WithDefaults());
     }
 
 

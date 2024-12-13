@@ -74,21 +74,11 @@ type GetWorkspaceOutputValueResult struct {
 }
 
 func GetWorkspaceOutputValueOutput(ctx *pulumi.Context, args GetWorkspaceOutputValueOutputArgs, opts ...pulumi.InvokeOption) GetWorkspaceOutputValueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWorkspaceOutputValueResultOutput, error) {
 			args := v.(GetWorkspaceOutputValueArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetWorkspaceOutputValueResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", args, &rv, "", opts...)
-			if err != nil {
-				return GetWorkspaceOutputValueResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetWorkspaceOutputValueResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetWorkspaceOutputValueResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", args, GetWorkspaceOutputValueResultOutput{}, options).(GetWorkspaceOutputValueResultOutput), nil
 		}).(GetWorkspaceOutputValueResultOutput)
 }
 

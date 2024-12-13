@@ -89,21 +89,11 @@ type GetGitopsClusterResult struct {
 }
 
 func GetGitopsClusterOutput(ctx *pulumi.Context, args GetGitopsClusterOutputArgs, opts ...pulumi.InvokeOption) GetGitopsClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGitopsClusterResultOutput, error) {
 			args := v.(GetGitopsClusterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGitopsClusterResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsCluster:getGitopsCluster", args, &rv, "", opts...)
-			if err != nil {
-				return GetGitopsClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGitopsClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGitopsClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getGitopsCluster:getGitopsCluster", args, GetGitopsClusterResultOutput{}, options).(GetGitopsClusterResultOutput), nil
 		}).(GetGitopsClusterResultOutput)
 }
 

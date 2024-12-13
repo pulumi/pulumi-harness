@@ -70,6 +70,36 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetTriggerResult> Invoke(GetTriggerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTriggerResult>("harness:index/getTrigger:getTrigger", args ?? new GetTriggerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness trigger.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleByName = Harness.GetTrigger.Invoke(new()
+        ///     {
+        ///         AppId = "app_id",
+        ///         Name = "name",
+        ///     });
+        /// 
+        ///     var exampleById = Harness.GetTrigger.Invoke(new()
+        ///     {
+        ///         Id = "trigger_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTriggerResult> Invoke(GetTriggerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTriggerResult>("harness:index/getTrigger:getTrigger", args ?? new GetTriggerInvokeArgs(), options.WithDefaults());
     }
 
 

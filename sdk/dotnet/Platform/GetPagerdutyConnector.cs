@@ -54,6 +54,28 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetPagerdutyConnectorResult> Invoke(GetPagerdutyConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPagerdutyConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPagerdutyConnectorResult> Invoke(GetPagerdutyConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

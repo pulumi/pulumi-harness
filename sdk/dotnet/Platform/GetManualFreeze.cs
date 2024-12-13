@@ -64,6 +64,33 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetManualFreezeResult> Invoke(GetManualFreezeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManualFreezeResult>("harness:platform/getManualFreeze:getManualFreeze", args ?? new GetManualFreezeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// DataSource for deployment freeze in harness.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetManualFreeze.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///         AccountId = "account_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetManualFreezeResult> Invoke(GetManualFreezeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetManualFreezeResult>("harness:platform/getManualFreeze:getManualFreeze", args ?? new GetManualFreezeInvokeArgs(), options.WithDefaults());
     }
 
 

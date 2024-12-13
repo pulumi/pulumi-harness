@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.cloudprovider.inputs.GetDelegateIdsArgs;
 import com.pulumi.harness.cloudprovider.inputs.GetDelegateIdsPlainArgs;
@@ -47,6 +48,13 @@ public final class CloudproviderFunctions {
      * 
      */
     public static Output<GetDelegateIdsResult> getDelegateIds(GetDelegateIdsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", TypeShape.of(GetDelegateIdsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of delegate ID&#39;s matching the specified search criteria.
+     * 
+     */
+    public static Output<GetDelegateIdsResult> getDelegateIds(GetDelegateIdsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:cloudprovider/getDelegateIds:getDelegateIds", TypeShape.of(GetDelegateIdsResult.class), args, Utilities.withVersion(options));
     }
     /**

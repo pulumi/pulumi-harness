@@ -62,6 +62,32 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitopsGnupgResult> Invoke(GetGitopsGnupgInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsGnupgResult>("harness:platform/getGitopsGnupg:getGitopsGnupg", args ?? new GetGitopsGnupgInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for fetching a Harness GitOps GPG public key.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsGnupg.Invoke(new()
+        ///     {
+        ///         AccountId = "account_id",
+        ///         AgentId = "agent_id",
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGitopsGnupgResult> Invoke(GetGitopsGnupgInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitopsGnupgResult>("harness:platform/getGitopsGnupg:getGitopsGnupg", args ?? new GetGitopsGnupgInvokeArgs(), options.WithDefaults());
     }
 
 

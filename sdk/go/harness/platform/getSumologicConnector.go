@@ -87,21 +87,11 @@ type LookupSumologicConnectorResult struct {
 }
 
 func LookupSumologicConnectorOutput(ctx *pulumi.Context, args LookupSumologicConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupSumologicConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSumologicConnectorResultOutput, error) {
 			args := v.(LookupSumologicConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSumologicConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getSumologicConnector:getSumologicConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSumologicConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSumologicConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSumologicConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getSumologicConnector:getSumologicConnector", args, LookupSumologicConnectorResultOutput{}, options).(LookupSumologicConnectorResultOutput), nil
 		}).(LookupSumologicConnectorResultOutput)
 }
 

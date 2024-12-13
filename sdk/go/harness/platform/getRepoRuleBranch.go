@@ -77,21 +77,11 @@ type LookupRepoRuleBranchResult struct {
 }
 
 func LookupRepoRuleBranchOutput(ctx *pulumi.Context, args LookupRepoRuleBranchOutputArgs, opts ...pulumi.InvokeOption) LookupRepoRuleBranchResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRepoRuleBranchResultOutput, error) {
 			args := v.(LookupRepoRuleBranchArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRepoRuleBranchResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getRepoRuleBranch:getRepoRuleBranch", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRepoRuleBranchResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRepoRuleBranchResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRepoRuleBranchResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getRepoRuleBranch:getRepoRuleBranch", args, LookupRepoRuleBranchResultOutput{}, options).(LookupRepoRuleBranchResultOutput), nil
 		}).(LookupRepoRuleBranchResultOutput)
 }
 

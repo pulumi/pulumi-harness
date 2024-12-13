@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public static Output<GetGcpProxyResult> Invoke(GetGcpProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpProxyResult>("harness:autostopping/getGcpProxy:getGcpProxy", args ?? new GetGcpProxyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for GCP Autostopping proxy
+        /// </summary>
+        public static Output<GetGcpProxyResult> Invoke(GetGcpProxyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGcpProxyResult>("harness:autostopping/getGcpProxy:getGcpProxy", args ?? new GetGcpProxyInvokeArgs(), options.WithDefaults());
     }
 
 

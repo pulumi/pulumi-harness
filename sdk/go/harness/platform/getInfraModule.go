@@ -83,21 +83,11 @@ type LookupInfraModuleResult struct {
 }
 
 func LookupInfraModuleOutput(ctx *pulumi.Context, args LookupInfraModuleOutputArgs, opts ...pulumi.InvokeOption) LookupInfraModuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInfraModuleResultOutput, error) {
 			args := v.(LookupInfraModuleArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupInfraModuleResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getInfraModule:getInfraModule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInfraModuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInfraModuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInfraModuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getInfraModule:getInfraModule", args, LookupInfraModuleResultOutput{}, options).(LookupInfraModuleResultOutput), nil
 		}).(LookupInfraModuleResultOutput)
 }
 

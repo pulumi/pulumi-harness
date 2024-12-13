@@ -22,6 +22,12 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetSshCredentialResult> Invoke(GetSshCredentialInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshCredentialResult>("harness:index/getSshCredential:getSshCredential", args ?? new GetSshCredentialInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving an SSH credential.
+        /// </summary>
+        public static Output<GetSshCredentialResult> Invoke(GetSshCredentialInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshCredentialResult>("harness:index/getSshCredential:getSshCredential", args ?? new GetSshCredentialInvokeArgs(), options.WithDefaults());
     }
 
 

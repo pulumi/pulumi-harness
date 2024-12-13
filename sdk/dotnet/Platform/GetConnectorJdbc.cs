@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetConnectorJdbcResult> Invoke(GetConnectorJdbcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorJdbcResult>("harness:platform/getConnectorJdbc:getConnectorJdbc", args ?? new GetConnectorJdbcInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness JDBC Connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetConnectorJdbc.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectorJdbcResult> Invoke(GetConnectorJdbcInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorJdbcResult>("harness:platform/getConnectorJdbc:getConnectorJdbc", args ?? new GetConnectorJdbcInvokeArgs(), options.WithDefaults());
     }
 
 

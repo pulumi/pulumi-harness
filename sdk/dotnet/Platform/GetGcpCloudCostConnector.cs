@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGcpCloudCostConnectorResult> Invoke(GetGcpCloudCostConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpCloudCostConnectorResult>("harness:platform/getGcpCloudCostConnector:getGcpCloudCostConnector", args ?? new GetGcpCloudCostConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a GCP Cloud Cost Connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGcpCloudCostConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGcpCloudCostConnectorResult> Invoke(GetGcpCloudCostConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGcpCloudCostConnectorResult>("harness:platform/getGcpCloudCostConnector:getGcpCloudCostConnector", args ?? new GetGcpCloudCostConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

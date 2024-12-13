@@ -85,21 +85,11 @@ type LookupDynatraceConnectorResult struct {
 }
 
 func LookupDynatraceConnectorOutput(ctx *pulumi.Context, args LookupDynatraceConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDynatraceConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDynatraceConnectorResultOutput, error) {
 			args := v.(LookupDynatraceConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDynatraceConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getDynatraceConnector:getDynatraceConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDynatraceConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDynatraceConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDynatraceConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getDynatraceConnector:getDynatraceConnector", args, LookupDynatraceConnectorResultOutput{}, options).(LookupDynatraceConnectorResultOutput), nil
 		}).(LookupDynatraceConnectorResultOutput)
 }
 

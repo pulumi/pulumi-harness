@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Governance
         /// </summary>
         public static Output<GetRuleSetResult> Invoke(GetRuleSetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleSetResult>("harness:governance/getRuleSet:getRuleSet", args ?? new GetRuleSetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a rule.
+        /// </summary>
+        public static Output<GetRuleSetResult> Invoke(GetRuleSetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRuleSetResult>("harness:governance/getRuleSet:getRuleSet", args ?? new GetRuleSetInvokeArgs(), options.WithDefaults());
     }
 
 

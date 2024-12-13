@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetConnectorRancherResult> Invoke(GetConnectorRancherInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorRancherResult>("harness:platform/getConnectorRancher:getConnectorRancher", args ?? new GetConnectorRancherInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for looking up a Rancher connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetConnectorRancher.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectorRancherResult> Invoke(GetConnectorRancherInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorRancherResult>("harness:platform/getConnectorRancher:getConnectorRancher", args ?? new GetConnectorRancherInvokeArgs(), options.WithDefaults());
     }
 
 

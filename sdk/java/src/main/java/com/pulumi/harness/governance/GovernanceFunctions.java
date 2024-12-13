@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.governance.inputs.GetRuleArgs;
 import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
@@ -144,6 +145,48 @@ public final class GovernanceFunctions {
      * 
      */
     public static Output<GetRuleResult> getRule(GetRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:governance/getRule:getRule", TypeShape.of(GetRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up a rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.governance.GovernanceFunctions;
+     * import com.pulumi.harness.governance.inputs.GetRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GovernanceFunctions.getRule(GetRuleArgs.builder()
+     *             .ruleId("rule_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRuleResult> getRule(GetRuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:governance/getRule:getRule", TypeShape.of(GetRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -353,6 +396,48 @@ public final class GovernanceFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRuleEnforcementResult> getRuleEnforcement(GetRuleEnforcementArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:governance/getRuleEnforcement:getRuleEnforcement", TypeShape.of(GetRuleEnforcementResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up a rule enforcement.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.governance.GovernanceFunctions;
+     * import com.pulumi.harness.governance.inputs.GetRuleEnforcementArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GovernanceFunctions.getRuleEnforcement(GetRuleEnforcementArgs.builder()
+     *             .enforcementId("enforcement_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRuleEnforcementResult> getRuleEnforcementPlain(GetRuleEnforcementPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:governance/getRuleEnforcement:getRuleEnforcement", TypeShape.of(GetRuleEnforcementResult.class), args, Utilities.withVersion(options));
     }
@@ -375,6 +460,13 @@ public final class GovernanceFunctions {
      * 
      */
     public static Output<GetRuleSetResult> getRuleSet(GetRuleSetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:governance/getRuleSet:getRuleSet", TypeShape.of(GetRuleSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up a rule.
+     * 
+     */
+    public static Output<GetRuleSetResult> getRuleSet(GetRuleSetArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:governance/getRuleSet:getRuleSet", TypeShape.of(GetRuleSetResult.class), args, Utilities.withVersion(options));
     }
     /**

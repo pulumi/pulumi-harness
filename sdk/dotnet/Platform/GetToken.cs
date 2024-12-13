@@ -68,6 +68,35 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetTokenResult> Invoke(GetTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTokenResult>("harness:platform/getToken:getToken", args ?? new GetTokenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness ApiKey Token.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetToken.Invoke(new()
+        ///     {
+        ///         Identifier = "test_token",
+        ///         ParentId = "apikey_parent_id",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///         ApikeyId = "apikey_id",
+        ///         ApikeyType = "USER",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTokenResult> Invoke(GetTokenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTokenResult>("harness:platform/getToken:getToken", args ?? new GetTokenInvokeArgs(), options.WithDefaults());
     }
 
 

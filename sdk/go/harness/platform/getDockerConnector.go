@@ -87,21 +87,11 @@ type LookupDockerConnectorResult struct {
 }
 
 func LookupDockerConnectorOutput(ctx *pulumi.Context, args LookupDockerConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDockerConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDockerConnectorResultOutput, error) {
 			args := v.(LookupDockerConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDockerConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getDockerConnector:getDockerConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDockerConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDockerConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDockerConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getDockerConnector:getDockerConnector", args, LookupDockerConnectorResultOutput{}, options).(LookupDockerConnectorResultOutput), nil
 		}).(LookupDockerConnectorResultOutput)
 }
 

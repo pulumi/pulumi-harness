@@ -94,21 +94,11 @@ type LookupConnectorCustomSecretManagerResult struct {
 }
 
 func LookupConnectorCustomSecretManagerOutput(ctx *pulumi.Context, args LookupConnectorCustomSecretManagerOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorCustomSecretManagerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorCustomSecretManagerResultOutput, error) {
 			args := v.(LookupConnectorCustomSecretManagerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectorCustomSecretManagerResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectorCustomSecretManagerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectorCustomSecretManagerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectorCustomSecretManagerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager", args, LookupConnectorCustomSecretManagerResultOutput{}, options).(LookupConnectorCustomSecretManagerResultOutput), nil
 		}).(LookupConnectorCustomSecretManagerResultOutput)
 }
 

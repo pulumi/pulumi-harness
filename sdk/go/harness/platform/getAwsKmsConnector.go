@@ -85,21 +85,11 @@ type LookupAwsKmsConnectorResult struct {
 }
 
 func LookupAwsKmsConnectorOutput(ctx *pulumi.Context, args LookupAwsKmsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsKmsConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAwsKmsConnectorResultOutput, error) {
 			args := v.(LookupAwsKmsConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAwsKmsConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAwsKmsConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAwsKmsConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAwsKmsConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getAwsKmsConnector:getAwsKmsConnector", args, LookupAwsKmsConnectorResultOutput{}, options).(LookupAwsKmsConnectorResultOutput), nil
 		}).(LookupAwsKmsConnectorResultOutput)
 }
 
