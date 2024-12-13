@@ -81,21 +81,11 @@ type LookupAwsProxyResult struct {
 }
 
 func LookupAwsProxyOutput(ctx *pulumi.Context, args LookupAwsProxyOutputArgs, opts ...pulumi.InvokeOption) LookupAwsProxyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAwsProxyResultOutput, error) {
 			args := v.(LookupAwsProxyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAwsProxyResult
-			secret, err := ctx.InvokePackageRaw("harness:autostopping/getAwsProxy:getAwsProxy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAwsProxyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAwsProxyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAwsProxyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:autostopping/getAwsProxy:getAwsProxy", args, LookupAwsProxyResultOutput{}, options).(LookupAwsProxyResultOutput), nil
 		}).(LookupAwsProxyResultOutput)
 }
 

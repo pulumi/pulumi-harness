@@ -62,6 +62,32 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetDelegateResult> Invoke(GetDelegateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegateResult>("harness:index/getDelegate:getDelegate", args ?? new GetDelegateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.GetDelegate.Invoke(new()
+        ///     {
+        ///         Name = "harness-delegate",
+        ///         Type = "KUBERNETES",
+        ///         Status = "ENABLED",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDelegateResult> Invoke(GetDelegateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDelegateResult>("harness:index/getDelegate:getDelegate", args ?? new GetDelegateInvokeArgs(), options.WithDefaults());
     }
 
 

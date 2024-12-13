@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetOciHelmConnectorResult> Invoke(GetOciHelmConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOciHelmConnectorResult>("harness:platform/getOciHelmConnector:getOciHelmConnector", args ?? new GetOciHelmConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a OCI Helm connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetOciHelmConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOciHelmConnectorResult> Invoke(GetOciHelmConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOciHelmConnectorResult>("harness:platform/getOciHelmConnector:getOciHelmConnector", args ?? new GetOciHelmConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

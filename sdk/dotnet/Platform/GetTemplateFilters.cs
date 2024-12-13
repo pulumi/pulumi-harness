@@ -64,6 +64,33 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetTemplateFiltersResult> Invoke(GetTemplateFiltersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateFiltersResult>("harness:platform/getTemplateFilters:getTemplateFilters", args ?? new GetTemplateFiltersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness Template Filter.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetTemplateFilters.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///         Type = "Template",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTemplateFiltersResult> Invoke(GetTemplateFiltersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTemplateFiltersResult>("harness:platform/getTemplateFilters:getTemplateFilters", args ?? new GetTemplateFiltersInvokeArgs(), options.WithDefaults());
     }
 
 

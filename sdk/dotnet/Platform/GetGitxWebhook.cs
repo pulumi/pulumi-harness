@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitxWebhookResult> Invoke(GetGitxWebhookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitxWebhookResult>("harness:platform/getGitxWebhook:getGitxWebhook", args ?? new GetGitxWebhookInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Resource for creating a Harness pipeline.
+        /// </summary>
+        public static Output<GetGitxWebhookResult> Invoke(GetGitxWebhookInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitxWebhookResult>("harness:platform/getGitxWebhook:getGitxWebhook", args ?? new GetGitxWebhookInvokeArgs(), options.WithDefaults());
     }
 
 

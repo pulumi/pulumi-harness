@@ -47,21 +47,11 @@ type GetDelegateIdsResult struct {
 }
 
 func GetDelegateIdsOutput(ctx *pulumi.Context, args GetDelegateIdsOutputArgs, opts ...pulumi.InvokeOption) GetDelegateIdsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDelegateIdsResultOutput, error) {
 			args := v.(GetDelegateIdsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDelegateIdsResult
-			secret, err := ctx.InvokePackageRaw("harness:cloudprovider/getDelegateIds:getDelegateIds", args, &rv, "", opts...)
-			if err != nil {
-				return GetDelegateIdsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDelegateIdsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDelegateIdsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:cloudprovider/getDelegateIds:getDelegateIds", args, GetDelegateIdsResultOutput{}, options).(GetDelegateIdsResultOutput), nil
 		}).(GetDelegateIdsResultOutput)
 }
 

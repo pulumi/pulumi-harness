@@ -85,21 +85,11 @@ type LookupAzureGatewayResult struct {
 }
 
 func LookupAzureGatewayOutput(ctx *pulumi.Context, args LookupAzureGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAzureGatewayResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzureGatewayResultOutput, error) {
 			args := v.(LookupAzureGatewayArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzureGatewayResult
-			secret, err := ctx.InvokePackageRaw("harness:autostopping/getAzureGateway:getAzureGateway", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzureGatewayResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzureGatewayResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzureGatewayResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:autostopping/getAzureGateway:getAzureGateway", args, LookupAzureGatewayResultOutput{}, options).(LookupAzureGatewayResultOutput), nil
 		}).(LookupAzureGatewayResultOutput)
 }
 

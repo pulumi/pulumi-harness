@@ -85,21 +85,11 @@ type LookupRuleEnforcementResult struct {
 }
 
 func LookupRuleEnforcementOutput(ctx *pulumi.Context, args LookupRuleEnforcementOutputArgs, opts ...pulumi.InvokeOption) LookupRuleEnforcementResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRuleEnforcementResultOutput, error) {
 			args := v.(LookupRuleEnforcementArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRuleEnforcementResult
-			secret, err := ctx.InvokePackageRaw("harness:governance/getRuleEnforcement:getRuleEnforcement", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRuleEnforcementResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRuleEnforcementResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRuleEnforcementResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:governance/getRuleEnforcement:getRuleEnforcement", args, LookupRuleEnforcementResultOutput{}, options).(LookupRuleEnforcementResultOutput), nil
 		}).(LookupRuleEnforcementResultOutput)
 }
 

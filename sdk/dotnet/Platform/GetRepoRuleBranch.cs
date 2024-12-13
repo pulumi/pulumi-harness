@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetRepoRuleBranchResult> Invoke(GetRepoRuleBranchInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepoRuleBranchResult>("harness:platform/getRepoRuleBranch:getRepoRuleBranch", args ?? new GetRepoRuleBranchInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness repo branch rule.
+        /// </summary>
+        public static Output<GetRepoRuleBranchResult> Invoke(GetRepoRuleBranchInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepoRuleBranchResult>("harness:platform/getRepoRuleBranch:getRepoRuleBranch", args ?? new GetRepoRuleBranchInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -115,21 +115,11 @@ type LookupEnvironmentClustersMappingResult struct {
 }
 
 func LookupEnvironmentClustersMappingOutput(ctx *pulumi.Context, args LookupEnvironmentClustersMappingOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentClustersMappingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEnvironmentClustersMappingResultOutput, error) {
 			args := v.(LookupEnvironmentClustersMappingArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupEnvironmentClustersMappingResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEnvironmentClustersMappingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEnvironmentClustersMappingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEnvironmentClustersMappingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args, LookupEnvironmentClustersMappingResultOutput{}, options).(LookupEnvironmentClustersMappingResultOutput), nil
 		}).(LookupEnvironmentClustersMappingResultOutput)
 }
 

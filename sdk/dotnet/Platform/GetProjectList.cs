@@ -106,6 +106,54 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetProjectListResult> Invoke(GetProjectListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectListResult>("harness:platform/getProjectList:getProjectList", args ?? new GetProjectListInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving Harness project list.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Org Level Project List
+        /// 
+        /// ### Without the Pagination
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
+        ///     {
+        ///         OrgId = "org_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### With Pagination Logic
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
+        ///     {
+        ///         OrgId = "org_id",
+        ///         Page = 1,
+        ///         Limit = 4,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectListResult> Invoke(GetProjectListInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectListResult>("harness:platform/getProjectList:getProjectList", args ?? new GetProjectListInvokeArgs(), options.WithDefaults());
     }
 
 

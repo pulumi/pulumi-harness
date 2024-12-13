@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetConnectorCustomhealthsourceResult> Invoke(GetConnectorCustomhealthsourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCustomhealthsourceResult>("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", args ?? new GetConnectorCustomhealthsourceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up a Custom Health source connector.
+        /// </summary>
+        public static Output<GetConnectorCustomhealthsourceResult> Invoke(GetConnectorCustomhealthsourceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCustomhealthsourceResult>("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", args ?? new GetConnectorCustomhealthsourceInvokeArgs(), options.WithDefaults());
     }
 
 

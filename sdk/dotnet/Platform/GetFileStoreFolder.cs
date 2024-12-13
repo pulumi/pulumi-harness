@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetFileStoreFolderResult> Invoke(GetFileStoreFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFileStoreFolderResult>("harness:platform/getFileStoreFolder:getFileStoreFolder", args ?? new GetFileStoreFolderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving folders.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetFileStoreFolder.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFileStoreFolderResult> Invoke(GetFileStoreFolderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFileStoreFolderResult>("harness:platform/getFileStoreFolder:getFileStoreFolder", args ?? new GetFileStoreFolderInvokeArgs(), options.WithDefaults());
     }
 
 

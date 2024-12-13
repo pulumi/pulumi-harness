@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Cloudprovider
         /// </summary>
         public static Output<GetDelegateIdsResult> Invoke(GetDelegateIdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegateIdsResult>("harness:cloudprovider/getDelegateIds:getDelegateIds", args ?? new GetDelegateIdsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a list of delegate ID's matching the specified search criteria.
+        /// </summary>
+        public static Output<GetDelegateIdsResult> Invoke(GetDelegateIdsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDelegateIdsResult>("harness:cloudprovider/getDelegateIds:getDelegateIds", args ?? new GetDelegateIdsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetAzureCloudCostConnectorResult> Invoke(GetAzureCloudCostConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureCloudCostConnectorResult>("harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector", args ?? new GetAzureCloudCostConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up an Azure Cloud Cost Connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetAzureCloudCostConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAzureCloudCostConnectorResult> Invoke(GetAzureCloudCostConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureCloudCostConnectorResult>("harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector", args ?? new GetAzureCloudCostConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

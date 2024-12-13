@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetArtifactoryConnectorResult> Invoke(GetArtifactoryConnectorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Resource for looking up an App Dynamics connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetArtifactoryConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetArtifactoryConnectorResult> Invoke(GetArtifactoryConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetArtifactoryConnectorResult>("harness:platform/getArtifactoryConnector:getArtifactoryConnector", args ?? new GetArtifactoryConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

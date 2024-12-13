@@ -22,6 +22,12 @@ namespace Pulumi.Harness
         /// </summary>
         public static Output<GetSsoProviderResult> Invoke(GetSsoProviderInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSsoProviderResult>("harness:index/getSsoProvider:getSsoProvider", args ?? new GetSsoProviderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving an SSO providers
+        /// </summary>
+        public static Output<GetSsoProviderResult> Invoke(GetSsoProviderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSsoProviderResult>("harness:index/getSsoProvider:getSsoProvider", args ?? new GetSsoProviderInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitopsAgentResult> Invoke(GetGitopsAgentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentResult>("harness:platform/getGitopsAgent:getGitopsAgent", args ?? new GetGitopsAgentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for fetching a Harness GitOps Agent.
+        /// </summary>
+        public static Output<GetGitopsAgentResult> Invoke(GetGitopsAgentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentResult>("harness:platform/getGitopsAgent:getGitopsAgent", args ?? new GetGitopsAgentInvokeArgs(), options.WithDefaults());
     }
 
 

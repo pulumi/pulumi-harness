@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.autostopping.inputs.GetAwsAlbArgs;
 import com.pulumi.harness.autostopping.inputs.GetAwsAlbPlainArgs;
@@ -162,6 +163,48 @@ public final class AutostoppingFunctions {
      * 
      */
     public static Output<GetAwsAlbResult> getAwsAlb(GetAwsAlbArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getAwsAlb:getAwsAlb", TypeShape.of(GetAwsAlbResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetAwsAlbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = AutostoppingFunctions.getAwsAlb(GetAwsAlbArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAwsAlbResult> getAwsAlb(GetAwsAlbArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAwsAlb:getAwsAlb", TypeShape.of(GetAwsAlbResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -371,6 +414,48 @@ public final class AutostoppingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAwsProxyResult> getAwsProxy(GetAwsProxyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getAwsProxy:getAwsProxy", TypeShape.of(GetAwsProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetAwsProxyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = AutostoppingFunctions.getAwsProxy(GetAwsProxyArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAwsProxyResult> getAwsProxyPlain(GetAwsProxyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getAwsProxy:getAwsProxy", TypeShape.of(GetAwsProxyResult.class), args, Utilities.withVersion(options));
     }
@@ -498,6 +583,48 @@ public final class AutostoppingFunctions {
      * 
      */
     public static Output<GetAzureGatewayResult> getAzureGateway(GetAzureGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getAzureGateway:getAzureGateway", TypeShape.of(GetAzureGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for AWS Autostopping proxy
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetAzureGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = AutostoppingFunctions.getAzureGateway(GetAzureGatewayArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAzureGatewayResult> getAzureGateway(GetAzureGatewayArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getAzureGateway:getAzureGateway", TypeShape.of(GetAzureGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -707,6 +834,48 @@ public final class AutostoppingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAzureProxyResult> getAzureProxy(GetAzureProxyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getAzureProxy:getAzureProxy", TypeShape.of(GetAzureProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for Azure Autostopping proxy
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetAzureProxyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = AutostoppingFunctions.getAzureProxy(GetAzureProxyArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAzureProxyResult> getAzureProxyPlain(GetAzureProxyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getAzureProxy:getAzureProxy", TypeShape.of(GetAzureProxyResult.class), args, Utilities.withVersion(options));
     }
@@ -834,6 +1003,48 @@ public final class AutostoppingFunctions {
      * 
      */
     public static Output<GetGcpProxyResult> getGcpProxy(GetGcpProxyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getGcpProxy:getGcpProxy", TypeShape.of(GetGcpProxyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for GCP Autostopping proxy
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetGcpProxyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = AutostoppingFunctions.getGcpProxy(GetGcpProxyArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGcpProxyResult> getGcpProxy(GetGcpProxyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getGcpProxy:getGcpProxy", TypeShape.of(GetGcpProxyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1043,6 +1254,48 @@ public final class AutostoppingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRuleEcsResult> getRuleEcs(GetRuleEcsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRuleEcsResult> getRuleEcsPlain(GetRuleEcsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
     }
@@ -1170,6 +1423,48 @@ public final class AutostoppingFunctions {
      * 
      */
     public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1379,6 +1674,48 @@ public final class AutostoppingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRuleVmResult> getRuleVm(GetRuleVmArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Variable.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRuleVmResult> getRuleVmPlain(GetRuleVmPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
     }
@@ -1401,6 +1738,13 @@ public final class AutostoppingFunctions {
      * 
      */
     public static Output<GetScheduleResult> getSchedule(GetScheduleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:autostopping/getSchedule:getSchedule", TypeShape.of(GetScheduleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a fixed schedule for Harness AutoStopping rule
+     * 
+     */
+    public static Output<GetScheduleResult> getSchedule(GetScheduleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getSchedule:getSchedule", TypeShape.of(GetScheduleResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -83,21 +83,11 @@ type LookupKubernetesCloudCostConnectorResult struct {
 }
 
 func LookupKubernetesCloudCostConnectorOutput(ctx *pulumi.Context, args LookupKubernetesCloudCostConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesCloudCostConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupKubernetesCloudCostConnectorResultOutput, error) {
 			args := v.(LookupKubernetesCloudCostConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupKubernetesCloudCostConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupKubernetesCloudCostConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupKubernetesCloudCostConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupKubernetesCloudCostConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", args, LookupKubernetesCloudCostConnectorResultOutput{}, options).(LookupKubernetesCloudCostConnectorResultOutput), nil
 		}).(LookupKubernetesCloudCostConnectorResultOutput)
 }
 

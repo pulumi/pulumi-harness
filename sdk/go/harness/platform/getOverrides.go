@@ -46,21 +46,11 @@ type LookupOverridesResult struct {
 }
 
 func LookupOverridesOutput(ctx *pulumi.Context, args LookupOverridesOutputArgs, opts ...pulumi.InvokeOption) LookupOverridesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOverridesResultOutput, error) {
 			args := v.(LookupOverridesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupOverridesResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getOverrides:getOverrides", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOverridesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOverridesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOverridesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getOverrides:getOverrides", args, LookupOverridesResultOutput{}, options).(LookupOverridesResultOutput), nil
 		}).(LookupOverridesResultOutput)
 }
 

@@ -62,6 +62,32 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetDbSchemaResult> Invoke(GetDbSchemaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbSchemaResult>("harness:platform/getDbSchema:getDbSchema", args ?? new GetDbSchemaInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness DBDevOps Schema.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetDbSchema.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDbSchemaResult> Invoke(GetDbSchemaInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDbSchemaResult>("harness:platform/getDbSchema:getDbSchema", args ?? new GetDbSchemaInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetPipelineFiltersResult> Invoke(GetPipelineFiltersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineFiltersResult>("harness:platform/getPipelineFilters:getPipelineFilters", args ?? new GetPipelineFiltersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness Pipeline Filter.
+        /// </summary>
+        public static Output<GetPipelineFiltersResult> Invoke(GetPipelineFiltersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPipelineFiltersResult>("harness:platform/getPipelineFilters:getPipelineFilters", args ?? new GetPipelineFiltersInvokeArgs(), options.WithDefaults());
     }
 
 

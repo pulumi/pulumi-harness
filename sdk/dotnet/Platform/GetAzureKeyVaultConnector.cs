@@ -54,6 +54,28 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetAzureKeyVaultConnectorResult> Invoke(GetAzureKeyVaultConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureKeyVaultConnectorResult>("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args ?? new GetAzureKeyVaultConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetAzureKeyVaultConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAzureKeyVaultConnectorResult> Invoke(GetAzureKeyVaultConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureKeyVaultConnectorResult>("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args ?? new GetAzureKeyVaultConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

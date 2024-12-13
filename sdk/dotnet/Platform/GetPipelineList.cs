@@ -106,6 +106,54 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetPipelineListResult> Invoke(GetPipelineListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineListResult>("harness:platform/getPipelineList:getPipelineList", args ?? new GetPipelineListInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness pipeline list.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Without the Pagination
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
+        ///     {
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### With Pagination Logic
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPipelineList.Invoke(new()
+        ///     {
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///         Page = 1,
+        ///         Limit = 4,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPipelineListResult> Invoke(GetPipelineListInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPipelineListResult>("harness:platform/getPipelineList:getPipelineList", args ?? new GetPipelineListInvokeArgs(), options.WithDefaults());
     }
 
 

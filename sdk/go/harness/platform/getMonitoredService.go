@@ -45,21 +45,11 @@ type LookupMonitoredServiceResult struct {
 }
 
 func LookupMonitoredServiceOutput(ctx *pulumi.Context, args LookupMonitoredServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoredServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMonitoredServiceResultOutput, error) {
 			args := v.(LookupMonitoredServiceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMonitoredServiceResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getMonitoredService:getMonitoredService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMonitoredServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMonitoredServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMonitoredServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getMonitoredService:getMonitoredService", args, LookupMonitoredServiceResultOutput{}, options).(LookupMonitoredServiceResultOutput), nil
 		}).(LookupMonitoredServiceResultOutput)
 }
 

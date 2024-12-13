@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitopsAppProjectMappingResult> Invoke(GetGitopsAppProjectMappingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAppProjectMappingResult>("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args ?? new GetGitopsAppProjectMappingInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Resource for managing the Harness GitOps Application Project Mappings.
+        /// </summary>
+        public static Output<GetGitopsAppProjectMappingResult> Invoke(GetGitopsAppProjectMappingInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAppProjectMappingResult>("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args ?? new GetGitopsAppProjectMappingInvokeArgs(), options.WithDefaults());
     }
 
 

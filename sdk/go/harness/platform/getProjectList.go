@@ -111,21 +111,11 @@ type GetProjectListResult struct {
 }
 
 func GetProjectListOutput(ctx *pulumi.Context, args GetProjectListOutputArgs, opts ...pulumi.InvokeOption) GetProjectListResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectListResultOutput, error) {
 			args := v.(GetProjectListArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectListResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getProjectList:getProjectList", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectListResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectListResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectListResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getProjectList:getProjectList", args, GetProjectListResultOutput{}, options).(GetProjectListResultOutput), nil
 		}).(GetProjectListResultOutput)
 }
 

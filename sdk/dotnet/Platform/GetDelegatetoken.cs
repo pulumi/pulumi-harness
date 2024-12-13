@@ -22,6 +22,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetDelegatetokenResult> Invoke(GetDelegatetokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegatetokenResult>("harness:platform/getDelegatetoken:getDelegatetoken", args ?? new GetDelegatetokenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data Source for retrieving delegate tokens.
+        /// </summary>
+        public static Output<GetDelegatetokenResult> Invoke(GetDelegatetokenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDelegatetokenResult>("harness:platform/getDelegatetoken:getDelegatetoken", args ?? new GetDelegatetokenInvokeArgs(), options.WithDefaults());
     }
 
 

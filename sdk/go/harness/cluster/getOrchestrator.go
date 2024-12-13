@@ -45,21 +45,11 @@ type LookupOrchestratorResult struct {
 }
 
 func LookupOrchestratorOutput(ctx *pulumi.Context, args LookupOrchestratorOutputArgs, opts ...pulumi.InvokeOption) LookupOrchestratorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupOrchestratorResultOutput, error) {
 			args := v.(LookupOrchestratorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupOrchestratorResult
-			secret, err := ctx.InvokePackageRaw("harness:cluster/getOrchestrator:getOrchestrator", args, &rv, "", opts...)
-			if err != nil {
-				return LookupOrchestratorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupOrchestratorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupOrchestratorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:cluster/getOrchestrator:getOrchestrator", args, LookupOrchestratorResultOutput{}, options).(LookupOrchestratorResultOutput), nil
 		}).(LookupOrchestratorResultOutput)
 }
 

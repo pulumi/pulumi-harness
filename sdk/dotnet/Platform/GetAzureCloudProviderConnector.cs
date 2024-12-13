@@ -58,6 +58,30 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetAzureCloudProviderConnectorResult> Invoke(GetAzureCloudProviderConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureCloudProviderConnectorResult>("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", args ?? new GetAzureCloudProviderConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for looking up an Azure Cloud Provider Connector.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetAzureCloudProviderConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAzureCloudProviderConnectorResult> Invoke(GetAzureCloudProviderConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureCloudProviderConnectorResult>("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", args ?? new GetAzureCloudProviderConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -66,6 +66,34 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetGitopsAgentDeployYamlResult> Invoke(GetGitopsAgentDeployYamlInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentDeployYamlResult>("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args ?? new GetGitopsAgentDeployYamlInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsAgentDeployYaml.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         Namespace = "namespace",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGitopsAgentDeployYamlResult> Invoke(GetGitopsAgentDeployYamlInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitopsAgentDeployYamlResult>("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args ?? new GetGitopsAgentDeployYamlInvokeArgs(), options.WithDefaults());
     }
 
 

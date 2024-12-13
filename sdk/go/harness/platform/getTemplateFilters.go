@@ -84,21 +84,11 @@ type LookupTemplateFiltersResult struct {
 }
 
 func LookupTemplateFiltersOutput(ctx *pulumi.Context, args LookupTemplateFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupTemplateFiltersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTemplateFiltersResultOutput, error) {
 			args := v.(LookupTemplateFiltersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTemplateFiltersResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getTemplateFilters:getTemplateFilters", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTemplateFiltersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTemplateFiltersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTemplateFiltersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getTemplateFilters:getTemplateFilters", args, LookupTemplateFiltersResultOutput{}, options).(LookupTemplateFiltersResultOutput), nil
 		}).(LookupTemplateFiltersResultOutput)
 }
 

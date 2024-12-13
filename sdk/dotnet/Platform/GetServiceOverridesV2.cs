@@ -62,6 +62,32 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetServiceOverridesV2Result> Invoke(GetServiceOverridesV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceOverridesV2Result>("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args ?? new GetServiceOverridesV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for Harness service overrides V2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetServiceOverridesV2.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "orgIdentifier",
+        ///         ProjectId = "projectIdentifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceOverridesV2Result> Invoke(GetServiceOverridesV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceOverridesV2Result>("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args ?? new GetServiceOverridesV2InvokeArgs(), options.WithDefaults());
     }
 
 

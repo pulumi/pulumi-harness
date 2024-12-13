@@ -131,21 +131,11 @@ type LookupVaultConnectorResult struct {
 }
 
 func LookupVaultConnectorOutput(ctx *pulumi.Context, args LookupVaultConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupVaultConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVaultConnectorResultOutput, error) {
 			args := v.(LookupVaultConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupVaultConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getVaultConnector:getVaultConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupVaultConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupVaultConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupVaultConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getVaultConnector:getVaultConnector", args, LookupVaultConnectorResultOutput{}, options).(LookupVaultConnectorResultOutput), nil
 		}).(LookupVaultConnectorResultOutput)
 }
 

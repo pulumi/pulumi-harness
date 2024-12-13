@@ -89,21 +89,11 @@ type LookupDatadogConnectorResult struct {
 }
 
 func LookupDatadogConnectorOutput(ctx *pulumi.Context, args LookupDatadogConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDatadogConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatadogConnectorResultOutput, error) {
 			args := v.(LookupDatadogConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatadogConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getDatadogConnector:getDatadogConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatadogConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatadogConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatadogConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getDatadogConnector:getDatadogConnector", args, LookupDatadogConnectorResultOutput{}, options).(LookupDatadogConnectorResultOutput), nil
 		}).(LookupDatadogConnectorResultOutput)
 }
 

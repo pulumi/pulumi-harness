@@ -62,6 +62,32 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetRepoResult> Invoke(GetRepoInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepoResult>("harness:platform/getRepo:getRepo", args ?? new GetRepoInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving a Harness repo.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleByIdentifier = Harness.Platform.GetRepo.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "proj_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRepoResult> Invoke(GetRepoInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepoResult>("harness:platform/getRepo:getRepo", args ?? new GetRepoInvokeArgs(), options.WithDefaults());
     }
 
 

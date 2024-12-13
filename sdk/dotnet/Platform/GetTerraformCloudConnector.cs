@@ -54,6 +54,28 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public static Output<GetTerraformCloudConnectorResult> Invoke(GetTerraformCloudConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTerraformCloudConnectorResult>("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", args ?? new GetTerraformCloudConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetTerraformCloudConnector.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTerraformCloudConnectorResult> Invoke(GetTerraformCloudConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTerraformCloudConnectorResult>("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", args ?? new GetTerraformCloudConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

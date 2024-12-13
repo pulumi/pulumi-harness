@@ -16,6 +16,9 @@ namespace Pulumi.Harness.Platform
 
         public static Output<GetProviderResult> Invoke(GetProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProviderResult>("harness:platform/getProvider:getProvider", args ?? new GetProviderInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetProviderResult> Invoke(GetProviderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProviderResult>("harness:platform/getProvider:getProvider", args ?? new GetProviderInvokeArgs(), options.WithDefaults());
     }
 
 

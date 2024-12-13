@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.inputs.GetApplicationArgs;
 import com.pulumi.harness.inputs.GetApplicationPlainArgs;
@@ -92,6 +93,13 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness application
      * 
      */
+    public static Output<GetApplicationResult> getApplication(GetApplicationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness application
+     * 
+     */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
     }
@@ -128,6 +136,13 @@ public final class HarnessFunctions {
      * 
      */
     public static Output<GetCurrentAccountResult> getCurrentAccount(GetCurrentAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getCurrentAccount:getCurrentAccount", TypeShape.of(GetCurrentAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving information about the current Harness account
+     * 
+     */
+    public static Output<GetCurrentAccountResult> getCurrentAccount(GetCurrentAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:index/getCurrentAccount:getCurrentAccount", TypeShape.of(GetCurrentAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -398,6 +413,50 @@ public final class HarnessFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDelegateResult> getDelegate(GetDelegateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getDelegate:getDelegate", TypeShape.of(GetDelegateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetDelegateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = HarnessFunctions.getDelegate(GetDelegateArgs.builder()
+     *             .name("harness-delegate")
+     *             .type("KUBERNETES")
+     *             .status("ENABLED")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDelegateResult> getDelegatePlain(GetDelegatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getDelegate:getDelegate", TypeShape.of(GetDelegateResult.class), args, Utilities.withVersion(options));
     }
@@ -440,6 +499,13 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness application
      * 
      */
+    public static Output<GetEncryptedTextResult> getEncryptedText(GetEncryptedTextArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getEncryptedText:getEncryptedText", TypeShape.of(GetEncryptedTextResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness application
+     * 
+     */
     public static CompletableFuture<GetEncryptedTextResult> getEncryptedTextPlain(GetEncryptedTextPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getEncryptedText:getEncryptedText", TypeShape.of(GetEncryptedTextResult.class), args, Utilities.withVersion(options));
     }
@@ -462,6 +528,13 @@ public final class HarnessFunctions {
      * 
      */
     public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness service
+     * 
+     */
+    public static Output<GetEnvironmentResult> getEnvironment(GetEnvironmentArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:index/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -510,6 +583,13 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness application
      * 
      */
+    public static Output<GetGitConnectorResult> getGitConnector(GetGitConnectorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getGitConnector:getGitConnector", TypeShape.of(GetGitConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness application
+     * 
+     */
     public static CompletableFuture<GetGitConnectorResult> getGitConnectorPlain(GetGitConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getGitConnector:getGitConnector", TypeShape.of(GetGitConnectorResult.class), args, Utilities.withVersion(options));
     }
@@ -552,6 +632,13 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness secret manager
      * 
      */
+    public static Output<GetSecretManagerResult> getSecretManager(GetSecretManagerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getSecretManager:getSecretManager", TypeShape.of(GetSecretManagerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness secret manager
+     * 
+     */
     public static CompletableFuture<GetSecretManagerResult> getSecretManagerPlain(GetSecretManagerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getSecretManager:getSecretManager", TypeShape.of(GetSecretManagerResult.class), args, Utilities.withVersion(options));
     }
@@ -574,6 +661,13 @@ public final class HarnessFunctions {
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness service
+     * 
+     */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:index/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -622,6 +716,13 @@ public final class HarnessFunctions {
      * Data source for retrieving an SSH credential.
      * 
      */
+    public static Output<GetSshCredentialResult> getSshCredential(GetSshCredentialArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getSshCredential:getSshCredential", TypeShape.of(GetSshCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an SSH credential.
+     * 
+     */
     public static CompletableFuture<GetSshCredentialResult> getSshCredentialPlain(GetSshCredentialPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getSshCredential:getSshCredential", TypeShape.of(GetSshCredentialResult.class), args, Utilities.withVersion(options));
     }
@@ -658,6 +759,13 @@ public final class HarnessFunctions {
      * 
      */
     public static Output<GetSsoProviderResult> getSsoProvider(GetSsoProviderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getSsoProvider:getSsoProvider", TypeShape.of(GetSsoProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an SSO providers
+     * 
+     */
+    public static Output<GetSsoProviderResult> getSsoProvider(GetSsoProviderArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:index/getSsoProvider:getSsoProvider", TypeShape.of(GetSsoProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -946,6 +1054,53 @@ public final class HarnessFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getTrigger:getTrigger", TypeShape.of(GetTriggerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness trigger.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleByName = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .appId("app_id")
+     *             .name("name")
+     *             .build());
+     * 
+     *         final var exampleById = HarnessFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .id("trigger_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getTrigger:getTrigger", TypeShape.of(GetTriggerResult.class), args, Utilities.withVersion(options));
     }
@@ -982,6 +1137,13 @@ public final class HarnessFunctions {
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness user
+     * 
+     */
+    public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1030,6 +1192,13 @@ public final class HarnessFunctions {
      * Data source for retrieving a Harness user group
      * 
      */
+    public static Output<GetUserGroupResult> getUserGroup(GetUserGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getUserGroup:getUserGroup", TypeShape.of(GetUserGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness user group
+     * 
+     */
     public static CompletableFuture<GetUserGroupResult> getUserGroupPlain(GetUserGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getUserGroup:getUserGroup", TypeShape.of(GetUserGroupResult.class), args, Utilities.withVersion(options));
     }
@@ -1052,6 +1221,13 @@ public final class HarnessFunctions {
      * 
      */
     public static Output<GetYamlConfigResult> getYamlConfig(GetYamlConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getYamlConfig:getYamlConfig", TypeShape.of(GetYamlConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a yaml config.
+     * 
+     */
+    public static Output<GetYamlConfigResult> getYamlConfig(GetYamlConfigArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:index/getYamlConfig:getYamlConfig", TypeShape.of(GetYamlConfigResult.class), args, Utilities.withVersion(options));
     }
     /**

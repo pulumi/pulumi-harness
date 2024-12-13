@@ -87,21 +87,11 @@ type GetGitopsApplicationsResult struct {
 }
 
 func GetGitopsApplicationsOutput(ctx *pulumi.Context, args GetGitopsApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetGitopsApplicationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGitopsApplicationsResultOutput, error) {
 			args := v.(GetGitopsApplicationsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGitopsApplicationsResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getGitopsApplications:getGitopsApplications", args, &rv, "", opts...)
-			if err != nil {
-				return GetGitopsApplicationsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGitopsApplicationsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGitopsApplicationsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getGitopsApplications:getGitopsApplications", args, GetGitopsApplicationsResultOutput{}, options).(GetGitopsApplicationsResultOutput), nil
 		}).(GetGitopsApplicationsResultOutput)
 }
 

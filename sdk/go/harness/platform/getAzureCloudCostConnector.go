@@ -87,21 +87,11 @@ type LookupAzureCloudCostConnectorResult struct {
 }
 
 func LookupAzureCloudCostConnectorOutput(ctx *pulumi.Context, args LookupAzureCloudCostConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAzureCloudCostConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAzureCloudCostConnectorResultOutput, error) {
 			args := v.(LookupAzureCloudCostConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAzureCloudCostConnectorResult
-			secret, err := ctx.InvokePackageRaw("harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAzureCloudCostConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAzureCloudCostConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAzureCloudCostConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector", args, LookupAzureCloudCostConnectorResultOutput{}, options).(LookupAzureCloudCostConnectorResultOutput), nil
 		}).(LookupAzureCloudCostConnectorResultOutput)
 }
 
