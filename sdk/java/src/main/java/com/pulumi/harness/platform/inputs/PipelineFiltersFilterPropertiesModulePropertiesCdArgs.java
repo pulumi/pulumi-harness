@@ -47,6 +47,21 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
     }
 
     /**
+     * Environment identifier of the CD pipeline.
+     * 
+     */
+    @Import(name="environmentIdentifiers")
+    private @Nullable Output<List<String>> environmentIdentifiers;
+
+    /**
+     * @return Environment identifier of the CD pipeline.
+     * 
+     */
+    public Optional<Output<List<String>>> environmentIdentifiers() {
+        return Optional.ofNullable(this.environmentIdentifiers);
+    }
+
+    /**
      * Environment names of the CD pipeline.
      * 
      */
@@ -59,6 +74,21 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
      */
     public Optional<Output<List<String>>> environmentNames() {
         return Optional.ofNullable(this.environmentNames);
+    }
+
+    /**
+     * Deployment type of the CD pipeline, eg. Kubernetes
+     * 
+     */
+    @Import(name="serviceDefinitionTypes")
+    private @Nullable Output<String> serviceDefinitionTypes;
+
+    /**
+     * @return Deployment type of the CD pipeline, eg. Kubernetes
+     * 
+     */
+    public Optional<Output<String>> serviceDefinitionTypes() {
+        return Optional.ofNullable(this.serviceDefinitionTypes);
     }
 
     /**
@@ -96,7 +126,9 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
     private PipelineFiltersFilterPropertiesModulePropertiesCdArgs(PipelineFiltersFilterPropertiesModulePropertiesCdArgs $) {
         this.artifactDisplayNames = $.artifactDisplayNames;
         this.deploymentTypes = $.deploymentTypes;
+        this.environmentIdentifiers = $.environmentIdentifiers;
         this.environmentNames = $.environmentNames;
+        this.serviceDefinitionTypes = $.serviceDefinitionTypes;
         this.serviceIdentifiers = $.serviceIdentifiers;
         this.serviceNames = $.serviceNames;
     }
@@ -172,6 +204,37 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
         }
 
         /**
+         * @param environmentIdentifiers Environment identifier of the CD pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentIdentifiers(@Nullable Output<List<String>> environmentIdentifiers) {
+            $.environmentIdentifiers = environmentIdentifiers;
+            return this;
+        }
+
+        /**
+         * @param environmentIdentifiers Environment identifier of the CD pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentIdentifiers(List<String> environmentIdentifiers) {
+            return environmentIdentifiers(Output.of(environmentIdentifiers));
+        }
+
+        /**
+         * @param environmentIdentifiers Environment identifier of the CD pipeline.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentIdentifiers(String... environmentIdentifiers) {
+            return environmentIdentifiers(List.of(environmentIdentifiers));
+        }
+
+        /**
          * @param environmentNames Environment names of the CD pipeline.
          * 
          * @return builder
@@ -200,6 +263,27 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCdArgs extends
          */
         public Builder environmentNames(String... environmentNames) {
             return environmentNames(List.of(environmentNames));
+        }
+
+        /**
+         * @param serviceDefinitionTypes Deployment type of the CD pipeline, eg. Kubernetes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDefinitionTypes(@Nullable Output<String> serviceDefinitionTypes) {
+            $.serviceDefinitionTypes = serviceDefinitionTypes;
+            return this;
+        }
+
+        /**
+         * @param serviceDefinitionTypes Deployment type of the CD pipeline, eg. Kubernetes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDefinitionTypes(String serviceDefinitionTypes) {
+            return serviceDefinitionTypes(Output.of(serviceDefinitionTypes));
         }
 
         /**

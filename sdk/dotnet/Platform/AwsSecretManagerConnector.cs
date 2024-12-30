@@ -101,6 +101,12 @@ namespace Pulumi.Harness.Platform
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to update secret value using putSecretValue action.
+        /// </summary>
+        [Output("usePutSecret")]
+        public Output<bool?> UsePutSecret { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AwsSecretManagerConnector resource with the given unique name, arguments, and options.
@@ -226,6 +232,12 @@ namespace Pulumi.Harness.Platform
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Whether to update secret value using putSecretValue action.
+        /// </summary>
+        [Input("usePutSecret")]
+        public Input<bool>? UsePutSecret { get; set; }
+
         public AwsSecretManagerConnectorArgs()
         {
         }
@@ -311,6 +323,12 @@ namespace Pulumi.Harness.Platform
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Whether to update secret value using putSecretValue action.
+        /// </summary>
+        [Input("usePutSecret")]
+        public Input<bool>? UsePutSecret { get; set; }
 
         public AwsSecretManagerConnectorState()
         {

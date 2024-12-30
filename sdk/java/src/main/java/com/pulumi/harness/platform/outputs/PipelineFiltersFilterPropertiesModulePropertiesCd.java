@@ -23,10 +23,20 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
      */
     private @Nullable String deploymentTypes;
     /**
+     * @return Environment identifier of the CD pipeline.
+     * 
+     */
+    private @Nullable List<String> environmentIdentifiers;
+    /**
      * @return Environment names of the CD pipeline.
      * 
      */
     private @Nullable List<String> environmentNames;
+    /**
+     * @return Deployment type of the CD pipeline, eg. Kubernetes
+     * 
+     */
+    private @Nullable String serviceDefinitionTypes;
     /**
      * @return Service identifiers of the CD pipeline.
      * 
@@ -54,11 +64,25 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
         return Optional.ofNullable(this.deploymentTypes);
     }
     /**
+     * @return Environment identifier of the CD pipeline.
+     * 
+     */
+    public List<String> environmentIdentifiers() {
+        return this.environmentIdentifiers == null ? List.of() : this.environmentIdentifiers;
+    }
+    /**
      * @return Environment names of the CD pipeline.
      * 
      */
     public List<String> environmentNames() {
         return this.environmentNames == null ? List.of() : this.environmentNames;
+    }
+    /**
+     * @return Deployment type of the CD pipeline, eg. Kubernetes
+     * 
+     */
+    public Optional<String> serviceDefinitionTypes() {
+        return Optional.ofNullable(this.serviceDefinitionTypes);
     }
     /**
      * @return Service identifiers of the CD pipeline.
@@ -86,7 +110,9 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
     public static final class Builder {
         private @Nullable List<String> artifactDisplayNames;
         private @Nullable String deploymentTypes;
+        private @Nullable List<String> environmentIdentifiers;
         private @Nullable List<String> environmentNames;
+        private @Nullable String serviceDefinitionTypes;
         private @Nullable List<String> serviceIdentifiers;
         private @Nullable List<String> serviceNames;
         public Builder() {}
@@ -94,7 +120,9 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
     	      Objects.requireNonNull(defaults);
     	      this.artifactDisplayNames = defaults.artifactDisplayNames;
     	      this.deploymentTypes = defaults.deploymentTypes;
+    	      this.environmentIdentifiers = defaults.environmentIdentifiers;
     	      this.environmentNames = defaults.environmentNames;
+    	      this.serviceDefinitionTypes = defaults.serviceDefinitionTypes;
     	      this.serviceIdentifiers = defaults.serviceIdentifiers;
     	      this.serviceNames = defaults.serviceNames;
         }
@@ -115,6 +143,15 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
             return this;
         }
         @CustomType.Setter
+        public Builder environmentIdentifiers(@Nullable List<String> environmentIdentifiers) {
+
+            this.environmentIdentifiers = environmentIdentifiers;
+            return this;
+        }
+        public Builder environmentIdentifiers(String... environmentIdentifiers) {
+            return environmentIdentifiers(List.of(environmentIdentifiers));
+        }
+        @CustomType.Setter
         public Builder environmentNames(@Nullable List<String> environmentNames) {
 
             this.environmentNames = environmentNames;
@@ -122,6 +159,12 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
         }
         public Builder environmentNames(String... environmentNames) {
             return environmentNames(List.of(environmentNames));
+        }
+        @CustomType.Setter
+        public Builder serviceDefinitionTypes(@Nullable String serviceDefinitionTypes) {
+
+            this.serviceDefinitionTypes = serviceDefinitionTypes;
+            return this;
         }
         @CustomType.Setter
         public Builder serviceIdentifiers(@Nullable List<String> serviceIdentifiers) {
@@ -145,7 +188,9 @@ public final class PipelineFiltersFilterPropertiesModulePropertiesCd {
             final var _resultValue = new PipelineFiltersFilterPropertiesModulePropertiesCd();
             _resultValue.artifactDisplayNames = artifactDisplayNames;
             _resultValue.deploymentTypes = deploymentTypes;
+            _resultValue.environmentIdentifiers = environmentIdentifiers;
             _resultValue.environmentNames = environmentNames;
+            _resultValue.serviceDefinitionTypes = serviceDefinitionTypes;
             _resultValue.serviceIdentifiers = serviceIdentifiers;
             _resultValue.serviceNames = serviceNames;
             return _resultValue;

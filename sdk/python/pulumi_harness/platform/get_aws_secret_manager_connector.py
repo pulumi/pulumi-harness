@@ -27,7 +27,7 @@ class GetAwsSecretManagerConnectorResult:
     """
     A collection of values returned by getAwsSecretManagerConnector.
     """
-    def __init__(__self__, credentials=None, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, secret_name_prefix=None, tags=None):
+    def __init__(__self__, credentials=None, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, secret_name_prefix=None, tags=None, use_put_secret=None):
         if credentials and not isinstance(credentials, list):
             raise TypeError("Expected argument 'credentials' to be a list")
         pulumi.set(__self__, "credentials", credentials)
@@ -61,6 +61,9 @@ class GetAwsSecretManagerConnectorResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if use_put_secret and not isinstance(use_put_secret, bool):
+            raise TypeError("Expected argument 'use_put_secret' to be a bool")
+        pulumi.set(__self__, "use_put_secret", use_put_secret)
 
     @property
     @pulumi.getter
@@ -150,6 +153,14 @@ class GetAwsSecretManagerConnectorResult:
         """
         return pulumi.get(self, "tags")
 
+    @property
+    @pulumi.getter(name="usePutSecret")
+    def use_put_secret(self) -> bool:
+        """
+        Whether to update secret value using putSecretValue action.
+        """
+        return pulumi.get(self, "use_put_secret")
+
 
 class AwaitableGetAwsSecretManagerConnectorResult(GetAwsSecretManagerConnectorResult):
     # pylint: disable=using-constant-test
@@ -167,7 +178,8 @@ class AwaitableGetAwsSecretManagerConnectorResult(GetAwsSecretManagerConnectorRe
             project_id=self.project_id,
             region=self.region,
             secret_name_prefix=self.secret_name_prefix,
-            tags=self.tags)
+            tags=self.tags,
+            use_put_secret=self.use_put_secret)
 
 
 def get_aws_secret_manager_connector(identifier: Optional[str] = None,
@@ -210,7 +222,8 @@ def get_aws_secret_manager_connector(identifier: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         secret_name_prefix=pulumi.get(__ret__, 'secret_name_prefix'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        use_put_secret=pulumi.get(__ret__, 'use_put_secret'))
 def get_aws_secret_manager_connector_output(identifier: Optional[pulumi.Input[str]] = None,
                                             name: Optional[pulumi.Input[Optional[str]]] = None,
                                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -250,4 +263,5 @@ def get_aws_secret_manager_connector_output(identifier: Optional[pulumi.Input[st
         project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
         secret_name_prefix=pulumi.get(__response__, 'secret_name_prefix'),
-        tags=pulumi.get(__response__, 'tags')))
+        tags=pulumi.get(__response__, 'tags'),
+        use_put_secret=pulumi.get(__response__, 'use_put_secret')))

@@ -95,6 +95,21 @@ public final class PipelineFiltersFilterPropertiesArgs extends com.pulumi.resour
     }
 
     /**
+     * Name of the pipeline execution filter.
+     * 
+     */
+    @Import(name="pipelineName")
+    private @Nullable Output<String> pipelineName;
+
+    /**
+     * @return Name of the pipeline execution filter.
+     * 
+     */
+    public Optional<Output<String>> pipelineName() {
+        return Optional.ofNullable(this.pipelineName);
+    }
+
+    /**
      * Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
      * 
      */
@@ -132,6 +147,7 @@ public final class PipelineFiltersFilterPropertiesArgs extends com.pulumi.resour
         this.moduleProperties = $.moduleProperties;
         this.name = $.name;
         this.pipelineIdentifiers = $.pipelineIdentifiers;
+        this.pipelineName = $.pipelineName;
         this.pipelineTags = $.pipelineTags;
         this.tags = $.tags;
     }
@@ -267,6 +283,27 @@ public final class PipelineFiltersFilterPropertiesArgs extends com.pulumi.resour
          */
         public Builder pipelineIdentifiers(String... pipelineIdentifiers) {
             return pipelineIdentifiers(List.of(pipelineIdentifiers));
+        }
+
+        /**
+         * @param pipelineName Name of the pipeline execution filter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineName(@Nullable Output<String> pipelineName) {
+            $.pipelineName = pipelineName;
+            return this;
+        }
+
+        /**
+         * @param pipelineName Name of the pipeline execution filter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipelineName(String pipelineName) {
+            return pipelineName(Output.of(pipelineName));
         }
 
         /**

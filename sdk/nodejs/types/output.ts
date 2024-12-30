@@ -2422,7 +2422,7 @@ export namespace platform {
         /**
          * The delegates to inherit the credentials from.
          */
-        delegateSelectors: string[];
+        delegateSelectors?: string[];
         /**
          * The project number of the GCP project that is used to create the workload identity.
          */
@@ -7517,6 +7517,10 @@ export namespace platform {
          */
         pipelineIdentifiers?: string[];
         /**
+         * Name of the pipeline execution filter.
+         */
+        pipelineName?: string;
+        /**
          * Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
          */
         pipelineTags?: {[key: string]: string}[];
@@ -7547,9 +7551,17 @@ export namespace platform {
          */
         deploymentTypes?: string;
         /**
+         * Environment identifier of the CD pipeline.
+         */
+        environmentIdentifiers?: string[];
+        /**
          * Environment names of the CD pipeline.
          */
         environmentNames?: string[];
+        /**
+         * Deployment type of the CD pipeline, eg. Kubernetes
+         */
+        serviceDefinitionTypes?: string;
         /**
          * Service identifiers of the CD pipeline.
          */

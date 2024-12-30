@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpConnectorOidcAuthentication {
@@ -15,7 +16,7 @@ public final class GcpConnectorOidcAuthentication {
      * @return The delegates to inherit the credentials from.
      * 
      */
-    private List<String> delegateSelectors;
+    private @Nullable List<String> delegateSelectors;
     /**
      * @return The project number of the GCP project that is used to create the workload identity.
      * 
@@ -43,7 +44,7 @@ public final class GcpConnectorOidcAuthentication {
      * 
      */
     public List<String> delegateSelectors() {
-        return this.delegateSelectors;
+        return this.delegateSelectors == null ? List.of() : this.delegateSelectors;
     }
     /**
      * @return The project number of the GCP project that is used to create the workload identity.
@@ -83,7 +84,7 @@ public final class GcpConnectorOidcAuthentication {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> delegateSelectors;
+        private @Nullable List<String> delegateSelectors;
         private String gcpProjectId;
         private String providerId;
         private String serviceAccountEmail;
@@ -99,10 +100,8 @@ public final class GcpConnectorOidcAuthentication {
         }
 
         @CustomType.Setter
-        public Builder delegateSelectors(List<String> delegateSelectors) {
-            if (delegateSelectors == null) {
-              throw new MissingRequiredPropertyException("GcpConnectorOidcAuthentication", "delegateSelectors");
-            }
+        public Builder delegateSelectors(@Nullable List<String> delegateSelectors) {
+
             this.delegateSelectors = delegateSelectors;
             return this;
         }

@@ -43,6 +43,39 @@ namespace Pulumi.Harness.Platform
     ///         FilterVisibility = "EveryOne",
     ///     });
     /// 
+    ///     // pipeline execution filter consisiting services (service_identifiers) filter
+    ///     var execution = new Harness.Platform.PipelineFilters("execution", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "PipelineSetup",
+    ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
+    ///         {
+    ///             Name = "pipeline_name",
+    ///             Description = "pipeline_description",
+    ///             PipelineIdentifiers = new[]
+    ///             {
+    ///                 "id1",
+    ///                 "id2",
+    ///             },
+    ///             FilterType = "PipelineExecution",
+    ///             ModuleProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesArgs
+    ///             {
+    ///                 Cd = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesCdArgs
+    ///                 {
+    ///                     DeploymentTypes = "Kubernetes",
+    ///                     ServiceIdentifiers = new[]
+    ///                     {
+    ///                         "nginx",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         FilterVisibility = "EveryOne",
+    ///     });
+    /// 
     ///     // pipeline filter with tags
     ///     var exampleWithTags = new Harness.Platform.PipelineFilters("example_with_tags", new()
     ///     {
@@ -93,6 +126,52 @@ namespace Pulumi.Harness.Platform
     ///                     BuildType = "branch",
     ///                     Branch = "branch123",
     ///                     RepoNames = "repo1234",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var pipelinemoduleproperties = new Harness.Platform.PipelineFilters("pipelinemoduleproperties", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = testHarnessPlatformProject.OrgId,
+    ///         ProjectId = testHarnessPlatformProject.Id,
+    ///         Type = "PipelineExecution",
+    ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
+    ///         {
+    ///             FilterType = "PipelineExecution",
+    ///             PipelineName = "test",
+    ///             PipelineTags = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "key", "k1" },
+    ///                     { "value", "v1" },
+    ///                 },
+    ///                 
+    ///                 {
+    ///                     { "key", "k2" },
+    ///                     { "value", "v2" },
+    ///                 },
+    ///             },
+    ///             ModuleProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesArgs
+    ///             {
+    ///                 Cd = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesCdArgs
+    ///                 {
+    ///                     ServiceDefinitionTypes = "Kubernetes",
+    ///                     ServiceIdentifiers = new[]
+    ///                     {
+    ///                         "K8",
+    ///                     },
+    ///                     EnvironmentIdentifiers = new[]
+    ///                     {
+    ///                         "dev",
+    ///                     },
+    ///                     ArtifactDisplayNames = new[]
+    ///                     {
+    ///                         "artificatname1",
+    ///                     },
     ///                 },
     ///             },
     ///         },

@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GcpConnectorOidcAuthenticationArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,15 +21,15 @@ public final class GcpConnectorOidcAuthenticationArgs extends com.pulumi.resourc
      * The delegates to inherit the credentials from.
      * 
      */
-    @Import(name="delegateSelectors", required=true)
-    private Output<List<String>> delegateSelectors;
+    @Import(name="delegateSelectors")
+    private @Nullable Output<List<String>> delegateSelectors;
 
     /**
      * @return The delegates to inherit the credentials from.
      * 
      */
-    public Output<List<String>> delegateSelectors() {
-        return this.delegateSelectors;
+    public Optional<Output<List<String>>> delegateSelectors() {
+        return Optional.ofNullable(this.delegateSelectors);
     }
 
     /**
@@ -124,7 +126,7 @@ public final class GcpConnectorOidcAuthenticationArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder delegateSelectors(Output<List<String>> delegateSelectors) {
+        public Builder delegateSelectors(@Nullable Output<List<String>> delegateSelectors) {
             $.delegateSelectors = delegateSelectors;
             return this;
         }
@@ -234,9 +236,6 @@ public final class GcpConnectorOidcAuthenticationArgs extends com.pulumi.resourc
         }
 
         public GcpConnectorOidcAuthenticationArgs build() {
-            if ($.delegateSelectors == null) {
-                throw new MissingRequiredPropertyException("GcpConnectorOidcAuthenticationArgs", "delegateSelectors");
-            }
             if ($.gcpProjectId == null) {
                 throw new MissingRequiredPropertyException("GcpConnectorOidcAuthenticationArgs", "gcpProjectId");
             }

@@ -191,6 +191,10 @@ namespace Pulumi.Harness.Platform
         /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Whether to update secret value using putSecretValue action.
+        /// </summary>
+        public readonly bool UsePutSecret;
 
         [OutputConstructor]
         private GetAwsSecretManagerConnectorResult(
@@ -214,7 +218,9 @@ namespace Pulumi.Harness.Platform
 
             string secretNamePrefix,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            bool usePutSecret)
         {
             Credentials = credentials;
             DelegateSelectors = delegateSelectors;
@@ -227,6 +233,7 @@ namespace Pulumi.Harness.Platform
             Region = region;
             SecretNamePrefix = secretNamePrefix;
             Tags = tags;
+            UsePutSecret = usePutSecret;
         }
     }
 }

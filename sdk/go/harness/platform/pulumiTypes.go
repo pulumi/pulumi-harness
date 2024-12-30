@@ -25673,6 +25673,8 @@ type PipelineFiltersFilterProperties struct {
 	Name *string `pulumi:"name"`
 	// Pipeline identifiers to filter on.
 	PipelineIdentifiers []string `pulumi:"pipelineIdentifiers"`
+	// Name of the pipeline execution filter.
+	PipelineName *string `pulumi:"pipelineName"`
 	// Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
 	PipelineTags []map[string]string `pulumi:"pipelineTags"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -25701,6 +25703,8 @@ type PipelineFiltersFilterPropertiesArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Pipeline identifiers to filter on.
 	PipelineIdentifiers pulumi.StringArrayInput `pulumi:"pipelineIdentifiers"`
+	// Name of the pipeline execution filter.
+	PipelineName pulumi.StringPtrInput `pulumi:"pipelineName"`
 	// Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
 	PipelineTags pulumi.StringMapArrayInput `pulumi:"pipelineTags"`
 	// Tags to associate with the resource. Tags should be in the form `name:value`.
@@ -25811,6 +25815,11 @@ func (o PipelineFiltersFilterPropertiesOutput) PipelineIdentifiers() pulumi.Stri
 	return o.ApplyT(func(v PipelineFiltersFilterProperties) []string { return v.PipelineIdentifiers }).(pulumi.StringArrayOutput)
 }
 
+// Name of the pipeline execution filter.
+func (o PipelineFiltersFilterPropertiesOutput) PipelineName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineFiltersFilterProperties) *string { return v.PipelineName }).(pulumi.StringPtrOutput)
+}
+
 // Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
 func (o PipelineFiltersFilterPropertiesOutput) PipelineTags() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v PipelineFiltersFilterProperties) []map[string]string { return v.PipelineTags }).(pulumi.StringMapArrayOutput)
@@ -25893,6 +25902,16 @@ func (o PipelineFiltersFilterPropertiesPtrOutput) PipelineIdentifiers() pulumi.S
 		}
 		return v.PipelineIdentifiers
 	}).(pulumi.StringArrayOutput)
+}
+
+// Name of the pipeline execution filter.
+func (o PipelineFiltersFilterPropertiesPtrOutput) PipelineName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineFiltersFilterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PipelineName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
@@ -26080,8 +26099,12 @@ type PipelineFiltersFilterPropertiesModulePropertiesCd struct {
 	ArtifactDisplayNames []string `pulumi:"artifactDisplayNames"`
 	// Deployment type of the CD pipeline, eg. Kubernetes
 	DeploymentTypes *string `pulumi:"deploymentTypes"`
+	// Environment identifier of the CD pipeline.
+	EnvironmentIdentifiers []string `pulumi:"environmentIdentifiers"`
 	// Environment names of the CD pipeline.
 	EnvironmentNames []string `pulumi:"environmentNames"`
+	// Deployment type of the CD pipeline, eg. Kubernetes
+	ServiceDefinitionTypes *string `pulumi:"serviceDefinitionTypes"`
 	// Service identifiers of the CD pipeline.
 	ServiceIdentifiers []string `pulumi:"serviceIdentifiers"`
 	// Service names of the CD pipeline.
@@ -26104,8 +26127,12 @@ type PipelineFiltersFilterPropertiesModulePropertiesCdArgs struct {
 	ArtifactDisplayNames pulumi.StringArrayInput `pulumi:"artifactDisplayNames"`
 	// Deployment type of the CD pipeline, eg. Kubernetes
 	DeploymentTypes pulumi.StringPtrInput `pulumi:"deploymentTypes"`
+	// Environment identifier of the CD pipeline.
+	EnvironmentIdentifiers pulumi.StringArrayInput `pulumi:"environmentIdentifiers"`
 	// Environment names of the CD pipeline.
 	EnvironmentNames pulumi.StringArrayInput `pulumi:"environmentNames"`
+	// Deployment type of the CD pipeline, eg. Kubernetes
+	ServiceDefinitionTypes pulumi.StringPtrInput `pulumi:"serviceDefinitionTypes"`
 	// Service identifiers of the CD pipeline.
 	ServiceIdentifiers pulumi.StringArrayInput `pulumi:"serviceIdentifiers"`
 	// Service names of the CD pipeline.
@@ -26199,9 +26226,19 @@ func (o PipelineFiltersFilterPropertiesModulePropertiesCdOutput) DeploymentTypes
 	return o.ApplyT(func(v PipelineFiltersFilterPropertiesModulePropertiesCd) *string { return v.DeploymentTypes }).(pulumi.StringPtrOutput)
 }
 
+// Environment identifier of the CD pipeline.
+func (o PipelineFiltersFilterPropertiesModulePropertiesCdOutput) EnvironmentIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PipelineFiltersFilterPropertiesModulePropertiesCd) []string { return v.EnvironmentIdentifiers }).(pulumi.StringArrayOutput)
+}
+
 // Environment names of the CD pipeline.
 func (o PipelineFiltersFilterPropertiesModulePropertiesCdOutput) EnvironmentNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PipelineFiltersFilterPropertiesModulePropertiesCd) []string { return v.EnvironmentNames }).(pulumi.StringArrayOutput)
+}
+
+// Deployment type of the CD pipeline, eg. Kubernetes
+func (o PipelineFiltersFilterPropertiesModulePropertiesCdOutput) ServiceDefinitionTypes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineFiltersFilterPropertiesModulePropertiesCd) *string { return v.ServiceDefinitionTypes }).(pulumi.StringPtrOutput)
 }
 
 // Service identifiers of the CD pipeline.
@@ -26258,6 +26295,16 @@ func (o PipelineFiltersFilterPropertiesModulePropertiesCdPtrOutput) DeploymentTy
 	}).(pulumi.StringPtrOutput)
 }
 
+// Environment identifier of the CD pipeline.
+func (o PipelineFiltersFilterPropertiesModulePropertiesCdPtrOutput) EnvironmentIdentifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PipelineFiltersFilterPropertiesModulePropertiesCd) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentIdentifiers
+	}).(pulumi.StringArrayOutput)
+}
+
 // Environment names of the CD pipeline.
 func (o PipelineFiltersFilterPropertiesModulePropertiesCdPtrOutput) EnvironmentNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PipelineFiltersFilterPropertiesModulePropertiesCd) []string {
@@ -26266,6 +26313,16 @@ func (o PipelineFiltersFilterPropertiesModulePropertiesCdPtrOutput) EnvironmentN
 		}
 		return v.EnvironmentNames
 	}).(pulumi.StringArrayOutput)
+}
+
+// Deployment type of the CD pipeline, eg. Kubernetes
+func (o PipelineFiltersFilterPropertiesModulePropertiesCdPtrOutput) ServiceDefinitionTypes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineFiltersFilterPropertiesModulePropertiesCd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDefinitionTypes
+	}).(pulumi.StringPtrOutput)
 }
 
 // Service identifiers of the CD pipeline.

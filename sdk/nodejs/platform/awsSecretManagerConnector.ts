@@ -101,6 +101,10 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
      * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether to update secret value using putSecretValue action.
+     */
+    public readonly usePutSecret!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AwsSecretManagerConnector resource with the given unique name, arguments, and options.
@@ -126,6 +130,7 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["secretNamePrefix"] = state ? state.secretNamePrefix : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["usePutSecret"] = state ? state.usePutSecret : undefined;
         } else {
             const args = argsOrState as AwsSecretManagerConnectorArgs | undefined;
             if ((!args || args.credentials === undefined) && !opts.urn) {
@@ -148,6 +153,7 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["secretNamePrefix"] = args ? args.secretNamePrefix : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["usePutSecret"] = args ? args.usePutSecret : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AwsSecretManagerConnector.__pulumiType, name, resourceInputs, opts);
@@ -202,6 +208,10 @@ export interface AwsSecretManagerConnectorState {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to update secret value using putSecretValue action.
+     */
+    usePutSecret?: pulumi.Input<boolean>;
 }
 
 /**
@@ -252,4 +262,8 @@ export interface AwsSecretManagerConnectorArgs {
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to update secret value using putSecretValue action.
+     */
+    usePutSecret?: pulumi.Input<boolean>;
 }

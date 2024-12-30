@@ -48,6 +48,35 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// pipeline execution filter consisiting services (service_identifiers) filter
+//			_, err = platform.NewPipelineFilters(ctx, "execution", &platform.PipelineFiltersArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Type:       pulumi.String("PipelineSetup"),
+//				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
+//					Name:        pulumi.String("pipeline_name"),
+//					Description: pulumi.String("pipeline_description"),
+//					PipelineIdentifiers: pulumi.StringArray{
+//						pulumi.String("id1"),
+//						pulumi.String("id2"),
+//					},
+//					FilterType: pulumi.String("PipelineExecution"),
+//					ModuleProperties: &platform.PipelineFiltersFilterPropertiesModulePropertiesArgs{
+//						Cd: &platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs{
+//							DeploymentTypes: pulumi.String("Kubernetes"),
+//							ServiceIdentifiers: pulumi.StringArray{
+//								pulumi.String("nginx"),
+//							},
+//						},
+//					},
+//				},
+//				FilterVisibility: pulumi.String("EveryOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// pipeline filter with tags
 //			_, err = platform.NewPipelineFilters(ctx, "example_with_tags", &platform.PipelineFiltersArgs{
 //				Identifier: pulumi.String("identifier"),
@@ -87,6 +116,44 @@ import (
 //							BuildType: pulumi.String("branch"),
 //							Branch:    pulumi.String("branch123"),
 //							RepoNames: pulumi.String("repo1234"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewPipelineFilters(ctx, "pipelinemoduleproperties", &platform.PipelineFiltersArgs{
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.Any(testHarnessPlatformProject.OrgId),
+//				ProjectId:  pulumi.Any(testHarnessPlatformProject.Id),
+//				Type:       pulumi.String("PipelineExecution"),
+//				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
+//					FilterType:   pulumi.String("PipelineExecution"),
+//					PipelineName: pulumi.String("test"),
+//					PipelineTags: pulumi.StringMapArray{
+//						pulumi.StringMap{
+//							"key":   pulumi.String("k1"),
+//							"value": pulumi.String("v1"),
+//						},
+//						pulumi.StringMap{
+//							"key":   pulumi.String("k2"),
+//							"value": pulumi.String("v2"),
+//						},
+//					},
+//					ModuleProperties: &platform.PipelineFiltersFilterPropertiesModulePropertiesArgs{
+//						Cd: &platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs{
+//							ServiceDefinitionTypes: pulumi.String("Kubernetes"),
+//							ServiceIdentifiers: pulumi.StringArray{
+//								pulumi.String("K8"),
+//							},
+//							EnvironmentIdentifiers: pulumi.StringArray{
+//								pulumi.String("dev"),
+//							},
+//							ArtifactDisplayNames: pulumi.StringArray{
+//								pulumi.String("artificatname1"),
+//							},
 //						},
 //					},
 //				},

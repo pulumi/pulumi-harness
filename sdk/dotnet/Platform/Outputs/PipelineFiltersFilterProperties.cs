@@ -34,6 +34,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PipelineIdentifiers;
         /// <summary>
+        /// Name of the pipeline execution filter.
+        /// </summary>
+        public readonly string? PipelineName;
+        /// <summary>
         /// Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> PipelineTags;
@@ -54,6 +58,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<string> pipelineIdentifiers,
 
+            string? pipelineName,
+
             ImmutableArray<ImmutableDictionary<string, string>> pipelineTags,
 
             ImmutableArray<string> tags)
@@ -63,6 +69,7 @@ namespace Pulumi.Harness.Platform.Outputs
             ModuleProperties = moduleProperties;
             Name = name;
             PipelineIdentifiers = pipelineIdentifiers;
+            PipelineName = pipelineName;
             PipelineTags = pipelineTags;
             Tags = tags;
         }

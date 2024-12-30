@@ -184,6 +184,21 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Whether to update secret value using putSecretValue action.
+     * 
+     */
+    @Import(name="usePutSecret")
+    private @Nullable Output<Boolean> usePutSecret;
+
+    /**
+     * @return Whether to update secret value using putSecretValue action.
+     * 
+     */
+    public Optional<Output<Boolean>> usePutSecret() {
+        return Optional.ofNullable(this.usePutSecret);
+    }
+
     private AwsSecretManagerConnectorArgs() {}
 
     private AwsSecretManagerConnectorArgs(AwsSecretManagerConnectorArgs $) {
@@ -198,6 +213,7 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
         this.region = $.region;
         this.secretNamePrefix = $.secretNamePrefix;
         this.tags = $.tags;
+        this.usePutSecret = $.usePutSecret;
     }
 
     public static Builder builder() {
@@ -467,6 +483,27 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param usePutSecret Whether to update secret value using putSecretValue action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usePutSecret(@Nullable Output<Boolean> usePutSecret) {
+            $.usePutSecret = usePutSecret;
+            return this;
+        }
+
+        /**
+         * @param usePutSecret Whether to update secret value using putSecretValue action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usePutSecret(Boolean usePutSecret) {
+            return usePutSecret(Output.of(usePutSecret));
         }
 
         public AwsSecretManagerConnectorArgs build() {

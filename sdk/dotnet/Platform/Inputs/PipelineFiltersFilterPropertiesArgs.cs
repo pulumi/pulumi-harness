@@ -48,6 +48,12 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _pipelineIdentifiers = value;
         }
 
+        /// <summary>
+        /// Name of the pipeline execution filter.
+        /// </summary>
+        [Input("pipelineName")]
+        public Input<string>? PipelineName { get; set; }
+
         [Input("pipelineTags")]
         private InputList<ImmutableDictionary<string, string>>? _pipelineTags;
 
