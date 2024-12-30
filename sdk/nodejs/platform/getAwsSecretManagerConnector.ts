@@ -98,6 +98,10 @@ export interface GetAwsSecretManagerConnectorResult {
      * Tags to associate with the resource.
      */
     readonly tags: string[];
+    /**
+     * Whether to update secret value using putSecretValue action.
+     */
+    readonly usePutSecret: boolean;
 }
 /**
  * ## Example Usage

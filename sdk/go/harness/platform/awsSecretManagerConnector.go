@@ -58,6 +58,8 @@ type AwsSecretManagerConnector struct {
 	SecretNamePrefix pulumi.StringPtrOutput `pulumi:"secretNamePrefix"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Whether to update secret value using putSecretValue action.
+	UsePutSecret pulumi.BoolPtrOutput `pulumi:"usePutSecret"`
 }
 
 // NewAwsSecretManagerConnector registers a new resource with the given unique name, arguments, and options.
@@ -121,6 +123,8 @@ type awsSecretManagerConnectorState struct {
 	SecretNamePrefix *string `pulumi:"secretNamePrefix"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// Whether to update secret value using putSecretValue action.
+	UsePutSecret *bool `pulumi:"usePutSecret"`
 }
 
 type AwsSecretManagerConnectorState struct {
@@ -146,6 +150,8 @@ type AwsSecretManagerConnectorState struct {
 	SecretNamePrefix pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
+	// Whether to update secret value using putSecretValue action.
+	UsePutSecret pulumi.BoolPtrInput
 }
 
 func (AwsSecretManagerConnectorState) ElementType() reflect.Type {
@@ -175,6 +181,8 @@ type awsSecretManagerConnectorArgs struct {
 	SecretNamePrefix *string `pulumi:"secretNamePrefix"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// Whether to update secret value using putSecretValue action.
+	UsePutSecret *bool `pulumi:"usePutSecret"`
 }
 
 // The set of arguments for constructing a AwsSecretManagerConnector resource.
@@ -201,6 +209,8 @@ type AwsSecretManagerConnectorArgs struct {
 	SecretNamePrefix pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
+	// Whether to update secret value using putSecretValue action.
+	UsePutSecret pulumi.BoolPtrInput
 }
 
 func (AwsSecretManagerConnectorArgs) ElementType() reflect.Type {
@@ -343,6 +353,11 @@ func (o AwsSecretManagerConnectorOutput) SecretNamePrefix() pulumi.StringPtrOutp
 // Tags to associate with the resource.
 func (o AwsSecretManagerConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Whether to update secret value using putSecretValue action.
+func (o AwsSecretManagerConnectorOutput) UsePutSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.BoolPtrOutput { return v.UsePutSecret }).(pulumi.BoolPtrOutput)
 }
 
 type AwsSecretManagerConnectorArrayOutput struct{ *pulumi.OutputState }

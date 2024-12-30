@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetAwsSecretManagerConnectorCredential;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,6 +70,11 @@ public final class GetAwsSecretManagerConnectorResult {
      * 
      */
     private List<String> tags;
+    /**
+     * @return Whether to update secret value using putSecretValue action.
+     * 
+     */
+    private Boolean usePutSecret;
 
     private GetAwsSecretManagerConnectorResult() {}
     /**
@@ -148,6 +154,13 @@ public final class GetAwsSecretManagerConnectorResult {
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return Whether to update secret value using putSecretValue action.
+     * 
+     */
+    public Boolean usePutSecret() {
+        return this.usePutSecret;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -169,6 +182,7 @@ public final class GetAwsSecretManagerConnectorResult {
         private String region;
         private String secretNamePrefix;
         private List<String> tags;
+        private Boolean usePutSecret;
         public Builder() {}
         public Builder(GetAwsSecretManagerConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -183,6 +197,7 @@ public final class GetAwsSecretManagerConnectorResult {
     	      this.region = defaults.region;
     	      this.secretNamePrefix = defaults.secretNamePrefix;
     	      this.tags = defaults.tags;
+    	      this.usePutSecret = defaults.usePutSecret;
         }
 
         @CustomType.Setter
@@ -276,6 +291,14 @@ public final class GetAwsSecretManagerConnectorResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder usePutSecret(Boolean usePutSecret) {
+            if (usePutSecret == null) {
+              throw new MissingRequiredPropertyException("GetAwsSecretManagerConnectorResult", "usePutSecret");
+            }
+            this.usePutSecret = usePutSecret;
+            return this;
+        }
         public GetAwsSecretManagerConnectorResult build() {
             final var _resultValue = new GetAwsSecretManagerConnectorResult();
             _resultValue.credentials = credentials;
@@ -289,6 +312,7 @@ public final class GetAwsSecretManagerConnectorResult {
             _resultValue.region = region;
             _resultValue.secretNamePrefix = secretNamePrefix;
             _resultValue.tags = tags;
+            _resultValue.usePutSecret = usePutSecret;
             return _resultValue;
         }
     }

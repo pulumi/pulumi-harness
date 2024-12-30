@@ -82,6 +82,8 @@ type LookupAwsSecretManagerConnectorResult struct {
 	SecretNamePrefix string `pulumi:"secretNamePrefix"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// Whether to update secret value using putSecretValue action.
+	UsePutSecret bool `pulumi:"usePutSecret"`
 }
 
 func LookupAwsSecretManagerConnectorOutput(ctx *pulumi.Context, args LookupAwsSecretManagerConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsSecretManagerConnectorResultOutput {
@@ -179,6 +181,11 @@ func (o LookupAwsSecretManagerConnectorResultOutput) SecretNamePrefix() pulumi.S
 // Tags to associate with the resource.
 func (o LookupAwsSecretManagerConnectorResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Whether to update secret value using putSecretValue action.
+func (o LookupAwsSecretManagerConnectorResultOutput) UsePutSecret() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) bool { return v.UsePutSecret }).(pulumi.BoolOutput)
 }
 
 func init() {

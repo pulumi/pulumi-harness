@@ -2678,7 +2678,7 @@ export namespace platform {
         /**
          * The delegates to inherit the credentials from.
          */
-        delegateSelectors: pulumi.Input<pulumi.Input<string>[]>;
+        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The project number of the GCP project that is used to create the workload identity.
          */
@@ -5924,6 +5924,10 @@ export namespace platform {
          */
         pipelineIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Name of the pipeline execution filter.
+         */
+        pipelineName?: pulumi.Input<string>;
+        /**
          * Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
          */
         pipelineTags?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
@@ -5954,9 +5958,17 @@ export namespace platform {
          */
         deploymentTypes?: pulumi.Input<string>;
         /**
+         * Environment identifier of the CD pipeline.
+         */
+        environmentIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Environment names of the CD pipeline.
          */
         environmentNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Deployment type of the CD pipeline, eg. Kubernetes
+         */
+        serviceDefinitionTypes?: pulumi.Input<string>;
         /**
          * Service identifiers of the CD pipeline.
          */

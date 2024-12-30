@@ -4348,10 +4348,6 @@ class GcpConnectorManualArgs:
 
 if not MYPY:
     class GcpConnectorOidcAuthenticationArgsDict(TypedDict):
-        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]]
-        """
-        The delegates to inherit the credentials from.
-        """
         gcp_project_id: pulumi.Input[str]
         """
         The project number of the GCP project that is used to create the workload identity.
@@ -4368,41 +4364,34 @@ if not MYPY:
         """
         The workload pool ID value created in GCP.
         """
+        delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The delegates to inherit the credentials from.
+        """
 elif False:
     GcpConnectorOidcAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpConnectorOidcAuthenticationArgs:
     def __init__(__self__, *,
-                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[str]]],
                  gcp_project_id: pulumi.Input[str],
                  provider_id: pulumi.Input[str],
                  service_account_email: pulumi.Input[str],
-                 workload_pool_id: pulumi.Input[str]):
+                 workload_pool_id: pulumi.Input[str],
+                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
         :param pulumi.Input[str] gcp_project_id: The project number of the GCP project that is used to create the workload identity.
         :param pulumi.Input[str] provider_id: The OIDC provider ID value configured in GCP.
         :param pulumi.Input[str] service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
         :param pulumi.Input[str] workload_pool_id: The workload pool ID value created in GCP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
         """
-        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "gcp_project_id", gcp_project_id)
         pulumi.set(__self__, "provider_id", provider_id)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "workload_pool_id", workload_pool_id)
-
-    @property
-    @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The delegates to inherit the credentials from.
-        """
-        return pulumi.get(self, "delegate_selectors")
-
-    @delegate_selectors.setter
-    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "delegate_selectors", value)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
 
     @property
     @pulumi.getter(name="gcpProjectId")
@@ -4451,6 +4440,18 @@ class GcpConnectorOidcAuthenticationArgs:
     @workload_pool_id.setter
     def workload_pool_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "workload_pool_id", value)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "delegate_selectors", value)
 
 
 if not MYPY:
@@ -14704,6 +14705,10 @@ if not MYPY:
         """
         Pipeline identifiers to filter on.
         """
+        pipeline_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the pipeline execution filter.
+        """
         pipeline_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
         """
         Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
@@ -14723,6 +14728,7 @@ class PipelineFiltersFilterPropertiesArgs:
                  module_properties: Optional[pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pipeline_name: Optional[pulumi.Input[str]] = None,
                  pipeline_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -14731,6 +14737,7 @@ class PipelineFiltersFilterPropertiesArgs:
         :param pulumi.Input['PipelineFiltersFilterPropertiesModulePropertiesArgs'] module_properties: module properties of the pipline filter.
         :param pulumi.Input[str] name: Name of the pipeline filter.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pipeline_identifiers: Pipeline identifiers to filter on.
+        :param pulumi.Input[str] pipeline_name: Name of the pipeline execution filter.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] pipeline_tags: Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource. Tags should be in the form `name:value`.
         """
@@ -14743,6 +14750,8 @@ class PipelineFiltersFilterPropertiesArgs:
             pulumi.set(__self__, "name", name)
         if pipeline_identifiers is not None:
             pulumi.set(__self__, "pipeline_identifiers", pipeline_identifiers)
+        if pipeline_name is not None:
+            pulumi.set(__self__, "pipeline_name", pipeline_name)
         if pipeline_tags is not None:
             pulumi.set(__self__, "pipeline_tags", pipeline_tags)
         if tags is not None:
@@ -14807,6 +14816,18 @@ class PipelineFiltersFilterPropertiesArgs:
     @pipeline_identifiers.setter
     def pipeline_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "pipeline_identifiers", value)
+
+    @property
+    @pulumi.getter(name="pipelineName")
+    def pipeline_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the pipeline execution filter.
+        """
+        return pulumi.get(self, "pipeline_name")
+
+    @pipeline_name.setter
+    def pipeline_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pipeline_name", value)
 
     @property
     @pulumi.getter(name="pipelineTags")
@@ -14895,9 +14916,17 @@ if not MYPY:
         """
         Deployment type of the CD pipeline, eg. Kubernetes
         """
+        environment_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Environment identifier of the CD pipeline.
+        """
         environment_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Environment names of the CD pipeline.
+        """
+        service_definition_types: NotRequired[pulumi.Input[str]]
+        """
+        Deployment type of the CD pipeline, eg. Kubernetes
         """
         service_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -14915,13 +14944,17 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
     def __init__(__self__, *,
                  artifact_display_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_types: Optional[pulumi.Input[str]] = None,
+                 environment_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  environment_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_definition_types: Optional[pulumi.Input[str]] = None,
                  service_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] artifact_display_names: Artifact display names of the CD pipeline.
         :param pulumi.Input[str] deployment_types: Deployment type of the CD pipeline, eg. Kubernetes
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_identifiers: Environment identifier of the CD pipeline.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] environment_names: Environment names of the CD pipeline.
+        :param pulumi.Input[str] service_definition_types: Deployment type of the CD pipeline, eg. Kubernetes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_identifiers: Service identifiers of the CD pipeline.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_names: Service names of the CD pipeline.
         """
@@ -14929,8 +14962,12 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
             pulumi.set(__self__, "artifact_display_names", artifact_display_names)
         if deployment_types is not None:
             pulumi.set(__self__, "deployment_types", deployment_types)
+        if environment_identifiers is not None:
+            pulumi.set(__self__, "environment_identifiers", environment_identifiers)
         if environment_names is not None:
             pulumi.set(__self__, "environment_names", environment_names)
+        if service_definition_types is not None:
+            pulumi.set(__self__, "service_definition_types", service_definition_types)
         if service_identifiers is not None:
             pulumi.set(__self__, "service_identifiers", service_identifiers)
         if service_names is not None:
@@ -14961,6 +14998,18 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
         pulumi.set(self, "deployment_types", value)
 
     @property
+    @pulumi.getter(name="environmentIdentifiers")
+    def environment_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Environment identifier of the CD pipeline.
+        """
+        return pulumi.get(self, "environment_identifiers")
+
+    @environment_identifiers.setter
+    def environment_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "environment_identifiers", value)
+
+    @property
     @pulumi.getter(name="environmentNames")
     def environment_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -14971,6 +15020,18 @@ class PipelineFiltersFilterPropertiesModulePropertiesCdArgs:
     @environment_names.setter
     def environment_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "environment_names", value)
+
+    @property
+    @pulumi.getter(name="serviceDefinitionTypes")
+    def service_definition_types(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deployment type of the CD pipeline, eg. Kubernetes
+        """
+        return pulumi.get(self, "service_definition_types")
+
+    @service_definition_types.setter
+    def service_definition_types(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_definition_types", value)
 
     @property
     @pulumi.getter(name="serviceIdentifiers")

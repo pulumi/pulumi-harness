@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class GcpConnectorOidcAuthenticationGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("delegateSelectors", required: true)]
+        [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
         /// <summary>

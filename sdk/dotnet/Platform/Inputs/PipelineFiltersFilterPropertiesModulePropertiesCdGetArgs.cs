@@ -30,6 +30,18 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("deploymentTypes")]
         public Input<string>? DeploymentTypes { get; set; }
 
+        [Input("environmentIdentifiers")]
+        private InputList<string>? _environmentIdentifiers;
+
+        /// <summary>
+        /// Environment identifier of the CD pipeline.
+        /// </summary>
+        public InputList<string> EnvironmentIdentifiers
+        {
+            get => _environmentIdentifiers ?? (_environmentIdentifiers = new InputList<string>());
+            set => _environmentIdentifiers = value;
+        }
+
         [Input("environmentNames")]
         private InputList<string>? _environmentNames;
 
@@ -41,6 +53,12 @@ namespace Pulumi.Harness.Platform.Inputs
             get => _environmentNames ?? (_environmentNames = new InputList<string>());
             set => _environmentNames = value;
         }
+
+        /// <summary>
+        /// Deployment type of the CD pipeline, eg. Kubernetes
+        /// </summary>
+        [Input("serviceDefinitionTypes")]
+        public Input<string>? ServiceDefinitionTypes { get; set; }
 
         [Input("serviceIdentifiers")]
         private InputList<string>? _serviceIdentifiers;

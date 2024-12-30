@@ -31,7 +31,8 @@ class AwsSecretManagerConnectorArgs:
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_put_secret: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AwsSecretManagerConnector resource.
         :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
@@ -45,6 +46,7 @@ class AwsSecretManagerConnectorArgs:
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] use_put_secret: Whether to update secret value using putSecretValue action.
         """
         pulumi.set(__self__, "credentials", credentials)
         pulumi.set(__self__, "identifier", identifier)
@@ -65,6 +67,8 @@ class AwsSecretManagerConnectorArgs:
             pulumi.set(__self__, "secret_name_prefix", secret_name_prefix)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_put_secret is not None:
+            pulumi.set(__self__, "use_put_secret", use_put_secret)
 
     @property
     @pulumi.getter
@@ -198,6 +202,18 @@ class AwsSecretManagerConnectorArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="usePutSecret")
+    def use_put_secret(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to update secret value using putSecretValue action.
+        """
+        return pulumi.get(self, "use_put_secret")
+
+    @use_put_secret.setter
+    def use_put_secret(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_put_secret", value)
+
 
 @pulumi.input_type
 class _AwsSecretManagerConnectorState:
@@ -212,7 +228,8 @@ class _AwsSecretManagerConnectorState:
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_put_secret: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AwsSecretManagerConnector resources.
         :param pulumi.Input['AwsSecretManagerConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
@@ -226,6 +243,7 @@ class _AwsSecretManagerConnectorState:
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] use_put_secret: Whether to update secret value using putSecretValue action.
         """
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
@@ -249,6 +267,8 @@ class _AwsSecretManagerConnectorState:
             pulumi.set(__self__, "secret_name_prefix", secret_name_prefix)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_put_secret is not None:
+            pulumi.set(__self__, "use_put_secret", use_put_secret)
 
     @property
     @pulumi.getter
@@ -382,6 +402,18 @@ class _AwsSecretManagerConnectorState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="usePutSecret")
+    def use_put_secret(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to update secret value using putSecretValue action.
+        """
+        return pulumi.get(self, "use_put_secret")
+
+    @use_put_secret.setter
+    def use_put_secret(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_put_secret", value)
+
 
 class AwsSecretManagerConnector(pulumi.CustomResource):
     @overload
@@ -399,6 +431,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_put_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -436,6 +469,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] use_put_secret: Whether to update secret value using putSecretValue action.
         """
         ...
     @overload
@@ -492,6 +526,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_put_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -518,6 +553,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["secret_name_prefix"] = secret_name_prefix
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["use_put_secret"] = use_put_secret
         super(AwsSecretManagerConnector, __self__).__init__(
             'harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector',
             resource_name,
@@ -538,7 +574,8 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             secret_name_prefix: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'AwsSecretManagerConnector':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            use_put_secret: Optional[pulumi.Input[bool]] = None) -> 'AwsSecretManagerConnector':
         """
         Get an existing AwsSecretManagerConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -557,6 +594,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[bool] use_put_secret: Whether to update secret value using putSecretValue action.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -573,6 +611,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["secret_name_prefix"] = secret_name_prefix
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["use_put_secret"] = use_put_secret
         return AwsSecretManagerConnector(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -662,4 +701,12 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="usePutSecret")
+    def use_put_secret(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to update secret value using putSecretValue action.
+        """
+        return pulumi.get(self, "use_put_secret")
 

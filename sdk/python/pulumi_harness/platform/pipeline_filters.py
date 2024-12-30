@@ -293,6 +293,29 @@ class PipelineFilters(pulumi.CustomResource):
                 "filter_type": "PipelineSetup",
             },
             filter_visibility="EveryOne")
+        # pipeline execution filter consisiting services (service_identifiers) filter
+        execution = harness.platform.PipelineFilters("execution",
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            type="PipelineSetup",
+            filter_properties={
+                "name": "pipeline_name",
+                "description": "pipeline_description",
+                "pipeline_identifiers": [
+                    "id1",
+                    "id2",
+                ],
+                "filter_type": "PipelineExecution",
+                "module_properties": {
+                    "cd": {
+                        "deployment_types": "Kubernetes",
+                        "service_identifiers": ["nginx"],
+                    },
+                },
+            },
+            filter_visibility="EveryOne")
         # pipeline filter with tags
         example_with_tags = harness.platform.PipelineFilters("example_with_tags",
             identifier="identifier",
@@ -332,6 +355,34 @@ class PipelineFilters(pulumi.CustomResource):
                         "build_type": "branch",
                         "branch": "branch123",
                         "repo_names": "repo1234",
+                    },
+                },
+            })
+        pipelinemoduleproperties = harness.platform.PipelineFilters("pipelinemoduleproperties",
+            identifier="identifier",
+            name="name",
+            org_id=test_harness_platform_project["orgId"],
+            project_id=test_harness_platform_project["id"],
+            type="PipelineExecution",
+            filter_properties={
+                "filter_type": "PipelineExecution",
+                "pipeline_name": "test",
+                "pipeline_tags": [
+                    {
+                        "key": "k1",
+                        "value": "v1",
+                    },
+                    {
+                        "key": "k2",
+                        "value": "v2",
+                    },
+                ],
+                "module_properties": {
+                    "cd": {
+                        "service_definition_types": "Kubernetes",
+                        "service_identifiers": ["K8"],
+                        "environment_identifiers": ["dev"],
+                        "artifact_display_names": ["artificatname1"],
                     },
                 },
             })
@@ -398,6 +449,29 @@ class PipelineFilters(pulumi.CustomResource):
                 "filter_type": "PipelineSetup",
             },
             filter_visibility="EveryOne")
+        # pipeline execution filter consisiting services (service_identifiers) filter
+        execution = harness.platform.PipelineFilters("execution",
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            type="PipelineSetup",
+            filter_properties={
+                "name": "pipeline_name",
+                "description": "pipeline_description",
+                "pipeline_identifiers": [
+                    "id1",
+                    "id2",
+                ],
+                "filter_type": "PipelineExecution",
+                "module_properties": {
+                    "cd": {
+                        "deployment_types": "Kubernetes",
+                        "service_identifiers": ["nginx"],
+                    },
+                },
+            },
+            filter_visibility="EveryOne")
         # pipeline filter with tags
         example_with_tags = harness.platform.PipelineFilters("example_with_tags",
             identifier="identifier",
@@ -437,6 +511,34 @@ class PipelineFilters(pulumi.CustomResource):
                         "build_type": "branch",
                         "branch": "branch123",
                         "repo_names": "repo1234",
+                    },
+                },
+            })
+        pipelinemoduleproperties = harness.platform.PipelineFilters("pipelinemoduleproperties",
+            identifier="identifier",
+            name="name",
+            org_id=test_harness_platform_project["orgId"],
+            project_id=test_harness_platform_project["id"],
+            type="PipelineExecution",
+            filter_properties={
+                "filter_type": "PipelineExecution",
+                "pipeline_name": "test",
+                "pipeline_tags": [
+                    {
+                        "key": "k1",
+                        "value": "v1",
+                    },
+                    {
+                        "key": "k2",
+                        "value": "v2",
+                    },
+                ],
+                "module_properties": {
+                    "cd": {
+                        "service_definition_types": "Kubernetes",
+                        "service_identifiers": ["K8"],
+                        "environment_identifiers": ["dev"],
+                        "artifact_display_names": ["artificatname1"],
                     },
                 },
             })

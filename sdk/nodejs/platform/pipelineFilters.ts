@@ -32,6 +32,30 @@ import * as utilities from "../utilities";
  *     },
  *     filterVisibility: "EveryOne",
  * });
+ * // pipeline execution filter consisiting services (service_identifiers) filter
+ * const execution = new harness.platform.PipelineFilters("execution", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     type: "PipelineSetup",
+ *     filterProperties: {
+ *         name: "pipeline_name",
+ *         description: "pipeline_description",
+ *         pipelineIdentifiers: [
+ *             "id1",
+ *             "id2",
+ *         ],
+ *         filterType: "PipelineExecution",
+ *         moduleProperties: {
+ *             cd: {
+ *                 deploymentTypes: "Kubernetes",
+ *                 serviceIdentifiers: ["nginx"],
+ *             },
+ *         },
+ *     },
+ *     filterVisibility: "EveryOne",
+ * });
  * // pipeline filter with tags
  * const exampleWithTags = new harness.platform.PipelineFilters("example_with_tags", {
  *     identifier: "identifier",
@@ -71,6 +95,35 @@ import * as utilities from "../utilities";
  *                 buildType: "branch",
  *                 branch: "branch123",
  *                 repoNames: "repo1234",
+ *             },
+ *         },
+ *     },
+ * });
+ * const pipelinemoduleproperties = new harness.platform.PipelineFilters("pipelinemoduleproperties", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: testHarnessPlatformProject.orgId,
+ *     projectId: testHarnessPlatformProject.id,
+ *     type: "PipelineExecution",
+ *     filterProperties: {
+ *         filterType: "PipelineExecution",
+ *         pipelineName: "test",
+ *         pipelineTags: [
+ *             {
+ *                 key: "k1",
+ *                 value: "v1",
+ *             },
+ *             {
+ *                 key: "k2",
+ *                 value: "v2",
+ *             },
+ *         ],
+ *         moduleProperties: {
+ *             cd: {
+ *                 serviceDefinitionTypes: "Kubernetes",
+ *                 serviceIdentifiers: ["K8"],
+ *                 environmentIdentifiers: ["dev"],
+ *                 artifactDisplayNames: ["artificatname1"],
  *             },
  *         },
  *     },

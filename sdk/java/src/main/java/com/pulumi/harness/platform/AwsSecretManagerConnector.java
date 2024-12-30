@@ -197,6 +197,20 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    /**
+     * Whether to update secret value using putSecretValue action.
+     * 
+     */
+    @Export(name="usePutSecret", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> usePutSecret;
+
+    /**
+     * @return Whether to update secret value using putSecretValue action.
+     * 
+     */
+    public Output<Optional<Boolean>> usePutSecret() {
+        return Codegen.optional(this.usePutSecret);
+    }
 
     /**
      *

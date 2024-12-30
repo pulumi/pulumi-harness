@@ -41,6 +41,11 @@ public final class PipelineFiltersFilterProperties {
      */
     private @Nullable List<String> pipelineIdentifiers;
     /**
+     * @return Name of the pipeline execution filter.
+     * 
+     */
+    private @Nullable String pipelineName;
+    /**
      * @return Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
      * 
      */
@@ -88,6 +93,13 @@ public final class PipelineFiltersFilterProperties {
         return this.pipelineIdentifiers == null ? List.of() : this.pipelineIdentifiers;
     }
     /**
+     * @return Name of the pipeline execution filter.
+     * 
+     */
+    public Optional<String> pipelineName() {
+        return Optional.ofNullable(this.pipelineName);
+    }
+    /**
      * @return Tags to associate with the pipeline. tags should be in the form of `{key:key1, value:key1value}`
      * 
      */
@@ -116,6 +128,7 @@ public final class PipelineFiltersFilterProperties {
         private @Nullable PipelineFiltersFilterPropertiesModuleProperties moduleProperties;
         private @Nullable String name;
         private @Nullable List<String> pipelineIdentifiers;
+        private @Nullable String pipelineName;
         private @Nullable List<Map<String,String>> pipelineTags;
         private @Nullable List<String> tags;
         public Builder() {}
@@ -126,6 +139,7 @@ public final class PipelineFiltersFilterProperties {
     	      this.moduleProperties = defaults.moduleProperties;
     	      this.name = defaults.name;
     	      this.pipelineIdentifiers = defaults.pipelineIdentifiers;
+    	      this.pipelineName = defaults.pipelineName;
     	      this.pipelineTags = defaults.pipelineTags;
     	      this.tags = defaults.tags;
         }
@@ -166,6 +180,12 @@ public final class PipelineFiltersFilterProperties {
             return pipelineIdentifiers(List.of(pipelineIdentifiers));
         }
         @CustomType.Setter
+        public Builder pipelineName(@Nullable String pipelineName) {
+
+            this.pipelineName = pipelineName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pipelineTags(@Nullable List<Map<String,String>> pipelineTags) {
 
             this.pipelineTags = pipelineTags;
@@ -187,6 +207,7 @@ public final class PipelineFiltersFilterProperties {
             _resultValue.moduleProperties = moduleProperties;
             _resultValue.name = name;
             _resultValue.pipelineIdentifiers = pipelineIdentifiers;
+            _resultValue.pipelineName = pipelineName;
             _resultValue.pipelineTags = pipelineTags;
             _resultValue.tags = tags;
             return _resultValue;
