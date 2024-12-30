@@ -2124,6 +2124,9 @@
                                                         "artifact_display_names": {
                                                             "maxItemsOne": false
                                                         },
+                                                        "environment_identifiers": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "environment_names": {
                                                             "maxItemsOne": false
                                                         },
