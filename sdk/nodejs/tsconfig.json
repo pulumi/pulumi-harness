@@ -86,6 +86,7 @@
         "platform/azureCloudProviderConnector.ts",
         "platform/azureKeyVaultConnector.ts",
         "platform/bitbucketConnector.ts",
+        "platform/connectorAzureArtifacts.ts",
         "platform/connectorCustomSecretManager.ts",
         "platform/connectorCustomhealthsource.ts",
         "platform/connectorJdbc.ts",

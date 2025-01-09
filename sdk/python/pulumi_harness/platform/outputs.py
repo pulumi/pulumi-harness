@@ -47,6 +47,7 @@ __all__ = [
     'BitbucketConnectorCredentials',
     'BitbucketConnectorCredentialsHttp',
     'BitbucketConnectorCredentialsSsh',
+    'ConnectorAzureArtifactsCredentials',
     'ConnectorCustomSecretManagerTemplateInput',
     'ConnectorCustomSecretManagerTemplateInputEnvironmentVariable',
     'ConnectorCustomhealthsourceHeader',
@@ -2092,6 +2093,41 @@ class BitbucketConnectorCredentialsSsh(dict):
         Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class ConnectorAzureArtifactsCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAzureArtifactsCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAzureArtifactsCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAzureArtifactsCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: str):
+        """
+        :param str token_ref: Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> str:
+        """
+        Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
 
 
 @pulumi.output_type

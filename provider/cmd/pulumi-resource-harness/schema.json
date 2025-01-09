@@ -3013,6 +3013,18 @@
                 "sshKeyRef"
             ]
         },
+        "harness:platform/ConnectorAzureArtifactsCredentials:ConnectorAzureArtifactsCredentials": {
+            "properties": {
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tokenRef"
+            ]
+        },
         "harness:platform/ConnectorCustomSecretManagerTemplateInput:ConnectorCustomSecretManagerTemplateInput": {
             "properties": {
                 "environmentVariables": {
@@ -19677,6 +19689,157 @@
                     "validationRepo": {
                         "type": "string",
                         "description": "Repository to test the connection with. This is only used when `connection_type` is `Account`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts": {
+            "properties": {
+                "credentials": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureArtifactsCredentials:ConnectorAzureArtifactsCredentials",
+                    "description": "Credentials to use for authentication.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to filter delegates for connection.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the Azure Artifacts server.\n"
+                }
+            },
+            "required": [
+                "credentials",
+                "identifier",
+                "name",
+                "url"
+            ],
+            "inputProperties": {
+                "credentials": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureArtifactsCredentials:ConnectorAzureArtifactsCredentials",
+                    "description": "Credentials to use for authentication.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to filter delegates for connection.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the Azure Artifacts server.\n"
+                }
+            },
+            "requiredInputs": [
+                "credentials",
+                "identifier",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectorAzureArtifacts resources.\n",
+                "properties": {
+                    "credentials": {
+                        "$ref": "#/types/harness:platform/ConnectorAzureArtifactsCredentials:ConnectorAzureArtifactsCredentials",
+                        "description": "Credentials to use for authentication.\n"
+                    },
+                    "delegateSelectors": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to filter delegates for connection.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "URL of the Azure Artifacts server.\n"
                     }
                 },
                 "type": "object"

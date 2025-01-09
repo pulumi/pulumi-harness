@@ -12,6 +12,7 @@ import (
 	harnessShim "github.com/harness/terraform-provider-harness/shim"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -48,7 +49,7 @@ func harnessResource(mod string, res string) tokens.Type {
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
-func Provider() tfbridge.ProviderInfo {
+func Provider() info.Provider {
 	p := shimv2.NewProvider(harnessShim.NewProvider())
 
 	// Create a Pulumi provider mapping
@@ -65,25 +66,25 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:          "https://www.pulumi.com",
 		Repository:        "https://github.com/pulumi/pulumi-harness",
 		GitHubOrg:         "harness",
-		DocRules:          &tfbridge.DocRuleInfo{EditRules: editRules},
-		Config: map[string]*tfbridge.SchemaInfo{
+		DocRules:          &info.DocRule{EditRules: editRules},
+		Config: map[string]*info.Schema{
 			"endpoint": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					EnvVars: []string{"HARNESS_ENDPOINT"},
 				},
 			},
 			"account_id": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					EnvVars: []string{"HARNESS_ACCOUNT_ID"},
 				},
 			},
 			"api_key": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					EnvVars: []string{"HARNESS_API_KEY"},
 				},
 			},
 			"platform_api_key": {
-				Default: &tfbridge.DefaultInfo{
+				Default: &info.Default{
 					EnvVars: []string{"HARNESS_PLATFORM_API_KEY"},
 				},
 			},
@@ -138,27 +139,28 @@ func Provider() tfbridge.ProviderInfo {
 			"harness_platform_connector_aws_secret_manager": {
 				Tok: harnessResource(platformMod, "AwsSecretManagerConnector"),
 			},
-			"harness_platform_connector_awscc":      {Tok: harnessResource(platformMod, "AwsCCConnector")},
-			"harness_platform_connector_awskms":     {Tok: harnessResource(platformMod, "AwsKmsConnector")},
-			"harness_platform_connector_bitbucket":  {Tok: harnessResource(platformMod, "BitbucketConnector")},
-			"harness_platform_connector_datadog":    {Tok: harnessResource(platformMod, "DatadogConnector")},
-			"harness_platform_connector_docker":     {Tok: harnessResource(platformMod, "DockerConnector")},
-			"harness_platform_connector_dynatrace":  {Tok: harnessResource(platformMod, "DynatraceConnector")},
-			"harness_platform_connector_gcp":        {Tok: harnessResource(platformMod, "GcpConnector")},
-			"harness_platform_connector_git":        {Tok: harnessResource(platformMod, "GitConnector")},
-			"harness_platform_connector_github":     {Tok: harnessResource(platformMod, "GithubConnector")},
-			"harness_platform_connector_gitlab":     {Tok: harnessResource(platformMod, "GitlabConnector")},
-			"harness_platform_connector_helm":       {Tok: harnessResource(platformMod, "HelmConnector")},
-			"harness_platform_connector_jira":       {Tok: harnessResource(platformMod, "JiraConnector")},
-			"harness_platform_connector_kubernetes": {Tok: harnessResource(platformMod, "KubernetesConnector")},
-			"harness_platform_connector_newrelic":   {Tok: harnessResource(platformMod, "NewrelicConnector")},
-			"harness_platform_connector_nexus":      {Tok: harnessResource(platformMod, "NexusConnector")},
-			"harness_platform_connector_pagerduty":  {Tok: harnessResource(platformMod, "PagerdutyConnector")},
-			"harness_platform_connector_prometheus": {Tok: harnessResource(platformMod, "PrometheusConnector")},
-			"harness_platform_connector_splunk":     {Tok: harnessResource(platformMod, "SplunkConnector")},
-			"harness_platform_connector_sumologic":  {Tok: harnessResource(platformMod, "SumologicConnector")},
-			"harness_platform_connector_vault":      {Tok: harnessResource(platformMod, "VaultConnector")},
-			"harness_platform_environment":          {Tok: harnessResource(platformMod, "Environment")},
+			"harness_platform_connector_awscc":           {Tok: harnessResource(platformMod, "AwsCCConnector")},
+			"harness_platform_connector_awskms":          {Tok: harnessResource(platformMod, "AwsKmsConnector")},
+			"harness_platform_connector_azure_artifacts": {Docs: &info.Doc{AllowMissing: true}},
+			"harness_platform_connector_bitbucket":       {Tok: harnessResource(platformMod, "BitbucketConnector")},
+			"harness_platform_connector_datadog":         {Tok: harnessResource(platformMod, "DatadogConnector")},
+			"harness_platform_connector_docker":          {Tok: harnessResource(platformMod, "DockerConnector")},
+			"harness_platform_connector_dynatrace":       {Tok: harnessResource(platformMod, "DynatraceConnector")},
+			"harness_platform_connector_gcp":             {Tok: harnessResource(platformMod, "GcpConnector")},
+			"harness_platform_connector_git":             {Tok: harnessResource(platformMod, "GitConnector")},
+			"harness_platform_connector_github":          {Tok: harnessResource(platformMod, "GithubConnector")},
+			"harness_platform_connector_gitlab":          {Tok: harnessResource(platformMod, "GitlabConnector")},
+			"harness_platform_connector_helm":            {Tok: harnessResource(platformMod, "HelmConnector")},
+			"harness_platform_connector_jira":            {Tok: harnessResource(platformMod, "JiraConnector")},
+			"harness_platform_connector_kubernetes":      {Tok: harnessResource(platformMod, "KubernetesConnector")},
+			"harness_platform_connector_newrelic":        {Tok: harnessResource(platformMod, "NewrelicConnector")},
+			"harness_platform_connector_nexus":           {Tok: harnessResource(platformMod, "NexusConnector")},
+			"harness_platform_connector_pagerduty":       {Tok: harnessResource(platformMod, "PagerdutyConnector")},
+			"harness_platform_connector_prometheus":      {Tok: harnessResource(platformMod, "PrometheusConnector")},
+			"harness_platform_connector_splunk":          {Tok: harnessResource(platformMod, "SplunkConnector")},
+			"harness_platform_connector_sumologic":       {Tok: harnessResource(platformMod, "SumologicConnector")},
+			"harness_platform_connector_vault":           {Tok: harnessResource(platformMod, "VaultConnector")},
+			"harness_platform_environment":               {Tok: harnessResource(platformMod, "Environment")},
 			"harness_platform_environment_clusters_mapping": {
 				Tok: harnessResource(platformMod, "EnvironmentClustersMapping"),
 			},

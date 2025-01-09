@@ -601,6 +601,20 @@
                     }
                 }
             },
+            "harness_platform_connector_azure_artifacts": {
+                "current": "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts",
+                "fields": {
+                    "credentials": {
+                        "maxItemsOne": true
+                    },
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_azure_cloud_cost": {
                 "current": "harness:platform/azureCloudCostConnector:AzureCloudCostConnector",
                 "fields": {

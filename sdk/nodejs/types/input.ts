@@ -2270,6 +2270,13 @@ export namespace platform {
         sshKeyRef: pulumi.Input<string>;
     }
 
+    export interface ConnectorAzureArtifactsCredentials {
+        /**
+         * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: pulumi.Input<string>;
+    }
+
     export interface ConnectorCustomSecretManagerTemplateInput {
         environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInputEnvironmentVariable>[]>;
     }

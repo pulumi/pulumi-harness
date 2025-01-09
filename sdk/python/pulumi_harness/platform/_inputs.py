@@ -77,6 +77,8 @@ __all__ = [
     'BitbucketConnectorCredentialsHttpArgsDict',
     'BitbucketConnectorCredentialsSshArgs',
     'BitbucketConnectorCredentialsSshArgsDict',
+    'ConnectorAzureArtifactsCredentialsArgs',
+    'ConnectorAzureArtifactsCredentialsArgsDict',
     'ConnectorCustomSecretManagerTemplateInputArgs',
     'ConnectorCustomSecretManagerTemplateInputArgsDict',
     'ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs',
@@ -2412,6 +2414,37 @@ class BitbucketConnectorCredentialsSshArgs:
     @ssh_key_ref.setter
     def ssh_key_ref(self, value: pulumi.Input[str]):
         pulumi.set(self, "ssh_key_ref", value)
+
+
+if not MYPY:
+    class ConnectorAzureArtifactsCredentialsArgsDict(TypedDict):
+        token_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ConnectorAzureArtifactsCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectorAzureArtifactsCredentialsArgs:
+    def __init__(__self__, *,
+                 token_ref: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_ref: Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_ref", value)
 
 
 if not MYPY:

@@ -5179,6 +5179,143 @@ func (o BitbucketConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectorAzureArtifactsCredentials struct {
+	// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// ConnectorAzureArtifactsCredentialsInput is an input type that accepts ConnectorAzureArtifactsCredentialsArgs and ConnectorAzureArtifactsCredentialsOutput values.
+// You can construct a concrete instance of `ConnectorAzureArtifactsCredentialsInput` via:
+//
+//	ConnectorAzureArtifactsCredentialsArgs{...}
+type ConnectorAzureArtifactsCredentialsInput interface {
+	pulumi.Input
+
+	ToConnectorAzureArtifactsCredentialsOutput() ConnectorAzureArtifactsCredentialsOutput
+	ToConnectorAzureArtifactsCredentialsOutputWithContext(context.Context) ConnectorAzureArtifactsCredentialsOutput
+}
+
+type ConnectorAzureArtifactsCredentialsArgs struct {
+	// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (ConnectorAzureArtifactsCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureArtifactsCredentials)(nil)).Elem()
+}
+
+func (i ConnectorAzureArtifactsCredentialsArgs) ToConnectorAzureArtifactsCredentialsOutput() ConnectorAzureArtifactsCredentialsOutput {
+	return i.ToConnectorAzureArtifactsCredentialsOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureArtifactsCredentialsArgs) ToConnectorAzureArtifactsCredentialsOutputWithContext(ctx context.Context) ConnectorAzureArtifactsCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureArtifactsCredentialsOutput)
+}
+
+func (i ConnectorAzureArtifactsCredentialsArgs) ToConnectorAzureArtifactsCredentialsPtrOutput() ConnectorAzureArtifactsCredentialsPtrOutput {
+	return i.ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureArtifactsCredentialsArgs) ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureArtifactsCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureArtifactsCredentialsOutput).ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(ctx)
+}
+
+// ConnectorAzureArtifactsCredentialsPtrInput is an input type that accepts ConnectorAzureArtifactsCredentialsArgs, ConnectorAzureArtifactsCredentialsPtr and ConnectorAzureArtifactsCredentialsPtrOutput values.
+// You can construct a concrete instance of `ConnectorAzureArtifactsCredentialsPtrInput` via:
+//
+//	        ConnectorAzureArtifactsCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAzureArtifactsCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAzureArtifactsCredentialsPtrOutput() ConnectorAzureArtifactsCredentialsPtrOutput
+	ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(context.Context) ConnectorAzureArtifactsCredentialsPtrOutput
+}
+
+type connectorAzureArtifactsCredentialsPtrType ConnectorAzureArtifactsCredentialsArgs
+
+func ConnectorAzureArtifactsCredentialsPtr(v *ConnectorAzureArtifactsCredentialsArgs) ConnectorAzureArtifactsCredentialsPtrInput {
+	return (*connectorAzureArtifactsCredentialsPtrType)(v)
+}
+
+func (*connectorAzureArtifactsCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureArtifactsCredentials)(nil)).Elem()
+}
+
+func (i *connectorAzureArtifactsCredentialsPtrType) ToConnectorAzureArtifactsCredentialsPtrOutput() ConnectorAzureArtifactsCredentialsPtrOutput {
+	return i.ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAzureArtifactsCredentialsPtrType) ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureArtifactsCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureArtifactsCredentialsPtrOutput)
+}
+
+type ConnectorAzureArtifactsCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureArtifactsCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureArtifactsCredentials)(nil)).Elem()
+}
+
+func (o ConnectorAzureArtifactsCredentialsOutput) ToConnectorAzureArtifactsCredentialsOutput() ConnectorAzureArtifactsCredentialsOutput {
+	return o
+}
+
+func (o ConnectorAzureArtifactsCredentialsOutput) ToConnectorAzureArtifactsCredentialsOutputWithContext(ctx context.Context) ConnectorAzureArtifactsCredentialsOutput {
+	return o
+}
+
+func (o ConnectorAzureArtifactsCredentialsOutput) ToConnectorAzureArtifactsCredentialsPtrOutput() ConnectorAzureArtifactsCredentialsPtrOutput {
+	return o.ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAzureArtifactsCredentialsOutput) ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureArtifactsCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAzureArtifactsCredentials) *ConnectorAzureArtifactsCredentials {
+		return &v
+	}).(ConnectorAzureArtifactsCredentialsPtrOutput)
+}
+
+// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureArtifactsCredentialsOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAzureArtifactsCredentials) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type ConnectorAzureArtifactsCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureArtifactsCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureArtifactsCredentials)(nil)).Elem()
+}
+
+func (o ConnectorAzureArtifactsCredentialsPtrOutput) ToConnectorAzureArtifactsCredentialsPtrOutput() ConnectorAzureArtifactsCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureArtifactsCredentialsPtrOutput) ToConnectorAzureArtifactsCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureArtifactsCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureArtifactsCredentialsPtrOutput) Elem() ConnectorAzureArtifactsCredentialsOutput {
+	return o.ApplyT(func(v *ConnectorAzureArtifactsCredentials) ConnectorAzureArtifactsCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAzureArtifactsCredentials
+		return ret
+	}).(ConnectorAzureArtifactsCredentialsOutput)
+}
+
+// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureArtifactsCredentialsPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureArtifactsCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectorCustomSecretManagerTemplateInput struct {
 	EnvironmentVariables []ConnectorCustomSecretManagerTemplateInputEnvironmentVariable `pulumi:"environmentVariables"`
 }
@@ -56837,6 +56974,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsHttpPtrInput)(nil)).Elem(), BitbucketConnectorCredentialsHttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsSshInput)(nil)).Elem(), BitbucketConnectorCredentialsSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsSshPtrInput)(nil)).Elem(), BitbucketConnectorCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureArtifactsCredentialsInput)(nil)).Elem(), ConnectorAzureArtifactsCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureArtifactsCredentialsPtrInput)(nil)).Elem(), ConnectorAzureArtifactsCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomSecretManagerTemplateInputInput)(nil)).Elem(), ConnectorCustomSecretManagerTemplateInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomSecretManagerTemplateInputArrayInput)(nil)).Elem(), ConnectorCustomSecretManagerTemplateInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomSecretManagerTemplateInputEnvironmentVariableInput)(nil)).Elem(), ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs{})
@@ -57630,6 +57769,8 @@ func init() {
 	pulumi.RegisterOutputType(BitbucketConnectorCredentialsHttpPtrOutput{})
 	pulumi.RegisterOutputType(BitbucketConnectorCredentialsSshOutput{})
 	pulumi.RegisterOutputType(BitbucketConnectorCredentialsSshPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureArtifactsCredentialsOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureArtifactsCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomSecretManagerTemplateInputOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomSecretManagerTemplateInputArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomSecretManagerTemplateInputEnvironmentVariableOutput{})

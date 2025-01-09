@@ -55,6 +55,11 @@ export type BitbucketConnector = import("./bitbucketConnector").BitbucketConnect
 export const BitbucketConnector: typeof import("./bitbucketConnector").BitbucketConnector = null as any;
 utilities.lazyLoad(exports, ["BitbucketConnector"], () => require("./bitbucketConnector"));
 
+export { ConnectorAzureArtifactsArgs, ConnectorAzureArtifactsState } from "./connectorAzureArtifacts";
+export type ConnectorAzureArtifacts = import("./connectorAzureArtifacts").ConnectorAzureArtifacts;
+export const ConnectorAzureArtifacts: typeof import("./connectorAzureArtifacts").ConnectorAzureArtifacts = null as any;
+utilities.lazyLoad(exports, ["ConnectorAzureArtifacts"], () => require("./connectorAzureArtifacts"));
+
 export { ConnectorCustomSecretManagerArgs, ConnectorCustomSecretManagerState } from "./connectorCustomSecretManager";
 export type ConnectorCustomSecretManager = import("./connectorCustomSecretManager").ConnectorCustomSecretManager;
 export const ConnectorCustomSecretManager: typeof import("./connectorCustomSecretManager").ConnectorCustomSecretManager = null as any;
@@ -1080,6 +1085,8 @@ const _module = {
                 return new AzureKeyVaultConnector(name, <any>undefined, { urn })
             case "harness:platform/bitbucketConnector:BitbucketConnector":
                 return new BitbucketConnector(name, <any>undefined, { urn })
+            case "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts":
+                return new ConnectorAzureArtifacts(name, <any>undefined, { urn })
             case "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager":
                 return new ConnectorCustomSecretManager(name, <any>undefined, { urn })
             case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
@@ -1279,6 +1286,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/azureCloudCostConnect
 pulumi.runtime.registerResourceModule("harness", "platform/azureCloudProviderConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/azureKeyVaultConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureArtifacts", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomSecretManager", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomhealthsource", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorJdbc", _module)
