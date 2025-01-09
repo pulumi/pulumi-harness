@@ -2014,6 +2014,13 @@ export namespace platform {
         sshKeyRef: string;
     }
 
+    export interface ConnectorAzureArtifactsCredentials {
+        /**
+         * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+    }
+
     export interface ConnectorCustomSecretManagerTemplateInput {
         environmentVariables?: outputs.platform.ConnectorCustomSecretManagerTemplateInputEnvironmentVariable[];
     }

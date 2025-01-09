@@ -428,6 +428,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/connectorAzureArtifacts",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts": "ConnectorAzureArtifacts"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/connectorCustomSecretManager",
   "fqn": "pulumi_harness.platform",
   "classes": {
