@@ -36046,7 +36046,7 @@ func (o GetAwsConnectorFullJitterBackoffStrategyArrayOutput) Index(i pulumi.IntI
 type GetAwsConnectorInheritFromDelegate struct {
 	// The delegates to inherit the credentials from.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region *string `pulumi:"region"`
 }
 
@@ -36064,7 +36064,7 @@ type GetAwsConnectorInheritFromDelegateInput interface {
 type GetAwsConnectorInheritFromDelegateArgs struct {
 	// The delegates to inherit the credentials from.
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -36124,7 +36124,7 @@ func (o GetAwsConnectorInheritFromDelegateOutput) DelegateSelectors() pulumi.Str
 	return o.ApplyT(func(v GetAwsConnectorInheritFromDelegate) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
 
-// AWS Region to perform Connection test of Connector.
+// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsConnectorInheritFromDelegateOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsConnectorInheritFromDelegate) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -36152,7 +36152,7 @@ func (o GetAwsConnectorInheritFromDelegateArrayOutput) Index(i pulumi.IntInput) 
 type GetAwsConnectorIrsa struct {
 	// The delegates to inherit the credentials from.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region *string `pulumi:"region"`
 }
 
@@ -36170,7 +36170,7 @@ type GetAwsConnectorIrsaInput interface {
 type GetAwsConnectorIrsaArgs struct {
 	// The delegates to inherit the credentials from.
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -36230,7 +36230,7 @@ func (o GetAwsConnectorIrsaOutput) DelegateSelectors() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetAwsConnectorIrsa) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
 
-// AWS Region to perform Connection test of Connector.
+// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsConnectorIrsaOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsConnectorIrsa) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -36264,11 +36264,11 @@ type GetAwsConnectorManual struct {
 	AccessKeyRef string `pulumi:"accessKeyRef"`
 	// Connect only use delegates with these tags.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region *string `pulumi:"region"`
 	// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef string `pulumi:"secretKeyRef"`
-	// Reference to the Harness secret containing the aws session token.
+	// Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SessionTokenRef *string `pulumi:"sessionTokenRef"`
 }
 
@@ -36292,11 +36292,11 @@ type GetAwsConnectorManualArgs struct {
 	AccessKeyRef pulumi.StringInput `pulumi:"accessKeyRef"`
 	// Connect only use delegates with these tags.
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SecretKeyRef pulumi.StringInput `pulumi:"secretKeyRef"`
-	// Reference to the Harness secret containing the aws session token.
+	// Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	SessionTokenRef pulumi.StringPtrInput `pulumi:"sessionTokenRef"`
 }
 
@@ -36371,7 +36371,7 @@ func (o GetAwsConnectorManualOutput) DelegateSelectors() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v GetAwsConnectorManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
 
-// AWS Region to perform Connection test of Connector.
+// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsConnectorManualOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsConnectorManual) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -36381,7 +36381,7 @@ func (o GetAwsConnectorManualOutput) SecretKeyRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsConnectorManual) string { return v.SecretKeyRef }).(pulumi.StringOutput)
 }
 
-// Reference to the Harness secret containing the aws session token.
+// Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsConnectorManualOutput) SessionTokenRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsConnectorManual) *string { return v.SessionTokenRef }).(pulumi.StringPtrOutput)
 }
@@ -36411,7 +36411,7 @@ type GetAwsConnectorOidcAuthentication struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn string `pulumi:"iamRoleArn"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region *string `pulumi:"region"`
 }
 
@@ -36431,7 +36431,7 @@ type GetAwsConnectorOidcAuthenticationArgs struct {
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
-	// AWS Region to perform Connection test of Connector.
+	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -36496,7 +36496,7 @@ func (o GetAwsConnectorOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutpu
 	return o.ApplyT(func(v GetAwsConnectorOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
 }
 
-// AWS Region to perform Connection test of Connector.
+// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetAwsConnectorOidcAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAwsConnectorOidcAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }

@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,13 @@ public final class GetServiceListPlainArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.orgId);
     }
 
+    @Import(name="page")
+    private @Nullable Integer page;
+
+    public Optional<Integer> page() {
+        return Optional.ofNullable(this.page);
+    }
+
     @Import(name="projectId")
     private @Nullable String projectId;
 
@@ -28,11 +36,20 @@ public final class GetServiceListPlainArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.projectId);
     }
 
+    @Import(name="size")
+    private @Nullable Integer size;
+
+    public Optional<Integer> size() {
+        return Optional.ofNullable(this.size);
+    }
+
     private GetServiceListPlainArgs() {}
 
     private GetServiceListPlainArgs(GetServiceListPlainArgs $) {
         this.orgId = $.orgId;
+        this.page = $.page;
         this.projectId = $.projectId;
+        this.size = $.size;
     }
 
     public static Builder builder() {
@@ -58,8 +75,18 @@ public final class GetServiceListPlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
+        public Builder page(@Nullable Integer page) {
+            $.page = page;
+            return this;
+        }
+
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
+            return this;
+        }
+
+        public Builder size(@Nullable Integer size) {
+            $.size = size;
             return this;
         }
 

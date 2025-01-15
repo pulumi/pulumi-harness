@@ -54,6 +54,12 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.AwsConnectorEqualJitterBackoffStrategy?> EqualJitterBackoffStrategy { get; private set; } = null!;
 
         /// <summary>
+        /// Enable this flag to execute on Delegate
+        /// </summary>
+        [Output("executeOnDelegate")]
+        public Output<bool?> ExecuteOnDelegate { get; private set; } = null!;
+
+        /// <summary>
         /// Fixed Delay BackOff Strategy.
         /// </summary>
         [Output("fixedDelayBackoffStrategy")]
@@ -191,6 +197,12 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.AwsConnectorEqualJitterBackoffStrategyArgs>? EqualJitterBackoffStrategy { get; set; }
 
         /// <summary>
+        /// Enable this flag to execute on Delegate
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
+
+        /// <summary>
         /// Fixed Delay BackOff Strategy.
         /// </summary>
         [Input("fixedDelayBackoffStrategy")]
@@ -293,6 +305,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("equalJitterBackoffStrategy")]
         public Input<Inputs.AwsConnectorEqualJitterBackoffStrategyGetArgs>? EqualJitterBackoffStrategy { get; set; }
+
+        /// <summary>
+        /// Enable this flag to execute on Delegate
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
         /// Fixed Delay BackOff Strategy.

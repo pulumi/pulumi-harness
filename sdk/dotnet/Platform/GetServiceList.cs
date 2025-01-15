@@ -204,8 +204,14 @@ namespace Pulumi.Harness.Platform
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        [Input("page")]
+        public int? Page { get; set; }
+
         [Input("projectId")]
         public string? ProjectId { get; set; }
+
+        [Input("size")]
+        public int? Size { get; set; }
 
         public GetServiceListArgs()
         {
@@ -218,8 +224,14 @@ namespace Pulumi.Harness.Platform
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        [Input("page")]
+        public Input<int>? Page { get; set; }
+
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        [Input("size")]
+        public Input<int>? Size { get; set; }
 
         public GetServiceListInvokeArgs()
         {
@@ -236,8 +248,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Id;
         public readonly string? OrgId;
+        public readonly int? Page;
         public readonly string? ProjectId;
         public readonly ImmutableArray<Outputs.GetServiceListServiceResult> Services;
+        public readonly int? Size;
 
         [OutputConstructor]
         private GetServiceListResult(
@@ -245,14 +259,20 @@ namespace Pulumi.Harness.Platform
 
             string? orgId,
 
+            int? page,
+
             string? projectId,
 
-            ImmutableArray<Outputs.GetServiceListServiceResult> services)
+            ImmutableArray<Outputs.GetServiceListServiceResult> services,
+
+            int? size)
         {
             Id = id;
             OrgId = orgId;
+            Page = page;
             ProjectId = projectId;
             Services = services;
+            Size = size;
         }
     }
 }

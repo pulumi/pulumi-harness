@@ -72,6 +72,21 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable this flag to execute on Delegate
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Enable this flag to execute on Delegate
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
+    }
+
+    /**
      * Fixed Delay BackOff Strategy.
      * 
      */
@@ -257,6 +272,7 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
         this.crossAccountAccess = $.crossAccountAccess;
         this.description = $.description;
         this.equalJitterBackoffStrategy = $.equalJitterBackoffStrategy;
+        this.executeOnDelegate = $.executeOnDelegate;
         this.fixedDelayBackoffStrategy = $.fixedDelayBackoffStrategy;
         this.forceDelete = $.forceDelete;
         this.fullJitterBackoffStrategy = $.fullJitterBackoffStrategy;
@@ -350,6 +366,27 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder equalJitterBackoffStrategy(AwsConnectorEqualJitterBackoffStrategyArgs equalJitterBackoffStrategy) {
             return equalJitterBackoffStrategy(Output.of(equalJitterBackoffStrategy));
+        }
+
+        /**
+         * @param executeOnDelegate Enable this flag to execute on Delegate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Enable this flag to execute on Delegate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
         }
 
         /**
