@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.inputs.GetApplicationArgs;
 import com.pulumi.harness.inputs.GetApplicationPlainArgs;
+import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
+import com.pulumi.harness.inputs.GetChaosInfrastructurePlainArgs;
 import com.pulumi.harness.inputs.GetCurrentAccountArgs;
 import com.pulumi.harness.inputs.GetCurrentAccountPlainArgs;
 import com.pulumi.harness.inputs.GetDelegateArgs;
@@ -38,6 +40,7 @@ import com.pulumi.harness.inputs.GetUserPlainArgs;
 import com.pulumi.harness.inputs.GetYamlConfigArgs;
 import com.pulumi.harness.inputs.GetYamlConfigPlainArgs;
 import com.pulumi.harness.outputs.GetApplicationResult;
+import com.pulumi.harness.outputs.GetChaosInfrastructureResult;
 import com.pulumi.harness.outputs.GetCurrentAccountResult;
 import com.pulumi.harness.outputs.GetDelegateResult;
 import com.pulumi.harness.outputs.GetEncryptedTextResult;
@@ -102,6 +105,231 @@ public final class HarnessFunctions {
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a chaos infrastructure.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = HarnessFunctions.getChaosInfrastructure(GetChaosInfrastructureArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .environmentId("env_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChaosInfrastructureResult> getChaosInfrastructure(GetChaosInfrastructureArgs args) {
+        return getChaosInfrastructure(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a chaos infrastructure.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = HarnessFunctions.getChaosInfrastructure(GetChaosInfrastructureArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .environmentId("env_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetChaosInfrastructureResult> getChaosInfrastructurePlain(GetChaosInfrastructurePlainArgs args) {
+        return getChaosInfrastructurePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a chaos infrastructure.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = HarnessFunctions.getChaosInfrastructure(GetChaosInfrastructureArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .environmentId("env_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChaosInfrastructureResult> getChaosInfrastructure(GetChaosInfrastructureArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getChaosInfrastructure:getChaosInfrastructure", TypeShape.of(GetChaosInfrastructureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a chaos infrastructure.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = HarnessFunctions.getChaosInfrastructure(GetChaosInfrastructureArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .environmentId("env_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetChaosInfrastructureResult> getChaosInfrastructure(GetChaosInfrastructureArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:index/getChaosInfrastructure:getChaosInfrastructure", TypeShape.of(GetChaosInfrastructureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a chaos infrastructure.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.HarnessFunctions;
+     * import com.pulumi.harness.inputs.GetChaosInfrastructureArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = HarnessFunctions.getChaosInfrastructure(GetChaosInfrastructureArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .environmentId("env_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetChaosInfrastructureResult> getChaosInfrastructurePlain(GetChaosInfrastructurePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:index/getChaosInfrastructure:getChaosInfrastructure", TypeShape.of(GetChaosInfrastructureResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving information about the current Harness account

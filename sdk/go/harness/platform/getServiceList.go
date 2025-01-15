@@ -104,7 +104,9 @@ func GetServiceList(ctx *pulumi.Context, args *GetServiceListArgs, opts ...pulum
 // A collection of arguments for invoking getServiceList.
 type GetServiceListArgs struct {
 	OrgId     *string `pulumi:"orgId"`
+	Page      *int    `pulumi:"page"`
 	ProjectId *string `pulumi:"projectId"`
+	Size      *int    `pulumi:"size"`
 }
 
 // A collection of values returned by getServiceList.
@@ -112,8 +114,10 @@ type GetServiceListResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id        string                  `pulumi:"id"`
 	OrgId     *string                 `pulumi:"orgId"`
+	Page      *int                    `pulumi:"page"`
 	ProjectId *string                 `pulumi:"projectId"`
 	Services  []GetServiceListService `pulumi:"services"`
+	Size      *int                    `pulumi:"size"`
 }
 
 func GetServiceListOutput(ctx *pulumi.Context, args GetServiceListOutputArgs, opts ...pulumi.InvokeOption) GetServiceListResultOutput {
@@ -128,7 +132,9 @@ func GetServiceListOutput(ctx *pulumi.Context, args GetServiceListOutputArgs, op
 // A collection of arguments for invoking getServiceList.
 type GetServiceListOutputArgs struct {
 	OrgId     pulumi.StringPtrInput `pulumi:"orgId"`
+	Page      pulumi.IntPtrInput    `pulumi:"page"`
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Size      pulumi.IntPtrInput    `pulumi:"size"`
 }
 
 func (GetServiceListOutputArgs) ElementType() reflect.Type {
@@ -159,12 +165,20 @@ func (o GetServiceListResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceListResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+func (o GetServiceListResultOutput) Page() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceListResult) *int { return v.Page }).(pulumi.IntPtrOutput)
+}
+
 func (o GetServiceListResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceListResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetServiceListResultOutput) Services() GetServiceListServiceArrayOutput {
 	return o.ApplyT(func(v GetServiceListResult) []GetServiceListService { return v.Services }).(GetServiceListServiceArrayOutput)
+}
+
+func (o GetServiceListResultOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceListResult) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
 func init() {

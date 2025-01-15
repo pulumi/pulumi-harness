@@ -8366,7 +8366,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "AWS Region to perform Connection test of Connector.\n"
+                    "description": "Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
                 }
             },
             "type": "object",
@@ -8390,7 +8390,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "AWS Region to perform Connection test of Connector.\n"
+                    "description": "Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
                 }
             },
             "type": "object",
@@ -8426,7 +8426,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "AWS Region to perform Connection test of Connector.\n"
+                    "description": "Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
                 },
                 "secretKeyRef": {
                     "type": "string",
@@ -8434,7 +8434,7 @@
                 },
                 "sessionTokenRef": {
                     "type": "string",
-                    "description": "Reference to the Harness secret containing the aws session token.\n"
+                    "description": "Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
                 }
             },
             "type": "object",
@@ -8465,7 +8465,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "AWS Region to perform Connection test of Connector.\n"
+                    "description": "Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
                 }
             },
             "type": "object",
@@ -16421,6 +16421,151 @@
                 "type": "object"
             }
         },
+        "harness:index/chaosInfrastructure:ChaosInfrastructure": {
+            "description": "Resource for creating a Chaos Infrastructure.\n\n## Example to create Chaos Infrastructure\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.ChaosInfrastructure(\"example\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    environmentId: \"env_id\",\n    namespace: \"namespace\",\n    serviceAccount: \"service_acc_name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.ChaosInfrastructure(\"example\",\n    identifier=\"identifier\",\n    name=\"name\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    environment_id=\"env_id\",\n    namespace=\"namespace\",\n    service_account=\"service_acc_name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.ChaosInfrastructure(\"example\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        EnvironmentId = \"env_id\",\n        Namespace = \"namespace\",\n        ServiceAccount = \"service_acc_name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harness.NewChaosInfrastructure(ctx, \"example\", \u0026harness.ChaosInfrastructureArgs{\n\t\t\tIdentifier:     pulumi.String(\"identifier\"),\n\t\t\tName:           pulumi.String(\"name\"),\n\t\t\tOrgId:          pulumi.String(\"org_id\"),\n\t\t\tProjectId:      pulumi.String(\"project_id\"),\n\t\t\tEnvironmentId:  pulumi.String(\"env_id\"),\n\t\t\tNamespace:      pulumi.String(\"namespace\"),\n\t\t\tServiceAccount: pulumi.String(\"service_acc_name\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.ChaosInfrastructure;\nimport com.pulumi.harness.ChaosInfrastructureArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ChaosInfrastructure(\"example\", ChaosInfrastructureArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .environmentId(\"env_id\")\n            .namespace(\"namespace\")\n            .serviceAccount(\"service_acc_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:ChaosInfrastructure\n    properties:\n      identifier: identifier\n      name: name\n      orgId: org_id\n      projectId: project_id\n      environmentId: env_id\n      namespace: namespace\n      serviceAccount: service_acc_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport using the Chaos Infra ID.\n\n```sh\n$ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example \u003cchaos_infra_id\u003e\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "environmentId": {
+                    "type": "string",
+                    "description": "Environment ID of the chaos infrastructure.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace of the chaos infrastructure.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "Service Account of the chaos infrastructure.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "required": [
+                "environmentId",
+                "identifier",
+                "name",
+                "namespace",
+                "serviceAccount"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "environmentId": {
+                    "type": "string",
+                    "description": "Environment ID of the chaos infrastructure.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace of the chaos infrastructure.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "Service Account of the chaos infrastructure.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "environmentId",
+                "identifier",
+                "namespace",
+                "serviceAccount"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ChaosInfrastructure resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "environmentId": {
+                        "type": "string",
+                        "description": "Environment ID of the chaos infrastructure.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "Namespace of the chaos infrastructure.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "serviceAccount": {
+                        "type": "string",
+                        "description": "Service Account of the chaos infrastructure.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:index/delegateApproval:DelegateApproval": {
             "description": "Resource for approving or rejecting delegates.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.getDelegate({\n    name: \"my-delegate\",\n});\nconst testDelegateApproval = new harness.DelegateApproval(\"test\", {\n    delegateId: test.then(test =\u003e test.id),\n    approve: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.get_delegate(name=\"my-delegate\")\ntest_delegate_approval = harness.DelegateApproval(\"test\",\n    delegate_id=test.id,\n    approve=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.GetDelegate.Invoke(new()\n    {\n        Name = \"my-delegate\",\n    });\n\n    var testDelegateApproval = new Harness.DelegateApproval(\"test\", new()\n    {\n        DelegateId = test.Apply(getDelegateResult =\u003e getDelegateResult.Id),\n        Approve = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttest, err := harness.GetDelegate(ctx, \u0026harness.GetDelegateArgs{\n\t\t\tName: pulumi.StringRef(\"my-delegate\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harness.NewDelegateApproval(ctx, \"test\", \u0026harness.DelegateApprovalArgs{\n\t\t\tDelegateId: pulumi.String(test.Id),\n\t\t\tApprove:    pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.HarnessFunctions;\nimport com.pulumi.harness.inputs.GetDelegateArgs;\nimport com.pulumi.harness.DelegateApproval;\nimport com.pulumi.harness.DelegateApprovalArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = HarnessFunctions.getDelegate(GetDelegateArgs.builder()\n            .name(\"my-delegate\")\n            .build());\n\n        var testDelegateApproval = new DelegateApproval(\"testDelegateApproval\", DelegateApprovalArgs.builder()\n            .delegateId(test.applyValue(getDelegateResult -\u003e getDelegateResult.id()))\n            .approve(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testDelegateApproval:\n    type: harness:DelegateApproval\n    name: test\n    properties:\n      delegateId: ${test.id}\n      approve: true\nvariables:\n  test:\n    fn::invoke:\n      function: harness:getDelegate\n      arguments:\n        name: my-delegate\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport the status of the delegate approval.\n\n```sh\n$ pulumi import harness:index/delegateApproval:DelegateApproval example \u003cdelegate_id\u003e\n```\n\n",
             "properties": {
@@ -18392,6 +18537,10 @@
                     "$ref": "#/types/harness:platform/AwsConnectorEqualJitterBackoffStrategy:AwsConnectorEqualJitterBackoffStrategy",
                     "description": "Equal Jitter BackOff Strategy.\n"
                 },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Enable this flag to execute on Delegate\n"
+                },
                 "fixedDelayBackoffStrategy": {
                     "$ref": "#/types/harness:platform/AwsConnectorFixedDelayBackoffStrategy:AwsConnectorFixedDelayBackoffStrategy",
                     "description": "Fixed Delay BackOff Strategy.\n"
@@ -18461,6 +18610,10 @@
                 "equalJitterBackoffStrategy": {
                     "$ref": "#/types/harness:platform/AwsConnectorEqualJitterBackoffStrategy:AwsConnectorEqualJitterBackoffStrategy",
                     "description": "Equal Jitter BackOff Strategy.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Enable this flag to execute on Delegate\n"
                 },
                 "fixedDelayBackoffStrategy": {
                     "$ref": "#/types/harness:platform/AwsConnectorFixedDelayBackoffStrategy:AwsConnectorFixedDelayBackoffStrategy",
@@ -18532,6 +18685,10 @@
                     "equalJitterBackoffStrategy": {
                         "$ref": "#/types/harness:platform/AwsConnectorEqualJitterBackoffStrategy:AwsConnectorEqualJitterBackoffStrategy",
                         "description": "Equal Jitter BackOff Strategy.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Enable this flag to execute on Delegate\n"
                     },
                     "fixedDelayBackoffStrategy": {
                         "$ref": "#/types/harness:platform/AwsConnectorFixedDelayBackoffStrategy:AwsConnectorFixedDelayBackoffStrategy",
@@ -37194,6 +37351,70 @@
                 "type": "object"
             }
         },
+        "harness:index/getChaosInfrastructure:getChaosInfrastructure": {
+            "description": "Data source for retrieving a chaos infrastructure.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.getChaosInfrastructure({\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    environmentId: \"env_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.get_chaos_infrastructure(identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    environment_id=\"env_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.GetChaosInfrastructure.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        EnvironmentId = \"env_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harness.LookupChaosInfrastructure(ctx, \u0026harness.LookupChaosInfrastructureArgs{\n\t\t\tIdentifier:    \"identifier\",\n\t\t\tOrgId:         \"org_id\",\n\t\t\tProjectId:     \"project_id\",\n\t\t\tEnvironmentId: \"env_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.HarnessFunctions;\nimport com.pulumi.harness.inputs.GetChaosInfrastructureArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = HarnessFunctions.getChaosInfrastructure(GetChaosInfrastructureArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .environmentId(\"env_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: harness:getChaosInfrastructure\n      arguments:\n        identifier: identifier\n        orgId: org_id\n        projectId: project_id\n        environmentId: env_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getChaosInfrastructure.\n",
+                "properties": {
+                    "environmentId": {
+                        "type": "string",
+                        "description": "Environment identifier of the chaos infrastructure.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Identifier of the chaos infrastructure.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Identifier of the organization in which the chaos infrastructure is configured.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Identifier of the project in which the chaos infrastructure is configured.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "environmentId",
+                    "identifier",
+                    "orgId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getChaosInfrastructure.\n",
+                "properties": {
+                    "environmentId": {
+                        "description": "Environment identifier of the chaos infrastructure.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Identifier of the chaos infrastructure.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Identifier of the organization in which the chaos infrastructure is configured.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Identifier of the project in which the chaos infrastructure is configured.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "environmentId",
+                    "identifier",
+                    "orgId",
+                    "projectId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:index/getCurrentAccount:getCurrentAccount": {
             "description": "Data source for retrieving information about the current Harness account\n",
             "inputs": {
@@ -38414,6 +38635,10 @@
                         },
                         "type": "array"
                     },
+                    "executeOnDelegate": {
+                        "description": "Execute on delegate or not.\n",
+                        "type": "boolean"
+                    },
                     "fixedDelayBackoffStrategies": {
                         "description": "Fixed Delay BackOff Strategy.\n",
                         "items": {
@@ -38488,6 +38713,7 @@
                     "crossAccountAccesses",
                     "description",
                     "equalJitterBackoffStrategies",
+                    "executeOnDelegate",
                     "fixedDelayBackoffStrategies",
                     "fullJitterBackoffStrategies",
                     "identifier",
@@ -46236,8 +46462,14 @@
                     "orgId": {
                         "type": "string"
                     },
+                    "page": {
+                        "type": "integer"
+                    },
                     "projectId": {
                         "type": "string"
+                    },
+                    "size": {
+                        "type": "integer"
                     }
                 },
                 "type": "object"
@@ -46252,6 +46484,9 @@
                     "orgId": {
                         "type": "string"
                     },
+                    "page": {
+                        "type": "integer"
+                    },
                     "projectId": {
                         "type": "string"
                     },
@@ -46260,6 +46495,9 @@
                             "$ref": "#/types/harness:platform/getServiceListService:getServiceListService"
                         },
                         "type": "array"
+                    },
+                    "size": {
+                        "type": "integer"
                     }
                 },
                 "required": [

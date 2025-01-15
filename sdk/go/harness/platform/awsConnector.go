@@ -42,6 +42,8 @@ type AwsConnector struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Equal Jitter BackOff Strategy.
 	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrOutput `pulumi:"equalJitterBackoffStrategy"`
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrOutput `pulumi:"fixedDelayBackoffStrategy"`
 	// Enable this flag for force deletion of connector
@@ -107,6 +109,8 @@ type awsConnectorState struct {
 	Description *string `pulumi:"description"`
 	// Equal Jitter BackOff Strategy.
 	EqualJitterBackoffStrategy *AwsConnectorEqualJitterBackoffStrategy `pulumi:"equalJitterBackoffStrategy"`
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy *AwsConnectorFixedDelayBackoffStrategy `pulumi:"fixedDelayBackoffStrategy"`
 	// Enable this flag for force deletion of connector
@@ -140,6 +144,8 @@ type AwsConnectorState struct {
 	Description pulumi.StringPtrInput
 	// Equal Jitter BackOff Strategy.
 	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrInput
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrInput
 	// Enable this flag for force deletion of connector
@@ -177,6 +183,8 @@ type awsConnectorArgs struct {
 	Description *string `pulumi:"description"`
 	// Equal Jitter BackOff Strategy.
 	EqualJitterBackoffStrategy *AwsConnectorEqualJitterBackoffStrategy `pulumi:"equalJitterBackoffStrategy"`
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy *AwsConnectorFixedDelayBackoffStrategy `pulumi:"fixedDelayBackoffStrategy"`
 	// Enable this flag for force deletion of connector
@@ -211,6 +219,8 @@ type AwsConnectorArgs struct {
 	Description pulumi.StringPtrInput
 	// Equal Jitter BackOff Strategy.
 	EqualJitterBackoffStrategy AwsConnectorEqualJitterBackoffStrategyPtrInput
+	// Enable this flag to execute on Delegate
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategy AwsConnectorFixedDelayBackoffStrategyPtrInput
 	// Enable this flag for force deletion of connector
@@ -339,6 +349,11 @@ func (o AwsConnectorOutput) EqualJitterBackoffStrategy() AwsConnectorEqualJitter
 	return o.ApplyT(func(v *AwsConnector) AwsConnectorEqualJitterBackoffStrategyPtrOutput {
 		return v.EqualJitterBackoffStrategy
 	}).(AwsConnectorEqualJitterBackoffStrategyPtrOutput)
+}
+
+// Enable this flag to execute on Delegate
+func (o AwsConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
 }
 
 // Fixed Delay BackOff Strategy.

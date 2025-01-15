@@ -27,7 +27,7 @@ class GetAwsConnectorResult:
     """
     A collection of values returned by getAwsConnector.
     """
-    def __init__(__self__, cross_account_accesses=None, description=None, equal_jitter_backoff_strategies=None, fixed_delay_backoff_strategies=None, full_jitter_backoff_strategies=None, id=None, identifier=None, inherit_from_delegates=None, irsas=None, manuals=None, name=None, oidc_authentications=None, org_id=None, project_id=None, tags=None):
+    def __init__(__self__, cross_account_accesses=None, description=None, equal_jitter_backoff_strategies=None, execute_on_delegate=None, fixed_delay_backoff_strategies=None, full_jitter_backoff_strategies=None, id=None, identifier=None, inherit_from_delegates=None, irsas=None, manuals=None, name=None, oidc_authentications=None, org_id=None, project_id=None, tags=None):
         if cross_account_accesses and not isinstance(cross_account_accesses, list):
             raise TypeError("Expected argument 'cross_account_accesses' to be a list")
         pulumi.set(__self__, "cross_account_accesses", cross_account_accesses)
@@ -37,6 +37,9 @@ class GetAwsConnectorResult:
         if equal_jitter_backoff_strategies and not isinstance(equal_jitter_backoff_strategies, list):
             raise TypeError("Expected argument 'equal_jitter_backoff_strategies' to be a list")
         pulumi.set(__self__, "equal_jitter_backoff_strategies", equal_jitter_backoff_strategies)
+        if execute_on_delegate and not isinstance(execute_on_delegate, bool):
+            raise TypeError("Expected argument 'execute_on_delegate' to be a bool")
+        pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if fixed_delay_backoff_strategies and not isinstance(fixed_delay_backoff_strategies, list):
             raise TypeError("Expected argument 'fixed_delay_backoff_strategies' to be a list")
         pulumi.set(__self__, "fixed_delay_backoff_strategies", fixed_delay_backoff_strategies)
@@ -97,6 +100,14 @@ class GetAwsConnectorResult:
         Equal Jitter BackOff Strategy.
         """
         return pulumi.get(self, "equal_jitter_backoff_strategies")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> bool:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter(name="fixedDelayBackoffStrategies")
@@ -204,6 +215,7 @@ class AwaitableGetAwsConnectorResult(GetAwsConnectorResult):
             cross_account_accesses=self.cross_account_accesses,
             description=self.description,
             equal_jitter_backoff_strategies=self.equal_jitter_backoff_strategies,
+            execute_on_delegate=self.execute_on_delegate,
             fixed_delay_backoff_strategies=self.fixed_delay_backoff_strategies,
             full_jitter_backoff_strategies=self.full_jitter_backoff_strategies,
             id=self.id,
@@ -253,6 +265,7 @@ def get_aws_connector(identifier: Optional[str] = None,
         cross_account_accesses=pulumi.get(__ret__, 'cross_account_accesses'),
         description=pulumi.get(__ret__, 'description'),
         equal_jitter_backoff_strategies=pulumi.get(__ret__, 'equal_jitter_backoff_strategies'),
+        execute_on_delegate=pulumi.get(__ret__, 'execute_on_delegate'),
         fixed_delay_backoff_strategies=pulumi.get(__ret__, 'fixed_delay_backoff_strategies'),
         full_jitter_backoff_strategies=pulumi.get(__ret__, 'full_jitter_backoff_strategies'),
         id=pulumi.get(__ret__, 'id'),
@@ -299,6 +312,7 @@ def get_aws_connector_output(identifier: Optional[pulumi.Input[str]] = None,
         cross_account_accesses=pulumi.get(__response__, 'cross_account_accesses'),
         description=pulumi.get(__response__, 'description'),
         equal_jitter_backoff_strategies=pulumi.get(__response__, 'equal_jitter_backoff_strategies'),
+        execute_on_delegate=pulumi.get(__response__, 'execute_on_delegate'),
         fixed_delay_backoff_strategies=pulumi.get(__response__, 'fixed_delay_backoff_strategies'),
         full_jitter_backoff_strategies=pulumi.get(__response__, 'full_jitter_backoff_strategies'),
         id=pulumi.get(__response__, 'id'),

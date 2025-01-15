@@ -93,6 +93,20 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.equalJitterBackoffStrategy);
     }
     /**
+     * Enable this flag to execute on Delegate
+     * 
+     */
+    @Export(name="executeOnDelegate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> executeOnDelegate;
+
+    /**
+     * @return Enable this flag to execute on Delegate
+     * 
+     */
+    public Output<Optional<Boolean>> executeOnDelegate() {
+        return Codegen.optional(this.executeOnDelegate);
+    }
+    /**
      * Fixed Delay BackOff Strategy.
      * 
      */

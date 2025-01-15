@@ -166,6 +166,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAwsConnectorEqualJitterBackoffStrategyResult> EqualJitterBackoffStrategies;
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        public readonly bool ExecuteOnDelegate;
+        /// <summary>
         /// Fixed Delay BackOff Strategy.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAwsConnectorFixedDelayBackoffStrategyResult> FixedDelayBackoffStrategies;
@@ -222,6 +226,8 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<Outputs.GetAwsConnectorEqualJitterBackoffStrategyResult> equalJitterBackoffStrategies,
 
+            bool executeOnDelegate,
+
             ImmutableArray<Outputs.GetAwsConnectorFixedDelayBackoffStrategyResult> fixedDelayBackoffStrategies,
 
             ImmutableArray<Outputs.GetAwsConnectorFullJitterBackoffStrategyResult> fullJitterBackoffStrategies,
@@ -249,6 +255,7 @@ namespace Pulumi.Harness.Platform
             CrossAccountAccesses = crossAccountAccesses;
             Description = description;
             EqualJitterBackoffStrategies = equalJitterBackoffStrategies;
+            ExecuteOnDelegate = executeOnDelegate;
             FixedDelayBackoffStrategies = fixedDelayBackoffStrategies;
             FullJitterBackoffStrategies = fullJitterBackoffStrategies;
             Id = id;

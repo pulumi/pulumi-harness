@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,6 +23,13 @@ public final class GetServiceListArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orgId);
     }
 
+    @Import(name="page")
+    private @Nullable Output<Integer> page;
+
+    public Optional<Output<Integer>> page() {
+        return Optional.ofNullable(this.page);
+    }
+
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
@@ -29,11 +37,20 @@ public final class GetServiceListArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.projectId);
     }
 
+    @Import(name="size")
+    private @Nullable Output<Integer> size;
+
+    public Optional<Output<Integer>> size() {
+        return Optional.ofNullable(this.size);
+    }
+
     private GetServiceListArgs() {}
 
     private GetServiceListArgs(GetServiceListArgs $) {
         this.orgId = $.orgId;
+        this.page = $.page;
         this.projectId = $.projectId;
+        this.size = $.size;
     }
 
     public static Builder builder() {
@@ -63,6 +80,15 @@ public final class GetServiceListArgs extends com.pulumi.resources.InvokeArgs {
             return orgId(Output.of(orgId));
         }
 
+        public Builder page(@Nullable Output<Integer> page) {
+            $.page = page;
+            return this;
+        }
+
+        public Builder page(Integer page) {
+            return page(Output.of(page));
+        }
+
         public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
@@ -70,6 +96,15 @@ public final class GetServiceListArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        public Builder size(@Nullable Output<Integer> size) {
+            $.size = size;
+            return this;
+        }
+
+        public Builder size(Integer size) {
+            return size(Output.of(size));
         }
 
         public GetServiceListArgs build() {

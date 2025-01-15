@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetServiceListService;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,8 +21,10 @@ public final class GetServiceListResult {
      */
     private String id;
     private @Nullable String orgId;
+    private @Nullable Integer page;
     private @Nullable String projectId;
     private List<GetServiceListService> services;
+    private @Nullable Integer size;
 
     private GetServiceListResult() {}
     /**
@@ -34,11 +37,17 @@ public final class GetServiceListResult {
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    public Optional<Integer> page() {
+        return Optional.ofNullable(this.page);
+    }
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     public List<GetServiceListService> services() {
         return this.services;
+    }
+    public Optional<Integer> size() {
+        return Optional.ofNullable(this.size);
     }
 
     public static Builder builder() {
@@ -52,15 +61,19 @@ public final class GetServiceListResult {
     public static final class Builder {
         private String id;
         private @Nullable String orgId;
+        private @Nullable Integer page;
         private @Nullable String projectId;
         private List<GetServiceListService> services;
+        private @Nullable Integer size;
         public Builder() {}
         public Builder(GetServiceListResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.orgId = defaults.orgId;
+    	      this.page = defaults.page;
     	      this.projectId = defaults.projectId;
     	      this.services = defaults.services;
+    	      this.size = defaults.size;
         }
 
         @CustomType.Setter
@@ -75,6 +88,12 @@ public final class GetServiceListResult {
         public Builder orgId(@Nullable String orgId) {
 
             this.orgId = orgId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder page(@Nullable Integer page) {
+
+            this.page = page;
             return this;
         }
         @CustomType.Setter
@@ -94,12 +113,20 @@ public final class GetServiceListResult {
         public Builder services(GetServiceListService... services) {
             return services(List.of(services));
         }
+        @CustomType.Setter
+        public Builder size(@Nullable Integer size) {
+
+            this.size = size;
+            return this;
+        }
         public GetServiceListResult build() {
             final var _resultValue = new GetServiceListResult();
             _resultValue.id = id;
             _resultValue.orgId = orgId;
+            _resultValue.page = page;
             _resultValue.projectId = projectId;
             _resultValue.services = services;
+            _resultValue.size = size;
             return _resultValue;
         }
     }

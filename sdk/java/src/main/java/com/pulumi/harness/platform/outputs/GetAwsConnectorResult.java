@@ -13,6 +13,7 @@ import com.pulumi.harness.platform.outputs.GetAwsConnectorInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.GetAwsConnectorIrsa;
 import com.pulumi.harness.platform.outputs.GetAwsConnectorManual;
 import com.pulumi.harness.platform.outputs.GetAwsConnectorOidcAuthentication;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -36,6 +37,11 @@ public final class GetAwsConnectorResult {
      * 
      */
     private List<GetAwsConnectorEqualJitterBackoffStrategy> equalJitterBackoffStrategies;
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    private Boolean executeOnDelegate;
     /**
      * @return Fixed Delay BackOff Strategy.
      * 
@@ -118,6 +124,13 @@ public final class GetAwsConnectorResult {
      */
     public List<GetAwsConnectorEqualJitterBackoffStrategy> equalJitterBackoffStrategies() {
         return this.equalJitterBackoffStrategies;
+    }
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
     }
     /**
      * @return Fixed Delay BackOff Strategy.
@@ -216,6 +229,7 @@ public final class GetAwsConnectorResult {
         private List<GetAwsConnectorCrossAccountAccess> crossAccountAccesses;
         private String description;
         private List<GetAwsConnectorEqualJitterBackoffStrategy> equalJitterBackoffStrategies;
+        private Boolean executeOnDelegate;
         private List<GetAwsConnectorFixedDelayBackoffStrategy> fixedDelayBackoffStrategies;
         private List<GetAwsConnectorFullJitterBackoffStrategy> fullJitterBackoffStrategies;
         private String id;
@@ -234,6 +248,7 @@ public final class GetAwsConnectorResult {
     	      this.crossAccountAccesses = defaults.crossAccountAccesses;
     	      this.description = defaults.description;
     	      this.equalJitterBackoffStrategies = defaults.equalJitterBackoffStrategies;
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
     	      this.fixedDelayBackoffStrategies = defaults.fixedDelayBackoffStrategies;
     	      this.fullJitterBackoffStrategies = defaults.fullJitterBackoffStrategies;
     	      this.id = defaults.id;
@@ -277,6 +292,14 @@ public final class GetAwsConnectorResult {
         }
         public Builder equalJitterBackoffStrategies(GetAwsConnectorEqualJitterBackoffStrategy... equalJitterBackoffStrategies) {
             return equalJitterBackoffStrategies(List.of(equalJitterBackoffStrategies));
+        }
+        @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            if (executeOnDelegate == null) {
+              throw new MissingRequiredPropertyException("GetAwsConnectorResult", "executeOnDelegate");
+            }
+            this.executeOnDelegate = executeOnDelegate;
+            return this;
         }
         @CustomType.Setter
         public Builder fixedDelayBackoffStrategies(List<GetAwsConnectorFixedDelayBackoffStrategy> fixedDelayBackoffStrategies) {
@@ -394,6 +417,7 @@ public final class GetAwsConnectorResult {
             _resultValue.crossAccountAccesses = crossAccountAccesses;
             _resultValue.description = description;
             _resultValue.equalJitterBackoffStrategies = equalJitterBackoffStrategies;
+            _resultValue.executeOnDelegate = executeOnDelegate;
             _resultValue.fixedDelayBackoffStrategies = fixedDelayBackoffStrategies;
             _resultValue.fullJitterBackoffStrategies = fullJitterBackoffStrategies;
             _resultValue.id = id;

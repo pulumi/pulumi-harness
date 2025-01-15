@@ -69,6 +69,10 @@ export interface GetAwsConnectorResult {
      */
     readonly equalJitterBackoffStrategies: outputs.platform.GetAwsConnectorEqualJitterBackoffStrategy[];
     /**
+     * Execute on delegate or not.
+     */
+    readonly executeOnDelegate: boolean;
+    /**
      * Fixed Delay BackOff Strategy.
      */
     readonly fixedDelayBackoffStrategies: outputs.platform.GetAwsConnectorFixedDelayBackoffStrategy[];

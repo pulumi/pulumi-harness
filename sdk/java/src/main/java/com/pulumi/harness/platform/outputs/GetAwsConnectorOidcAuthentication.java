@@ -24,7 +24,7 @@ public final class GetAwsConnectorOidcAuthentication {
      */
     private String iamRoleArn;
     /**
-     * @return AWS Region to perform Connection test of Connector.
+     * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private @Nullable String region;
@@ -45,7 +45,7 @@ public final class GetAwsConnectorOidcAuthentication {
         return this.iamRoleArn;
     }
     /**
-     * @return AWS Region to perform Connection test of Connector.
+     * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<String> region() {

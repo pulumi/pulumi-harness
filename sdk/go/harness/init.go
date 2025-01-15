@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Application{}
 	case "harness:index/applicationGitSync:ApplicationGitSync":
 		r = &ApplicationGitSync{}
+	case "harness:index/chaosInfrastructure:ChaosInfrastructure":
+		r = &ChaosInfrastructure{}
 	case "harness:index/delegateApproval:DelegateApproval":
 		r = &DelegateApproval{}
 	case "harness:index/encryptedText:EncryptedText":
@@ -95,6 +97,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"index/applicationGitSync",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"index/chaosInfrastructure",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

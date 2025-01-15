@@ -15615,7 +15615,7 @@ class GetAwsConnectorInheritFromDelegateResult(dict):
                  region: Optional[str] = None):
         """
         :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
-        :param str region: AWS Region to perform Connection test of Connector.
+        :param str region: Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if region is not None:
@@ -15633,7 +15633,7 @@ class GetAwsConnectorInheritFromDelegateResult(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        AWS Region to perform Connection test of Connector.
+        Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "region")
 
@@ -15645,7 +15645,7 @@ class GetAwsConnectorIrsaResult(dict):
                  region: Optional[str] = None):
         """
         :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
-        :param str region: AWS Region to perform Connection test of Connector.
+        :param str region: Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if region is not None:
@@ -15663,7 +15663,7 @@ class GetAwsConnectorIrsaResult(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        AWS Region to perform Connection test of Connector.
+        Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "region")
 
@@ -15684,8 +15684,8 @@ class GetAwsConnectorManualResult(dict):
         :param Sequence[str] delegate_selectors: Connect only use delegates with these tags.
         :param str secret_key_ref: Reference to the Harness secret containing the aws secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param str access_key_plain_text: The plain text AWS access key.
-        :param str region: AWS Region to perform Connection test of Connector.
-        :param str session_token_ref: Reference to the Harness secret containing the aws session token.
+        :param str region: Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param str session_token_ref: Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "access_key_ref", access_key_ref)
@@ -15742,7 +15742,7 @@ class GetAwsConnectorManualResult(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        AWS Region to perform Connection test of Connector.
+        Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "region")
 
@@ -15750,7 +15750,7 @@ class GetAwsConnectorManualResult(dict):
     @pulumi.getter(name="sessionTokenRef")
     def session_token_ref(self) -> Optional[str]:
         """
-        Reference to the Harness secret containing the aws session token.
+        Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "session_token_ref")
 
@@ -15764,7 +15764,7 @@ class GetAwsConnectorOidcAuthenticationResult(dict):
         """
         :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
         :param str iam_role_arn: The IAM Role to assume the credentials from.
-        :param str region: AWS Region to perform Connection test of Connector.
+        :param str region: Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "iam_role_arn", iam_role_arn)
@@ -15791,7 +15791,7 @@ class GetAwsConnectorOidcAuthenticationResult(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        AWS Region to perform Connection test of Connector.
+        Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "region")
 

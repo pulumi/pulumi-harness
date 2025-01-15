@@ -68,6 +68,8 @@ type LookupAwsConnectorResult struct {
 	Description string `pulumi:"description"`
 	// Equal Jitter BackOff Strategy.
 	EqualJitterBackoffStrategies []GetAwsConnectorEqualJitterBackoffStrategy `pulumi:"equalJitterBackoffStrategies"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
 	// Fixed Delay BackOff Strategy.
 	FixedDelayBackoffStrategies []GetAwsConnectorFixedDelayBackoffStrategy `pulumi:"fixedDelayBackoffStrategies"`
 	// Full Jitter BackOff Strategy.
@@ -149,6 +151,11 @@ func (o LookupAwsConnectorResultOutput) EqualJitterBackoffStrategies() GetAwsCon
 	return o.ApplyT(func(v LookupAwsConnectorResult) []GetAwsConnectorEqualJitterBackoffStrategy {
 		return v.EqualJitterBackoffStrategies
 	}).(GetAwsConnectorEqualJitterBackoffStrategyArrayOutput)
+}
+
+// Execute on delegate or not.
+func (o LookupAwsConnectorResultOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAwsConnectorResult) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
 
 // Fixed Delay BackOff Strategy.
