@@ -8,10 +8,12 @@ import typing
 from .add_user_to_group import *
 from .application import *
 from .application_git_sync import *
+from .chaos_infrastructure import *
 from .delegate_approval import *
 from .encrypted_text import *
 from .environment import *
 from .get_application import *
+from .get_chaos_infrastructure import *
 from .get_current_account import *
 from .get_delegate import *
 from .get_encrypted_text import *
@@ -248,6 +250,14 @@ _utilities.register(
   "fqn": "pulumi_harness",
   "classes": {
    "harness:index/applicationGitSync:ApplicationGitSync": "ApplicationGitSync"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "index/chaosInfrastructure",
+  "fqn": "pulumi_harness",
+  "classes": {
+   "harness:index/chaosInfrastructure:ChaosInfrastructure": "ChaosInfrastructure"
   }
  },
  {

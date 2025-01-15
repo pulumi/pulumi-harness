@@ -70,6 +70,10 @@ export class AwsConnector extends pulumi.CustomResource {
      */
     public readonly equalJitterBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorEqualJitterBackoffStrategy | undefined>;
     /**
+     * Enable this flag to execute on Delegate
+     */
+    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    /**
      * Fixed Delay BackOff Strategy.
      */
     public readonly fixedDelayBackoffStrategy!: pulumi.Output<outputs.platform.AwsConnectorFixedDelayBackoffStrategy | undefined>;
@@ -134,6 +138,7 @@ export class AwsConnector extends pulumi.CustomResource {
             resourceInputs["crossAccountAccess"] = state ? state.crossAccountAccess : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["equalJitterBackoffStrategy"] = state ? state.equalJitterBackoffStrategy : undefined;
+            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
             resourceInputs["fixedDelayBackoffStrategy"] = state ? state.fixedDelayBackoffStrategy : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["fullJitterBackoffStrategy"] = state ? state.fullJitterBackoffStrategy : undefined;
@@ -154,6 +159,7 @@ export class AwsConnector extends pulumi.CustomResource {
             resourceInputs["crossAccountAccess"] = args ? args.crossAccountAccess : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["equalJitterBackoffStrategy"] = args ? args.equalJitterBackoffStrategy : undefined;
+            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
             resourceInputs["fixedDelayBackoffStrategy"] = args ? args.fixedDelayBackoffStrategy : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["fullJitterBackoffStrategy"] = args ? args.fullJitterBackoffStrategy : undefined;
@@ -188,6 +194,10 @@ export interface AwsConnectorState {
      * Equal Jitter BackOff Strategy.
      */
     equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy>;
+    /**
+     * Enable this flag to execute on Delegate
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Fixed Delay BackOff Strategy.
      */
@@ -254,6 +264,10 @@ export interface AwsConnectorArgs {
      * Equal Jitter BackOff Strategy.
      */
     equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy>;
+    /**
+     * Enable this flag to execute on Delegate
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Fixed Delay BackOff Strategy.
      */

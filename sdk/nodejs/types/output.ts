@@ -2554,7 +2554,7 @@ export namespace platform {
          */
         delegateSelectors: string[];
         /**
-         * AWS Region to perform Connection test of Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
     }
@@ -2565,7 +2565,7 @@ export namespace platform {
          */
         delegateSelectors: string[];
         /**
-         * AWS Region to perform Connection test of Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
     }
@@ -2588,7 +2588,7 @@ export namespace platform {
          */
         delegateSelectors: string[];
         /**
-         * AWS Region to perform Connection test of Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
         /**
@@ -2596,7 +2596,7 @@ export namespace platform {
          */
         secretKeyRef: string;
         /**
-         * Reference to the Harness secret containing the aws session token.
+         * Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         sessionTokenRef?: string;
     }
@@ -2611,7 +2611,7 @@ export namespace platform {
          */
         iamRoleArn: string;
         /**
-         * AWS Region to perform Connection test of Connector.
+         * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
     }

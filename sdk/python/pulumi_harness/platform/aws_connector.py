@@ -25,6 +25,7 @@ class AwsConnectorArgs:
                  cross_account_access: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  equal_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  fixed_delay_backoff_strategy: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  full_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
@@ -42,6 +43,7 @@ class AwsConnectorArgs:
         :param pulumi.Input['AwsConnectorCrossAccountAccessArgs'] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs'] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
         :param pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs'] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
         :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs'] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
@@ -61,6 +63,8 @@ class AwsConnectorArgs:
             pulumi.set(__self__, "description", description)
         if equal_jitter_backoff_strategy is not None:
             pulumi.set(__self__, "equal_jitter_backoff_strategy", equal_jitter_backoff_strategy)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if fixed_delay_backoff_strategy is not None:
             pulumi.set(__self__, "fixed_delay_backoff_strategy", fixed_delay_backoff_strategy)
         if force_delete is not None:
@@ -131,6 +135,18 @@ class AwsConnectorArgs:
     @equal_jitter_backoff_strategy.setter
     def equal_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]):
         pulumi.set(self, "equal_jitter_backoff_strategy", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag to execute on Delegate
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
 
     @property
     @pulumi.getter(name="fixedDelayBackoffStrategy")
@@ -271,6 +287,7 @@ class _AwsConnectorState:
                  cross_account_access: Optional[pulumi.Input['AwsConnectorCrossAccountAccessArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  equal_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  fixed_delay_backoff_strategy: Optional[pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs']] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  full_jitter_backoff_strategy: Optional[pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs']] = None,
@@ -288,6 +305,7 @@ class _AwsConnectorState:
         :param pulumi.Input['AwsConnectorCrossAccountAccessArgs'] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs'] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
         :param pulumi.Input['AwsConnectorFixedDelayBackoffStrategyArgs'] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
         :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input['AwsConnectorFullJitterBackoffStrategyArgs'] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
@@ -307,6 +325,8 @@ class _AwsConnectorState:
             pulumi.set(__self__, "description", description)
         if equal_jitter_backoff_strategy is not None:
             pulumi.set(__self__, "equal_jitter_backoff_strategy", equal_jitter_backoff_strategy)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if fixed_delay_backoff_strategy is not None:
             pulumi.set(__self__, "fixed_delay_backoff_strategy", fixed_delay_backoff_strategy)
         if force_delete is not None:
@@ -367,6 +387,18 @@ class _AwsConnectorState:
     @equal_jitter_backoff_strategy.setter
     def equal_jitter_backoff_strategy(self, value: Optional[pulumi.Input['AwsConnectorEqualJitterBackoffStrategyArgs']]):
         pulumi.set(self, "equal_jitter_backoff_strategy", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable this flag to execute on Delegate
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
 
     @property
     @pulumi.getter(name="fixedDelayBackoffStrategy")
@@ -521,6 +553,7 @@ class AwsConnector(pulumi.CustomResource):
                  cross_account_access: Optional[pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  equal_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  fixed_delay_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  full_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
@@ -562,6 +595,7 @@ class AwsConnector(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
         :param pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
         :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
@@ -622,6 +656,7 @@ class AwsConnector(pulumi.CustomResource):
                  cross_account_access: Optional[pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  equal_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  fixed_delay_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  full_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
@@ -646,6 +681,7 @@ class AwsConnector(pulumi.CustomResource):
             __props__.__dict__["cross_account_access"] = cross_account_access
             __props__.__dict__["description"] = description
             __props__.__dict__["equal_jitter_backoff_strategy"] = equal_jitter_backoff_strategy
+            __props__.__dict__["execute_on_delegate"] = execute_on_delegate
             __props__.__dict__["fixed_delay_backoff_strategy"] = fixed_delay_backoff_strategy
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["full_jitter_backoff_strategy"] = full_jitter_backoff_strategy
@@ -673,6 +709,7 @@ class AwsConnector(pulumi.CustomResource):
             cross_account_access: Optional[pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             equal_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']]] = None,
+            execute_on_delegate: Optional[pulumi.Input[bool]] = None,
             fixed_delay_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             full_jitter_backoff_strategy: Optional[pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']]] = None,
@@ -695,6 +732,7 @@ class AwsConnector(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsConnectorCrossAccountAccessArgs', 'AwsConnectorCrossAccountAccessArgsDict']] cross_account_access: Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[Union['AwsConnectorEqualJitterBackoffStrategyArgs', 'AwsConnectorEqualJitterBackoffStrategyArgsDict']] equal_jitter_backoff_strategy: Equal Jitter BackOff Strategy.
+        :param pulumi.Input[bool] execute_on_delegate: Enable this flag to execute on Delegate
         :param pulumi.Input[Union['AwsConnectorFixedDelayBackoffStrategyArgs', 'AwsConnectorFixedDelayBackoffStrategyArgsDict']] fixed_delay_backoff_strategy: Fixed Delay BackOff Strategy.
         :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[Union['AwsConnectorFullJitterBackoffStrategyArgs', 'AwsConnectorFullJitterBackoffStrategyArgsDict']] full_jitter_backoff_strategy: Full Jitter BackOff Strategy.
@@ -715,6 +753,7 @@ class AwsConnector(pulumi.CustomResource):
         __props__.__dict__["cross_account_access"] = cross_account_access
         __props__.__dict__["description"] = description
         __props__.__dict__["equal_jitter_backoff_strategy"] = equal_jitter_backoff_strategy
+        __props__.__dict__["execute_on_delegate"] = execute_on_delegate
         __props__.__dict__["fixed_delay_backoff_strategy"] = fixed_delay_backoff_strategy
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["full_jitter_backoff_strategy"] = full_jitter_backoff_strategy
@@ -752,6 +791,14 @@ class AwsConnector(pulumi.CustomResource):
         Equal Jitter BackOff Strategy.
         """
         return pulumi.get(self, "equal_jitter_backoff_strategy")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable this flag to execute on Delegate
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter(name="fixedDelayBackoffStrategy")

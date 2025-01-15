@@ -48,7 +48,9 @@ export function getServiceList(args?: GetServiceListArgs, opts?: pulumi.InvokeOp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getServiceList:getServiceList", {
         "orgId": args.orgId,
+        "page": args.page,
         "projectId": args.projectId,
+        "size": args.size,
     }, opts);
 }
 
@@ -57,7 +59,9 @@ export function getServiceList(args?: GetServiceListArgs, opts?: pulumi.InvokeOp
  */
 export interface GetServiceListArgs {
     orgId?: string;
+    page?: number;
     projectId?: string;
+    size?: number;
 }
 
 /**
@@ -69,8 +73,10 @@ export interface GetServiceListResult {
      */
     readonly id: string;
     readonly orgId?: string;
+    readonly page?: number;
     readonly projectId?: string;
     readonly services: outputs.platform.GetServiceListService[];
+    readonly size?: number;
 }
 /**
  * Data source for retrieving Harness service list.
@@ -114,7 +120,9 @@ export function getServiceListOutput(args?: GetServiceListOutputArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getServiceList:getServiceList", {
         "orgId": args.orgId,
+        "page": args.page,
         "projectId": args.projectId,
+        "size": args.size,
     }, opts);
 }
 
@@ -123,5 +131,7 @@ export function getServiceListOutput(args?: GetServiceListOutputArgs, opts?: pul
  */
 export interface GetServiceListOutputArgs {
     orgId?: pulumi.Input<string>;
+    page?: pulumi.Input<number>;
     projectId?: pulumi.Input<string>;
+    size?: pulumi.Input<number>;
 }

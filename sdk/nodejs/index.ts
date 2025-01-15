@@ -20,6 +20,11 @@ export type ApplicationGitSync = import("./applicationGitSync").ApplicationGitSy
 export const ApplicationGitSync: typeof import("./applicationGitSync").ApplicationGitSync = null as any;
 utilities.lazyLoad(exports, ["ApplicationGitSync"], () => require("./applicationGitSync"));
 
+export { ChaosInfrastructureArgs, ChaosInfrastructureState } from "./chaosInfrastructure";
+export type ChaosInfrastructure = import("./chaosInfrastructure").ChaosInfrastructure;
+export const ChaosInfrastructure: typeof import("./chaosInfrastructure").ChaosInfrastructure = null as any;
+utilities.lazyLoad(exports, ["ChaosInfrastructure"], () => require("./chaosInfrastructure"));
+
 export { DelegateApprovalArgs, DelegateApprovalState } from "./delegateApproval";
 export type DelegateApproval = import("./delegateApproval").DelegateApproval;
 export const DelegateApproval: typeof import("./delegateApproval").DelegateApproval = null as any;
@@ -39,6 +44,11 @@ export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } fr
 export const getApplication: typeof import("./getApplication").getApplication = null as any;
 export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
 utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
+
+export { GetChaosInfrastructureArgs, GetChaosInfrastructureResult, GetChaosInfrastructureOutputArgs } from "./getChaosInfrastructure";
+export const getChaosInfrastructure: typeof import("./getChaosInfrastructure").getChaosInfrastructure = null as any;
+export const getChaosInfrastructureOutput: typeof import("./getChaosInfrastructure").getChaosInfrastructureOutput = null as any;
+utilities.lazyLoad(exports, ["getChaosInfrastructure","getChaosInfrastructureOutput"], () => require("./getChaosInfrastructure"));
 
 export { GetCurrentAccountArgs, GetCurrentAccountResult, GetCurrentAccountOutputArgs } from "./getCurrentAccount";
 export const getCurrentAccount: typeof import("./getCurrentAccount").getCurrentAccount = null as any;
@@ -187,6 +197,8 @@ const _module = {
                 return new Application(name, <any>undefined, { urn })
             case "harness:index/applicationGitSync:ApplicationGitSync":
                 return new ApplicationGitSync(name, <any>undefined, { urn })
+            case "harness:index/chaosInfrastructure:ChaosInfrastructure":
+                return new ChaosInfrastructure(name, <any>undefined, { urn })
             case "harness:index/delegateApproval:DelegateApproval":
                 return new DelegateApproval(name, <any>undefined, { urn })
             case "harness:index/encryptedText:EncryptedText":
@@ -219,6 +231,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("harness", "index/addUserToGroup", _module)
 pulumi.runtime.registerResourceModule("harness", "index/application", _module)
 pulumi.runtime.registerResourceModule("harness", "index/applicationGitSync", _module)
+pulumi.runtime.registerResourceModule("harness", "index/chaosInfrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "index/delegateApproval", _module)
 pulumi.runtime.registerResourceModule("harness", "index/encryptedText", _module)
 pulumi.runtime.registerResourceModule("harness", "index/environment", _module)
