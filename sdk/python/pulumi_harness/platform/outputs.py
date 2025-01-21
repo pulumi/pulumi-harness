@@ -153,6 +153,9 @@ __all__ = [
     'GitopsAppProjectProjectSpecRoleJwtToken',
     'GitopsAppProjectProjectSpecSignatureKey',
     'GitopsAppProjectProjectSpecSyncWindow',
+    'HarRegistryConfig',
+    'HarRegistryConfigAuth',
+    'HarRegistryConfigAuthUserPassword',
     'HelmConnectorCredentials',
     'InfrastructureGitDetails',
     'InputSetGitDetails',
@@ -345,6 +348,9 @@ __all__ = [
     'GetGitopsGnupgRequestPublickeyResult',
     'GetGitopsRepoCredCredResult',
     'GetGitopsRepositoryRepoResult',
+    'GetHarRegistryConfigResult',
+    'GetHarRegistryConfigAuthResult',
+    'GetHarRegistryConfigAuthUserPasswordResult',
     'GetHelmConnectorCredentialResult',
     'GetInfrastructureGitDetailsResult',
     'GetInputSetGitDetailsResult',
@@ -8838,6 +8844,186 @@ class GitopsAppProjectProjectSpecSyncWindow(dict):
         Time zone of synchronization window.
         """
         return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class HarRegistryConfig(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 auths: Optional[Sequence['outputs.HarRegistryConfigAuth']] = None,
+                 source: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str type: Type of registry (VIRTUAL only supported)
+        :param Sequence['HarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM type
+        :param str source: Source of the upstream
+        :param str url: URL of the upstream
+        """
+        pulumi.set(__self__, "type", type)
+        if auths is not None:
+            pulumi.set(__self__, "auths", auths)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of registry (VIRTUAL only supported)
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def auths(self) -> Optional[Sequence['outputs.HarRegistryConfigAuth']]:
+        """
+        Authentication configuration for UPSTREAM type
+        """
+        return pulumi.get(self, "auths")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        Source of the upstream
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        URL of the upstream
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class HarRegistryConfigAuth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authType":
+            suggest = "auth_type"
+        elif key == "userPassword":
+            suggest = "user_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HarRegistryConfigAuth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HarRegistryConfigAuth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HarRegistryConfigAuth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_type: str,
+                 user_password: Optional['outputs.HarRegistryConfigAuthUserPassword'] = None):
+        """
+        :param str auth_type: Type of authentication (UserPassword, Anonymous)
+        :param 'HarRegistryConfigAuthUserPasswordArgs' user_password: User password authentication details
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if user_password is not None:
+            pulumi.set(__self__, "user_password", user_password)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> str:
+        """
+        Type of authentication (UserPassword, Anonymous)
+        """
+        return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="userPassword")
+    def user_password(self) -> Optional['outputs.HarRegistryConfigAuthUserPassword']:
+        """
+        User password authentication details
+        """
+        return pulumi.get(self, "user_password")
+
+
+@pulumi.output_type
+class HarRegistryConfigAuthUserPassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+        elif key == "secretIdentifier":
+            suggest = "secret_identifier"
+        elif key == "secretSpaceId":
+            suggest = "secret_space_id"
+        elif key == "secretSpacePath":
+            suggest = "secret_space_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HarRegistryConfigAuthUserPassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HarRegistryConfigAuthUserPassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HarRegistryConfigAuthUserPassword.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_name: str,
+                 secret_identifier: Optional[str] = None,
+                 secret_space_id: Optional[int] = None,
+                 secret_space_path: Optional[str] = None):
+        """
+        :param str user_name: User name
+        :param str secret_identifier: Secret identifier
+        :param int secret_space_id: Secret space ID
+        :param str secret_space_path: Secret space path
+        """
+        pulumi.set(__self__, "user_name", user_name)
+        if secret_identifier is not None:
+            pulumi.set(__self__, "secret_identifier", secret_identifier)
+        if secret_space_id is not None:
+            pulumi.set(__self__, "secret_space_id", secret_space_id)
+        if secret_space_path is not None:
+            pulumi.set(__self__, "secret_space_path", secret_space_path)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        User name
+        """
+        return pulumi.get(self, "user_name")
+
+    @property
+    @pulumi.getter(name="secretIdentifier")
+    def secret_identifier(self) -> Optional[str]:
+        """
+        Secret identifier
+        """
+        return pulumi.get(self, "secret_identifier")
+
+    @property
+    @pulumi.getter(name="secretSpaceId")
+    def secret_space_id(self) -> Optional[int]:
+        """
+        Secret space ID
+        """
+        return pulumi.get(self, "secret_space_id")
+
+    @property
+    @pulumi.getter(name="secretSpacePath")
+    def secret_space_path(self) -> Optional[str]:
+        """
+        Secret space path
+        """
+        return pulumi.get(self, "secret_space_path")
 
 
 @pulumi.output_type
@@ -20124,6 +20310,144 @@ class GetGitopsRepositoryRepoResult(dict):
         Username to be used for authenticating the remote repository.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetHarRegistryConfigResult(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 auths: Optional[Sequence['outputs.GetHarRegistryConfigAuthResult']] = None,
+                 source: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str type: Type of registry (VIRTUAL, UPSTREAM)
+        :param Sequence['GetHarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM type
+        :param str source: Source of the upstream
+        :param str url: URL of the upstream
+        """
+        pulumi.set(__self__, "type", type)
+        if auths is not None:
+            pulumi.set(__self__, "auths", auths)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of registry (VIRTUAL, UPSTREAM)
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def auths(self) -> Optional[Sequence['outputs.GetHarRegistryConfigAuthResult']]:
+        """
+        Authentication configuration for UPSTREAM type
+        """
+        return pulumi.get(self, "auths")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        Source of the upstream
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        URL of the upstream
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetHarRegistryConfigAuthResult(dict):
+    def __init__(__self__, *,
+                 auth_type: str,
+                 user_password: Optional['outputs.GetHarRegistryConfigAuthUserPasswordResult'] = None):
+        """
+        :param str auth_type: Type of authentication (UserPassword, Anonymous)
+        :param 'GetHarRegistryConfigAuthUserPasswordArgs' user_password: User password authentication details
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if user_password is not None:
+            pulumi.set(__self__, "user_password", user_password)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> str:
+        """
+        Type of authentication (UserPassword, Anonymous)
+        """
+        return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="userPassword")
+    def user_password(self) -> Optional['outputs.GetHarRegistryConfigAuthUserPasswordResult']:
+        """
+        User password authentication details
+        """
+        return pulumi.get(self, "user_password")
+
+
+@pulumi.output_type
+class GetHarRegistryConfigAuthUserPasswordResult(dict):
+    def __init__(__self__, *,
+                 user_name: str,
+                 secret_identifier: Optional[str] = None,
+                 secret_space_id: Optional[int] = None,
+                 secret_space_path: Optional[str] = None):
+        """
+        :param str user_name: User name
+        :param str secret_identifier: Secret identifier
+        :param int secret_space_id: Secret space ID
+        :param str secret_space_path: Secret space path
+        """
+        pulumi.set(__self__, "user_name", user_name)
+        if secret_identifier is not None:
+            pulumi.set(__self__, "secret_identifier", secret_identifier)
+        if secret_space_id is not None:
+            pulumi.set(__self__, "secret_space_id", secret_space_id)
+        if secret_space_path is not None:
+            pulumi.set(__self__, "secret_space_path", secret_space_path)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        User name
+        """
+        return pulumi.get(self, "user_name")
+
+    @property
+    @pulumi.getter(name="secretIdentifier")
+    def secret_identifier(self) -> Optional[str]:
+        """
+        Secret identifier
+        """
+        return pulumi.get(self, "secret_identifier")
+
+    @property
+    @pulumi.getter(name="secretSpaceId")
+    def secret_space_id(self) -> Optional[int]:
+        """
+        Secret space ID
+        """
+        return pulumi.get(self, "secret_space_id")
+
+    @property
+    @pulumi.getter(name="secretSpacePath")
+    def secret_space_path(self) -> Optional[str]:
+        """
+        Secret space path
+        """
+        return pulumi.get(self, "secret_space_path")
 
 
 @pulumi.output_type

@@ -28,7 +28,7 @@ class GetGitopsAgentDeployYamlResult:
     """
     A collection of values returned by getGitopsAgentDeployYaml.
     """
-    def __init__(__self__, account_id=None, ca_data=None, id=None, identifier=None, namespace=None, org_id=None, project_id=None, proxies=None, yaml=None):
+    def __init__(__self__, account_id=None, ca_data=None, id=None, identifier=None, namespace=None, org_id=None, private_key=None, project_id=None, proxies=None, skip_crds=None, yaml=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -47,12 +47,18 @@ class GetGitopsAgentDeployYamlResult:
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
+        if private_key and not isinstance(private_key, str):
+            raise TypeError("Expected argument 'private_key' to be a str")
+        pulumi.set(__self__, "private_key", private_key)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
         if proxies and not isinstance(proxies, list):
             raise TypeError("Expected argument 'proxies' to be a list")
         pulumi.set(__self__, "proxies", proxies)
+        if skip_crds and not isinstance(skip_crds, bool):
+            raise TypeError("Expected argument 'skip_crds' to be a bool")
+        pulumi.set(__self__, "skip_crds", skip_crds)
         if yaml and not isinstance(yaml, str):
             raise TypeError("Expected argument 'yaml' to be a str")
         pulumi.set(__self__, "yaml", yaml)
@@ -107,6 +113,14 @@ class GetGitopsAgentDeployYamlResult:
         return pulumi.get(self, "org_id")
 
     @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
@@ -121,6 +135,14 @@ class GetGitopsAgentDeployYamlResult:
         Proxy settings for the GitOps agent.
         """
         return pulumi.get(self, "proxies")
+
+    @property
+    @pulumi.getter(name="skipCrds")
+    def skip_crds(self) -> Optional[bool]:
+        """
+        Skip CRDs for the GitOps agent.
+        """
+        return pulumi.get(self, "skip_crds")
 
     @property
     @pulumi.getter
@@ -143,8 +165,10 @@ class AwaitableGetGitopsAgentDeployYamlResult(GetGitopsAgentDeployYamlResult):
             identifier=self.identifier,
             namespace=self.namespace,
             org_id=self.org_id,
+            private_key=self.private_key,
             project_id=self.project_id,
             proxies=self.proxies,
+            skip_crds=self.skip_crds,
             yaml=self.yaml)
 
 
@@ -153,8 +177,10 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
                                  identifier: Optional[str] = None,
                                  namespace: Optional[str] = None,
                                  org_id: Optional[str] = None,
+                                 private_key: Optional[str] = None,
                                  project_id: Optional[str] = None,
                                  proxies: Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']]] = None,
+                                 skip_crds: Optional[bool] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentDeployYamlResult:
     """
     Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
@@ -178,8 +204,10 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
     :param str identifier: Identifier of the GitOps agent.
     :param str namespace: The kubernetes namespace where the agent is installed.
     :param str org_id: Organization identifier of the GitOps agent.
+    :param str private_key: Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
     :param str project_id: Project identifier of the GitOps agent.
     :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
+    :param bool skip_crds: Skip CRDs for the GitOps agent.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -187,8 +215,10 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
     __args__['identifier'] = identifier
     __args__['namespace'] = namespace
     __args__['orgId'] = org_id
+    __args__['privateKey'] = private_key
     __args__['projectId'] = project_id
     __args__['proxies'] = proxies
+    __args__['skipCrds'] = skip_crds
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml', __args__, opts=opts, typ=GetGitopsAgentDeployYamlResult).value
 
@@ -199,16 +229,20 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         namespace=pulumi.get(__ret__, 'namespace'),
         org_id=pulumi.get(__ret__, 'org_id'),
+        private_key=pulumi.get(__ret__, 'private_key'),
         project_id=pulumi.get(__ret__, 'project_id'),
         proxies=pulumi.get(__ret__, 'proxies'),
+        skip_crds=pulumi.get(__ret__, 'skip_crds'),
         yaml=pulumi.get(__ret__, 'yaml'))
 def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         ca_data: Optional[pulumi.Input[Optional[str]]] = None,
                                         identifier: Optional[pulumi.Input[str]] = None,
                                         namespace: Optional[pulumi.Input[str]] = None,
                                         org_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                        private_key: Optional[pulumi.Input[Optional[str]]] = None,
                                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         proxies: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']]]]] = None,
+                                        skip_crds: Optional[pulumi.Input[Optional[bool]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAgentDeployYamlResult]:
     """
     Datasource for fetching a Harness Gitops Agent deployment manifest YAML.
@@ -232,8 +266,10 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Option
     :param str identifier: Identifier of the GitOps agent.
     :param str namespace: The kubernetes namespace where the agent is installed.
     :param str org_id: Organization identifier of the GitOps agent.
+    :param str private_key: Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
     :param str project_id: Project identifier of the GitOps agent.
     :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
+    :param bool skip_crds: Skip CRDs for the GitOps agent.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -241,8 +277,10 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Option
     __args__['identifier'] = identifier
     __args__['namespace'] = namespace
     __args__['orgId'] = org_id
+    __args__['privateKey'] = private_key
     __args__['projectId'] = project_id
     __args__['proxies'] = proxies
+    __args__['skipCrds'] = skip_crds
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml', __args__, opts=opts, typ=GetGitopsAgentDeployYamlResult)
     return __ret__.apply(lambda __response__: GetGitopsAgentDeployYamlResult(
@@ -252,6 +290,8 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Option
         identifier=pulumi.get(__response__, 'identifier'),
         namespace=pulumi.get(__response__, 'namespace'),
         org_id=pulumi.get(__response__, 'org_id'),
+        private_key=pulumi.get(__response__, 'private_key'),
         project_id=pulumi.get(__response__, 'project_id'),
         proxies=pulumi.get(__response__, 'proxies'),
+        skip_crds=pulumi.get(__response__, 'skip_crds'),
         yaml=pulumi.get(__response__, 'yaml')))

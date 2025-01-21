@@ -289,6 +289,12 @@ __all__ = [
     'GitopsAppProjectProjectSpecSignatureKeyArgsDict',
     'GitopsAppProjectProjectSpecSyncWindowArgs',
     'GitopsAppProjectProjectSpecSyncWindowArgsDict',
+    'HarRegistryConfigArgs',
+    'HarRegistryConfigArgsDict',
+    'HarRegistryConfigAuthArgs',
+    'HarRegistryConfigAuthArgsDict',
+    'HarRegistryConfigAuthUserPasswordArgs',
+    'HarRegistryConfigAuthUserPasswordArgsDict',
     'HelmConnectorCredentialsArgs',
     'HelmConnectorCredentialsArgsDict',
     'InfrastructureGitDetailsArgs',
@@ -473,6 +479,12 @@ __all__ = [
     'GetGitopsGnupgRequestPublickeyArgsDict',
     'GetGitopsRepoCredCredArgs',
     'GetGitopsRepoCredCredArgsDict',
+    'GetHarRegistryConfigArgs',
+    'GetHarRegistryConfigArgsDict',
+    'GetHarRegistryConfigAuthArgs',
+    'GetHarRegistryConfigAuthArgsDict',
+    'GetHarRegistryConfigAuthUserPasswordArgs',
+    'GetHarRegistryConfigAuthUserPasswordArgsDict',
     'GetInfrastructureGitDetailsArgs',
     'GetInfrastructureGitDetailsArgsDict',
     'GetInputSetGitDetailsArgs',
@@ -11552,6 +11564,239 @@ class GitopsAppProjectProjectSpecSyncWindowArgs:
 
 
 if not MYPY:
+    class HarRegistryConfigArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of registry (VIRTUAL only supported)
+        """
+        auths: NotRequired[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgsDict']]]]
+        """
+        Authentication configuration for UPSTREAM type
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        Source of the upstream
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        URL of the upstream
+        """
+elif False:
+    HarRegistryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HarRegistryConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 auths: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of registry (VIRTUAL only supported)
+        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]] auths: Authentication configuration for UPSTREAM type
+        :param pulumi.Input[str] source: Source of the upstream
+        :param pulumi.Input[str] url: URL of the upstream
+        """
+        pulumi.set(__self__, "type", type)
+        if auths is not None:
+            pulumi.set(__self__, "auths", auths)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of registry (VIRTUAL only supported)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def auths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]]]:
+        """
+        Authentication configuration for UPSTREAM type
+        """
+        return pulumi.get(self, "auths")
+
+    @auths.setter
+    def auths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]]]):
+        pulumi.set(self, "auths", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source of the upstream
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the upstream
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class HarRegistryConfigAuthArgsDict(TypedDict):
+        auth_type: pulumi.Input[str]
+        """
+        Type of authentication (UserPassword, Anonymous)
+        """
+        user_password: NotRequired[pulumi.Input['HarRegistryConfigAuthUserPasswordArgsDict']]
+        """
+        User password authentication details
+        """
+elif False:
+    HarRegistryConfigAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HarRegistryConfigAuthArgs:
+    def __init__(__self__, *,
+                 auth_type: pulumi.Input[str],
+                 user_password: Optional[pulumi.Input['HarRegistryConfigAuthUserPasswordArgs']] = None):
+        """
+        :param pulumi.Input[str] auth_type: Type of authentication (UserPassword, Anonymous)
+        :param pulumi.Input['HarRegistryConfigAuthUserPasswordArgs'] user_password: User password authentication details
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if user_password is not None:
+            pulumi.set(__self__, "user_password", user_password)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> pulumi.Input[str]:
+        """
+        Type of authentication (UserPassword, Anonymous)
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter(name="userPassword")
+    def user_password(self) -> Optional[pulumi.Input['HarRegistryConfigAuthUserPasswordArgs']]:
+        """
+        User password authentication details
+        """
+        return pulumi.get(self, "user_password")
+
+    @user_password.setter
+    def user_password(self, value: Optional[pulumi.Input['HarRegistryConfigAuthUserPasswordArgs']]):
+        pulumi.set(self, "user_password", value)
+
+
+if not MYPY:
+    class HarRegistryConfigAuthUserPasswordArgsDict(TypedDict):
+        user_name: pulumi.Input[str]
+        """
+        User name
+        """
+        secret_identifier: NotRequired[pulumi.Input[str]]
+        """
+        Secret identifier
+        """
+        secret_space_id: NotRequired[pulumi.Input[int]]
+        """
+        Secret space ID
+        """
+        secret_space_path: NotRequired[pulumi.Input[str]]
+        """
+        Secret space path
+        """
+elif False:
+    HarRegistryConfigAuthUserPasswordArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HarRegistryConfigAuthUserPasswordArgs:
+    def __init__(__self__, *,
+                 user_name: pulumi.Input[str],
+                 secret_identifier: Optional[pulumi.Input[str]] = None,
+                 secret_space_id: Optional[pulumi.Input[int]] = None,
+                 secret_space_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_name: User name
+        :param pulumi.Input[str] secret_identifier: Secret identifier
+        :param pulumi.Input[int] secret_space_id: Secret space ID
+        :param pulumi.Input[str] secret_space_path: Secret space path
+        """
+        pulumi.set(__self__, "user_name", user_name)
+        if secret_identifier is not None:
+            pulumi.set(__self__, "secret_identifier", secret_identifier)
+        if secret_space_id is not None:
+            pulumi.set(__self__, "secret_space_id", secret_space_id)
+        if secret_space_path is not None:
+            pulumi.set(__self__, "secret_space_path", secret_space_path)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> pulumi.Input[str]:
+        """
+        User name
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_name", value)
+
+    @property
+    @pulumi.getter(name="secretIdentifier")
+    def secret_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret identifier
+        """
+        return pulumi.get(self, "secret_identifier")
+
+    @secret_identifier.setter
+    def secret_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_identifier", value)
+
+    @property
+    @pulumi.getter(name="secretSpaceId")
+    def secret_space_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Secret space ID
+        """
+        return pulumi.get(self, "secret_space_id")
+
+    @secret_space_id.setter
+    def secret_space_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secret_space_id", value)
+
+    @property
+    @pulumi.getter(name="secretSpacePath")
+    def secret_space_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret space path
+        """
+        return pulumi.get(self, "secret_space_path")
+
+    @secret_space_path.setter
+    def secret_space_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_space_path", value)
+
+
+if not MYPY:
     class HelmConnectorCredentialsArgsDict(TypedDict):
         password_ref: pulumi.Input[str]
         """
@@ -20469,6 +20714,239 @@ class GetGitopsRepoCredCredArgs:
     @username.setter
     def username(self, value: str):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class GetHarRegistryConfigArgsDict(TypedDict):
+        type: str
+        """
+        Type of registry (VIRTUAL, UPSTREAM)
+        """
+        auths: NotRequired[Sequence['GetHarRegistryConfigAuthArgsDict']]
+        """
+        Authentication configuration for UPSTREAM type
+        """
+        source: NotRequired[str]
+        """
+        Source of the upstream
+        """
+        url: NotRequired[str]
+        """
+        URL of the upstream
+        """
+elif False:
+    GetHarRegistryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetHarRegistryConfigArgs:
+    def __init__(__self__, *,
+                 type: str,
+                 auths: Optional[Sequence['GetHarRegistryConfigAuthArgs']] = None,
+                 source: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str type: Type of registry (VIRTUAL, UPSTREAM)
+        :param Sequence['GetHarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM type
+        :param str source: Source of the upstream
+        :param str url: URL of the upstream
+        """
+        pulumi.set(__self__, "type", type)
+        if auths is not None:
+            pulumi.set(__self__, "auths", auths)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of registry (VIRTUAL, UPSTREAM)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def auths(self) -> Optional[Sequence['GetHarRegistryConfigAuthArgs']]:
+        """
+        Authentication configuration for UPSTREAM type
+        """
+        return pulumi.get(self, "auths")
+
+    @auths.setter
+    def auths(self, value: Optional[Sequence['GetHarRegistryConfigAuthArgs']]):
+        pulumi.set(self, "auths", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        Source of the upstream
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[str]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        URL of the upstream
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[str]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class GetHarRegistryConfigAuthArgsDict(TypedDict):
+        auth_type: str
+        """
+        Type of authentication (UserPassword, Anonymous)
+        """
+        user_password: NotRequired['GetHarRegistryConfigAuthUserPasswordArgsDict']
+        """
+        User password authentication details
+        """
+elif False:
+    GetHarRegistryConfigAuthArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetHarRegistryConfigAuthArgs:
+    def __init__(__self__, *,
+                 auth_type: str,
+                 user_password: Optional['GetHarRegistryConfigAuthUserPasswordArgs'] = None):
+        """
+        :param str auth_type: Type of authentication (UserPassword, Anonymous)
+        :param 'GetHarRegistryConfigAuthUserPasswordArgs' user_password: User password authentication details
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if user_password is not None:
+            pulumi.set(__self__, "user_password", user_password)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> str:
+        """
+        Type of authentication (UserPassword, Anonymous)
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: str):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter(name="userPassword")
+    def user_password(self) -> Optional['GetHarRegistryConfigAuthUserPasswordArgs']:
+        """
+        User password authentication details
+        """
+        return pulumi.get(self, "user_password")
+
+    @user_password.setter
+    def user_password(self, value: Optional['GetHarRegistryConfigAuthUserPasswordArgs']):
+        pulumi.set(self, "user_password", value)
+
+
+if not MYPY:
+    class GetHarRegistryConfigAuthUserPasswordArgsDict(TypedDict):
+        user_name: str
+        """
+        User name
+        """
+        secret_identifier: NotRequired[str]
+        """
+        Secret identifier
+        """
+        secret_space_id: NotRequired[int]
+        """
+        Secret space ID
+        """
+        secret_space_path: NotRequired[str]
+        """
+        Secret space path
+        """
+elif False:
+    GetHarRegistryConfigAuthUserPasswordArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetHarRegistryConfigAuthUserPasswordArgs:
+    def __init__(__self__, *,
+                 user_name: str,
+                 secret_identifier: Optional[str] = None,
+                 secret_space_id: Optional[int] = None,
+                 secret_space_path: Optional[str] = None):
+        """
+        :param str user_name: User name
+        :param str secret_identifier: Secret identifier
+        :param int secret_space_id: Secret space ID
+        :param str secret_space_path: Secret space path
+        """
+        pulumi.set(__self__, "user_name", user_name)
+        if secret_identifier is not None:
+            pulumi.set(__self__, "secret_identifier", secret_identifier)
+        if secret_space_id is not None:
+            pulumi.set(__self__, "secret_space_id", secret_space_id)
+        if secret_space_path is not None:
+            pulumi.set(__self__, "secret_space_path", secret_space_path)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        """
+        User name
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: str):
+        pulumi.set(self, "user_name", value)
+
+    @property
+    @pulumi.getter(name="secretIdentifier")
+    def secret_identifier(self) -> Optional[str]:
+        """
+        Secret identifier
+        """
+        return pulumi.get(self, "secret_identifier")
+
+    @secret_identifier.setter
+    def secret_identifier(self, value: Optional[str]):
+        pulumi.set(self, "secret_identifier", value)
+
+    @property
+    @pulumi.getter(name="secretSpaceId")
+    def secret_space_id(self) -> Optional[int]:
+        """
+        Secret space ID
+        """
+        return pulumi.get(self, "secret_space_id")
+
+    @secret_space_id.setter
+    def secret_space_id(self, value: Optional[int]):
+        pulumi.set(self, "secret_space_id", value)
+
+    @property
+    @pulumi.getter(name="secretSpacePath")
+    def secret_space_path(self) -> Optional[str]:
+        """
+        Secret space path
+        """
+        return pulumi.get(self, "secret_space_path")
+
+    @secret_space_path.setter
+    def secret_space_path(self, value: Optional[str]):
+        pulumi.set(self, "secret_space_path", value)
 
 
 if not MYPY:

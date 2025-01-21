@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlProxy;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,6 +102,21 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
     }
 
     /**
+     * Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+     * 
+     */
+    @Import(name="privateKey")
+    private @Nullable String privateKey;
+
+    /**
+     * @return Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+     * 
+     */
+    public Optional<String> privateKey() {
+        return Optional.ofNullable(this.privateKey);
+    }
+
+    /**
      * Project identifier of the GitOps agent.
      * 
      */
@@ -130,6 +146,21 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.proxies);
     }
 
+    /**
+     * Skip CRDs for the GitOps agent.
+     * 
+     */
+    @Import(name="skipCrds")
+    private @Nullable Boolean skipCrds;
+
+    /**
+     * @return Skip CRDs for the GitOps agent.
+     * 
+     */
+    public Optional<Boolean> skipCrds() {
+        return Optional.ofNullable(this.skipCrds);
+    }
+
     private GetGitopsAgentDeployYamlPlainArgs() {}
 
     private GetGitopsAgentDeployYamlPlainArgs(GetGitopsAgentDeployYamlPlainArgs $) {
@@ -138,8 +169,10 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
         this.identifier = $.identifier;
         this.namespace = $.namespace;
         this.orgId = $.orgId;
+        this.privateKey = $.privateKey;
         this.projectId = $.projectId;
         this.proxies = $.proxies;
+        this.skipCrds = $.skipCrds;
     }
 
     public static Builder builder() {
@@ -220,6 +253,17 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
         }
 
         /**
+         * @param privateKey Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateKey(@Nullable String privateKey) {
+            $.privateKey = privateKey;
+            return this;
+        }
+
+        /**
          * @param projectId Project identifier of the GitOps agent.
          * 
          * @return builder
@@ -249,6 +293,17 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
          */
         public Builder proxies(GetGitopsAgentDeployYamlProxy... proxies) {
             return proxies(List.of(proxies));
+        }
+
+        /**
+         * @param skipCrds Skip CRDs for the GitOps agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipCrds(@Nullable Boolean skipCrds) {
+            $.skipCrds = skipCrds;
+            return this;
         }
 
         public GetGitopsAgentDeployYamlPlainArgs build() {

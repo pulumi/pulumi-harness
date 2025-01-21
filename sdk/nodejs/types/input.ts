@@ -3010,6 +3010,104 @@ export namespace platform {
         username?: pulumi.Input<string>;
     }
 
+    export interface GetHarRegistryConfig {
+        /**
+         * Authentication configuration for UPSTREAM type
+         */
+        auths?: inputs.platform.GetHarRegistryConfigAuth[];
+        /**
+         * Source of the upstream
+         */
+        source?: string;
+        /**
+         * Type of registry (VIRTUAL, UPSTREAM)
+         */
+        type: string;
+        /**
+         * URL of the upstream
+         */
+        url?: string;
+    }
+
+    export interface GetHarRegistryConfigArgs {
+        /**
+         * Authentication configuration for UPSTREAM type
+         */
+        auths?: pulumi.Input<pulumi.Input<inputs.platform.GetHarRegistryConfigAuthArgs>[]>;
+        /**
+         * Source of the upstream
+         */
+        source?: pulumi.Input<string>;
+        /**
+         * Type of registry (VIRTUAL, UPSTREAM)
+         */
+        type: pulumi.Input<string>;
+        /**
+         * URL of the upstream
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface GetHarRegistryConfigAuth {
+        /**
+         * Type of authentication (UserPassword, Anonymous)
+         */
+        authType: string;
+        /**
+         * User password authentication details
+         */
+        userPassword?: inputs.platform.GetHarRegistryConfigAuthUserPassword;
+    }
+
+    export interface GetHarRegistryConfigAuthArgs {
+        /**
+         * Type of authentication (UserPassword, Anonymous)
+         */
+        authType: pulumi.Input<string>;
+        /**
+         * User password authentication details
+         */
+        userPassword?: pulumi.Input<inputs.platform.GetHarRegistryConfigAuthUserPasswordArgs>;
+    }
+
+    export interface GetHarRegistryConfigAuthUserPassword {
+        /**
+         * Secret identifier
+         */
+        secretIdentifier?: string;
+        /**
+         * Secret space ID
+         */
+        secretSpaceId?: number;
+        /**
+         * Secret space path
+         */
+        secretSpacePath?: string;
+        /**
+         * User name
+         */
+        userName: string;
+    }
+
+    export interface GetHarRegistryConfigAuthUserPasswordArgs {
+        /**
+         * Secret identifier
+         */
+        secretIdentifier?: pulumi.Input<string>;
+        /**
+         * Secret space ID
+         */
+        secretSpaceId?: pulumi.Input<number>;
+        /**
+         * Secret space path
+         */
+        secretSpacePath?: pulumi.Input<string>;
+        /**
+         * User name
+         */
+        userName: pulumi.Input<string>;
+    }
+
     export interface GetInfrastructureGitDetails {
         /**
          * Name of the branch.
@@ -5247,6 +5345,55 @@ export namespace platform {
          * Time zone of synchronization window.
          */
         timeZone?: pulumi.Input<string>;
+    }
+
+    export interface HarRegistryConfig {
+        /**
+         * Authentication configuration for UPSTREAM type
+         */
+        auths?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfigAuth>[]>;
+        /**
+         * Source of the upstream
+         */
+        source?: pulumi.Input<string>;
+        /**
+         * Type of registry (VIRTUAL only supported)
+         */
+        type: pulumi.Input<string>;
+        /**
+         * URL of the upstream
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface HarRegistryConfigAuth {
+        /**
+         * Type of authentication (UserPassword, Anonymous)
+         */
+        authType: pulumi.Input<string>;
+        /**
+         * User password authentication details
+         */
+        userPassword?: pulumi.Input<inputs.platform.HarRegistryConfigAuthUserPassword>;
+    }
+
+    export interface HarRegistryConfigAuthUserPassword {
+        /**
+         * Secret identifier
+         */
+        secretIdentifier?: pulumi.Input<string>;
+        /**
+         * Secret space ID
+         */
+        secretSpaceId?: pulumi.Input<number>;
+        /**
+         * Secret space path
+         */
+        secretSpacePath?: pulumi.Input<string>;
+        /**
+         * User name
+         */
+        userName: pulumi.Input<string>;
     }
 
     export interface HelmConnectorCredentials {

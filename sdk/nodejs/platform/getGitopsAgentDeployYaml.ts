@@ -32,8 +32,10 @@ export function getGitopsAgentDeployYaml(args: GetGitopsAgentDeployYamlArgs, opt
         "identifier": args.identifier,
         "namespace": args.namespace,
         "orgId": args.orgId,
+        "privateKey": args.privateKey,
         "projectId": args.projectId,
         "proxies": args.proxies,
+        "skipCrds": args.skipCrds,
     }, opts);
 }
 
@@ -64,6 +66,10 @@ export interface GetGitopsAgentDeployYamlArgs {
      */
     orgId?: string;
     /**
+     * Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+     */
+    privateKey?: string;
+    /**
      * Project identifier of the GitOps agent.
      */
     projectId?: string;
@@ -71,6 +77,10 @@ export interface GetGitopsAgentDeployYamlArgs {
      * Proxy settings for the GitOps agent.
      */
     proxies?: inputs.platform.GetGitopsAgentDeployYamlProxy[];
+    /**
+     * Skip CRDs for the GitOps agent.
+     */
+    skipCrds?: boolean;
 }
 
 /**
@@ -104,6 +114,10 @@ export interface GetGitopsAgentDeployYamlResult {
      */
     readonly orgId?: string;
     /**
+     * Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+     */
+    readonly privateKey?: string;
+    /**
      * Project identifier of the GitOps agent.
      */
     readonly projectId?: string;
@@ -111,6 +125,10 @@ export interface GetGitopsAgentDeployYamlResult {
      * Proxy settings for the GitOps agent.
      */
     readonly proxies?: outputs.platform.GetGitopsAgentDeployYamlProxy[];
+    /**
+     * Skip CRDs for the GitOps agent.
+     */
+    readonly skipCrds?: boolean;
     /**
      * The deployment manifest YAML of the GitOps agent.
      */
@@ -142,8 +160,10 @@ export function getGitopsAgentDeployYamlOutput(args: GetGitopsAgentDeployYamlOut
         "identifier": args.identifier,
         "namespace": args.namespace,
         "orgId": args.orgId,
+        "privateKey": args.privateKey,
         "projectId": args.projectId,
         "proxies": args.proxies,
+        "skipCrds": args.skipCrds,
     }, opts);
 }
 
@@ -174,6 +194,10 @@ export interface GetGitopsAgentDeployYamlOutputArgs {
      */
     orgId?: pulumi.Input<string>;
     /**
+     * Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+     */
+    privateKey?: pulumi.Input<string>;
+    /**
      * Project identifier of the GitOps agent.
      */
     projectId?: pulumi.Input<string>;
@@ -181,4 +205,8 @@ export interface GetGitopsAgentDeployYamlOutputArgs {
      * Proxy settings for the GitOps agent.
      */
     proxies?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsAgentDeployYamlProxyArgs>[]>;
+    /**
+     * Skip CRDs for the GitOps agent.
+     */
+    skipCrds?: pulumi.Input<boolean>;
 }

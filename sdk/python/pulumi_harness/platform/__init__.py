@@ -93,6 +93,7 @@ from .get_gitops_repo_cert import *
 from .get_gitops_repo_cred import *
 from .get_gitops_repository import *
 from .get_gitx_webhook import *
+from .get_har_registry import *
 from .get_helm_connector import *
 from .get_iacm_default_pipeline import *
 from .get_infra_module import *
@@ -163,6 +164,7 @@ from .gitlab_connector import *
 from .gitops_app_project import *
 from .gitops_app_project_mapping import *
 from .gitx_webhook import *
+from .har_registry import *
 from .helm_connector import *
 from .iacm_default_pipeline import *
 from .infra_module import *

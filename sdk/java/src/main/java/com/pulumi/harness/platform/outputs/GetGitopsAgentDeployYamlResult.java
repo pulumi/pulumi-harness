@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitopsAgentDeployYamlProxy;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,6 +50,11 @@ public final class GetGitopsAgentDeployYamlResult {
      */
     private @Nullable String orgId;
     /**
+     * @return Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+     * 
+     */
+    private @Nullable String privateKey;
+    /**
      * @return Project identifier of the GitOps agent.
      * 
      */
@@ -58,6 +64,11 @@ public final class GetGitopsAgentDeployYamlResult {
      * 
      */
     private @Nullable List<GetGitopsAgentDeployYamlProxy> proxies;
+    /**
+     * @return Skip CRDs for the GitOps agent.
+     * 
+     */
+    private @Nullable Boolean skipCrds;
     /**
      * @return The deployment manifest YAML of the GitOps agent.
      * 
@@ -112,6 +123,13 @@ public final class GetGitopsAgentDeployYamlResult {
         return Optional.ofNullable(this.orgId);
     }
     /**
+     * @return Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+     * 
+     */
+    public Optional<String> privateKey() {
+        return Optional.ofNullable(this.privateKey);
+    }
+    /**
      * @return Project identifier of the GitOps agent.
      * 
      */
@@ -124,6 +142,13 @@ public final class GetGitopsAgentDeployYamlResult {
      */
     public List<GetGitopsAgentDeployYamlProxy> proxies() {
         return this.proxies == null ? List.of() : this.proxies;
+    }
+    /**
+     * @return Skip CRDs for the GitOps agent.
+     * 
+     */
+    public Optional<Boolean> skipCrds() {
+        return Optional.ofNullable(this.skipCrds);
     }
     /**
      * @return The deployment manifest YAML of the GitOps agent.
@@ -148,8 +173,10 @@ public final class GetGitopsAgentDeployYamlResult {
         private String identifier;
         private String namespace;
         private @Nullable String orgId;
+        private @Nullable String privateKey;
         private @Nullable String projectId;
         private @Nullable List<GetGitopsAgentDeployYamlProxy> proxies;
+        private @Nullable Boolean skipCrds;
         private String yaml;
         public Builder() {}
         public Builder(GetGitopsAgentDeployYamlResult defaults) {
@@ -160,8 +187,10 @@ public final class GetGitopsAgentDeployYamlResult {
     	      this.identifier = defaults.identifier;
     	      this.namespace = defaults.namespace;
     	      this.orgId = defaults.orgId;
+    	      this.privateKey = defaults.privateKey;
     	      this.projectId = defaults.projectId;
     	      this.proxies = defaults.proxies;
+    	      this.skipCrds = defaults.skipCrds;
     	      this.yaml = defaults.yaml;
         }
 
@@ -210,6 +239,12 @@ public final class GetGitopsAgentDeployYamlResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateKey(@Nullable String privateKey) {
+
+            this.privateKey = privateKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
 
             this.projectId = projectId;
@@ -223,6 +258,12 @@ public final class GetGitopsAgentDeployYamlResult {
         }
         public Builder proxies(GetGitopsAgentDeployYamlProxy... proxies) {
             return proxies(List.of(proxies));
+        }
+        @CustomType.Setter
+        public Builder skipCrds(@Nullable Boolean skipCrds) {
+
+            this.skipCrds = skipCrds;
+            return this;
         }
         @CustomType.Setter
         public Builder yaml(String yaml) {
@@ -240,8 +281,10 @@ public final class GetGitopsAgentDeployYamlResult {
             _resultValue.identifier = identifier;
             _resultValue.namespace = namespace;
             _resultValue.orgId = orgId;
+            _resultValue.privateKey = privateKey;
             _resultValue.projectId = projectId;
             _resultValue.proxies = proxies;
+            _resultValue.skipCrds = skipCrds;
             _resultValue.yaml = yaml;
             return _resultValue;
         }

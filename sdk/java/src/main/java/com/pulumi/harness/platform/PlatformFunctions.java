@@ -109,6 +109,8 @@ import com.pulumi.harness.platform.inputs.GetGitopsRepositoryArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepositoryPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitxWebhookArgs;
 import com.pulumi.harness.platform.inputs.GetGitxWebhookPlainArgs;
+import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
+import com.pulumi.harness.platform.inputs.GetHarRegistryPlainArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
@@ -274,6 +276,7 @@ import com.pulumi.harness.platform.outputs.GetGitopsRepoCertResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCredResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepositoryResult;
 import com.pulumi.harness.platform.outputs.GetGitxWebhookResult;
+import com.pulumi.harness.platform.outputs.GetHarRegistryResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleResult;
@@ -11468,6 +11471,221 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetGitxWebhookResult> getGitxWebhookPlain(GetGitxWebhookPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitxWebhook:getGitxWebhook", TypeShape.of(GetGitxWebhookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data Source for retrieving a Harness Artifact registry
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getHarRegistry(GetHarRegistryArgs.builder()
+     *             .identifier("test_registry")
+     *             .spaceRef("accountId/orgId/projectId")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHarRegistryResult> getHarRegistry(GetHarRegistryArgs args) {
+        return getHarRegistry(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data Source for retrieving a Harness Artifact registry
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getHarRegistry(GetHarRegistryArgs.builder()
+     *             .identifier("test_registry")
+     *             .spaceRef("accountId/orgId/projectId")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHarRegistryResult> getHarRegistryPlain(GetHarRegistryPlainArgs args) {
+        return getHarRegistryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data Source for retrieving a Harness Artifact registry
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getHarRegistry(GetHarRegistryArgs.builder()
+     *             .identifier("test_registry")
+     *             .spaceRef("accountId/orgId/projectId")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHarRegistryResult> getHarRegistry(GetHarRegistryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getHarRegistry:getHarRegistry", TypeShape.of(GetHarRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data Source for retrieving a Harness Artifact registry
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getHarRegistry(GetHarRegistryArgs.builder()
+     *             .identifier("test_registry")
+     *             .spaceRef("accountId/orgId/projectId")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHarRegistryResult> getHarRegistry(GetHarRegistryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getHarRegistry:getHarRegistry", TypeShape.of(GetHarRegistryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data Source for retrieving a Harness Artifact registry
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getHarRegistry(GetHarRegistryArgs.builder()
+     *             .identifier("test_registry")
+     *             .spaceRef("accountId/orgId/projectId")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHarRegistryResult> getHarRegistryPlain(GetHarRegistryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getHarRegistry:getHarRegistry", TypeShape.of(GetHarRegistryResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for looking up a HTTP Helm connector.

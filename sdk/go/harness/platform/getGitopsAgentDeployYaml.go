@@ -66,10 +66,14 @@ type GetGitopsAgentDeployYamlArgs struct {
 	Namespace string `pulumi:"namespace"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
+	// Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+	PrivateKey *string `pulumi:"privateKey"`
 	// Project identifier of the GitOps agent.
 	ProjectId *string `pulumi:"projectId"`
 	// Proxy settings for the GitOps agent.
 	Proxies []GetGitopsAgentDeployYamlProxy `pulumi:"proxies"`
+	// Skip CRDs for the GitOps agent.
+	SkipCrds *bool `pulumi:"skipCrds"`
 }
 
 // A collection of values returned by getGitopsAgentDeployYaml.
@@ -88,10 +92,14 @@ type GetGitopsAgentDeployYamlResult struct {
 	Namespace string `pulumi:"namespace"`
 	// Organization identifier of the GitOps agent.
 	OrgId *string `pulumi:"orgId"`
+	// Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+	PrivateKey *string `pulumi:"privateKey"`
 	// Project identifier of the GitOps agent.
 	ProjectId *string `pulumi:"projectId"`
 	// Proxy settings for the GitOps agent.
 	Proxies []GetGitopsAgentDeployYamlProxy `pulumi:"proxies"`
+	// Skip CRDs for the GitOps agent.
+	SkipCrds *bool `pulumi:"skipCrds"`
 	// The deployment manifest YAML of the GitOps agent.
 	Yaml string `pulumi:"yaml"`
 }
@@ -119,10 +127,14 @@ type GetGitopsAgentDeployYamlOutputArgs struct {
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// Organization identifier of the GitOps agent.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// Project identifier of the GitOps agent.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Proxy settings for the GitOps agent.
 	Proxies GetGitopsAgentDeployYamlProxyArrayInput `pulumi:"proxies"`
+	// Skip CRDs for the GitOps agent.
+	SkipCrds pulumi.BoolPtrInput `pulumi:"skipCrds"`
 }
 
 func (GetGitopsAgentDeployYamlOutputArgs) ElementType() reflect.Type {
@@ -176,6 +188,11 @@ func (o GetGitopsAgentDeployYamlResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+func (o GetGitopsAgentDeployYamlResultOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
 // Project identifier of the GitOps agent.
 func (o GetGitopsAgentDeployYamlResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
@@ -184,6 +201,11 @@ func (o GetGitopsAgentDeployYamlResultOutput) ProjectId() pulumi.StringPtrOutput
 // Proxy settings for the GitOps agent.
 func (o GetGitopsAgentDeployYamlResultOutput) Proxies() GetGitopsAgentDeployYamlProxyArrayOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) []GetGitopsAgentDeployYamlProxy { return v.Proxies }).(GetGitopsAgentDeployYamlProxyArrayOutput)
+}
+
+// Skip CRDs for the GitOps agent.
+func (o GetGitopsAgentDeployYamlResultOutput) SkipCrds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) *bool { return v.SkipCrds }).(pulumi.BoolPtrOutput)
 }
 
 // The deployment manifest YAML of the GitOps agent.
