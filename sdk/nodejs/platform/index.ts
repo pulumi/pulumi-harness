@@ -445,6 +445,11 @@ export const getGitxWebhook: typeof import("./getGitxWebhook").getGitxWebhook = 
 export const getGitxWebhookOutput: typeof import("./getGitxWebhook").getGitxWebhookOutput = null as any;
 utilities.lazyLoad(exports, ["getGitxWebhook","getGitxWebhookOutput"], () => require("./getGitxWebhook"));
 
+export { GetHarRegistryArgs, GetHarRegistryResult, GetHarRegistryOutputArgs } from "./getHarRegistry";
+export const getHarRegistry: typeof import("./getHarRegistry").getHarRegistry = null as any;
+export const getHarRegistryOutput: typeof import("./getHarRegistry").getHarRegistryOutput = null as any;
+utilities.lazyLoad(exports, ["getHarRegistry","getHarRegistryOutput"], () => require("./getHarRegistry"));
+
 export { GetHelmConnectorArgs, GetHelmConnectorResult, GetHelmConnectorOutputArgs } from "./getHelmConnector";
 export const getHelmConnector: typeof import("./getHelmConnector").getHelmConnector = null as any;
 export const getHelmConnectorOutput: typeof import("./getHelmConnector").getHelmConnectorOutput = null as any;
@@ -794,6 +799,11 @@ export { GitxWebhookArgs, GitxWebhookState } from "./gitxWebhook";
 export type GitxWebhook = import("./gitxWebhook").GitxWebhook;
 export const GitxWebhook: typeof import("./gitxWebhook").GitxWebhook = null as any;
 utilities.lazyLoad(exports, ["GitxWebhook"], () => require("./gitxWebhook"));
+
+export { HarRegistryArgs, HarRegistryState } from "./harRegistry";
+export type HarRegistry = import("./harRegistry").HarRegistry;
+export const HarRegistry: typeof import("./harRegistry").HarRegistry = null as any;
+utilities.lazyLoad(exports, ["HarRegistry"], () => require("./harRegistry"));
 
 export { HelmConnectorArgs, HelmConnectorState } from "./helmConnector";
 export type HelmConnector = import("./helmConnector").HelmConnector;
@@ -1165,6 +1175,8 @@ const _module = {
                 return new GitopsAppProjectMapping(name, <any>undefined, { urn })
             case "harness:platform/gitxWebhook:GitxWebhook":
                 return new GitxWebhook(name, <any>undefined, { urn })
+            case "harness:platform/harRegistry:HarRegistry":
+                return new HarRegistry(name, <any>undefined, { urn })
             case "harness:platform/helmConnector:HelmConnector":
                 return new HelmConnector(name, <any>undefined, { urn })
             case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
@@ -1326,6 +1338,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _mo
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProject", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMapping", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModule", _module)

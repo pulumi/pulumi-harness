@@ -4190,6 +4190,55 @@ export namespace platform {
         username: string;
     }
 
+    export interface GetHarRegistryConfig {
+        /**
+         * Authentication configuration for UPSTREAM type
+         */
+        auths?: outputs.platform.GetHarRegistryConfigAuth[];
+        /**
+         * Source of the upstream
+         */
+        source?: string;
+        /**
+         * Type of registry (VIRTUAL, UPSTREAM)
+         */
+        type: string;
+        /**
+         * URL of the upstream
+         */
+        url?: string;
+    }
+
+    export interface GetHarRegistryConfigAuth {
+        /**
+         * Type of authentication (UserPassword, Anonymous)
+         */
+        authType: string;
+        /**
+         * User password authentication details
+         */
+        userPassword?: outputs.platform.GetHarRegistryConfigAuthUserPassword;
+    }
+
+    export interface GetHarRegistryConfigAuthUserPassword {
+        /**
+         * Secret identifier
+         */
+        secretIdentifier?: string;
+        /**
+         * Secret space ID
+         */
+        secretSpaceId?: number;
+        /**
+         * Secret space path
+         */
+        secretSpacePath?: string;
+        /**
+         * User name
+         */
+        userName: string;
+    }
+
     export interface GetHelmConnectorCredential {
         /**
          * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -6840,6 +6889,55 @@ export namespace platform {
          * Time zone of synchronization window.
          */
         timeZone: string;
+    }
+
+    export interface HarRegistryConfig {
+        /**
+         * Authentication configuration for UPSTREAM type
+         */
+        auths?: outputs.platform.HarRegistryConfigAuth[];
+        /**
+         * Source of the upstream
+         */
+        source?: string;
+        /**
+         * Type of registry (VIRTUAL only supported)
+         */
+        type: string;
+        /**
+         * URL of the upstream
+         */
+        url?: string;
+    }
+
+    export interface HarRegistryConfigAuth {
+        /**
+         * Type of authentication (UserPassword, Anonymous)
+         */
+        authType: string;
+        /**
+         * User password authentication details
+         */
+        userPassword?: outputs.platform.HarRegistryConfigAuthUserPassword;
+    }
+
+    export interface HarRegistryConfigAuthUserPassword {
+        /**
+         * Secret identifier
+         */
+        secretIdentifier?: string;
+        /**
+         * Secret space ID
+         */
+        secretSpaceId?: number;
+        /**
+         * Secret space path
+         */
+        secretSpacePath?: string;
+        /**
+         * User name
+         */
+        userName: string;
     }
 
     export interface HelmConnectorCredentials {

@@ -758,6 +758,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/harRegistry",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/harRegistry:HarRegistry": "HarRegistry"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/helmConnector",
   "fqn": "pulumi_harness.platform",
   "classes": {

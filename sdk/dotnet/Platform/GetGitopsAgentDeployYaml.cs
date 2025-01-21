@@ -130,6 +130,12 @@ namespace Pulumi.Harness.Platform
         public string? OrgId { get; set; }
 
         /// <summary>
+        /// Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+        /// </summary>
+        [Input("privateKey")]
+        public string? PrivateKey { get; set; }
+
+        /// <summary>
         /// Project identifier of the GitOps agent.
         /// </summary>
         [Input("projectId")]
@@ -146,6 +152,12 @@ namespace Pulumi.Harness.Platform
             get => _proxies ?? (_proxies = new List<Inputs.GetGitopsAgentDeployYamlProxyArgs>());
             set => _proxies = value;
         }
+
+        /// <summary>
+        /// Skip CRDs for the GitOps agent.
+        /// </summary>
+        [Input("skipCrds")]
+        public bool? SkipCrds { get; set; }
 
         public GetGitopsAgentDeployYamlArgs()
         {
@@ -186,6 +198,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
+        /// Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+        /// </summary>
+        [Input("privateKey")]
+        public Input<string>? PrivateKey { get; set; }
+
+        /// <summary>
         /// Project identifier of the GitOps agent.
         /// </summary>
         [Input("projectId")]
@@ -202,6 +220,12 @@ namespace Pulumi.Harness.Platform
             get => _proxies ?? (_proxies = new InputList<Inputs.GetGitopsAgentDeployYamlProxyInputArgs>());
             set => _proxies = value;
         }
+
+        /// <summary>
+        /// Skip CRDs for the GitOps agent.
+        /// </summary>
+        [Input("skipCrds")]
+        public Input<bool>? SkipCrds { get; set; }
 
         public GetGitopsAgentDeployYamlInvokeArgs()
         {
@@ -238,6 +262,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
+        /// Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
+        /// </summary>
+        public readonly string? PrivateKey;
+        /// <summary>
         /// Project identifier of the GitOps agent.
         /// </summary>
         public readonly string? ProjectId;
@@ -245,6 +273,10 @@ namespace Pulumi.Harness.Platform
         /// Proxy settings for the GitOps agent.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsAgentDeployYamlProxyResult> Proxies;
+        /// <summary>
+        /// Skip CRDs for the GitOps agent.
+        /// </summary>
+        public readonly bool? SkipCrds;
         /// <summary>
         /// The deployment manifest YAML of the GitOps agent.
         /// </summary>
@@ -264,9 +296,13 @@ namespace Pulumi.Harness.Platform
 
             string? orgId,
 
+            string? privateKey,
+
             string? projectId,
 
             ImmutableArray<Outputs.GetGitopsAgentDeployYamlProxyResult> proxies,
+
+            bool? skipCrds,
 
             string yaml)
         {
@@ -276,8 +312,10 @@ namespace Pulumi.Harness.Platform
             Identifier = identifier;
             Namespace = @namespace;
             OrgId = orgId;
+            PrivateKey = privateKey;
             ProjectId = projectId;
             Proxies = proxies;
+            SkipCrds = skipCrds;
             Yaml = yaml;
         }
     }

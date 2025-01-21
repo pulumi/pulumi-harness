@@ -5795,6 +5795,73 @@
                 }
             }
         },
+        "harness:platform/HarRegistryConfig:HarRegistryConfig": {
+            "properties": {
+                "auths": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/HarRegistryConfigAuth:HarRegistryConfigAuth"
+                    },
+                    "description": "Authentication configuration for UPSTREAM type\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Source of the upstream\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of registry (VIRTUAL only supported)\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the upstream\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "harness:platform/HarRegistryConfigAuth:HarRegistryConfigAuth": {
+            "properties": {
+                "authType": {
+                    "type": "string",
+                    "description": "Type of authentication (UserPassword, Anonymous)\n"
+                },
+                "userPassword": {
+                    "$ref": "#/types/harness:platform/HarRegistryConfigAuthUserPassword:HarRegistryConfigAuthUserPassword",
+                    "description": "User password authentication details\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authType"
+            ]
+        },
+        "harness:platform/HarRegistryConfigAuthUserPassword:HarRegistryConfigAuthUserPassword": {
+            "properties": {
+                "secretIdentifier": {
+                    "type": "string",
+                    "description": "Secret identifier\n"
+                },
+                "secretSpaceId": {
+                    "type": "integer",
+                    "description": "Secret space ID\n"
+                },
+                "secretSpacePath": {
+                    "type": "string",
+                    "description": "Secret space path\n"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "User name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "userName"
+            ]
+        },
         "harness:platform/HelmConnectorCredentials:HelmConnectorCredentials": {
             "properties": {
                 "passwordRef": {
@@ -11217,6 +11284,73 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "harness:platform/getHarRegistryConfig:getHarRegistryConfig": {
+            "properties": {
+                "auths": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getHarRegistryConfigAuth:getHarRegistryConfigAuth"
+                    },
+                    "description": "Authentication configuration for UPSTREAM type\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Source of the upstream\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of registry (VIRTUAL, UPSTREAM)\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the upstream\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "harness:platform/getHarRegistryConfigAuth:getHarRegistryConfigAuth": {
+            "properties": {
+                "authType": {
+                    "type": "string",
+                    "description": "Type of authentication (UserPassword, Anonymous)\n"
+                },
+                "userPassword": {
+                    "$ref": "#/types/harness:platform/getHarRegistryConfigAuthUserPassword:getHarRegistryConfigAuthUserPassword",
+                    "description": "User password authentication details\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authType"
+            ]
+        },
+        "harness:platform/getHarRegistryConfigAuthUserPassword:getHarRegistryConfigAuthUserPassword": {
+            "properties": {
+                "secretIdentifier": {
+                    "type": "string",
+                    "description": "Secret identifier\n"
+                },
+                "secretSpaceId": {
+                    "type": "integer",
+                    "description": "Secret space ID\n"
+                },
+                "secretSpacePath": {
+                    "type": "string",
+                    "description": "Secret space path\n"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "User name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "userName"
+            ]
         },
         "harness:platform/getHelmConnectorCredential:getHelmConnectorCredential": {
             "properties": {
@@ -26260,6 +26394,170 @@
                             "type": "string"
                         },
                         "description": "Tags to associate with the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/harRegistry:HarRegistry": {
+            "description": "Resource for create, update, list registry\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.HarRegistry(\"test\", {\n    identifier: \"test_registry\",\n    spaceRef: \"accountId/orgId/projectId\",\n    packageType: \"DOCKER\",\n    configs: [{\n        type: \"VIRTUAL\",\n    }],\n    parentRef: \"accountId/orgId/projectId\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.HarRegistry(\"test\",\n    identifier=\"test_registry\",\n    space_ref=\"accountId/orgId/projectId\",\n    package_type=\"DOCKER\",\n    configs=[{\n        \"type\": \"VIRTUAL\",\n    }],\n    parent_ref=\"accountId/orgId/projectId\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.HarRegistry(\"test\", new()\n    {\n        Identifier = \"test_registry\",\n        SpaceRef = \"accountId/orgId/projectId\",\n        PackageType = \"DOCKER\",\n        Configs = new[]\n        {\n            new Harness.Platform.Inputs.HarRegistryConfigArgs\n            {\n                Type = \"VIRTUAL\",\n            },\n        },\n        ParentRef = \"accountId/orgId/projectId\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewHarRegistry(ctx, \"test\", \u0026platform.HarRegistryArgs{\n\t\t\tIdentifier:  pulumi.String(\"test_registry\"),\n\t\t\tSpaceRef:    pulumi.String(\"accountId/orgId/projectId\"),\n\t\t\tPackageType: pulumi.String(\"DOCKER\"),\n\t\t\tConfigs: platform.HarRegistryConfigArray{\n\t\t\t\t\u0026platform.HarRegistryConfigArgs{\n\t\t\t\t\tType: pulumi.String(\"VIRTUAL\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tParentRef: pulumi.String(\"accountId/orgId/projectId\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.HarRegistry;\nimport com.pulumi.harness.platform.HarRegistryArgs;\nimport com.pulumi.harness.platform.inputs.HarRegistryConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new HarRegistry(\"test\", HarRegistryArgs.builder()\n            .identifier(\"test_registry\")\n            .spaceRef(\"accountId/orgId/projectId\")\n            .packageType(\"DOCKER\")\n            .configs(HarRegistryConfigArgs.builder()\n                .type(\"VIRTUAL\")\n                .build())\n            .parentRef(\"accountId/orgId/projectId\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:HarRegistry\n    properties:\n      identifier: test_registry\n      spaceRef: accountId/orgId/projectId\n      packageType: DOCKER\n      configs:\n        - type: VIRTUAL\n      parentRef: accountId/orgId/projectId\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "allowedPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowed pattern for the registry\n"
+                },
+                "blockedPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Blocked pattern for the registry\n"
+                },
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/HarRegistryConfig:HarRegistryConfig"
+                    },
+                    "description": "Type of registry.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp when the registry was created\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the registry\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "packageType": {
+                    "type": "string",
+                    "description": "Type of package (DOCKER, MAVEN, etc.)\n"
+                },
+                "parentRef": {
+                    "type": "string",
+                    "description": "Parent Reference of the registry.\n"
+                },
+                "spaceRef": {
+                    "type": "string",
+                    "description": "Reference of the space.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the registry\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "identifier",
+                "packageType",
+                "url"
+            ],
+            "inputProperties": {
+                "allowedPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowed pattern for the registry\n"
+                },
+                "blockedPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Blocked pattern for the registry\n"
+                },
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/HarRegistryConfig:HarRegistryConfig"
+                    },
+                    "description": "Type of registry.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the registry\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "packageType": {
+                    "type": "string",
+                    "description": "Type of package (DOCKER, MAVEN, etc.)\n"
+                },
+                "parentRef": {
+                    "type": "string",
+                    "description": "Parent Reference of the registry.\n"
+                },
+                "spaceRef": {
+                    "type": "string",
+                    "description": "Reference of the space.\n"
+                }
+            },
+            "requiredInputs": [
+                "identifier",
+                "packageType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HarRegistry resources.\n",
+                "properties": {
+                    "allowedPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Allowed pattern for the registry\n"
+                    },
+                    "blockedPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Blocked pattern for the registry\n"
+                    },
+                    "configs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/HarRegistryConfig:HarRegistryConfig"
+                        },
+                        "description": "Type of registry.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Timestamp when the registry was created\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the registry\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "packageType": {
+                        "type": "string",
+                        "description": "Type of package (DOCKER, MAVEN, etc.)\n"
+                    },
+                    "parentRef": {
+                        "type": "string",
+                        "description": "Parent Reference of the registry.\n"
+                    },
+                    "spaceRef": {
+                        "type": "string",
+                        "description": "Reference of the space.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "URL of the registry\n"
                     }
                 },
                 "type": "object"
@@ -42139,6 +42437,10 @@
                         "type": "string",
                         "description": "Organization identifier of the GitOps agent.\n"
                     },
+                    "privateKey": {
+                        "type": "string",
+                        "description": "Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.\n"
+                    },
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps agent.\n"
@@ -42149,6 +42451,10 @@
                             "$ref": "#/types/harness:platform/getGitopsAgentDeployYamlProxy:getGitopsAgentDeployYamlProxy"
                         },
                         "description": "Proxy settings for the GitOps agent.\n"
+                    },
+                    "skipCrds": {
+                        "type": "boolean",
+                        "description": "Skip CRDs for the GitOps agent.\n"
                     }
                 },
                 "type": "object",
@@ -42185,6 +42491,10 @@
                         "description": "Organization identifier of the GitOps agent.\n",
                         "type": "string"
                     },
+                    "privateKey": {
+                        "description": "Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.\n",
+                        "type": "string"
+                    },
                     "projectId": {
                         "description": "Project identifier of the GitOps agent.\n",
                         "type": "string"
@@ -42195,6 +42505,10 @@
                             "$ref": "#/types/harness:platform/getGitopsAgentDeployYamlProxy:getGitopsAgentDeployYamlProxy"
                         },
                         "type": "array"
+                    },
+                    "skipCrds": {
+                        "description": "Skip CRDs for the GitOps agent.\n",
+                        "type": "boolean"
                     },
                     "yaml": {
                         "description": "The deployment manifest YAML of the GitOps agent.\n",
@@ -42978,6 +43292,113 @@
                 "required": [
                     "identifier",
                     "name",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getHarRegistry:getHarRegistry": {
+            "description": "Data Source for retrieving a Harness Artifact registry\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getHarRegistry({\n    identifier: \"test_registry\",\n    spaceRef: \"accountId/orgId/projectId\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_har_registry(identifier=\"test_registry\",\n    space_ref=\"accountId/orgId/projectId\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetHarRegistry.Invoke(new()\n    {\n        Identifier = \"test_registry\",\n        SpaceRef = \"accountId/orgId/projectId\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupHarRegistry(ctx, \u0026platform.LookupHarRegistryArgs{\n\t\t\tIdentifier: \"test_registry\",\n\t\t\tSpaceRef:   \"accountId/orgId/projectId\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetHarRegistryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getHarRegistry(GetHarRegistryArgs.builder()\n            .identifier(\"test_registry\")\n            .spaceRef(\"accountId/orgId/projectId\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: harness:platform:getHarRegistry\n      arguments:\n        identifier: test_registry\n        spaceRef: accountId/orgId/projectId\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHarRegistry.\n",
+                "properties": {
+                    "allowedPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "blockedPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "configs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getHarRegistryConfig:getHarRegistryConfig"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "packageType": {
+                        "type": "string"
+                    },
+                    "parentRef": {
+                        "type": "string"
+                    },
+                    "spaceRef": {
+                        "type": "string",
+                        "description": "Reference of the space.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "spaceRef"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHarRegistry.\n",
+                "properties": {
+                    "allowedPatterns": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "blockedPatterns": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "configs": {
+                        "items": {
+                            "$ref": "#/types/harness:platform/getHarRegistryConfig:getHarRegistryConfig"
+                        },
+                        "type": "array"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "packageType": {
+                        "type": "string"
+                    },
+                    "parentRef": {
+                        "type": "string"
+                    },
+                    "spaceRef": {
+                        "description": "Reference of the space.\n",
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "identifier",
+                    "spaceRef",
+                    "url",
                     "id"
                 ],
                 "type": "object"

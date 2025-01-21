@@ -1980,6 +1980,34 @@
                     }
                 }
             },
+            "harness_platform_har_registry": {
+                "current": "harness:platform/harRegistry:HarRegistry",
+                "fields": {
+                    "allowed_pattern": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_pattern": {
+                        "maxItemsOne": false
+                    },
+                    "config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "auth": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "user_password": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
             },
@@ -4555,6 +4583,34 @@
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_har_registry": {
+                "current": "harness:platform/getHarRegistry:getHarRegistry",
+                "fields": {
+                    "allowed_pattern": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_pattern": {
+                        "maxItemsOne": false
+                    },
+                    "config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "auth": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "user_password": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
