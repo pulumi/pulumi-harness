@@ -24943,6 +24943,10 @@
                     "type": "string",
                     "description": "Agent identifier of the GitOps cluster. (include scope prefix)\n"
                 },
+                "forceDelete": {
+                    "type": "boolean",
+                    "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Identifier of the GitOps cluster.\n"
@@ -24978,6 +24982,10 @@
                     "type": "string",
                     "description": "Agent identifier of the GitOps cluster. (include scope prefix)\n",
                     "willReplaceOnChanges": true
+                },
+                "forceDelete": {
+                    "type": "boolean",
+                    "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -25018,6 +25026,10 @@
                         "type": "string",
                         "description": "Agent identifier of the GitOps cluster. (include scope prefix)\n",
                         "willReplaceOnChanges": true
+                    },
+                    "forceDelete": {
+                        "type": "boolean",
+                        "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.\n"
                     },
                     "identifier": {
                         "type": "string",
