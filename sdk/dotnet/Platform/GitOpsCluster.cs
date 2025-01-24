@@ -48,6 +48,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier of the GitOps cluster.
         /// </summary>
         [Output("identifier")]
@@ -131,6 +137,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
+        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// Identifier of the GitOps cluster.
         /// </summary>
         [Input("identifier", required: true)]
@@ -179,6 +191,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
+
+        /// <summary>
+        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps cluster.

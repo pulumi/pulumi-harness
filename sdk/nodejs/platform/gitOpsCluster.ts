@@ -68,6 +68,10 @@ export class GitOpsCluster extends pulumi.CustomResource {
      */
     public readonly agentId!: pulumi.Output<string>;
     /**
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     */
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier of the GitOps cluster.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class GitOpsCluster extends pulumi.CustomResource {
             const state = argsOrState as GitOpsClusterState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["agentId"] = state ? state.agentId : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -113,6 +118,7 @@ export class GitOpsCluster extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -137,6 +143,10 @@ export interface GitOpsClusterState {
      * Agent identifier of the GitOps cluster. (include scope prefix)
      */
     agentId?: pulumi.Input<string>;
+    /**
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Identifier of the GitOps cluster.
      */
@@ -169,6 +179,10 @@ export interface GitOpsClusterArgs {
      * Agent identifier of the GitOps cluster. (include scope prefix)
      */
     agentId: pulumi.Input<string>;
+    /**
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     */
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Identifier of the GitOps cluster.
      */
