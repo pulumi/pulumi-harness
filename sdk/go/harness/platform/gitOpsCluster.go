@@ -42,6 +42,8 @@ type GitOpsCluster struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
+	// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Organization identifier of the cluster.
@@ -94,6 +96,8 @@ type gitOpsClusterState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId *string `pulumi:"agentId"`
+	// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Identifier of the GitOps cluster.
 	Identifier *string `pulumi:"identifier"`
 	// Organization identifier of the cluster.
@@ -111,6 +115,8 @@ type GitOpsClusterState struct {
 	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringPtrInput
+	// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete pulumi.BoolPtrInput
 	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringPtrInput
 	// Organization identifier of the cluster.
@@ -132,6 +138,8 @@ type gitOpsClusterArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId string `pulumi:"agentId"`
+	// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Identifier of the GitOps cluster.
 	Identifier string `pulumi:"identifier"`
 	// Organization identifier of the cluster.
@@ -150,6 +158,8 @@ type GitOpsClusterArgs struct {
 	AccountId pulumi.StringPtrInput
 	// Agent identifier of the GitOps cluster. (include scope prefix)
 	AgentId pulumi.StringInput
+	// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+	ForceDelete pulumi.BoolPtrInput
 	// Identifier of the GitOps cluster.
 	Identifier pulumi.StringInput
 	// Organization identifier of the cluster.
@@ -257,6 +267,11 @@ func (o GitOpsClusterOutput) AccountId() pulumi.StringOutput {
 // Agent identifier of the GitOps cluster. (include scope prefix)
 func (o GitOpsClusterOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsCluster) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+func (o GitOpsClusterOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitOpsCluster) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier of the GitOps cluster.

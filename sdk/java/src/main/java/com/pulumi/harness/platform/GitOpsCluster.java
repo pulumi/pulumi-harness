@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.GitOpsClusterArgs;
 import com.pulumi.harness.platform.inputs.GitOpsClusterState;
 import com.pulumi.harness.platform.outputs.GitOpsClusterRequest;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -73,6 +74,20 @@ public class GitOpsCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> agentId() {
         return this.agentId;
+    }
+    /**
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
     }
     /**
      * Identifier of the GitOps cluster.

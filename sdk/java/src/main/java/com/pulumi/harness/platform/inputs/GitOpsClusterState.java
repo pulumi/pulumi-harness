@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -53,6 +54,21 @@ public final class GitOpsClusterState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> agentId() {
         return Optional.ofNullable(this.agentId);
+    }
+
+    /**
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
     }
 
     /**
@@ -120,6 +136,7 @@ public final class GitOpsClusterState extends com.pulumi.resources.ResourceArgs 
     private GitOpsClusterState(GitOpsClusterState $) {
         this.accountId = $.accountId;
         this.agentId = $.agentId;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -192,6 +209,27 @@ public final class GitOpsClusterState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder agentId(String agentId) {
             return agentId(Output.of(agentId));
+        }
+
+        /**
+         * @param forceDelete Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**
