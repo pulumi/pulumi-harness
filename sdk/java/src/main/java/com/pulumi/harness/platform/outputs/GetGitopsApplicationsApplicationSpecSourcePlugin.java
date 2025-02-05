@@ -19,7 +19,7 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
      */
     private @Nullable List<GetGitopsApplicationsApplicationSpecSourcePluginEnv> envs;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the plugin.
      * 
      */
     private @Nullable String name;
@@ -33,7 +33,7 @@ public final class GetGitopsApplicationsApplicationSpecSourcePlugin {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the plugin.
      * 
      */
     public Optional<String> name() {

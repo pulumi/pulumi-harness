@@ -17,7 +17,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
      */
     private @Nullable String component;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the parameter of the ksonnet application.
      * 
      */
     private @Nullable String name;
@@ -36,7 +36,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceKsonnetParameter {
         return Optional.ofNullable(this.component);
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the parameter of the ksonnet application.
      * 
      */
     public Optional<String> name() {

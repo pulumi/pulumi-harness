@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     name: "name",
  *     cloudConnectorId: "cloud_connector_id",
  *     idleTimeMins: 10,
+ *     dryRun: true,
  *     filter: {
  *         vmIds: ["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
  *         regions: ["useast2"],
@@ -109,6 +110,10 @@ export class RuleVm extends pulumi.CustomResource {
      * Dependent rules
      */
     public readonly depends!: pulumi.Output<outputs.autostopping.RuleVmDepend[] | undefined>;
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
     public readonly filter!: pulumi.Output<outputs.autostopping.RuleVmFilter>;
     /**
      * Http routing configuration
@@ -151,6 +156,7 @@ export class RuleVm extends pulumi.CustomResource {
             resourceInputs["cloudConnectorId"] = state ? state.cloudConnectorId : undefined;
             resourceInputs["customDomains"] = state ? state.customDomains : undefined;
             resourceInputs["depends"] = state ? state.depends : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["https"] = state ? state.https : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
@@ -169,6 +175,7 @@ export class RuleVm extends pulumi.CustomResource {
             resourceInputs["cloudConnectorId"] = args ? args.cloudConnectorId : undefined;
             resourceInputs["customDomains"] = args ? args.customDomains : undefined;
             resourceInputs["depends"] = args ? args.depends : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["https"] = args ? args.https : undefined;
             resourceInputs["idleTimeMins"] = args ? args.idleTimeMins : undefined;
@@ -198,6 +205,10 @@ export interface RuleVmState {
      * Dependent rules
      */
     depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmDepend>[]>;
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    dryRun?: pulumi.Input<boolean>;
     filter?: pulumi.Input<inputs.autostopping.RuleVmFilter>;
     /**
      * Http routing configuration
@@ -241,6 +252,10 @@ export interface RuleVmArgs {
      * Dependent rules
      */
     depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmDepend>[]>;
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    dryRun?: pulumi.Input<boolean>;
     filter: pulumi.Input<inputs.autostopping.RuleVmFilter>;
     /**
      * Http routing configuration

@@ -37,6 +37,12 @@ namespace Pulumi.Harness.Autostopping
         public Output<ImmutableArray<Outputs.RuleEcsDepend>> Depends { get; private set; } = null!;
 
         /// <summary>
+        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
         /// Http routing configuration
         /// </summary>
         [Output("https")]
@@ -140,6 +146,12 @@ namespace Pulumi.Harness.Autostopping
             set => _depends = value;
         }
 
+        /// <summary>
+        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
         [Input("https")]
         private InputList<Inputs.RuleEcsHttpArgs>? _https;
 
@@ -204,6 +216,12 @@ namespace Pulumi.Harness.Autostopping
             get => _depends ?? (_depends = new InputList<Inputs.RuleEcsDependGetArgs>());
             set => _depends = value;
         }
+
+        /// <summary>
+        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
 
         [Input("https")]
         private InputList<Inputs.RuleEcsHttpGetArgs>? _https;

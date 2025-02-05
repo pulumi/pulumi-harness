@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .cloudConnectorId("cloud_connector_id")
  *             .idleTimeMins(10)
+ *             .dryRun(true)
  *             .filter(RuleVmFilterArgs.builder()
  *                 .vmIds("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine")
  *                 .regions("useast2")
@@ -156,6 +157,20 @@ public class RuleVm extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<RuleVmDepend>>> depends() {
         return Codegen.optional(this.depends);
+    }
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dryRun;
+
+    /**
+     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * 
+     */
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
     }
     @Export(name="filter", refs={RuleVmFilter.class}, tree="[0]")
     private Output<RuleVmFilter> filter;
@@ -287,6 +302,7 @@ public class RuleVm extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumi")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

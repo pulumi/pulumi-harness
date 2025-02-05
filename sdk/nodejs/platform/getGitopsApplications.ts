@@ -26,8 +26,6 @@ export function getGitopsApplications(args: GetGitopsApplicationsArgs, opts?: pu
  */
 export interface GetGitopsApplicationsArgs {
     /**
-     * Account identifier of the GitOps application.
-     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: string;
@@ -60,8 +58,6 @@ export interface GetGitopsApplicationsArgs {
  */
 export interface GetGitopsApplicationsResult {
     /**
-     * Account identifier of the GitOps application.
-     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
@@ -156,8 +152,6 @@ export function getGitopsApplicationsOutput(args: GetGitopsApplicationsOutputArg
  */
 export interface GetGitopsApplicationsOutputArgs {
     /**
-     * Account identifier of the GitOps application.
-     *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;

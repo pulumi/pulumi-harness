@@ -87,9 +87,6 @@ class GetGitopsApplicationsResult:
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> str:
-        """
-        Account identifier of the GitOps application.
-        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -267,7 +264,6 @@ def get_gitops_applications(account_id: Optional[str] = None,
     Datasource for fetching a Harness GitOps Application.
 
 
-    :param str account_id: Account identifier of the GitOps application.
     :param str agent_id: Agent identifier of the GitOps application.
     :param str identifier: Identifier of the GitOps application.
     :param str name: Name of the GitOps application.
@@ -314,7 +310,6 @@ def get_gitops_applications_output(account_id: Optional[pulumi.Input[Optional[st
     Datasource for fetching a Harness GitOps Application.
 
 
-    :param str account_id: Account identifier of the GitOps application.
     :param str agent_id: Agent identifier of the GitOps application.
     :param str identifier: Identifier of the GitOps application.
     :param str name: Name of the GitOps application.

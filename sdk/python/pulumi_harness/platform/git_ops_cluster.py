@@ -33,7 +33,7 @@ class GitOpsClusterArgs:
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
-        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestArgs']]] requests: Cluster create or update request.
@@ -95,7 +95,7 @@ class GitOpsClusterArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_delete")
 
@@ -154,7 +154,7 @@ class _GitOpsClusterState:
         Input properties used for looking up and filtering GitOpsCluster resources.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
-        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
@@ -207,7 +207,7 @@ class _GitOpsClusterState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_delete")
 
@@ -304,7 +304,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
-        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
@@ -407,7 +407,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Account identifier of the GitOps cluster.
         :param pulumi.Input[str] agent_id: Agent identifier of the GitOps cluster. (include scope prefix)
-        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        :param pulumi.Input[bool] force_delete: Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         :param pulumi.Input[str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[str] project_id: Project identifier of the GitOps cluster.
@@ -447,7 +447,7 @@ class GitOpsCluster(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         """
         return pulumi.get(self, "force_delete")
 

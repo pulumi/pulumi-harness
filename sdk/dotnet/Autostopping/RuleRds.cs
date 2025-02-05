@@ -27,6 +27,7 @@ namespace Pulumi.Harness.Autostopping
     ///         Name = "name",
     ///         CloudConnectorId = "cloud_connector_id",
     ///         IdleTimeMins = 10,
+    ///         DryRun = true,
     ///         Database = new Harness.Autostopping.Inputs.RuleRdsDatabaseArgs
     ///         {
     ///             Id = "database_id",
@@ -68,6 +69,12 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Output("depends")]
         public Output<ImmutableArray<Outputs.RuleRdsDepend>> Depends { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource
@@ -162,6 +169,12 @@ namespace Pulumi.Harness.Autostopping
         }
 
         /// <summary>
+        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         /// </summary>
         [Input("idleTimeMins")]
@@ -213,6 +226,12 @@ namespace Pulumi.Harness.Autostopping
             get => _depends ?? (_depends = new InputList<Inputs.RuleRdsDependGetArgs>());
             set => _depends = value;
         }
+
+        /// <summary>
+        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource

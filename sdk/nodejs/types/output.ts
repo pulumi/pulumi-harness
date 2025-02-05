@@ -3576,7 +3576,7 @@ export namespace platform {
          */
         code?: boolean;
         /**
-         * Name of the GitOps application.
+         * Name of the external variables of jsonnet application.
          */
         name?: string;
         /**
@@ -3591,7 +3591,7 @@ export namespace platform {
          */
         code?: boolean;
         /**
-         * Name of the GitOps application.
+         * Name of the TLAS of the jsonnet application.
          */
         name?: string;
         /**
@@ -3633,7 +3633,7 @@ export namespace platform {
 
     export interface GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
         /**
-         * Name of the GitOps application.
+         * Name of the helm parameter.
          */
         name?: string;
         /**
@@ -3648,7 +3648,7 @@ export namespace platform {
          */
         forceString?: boolean;
         /**
-         * Name of the GitOps application.
+         * Name of the helm parameter.
          */
         name?: string;
         /**
@@ -3674,7 +3674,7 @@ export namespace platform {
          */
         component?: string;
         /**
-         * Name of the GitOps application.
+         * Name of the parameter of the ksonnet application.
          */
         name?: string;
         /**
@@ -3724,14 +3724,14 @@ export namespace platform {
          */
         envs?: outputs.platform.GetGitopsApplicationsApplicationSpecSourcePluginEnv[];
         /**
-         * Name of the GitOps application.
+         * Name of the plugin.
          */
         name?: string;
     }
 
     export interface GetGitopsApplicationsApplicationSpecSourcePluginEnv {
         /**
-         * Name of the GitOps application.
+         * Name of the variable, usually expressed in uppercase.
          */
         name?: string;
         /**
@@ -3876,6 +3876,10 @@ export namespace platform {
          */
         clusterConnectionType?: string;
         /**
+         * DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+         */
+        disableCompression?: boolean;
+        /**
          * Configuration for an exec provider.
          */
         execProviderConfigs?: outputs.platform.GetGitopsClusterRequestClusterConfigExecProviderConfig[];
@@ -3883,6 +3887,10 @@ export namespace platform {
          * Password of the server of the cluster.
          */
         password?: string;
+        /**
+         * The URL to the proxy to be used for all requests send to the cluster's API server
+         */
+        proxyUrl?: string;
         /**
          * Optional role ARN. If set then used for AWS IAM Authenticator.
          */
@@ -5978,6 +5986,10 @@ export namespace platform {
          */
         clusterConnectionType?: string;
         /**
+         * DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+         */
+        disableCompression?: boolean;
+        /**
          * Configuration for an exec provider.
          */
         execProviderConfigs?: outputs.platform.GitOpsClusterRequestClusterConfigExecProviderConfig[];
@@ -5985,6 +5997,10 @@ export namespace platform {
          * Password of the server of the cluster.
          */
         password?: string;
+        /**
+         * The URL to the proxy to be used for all requests send to the cluster's API server
+         */
+        proxyUrl?: string;
         /**
          * Optional role ARN. If set then used for AWS IAM Authenticator.
          */
@@ -6709,6 +6725,10 @@ export namespace platform {
          */
         orphanedResources?: outputs.platform.GitopsAppProjectProjectSpecOrphanedResource[];
         /**
+         * This option determines whether destinations can only reference clusters which are argo project-scoped
+         */
+        permitOnlyProjectScopedClusters?: boolean;
+        /**
          * Roles associated with the Argo project.
          */
         roles?: outputs.platform.GitopsAppProjectProjectSpecRole[];
@@ -6716,6 +6736,10 @@ export namespace platform {
          * Signature keys for the GitOps project.
          */
         signatureKeys?: outputs.platform.GitopsAppProjectProjectSpecSignatureKey[];
+        /**
+         * Source namespaces defines the namespaces application resources are allowed to be created in.
+         */
+        sourceNamespaces?: string[];
         /**
          * Allowed Source repositories for the Argo project.
          */

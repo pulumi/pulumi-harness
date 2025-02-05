@@ -24,6 +24,7 @@ class RuleRdsArgs:
                  cloud_connector_id: pulumi.Input[str],
                  database: pulumi.Input['RuleRdsDatabaseArgs'],
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tcps: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpArgs']]]] = None):
@@ -31,6 +32,7 @@ class RuleRdsArgs:
         The set of arguments for constructing a RuleRds resource.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
         :param pulumi.Input[Sequence[pulumi.Input['RuleRdsTcpArgs']]] tcps: TCP routing configuration
@@ -39,6 +41,8 @@ class RuleRdsArgs:
         pulumi.set(__self__, "database", database)
         if depends is not None:
             pulumi.set(__self__, "depends", depends)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if idle_time_mins is not None:
             pulumi.set(__self__, "idle_time_mins", idle_time_mins)
         if name is not None:
@@ -78,6 +82,18 @@ class RuleRdsArgs:
     @depends.setter
     def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]]]):
         pulumi.set(self, "depends", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
     @property
     @pulumi.getter(name="idleTimeMins")
@@ -122,6 +138,7 @@ class _RuleRdsState:
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input['RuleRdsDatabaseArgs']] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[float]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -130,6 +147,7 @@ class _RuleRdsState:
         Input properties used for looking up and filtering RuleRds resources.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
@@ -141,6 +159,8 @@ class _RuleRdsState:
             pulumi.set(__self__, "database", database)
         if depends is not None:
             pulumi.set(__self__, "depends", depends)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if idle_time_mins is not None:
@@ -182,6 +202,18 @@ class _RuleRdsState:
     @depends.setter
     def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRdsDependArgs']]]]):
         pulumi.set(self, "depends", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
     @property
     @pulumi.getter
@@ -240,6 +272,7 @@ class RuleRds(pulumi.CustomResource):
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[Union['RuleRdsDatabaseArgs', 'RuleRdsDatabaseArgsDict']]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]]] = None,
@@ -257,6 +290,7 @@ class RuleRds(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
+            dry_run=True,
             database={
                 "id": "database_id",
                 "region": "region",
@@ -273,6 +307,7 @@ class RuleRds(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]] tcps: TCP routing configuration
@@ -296,6 +331,7 @@ class RuleRds(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
+            dry_run=True,
             database={
                 "id": "database_id",
                 "region": "region",
@@ -326,6 +362,7 @@ class RuleRds(pulumi.CustomResource):
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[Union['RuleRdsDatabaseArgs', 'RuleRdsDatabaseArgsDict']]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tcps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsTcpArgs', 'RuleRdsTcpArgsDict']]]]] = None,
@@ -345,6 +382,7 @@ class RuleRds(pulumi.CustomResource):
                 raise TypeError("Missing required property 'database'")
             __props__.__dict__["database"] = database
             __props__.__dict__["depends"] = depends
+            __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["idle_time_mins"] = idle_time_mins
             __props__.__dict__["name"] = name
             __props__.__dict__["tcps"] = tcps
@@ -362,6 +400,7 @@ class RuleRds(pulumi.CustomResource):
             cloud_connector_id: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[Union['RuleRdsDatabaseArgs', 'RuleRdsDatabaseArgsDict']]] = None,
             depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]]] = None,
+            dry_run: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[float]] = None,
             idle_time_mins: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -375,6 +414,7 @@ class RuleRds(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRdsDependArgs', 'RuleRdsDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
@@ -387,6 +427,7 @@ class RuleRds(pulumi.CustomResource):
         __props__.__dict__["cloud_connector_id"] = cloud_connector_id
         __props__.__dict__["database"] = database
         __props__.__dict__["depends"] = depends
+        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["idle_time_mins"] = idle_time_mins
         __props__.__dict__["name"] = name
@@ -413,6 +454,14 @@ class RuleRds(pulumi.CustomResource):
         Dependent rules
         """
         return pulumi.get(self, "depends")
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
 
     @property
     @pulumi.getter

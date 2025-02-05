@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterConfigExecProviderConfigArgs;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterConfigTlsClientConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,6 +65,21 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
     }
 
     /**
+     * DisableCompression bypasses automatic GZip compression requests to to the cluster&#39;s API server. Corresponds to running kubectl with --disable-compression
+     * 
+     */
+    @Import(name="disableCompression")
+    private @Nullable Output<Boolean> disableCompression;
+
+    /**
+     * @return DisableCompression bypasses automatic GZip compression requests to to the cluster&#39;s API server. Corresponds to running kubectl with --disable-compression
+     * 
+     */
+    public Optional<Output<Boolean>> disableCompression() {
+        return Optional.ofNullable(this.disableCompression);
+    }
+
+    /**
      * Configuration for an exec provider.
      * 
      */
@@ -91,6 +107,21 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * The URL to the proxy to be used for all requests send to the cluster&#39;s API server
+     * 
+     */
+    @Import(name="proxyUrl")
+    private @Nullable Output<String> proxyUrl;
+
+    /**
+     * @return The URL to the proxy to be used for all requests send to the cluster&#39;s API server
+     * 
+     */
+    public Optional<Output<String>> proxyUrl() {
+        return Optional.ofNullable(this.proxyUrl);
     }
 
     /**
@@ -144,8 +175,10 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
         this.awsClusterName = $.awsClusterName;
         this.bearerToken = $.bearerToken;
         this.clusterConnectionType = $.clusterConnectionType;
+        this.disableCompression = $.disableCompression;
         this.execProviderConfigs = $.execProviderConfigs;
         this.password = $.password;
+        this.proxyUrl = $.proxyUrl;
         this.roleARN = $.roleARN;
         this.tlsClientConfigs = $.tlsClientConfigs;
         this.username = $.username;
@@ -233,6 +266,27 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
         }
 
         /**
+         * @param disableCompression DisableCompression bypasses automatic GZip compression requests to to the cluster&#39;s API server. Corresponds to running kubectl with --disable-compression
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableCompression(@Nullable Output<Boolean> disableCompression) {
+            $.disableCompression = disableCompression;
+            return this;
+        }
+
+        /**
+         * @param disableCompression DisableCompression bypasses automatic GZip compression requests to to the cluster&#39;s API server. Corresponds to running kubectl with --disable-compression
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableCompression(Boolean disableCompression) {
+            return disableCompression(Output.of(disableCompression));
+        }
+
+        /**
          * @param execProviderConfigs Configuration for an exec provider.
          * 
          * @return builder
@@ -282,6 +336,27 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param proxyUrl The URL to the proxy to be used for all requests send to the cluster&#39;s API server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyUrl(@Nullable Output<String> proxyUrl) {
+            $.proxyUrl = proxyUrl;
+            return this;
+        }
+
+        /**
+         * @param proxyUrl The URL to the proxy to be used for all requests send to the cluster&#39;s API server
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyUrl(String proxyUrl) {
+            return proxyUrl(Output.of(proxyUrl));
         }
 
         /**

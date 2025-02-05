@@ -4483,6 +4483,10 @@
                     "type": "string",
                     "description": "Identifies the authentication method used to connect to the cluster.\n"
                 },
+                "disableCompression": {
+                    "type": "boolean",
+                    "description": "DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression\n"
+                },
                 "execProviderConfigs": {
                     "type": "array",
                     "items": {
@@ -4493,6 +4497,10 @@
                 "password": {
                     "type": "string",
                     "description": "Password of the server of the cluster.\n"
+                },
+                "proxyUrl": {
+                    "type": "string",
+                    "description": "The URL to the proxy to be used for all requests send to the cluster's API server\n"
                 },
                 "roleARN": {
                     "type": "string",
@@ -5522,6 +5530,10 @@
                     },
                     "description": "OrphanedResources specifies if agent should monitor orphaned resources of apps in this project\n"
                 },
+                "permitOnlyProjectScopedClusters": {
+                    "type": "boolean",
+                    "description": "This option determines whether destinations can only reference clusters which are argo project-scoped\n"
+                },
                 "roles": {
                     "type": "array",
                     "items": {
@@ -5535,6 +5547,13 @@
                         "$ref": "#/types/harness:platform/GitopsAppProjectProjectSpecSignatureKey:GitopsAppProjectProjectSpecSignatureKey"
                     },
                     "description": "Signature keys for the GitOps project.\n"
+                },
+                "sourceNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Source namespaces defines the namespaces application resources are allowed to be created in.\n"
                 },
                 "sourceRepos": {
                     "type": "array",
@@ -10395,7 +10414,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the external variables of jsonnet application.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10412,7 +10431,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the TLAS of the jsonnet application.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10467,7 +10486,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the helm parameter.\n"
                 },
                 "path": {
                     "type": "string",
@@ -10484,7 +10503,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the helm parameter.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10517,7 +10536,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the parameter of the ksonnet application.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10583,7 +10602,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the plugin.\n"
                 }
             },
             "type": "object"
@@ -10592,7 +10611,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the GitOps application.\n"
+                    "description": "Name of the variable, usually expressed in uppercase.\n"
                 },
                 "value": {
                     "type": "string",
@@ -10843,6 +10862,10 @@
                     "type": "string",
                     "description": "Identifies the authentication method used to connect to the cluster.\n"
                 },
+                "disableCompression": {
+                    "type": "boolean",
+                    "description": "DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression\n"
+                },
                 "execProviderConfigs": {
                     "type": "array",
                     "items": {
@@ -10853,6 +10876,10 @@
                 "password": {
                     "type": "string",
                     "description": "Password of the server of the cluster.\n"
+                },
+                "proxyUrl": {
+                    "type": "string",
+                    "description": "The URL to the proxy to be used for all requests send to the cluster's API server\n"
                 },
                 "roleARN": {
                     "type": "string",
@@ -14740,7 +14767,7 @@
             }
         },
         "harness:autostopping/ruleEcs:RuleEcs": {
-            "description": "Resource for creating a Harness Variables.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  test:\n    type: harness:autostopping:RuleEcs\n    properties:\n      name: name\n      cloudConnectorId: cloud_connector_id\n      idleTimeMins: 10\n      container:\n        cluster: cluster\n        service: service\n        region: us-east-1\n        taskCount: 1\n      tcp:\n        - proxyId: proxy_id\n          forwardRule:\n            - port: 2233\n      depends:\n        - ruleId: 24576\n          delayInSec: 5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Resource for creating a Harness Variables.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  test:\n    type: harness:autostopping:RuleEcs\n    properties:\n      name: name\n      cloudConnectorId: cloud_connector_id\n      idleTimeMins: 10\n      dryRun: true\n      container:\n        cluster: cluster\n        service: service\n        region: us-east-1\n        taskCount: 1\n      tcp:\n        - proxyId: proxy_id\n          forwardRule:\n            - port: 2233\n      depends:\n        - ruleId: 24576\n          delayInSec: 5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "cloudConnectorId": {
                     "type": "string",
@@ -14762,6 +14789,10 @@
                         "$ref": "#/types/harness:autostopping/RuleEcsDepend:RuleEcsDepend"
                     },
                     "description": "Dependent rules\n"
+                },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
                 },
                 "https": {
                     "type": "array",
@@ -14809,6 +14840,10 @@
                         "$ref": "#/types/harness:autostopping/RuleEcsDepend:RuleEcsDepend"
                     },
                     "description": "Dependent rules\n"
+                },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
                 },
                 "https": {
                     "type": "array",
@@ -14853,6 +14888,10 @@
                         },
                         "description": "Dependent rules\n"
                     },
+                    "dryRun": {
+                        "type": "boolean",
+                        "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
+                    },
                     "https": {
                         "type": "array",
                         "items": {
@@ -14877,7 +14916,7 @@
             }
         },
         "harness:autostopping/ruleRds:RuleRds": {
-            "description": "Resource for creating a Harness Variables.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.autostopping.RuleRds(\"test\", {\n    name: \"name\",\n    cloudConnectorId: \"cloud_connector_id\",\n    idleTimeMins: 10,\n    database: {\n        id: \"database_id\",\n        region: \"region\",\n    },\n    tcps: [{\n        proxyId: \"proxy_id\",\n        forwardRules: [{\n            port: 2233,\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.autostopping.RuleRds(\"test\",\n    name=\"name\",\n    cloud_connector_id=\"cloud_connector_id\",\n    idle_time_mins=10,\n    database={\n        \"id\": \"database_id\",\n        \"region\": \"region\",\n    },\n    tcps=[{\n        \"proxy_id\": \"proxy_id\",\n        \"forward_rules\": [{\n            \"port\": 2233,\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Autostopping.RuleRds(\"test\", new()\n    {\n        Name = \"name\",\n        CloudConnectorId = \"cloud_connector_id\",\n        IdleTimeMins = 10,\n        Database = new Harness.Autostopping.Inputs.RuleRdsDatabaseArgs\n        {\n            Id = \"database_id\",\n            Region = \"region\",\n        },\n        Tcps = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleRdsTcpArgs\n            {\n                ProxyId = \"proxy_id\",\n                ForwardRules = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleRdsTcpForwardRuleArgs\n                    {\n                        Port = 2233,\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := autostopping.NewRuleRds(ctx, \"test\", \u0026autostopping.RuleRdsArgs{\n\t\t\tName:             pulumi.String(\"name\"),\n\t\t\tCloudConnectorId: pulumi.String(\"cloud_connector_id\"),\n\t\t\tIdleTimeMins:     pulumi.Int(10),\n\t\t\tDatabase: \u0026autostopping.RuleRdsDatabaseArgs{\n\t\t\t\tId:     pulumi.String(\"database_id\"),\n\t\t\t\tRegion: pulumi.String(\"region\"),\n\t\t\t},\n\t\t\tTcps: autostopping.RuleRdsTcpArray{\n\t\t\t\t\u0026autostopping.RuleRdsTcpArgs{\n\t\t\t\t\tProxyId: pulumi.String(\"proxy_id\"),\n\t\t\t\t\tForwardRules: autostopping.RuleRdsTcpForwardRuleArray{\n\t\t\t\t\t\t\u0026autostopping.RuleRdsTcpForwardRuleArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(2233),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.autostopping.RuleRds;\nimport com.pulumi.harness.autostopping.RuleRdsArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleRdsDatabaseArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleRdsTcpArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new RuleRds(\"test\", RuleRdsArgs.builder()\n            .name(\"name\")\n            .cloudConnectorId(\"cloud_connector_id\")\n            .idleTimeMins(10)\n            .database(RuleRdsDatabaseArgs.builder()\n                .id(\"database_id\")\n                .region(\"region\")\n                .build())\n            .tcps(RuleRdsTcpArgs.builder()\n                .proxyId(\"proxy_id\")\n                .forwardRules(RuleRdsTcpForwardRuleArgs.builder()\n                    .port(2233)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:autostopping:RuleRds\n    properties:\n      name: name\n      cloudConnectorId: cloud_connector_id\n      idleTimeMins: 10\n      database:\n        id: database_id\n        region: region\n      tcps:\n        - proxyId: proxy_id\n          forwardRules:\n            - port: 2233\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Resource for creating a Harness Variables.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.autostopping.RuleRds(\"test\", {\n    name: \"name\",\n    cloudConnectorId: \"cloud_connector_id\",\n    idleTimeMins: 10,\n    dryRun: true,\n    database: {\n        id: \"database_id\",\n        region: \"region\",\n    },\n    tcps: [{\n        proxyId: \"proxy_id\",\n        forwardRules: [{\n            port: 2233,\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.autostopping.RuleRds(\"test\",\n    name=\"name\",\n    cloud_connector_id=\"cloud_connector_id\",\n    idle_time_mins=10,\n    dry_run=True,\n    database={\n        \"id\": \"database_id\",\n        \"region\": \"region\",\n    },\n    tcps=[{\n        \"proxy_id\": \"proxy_id\",\n        \"forward_rules\": [{\n            \"port\": 2233,\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Autostopping.RuleRds(\"test\", new()\n    {\n        Name = \"name\",\n        CloudConnectorId = \"cloud_connector_id\",\n        IdleTimeMins = 10,\n        DryRun = true,\n        Database = new Harness.Autostopping.Inputs.RuleRdsDatabaseArgs\n        {\n            Id = \"database_id\",\n            Region = \"region\",\n        },\n        Tcps = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleRdsTcpArgs\n            {\n                ProxyId = \"proxy_id\",\n                ForwardRules = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleRdsTcpForwardRuleArgs\n                    {\n                        Port = 2233,\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := autostopping.NewRuleRds(ctx, \"test\", \u0026autostopping.RuleRdsArgs{\n\t\t\tName:             pulumi.String(\"name\"),\n\t\t\tCloudConnectorId: pulumi.String(\"cloud_connector_id\"),\n\t\t\tIdleTimeMins:     pulumi.Int(10),\n\t\t\tDryRun:           pulumi.Bool(true),\n\t\t\tDatabase: \u0026autostopping.RuleRdsDatabaseArgs{\n\t\t\t\tId:     pulumi.String(\"database_id\"),\n\t\t\t\tRegion: pulumi.String(\"region\"),\n\t\t\t},\n\t\t\tTcps: autostopping.RuleRdsTcpArray{\n\t\t\t\t\u0026autostopping.RuleRdsTcpArgs{\n\t\t\t\t\tProxyId: pulumi.String(\"proxy_id\"),\n\t\t\t\t\tForwardRules: autostopping.RuleRdsTcpForwardRuleArray{\n\t\t\t\t\t\t\u0026autostopping.RuleRdsTcpForwardRuleArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(2233),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.autostopping.RuleRds;\nimport com.pulumi.harness.autostopping.RuleRdsArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleRdsDatabaseArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleRdsTcpArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new RuleRds(\"test\", RuleRdsArgs.builder()\n            .name(\"name\")\n            .cloudConnectorId(\"cloud_connector_id\")\n            .idleTimeMins(10)\n            .dryRun(true)\n            .database(RuleRdsDatabaseArgs.builder()\n                .id(\"database_id\")\n                .region(\"region\")\n                .build())\n            .tcps(RuleRdsTcpArgs.builder()\n                .proxyId(\"proxy_id\")\n                .forwardRules(RuleRdsTcpForwardRuleArgs.builder()\n                    .port(2233)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:autostopping:RuleRds\n    properties:\n      name: name\n      cloudConnectorId: cloud_connector_id\n      idleTimeMins: 10\n      dryRun: true\n      database:\n        id: database_id\n        region: region\n      tcps:\n        - proxyId: proxy_id\n          forwardRules:\n            - port: 2233\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "cloudConnectorId": {
                     "type": "string",
@@ -14892,6 +14931,10 @@
                         "$ref": "#/types/harness:autostopping/RuleRdsDepend:RuleRdsDepend"
                     },
                     "description": "Dependent rules\n"
+                },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
                 },
                 "identifier": {
                     "type": "number",
@@ -14934,6 +14977,10 @@
                     },
                     "description": "Dependent rules\n"
                 },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
+                },
                 "idleTimeMins": {
                     "type": "integer",
                     "description": "Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.\n"
@@ -14971,6 +15018,10 @@
                         },
                         "description": "Dependent rules\n"
                     },
+                    "dryRun": {
+                        "type": "boolean",
+                        "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
+                    },
                     "identifier": {
                         "type": "number",
                         "description": "Unique identifier of the resource\n"
@@ -14995,7 +15046,7 @@
             }
         },
         "harness:autostopping/ruleVm:RuleVm": {
-            "description": "Resource for creating a Harness Variables.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.autostopping.RuleVm(\"test\", {\n    name: \"name\",\n    cloudConnectorId: \"cloud_connector_id\",\n    idleTimeMins: 10,\n    filter: {\n        vmIds: [\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\"],\n        regions: [\"useast2\"],\n    },\n    https: [{\n        proxyId: \"proxy_id\",\n        routings: [\n            {\n                sourceProtocol: \"https\",\n                targetProtocol: \"https\",\n                sourcePort: 443,\n                targetPort: 443,\n                action: \"forward\",\n            },\n            {\n                sourceProtocol: \"http\",\n                targetProtocol: \"http\",\n                sourcePort: 80,\n                targetPort: 80,\n                action: \"forward\",\n            },\n        ],\n        healths: [{\n            protocol: \"http\",\n            port: 80,\n            path: \"/\",\n            timeout: 30,\n            statusCodeFrom: 200,\n            statusCodeTo: 299,\n        }],\n    }],\n    tcps: [{\n        proxyId: \"proxy_id\",\n        sshes: [{\n            port: 22,\n        }],\n        rdps: [{\n            port: 3389,\n        }],\n        forwardRules: [{\n            port: 2233,\n        }],\n    }],\n    depends: [{\n        ruleId: 24576,\n        delayInSec: 5,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.autostopping.RuleVm(\"test\",\n    name=\"name\",\n    cloud_connector_id=\"cloud_connector_id\",\n    idle_time_mins=10,\n    filter={\n        \"vm_ids\": [\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\"],\n        \"regions\": [\"useast2\"],\n    },\n    https=[{\n        \"proxy_id\": \"proxy_id\",\n        \"routings\": [\n            {\n                \"source_protocol\": \"https\",\n                \"target_protocol\": \"https\",\n                \"source_port\": 443,\n                \"target_port\": 443,\n                \"action\": \"forward\",\n            },\n            {\n                \"source_protocol\": \"http\",\n                \"target_protocol\": \"http\",\n                \"source_port\": 80,\n                \"target_port\": 80,\n                \"action\": \"forward\",\n            },\n        ],\n        \"healths\": [{\n            \"protocol\": \"http\",\n            \"port\": 80,\n            \"path\": \"/\",\n            \"timeout\": 30,\n            \"status_code_from\": 200,\n            \"status_code_to\": 299,\n        }],\n    }],\n    tcps=[{\n        \"proxy_id\": \"proxy_id\",\n        \"sshes\": [{\n            \"port\": 22,\n        }],\n        \"rdps\": [{\n            \"port\": 3389,\n        }],\n        \"forward_rules\": [{\n            \"port\": 2233,\n        }],\n    }],\n    depends=[{\n        \"rule_id\": 24576,\n        \"delay_in_sec\": 5,\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Autostopping.RuleVm(\"test\", new()\n    {\n        Name = \"name\",\n        CloudConnectorId = \"cloud_connector_id\",\n        IdleTimeMins = 10,\n        Filter = new Harness.Autostopping.Inputs.RuleVmFilterArgs\n        {\n            VmIds = new[]\n            {\n                \"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\",\n            },\n            Regions = new[]\n            {\n                \"useast2\",\n            },\n        },\n        Https = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleVmHttpArgs\n            {\n                ProxyId = \"proxy_id\",\n                Routings = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmHttpRoutingArgs\n                    {\n                        SourceProtocol = \"https\",\n                        TargetProtocol = \"https\",\n                        SourcePort = 443,\n                        TargetPort = 443,\n                        Action = \"forward\",\n                    },\n                    new Harness.Autostopping.Inputs.RuleVmHttpRoutingArgs\n                    {\n                        SourceProtocol = \"http\",\n                        TargetProtocol = \"http\",\n                        SourcePort = 80,\n                        TargetPort = 80,\n                        Action = \"forward\",\n                    },\n                },\n                Healths = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmHttpHealthArgs\n                    {\n                        Protocol = \"http\",\n                        Port = 80,\n                        Path = \"/\",\n                        Timeout = 30,\n                        StatusCodeFrom = 200,\n                        StatusCodeTo = 299,\n                    },\n                },\n            },\n        },\n        Tcps = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleVmTcpArgs\n            {\n                ProxyId = \"proxy_id\",\n                Sshes = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmTcpSshArgs\n                    {\n                        Port = 22,\n                    },\n                },\n                Rdps = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmTcpRdpArgs\n                    {\n                        Port = 3389,\n                    },\n                },\n                ForwardRules = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmTcpForwardRuleArgs\n                    {\n                        Port = 2233,\n                    },\n                },\n            },\n        },\n        Depends = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleVmDependArgs\n            {\n                RuleId = 24576,\n                DelayInSec = 5,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := autostopping.NewRuleVm(ctx, \"test\", \u0026autostopping.RuleVmArgs{\n\t\t\tName:             pulumi.String(\"name\"),\n\t\t\tCloudConnectorId: pulumi.String(\"cloud_connector_id\"),\n\t\t\tIdleTimeMins:     pulumi.Int(10),\n\t\t\tFilter: \u0026autostopping.RuleVmFilterArgs{\n\t\t\t\tVmIds: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\"),\n\t\t\t\t},\n\t\t\t\tRegions: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"useast2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tHttps: autostopping.RuleVmHttpArray{\n\t\t\t\t\u0026autostopping.RuleVmHttpArgs{\n\t\t\t\t\tProxyId: pulumi.String(\"proxy_id\"),\n\t\t\t\t\tRoutings: autostopping.RuleVmHttpRoutingArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmHttpRoutingArgs{\n\t\t\t\t\t\t\tSourceProtocol: pulumi.String(\"https\"),\n\t\t\t\t\t\t\tTargetProtocol: pulumi.String(\"https\"),\n\t\t\t\t\t\t\tSourcePort:     pulumi.Int(443),\n\t\t\t\t\t\t\tTargetPort:     pulumi.Int(443),\n\t\t\t\t\t\t\tAction:         pulumi.String(\"forward\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026autostopping.RuleVmHttpRoutingArgs{\n\t\t\t\t\t\t\tSourceProtocol: pulumi.String(\"http\"),\n\t\t\t\t\t\t\tTargetProtocol: pulumi.String(\"http\"),\n\t\t\t\t\t\t\tSourcePort:     pulumi.Int(80),\n\t\t\t\t\t\t\tTargetPort:     pulumi.Int(80),\n\t\t\t\t\t\t\tAction:         pulumi.String(\"forward\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tHealths: autostopping.RuleVmHttpHealthArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmHttpHealthArgs{\n\t\t\t\t\t\t\tProtocol:       pulumi.String(\"http\"),\n\t\t\t\t\t\t\tPort:           pulumi.Int(80),\n\t\t\t\t\t\t\tPath:           pulumi.String(\"/\"),\n\t\t\t\t\t\t\tTimeout:        pulumi.Int(30),\n\t\t\t\t\t\t\tStatusCodeFrom: pulumi.Int(200),\n\t\t\t\t\t\t\tStatusCodeTo:   pulumi.Int(299),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tTcps: autostopping.RuleVmTcpArray{\n\t\t\t\t\u0026autostopping.RuleVmTcpArgs{\n\t\t\t\t\tProxyId: pulumi.String(\"proxy_id\"),\n\t\t\t\t\tSshes: autostopping.RuleVmTcpSshArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmTcpSshArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(22),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tRdps: autostopping.RuleVmTcpRdpArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmTcpRdpArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(3389),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tForwardRules: autostopping.RuleVmTcpForwardRuleArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmTcpForwardRuleArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(2233),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tDepends: autostopping.RuleVmDependArray{\n\t\t\t\t\u0026autostopping.RuleVmDependArgs{\n\t\t\t\t\tRuleId:     pulumi.Int(24576),\n\t\t\t\t\tDelayInSec: pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.autostopping.RuleVm;\nimport com.pulumi.harness.autostopping.RuleVmArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmFilterArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmHttpArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmTcpArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmDependArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new RuleVm(\"test\", RuleVmArgs.builder()\n            .name(\"name\")\n            .cloudConnectorId(\"cloud_connector_id\")\n            .idleTimeMins(10)\n            .filter(RuleVmFilterArgs.builder()\n                .vmIds(\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\")\n                .regions(\"useast2\")\n                .build())\n            .https(RuleVmHttpArgs.builder()\n                .proxyId(\"proxy_id\")\n                .routings(                \n                    RuleVmHttpRoutingArgs.builder()\n                        .sourceProtocol(\"https\")\n                        .targetProtocol(\"https\")\n                        .sourcePort(443)\n                        .targetPort(443)\n                        .action(\"forward\")\n                        .build(),\n                    RuleVmHttpRoutingArgs.builder()\n                        .sourceProtocol(\"http\")\n                        .targetProtocol(\"http\")\n                        .sourcePort(80)\n                        .targetPort(80)\n                        .action(\"forward\")\n                        .build())\n                .healths(RuleVmHttpHealthArgs.builder()\n                    .protocol(\"http\")\n                    .port(80)\n                    .path(\"/\")\n                    .timeout(30)\n                    .statusCodeFrom(200)\n                    .statusCodeTo(299)\n                    .build())\n                .build())\n            .tcps(RuleVmTcpArgs.builder()\n                .proxyId(\"proxy_id\")\n                .sshes(RuleVmTcpSshArgs.builder()\n                    .port(22)\n                    .build())\n                .rdps(RuleVmTcpRdpArgs.builder()\n                    .port(3389)\n                    .build())\n                .forwardRules(RuleVmTcpForwardRuleArgs.builder()\n                    .port(2233)\n                    .build())\n                .build())\n            .depends(RuleVmDependArgs.builder()\n                .ruleId(24576)\n                .delayInSec(5)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:autostopping:RuleVm\n    properties:\n      name: name\n      cloudConnectorId: cloud_connector_id\n      idleTimeMins: 10\n      filter:\n        vmIds:\n          - /subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\n        regions:\n          - useast2\n      https:\n        - proxyId: proxy_id\n          routings:\n            - sourceProtocol: https\n              targetProtocol: https\n              sourcePort: 443\n              targetPort: 443\n              action: forward\n            - sourceProtocol: http\n              targetProtocol: http\n              sourcePort: 80\n              targetPort: 80\n              action: forward\n          healths:\n            - protocol: http\n              port: 80\n              path: /\n              timeout: 30\n              statusCodeFrom: 200\n              statusCodeTo: 299\n      tcps:\n        - proxyId: proxy_id\n          sshes:\n            - port: 22\n          rdps:\n            - port: 3389\n          forwardRules:\n            - port: 2233\n      depends:\n        - ruleId: 24576\n          delayInSec: 5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Resource for creating a Harness Variables.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.autostopping.RuleVm(\"test\", {\n    name: \"name\",\n    cloudConnectorId: \"cloud_connector_id\",\n    idleTimeMins: 10,\n    dryRun: true,\n    filter: {\n        vmIds: [\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\"],\n        regions: [\"useast2\"],\n    },\n    https: [{\n        proxyId: \"proxy_id\",\n        routings: [\n            {\n                sourceProtocol: \"https\",\n                targetProtocol: \"https\",\n                sourcePort: 443,\n                targetPort: 443,\n                action: \"forward\",\n            },\n            {\n                sourceProtocol: \"http\",\n                targetProtocol: \"http\",\n                sourcePort: 80,\n                targetPort: 80,\n                action: \"forward\",\n            },\n        ],\n        healths: [{\n            protocol: \"http\",\n            port: 80,\n            path: \"/\",\n            timeout: 30,\n            statusCodeFrom: 200,\n            statusCodeTo: 299,\n        }],\n    }],\n    tcps: [{\n        proxyId: \"proxy_id\",\n        sshes: [{\n            port: 22,\n        }],\n        rdps: [{\n            port: 3389,\n        }],\n        forwardRules: [{\n            port: 2233,\n        }],\n    }],\n    depends: [{\n        ruleId: 24576,\n        delayInSec: 5,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.autostopping.RuleVm(\"test\",\n    name=\"name\",\n    cloud_connector_id=\"cloud_connector_id\",\n    idle_time_mins=10,\n    dry_run=True,\n    filter={\n        \"vm_ids\": [\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\"],\n        \"regions\": [\"useast2\"],\n    },\n    https=[{\n        \"proxy_id\": \"proxy_id\",\n        \"routings\": [\n            {\n                \"source_protocol\": \"https\",\n                \"target_protocol\": \"https\",\n                \"source_port\": 443,\n                \"target_port\": 443,\n                \"action\": \"forward\",\n            },\n            {\n                \"source_protocol\": \"http\",\n                \"target_protocol\": \"http\",\n                \"source_port\": 80,\n                \"target_port\": 80,\n                \"action\": \"forward\",\n            },\n        ],\n        \"healths\": [{\n            \"protocol\": \"http\",\n            \"port\": 80,\n            \"path\": \"/\",\n            \"timeout\": 30,\n            \"status_code_from\": 200,\n            \"status_code_to\": 299,\n        }],\n    }],\n    tcps=[{\n        \"proxy_id\": \"proxy_id\",\n        \"sshes\": [{\n            \"port\": 22,\n        }],\n        \"rdps\": [{\n            \"port\": 3389,\n        }],\n        \"forward_rules\": [{\n            \"port\": 2233,\n        }],\n    }],\n    depends=[{\n        \"rule_id\": 24576,\n        \"delay_in_sec\": 5,\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Autostopping.RuleVm(\"test\", new()\n    {\n        Name = \"name\",\n        CloudConnectorId = \"cloud_connector_id\",\n        IdleTimeMins = 10,\n        DryRun = true,\n        Filter = new Harness.Autostopping.Inputs.RuleVmFilterArgs\n        {\n            VmIds = new[]\n            {\n                \"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\",\n            },\n            Regions = new[]\n            {\n                \"useast2\",\n            },\n        },\n        Https = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleVmHttpArgs\n            {\n                ProxyId = \"proxy_id\",\n                Routings = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmHttpRoutingArgs\n                    {\n                        SourceProtocol = \"https\",\n                        TargetProtocol = \"https\",\n                        SourcePort = 443,\n                        TargetPort = 443,\n                        Action = \"forward\",\n                    },\n                    new Harness.Autostopping.Inputs.RuleVmHttpRoutingArgs\n                    {\n                        SourceProtocol = \"http\",\n                        TargetProtocol = \"http\",\n                        SourcePort = 80,\n                        TargetPort = 80,\n                        Action = \"forward\",\n                    },\n                },\n                Healths = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmHttpHealthArgs\n                    {\n                        Protocol = \"http\",\n                        Port = 80,\n                        Path = \"/\",\n                        Timeout = 30,\n                        StatusCodeFrom = 200,\n                        StatusCodeTo = 299,\n                    },\n                },\n            },\n        },\n        Tcps = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleVmTcpArgs\n            {\n                ProxyId = \"proxy_id\",\n                Sshes = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmTcpSshArgs\n                    {\n                        Port = 22,\n                    },\n                },\n                Rdps = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmTcpRdpArgs\n                    {\n                        Port = 3389,\n                    },\n                },\n                ForwardRules = new[]\n                {\n                    new Harness.Autostopping.Inputs.RuleVmTcpForwardRuleArgs\n                    {\n                        Port = 2233,\n                    },\n                },\n            },\n        },\n        Depends = new[]\n        {\n            new Harness.Autostopping.Inputs.RuleVmDependArgs\n            {\n                RuleId = 24576,\n                DelayInSec = 5,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := autostopping.NewRuleVm(ctx, \"test\", \u0026autostopping.RuleVmArgs{\n\t\t\tName:             pulumi.String(\"name\"),\n\t\t\tCloudConnectorId: pulumi.String(\"cloud_connector_id\"),\n\t\t\tIdleTimeMins:     pulumi.Int(10),\n\t\t\tDryRun:           pulumi.Bool(true),\n\t\t\tFilter: \u0026autostopping.RuleVmFilterArgs{\n\t\t\t\tVmIds: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\"),\n\t\t\t\t},\n\t\t\t\tRegions: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"useast2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tHttps: autostopping.RuleVmHttpArray{\n\t\t\t\t\u0026autostopping.RuleVmHttpArgs{\n\t\t\t\t\tProxyId: pulumi.String(\"proxy_id\"),\n\t\t\t\t\tRoutings: autostopping.RuleVmHttpRoutingArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmHttpRoutingArgs{\n\t\t\t\t\t\t\tSourceProtocol: pulumi.String(\"https\"),\n\t\t\t\t\t\t\tTargetProtocol: pulumi.String(\"https\"),\n\t\t\t\t\t\t\tSourcePort:     pulumi.Int(443),\n\t\t\t\t\t\t\tTargetPort:     pulumi.Int(443),\n\t\t\t\t\t\t\tAction:         pulumi.String(\"forward\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026autostopping.RuleVmHttpRoutingArgs{\n\t\t\t\t\t\t\tSourceProtocol: pulumi.String(\"http\"),\n\t\t\t\t\t\t\tTargetProtocol: pulumi.String(\"http\"),\n\t\t\t\t\t\t\tSourcePort:     pulumi.Int(80),\n\t\t\t\t\t\t\tTargetPort:     pulumi.Int(80),\n\t\t\t\t\t\t\tAction:         pulumi.String(\"forward\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tHealths: autostopping.RuleVmHttpHealthArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmHttpHealthArgs{\n\t\t\t\t\t\t\tProtocol:       pulumi.String(\"http\"),\n\t\t\t\t\t\t\tPort:           pulumi.Int(80),\n\t\t\t\t\t\t\tPath:           pulumi.String(\"/\"),\n\t\t\t\t\t\t\tTimeout:        pulumi.Int(30),\n\t\t\t\t\t\t\tStatusCodeFrom: pulumi.Int(200),\n\t\t\t\t\t\t\tStatusCodeTo:   pulumi.Int(299),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tTcps: autostopping.RuleVmTcpArray{\n\t\t\t\t\u0026autostopping.RuleVmTcpArgs{\n\t\t\t\t\tProxyId: pulumi.String(\"proxy_id\"),\n\t\t\t\t\tSshes: autostopping.RuleVmTcpSshArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmTcpSshArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(22),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tRdps: autostopping.RuleVmTcpRdpArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmTcpRdpArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(3389),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tForwardRules: autostopping.RuleVmTcpForwardRuleArray{\n\t\t\t\t\t\t\u0026autostopping.RuleVmTcpForwardRuleArgs{\n\t\t\t\t\t\t\tPort: pulumi.Int(2233),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tDepends: autostopping.RuleVmDependArray{\n\t\t\t\t\u0026autostopping.RuleVmDependArgs{\n\t\t\t\t\tRuleId:     pulumi.Int(24576),\n\t\t\t\t\tDelayInSec: pulumi.Int(5),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.autostopping.RuleVm;\nimport com.pulumi.harness.autostopping.RuleVmArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmFilterArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmHttpArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmTcpArgs;\nimport com.pulumi.harness.autostopping.inputs.RuleVmDependArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new RuleVm(\"test\", RuleVmArgs.builder()\n            .name(\"name\")\n            .cloudConnectorId(\"cloud_connector_id\")\n            .idleTimeMins(10)\n            .dryRun(true)\n            .filter(RuleVmFilterArgs.builder()\n                .vmIds(\"/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\")\n                .regions(\"useast2\")\n                .build())\n            .https(RuleVmHttpArgs.builder()\n                .proxyId(\"proxy_id\")\n                .routings(                \n                    RuleVmHttpRoutingArgs.builder()\n                        .sourceProtocol(\"https\")\n                        .targetProtocol(\"https\")\n                        .sourcePort(443)\n                        .targetPort(443)\n                        .action(\"forward\")\n                        .build(),\n                    RuleVmHttpRoutingArgs.builder()\n                        .sourceProtocol(\"http\")\n                        .targetProtocol(\"http\")\n                        .sourcePort(80)\n                        .targetPort(80)\n                        .action(\"forward\")\n                        .build())\n                .healths(RuleVmHttpHealthArgs.builder()\n                    .protocol(\"http\")\n                    .port(80)\n                    .path(\"/\")\n                    .timeout(30)\n                    .statusCodeFrom(200)\n                    .statusCodeTo(299)\n                    .build())\n                .build())\n            .tcps(RuleVmTcpArgs.builder()\n                .proxyId(\"proxy_id\")\n                .sshes(RuleVmTcpSshArgs.builder()\n                    .port(22)\n                    .build())\n                .rdps(RuleVmTcpRdpArgs.builder()\n                    .port(3389)\n                    .build())\n                .forwardRules(RuleVmTcpForwardRuleArgs.builder()\n                    .port(2233)\n                    .build())\n                .build())\n            .depends(RuleVmDependArgs.builder()\n                .ruleId(24576)\n                .delayInSec(5)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:autostopping:RuleVm\n    properties:\n      name: name\n      cloudConnectorId: cloud_connector_id\n      idleTimeMins: 10\n      dryRun: true\n      filter:\n        vmIds:\n          - /subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine\n        regions:\n          - useast2\n      https:\n        - proxyId: proxy_id\n          routings:\n            - sourceProtocol: https\n              targetProtocol: https\n              sourcePort: 443\n              targetPort: 443\n              action: forward\n            - sourceProtocol: http\n              targetProtocol: http\n              sourcePort: 80\n              targetPort: 80\n              action: forward\n          healths:\n            - protocol: http\n              port: 80\n              path: /\n              timeout: 30\n              statusCodeFrom: 200\n              statusCodeTo: 299\n      tcps:\n        - proxyId: proxy_id\n          sshes:\n            - port: 22\n          rdps:\n            - port: 3389\n          forwardRules:\n            - port: 2233\n      depends:\n        - ruleId: 24576\n          delayInSec: 5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "cloudConnectorId": {
                     "type": "string",
@@ -15014,6 +15065,10 @@
                         "$ref": "#/types/harness:autostopping/RuleVmDepend:RuleVmDepend"
                     },
                     "description": "Dependent rules\n"
+                },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
                 },
                 "filter": {
                     "$ref": "#/types/harness:autostopping/RuleVmFilter:RuleVmFilter"
@@ -15074,6 +15129,10 @@
                     },
                     "description": "Dependent rules\n"
                 },
+                "dryRun": {
+                    "type": "boolean",
+                    "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
+                },
                 "filter": {
                     "$ref": "#/types/harness:autostopping/RuleVmFilter:RuleVmFilter"
                 },
@@ -15128,6 +15187,10 @@
                             "$ref": "#/types/harness:autostopping/RuleVmDepend:RuleVmDepend"
                         },
                         "description": "Dependent rules\n"
+                    },
+                    "dryRun": {
+                        "type": "boolean",
+                        "description": "Boolean that indicates whether the AutoStopping rule should be created in DryRun mode\n"
                     },
                     "filter": {
                         "$ref": "#/types/harness:autostopping/RuleVmFilter:RuleVmFilter"
@@ -24945,7 +25008,7 @@
                 },
                 "forceDelete": {
                     "type": "boolean",
-                    "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.\n"
+                    "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -24985,7 +25048,7 @@
                 },
                 "forceDelete": {
                     "type": "boolean",
-                    "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.\n"
+                    "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -25029,7 +25092,7 @@
                     },
                     "forceDelete": {
                         "type": "boolean",
-                        "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.\n"
+                        "description": "Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -42694,7 +42757,6 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account identifier of the GitOps application.\n",
                         "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
                     "agentId": {
@@ -42732,7 +42794,6 @@
                 "properties": {
                     "accountId": {
                         "deprecationMessage": "This field is deprecated and will be removed in a future release.",
-                        "description": "Account identifier of the GitOps application.\n",
                         "type": "string"
                     },
                     "agentId": {

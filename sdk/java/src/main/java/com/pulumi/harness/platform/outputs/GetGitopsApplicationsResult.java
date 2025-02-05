@@ -16,8 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsApplicationsResult {
     /**
-     * @return Account identifier of the GitOps application.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -116,8 +114,6 @@ public final class GetGitopsApplicationsResult {
 
     private GetGitopsApplicationsResult() {}
     /**
-     * @return Account identifier of the GitOps application.
-     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 

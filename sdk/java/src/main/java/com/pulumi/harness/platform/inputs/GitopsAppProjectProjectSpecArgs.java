@@ -14,6 +14,7 @@ import com.pulumi.harness.platform.inputs.GitopsAppProjectProjectSpecOrphanedRes
 import com.pulumi.harness.platform.inputs.GitopsAppProjectProjectSpecRoleArgs;
 import com.pulumi.harness.platform.inputs.GitopsAppProjectProjectSpecSignatureKeyArgs;
 import com.pulumi.harness.platform.inputs.GitopsAppProjectProjectSpecSyncWindowArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -131,6 +132,21 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
     }
 
     /**
+     * This option determines whether destinations can only reference clusters which are argo project-scoped
+     * 
+     */
+    @Import(name="permitOnlyProjectScopedClusters")
+    private @Nullable Output<Boolean> permitOnlyProjectScopedClusters;
+
+    /**
+     * @return This option determines whether destinations can only reference clusters which are argo project-scoped
+     * 
+     */
+    public Optional<Output<Boolean>> permitOnlyProjectScopedClusters() {
+        return Optional.ofNullable(this.permitOnlyProjectScopedClusters);
+    }
+
+    /**
      * Roles associated with the Argo project.
      * 
      */
@@ -158,6 +174,21 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
      */
     public Optional<Output<List<GitopsAppProjectProjectSpecSignatureKeyArgs>>> signatureKeys() {
         return Optional.ofNullable(this.signatureKeys);
+    }
+
+    /**
+     * Source namespaces defines the namespaces application resources are allowed to be created in.
+     * 
+     */
+    @Import(name="sourceNamespaces")
+    private @Nullable Output<List<String>> sourceNamespaces;
+
+    /**
+     * @return Source namespaces defines the namespaces application resources are allowed to be created in.
+     * 
+     */
+    public Optional<Output<List<String>>> sourceNamespaces() {
+        return Optional.ofNullable(this.sourceNamespaces);
     }
 
     /**
@@ -200,8 +231,10 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         this.namespaceResourceBlacklists = $.namespaceResourceBlacklists;
         this.namespaceResourceWhitelists = $.namespaceResourceWhitelists;
         this.orphanedResources = $.orphanedResources;
+        this.permitOnlyProjectScopedClusters = $.permitOnlyProjectScopedClusters;
         this.roles = $.roles;
         this.signatureKeys = $.signatureKeys;
+        this.sourceNamespaces = $.sourceNamespaces;
         this.sourceRepos = $.sourceRepos;
         this.syncWindows = $.syncWindows;
     }
@@ -432,6 +465,27 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param permitOnlyProjectScopedClusters This option determines whether destinations can only reference clusters which are argo project-scoped
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permitOnlyProjectScopedClusters(@Nullable Output<Boolean> permitOnlyProjectScopedClusters) {
+            $.permitOnlyProjectScopedClusters = permitOnlyProjectScopedClusters;
+            return this;
+        }
+
+        /**
+         * @param permitOnlyProjectScopedClusters This option determines whether destinations can only reference clusters which are argo project-scoped
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permitOnlyProjectScopedClusters(Boolean permitOnlyProjectScopedClusters) {
+            return permitOnlyProjectScopedClusters(Output.of(permitOnlyProjectScopedClusters));
+        }
+
+        /**
          * @param roles Roles associated with the Argo project.
          * 
          * @return builder
@@ -491,6 +545,37 @@ public final class GitopsAppProjectProjectSpecArgs extends com.pulumi.resources.
          */
         public Builder signatureKeys(GitopsAppProjectProjectSpecSignatureKeyArgs... signatureKeys) {
             return signatureKeys(List.of(signatureKeys));
+        }
+
+        /**
+         * @param sourceNamespaces Source namespaces defines the namespaces application resources are allowed to be created in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceNamespaces(@Nullable Output<List<String>> sourceNamespaces) {
+            $.sourceNamespaces = sourceNamespaces;
+            return this;
+        }
+
+        /**
+         * @param sourceNamespaces Source namespaces defines the namespaces application resources are allowed to be created in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceNamespaces(List<String> sourceNamespaces) {
+            return sourceNamespaces(Output.of(sourceNamespaces));
+        }
+
+        /**
+         * @param sourceNamespaces Source namespaces defines the namespaces application resources are allowed to be created in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceNamespaces(String... sourceNamespaces) {
+            return sourceNamespaces(List.of(sourceNamespaces));
         }
 
         /**

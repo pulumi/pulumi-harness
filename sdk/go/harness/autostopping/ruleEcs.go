@@ -23,6 +23,8 @@ type RuleEcs struct {
 	CustomDomains pulumi.StringArrayOutput `pulumi:"customDomains"`
 	// Dependent rules
 	Depends RuleEcsDependArrayOutput `pulumi:"depends"`
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Http routing configuration
 	Https RuleEcsHttpArrayOutput `pulumi:"https"`
 	// Unique identifier of the resource
@@ -73,6 +75,8 @@ type ruleEcsState struct {
 	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
 	Depends []RuleEcsDepend `pulumi:"depends"`
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun *bool `pulumi:"dryRun"`
 	// Http routing configuration
 	Https []RuleEcsHttp `pulumi:"https"`
 	// Unique identifier of the resource
@@ -91,6 +95,8 @@ type RuleEcsState struct {
 	CustomDomains pulumi.StringArrayInput
 	// Dependent rules
 	Depends RuleEcsDependArrayInput
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun pulumi.BoolPtrInput
 	// Http routing configuration
 	Https RuleEcsHttpArrayInput
 	// Unique identifier of the resource
@@ -113,6 +119,8 @@ type ruleEcsArgs struct {
 	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
 	Depends []RuleEcsDepend `pulumi:"depends"`
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun *bool `pulumi:"dryRun"`
 	// Http routing configuration
 	Https []RuleEcsHttp `pulumi:"https"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -130,6 +138,8 @@ type RuleEcsArgs struct {
 	CustomDomains pulumi.StringArrayInput
 	// Dependent rules
 	Depends RuleEcsDependArrayInput
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun pulumi.BoolPtrInput
 	// Http routing configuration
 	Https RuleEcsHttpArrayInput
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -242,6 +252,11 @@ func (o RuleEcsOutput) CustomDomains() pulumi.StringArrayOutput {
 // Dependent rules
 func (o RuleEcsOutput) Depends() RuleEcsDependArrayOutput {
 	return o.ApplyT(func(v *RuleEcs) RuleEcsDependArrayOutput { return v.Depends }).(RuleEcsDependArrayOutput)
+}
+
+// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+func (o RuleEcsOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuleEcs) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
 // Http routing configuration

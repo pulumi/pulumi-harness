@@ -90,6 +90,12 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _orphanedResources = value;
         }
 
+        /// <summary>
+        /// This option determines whether destinations can only reference clusters which are argo project-scoped
+        /// </summary>
+        [Input("permitOnlyProjectScopedClusters")]
+        public Input<bool>? PermitOnlyProjectScopedClusters { get; set; }
+
         [Input("roles")]
         private InputList<Inputs.GitopsAppProjectProjectSpecRoleArgs>? _roles;
 
@@ -112,6 +118,18 @@ namespace Pulumi.Harness.Platform.Inputs
         {
             get => _signatureKeys ?? (_signatureKeys = new InputList<Inputs.GitopsAppProjectProjectSpecSignatureKeyArgs>());
             set => _signatureKeys = value;
+        }
+
+        [Input("sourceNamespaces")]
+        private InputList<string>? _sourceNamespaces;
+
+        /// <summary>
+        /// Source namespaces defines the namespaces application resources are allowed to be created in.
+        /// </summary>
+        public InputList<string> SourceNamespaces
+        {
+            get => _sourceNamespaces ?? (_sourceNamespaces = new InputList<string>());
+            set => _sourceNamespaces = value;
         }
 
         [Input("sourceRepos")]

@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? ForceString;
         /// <summary>
-        /// Name of the GitOps application.
+        /// Name of the helm parameter.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -13,6 +13,7 @@ import com.pulumi.harness.autostopping.inputs.RuleEcsState;
 import com.pulumi.harness.autostopping.outputs.RuleEcsContainer;
 import com.pulumi.harness.autostopping.outputs.RuleEcsDepend;
 import com.pulumi.harness.autostopping.outputs.RuleEcsHttp;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -78,6 +79,20 @@ public class RuleEcs extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<RuleEcsDepend>>> depends() {
         return Codegen.optional(this.depends);
+    }
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dryRun;
+
+    /**
+     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * 
+     */
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
     }
     /**
      * Http routing configuration
@@ -175,6 +190,7 @@ public class RuleEcs extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/pulumi")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

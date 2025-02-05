@@ -18,7 +18,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
      */
     private @Nullable Boolean forceString;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the helm parameter.
      * 
      */
     private @Nullable String name;
@@ -37,7 +37,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmParameter {
         return Optional.ofNullable(this.forceString);
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the helm parameter.
      * 
      */
     public Optional<String> name() {

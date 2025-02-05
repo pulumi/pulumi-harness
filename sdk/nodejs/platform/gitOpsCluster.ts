@@ -68,7 +68,7 @@ export class GitOpsCluster extends pulumi.CustomResource {
      */
     public readonly agentId!: pulumi.Output<string>;
     /**
-     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
@@ -144,7 +144,7 @@ export interface GitOpsClusterState {
      */
     agentId?: pulumi.Input<string>;
     /**
-     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -180,7 +180,7 @@ export interface GitOpsClusterArgs {
      */
     agentId: pulumi.Input<string>;
     /**
-     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      */
     forceDelete?: pulumi.Input<boolean>;
     /**

@@ -25,6 +25,7 @@ class RuleEcsArgs:
                  container: Optional[pulumi.Input['RuleEcsContainerArgs']] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsHttpArgs']]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -33,6 +34,7 @@ class RuleEcsArgs:
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsHttpArgs']]] https: Http routing configuration
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
@@ -44,6 +46,8 @@ class RuleEcsArgs:
             pulumi.set(__self__, "custom_domains", custom_domains)
         if depends is not None:
             pulumi.set(__self__, "depends", depends)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if https is not None:
             pulumi.set(__self__, "https", https)
         if idle_time_mins is not None:
@@ -97,6 +101,18 @@ class RuleEcsArgs:
         pulumi.set(self, "depends", value)
 
     @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
     @pulumi.getter
     def https(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsHttpArgs']]]]:
         """
@@ -140,6 +156,7 @@ class _RuleEcsState:
                  container: Optional[pulumi.Input['RuleEcsContainerArgs']] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsHttpArgs']]]] = None,
                  identifier: Optional[pulumi.Input[float]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
@@ -149,6 +166,7 @@ class _RuleEcsState:
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input['RuleEcsHttpArgs']]] https: Http routing configuration
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -162,6 +180,8 @@ class _RuleEcsState:
             pulumi.set(__self__, "custom_domains", custom_domains)
         if depends is not None:
             pulumi.set(__self__, "depends", depends)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if https is not None:
             pulumi.set(__self__, "https", https)
         if identifier is not None:
@@ -215,6 +235,18 @@ class _RuleEcsState:
     @depends.setter
     def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleEcsDependArgs']]]]):
         pulumi.set(self, "depends", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
     @property
     @pulumi.getter
@@ -274,6 +306,7 @@ class RuleEcs(pulumi.CustomResource):
                  container: Optional[pulumi.Input[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict']]] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -286,6 +319,7 @@ class RuleEcs(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]] https: Http routing configuration
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
@@ -318,6 +352,7 @@ class RuleEcs(pulumi.CustomResource):
                  container: Optional[pulumi.Input[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict']]] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -336,6 +371,7 @@ class RuleEcs(pulumi.CustomResource):
             __props__.__dict__["container"] = container
             __props__.__dict__["custom_domains"] = custom_domains
             __props__.__dict__["depends"] = depends
+            __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["https"] = https
             __props__.__dict__["idle_time_mins"] = idle_time_mins
             __props__.__dict__["name"] = name
@@ -354,6 +390,7 @@ class RuleEcs(pulumi.CustomResource):
             container: Optional[pulumi.Input[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict']]] = None,
             custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]]] = None,
+            dry_run: Optional[pulumi.Input[bool]] = None,
             https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[float]] = None,
             idle_time_mins: Optional[pulumi.Input[int]] = None,
@@ -368,6 +405,7 @@ class RuleEcs(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]] https: Http routing configuration
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -381,6 +419,7 @@ class RuleEcs(pulumi.CustomResource):
         __props__.__dict__["container"] = container
         __props__.__dict__["custom_domains"] = custom_domains
         __props__.__dict__["depends"] = depends
+        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["https"] = https
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["idle_time_mins"] = idle_time_mins
@@ -415,6 +454,14 @@ class RuleEcs(pulumi.CustomResource):
         Dependent rules
         """
         return pulumi.get(self, "depends")
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
 
     @property
     @pulumi.getter

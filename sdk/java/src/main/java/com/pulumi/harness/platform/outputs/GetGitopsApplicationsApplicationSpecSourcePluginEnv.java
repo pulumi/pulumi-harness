@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourcePluginEnv {
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the variable, usually expressed in uppercase.
      * 
      */
     private @Nullable String name;
@@ -24,7 +24,7 @@ public final class GetGitopsApplicationsApplicationSpecSourcePluginEnv {
 
     private GetGitopsApplicationsApplicationSpecSourcePluginEnv() {}
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the variable, usually expressed in uppercase.
      * 
      */
     public Optional<String> name() {

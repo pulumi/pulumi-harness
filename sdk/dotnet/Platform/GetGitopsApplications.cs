@@ -33,9 +33,6 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsApplicationsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account identifier of the GitOps application.
-        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
@@ -77,9 +74,6 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetGitopsApplicationsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Account identifier of the GitOps application.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -123,9 +117,6 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetGitopsApplicationsResult
     {
-        /// <summary>
-        /// Account identifier of the GitOps application.
-        /// </summary>
         public readonly string AccountId;
         /// <summary>
         /// Agent identifier of the GitOps application.

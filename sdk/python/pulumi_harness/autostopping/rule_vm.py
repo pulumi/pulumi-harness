@@ -25,6 +25,7 @@ class RuleVmArgs:
                  filter: pulumi.Input['RuleVmFilterArgs'],
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class RuleVmArgs:
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]] https: Http routing configuration
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
@@ -47,6 +49,8 @@ class RuleVmArgs:
             pulumi.set(__self__, "custom_domains", custom_domains)
         if depends is not None:
             pulumi.set(__self__, "depends", depends)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if https is not None:
             pulumi.set(__self__, "https", https)
         if idle_time_mins is not None:
@@ -102,6 +106,18 @@ class RuleVmArgs:
     @depends.setter
     def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]]):
         pulumi.set(self, "depends", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
     @property
     @pulumi.getter
@@ -170,6 +186,7 @@ class _RuleVmState:
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input['RuleVmFilterArgs']] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]]] = None,
                  identifier: Optional[pulumi.Input[float]] = None,
@@ -182,6 +199,7 @@ class _RuleVmState:
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input['RuleVmHttpArgs']]] https: Http routing configuration
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -195,6 +213,8 @@ class _RuleVmState:
             pulumi.set(__self__, "custom_domains", custom_domains)
         if depends is not None:
             pulumi.set(__self__, "depends", depends)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if https is not None:
@@ -245,6 +265,18 @@ class _RuleVmState:
     @depends.setter
     def depends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleVmDependArgs']]]]):
         pulumi.set(self, "depends", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
 
     @property
     @pulumi.getter
@@ -336,6 +368,7 @@ class RuleVm(pulumi.CustomResource):
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
@@ -356,6 +389,7 @@ class RuleVm(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
+            dry_run=True,
             filter={
                 "vm_ids": ["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
                 "regions": ["useast2"],
@@ -410,6 +444,7 @@ class RuleVm(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]] https: Http routing configuration
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[str] name: Name of the rule
@@ -435,6 +470,7 @@ class RuleVm(pulumi.CustomResource):
             name="name",
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
+            dry_run=True,
             filter={
                 "vm_ids": ["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
                 "regions": ["useast2"],
@@ -502,6 +538,7 @@ class RuleVm(pulumi.CustomResource):
                  cloud_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
                  https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
                  idle_time_mins: Optional[pulumi.Input[int]] = None,
@@ -522,6 +559,7 @@ class RuleVm(pulumi.CustomResource):
             __props__.__dict__["cloud_connector_id"] = cloud_connector_id
             __props__.__dict__["custom_domains"] = custom_domains
             __props__.__dict__["depends"] = depends
+            __props__.__dict__["dry_run"] = dry_run
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
@@ -544,6 +582,7 @@ class RuleVm(pulumi.CustomResource):
             cloud_connector_id: Optional[pulumi.Input[str]] = None,
             custom_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             depends: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]]] = None,
+            dry_run: Optional[pulumi.Input[bool]] = None,
             filter: Optional[pulumi.Input[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict']]] = None,
             https: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[float]] = None,
@@ -561,6 +600,7 @@ class RuleVm(pulumi.CustomResource):
         :param pulumi.Input[str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_domains: Custom URLs used to access the instances
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict']]]] https: Http routing configuration
         :param pulumi.Input[float] identifier: Unique identifier of the resource
         :param pulumi.Input[int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -575,6 +615,7 @@ class RuleVm(pulumi.CustomResource):
         __props__.__dict__["cloud_connector_id"] = cloud_connector_id
         __props__.__dict__["custom_domains"] = custom_domains
         __props__.__dict__["depends"] = depends
+        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["filter"] = filter
         __props__.__dict__["https"] = https
         __props__.__dict__["identifier"] = identifier
@@ -607,6 +648,14 @@ class RuleVm(pulumi.CustomResource):
         Dependent rules
         """
         return pulumi.get(self, "depends")
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
 
     @property
     @pulumi.getter
