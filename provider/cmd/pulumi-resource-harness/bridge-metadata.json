@@ -1542,6 +1542,9 @@
                                             "signature_keys": {
                                                 "maxItemsOne": false
                                             },
+                                            "source_namespaces": {
+                                                "maxItemsOne": false
+                                            },
                                             "source_repos": {
                                                 "maxItemsOne": false
                                             },
