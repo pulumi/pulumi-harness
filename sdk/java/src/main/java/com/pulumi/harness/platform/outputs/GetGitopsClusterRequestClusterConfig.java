@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.harness.platform.outputs.GetGitopsClusterRequestClusterConfigExecProviderConfig;
 import com.pulumi.harness.platform.outputs.GetGitopsClusterRequestClusterConfigTlsClientConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +31,11 @@ public final class GetGitopsClusterRequestClusterConfig {
      */
     private @Nullable String clusterConnectionType;
     /**
+     * @return DisableCompression bypasses automatic GZip compression requests to to the cluster&#39;s API server. Corresponds to running kubectl with --disable-compression
+     * 
+     */
+    private @Nullable Boolean disableCompression;
+    /**
      * @return Configuration for an exec provider.
      * 
      */
@@ -39,6 +45,11 @@ public final class GetGitopsClusterRequestClusterConfig {
      * 
      */
     private @Nullable String password;
+    /**
+     * @return The URL to the proxy to be used for all requests send to the cluster&#39;s API server
+     * 
+     */
+    private @Nullable String proxyUrl;
     /**
      * @return Optional role ARN. If set then used for AWS IAM Authenticator.
      * 
@@ -78,6 +89,13 @@ public final class GetGitopsClusterRequestClusterConfig {
         return Optional.ofNullable(this.clusterConnectionType);
     }
     /**
+     * @return DisableCompression bypasses automatic GZip compression requests to to the cluster&#39;s API server. Corresponds to running kubectl with --disable-compression
+     * 
+     */
+    public Optional<Boolean> disableCompression() {
+        return Optional.ofNullable(this.disableCompression);
+    }
+    /**
      * @return Configuration for an exec provider.
      * 
      */
@@ -90,6 +108,13 @@ public final class GetGitopsClusterRequestClusterConfig {
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return The URL to the proxy to be used for all requests send to the cluster&#39;s API server
+     * 
+     */
+    public Optional<String> proxyUrl() {
+        return Optional.ofNullable(this.proxyUrl);
     }
     /**
      * @return Optional role ARN. If set then used for AWS IAM Authenticator.
@@ -125,8 +150,10 @@ public final class GetGitopsClusterRequestClusterConfig {
         private @Nullable String awsClusterName;
         private @Nullable String bearerToken;
         private @Nullable String clusterConnectionType;
+        private @Nullable Boolean disableCompression;
         private @Nullable List<GetGitopsClusterRequestClusterConfigExecProviderConfig> execProviderConfigs;
         private @Nullable String password;
+        private @Nullable String proxyUrl;
         private @Nullable String roleARN;
         private @Nullable List<GetGitopsClusterRequestClusterConfigTlsClientConfig> tlsClientConfigs;
         private @Nullable String username;
@@ -136,8 +163,10 @@ public final class GetGitopsClusterRequestClusterConfig {
     	      this.awsClusterName = defaults.awsClusterName;
     	      this.bearerToken = defaults.bearerToken;
     	      this.clusterConnectionType = defaults.clusterConnectionType;
+    	      this.disableCompression = defaults.disableCompression;
     	      this.execProviderConfigs = defaults.execProviderConfigs;
     	      this.password = defaults.password;
+    	      this.proxyUrl = defaults.proxyUrl;
     	      this.roleARN = defaults.roleARN;
     	      this.tlsClientConfigs = defaults.tlsClientConfigs;
     	      this.username = defaults.username;
@@ -162,6 +191,12 @@ public final class GetGitopsClusterRequestClusterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder disableCompression(@Nullable Boolean disableCompression) {
+
+            this.disableCompression = disableCompression;
+            return this;
+        }
+        @CustomType.Setter
         public Builder execProviderConfigs(@Nullable List<GetGitopsClusterRequestClusterConfigExecProviderConfig> execProviderConfigs) {
 
             this.execProviderConfigs = execProviderConfigs;
@@ -174,6 +209,12 @@ public final class GetGitopsClusterRequestClusterConfig {
         public Builder password(@Nullable String password) {
 
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder proxyUrl(@Nullable String proxyUrl) {
+
+            this.proxyUrl = proxyUrl;
             return this;
         }
         @CustomType.Setter
@@ -202,8 +243,10 @@ public final class GetGitopsClusterRequestClusterConfig {
             _resultValue.awsClusterName = awsClusterName;
             _resultValue.bearerToken = bearerToken;
             _resultValue.clusterConnectionType = clusterConnectionType;
+            _resultValue.disableCompression = disableCompression;
             _resultValue.execProviderConfigs = execProviderConfigs;
             _resultValue.password = password;
+            _resultValue.proxyUrl = proxyUrl;
             _resultValue.roleARN = roleARN;
             _resultValue.tlsClientConfigs = tlsClientConfigs;
             _resultValue.username = username;

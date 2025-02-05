@@ -48,7 +48,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         /// </summary>
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? AgentId { get; set; }
 
         /// <summary>
-        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+        /// Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }

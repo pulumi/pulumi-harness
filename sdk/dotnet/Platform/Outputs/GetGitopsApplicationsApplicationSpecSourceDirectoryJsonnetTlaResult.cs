@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly bool? Code;
         /// <summary>
-        /// Name of the GitOps application.
+        /// Name of the TLAS of the jsonnet application.
         /// </summary>
         public readonly string? Name;
         /// <summary>

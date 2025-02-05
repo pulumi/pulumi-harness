@@ -18,7 +18,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla
      */
     private @Nullable Boolean code;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the TLAS of the jsonnet application.
      * 
      */
     private @Nullable String name;
@@ -37,7 +37,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla
         return Optional.ofNullable(this.code);
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the TLAS of the jsonnet application.
      * 
      */
     public Optional<String> name() {

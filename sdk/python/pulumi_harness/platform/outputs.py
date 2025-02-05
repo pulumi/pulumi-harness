@@ -5545,8 +5545,12 @@ class GitOpsClusterRequestClusterConfig(dict):
             suggest = "bearer_token"
         elif key == "clusterConnectionType":
             suggest = "cluster_connection_type"
+        elif key == "disableCompression":
+            suggest = "disable_compression"
         elif key == "execProviderConfigs":
             suggest = "exec_provider_configs"
+        elif key == "proxyUrl":
+            suggest = "proxy_url"
         elif key == "roleARN":
             suggest = "role_arn"
         elif key == "tlsClientConfigs":
@@ -5567,8 +5571,10 @@ class GitOpsClusterRequestClusterConfig(dict):
                  aws_cluster_name: Optional[str] = None,
                  bearer_token: Optional[str] = None,
                  cluster_connection_type: Optional[str] = None,
+                 disable_compression: Optional[bool] = None,
                  exec_provider_configs: Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigExecProviderConfig']] = None,
                  password: Optional[str] = None,
+                 proxy_url: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  tls_client_configs: Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigTlsClientConfig']] = None,
                  username: Optional[str] = None):
@@ -5576,8 +5582,10 @@ class GitOpsClusterRequestClusterConfig(dict):
         :param str aws_cluster_name: AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         :param str bearer_token: Bearer authentication token the cluster.
         :param str cluster_connection_type: Identifies the authentication method used to connect to the cluster.
+        :param bool disable_compression: DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
         :param Sequence['GitOpsClusterRequestClusterConfigExecProviderConfigArgs'] exec_provider_configs: Configuration for an exec provider.
         :param str password: Password of the server of the cluster.
+        :param str proxy_url: The URL to the proxy to be used for all requests send to the cluster's API server
         :param str role_arn: Optional role ARN. If set then used for AWS IAM Authenticator.
         :param Sequence['GitOpsClusterRequestClusterConfigTlsClientConfigArgs'] tls_client_configs: Settings to enable transport layer security.
         :param str username: Username of the server of the cluster.
@@ -5588,10 +5596,14 @@ class GitOpsClusterRequestClusterConfig(dict):
             pulumi.set(__self__, "bearer_token", bearer_token)
         if cluster_connection_type is not None:
             pulumi.set(__self__, "cluster_connection_type", cluster_connection_type)
+        if disable_compression is not None:
+            pulumi.set(__self__, "disable_compression", disable_compression)
         if exec_provider_configs is not None:
             pulumi.set(__self__, "exec_provider_configs", exec_provider_configs)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if tls_client_configs is not None:
@@ -5624,6 +5636,14 @@ class GitOpsClusterRequestClusterConfig(dict):
         return pulumi.get(self, "cluster_connection_type")
 
     @property
+    @pulumi.getter(name="disableCompression")
+    def disable_compression(self) -> Optional[bool]:
+        """
+        DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+        """
+        return pulumi.get(self, "disable_compression")
+
+    @property
     @pulumi.getter(name="execProviderConfigs")
     def exec_provider_configs(self) -> Optional[Sequence['outputs.GitOpsClusterRequestClusterConfigExecProviderConfig']]:
         """
@@ -5638,6 +5658,14 @@ class GitOpsClusterRequestClusterConfig(dict):
         Password of the server of the cluster.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[str]:
+        """
+        The URL to the proxy to be used for all requests send to the cluster's API server
+        """
+        return pulumi.get(self, "proxy_url")
 
     @property
     @pulumi.getter(name="roleARN")
@@ -8167,8 +8195,12 @@ class GitopsAppProjectProjectSpec(dict):
             suggest = "namespace_resource_whitelists"
         elif key == "orphanedResources":
             suggest = "orphaned_resources"
+        elif key == "permitOnlyProjectScopedClusters":
+            suggest = "permit_only_project_scoped_clusters"
         elif key == "signatureKeys":
             suggest = "signature_keys"
+        elif key == "sourceNamespaces":
+            suggest = "source_namespaces"
         elif key == "sourceRepos":
             suggest = "source_repos"
         elif key == "syncWindows":
@@ -8193,8 +8225,10 @@ class GitopsAppProjectProjectSpec(dict):
                  namespace_resource_blacklists: Optional[Sequence['outputs.GitopsAppProjectProjectSpecNamespaceResourceBlacklist']] = None,
                  namespace_resource_whitelists: Optional[Sequence['outputs.GitopsAppProjectProjectSpecNamespaceResourceWhitelist']] = None,
                  orphaned_resources: Optional[Sequence['outputs.GitopsAppProjectProjectSpecOrphanedResource']] = None,
+                 permit_only_project_scoped_clusters: Optional[bool] = None,
                  roles: Optional[Sequence['outputs.GitopsAppProjectProjectSpecRole']] = None,
                  signature_keys: Optional[Sequence['outputs.GitopsAppProjectProjectSpecSignatureKey']] = None,
+                 source_namespaces: Optional[Sequence[str]] = None,
                  source_repos: Optional[Sequence[str]] = None,
                  sync_windows: Optional[Sequence['outputs.GitopsAppProjectProjectSpecSyncWindow']] = None):
         """
@@ -8205,8 +8239,10 @@ class GitopsAppProjectProjectSpec(dict):
         :param Sequence['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs'] namespace_resource_blacklists: Namespace resource blacklist for the Argo project.
         :param Sequence['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs'] namespace_resource_whitelists: Namespace resource whitelist for the GitOps project.
         :param Sequence['GitopsAppProjectProjectSpecOrphanedResourceArgs'] orphaned_resources: OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
+        :param bool permit_only_project_scoped_clusters: This option determines whether destinations can only reference clusters which are argo project-scoped
         :param Sequence['GitopsAppProjectProjectSpecRoleArgs'] roles: Roles associated with the Argo project.
         :param Sequence['GitopsAppProjectProjectSpecSignatureKeyArgs'] signature_keys: Signature keys for the GitOps project.
+        :param Sequence[str] source_namespaces: Source namespaces defines the namespaces application resources are allowed to be created in.
         :param Sequence[str] source_repos: Allowed Source repositories for the Argo project.
         :param Sequence['GitopsAppProjectProjectSpecSyncWindowArgs'] sync_windows: Synchronization windows for the GitOps project.
         """
@@ -8224,10 +8260,14 @@ class GitopsAppProjectProjectSpec(dict):
             pulumi.set(__self__, "namespace_resource_whitelists", namespace_resource_whitelists)
         if orphaned_resources is not None:
             pulumi.set(__self__, "orphaned_resources", orphaned_resources)
+        if permit_only_project_scoped_clusters is not None:
+            pulumi.set(__self__, "permit_only_project_scoped_clusters", permit_only_project_scoped_clusters)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if signature_keys is not None:
             pulumi.set(__self__, "signature_keys", signature_keys)
+        if source_namespaces is not None:
+            pulumi.set(__self__, "source_namespaces", source_namespaces)
         if source_repos is not None:
             pulumi.set(__self__, "source_repos", source_repos)
         if sync_windows is not None:
@@ -8290,6 +8330,14 @@ class GitopsAppProjectProjectSpec(dict):
         return pulumi.get(self, "orphaned_resources")
 
     @property
+    @pulumi.getter(name="permitOnlyProjectScopedClusters")
+    def permit_only_project_scoped_clusters(self) -> Optional[bool]:
+        """
+        This option determines whether destinations can only reference clusters which are argo project-scoped
+        """
+        return pulumi.get(self, "permit_only_project_scoped_clusters")
+
+    @property
     @pulumi.getter
     def roles(self) -> Optional[Sequence['outputs.GitopsAppProjectProjectSpecRole']]:
         """
@@ -8304,6 +8352,14 @@ class GitopsAppProjectProjectSpec(dict):
         Signature keys for the GitOps project.
         """
         return pulumi.get(self, "signature_keys")
+
+    @property
+    @pulumi.getter(name="sourceNamespaces")
+    def source_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        Source namespaces defines the namespaces application resources are allowed to be created in.
+        """
+        return pulumi.get(self, "source_namespaces")
 
     @property
     @pulumi.getter(name="sourceRepos")
@@ -18566,7 +18622,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
                  value: Optional[str] = None):
         """
         :param bool code: Code of the external variables of jsonnet application.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the external variables of jsonnet application.
         :param str value: Value of the external variables of jsonnet application.
         """
         if code is not None:
@@ -18588,7 +18644,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarResult(dic
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the GitOps application.
+        Name of the external variables of jsonnet application.
         """
         return pulumi.get(self, "name")
 
@@ -18609,7 +18665,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
                  value: Optional[str] = None):
         """
         :param bool code: Code of the TLAS of the jsonnet application.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the TLAS of the jsonnet application.
         :param str value: Value of the TLAS of the jsonnet application.
         """
         if code is not None:
@@ -18631,7 +18687,7 @@ class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the GitOps application.
+        Name of the TLAS of the jsonnet application.
         """
         return pulumi.get(self, "name")
 
@@ -18741,7 +18797,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
                  name: Optional[str] = None,
                  path: Optional[str] = None):
         """
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the helm parameter.
         :param str path: Path to the file containing the values of the helm parameter.
         """
         if name is not None:
@@ -18753,7 +18809,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the GitOps application.
+        Name of the helm parameter.
         """
         return pulumi.get(self, "name")
 
@@ -18774,7 +18830,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
                  value: Optional[str] = None):
         """
         :param bool force_string: Indicates if helm should interpret booleans and numbers as strings.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the helm parameter.
         :param str value: Value of the Helm parameter.
         """
         if force_string is not None:
@@ -18796,7 +18852,7 @@ class GetGitopsApplicationsApplicationSpecSourceHelmParameterResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the GitOps application.
+        Name of the helm parameter.
         """
         return pulumi.get(self, "name")
 
@@ -18848,7 +18904,7 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
                  value: Optional[str] = None):
         """
         :param str component: Component of the parameter of the ksonnet application.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the parameter of the ksonnet application.
         :param str value: Value of the parameter of the ksonnet application.
         """
         if component is not None:
@@ -18870,7 +18926,7 @@ class GetGitopsApplicationsApplicationSpecSourceKsonnetParameterResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the GitOps application.
+        Name of the parameter of the ksonnet application.
         """
         return pulumi.get(self, "name")
 
@@ -18993,7 +19049,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
                  name: Optional[str] = None):
         """
         :param Sequence['GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs'] envs: Entry in the GitOps application's environment.
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the plugin.
         """
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
@@ -19012,7 +19068,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the GitOps application.
+        Name of the plugin.
         """
         return pulumi.get(self, "name")
 
@@ -19023,7 +19079,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: Name of the GitOps application.
+        :param str name: Name of the variable, usually expressed in uppercase.
         :param str value: Value of the variable.
         """
         if name is not None:
@@ -19035,7 +19091,7 @@ class GetGitopsApplicationsApplicationSpecSourcePluginEnvResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the GitOps application.
+        Name of the variable, usually expressed in uppercase.
         """
         return pulumi.get(self, "name")
 
@@ -19395,8 +19451,10 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
                  aws_cluster_name: Optional[str] = None,
                  bearer_token: Optional[str] = None,
                  cluster_connection_type: Optional[str] = None,
+                 disable_compression: Optional[bool] = None,
                  exec_provider_configs: Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigExecProviderConfigResult']] = None,
                  password: Optional[str] = None,
+                 proxy_url: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  tls_client_configs: Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigTlsClientConfigResult']] = None,
                  username: Optional[str] = None):
@@ -19404,8 +19462,10 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
         :param str aws_cluster_name: AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         :param str bearer_token: Bearer authentication token the cluster.
         :param str cluster_connection_type: Identifies the authentication method used to connect to the cluster.
+        :param bool disable_compression: DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
         :param Sequence['GetGitopsClusterRequestClusterConfigExecProviderConfigArgs'] exec_provider_configs: Configuration for an exec provider.
         :param str password: Password of the server of the cluster.
+        :param str proxy_url: The URL to the proxy to be used for all requests send to the cluster's API server
         :param str role_arn: Optional role ARN. If set then used for AWS IAM Authenticator.
         :param Sequence['GetGitopsClusterRequestClusterConfigTlsClientConfigArgs'] tls_client_configs: Settings to enable transport layer security.
         :param str username: Username of the server of the cluster.
@@ -19416,10 +19476,14 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
             pulumi.set(__self__, "bearer_token", bearer_token)
         if cluster_connection_type is not None:
             pulumi.set(__self__, "cluster_connection_type", cluster_connection_type)
+        if disable_compression is not None:
+            pulumi.set(__self__, "disable_compression", disable_compression)
         if exec_provider_configs is not None:
             pulumi.set(__self__, "exec_provider_configs", exec_provider_configs)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if tls_client_configs is not None:
@@ -19452,6 +19516,14 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
         return pulumi.get(self, "cluster_connection_type")
 
     @property
+    @pulumi.getter(name="disableCompression")
+    def disable_compression(self) -> Optional[bool]:
+        """
+        DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+        """
+        return pulumi.get(self, "disable_compression")
+
+    @property
     @pulumi.getter(name="execProviderConfigs")
     def exec_provider_configs(self) -> Optional[Sequence['outputs.GetGitopsClusterRequestClusterConfigExecProviderConfigResult']]:
         """
@@ -19466,6 +19538,14 @@ class GetGitopsClusterRequestClusterConfigResult(dict):
         Password of the server of the cluster.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[str]:
+        """
+        The URL to the proxy to be used for all requests send to the cluster's API server
+        """
+        return pulumi.get(self, "proxy_url")
 
     @property
     @pulumi.getter(name="roleARN")

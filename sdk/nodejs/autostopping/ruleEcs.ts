@@ -51,6 +51,10 @@ export class RuleEcs extends pulumi.CustomResource {
      */
     public readonly depends!: pulumi.Output<outputs.autostopping.RuleEcsDepend[] | undefined>;
     /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
      * Http routing configuration
      */
     public readonly https!: pulumi.Output<outputs.autostopping.RuleEcsHttp[] | undefined>;
@@ -84,6 +88,7 @@ export class RuleEcs extends pulumi.CustomResource {
             resourceInputs["container"] = state ? state.container : undefined;
             resourceInputs["customDomains"] = state ? state.customDomains : undefined;
             resourceInputs["depends"] = state ? state.depends : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["https"] = state ? state.https : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["idleTimeMins"] = state ? state.idleTimeMins : undefined;
@@ -97,6 +102,7 @@ export class RuleEcs extends pulumi.CustomResource {
             resourceInputs["container"] = args ? args.container : undefined;
             resourceInputs["customDomains"] = args ? args.customDomains : undefined;
             resourceInputs["depends"] = args ? args.depends : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["https"] = args ? args.https : undefined;
             resourceInputs["idleTimeMins"] = args ? args.idleTimeMins : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -124,6 +130,10 @@ export interface RuleEcsState {
      * Dependent rules
      */
     depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleEcsDepend>[]>;
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Http routing configuration
      */
@@ -159,6 +169,10 @@ export interface RuleEcsArgs {
      * Dependent rules
      */
     depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleEcsDepend>[]>;
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Http routing configuration
      */

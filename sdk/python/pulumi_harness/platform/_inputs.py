@@ -7102,6 +7102,10 @@ if not MYPY:
         """
         Identifies the authentication method used to connect to the cluster.
         """
+        disable_compression: NotRequired[pulumi.Input[bool]]
+        """
+        DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+        """
         exec_provider_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigExecProviderConfigArgsDict']]]]
         """
         Configuration for an exec provider.
@@ -7109,6 +7113,10 @@ if not MYPY:
         password: NotRequired[pulumi.Input[str]]
         """
         Password of the server of the cluster.
+        """
+        proxy_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL to the proxy to be used for all requests send to the cluster's API server
         """
         role_arn: NotRequired[pulumi.Input[str]]
         """
@@ -7131,8 +7139,10 @@ class GitOpsClusterRequestClusterConfigArgs:
                  aws_cluster_name: Optional[pulumi.Input[str]] = None,
                  bearer_token: Optional[pulumi.Input[str]] = None,
                  cluster_connection_type: Optional[pulumi.Input[str]] = None,
+                 disable_compression: Optional[pulumi.Input[bool]] = None,
                  exec_provider_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigExecProviderConfigArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 proxy_url: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  tls_client_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigTlsClientConfigArgs']]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -7140,8 +7150,10 @@ class GitOpsClusterRequestClusterConfigArgs:
         :param pulumi.Input[str] aws_cluster_name: AWS Cluster name. If set then AWS CLI EKS token command will be used to access cluster.
         :param pulumi.Input[str] bearer_token: Bearer authentication token the cluster.
         :param pulumi.Input[str] cluster_connection_type: Identifies the authentication method used to connect to the cluster.
+        :param pulumi.Input[bool] disable_compression: DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigExecProviderConfigArgs']]] exec_provider_configs: Configuration for an exec provider.
         :param pulumi.Input[str] password: Password of the server of the cluster.
+        :param pulumi.Input[str] proxy_url: The URL to the proxy to be used for all requests send to the cluster's API server
         :param pulumi.Input[str] role_arn: Optional role ARN. If set then used for AWS IAM Authenticator.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigTlsClientConfigArgs']]] tls_client_configs: Settings to enable transport layer security.
         :param pulumi.Input[str] username: Username of the server of the cluster.
@@ -7152,10 +7164,14 @@ class GitOpsClusterRequestClusterConfigArgs:
             pulumi.set(__self__, "bearer_token", bearer_token)
         if cluster_connection_type is not None:
             pulumi.set(__self__, "cluster_connection_type", cluster_connection_type)
+        if disable_compression is not None:
+            pulumi.set(__self__, "disable_compression", disable_compression)
         if exec_provider_configs is not None:
             pulumi.set(__self__, "exec_provider_configs", exec_provider_configs)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if tls_client_configs is not None:
@@ -7200,6 +7216,18 @@ class GitOpsClusterRequestClusterConfigArgs:
         pulumi.set(self, "cluster_connection_type", value)
 
     @property
+    @pulumi.getter(name="disableCompression")
+    def disable_compression(self) -> Optional[pulumi.Input[bool]]:
+        """
+        DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+        """
+        return pulumi.get(self, "disable_compression")
+
+    @disable_compression.setter
+    def disable_compression(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_compression", value)
+
+    @property
     @pulumi.getter(name="execProviderConfigs")
     def exec_provider_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsClusterRequestClusterConfigExecProviderConfigArgs']]]]:
         """
@@ -7222,6 +7250,18 @@ class GitOpsClusterRequestClusterConfigArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to the proxy to be used for all requests send to the cluster's API server
+        """
+        return pulumi.get(self, "proxy_url")
+
+    @proxy_url.setter
+    def proxy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_url", value)
 
     @property
     @pulumi.getter(name="roleARN")
@@ -10571,6 +10611,10 @@ if not MYPY:
         """
         OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
         """
+        permit_only_project_scoped_clusters: NotRequired[pulumi.Input[bool]]
+        """
+        This option determines whether destinations can only reference clusters which are argo project-scoped
+        """
         roles: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgsDict']]]]
         """
         Roles associated with the Argo project.
@@ -10578,6 +10622,10 @@ if not MYPY:
         signature_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgsDict']]]]
         """
         Signature keys for the GitOps project.
+        """
+        source_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source namespaces defines the namespaces application resources are allowed to be created in.
         """
         source_repos: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -10600,8 +10648,10 @@ class GitopsAppProjectProjectSpecArgs:
                  namespace_resource_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]]] = None,
                  namespace_resource_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs']]]] = None,
                  orphaned_resources: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]]] = None,
+                 permit_only_project_scoped_clusters: Optional[pulumi.Input[bool]] = None,
                  roles: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]]] = None,
                  signature_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]]] = None,
+                 source_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_repos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sync_windows: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]]] = None):
         """
@@ -10612,8 +10662,10 @@ class GitopsAppProjectProjectSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceBlacklistArgs']]] namespace_resource_blacklists: Namespace resource blacklist for the Argo project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecNamespaceResourceWhitelistArgs']]] namespace_resource_whitelists: Namespace resource whitelist for the GitOps project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecOrphanedResourceArgs']]] orphaned_resources: OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
+        :param pulumi.Input[bool] permit_only_project_scoped_clusters: This option determines whether destinations can only reference clusters which are argo project-scoped
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]] roles: Roles associated with the Argo project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]] signature_keys: Signature keys for the GitOps project.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_namespaces: Source namespaces defines the namespaces application resources are allowed to be created in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_repos: Allowed Source repositories for the Argo project.
         :param pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSyncWindowArgs']]] sync_windows: Synchronization windows for the GitOps project.
         """
@@ -10631,10 +10683,14 @@ class GitopsAppProjectProjectSpecArgs:
             pulumi.set(__self__, "namespace_resource_whitelists", namespace_resource_whitelists)
         if orphaned_resources is not None:
             pulumi.set(__self__, "orphaned_resources", orphaned_resources)
+        if permit_only_project_scoped_clusters is not None:
+            pulumi.set(__self__, "permit_only_project_scoped_clusters", permit_only_project_scoped_clusters)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
         if signature_keys is not None:
             pulumi.set(__self__, "signature_keys", signature_keys)
+        if source_namespaces is not None:
+            pulumi.set(__self__, "source_namespaces", source_namespaces)
         if source_repos is not None:
             pulumi.set(__self__, "source_repos", source_repos)
         if sync_windows is not None:
@@ -10725,6 +10781,18 @@ class GitopsAppProjectProjectSpecArgs:
         pulumi.set(self, "orphaned_resources", value)
 
     @property
+    @pulumi.getter(name="permitOnlyProjectScopedClusters")
+    def permit_only_project_scoped_clusters(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This option determines whether destinations can only reference clusters which are argo project-scoped
+        """
+        return pulumi.get(self, "permit_only_project_scoped_clusters")
+
+    @permit_only_project_scoped_clusters.setter
+    def permit_only_project_scoped_clusters(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "permit_only_project_scoped_clusters", value)
+
+    @property
     @pulumi.getter
     def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecRoleArgs']]]]:
         """
@@ -10747,6 +10815,18 @@ class GitopsAppProjectProjectSpecArgs:
     @signature_keys.setter
     def signature_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitopsAppProjectProjectSpecSignatureKeyArgs']]]]):
         pulumi.set(self, "signature_keys", value)
+
+    @property
+    @pulumi.getter(name="sourceNamespaces")
+    def source_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Source namespaces defines the namespaces application resources are allowed to be created in.
+        """
+        return pulumi.get(self, "source_namespaces")
+
+    @source_namespaces.setter
+    def source_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_namespaces", value)
 
     @property
     @pulumi.getter(name="sourceRepos")

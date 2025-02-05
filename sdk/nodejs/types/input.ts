@@ -4434,6 +4434,10 @@ export namespace platform {
          */
         clusterConnectionType?: pulumi.Input<string>;
         /**
+         * DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+         */
+        disableCompression?: pulumi.Input<boolean>;
+        /**
          * Configuration for an exec provider.
          */
         execProviderConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfigExecProviderConfig>[]>;
@@ -4441,6 +4445,10 @@ export namespace platform {
          * Password of the server of the cluster.
          */
         password?: pulumi.Input<string>;
+        /**
+         * The URL to the proxy to be used for all requests send to the cluster's API server
+         */
+        proxyUrl?: pulumi.Input<string>;
         /**
          * Optional role ARN. If set then used for AWS IAM Authenticator.
          */
@@ -5165,6 +5173,10 @@ export namespace platform {
          */
         orphanedResources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecOrphanedResource>[]>;
         /**
+         * This option determines whether destinations can only reference clusters which are argo project-scoped
+         */
+        permitOnlyProjectScopedClusters?: pulumi.Input<boolean>;
+        /**
          * Roles associated with the Argo project.
          */
         roles?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecRole>[]>;
@@ -5172,6 +5184,10 @@ export namespace platform {
          * Signature keys for the GitOps project.
          */
         signatureKeys?: pulumi.Input<pulumi.Input<inputs.platform.GitopsAppProjectProjectSpecSignatureKey>[]>;
+        /**
+         * Source namespaces defines the namespaces application resources are allowed to be created in.
+         */
+        sourceNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Allowed Source repositories for the Argo project.
          */

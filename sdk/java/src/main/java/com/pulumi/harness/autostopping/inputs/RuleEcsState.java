@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.autostopping.inputs.RuleEcsContainerArgs;
 import com.pulumi.harness.autostopping.inputs.RuleEcsDependArgs;
 import com.pulumi.harness.autostopping.inputs.RuleEcsHttpArgs;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -71,6 +72,21 @@ public final class RuleEcsState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<RuleEcsDependArgs>>> depends() {
         return Optional.ofNullable(this.depends);
+    }
+
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * 
+     */
+    @Import(name="dryRun")
+    private @Nullable Output<Boolean> dryRun;
+
+    /**
+     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * 
+     */
+    public Optional<Output<Boolean>> dryRun() {
+        return Optional.ofNullable(this.dryRun);
     }
 
     /**
@@ -140,6 +156,7 @@ public final class RuleEcsState extends com.pulumi.resources.ResourceArgs {
         this.container = $.container;
         this.customDomains = $.customDomains;
         this.depends = $.depends;
+        this.dryRun = $.dryRun;
         this.https = $.https;
         this.identifier = $.identifier;
         this.idleTimeMins = $.idleTimeMins;
@@ -254,6 +271,27 @@ public final class RuleEcsState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder depends(RuleEcsDependArgs... depends) {
             return depends(List.of(depends));
+        }
+
+        /**
+         * @param dryRun Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
+            $.dryRun = dryRun;
+            return this;
+        }
+
+        /**
+         * @param dryRun Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRun(Boolean dryRun) {
+            return dryRun(Output.of(dryRun));
         }
 
         /**

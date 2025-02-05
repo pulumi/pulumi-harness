@@ -57,14 +57,14 @@ public final class GitOpsClusterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+     * @return Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      * 
      */
     public Optional<Output<Boolean>> forceDelete() {
@@ -212,7 +212,7 @@ public final class GitOpsClusterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceDelete Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+         * @param forceDelete Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class GitOpsClusterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceDelete Indicates if the cluster should be deleted forcefully, regardless of existing applications using that repo.
+         * @param forceDelete Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
          * 
          * @return builder
          * 

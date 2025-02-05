@@ -18,7 +18,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExt
      */
     private @Nullable Boolean code;
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the external variables of jsonnet application.
      * 
      */
     private @Nullable String name;
@@ -37,7 +37,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExt
         return Optional.ofNullable(this.code);
     }
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the external variables of jsonnet application.
      * 
      */
     public Optional<String> name() {

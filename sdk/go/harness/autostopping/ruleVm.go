@@ -32,6 +32,7 @@ import (
 //				Name:             pulumi.String("name"),
 //				CloudConnectorId: pulumi.String("cloud_connector_id"),
 //				IdleTimeMins:     pulumi.Int(10),
+//				DryRun:           pulumi.Bool(true),
 //				Filter: &autostopping.RuleVmFilterArgs{
 //					VmIds: pulumi.StringArray{
 //						pulumi.String("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"),
@@ -115,7 +116,9 @@ type RuleVm struct {
 	CustomDomains pulumi.StringArrayOutput `pulumi:"customDomains"`
 	// Dependent rules
 	Depends RuleVmDependArrayOutput `pulumi:"depends"`
-	Filter  RuleVmFilterOutput      `pulumi:"filter"`
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	Filter RuleVmFilterOutput   `pulumi:"filter"`
 	// Http routing configuration
 	Https RuleVmHttpArrayOutput `pulumi:"https"`
 	// Unique identifier of the resource
@@ -172,7 +175,9 @@ type ruleVmState struct {
 	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
 	Depends []RuleVmDepend `pulumi:"depends"`
-	Filter  *RuleVmFilter  `pulumi:"filter"`
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun *bool         `pulumi:"dryRun"`
+	Filter *RuleVmFilter `pulumi:"filter"`
 	// Http routing configuration
 	Https []RuleVmHttp `pulumi:"https"`
 	// Unique identifier of the resource
@@ -194,7 +199,9 @@ type RuleVmState struct {
 	CustomDomains pulumi.StringArrayInput
 	// Dependent rules
 	Depends RuleVmDependArrayInput
-	Filter  RuleVmFilterPtrInput
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun pulumi.BoolPtrInput
+	Filter RuleVmFilterPtrInput
 	// Http routing configuration
 	Https RuleVmHttpArrayInput
 	// Unique identifier of the resource
@@ -220,7 +227,9 @@ type ruleVmArgs struct {
 	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
 	Depends []RuleVmDepend `pulumi:"depends"`
-	Filter  RuleVmFilter   `pulumi:"filter"`
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun *bool        `pulumi:"dryRun"`
+	Filter RuleVmFilter `pulumi:"filter"`
 	// Http routing configuration
 	Https []RuleVmHttp `pulumi:"https"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -241,7 +250,9 @@ type RuleVmArgs struct {
 	CustomDomains pulumi.StringArrayInput
 	// Dependent rules
 	Depends RuleVmDependArrayInput
-	Filter  RuleVmFilterInput
+	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+	DryRun pulumi.BoolPtrInput
+	Filter RuleVmFilterInput
 	// Http routing configuration
 	Https RuleVmHttpArrayInput
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
@@ -354,6 +365,11 @@ func (o RuleVmOutput) CustomDomains() pulumi.StringArrayOutput {
 // Dependent rules
 func (o RuleVmOutput) Depends() RuleVmDependArrayOutput {
 	return o.ApplyT(func(v *RuleVm) RuleVmDependArrayOutput { return v.Depends }).(RuleVmDependArrayOutput)
+}
+
+// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+func (o RuleVmOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuleVm) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
 func (o RuleVmOutput) Filter() RuleVmFilterOutput {

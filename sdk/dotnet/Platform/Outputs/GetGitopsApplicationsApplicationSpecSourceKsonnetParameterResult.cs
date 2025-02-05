@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Component;
         /// <summary>
-        /// Name of the GitOps application.
+        /// Name of the parameter of the ksonnet application.
         /// </summary>
         public readonly string? Name;
         /// <summary>

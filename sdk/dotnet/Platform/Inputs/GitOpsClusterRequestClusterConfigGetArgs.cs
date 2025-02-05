@@ -40,6 +40,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("clusterConnectionType")]
         public Input<string>? ClusterConnectionType { get; set; }
 
+        /// <summary>
+        /// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+        /// </summary>
+        [Input("disableCompression")]
+        public Input<bool>? DisableCompression { get; set; }
+
         [Input("execProviderConfigs")]
         private InputList<Inputs.GitOpsClusterRequestClusterConfigExecProviderConfigGetArgs>? _execProviderConfigs;
 
@@ -57,6 +63,12 @@ namespace Pulumi.Harness.Platform.Inputs
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// The URL to the proxy to be used for all requests send to the cluster's API server
+        /// </summary>
+        [Input("proxyUrl")]
+        public Input<string>? ProxyUrl { get; set; }
 
         /// <summary>
         /// Optional role ARN. If set then used for AWS IAM Authenticator.

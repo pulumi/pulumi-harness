@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the helm parameter.
      * 
      */
     private @Nullable String name;
@@ -24,7 +24,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceHelmFileParameter {
 
     private GetGitopsApplicationsApplicationSpecSourceHelmFileParameter() {}
     /**
-     * @return Name of the GitOps application.
+     * @return Name of the helm parameter.
      * 
      */
     public Optional<String> name() {

@@ -42,6 +42,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecOrphanedResource> OrphanedResources;
         /// <summary>
+        /// This option determines whether destinations can only reference clusters which are argo project-scoped
+        /// </summary>
+        public readonly bool? PermitOnlyProjectScopedClusters;
+        /// <summary>
         /// Roles associated with the Argo project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecRole> Roles;
@@ -49,6 +53,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Signature keys for the GitOps project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsAppProjectProjectSpecSignatureKey> SignatureKeys;
+        /// <summary>
+        /// Source namespaces defines the namespaces application resources are allowed to be created in.
+        /// </summary>
+        public readonly ImmutableArray<string> SourceNamespaces;
         /// <summary>
         /// Allowed Source repositories for the Argo project.
         /// </summary>
@@ -74,9 +82,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GitopsAppProjectProjectSpecOrphanedResource> orphanedResources,
 
+            bool? permitOnlyProjectScopedClusters,
+
             ImmutableArray<Outputs.GitopsAppProjectProjectSpecRole> roles,
 
             ImmutableArray<Outputs.GitopsAppProjectProjectSpecSignatureKey> signatureKeys,
+
+            ImmutableArray<string> sourceNamespaces,
 
             ImmutableArray<string> sourceRepos,
 
@@ -89,8 +101,10 @@ namespace Pulumi.Harness.Platform.Outputs
             NamespaceResourceBlacklists = namespaceResourceBlacklists;
             NamespaceResourceWhitelists = namespaceResourceWhitelists;
             OrphanedResources = orphanedResources;
+            PermitOnlyProjectScopedClusters = permitOnlyProjectScopedClusters;
             Roles = roles;
             SignatureKeys = signatureKeys;
+            SourceNamespaces = sourceNamespaces;
             SourceRepos = sourceRepos;
             SyncWindows = syncWindows;
         }

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     name: "name",
  *     cloudConnectorId: "cloud_connector_id",
  *     idleTimeMins: 10,
+ *     dryRun: true,
  *     database: {
  *         id: "database_id",
  *         region: "region",
@@ -70,6 +71,10 @@ export class RuleRds extends pulumi.CustomResource {
      */
     public readonly depends!: pulumi.Output<outputs.autostopping.RuleRdsDepend[] | undefined>;
     /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
      * Unique identifier of the resource
      */
     public /*out*/ readonly identifier!: pulumi.Output<number>;
@@ -102,6 +107,7 @@ export class RuleRds extends pulumi.CustomResource {
             resourceInputs["cloudConnectorId"] = state ? state.cloudConnectorId : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["depends"] = state ? state.depends : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["idleTimeMins"] = state ? state.idleTimeMins : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -117,6 +123,7 @@ export class RuleRds extends pulumi.CustomResource {
             resourceInputs["cloudConnectorId"] = args ? args.cloudConnectorId : undefined;
             resourceInputs["database"] = args ? args.database : undefined;
             resourceInputs["depends"] = args ? args.depends : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["idleTimeMins"] = args ? args.idleTimeMins : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tcps"] = args ? args.tcps : undefined;
@@ -140,6 +147,10 @@ export interface RuleRdsState {
      * Dependent rules
      */
     depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsDepend>[]>;
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource
      */
@@ -171,6 +182,10 @@ export interface RuleRdsArgs {
      * Dependent rules
      */
     depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleRdsDepend>[]>;
+    /**
+     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     */
+    dryRun?: pulumi.Input<boolean>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */

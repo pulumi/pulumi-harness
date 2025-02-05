@@ -12951,10 +12951,14 @@ type GitOpsClusterRequestClusterConfig struct {
 	BearerToken *string `pulumi:"bearerToken"`
 	// Identifies the authentication method used to connect to the cluster.
 	ClusterConnectionType *string `pulumi:"clusterConnectionType"`
+	// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+	DisableCompression *bool `pulumi:"disableCompression"`
 	// Configuration for an exec provider.
 	ExecProviderConfigs []GitOpsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
 	// Password of the server of the cluster.
 	Password *string `pulumi:"password"`
+	// The URL to the proxy to be used for all requests send to the cluster's API server
+	ProxyUrl *string `pulumi:"proxyUrl"`
 	// Optional role ARN. If set then used for AWS IAM Authenticator.
 	RoleARN *string `pulumi:"roleARN"`
 	// Settings to enable transport layer security.
@@ -12981,10 +12985,14 @@ type GitOpsClusterRequestClusterConfigArgs struct {
 	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
 	// Identifies the authentication method used to connect to the cluster.
 	ClusterConnectionType pulumi.StringPtrInput `pulumi:"clusterConnectionType"`
+	// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+	DisableCompression pulumi.BoolPtrInput `pulumi:"disableCompression"`
 	// Configuration for an exec provider.
 	ExecProviderConfigs GitOpsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
 	// Password of the server of the cluster.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The URL to the proxy to be used for all requests send to the cluster's API server
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
 	// Optional role ARN. If set then used for AWS IAM Authenticator.
 	RoleARN pulumi.StringPtrInput `pulumi:"roleARN"`
 	// Settings to enable transport layer security.
@@ -13059,6 +13067,11 @@ func (o GitOpsClusterRequestClusterConfigOutput) ClusterConnectionType() pulumi.
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.ClusterConnectionType }).(pulumi.StringPtrOutput)
 }
 
+// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+func (o GitOpsClusterRequestClusterConfigOutput) DisableCompression() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *bool { return v.DisableCompression }).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for an exec provider.
 func (o GitOpsClusterRequestClusterConfigOutput) ExecProviderConfigs() GitOpsClusterRequestClusterConfigExecProviderConfigArrayOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) []GitOpsClusterRequestClusterConfigExecProviderConfig {
@@ -13069,6 +13082,11 @@ func (o GitOpsClusterRequestClusterConfigOutput) ExecProviderConfigs() GitOpsClu
 // Password of the server of the cluster.
 func (o GitOpsClusterRequestClusterConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The URL to the proxy to be used for all requests send to the cluster's API server
+func (o GitOpsClusterRequestClusterConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitOpsClusterRequestClusterConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
 }
 
 // Optional role ARN. If set then used for AWS IAM Authenticator.
@@ -18544,10 +18562,14 @@ type GitopsAppProjectProjectSpec struct {
 	NamespaceResourceWhitelists []GitopsAppProjectProjectSpecNamespaceResourceWhitelist `pulumi:"namespaceResourceWhitelists"`
 	// OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
 	OrphanedResources []GitopsAppProjectProjectSpecOrphanedResource `pulumi:"orphanedResources"`
+	// This option determines whether destinations can only reference clusters which are argo project-scoped
+	PermitOnlyProjectScopedClusters *bool `pulumi:"permitOnlyProjectScopedClusters"`
 	// Roles associated with the Argo project.
 	Roles []GitopsAppProjectProjectSpecRole `pulumi:"roles"`
 	// Signature keys for the GitOps project.
 	SignatureKeys []GitopsAppProjectProjectSpecSignatureKey `pulumi:"signatureKeys"`
+	// Source namespaces defines the namespaces application resources are allowed to be created in.
+	SourceNamespaces []string `pulumi:"sourceNamespaces"`
 	// Allowed Source repositories for the Argo project.
 	SourceRepos []string `pulumi:"sourceRepos"`
 	// Synchronization windows for the GitOps project.
@@ -18580,10 +18602,14 @@ type GitopsAppProjectProjectSpecArgs struct {
 	NamespaceResourceWhitelists GitopsAppProjectProjectSpecNamespaceResourceWhitelistArrayInput `pulumi:"namespaceResourceWhitelists"`
 	// OrphanedResources specifies if agent should monitor orphaned resources of apps in this project
 	OrphanedResources GitopsAppProjectProjectSpecOrphanedResourceArrayInput `pulumi:"orphanedResources"`
+	// This option determines whether destinations can only reference clusters which are argo project-scoped
+	PermitOnlyProjectScopedClusters pulumi.BoolPtrInput `pulumi:"permitOnlyProjectScopedClusters"`
 	// Roles associated with the Argo project.
 	Roles GitopsAppProjectProjectSpecRoleArrayInput `pulumi:"roles"`
 	// Signature keys for the GitOps project.
 	SignatureKeys GitopsAppProjectProjectSpecSignatureKeyArrayInput `pulumi:"signatureKeys"`
+	// Source namespaces defines the namespaces application resources are allowed to be created in.
+	SourceNamespaces pulumi.StringArrayInput `pulumi:"sourceNamespaces"`
 	// Allowed Source repositories for the Argo project.
 	SourceRepos pulumi.StringArrayInput `pulumi:"sourceRepos"`
 	// Synchronization windows for the GitOps project.
@@ -18686,6 +18712,11 @@ func (o GitopsAppProjectProjectSpecOutput) OrphanedResources() GitopsAppProjectP
 	}).(GitopsAppProjectProjectSpecOrphanedResourceArrayOutput)
 }
 
+// This option determines whether destinations can only reference clusters which are argo project-scoped
+func (o GitopsAppProjectProjectSpecOutput) PermitOnlyProjectScopedClusters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) *bool { return v.PermitOnlyProjectScopedClusters }).(pulumi.BoolPtrOutput)
+}
+
 // Roles associated with the Argo project.
 func (o GitopsAppProjectProjectSpecOutput) Roles() GitopsAppProjectProjectSpecRoleArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecRole { return v.Roles }).(GitopsAppProjectProjectSpecRoleArrayOutput)
@@ -18694,6 +18725,11 @@ func (o GitopsAppProjectProjectSpecOutput) Roles() GitopsAppProjectProjectSpecRo
 // Signature keys for the GitOps project.
 func (o GitopsAppProjectProjectSpecOutput) SignatureKeys() GitopsAppProjectProjectSpecSignatureKeyArrayOutput {
 	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []GitopsAppProjectProjectSpecSignatureKey { return v.SignatureKeys }).(GitopsAppProjectProjectSpecSignatureKeyArrayOutput)
+}
+
+// Source namespaces defines the namespaces application resources are allowed to be created in.
+func (o GitopsAppProjectProjectSpecOutput) SourceNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsAppProjectProjectSpec) []string { return v.SourceNamespaces }).(pulumi.StringArrayOutput)
 }
 
 // Allowed Source repositories for the Argo project.
@@ -44729,7 +44765,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetArrayOutput) I
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar struct {
 	// Code of the external variables of jsonnet application.
 	Code *bool `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the external variables of jsonnet application.
 	Name *string `pulumi:"name"`
 	// Value of the external variables of jsonnet application.
 	Value *string `pulumi:"value"`
@@ -44749,7 +44785,7 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarInput inter
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArgs struct {
 	// Code of the external variables of jsonnet application.
 	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the external variables of jsonnet application.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the external variables of jsonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -44811,7 +44847,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) 
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the external variables of jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVar) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -44844,7 +44880,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetExtVarArrayOut
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla struct {
 	// Code of the TLAS of the jsonnet application.
 	Code *bool `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the TLAS of the jsonnet application.
 	Name *string `pulumi:"name"`
 	// Value of the TLAS of the jsonnet application.
 	Value *string `pulumi:"value"`
@@ -44864,7 +44900,7 @@ type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaInput interfac
 type GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArgs struct {
 	// Code of the TLAS of the jsonnet application.
 	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of the GitOps application.
+	// Name of the TLAS of the jsonnet application.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the TLAS of the jsonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -44926,7 +44962,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Cod
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *bool { return v.Code }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the TLAS of the jsonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTla) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -45112,7 +45148,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmArrayOutput) Index(i pulum
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameter struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name *string `pulumi:"name"`
 	// Path to the file containing the values of the helm parameter.
 	Path *string `pulumi:"path"`
@@ -45130,7 +45166,7 @@ type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterInput interface 
 }
 
 type GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArgs struct {
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to the file containing the values of the helm parameter.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -45187,7 +45223,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) ToGet
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmFileParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -45220,7 +45256,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput) 
 type GetGitopsApplicationsApplicationSpecSourceHelmParameter struct {
 	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString *bool `pulumi:"forceString"`
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name *string `pulumi:"name"`
 	// Value of the Helm parameter.
 	Value *string `pulumi:"value"`
@@ -45240,7 +45276,7 @@ type GetGitopsApplicationsApplicationSpecSourceHelmParameterInput interface {
 type GetGitopsApplicationsApplicationSpecSourceHelmParameterArgs struct {
 	// Indicates if helm should interpret booleans and numbers as strings.
 	ForceString pulumi.BoolPtrInput `pulumi:"forceString"`
-	// Name of the GitOps application.
+	// Name of the helm parameter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the Helm parameter.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -45302,7 +45338,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) ForceStri
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *bool { return v.ForceString }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the helm parameter.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelmParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -45443,7 +45479,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetArrayOutput) Index(i pu
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameter struct {
 	// Component of the parameter of the ksonnet application.
 	Component *string `pulumi:"component"`
-	// Name of the GitOps application.
+	// Name of the parameter of the ksonnet application.
 	Name *string `pulumi:"name"`
 	// Value of the parameter of the ksonnet application.
 	Value *string `pulumi:"value"`
@@ -45463,7 +45499,7 @@ type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterInput interface {
 type GetGitopsApplicationsApplicationSpecSourceKsonnetParameterArgs struct {
 	// Component of the parameter of the ksonnet application.
 	Component pulumi.StringPtrInput `pulumi:"component"`
-	// Name of the GitOps application.
+	// Name of the parameter of the ksonnet application.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the parameter of the ksonnet application.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -45525,7 +45561,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Compon
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Component }).(pulumi.StringPtrOutput)
 }
 
-// Name of the GitOps application.
+// Name of the parameter of the ksonnet application.
 func (o GetGitopsApplicationsApplicationSpecSourceKsonnetParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKsonnetParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -45720,7 +45756,7 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeArrayOutput) Index(i 
 type GetGitopsApplicationsApplicationSpecSourcePlugin struct {
 	// Entry in the GitOps application's environment.
 	Envs []GetGitopsApplicationsApplicationSpecSourcePluginEnv `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name *string `pulumi:"name"`
 }
 
@@ -45738,7 +45774,7 @@ type GetGitopsApplicationsApplicationSpecSourcePluginInput interface {
 type GetGitopsApplicationsApplicationSpecSourcePluginArgs struct {
 	// Entry in the GitOps application's environment.
 	Envs GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayInput `pulumi:"envs"`
-	// Name of the GitOps application.
+	// Name of the plugin.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -45800,7 +45836,7 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Envs() GetGitops
 	}).(GetGitopsApplicationsApplicationSpecSourcePluginEnvArrayOutput)
 }
 
-// Name of the GitOps application.
+// Name of the plugin.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePlugin) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -45826,7 +45862,7 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginArrayOutput) Index(i pul
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnv struct {
-	// Name of the GitOps application.
+	// Name of the variable, usually expressed in uppercase.
 	Name *string `pulumi:"name"`
 	// Value of the variable.
 	Value *string `pulumi:"value"`
@@ -45844,7 +45880,7 @@ type GetGitopsApplicationsApplicationSpecSourcePluginEnvInput interface {
 }
 
 type GetGitopsApplicationsApplicationSpecSourcePluginEnvArgs struct {
-	// Name of the GitOps application.
+	// Name of the variable, usually expressed in uppercase.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Value of the variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -45901,7 +45937,7 @@ func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) ToGetGitopsAp
 	return o
 }
 
-// Name of the GitOps application.
+// Name of the variable, usually expressed in uppercase.
 func (o GetGitopsApplicationsApplicationSpecSourcePluginEnvOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourcePluginEnv) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -46708,10 +46744,14 @@ type GetGitopsClusterRequestClusterConfig struct {
 	BearerToken *string `pulumi:"bearerToken"`
 	// Identifies the authentication method used to connect to the cluster.
 	ClusterConnectionType *string `pulumi:"clusterConnectionType"`
+	// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+	DisableCompression *bool `pulumi:"disableCompression"`
 	// Configuration for an exec provider.
 	ExecProviderConfigs []GetGitopsClusterRequestClusterConfigExecProviderConfig `pulumi:"execProviderConfigs"`
 	// Password of the server of the cluster.
 	Password *string `pulumi:"password"`
+	// The URL to the proxy to be used for all requests send to the cluster's API server
+	ProxyUrl *string `pulumi:"proxyUrl"`
 	// Optional role ARN. If set then used for AWS IAM Authenticator.
 	RoleARN *string `pulumi:"roleARN"`
 	// Settings to enable transport layer security.
@@ -46738,10 +46778,14 @@ type GetGitopsClusterRequestClusterConfigArgs struct {
 	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
 	// Identifies the authentication method used to connect to the cluster.
 	ClusterConnectionType pulumi.StringPtrInput `pulumi:"clusterConnectionType"`
+	// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+	DisableCompression pulumi.BoolPtrInput `pulumi:"disableCompression"`
 	// Configuration for an exec provider.
 	ExecProviderConfigs GetGitopsClusterRequestClusterConfigExecProviderConfigArrayInput `pulumi:"execProviderConfigs"`
 	// Password of the server of the cluster.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The URL to the proxy to be used for all requests send to the cluster's API server
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
 	// Optional role ARN. If set then used for AWS IAM Authenticator.
 	RoleARN pulumi.StringPtrInput `pulumi:"roleARN"`
 	// Settings to enable transport layer security.
@@ -46816,6 +46860,11 @@ func (o GetGitopsClusterRequestClusterConfigOutput) ClusterConnectionType() pulu
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.ClusterConnectionType }).(pulumi.StringPtrOutput)
 }
 
+// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+func (o GetGitopsClusterRequestClusterConfigOutput) DisableCompression() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *bool { return v.DisableCompression }).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for an exec provider.
 func (o GetGitopsClusterRequestClusterConfigOutput) ExecProviderConfigs() GetGitopsClusterRequestClusterConfigExecProviderConfigArrayOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) []GetGitopsClusterRequestClusterConfigExecProviderConfig {
@@ -46826,6 +46875,11 @@ func (o GetGitopsClusterRequestClusterConfigOutput) ExecProviderConfigs() GetGit
 // Password of the server of the cluster.
 func (o GetGitopsClusterRequestClusterConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The URL to the proxy to be used for all requests send to the cluster's API server
+func (o GetGitopsClusterRequestClusterConfigOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsClusterRequestClusterConfig) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
 }
 
 // Optional role ARN. If set then used for AWS IAM Authenticator.

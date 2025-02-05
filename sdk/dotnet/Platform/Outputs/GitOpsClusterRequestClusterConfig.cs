@@ -26,6 +26,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? ClusterConnectionType;
         /// <summary>
+        /// DisableCompression bypasses automatic GZip compression requests to to the cluster's API server. Corresponds to running kubectl with --disable-compression
+        /// </summary>
+        public readonly bool? DisableCompression;
+        /// <summary>
         /// Configuration for an exec provider.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsClusterRequestClusterConfigExecProviderConfig> ExecProviderConfigs;
@@ -33,6 +37,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Password of the server of the cluster.
         /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// The URL to the proxy to be used for all requests send to the cluster's API server
+        /// </summary>
+        public readonly string? ProxyUrl;
         /// <summary>
         /// Optional role ARN. If set then used for AWS IAM Authenticator.
         /// </summary>
@@ -54,9 +62,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? clusterConnectionType,
 
+            bool? disableCompression,
+
             ImmutableArray<Outputs.GitOpsClusterRequestClusterConfigExecProviderConfig> execProviderConfigs,
 
             string? password,
+
+            string? proxyUrl,
 
             string? roleARN,
 
@@ -67,8 +79,10 @@ namespace Pulumi.Harness.Platform.Outputs
             AwsClusterName = awsClusterName;
             BearerToken = bearerToken;
             ClusterConnectionType = clusterConnectionType;
+            DisableCompression = disableCompression;
             ExecProviderConfigs = execProviderConfigs;
             Password = password;
+            ProxyUrl = proxyUrl;
             RoleARN = roleARN;
             TlsClientConfigs = tlsClientConfigs;
             Username = username;

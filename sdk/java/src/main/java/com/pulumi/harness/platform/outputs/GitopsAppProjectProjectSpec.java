@@ -13,6 +13,7 @@ import com.pulumi.harness.platform.outputs.GitopsAppProjectProjectSpecOrphanedRe
 import com.pulumi.harness.platform.outputs.GitopsAppProjectProjectSpecRole;
 import com.pulumi.harness.platform.outputs.GitopsAppProjectProjectSpecSignatureKey;
 import com.pulumi.harness.platform.outputs.GitopsAppProjectProjectSpecSyncWindow;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,6 +58,11 @@ public final class GitopsAppProjectProjectSpec {
      */
     private @Nullable List<GitopsAppProjectProjectSpecOrphanedResource> orphanedResources;
     /**
+     * @return This option determines whether destinations can only reference clusters which are argo project-scoped
+     * 
+     */
+    private @Nullable Boolean permitOnlyProjectScopedClusters;
+    /**
      * @return Roles associated with the Argo project.
      * 
      */
@@ -66,6 +72,11 @@ public final class GitopsAppProjectProjectSpec {
      * 
      */
     private @Nullable List<GitopsAppProjectProjectSpecSignatureKey> signatureKeys;
+    /**
+     * @return Source namespaces defines the namespaces application resources are allowed to be created in.
+     * 
+     */
+    private @Nullable List<String> sourceNamespaces;
     /**
      * @return Allowed Source repositories for the Argo project.
      * 
@@ -128,6 +139,13 @@ public final class GitopsAppProjectProjectSpec {
         return this.orphanedResources == null ? List.of() : this.orphanedResources;
     }
     /**
+     * @return This option determines whether destinations can only reference clusters which are argo project-scoped
+     * 
+     */
+    public Optional<Boolean> permitOnlyProjectScopedClusters() {
+        return Optional.ofNullable(this.permitOnlyProjectScopedClusters);
+    }
+    /**
      * @return Roles associated with the Argo project.
      * 
      */
@@ -140,6 +158,13 @@ public final class GitopsAppProjectProjectSpec {
      */
     public List<GitopsAppProjectProjectSpecSignatureKey> signatureKeys() {
         return this.signatureKeys == null ? List.of() : this.signatureKeys;
+    }
+    /**
+     * @return Source namespaces defines the namespaces application resources are allowed to be created in.
+     * 
+     */
+    public List<String> sourceNamespaces() {
+        return this.sourceNamespaces == null ? List.of() : this.sourceNamespaces;
     }
     /**
      * @return Allowed Source repositories for the Argo project.
@@ -172,8 +197,10 @@ public final class GitopsAppProjectProjectSpec {
         private @Nullable List<GitopsAppProjectProjectSpecNamespaceResourceBlacklist> namespaceResourceBlacklists;
         private @Nullable List<GitopsAppProjectProjectSpecNamespaceResourceWhitelist> namespaceResourceWhitelists;
         private @Nullable List<GitopsAppProjectProjectSpecOrphanedResource> orphanedResources;
+        private @Nullable Boolean permitOnlyProjectScopedClusters;
         private @Nullable List<GitopsAppProjectProjectSpecRole> roles;
         private @Nullable List<GitopsAppProjectProjectSpecSignatureKey> signatureKeys;
+        private @Nullable List<String> sourceNamespaces;
         private @Nullable List<String> sourceRepos;
         private @Nullable List<GitopsAppProjectProjectSpecSyncWindow> syncWindows;
         public Builder() {}
@@ -186,8 +213,10 @@ public final class GitopsAppProjectProjectSpec {
     	      this.namespaceResourceBlacklists = defaults.namespaceResourceBlacklists;
     	      this.namespaceResourceWhitelists = defaults.namespaceResourceWhitelists;
     	      this.orphanedResources = defaults.orphanedResources;
+    	      this.permitOnlyProjectScopedClusters = defaults.permitOnlyProjectScopedClusters;
     	      this.roles = defaults.roles;
     	      this.signatureKeys = defaults.signatureKeys;
+    	      this.sourceNamespaces = defaults.sourceNamespaces;
     	      this.sourceRepos = defaults.sourceRepos;
     	      this.syncWindows = defaults.syncWindows;
         }
@@ -253,6 +282,12 @@ public final class GitopsAppProjectProjectSpec {
             return orphanedResources(List.of(orphanedResources));
         }
         @CustomType.Setter
+        public Builder permitOnlyProjectScopedClusters(@Nullable Boolean permitOnlyProjectScopedClusters) {
+
+            this.permitOnlyProjectScopedClusters = permitOnlyProjectScopedClusters;
+            return this;
+        }
+        @CustomType.Setter
         public Builder roles(@Nullable List<GitopsAppProjectProjectSpecRole> roles) {
 
             this.roles = roles;
@@ -269,6 +304,15 @@ public final class GitopsAppProjectProjectSpec {
         }
         public Builder signatureKeys(GitopsAppProjectProjectSpecSignatureKey... signatureKeys) {
             return signatureKeys(List.of(signatureKeys));
+        }
+        @CustomType.Setter
+        public Builder sourceNamespaces(@Nullable List<String> sourceNamespaces) {
+
+            this.sourceNamespaces = sourceNamespaces;
+            return this;
+        }
+        public Builder sourceNamespaces(String... sourceNamespaces) {
+            return sourceNamespaces(List.of(sourceNamespaces));
         }
         @CustomType.Setter
         public Builder sourceRepos(@Nullable List<String> sourceRepos) {
@@ -297,8 +341,10 @@ public final class GitopsAppProjectProjectSpec {
             _resultValue.namespaceResourceBlacklists = namespaceResourceBlacklists;
             _resultValue.namespaceResourceWhitelists = namespaceResourceWhitelists;
             _resultValue.orphanedResources = orphanedResources;
+            _resultValue.permitOnlyProjectScopedClusters = permitOnlyProjectScopedClusters;
             _resultValue.roles = roles;
             _resultValue.signatureKeys = signatureKeys;
+            _resultValue.sourceNamespaces = sourceNamespaces;
             _resultValue.sourceRepos = sourceRepos;
             _resultValue.syncWindows = syncWindows;
             return _resultValue;
