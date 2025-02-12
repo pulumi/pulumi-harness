@@ -2713,6 +2713,10 @@
                 "manual": {
                     "$ref": "#/types/harness:platform/AwsKmsConnectorCredentialsManual:AwsKmsConnectorCredentialsManual",
                     "description": "Specify the AWS key and secret used for authenticating.\n"
+                },
+                "oidcAuthentication": {
+                    "$ref": "#/types/harness:platform/AwsKmsConnectorCredentialsOidcAuthentication:AwsKmsConnectorCredentialsOidcAuthentication",
+                    "description": "Connect using OIDC authentication.\n"
                 }
             },
             "type": "object"
@@ -2755,6 +2759,18 @@
                 "secretKeyRef"
             ]
         },
+        "harness:platform/AwsKmsConnectorCredentialsOidcAuthentication:AwsKmsConnectorCredentialsOidcAuthentication": {
+            "properties": {
+                "iamRoleArn": {
+                    "type": "string",
+                    "description": "The ARN of the IAM role to assume.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iamRoleArn"
+            ]
+        },
         "harness:platform/AwsSecretManagerConnectorCredentials:AwsSecretManagerConnectorCredentials": {
             "properties": {
                 "assumeRole": {
@@ -2768,6 +2784,10 @@
                 "manual": {
                     "$ref": "#/types/harness:platform/AwsSecretManagerConnectorCredentialsManual:AwsSecretManagerConnectorCredentialsManual",
                     "description": "Specify the AWS key and secret used for authenticating.\n"
+                },
+                "oidcAuthentication": {
+                    "$ref": "#/types/harness:platform/AwsSecretManagerConnectorCredentialsOidcAuthentication:AwsSecretManagerConnectorCredentialsOidcAuthentication",
+                    "description": "Authentication using harness oidc.\n"
                 }
             },
             "type": "object"
@@ -2797,7 +2817,7 @@
             "properties": {
                 "accessKeyPlainText": {
                     "type": "string",
-                    "description": "The plain text AWS access key.\n"
+                    "description": "The plain text AWS access key. This is required if the access*key*ref is not provided.\n"
                 },
                 "accessKeyRef": {
                     "type": "string",
@@ -2811,6 +2831,18 @@
             "type": "object",
             "required": [
                 "secretKeyRef"
+            ]
+        },
+        "harness:platform/AwsSecretManagerConnectorCredentialsOidcAuthentication:AwsSecretManagerConnectorCredentialsOidcAuthentication": {
+            "properties": {
+                "iamRoleArn": {
+                    "type": "string",
+                    "description": "The IAM role ARN.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iamRoleArn"
             ]
         },
         "harness:platform/AzureCloudCostConnectorBillingExportSpec:AzureCloudCostConnectorBillingExportSpec": {
@@ -3106,6 +3138,59 @@
             "type": "object",
             "required": [
                 "key"
+            ]
+        },
+        "harness:platform/ConnectorGcpKmsManual:ConnectorGcpKmsManual": {
+            "properties": {
+                "credentials": {
+                    "type": "string",
+                    "description": "Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The delegates to connect with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentials"
+            ]
+        },
+        "harness:platform/ConnectorGcpKmsOidcAuthentication:ConnectorGcpKmsOidcAuthentication": {
+            "properties": {
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The delegates to inherit the credentials from.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project number of the GCP project that is used to create the workload identity.\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The OIDC provider ID value configured in GCP.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The service account linked to workload identity pool while setting GCP workload identity provider.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "The workload pool ID value created in GCP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "gcpProjectId",
+                "providerId",
+                "serviceAccountEmail",
+                "workloadPoolId"
             ]
         },
         "harness:platform/ConnectorJdbcCredentials:ConnectorJdbcCredentials": {
@@ -3662,6 +3747,33 @@
                     },
                     "description": "The delegates to inherit the credentials from.\n"
                 },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project number of the GCP project that is used to create the workload identity.\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The OIDC provider ID value configured in GCP.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The service account linked to workload identity pool while setting GCP workload identity provider.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "The workload pool ID value created in GCP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "gcpProjectId",
+                "providerId",
+                "serviceAccountEmail",
+                "workloadPoolId"
+            ]
+        },
+        "harness:platform/GcpSecretManagerConnectorOidcAuthentication:GcpSecretManagerConnectorOidcAuthentication": {
+            "properties": {
                 "gcpProjectId": {
                     "type": "string",
                     "description": "The project number of the GCP project that is used to create the workload identity.\n"
@@ -8584,13 +8696,21 @@
                         "$ref": "#/types/harness:platform/getAwsKmsConnectorCredentialManual:getAwsKmsConnectorCredentialManual"
                     },
                     "description": "Specify the AWS key and secret used for authenticating.\n"
+                },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getAwsKmsConnectorCredentialOidcAuthentication:getAwsKmsConnectorCredentialOidcAuthentication"
+                    },
+                    "description": "Authentication using OIDC.\n"
                 }
             },
             "type": "object",
             "required": [
                 "assumeRoles",
                 "inheritFromDelegate",
-                "manuals"
+                "manuals",
+                "oidcAuthentications"
             ],
             "language": {
                 "nodejs": {
@@ -8647,6 +8767,23 @@
                 }
             }
         },
+        "harness:platform/getAwsKmsConnectorCredentialOidcAuthentication:getAwsKmsConnectorCredentialOidcAuthentication": {
+            "properties": {
+                "iamRoleArn": {
+                    "type": "string",
+                    "description": "The IAM role ARN to assume.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iamRoleArn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harness:platform/getAwsSecretManagerConnectorCredential:getAwsSecretManagerConnectorCredential": {
             "properties": {
                 "assumeRoles": {
@@ -8666,13 +8803,21 @@
                         "$ref": "#/types/harness:platform/getAwsSecretManagerConnectorCredentialManual:getAwsSecretManagerConnectorCredentialManual"
                     },
                     "description": "Specify the AWS key and secret used for authenticating.\n"
+                },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getAwsSecretManagerConnectorCredentialOidcAuthentication:getAwsSecretManagerConnectorCredentialOidcAuthentication"
+                    },
+                    "description": "Authentication using OIDC.\n"
                 }
             },
             "type": "object",
             "required": [
                 "assumeRoles",
                 "inheritFromDelegate",
-                "manuals"
+                "manuals",
+                "oidcAuthentications"
             ],
             "language": {
                 "nodejs": {
@@ -8722,6 +8867,23 @@
             "required": [
                 "accessKeyRef",
                 "secretKeyRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getAwsSecretManagerConnectorCredentialOidcAuthentication:getAwsSecretManagerConnectorCredentialOidcAuthentication": {
+            "properties": {
+                "iamRoleArn": {
+                    "type": "string",
+                    "description": "The IAM role ARN to assume.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iamRoleArn"
             ],
             "language": {
                 "nodejs": {
@@ -9195,6 +9357,71 @@
                 }
             }
         },
+        "harness:platform/getConnectorGcpKmsManual:getConnectorGcpKmsManual": {
+            "properties": {
+                "credentials": {
+                    "type": "string",
+                    "description": "Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The delegates to connect with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentials",
+                "delegateSelectors"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getConnectorGcpKmsOidcAuthentication:getConnectorGcpKmsOidcAuthentication": {
+            "properties": {
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The delegates to inherit the credentials from.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project number of the GCP project that is used to create the workload identity..\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The OIDC provider ID value configured in GCP.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The service account linked to workload identity pool while setting GCP workload identity provider.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "The workload pool ID value created in GCP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "delegateSelectors",
+                "gcpProjectId",
+                "providerId",
+                "serviceAccountEmail",
+                "workloadPoolId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harness:platform/getConnectorJdbcCredential:getConnectorJdbcCredential": {
             "properties": {
                 "passwordRef": {
@@ -9648,6 +9875,38 @@
             "type": "object",
             "required": [
                 "delegateSelectors",
+                "gcpProjectId",
+                "providerId",
+                "serviceAccountEmail",
+                "workloadPoolId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getGcpSecretManagerConnectorOidcAuthentication:getGcpSecretManagerConnectorOidcAuthentication": {
+            "properties": {
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project number of the GCP project that is used to create the workload identity..\n"
+                },
+                "providerId": {
+                    "type": "string",
+                    "description": "The OIDC provider ID value configured in GCP.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The service account linked to workload identity pool while setting GCP workload identity provider.\n"
+                },
+                "workloadPoolId": {
+                    "type": "string",
+                    "description": "The workload pool ID value created in GCP.\n"
+                }
+            },
+            "type": "object",
+            "required": [
                 "gcpProjectId",
                 "providerId",
                 "serviceAccountEmail",
@@ -18954,6 +19213,10 @@
                     "$ref": "#/types/harness:platform/AwsKmsConnectorCredentials:AwsKmsConnectorCredentials",
                     "description": "Credentials to connect to AWS.\n"
                 },
+                "default": {
+                    "type": "boolean",
+                    "description": "Set this connector as the default for all the services.\n"
+                },
                 "delegateSelectors": {
                     "type": "array",
                     "items": {
@@ -18964,6 +19227,10 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute the command on the delegate.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -19009,6 +19276,10 @@
                     "$ref": "#/types/harness:platform/AwsKmsConnectorCredentials:AwsKmsConnectorCredentials",
                     "description": "Credentials to connect to AWS.\n"
                 },
+                "default": {
+                    "type": "boolean",
+                    "description": "Set this connector as the default for all the services.\n"
+                },
                 "delegateSelectors": {
                     "type": "array",
                     "items": {
@@ -19019,6 +19290,10 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute the command on the delegate.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -19066,6 +19341,10 @@
                         "$ref": "#/types/harness:platform/AwsKmsConnectorCredentials:AwsKmsConnectorCredentials",
                         "description": "Credentials to connect to AWS.\n"
                     },
+                    "default": {
+                        "type": "boolean",
+                        "description": "Set this connector as the default for all the services.\n"
+                    },
                     "delegateSelectors": {
                         "type": "array",
                         "items": {
@@ -19076,6 +19355,10 @@
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Execute the command on the delegate.\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -19131,6 +19414,14 @@
                     "type": "string",
                     "description": "Description of the resource.\n"
                 },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Run the operation on the delegate or harness platform.\n"
+                },
+                "forceDeleteWithoutRecovery": {
+                    "type": "boolean",
+                    "description": "Whether to force delete secret value or not.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
@@ -19146,6 +19437,10 @@
                 "projectId": {
                     "type": "string",
                     "description": "Unique identifier of the project.\n"
+                },
+                "recoveryWindowInDays": {
+                    "type": "integer",
+                    "description": "recovery duration in days in AWS Secrets Manager.\n"
                 },
                 "region": {
                     "type": "string",
@@ -19193,6 +19488,14 @@
                     "type": "string",
                     "description": "Description of the resource.\n"
                 },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Run the operation on the delegate or harness platform.\n"
+                },
+                "forceDeleteWithoutRecovery": {
+                    "type": "boolean",
+                    "description": "Whether to force delete secret value or not.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n",
@@ -19209,6 +19512,10 @@
                 "projectId": {
                     "type": "string",
                     "description": "Unique identifier of the project.\n"
+                },
+                "recoveryWindowInDays": {
+                    "type": "integer",
+                    "description": "recovery duration in days in AWS Secrets Manager.\n"
                 },
                 "region": {
                     "type": "string",
@@ -19257,6 +19564,14 @@
                         "type": "string",
                         "description": "Description of the resource.\n"
                     },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Run the operation on the delegate or harness platform.\n"
+                    },
+                    "forceDeleteWithoutRecovery": {
+                        "type": "boolean",
+                        "description": "Whether to force delete secret value or not.\n"
+                    },
                     "identifier": {
                         "type": "string",
                         "description": "Unique identifier of the resource.\n",
@@ -19273,6 +19588,10 @@
                     "projectId": {
                         "type": "string",
                         "description": "Unique identifier of the project.\n"
+                    },
+                    "recoveryWindowInDays": {
+                        "type": "integer",
+                        "description": "recovery duration in days in AWS Secrets Manager.\n"
                     },
                     "region": {
                         "type": "string",
@@ -20654,6 +20973,222 @@
                     "validationPath": {
                         "type": "string",
                         "description": "Path to be added to the base URL for the API Call\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/connectorGcpKms:ConnectorGcpKms": {
+            "description": "Resource for creating a GCP KMS connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.SecretText(\"test\", {\n    identifier: \"%[1]s\",\n    name: \"%[2]s\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    secretManagerIdentifier: \"harnessSecretManager\",\n    valueType: \"Reference\",\n    value: \"secret\",\n});\nconst gcpKmsManual = new harness.platform.ConnectorGcpKms(\"gcp_kms_manual\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    region: \"us-west1\",\n    gcpProjectId: \"1234567\",\n    keyRing: \"key_ring\",\n    keyName: \"key_name\",\n    manual: {\n        credentials: pulumi.interpolate`account.${test.id}`,\n        delegateSelectors: [\"harness-delegate\"],\n    },\n});\nconst gcpKmsOidcPlatform = new harness.platform.ConnectorGcpKms(\"gcp_kms_oidc_platform\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    region: \"us-west1\",\n    gcpProjectId: \"1234567\",\n    keyRing: \"key_ring\",\n    keyName: \"key_name\",\n    executeOnDelegate: false,\n    oidcAuthentications: [{\n        workloadPoolId: \"harness-pool-test\",\n        providerId: \"harness\",\n        gcpProjectId: \"1234567\",\n        serviceAccountEmail: \"harness.sample@iam.gserviceaccount.com\",\n    }],\n});\nconst gcpKmsOidcDelegate = new harness.platform.ConnectorGcpKms(\"gcp_kms_oidc_delegate\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    region: \"us-west1\",\n    gcpProjectId: \"1234567\",\n    keyRing: \"key_ring\",\n    keyName: \"key_name\",\n    oidcAuthentications: [{\n        workloadPoolId: \"harness-pool-test\",\n        providerId: \"harness\",\n        gcpProjectId: \"1234567\",\n        serviceAccountEmail: \"harness.sample@iam.gserviceaccount.com\",\n        delegateSelectors: [\"harness-delegate\"],\n    }],\n});\nconst gcpKmsOidcDelegateDefault = new harness.platform.ConnectorGcpKms(\"gcp_kms_oidc_delegate_default\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    region: \"us-west1\",\n    gcpProjectId: \"1234567\",\n    keyRing: \"key_ring\",\n    keyName: \"key_name\",\n    \"default\": true,\n    oidcAuthentications: [{\n        workloadPoolId: \"harness-pool-test\",\n        providerId: \"harness\",\n        gcpProjectId: \"1234567\",\n        serviceAccountEmail: \"harness.sample@iam.gserviceaccount.com\",\n        delegateSelectors: [\"harness-delegate\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.SecretText(\"test\",\n    identifier=\"%[1]s\",\n    name=\"%[2]s\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    secret_manager_identifier=\"harnessSecretManager\",\n    value_type=\"Reference\",\n    value=\"secret\")\ngcp_kms_manual = harness.platform.ConnectorGcpKms(\"gcp_kms_manual\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    region=\"us-west1\",\n    gcp_project_id=\"1234567\",\n    key_ring=\"key_ring\",\n    key_name=\"key_name\",\n    manual={\n        \"credentials\": test.id.apply(lambda id: f\"account.{id}\"),\n        \"delegate_selectors\": [\"harness-delegate\"],\n    })\ngcp_kms_oidc_platform = harness.platform.ConnectorGcpKms(\"gcp_kms_oidc_platform\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    region=\"us-west1\",\n    gcp_project_id=\"1234567\",\n    key_ring=\"key_ring\",\n    key_name=\"key_name\",\n    execute_on_delegate=False,\n    oidc_authentications=[{\n        \"workload_pool_id\": \"harness-pool-test\",\n        \"provider_id\": \"harness\",\n        \"gcp_project_id\": \"1234567\",\n        \"service_account_email\": \"harness.sample@iam.gserviceaccount.com\",\n    }])\ngcp_kms_oidc_delegate = harness.platform.ConnectorGcpKms(\"gcp_kms_oidc_delegate\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    region=\"us-west1\",\n    gcp_project_id=\"1234567\",\n    key_ring=\"key_ring\",\n    key_name=\"key_name\",\n    oidc_authentications=[{\n        \"workload_pool_id\": \"harness-pool-test\",\n        \"provider_id\": \"harness\",\n        \"gcp_project_id\": \"1234567\",\n        \"service_account_email\": \"harness.sample@iam.gserviceaccount.com\",\n        \"delegate_selectors\": [\"harness-delegate\"],\n    }])\ngcp_kms_oidc_delegate_default = harness.platform.ConnectorGcpKms(\"gcp_kms_oidc_delegate_default\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    region=\"us-west1\",\n    gcp_project_id=\"1234567\",\n    key_ring=\"key_ring\",\n    key_name=\"key_name\",\n    default=True,\n    oidc_authentications=[{\n        \"workload_pool_id\": \"harness-pool-test\",\n        \"provider_id\": \"harness\",\n        \"gcp_project_id\": \"1234567\",\n        \"service_account_email\": \"harness.sample@iam.gserviceaccount.com\",\n        \"delegate_selectors\": [\"harness-delegate\"],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.SecretText(\"test\", new()\n    {\n        Identifier = \"%[1]s\",\n        Name = \"%[2]s\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        SecretManagerIdentifier = \"harnessSecretManager\",\n        ValueType = \"Reference\",\n        Value = \"secret\",\n    });\n\n    var gcpKmsManual = new Harness.Platform.ConnectorGcpKms(\"gcp_kms_manual\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        Region = \"us-west1\",\n        GcpProjectId = \"1234567\",\n        KeyRing = \"key_ring\",\n        KeyName = \"key_name\",\n        Manual = new Harness.Platform.Inputs.ConnectorGcpKmsManualArgs\n        {\n            Credentials = test.Id.Apply(id =\u003e $\"account.{id}\"),\n            DelegateSelectors = new[]\n            {\n                \"harness-delegate\",\n            },\n        },\n    });\n\n    var gcpKmsOidcPlatform = new Harness.Platform.ConnectorGcpKms(\"gcp_kms_oidc_platform\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        Region = \"us-west1\",\n        GcpProjectId = \"1234567\",\n        KeyRing = \"key_ring\",\n        KeyName = \"key_name\",\n        ExecuteOnDelegate = false,\n        OidcAuthentications = new[]\n        {\n            new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs\n            {\n                WorkloadPoolId = \"harness-pool-test\",\n                ProviderId = \"harness\",\n                GcpProjectId = \"1234567\",\n                ServiceAccountEmail = \"harness.sample@iam.gserviceaccount.com\",\n            },\n        },\n    });\n\n    var gcpKmsOidcDelegate = new Harness.Platform.ConnectorGcpKms(\"gcp_kms_oidc_delegate\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        Region = \"us-west1\",\n        GcpProjectId = \"1234567\",\n        KeyRing = \"key_ring\",\n        KeyName = \"key_name\",\n        OidcAuthentications = new[]\n        {\n            new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs\n            {\n                WorkloadPoolId = \"harness-pool-test\",\n                ProviderId = \"harness\",\n                GcpProjectId = \"1234567\",\n                ServiceAccountEmail = \"harness.sample@iam.gserviceaccount.com\",\n                DelegateSelectors = new[]\n                {\n                    \"harness-delegate\",\n                },\n            },\n        },\n    });\n\n    var gcpKmsOidcDelegateDefault = new Harness.Platform.ConnectorGcpKms(\"gcp_kms_oidc_delegate_default\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        Region = \"us-west1\",\n        GcpProjectId = \"1234567\",\n        KeyRing = \"key_ring\",\n        KeyName = \"key_name\",\n        Default = true,\n        OidcAuthentications = new[]\n        {\n            new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs\n            {\n                WorkloadPoolId = \"harness-pool-test\",\n                ProviderId = \"harness\",\n                GcpProjectId = \"1234567\",\n                ServiceAccountEmail = \"harness.sample@iam.gserviceaccount.com\",\n                DelegateSelectors = new[]\n                {\n                    \"harness-delegate\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttest, err := platform.NewSecretText(ctx, \"test\", \u0026platform.SecretTextArgs{\n\t\t\tIdentifier:  pulumi.String(\"%[1]s\"),\n\t\t\tName:        pulumi.String(\"%[2]s\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tSecretManagerIdentifier: pulumi.String(\"harnessSecretManager\"),\n\t\t\tValueType:               pulumi.String(\"Reference\"),\n\t\t\tValue:                   pulumi.String(\"secret\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewConnectorGcpKms(ctx, \"gcp_kms_manual\", \u0026platform.ConnectorGcpKmsArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tRegion:       pulumi.String(\"us-west1\"),\n\t\t\tGcpProjectId: pulumi.String(\"1234567\"),\n\t\t\tKeyRing:      pulumi.String(\"key_ring\"),\n\t\t\tKeyName:      pulumi.String(\"key_name\"),\n\t\t\tManual: \u0026platform.ConnectorGcpKmsManualArgs{\n\t\t\t\tCredentials: test.ID().ApplyT(func(id string) (string, error) {\n\t\t\t\t\treturn fmt.Sprintf(\"account.%v\", id), nil\n\t\t\t\t}).(pulumi.StringOutput),\n\t\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewConnectorGcpKms(ctx, \"gcp_kms_oidc_platform\", \u0026platform.ConnectorGcpKmsArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tRegion:            pulumi.String(\"us-west1\"),\n\t\t\tGcpProjectId:      pulumi.String(\"1234567\"),\n\t\t\tKeyRing:           pulumi.String(\"key_ring\"),\n\t\t\tKeyName:           pulumi.String(\"key_name\"),\n\t\t\tExecuteOnDelegate: pulumi.Bool(false),\n\t\t\tOidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{\n\t\t\t\t\u0026platform.ConnectorGcpKmsOidcAuthenticationArgs{\n\t\t\t\t\tWorkloadPoolId:      pulumi.String(\"harness-pool-test\"),\n\t\t\t\t\tProviderId:          pulumi.String(\"harness\"),\n\t\t\t\t\tGcpProjectId:        pulumi.String(\"1234567\"),\n\t\t\t\t\tServiceAccountEmail: pulumi.String(\"harness.sample@iam.gserviceaccount.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewConnectorGcpKms(ctx, \"gcp_kms_oidc_delegate\", \u0026platform.ConnectorGcpKmsArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tRegion:       pulumi.String(\"us-west1\"),\n\t\t\tGcpProjectId: pulumi.String(\"1234567\"),\n\t\t\tKeyRing:      pulumi.String(\"key_ring\"),\n\t\t\tKeyName:      pulumi.String(\"key_name\"),\n\t\t\tOidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{\n\t\t\t\t\u0026platform.ConnectorGcpKmsOidcAuthenticationArgs{\n\t\t\t\t\tWorkloadPoolId:      pulumi.String(\"harness-pool-test\"),\n\t\t\t\t\tProviderId:          pulumi.String(\"harness\"),\n\t\t\t\t\tGcpProjectId:        pulumi.String(\"1234567\"),\n\t\t\t\t\tServiceAccountEmail: pulumi.String(\"harness.sample@iam.gserviceaccount.com\"),\n\t\t\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewConnectorGcpKms(ctx, \"gcp_kms_oidc_delegate_default\", \u0026platform.ConnectorGcpKmsArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tRegion:       pulumi.String(\"us-west1\"),\n\t\t\tGcpProjectId: pulumi.String(\"1234567\"),\n\t\t\tKeyRing:      pulumi.String(\"key_ring\"),\n\t\t\tKeyName:      pulumi.String(\"key_name\"),\n\t\t\tDefault:      pulumi.Bool(true),\n\t\t\tOidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{\n\t\t\t\t\u0026platform.ConnectorGcpKmsOidcAuthenticationArgs{\n\t\t\t\t\tWorkloadPoolId:      pulumi.String(\"harness-pool-test\"),\n\t\t\t\t\tProviderId:          pulumi.String(\"harness\"),\n\t\t\t\t\tGcpProjectId:        pulumi.String(\"1234567\"),\n\t\t\t\t\tServiceAccountEmail: pulumi.String(\"harness.sample@iam.gserviceaccount.com\"),\n\t\t\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.SecretText;\nimport com.pulumi.harness.platform.SecretTextArgs;\nimport com.pulumi.harness.platform.ConnectorGcpKms;\nimport com.pulumi.harness.platform.ConnectorGcpKmsArgs;\nimport com.pulumi.harness.platform.inputs.ConnectorGcpKmsManualArgs;\nimport com.pulumi.harness.platform.inputs.ConnectorGcpKmsOidcAuthenticationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new SecretText(\"test\", SecretTextArgs.builder()\n            .identifier(\"%[1]s\")\n            .name(\"%[2]s\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .secretManagerIdentifier(\"harnessSecretManager\")\n            .valueType(\"Reference\")\n            .value(\"secret\")\n            .build());\n\n        var gcpKmsManual = new ConnectorGcpKms(\"gcpKmsManual\", ConnectorGcpKmsArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .region(\"us-west1\")\n            .gcpProjectId(\"1234567\")\n            .keyRing(\"key_ring\")\n            .keyName(\"key_name\")\n            .manual(ConnectorGcpKmsManualArgs.builder()\n                .credentials(test.id().applyValue(id -\u003e String.format(\"account.%s\", id)))\n                .delegateSelectors(\"harness-delegate\")\n                .build())\n            .build());\n\n        var gcpKmsOidcPlatform = new ConnectorGcpKms(\"gcpKmsOidcPlatform\", ConnectorGcpKmsArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .region(\"us-west1\")\n            .gcpProjectId(\"1234567\")\n            .keyRing(\"key_ring\")\n            .keyName(\"key_name\")\n            .executeOnDelegate(false)\n            .oidcAuthentications(ConnectorGcpKmsOidcAuthenticationArgs.builder()\n                .workloadPoolId(\"harness-pool-test\")\n                .providerId(\"harness\")\n                .gcpProjectId(\"1234567\")\n                .serviceAccountEmail(\"harness.sample@iam.gserviceaccount.com\")\n                .build())\n            .build());\n\n        var gcpKmsOidcDelegate = new ConnectorGcpKms(\"gcpKmsOidcDelegate\", ConnectorGcpKmsArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .region(\"us-west1\")\n            .gcpProjectId(\"1234567\")\n            .keyRing(\"key_ring\")\n            .keyName(\"key_name\")\n            .oidcAuthentications(ConnectorGcpKmsOidcAuthenticationArgs.builder()\n                .workloadPoolId(\"harness-pool-test\")\n                .providerId(\"harness\")\n                .gcpProjectId(\"1234567\")\n                .serviceAccountEmail(\"harness.sample@iam.gserviceaccount.com\")\n                .delegateSelectors(\"harness-delegate\")\n                .build())\n            .build());\n\n        var gcpKmsOidcDelegateDefault = new ConnectorGcpKms(\"gcpKmsOidcDelegateDefault\", ConnectorGcpKmsArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .region(\"us-west1\")\n            .gcpProjectId(\"1234567\")\n            .keyRing(\"key_ring\")\n            .keyName(\"key_name\")\n            .default_(true)\n            .oidcAuthentications(ConnectorGcpKmsOidcAuthenticationArgs.builder()\n                .workloadPoolId(\"harness-pool-test\")\n                .providerId(\"harness\")\n                .gcpProjectId(\"1234567\")\n                .serviceAccountEmail(\"harness.sample@iam.gserviceaccount.com\")\n                .delegateSelectors(\"harness-delegate\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:SecretText\n    properties:\n      identifier: '%[1]s'\n      name: '%[2]s'\n      description: test\n      tags:\n        - foo:bar\n      secretManagerIdentifier: harnessSecretManager\n      valueType: Reference\n      value: secret\n  gcpKmsManual:\n    type: harness:platform:ConnectorGcpKms\n    name: gcp_kms_manual\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      region: us-west1\n      gcpProjectId: '1234567'\n      keyRing: key_ring\n      keyName: key_name\n      manual:\n        credentials: account.${test.id}\n        delegateSelectors:\n          - harness-delegate\n  gcpKmsOidcPlatform:\n    type: harness:platform:ConnectorGcpKms\n    name: gcp_kms_oidc_platform\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      region: us-west1\n      gcpProjectId: '1234567'\n      keyRing: key_ring\n      keyName: key_name\n      executeOnDelegate: false\n      oidcAuthentications:\n        - workloadPoolId: harness-pool-test\n          providerId: harness\n          gcpProjectId: '1234567'\n          serviceAccountEmail: harness.sample@iam.gserviceaccount.com\n  gcpKmsOidcDelegate:\n    type: harness:platform:ConnectorGcpKms\n    name: gcp_kms_oidc_delegate\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      region: us-west1\n      gcpProjectId: '1234567'\n      keyRing: key_ring\n      keyName: key_name\n      oidcAuthentications:\n        - workloadPoolId: harness-pool-test\n          providerId: harness\n          gcpProjectId: '1234567'\n          serviceAccountEmail: harness.sample@iam.gserviceaccount.com\n          delegateSelectors:\n            - harness-delegate\n  gcpKmsOidcDelegateDefault:\n    type: harness:platform:ConnectorGcpKms\n    name: gcp_kms_oidc_delegate_default\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      region: us-west1\n      gcpProjectId: '1234567'\n      keyRing: key_ring\n      keyName: key_name\n      default: true\n      oidcAuthentications:\n        - workloadPoolId: harness-pool-test\n          providerId: harness\n          gcpProjectId: '1234567'\n          serviceAccountEmail: harness.sample@iam.gserviceaccount.com\n          delegateSelectors:\n            - harness-delegate\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level gcp connector \n\n```sh\n$ pulumi import harness:platform/connectorGcpKms:ConnectorGcpKms example \u003cconnector_id\u003e\n```\n\nImport org level gcp connector \n\n```sh\n$ pulumi import harness:platform/connectorGcpKms:ConnectorGcpKms example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level gcp connector \n\n```sh\n$ pulumi import harness:platform/connectorGcpKms:ConnectorGcpKms example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
+            "properties": {
+                "default": {
+                    "type": "boolean",
+                    "description": "Set this flag to set this secret manager as default secret manager.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Enable this flag to execute on Delegate.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project ID of the GCP KMS.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "keyName": {
+                    "type": "string",
+                    "description": "The key name of the GCP KMS.\n"
+                },
+                "keyRing": {
+                    "type": "string",
+                    "description": "The key ring of the GCP KMS.\n"
+                },
+                "manual": {
+                    "$ref": "#/types/harness:platform/ConnectorGcpKmsManual:ConnectorGcpKmsManual",
+                    "description": "Manual credential configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/ConnectorGcpKmsOidcAuthentication:ConnectorGcpKmsOidcAuthentication"
+                    },
+                    "description": "Authentication using harness oidc.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the GCP KMS.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "required": [
+                "gcpProjectId",
+                "identifier",
+                "keyName",
+                "keyRing",
+                "name",
+                "region"
+            ],
+            "inputProperties": {
+                "default": {
+                    "type": "boolean",
+                    "description": "Set this flag to set this secret manager as default secret manager.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Enable this flag to execute on Delegate.\n"
+                },
+                "gcpProjectId": {
+                    "type": "string",
+                    "description": "The project ID of the GCP KMS.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "keyName": {
+                    "type": "string",
+                    "description": "The key name of the GCP KMS.\n"
+                },
+                "keyRing": {
+                    "type": "string",
+                    "description": "The key ring of the GCP KMS.\n"
+                },
+                "manual": {
+                    "$ref": "#/types/harness:platform/ConnectorGcpKmsManual:ConnectorGcpKmsManual",
+                    "description": "Manual credential configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/ConnectorGcpKmsOidcAuthentication:ConnectorGcpKmsOidcAuthentication"
+                    },
+                    "description": "Authentication using harness oidc.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the GCP KMS.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "gcpProjectId",
+                "identifier",
+                "keyName",
+                "keyRing",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectorGcpKms resources.\n",
+                "properties": {
+                    "default": {
+                        "type": "boolean",
+                        "description": "Set this flag to set this secret manager as default secret manager.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Enable this flag to execute on Delegate.\n"
+                    },
+                    "gcpProjectId": {
+                        "type": "string",
+                        "description": "The project ID of the GCP KMS.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "keyName": {
+                        "type": "string",
+                        "description": "The key name of the GCP KMS.\n"
+                    },
+                    "keyRing": {
+                        "type": "string",
+                        "description": "The key ring of the GCP KMS.\n"
+                    },
+                    "manual": {
+                        "$ref": "#/types/harness:platform/ConnectorGcpKmsManual:ConnectorGcpKmsManual",
+                        "description": "Manual credential configuration.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "oidcAuthentications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/ConnectorGcpKmsOidcAuthentication:ConnectorGcpKmsOidcAuthentication"
+                        },
+                        "description": "Authentication using harness oidc.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the GCP KMS.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
                     }
                 },
                 "type": "object"
@@ -24203,7 +24738,7 @@
             }
         },
         "harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst gcpSm = new harness.platform.GcpSecretManagerConnector(\"gcp_sm\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    delegateSelectors: [\"harness-delegate\"],\n    credentialsRef: `account.${test.id}`,\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ngcp_sm = harness.platform.GcpSecretManagerConnector(\"gcp_sm\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    delegate_selectors=[\"harness-delegate\"],\n    credentials_ref=f\"account.{test['id']}\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gcpSm = new Harness.Platform.GcpSecretManagerConnector(\"gcp_sm\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        CredentialsRef = $\"account.{test.Id}\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewGcpSecretManagerConnector(ctx, \"gcp_sm\", \u0026platform.GcpSecretManagerConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tCredentialsRef: pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.GcpSecretManagerConnector;\nimport com.pulumi.harness.platform.GcpSecretManagerConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gcpSm = new GcpSecretManagerConnector(\"gcpSm\", GcpSecretManagerConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .delegateSelectors(\"harness-delegate\")\n            .credentialsRef(String.format(\"account.%s\", test.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gcpSm:\n    type: harness:platform:GcpSecretManagerConnector\n    name: gcp_sm\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      delegateSelectors:\n        - harness-delegate\n      credentialsRef: account.${test.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level gcp secret manager connector \n\n```sh\n$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example \u003cconnector_id\u003e\n```\n\nImport org level gcp secret manager connector \n\n```sh\n$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level gcp secret manager connector \n\n```sh\n$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst gcpSmManual = new harness.platform.GcpSecretManagerConnector(\"gcp_sm_manual\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    delegateSelectors: [\"harness-delegate\"],\n    credentialsRef: `account.${test.id}`,\n});\nconst gcpSmInherit = new harness.platform.GcpSecretManagerConnector(\"gcp_sm_inherit\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    delegateSelectors: [\"harness-delegate\"],\n    inheritFromDelegate: true,\n});\nconst gcpSmOidcPlatform = new harness.platform.GcpSecretManagerConnector(\"gcp_sm_oidc_platform\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    executeOnDelegate: false,\n    oidcAuthentications: [{\n        workloadPoolId: \"harness-pool-test\",\n        providerId: \"harness\",\n        gcpProjectId: \"1234567\",\n        serviceAccountEmail: \"harness.sample@iam.gserviceaccount.com\",\n    }],\n});\nconst gcpSmOidcDelegate = new harness.platform.GcpSecretManagerConnector(\"gcp_sm_oidc_delegate\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    isDefault: true,\n    delegateSelectors: [\"harness-delegate\"],\n    oidcAuthentications: [{\n        workloadPoolId: \"harness-pool-test\",\n        providerId: \"harness\",\n        gcpProjectId: \"1234567\",\n        serviceAccountEmail: \"harness.sample@iam.gserviceaccount.com\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ngcp_sm_manual = harness.platform.GcpSecretManagerConnector(\"gcp_sm_manual\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    delegate_selectors=[\"harness-delegate\"],\n    credentials_ref=f\"account.{test['id']}\")\ngcp_sm_inherit = harness.platform.GcpSecretManagerConnector(\"gcp_sm_inherit\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    delegate_selectors=[\"harness-delegate\"],\n    inherit_from_delegate=True)\ngcp_sm_oidc_platform = harness.platform.GcpSecretManagerConnector(\"gcp_sm_oidc_platform\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    execute_on_delegate=False,\n    oidc_authentications=[{\n        \"workload_pool_id\": \"harness-pool-test\",\n        \"provider_id\": \"harness\",\n        \"gcp_project_id\": \"1234567\",\n        \"service_account_email\": \"harness.sample@iam.gserviceaccount.com\",\n    }])\ngcp_sm_oidc_delegate = harness.platform.GcpSecretManagerConnector(\"gcp_sm_oidc_delegate\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    is_default=True,\n    delegate_selectors=[\"harness-delegate\"],\n    oidc_authentications=[{\n        \"workload_pool_id\": \"harness-pool-test\",\n        \"provider_id\": \"harness\",\n        \"gcp_project_id\": \"1234567\",\n        \"service_account_email\": \"harness.sample@iam.gserviceaccount.com\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gcpSmManual = new Harness.Platform.GcpSecretManagerConnector(\"gcp_sm_manual\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        CredentialsRef = $\"account.{test.Id}\",\n    });\n\n    var gcpSmInherit = new Harness.Platform.GcpSecretManagerConnector(\"gcp_sm_inherit\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        InheritFromDelegate = true,\n    });\n\n    var gcpSmOidcPlatform = new Harness.Platform.GcpSecretManagerConnector(\"gcp_sm_oidc_platform\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        ExecuteOnDelegate = false,\n        OidcAuthentications = new[]\n        {\n            new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs\n            {\n                WorkloadPoolId = \"harness-pool-test\",\n                ProviderId = \"harness\",\n                GcpProjectId = \"1234567\",\n                ServiceAccountEmail = \"harness.sample@iam.gserviceaccount.com\",\n            },\n        },\n    });\n\n    var gcpSmOidcDelegate = new Harness.Platform.GcpSecretManagerConnector(\"gcp_sm_oidc_delegate\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        IsDefault = true,\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        OidcAuthentications = new[]\n        {\n            new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs\n            {\n                WorkloadPoolId = \"harness-pool-test\",\n                ProviderId = \"harness\",\n                GcpProjectId = \"1234567\",\n                ServiceAccountEmail = \"harness.sample@iam.gserviceaccount.com\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewGcpSecretManagerConnector(ctx, \"gcp_sm_manual\", \u0026platform.GcpSecretManagerConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tCredentialsRef: pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewGcpSecretManagerConnector(ctx, \"gcp_sm_inherit\", \u0026platform.GcpSecretManagerConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tInheritFromDelegate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewGcpSecretManagerConnector(ctx, \"gcp_sm_oidc_platform\", \u0026platform.GcpSecretManagerConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tExecuteOnDelegate: pulumi.Bool(false),\n\t\t\tOidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{\n\t\t\t\t\u0026platform.GcpSecretManagerConnectorOidcAuthenticationArgs{\n\t\t\t\t\tWorkloadPoolId:      pulumi.String(\"harness-pool-test\"),\n\t\t\t\t\tProviderId:          pulumi.String(\"harness\"),\n\t\t\t\t\tGcpProjectId:        pulumi.String(\"1234567\"),\n\t\t\t\t\tServiceAccountEmail: pulumi.String(\"harness.sample@iam.gserviceaccount.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewGcpSecretManagerConnector(ctx, \"gcp_sm_oidc_delegate\", \u0026platform.GcpSecretManagerConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tIsDefault: pulumi.Bool(true),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tOidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{\n\t\t\t\t\u0026platform.GcpSecretManagerConnectorOidcAuthenticationArgs{\n\t\t\t\t\tWorkloadPoolId:      pulumi.String(\"harness-pool-test\"),\n\t\t\t\t\tProviderId:          pulumi.String(\"harness\"),\n\t\t\t\t\tGcpProjectId:        pulumi.String(\"1234567\"),\n\t\t\t\t\tServiceAccountEmail: pulumi.String(\"harness.sample@iam.gserviceaccount.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.GcpSecretManagerConnector;\nimport com.pulumi.harness.platform.GcpSecretManagerConnectorArgs;\nimport com.pulumi.harness.platform.inputs.GcpSecretManagerConnectorOidcAuthenticationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gcpSmManual = new GcpSecretManagerConnector(\"gcpSmManual\", GcpSecretManagerConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .delegateSelectors(\"harness-delegate\")\n            .credentialsRef(String.format(\"account.%s\", test.id()))\n            .build());\n\n        var gcpSmInherit = new GcpSecretManagerConnector(\"gcpSmInherit\", GcpSecretManagerConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .delegateSelectors(\"harness-delegate\")\n            .inheritFromDelegate(true)\n            .build());\n\n        var gcpSmOidcPlatform = new GcpSecretManagerConnector(\"gcpSmOidcPlatform\", GcpSecretManagerConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .executeOnDelegate(false)\n            .oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs.builder()\n                .workloadPoolId(\"harness-pool-test\")\n                .providerId(\"harness\")\n                .gcpProjectId(\"1234567\")\n                .serviceAccountEmail(\"harness.sample@iam.gserviceaccount.com\")\n                .build())\n            .build());\n\n        var gcpSmOidcDelegate = new GcpSecretManagerConnector(\"gcpSmOidcDelegate\", GcpSecretManagerConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .isDefault(true)\n            .delegateSelectors(\"harness-delegate\")\n            .oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs.builder()\n                .workloadPoolId(\"harness-pool-test\")\n                .providerId(\"harness\")\n                .gcpProjectId(\"1234567\")\n                .serviceAccountEmail(\"harness.sample@iam.gserviceaccount.com\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gcpSmManual:\n    type: harness:platform:GcpSecretManagerConnector\n    name: gcp_sm_manual\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      delegateSelectors:\n        - harness-delegate\n      credentialsRef: account.${test.id}\n  gcpSmInherit:\n    type: harness:platform:GcpSecretManagerConnector\n    name: gcp_sm_inherit\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      delegateSelectors:\n        - harness-delegate\n      inheritFromDelegate: true\n  gcpSmOidcPlatform:\n    type: harness:platform:GcpSecretManagerConnector\n    name: gcp_sm_oidc_platform\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      executeOnDelegate: false\n      oidcAuthentications:\n        - workloadPoolId: harness-pool-test\n          providerId: harness\n          gcpProjectId: '1234567'\n          serviceAccountEmail: harness.sample@iam.gserviceaccount.com\n  gcpSmOidcDelegate:\n    type: harness:platform:GcpSecretManagerConnector\n    name: gcp_sm_oidc_delegate\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      isDefault: true\n      delegateSelectors:\n        - harness-delegate\n      oidcAuthentications:\n        - workloadPoolId: harness-pool-test\n          providerId: harness\n          gcpProjectId: '1234567'\n          serviceAccountEmail: harness.sample@iam.gserviceaccount.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level gcp secret manager connector \n\n```sh\n$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example \u003cconnector_id\u003e\n```\n\nImport org level gcp secret manager connector \n\n```sh\n$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level gcp secret manager connector \n\n```sh\n$ pulumi import harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
             "properties": {
                 "credentialsRef": {
                     "type": "string",
@@ -24214,23 +24749,38 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags to filter delegates for connection.\n"
+                    "description": "The delegates to inherit the credentials from.\n"
                 },
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
                 },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
                 },
+                "inheritFromDelegate": {
+                    "type": "boolean",
+                    "description": "Inherit configuration from delegate.\n"
+                },
                 "isDefault": {
                     "type": "boolean",
-                    "description": "Indicative if this is default Secret manager for secrets.\n"
+                    "description": "Set this flag to set this secret manager as default secret manager.\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "Name of the resource.\n"
+                },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GcpSecretManagerConnectorOidcAuthentication:GcpSecretManagerConnectorOidcAuthentication"
+                    },
+                    "description": "Authentication using harness oidc.\n"
                 },
                 "orgId": {
                     "type": "string",
@@ -24249,7 +24799,6 @@
                 }
             },
             "required": [
-                "credentialsRef",
                 "identifier",
                 "name"
             ],
@@ -24263,24 +24812,39 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Tags to filter delegates for connection.\n"
+                    "description": "The delegates to inherit the credentials from.\n"
                 },
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
                 },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n",
                     "willReplaceOnChanges": true
                 },
+                "inheritFromDelegate": {
+                    "type": "boolean",
+                    "description": "Inherit configuration from delegate.\n"
+                },
                 "isDefault": {
                     "type": "boolean",
-                    "description": "Indicative if this is default Secret manager for secrets.\n"
+                    "description": "Set this flag to set this secret manager as default secret manager.\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "Name of the resource.\n"
+                },
+                "oidcAuthentications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/GcpSecretManagerConnectorOidcAuthentication:GcpSecretManagerConnectorOidcAuthentication"
+                    },
+                    "description": "Authentication using harness oidc.\n"
                 },
                 "orgId": {
                     "type": "string",
@@ -24299,7 +24863,6 @@
                 }
             },
             "requiredInputs": [
-                "credentialsRef",
                 "identifier"
             ],
             "stateInputs": {
@@ -24314,24 +24877,39 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Tags to filter delegates for connection.\n"
+                        "description": "The delegates to inherit the credentials from.\n"
                     },
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Execute on delegate or not.\n"
                     },
                     "identifier": {
                         "type": "string",
                         "description": "Unique identifier of the resource.\n",
                         "willReplaceOnChanges": true
                     },
+                    "inheritFromDelegate": {
+                        "type": "boolean",
+                        "description": "Inherit configuration from delegate.\n"
+                    },
                     "isDefault": {
                         "type": "boolean",
-                        "description": "Indicative if this is default Secret manager for secrets.\n"
+                        "description": "Set this flag to set this secret manager as default secret manager.\n"
                     },
                     "name": {
                         "type": "string",
                         "description": "Name of the resource.\n"
+                    },
+                    "oidcAuthentications": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/GcpSecretManagerConnectorOidcAuthentication:GcpSecretManagerConnectorOidcAuthentication"
+                        },
+                        "description": "Authentication using harness oidc.\n"
                     },
                     "orgId": {
                         "type": "string",
@@ -25919,6 +26497,10 @@
                     "type": "string",
                     "description": "Description of the resource.\n"
                 },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
@@ -25981,6 +26563,10 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -26046,6 +26632,10 @@
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Execute on delegate or not.\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -39142,6 +39732,10 @@
                         },
                         "type": "array"
                     },
+                    "default": {
+                        "description": "Whether this is the default connector.\n",
+                        "type": "boolean"
+                    },
                     "delegateSelectors": {
                         "description": "Tags to filter delegates for connection.\n",
                         "items": {
@@ -39152,6 +39746,10 @@
                     "description": {
                         "description": "Description of the resource.\n",
                         "type": "string"
+                    },
+                    "executeOnDelegate": {
+                        "description": "The delegate to execute the action on.\n",
+                        "type": "boolean"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
@@ -39188,8 +39786,10 @@
                 "required": [
                     "arnRef",
                     "credentials",
+                    "default",
                     "delegateSelectors",
                     "description",
+                    "executeOnDelegate",
                     "identifier",
                     "region",
                     "tags",
@@ -39203,6 +39803,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getAwsSecretManagerConnector.\n",
                 "properties": {
+                    "forceDeleteWithoutRecovery": {
+                        "type": "boolean",
+                        "description": "Whether to force delete secret value or not.\n"
+                    },
                     "identifier": {
                         "type": "string",
                         "description": "Unique identifier of the resource.\n",
@@ -39219,6 +39823,10 @@
                     "projectId": {
                         "type": "string",
                         "description": "Unique identifier of the project.\n"
+                    },
+                    "recoveryWindowInDays": {
+                        "type": "integer",
+                        "description": "recovery duration in days in AWS Secrets Manager.\n"
                     }
                 },
                 "type": "object",
@@ -39236,6 +39844,10 @@
                         },
                         "type": "array"
                     },
+                    "default": {
+                        "description": "Whether this is the default connector.\n",
+                        "type": "boolean"
+                    },
                     "delegateSelectors": {
                         "description": "Tags to filter delegates for connection.\n",
                         "items": {
@@ -39246,6 +39858,14 @@
                     "description": {
                         "description": "Description of the resource.\n",
                         "type": "string"
+                    },
+                    "executeOnDelegate": {
+                        "description": "The delegate to execute the action on.\n",
+                        "type": "boolean"
+                    },
+                    "forceDeleteWithoutRecovery": {
+                        "description": "Whether to force delete secret value or not.\n",
+                        "type": "boolean"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
@@ -39266,6 +39886,10 @@
                     "projectId": {
                         "description": "Unique identifier of the project.\n",
                         "type": "string"
+                    },
+                    "recoveryWindowInDays": {
+                        "description": "recovery duration in days in AWS Secrets Manager.\n",
+                        "type": "integer"
                     },
                     "region": {
                         "description": "The AWS region where the AWS Secret Manager is.\n",
@@ -39289,8 +39913,10 @@
                 },
                 "required": [
                     "credentials",
+                    "default",
                     "delegateSelectors",
                     "description",
+                    "executeOnDelegate",
                     "identifier",
                     "region",
                     "secretNamePrefix",
@@ -40041,6 +40667,124 @@
                     "url",
                     "validationBody",
                     "validationPath",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getConnectorGcpKms:getConnectorGcpKms": {
+            "description": "Datasource for looking up GCP KMS connector.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectorGcpKms.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectorGcpKms.\n",
+                "properties": {
+                    "default": {
+                        "description": "Set this flag to set this secret manager as default secret manager.\n",
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "executeOnDelegate": {
+                        "description": "Enable this flag to execute on Delegate.\n",
+                        "type": "boolean"
+                    },
+                    "gcpProjectId": {
+                        "description": "The project ID of the GCP KMS.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "keyName": {
+                        "description": "The key name of the GCP KMS.\n",
+                        "type": "string"
+                    },
+                    "keyRing": {
+                        "description": "The key ring of the GCP KMS.\n",
+                        "type": "string"
+                    },
+                    "manuals": {
+                        "description": "Manual credential configuration.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getConnectorGcpKmsManual:getConnectorGcpKmsManual"
+                        },
+                        "type": "array"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "oidcAuthentications": {
+                        "description": "Authentication using harness oidc.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getConnectorGcpKmsOidcAuthentication:getConnectorGcpKmsOidcAuthentication"
+                        },
+                        "type": "array"
+                    },
+                    "orgId": {
+                        "description": "Unique identifier of the organization.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Unique identifier of the project.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "The region of the GCP KMS.\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "Tags to associate with the resource.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "default",
+                    "description",
+                    "executeOnDelegate",
+                    "gcpProjectId",
+                    "identifier",
+                    "keyName",
+                    "keyRing",
+                    "manuals",
+                    "oidcAuthentications",
+                    "region",
+                    "tags",
                     "id"
                 ],
                 "type": "object"
@@ -41983,7 +42727,7 @@
                         "type": "string"
                     },
                     "delegateSelectors": {
-                        "description": "Tags to filter delegates for connection.\n",
+                        "description": "The delegates to inherit the credentials from.\n",
                         "items": {
                             "type": "string"
                         },
@@ -41993,6 +42737,10 @@
                         "description": "Description of the resource.\n",
                         "type": "string"
                     },
+                    "executeOnDelegate": {
+                        "description": "Execute on delegate or not.\n",
+                        "type": "boolean"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -42001,13 +42749,24 @@
                         "description": "Unique identifier of the resource.\n",
                         "type": "string"
                     },
+                    "inheritFromDelegate": {
+                        "description": "Inherit configuration from delegate.\n",
+                        "type": "boolean"
+                    },
                     "isDefault": {
-                        "description": "Indicative if this is default Secret manager for secrets.\n",
+                        "description": "Set this flag to set this secret manager as default secret manager.\n",
                         "type": "boolean"
                     },
                     "name": {
                         "description": "Name of the resource.\n",
                         "type": "string"
+                    },
+                    "oidcAuthentications": {
+                        "description": "Authentication using harness oidc.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getGcpSecretManagerConnectorOidcAuthentication:getGcpSecretManagerConnectorOidcAuthentication"
+                        },
+                        "type": "array"
                     },
                     "orgId": {
                         "description": "Unique identifier of the organization.\n",
@@ -42029,8 +42788,11 @@
                     "credentialsRef",
                     "delegateSelectors",
                     "description",
+                    "executeOnDelegate",
                     "identifier",
+                    "inheritFromDelegate",
                     "isDefault",
+                    "oidcAuthentications",
                     "tags",
                     "id"
                 ],
@@ -42315,6 +43077,9 @@
                         "description": "Description of the resource.\n",
                         "type": "string"
                     },
+                    "executeOnDelegate": {
+                        "type": "boolean"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -42357,6 +43122,7 @@
                     "credentials",
                     "delegateSelectors",
                     "description",
+                    "executeOnDelegate",
                     "identifier",
                     "tags",
                     "url",

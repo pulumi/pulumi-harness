@@ -559,6 +559,9 @@
                                 },
                                 "manual": {
                                     "maxItemsOne": true
+                                },
+                                "oidc_authentication": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -596,6 +599,9 @@
                                     "maxItemsOne": true
                                 },
                                 "manual": {
+                                    "maxItemsOne": true
+                                },
+                                "oidc_authentication": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -876,10 +882,41 @@
                     }
                 }
             },
+            "harness_platform_connector_gcp_kms": {
+                "current": "harness:platform/connectorGcpKms:ConnectorGcpKms",
+                "fields": {
+                    "manual": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "oidc_authentication": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_gcp_secret_manager": {
                 "current": "harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector",
                 "fields": {
                     "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "oidc_authentication": {
                         "maxItemsOne": false
                     },
                     "tags": {
@@ -3403,6 +3440,9 @@
                                 },
                                 "manual": {
                                     "maxItemsOne": false
+                                },
+                                "oidc_authentication": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -3440,6 +3480,9 @@
                                     "maxItemsOne": false
                                 },
                                 "manual": {
+                                    "maxItemsOne": false
+                                },
+                                "oidc_authentication": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -3703,10 +3746,41 @@
                     }
                 }
             },
+            "harness_platform_connector_gcp_kms": {
+                "current": "harness:platform/getConnectorGcpKms:getConnectorGcpKms",
+                "fields": {
+                    "manual": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "oidc_authentication": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_gcp_secret_manager": {
                 "current": "harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector",
                 "fields": {
                     "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "oidc_authentication": {
                         "maxItemsOne": false
                     },
                     "tags": {
