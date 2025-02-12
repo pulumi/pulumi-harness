@@ -25,6 +25,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Specify the AWS key and secret used for authenticating.
         /// </summary>
         public readonly Outputs.AwsKmsConnectorCredentialsManual? Manual;
+        /// <summary>
+        /// Connect using OIDC authentication.
+        /// </summary>
+        public readonly Outputs.AwsKmsConnectorCredentialsOidcAuthentication? OidcAuthentication;
 
         [OutputConstructor]
         private AwsKmsConnectorCredentials(
@@ -32,11 +36,14 @@ namespace Pulumi.Harness.Platform.Outputs
 
             bool? inheritFromDelegate,
 
-            Outputs.AwsKmsConnectorCredentialsManual? manual)
+            Outputs.AwsKmsConnectorCredentialsManual? manual,
+
+            Outputs.AwsKmsConnectorCredentialsOidcAuthentication? oidcAuthentication)
         {
             AssumeRole = assumeRole;
             InheritFromDelegate = inheritFromDelegate;
             Manual = manual;
+            OidcAuthentication = oidcAuthentication;
         }
     }
 }

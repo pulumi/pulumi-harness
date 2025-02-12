@@ -25,8 +25,10 @@ class AwsKmsConnectorArgs:
                  credentials: pulumi.Input['AwsKmsConnectorCredentialsArgs'],
                  identifier: pulumi.Input[str],
                  region: pulumi.Input[str],
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -37,8 +39,10 @@ class AwsKmsConnectorArgs:
         :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
+        :param pulumi.Input[bool] default: Set this connector as the default for all the services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute the command on the delegate.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
@@ -48,10 +52,14 @@ class AwsKmsConnectorArgs:
         pulumi.set(__self__, "credentials", credentials)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "region", region)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -110,6 +118,18 @@ class AwsKmsConnectorArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set this connector as the default for all the services.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default", value)
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -132,6 +152,18 @@ class AwsKmsConnectorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Execute the command on the delegate.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
 
     @property
     @pulumi.getter
@@ -187,8 +219,10 @@ class _AwsKmsConnectorState:
     def __init__(__self__, *,
                  arn_ref: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input['AwsKmsConnectorCredentialsArgs']] = None,
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -199,8 +233,10 @@ class _AwsKmsConnectorState:
         Input properties used for looking up and filtering AwsKmsConnector resources.
         :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[bool] default: Set this connector as the default for all the services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute the command on the delegate.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -212,10 +248,14 @@ class _AwsKmsConnectorState:
             pulumi.set(__self__, "arn_ref", arn_ref)
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -254,6 +294,18 @@ class _AwsKmsConnectorState:
         pulumi.set(self, "credentials", value)
 
     @property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set this connector as the default for all the services.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default", value)
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -276,6 +328,18 @@ class _AwsKmsConnectorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Execute the command on the delegate.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
 
     @property
     @pulumi.getter
@@ -357,8 +421,10 @@ class AwsKmsConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arn_ref: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -393,8 +459,10 @@ class AwsKmsConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[bool] default: Set this connector as the default for all the services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute the command on the delegate.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -448,8 +516,10 @@ class AwsKmsConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  arn_ref: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
+                 default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -471,8 +541,10 @@ class AwsKmsConnector(pulumi.CustomResource):
             if credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials'")
             __props__.__dict__["credentials"] = credentials
+            __props__.__dict__["default"] = default
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
+            __props__.__dict__["execute_on_delegate"] = execute_on_delegate
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -495,8 +567,10 @@ class AwsKmsConnector(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             arn_ref: Optional[pulumi.Input[str]] = None,
             credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
+            default: Optional[pulumi.Input[bool]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            execute_on_delegate: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -512,8 +586,10 @@ class AwsKmsConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
+        :param pulumi.Input[bool] default: Set this connector as the default for all the services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute the command on the delegate.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -527,8 +603,10 @@ class AwsKmsConnector(pulumi.CustomResource):
 
         __props__.__dict__["arn_ref"] = arn_ref
         __props__.__dict__["credentials"] = credentials
+        __props__.__dict__["default"] = default
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
+        __props__.__dict__["execute_on_delegate"] = execute_on_delegate
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -554,6 +632,14 @@ class AwsKmsConnector(pulumi.CustomResource):
         return pulumi.get(self, "credentials")
 
     @property
+    @pulumi.getter
+    def default(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set this connector as the default for all the services.
+        """
+        return pulumi.get(self, "default")
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -568,6 +654,14 @@ class AwsKmsConnector(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Execute the command on the delegate.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter

@@ -27,16 +27,25 @@ class GetAwsSecretManagerConnectorResult:
     """
     A collection of values returned by getAwsSecretManagerConnector.
     """
-    def __init__(__self__, credentials=None, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, secret_name_prefix=None, tags=None, use_put_secret=None):
+    def __init__(__self__, credentials=None, default=None, delegate_selectors=None, description=None, execute_on_delegate=None, force_delete_without_recovery=None, id=None, identifier=None, name=None, org_id=None, project_id=None, recovery_window_in_days=None, region=None, secret_name_prefix=None, tags=None, use_put_secret=None):
         if credentials and not isinstance(credentials, list):
             raise TypeError("Expected argument 'credentials' to be a list")
         pulumi.set(__self__, "credentials", credentials)
+        if default and not isinstance(default, bool):
+            raise TypeError("Expected argument 'default' to be a bool")
+        pulumi.set(__self__, "default", default)
         if delegate_selectors and not isinstance(delegate_selectors, list):
             raise TypeError("Expected argument 'delegate_selectors' to be a list")
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if execute_on_delegate and not isinstance(execute_on_delegate, bool):
+            raise TypeError("Expected argument 'execute_on_delegate' to be a bool")
+        pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if force_delete_without_recovery and not isinstance(force_delete_without_recovery, bool):
+            raise TypeError("Expected argument 'force_delete_without_recovery' to be a bool")
+        pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,6 +61,9 @@ class GetAwsSecretManagerConnectorResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if recovery_window_in_days and not isinstance(recovery_window_in_days, int):
+            raise TypeError("Expected argument 'recovery_window_in_days' to be a int")
+        pulumi.set(__self__, "recovery_window_in_days", recovery_window_in_days)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -74,6 +86,14 @@ class GetAwsSecretManagerConnectorResult:
         return pulumi.get(self, "credentials")
 
     @property
+    @pulumi.getter
+    def default(self) -> bool:
+        """
+        Whether this is the default connector.
+        """
+        return pulumi.get(self, "default")
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[str]:
         """
@@ -88,6 +108,22 @@ class GetAwsSecretManagerConnectorResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> bool:
+        """
+        The delegate to execute the action on.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @property
+    @pulumi.getter(name="forceDeleteWithoutRecovery")
+    def force_delete_without_recovery(self) -> Optional[bool]:
+        """
+        Whether to force delete secret value or not.
+        """
+        return pulumi.get(self, "force_delete_without_recovery")
 
     @property
     @pulumi.getter
@@ -130,6 +166,14 @@ class GetAwsSecretManagerConnectorResult:
         return pulumi.get(self, "project_id")
 
     @property
+    @pulumi.getter(name="recoveryWindowInDays")
+    def recovery_window_in_days(self) -> Optional[int]:
+        """
+        recovery duration in days in AWS Secrets Manager.
+        """
+        return pulumi.get(self, "recovery_window_in_days")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -169,23 +213,29 @@ class AwaitableGetAwsSecretManagerConnectorResult(GetAwsSecretManagerConnectorRe
             yield self
         return GetAwsSecretManagerConnectorResult(
             credentials=self.credentials,
+            default=self.default,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
+            execute_on_delegate=self.execute_on_delegate,
+            force_delete_without_recovery=self.force_delete_without_recovery,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
+            recovery_window_in_days=self.recovery_window_in_days,
             region=self.region,
             secret_name_prefix=self.secret_name_prefix,
             tags=self.tags,
             use_put_secret=self.use_put_secret)
 
 
-def get_aws_secret_manager_connector(identifier: Optional[str] = None,
+def get_aws_secret_manager_connector(force_delete_without_recovery: Optional[bool] = None,
+                                     identifier: Optional[str] = None,
                                      name: Optional[str] = None,
                                      org_id: Optional[str] = None,
                                      project_id: Optional[str] = None,
+                                     recovery_window_in_days: Optional[int] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsSecretManagerConnectorResult:
     """
     ## Example Usage
@@ -198,36 +248,46 @@ def get_aws_secret_manager_connector(identifier: Optional[str] = None,
     ```
 
 
+    :param bool force_delete_without_recovery: Whether to force delete secret value or not.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
+    :param int recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
     """
     __args__ = dict()
+    __args__['forceDeleteWithoutRecovery'] = force_delete_without_recovery
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['recoveryWindowInDays'] = recovery_window_in_days
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector', __args__, opts=opts, typ=GetAwsSecretManagerConnectorResult).value
 
     return AwaitableGetAwsSecretManagerConnectorResult(
         credentials=pulumi.get(__ret__, 'credentials'),
+        default=pulumi.get(__ret__, 'default'),
         delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
         description=pulumi.get(__ret__, 'description'),
+        execute_on_delegate=pulumi.get(__ret__, 'execute_on_delegate'),
+        force_delete_without_recovery=pulumi.get(__ret__, 'force_delete_without_recovery'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
+        recovery_window_in_days=pulumi.get(__ret__, 'recovery_window_in_days'),
         region=pulumi.get(__ret__, 'region'),
         secret_name_prefix=pulumi.get(__ret__, 'secret_name_prefix'),
         tags=pulumi.get(__ret__, 'tags'),
         use_put_secret=pulumi.get(__ret__, 'use_put_secret'))
-def get_aws_secret_manager_connector_output(identifier: Optional[pulumi.Input[str]] = None,
+def get_aws_secret_manager_connector_output(force_delete_without_recovery: Optional[pulumi.Input[Optional[bool]]] = None,
+                                            identifier: Optional[pulumi.Input[str]] = None,
                                             name: Optional[pulumi.Input[Optional[str]]] = None,
                                             org_id: Optional[pulumi.Input[Optional[str]]] = None,
                                             project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                            recovery_window_in_days: Optional[pulumi.Input[Optional[int]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsSecretManagerConnectorResult]:
     """
     ## Example Usage
@@ -240,27 +300,35 @@ def get_aws_secret_manager_connector_output(identifier: Optional[pulumi.Input[st
     ```
 
 
+    :param bool force_delete_without_recovery: Whether to force delete secret value or not.
     :param str identifier: Unique identifier of the resource.
     :param str name: Name of the resource.
     :param str org_id: Unique identifier of the organization.
     :param str project_id: Unique identifier of the project.
+    :param int recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
     """
     __args__ = dict()
+    __args__['forceDeleteWithoutRecovery'] = force_delete_without_recovery
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['recoveryWindowInDays'] = recovery_window_in_days
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector', __args__, opts=opts, typ=GetAwsSecretManagerConnectorResult)
     return __ret__.apply(lambda __response__: GetAwsSecretManagerConnectorResult(
         credentials=pulumi.get(__response__, 'credentials'),
+        default=pulumi.get(__response__, 'default'),
         delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
         description=pulumi.get(__response__, 'description'),
+        execute_on_delegate=pulumi.get(__response__, 'execute_on_delegate'),
+        force_delete_without_recovery=pulumi.get(__response__, 'force_delete_without_recovery'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),
+        recovery_window_in_days=pulumi.get(__response__, 'recovery_window_in_days'),
         region=pulumi.get(__response__, 'region'),
         secret_name_prefix=pulumi.get(__response__, 'secret_name_prefix'),
         tags=pulumi.get(__response__, 'tags'),

@@ -5,6 +5,8 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class GetAwsSecretManagerConnectorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAwsSecretManagerConnectorPlainArgs Empty = new GetAwsSecretManagerConnectorPlainArgs();
+
+    /**
+     * Whether to force delete secret value or not.
+     * 
+     */
+    @Import(name="forceDeleteWithoutRecovery")
+    private @Nullable Boolean forceDeleteWithoutRecovery;
+
+    /**
+     * @return Whether to force delete secret value or not.
+     * 
+     */
+    public Optional<Boolean> forceDeleteWithoutRecovery() {
+        return Optional.ofNullable(this.forceDeleteWithoutRecovery);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -75,13 +92,30 @@ public final class GetAwsSecretManagerConnectorPlainArgs extends com.pulumi.reso
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    @Import(name="recoveryWindowInDays")
+    private @Nullable Integer recoveryWindowInDays;
+
+    /**
+     * @return recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    public Optional<Integer> recoveryWindowInDays() {
+        return Optional.ofNullable(this.recoveryWindowInDays);
+    }
+
     private GetAwsSecretManagerConnectorPlainArgs() {}
 
     private GetAwsSecretManagerConnectorPlainArgs(GetAwsSecretManagerConnectorPlainArgs $) {
+        this.forceDeleteWithoutRecovery = $.forceDeleteWithoutRecovery;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.recoveryWindowInDays = $.recoveryWindowInDays;
     }
 
     public static Builder builder() {
@@ -100,6 +134,17 @@ public final class GetAwsSecretManagerConnectorPlainArgs extends com.pulumi.reso
 
         public Builder(GetAwsSecretManagerConnectorPlainArgs defaults) {
             $ = new GetAwsSecretManagerConnectorPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param forceDeleteWithoutRecovery Whether to force delete secret value or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteWithoutRecovery(@Nullable Boolean forceDeleteWithoutRecovery) {
+            $.forceDeleteWithoutRecovery = forceDeleteWithoutRecovery;
+            return this;
         }
 
         /**
@@ -143,6 +188,17 @@ public final class GetAwsSecretManagerConnectorPlainArgs extends com.pulumi.reso
          */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param recoveryWindowInDays recovery duration in days in AWS Secrets Manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoveryWindowInDays(@Nullable Integer recoveryWindowInDays) {
+            $.recoveryWindowInDays = recoveryWindowInDays;
             return this;
         }
 

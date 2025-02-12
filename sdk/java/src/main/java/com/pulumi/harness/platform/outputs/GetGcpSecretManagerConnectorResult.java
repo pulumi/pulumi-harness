@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetGcpSecretManagerConnectorOidcAuthentication;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -20,7 +21,7 @@ public final class GetGcpSecretManagerConnectorResult {
      */
     private String credentialsRef;
     /**
-     * @return Tags to filter delegates for connection.
+     * @return The delegates to inherit the credentials from.
      * 
      */
     private List<String> delegateSelectors;
@@ -29,6 +30,11 @@ public final class GetGcpSecretManagerConnectorResult {
      * 
      */
     private String description;
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    private Boolean executeOnDelegate;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -40,7 +46,12 @@ public final class GetGcpSecretManagerConnectorResult {
      */
     private String identifier;
     /**
-     * @return Indicative if this is default Secret manager for secrets.
+     * @return Inherit configuration from delegate.
+     * 
+     */
+    private Boolean inheritFromDelegate;
+    /**
+     * @return Set this flag to set this secret manager as default secret manager.
      * 
      */
     private Boolean isDefault;
@@ -49,6 +60,11 @@ public final class GetGcpSecretManagerConnectorResult {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    private List<GetGcpSecretManagerConnectorOidcAuthentication> oidcAuthentications;
     /**
      * @return Unique identifier of the organization.
      * 
@@ -74,7 +90,7 @@ public final class GetGcpSecretManagerConnectorResult {
         return this.credentialsRef;
     }
     /**
-     * @return Tags to filter delegates for connection.
+     * @return The delegates to inherit the credentials from.
      * 
      */
     public List<String> delegateSelectors() {
@@ -86,6 +102,13 @@ public final class GetGcpSecretManagerConnectorResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -102,7 +125,14 @@ public final class GetGcpSecretManagerConnectorResult {
         return this.identifier;
     }
     /**
-     * @return Indicative if this is default Secret manager for secrets.
+     * @return Inherit configuration from delegate.
+     * 
+     */
+    public Boolean inheritFromDelegate() {
+        return this.inheritFromDelegate;
+    }
+    /**
+     * @return Set this flag to set this secret manager as default secret manager.
      * 
      */
     public Boolean isDefault() {
@@ -114,6 +144,13 @@ public final class GetGcpSecretManagerConnectorResult {
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public List<GetGcpSecretManagerConnectorOidcAuthentication> oidcAuthentications() {
+        return this.oidcAuthentications;
     }
     /**
      * @return Unique identifier of the organization.
@@ -149,10 +186,13 @@ public final class GetGcpSecretManagerConnectorResult {
         private String credentialsRef;
         private List<String> delegateSelectors;
         private String description;
+        private Boolean executeOnDelegate;
         private String id;
         private String identifier;
+        private Boolean inheritFromDelegate;
         private Boolean isDefault;
         private @Nullable String name;
+        private List<GetGcpSecretManagerConnectorOidcAuthentication> oidcAuthentications;
         private @Nullable String orgId;
         private @Nullable String projectId;
         private List<String> tags;
@@ -162,10 +202,13 @@ public final class GetGcpSecretManagerConnectorResult {
     	      this.credentialsRef = defaults.credentialsRef;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.inheritFromDelegate = defaults.inheritFromDelegate;
     	      this.isDefault = defaults.isDefault;
     	      this.name = defaults.name;
+    	      this.oidcAuthentications = defaults.oidcAuthentications;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.tags = defaults.tags;
@@ -199,6 +242,14 @@ public final class GetGcpSecretManagerConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            if (executeOnDelegate == null) {
+              throw new MissingRequiredPropertyException("GetGcpSecretManagerConnectorResult", "executeOnDelegate");
+            }
+            this.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetGcpSecretManagerConnectorResult", "id");
@@ -215,6 +266,14 @@ public final class GetGcpSecretManagerConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder inheritFromDelegate(Boolean inheritFromDelegate) {
+            if (inheritFromDelegate == null) {
+              throw new MissingRequiredPropertyException("GetGcpSecretManagerConnectorResult", "inheritFromDelegate");
+            }
+            this.inheritFromDelegate = inheritFromDelegate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
             if (isDefault == null) {
               throw new MissingRequiredPropertyException("GetGcpSecretManagerConnectorResult", "isDefault");
@@ -227,6 +286,17 @@ public final class GetGcpSecretManagerConnectorResult {
 
             this.name = name;
             return this;
+        }
+        @CustomType.Setter
+        public Builder oidcAuthentications(List<GetGcpSecretManagerConnectorOidcAuthentication> oidcAuthentications) {
+            if (oidcAuthentications == null) {
+              throw new MissingRequiredPropertyException("GetGcpSecretManagerConnectorResult", "oidcAuthentications");
+            }
+            this.oidcAuthentications = oidcAuthentications;
+            return this;
+        }
+        public Builder oidcAuthentications(GetGcpSecretManagerConnectorOidcAuthentication... oidcAuthentications) {
+            return oidcAuthentications(List.of(oidcAuthentications));
         }
         @CustomType.Setter
         public Builder orgId(@Nullable String orgId) {
@@ -256,10 +326,13 @@ public final class GetGcpSecretManagerConnectorResult {
             _resultValue.credentialsRef = credentialsRef;
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.description = description;
+            _resultValue.executeOnDelegate = executeOnDelegate;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.inheritFromDelegate = inheritFromDelegate;
             _resultValue.isDefault = isDefault;
             _resultValue.name = name;
+            _resultValue.oidcAuthentications = oidcAuthentications;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.tags = tags;

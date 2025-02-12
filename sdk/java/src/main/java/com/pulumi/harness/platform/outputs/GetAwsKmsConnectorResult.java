@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetAwsKmsConnectorCredential;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,11 @@ public final class GetAwsKmsConnectorResult {
      */
     private List<GetAwsKmsConnectorCredential> credentials;
     /**
+     * @return Whether this is the default connector.
+     * 
+     */
+    private Boolean default_;
+    /**
      * @return Tags to filter delegates for connection.
      * 
      */
@@ -34,6 +40,11 @@ public final class GetAwsKmsConnectorResult {
      * 
      */
     private String description;
+    /**
+     * @return The delegate to execute the action on.
+     * 
+     */
+    private Boolean executeOnDelegate;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -86,6 +97,13 @@ public final class GetAwsKmsConnectorResult {
         return this.credentials;
     }
     /**
+     * @return Whether this is the default connector.
+     * 
+     */
+    public Boolean default_() {
+        return this.default_;
+    }
+    /**
      * @return Tags to filter delegates for connection.
      * 
      */
@@ -98,6 +116,13 @@ public final class GetAwsKmsConnectorResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return The delegate to execute the action on.
+     * 
+     */
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -160,8 +185,10 @@ public final class GetAwsKmsConnectorResult {
     public static final class Builder {
         private String arnRef;
         private List<GetAwsKmsConnectorCredential> credentials;
+        private Boolean default_;
         private List<String> delegateSelectors;
         private String description;
+        private Boolean executeOnDelegate;
         private String id;
         private String identifier;
         private @Nullable String name;
@@ -174,8 +201,10 @@ public final class GetAwsKmsConnectorResult {
     	      Objects.requireNonNull(defaults);
     	      this.arnRef = defaults.arnRef;
     	      this.credentials = defaults.credentials;
+    	      this.default_ = defaults.default_;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -204,6 +233,14 @@ public final class GetAwsKmsConnectorResult {
         public Builder credentials(GetAwsKmsConnectorCredential... credentials) {
             return credentials(List.of(credentials));
         }
+        @CustomType.Setter("default")
+        public Builder default_(Boolean default_) {
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetAwsKmsConnectorResult", "default_");
+            }
+            this.default_ = default_;
+            return this;
+        }
         @CustomType.Setter
         public Builder delegateSelectors(List<String> delegateSelectors) {
             if (delegateSelectors == null) {
@@ -221,6 +258,14 @@ public final class GetAwsKmsConnectorResult {
               throw new MissingRequiredPropertyException("GetAwsKmsConnectorResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            if (executeOnDelegate == null) {
+              throw new MissingRequiredPropertyException("GetAwsKmsConnectorResult", "executeOnDelegate");
+            }
+            this.executeOnDelegate = executeOnDelegate;
             return this;
         }
         @CustomType.Setter
@@ -280,8 +325,10 @@ public final class GetAwsKmsConnectorResult {
             final var _resultValue = new GetAwsKmsConnectorResult();
             _resultValue.arnRef = arnRef;
             _resultValue.credentials = credentials;
+            _resultValue.default_ = default_;
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.description = description;
+            _resultValue.executeOnDelegate = executeOnDelegate;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;

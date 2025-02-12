@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetAwsSecretManagerConnectorCredential;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,11 @@ public final class GetAwsSecretManagerConnectorResult {
      */
     private List<GetAwsSecretManagerConnectorCredential> credentials;
     /**
+     * @return Whether this is the default connector.
+     * 
+     */
+    private Boolean default_;
+    /**
      * @return Tags to filter delegates for connection.
      * 
      */
@@ -30,6 +36,16 @@ public final class GetAwsSecretManagerConnectorResult {
      * 
      */
     private String description;
+    /**
+     * @return The delegate to execute the action on.
+     * 
+     */
+    private Boolean executeOnDelegate;
+    /**
+     * @return Whether to force delete secret value or not.
+     * 
+     */
+    private @Nullable Boolean forceDeleteWithoutRecovery;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -55,6 +71,11 @@ public final class GetAwsSecretManagerConnectorResult {
      * 
      */
     private @Nullable String projectId;
+    /**
+     * @return recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    private @Nullable Integer recoveryWindowInDays;
     /**
      * @return The AWS region where the AWS Secret Manager is.
      * 
@@ -85,6 +106,13 @@ public final class GetAwsSecretManagerConnectorResult {
         return this.credentials;
     }
     /**
+     * @return Whether this is the default connector.
+     * 
+     */
+    public Boolean default_() {
+        return this.default_;
+    }
+    /**
      * @return Tags to filter delegates for connection.
      * 
      */
@@ -97,6 +125,20 @@ public final class GetAwsSecretManagerConnectorResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return The delegate to execute the action on.
+     * 
+     */
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
+    }
+    /**
+     * @return Whether to force delete secret value or not.
+     * 
+     */
+    public Optional<Boolean> forceDeleteWithoutRecovery() {
+        return Optional.ofNullable(this.forceDeleteWithoutRecovery);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -132,6 +174,13 @@ public final class GetAwsSecretManagerConnectorResult {
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
+    }
+    /**
+     * @return recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    public Optional<Integer> recoveryWindowInDays() {
+        return Optional.ofNullable(this.recoveryWindowInDays);
     }
     /**
      * @return The AWS region where the AWS Secret Manager is.
@@ -172,13 +221,17 @@ public final class GetAwsSecretManagerConnectorResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAwsSecretManagerConnectorCredential> credentials;
+        private Boolean default_;
         private List<String> delegateSelectors;
         private String description;
+        private Boolean executeOnDelegate;
+        private @Nullable Boolean forceDeleteWithoutRecovery;
         private String id;
         private String identifier;
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
+        private @Nullable Integer recoveryWindowInDays;
         private String region;
         private String secretNamePrefix;
         private List<String> tags;
@@ -187,13 +240,17 @@ public final class GetAwsSecretManagerConnectorResult {
         public Builder(GetAwsSecretManagerConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.credentials = defaults.credentials;
+    	      this.default_ = defaults.default_;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
+    	      this.forceDeleteWithoutRecovery = defaults.forceDeleteWithoutRecovery;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
+    	      this.recoveryWindowInDays = defaults.recoveryWindowInDays;
     	      this.region = defaults.region;
     	      this.secretNamePrefix = defaults.secretNamePrefix;
     	      this.tags = defaults.tags;
@@ -210,6 +267,14 @@ public final class GetAwsSecretManagerConnectorResult {
         }
         public Builder credentials(GetAwsSecretManagerConnectorCredential... credentials) {
             return credentials(List.of(credentials));
+        }
+        @CustomType.Setter("default")
+        public Builder default_(Boolean default_) {
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetAwsSecretManagerConnectorResult", "default_");
+            }
+            this.default_ = default_;
+            return this;
         }
         @CustomType.Setter
         public Builder delegateSelectors(List<String> delegateSelectors) {
@@ -228,6 +293,20 @@ public final class GetAwsSecretManagerConnectorResult {
               throw new MissingRequiredPropertyException("GetAwsSecretManagerConnectorResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            if (executeOnDelegate == null) {
+              throw new MissingRequiredPropertyException("GetAwsSecretManagerConnectorResult", "executeOnDelegate");
+            }
+            this.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceDeleteWithoutRecovery(@Nullable Boolean forceDeleteWithoutRecovery) {
+
+            this.forceDeleteWithoutRecovery = forceDeleteWithoutRecovery;
             return this;
         }
         @CustomType.Setter
@@ -262,6 +341,12 @@ public final class GetAwsSecretManagerConnectorResult {
         public Builder projectId(@Nullable String projectId) {
 
             this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder recoveryWindowInDays(@Nullable Integer recoveryWindowInDays) {
+
+            this.recoveryWindowInDays = recoveryWindowInDays;
             return this;
         }
         @CustomType.Setter
@@ -302,13 +387,17 @@ public final class GetAwsSecretManagerConnectorResult {
         public GetAwsSecretManagerConnectorResult build() {
             final var _resultValue = new GetAwsSecretManagerConnectorResult();
             _resultValue.credentials = credentials;
+            _resultValue.default_ = default_;
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.description = description;
+            _resultValue.executeOnDelegate = executeOnDelegate;
+            _resultValue.forceDeleteWithoutRecovery = forceDeleteWithoutRecovery;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
+            _resultValue.recoveryWindowInDays = recoveryWindowInDays;
             _resultValue.region = region;
             _resultValue.secretNamePrefix = secretNamePrefix;
             _resultValue.tags = tags;

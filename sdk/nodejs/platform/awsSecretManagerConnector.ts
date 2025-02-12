@@ -74,6 +74,14 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Run the operation on the delegate or harness platform.
+     */
+    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to force delete secret value or not.
+     */
+    public readonly forceDeleteWithoutRecovery!: pulumi.Output<boolean | undefined>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -89,6 +97,10 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
      * Unique identifier of the project.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     */
+    public readonly recoveryWindowInDays!: pulumi.Output<number | undefined>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
@@ -123,10 +135,13 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
             resourceInputs["default"] = state ? state.default : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
+            resourceInputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["secretNamePrefix"] = state ? state.secretNamePrefix : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -146,10 +161,13 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
             resourceInputs["default"] = args ? args.default : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
+            resourceInputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["secretNamePrefix"] = args ? args.secretNamePrefix : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -181,6 +199,14 @@ export interface AwsSecretManagerConnectorState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Run the operation on the delegate or harness platform.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
+    /**
+     * Whether to force delete secret value or not.
+     */
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    /**
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
@@ -196,6 +222,10 @@ export interface AwsSecretManagerConnectorState {
      * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     */
+    recoveryWindowInDays?: pulumi.Input<number>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
@@ -235,6 +265,14 @@ export interface AwsSecretManagerConnectorArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Run the operation on the delegate or harness platform.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
+    /**
+     * Whether to force delete secret value or not.
+     */
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    /**
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
@@ -250,6 +288,10 @@ export interface AwsSecretManagerConnectorArgs {
      * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     */
+    recoveryWindowInDays?: pulumi.Input<number>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */

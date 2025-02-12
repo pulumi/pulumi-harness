@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.AwsKmsConnectorCredentialsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +49,21 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Set this connector as the default for all the services.
+     * 
+     */
+    @Import(name="default")
+    private @Nullable Output<Boolean> default_;
+
+    /**
+     * @return Set this connector as the default for all the services.
+     * 
+     */
+    public Optional<Output<Boolean>> default_() {
+        return Optional.ofNullable(this.default_);
+    }
+
+    /**
      * Tags to filter delegates for connection.
      * 
      */
@@ -75,6 +91,21 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Execute the command on the delegate.
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute the command on the delegate.
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
     }
 
     /**
@@ -172,8 +203,10 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
     private AwsKmsConnectorState(AwsKmsConnectorState $) {
         this.arnRef = $.arnRef;
         this.credentials = $.credentials;
+        this.default_ = $.default_;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.executeOnDelegate = $.executeOnDelegate;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -243,6 +276,27 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param default_ Set this connector as the default for all the services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder default_(@Nullable Output<Boolean> default_) {
+            $.default_ = default_;
+            return this;
+        }
+
+        /**
+         * @param default_ Set this connector as the default for all the services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder default_(Boolean default_) {
+            return default_(Output.of(default_));
+        }
+
+        /**
          * @param delegateSelectors Tags to filter delegates for connection.
          * 
          * @return builder
@@ -292,6 +346,27 @@ public final class AwsKmsConnectorState extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param executeOnDelegate Execute the command on the delegate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Execute the command on the delegate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
         }
 
         /**

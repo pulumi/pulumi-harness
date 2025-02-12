@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.AwsKmsConnectorCredentialsAssumeRoleArgs;
 import com.pulumi.harness.platform.inputs.AwsKmsConnectorCredentialsManualArgs;
+import com.pulumi.harness.platform.inputs.AwsKmsConnectorCredentialsOidcAuthenticationArgs;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,12 +63,28 @@ public final class AwsKmsConnectorCredentialsArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.manual);
     }
 
+    /**
+     * Connect using OIDC authentication.
+     * 
+     */
+    @Import(name="oidcAuthentication")
+    private @Nullable Output<AwsKmsConnectorCredentialsOidcAuthenticationArgs> oidcAuthentication;
+
+    /**
+     * @return Connect using OIDC authentication.
+     * 
+     */
+    public Optional<Output<AwsKmsConnectorCredentialsOidcAuthenticationArgs>> oidcAuthentication() {
+        return Optional.ofNullable(this.oidcAuthentication);
+    }
+
     private AwsKmsConnectorCredentialsArgs() {}
 
     private AwsKmsConnectorCredentialsArgs(AwsKmsConnectorCredentialsArgs $) {
         this.assumeRole = $.assumeRole;
         this.inheritFromDelegate = $.inheritFromDelegate;
         this.manual = $.manual;
+        this.oidcAuthentication = $.oidcAuthentication;
     }
 
     public static Builder builder() {
@@ -149,6 +166,27 @@ public final class AwsKmsConnectorCredentialsArgs extends com.pulumi.resources.R
          */
         public Builder manual(AwsKmsConnectorCredentialsManualArgs manual) {
             return manual(Output.of(manual));
+        }
+
+        /**
+         * @param oidcAuthentication Connect using OIDC authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentication(@Nullable Output<AwsKmsConnectorCredentialsOidcAuthenticationArgs> oidcAuthentication) {
+            $.oidcAuthentication = oidcAuthentication;
+            return this;
+        }
+
+        /**
+         * @param oidcAuthentication Connect using OIDC authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentication(AwsKmsConnectorCredentialsOidcAuthenticationArgs oidcAuthentication) {
+            return oidcAuthentication(Output.of(oidcAuthentication));
         }
 
         public AwsKmsConnectorCredentialsArgs build() {

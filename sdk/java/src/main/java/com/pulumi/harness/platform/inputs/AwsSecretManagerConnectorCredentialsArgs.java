@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorCredentialsAssumeRoleArgs;
 import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorCredentialsManualArgs;
+import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,12 +63,28 @@ public final class AwsSecretManagerConnectorCredentialsArgs extends com.pulumi.r
         return Optional.ofNullable(this.manual);
     }
 
+    /**
+     * Authentication using harness oidc.
+     * 
+     */
+    @Import(name="oidcAuthentication")
+    private @Nullable Output<AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs> oidcAuthentication;
+
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Optional<Output<AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs>> oidcAuthentication() {
+        return Optional.ofNullable(this.oidcAuthentication);
+    }
+
     private AwsSecretManagerConnectorCredentialsArgs() {}
 
     private AwsSecretManagerConnectorCredentialsArgs(AwsSecretManagerConnectorCredentialsArgs $) {
         this.assumeRole = $.assumeRole;
         this.inheritFromDelegate = $.inheritFromDelegate;
         this.manual = $.manual;
+        this.oidcAuthentication = $.oidcAuthentication;
     }
 
     public static Builder builder() {
@@ -149,6 +166,27 @@ public final class AwsSecretManagerConnectorCredentialsArgs extends com.pulumi.r
          */
         public Builder manual(AwsSecretManagerConnectorCredentialsManualArgs manual) {
             return manual(Output.of(manual));
+        }
+
+        /**
+         * @param oidcAuthentication Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentication(@Nullable Output<AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs> oidcAuthentication) {
+            $.oidcAuthentication = oidcAuthentication;
+            return this;
+        }
+
+        /**
+         * @param oidcAuthentication Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentication(AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs oidcAuthentication) {
+            return oidcAuthentication(Output.of(oidcAuthentication));
         }
 
         public AwsSecretManagerConnectorCredentialsArgs build() {

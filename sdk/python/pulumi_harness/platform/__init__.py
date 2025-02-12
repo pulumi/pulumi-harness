@@ -18,6 +18,7 @@ from .bitbucket_connector import *
 from .connector_azure_artifacts import *
 from .connector_custom_secret_manager import *
 from .connector_customhealthsource import *
+from .connector_gcp_kms import *
 from .connector_jdbc import *
 from .connector_pdc import *
 from .connector_rancher import *
@@ -56,6 +57,7 @@ from .get_bitbucket_connector import *
 from .get_ccm_filters import *
 from .get_connector_custom_secret_manager import *
 from .get_connector_customhealthsource import *
+from .get_connector_gcp_kms import *
 from .get_connector_jdbc import *
 from .get_connector_pdc import *
 from .get_connector_rancher import *

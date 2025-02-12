@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.harness.platform.outputs.AwsSecretManagerConnectorCredentialsAssumeRole;
 import com.pulumi.harness.platform.outputs.AwsSecretManagerConnectorCredentialsManual;
+import com.pulumi.harness.platform.outputs.AwsSecretManagerConnectorCredentialsOidcAuthentication;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,11 @@ public final class AwsSecretManagerConnectorCredentials {
      * 
      */
     private @Nullable AwsSecretManagerConnectorCredentialsManual manual;
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    private @Nullable AwsSecretManagerConnectorCredentialsOidcAuthentication oidcAuthentication;
 
     private AwsSecretManagerConnectorCredentials() {}
     /**
@@ -51,6 +57,13 @@ public final class AwsSecretManagerConnectorCredentials {
     public Optional<AwsSecretManagerConnectorCredentialsManual> manual() {
         return Optional.ofNullable(this.manual);
     }
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Optional<AwsSecretManagerConnectorCredentialsOidcAuthentication> oidcAuthentication() {
+        return Optional.ofNullable(this.oidcAuthentication);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +77,14 @@ public final class AwsSecretManagerConnectorCredentials {
         private @Nullable AwsSecretManagerConnectorCredentialsAssumeRole assumeRole;
         private @Nullable Boolean inheritFromDelegate;
         private @Nullable AwsSecretManagerConnectorCredentialsManual manual;
+        private @Nullable AwsSecretManagerConnectorCredentialsOidcAuthentication oidcAuthentication;
         public Builder() {}
         public Builder(AwsSecretManagerConnectorCredentials defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assumeRole = defaults.assumeRole;
     	      this.inheritFromDelegate = defaults.inheritFromDelegate;
     	      this.manual = defaults.manual;
+    	      this.oidcAuthentication = defaults.oidcAuthentication;
         }
 
         @CustomType.Setter
@@ -90,11 +105,18 @@ public final class AwsSecretManagerConnectorCredentials {
             this.manual = manual;
             return this;
         }
+        @CustomType.Setter
+        public Builder oidcAuthentication(@Nullable AwsSecretManagerConnectorCredentialsOidcAuthentication oidcAuthentication) {
+
+            this.oidcAuthentication = oidcAuthentication;
+            return this;
+        }
         public AwsSecretManagerConnectorCredentials build() {
             final var _resultValue = new AwsSecretManagerConnectorCredentials();
             _resultValue.assumeRole = assumeRole;
             _resultValue.inheritFromDelegate = inheritFromDelegate;
             _resultValue.manual = manual;
+            _resultValue.oidcAuthentication = oidcAuthentication;
             return _resultValue;
         }
     }

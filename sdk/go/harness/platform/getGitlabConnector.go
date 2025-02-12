@@ -71,7 +71,8 @@ type LookupGitlabConnectorResult struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
-	Description string `pulumi:"description"`
+	Description       string `pulumi:"description"`
+	ExecuteOnDelegate bool   `pulumi:"executeOnDelegate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -153,6 +154,10 @@ func (o LookupGitlabConnectorResultOutput) DelegateSelectors() pulumi.StringArra
 // Description of the resource.
 func (o LookupGitlabConnectorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitlabConnectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupGitlabConnectorResultOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGitlabConnectorResult) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

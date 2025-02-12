@@ -70,6 +70,11 @@ export type ConnectorCustomhealthsource = import("./connectorCustomhealthsource"
 export const ConnectorCustomhealthsource: typeof import("./connectorCustomhealthsource").ConnectorCustomhealthsource = null as any;
 utilities.lazyLoad(exports, ["ConnectorCustomhealthsource"], () => require("./connectorCustomhealthsource"));
 
+export { ConnectorGcpKmsArgs, ConnectorGcpKmsState } from "./connectorGcpKms";
+export type ConnectorGcpKms = import("./connectorGcpKms").ConnectorGcpKms;
+export const ConnectorGcpKms: typeof import("./connectorGcpKms").ConnectorGcpKms = null as any;
+utilities.lazyLoad(exports, ["ConnectorGcpKms"], () => require("./connectorGcpKms"));
+
 export { ConnectorJdbcArgs, ConnectorJdbcState } from "./connectorJdbc";
 export type ConnectorJdbc = import("./connectorJdbc").ConnectorJdbc;
 export const ConnectorJdbc: typeof import("./connectorJdbc").ConnectorJdbc = null as any;
@@ -259,6 +264,11 @@ export { GetConnectorCustomhealthsourceArgs, GetConnectorCustomhealthsourceResul
 export const getConnectorCustomhealthsource: typeof import("./getConnectorCustomhealthsource").getConnectorCustomhealthsource = null as any;
 export const getConnectorCustomhealthsourceOutput: typeof import("./getConnectorCustomhealthsource").getConnectorCustomhealthsourceOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectorCustomhealthsource","getConnectorCustomhealthsourceOutput"], () => require("./getConnectorCustomhealthsource"));
+
+export { GetConnectorGcpKmsArgs, GetConnectorGcpKmsResult, GetConnectorGcpKmsOutputArgs } from "./getConnectorGcpKms";
+export const getConnectorGcpKms: typeof import("./getConnectorGcpKms").getConnectorGcpKms = null as any;
+export const getConnectorGcpKmsOutput: typeof import("./getConnectorGcpKms").getConnectorGcpKmsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorGcpKms","getConnectorGcpKmsOutput"], () => require("./getConnectorGcpKms"));
 
 export { GetConnectorJdbcArgs, GetConnectorJdbcResult, GetConnectorJdbcOutputArgs } from "./getConnectorJdbc";
 export const getConnectorJdbc: typeof import("./getConnectorJdbc").getConnectorJdbc = null as any;
@@ -1101,6 +1111,8 @@ const _module = {
                 return new ConnectorCustomSecretManager(name, <any>undefined, { urn })
             case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
                 return new ConnectorCustomhealthsource(name, <any>undefined, { urn })
+            case "harness:platform/connectorGcpKms:ConnectorGcpKms":
+                return new ConnectorGcpKms(name, <any>undefined, { urn })
             case "harness:platform/connectorJdbc:ConnectorJdbc":
                 return new ConnectorJdbc(name, <any>undefined, { urn })
             case "harness:platform/connectorPdc:ConnectorPdc":
@@ -1301,6 +1313,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", 
 pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureArtifacts", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomSecretManager", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomhealthsource", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorGcpKms", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorJdbc", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorPdc", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorRancher", _module)

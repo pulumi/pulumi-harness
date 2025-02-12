@@ -462,6 +462,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/connectorGcpKms",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorGcpKms:ConnectorGcpKms": "ConnectorGcpKms"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/connectorJdbc",
   "fqn": "pulumi_harness.platform",
   "classes": {

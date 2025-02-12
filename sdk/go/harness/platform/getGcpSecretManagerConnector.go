@@ -62,18 +62,24 @@ type LookupGcpSecretManagerConnectorArgs struct {
 type LookupGcpSecretManagerConnectorResult struct {
 	// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CredentialsRef string `pulumi:"credentialsRef"`
-	// Tags to filter delegates for connection.
+	// The delegates to inherit the credentials from.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Indicative if this is default Secret manager for secrets.
+	// Inherit configuration from delegate.
+	InheritFromDelegate bool `pulumi:"inheritFromDelegate"`
+	// Set this flag to set this secret manager as default secret manager.
 	IsDefault bool `pulumi:"isDefault"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications []GetGcpSecretManagerConnectorOidcAuthentication `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -127,7 +133,7 @@ func (o LookupGcpSecretManagerConnectorResultOutput) CredentialsRef() pulumi.Str
 	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) string { return v.CredentialsRef }).(pulumi.StringOutput)
 }
 
-// Tags to filter delegates for connection.
+// The delegates to inherit the credentials from.
 func (o LookupGcpSecretManagerConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -135,6 +141,11 @@ func (o LookupGcpSecretManagerConnectorResultOutput) DelegateSelectors() pulumi.
 // Description of the resource.
 func (o LookupGcpSecretManagerConnectorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Execute on delegate or not.
+func (o LookupGcpSecretManagerConnectorResultOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -147,7 +158,12 @@ func (o LookupGcpSecretManagerConnectorResultOutput) Identifier() pulumi.StringO
 	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Indicative if this is default Secret manager for secrets.
+// Inherit configuration from delegate.
+func (o LookupGcpSecretManagerConnectorResultOutput) InheritFromDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) bool { return v.InheritFromDelegate }).(pulumi.BoolOutput)
+}
+
+// Set this flag to set this secret manager as default secret manager.
 func (o LookupGcpSecretManagerConnectorResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
@@ -155,6 +171,13 @@ func (o LookupGcpSecretManagerConnectorResultOutput) IsDefault() pulumi.BoolOutp
 // Name of the resource.
 func (o LookupGcpSecretManagerConnectorResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Authentication using harness oidc.
+func (o LookupGcpSecretManagerConnectorResultOutput) OidcAuthentications() GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return o.ApplyT(func(v LookupGcpSecretManagerConnectorResult) []GetGcpSecretManagerConnectorOidcAuthentication {
+		return v.OidcAuthentications
+	}).(GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput)
 }
 
 // Unique identifier of the organization.

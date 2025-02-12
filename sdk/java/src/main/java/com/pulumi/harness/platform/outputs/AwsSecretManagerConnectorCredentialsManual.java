@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AwsSecretManagerConnectorCredentialsManual {
     /**
-     * @return The plain text AWS access key.
+     * @return The plain text AWS access key. This is required if the access*key*ref is not provided.
      * 
      */
     private @Nullable String accessKeyPlainText;
@@ -30,7 +30,7 @@ public final class AwsSecretManagerConnectorCredentialsManual {
 
     private AwsSecretManagerConnectorCredentialsManual() {}
     /**
-     * @return The plain text AWS access key.
+     * @return The plain text AWS access key. This is required if the access*key*ref is not provided.
      * 
      */
     public Optional<String> accessKeyPlainText() {

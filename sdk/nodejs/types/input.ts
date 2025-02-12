@@ -2042,6 +2042,10 @@ export namespace platform {
          * Specify the AWS key and secret used for authenticating.
          */
         manual?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentialsManual>;
+        /**
+         * Connect using OIDC authentication.
+         */
+        oidcAuthentication?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentialsOidcAuthentication>;
     }
 
     export interface AwsKmsConnectorCredentialsAssumeRole {
@@ -2070,6 +2074,13 @@ export namespace platform {
         secretKeyRef: pulumi.Input<string>;
     }
 
+    export interface AwsKmsConnectorCredentialsOidcAuthentication {
+        /**
+         * The ARN of the IAM role to assume.
+         */
+        iamRoleArn: pulumi.Input<string>;
+    }
+
     export interface AwsSecretManagerConnectorCredentials {
         /**
          * Connect using STS assume role.
@@ -2083,6 +2094,10 @@ export namespace platform {
          * Specify the AWS key and secret used for authenticating.
          */
         manual?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentialsManual>;
+        /**
+         * Authentication using harness oidc.
+         */
+        oidcAuthentication?: pulumi.Input<inputs.platform.AwsSecretManagerConnectorCredentialsOidcAuthentication>;
     }
 
     export interface AwsSecretManagerConnectorCredentialsAssumeRole {
@@ -2102,7 +2117,7 @@ export namespace platform {
 
     export interface AwsSecretManagerConnectorCredentialsManual {
         /**
-         * The plain text AWS access key.
+         * The plain text AWS access key. This is required if the access*key*ref is not provided.
          */
         accessKeyPlainText?: pulumi.Input<string>;
         /**
@@ -2113,6 +2128,13 @@ export namespace platform {
          * The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: pulumi.Input<string>;
+    }
+
+    export interface AwsSecretManagerConnectorCredentialsOidcAuthentication {
+        /**
+         * The IAM role ARN.
+         */
+        iamRoleArn: pulumi.Input<string>;
     }
 
     export interface AzureCloudCostConnectorBillingExportSpec {
@@ -2330,6 +2352,40 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted?: pulumi.Input<boolean>;
+    }
+
+    export interface ConnectorGcpKmsManual {
+        /**
+         * Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        credentials: pulumi.Input<string>;
+        /**
+         * The delegates to connect with.
+         */
+        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ConnectorGcpKmsOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The project number of the GCP project that is used to create the workload identity.
+         */
+        gcpProjectId: pulumi.Input<string>;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: pulumi.Input<string>;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: pulumi.Input<string>;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: pulumi.Input<string>;
     }
 
     export interface ConnectorJdbcCredentials {
@@ -2686,6 +2742,25 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The project number of the GCP project that is used to create the workload identity.
+         */
+        gcpProjectId: pulumi.Input<string>;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: pulumi.Input<string>;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: pulumi.Input<string>;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: pulumi.Input<string>;
+    }
+
+    export interface GcpSecretManagerConnectorOidcAuthentication {
         /**
          * The project number of the GCP project that is used to create the workload identity.
          */

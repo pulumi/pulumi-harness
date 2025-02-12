@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetAwsKmsConnectorCredentialAssumeRole;
 import com.pulumi.harness.platform.outputs.GetAwsKmsConnectorCredentialManual;
+import com.pulumi.harness.platform.outputs.GetAwsKmsConnectorCredentialOidcAuthentication;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +29,11 @@ public final class GetAwsKmsConnectorCredential {
      * 
      */
     private List<GetAwsKmsConnectorCredentialManual> manuals;
+    /**
+     * @return Authentication using OIDC.
+     * 
+     */
+    private List<GetAwsKmsConnectorCredentialOidcAuthentication> oidcAuthentications;
 
     private GetAwsKmsConnectorCredential() {}
     /**
@@ -51,6 +57,13 @@ public final class GetAwsKmsConnectorCredential {
     public List<GetAwsKmsConnectorCredentialManual> manuals() {
         return this.manuals;
     }
+    /**
+     * @return Authentication using OIDC.
+     * 
+     */
+    public List<GetAwsKmsConnectorCredentialOidcAuthentication> oidcAuthentications() {
+        return this.oidcAuthentications;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +77,14 @@ public final class GetAwsKmsConnectorCredential {
         private List<GetAwsKmsConnectorCredentialAssumeRole> assumeRoles;
         private Boolean inheritFromDelegate;
         private List<GetAwsKmsConnectorCredentialManual> manuals;
+        private List<GetAwsKmsConnectorCredentialOidcAuthentication> oidcAuthentications;
         public Builder() {}
         public Builder(GetAwsKmsConnectorCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assumeRoles = defaults.assumeRoles;
     	      this.inheritFromDelegate = defaults.inheritFromDelegate;
     	      this.manuals = defaults.manuals;
+    	      this.oidcAuthentications = defaults.oidcAuthentications;
         }
 
         @CustomType.Setter
@@ -102,11 +117,23 @@ public final class GetAwsKmsConnectorCredential {
         public Builder manuals(GetAwsKmsConnectorCredentialManual... manuals) {
             return manuals(List.of(manuals));
         }
+        @CustomType.Setter
+        public Builder oidcAuthentications(List<GetAwsKmsConnectorCredentialOidcAuthentication> oidcAuthentications) {
+            if (oidcAuthentications == null) {
+              throw new MissingRequiredPropertyException("GetAwsKmsConnectorCredential", "oidcAuthentications");
+            }
+            this.oidcAuthentications = oidcAuthentications;
+            return this;
+        }
+        public Builder oidcAuthentications(GetAwsKmsConnectorCredentialOidcAuthentication... oidcAuthentications) {
+            return oidcAuthentications(List.of(oidcAuthentications));
+        }
         public GetAwsKmsConnectorCredential build() {
             final var _resultValue = new GetAwsKmsConnectorCredential();
             _resultValue.assumeRoles = assumeRoles;
             _resultValue.inheritFromDelegate = inheritFromDelegate;
             _resultValue.manuals = manuals;
+            _resultValue.oidcAuthentications = oidcAuthentications;
             return _resultValue;
         }
     }

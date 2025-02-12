@@ -27,19 +27,25 @@ class GetAwsKmsConnectorResult:
     """
     A collection of values returned by getAwsKmsConnector.
     """
-    def __init__(__self__, arn_ref=None, credentials=None, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, tags=None):
+    def __init__(__self__, arn_ref=None, credentials=None, default=None, delegate_selectors=None, description=None, execute_on_delegate=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, tags=None):
         if arn_ref and not isinstance(arn_ref, str):
             raise TypeError("Expected argument 'arn_ref' to be a str")
         pulumi.set(__self__, "arn_ref", arn_ref)
         if credentials and not isinstance(credentials, list):
             raise TypeError("Expected argument 'credentials' to be a list")
         pulumi.set(__self__, "credentials", credentials)
+        if default and not isinstance(default, bool):
+            raise TypeError("Expected argument 'default' to be a bool")
+        pulumi.set(__self__, "default", default)
         if delegate_selectors and not isinstance(delegate_selectors, list):
             raise TypeError("Expected argument 'delegate_selectors' to be a list")
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if execute_on_delegate and not isinstance(execute_on_delegate, bool):
+            raise TypeError("Expected argument 'execute_on_delegate' to be a bool")
+        pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -79,6 +85,14 @@ class GetAwsKmsConnectorResult:
         return pulumi.get(self, "credentials")
 
     @property
+    @pulumi.getter
+    def default(self) -> bool:
+        """
+        Whether this is the default connector.
+        """
+        return pulumi.get(self, "default")
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[str]:
         """
@@ -93,6 +107,14 @@ class GetAwsKmsConnectorResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> bool:
+        """
+        The delegate to execute the action on.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter
@@ -159,8 +181,10 @@ class AwaitableGetAwsKmsConnectorResult(GetAwsKmsConnectorResult):
         return GetAwsKmsConnectorResult(
             arn_ref=self.arn_ref,
             credentials=self.credentials,
+            default=self.default,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
+            execute_on_delegate=self.execute_on_delegate,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
@@ -202,8 +226,10 @@ def get_aws_kms_connector(identifier: Optional[str] = None,
     return AwaitableGetAwsKmsConnectorResult(
         arn_ref=pulumi.get(__ret__, 'arn_ref'),
         credentials=pulumi.get(__ret__, 'credentials'),
+        default=pulumi.get(__ret__, 'default'),
         delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
         description=pulumi.get(__ret__, 'description'),
+        execute_on_delegate=pulumi.get(__ret__, 'execute_on_delegate'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
@@ -242,8 +268,10 @@ def get_aws_kms_connector_output(identifier: Optional[pulumi.Input[str]] = None,
     return __ret__.apply(lambda __response__: GetAwsKmsConnectorResult(
         arn_ref=pulumi.get(__response__, 'arn_ref'),
         credentials=pulumi.get(__response__, 'credentials'),
+        default=pulumi.get(__response__, 'default'),
         delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
         description=pulumi.get(__response__, 'description'),
+        execute_on_delegate=pulumi.get(__response__, 'execute_on_delegate'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),

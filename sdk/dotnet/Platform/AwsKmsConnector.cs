@@ -48,6 +48,12 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.AwsKmsConnectorCredentials> Credentials { get; private set; } = null!;
 
         /// <summary>
+        /// Set this connector as the default for all the services.
+        /// </summary>
+        [Output("default")]
+        public Output<bool?> Default { get; private set; } = null!;
+
+        /// <summary>
         /// Tags to filter delegates for connection.
         /// </summary>
         [Output("delegateSelectors")]
@@ -58,6 +64,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Execute the command on the delegate.
+        /// </summary>
+        [Output("executeOnDelegate")]
+        public Output<bool?> ExecuteOnDelegate { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -154,6 +166,12 @@ namespace Pulumi.Harness.Platform
         [Input("credentials", required: true)]
         public Input<Inputs.AwsKmsConnectorCredentialsArgs> Credentials { get; set; } = null!;
 
+        /// <summary>
+        /// Set this connector as the default for all the services.
+        /// </summary>
+        [Input("default")]
+        public Input<bool>? Default { get; set; }
+
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
@@ -171,6 +189,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Execute the command on the delegate.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -234,6 +258,12 @@ namespace Pulumi.Harness.Platform
         [Input("credentials")]
         public Input<Inputs.AwsKmsConnectorCredentialsGetArgs>? Credentials { get; set; }
 
+        /// <summary>
+        /// Set this connector as the default for all the services.
+        /// </summary>
+        [Input("default")]
+        public Input<bool>? Default { get; set; }
+
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
@@ -251,6 +281,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Execute the command on the delegate.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.

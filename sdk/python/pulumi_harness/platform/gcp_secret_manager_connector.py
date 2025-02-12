@@ -13,61 +13,64 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GcpSecretManagerConnectorArgs', 'GcpSecretManagerConnector']
 
 @pulumi.input_type
 class GcpSecretManagerConnectorArgs:
     def __init__(__self__, *,
-                 credentials_ref: pulumi.Input[str],
                  identifier: pulumi.Input[str],
+                 credentials_ref: Optional[pulumi.Input[str]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 inherit_from_delegate: Optional[pulumi.Input[bool]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GcpSecretManagerConnector resource.
-        :param pulumi.Input[str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
+        :param pulumi.Input[str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[bool] is_default: Indicative if this is default Secret manager for secrets.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
+        :param pulumi.Input[bool] inherit_from_delegate: Inherit configuration from delegate.
+        :param pulumi.Input[bool] is_default: Set this flag to set this secret manager as default secret manager.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         """
-        pulumi.set(__self__, "credentials_ref", credentials_ref)
         pulumi.set(__self__, "identifier", identifier)
+        if credentials_ref is not None:
+            pulumi.set(__self__, "credentials_ref", credentials_ref)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if inherit_from_delegate is not None:
+            pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oidc_authentications is not None:
+            pulumi.set(__self__, "oidc_authentications", oidc_authentications)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="credentialsRef")
-    def credentials_ref(self) -> pulumi.Input[str]:
-        """
-        Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        """
-        return pulumi.get(self, "credentials_ref")
-
-    @credentials_ref.setter
-    def credentials_ref(self, value: pulumi.Input[str]):
-        pulumi.set(self, "credentials_ref", value)
 
     @property
     @pulumi.getter
@@ -82,10 +85,22 @@ class GcpSecretManagerConnectorArgs:
         pulumi.set(self, "identifier", value)
 
     @property
+    @pulumi.getter(name="credentialsRef")
+    def credentials_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "credentials_ref")
+
+    @credentials_ref.setter
+    def credentials_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credentials_ref", value)
+
+    @property
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to filter delegates for connection.
+        The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -106,10 +121,34 @@ class GcpSecretManagerConnectorArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inherit configuration from delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @inherit_from_delegate.setter
+    def inherit_from_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "inherit_from_delegate", value)
+
+    @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicative if this is default Secret manager for secrets.
+        Set this flag to set this secret manager as default secret manager.
         """
         return pulumi.get(self, "is_default")
 
@@ -128,6 +167,18 @@ class GcpSecretManagerConnectorArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]]]:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
+
+    @oidc_authentications.setter
+    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]]]):
+        pulumi.set(self, "oidc_authentications", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -172,20 +223,26 @@ class _GcpSecretManagerConnectorState:
                  credentials_ref: Optional[pulumi.Input[str]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 inherit_from_delegate: Optional[pulumi.Input[bool]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering GcpSecretManagerConnector resources.
         :param pulumi.Input[str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[bool] is_default: Indicative if this is default Secret manager for secrets.
+        :param pulumi.Input[bool] inherit_from_delegate: Inherit configuration from delegate.
+        :param pulumi.Input[bool] is_default: Set this flag to set this secret manager as default secret manager.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -196,12 +253,18 @@ class _GcpSecretManagerConnectorState:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if inherit_from_delegate is not None:
+            pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oidc_authentications is not None:
+            pulumi.set(__self__, "oidc_authentications", oidc_authentications)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
@@ -225,7 +288,7 @@ class _GcpSecretManagerConnectorState:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags to filter delegates for connection.
+        The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -246,6 +309,18 @@ class _GcpSecretManagerConnectorState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -258,10 +333,22 @@ class _GcpSecretManagerConnectorState:
         pulumi.set(self, "identifier", value)
 
     @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Inherit configuration from delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @inherit_from_delegate.setter
+    def inherit_from_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "inherit_from_delegate", value)
+
+    @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicative if this is default Secret manager for secrets.
+        Set this flag to set this secret manager as default secret manager.
         """
         return pulumi.get(self, "is_default")
 
@@ -280,6 +367,18 @@ class _GcpSecretManagerConnectorState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]]]:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
+
+    @oidc_authentications.setter
+    def oidc_authentications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpSecretManagerConnectorOidcAuthenticationArgs']]]]):
+        pulumi.set(self, "oidc_authentications", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -326,9 +425,12 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                  credentials_ref: Optional[pulumi.Input[str]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 inherit_from_delegate: Optional[pulumi.Input[bool]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -340,13 +442,45 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        gcp_sm = harness.platform.GcpSecretManagerConnector("gcp_sm",
+        gcp_sm_manual = harness.platform.GcpSecretManagerConnector("gcp_sm_manual",
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             delegate_selectors=["harness-delegate"],
             credentials_ref=f"account.{test['id']}")
+        gcp_sm_inherit = harness.platform.GcpSecretManagerConnector("gcp_sm_inherit",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            inherit_from_delegate=True)
+        gcp_sm_oidc_platform = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            execute_on_delegate=False,
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
+        gcp_sm_oidc_delegate = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            is_default=True,
+            delegate_selectors=["harness-delegate"],
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
         ```
 
         ## Import
@@ -372,11 +506,14 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[bool] is_default: Indicative if this is default Secret manager for secrets.
+        :param pulumi.Input[bool] inherit_from_delegate: Inherit configuration from delegate.
+        :param pulumi.Input[bool] is_default: Set this flag to set this secret manager as default secret manager.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -394,13 +531,45 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        gcp_sm = harness.platform.GcpSecretManagerConnector("gcp_sm",
+        gcp_sm_manual = harness.platform.GcpSecretManagerConnector("gcp_sm_manual",
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             delegate_selectors=["harness-delegate"],
             credentials_ref=f"account.{test['id']}")
+        gcp_sm_inherit = harness.platform.GcpSecretManagerConnector("gcp_sm_inherit",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"],
+            inherit_from_delegate=True)
+        gcp_sm_oidc_platform = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            execute_on_delegate=False,
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
+        gcp_sm_oidc_delegate = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            is_default=True,
+            delegate_selectors=["harness-delegate"],
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }])
         ```
 
         ## Import
@@ -441,9 +610,12 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                  credentials_ref: Optional[pulumi.Input[str]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
+                 inherit_from_delegate: Optional[pulumi.Input[bool]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -456,16 +628,17 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GcpSecretManagerConnectorArgs.__new__(GcpSecretManagerConnectorArgs)
 
-            if credentials_ref is None and not opts.urn:
-                raise TypeError("Missing required property 'credentials_ref'")
             __props__.__dict__["credentials_ref"] = credentials_ref
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
+            __props__.__dict__["execute_on_delegate"] = execute_on_delegate
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["inherit_from_delegate"] = inherit_from_delegate
             __props__.__dict__["is_default"] = is_default
             __props__.__dict__["name"] = name
+            __props__.__dict__["oidc_authentications"] = oidc_authentications
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["tags"] = tags
@@ -482,9 +655,12 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
             credentials_ref: Optional[pulumi.Input[str]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            execute_on_delegate: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
+            inherit_from_delegate: Optional[pulumi.Input[bool]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            oidc_authentications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'GcpSecretManagerConnector':
@@ -496,11 +672,14 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] credentials_ref: Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: The delegates to inherit the credentials from.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[bool] is_default: Indicative if this is default Secret manager for secrets.
+        :param pulumi.Input[bool] inherit_from_delegate: Inherit configuration from delegate.
+        :param pulumi.Input[bool] is_default: Set this flag to set this secret manager as default secret manager.
         :param pulumi.Input[str] name: Name of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -512,9 +691,12 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         __props__.__dict__["credentials_ref"] = credentials_ref
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
+        __props__.__dict__["execute_on_delegate"] = execute_on_delegate
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["inherit_from_delegate"] = inherit_from_delegate
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["name"] = name
+        __props__.__dict__["oidc_authentications"] = oidc_authentications
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["tags"] = tags
@@ -522,7 +704,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="credentialsRef")
-    def credentials_ref(self) -> pulumi.Output[str]:
+    def credentials_ref(self) -> pulumi.Output[Optional[str]]:
         """
         Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
@@ -532,7 +714,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags to filter delegates for connection.
+        The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -545,6 +727,14 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
@@ -553,10 +743,18 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         return pulumi.get(self, "identifier")
 
     @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Inherit configuration from delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicative if this is default Secret manager for secrets.
+        Set this flag to set this secret manager as default secret manager.
         """
         return pulumi.get(self, "is_default")
 
@@ -567,6 +765,14 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         Name of the resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> pulumi.Output[Optional[Sequence['outputs.GcpSecretManagerConnectorOidcAuthentication']]]:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
 
     @property
     @pulumi.getter(name="orgId")

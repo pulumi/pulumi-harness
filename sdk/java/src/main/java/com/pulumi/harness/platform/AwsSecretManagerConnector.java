@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.AwsSecretManagerConnectorArgs;
 import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorState;
 import com.pulumi.harness.platform.outputs.AwsSecretManagerConnectorCredentials;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -100,6 +101,34 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.description);
     }
     /**
+     * Run the operation on the delegate or harness platform.
+     * 
+     */
+    @Export(name="executeOnDelegate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> executeOnDelegate;
+
+    /**
+     * @return Run the operation on the delegate or harness platform.
+     * 
+     */
+    public Output<Optional<Boolean>> executeOnDelegate() {
+        return Codegen.optional(this.executeOnDelegate);
+    }
+    /**
+     * Whether to force delete secret value or not.
+     * 
+     */
+    @Export(name="forceDeleteWithoutRecovery", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDeleteWithoutRecovery;
+
+    /**
+     * @return Whether to force delete secret value or not.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDeleteWithoutRecovery() {
+        return Codegen.optional(this.forceDeleteWithoutRecovery);
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -154,6 +183,20 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
+    }
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    @Export(name="recoveryWindowInDays", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> recoveryWindowInDays;
+
+    /**
+     * @return recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    public Output<Optional<Integer>> recoveryWindowInDays() {
+        return Codegen.optional(this.recoveryWindowInDays);
     }
     /**
      * The AWS region where the AWS Secret Manager is.

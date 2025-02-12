@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.GcpSecretManagerConnectorArgs;
 import com.pulumi.harness.platform.inputs.GcpSecretManagerConnectorState;
+import com.pulumi.harness.platform.outputs.GcpSecretManagerConnectorOidcAuthentication;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -29,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.GcpSecretManagerConnector;
  * import com.pulumi.harness.platform.GcpSecretManagerConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.GcpSecretManagerConnectorOidcAuthenticationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -36,13 +38,13 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
- *         var gcpSm = new GcpSecretManagerConnector("gcpSm", GcpSecretManagerConnectorArgs.builder()
+ *     public static void stack(Context ctx) }{{@code
+ *         var gcpSmManual = new GcpSecretManagerConnector("gcpSmManual", GcpSecretManagerConnectorArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -51,8 +53,46 @@ import javax.annotation.Nullable;
  *             .credentialsRef(String.format("account.%s", test.id()))
  *             .build());
  * 
- *     }
- * }
+ *         var gcpSmInherit = new GcpSecretManagerConnector("gcpSmInherit", GcpSecretManagerConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .delegateSelectors("harness-delegate")
+ *             .inheritFromDelegate(true)
+ *             .build());
+ * 
+ *         var gcpSmOidcPlatform = new GcpSecretManagerConnector("gcpSmOidcPlatform", GcpSecretManagerConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .executeOnDelegate(false)
+ *             .oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs.builder()
+ *                 .workloadPoolId("harness-pool-test")
+ *                 .providerId("harness")
+ *                 .gcpProjectId("1234567")
+ *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var gcpSmOidcDelegate = new GcpSecretManagerConnector("gcpSmOidcDelegate", GcpSecretManagerConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .isDefault(true)
+ *             .delegateSelectors("harness-delegate")
+ *             .oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs.builder()
+ *                 .workloadPoolId("harness-pool-test")
+ *                 .providerId("harness")
+ *                 .gcpProjectId("1234567")
+ *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -85,24 +125,24 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="credentialsRef", refs={String.class}, tree="[0]")
-    private Output<String> credentialsRef;
+    private Output</* @Nullable */ String> credentialsRef;
 
     /**
      * @return Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<String> credentialsRef() {
-        return this.credentialsRef;
+    public Output<Optional<String>> credentialsRef() {
+        return Codegen.optional(this.credentialsRef);
     }
     /**
-     * Tags to filter delegates for connection.
+     * The delegates to inherit the credentials from.
      * 
      */
     @Export(name="delegateSelectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> delegateSelectors;
 
     /**
-     * @return Tags to filter delegates for connection.
+     * @return The delegates to inherit the credentials from.
      * 
      */
     public Output<Optional<List<String>>> delegateSelectors() {
@@ -123,6 +163,20 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.description);
     }
     /**
+     * Execute on delegate or not.
+     * 
+     */
+    @Export(name="executeOnDelegate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Output<Optional<Boolean>> executeOnDelegate() {
+        return Codegen.optional(this.executeOnDelegate);
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -137,14 +191,28 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
         return this.identifier;
     }
     /**
-     * Indicative if this is default Secret manager for secrets.
+     * Inherit configuration from delegate.
+     * 
+     */
+    @Export(name="inheritFromDelegate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> inheritFromDelegate;
+
+    /**
+     * @return Inherit configuration from delegate.
+     * 
+     */
+    public Output<Optional<Boolean>> inheritFromDelegate() {
+        return Codegen.optional(this.inheritFromDelegate);
+    }
+    /**
+     * Set this flag to set this secret manager as default secret manager.
      * 
      */
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
     /**
-     * @return Indicative if this is default Secret manager for secrets.
+     * @return Set this flag to set this secret manager as default secret manager.
      * 
      */
     public Output<Optional<Boolean>> isDefault() {
@@ -163,6 +231,20 @@ public class GcpSecretManagerConnector extends com.pulumi.resources.CustomResour
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Authentication using harness oidc.
+     * 
+     */
+    @Export(name="oidcAuthentications", refs={List.class,GcpSecretManagerConnectorOidcAuthentication.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<GcpSecretManagerConnectorOidcAuthentication>> oidcAuthentications;
+
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Output<Optional<List<GcpSecretManagerConnectorOidcAuthentication>>> oidcAuthentications() {
+        return Codegen.optional(this.oidcAuthentications);
     }
     /**
      * Unique identifier of the organization.

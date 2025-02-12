@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -57,13 +59,17 @@ export interface GetGcpSecretManagerConnectorResult {
      */
     readonly credentialsRef: string;
     /**
-     * Tags to filter delegates for connection.
+     * The delegates to inherit the credentials from.
      */
     readonly delegateSelectors: string[];
     /**
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * Execute on delegate or not.
+     */
+    readonly executeOnDelegate: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -73,13 +79,21 @@ export interface GetGcpSecretManagerConnectorResult {
      */
     readonly identifier: string;
     /**
-     * Indicative if this is default Secret manager for secrets.
+     * Inherit configuration from delegate.
+     */
+    readonly inheritFromDelegate: boolean;
+    /**
+     * Set this flag to set this secret manager as default secret manager.
      */
     readonly isDefault: boolean;
     /**
      * Name of the resource.
      */
     readonly name?: string;
+    /**
+     * Authentication using harness oidc.
+     */
+    readonly oidcAuthentications: outputs.platform.GetGcpSecretManagerConnectorOidcAuthentication[];
     /**
      * Unique identifier of the organization.
      */

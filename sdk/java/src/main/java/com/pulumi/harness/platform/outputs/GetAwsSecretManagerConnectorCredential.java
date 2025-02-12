@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetAwsSecretManagerConnectorCredentialAssumeRole;
 import com.pulumi.harness.platform.outputs.GetAwsSecretManagerConnectorCredentialManual;
+import com.pulumi.harness.platform.outputs.GetAwsSecretManagerConnectorCredentialOidcAuthentication;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +29,11 @@ public final class GetAwsSecretManagerConnectorCredential {
      * 
      */
     private List<GetAwsSecretManagerConnectorCredentialManual> manuals;
+    /**
+     * @return Authentication using OIDC.
+     * 
+     */
+    private List<GetAwsSecretManagerConnectorCredentialOidcAuthentication> oidcAuthentications;
 
     private GetAwsSecretManagerConnectorCredential() {}
     /**
@@ -51,6 +57,13 @@ public final class GetAwsSecretManagerConnectorCredential {
     public List<GetAwsSecretManagerConnectorCredentialManual> manuals() {
         return this.manuals;
     }
+    /**
+     * @return Authentication using OIDC.
+     * 
+     */
+    public List<GetAwsSecretManagerConnectorCredentialOidcAuthentication> oidcAuthentications() {
+        return this.oidcAuthentications;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,12 +77,14 @@ public final class GetAwsSecretManagerConnectorCredential {
         private List<GetAwsSecretManagerConnectorCredentialAssumeRole> assumeRoles;
         private Boolean inheritFromDelegate;
         private List<GetAwsSecretManagerConnectorCredentialManual> manuals;
+        private List<GetAwsSecretManagerConnectorCredentialOidcAuthentication> oidcAuthentications;
         public Builder() {}
         public Builder(GetAwsSecretManagerConnectorCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assumeRoles = defaults.assumeRoles;
     	      this.inheritFromDelegate = defaults.inheritFromDelegate;
     	      this.manuals = defaults.manuals;
+    	      this.oidcAuthentications = defaults.oidcAuthentications;
         }
 
         @CustomType.Setter
@@ -102,11 +117,23 @@ public final class GetAwsSecretManagerConnectorCredential {
         public Builder manuals(GetAwsSecretManagerConnectorCredentialManual... manuals) {
             return manuals(List.of(manuals));
         }
+        @CustomType.Setter
+        public Builder oidcAuthentications(List<GetAwsSecretManagerConnectorCredentialOidcAuthentication> oidcAuthentications) {
+            if (oidcAuthentications == null) {
+              throw new MissingRequiredPropertyException("GetAwsSecretManagerConnectorCredential", "oidcAuthentications");
+            }
+            this.oidcAuthentications = oidcAuthentications;
+            return this;
+        }
+        public Builder oidcAuthentications(GetAwsSecretManagerConnectorCredentialOidcAuthentication... oidcAuthentications) {
+            return oidcAuthentications(List.of(oidcAuthentications));
+        }
         public GetAwsSecretManagerConnectorCredential build() {
             final var _resultValue = new GetAwsSecretManagerConnectorCredential();
             _resultValue.assumeRoles = assumeRoles;
             _resultValue.inheritFromDelegate = inheritFromDelegate;
             _resultValue.manuals = manuals;
+            _resultValue.oidcAuthentications = oidcAuthentications;
             return _resultValue;
         }
     }

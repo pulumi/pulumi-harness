@@ -21,10 +21,12 @@ import * as utilities from "../utilities";
 export function getAwsSecretManagerConnector(args: GetAwsSecretManagerConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsSecretManagerConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", {
+        "forceDeleteWithoutRecovery": args.forceDeleteWithoutRecovery,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "recoveryWindowInDays": args.recoveryWindowInDays,
     }, opts);
 }
 
@@ -32,6 +34,10 @@ export function getAwsSecretManagerConnector(args: GetAwsSecretManagerConnectorA
  * A collection of arguments for invoking getAwsSecretManagerConnector.
  */
 export interface GetAwsSecretManagerConnectorArgs {
+    /**
+     * Whether to force delete secret value or not.
+     */
+    forceDeleteWithoutRecovery?: boolean;
     /**
      * Unique identifier of the resource.
      */
@@ -48,6 +54,10 @@ export interface GetAwsSecretManagerConnectorArgs {
      * Unique identifier of the project.
      */
     projectId?: string;
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     */
+    recoveryWindowInDays?: number;
 }
 
 /**
@@ -59,6 +69,10 @@ export interface GetAwsSecretManagerConnectorResult {
      */
     readonly credentials: outputs.platform.GetAwsSecretManagerConnectorCredential[];
     /**
+     * Whether this is the default connector.
+     */
+    readonly default: boolean;
+    /**
      * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
@@ -66,6 +80,14 @@ export interface GetAwsSecretManagerConnectorResult {
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * The delegate to execute the action on.
+     */
+    readonly executeOnDelegate: boolean;
+    /**
+     * Whether to force delete secret value or not.
+     */
+    readonly forceDeleteWithoutRecovery?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -86,6 +108,10 @@ export interface GetAwsSecretManagerConnectorResult {
      * Unique identifier of the project.
      */
     readonly projectId?: string;
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     */
+    readonly recoveryWindowInDays?: number;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
@@ -118,10 +144,12 @@ export interface GetAwsSecretManagerConnectorResult {
 export function getAwsSecretManagerConnectorOutput(args: GetAwsSecretManagerConnectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsSecretManagerConnectorResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", {
+        "forceDeleteWithoutRecovery": args.forceDeleteWithoutRecovery,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "recoveryWindowInDays": args.recoveryWindowInDays,
     }, opts);
 }
 
@@ -129,6 +157,10 @@ export function getAwsSecretManagerConnectorOutput(args: GetAwsSecretManagerConn
  * A collection of arguments for invoking getAwsSecretManagerConnector.
  */
 export interface GetAwsSecretManagerConnectorOutputArgs {
+    /**
+     * Whether to force delete secret value or not.
+     */
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -145,4 +177,8 @@ export interface GetAwsSecretManagerConnectorOutputArgs {
      * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     */
+    recoveryWindowInDays?: pulumi.Input<number>;
 }

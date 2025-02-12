@@ -20,7 +20,7 @@ namespace Pulumi.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var gcpSm = new Harness.Platform.GcpSecretManagerConnector("gcp_sm", new()
+    ///     var gcpSmManual = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_manual", new()
     ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",
@@ -34,6 +34,70 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         CredentialsRef = $"account.{test.Id}",
+    ///     });
+    /// 
+    ///     var gcpSmInherit = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_inherit", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         InheritFromDelegate = true,
+    ///     });
+    /// 
+    ///     var gcpSmOidcPlatform = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_oidc_platform", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         ExecuteOnDelegate = false,
+    ///         OidcAuthentications = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs
+    ///             {
+    ///                 WorkloadPoolId = "harness-pool-test",
+    ///                 ProviderId = "harness",
+    ///                 GcpProjectId = "1234567",
+    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var gcpSmOidcDelegate = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         IsDefault = true,
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         OidcAuthentications = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs
+    ///             {
+    ///                 WorkloadPoolId = "harness-pool-test",
+    ///                 ProviderId = "harness",
+    ///                 GcpProjectId = "1234567",
+    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -66,10 +130,10 @@ namespace Pulumi.Harness.Platform
         /// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Output("credentialsRef")]
-        public Output<string> CredentialsRef { get; private set; } = null!;
+        public Output<string?> CredentialsRef { get; private set; } = null!;
 
         /// <summary>
-        /// Tags to filter delegates for connection.
+        /// The delegates to inherit the credentials from.
         /// </summary>
         [Output("delegateSelectors")]
         public Output<ImmutableArray<string>> DelegateSelectors { get; private set; } = null!;
@@ -81,13 +145,25 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Output("executeOnDelegate")]
+        public Output<bool?> ExecuteOnDelegate { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Indicative if this is default Secret manager for secrets.
+        /// Inherit configuration from delegate.
+        /// </summary>
+        [Output("inheritFromDelegate")]
+        public Output<bool?> InheritFromDelegate { get; private set; } = null!;
+
+        /// <summary>
+        /// Set this flag to set this secret manager as default secret manager.
         /// </summary>
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
@@ -97,6 +173,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        [Output("oidcAuthentications")]
+        public Output<ImmutableArray<Outputs.GcpSecretManagerConnectorOidcAuthentication>> OidcAuthentications { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -166,14 +248,14 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        [Input("credentialsRef", required: true)]
-        public Input<string> CredentialsRef { get; set; } = null!;
+        [Input("credentialsRef")]
+        public Input<string>? CredentialsRef { get; set; }
 
         [Input("delegateSelectors")]
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Tags to filter delegates for connection.
+        /// The delegates to inherit the credentials from.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -188,13 +270,25 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Indicative if this is default Secret manager for secrets.
+        /// Inherit configuration from delegate.
+        /// </summary>
+        [Input("inheritFromDelegate")]
+        public Input<bool>? InheritFromDelegate { get; set; }
+
+        /// <summary>
+        /// Set this flag to set this secret manager as default secret manager.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
@@ -204,6 +298,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("oidcAuthentications")]
+        private InputList<Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs>? _oidcAuthentications;
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        public InputList<Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs> OidcAuthentications
+        {
+            get => _oidcAuthentications ?? (_oidcAuthentications = new InputList<Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs>());
+            set => _oidcAuthentications = value;
+        }
 
         /// <summary>
         /// Unique identifier of the organization.
@@ -247,7 +353,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _delegateSelectors;
 
         /// <summary>
-        /// Tags to filter delegates for connection.
+        /// The delegates to inherit the credentials from.
         /// </summary>
         public InputList<string> DelegateSelectors
         {
@@ -262,13 +368,25 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Indicative if this is default Secret manager for secrets.
+        /// Inherit configuration from delegate.
+        /// </summary>
+        [Input("inheritFromDelegate")]
+        public Input<bool>? InheritFromDelegate { get; set; }
+
+        /// <summary>
+        /// Set this flag to set this secret manager as default secret manager.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
@@ -278,6 +396,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("oidcAuthentications")]
+        private InputList<Inputs.GcpSecretManagerConnectorOidcAuthenticationGetArgs>? _oidcAuthentications;
+
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        public InputList<Inputs.GcpSecretManagerConnectorOidcAuthenticationGetArgs> OidcAuthentications
+        {
+            get => _oidcAuthentications ?? (_oidcAuthentications = new InputList<Inputs.GcpSecretManagerConnectorOidcAuthenticationGetArgs>());
+            set => _oidcAuthentications = value;
+        }
 
         /// <summary>
         /// Unique identifier of the organization.

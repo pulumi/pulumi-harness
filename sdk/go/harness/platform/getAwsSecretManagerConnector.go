@@ -48,6 +48,8 @@ func LookupAwsSecretManagerConnector(ctx *pulumi.Context, args *LookupAwsSecretM
 
 // A collection of arguments for invoking getAwsSecretManagerConnector.
 type LookupAwsSecretManagerConnectorArgs struct {
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery *bool `pulumi:"forceDeleteWithoutRecovery"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -56,16 +58,24 @@ type LookupAwsSecretManagerConnectorArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 }
 
 // A collection of values returned by getAwsSecretManagerConnector.
 type LookupAwsSecretManagerConnectorResult struct {
 	// Credentials to connect to AWS.
 	Credentials []GetAwsSecretManagerConnectorCredential `pulumi:"credentials"`
+	// Whether this is the default connector.
+	Default bool `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// The delegate to execute the action on.
+	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery *bool `pulumi:"forceDeleteWithoutRecovery"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -76,6 +86,8 @@ type LookupAwsSecretManagerConnectorResult struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
 	// A prefix to be added to all secrets.
@@ -97,6 +109,8 @@ func LookupAwsSecretManagerConnectorOutput(ctx *pulumi.Context, args LookupAwsSe
 
 // A collection of arguments for invoking getAwsSecretManagerConnector.
 type LookupAwsSecretManagerConnectorOutputArgs struct {
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery pulumi.BoolPtrInput `pulumi:"forceDeleteWithoutRecovery"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
@@ -105,6 +119,8 @@ type LookupAwsSecretManagerConnectorOutputArgs struct {
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays pulumi.IntPtrInput `pulumi:"recoveryWindowInDays"`
 }
 
 func (LookupAwsSecretManagerConnectorOutputArgs) ElementType() reflect.Type {
@@ -133,6 +149,11 @@ func (o LookupAwsSecretManagerConnectorResultOutput) Credentials() GetAwsSecretM
 	}).(GetAwsSecretManagerConnectorCredentialArrayOutput)
 }
 
+// Whether this is the default connector.
+func (o LookupAwsSecretManagerConnectorResultOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
 // Tags to filter delegates for connection.
 func (o LookupAwsSecretManagerConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
@@ -141,6 +162,16 @@ func (o LookupAwsSecretManagerConnectorResultOutput) DelegateSelectors() pulumi.
 // Description of the resource.
 func (o LookupAwsSecretManagerConnectorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The delegate to execute the action on.
+func (o LookupAwsSecretManagerConnectorResultOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
+}
+
+// Whether to force delete secret value or not.
+func (o LookupAwsSecretManagerConnectorResultOutput) ForceDeleteWithoutRecovery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *bool { return v.ForceDeleteWithoutRecovery }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -166,6 +197,11 @@ func (o LookupAwsSecretManagerConnectorResultOutput) OrgId() pulumi.StringPtrOut
 // Unique identifier of the project.
 func (o LookupAwsSecretManagerConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// recovery duration in days in AWS Secrets Manager.
+func (o LookupAwsSecretManagerConnectorResultOutput) RecoveryWindowInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupAwsSecretManagerConnectorResult) *int { return v.RecoveryWindowInDays }).(pulumi.IntPtrOutput)
 }
 
 // The AWS region where the AWS Secret Manager is.

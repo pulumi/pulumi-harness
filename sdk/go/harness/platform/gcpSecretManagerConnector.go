@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewGcpSecretManagerConnector(ctx, "gcp_sm", &platform.GcpSecretManagerConnectorArgs{
+//			_, err := platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_manual", &platform.GcpSecretManagerConnectorArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -39,6 +39,64 @@ import (
 //					pulumi.String("harness-delegate"),
 //				},
 //				CredentialsRef: pulumi.Sprintf("account.%v", test.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_inherit", &platform.GcpSecretManagerConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				InheritFromDelegate: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_oidc_platform", &platform.GcpSecretManagerConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				ExecuteOnDelegate: pulumi.Bool(false),
+//				OidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{
+//					&platform.GcpSecretManagerConnectorOidcAuthenticationArgs{
+//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
+//						ProviderId:          pulumi.String("harness"),
+//						GcpProjectId:        pulumi.String("1234567"),
+//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_oidc_delegate", &platform.GcpSecretManagerConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				IsDefault: pulumi.Bool(true),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				OidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{
+//					&platform.GcpSecretManagerConnectorOidcAuthenticationArgs{
+//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
+//						ProviderId:          pulumi.String("harness"),
+//						GcpProjectId:        pulumi.String("1234567"),
+//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -72,17 +130,23 @@ type GcpSecretManagerConnector struct {
 	pulumi.CustomResourceState
 
 	// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	CredentialsRef pulumi.StringOutput `pulumi:"credentialsRef"`
-	// Tags to filter delegates for connection.
+	CredentialsRef pulumi.StringPtrOutput `pulumi:"credentialsRef"`
+	// The delegates to inherit the credentials from.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Indicative if this is default Secret manager for secrets.
+	// Inherit configuration from delegate.
+	InheritFromDelegate pulumi.BoolPtrOutput `pulumi:"inheritFromDelegate"`
+	// Set this flag to set this secret manager as default secret manager.
 	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications GcpSecretManagerConnectorOidcAuthenticationArrayOutput `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -98,9 +162,6 @@ func NewGcpSecretManagerConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CredentialsRef == nil {
-		return nil, errors.New("invalid value for required argument 'CredentialsRef'")
-	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -129,16 +190,22 @@ func GetGcpSecretManagerConnector(ctx *pulumi.Context,
 type gcpSecretManagerConnectorState struct {
 	// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CredentialsRef *string `pulumi:"credentialsRef"`
-	// Tags to filter delegates for connection.
+	// The delegates to inherit the credentials from.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
-	// Indicative if this is default Secret manager for secrets.
+	// Inherit configuration from delegate.
+	InheritFromDelegate *bool `pulumi:"inheritFromDelegate"`
+	// Set this flag to set this secret manager as default secret manager.
 	IsDefault *bool `pulumi:"isDefault"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications []GcpSecretManagerConnectorOidcAuthentication `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -150,16 +217,22 @@ type gcpSecretManagerConnectorState struct {
 type GcpSecretManagerConnectorState struct {
 	// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CredentialsRef pulumi.StringPtrInput
-	// Tags to filter delegates for connection.
+	// The delegates to inherit the credentials from.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
-	// Indicative if this is default Secret manager for secrets.
+	// Inherit configuration from delegate.
+	InheritFromDelegate pulumi.BoolPtrInput
+	// Set this flag to set this secret manager as default secret manager.
 	IsDefault pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Authentication using harness oidc.
+	OidcAuthentications GcpSecretManagerConnectorOidcAuthenticationArrayInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
@@ -174,17 +247,23 @@ func (GcpSecretManagerConnectorState) ElementType() reflect.Type {
 
 type gcpSecretManagerConnectorArgs struct {
 	// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	CredentialsRef string `pulumi:"credentialsRef"`
-	// Tags to filter delegates for connection.
+	CredentialsRef *string `pulumi:"credentialsRef"`
+	// The delegates to inherit the credentials from.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// Indicative if this is default Secret manager for secrets.
+	// Inherit configuration from delegate.
+	InheritFromDelegate *bool `pulumi:"inheritFromDelegate"`
+	// Set this flag to set this secret manager as default secret manager.
 	IsDefault *bool `pulumi:"isDefault"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
+	// Authentication using harness oidc.
+	OidcAuthentications []GcpSecretManagerConnectorOidcAuthentication `pulumi:"oidcAuthentications"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
@@ -196,17 +275,23 @@ type gcpSecretManagerConnectorArgs struct {
 // The set of arguments for constructing a GcpSecretManagerConnector resource.
 type GcpSecretManagerConnectorArgs struct {
 	// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	CredentialsRef pulumi.StringInput
-	// Tags to filter delegates for connection.
+	CredentialsRef pulumi.StringPtrInput
+	// The delegates to inherit the credentials from.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
-	// Indicative if this is default Secret manager for secrets.
+	// Inherit configuration from delegate.
+	InheritFromDelegate pulumi.BoolPtrInput
+	// Set this flag to set this secret manager as default secret manager.
 	IsDefault pulumi.BoolPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
+	// Authentication using harness oidc.
+	OidcAuthentications GcpSecretManagerConnectorOidcAuthenticationArrayInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
@@ -303,11 +388,11 @@ func (o GcpSecretManagerConnectorOutput) ToGcpSecretManagerConnectorOutputWithCo
 }
 
 // Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o GcpSecretManagerConnectorOutput) CredentialsRef() pulumi.StringOutput {
-	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.StringOutput { return v.CredentialsRef }).(pulumi.StringOutput)
+func (o GcpSecretManagerConnectorOutput) CredentialsRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.StringPtrOutput { return v.CredentialsRef }).(pulumi.StringPtrOutput)
 }
 
-// Tags to filter delegates for connection.
+// The delegates to inherit the credentials from.
 func (o GcpSecretManagerConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
@@ -317,12 +402,22 @@ func (o GcpSecretManagerConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Execute on delegate or not.
+func (o GcpSecretManagerConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
+}
+
 // Unique identifier of the resource.
 func (o GcpSecretManagerConnectorOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Indicative if this is default Secret manager for secrets.
+// Inherit configuration from delegate.
+func (o GcpSecretManagerConnectorOutput) InheritFromDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.BoolPtrOutput { return v.InheritFromDelegate }).(pulumi.BoolPtrOutput)
+}
+
+// Set this flag to set this secret manager as default secret manager.
 func (o GcpSecretManagerConnectorOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
@@ -330,6 +425,13 @@ func (o GcpSecretManagerConnectorOutput) IsDefault() pulumi.BoolPtrOutput {
 // Name of the resource.
 func (o GcpSecretManagerConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpSecretManagerConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Authentication using harness oidc.
+func (o GcpSecretManagerConnectorOutput) OidcAuthentications() GcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return o.ApplyT(func(v *GcpSecretManagerConnector) GcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+		return v.OidcAuthentications
+	}).(GcpSecretManagerConnectorOidcAuthenticationArrayOutput)
 }
 
 // Unique identifier of the organization.

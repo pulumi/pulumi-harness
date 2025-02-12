@@ -152,13 +152,17 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string CredentialsRef;
         /// <summary>
-        /// Tags to filter delegates for connection.
+        /// The delegates to inherit the credentials from.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        public readonly bool ExecuteOnDelegate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -168,13 +172,21 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// Indicative if this is default Secret manager for secrets.
+        /// Inherit configuration from delegate.
+        /// </summary>
+        public readonly bool InheritFromDelegate;
+        /// <summary>
+        /// Set this flag to set this secret manager as default secret manager.
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>
         /// Name of the resource.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGcpSecretManagerConnectorOidcAuthenticationResult> OidcAuthentications;
         /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
@@ -196,13 +208,19 @@ namespace Pulumi.Harness.Platform
 
             string description,
 
+            bool executeOnDelegate,
+
             string id,
 
             string identifier,
 
+            bool inheritFromDelegate,
+
             bool isDefault,
 
             string? name,
+
+            ImmutableArray<Outputs.GetGcpSecretManagerConnectorOidcAuthenticationResult> oidcAuthentications,
 
             string? orgId,
 
@@ -213,10 +231,13 @@ namespace Pulumi.Harness.Platform
             CredentialsRef = credentialsRef;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            ExecuteOnDelegate = executeOnDelegate;
             Id = id;
             Identifier = identifier;
+            InheritFromDelegate = inheritFromDelegate;
             IsDefault = isDefault;
             Name = name;
+            OidcAuthentications = oidcAuthentications;
             OrgId = orgId;
             ProjectId = projectId;
             Tags = tags;

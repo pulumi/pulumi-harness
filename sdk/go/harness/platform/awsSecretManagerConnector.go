@@ -44,6 +44,10 @@ type AwsSecretManagerConnector struct {
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Run the operation on the delegate or harness platform.
+	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery pulumi.BoolPtrOutput `pulumi:"forceDeleteWithoutRecovery"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -52,6 +56,8 @@ type AwsSecretManagerConnector struct {
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays pulumi.IntPtrOutput `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// A prefix to be added to all secrets.
@@ -109,6 +115,10 @@ type awsSecretManagerConnectorState struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Run the operation on the delegate or harness platform.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery *bool `pulumi:"forceDeleteWithoutRecovery"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -117,6 +127,8 @@ type awsSecretManagerConnectorState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region *string `pulumi:"region"`
 	// A prefix to be added to all secrets.
@@ -136,6 +148,10 @@ type AwsSecretManagerConnectorState struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Run the operation on the delegate or harness platform.
+	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -144,6 +160,8 @@ type AwsSecretManagerConnectorState struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays pulumi.IntPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringPtrInput
 	// A prefix to be added to all secrets.
@@ -167,6 +185,10 @@ type awsSecretManagerConnectorArgs struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Run the operation on the delegate or harness platform.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery *bool `pulumi:"forceDeleteWithoutRecovery"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -175,6 +197,8 @@ type awsSecretManagerConnectorArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays *int `pulumi:"recoveryWindowInDays"`
 	// The AWS region where the AWS Secret Manager is.
 	Region string `pulumi:"region"`
 	// A prefix to be added to all secrets.
@@ -195,6 +219,10 @@ type AwsSecretManagerConnectorArgs struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Run the operation on the delegate or harness platform.
+	ExecuteOnDelegate pulumi.BoolPtrInput
+	// Whether to force delete secret value or not.
+	ForceDeleteWithoutRecovery pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -203,6 +231,8 @@ type AwsSecretManagerConnectorArgs struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
+	// recovery duration in days in AWS Secrets Manager.
+	RecoveryWindowInDays pulumi.IntPtrInput
 	// The AWS region where the AWS Secret Manager is.
 	Region pulumi.StringInput
 	// A prefix to be added to all secrets.
@@ -320,6 +350,16 @@ func (o AwsSecretManagerConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Run the operation on the delegate or harness platform.
+func (o AwsSecretManagerConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to force delete secret value or not.
+func (o AwsSecretManagerConnectorOutput) ForceDeleteWithoutRecovery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.BoolPtrOutput { return v.ForceDeleteWithoutRecovery }).(pulumi.BoolPtrOutput)
+}
+
 // Unique identifier of the resource.
 func (o AwsSecretManagerConnectorOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -338,6 +378,11 @@ func (o AwsSecretManagerConnectorOutput) OrgId() pulumi.StringPtrOutput {
 // Unique identifier of the project.
 func (o AwsSecretManagerConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// recovery duration in days in AWS Secrets Manager.
+func (o AwsSecretManagerConnectorOutput) RecoveryWindowInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnector) pulumi.IntPtrOutput { return v.RecoveryWindowInDays }).(pulumi.IntPtrOutput)
 }
 
 // The AWS region where the AWS Secret Manager is.

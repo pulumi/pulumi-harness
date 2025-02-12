@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectorCustomSecretManager{}
 	case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
 		r = &ConnectorCustomhealthsource{}
+	case "harness:platform/connectorGcpKms:ConnectorGcpKms":
+		r = &ConnectorGcpKms{}
 	case "harness:platform/connectorJdbc:ConnectorJdbc":
 		r = &ConnectorJdbc{}
 	case "harness:platform/connectorPdc:ConnectorPdc":
@@ -305,6 +307,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/connectorCustomhealthsource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorGcpKms",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
