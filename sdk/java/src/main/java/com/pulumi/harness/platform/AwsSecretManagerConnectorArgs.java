@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.AwsSecretManagerConnectorCredentialsArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,6 +81,36 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Run the operation on the delegate or harness platform.
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Run the operation on the delegate or harness platform.
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
+    }
+
+    /**
+     * Whether to force delete secret value or not.
+     * 
+     */
+    @Import(name="forceDeleteWithoutRecovery")
+    private @Nullable Output<Boolean> forceDeleteWithoutRecovery;
+
+    /**
+     * @return Whether to force delete secret value or not.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDeleteWithoutRecovery() {
+        return Optional.ofNullable(this.forceDeleteWithoutRecovery);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -137,6 +168,21 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
+    }
+
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    @Import(name="recoveryWindowInDays")
+    private @Nullable Output<Integer> recoveryWindowInDays;
+
+    /**
+     * @return recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    public Optional<Output<Integer>> recoveryWindowInDays() {
+        return Optional.ofNullable(this.recoveryWindowInDays);
     }
 
     /**
@@ -206,10 +252,13 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
         this.default_ = $.default_;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.executeOnDelegate = $.executeOnDelegate;
+        this.forceDeleteWithoutRecovery = $.forceDeleteWithoutRecovery;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.recoveryWindowInDays = $.recoveryWindowInDays;
         this.region = $.region;
         this.secretNamePrefix = $.secretNamePrefix;
         this.tags = $.tags;
@@ -329,6 +378,48 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param executeOnDelegate Run the operation on the delegate or harness platform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Run the operation on the delegate or harness platform.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
+        }
+
+        /**
+         * @param forceDeleteWithoutRecovery Whether to force delete secret value or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteWithoutRecovery(@Nullable Output<Boolean> forceDeleteWithoutRecovery) {
+            $.forceDeleteWithoutRecovery = forceDeleteWithoutRecovery;
+            return this;
+        }
+
+        /**
+         * @param forceDeleteWithoutRecovery Whether to force delete secret value or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteWithoutRecovery(Boolean forceDeleteWithoutRecovery) {
+            return forceDeleteWithoutRecovery(Output.of(forceDeleteWithoutRecovery));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -410,6 +501,27 @@ public final class AwsSecretManagerConnectorArgs extends com.pulumi.resources.Re
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param recoveryWindowInDays recovery duration in days in AWS Secrets Manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoveryWindowInDays(@Nullable Output<Integer> recoveryWindowInDays) {
+            $.recoveryWindowInDays = recoveryWindowInDays;
+            return this;
+        }
+
+        /**
+         * @param recoveryWindowInDays recovery duration in days in AWS Secrets Manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoveryWindowInDays(Integer recoveryWindowInDays) {
+            return recoveryWindowInDays(Output.of(recoveryWindowInDays));
         }
 
         /**

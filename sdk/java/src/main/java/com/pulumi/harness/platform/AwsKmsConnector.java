@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.AwsKmsConnectorArgs;
 import com.pulumi.harness.platform.inputs.AwsKmsConnectorState;
 import com.pulumi.harness.platform.outputs.AwsKmsConnectorCredentials;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -71,6 +72,20 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
         return this.credentials;
     }
     /**
+     * Set this connector as the default for all the services.
+     * 
+     */
+    @Export(name="default", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> default_;
+
+    /**
+     * @return Set this connector as the default for all the services.
+     * 
+     */
+    public Output<Optional<Boolean>> default_() {
+        return Codegen.optional(this.default_);
+    }
+    /**
      * Tags to filter delegates for connection.
      * 
      */
@@ -97,6 +112,20 @@ public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Execute the command on the delegate.
+     * 
+     */
+    @Export(name="executeOnDelegate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute the command on the delegate.
+     * 
+     */
+    public Output<Optional<Boolean>> executeOnDelegate() {
+        return Codegen.optional(this.executeOnDelegate);
     }
     /**
      * Unique identifier of the resource.

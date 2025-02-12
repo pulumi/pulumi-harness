@@ -27,9 +27,12 @@ class AwsSecretManagerConnectorArgs:
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_put_secret: Optional[pulumi.Input[bool]] = None):
@@ -41,9 +44,12 @@ class AwsSecretManagerConnectorArgs:
         :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Run the operation on the delegate or harness platform.
+        :param pulumi.Input[bool] force_delete_without_recovery: Whether to force delete secret value or not.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_put_secret: Whether to update secret value using putSecretValue action.
@@ -57,12 +63,18 @@ class AwsSecretManagerConnectorArgs:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if force_delete_without_recovery is not None:
+            pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if recovery_window_in_days is not None:
+            pulumi.set(__self__, "recovery_window_in_days", recovery_window_in_days)
         if secret_name_prefix is not None:
             pulumi.set(__self__, "secret_name_prefix", secret_name_prefix)
         if tags is not None:
@@ -143,6 +155,30 @@ class AwsSecretManagerConnectorArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Run the operation on the delegate or harness platform.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteWithoutRecovery")
+    def force_delete_without_recovery(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force delete secret value or not.
+        """
+        return pulumi.get(self, "force_delete_without_recovery")
+
+    @force_delete_without_recovery.setter
+    def force_delete_without_recovery(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_without_recovery", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -177,6 +213,18 @@ class AwsSecretManagerConnectorArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="recoveryWindowInDays")
+    def recovery_window_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        recovery duration in days in AWS Secrets Manager.
+        """
+        return pulumi.get(self, "recovery_window_in_days")
+
+    @recovery_window_in_days.setter
+    def recovery_window_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recovery_window_in_days", value)
 
     @property
     @pulumi.getter(name="secretNamePrefix")
@@ -222,10 +270,13 @@ class _AwsSecretManagerConnectorState:
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -236,10 +287,13 @@ class _AwsSecretManagerConnectorState:
         :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Run the operation on the delegate or harness platform.
+        :param pulumi.Input[bool] force_delete_without_recovery: Whether to force delete secret value or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -253,6 +307,10 @@ class _AwsSecretManagerConnectorState:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
+        if force_delete_without_recovery is not None:
+            pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -261,6 +319,8 @@ class _AwsSecretManagerConnectorState:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if recovery_window_in_days is not None:
+            pulumi.set(__self__, "recovery_window_in_days", recovery_window_in_days)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if secret_name_prefix is not None:
@@ -319,6 +379,30 @@ class _AwsSecretManagerConnectorState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Run the operation on the delegate or harness platform.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
+
+    @property
+    @pulumi.getter(name="forceDeleteWithoutRecovery")
+    def force_delete_without_recovery(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to force delete secret value or not.
+        """
+        return pulumi.get(self, "force_delete_without_recovery")
+
+    @force_delete_without_recovery.setter
+    def force_delete_without_recovery(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_delete_without_recovery", value)
+
+    @property
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -365,6 +449,18 @@ class _AwsSecretManagerConnectorState:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="recoveryWindowInDays")
+    def recovery_window_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        recovery duration in days in AWS Secrets Manager.
+        """
+        return pulumi.get(self, "recovery_window_in_days")
+
+    @recovery_window_in_days.setter
+    def recovery_window_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recovery_window_in_days", value)
 
     @property
     @pulumi.getter
@@ -424,10 +520,13 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -462,10 +561,13 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Run the operation on the delegate or harness platform.
+        :param pulumi.Input[bool] force_delete_without_recovery: Whether to force delete secret value or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -519,10 +621,13 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+                 force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  secret_name_prefix: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -542,12 +647,15 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
             __props__.__dict__["default"] = default
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
+            __props__.__dict__["execute_on_delegate"] = execute_on_delegate
+            __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["recovery_window_in_days"] = recovery_window_in_days
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -568,10 +676,13 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
             default: Optional[pulumi.Input[bool]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            execute_on_delegate: Optional[pulumi.Input[bool]] = None,
+            force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
+            recovery_window_in_days: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             secret_name_prefix: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -587,10 +698,13 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[bool] default: Use as Default Secrets Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Run the operation on the delegate or harness platform.
+        :param pulumi.Input[bool] force_delete_without_recovery: Whether to force delete secret value or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
         :param pulumi.Input[str] project_id: Unique identifier of the project.
+        :param pulumi.Input[int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
@@ -604,10 +718,13 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         __props__.__dict__["default"] = default
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
+        __props__.__dict__["execute_on_delegate"] = execute_on_delegate
+        __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["recovery_window_in_days"] = recovery_window_in_days
         __props__.__dict__["region"] = region
         __props__.__dict__["secret_name_prefix"] = secret_name_prefix
         __props__.__dict__["tags"] = tags
@@ -647,6 +764,22 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Run the operation on the delegate or harness platform.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @property
+    @pulumi.getter(name="forceDeleteWithoutRecovery")
+    def force_delete_without_recovery(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to force delete secret value or not.
+        """
+        return pulumi.get(self, "force_delete_without_recovery")
+
+    @property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
@@ -677,6 +810,14 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="recoveryWindowInDays")
+    def recovery_window_in_days(self) -> pulumi.Output[Optional[int]]:
+        """
+        recovery duration in days in AWS Secrets Manager.
+        """
+        return pulumi.get(self, "recovery_window_in_days")
 
     @property
     @pulumi.getter

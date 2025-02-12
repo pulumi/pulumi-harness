@@ -6,6 +6,8 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class GetAwsSecretManagerConnectorArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAwsSecretManagerConnectorArgs Empty = new GetAwsSecretManagerConnectorArgs();
+
+    /**
+     * Whether to force delete secret value or not.
+     * 
+     */
+    @Import(name="forceDeleteWithoutRecovery")
+    private @Nullable Output<Boolean> forceDeleteWithoutRecovery;
+
+    /**
+     * @return Whether to force delete secret value or not.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDeleteWithoutRecovery() {
+        return Optional.ofNullable(this.forceDeleteWithoutRecovery);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -76,13 +93,30 @@ public final class GetAwsSecretManagerConnectorArgs extends com.pulumi.resources
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    @Import(name="recoveryWindowInDays")
+    private @Nullable Output<Integer> recoveryWindowInDays;
+
+    /**
+     * @return recovery duration in days in AWS Secrets Manager.
+     * 
+     */
+    public Optional<Output<Integer>> recoveryWindowInDays() {
+        return Optional.ofNullable(this.recoveryWindowInDays);
+    }
+
     private GetAwsSecretManagerConnectorArgs() {}
 
     private GetAwsSecretManagerConnectorArgs(GetAwsSecretManagerConnectorArgs $) {
+        this.forceDeleteWithoutRecovery = $.forceDeleteWithoutRecovery;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.recoveryWindowInDays = $.recoveryWindowInDays;
     }
 
     public static Builder builder() {
@@ -101,6 +135,27 @@ public final class GetAwsSecretManagerConnectorArgs extends com.pulumi.resources
 
         public Builder(GetAwsSecretManagerConnectorArgs defaults) {
             $ = new GetAwsSecretManagerConnectorArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param forceDeleteWithoutRecovery Whether to force delete secret value or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteWithoutRecovery(@Nullable Output<Boolean> forceDeleteWithoutRecovery) {
+            $.forceDeleteWithoutRecovery = forceDeleteWithoutRecovery;
+            return this;
+        }
+
+        /**
+         * @param forceDeleteWithoutRecovery Whether to force delete secret value or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteWithoutRecovery(Boolean forceDeleteWithoutRecovery) {
+            return forceDeleteWithoutRecovery(Output.of(forceDeleteWithoutRecovery));
         }
 
         /**
@@ -185,6 +240,27 @@ public final class GetAwsSecretManagerConnectorArgs extends com.pulumi.resources
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param recoveryWindowInDays recovery duration in days in AWS Secrets Manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoveryWindowInDays(@Nullable Output<Integer> recoveryWindowInDays) {
+            $.recoveryWindowInDays = recoveryWindowInDays;
+            return this;
+        }
+
+        /**
+         * @param recoveryWindowInDays recovery duration in days in AWS Secrets Manager.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoveryWindowInDays(Integer recoveryWindowInDays) {
+            return recoveryWindowInDays(Output.of(recoveryWindowInDays));
         }
 
         public GetAwsSecretManagerConnectorArgs build() {

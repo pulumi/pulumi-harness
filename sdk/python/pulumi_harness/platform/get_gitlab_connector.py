@@ -27,7 +27,7 @@ class GetGitlabConnectorResult:
     """
     A collection of values returned by getGitlabConnector.
     """
-    def __init__(__self__, api_authentications=None, connection_type=None, credentials=None, delegate_selectors=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, url=None, validation_repo=None):
+    def __init__(__self__, api_authentications=None, connection_type=None, credentials=None, delegate_selectors=None, description=None, execute_on_delegate=None, id=None, identifier=None, name=None, org_id=None, project_id=None, tags=None, url=None, validation_repo=None):
         if api_authentications and not isinstance(api_authentications, list):
             raise TypeError("Expected argument 'api_authentications' to be a list")
         pulumi.set(__self__, "api_authentications", api_authentications)
@@ -43,6 +43,9 @@ class GetGitlabConnectorResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if execute_on_delegate and not isinstance(execute_on_delegate, bool):
+            raise TypeError("Expected argument 'execute_on_delegate' to be a bool")
+        pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -107,6 +110,11 @@ class GetGitlabConnectorResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> bool:
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter
@@ -184,6 +192,7 @@ class AwaitableGetGitlabConnectorResult(GetGitlabConnectorResult):
             credentials=self.credentials,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
+            execute_on_delegate=self.execute_on_delegate,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
@@ -231,6 +240,7 @@ def get_gitlab_connector(identifier: Optional[str] = None,
         credentials=pulumi.get(__ret__, 'credentials'),
         delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
         description=pulumi.get(__ret__, 'description'),
+        execute_on_delegate=pulumi.get(__ret__, 'execute_on_delegate'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
@@ -275,6 +285,7 @@ def get_gitlab_connector_output(identifier: Optional[pulumi.Input[str]] = None,
         credentials=pulumi.get(__response__, 'credentials'),
         delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
         description=pulumi.get(__response__, 'description'),
+        execute_on_delegate=pulumi.get(__response__, 'execute_on_delegate'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),

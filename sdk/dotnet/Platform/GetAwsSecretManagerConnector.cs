@@ -82,6 +82,12 @@ namespace Pulumi.Harness.Platform
     public sealed class GetAwsSecretManagerConnectorArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Whether to force delete secret value or not.
+        /// </summary>
+        [Input("forceDeleteWithoutRecovery")]
+        public bool? ForceDeleteWithoutRecovery { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
@@ -105,6 +111,12 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
+        /// <summary>
+        /// recovery duration in days in AWS Secrets Manager.
+        /// </summary>
+        [Input("recoveryWindowInDays")]
+        public int? RecoveryWindowInDays { get; set; }
+
         public GetAwsSecretManagerConnectorArgs()
         {
         }
@@ -113,6 +125,12 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetAwsSecretManagerConnectorInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to force delete secret value or not.
+        /// </summary>
+        [Input("forceDeleteWithoutRecovery")]
+        public Input<bool>? ForceDeleteWithoutRecovery { get; set; }
+
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -137,6 +155,12 @@ namespace Pulumi.Harness.Platform
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// recovery duration in days in AWS Secrets Manager.
+        /// </summary>
+        [Input("recoveryWindowInDays")]
+        public Input<int>? RecoveryWindowInDays { get; set; }
+
         public GetAwsSecretManagerConnectorInvokeArgs()
         {
         }
@@ -152,6 +176,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialResult> Credentials;
         /// <summary>
+        /// Whether this is the default connector.
+        /// </summary>
+        public readonly bool Default;
+        /// <summary>
         /// Tags to filter delegates for connection.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
@@ -159,6 +187,14 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The delegate to execute the action on.
+        /// </summary>
+        public readonly bool ExecuteOnDelegate;
+        /// <summary>
+        /// Whether to force delete secret value or not.
+        /// </summary>
+        public readonly bool? ForceDeleteWithoutRecovery;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -180,6 +216,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
+        /// recovery duration in days in AWS Secrets Manager.
+        /// </summary>
+        public readonly int? RecoveryWindowInDays;
+        /// <summary>
         /// The AWS region where the AWS Secret Manager is.
         /// </summary>
         public readonly string Region;
@@ -200,9 +240,15 @@ namespace Pulumi.Harness.Platform
         private GetAwsSecretManagerConnectorResult(
             ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialResult> credentials,
 
+            bool @default,
+
             ImmutableArray<string> delegateSelectors,
 
             string description,
+
+            bool executeOnDelegate,
+
+            bool? forceDeleteWithoutRecovery,
 
             string id,
 
@@ -214,6 +260,8 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
+            int? recoveryWindowInDays,
+
             string region,
 
             string secretNamePrefix,
@@ -223,13 +271,17 @@ namespace Pulumi.Harness.Platform
             bool usePutSecret)
         {
             Credentials = credentials;
+            Default = @default;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            ExecuteOnDelegate = executeOnDelegate;
+            ForceDeleteWithoutRecovery = forceDeleteWithoutRecovery;
             Id = id;
             Identifier = identifier;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;
+            RecoveryWindowInDays = recoveryWindowInDays;
             Region = region;
             SecretNamePrefix = secretNamePrefix;
             Tags = tags;

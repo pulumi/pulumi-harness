@@ -30,6 +30,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("manual")]
         public Input<Inputs.AwsSecretManagerConnectorCredentialsManualGetArgs>? Manual { get; set; }
 
+        /// <summary>
+        /// Authentication using harness oidc.
+        /// </summary>
+        [Input("oidcAuthentication")]
+        public Input<Inputs.AwsSecretManagerConnectorCredentialsOidcAuthenticationGetArgs>? OidcAuthentication { get; set; }
+
         public AwsSecretManagerConnectorCredentialsGetArgs()
         {
         }

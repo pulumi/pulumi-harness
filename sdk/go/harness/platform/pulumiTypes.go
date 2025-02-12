@@ -2044,6 +2044,8 @@ type AwsKmsConnectorCredentials struct {
 	InheritFromDelegate *bool `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manual *AwsKmsConnectorCredentialsManual `pulumi:"manual"`
+	// Connect using OIDC authentication.
+	OidcAuthentication *AwsKmsConnectorCredentialsOidcAuthentication `pulumi:"oidcAuthentication"`
 }
 
 // AwsKmsConnectorCredentialsInput is an input type that accepts AwsKmsConnectorCredentialsArgs and AwsKmsConnectorCredentialsOutput values.
@@ -2064,6 +2066,8 @@ type AwsKmsConnectorCredentialsArgs struct {
 	InheritFromDelegate pulumi.BoolPtrInput `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manual AwsKmsConnectorCredentialsManualPtrInput `pulumi:"manual"`
+	// Connect using OIDC authentication.
+	OidcAuthentication AwsKmsConnectorCredentialsOidcAuthenticationPtrInput `pulumi:"oidcAuthentication"`
 }
 
 func (AwsKmsConnectorCredentialsArgs) ElementType() reflect.Type {
@@ -2158,6 +2162,13 @@ func (o AwsKmsConnectorCredentialsOutput) Manual() AwsKmsConnectorCredentialsMan
 	return o.ApplyT(func(v AwsKmsConnectorCredentials) *AwsKmsConnectorCredentialsManual { return v.Manual }).(AwsKmsConnectorCredentialsManualPtrOutput)
 }
 
+// Connect using OIDC authentication.
+func (o AwsKmsConnectorCredentialsOutput) OidcAuthentication() AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentials) *AwsKmsConnectorCredentialsOidcAuthentication {
+		return v.OidcAuthentication
+	}).(AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput)
+}
+
 type AwsKmsConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsKmsConnectorCredentialsPtrOutput) ElementType() reflect.Type {
@@ -2210,6 +2221,16 @@ func (o AwsKmsConnectorCredentialsPtrOutput) Manual() AwsKmsConnectorCredentials
 		}
 		return v.Manual
 	}).(AwsKmsConnectorCredentialsManualPtrOutput)
+}
+
+// Connect using OIDC authentication.
+func (o AwsKmsConnectorCredentialsPtrOutput) OidcAuthentication() AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentials) *AwsKmsConnectorCredentialsOidcAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.OidcAuthentication
+	}).(AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput)
 }
 
 type AwsKmsConnectorCredentialsAssumeRole struct {
@@ -2543,6 +2564,143 @@ func (o AwsKmsConnectorCredentialsManualPtrOutput) SecretKeyRef() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type AwsKmsConnectorCredentialsOidcAuthentication struct {
+	// The ARN of the IAM role to assume.
+	IamRoleArn string `pulumi:"iamRoleArn"`
+}
+
+// AwsKmsConnectorCredentialsOidcAuthenticationInput is an input type that accepts AwsKmsConnectorCredentialsOidcAuthenticationArgs and AwsKmsConnectorCredentialsOidcAuthenticationOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsOidcAuthenticationInput` via:
+//
+//	AwsKmsConnectorCredentialsOidcAuthenticationArgs{...}
+type AwsKmsConnectorCredentialsOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsOidcAuthenticationOutput() AwsKmsConnectorCredentialsOidcAuthenticationOutput
+	ToAwsKmsConnectorCredentialsOidcAuthenticationOutputWithContext(context.Context) AwsKmsConnectorCredentialsOidcAuthenticationOutput
+}
+
+type AwsKmsConnectorCredentialsOidcAuthenticationArgs struct {
+	// The ARN of the IAM role to assume.
+	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+}
+
+func (AwsKmsConnectorCredentialsOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (i AwsKmsConnectorCredentialsOidcAuthenticationArgs) ToAwsKmsConnectorCredentialsOidcAuthenticationOutput() AwsKmsConnectorCredentialsOidcAuthenticationOutput {
+	return i.ToAwsKmsConnectorCredentialsOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsOidcAuthenticationArgs) ToAwsKmsConnectorCredentialsOidcAuthenticationOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsOidcAuthenticationOutput)
+}
+
+func (i AwsKmsConnectorCredentialsOidcAuthenticationArgs) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutput() AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return i.ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AwsKmsConnectorCredentialsOidcAuthenticationArgs) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsOidcAuthenticationOutput).ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AwsKmsConnectorCredentialsOidcAuthenticationPtrInput is an input type that accepts AwsKmsConnectorCredentialsOidcAuthenticationArgs, AwsKmsConnectorCredentialsOidcAuthenticationPtr and AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput values.
+// You can construct a concrete instance of `AwsKmsConnectorCredentialsOidcAuthenticationPtrInput` via:
+//
+//	        AwsKmsConnectorCredentialsOidcAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsKmsConnectorCredentialsOidcAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutput() AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput
+	ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Context) AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput
+}
+
+type awsKmsConnectorCredentialsOidcAuthenticationPtrType AwsKmsConnectorCredentialsOidcAuthenticationArgs
+
+func AwsKmsConnectorCredentialsOidcAuthenticationPtr(v *AwsKmsConnectorCredentialsOidcAuthenticationArgs) AwsKmsConnectorCredentialsOidcAuthenticationPtrInput {
+	return (*awsKmsConnectorCredentialsOidcAuthenticationPtrType)(v)
+}
+
+func (*awsKmsConnectorCredentialsOidcAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (i *awsKmsConnectorCredentialsOidcAuthenticationPtrType) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutput() AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return i.ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *awsKmsConnectorCredentialsOidcAuthenticationPtrType) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput)
+}
+
+type AwsKmsConnectorCredentialsOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKmsConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsOidcAuthenticationOutput) ToAwsKmsConnectorCredentialsOidcAuthenticationOutput() AwsKmsConnectorCredentialsOidcAuthenticationOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsOidcAuthenticationOutput) ToAwsKmsConnectorCredentialsOidcAuthenticationOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOidcAuthenticationOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsOidcAuthenticationOutput) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutput() AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AwsKmsConnectorCredentialsOidcAuthenticationOutput) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsKmsConnectorCredentialsOidcAuthentication) *AwsKmsConnectorCredentialsOidcAuthentication {
+		return &v
+	}).(AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput)
+}
+
+// The ARN of the IAM role to assume.
+func (o AwsKmsConnectorCredentialsOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentialsOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+type AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKmsConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (o AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutput() AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) ToAwsKmsConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o
+}
+
+func (o AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) Elem() AwsKmsConnectorCredentialsOidcAuthenticationOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsOidcAuthentication) AwsKmsConnectorCredentialsOidcAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AwsKmsConnectorCredentialsOidcAuthentication
+		return ret
+	}).(AwsKmsConnectorCredentialsOidcAuthenticationOutput)
+}
+
+// The ARN of the IAM role to assume.
+func (o AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) IamRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsOidcAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IamRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
 type AwsSecretManagerConnectorCredentials struct {
 	// Connect using STS assume role.
 	AssumeRole *AwsSecretManagerConnectorCredentialsAssumeRole `pulumi:"assumeRole"`
@@ -2550,6 +2708,8 @@ type AwsSecretManagerConnectorCredentials struct {
 	InheritFromDelegate *bool `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manual *AwsSecretManagerConnectorCredentialsManual `pulumi:"manual"`
+	// Authentication using harness oidc.
+	OidcAuthentication *AwsSecretManagerConnectorCredentialsOidcAuthentication `pulumi:"oidcAuthentication"`
 }
 
 // AwsSecretManagerConnectorCredentialsInput is an input type that accepts AwsSecretManagerConnectorCredentialsArgs and AwsSecretManagerConnectorCredentialsOutput values.
@@ -2570,6 +2730,8 @@ type AwsSecretManagerConnectorCredentialsArgs struct {
 	InheritFromDelegate pulumi.BoolPtrInput `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manual AwsSecretManagerConnectorCredentialsManualPtrInput `pulumi:"manual"`
+	// Authentication using harness oidc.
+	OidcAuthentication AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrInput `pulumi:"oidcAuthentication"`
 }
 
 func (AwsSecretManagerConnectorCredentialsArgs) ElementType() reflect.Type {
@@ -2668,6 +2830,13 @@ func (o AwsSecretManagerConnectorCredentialsOutput) Manual() AwsSecretManagerCon
 	}).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
 }
 
+// Authentication using harness oidc.
+func (o AwsSecretManagerConnectorCredentialsOutput) OidcAuthentication() AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentials) *AwsSecretManagerConnectorCredentialsOidcAuthentication {
+		return v.OidcAuthentication
+	}).(AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput)
+}
+
 type AwsSecretManagerConnectorCredentialsPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsSecretManagerConnectorCredentialsPtrOutput) ElementType() reflect.Type {
@@ -2720,6 +2889,16 @@ func (o AwsSecretManagerConnectorCredentialsPtrOutput) Manual() AwsSecretManager
 		}
 		return v.Manual
 	}).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
+}
+
+// Authentication using harness oidc.
+func (o AwsSecretManagerConnectorCredentialsPtrOutput) OidcAuthentication() AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentials) *AwsSecretManagerConnectorCredentialsOidcAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.OidcAuthentication
+	}).(AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput)
 }
 
 type AwsSecretManagerConnectorCredentialsAssumeRole struct {
@@ -2898,7 +3077,7 @@ func (o AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput) RoleArn() pulum
 }
 
 type AwsSecretManagerConnectorCredentialsManual struct {
-	// The plain text AWS access key.
+	// The plain text AWS access key. This is required if the access*key*ref is not provided.
 	AccessKeyPlainText *string `pulumi:"accessKeyPlainText"`
 	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef *string `pulumi:"accessKeyRef"`
@@ -2918,7 +3097,7 @@ type AwsSecretManagerConnectorCredentialsManualInput interface {
 }
 
 type AwsSecretManagerConnectorCredentialsManualArgs struct {
-	// The plain text AWS access key.
+	// The plain text AWS access key. This is required if the access*key*ref is not provided.
 	AccessKeyPlainText pulumi.StringPtrInput `pulumi:"accessKeyPlainText"`
 	// The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessKeyRef pulumi.StringPtrInput `pulumi:"accessKeyRef"`
@@ -3003,7 +3182,7 @@ func (o AwsSecretManagerConnectorCredentialsManualOutput) ToAwsSecretManagerConn
 	}).(AwsSecretManagerConnectorCredentialsManualPtrOutput)
 }
 
-// The plain text AWS access key.
+// The plain text AWS access key. This is required if the access*key*ref is not provided.
 func (o AwsSecretManagerConnectorCredentialsManualOutput) AccessKeyPlainText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsManual) *string { return v.AccessKeyPlainText }).(pulumi.StringPtrOutput)
 }
@@ -3042,7 +3221,7 @@ func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) Elem() AwsSecretMan
 	}).(AwsSecretManagerConnectorCredentialsManualOutput)
 }
 
-// The plain text AWS access key.
+// The plain text AWS access key. This is required if the access*key*ref is not provided.
 func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) AccessKeyPlainText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsManual) *string {
 		if v == nil {
@@ -3069,6 +3248,143 @@ func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) SecretKeyRef() pulu
 			return nil
 		}
 		return &v.SecretKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsOidcAuthentication struct {
+	// The IAM role ARN.
+	IamRoleArn string `pulumi:"iamRoleArn"`
+}
+
+// AwsSecretManagerConnectorCredentialsOidcAuthenticationInput is an input type that accepts AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs and AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsOidcAuthenticationInput` via:
+//
+//	AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs{...}
+type AwsSecretManagerConnectorCredentialsOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsOidcAuthenticationOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput
+	ToAwsSecretManagerConnectorCredentialsOidcAuthenticationOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput
+}
+
+type AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs struct {
+	// The IAM role ARN.
+	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+}
+
+func (AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (i AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput)
+}
+
+func (i AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput).ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrInput is an input type that accepts AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs, AwsSecretManagerConnectorCredentialsOidcAuthenticationPtr and AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput values.
+// You can construct a concrete instance of `AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrInput` via:
+//
+//	        AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput
+	ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput
+}
+
+type awsSecretManagerConnectorCredentialsOidcAuthenticationPtrType AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs
+
+func AwsSecretManagerConnectorCredentialsOidcAuthenticationPtr(v *AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs) AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrInput {
+	return (*awsSecretManagerConnectorCredentialsOidcAuthenticationPtrType)(v)
+}
+
+func (*awsSecretManagerConnectorCredentialsOidcAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (i *awsSecretManagerConnectorCredentialsOidcAuthenticationPtrType) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return i.ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *awsSecretManagerConnectorCredentialsOidcAuthenticationPtrType) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSecretManagerConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsSecretManagerConnectorCredentialsOidcAuthentication) *AwsSecretManagerConnectorCredentialsOidcAuthentication {
+		return &v
+	}).(AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput)
+}
+
+// The IAM role ARN.
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+type AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSecretManagerConnectorCredentialsOidcAuthentication)(nil)).Elem()
+}
+
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput() AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) ToAwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutputWithContext(ctx context.Context) AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput {
+	return o
+}
+
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) Elem() AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsOidcAuthentication) AwsSecretManagerConnectorCredentialsOidcAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AwsSecretManagerConnectorCredentialsOidcAuthentication
+		return ret
+	}).(AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput)
+}
+
+// The IAM role ARN.
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) IamRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsOidcAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IamRoleArn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5776,6 +6092,295 @@ func (o ConnectorCustomhealthsourceParamArrayOutput) Index(i pulumi.IntInput) Co
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorCustomhealthsourceParam {
 		return vs[0].([]ConnectorCustomhealthsourceParam)[vs[1].(int)]
 	}).(ConnectorCustomhealthsourceParamOutput)
+}
+
+type ConnectorGcpKmsManual struct {
+	// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	Credentials string `pulumi:"credentials"`
+	// The delegates to connect with.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// ConnectorGcpKmsManualInput is an input type that accepts ConnectorGcpKmsManualArgs and ConnectorGcpKmsManualOutput values.
+// You can construct a concrete instance of `ConnectorGcpKmsManualInput` via:
+//
+//	ConnectorGcpKmsManualArgs{...}
+type ConnectorGcpKmsManualInput interface {
+	pulumi.Input
+
+	ToConnectorGcpKmsManualOutput() ConnectorGcpKmsManualOutput
+	ToConnectorGcpKmsManualOutputWithContext(context.Context) ConnectorGcpKmsManualOutput
+}
+
+type ConnectorGcpKmsManualArgs struct {
+	// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	Credentials pulumi.StringInput `pulumi:"credentials"`
+	// The delegates to connect with.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (ConnectorGcpKmsManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (i ConnectorGcpKmsManualArgs) ToConnectorGcpKmsManualOutput() ConnectorGcpKmsManualOutput {
+	return i.ToConnectorGcpKmsManualOutputWithContext(context.Background())
+}
+
+func (i ConnectorGcpKmsManualArgs) ToConnectorGcpKmsManualOutputWithContext(ctx context.Context) ConnectorGcpKmsManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorGcpKmsManualOutput)
+}
+
+func (i ConnectorGcpKmsManualArgs) ToConnectorGcpKmsManualPtrOutput() ConnectorGcpKmsManualPtrOutput {
+	return i.ToConnectorGcpKmsManualPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorGcpKmsManualArgs) ToConnectorGcpKmsManualPtrOutputWithContext(ctx context.Context) ConnectorGcpKmsManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorGcpKmsManualOutput).ToConnectorGcpKmsManualPtrOutputWithContext(ctx)
+}
+
+// ConnectorGcpKmsManualPtrInput is an input type that accepts ConnectorGcpKmsManualArgs, ConnectorGcpKmsManualPtr and ConnectorGcpKmsManualPtrOutput values.
+// You can construct a concrete instance of `ConnectorGcpKmsManualPtrInput` via:
+//
+//	        ConnectorGcpKmsManualArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorGcpKmsManualPtrInput interface {
+	pulumi.Input
+
+	ToConnectorGcpKmsManualPtrOutput() ConnectorGcpKmsManualPtrOutput
+	ToConnectorGcpKmsManualPtrOutputWithContext(context.Context) ConnectorGcpKmsManualPtrOutput
+}
+
+type connectorGcpKmsManualPtrType ConnectorGcpKmsManualArgs
+
+func ConnectorGcpKmsManualPtr(v *ConnectorGcpKmsManualArgs) ConnectorGcpKmsManualPtrInput {
+	return (*connectorGcpKmsManualPtrType)(v)
+}
+
+func (*connectorGcpKmsManualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (i *connectorGcpKmsManualPtrType) ToConnectorGcpKmsManualPtrOutput() ConnectorGcpKmsManualPtrOutput {
+	return i.ToConnectorGcpKmsManualPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorGcpKmsManualPtrType) ToConnectorGcpKmsManualPtrOutputWithContext(ctx context.Context) ConnectorGcpKmsManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorGcpKmsManualPtrOutput)
+}
+
+type ConnectorGcpKmsManualOutput struct{ *pulumi.OutputState }
+
+func (ConnectorGcpKmsManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (o ConnectorGcpKmsManualOutput) ToConnectorGcpKmsManualOutput() ConnectorGcpKmsManualOutput {
+	return o
+}
+
+func (o ConnectorGcpKmsManualOutput) ToConnectorGcpKmsManualOutputWithContext(ctx context.Context) ConnectorGcpKmsManualOutput {
+	return o
+}
+
+func (o ConnectorGcpKmsManualOutput) ToConnectorGcpKmsManualPtrOutput() ConnectorGcpKmsManualPtrOutput {
+	return o.ToConnectorGcpKmsManualPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorGcpKmsManualOutput) ToConnectorGcpKmsManualPtrOutputWithContext(ctx context.Context) ConnectorGcpKmsManualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorGcpKmsManual) *ConnectorGcpKmsManual {
+		return &v
+	}).(ConnectorGcpKmsManualPtrOutput)
+}
+
+// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorGcpKmsManualOutput) Credentials() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorGcpKmsManual) string { return v.Credentials }).(pulumi.StringOutput)
+}
+
+// The delegates to connect with.
+func (o ConnectorGcpKmsManualOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorGcpKmsManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type ConnectorGcpKmsManualPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorGcpKmsManualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (o ConnectorGcpKmsManualPtrOutput) ToConnectorGcpKmsManualPtrOutput() ConnectorGcpKmsManualPtrOutput {
+	return o
+}
+
+func (o ConnectorGcpKmsManualPtrOutput) ToConnectorGcpKmsManualPtrOutputWithContext(ctx context.Context) ConnectorGcpKmsManualPtrOutput {
+	return o
+}
+
+func (o ConnectorGcpKmsManualPtrOutput) Elem() ConnectorGcpKmsManualOutput {
+	return o.ApplyT(func(v *ConnectorGcpKmsManual) ConnectorGcpKmsManual {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorGcpKmsManual
+		return ret
+	}).(ConnectorGcpKmsManualOutput)
+}
+
+// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorGcpKmsManualPtrOutput) Credentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorGcpKmsManual) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Credentials
+	}).(pulumi.StringPtrOutput)
+}
+
+// The delegates to connect with.
+func (o ConnectorGcpKmsManualPtrOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorGcpKmsManual) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegateSelectors
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectorGcpKmsOidcAuthentication struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity.
+	GcpProjectId string `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId string `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId string `pulumi:"workloadPoolId"`
+}
+
+// ConnectorGcpKmsOidcAuthenticationInput is an input type that accepts ConnectorGcpKmsOidcAuthenticationArgs and ConnectorGcpKmsOidcAuthenticationOutput values.
+// You can construct a concrete instance of `ConnectorGcpKmsOidcAuthenticationInput` via:
+//
+//	ConnectorGcpKmsOidcAuthenticationArgs{...}
+type ConnectorGcpKmsOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToConnectorGcpKmsOidcAuthenticationOutput() ConnectorGcpKmsOidcAuthenticationOutput
+	ToConnectorGcpKmsOidcAuthenticationOutputWithContext(context.Context) ConnectorGcpKmsOidcAuthenticationOutput
+}
+
+type ConnectorGcpKmsOidcAuthenticationArgs struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity.
+	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId pulumi.StringInput `pulumi:"workloadPoolId"`
+}
+
+func (ConnectorGcpKmsOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (i ConnectorGcpKmsOidcAuthenticationArgs) ToConnectorGcpKmsOidcAuthenticationOutput() ConnectorGcpKmsOidcAuthenticationOutput {
+	return i.ToConnectorGcpKmsOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ConnectorGcpKmsOidcAuthenticationArgs) ToConnectorGcpKmsOidcAuthenticationOutputWithContext(ctx context.Context) ConnectorGcpKmsOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorGcpKmsOidcAuthenticationOutput)
+}
+
+// ConnectorGcpKmsOidcAuthenticationArrayInput is an input type that accepts ConnectorGcpKmsOidcAuthenticationArray and ConnectorGcpKmsOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `ConnectorGcpKmsOidcAuthenticationArrayInput` via:
+//
+//	ConnectorGcpKmsOidcAuthenticationArray{ ConnectorGcpKmsOidcAuthenticationArgs{...} }
+type ConnectorGcpKmsOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToConnectorGcpKmsOidcAuthenticationArrayOutput() ConnectorGcpKmsOidcAuthenticationArrayOutput
+	ToConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(context.Context) ConnectorGcpKmsOidcAuthenticationArrayOutput
+}
+
+type ConnectorGcpKmsOidcAuthenticationArray []ConnectorGcpKmsOidcAuthenticationInput
+
+func (ConnectorGcpKmsOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (i ConnectorGcpKmsOidcAuthenticationArray) ToConnectorGcpKmsOidcAuthenticationArrayOutput() ConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return i.ToConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorGcpKmsOidcAuthenticationArray) ToConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(ctx context.Context) ConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorGcpKmsOidcAuthenticationArrayOutput)
+}
+
+type ConnectorGcpKmsOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ConnectorGcpKmsOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (o ConnectorGcpKmsOidcAuthenticationOutput) ToConnectorGcpKmsOidcAuthenticationOutput() ConnectorGcpKmsOidcAuthenticationOutput {
+	return o
+}
+
+func (o ConnectorGcpKmsOidcAuthenticationOutput) ToConnectorGcpKmsOidcAuthenticationOutputWithContext(ctx context.Context) ConnectorGcpKmsOidcAuthenticationOutput {
+	return o
+}
+
+// The delegates to inherit the credentials from.
+func (o ConnectorGcpKmsOidcAuthenticationOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorGcpKmsOidcAuthentication) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// The project number of the GCP project that is used to create the workload identity.
+func (o ConnectorGcpKmsOidcAuthenticationOutput) GcpProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorGcpKmsOidcAuthentication) string { return v.GcpProjectId }).(pulumi.StringOutput)
+}
+
+// The OIDC provider ID value configured in GCP.
+func (o ConnectorGcpKmsOidcAuthenticationOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorGcpKmsOidcAuthentication) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// The service account linked to workload identity pool while setting GCP workload identity provider.
+func (o ConnectorGcpKmsOidcAuthenticationOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorGcpKmsOidcAuthentication) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The workload pool ID value created in GCP.
+func (o ConnectorGcpKmsOidcAuthenticationOutput) WorkloadPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorGcpKmsOidcAuthentication) string { return v.WorkloadPoolId }).(pulumi.StringOutput)
+}
+
+type ConnectorGcpKmsOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorGcpKmsOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (o ConnectorGcpKmsOidcAuthenticationArrayOutput) ToConnectorGcpKmsOidcAuthenticationArrayOutput() ConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o ConnectorGcpKmsOidcAuthenticationArrayOutput) ToConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(ctx context.Context) ConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o ConnectorGcpKmsOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) ConnectorGcpKmsOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorGcpKmsOidcAuthentication {
+		return vs[0].([]ConnectorGcpKmsOidcAuthentication)[vs[1].(int)]
+	}).(ConnectorGcpKmsOidcAuthenticationOutput)
 }
 
 type ConnectorJdbcCredentials struct {
@@ -9273,6 +9878,130 @@ func (o GcpConnectorOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GcpC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpConnectorOidcAuthentication {
 		return vs[0].([]GcpConnectorOidcAuthentication)[vs[1].(int)]
 	}).(GcpConnectorOidcAuthenticationOutput)
+}
+
+type GcpSecretManagerConnectorOidcAuthentication struct {
+	// The project number of the GCP project that is used to create the workload identity.
+	GcpProjectId string `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId string `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId string `pulumi:"workloadPoolId"`
+}
+
+// GcpSecretManagerConnectorOidcAuthenticationInput is an input type that accepts GcpSecretManagerConnectorOidcAuthenticationArgs and GcpSecretManagerConnectorOidcAuthenticationOutput values.
+// You can construct a concrete instance of `GcpSecretManagerConnectorOidcAuthenticationInput` via:
+//
+//	GcpSecretManagerConnectorOidcAuthenticationArgs{...}
+type GcpSecretManagerConnectorOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToGcpSecretManagerConnectorOidcAuthenticationOutput() GcpSecretManagerConnectorOidcAuthenticationOutput
+	ToGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(context.Context) GcpSecretManagerConnectorOidcAuthenticationOutput
+}
+
+type GcpSecretManagerConnectorOidcAuthenticationArgs struct {
+	// The project number of the GCP project that is used to create the workload identity.
+	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId pulumi.StringInput `pulumi:"workloadPoolId"`
+}
+
+func (GcpSecretManagerConnectorOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GcpSecretManagerConnectorOidcAuthenticationArgs) ToGcpSecretManagerConnectorOidcAuthenticationOutput() GcpSecretManagerConnectorOidcAuthenticationOutput {
+	return i.ToGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GcpSecretManagerConnectorOidcAuthenticationArgs) ToGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GcpSecretManagerConnectorOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpSecretManagerConnectorOidcAuthenticationOutput)
+}
+
+// GcpSecretManagerConnectorOidcAuthenticationArrayInput is an input type that accepts GcpSecretManagerConnectorOidcAuthenticationArray and GcpSecretManagerConnectorOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GcpSecretManagerConnectorOidcAuthenticationArrayInput` via:
+//
+//	GcpSecretManagerConnectorOidcAuthenticationArray{ GcpSecretManagerConnectorOidcAuthenticationArgs{...} }
+type GcpSecretManagerConnectorOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGcpSecretManagerConnectorOidcAuthenticationArrayOutput() GcpSecretManagerConnectorOidcAuthenticationArrayOutput
+	ToGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(context.Context) GcpSecretManagerConnectorOidcAuthenticationArrayOutput
+}
+
+type GcpSecretManagerConnectorOidcAuthenticationArray []GcpSecretManagerConnectorOidcAuthenticationInput
+
+func (GcpSecretManagerConnectorOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GcpSecretManagerConnectorOidcAuthenticationArray) ToGcpSecretManagerConnectorOidcAuthenticationArrayOutput() GcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return i.ToGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GcpSecretManagerConnectorOidcAuthenticationArray) ToGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpSecretManagerConnectorOidcAuthenticationArrayOutput)
+}
+
+type GcpSecretManagerConnectorOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GcpSecretManagerConnectorOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GcpSecretManagerConnectorOidcAuthenticationOutput) ToGcpSecretManagerConnectorOidcAuthenticationOutput() GcpSecretManagerConnectorOidcAuthenticationOutput {
+	return o
+}
+
+func (o GcpSecretManagerConnectorOidcAuthenticationOutput) ToGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GcpSecretManagerConnectorOidcAuthenticationOutput {
+	return o
+}
+
+// The project number of the GCP project that is used to create the workload identity.
+func (o GcpSecretManagerConnectorOidcAuthenticationOutput) GcpProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpSecretManagerConnectorOidcAuthentication) string { return v.GcpProjectId }).(pulumi.StringOutput)
+}
+
+// The OIDC provider ID value configured in GCP.
+func (o GcpSecretManagerConnectorOidcAuthenticationOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpSecretManagerConnectorOidcAuthentication) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// The service account linked to workload identity pool while setting GCP workload identity provider.
+func (o GcpSecretManagerConnectorOidcAuthenticationOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpSecretManagerConnectorOidcAuthentication) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The workload pool ID value created in GCP.
+func (o GcpSecretManagerConnectorOidcAuthenticationOutput) WorkloadPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GcpSecretManagerConnectorOidcAuthentication) string { return v.WorkloadPoolId }).(pulumi.StringOutput)
+}
+
+type GcpSecretManagerConnectorOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GcpSecretManagerConnectorOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GcpSecretManagerConnectorOidcAuthenticationArrayOutput) ToGcpSecretManagerConnectorOidcAuthenticationArrayOutput() GcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GcpSecretManagerConnectorOidcAuthenticationArrayOutput) ToGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GcpSecretManagerConnectorOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GcpSecretManagerConnectorOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcpSecretManagerConnectorOidcAuthentication {
+		return vs[0].([]GcpSecretManagerConnectorOidcAuthentication)[vs[1].(int)]
+	}).(GcpSecretManagerConnectorOidcAuthenticationOutput)
 }
 
 type GitConnectorCredentials struct {
@@ -36988,6 +37717,8 @@ type GetAwsKmsConnectorCredential struct {
 	InheritFromDelegate bool `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manuals []GetAwsKmsConnectorCredentialManual `pulumi:"manuals"`
+	// Authentication using OIDC.
+	OidcAuthentications []GetAwsKmsConnectorCredentialOidcAuthentication `pulumi:"oidcAuthentications"`
 }
 
 // GetAwsKmsConnectorCredentialInput is an input type that accepts GetAwsKmsConnectorCredentialArgs and GetAwsKmsConnectorCredentialOutput values.
@@ -37008,6 +37739,8 @@ type GetAwsKmsConnectorCredentialArgs struct {
 	InheritFromDelegate pulumi.BoolInput `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manuals GetAwsKmsConnectorCredentialManualArrayInput `pulumi:"manuals"`
+	// Authentication using OIDC.
+	OidcAuthentications GetAwsKmsConnectorCredentialOidcAuthenticationArrayInput `pulumi:"oidcAuthentications"`
 }
 
 func (GetAwsKmsConnectorCredentialArgs) ElementType() reflect.Type {
@@ -37074,6 +37807,13 @@ func (o GetAwsKmsConnectorCredentialOutput) InheritFromDelegate() pulumi.BoolOut
 // Specify the AWS key and secret used for authenticating.
 func (o GetAwsKmsConnectorCredentialOutput) Manuals() GetAwsKmsConnectorCredentialManualArrayOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredential) []GetAwsKmsConnectorCredentialManual { return v.Manuals }).(GetAwsKmsConnectorCredentialManualArrayOutput)
+}
+
+// Authentication using OIDC.
+func (o GetAwsKmsConnectorCredentialOutput) OidcAuthentications() GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredential) []GetAwsKmsConnectorCredentialOidcAuthentication {
+		return v.OidcAuthentications
+	}).(GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput)
 }
 
 type GetAwsKmsConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
@@ -37317,6 +38057,103 @@ func (o GetAwsKmsConnectorCredentialManualArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetAwsKmsConnectorCredentialManualOutput)
 }
 
+type GetAwsKmsConnectorCredentialOidcAuthentication struct {
+	// The IAM role ARN to assume.
+	IamRoleArn string `pulumi:"iamRoleArn"`
+}
+
+// GetAwsKmsConnectorCredentialOidcAuthenticationInput is an input type that accepts GetAwsKmsConnectorCredentialOidcAuthenticationArgs and GetAwsKmsConnectorCredentialOidcAuthenticationOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialOidcAuthenticationInput` via:
+//
+//	GetAwsKmsConnectorCredentialOidcAuthenticationArgs{...}
+type GetAwsKmsConnectorCredentialOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialOidcAuthenticationOutput() GetAwsKmsConnectorCredentialOidcAuthenticationOutput
+	ToGetAwsKmsConnectorCredentialOidcAuthenticationOutputWithContext(context.Context) GetAwsKmsConnectorCredentialOidcAuthenticationOutput
+}
+
+type GetAwsKmsConnectorCredentialOidcAuthenticationArgs struct {
+	// The IAM role ARN to assume.
+	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+}
+
+func (GetAwsKmsConnectorCredentialOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialOidcAuthenticationArgs) ToGetAwsKmsConnectorCredentialOidcAuthenticationOutput() GetAwsKmsConnectorCredentialOidcAuthenticationOutput {
+	return i.ToGetAwsKmsConnectorCredentialOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialOidcAuthenticationArgs) ToGetAwsKmsConnectorCredentialOidcAuthenticationOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialOidcAuthenticationOutput)
+}
+
+// GetAwsKmsConnectorCredentialOidcAuthenticationArrayInput is an input type that accepts GetAwsKmsConnectorCredentialOidcAuthenticationArray and GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetAwsKmsConnectorCredentialOidcAuthenticationArrayInput` via:
+//
+//	GetAwsKmsConnectorCredentialOidcAuthenticationArray{ GetAwsKmsConnectorCredentialOidcAuthenticationArgs{...} }
+type GetAwsKmsConnectorCredentialOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput() GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput
+	ToGetAwsKmsConnectorCredentialOidcAuthenticationArrayOutputWithContext(context.Context) GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput
+}
+
+type GetAwsKmsConnectorCredentialOidcAuthenticationArray []GetAwsKmsConnectorCredentialOidcAuthenticationInput
+
+func (GetAwsKmsConnectorCredentialOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetAwsKmsConnectorCredentialOidcAuthenticationArray) ToGetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput() GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput {
+	return i.ToGetAwsKmsConnectorCredentialOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsKmsConnectorCredentialOidcAuthenticationArray) ToGetAwsKmsConnectorCredentialOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput)
+}
+
+type GetAwsKmsConnectorCredentialOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsKmsConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialOidcAuthenticationOutput) ToGetAwsKmsConnectorCredentialOidcAuthenticationOutput() GetAwsKmsConnectorCredentialOidcAuthenticationOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialOidcAuthenticationOutput) ToGetAwsKmsConnectorCredentialOidcAuthenticationOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialOidcAuthenticationOutput {
+	return o
+}
+
+// The IAM role ARN to assume.
+func (o GetAwsKmsConnectorCredentialOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredentialOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+type GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsKmsConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput) ToGetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput() GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput) ToGetAwsKmsConnectorCredentialOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GetAwsKmsConnectorCredentialOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsKmsConnectorCredentialOidcAuthentication {
+		return vs[0].([]GetAwsKmsConnectorCredentialOidcAuthentication)[vs[1].(int)]
+	}).(GetAwsKmsConnectorCredentialOidcAuthenticationOutput)
+}
+
 type GetAwsSecretManagerConnectorCredential struct {
 	// Connect using STS assume role.
 	AssumeRoles []GetAwsSecretManagerConnectorCredentialAssumeRole `pulumi:"assumeRoles"`
@@ -37324,6 +38161,8 @@ type GetAwsSecretManagerConnectorCredential struct {
 	InheritFromDelegate bool `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manuals []GetAwsSecretManagerConnectorCredentialManual `pulumi:"manuals"`
+	// Authentication using OIDC.
+	OidcAuthentications []GetAwsSecretManagerConnectorCredentialOidcAuthentication `pulumi:"oidcAuthentications"`
 }
 
 // GetAwsSecretManagerConnectorCredentialInput is an input type that accepts GetAwsSecretManagerConnectorCredentialArgs and GetAwsSecretManagerConnectorCredentialOutput values.
@@ -37344,6 +38183,8 @@ type GetAwsSecretManagerConnectorCredentialArgs struct {
 	InheritFromDelegate pulumi.BoolInput `pulumi:"inheritFromDelegate"`
 	// Specify the AWS key and secret used for authenticating.
 	Manuals GetAwsSecretManagerConnectorCredentialManualArrayInput `pulumi:"manuals"`
+	// Authentication using OIDC.
+	OidcAuthentications GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayInput `pulumi:"oidcAuthentications"`
 }
 
 func (GetAwsSecretManagerConnectorCredentialArgs) ElementType() reflect.Type {
@@ -37414,6 +38255,13 @@ func (o GetAwsSecretManagerConnectorCredentialOutput) Manuals() GetAwsSecretMana
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) []GetAwsSecretManagerConnectorCredentialManual {
 		return v.Manuals
 	}).(GetAwsSecretManagerConnectorCredentialManualArrayOutput)
+}
+
+// Authentication using OIDC.
+func (o GetAwsSecretManagerConnectorCredentialOutput) OidcAuthentications() GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredential) []GetAwsSecretManagerConnectorCredentialOidcAuthentication {
+		return v.OidcAuthentications
+	}).(GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput)
 }
 
 type GetAwsSecretManagerConnectorCredentialArrayOutput struct{ *pulumi.OutputState }
@@ -37655,6 +38503,103 @@ func (o GetAwsSecretManagerConnectorCredentialManualArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsSecretManagerConnectorCredentialManual {
 		return vs[0].([]GetAwsSecretManagerConnectorCredentialManual)[vs[1].(int)]
 	}).(GetAwsSecretManagerConnectorCredentialManualOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialOidcAuthentication struct {
+	// The IAM role ARN to assume.
+	IamRoleArn string `pulumi:"iamRoleArn"`
+}
+
+// GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput is an input type that accepts GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs and GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs{...}
+type GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput() GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput
+	ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs struct {
+	// The IAM role ARN to assume.
+	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+}
+
+func (GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput() GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput)
+}
+
+// GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayInput is an input type that accepts GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray and GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayInput` via:
+//
+//	GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray{ GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs{...} }
+type GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput() GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput
+	ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutputWithContext(context.Context) GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput
+}
+
+type GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray []GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput
+
+func (GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput() GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput {
+	return i.ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput() GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput {
+	return o
+}
+
+// The IAM role ARN to assume.
+func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+type GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsSecretManagerConnectorCredentialOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput() GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput) ToGetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsSecretManagerConnectorCredentialOidcAuthentication {
+		return vs[0].([]GetAwsSecretManagerConnectorCredentialOidcAuthentication)[vs[1].(int)]
+	}).(GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput)
 }
 
 type GetAzureCloudCostConnectorBillingExportSpec struct {
@@ -39650,6 +40595,245 @@ func (o GetConnectorCustomhealthsourceParamArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorCustomhealthsourceParam {
 		return vs[0].([]GetConnectorCustomhealthsourceParam)[vs[1].(int)]
 	}).(GetConnectorCustomhealthsourceParamOutput)
+}
+
+type GetConnectorGcpKmsManual struct {
+	// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	Credentials string `pulumi:"credentials"`
+	// The delegates to connect with.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+}
+
+// GetConnectorGcpKmsManualInput is an input type that accepts GetConnectorGcpKmsManualArgs and GetConnectorGcpKmsManualOutput values.
+// You can construct a concrete instance of `GetConnectorGcpKmsManualInput` via:
+//
+//	GetConnectorGcpKmsManualArgs{...}
+type GetConnectorGcpKmsManualInput interface {
+	pulumi.Input
+
+	ToGetConnectorGcpKmsManualOutput() GetConnectorGcpKmsManualOutput
+	ToGetConnectorGcpKmsManualOutputWithContext(context.Context) GetConnectorGcpKmsManualOutput
+}
+
+type GetConnectorGcpKmsManualArgs struct {
+	// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	Credentials pulumi.StringInput `pulumi:"credentials"`
+	// The delegates to connect with.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+}
+
+func (GetConnectorGcpKmsManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (i GetConnectorGcpKmsManualArgs) ToGetConnectorGcpKmsManualOutput() GetConnectorGcpKmsManualOutput {
+	return i.ToGetConnectorGcpKmsManualOutputWithContext(context.Background())
+}
+
+func (i GetConnectorGcpKmsManualArgs) ToGetConnectorGcpKmsManualOutputWithContext(ctx context.Context) GetConnectorGcpKmsManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorGcpKmsManualOutput)
+}
+
+// GetConnectorGcpKmsManualArrayInput is an input type that accepts GetConnectorGcpKmsManualArray and GetConnectorGcpKmsManualArrayOutput values.
+// You can construct a concrete instance of `GetConnectorGcpKmsManualArrayInput` via:
+//
+//	GetConnectorGcpKmsManualArray{ GetConnectorGcpKmsManualArgs{...} }
+type GetConnectorGcpKmsManualArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorGcpKmsManualArrayOutput() GetConnectorGcpKmsManualArrayOutput
+	ToGetConnectorGcpKmsManualArrayOutputWithContext(context.Context) GetConnectorGcpKmsManualArrayOutput
+}
+
+type GetConnectorGcpKmsManualArray []GetConnectorGcpKmsManualInput
+
+func (GetConnectorGcpKmsManualArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (i GetConnectorGcpKmsManualArray) ToGetConnectorGcpKmsManualArrayOutput() GetConnectorGcpKmsManualArrayOutput {
+	return i.ToGetConnectorGcpKmsManualArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorGcpKmsManualArray) ToGetConnectorGcpKmsManualArrayOutputWithContext(ctx context.Context) GetConnectorGcpKmsManualArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorGcpKmsManualArrayOutput)
+}
+
+type GetConnectorGcpKmsManualOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorGcpKmsManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (o GetConnectorGcpKmsManualOutput) ToGetConnectorGcpKmsManualOutput() GetConnectorGcpKmsManualOutput {
+	return o
+}
+
+func (o GetConnectorGcpKmsManualOutput) ToGetConnectorGcpKmsManualOutputWithContext(ctx context.Context) GetConnectorGcpKmsManualOutput {
+	return o
+}
+
+// Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorGcpKmsManualOutput) Credentials() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorGcpKmsManual) string { return v.Credentials }).(pulumi.StringOutput)
+}
+
+// The delegates to connect with.
+func (o GetConnectorGcpKmsManualOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorGcpKmsManual) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectorGcpKmsManualArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorGcpKmsManualArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorGcpKmsManual)(nil)).Elem()
+}
+
+func (o GetConnectorGcpKmsManualArrayOutput) ToGetConnectorGcpKmsManualArrayOutput() GetConnectorGcpKmsManualArrayOutput {
+	return o
+}
+
+func (o GetConnectorGcpKmsManualArrayOutput) ToGetConnectorGcpKmsManualArrayOutputWithContext(ctx context.Context) GetConnectorGcpKmsManualArrayOutput {
+	return o
+}
+
+func (o GetConnectorGcpKmsManualArrayOutput) Index(i pulumi.IntInput) GetConnectorGcpKmsManualOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorGcpKmsManual {
+		return vs[0].([]GetConnectorGcpKmsManual)[vs[1].(int)]
+	}).(GetConnectorGcpKmsManualOutput)
+}
+
+type GetConnectorGcpKmsOidcAuthentication struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity..
+	GcpProjectId string `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId string `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId string `pulumi:"workloadPoolId"`
+}
+
+// GetConnectorGcpKmsOidcAuthenticationInput is an input type that accepts GetConnectorGcpKmsOidcAuthenticationArgs and GetConnectorGcpKmsOidcAuthenticationOutput values.
+// You can construct a concrete instance of `GetConnectorGcpKmsOidcAuthenticationInput` via:
+//
+//	GetConnectorGcpKmsOidcAuthenticationArgs{...}
+type GetConnectorGcpKmsOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetConnectorGcpKmsOidcAuthenticationOutput() GetConnectorGcpKmsOidcAuthenticationOutput
+	ToGetConnectorGcpKmsOidcAuthenticationOutputWithContext(context.Context) GetConnectorGcpKmsOidcAuthenticationOutput
+}
+
+type GetConnectorGcpKmsOidcAuthenticationArgs struct {
+	// The delegates to inherit the credentials from.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// The project number of the GCP project that is used to create the workload identity..
+	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId pulumi.StringInput `pulumi:"workloadPoolId"`
+}
+
+func (GetConnectorGcpKmsOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectorGcpKmsOidcAuthenticationArgs) ToGetConnectorGcpKmsOidcAuthenticationOutput() GetConnectorGcpKmsOidcAuthenticationOutput {
+	return i.ToGetConnectorGcpKmsOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetConnectorGcpKmsOidcAuthenticationArgs) ToGetConnectorGcpKmsOidcAuthenticationOutputWithContext(ctx context.Context) GetConnectorGcpKmsOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorGcpKmsOidcAuthenticationOutput)
+}
+
+// GetConnectorGcpKmsOidcAuthenticationArrayInput is an input type that accepts GetConnectorGcpKmsOidcAuthenticationArray and GetConnectorGcpKmsOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetConnectorGcpKmsOidcAuthenticationArrayInput` via:
+//
+//	GetConnectorGcpKmsOidcAuthenticationArray{ GetConnectorGcpKmsOidcAuthenticationArgs{...} }
+type GetConnectorGcpKmsOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorGcpKmsOidcAuthenticationArrayOutput() GetConnectorGcpKmsOidcAuthenticationArrayOutput
+	ToGetConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(context.Context) GetConnectorGcpKmsOidcAuthenticationArrayOutput
+}
+
+type GetConnectorGcpKmsOidcAuthenticationArray []GetConnectorGcpKmsOidcAuthenticationInput
+
+func (GetConnectorGcpKmsOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectorGcpKmsOidcAuthenticationArray) ToGetConnectorGcpKmsOidcAuthenticationArrayOutput() GetConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return i.ToGetConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorGcpKmsOidcAuthenticationArray) ToGetConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorGcpKmsOidcAuthenticationArrayOutput)
+}
+
+type GetConnectorGcpKmsOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorGcpKmsOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectorGcpKmsOidcAuthenticationOutput) ToGetConnectorGcpKmsOidcAuthenticationOutput() GetConnectorGcpKmsOidcAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectorGcpKmsOidcAuthenticationOutput) ToGetConnectorGcpKmsOidcAuthenticationOutputWithContext(ctx context.Context) GetConnectorGcpKmsOidcAuthenticationOutput {
+	return o
+}
+
+// The delegates to inherit the credentials from.
+func (o GetConnectorGcpKmsOidcAuthenticationOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectorGcpKmsOidcAuthentication) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// The project number of the GCP project that is used to create the workload identity..
+func (o GetConnectorGcpKmsOidcAuthenticationOutput) GcpProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorGcpKmsOidcAuthentication) string { return v.GcpProjectId }).(pulumi.StringOutput)
+}
+
+// The OIDC provider ID value configured in GCP.
+func (o GetConnectorGcpKmsOidcAuthenticationOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorGcpKmsOidcAuthentication) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// The service account linked to workload identity pool while setting GCP workload identity provider.
+func (o GetConnectorGcpKmsOidcAuthenticationOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorGcpKmsOidcAuthentication) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The workload pool ID value created in GCP.
+func (o GetConnectorGcpKmsOidcAuthenticationOutput) WorkloadPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorGcpKmsOidcAuthentication) string { return v.WorkloadPoolId }).(pulumi.StringOutput)
+}
+
+type GetConnectorGcpKmsOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorGcpKmsOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorGcpKmsOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectorGcpKmsOidcAuthenticationArrayOutput) ToGetConnectorGcpKmsOidcAuthenticationArrayOutput() GetConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectorGcpKmsOidcAuthenticationArrayOutput) ToGetConnectorGcpKmsOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectorGcpKmsOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectorGcpKmsOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GetConnectorGcpKmsOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorGcpKmsOidcAuthentication {
+		return vs[0].([]GetConnectorGcpKmsOidcAuthentication)[vs[1].(int)]
+	}).(GetConnectorGcpKmsOidcAuthenticationOutput)
 }
 
 type GetConnectorJdbcCredential struct {
@@ -41858,6 +43042,130 @@ func (o GetGcpConnectorOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGcpConnectorOidcAuthentication {
 		return vs[0].([]GetGcpConnectorOidcAuthentication)[vs[1].(int)]
 	}).(GetGcpConnectorOidcAuthenticationOutput)
+}
+
+type GetGcpSecretManagerConnectorOidcAuthentication struct {
+	// The project number of the GCP project that is used to create the workload identity..
+	GcpProjectId string `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId string `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId string `pulumi:"workloadPoolId"`
+}
+
+// GetGcpSecretManagerConnectorOidcAuthenticationInput is an input type that accepts GetGcpSecretManagerConnectorOidcAuthenticationArgs and GetGcpSecretManagerConnectorOidcAuthenticationOutput values.
+// You can construct a concrete instance of `GetGcpSecretManagerConnectorOidcAuthenticationInput` via:
+//
+//	GetGcpSecretManagerConnectorOidcAuthenticationArgs{...}
+type GetGcpSecretManagerConnectorOidcAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetGcpSecretManagerConnectorOidcAuthenticationOutput() GetGcpSecretManagerConnectorOidcAuthenticationOutput
+	ToGetGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(context.Context) GetGcpSecretManagerConnectorOidcAuthenticationOutput
+}
+
+type GetGcpSecretManagerConnectorOidcAuthenticationArgs struct {
+	// The project number of the GCP project that is used to create the workload identity..
+	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
+	// The OIDC provider ID value configured in GCP.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+	// The service account linked to workload identity pool while setting GCP workload identity provider.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// The workload pool ID value created in GCP.
+	WorkloadPoolId pulumi.StringInput `pulumi:"workloadPoolId"`
+}
+
+func (GetGcpSecretManagerConnectorOidcAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetGcpSecretManagerConnectorOidcAuthenticationArgs) ToGetGcpSecretManagerConnectorOidcAuthenticationOutput() GetGcpSecretManagerConnectorOidcAuthenticationOutput {
+	return i.ToGetGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetGcpSecretManagerConnectorOidcAuthenticationArgs) ToGetGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GetGcpSecretManagerConnectorOidcAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpSecretManagerConnectorOidcAuthenticationOutput)
+}
+
+// GetGcpSecretManagerConnectorOidcAuthenticationArrayInput is an input type that accepts GetGcpSecretManagerConnectorOidcAuthenticationArray and GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetGcpSecretManagerConnectorOidcAuthenticationArrayInput` via:
+//
+//	GetGcpSecretManagerConnectorOidcAuthenticationArray{ GetGcpSecretManagerConnectorOidcAuthenticationArgs{...} }
+type GetGcpSecretManagerConnectorOidcAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetGcpSecretManagerConnectorOidcAuthenticationArrayOutput() GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput
+	ToGetGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(context.Context) GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput
+}
+
+type GetGcpSecretManagerConnectorOidcAuthenticationArray []GetGcpSecretManagerConnectorOidcAuthenticationInput
+
+func (GetGcpSecretManagerConnectorOidcAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (i GetGcpSecretManagerConnectorOidcAuthenticationArray) ToGetGcpSecretManagerConnectorOidcAuthenticationArrayOutput() GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return i.ToGetGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGcpSecretManagerConnectorOidcAuthenticationArray) ToGetGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput)
+}
+
+type GetGcpSecretManagerConnectorOidcAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetGcpSecretManagerConnectorOidcAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetGcpSecretManagerConnectorOidcAuthenticationOutput) ToGetGcpSecretManagerConnectorOidcAuthenticationOutput() GetGcpSecretManagerConnectorOidcAuthenticationOutput {
+	return o
+}
+
+func (o GetGcpSecretManagerConnectorOidcAuthenticationOutput) ToGetGcpSecretManagerConnectorOidcAuthenticationOutputWithContext(ctx context.Context) GetGcpSecretManagerConnectorOidcAuthenticationOutput {
+	return o
+}
+
+// The project number of the GCP project that is used to create the workload identity..
+func (o GetGcpSecretManagerConnectorOidcAuthenticationOutput) GcpProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpSecretManagerConnectorOidcAuthentication) string { return v.GcpProjectId }).(pulumi.StringOutput)
+}
+
+// The OIDC provider ID value configured in GCP.
+func (o GetGcpSecretManagerConnectorOidcAuthenticationOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpSecretManagerConnectorOidcAuthentication) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// The service account linked to workload identity pool while setting GCP workload identity provider.
+func (o GetGcpSecretManagerConnectorOidcAuthenticationOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpSecretManagerConnectorOidcAuthentication) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The workload pool ID value created in GCP.
+func (o GetGcpSecretManagerConnectorOidcAuthenticationOutput) WorkloadPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGcpSecretManagerConnectorOidcAuthentication) string { return v.WorkloadPoolId }).(pulumi.StringOutput)
+}
+
+type GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGcpSecretManagerConnectorOidcAuthentication)(nil)).Elem()
+}
+
+func (o GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput) ToGetGcpSecretManagerConnectorOidcAuthenticationArrayOutput() GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput) ToGetGcpSecretManagerConnectorOidcAuthenticationArrayOutputWithContext(ctx context.Context) GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) GetGcpSecretManagerConnectorOidcAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGcpSecretManagerConnectorOidcAuthentication {
+		return vs[0].([]GetGcpSecretManagerConnectorOidcAuthentication)[vs[1].(int)]
+	}).(GetGcpSecretManagerConnectorOidcAuthenticationOutput)
 }
 
 type GetGitConnectorCredential struct {
@@ -57844,12 +59152,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsAssumeRolePtrInput)(nil)).Elem(), AwsKmsConnectorCredentialsAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsManualInput)(nil)).Elem(), AwsKmsConnectorCredentialsManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsManualPtrInput)(nil)).Elem(), AwsKmsConnectorCredentialsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsOidcAuthenticationInput)(nil)).Elem(), AwsKmsConnectorCredentialsOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKmsConnectorCredentialsOidcAuthenticationPtrInput)(nil)).Elem(), AwsKmsConnectorCredentialsOidcAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsPtrInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsAssumeRoleInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsAssumeRolePtrInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsManualInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsManualPtrInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsOidcAuthenticationInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrInput)(nil)).Elem(), AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureCloudCostConnectorBillingExportSpecInput)(nil)).Elem(), AzureCloudCostConnectorBillingExportSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureCloudCostConnectorBillingExportSpecPtrInput)(nil)).Elem(), AzureCloudCostConnectorBillingExportSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureCloudProviderConnectorCredentialsInput)(nil)).Elem(), AzureCloudProviderConnectorCredentialsArgs{})
@@ -57886,6 +59198,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomhealthsourceHeaderArrayInput)(nil)).Elem(), ConnectorCustomhealthsourceHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomhealthsourceParamInput)(nil)).Elem(), ConnectorCustomhealthsourceParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomhealthsourceParamArrayInput)(nil)).Elem(), ConnectorCustomhealthsourceParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorGcpKmsManualInput)(nil)).Elem(), ConnectorGcpKmsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorGcpKmsManualPtrInput)(nil)).Elem(), ConnectorGcpKmsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorGcpKmsOidcAuthenticationInput)(nil)).Elem(), ConnectorGcpKmsOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorGcpKmsOidcAuthenticationArrayInput)(nil)).Elem(), ConnectorGcpKmsOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsInput)(nil)).Elem(), ConnectorJdbcCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsPtrInput)(nil)).Elem(), ConnectorJdbcCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostInput)(nil)).Elem(), ConnectorPdcHostArgs{})
@@ -57934,6 +59250,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorManualPtrInput)(nil)).Elem(), GcpConnectorManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorOidcAuthenticationInput)(nil)).Elem(), GcpConnectorOidcAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GcpConnectorOidcAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSecretManagerConnectorOidcAuthenticationInput)(nil)).Elem(), GcpSecretManagerConnectorOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpSecretManagerConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GcpSecretManagerConnectorOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsInput)(nil)).Elem(), GitConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsPtrInput)(nil)).Elem(), GitConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitConnectorCredentialsHttpInput)(nil)).Elem(), GitConnectorCredentialsHttpArgs{})
@@ -58294,12 +59612,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialAssumeRoleArrayInput)(nil)).Elem(), GetAwsKmsConnectorCredentialAssumeRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialManualInput)(nil)).Elem(), GetAwsKmsConnectorCredentialManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialManualArrayInput)(nil)).Elem(), GetAwsKmsConnectorCredentialManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialOidcAuthenticationInput)(nil)).Elem(), GetAwsKmsConnectorCredentialOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsKmsConnectorCredentialOidcAuthenticationArrayInput)(nil)).Elem(), GetAwsKmsConnectorCredentialOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialAssumeRoleInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialAssumeRoleArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialAssumeRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialManualInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialManualArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayInput)(nil)).Elem(), GetAwsSecretManagerConnectorCredentialOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpecInput)(nil)).Elem(), GetAzureCloudCostConnectorBillingExportSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudCostConnectorBillingExportSpecArrayInput)(nil)).Elem(), GetAzureCloudCostConnectorBillingExportSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureCloudProviderConnectorCredentialInput)(nil)).Elem(), GetAzureCloudProviderConnectorCredentialArgs{})
@@ -58336,6 +59658,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomhealthsourceHeaderArrayInput)(nil)).Elem(), GetConnectorCustomhealthsourceHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomhealthsourceParamInput)(nil)).Elem(), GetConnectorCustomhealthsourceParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomhealthsourceParamArrayInput)(nil)).Elem(), GetConnectorCustomhealthsourceParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorGcpKmsManualInput)(nil)).Elem(), GetConnectorGcpKmsManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorGcpKmsManualArrayInput)(nil)).Elem(), GetConnectorGcpKmsManualArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorGcpKmsOidcAuthenticationInput)(nil)).Elem(), GetConnectorGcpKmsOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorGcpKmsOidcAuthenticationArrayInput)(nil)).Elem(), GetConnectorGcpKmsOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialInput)(nil)).Elem(), GetConnectorJdbcCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostInput)(nil)).Elem(), GetConnectorPdcHostArgs{})
@@ -58374,6 +59700,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorManualArrayInput)(nil)).Elem(), GetGcpConnectorManualArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorOidcAuthenticationInput)(nil)).Elem(), GetGcpConnectorOidcAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GetGcpConnectorOidcAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpSecretManagerConnectorOidcAuthenticationInput)(nil)).Elem(), GetGcpSecretManagerConnectorOidcAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGcpSecretManagerConnectorOidcAuthenticationArrayInput)(nil)).Elem(), GetGcpSecretManagerConnectorOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialInput)(nil)).Elem(), GetGitConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialArrayInput)(nil)).Elem(), GetGitConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitConnectorCredentialHttpInput)(nil)).Elem(), GetGitConnectorCredentialHttpArgs{})
@@ -58651,12 +59979,16 @@ func init() {
 	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsManualOutput{})
 	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsManualPtrOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsAssumeRoleOutput{})
 	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsManualOutput{})
 	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsManualPtrOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(AzureCloudCostConnectorBillingExportSpecOutput{})
 	pulumi.RegisterOutputType(AzureCloudCostConnectorBillingExportSpecPtrOutput{})
 	pulumi.RegisterOutputType(AzureCloudProviderConnectorCredentialsOutput{})
@@ -58693,6 +60025,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorCustomhealthsourceHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomhealthsourceParamOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomhealthsourceParamArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorGcpKmsManualOutput{})
+	pulumi.RegisterOutputType(ConnectorGcpKmsManualPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorGcpKmsOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(ConnectorGcpKmsOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorJdbcCredentialsOutput{})
 	pulumi.RegisterOutputType(ConnectorJdbcCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorPdcHostOutput{})
@@ -58741,6 +60077,8 @@ func init() {
 	pulumi.RegisterOutputType(GcpConnectorManualPtrOutput{})
 	pulumi.RegisterOutputType(GcpConnectorOidcAuthenticationOutput{})
 	pulumi.RegisterOutputType(GcpConnectorOidcAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GcpSecretManagerConnectorOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(GcpSecretManagerConnectorOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(GitConnectorCredentialsHttpOutput{})
@@ -59101,12 +60439,16 @@ func init() {
 	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialAssumeRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialManualOutput{})
 	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialManualArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialAssumeRoleOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialAssumeRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialManualOutput{})
 	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialManualArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudCostConnectorBillingExportSpecOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudCostConnectorBillingExportSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAzureCloudProviderConnectorCredentialOutput{})
@@ -59143,6 +60485,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorCustomhealthsourceHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorCustomhealthsourceParamOutput{})
 	pulumi.RegisterOutputType(GetConnectorCustomhealthsourceParamArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorGcpKmsManualOutput{})
+	pulumi.RegisterOutputType(GetConnectorGcpKmsManualArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorGcpKmsOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetConnectorGcpKmsOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorPdcHostOutput{})
@@ -59181,6 +60527,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGcpConnectorManualArrayOutput{})
 	pulumi.RegisterOutputType(GetGcpConnectorOidcAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetGcpConnectorOidcAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetGcpSecretManagerConnectorOidcAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetGcpSecretManagerConnectorOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetGitConnectorCredentialHttpOutput{})

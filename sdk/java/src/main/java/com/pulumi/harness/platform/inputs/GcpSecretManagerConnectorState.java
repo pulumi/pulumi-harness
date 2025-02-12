@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.GcpSecretManagerConnectorOidcAuthenticationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -33,14 +34,14 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
     }
 
     /**
-     * Tags to filter delegates for connection.
+     * The delegates to inherit the credentials from.
      * 
      */
     @Import(name="delegateSelectors")
     private @Nullable Output<List<String>> delegateSelectors;
 
     /**
-     * @return Tags to filter delegates for connection.
+     * @return The delegates to inherit the credentials from.
      * 
      */
     public Optional<Output<List<String>>> delegateSelectors() {
@@ -63,6 +64,21 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
     }
 
     /**
+     * Execute on delegate or not.
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -78,14 +94,29 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
     }
 
     /**
-     * Indicative if this is default Secret manager for secrets.
+     * Inherit configuration from delegate.
+     * 
+     */
+    @Import(name="inheritFromDelegate")
+    private @Nullable Output<Boolean> inheritFromDelegate;
+
+    /**
+     * @return Inherit configuration from delegate.
+     * 
+     */
+    public Optional<Output<Boolean>> inheritFromDelegate() {
+        return Optional.ofNullable(this.inheritFromDelegate);
+    }
+
+    /**
+     * Set this flag to set this secret manager as default secret manager.
      * 
      */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
     /**
-     * @return Indicative if this is default Secret manager for secrets.
+     * @return Set this flag to set this secret manager as default secret manager.
      * 
      */
     public Optional<Output<Boolean>> isDefault() {
@@ -105,6 +136,21 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Authentication using harness oidc.
+     * 
+     */
+    @Import(name="oidcAuthentications")
+    private @Nullable Output<List<GcpSecretManagerConnectorOidcAuthenticationArgs>> oidcAuthentications;
+
+    /**
+     * @return Authentication using harness oidc.
+     * 
+     */
+    public Optional<Output<List<GcpSecretManagerConnectorOidcAuthenticationArgs>>> oidcAuthentications() {
+        return Optional.ofNullable(this.oidcAuthentications);
     }
 
     /**
@@ -158,9 +204,12 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
         this.credentialsRef = $.credentialsRef;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.executeOnDelegate = $.executeOnDelegate;
         this.identifier = $.identifier;
+        this.inheritFromDelegate = $.inheritFromDelegate;
         this.isDefault = $.isDefault;
         this.name = $.name;
+        this.oidcAuthentications = $.oidcAuthentications;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tags = $.tags;
@@ -206,7 +255,7 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
-         * @param delegateSelectors Tags to filter delegates for connection.
+         * @param delegateSelectors The delegates to inherit the credentials from.
          * 
          * @return builder
          * 
@@ -217,7 +266,7 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
-         * @param delegateSelectors Tags to filter delegates for connection.
+         * @param delegateSelectors The delegates to inherit the credentials from.
          * 
          * @return builder
          * 
@@ -227,7 +276,7 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
-         * @param delegateSelectors Tags to filter delegates for connection.
+         * @param delegateSelectors The delegates to inherit the credentials from.
          * 
          * @return builder
          * 
@@ -258,6 +307,27 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
+        }
+
+        /**
          * @param identifier Unique identifier of the resource.
          * 
          * @return builder
@@ -279,7 +349,28 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
-         * @param isDefault Indicative if this is default Secret manager for secrets.
+         * @param inheritFromDelegate Inherit configuration from delegate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritFromDelegate(@Nullable Output<Boolean> inheritFromDelegate) {
+            $.inheritFromDelegate = inheritFromDelegate;
+            return this;
+        }
+
+        /**
+         * @param inheritFromDelegate Inherit configuration from delegate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritFromDelegate(Boolean inheritFromDelegate) {
+            return inheritFromDelegate(Output.of(inheritFromDelegate));
+        }
+
+        /**
+         * @param isDefault Set this flag to set this secret manager as default secret manager.
          * 
          * @return builder
          * 
@@ -290,7 +381,7 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
         }
 
         /**
-         * @param isDefault Indicative if this is default Secret manager for secrets.
+         * @param isDefault Set this flag to set this secret manager as default secret manager.
          * 
          * @return builder
          * 
@@ -318,6 +409,37 @@ public final class GcpSecretManagerConnectorState extends com.pulumi.resources.R
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oidcAuthentications Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentications(@Nullable Output<List<GcpSecretManagerConnectorOidcAuthenticationArgs>> oidcAuthentications) {
+            $.oidcAuthentications = oidcAuthentications;
+            return this;
+        }
+
+        /**
+         * @param oidcAuthentications Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentications(List<GcpSecretManagerConnectorOidcAuthenticationArgs> oidcAuthentications) {
+            return oidcAuthentications(Output.of(oidcAuthentications));
+        }
+
+        /**
+         * @param oidcAuthentications Authentication using harness oidc.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs... oidcAuthentications) {
+            return oidcAuthentications(List.of(oidcAuthentications));
         }
 
         /**

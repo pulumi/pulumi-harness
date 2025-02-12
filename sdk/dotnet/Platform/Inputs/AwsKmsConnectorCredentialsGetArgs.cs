@@ -30,6 +30,12 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("manual")]
         public Input<Inputs.AwsKmsConnectorCredentialsManualGetArgs>? Manual { get; set; }
 
+        /// <summary>
+        /// Connect using OIDC authentication.
+        /// </summary>
+        [Input("oidcAuthentication")]
+        public Input<Inputs.AwsKmsConnectorCredentialsOidcAuthenticationGetArgs>? OidcAuthentication { get; set; }
+
         public AwsKmsConnectorCredentialsGetArgs()
         {
         }

@@ -40,10 +40,14 @@ type AwsKmsConnector struct {
 	ArnRef pulumi.StringOutput `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsOutput `pulumi:"credentials"`
+	// Set this connector as the default for all the services.
+	Default pulumi.BoolPtrOutput `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Execute the command on the delegate.
+	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -104,10 +108,14 @@ type awsKmsConnectorState struct {
 	ArnRef *string `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
 	Credentials *AwsKmsConnectorCredentials `pulumi:"credentials"`
+	// Set this connector as the default for all the services.
+	Default *bool `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute the command on the delegate.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -127,10 +135,14 @@ type AwsKmsConnectorState struct {
 	ArnRef pulumi.StringPtrInput
 	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsPtrInput
+	// Set this connector as the default for all the services.
+	Default pulumi.BoolPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute the command on the delegate.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -154,10 +166,14 @@ type awsKmsConnectorArgs struct {
 	ArnRef string `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentials `pulumi:"credentials"`
+	// Set this connector as the default for all the services.
+	Default *bool `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute the command on the delegate.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -178,10 +194,14 @@ type AwsKmsConnectorArgs struct {
 	ArnRef pulumi.StringInput
 	// Credentials to connect to AWS.
 	Credentials AwsKmsConnectorCredentialsInput
+	// Set this connector as the default for all the services.
+	Default pulumi.BoolPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute the command on the delegate.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -293,6 +313,11 @@ func (o AwsKmsConnectorOutput) Credentials() AwsKmsConnectorCredentialsOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) AwsKmsConnectorCredentialsOutput { return v.Credentials }).(AwsKmsConnectorCredentialsOutput)
 }
 
+// Set this connector as the default for all the services.
+func (o AwsKmsConnectorOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnector) pulumi.BoolPtrOutput { return v.Default }).(pulumi.BoolPtrOutput)
+}
+
 // Tags to filter delegates for connection.
 func (o AwsKmsConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringArrayOutput { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
@@ -301,6 +326,11 @@ func (o AwsKmsConnectorOutput) DelegateSelectors() pulumi.StringArrayOutput {
 // Description of the resource.
 func (o AwsKmsConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsKmsConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Execute the command on the delegate.
+func (o AwsKmsConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsKmsConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
 }
 
 // Unique identifier of the resource.

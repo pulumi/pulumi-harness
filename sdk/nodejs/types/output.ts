@@ -1786,6 +1786,10 @@ export namespace platform {
          * Specify the AWS key and secret used for authenticating.
          */
         manual?: outputs.platform.AwsKmsConnectorCredentialsManual;
+        /**
+         * Connect using OIDC authentication.
+         */
+        oidcAuthentication?: outputs.platform.AwsKmsConnectorCredentialsOidcAuthentication;
     }
 
     export interface AwsKmsConnectorCredentialsAssumeRole {
@@ -1814,6 +1818,13 @@ export namespace platform {
         secretKeyRef: string;
     }
 
+    export interface AwsKmsConnectorCredentialsOidcAuthentication {
+        /**
+         * The ARN of the IAM role to assume.
+         */
+        iamRoleArn: string;
+    }
+
     export interface AwsSecretManagerConnectorCredentials {
         /**
          * Connect using STS assume role.
@@ -1827,6 +1838,10 @@ export namespace platform {
          * Specify the AWS key and secret used for authenticating.
          */
         manual?: outputs.platform.AwsSecretManagerConnectorCredentialsManual;
+        /**
+         * Authentication using harness oidc.
+         */
+        oidcAuthentication?: outputs.platform.AwsSecretManagerConnectorCredentialsOidcAuthentication;
     }
 
     export interface AwsSecretManagerConnectorCredentialsAssumeRole {
@@ -1846,7 +1861,7 @@ export namespace platform {
 
     export interface AwsSecretManagerConnectorCredentialsManual {
         /**
-         * The plain text AWS access key.
+         * The plain text AWS access key. This is required if the access*key*ref is not provided.
          */
         accessKeyPlainText?: string;
         /**
@@ -1857,6 +1872,13 @@ export namespace platform {
          * The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: string;
+    }
+
+    export interface AwsSecretManagerConnectorCredentialsOidcAuthentication {
+        /**
+         * The IAM role ARN.
+         */
+        iamRoleArn: string;
     }
 
     export interface AzureCloudCostConnectorBillingExportSpec {
@@ -2074,6 +2096,40 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted?: boolean;
+    }
+
+    export interface ConnectorGcpKmsManual {
+        /**
+         * Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        credentials: string;
+        /**
+         * The delegates to connect with.
+         */
+        delegateSelectors?: string[];
+    }
+
+    export interface ConnectorGcpKmsOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors?: string[];
+        /**
+         * The project number of the GCP project that is used to create the workload identity.
+         */
+        gcpProjectId: string;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: string;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: string;
     }
 
     export interface ConnectorJdbcCredentials {
@@ -2448,6 +2504,25 @@ export namespace platform {
         workloadPoolId: string;
     }
 
+    export interface GcpSecretManagerConnectorOidcAuthentication {
+        /**
+         * The project number of the GCP project that is used to create the workload identity.
+         */
+        gcpProjectId: string;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: string;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: string;
+    }
+
     export interface GetAppDynamicsConnectorApiToken {
         /**
          * The client id used for connecting to App Dynamics.
@@ -2629,6 +2704,10 @@ export namespace platform {
          * Specify the AWS key and secret used for authenticating.
          */
         manuals: outputs.platform.GetAwsKmsConnectorCredentialManual[];
+        /**
+         * Authentication using OIDC.
+         */
+        oidcAuthentications: outputs.platform.GetAwsKmsConnectorCredentialOidcAuthentication[];
     }
 
     export interface GetAwsKmsConnectorCredentialAssumeRole {
@@ -2657,6 +2736,13 @@ export namespace platform {
         secretKeyRef: string;
     }
 
+    export interface GetAwsKmsConnectorCredentialOidcAuthentication {
+        /**
+         * The IAM role ARN to assume.
+         */
+        iamRoleArn: string;
+    }
+
     export interface GetAwsSecretManagerConnectorCredential {
         /**
          * Connect using STS assume role.
@@ -2670,6 +2756,10 @@ export namespace platform {
          * Specify the AWS key and secret used for authenticating.
          */
         manuals: outputs.platform.GetAwsSecretManagerConnectorCredentialManual[];
+        /**
+         * Authentication using OIDC.
+         */
+        oidcAuthentications: outputs.platform.GetAwsSecretManagerConnectorCredentialOidcAuthentication[];
     }
 
     export interface GetAwsSecretManagerConnectorCredentialAssumeRole {
@@ -2696,6 +2786,13 @@ export namespace platform {
          * The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         secretKeyRef: string;
+    }
+
+    export interface GetAwsSecretManagerConnectorCredentialOidcAuthentication {
+        /**
+         * The IAM role ARN to assume.
+         */
+        iamRoleArn: string;
     }
 
     export interface GetAzureCloudCostConnectorBillingExportSpec {
@@ -2917,6 +3014,40 @@ export namespace platform {
          * Encrypted value.
          */
         valueEncrypted: boolean;
+    }
+
+    export interface GetConnectorGcpKmsManual {
+        /**
+         * Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        credentials: string;
+        /**
+         * The delegates to connect with.
+         */
+        delegateSelectors: string[];
+    }
+
+    export interface GetConnectorGcpKmsOidcAuthentication {
+        /**
+         * The delegates to inherit the credentials from.
+         */
+        delegateSelectors: string[];
+        /**
+         * The project number of the GCP project that is used to create the workload identity..
+         */
+        gcpProjectId: string;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: string;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: string;
     }
 
     export interface GetConnectorJdbcCredential {
@@ -3144,6 +3275,25 @@ export namespace platform {
          * The delegates to inherit the credentials from.
          */
         delegateSelectors: string[];
+        /**
+         * The project number of the GCP project that is used to create the workload identity..
+         */
+        gcpProjectId: string;
+        /**
+         * The OIDC provider ID value configured in GCP.
+         */
+        providerId: string;
+        /**
+         * The service account linked to workload identity pool while setting GCP workload identity provider.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The workload pool ID value created in GCP.
+         */
+        workloadPoolId: string;
+    }
+
+    export interface GetGcpSecretManagerConnectorOidcAuthentication {
         /**
          * The project number of the GCP project that is used to create the workload identity..
          */

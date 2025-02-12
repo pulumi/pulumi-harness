@@ -156,6 +156,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAwsKmsConnectorCredentialResult> Credentials;
         /// <summary>
+        /// Whether this is the default connector.
+        /// </summary>
+        public readonly bool Default;
+        /// <summary>
         /// Tags to filter delegates for connection.
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
@@ -163,6 +167,10 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The delegate to execute the action on.
+        /// </summary>
+        public readonly bool ExecuteOnDelegate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -198,9 +206,13 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<Outputs.GetAwsKmsConnectorCredentialResult> credentials,
 
+            bool @default,
+
             ImmutableArray<string> delegateSelectors,
 
             string description,
+
+            bool executeOnDelegate,
 
             string id,
 
@@ -218,8 +230,10 @@ namespace Pulumi.Harness.Platform
         {
             ArnRef = arnRef;
             Credentials = credentials;
+            Default = @default;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            ExecuteOnDelegate = executeOnDelegate;
             Id = id;
             Identifier = identifier;
             Name = name;

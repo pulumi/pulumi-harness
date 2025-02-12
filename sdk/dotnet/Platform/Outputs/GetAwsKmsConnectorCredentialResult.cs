@@ -25,6 +25,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Specify the AWS key and secret used for authenticating.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAwsKmsConnectorCredentialManualResult> Manuals;
+        /// <summary>
+        /// Authentication using OIDC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAwsKmsConnectorCredentialOidcAuthenticationResult> OidcAuthentications;
 
         [OutputConstructor]
         private GetAwsKmsConnectorCredentialResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Harness.Platform.Outputs
 
             bool inheritFromDelegate,
 
-            ImmutableArray<Outputs.GetAwsKmsConnectorCredentialManualResult> manuals)
+            ImmutableArray<Outputs.GetAwsKmsConnectorCredentialManualResult> manuals,
+
+            ImmutableArray<Outputs.GetAwsKmsConnectorCredentialOidcAuthenticationResult> oidcAuthentications)
         {
             AssumeRoles = assumeRoles;
             InheritFromDelegate = inheritFromDelegate;
             Manuals = manuals;
+            OidcAuthentications = oidcAuthentications;
         }
     }
 }

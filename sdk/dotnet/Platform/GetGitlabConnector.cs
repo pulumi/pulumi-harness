@@ -173,6 +173,7 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        public readonly bool ExecuteOnDelegate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -218,6 +219,8 @@ namespace Pulumi.Harness.Platform
 
             string description,
 
+            bool executeOnDelegate,
+
             string id,
 
             string identifier,
@@ -239,6 +242,7 @@ namespace Pulumi.Harness.Platform
             Credentials = credentials;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            ExecuteOnDelegate = executeOnDelegate;
             Id = id;
             Identifier = identifier;
             Name = name;

@@ -63,6 +63,10 @@ export interface GetAwsKmsConnectorResult {
      */
     readonly credentials: outputs.platform.GetAwsKmsConnectorCredential[];
     /**
+     * Whether this is the default connector.
+     */
+    readonly default: boolean;
+    /**
      * Tags to filter delegates for connection.
      */
     readonly delegateSelectors: string[];
@@ -70,6 +74,10 @@ export interface GetAwsKmsConnectorResult {
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * The delegate to execute the action on.
+     */
+    readonly executeOnDelegate: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

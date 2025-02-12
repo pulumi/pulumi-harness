@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetGcpSecretManagerConnectorResult',
@@ -26,7 +27,7 @@ class GetGcpSecretManagerConnectorResult:
     """
     A collection of values returned by getGcpSecretManagerConnector.
     """
-    def __init__(__self__, credentials_ref=None, delegate_selectors=None, description=None, id=None, identifier=None, is_default=None, name=None, org_id=None, project_id=None, tags=None):
+    def __init__(__self__, credentials_ref=None, delegate_selectors=None, description=None, execute_on_delegate=None, id=None, identifier=None, inherit_from_delegate=None, is_default=None, name=None, oidc_authentications=None, org_id=None, project_id=None, tags=None):
         if credentials_ref and not isinstance(credentials_ref, str):
             raise TypeError("Expected argument 'credentials_ref' to be a str")
         pulumi.set(__self__, "credentials_ref", credentials_ref)
@@ -36,18 +37,27 @@ class GetGcpSecretManagerConnectorResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if execute_on_delegate and not isinstance(execute_on_delegate, bool):
+            raise TypeError("Expected argument 'execute_on_delegate' to be a bool")
+        pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if inherit_from_delegate and not isinstance(inherit_from_delegate, bool):
+            raise TypeError("Expected argument 'inherit_from_delegate' to be a bool")
+        pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         if is_default and not isinstance(is_default, bool):
             raise TypeError("Expected argument 'is_default' to be a bool")
         pulumi.set(__self__, "is_default", is_default)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if oidc_authentications and not isinstance(oidc_authentications, list):
+            raise TypeError("Expected argument 'oidc_authentications' to be a list")
+        pulumi.set(__self__, "oidc_authentications", oidc_authentications)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
@@ -70,7 +80,7 @@ class GetGcpSecretManagerConnectorResult:
     @pulumi.getter(name="delegateSelectors")
     def delegate_selectors(self) -> Sequence[str]:
         """
-        Tags to filter delegates for connection.
+        The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
 
@@ -81,6 +91,14 @@ class GetGcpSecretManagerConnectorResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> bool:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter
@@ -99,10 +117,18 @@ class GetGcpSecretManagerConnectorResult:
         return pulumi.get(self, "identifier")
 
     @property
+    @pulumi.getter(name="inheritFromDelegate")
+    def inherit_from_delegate(self) -> bool:
+        """
+        Inherit configuration from delegate.
+        """
+        return pulumi.get(self, "inherit_from_delegate")
+
+    @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
         """
-        Indicative if this is default Secret manager for secrets.
+        Set this flag to set this secret manager as default secret manager.
         """
         return pulumi.get(self, "is_default")
 
@@ -113,6 +139,14 @@ class GetGcpSecretManagerConnectorResult:
         Name of the resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Sequence['outputs.GetGcpSecretManagerConnectorOidcAuthenticationResult']:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentications")
 
     @property
     @pulumi.getter(name="orgId")
@@ -148,10 +182,13 @@ class AwaitableGetGcpSecretManagerConnectorResult(GetGcpSecretManagerConnectorRe
             credentials_ref=self.credentials_ref,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
+            execute_on_delegate=self.execute_on_delegate,
             id=self.id,
             identifier=self.identifier,
+            inherit_from_delegate=self.inherit_from_delegate,
             is_default=self.is_default,
             name=self.name,
+            oidc_authentications=self.oidc_authentications,
             org_id=self.org_id,
             project_id=self.project_id,
             tags=self.tags)
@@ -190,10 +227,13 @@ def get_gcp_secret_manager_connector(identifier: Optional[str] = None,
         credentials_ref=pulumi.get(__ret__, 'credentials_ref'),
         delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
         description=pulumi.get(__ret__, 'description'),
+        execute_on_delegate=pulumi.get(__ret__, 'execute_on_delegate'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        inherit_from_delegate=pulumi.get(__ret__, 'inherit_from_delegate'),
         is_default=pulumi.get(__ret__, 'is_default'),
         name=pulumi.get(__ret__, 'name'),
+        oidc_authentications=pulumi.get(__ret__, 'oidc_authentications'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
@@ -229,10 +269,13 @@ def get_gcp_secret_manager_connector_output(identifier: Optional[pulumi.Input[st
         credentials_ref=pulumi.get(__response__, 'credentials_ref'),
         delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
         description=pulumi.get(__response__, 'description'),
+        execute_on_delegate=pulumi.get(__response__, 'execute_on_delegate'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        inherit_from_delegate=pulumi.get(__response__, 'inherit_from_delegate'),
         is_default=pulumi.get(__response__, 'is_default'),
         name=pulumi.get(__response__, 'name'),
+        oidc_authentications=pulumi.get(__response__, 'oidc_authentications'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),
         tags=pulumi.get(__response__, 'tags')))

@@ -64,10 +64,14 @@ type LookupAwsKmsConnectorResult struct {
 	ArnRef string `pulumi:"arnRef"`
 	// Credentials to connect to AWS.
 	Credentials []GetAwsKmsConnectorCredential `pulumi:"credentials"`
+	// Whether this is the default connector.
+	Default bool `pulumi:"default"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// The delegate to execute the action on.
+	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -134,6 +138,11 @@ func (o LookupAwsKmsConnectorResultOutput) Credentials() GetAwsKmsConnectorCrede
 	return o.ApplyT(func(v LookupAwsKmsConnectorResult) []GetAwsKmsConnectorCredential { return v.Credentials }).(GetAwsKmsConnectorCredentialArrayOutput)
 }
 
+// Whether this is the default connector.
+func (o LookupAwsKmsConnectorResultOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAwsKmsConnectorResult) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
 // Tags to filter delegates for connection.
 func (o LookupAwsKmsConnectorResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAwsKmsConnectorResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
@@ -142,6 +151,11 @@ func (o LookupAwsKmsConnectorResultOutput) DelegateSelectors() pulumi.StringArra
 // Description of the resource.
 func (o LookupAwsKmsConnectorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsKmsConnectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The delegate to execute the action on.
+func (o LookupAwsKmsConnectorResultOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAwsKmsConnectorResult) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

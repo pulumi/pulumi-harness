@@ -25,6 +25,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Specify the AWS key and secret used for authenticating.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialManualResult> Manuals;
+        /// <summary>
+        /// Authentication using OIDC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialOidcAuthenticationResult> OidcAuthentications;
 
         [OutputConstructor]
         private GetAwsSecretManagerConnectorCredentialResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Harness.Platform.Outputs
 
             bool inheritFromDelegate,
 
-            ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialManualResult> manuals)
+            ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialManualResult> manuals,
+
+            ImmutableArray<Outputs.GetAwsSecretManagerConnectorCredentialOidcAuthenticationResult> oidcAuthentications)
         {
             AssumeRoles = assumeRoles;
             InheritFromDelegate = inheritFromDelegate;
             Manuals = manuals;
+            OidcAuthentications = oidcAuthentications;
         }
     }
 }

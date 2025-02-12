@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetGitlabConnectorApiAuthentication;
 import com.pulumi.harness.platform.outputs.GetGitlabConnectorCredential;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -40,6 +41,7 @@ public final class GetGitlabConnectorResult {
      * 
      */
     private String description;
+    private Boolean executeOnDelegate;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -117,6 +119,9 @@ public final class GetGitlabConnectorResult {
     public String description() {
         return this.description;
     }
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -188,6 +193,7 @@ public final class GetGitlabConnectorResult {
         private List<GetGitlabConnectorCredential> credentials;
         private List<String> delegateSelectors;
         private String description;
+        private Boolean executeOnDelegate;
         private String id;
         private String identifier;
         private @Nullable String name;
@@ -204,6 +210,7 @@ public final class GetGitlabConnectorResult {
     	      this.credentials = defaults.credentials;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -261,6 +268,14 @@ public final class GetGitlabConnectorResult {
               throw new MissingRequiredPropertyException("GetGitlabConnectorResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            if (executeOnDelegate == null) {
+              throw new MissingRequiredPropertyException("GetGitlabConnectorResult", "executeOnDelegate");
+            }
+            this.executeOnDelegate = executeOnDelegate;
             return this;
         }
         @CustomType.Setter
@@ -331,6 +346,7 @@ public final class GetGitlabConnectorResult {
             _resultValue.credentials = credentials;
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.description = description;
+            _resultValue.executeOnDelegate = executeOnDelegate;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;

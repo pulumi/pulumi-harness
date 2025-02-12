@@ -66,6 +66,10 @@ export class AwsKmsConnector extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.platform.AwsKmsConnectorCredentials>;
     /**
+     * Set this connector as the default for all the services.
+     */
+    public readonly default!: pulumi.Output<boolean | undefined>;
+    /**
      * Tags to filter delegates for connection.
      */
     public readonly delegateSelectors!: pulumi.Output<string[] | undefined>;
@@ -73,6 +77,10 @@ export class AwsKmsConnector extends pulumi.CustomResource {
      * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Execute the command on the delegate.
+     */
+    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -113,8 +121,10 @@ export class AwsKmsConnector extends pulumi.CustomResource {
             const state = argsOrState as AwsKmsConnectorState | undefined;
             resourceInputs["arnRef"] = state ? state.arnRef : undefined;
             resourceInputs["credentials"] = state ? state.credentials : undefined;
+            resourceInputs["default"] = state ? state.default : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
@@ -137,8 +147,10 @@ export class AwsKmsConnector extends pulumi.CustomResource {
             }
             resourceInputs["arnRef"] = args ? args.arnRef : undefined;
             resourceInputs["credentials"] = args ? args.credentials : undefined;
+            resourceInputs["default"] = args ? args.default : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
@@ -164,6 +176,10 @@ export interface AwsKmsConnectorState {
      */
     credentials?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentials>;
     /**
+     * Set this connector as the default for all the services.
+     */
+    default?: pulumi.Input<boolean>;
+    /**
      * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
@@ -171,6 +187,10 @@ export interface AwsKmsConnectorState {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute the command on the delegate.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -210,6 +230,10 @@ export interface AwsKmsConnectorArgs {
      */
     credentials: pulumi.Input<inputs.platform.AwsKmsConnectorCredentials>;
     /**
+     * Set this connector as the default for all the services.
+     */
+    default?: pulumi.Input<boolean>;
+    /**
      * Tags to filter delegates for connection.
      */
     delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
@@ -217,6 +241,10 @@ export interface AwsKmsConnectorArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute the command on the delegate.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */

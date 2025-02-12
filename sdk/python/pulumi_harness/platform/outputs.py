@@ -31,9 +31,11 @@ __all__ = [
     'AwsKmsConnectorCredentials',
     'AwsKmsConnectorCredentialsAssumeRole',
     'AwsKmsConnectorCredentialsManual',
+    'AwsKmsConnectorCredentialsOidcAuthentication',
     'AwsSecretManagerConnectorCredentials',
     'AwsSecretManagerConnectorCredentialsAssumeRole',
     'AwsSecretManagerConnectorCredentialsManual',
+    'AwsSecretManagerConnectorCredentialsOidcAuthentication',
     'AzureCloudCostConnectorBillingExportSpec',
     'AzureCloudProviderConnectorCredentials',
     'AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetails',
@@ -52,6 +54,8 @@ __all__ = [
     'ConnectorCustomSecretManagerTemplateInputEnvironmentVariable',
     'ConnectorCustomhealthsourceHeader',
     'ConnectorCustomhealthsourceParam',
+    'ConnectorGcpKmsManual',
+    'ConnectorGcpKmsOidcAuthentication',
     'ConnectorJdbcCredentials',
     'ConnectorPdcHost',
     'ConnectorRancherBearerToken',
@@ -76,6 +80,7 @@ __all__ = [
     'GcpConnectorInheritFromDelegate',
     'GcpConnectorManual',
     'GcpConnectorOidcAuthentication',
+    'GcpSecretManagerConnectorOidcAuthentication',
     'GitConnectorCredentials',
     'GitConnectorCredentialsHttp',
     'GitConnectorCredentialsSsh',
@@ -256,9 +261,11 @@ __all__ = [
     'GetAwsKmsConnectorCredentialResult',
     'GetAwsKmsConnectorCredentialAssumeRoleResult',
     'GetAwsKmsConnectorCredentialManualResult',
+    'GetAwsKmsConnectorCredentialOidcAuthenticationResult',
     'GetAwsSecretManagerConnectorCredentialResult',
     'GetAwsSecretManagerConnectorCredentialAssumeRoleResult',
     'GetAwsSecretManagerConnectorCredentialManualResult',
+    'GetAwsSecretManagerConnectorCredentialOidcAuthenticationResult',
     'GetAzureCloudCostConnectorBillingExportSpecResult',
     'GetAzureCloudProviderConnectorCredentialResult',
     'GetAzureCloudProviderConnectorCredentialAzureInheritFromDelegateDetailResult',
@@ -277,6 +284,8 @@ __all__ = [
     'GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult',
     'GetConnectorCustomhealthsourceHeaderResult',
     'GetConnectorCustomhealthsourceParamResult',
+    'GetConnectorGcpKmsManualResult',
+    'GetConnectorGcpKmsOidcAuthenticationResult',
     'GetConnectorJdbcCredentialResult',
     'GetConnectorPdcHostResult',
     'GetConnectorRancherBearerTokenResult',
@@ -296,6 +305,7 @@ __all__ = [
     'GetGcpConnectorInheritFromDelegateResult',
     'GetGcpConnectorManualResult',
     'GetGcpConnectorOidcAuthenticationResult',
+    'GetGcpSecretManagerConnectorOidcAuthenticationResult',
     'GetGitConnectorCredentialResult',
     'GetGitConnectorCredentialHttpResult',
     'GetGitConnectorCredentialSshResult',
@@ -1120,6 +1130,8 @@ class AwsKmsConnectorCredentials(dict):
             suggest = "assume_role"
         elif key == "inheritFromDelegate":
             suggest = "inherit_from_delegate"
+        elif key == "oidcAuthentication":
+            suggest = "oidc_authentication"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsKmsConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
@@ -1135,11 +1147,13 @@ class AwsKmsConnectorCredentials(dict):
     def __init__(__self__, *,
                  assume_role: Optional['outputs.AwsKmsConnectorCredentialsAssumeRole'] = None,
                  inherit_from_delegate: Optional[bool] = None,
-                 manual: Optional['outputs.AwsKmsConnectorCredentialsManual'] = None):
+                 manual: Optional['outputs.AwsKmsConnectorCredentialsManual'] = None,
+                 oidc_authentication: Optional['outputs.AwsKmsConnectorCredentialsOidcAuthentication'] = None):
         """
         :param 'AwsKmsConnectorCredentialsAssumeRoleArgs' assume_role: Connect using STS assume role.
         :param bool inherit_from_delegate: Inherit the credentials from from the delegate.
         :param 'AwsKmsConnectorCredentialsManualArgs' manual: Specify the AWS key and secret used for authenticating.
+        :param 'AwsKmsConnectorCredentialsOidcAuthenticationArgs' oidc_authentication: Connect using OIDC authentication.
         """
         if assume_role is not None:
             pulumi.set(__self__, "assume_role", assume_role)
@@ -1147,6 +1161,8 @@ class AwsKmsConnectorCredentials(dict):
             pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         if manual is not None:
             pulumi.set(__self__, "manual", manual)
+        if oidc_authentication is not None:
+            pulumi.set(__self__, "oidc_authentication", oidc_authentication)
 
     @property
     @pulumi.getter(name="assumeRole")
@@ -1171,6 +1187,14 @@ class AwsKmsConnectorCredentials(dict):
         Specify the AWS key and secret used for authenticating.
         """
         return pulumi.get(self, "manual")
+
+    @property
+    @pulumi.getter(name="oidcAuthentication")
+    def oidc_authentication(self) -> Optional['outputs.AwsKmsConnectorCredentialsOidcAuthentication']:
+        """
+        Connect using OIDC authentication.
+        """
+        return pulumi.get(self, "oidc_authentication")
 
 
 @pulumi.output_type
@@ -1282,6 +1306,41 @@ class AwsKmsConnectorCredentialsManual(dict):
 
 
 @pulumi.output_type
+class AwsKmsConnectorCredentialsOidcAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iamRoleArn":
+            suggest = "iam_role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsKmsConnectorCredentialsOidcAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsKmsConnectorCredentialsOidcAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsKmsConnectorCredentialsOidcAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iam_role_arn: str):
+        """
+        :param str iam_role_arn: The ARN of the IAM role to assume.
+        """
+        pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> str:
+        """
+        The ARN of the IAM role to assume.
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+
+@pulumi.output_type
 class AwsSecretManagerConnectorCredentials(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1290,6 +1349,8 @@ class AwsSecretManagerConnectorCredentials(dict):
             suggest = "assume_role"
         elif key == "inheritFromDelegate":
             suggest = "inherit_from_delegate"
+        elif key == "oidcAuthentication":
+            suggest = "oidc_authentication"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsSecretManagerConnectorCredentials. Access the value via the '{suggest}' property getter instead.")
@@ -1305,11 +1366,13 @@ class AwsSecretManagerConnectorCredentials(dict):
     def __init__(__self__, *,
                  assume_role: Optional['outputs.AwsSecretManagerConnectorCredentialsAssumeRole'] = None,
                  inherit_from_delegate: Optional[bool] = None,
-                 manual: Optional['outputs.AwsSecretManagerConnectorCredentialsManual'] = None):
+                 manual: Optional['outputs.AwsSecretManagerConnectorCredentialsManual'] = None,
+                 oidc_authentication: Optional['outputs.AwsSecretManagerConnectorCredentialsOidcAuthentication'] = None):
         """
         :param 'AwsSecretManagerConnectorCredentialsAssumeRoleArgs' assume_role: Connect using STS assume role.
         :param bool inherit_from_delegate: Inherit the credentials from from the delegate.
         :param 'AwsSecretManagerConnectorCredentialsManualArgs' manual: Specify the AWS key and secret used for authenticating.
+        :param 'AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs' oidc_authentication: Authentication using harness oidc.
         """
         if assume_role is not None:
             pulumi.set(__self__, "assume_role", assume_role)
@@ -1317,6 +1380,8 @@ class AwsSecretManagerConnectorCredentials(dict):
             pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         if manual is not None:
             pulumi.set(__self__, "manual", manual)
+        if oidc_authentication is not None:
+            pulumi.set(__self__, "oidc_authentication", oidc_authentication)
 
     @property
     @pulumi.getter(name="assumeRole")
@@ -1341,6 +1406,14 @@ class AwsSecretManagerConnectorCredentials(dict):
         Specify the AWS key and secret used for authenticating.
         """
         return pulumi.get(self, "manual")
+
+    @property
+    @pulumi.getter(name="oidcAuthentication")
+    def oidc_authentication(self) -> Optional['outputs.AwsSecretManagerConnectorCredentialsOidcAuthentication']:
+        """
+        Authentication using harness oidc.
+        """
+        return pulumi.get(self, "oidc_authentication")
 
 
 @pulumi.output_type
@@ -1432,7 +1505,7 @@ class AwsSecretManagerConnectorCredentialsManual(dict):
                  access_key_ref: Optional[str] = None):
         """
         :param str secret_key_ref: The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        :param str access_key_plain_text: The plain text AWS access key.
+        :param str access_key_plain_text: The plain text AWS access key. This is required if the access*key*ref is not provided.
         :param str access_key_ref: The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
@@ -1453,7 +1526,7 @@ class AwsSecretManagerConnectorCredentialsManual(dict):
     @pulumi.getter(name="accessKeyPlainText")
     def access_key_plain_text(self) -> Optional[str]:
         """
-        The plain text AWS access key.
+        The plain text AWS access key. This is required if the access*key*ref is not provided.
         """
         return pulumi.get(self, "access_key_plain_text")
 
@@ -1464,6 +1537,41 @@ class AwsSecretManagerConnectorCredentialsManual(dict):
         The reference to the Harness secret containing the AWS access key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "access_key_ref")
+
+
+@pulumi.output_type
+class AwsSecretManagerConnectorCredentialsOidcAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iamRoleArn":
+            suggest = "iam_role_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSecretManagerConnectorCredentialsOidcAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSecretManagerConnectorCredentialsOidcAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSecretManagerConnectorCredentialsOidcAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iam_role_arn: str):
+        """
+        :param str iam_role_arn: The IAM role ARN.
+        """
+        pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> str:
+        """
+        The IAM role ARN.
+        """
+        return pulumi.get(self, "iam_role_arn")
 
 
 @pulumi.output_type
@@ -2354,6 +2462,141 @@ class ConnectorCustomhealthsourceParam(dict):
         Encrypted value.
         """
         return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class ConnectorGcpKmsManual(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateSelectors":
+            suggest = "delegate_selectors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorGcpKmsManual. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorGcpKmsManual.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorGcpKmsManual.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 credentials: str,
+                 delegate_selectors: Optional[Sequence[str]] = None):
+        """
+        :param str credentials: Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param Sequence[str] delegate_selectors: The delegates to connect with.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> str:
+        """
+        Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[Sequence[str]]:
+        """
+        The delegates to connect with.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class ConnectorGcpKmsOidcAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpProjectId":
+            suggest = "gcp_project_id"
+        elif key == "providerId":
+            suggest = "provider_id"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "workloadPoolId":
+            suggest = "workload_pool_id"
+        elif key == "delegateSelectors":
+            suggest = "delegate_selectors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorGcpKmsOidcAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorGcpKmsOidcAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorGcpKmsOidcAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_project_id: str,
+                 provider_id: str,
+                 service_account_email: str,
+                 workload_pool_id: str,
+                 delegate_selectors: Optional[Sequence[str]] = None):
+        """
+        :param str gcp_project_id: The project number of the GCP project that is used to create the workload identity.
+        :param str provider_id: The OIDC provider ID value configured in GCP.
+        :param str service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
+        :param str workload_pool_id: The workload pool ID value created in GCP.
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        """
+        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "workload_pool_id", workload_pool_id)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter(name="gcpProjectId")
+    def gcp_project_id(self) -> str:
+        """
+        The project number of the GCP project that is used to create the workload identity.
+        """
+        return pulumi.get(self, "gcp_project_id")
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> str:
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        return pulumi.get(self, "provider_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="workloadPoolId")
+    def workload_pool_id(self) -> str:
+        """
+        The workload pool ID value created in GCP.
+        """
+        return pulumi.get(self, "workload_pool_id")
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[Sequence[str]]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
 
 
 @pulumi.output_type
@@ -3683,6 +3926,80 @@ class GcpConnectorOidcAuthentication(dict):
         The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GcpSecretManagerConnectorOidcAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpProjectId":
+            suggest = "gcp_project_id"
+        elif key == "providerId":
+            suggest = "provider_id"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "workloadPoolId":
+            suggest = "workload_pool_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcpSecretManagerConnectorOidcAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcpSecretManagerConnectorOidcAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcpSecretManagerConnectorOidcAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_project_id: str,
+                 provider_id: str,
+                 service_account_email: str,
+                 workload_pool_id: str):
+        """
+        :param str gcp_project_id: The project number of the GCP project that is used to create the workload identity.
+        :param str provider_id: The OIDC provider ID value configured in GCP.
+        :param str service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
+        :param str workload_pool_id: The workload pool ID value created in GCP.
+        """
+        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "workload_pool_id", workload_pool_id)
+
+    @property
+    @pulumi.getter(name="gcpProjectId")
+    def gcp_project_id(self) -> str:
+        """
+        The project number of the GCP project that is used to create the workload identity.
+        """
+        return pulumi.get(self, "gcp_project_id")
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> str:
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        return pulumi.get(self, "provider_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="workloadPoolId")
+    def workload_pool_id(self) -> str:
+        """
+        The workload pool ID value created in GCP.
+        """
+        return pulumi.get(self, "workload_pool_id")
 
 
 @pulumi.output_type
@@ -16043,15 +16360,18 @@ class GetAwsKmsConnectorCredentialResult(dict):
     def __init__(__self__, *,
                  assume_roles: Sequence['outputs.GetAwsKmsConnectorCredentialAssumeRoleResult'],
                  inherit_from_delegate: bool,
-                 manuals: Sequence['outputs.GetAwsKmsConnectorCredentialManualResult']):
+                 manuals: Sequence['outputs.GetAwsKmsConnectorCredentialManualResult'],
+                 oidc_authentications: Sequence['outputs.GetAwsKmsConnectorCredentialOidcAuthenticationResult']):
         """
         :param Sequence['GetAwsKmsConnectorCredentialAssumeRoleArgs'] assume_roles: Connect using STS assume role.
         :param bool inherit_from_delegate: Inherit the credentials from from the delegate.
         :param Sequence['GetAwsKmsConnectorCredentialManualArgs'] manuals: Specify the AWS key and secret used for authenticating.
+        :param Sequence['GetAwsKmsConnectorCredentialOidcAuthenticationArgs'] oidc_authentications: Authentication using OIDC.
         """
         pulumi.set(__self__, "assume_roles", assume_roles)
         pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         pulumi.set(__self__, "manuals", manuals)
+        pulumi.set(__self__, "oidc_authentications", oidc_authentications)
 
     @property
     @pulumi.getter(name="assumeRoles")
@@ -16076,6 +16396,14 @@ class GetAwsKmsConnectorCredentialResult(dict):
         Specify the AWS key and secret used for authenticating.
         """
         return pulumi.get(self, "manuals")
+
+    @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Sequence['outputs.GetAwsKmsConnectorCredentialOidcAuthenticationResult']:
+        """
+        Authentication using OIDC.
+        """
+        return pulumi.get(self, "oidc_authentications")
 
 
 @pulumi.output_type
@@ -16148,19 +16476,40 @@ class GetAwsKmsConnectorCredentialManualResult(dict):
 
 
 @pulumi.output_type
+class GetAwsKmsConnectorCredentialOidcAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 iam_role_arn: str):
+        """
+        :param str iam_role_arn: The IAM role ARN to assume.
+        """
+        pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> str:
+        """
+        The IAM role ARN to assume.
+        """
+        return pulumi.get(self, "iam_role_arn")
+
+
+@pulumi.output_type
 class GetAwsSecretManagerConnectorCredentialResult(dict):
     def __init__(__self__, *,
                  assume_roles: Sequence['outputs.GetAwsSecretManagerConnectorCredentialAssumeRoleResult'],
                  inherit_from_delegate: bool,
-                 manuals: Sequence['outputs.GetAwsSecretManagerConnectorCredentialManualResult']):
+                 manuals: Sequence['outputs.GetAwsSecretManagerConnectorCredentialManualResult'],
+                 oidc_authentications: Sequence['outputs.GetAwsSecretManagerConnectorCredentialOidcAuthenticationResult']):
         """
         :param Sequence['GetAwsSecretManagerConnectorCredentialAssumeRoleArgs'] assume_roles: Connect using STS assume role.
         :param bool inherit_from_delegate: Inherit the credentials from from the delegate.
         :param Sequence['GetAwsSecretManagerConnectorCredentialManualArgs'] manuals: Specify the AWS key and secret used for authenticating.
+        :param Sequence['GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs'] oidc_authentications: Authentication using OIDC.
         """
         pulumi.set(__self__, "assume_roles", assume_roles)
         pulumi.set(__self__, "inherit_from_delegate", inherit_from_delegate)
         pulumi.set(__self__, "manuals", manuals)
+        pulumi.set(__self__, "oidc_authentications", oidc_authentications)
 
     @property
     @pulumi.getter(name="assumeRoles")
@@ -16185,6 +16534,14 @@ class GetAwsSecretManagerConnectorCredentialResult(dict):
         Specify the AWS key and secret used for authenticating.
         """
         return pulumi.get(self, "manuals")
+
+    @property
+    @pulumi.getter(name="oidcAuthentications")
+    def oidc_authentications(self) -> Sequence['outputs.GetAwsSecretManagerConnectorCredentialOidcAuthenticationResult']:
+        """
+        Authentication using OIDC.
+        """
+        return pulumi.get(self, "oidc_authentications")
 
 
 @pulumi.output_type
@@ -16254,6 +16611,24 @@ class GetAwsSecretManagerConnectorCredentialManualResult(dict):
         The reference to the Harness secret containing the AWS secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "secret_key_ref")
+
+
+@pulumi.output_type
+class GetAwsSecretManagerConnectorCredentialOidcAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 iam_role_arn: str):
+        """
+        :param str iam_role_arn: The IAM role ARN to assume.
+        """
+        pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+
+    @property
+    @pulumi.getter(name="iamRoleArn")
+    def iam_role_arn(self) -> str:
+        """
+        The IAM role ARN to assume.
+        """
+        return pulumi.get(self, "iam_role_arn")
 
 
 @pulumi.output_type
@@ -16850,6 +17225,97 @@ class GetConnectorCustomhealthsourceParamResult(dict):
         Encrypted value.
         """
         return pulumi.get(self, "value_encrypted")
+
+
+@pulumi.output_type
+class GetConnectorGcpKmsManualResult(dict):
+    def __init__(__self__, *,
+                 credentials: str,
+                 delegate_selectors: Sequence[str]):
+        """
+        :param str credentials: Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param Sequence[str] delegate_selectors: The delegates to connect with.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> str:
+        """
+        Reference to the Harness secret containing the secret key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to connect with.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+
+@pulumi.output_type
+class GetConnectorGcpKmsOidcAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 delegate_selectors: Sequence[str],
+                 gcp_project_id: str,
+                 provider_id: str,
+                 service_account_email: str,
+                 workload_pool_id: str):
+        """
+        :param Sequence[str] delegate_selectors: The delegates to inherit the credentials from.
+        :param str gcp_project_id: The project number of the GCP project that is used to create the workload identity..
+        :param str provider_id: The OIDC provider ID value configured in GCP.
+        :param str service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
+        :param str workload_pool_id: The workload pool ID value created in GCP.
+        """
+        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "workload_pool_id", workload_pool_id)
+
+    @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Sequence[str]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="gcpProjectId")
+    def gcp_project_id(self) -> str:
+        """
+        The project number of the GCP project that is used to create the workload identity..
+        """
+        return pulumi.get(self, "gcp_project_id")
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> str:
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        return pulumi.get(self, "provider_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="workloadPoolId")
+    def workload_pool_id(self) -> str:
+        """
+        The workload pool ID value created in GCP.
+        """
+        return pulumi.get(self, "workload_pool_id")
 
 
 @pulumi.output_type
@@ -17474,6 +17940,57 @@ class GetGcpConnectorOidcAuthenticationResult(dict):
         The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
+
+    @property
+    @pulumi.getter(name="gcpProjectId")
+    def gcp_project_id(self) -> str:
+        """
+        The project number of the GCP project that is used to create the workload identity..
+        """
+        return pulumi.get(self, "gcp_project_id")
+
+    @property
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> str:
+        """
+        The OIDC provider ID value configured in GCP.
+        """
+        return pulumi.get(self, "provider_id")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        The service account linked to workload identity pool while setting GCP workload identity provider.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="workloadPoolId")
+    def workload_pool_id(self) -> str:
+        """
+        The workload pool ID value created in GCP.
+        """
+        return pulumi.get(self, "workload_pool_id")
+
+
+@pulumi.output_type
+class GetGcpSecretManagerConnectorOidcAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 gcp_project_id: str,
+                 provider_id: str,
+                 service_account_email: str,
+                 workload_pool_id: str):
+        """
+        :param str gcp_project_id: The project number of the GCP project that is used to create the workload identity..
+        :param str provider_id: The OIDC provider ID value configured in GCP.
+        :param str service_account_email: The service account linked to workload identity pool while setting GCP workload identity provider.
+        :param str workload_pool_id: The workload pool ID value created in GCP.
+        """
+        pulumi.set(__self__, "gcp_project_id", gcp_project_id)
+        pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "workload_pool_id", workload_pool_id)
 
     @property
     @pulumi.getter(name="gcpProjectId")

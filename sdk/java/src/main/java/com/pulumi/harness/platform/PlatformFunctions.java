@@ -37,6 +37,8 @@ import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomhealthsourceArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomhealthsourcePlainArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorGcpKmsArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorGcpKmsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorJdbcPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
@@ -239,6 +241,7 @@ import com.pulumi.harness.platform.outputs.GetBitbucketConnectorResult;
 import com.pulumi.harness.platform.outputs.GetCcmFiltersResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomSecretManagerResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomhealthsourceResult;
+import com.pulumi.harness.platform.outputs.GetConnectorGcpKmsResult;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcResult;
 import com.pulumi.harness.platform.outputs.GetConnectorPdcResult;
 import com.pulumi.harness.platform.outputs.GetConnectorRancherResult;
@@ -3191,6 +3194,41 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetConnectorCustomhealthsourceResult> getConnectorCustomhealthsourcePlain(GetConnectorCustomhealthsourcePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", TypeShape.of(GetConnectorCustomhealthsourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up GCP KMS connector.
+     * 
+     */
+    public static Output<GetConnectorGcpKmsResult> getConnectorGcpKms(GetConnectorGcpKmsArgs args) {
+        return getConnectorGcpKms(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up GCP KMS connector.
+     * 
+     */
+    public static CompletableFuture<GetConnectorGcpKmsResult> getConnectorGcpKmsPlain(GetConnectorGcpKmsPlainArgs args) {
+        return getConnectorGcpKmsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up GCP KMS connector.
+     * 
+     */
+    public static Output<GetConnectorGcpKmsResult> getConnectorGcpKms(GetConnectorGcpKmsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorGcpKms:getConnectorGcpKms", TypeShape.of(GetConnectorGcpKmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up GCP KMS connector.
+     * 
+     */
+    public static Output<GetConnectorGcpKmsResult> getConnectorGcpKms(GetConnectorGcpKmsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorGcpKms:getConnectorGcpKms", TypeShape.of(GetConnectorGcpKmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up GCP KMS connector.
+     * 
+     */
+    public static CompletableFuture<GetConnectorGcpKmsResult> getConnectorGcpKmsPlain(GetConnectorGcpKmsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getConnectorGcpKms:getConnectorGcpKms", TypeShape.of(GetConnectorGcpKmsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness JDBC Connector.
