@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const this = harness.platform.getOrganization({
+ * const _this = harness.platform.getOrganization({
  *     identifier: "identifier",
  * });
  * ```
@@ -71,7 +71,7 @@ export interface GetOrganizationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const this = harness.platform.getOrganization({
+ * const _this = harness.platform.getOrganization({
  *     identifier: "identifier",
  * });
  * ```

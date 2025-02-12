@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const default = harness.getSecretManager({
+ * const _default = harness.getSecretManager({
  *     "default": true,
  * });
  * const githubToken = new harness.EncryptedText("github_token", {
