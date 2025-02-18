@@ -1037,7 +1037,17 @@
                 "current": "harness:platform/connectorJdbc:ConnectorJdbc",
                 "fields": {
                     "credentials": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "service_account": {
+                                    "maxItemsOne": true
+                                },
+                                "username_password": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "delegate_selectors": {
                         "maxItemsOne": false
@@ -2059,6 +2069,26 @@
                     }
                 }
             },
+            "harness_platform_infra_variable_set": {
+                "current": "harness:platform/infraVariableSet:InfraVariableSet",
+                "fields": {
+                    "connector": {
+                        "maxItemsOne": false
+                    },
+                    "environment_variable": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable_file": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_infrastructure": {
                 "current": "harness:platform/infrastructure:Infrastructure",
                 "fields": {
@@ -2639,6 +2669,9 @@
                         "maxItemsOne": false
                     },
                     "terraform_variable_file": {
+                        "maxItemsOne": false
+                    },
+                    "variable_sets": {
                         "maxItemsOne": false
                     }
                 }
@@ -3901,7 +3934,17 @@
                 "current": "harness:platform/getConnectorJdbc:getConnectorJdbc",
                 "fields": {
                     "credentials": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "service_account": {
+                                    "maxItemsOne": false
+                                },
+                                "username_password": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "delegate_selectors": {
                         "maxItemsOne": false
@@ -4697,6 +4740,26 @@
             "harness_platform_infra_module": {
                 "current": "harness:platform/getInfraModule:getInfraModule"
             },
+            "harness_platform_infra_variable_set": {
+                "current": "harness:platform/getInfraVariableSet:getInfraVariableSet",
+                "fields": {
+                    "connector": {
+                        "maxItemsOne": false
+                    },
+                    "environment_variable": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable": {
+                        "maxItemsOne": false
+                    },
+                    "terraform_variable_file": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_infrastructure": {
                 "current": "harness:platform/getInfrastructure:getInfrastructure",
                 "fields": {
@@ -5212,6 +5275,9 @@
                         "maxItemsOne": false
                     },
                     "terraform_variable_file": {
+                        "maxItemsOne": false
+                    },
+                    "variable_sets": {
                         "maxItemsOne": false
                     }
                 }
