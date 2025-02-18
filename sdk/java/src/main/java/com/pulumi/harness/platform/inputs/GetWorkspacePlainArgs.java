@@ -153,6 +153,21 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.terraformVariables);
     }
 
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    @Import(name="variableSets")
+    private @Nullable List<String> variableSets;
+
+    /**
+     * @return Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    public Optional<List<String>> variableSets() {
+        return Optional.ofNullable(this.variableSets);
+    }
+
     private GetWorkspacePlainArgs() {}
 
     private GetWorkspacePlainArgs(GetWorkspacePlainArgs $) {
@@ -166,6 +181,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         this.repositorySha = $.repositorySha;
         this.terraformVariableFiles = $.terraformVariableFiles;
         this.terraformVariables = $.terraformVariables;
+        this.variableSets = $.variableSets;
     }
 
     public static Builder builder() {
@@ -300,6 +316,27 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder terraformVariables(GetWorkspaceTerraformVariable... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(@Nullable List<String> variableSets) {
+            $.variableSets = variableSets;
+            return this;
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(String... variableSets) {
+            return variableSets(List.of(variableSets));
         }
 
         public GetWorkspacePlainArgs build() {

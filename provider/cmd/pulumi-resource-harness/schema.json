@@ -3195,17 +3195,58 @@
         },
         "harness:platform/ConnectorJdbcCredentials:ConnectorJdbcCredentials": {
             "properties": {
+                "authType": {
+                    "type": "string",
+                    "description": "Authentication types for JDBC connector\n"
+                },
                 "passwordRef": {
                     "type": "string",
                     "description": "The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "serviceAccount": {
+                    "$ref": "#/types/harness:platform/ConnectorJdbcCredentialsServiceAccount:ConnectorJdbcCredentialsServiceAccount",
+                    "description": "Authenticate using service account.\n"
                 },
                 "username": {
                     "type": "string",
                     "description": "The username to use for the database server.\n"
                 },
+                "usernamePassword": {
+                    "$ref": "#/types/harness:platform/ConnectorJdbcCredentialsUsernamePassword:ConnectorJdbcCredentialsUsernamePassword",
+                    "description": "Authenticate using username password.\n"
+                },
                 "usernameRef": {
                     "type": "string",
                     "description": "The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/ConnectorJdbcCredentialsServiceAccount:ConnectorJdbcCredentialsServiceAccount": {
+            "properties": {
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tokenRef"
+            ]
+        },
+        "harness:platform/ConnectorJdbcCredentialsUsernamePassword:ConnectorJdbcCredentialsUsernamePassword": {
+            "properties": {
+                "passwordRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use for authentication.\n"
+                },
+                "usernameRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
                 }
             },
             "type": "object",
@@ -6011,6 +6052,100 @@
             "type": "object",
             "required": [
                 "passwordRef"
+            ]
+        },
+        "harness:platform/InfraVariableSetConnector:InfraVariableSetConnector": {
+            "properties": {
+                "connectorRef": {
+                    "type": "string",
+                    "description": "Unique identifier of the connector.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type indicates the type of the connector. Currently we support aws, azure, gcp.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectorRef",
+                "type"
+            ]
+        },
+        "harness:platform/InfraVariableSetEnvironmentVariable:InfraVariableSetEnvironmentVariable": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Key is the identifier for the variable. Must be unique within the variable set.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.\n"
+                },
+                "valueType": {
+                    "type": "string",
+                    "description": "Value type indicates the value type of the variable. Currently we support string and secret.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value",
+                "valueType"
+            ]
+        },
+        "harness:platform/InfraVariableSetTerraformVariable:InfraVariableSetTerraformVariable": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Key is the identifier for the variable. Must be unique within the variable set.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.\n"
+                },
+                "valueType": {
+                    "type": "string",
+                    "description": "Value type indicates the value type of the variable. Currently we support string and secret.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value",
+                "valueType"
+            ]
+        },
+        "harness:platform/InfraVariableSetTerraformVariableFile:InfraVariableSetTerraformVariableFile": {
+            "properties": {
+                "repository": {
+                    "type": "string",
+                    "description": "Repository is the name of the repository to fetch the code from.\n"
+                },
+                "repositoryBranch": {
+                    "type": "string",
+                    "description": "Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set\n"
+                },
+                "repositoryCommit": {
+                    "type": "string",
+                    "description": "Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.\n"
+                },
+                "repositoryConnector": {
+                    "type": "string",
+                    "description": "Repository connector is the reference to the connector used to fetch the variables.\n"
+                },
+                "repositoryPath": {
+                    "type": "string",
+                    "description": "Repository path is the path in which the variables reside.\n"
+                },
+                "repositorySha": {
+                    "type": "string",
+                    "description": "Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "repository",
+                "repositoryConnector"
             ]
         },
         "harness:platform/InfrastructureGitDetails:InfrastructureGitDetails": {
@@ -9424,17 +9559,82 @@
         },
         "harness:platform/getConnectorJdbcCredential:getConnectorJdbcCredential": {
             "properties": {
+                "authType": {
+                    "type": "string",
+                    "description": "Authentication types for JDBC connector\n"
+                },
                 "passwordRef": {
                     "type": "string",
                     "description": "The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "serviceAccounts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getConnectorJdbcCredentialServiceAccount:getConnectorJdbcCredentialServiceAccount"
+                    },
+                    "description": "Authenticate using service account.\n"
                 },
                 "username": {
                     "type": "string",
                     "description": "The username to use for the database server.\n"
                 },
+                "usernamePasswords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getConnectorJdbcCredentialUsernamePassword:getConnectorJdbcCredentialUsernamePassword"
+                    },
+                    "description": "Authenticate using username password.\n"
+                },
                 "usernameRef": {
                     "type": "string",
                     "description": "The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authType",
+                "passwordRef",
+                "serviceAccounts",
+                "username",
+                "usernamePasswords",
+                "usernameRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getConnectorJdbcCredentialServiceAccount:getConnectorJdbcCredentialServiceAccount": {
+            "properties": {
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tokenRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getConnectorJdbcCredentialUsernamePassword:getConnectorJdbcCredentialUsernamePassword": {
+            "properties": {
+                "passwordRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use for authentication.\n"
+                },
+                "usernameRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
                 }
             },
             "type": "object",
@@ -11664,6 +11864,100 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "harness:platform/getInfraVariableSetConnector:getInfraVariableSetConnector": {
+            "properties": {
+                "connectorRef": {
+                    "type": "string",
+                    "description": "Unique identifier of the connector.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type indicates the type of the connector. Currently we support aws, azure, gcp.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectorRef",
+                "type"
+            ]
+        },
+        "harness:platform/getInfraVariableSetEnvironmentVariable:getInfraVariableSetEnvironmentVariable": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Key is the identifier for the variable`\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "value is the value of the variable\n"
+                },
+                "valueType": {
+                    "type": "string",
+                    "description": "Value type indicates the value type of the variable, text or secret\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value",
+                "valueType"
+            ]
+        },
+        "harness:platform/getInfraVariableSetTerraformVariable:getInfraVariableSetTerraformVariable": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Key is the identifier for the variable`\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "value is the value of the variable\n"
+                },
+                "valueType": {
+                    "type": "string",
+                    "description": "Value type indicates the value type of the variable, text or secret\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value",
+                "valueType"
+            ]
+        },
+        "harness:platform/getInfraVariableSetTerraformVariableFile:getInfraVariableSetTerraformVariableFile": {
+            "properties": {
+                "repository": {
+                    "type": "string",
+                    "description": "Repository is the name of the repository to fetch the code from.\n"
+                },
+                "repositoryBranch": {
+                    "type": "string",
+                    "description": "Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set\n"
+                },
+                "repositoryCommit": {
+                    "type": "string",
+                    "description": "Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.\n"
+                },
+                "repositoryConnector": {
+                    "type": "string",
+                    "description": "Repository connector is the reference to the connector used to fetch the variables.\n"
+                },
+                "repositoryPath": {
+                    "type": "string",
+                    "description": "Repository path is the path in which the variables reside.\n"
+                },
+                "repositorySha": {
+                    "type": "string",
+                    "description": "Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "repository",
+                "repositoryConnector"
+            ]
         },
         "harness:platform/getInfrastructureGitDetails:getInfrastructureGitDetails": {
             "properties": {
@@ -21195,7 +21489,7 @@
             }
         },
         "harness:platform/connectorJdbc:ConnectorJdbc": {
-            "description": "Resource for creating a JDBC connector.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.ConnectorJdbc(\"test\", {\n    identifier: \"identifer\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    url: \"jdbc:sqlserver://1.2.3;trustServerCertificate=true\",\n    delegateSelectors: [\"harness-delegate\"],\n    credentials: {\n        username: \"admin\",\n        passwordRef: \"account.secret_id\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.ConnectorJdbc(\"test\",\n    identifier=\"identifer\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    url=\"jdbc:sqlserver://1.2.3;trustServerCertificate=true\",\n    delegate_selectors=[\"harness-delegate\"],\n    credentials={\n        \"username\": \"admin\",\n        \"password_ref\": \"account.secret_id\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.ConnectorJdbc(\"test\", new()\n    {\n        Identifier = \"identifer\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        Url = \"jdbc:sqlserver://1.2.3;trustServerCertificate=true\",\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        Credentials = new Harness.Platform.Inputs.ConnectorJdbcCredentialsArgs\n        {\n            Username = \"admin\",\n            PasswordRef = \"account.secret_id\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewConnectorJdbc(ctx, \"test\", \u0026platform.ConnectorJdbcArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifer\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tUrl: pulumi.String(\"jdbc:sqlserver://1.2.3;trustServerCertificate=true\"),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tCredentials: \u0026platform.ConnectorJdbcCredentialsArgs{\n\t\t\t\tUsername:    pulumi.String(\"admin\"),\n\t\t\t\tPasswordRef: pulumi.String(\"account.secret_id\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.ConnectorJdbc;\nimport com.pulumi.harness.platform.ConnectorJdbcArgs;\nimport com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new ConnectorJdbc(\"test\", ConnectorJdbcArgs.builder()\n            .identifier(\"identifer\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .url(\"jdbc:sqlserver://1.2.3;trustServerCertificate=true\")\n            .delegateSelectors(\"harness-delegate\")\n            .credentials(ConnectorJdbcCredentialsArgs.builder()\n                .username(\"admin\")\n                .passwordRef(\"account.secret_id\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:ConnectorJdbc\n    properties:\n      identifier: identifer\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      url: jdbc:sqlserver://1.2.3;trustServerCertificate=true\n      delegateSelectors:\n        - harness-delegate\n      credentials:\n        username: admin\n        passwordRef: account.secret_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003cconnector_id\u003e\n```\n\nImport org level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
+            "description": "Resource for creating a JDBC connector.\n\n## Import\n\nImport account level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003cconnector_id\u003e\n```\n\nImport org level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level jdbc connector \n\n```sh\n$ pulumi import harness:platform/connectorJdbc:ConnectorJdbc example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
             "properties": {
                 "credentials": {
                     "$ref": "#/types/harness:platform/ConnectorJdbcCredentials:ConnectorJdbcCredentials",
@@ -27667,6 +27961,187 @@
                             "type": "string"
                         },
                         "description": "List of versions of the module.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/infraVariableSet:InfraVariableSet": {
+            "description": "Resource for managing infrastructure Variable Sets\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.InfraVariableSet(\"example\", {\n    identifier: \"example\",\n    name: \"example\",\n    orgId: test.id,\n    projectId: testHarnessPlatformProject.id,\n    description: \"some description\",\n    environmentVariables: [\n        {\n            key: \"key1\",\n            value: \"value1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"harness_platform_secret_text.test.id\",\n            valueType: \"secret\",\n        },\n    ],\n    terraformVariables: [\n        {\n            key: \"key1\",\n            value: \"1111\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"1111u\",\n            valueType: \"string\",\n        },\n    ],\n    terraformVariableFiles: [\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"main\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: \"harness_platform_connector_github.test.id\",\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"br2\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: \"harness_platform_connector_github.test.id\",\n        },\n    ],\n    connectors: [\n        {\n            connectorRef: \"harness_platform_connector_aws.test.id\",\n            type: \"aws\",\n        },\n        {\n            connectorRef: \"harness_platform_connector_azure.test.id\",\n            type: \"azure\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.InfraVariableSet(\"example\",\n    identifier=\"example\",\n    name=\"example\",\n    org_id=test[\"id\"],\n    project_id=test_harness_platform_project[\"id\"],\n    description=\"some description\",\n    environment_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"value1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"harness_platform_secret_text.test.id\",\n            \"value_type\": \"secret\",\n        },\n    ],\n    terraform_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"1111\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"1111u\",\n            \"value_type\": \"string\",\n        },\n    ],\n    terraform_variable_files=[\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"main\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": \"harness_platform_connector_github.test.id\",\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"br2\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": \"harness_platform_connector_github.test.id\",\n        },\n    ],\n    connectors=[\n        {\n            \"connector_ref\": \"harness_platform_connector_aws.test.id\",\n            \"type\": \"aws\",\n        },\n        {\n            \"connector_ref\": \"harness_platform_connector_azure.test.id\",\n            \"type\": \"azure\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.InfraVariableSet(\"example\", new()\n    {\n        Identifier = \"example\",\n        Name = \"example\",\n        OrgId = test.Id,\n        ProjectId = testHarnessPlatformProject.Id,\n        Description = \"some description\",\n        EnvironmentVariables = new[]\n        {\n            new Harness.Platform.Inputs.InfraVariableSetEnvironmentVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"value1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.InfraVariableSetEnvironmentVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"harness_platform_secret_text.test.id\",\n                ValueType = \"secret\",\n            },\n        },\n        TerraformVariables = new[]\n        {\n            new Harness.Platform.Inputs.InfraVariableSetTerraformVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"1111\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.InfraVariableSetTerraformVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"1111u\",\n                ValueType = \"string\",\n            },\n        },\n        TerraformVariableFiles = new[]\n        {\n            new Harness.Platform.Inputs.InfraVariableSetTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"main\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = \"harness_platform_connector_github.test.id\",\n            },\n            new Harness.Platform.Inputs.InfraVariableSetTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"br2\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = \"harness_platform_connector_github.test.id\",\n            },\n        },\n        Connectors = new[]\n        {\n            new Harness.Platform.Inputs.InfraVariableSetConnectorArgs\n            {\n                ConnectorRef = \"harness_platform_connector_aws.test.id\",\n                Type = \"aws\",\n            },\n            new Harness.Platform.Inputs.InfraVariableSetConnectorArgs\n            {\n                ConnectorRef = \"harness_platform_connector_azure.test.id\",\n                Type = \"azure\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewInfraVariableSet(ctx, \"example\", \u0026platform.InfraVariableSetArgs{\n\t\t\tIdentifier:  pulumi.String(\"example\"),\n\t\t\tName:        pulumi.String(\"example\"),\n\t\t\tOrgId:       pulumi.Any(test.Id),\n\t\t\tProjectId:   pulumi.Any(testHarnessPlatformProject.Id),\n\t\t\tDescription: pulumi.String(\"some description\"),\n\t\t\tEnvironmentVariables: platform.InfraVariableSetEnvironmentVariableArray{\n\t\t\t\t\u0026platform.InfraVariableSetEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"value1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.InfraVariableSetEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"harness_platform_secret_text.test.id\"),\n\t\t\t\t\tValueType: pulumi.String(\"secret\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariables: platform.InfraVariableSetTerraformVariableArray{\n\t\t\t\t\u0026platform.InfraVariableSetTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"1111\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.InfraVariableSetTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"1111u\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariableFiles: platform.InfraVariableSetTerraformVariableFileArray{\n\t\t\t\t\u0026platform.InfraVariableSetTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.String(\"harness_platform_connector_github.test.id\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.InfraVariableSetTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"br2\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.String(\"harness_platform_connector_github.test.id\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tConnectors: platform.InfraVariableSetConnectorArray{\n\t\t\t\t\u0026platform.InfraVariableSetConnectorArgs{\n\t\t\t\t\tConnectorRef: pulumi.String(\"harness_platform_connector_aws.test.id\"),\n\t\t\t\t\tType:         pulumi.String(\"aws\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.InfraVariableSetConnectorArgs{\n\t\t\t\t\tConnectorRef: pulumi.String(\"harness_platform_connector_azure.test.id\"),\n\t\t\t\t\tType:         pulumi.String(\"azure\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.InfraVariableSet;\nimport com.pulumi.harness.platform.InfraVariableSetArgs;\nimport com.pulumi.harness.platform.inputs.InfraVariableSetEnvironmentVariableArgs;\nimport com.pulumi.harness.platform.inputs.InfraVariableSetTerraformVariableArgs;\nimport com.pulumi.harness.platform.inputs.InfraVariableSetTerraformVariableFileArgs;\nimport com.pulumi.harness.platform.inputs.InfraVariableSetConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfraVariableSet(\"example\", InfraVariableSetArgs.builder()\n            .identifier(\"example\")\n            .name(\"example\")\n            .orgId(test.id())\n            .projectId(testHarnessPlatformProject.id())\n            .description(\"some description\")\n            .environmentVariables(            \n                InfraVariableSetEnvironmentVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"value1\")\n                    .valueType(\"string\")\n                    .build(),\n                InfraVariableSetEnvironmentVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"harness_platform_secret_text.test.id\")\n                    .valueType(\"secret\")\n                    .build())\n            .terraformVariables(            \n                InfraVariableSetTerraformVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"1111\")\n                    .valueType(\"string\")\n                    .build(),\n                InfraVariableSetTerraformVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"1111u\")\n                    .valueType(\"string\")\n                    .build())\n            .terraformVariableFiles(            \n                InfraVariableSetTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"main\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(\"harness_platform_connector_github.test.id\")\n                    .build(),\n                InfraVariableSetTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"br2\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(\"harness_platform_connector_github.test.id\")\n                    .build())\n            .connectors(            \n                InfraVariableSetConnectorArgs.builder()\n                    .connectorRef(\"harness_platform_connector_aws.test.id\")\n                    .type(\"aws\")\n                    .build(),\n                InfraVariableSetConnectorArgs.builder()\n                    .connectorRef(\"harness_platform_connector_azure.test.id\")\n                    .type(\"azure\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:InfraVariableSet\n    properties:\n      identifier: example\n      name: example\n      orgId: ${test.id}\n      projectId: ${testHarnessPlatformProject.id}\n      description: some description\n      environmentVariables:\n        - key: key1\n          value: value1\n          valueType: string\n        - key: key2\n          value: harness_platform_secret_text.test.id\n          valueType: secret\n      terraformVariables:\n        - key: key1\n          value: '1111'\n          valueType: string\n        - key: key2\n          value: 1111u\n          valueType: string\n      terraformVariableFiles:\n        - repository: https://github.com/org/repo\n          repositoryBranch: main\n          repositoryPath: tf/aws/basic\n          repositoryConnector: harness_platform_connector_github.test.id\n        - repository: https://github.com/org/repo\n          repositoryBranch: br2\n          repositoryPath: tf/aws/basic\n          repositoryConnector: harness_platform_connector_github.test.id\n      connectors:\n        - connectorRef: harness_platform_connector_aws.test.id\n          type: aws\n        - connectorRef: harness_platform_connector_azure.test.id\n          type: azure\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/infraVariableSet:InfraVariableSet example \u003cvarset_id\u003e\n```\n\n```sh\n$ pulumi import harness:platform/infraVariableSet:InfraVariableSet example \u003corg_id\u003e/\u003cvarset_id\u003e\n```\n\n```sh\n$ pulumi import harness:platform/infraVariableSet:InfraVariableSet example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cvarset_id\u003e\n```\n\n",
+            "properties": {
+                "connectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetConnector:InfraVariableSetConnector"
+                    },
+                    "description": "Provider connector configured on the variable set\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "environmentVariables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetEnvironmentVariable:InfraVariableSetEnvironmentVariable"
+                    },
+                    "description": "Environment variables configured on the variable set\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "terraformVariableFiles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetTerraformVariableFile:InfraVariableSetTerraformVariableFile"
+                    }
+                },
+                "terraformVariables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetTerraformVariable:InfraVariableSetTerraformVariable"
+                    }
+                }
+            },
+            "required": [
+                "identifier",
+                "name"
+            ],
+            "inputProperties": {
+                "connectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetConnector:InfraVariableSetConnector"
+                    },
+                    "description": "Provider connector configured on the variable set\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "environmentVariables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetEnvironmentVariable:InfraVariableSetEnvironmentVariable"
+                    },
+                    "description": "Environment variables configured on the variable set\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "terraformVariableFiles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetTerraformVariableFile:InfraVariableSetTerraformVariableFile"
+                    }
+                },
+                "terraformVariables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/InfraVariableSetTerraformVariable:InfraVariableSetTerraformVariable"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "identifier"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InfraVariableSet resources.\n",
+                "properties": {
+                    "connectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/InfraVariableSetConnector:InfraVariableSetConnector"
+                        },
+                        "description": "Provider connector configured on the variable set\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "environmentVariables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/InfraVariableSetEnvironmentVariable:InfraVariableSetEnvironmentVariable"
+                        },
+                        "description": "Environment variables configured on the variable set\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    },
+                    "terraformVariableFiles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/InfraVariableSetTerraformVariableFile:InfraVariableSetTerraformVariableFile"
+                        }
+                    },
+                    "terraformVariables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/InfraVariableSetTerraformVariable:InfraVariableSetTerraformVariable"
+                        }
                     }
                 },
                 "type": "object"
@@ -35707,7 +36182,7 @@
             }
         },
         "harness:platform/workspace:Workspace": {
-            "description": "Resource for managing Workspaces\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.Workspace(\"example\", {\n    name: \"example\",\n    identifier: \"example\",\n    orgId: testHarnessPlatformOrganization.id,\n    projectId: testHarnessPlatformProject.id,\n    provisionerType: \"terraform\",\n    provisionerVersion: \"1.5.6\",\n    repository: \"https://github.com/org/repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    costEstimationEnabled: true,\n    providerConnector: test.id,\n    repositoryConnector: test.id,\n    terraformVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    environmentVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    terraformVariableFiles: [\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"main\",\n            repositoryPath: \"tf/gcp/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryCommit: \"v1.0.0\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositorySha: \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.Workspace(\"example\",\n    name=\"example\",\n    identifier=\"example\",\n    org_id=test_harness_platform_organization[\"id\"],\n    project_id=test_harness_platform_project[\"id\"],\n    provisioner_type=\"terraform\",\n    provisioner_version=\"1.5.6\",\n    repository=\"https://github.com/org/repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    cost_estimation_enabled=True,\n    provider_connector=test[\"id\"],\n    repository_connector=test[\"id\"],\n    terraform_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    environment_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    terraform_variable_files=[\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"main\",\n            \"repository_path\": \"tf/gcp/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_commit\": \"v1.0.0\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_sha\": \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.Workspace(\"example\", new()\n    {\n        Name = \"example\",\n        Identifier = \"example\",\n        OrgId = testHarnessPlatformOrganization.Id,\n        ProjectId = testHarnessPlatformProject.Id,\n        ProvisionerType = \"terraform\",\n        ProvisionerVersion = \"1.5.6\",\n        Repository = \"https://github.com/org/repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        CostEstimationEnabled = true,\n        ProviderConnector = test.Id,\n        RepositoryConnector = test.Id,\n        TerraformVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        EnvironmentVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        TerraformVariableFiles = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"main\",\n                RepositoryPath = \"tf/gcp/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryCommit = \"v1.0.0\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositorySha = \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewWorkspace(ctx, \"example\", \u0026platform.WorkspaceArgs{\n\t\t\tName:                  pulumi.String(\"example\"),\n\t\t\tIdentifier:            pulumi.String(\"example\"),\n\t\t\tOrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),\n\t\t\tProjectId:             pulumi.Any(testHarnessPlatformProject.Id),\n\t\t\tProvisionerType:       pulumi.String(\"terraform\"),\n\t\t\tProvisionerVersion:    pulumi.String(\"1.5.6\"),\n\t\t\tRepository:            pulumi.String(\"https://github.com/org/repo\"),\n\t\t\tRepositoryBranch:      pulumi.String(\"main\"),\n\t\t\tRepositoryPath:        pulumi.String(\"tf/aws/basic\"),\n\t\t\tCostEstimationEnabled: pulumi.Bool(true),\n\t\t\tProviderConnector:     pulumi.Any(test.Id),\n\t\t\tRepositoryConnector:   pulumi.Any(test.Id),\n\t\t\tTerraformVariables: platform.WorkspaceTerraformVariableArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnvironmentVariables: platform.WorkspaceEnvironmentVariableArray{\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariableFiles: platform.WorkspaceTerraformVariableFileArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/gcp/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryCommit:    pulumi.String(\"v1.0.0\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositorySha:       pulumi.String(\"349d90bb9c90f4a3482981c259080de31609e6f6\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Workspace;\nimport com.pulumi.harness.platform.WorkspaceArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Workspace(\"example\", WorkspaceArgs.builder()\n            .name(\"example\")\n            .identifier(\"example\")\n            .orgId(testHarnessPlatformOrganization.id())\n            .projectId(testHarnessPlatformProject.id())\n            .provisionerType(\"terraform\")\n            .provisionerVersion(\"1.5.6\")\n            .repository(\"https://github.com/org/repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .costEstimationEnabled(true)\n            .providerConnector(test.id())\n            .repositoryConnector(test.id())\n            .terraformVariables(            \n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .environmentVariables(            \n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .terraformVariableFiles(            \n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"main\")\n                    .repositoryPath(\"tf/gcp/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryCommit(\"v1.0.0\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositorySha(\"349d90bb9c90f4a3482981c259080de31609e6f6\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:Workspace\n    properties:\n      name: example\n      identifier: example\n      orgId: ${testHarnessPlatformOrganization.id}\n      projectId: ${testHarnessPlatformProject.id}\n      provisionerType: terraform\n      provisionerVersion: 1.5.6\n      repository: https://github.com/org/repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      costEstimationEnabled: true\n      providerConnector: ${test.id}\n      repositoryConnector: ${test.id}\n      terraformVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      environmentVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      terraformVariableFiles:\n        - repository: https://github.com/org/repo\n          repositoryBranch: main\n          repositoryPath: tf/gcp/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositoryCommit: v1.0.0\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositorySha: 349d90bb9c90f4a3482981c259080de31609e6f6\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/workspace:Workspace example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cslo_id\u003e\n```\n\n",
+            "description": "Resource for managing Workspaces\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.Workspace(\"example\", {\n    name: \"example\",\n    identifier: \"example\",\n    orgId: testHarnessPlatformOrganization.id,\n    projectId: testHarnessPlatformProject.id,\n    provisionerType: \"terraform\",\n    provisionerVersion: \"1.5.6\",\n    repository: \"https://github.com/org/repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    costEstimationEnabled: true,\n    providerConnector: test.id,\n    repositoryConnector: test.id,\n    terraformVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    environmentVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    terraformVariableFiles: [\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"main\",\n            repositoryPath: \"tf/gcp/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryCommit: \"v1.0.0\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositorySha: \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n    ],\n    variableSets: [testHarnessPlatformInfraVariableSet.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.Workspace(\"example\",\n    name=\"example\",\n    identifier=\"example\",\n    org_id=test_harness_platform_organization[\"id\"],\n    project_id=test_harness_platform_project[\"id\"],\n    provisioner_type=\"terraform\",\n    provisioner_version=\"1.5.6\",\n    repository=\"https://github.com/org/repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    cost_estimation_enabled=True,\n    provider_connector=test[\"id\"],\n    repository_connector=test[\"id\"],\n    terraform_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    environment_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    terraform_variable_files=[\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"main\",\n            \"repository_path\": \"tf/gcp/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_commit\": \"v1.0.0\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_sha\": \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n    ],\n    variable_sets=[test_harness_platform_infra_variable_set[\"id\"]])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.Workspace(\"example\", new()\n    {\n        Name = \"example\",\n        Identifier = \"example\",\n        OrgId = testHarnessPlatformOrganization.Id,\n        ProjectId = testHarnessPlatformProject.Id,\n        ProvisionerType = \"terraform\",\n        ProvisionerVersion = \"1.5.6\",\n        Repository = \"https://github.com/org/repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        CostEstimationEnabled = true,\n        ProviderConnector = test.Id,\n        RepositoryConnector = test.Id,\n        TerraformVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        EnvironmentVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        TerraformVariableFiles = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"main\",\n                RepositoryPath = \"tf/gcp/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryCommit = \"v1.0.0\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositorySha = \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n        },\n        VariableSets = new[]\n        {\n            testHarnessPlatformInfraVariableSet.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewWorkspace(ctx, \"example\", \u0026platform.WorkspaceArgs{\n\t\t\tName:                  pulumi.String(\"example\"),\n\t\t\tIdentifier:            pulumi.String(\"example\"),\n\t\t\tOrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),\n\t\t\tProjectId:             pulumi.Any(testHarnessPlatformProject.Id),\n\t\t\tProvisionerType:       pulumi.String(\"terraform\"),\n\t\t\tProvisionerVersion:    pulumi.String(\"1.5.6\"),\n\t\t\tRepository:            pulumi.String(\"https://github.com/org/repo\"),\n\t\t\tRepositoryBranch:      pulumi.String(\"main\"),\n\t\t\tRepositoryPath:        pulumi.String(\"tf/aws/basic\"),\n\t\t\tCostEstimationEnabled: pulumi.Bool(true),\n\t\t\tProviderConnector:     pulumi.Any(test.Id),\n\t\t\tRepositoryConnector:   pulumi.Any(test.Id),\n\t\t\tTerraformVariables: platform.WorkspaceTerraformVariableArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnvironmentVariables: platform.WorkspaceEnvironmentVariableArray{\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariableFiles: platform.WorkspaceTerraformVariableFileArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/gcp/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryCommit:    pulumi.String(\"v1.0.0\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositorySha:       pulumi.String(\"349d90bb9c90f4a3482981c259080de31609e6f6\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t\tVariableSets: pulumi.StringArray{\n\t\t\t\ttestHarnessPlatformInfraVariableSet.Id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Workspace;\nimport com.pulumi.harness.platform.WorkspaceArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Workspace(\"example\", WorkspaceArgs.builder()\n            .name(\"example\")\n            .identifier(\"example\")\n            .orgId(testHarnessPlatformOrganization.id())\n            .projectId(testHarnessPlatformProject.id())\n            .provisionerType(\"terraform\")\n            .provisionerVersion(\"1.5.6\")\n            .repository(\"https://github.com/org/repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .costEstimationEnabled(true)\n            .providerConnector(test.id())\n            .repositoryConnector(test.id())\n            .terraformVariables(            \n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .environmentVariables(            \n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .terraformVariableFiles(            \n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"main\")\n                    .repositoryPath(\"tf/gcp/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryCommit(\"v1.0.0\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositorySha(\"349d90bb9c90f4a3482981c259080de31609e6f6\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build())\n            .variableSets(testHarnessPlatformInfraVariableSet.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:Workspace\n    properties:\n      name: example\n      identifier: example\n      orgId: ${testHarnessPlatformOrganization.id}\n      projectId: ${testHarnessPlatformProject.id}\n      provisionerType: terraform\n      provisionerVersion: 1.5.6\n      repository: https://github.com/org/repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      costEstimationEnabled: true\n      providerConnector: ${test.id}\n      repositoryConnector: ${test.id}\n      terraformVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      environmentVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      terraformVariableFiles:\n        - repository: https://github.com/org/repo\n          repositoryBranch: main\n          repositoryPath: tf/gcp/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositoryCommit: v1.0.0\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositorySha: 349d90bb9c90f4a3482981c259080de31609e6f6\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n      variableSets:\n        - ${testHarnessPlatformInfraVariableSet.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/workspace:Workspace example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cslo_id\u003e\n```\n\n",
             "properties": {
                 "costEstimationEnabled": {
                     "type": "boolean",
@@ -35799,6 +36274,13 @@
                     "items": {
                         "$ref": "#/types/harness:platform/WorkspaceTerraformVariable:WorkspaceTerraformVariable"
                     }
+                },
+                "variableSets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Variable set identifiers. Currently support only one variable set.\n"
                 }
             },
             "required": [
@@ -35908,6 +36390,13 @@
                     "items": {
                         "$ref": "#/types/harness:platform/WorkspaceTerraformVariable:WorkspaceTerraformVariable"
                     }
+                },
+                "variableSets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Variable set identifiers. Currently support only one variable set.\n"
                 }
             },
             "requiredInputs": [
@@ -36018,6 +36507,13 @@
                         "items": {
                             "$ref": "#/types/harness:platform/WorkspaceTerraformVariable:WorkspaceTerraformVariable"
                         }
+                    },
+                    "variableSets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Variable set identifiers. Currently support only one variable set.\n"
                     }
                 },
                 "type": "object"
@@ -43078,6 +43574,7 @@
                         "type": "string"
                     },
                     "executeOnDelegate": {
+                        "description": "Execute on delegate or not.\n",
                         "type": "boolean"
                     },
                     "id": {
@@ -44542,6 +45039,133 @@
                     "synced",
                     "system",
                     "tags"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getInfraVariableSet:getInfraVariableSet": {
+            "description": "Data source for retrieving Variable Sets.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = harness.platform.getInfraVariableSet({\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.get_infra_variable_set(identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = Harness.Platform.GetInfraVariableSet.Invoke(new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupInfraVariableSet(ctx, \u0026platform.LookupInfraVariableSetArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t\tOrgId:      pulumi.StringRef(\"org_id\"),\n\t\t\tProjectId:  pulumi.StringRef(\"project_id\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: harness:platform:getInfraVariableSet\n      arguments:\n        identifier: identifier\n        orgId: org_id\n        projectId: project_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getInfraVariableSet.\n",
+                "properties": {
+                    "connectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetConnector:getInfraVariableSetConnector"
+                        },
+                        "description": "Provider connector configured on the variable set\n"
+                    },
+                    "environmentVariables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetEnvironmentVariable:getInfraVariableSetEnvironmentVariable"
+                        },
+                        "description": "Environment variables configured on the variable set\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Identifier of the Variable Set\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Variable Set\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Organization Identifier\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project Identifier\n"
+                    },
+                    "terraformVariableFiles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetTerraformVariableFile:getInfraVariableSetTerraformVariableFile"
+                        }
+                    },
+                    "terraformVariables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetTerraformVariable:getInfraVariableSetTerraformVariable"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getInfraVariableSet.\n",
+                "properties": {
+                    "connectors": {
+                        "description": "Provider connector configured on the variable set\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetConnector:getInfraVariableSetConnector"
+                        },
+                        "type": "array"
+                    },
+                    "description": {
+                        "description": "Description of the Variable Set\n",
+                        "type": "string"
+                    },
+                    "environmentVariables": {
+                        "description": "Environment variables configured on the variable set\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetEnvironmentVariable:getInfraVariableSetEnvironmentVariable"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Identifier of the Variable Set\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the Variable Set\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Organization Identifier\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Project Identifier\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "terraformVariableFiles": {
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetTerraformVariableFile:getInfraVariableSetTerraformVariableFile"
+                        },
+                        "type": "array"
+                    },
+                    "terraformVariables": {
+                        "items": {
+                            "$ref": "#/types/harness:platform/getInfraVariableSetTerraformVariable:getInfraVariableSetTerraformVariable"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "connectors",
+                    "description",
+                    "environmentVariables",
+                    "identifier",
+                    "tags",
+                    "terraformVariables",
+                    "terraformVariableFiles",
+                    "id"
                 ],
                 "type": "object"
             }
@@ -49471,6 +50095,13 @@
                         "items": {
                             "$ref": "#/types/harness:platform/getWorkspaceTerraformVariable:getWorkspaceTerraformVariable"
                         }
+                    },
+                    "variableSets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Variable set identifiers. Currently support only one variable set.\n"
                     }
                 },
                 "type": "object",
@@ -49571,6 +50202,13 @@
                             "$ref": "#/types/harness:platform/getWorkspaceTerraformVariable:getWorkspaceTerraformVariable"
                         },
                         "type": "array"
+                    },
+                    "variableSets": {
+                        "description": "Variable set identifiers. Currently support only one variable set.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
@@ -49593,6 +50231,7 @@
                     "repositorySha",
                     "terraformVariables",
                     "terraformVariableFiles",
+                    "variableSets",
                     "id"
                 ],
                 "type": "object"

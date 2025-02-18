@@ -105,6 +105,7 @@ import javax.annotation.Nullable;
  *                     .repositoryPath("tf/aws/basic")
  *                     .repositoryConnector(test.id())
  *                     .build())
+ *             .variableSets(testHarnessPlatformInfraVariableSet.id())
  *             .build());
  * 
  *     }
@@ -369,6 +370,20 @@ public class Workspace extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<WorkspaceTerraformVariable>>> terraformVariables() {
         return Codegen.optional(this.terraformVariables);
+    }
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    @Export(name="variableSets", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> variableSets;
+
+    /**
+     * @return Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    public Output<Optional<List<String>>> variableSets() {
+        return Codegen.optional(this.variableSets);
     }
 
     /**

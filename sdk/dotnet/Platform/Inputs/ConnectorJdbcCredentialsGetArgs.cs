@@ -13,16 +13,34 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class ConnectorJdbcCredentialsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Authentication types for JDBC connector
+        /// </summary>
+        [Input("authType")]
+        public Input<string>? AuthType { get; set; }
+
+        /// <summary>
         /// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
-        [Input("passwordRef", required: true)]
-        public Input<string> PasswordRef { get; set; } = null!;
+        [Input("passwordRef")]
+        public Input<string>? PasswordRef { get; set; }
+
+        /// <summary>
+        /// Authenticate using service account.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<Inputs.ConnectorJdbcCredentialsServiceAccountGetArgs>? ServiceAccount { get; set; }
 
         /// <summary>
         /// The username to use for the database server.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Authenticate using username password.
+        /// </summary>
+        [Input("usernamePassword")]
+        public Input<Inputs.ConnectorJdbcCredentialsUsernamePasswordGetArgs>? UsernamePassword { get; set; }
 
         /// <summary>
         /// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

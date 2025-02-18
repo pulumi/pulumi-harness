@@ -76,6 +76,9 @@ export interface GetGitlabConnectorResult {
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * Execute on delegate or not.
+     */
     readonly executeOnDelegate: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.

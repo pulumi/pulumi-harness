@@ -14,13 +14,25 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetConnectorJdbcCredentialResult
     {
         /// <summary>
+        /// Authentication types for JDBC connector
+        /// </summary>
+        public readonly string AuthType;
+        /// <summary>
         /// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string PasswordRef;
         /// <summary>
+        /// Authenticate using service account.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectorJdbcCredentialServiceAccountResult> ServiceAccounts;
+        /// <summary>
         /// The username to use for the database server.
         /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// Authenticate using username password.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectorJdbcCredentialUsernamePasswordResult> UsernamePasswords;
         /// <summary>
         /// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
@@ -28,14 +40,23 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GetConnectorJdbcCredentialResult(
+            string authType,
+
             string passwordRef,
+
+            ImmutableArray<Outputs.GetConnectorJdbcCredentialServiceAccountResult> serviceAccounts,
 
             string username,
 
+            ImmutableArray<Outputs.GetConnectorJdbcCredentialUsernamePasswordResult> usernamePasswords,
+
             string usernameRef)
         {
+            AuthType = authType;
             PasswordRef = passwordRef;
+            ServiceAccounts = serviceAccounts;
             Username = username;
+            UsernamePasswords = usernamePasswords;
             UsernameRef = usernameRef;
         }
     }

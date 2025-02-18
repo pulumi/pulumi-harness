@@ -2134,15 +2134,49 @@ export namespace platform {
 
     export interface ConnectorJdbcCredentials {
         /**
+         * Authentication types for JDBC connector
+         */
+        authType?: string;
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
-        passwordRef: string;
+        passwordRef?: string;
+        /**
+         * Authenticate using service account.
+         */
+        serviceAccount?: outputs.platform.ConnectorJdbcCredentialsServiceAccount;
         /**
          * The username to use for the database server.
          */
         username?: string;
         /**
+         * Authenticate using username password.
+         */
+        usernamePassword?: outputs.platform.ConnectorJdbcCredentialsUsernamePassword;
+        /**
          * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: string;
+    }
+
+    export interface ConnectorJdbcCredentialsServiceAccount {
+        /**
+         * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+    }
+
+    export interface ConnectorJdbcCredentialsUsernamePassword {
+        /**
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username?: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
     }
@@ -3052,15 +3086,49 @@ export namespace platform {
 
     export interface GetConnectorJdbcCredential {
         /**
+         * Authentication types for JDBC connector
+         */
+        authType: string;
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: string;
+        /**
+         * Authenticate using service account.
+         */
+        serviceAccounts: outputs.platform.GetConnectorJdbcCredentialServiceAccount[];
         /**
          * The username to use for the database server.
          */
         username: string;
         /**
+         * Authenticate using username password.
+         */
+        usernamePasswords: outputs.platform.GetConnectorJdbcCredentialUsernamePassword[];
+        /**
          * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef: string;
+    }
+
+    export interface GetConnectorJdbcCredentialServiceAccount {
+        /**
+         * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+    }
+
+    export interface GetConnectorJdbcCredentialUsernamePassword {
+        /**
+         * Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        passwordRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
     }
@@ -4410,6 +4478,74 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetInfraVariableSetConnector {
+        /**
+         * Unique identifier of the connector.
+         */
+        connectorRef: string;
+        /**
+         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         */
+        type: string;
+    }
+
+    export interface GetInfraVariableSetEnvironmentVariable {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key: string;
+        /**
+         * value is the value of the variable
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType: string;
+    }
+
+    export interface GetInfraVariableSetTerraformVariable {
+        /**
+         * Key is the identifier for the variable`
+         */
+        key: string;
+        /**
+         * value is the value of the variable
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable, text or secret
+         */
+        valueType: string;
+    }
+
+    export interface GetInfraVariableSetTerraformVariableFile {
+        /**
+         * Repository is the name of the repository to fetch the code from.
+         */
+        repository: string;
+        /**
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+         */
+        repositoryBranch?: string;
+        /**
+         * Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+         */
+        repositoryCommit?: string;
+        /**
+         * Repository connector is the reference to the connector used to fetch the variables.
+         */
+        repositoryConnector: string;
+        /**
+         * Repository path is the path in which the variables reside.
+         */
+        repositoryPath?: string;
+        /**
+         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         */
+        repositorySha?: string;
     }
 
     export interface GetInfrastructureGitDetails {
@@ -7127,6 +7263,74 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface InfraVariableSetConnector {
+        /**
+         * Unique identifier of the connector.
+         */
+        connectorRef: string;
+        /**
+         * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         */
+        type: string;
+    }
+
+    export interface InfraVariableSetEnvironmentVariable {
+        /**
+         * Key is the identifier for the variable. Must be unique within the variable set.
+         */
+        key: string;
+        /**
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable. Currently we support string and secret.
+         */
+        valueType: string;
+    }
+
+    export interface InfraVariableSetTerraformVariable {
+        /**
+         * Key is the identifier for the variable. Must be unique within the variable set.
+         */
+        key: string;
+        /**
+         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         */
+        value: string;
+        /**
+         * Value type indicates the value type of the variable. Currently we support string and secret.
+         */
+        valueType: string;
+    }
+
+    export interface InfraVariableSetTerraformVariableFile {
+        /**
+         * Repository is the name of the repository to fetch the code from.
+         */
+        repository: string;
+        /**
+         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+         */
+        repositoryBranch?: string;
+        /**
+         * Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+         */
+        repositoryCommit?: string;
+        /**
+         * Repository connector is the reference to the connector used to fetch the variables.
+         */
+        repositoryConnector: string;
+        /**
+         * Repository path is the path in which the variables reside.
+         */
+        repositoryPath?: string;
+        /**
+         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         */
+        repositorySha?: string;
     }
 
     export interface InfrastructureGitDetails {

@@ -5,21 +5,39 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialServiceAccount;
+import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialUsernamePassword;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetConnectorJdbcCredential {
+    /**
+     * @return Authentication types for JDBC connector
+     * 
+     */
+    private String authType;
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     private String passwordRef;
     /**
+     * @return Authenticate using service account.
+     * 
+     */
+    private List<GetConnectorJdbcCredentialServiceAccount> serviceAccounts;
+    /**
      * @return The username to use for the database server.
      * 
      */
     private String username;
+    /**
+     * @return Authenticate using username password.
+     * 
+     */
+    private List<GetConnectorJdbcCredentialUsernamePassword> usernamePasswords;
     /**
      * @return The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -28,6 +46,13 @@ public final class GetConnectorJdbcCredential {
 
     private GetConnectorJdbcCredential() {}
     /**
+     * @return Authentication types for JDBC connector
+     * 
+     */
+    public String authType() {
+        return this.authType;
+    }
+    /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -35,11 +60,25 @@ public final class GetConnectorJdbcCredential {
         return this.passwordRef;
     }
     /**
+     * @return Authenticate using service account.
+     * 
+     */
+    public List<GetConnectorJdbcCredentialServiceAccount> serviceAccounts() {
+        return this.serviceAccounts;
+    }
+    /**
      * @return The username to use for the database server.
      * 
      */
     public String username() {
         return this.username;
+    }
+    /**
+     * @return Authenticate using username password.
+     * 
+     */
+    public List<GetConnectorJdbcCredentialUsernamePassword> usernamePasswords() {
+        return this.usernamePasswords;
     }
     /**
      * @return The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -58,17 +97,31 @@ public final class GetConnectorJdbcCredential {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String authType;
         private String passwordRef;
+        private List<GetConnectorJdbcCredentialServiceAccount> serviceAccounts;
         private String username;
+        private List<GetConnectorJdbcCredentialUsernamePassword> usernamePasswords;
         private String usernameRef;
         public Builder() {}
         public Builder(GetConnectorJdbcCredential defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authType = defaults.authType;
     	      this.passwordRef = defaults.passwordRef;
+    	      this.serviceAccounts = defaults.serviceAccounts;
     	      this.username = defaults.username;
+    	      this.usernamePasswords = defaults.usernamePasswords;
     	      this.usernameRef = defaults.usernameRef;
         }
 
+        @CustomType.Setter
+        public Builder authType(String authType) {
+            if (authType == null) {
+              throw new MissingRequiredPropertyException("GetConnectorJdbcCredential", "authType");
+            }
+            this.authType = authType;
+            return this;
+        }
         @CustomType.Setter
         public Builder passwordRef(String passwordRef) {
             if (passwordRef == null) {
@@ -78,12 +131,34 @@ public final class GetConnectorJdbcCredential {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccounts(List<GetConnectorJdbcCredentialServiceAccount> serviceAccounts) {
+            if (serviceAccounts == null) {
+              throw new MissingRequiredPropertyException("GetConnectorJdbcCredential", "serviceAccounts");
+            }
+            this.serviceAccounts = serviceAccounts;
+            return this;
+        }
+        public Builder serviceAccounts(GetConnectorJdbcCredentialServiceAccount... serviceAccounts) {
+            return serviceAccounts(List.of(serviceAccounts));
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("GetConnectorJdbcCredential", "username");
             }
             this.username = username;
             return this;
+        }
+        @CustomType.Setter
+        public Builder usernamePasswords(List<GetConnectorJdbcCredentialUsernamePassword> usernamePasswords) {
+            if (usernamePasswords == null) {
+              throw new MissingRequiredPropertyException("GetConnectorJdbcCredential", "usernamePasswords");
+            }
+            this.usernamePasswords = usernamePasswords;
+            return this;
+        }
+        public Builder usernamePasswords(GetConnectorJdbcCredentialUsernamePassword... usernamePasswords) {
+            return usernamePasswords(List.of(usernamePasswords));
         }
         @CustomType.Setter
         public Builder usernameRef(String usernameRef) {
@@ -95,8 +170,11 @@ public final class GetConnectorJdbcCredential {
         }
         public GetConnectorJdbcCredential build() {
             final var _resultValue = new GetConnectorJdbcCredential();
+            _resultValue.authType = authType;
             _resultValue.passwordRef = passwordRef;
+            _resultValue.serviceAccounts = serviceAccounts;
             _resultValue.username = username;
+            _resultValue.usernamePasswords = usernamePasswords;
             _resultValue.usernameRef = usernameRef;
             return _resultValue;
         }

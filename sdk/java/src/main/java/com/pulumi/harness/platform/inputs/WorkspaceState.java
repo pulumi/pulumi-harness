@@ -289,6 +289,21 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.terraformVariables);
     }
 
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    @Import(name="variableSets")
+    private @Nullable Output<List<String>> variableSets;
+
+    /**
+     * @return Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    public Optional<Output<List<String>>> variableSets() {
+        return Optional.ofNullable(this.variableSets);
+    }
+
     private WorkspaceState() {}
 
     private WorkspaceState(WorkspaceState $) {
@@ -312,6 +327,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.terraformVariableFiles = $.terraformVariableFiles;
         this.terraformVariables = $.terraformVariables;
+        this.variableSets = $.variableSets;
     }
 
     public static Builder builder() {
@@ -730,6 +746,37 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder terraformVariables(WorkspaceTerraformVariableArgs... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(@Nullable Output<List<String>> variableSets) {
+            $.variableSets = variableSets;
+            return this;
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(List<String> variableSets) {
+            return variableSets(Output.of(variableSets));
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(String... variableSets) {
+            return variableSets(List.of(variableSets));
         }
 
         public WorkspaceState build() {

@@ -104,6 +104,11 @@ public final class GetWorkspaceResult {
     private String repositorySha;
     private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
     private List<GetWorkspaceTerraformVariable> terraformVariables;
+    /**
+     * @return Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    private List<String> variableSets;
 
     private GetWorkspaceResult() {}
     /**
@@ -234,6 +239,13 @@ public final class GetWorkspaceResult {
     public List<GetWorkspaceTerraformVariable> terraformVariables() {
         return this.terraformVariables;
     }
+    /**
+     * @return Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    public List<String> variableSets() {
+        return this.variableSets;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -264,6 +276,7 @@ public final class GetWorkspaceResult {
         private String repositorySha;
         private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
         private List<GetWorkspaceTerraformVariable> terraformVariables;
+        private List<String> variableSets;
         public Builder() {}
         public Builder(GetWorkspaceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -287,6 +300,7 @@ public final class GetWorkspaceResult {
     	      this.repositorySha = defaults.repositorySha;
     	      this.terraformVariableFiles = defaults.terraformVariableFiles;
     	      this.terraformVariables = defaults.terraformVariables;
+    	      this.variableSets = defaults.variableSets;
         }
 
         @CustomType.Setter
@@ -458,6 +472,17 @@ public final class GetWorkspaceResult {
         public Builder terraformVariables(GetWorkspaceTerraformVariable... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
         }
+        @CustomType.Setter
+        public Builder variableSets(List<String> variableSets) {
+            if (variableSets == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceResult", "variableSets");
+            }
+            this.variableSets = variableSets;
+            return this;
+        }
+        public Builder variableSets(String... variableSets) {
+            return variableSets(List.of(variableSets));
+        }
         public GetWorkspaceResult build() {
             final var _resultValue = new GetWorkspaceResult();
             _resultValue.costEstimationEnabled = costEstimationEnabled;
@@ -480,6 +505,7 @@ public final class GetWorkspaceResult {
             _resultValue.repositorySha = repositorySha;
             _resultValue.terraformVariableFiles = terraformVariableFiles;
             _resultValue.terraformVariables = terraformVariables;
+            _resultValue.variableSets = variableSets;
             return _resultValue;
         }
     }

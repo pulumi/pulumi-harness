@@ -154,6 +154,21 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.terraformVariables);
     }
 
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    @Import(name="variableSets")
+    private @Nullable Output<List<String>> variableSets;
+
+    /**
+     * @return Variable set identifiers. Currently support only one variable set.
+     * 
+     */
+    public Optional<Output<List<String>>> variableSets() {
+        return Optional.ofNullable(this.variableSets);
+    }
+
     private GetWorkspaceArgs() {}
 
     private GetWorkspaceArgs(GetWorkspaceArgs $) {
@@ -167,6 +182,7 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
         this.repositorySha = $.repositorySha;
         this.terraformVariableFiles = $.terraformVariableFiles;
         this.terraformVariables = $.terraformVariables;
+        this.variableSets = $.variableSets;
     }
 
     public static Builder builder() {
@@ -389,6 +405,37 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder terraformVariables(GetWorkspaceTerraformVariableArgs... terraformVariables) {
             return terraformVariables(List.of(terraformVariables));
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(@Nullable Output<List<String>> variableSets) {
+            $.variableSets = variableSets;
+            return this;
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(List<String> variableSets) {
+            return variableSets(Output.of(variableSets));
+        }
+
+        /**
+         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variableSets(String... variableSets) {
+            return variableSets(List.of(variableSets));
         }
 
         public GetWorkspaceArgs build() {

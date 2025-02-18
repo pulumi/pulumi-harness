@@ -41,6 +41,10 @@ public final class GetGitlabConnectorResult {
      * 
      */
     private String description;
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
     private Boolean executeOnDelegate;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -119,6 +123,10 @@ public final class GetGitlabConnectorResult {
     public String description() {
         return this.description;
     }
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
     public Boolean executeOnDelegate() {
         return this.executeOnDelegate;
     }

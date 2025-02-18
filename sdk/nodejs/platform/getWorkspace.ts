@@ -35,6 +35,7 @@ export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions
         "repositorySha": args.repositorySha,
         "terraformVariableFiles": args.terraformVariableFiles,
         "terraformVariables": args.terraformVariables,
+        "variableSets": args.variableSets,
     }, opts);
 }
 
@@ -76,6 +77,10 @@ export interface GetWorkspaceArgs {
     repositorySha?: string;
     terraformVariableFiles?: inputs.platform.GetWorkspaceTerraformVariableFile[];
     terraformVariables?: inputs.platform.GetWorkspaceTerraformVariable[];
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     */
+    variableSets?: string[];
 }
 
 /**
@@ -153,6 +158,10 @@ export interface GetWorkspaceResult {
     readonly repositorySha: string;
     readonly terraformVariableFiles: outputs.platform.GetWorkspaceTerraformVariableFile[];
     readonly terraformVariables: outputs.platform.GetWorkspaceTerraformVariable[];
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     */
+    readonly variableSets: string[];
 }
 /**
  * Data source for retrieving workspaces.
@@ -183,6 +192,7 @@ export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.I
         "repositorySha": args.repositorySha,
         "terraformVariableFiles": args.terraformVariableFiles,
         "terraformVariables": args.terraformVariables,
+        "variableSets": args.variableSets,
     }, opts);
 }
 
@@ -224,4 +234,8 @@ export interface GetWorkspaceOutputArgs {
     repositorySha?: pulumi.Input<string>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[]>;
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     */
+    variableSets?: pulumi.Input<pulumi.Input<string>[]>;
 }

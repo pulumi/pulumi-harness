@@ -114,6 +114,9 @@ class GetGitlabConnectorResult:
     @property
     @pulumi.getter(name="executeOnDelegate")
     def execute_on_delegate(self) -> bool:
+        """
+        Execute on delegate or not.
+        """
         return pulumi.get(self, "execute_on_delegate")
 
     @property

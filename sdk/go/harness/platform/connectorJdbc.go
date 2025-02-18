@@ -14,45 +14,6 @@ import (
 
 // Resource for creating a JDBC connector.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewConnectorJdbc(ctx, "test", &platform.ConnectorJdbcArgs{
-//				Identifier:  pulumi.String("identifer"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("test"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Url: pulumi.String("jdbc:sqlserver://1.2.3;trustServerCertificate=true"),
-//				DelegateSelectors: pulumi.StringArray{
-//					pulumi.String("harness-delegate"),
-//				},
-//				Credentials: &platform.ConnectorJdbcCredentialsArgs{
-//					Username:    pulumi.String("admin"),
-//					PasswordRef: pulumi.String("account.secret_id"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Import account level jdbc connector

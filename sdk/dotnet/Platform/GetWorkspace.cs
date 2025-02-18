@@ -163,6 +163,18 @@ namespace Pulumi.Harness.Platform
             set => _terraformVariables = value;
         }
 
+        [Input("variableSets")]
+        private List<string>? _variableSets;
+
+        /// <summary>
+        /// Variable set identifiers. Currently support only one variable set.
+        /// </summary>
+        public List<string> VariableSets
+        {
+            get => _variableSets ?? (_variableSets = new List<string>());
+            set => _variableSets = value;
+        }
+
         public GetWorkspaceArgs()
         {
         }
@@ -239,6 +251,18 @@ namespace Pulumi.Harness.Platform
         {
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.GetWorkspaceTerraformVariableInputArgs>());
             set => _terraformVariables = value;
+        }
+
+        [Input("variableSets")]
+        private InputList<string>? _variableSets;
+
+        /// <summary>
+        /// Variable set identifiers. Currently support only one variable set.
+        /// </summary>
+        public InputList<string> VariableSets
+        {
+            get => _variableSets ?? (_variableSets = new InputList<string>());
+            set => _variableSets = value;
         }
 
         public GetWorkspaceInvokeArgs()
@@ -322,6 +346,10 @@ namespace Pulumi.Harness.Platform
         public readonly string RepositorySha;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> TerraformVariableFiles;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> TerraformVariables;
+        /// <summary>
+        /// Variable set identifiers. Currently support only one variable set.
+        /// </summary>
+        public readonly ImmutableArray<string> VariableSets;
 
         [OutputConstructor]
         private GetWorkspaceResult(
@@ -363,7 +391,9 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> terraformVariableFiles,
 
-            ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> terraformVariables)
+            ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> terraformVariables,
+
+            ImmutableArray<string> variableSets)
         {
             CostEstimationEnabled = costEstimationEnabled;
             DefaultPipelines = defaultPipelines;
@@ -385,6 +415,7 @@ namespace Pulumi.Harness.Platform
             RepositorySha = repositorySha;
             TerraformVariableFiles = terraformVariableFiles;
             TerraformVariables = terraformVariables;
+            VariableSets = variableSets;
         }
     }
 }
