@@ -72,6 +72,7 @@ import * as utilities from "../utilities";
  *             repositoryConnector: test.id,
  *         },
  *     ],
+ *     variableSets: [testHarnessPlatformInfraVariableSet.id],
  * });
  * ```
  *
@@ -177,6 +178,10 @@ export class Workspace extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[] | undefined>;
     public readonly terraformVariableFiles!: pulumi.Output<outputs.platform.WorkspaceTerraformVariableFile[] | undefined>;
     public readonly terraformVariables!: pulumi.Output<outputs.platform.WorkspaceTerraformVariable[] | undefined>;
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     */
+    public readonly variableSets!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Workspace resource with the given unique name, arguments, and options.
@@ -211,6 +216,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["terraformVariableFiles"] = state ? state.terraformVariableFiles : undefined;
             resourceInputs["terraformVariables"] = state ? state.terraformVariables : undefined;
+            resourceInputs["variableSets"] = state ? state.variableSets : undefined;
         } else {
             const args = argsOrState as WorkspaceArgs | undefined;
             if ((!args || args.costEstimationEnabled === undefined) && !opts.urn) {
@@ -263,6 +269,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["terraformVariableFiles"] = args ? args.terraformVariableFiles : undefined;
             resourceInputs["terraformVariables"] = args ? args.terraformVariables : undefined;
+            resourceInputs["variableSets"] = args ? args.variableSets : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Workspace.__pulumiType, name, resourceInputs, opts);
@@ -341,6 +348,10 @@ export interface WorkspaceState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     */
+    variableSets?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -415,4 +426,8 @@ export interface WorkspaceArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
+    /**
+     * Variable set identifiers. Currently support only one variable set.
+     */
+    variableSets?: pulumi.Input<pulumi.Input<string>[]>;
 }

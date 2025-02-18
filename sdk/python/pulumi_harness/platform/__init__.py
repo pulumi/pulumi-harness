@@ -99,6 +99,7 @@ from .get_har_registry import *
 from .get_helm_connector import *
 from .get_iacm_default_pipeline import *
 from .get_infra_module import *
+from .get_infra_variable_set import *
 from .get_infrastructure import *
 from .get_input_set import *
 from .get_jenkins_connector import *
@@ -170,6 +171,7 @@ from .har_registry import *
 from .helm_connector import *
 from .iacm_default_pipeline import *
 from .infra_module import *
+from .infra_variable_set import *
 from .infrastructure import *
 from .input_set import *
 from .jenkins_connector import *

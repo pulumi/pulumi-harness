@@ -70,6 +70,8 @@ type LookupWorkspaceArgs struct {
 	RepositorySha          *string                             `pulumi:"repositorySha"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets []string `pulumi:"variableSets"`
 }
 
 // A collection of values returned by getWorkspace.
@@ -111,6 +113,8 @@ type LookupWorkspaceResult struct {
 	RepositorySha          string                              `pulumi:"repositorySha"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets []string `pulumi:"variableSets"`
 }
 
 func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceResultOutput {
@@ -142,6 +146,8 @@ type LookupWorkspaceOutputArgs struct {
 	RepositorySha          pulumi.StringPtrInput                       `pulumi:"repositorySha"`
 	TerraformVariableFiles GetWorkspaceTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     GetWorkspaceTerraformVariableArrayInput     `pulumi:"terraformVariables"`
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets pulumi.StringArrayInput `pulumi:"variableSets"`
 }
 
 func (LookupWorkspaceOutputArgs) ElementType() reflect.Type {
@@ -258,6 +264,11 @@ func (o LookupWorkspaceResultOutput) TerraformVariableFiles() GetWorkspaceTerraf
 
 func (o LookupWorkspaceResultOutput) TerraformVariables() GetWorkspaceTerraformVariableArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceTerraformVariable { return v.TerraformVariables }).(GetWorkspaceTerraformVariableArrayOutput)
+}
+
+// Variable set identifiers. Currently support only one variable set.
+func (o LookupWorkspaceResultOutput) VariableSets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) []string { return v.VariableSets }).(pulumi.StringArrayOutput)
 }
 
 func init() {

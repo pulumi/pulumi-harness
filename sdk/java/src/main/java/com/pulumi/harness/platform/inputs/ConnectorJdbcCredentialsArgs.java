@@ -5,7 +5,8 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsServiceAccountArgs;
+import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsUsernamePasswordArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,18 +18,48 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
     public static final ConnectorJdbcCredentialsArgs Empty = new ConnectorJdbcCredentialsArgs();
 
     /**
+     * Authentication types for JDBC connector
+     * 
+     */
+    @Import(name="authType")
+    private @Nullable Output<String> authType;
+
+    /**
+     * @return Authentication types for JDBC connector
+     * 
+     */
+    public Optional<Output<String>> authType() {
+        return Optional.ofNullable(this.authType);
+    }
+
+    /**
      * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Import(name="passwordRef", required=true)
-    private Output<String> passwordRef;
+    @Import(name="passwordRef")
+    private @Nullable Output<String> passwordRef;
 
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<String> passwordRef() {
-        return this.passwordRef;
+    public Optional<Output<String>> passwordRef() {
+        return Optional.ofNullable(this.passwordRef);
+    }
+
+    /**
+     * Authenticate using service account.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<ConnectorJdbcCredentialsServiceAccountArgs> serviceAccount;
+
+    /**
+     * @return Authenticate using service account.
+     * 
+     */
+    public Optional<Output<ConnectorJdbcCredentialsServiceAccountArgs>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
     }
 
     /**
@@ -44,6 +75,21 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
+    }
+
+    /**
+     * Authenticate using username password.
+     * 
+     */
+    @Import(name="usernamePassword")
+    private @Nullable Output<ConnectorJdbcCredentialsUsernamePasswordArgs> usernamePassword;
+
+    /**
+     * @return Authenticate using username password.
+     * 
+     */
+    public Optional<Output<ConnectorJdbcCredentialsUsernamePasswordArgs>> usernamePassword() {
+        return Optional.ofNullable(this.usernamePassword);
     }
 
     /**
@@ -64,8 +110,11 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
     private ConnectorJdbcCredentialsArgs() {}
 
     private ConnectorJdbcCredentialsArgs(ConnectorJdbcCredentialsArgs $) {
+        this.authType = $.authType;
         this.passwordRef = $.passwordRef;
+        this.serviceAccount = $.serviceAccount;
         this.username = $.username;
+        this.usernamePassword = $.usernamePassword;
         this.usernameRef = $.usernameRef;
     }
 
@@ -88,12 +137,33 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param authType Authentication types for JDBC connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authType(@Nullable Output<String> authType) {
+            $.authType = authType;
+            return this;
+        }
+
+        /**
+         * @param authType Authentication types for JDBC connector
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authType(String authType) {
+            return authType(Output.of(authType));
+        }
+
+        /**
          * @param passwordRef The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
          */
-        public Builder passwordRef(Output<String> passwordRef) {
+        public Builder passwordRef(@Nullable Output<String> passwordRef) {
             $.passwordRef = passwordRef;
             return this;
         }
@@ -106,6 +176,27 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
          */
         public Builder passwordRef(String passwordRef) {
             return passwordRef(Output.of(passwordRef));
+        }
+
+        /**
+         * @param serviceAccount Authenticate using service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<ConnectorJdbcCredentialsServiceAccountArgs> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount Authenticate using service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(ConnectorJdbcCredentialsServiceAccountArgs serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**
@@ -130,6 +221,27 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param usernamePassword Authenticate using username password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usernamePassword(@Nullable Output<ConnectorJdbcCredentialsUsernamePasswordArgs> usernamePassword) {
+            $.usernamePassword = usernamePassword;
+            return this;
+        }
+
+        /**
+         * @param usernamePassword Authenticate using username password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usernamePassword(ConnectorJdbcCredentialsUsernamePasswordArgs usernamePassword) {
+            return usernamePassword(Output.of(usernamePassword));
+        }
+
+        /**
          * @param usernameRef The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
@@ -151,9 +263,6 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
         }
 
         public ConnectorJdbcCredentialsArgs build() {
-            if ($.passwordRef == null) {
-                throw new MissingRequiredPropertyException("ConnectorJdbcCredentialsArgs", "passwordRef");
-            }
             return $;
         }
     }

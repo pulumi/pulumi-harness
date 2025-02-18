@@ -90,6 +90,10 @@ namespace Pulumi.Harness.Platform
     ///                 RepositoryConnector = test.Id,
     ///             },
     ///         },
+    ///         VariableSets = new[]
+    ///         {
+    ///             testHarnessPlatformInfraVariableSet.Id,
+    ///         },
     ///     });
     /// 
     /// });
@@ -211,6 +215,12 @@ namespace Pulumi.Harness.Platform
 
         [Output("terraformVariables")]
         public Output<ImmutableArray<Outputs.WorkspaceTerraformVariable>> TerraformVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Variable set identifiers. Currently support only one variable set.
+        /// </summary>
+        [Output("variableSets")]
+        public Output<ImmutableArray<string>> VariableSets { get; private set; } = null!;
 
 
         /// <summary>
@@ -395,6 +405,18 @@ namespace Pulumi.Harness.Platform
             set => _terraformVariables = value;
         }
 
+        [Input("variableSets")]
+        private InputList<string>? _variableSets;
+
+        /// <summary>
+        /// Variable set identifiers. Currently support only one variable set.
+        /// </summary>
+        public InputList<string> VariableSets
+        {
+            get => _variableSets ?? (_variableSets = new InputList<string>());
+            set => _variableSets = value;
+        }
+
         public WorkspaceArgs()
         {
         }
@@ -537,6 +559,18 @@ namespace Pulumi.Harness.Platform
         {
             get => _terraformVariables ?? (_terraformVariables = new InputList<Inputs.WorkspaceTerraformVariableGetArgs>());
             set => _terraformVariables = value;
+        }
+
+        [Input("variableSets")]
+        private InputList<string>? _variableSets;
+
+        /// <summary>
+        /// Variable set identifiers. Currently support only one variable set.
+        /// </summary>
+        public InputList<string> VariableSets
+        {
+            get => _variableSets ?? (_variableSets = new InputList<string>());
+            set => _variableSets = value;
         }
 
         public WorkspaceState()

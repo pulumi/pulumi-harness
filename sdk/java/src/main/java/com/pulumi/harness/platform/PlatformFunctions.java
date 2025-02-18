@@ -119,6 +119,8 @@ import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelinePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModulePlainArgs;
+import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+import com.pulumi.harness.platform.inputs.GetInfraVariableSetPlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfrastructureArgs;
 import com.pulumi.harness.platform.inputs.GetInfrastructurePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInputSetArgs;
@@ -283,6 +285,7 @@ import com.pulumi.harness.platform.outputs.GetHarRegistryResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
 import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleResult;
+import com.pulumi.harness.platform.outputs.GetInfraVariableSetResult;
 import com.pulumi.harness.platform.outputs.GetInfrastructureResult;
 import com.pulumi.harness.platform.outputs.GetInputSetResult;
 import com.pulumi.harness.platform.outputs.GetJenkinsConnectorResult;
@@ -12189,6 +12192,226 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetInfraModuleResult> getInfraModulePlain(GetInfraModulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getInfraModule:getInfraModule", TypeShape.of(GetInfraModuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Variable Sets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInfraVariableSetResult> getInfraVariableSet(GetInfraVariableSetArgs args) {
+        return getInfraVariableSet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Variable Sets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInfraVariableSetResult> getInfraVariableSetPlain(GetInfraVariableSetPlainArgs args) {
+        return getInfraVariableSetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving Variable Sets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInfraVariableSetResult> getInfraVariableSet(GetInfraVariableSetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraVariableSet:getInfraVariableSet", TypeShape.of(GetInfraVariableSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Variable Sets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInfraVariableSetResult> getInfraVariableSet(GetInfraVariableSetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getInfraVariableSet:getInfraVariableSet", TypeShape.of(GetInfraVariableSetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving Variable Sets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("identifier")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInfraVariableSetResult> getInfraVariableSetPlain(GetInfraVariableSetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getInfraVariableSet:getInfraVariableSet", TypeShape.of(GetInfraVariableSetResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving a Harness Infrastructure.

@@ -85,6 +85,9 @@ import (
 //						RepositoryConnector: pulumi.Any(test.Id),
 //					},
 //				},
+//				VariableSets: pulumi.StringArray{
+//					testHarnessPlatformInfraVariableSet.Id,
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -139,6 +142,8 @@ type Workspace struct {
 	Tags                   pulumi.StringArrayOutput                  `pulumi:"tags"`
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayOutput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     WorkspaceTerraformVariableArrayOutput     `pulumi:"terraformVariables"`
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets pulumi.StringArrayOutput `pulumi:"variableSets"`
 }
 
 // NewWorkspace registers a new resource with the given unique name, arguments, and options.
@@ -237,6 +242,8 @@ type workspaceState struct {
 	Tags                   []string                         `pulumi:"tags"`
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []WorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets []string `pulumi:"variableSets"`
 }
 
 type WorkspaceState struct {
@@ -276,6 +283,8 @@ type WorkspaceState struct {
 	Tags                   pulumi.StringArrayInput
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
 	TerraformVariables     WorkspaceTerraformVariableArrayInput
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets pulumi.StringArrayInput
 }
 
 func (WorkspaceState) ElementType() reflect.Type {
@@ -319,6 +328,8 @@ type workspaceArgs struct {
 	Tags                   []string                         `pulumi:"tags"`
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []WorkspaceTerraformVariable     `pulumi:"terraformVariables"`
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets []string `pulumi:"variableSets"`
 }
 
 // The set of arguments for constructing a Workspace resource.
@@ -359,6 +370,8 @@ type WorkspaceArgs struct {
 	Tags                   pulumi.StringArrayInput
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
 	TerraformVariables     WorkspaceTerraformVariableArrayInput
+	// Variable set identifiers. Currently support only one variable set.
+	VariableSets pulumi.StringArrayInput
 }
 
 func (WorkspaceArgs) ElementType() reflect.Type {
@@ -542,6 +555,11 @@ func (o WorkspaceOutput) TerraformVariableFiles() WorkspaceTerraformVariableFile
 
 func (o WorkspaceOutput) TerraformVariables() WorkspaceTerraformVariableArrayOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceTerraformVariableArrayOutput { return v.TerraformVariables }).(WorkspaceTerraformVariableArrayOutput)
+}
+
+// Variable set identifiers. Currently support only one variable set.
+func (o WorkspaceOutput) VariableSets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringArrayOutput { return v.VariableSets }).(pulumi.StringArrayOutput)
 }
 
 type WorkspaceArrayOutput struct{ *pulumi.OutputState }

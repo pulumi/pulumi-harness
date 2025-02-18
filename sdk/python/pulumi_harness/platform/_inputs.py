@@ -97,6 +97,10 @@ __all__ = [
     'ConnectorGcpKmsOidcAuthenticationArgsDict',
     'ConnectorJdbcCredentialsArgs',
     'ConnectorJdbcCredentialsArgsDict',
+    'ConnectorJdbcCredentialsServiceAccountArgs',
+    'ConnectorJdbcCredentialsServiceAccountArgsDict',
+    'ConnectorJdbcCredentialsUsernamePasswordArgs',
+    'ConnectorJdbcCredentialsUsernamePasswordArgsDict',
     'ConnectorPdcHostArgs',
     'ConnectorPdcHostArgsDict',
     'ConnectorRancherBearerTokenArgs',
@@ -307,6 +311,14 @@ __all__ = [
     'HarRegistryConfigAuthUserPasswordArgsDict',
     'HelmConnectorCredentialsArgs',
     'HelmConnectorCredentialsArgsDict',
+    'InfraVariableSetConnectorArgs',
+    'InfraVariableSetConnectorArgsDict',
+    'InfraVariableSetEnvironmentVariableArgs',
+    'InfraVariableSetEnvironmentVariableArgsDict',
+    'InfraVariableSetTerraformVariableArgs',
+    'InfraVariableSetTerraformVariableArgsDict',
+    'InfraVariableSetTerraformVariableFileArgs',
+    'InfraVariableSetTerraformVariableFileArgsDict',
     'InfrastructureGitDetailsArgs',
     'InfrastructureGitDetailsArgsDict',
     'InputSetGitDetailsArgs',
@@ -495,6 +507,14 @@ __all__ = [
     'GetHarRegistryConfigAuthArgsDict',
     'GetHarRegistryConfigAuthUserPasswordArgs',
     'GetHarRegistryConfigAuthUserPasswordArgsDict',
+    'GetInfraVariableSetConnectorArgs',
+    'GetInfraVariableSetConnectorArgsDict',
+    'GetInfraVariableSetEnvironmentVariableArgs',
+    'GetInfraVariableSetEnvironmentVariableArgsDict',
+    'GetInfraVariableSetTerraformVariableArgs',
+    'GetInfraVariableSetTerraformVariableArgsDict',
+    'GetInfraVariableSetTerraformVariableFileArgs',
+    'GetInfraVariableSetTerraformVariableFileArgsDict',
     'GetInfrastructureGitDetailsArgs',
     'GetInfrastructureGitDetailsArgsDict',
     'GetInputSetGitDetailsArgs',
@@ -3012,13 +3032,25 @@ class ConnectorGcpKmsOidcAuthenticationArgs:
 
 if not MYPY:
     class ConnectorJdbcCredentialsArgsDict(TypedDict):
-        password_ref: pulumi.Input[str]
+        auth_type: NotRequired[pulumi.Input[str]]
+        """
+        Authentication types for JDBC connector
+        """
+        password_ref: NotRequired[pulumi.Input[str]]
         """
         The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        service_account: NotRequired[pulumi.Input['ConnectorJdbcCredentialsServiceAccountArgsDict']]
+        """
+        Authenticate using service account.
         """
         username: NotRequired[pulumi.Input[str]]
         """
         The username to use for the database server.
+        """
+        username_password: NotRequired[pulumi.Input['ConnectorJdbcCredentialsUsernamePasswordArgsDict']]
+        """
+        Authenticate using username password.
         """
         username_ref: NotRequired[pulumi.Input[str]]
         """
@@ -3030,31 +3062,68 @@ elif False:
 @pulumi.input_type
 class ConnectorJdbcCredentialsArgs:
     def __init__(__self__, *,
-                 password_ref: pulumi.Input[str],
+                 auth_type: Optional[pulumi.Input[str]] = None,
+                 password_ref: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input['ConnectorJdbcCredentialsServiceAccountArgs']] = None,
                  username: Optional[pulumi.Input[str]] = None,
+                 username_password: Optional[pulumi.Input['ConnectorJdbcCredentialsUsernamePasswordArgs']] = None,
                  username_ref: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_type: Authentication types for JDBC connector
         :param pulumi.Input[str] password_ref: The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input['ConnectorJdbcCredentialsServiceAccountArgs'] service_account: Authenticate using service account.
         :param pulumi.Input[str] username: The username to use for the database server.
+        :param pulumi.Input['ConnectorJdbcCredentialsUsernamePasswordArgs'] username_password: Authenticate using username password.
         :param pulumi.Input[str] username_ref: The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
-        pulumi.set(__self__, "password_ref", password_ref)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if password_ref is not None:
+            pulumi.set(__self__, "password_ref", password_ref)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if username is not None:
             pulumi.set(__self__, "username", username)
+        if username_password is not None:
+            pulumi.set(__self__, "username_password", username_password)
         if username_ref is not None:
             pulumi.set(__self__, "username_ref", username_ref)
 
     @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication types for JDBC connector
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
     @pulumi.getter(name="passwordRef")
-    def password_ref(self) -> pulumi.Input[str]:
+    def password_ref(self) -> Optional[pulumi.Input[str]]:
         """
         The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
     @password_ref.setter
-    def password_ref(self, value: pulumi.Input[str]):
+    def password_ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input['ConnectorJdbcCredentialsServiceAccountArgs']]:
+        """
+        Authenticate using service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input['ConnectorJdbcCredentialsServiceAccountArgs']]):
+        pulumi.set(self, "service_account", value)
 
     @property
     @pulumi.getter
@@ -3069,10 +3138,124 @@ class ConnectorJdbcCredentialsArgs:
         pulumi.set(self, "username", value)
 
     @property
+    @pulumi.getter(name="usernamePassword")
+    def username_password(self) -> Optional[pulumi.Input['ConnectorJdbcCredentialsUsernamePasswordArgs']]:
+        """
+        Authenticate using username password.
+        """
+        return pulumi.get(self, "username_password")
+
+    @username_password.setter
+    def username_password(self, value: Optional[pulumi.Input['ConnectorJdbcCredentialsUsernamePasswordArgs']]):
+        pulumi.set(self, "username_password", value)
+
+    @property
     @pulumi.getter(name="usernameRef")
     def username_ref(self) -> Optional[pulumi.Input[str]]:
         """
         The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+    @username_ref.setter
+    def username_ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username_ref", value)
+
+
+if not MYPY:
+    class ConnectorJdbcCredentialsServiceAccountArgsDict(TypedDict):
+        token_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ConnectorJdbcCredentialsServiceAccountArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectorJdbcCredentialsServiceAccountArgs:
+    def __init__(__self__, *,
+                 token_ref: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] token_ref: Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @token_ref.setter
+    def token_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "token_ref", value)
+
+
+if not MYPY:
+    class ConnectorJdbcCredentialsUsernamePasswordArgsDict(TypedDict):
+        password_ref: pulumi.Input[str]
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username to use for authentication.
+        """
+        username_ref: NotRequired[pulumi.Input[str]]
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+elif False:
+    ConnectorJdbcCredentialsUsernamePasswordArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectorJdbcCredentialsUsernamePasswordArgs:
+    def __init__(__self__, *,
+                 password_ref: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None,
+                 username_ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_ref: Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[str] username: Username to use for authentication.
+        :param pulumi.Input[str] username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "password_ref", password_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="passwordRef")
+    def password_ref(self) -> pulumi.Input[str]:
+        """
+        Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "password_ref")
+
+    @password_ref.setter
+    def password_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password_ref", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
 
@@ -12307,6 +12490,324 @@ class HelmConnectorCredentialsArgs:
 
 
 if not MYPY:
+    class InfraVariableSetConnectorArgsDict(TypedDict):
+        connector_ref: pulumi.Input[str]
+        """
+        Unique identifier of the connector.
+        """
+        type: pulumi.Input[str]
+        """
+        Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        """
+elif False:
+    InfraVariableSetConnectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InfraVariableSetConnectorArgs:
+    def __init__(__self__, *,
+                 connector_ref: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] connector_ref: Unique identifier of the connector.
+        :param pulumi.Input[str] type: Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        """
+        pulumi.set(__self__, "connector_ref", connector_ref)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> pulumi.Input[str]:
+        """
+        Unique identifier of the connector.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class InfraVariableSetEnvironmentVariableArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key is the identifier for the variable. Must be unique within the variable set.
+        """
+        value: pulumi.Input[str]
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        value_type: pulumi.Input[str]
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+elif False:
+    InfraVariableSetEnvironmentVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InfraVariableSetEnvironmentVariableArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 value_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Key is the identifier for the variable. Must be unique within the variable set.
+        :param pulumi.Input[str] value: Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        :param pulumi.Input[str] value_type: Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Key is the identifier for the variable. Must be unique within the variable set.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> pulumi.Input[str]:
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value_type", value)
+
+
+if not MYPY:
+    class InfraVariableSetTerraformVariableArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key is the identifier for the variable. Must be unique within the variable set.
+        """
+        value: pulumi.Input[str]
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        value_type: pulumi.Input[str]
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+elif False:
+    InfraVariableSetTerraformVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InfraVariableSetTerraformVariableArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 value_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: Key is the identifier for the variable. Must be unique within the variable set.
+        :param pulumi.Input[str] value: Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        :param pulumi.Input[str] value_type: Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        Key is the identifier for the variable. Must be unique within the variable set.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> pulumi.Input[str]:
+        """
+        Value type indicates the value type of the variable. Currently we support string and secret.
+        """
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value_type", value)
+
+
+if not MYPY:
+    class InfraVariableSetTerraformVariableFileArgsDict(TypedDict):
+        repository: pulumi.Input[str]
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        repository_connector: pulumi.Input[str]
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        repository_branch: NotRequired[pulumi.Input[str]]
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        """
+        repository_commit: NotRequired[pulumi.Input[str]]
+        """
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        """
+        repository_path: NotRequired[pulumi.Input[str]]
+        """
+        Repository path is the path in which the variables reside.
+        """
+        repository_sha: NotRequired[pulumi.Input[str]]
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+elif False:
+    InfraVariableSetTerraformVariableFileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InfraVariableSetTerraformVariableFileArgs:
+    def __init__(__self__, *,
+                 repository: pulumi.Input[str],
+                 repository_connector: pulumi.Input[str],
+                 repository_branch: Optional[pulumi.Input[str]] = None,
+                 repository_commit: Optional[pulumi.Input[str]] = None,
+                 repository_path: Optional[pulumi.Input[str]] = None,
+                 repository_sha: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] repository: Repository is the name of the repository to fetch the code from.
+        :param pulumi.Input[str] repository_connector: Repository connector is the reference to the connector used to fetch the variables.
+        :param pulumi.Input[str] repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        :param pulumi.Input[str] repository_commit: Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        :param pulumi.Input[str] repository_path: Repository path is the path in which the variables reside.
+        :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "repository_connector", repository_connector)
+        if repository_branch is not None:
+            pulumi.set(__self__, "repository_branch", repository_branch)
+        if repository_commit is not None:
+            pulumi.set(__self__, "repository_commit", repository_commit)
+        if repository_path is not None:
+            pulumi.set(__self__, "repository_path", repository_path)
+        if repository_sha is not None:
+            pulumi.set(__self__, "repository_sha", repository_sha)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[str]:
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter(name="repositoryConnector")
+    def repository_connector(self) -> pulumi.Input[str]:
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        return pulumi.get(self, "repository_connector")
+
+    @repository_connector.setter
+    def repository_connector(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_connector", value)
+
+    @property
+    @pulumi.getter(name="repositoryBranch")
+    def repository_branch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        """
+        return pulumi.get(self, "repository_branch")
+
+    @repository_branch.setter
+    def repository_branch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_branch", value)
+
+    @property
+    @pulumi.getter(name="repositoryCommit")
+    def repository_commit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        """
+        return pulumi.get(self, "repository_commit")
+
+    @repository_commit.setter
+    def repository_commit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_commit", value)
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository path is the path in which the variables reside.
+        """
+        return pulumi.get(self, "repository_path")
+
+    @repository_path.setter
+    def repository_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_path", value)
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+        return pulumi.get(self, "repository_sha")
+
+    @repository_sha.setter
+    def repository_sha(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_sha", value)
+
+
+if not MYPY:
     class InfrastructureGitDetailsArgsDict(TypedDict):
         base_branch: NotRequired[pulumi.Input[str]]
         """
@@ -21386,6 +21887,324 @@ class GetHarRegistryConfigAuthUserPasswordArgs:
     @secret_space_path.setter
     def secret_space_path(self, value: Optional[str]):
         pulumi.set(self, "secret_space_path", value)
+
+
+if not MYPY:
+    class GetInfraVariableSetConnectorArgsDict(TypedDict):
+        connector_ref: str
+        """
+        Unique identifier of the connector.
+        """
+        type: str
+        """
+        Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        """
+elif False:
+    GetInfraVariableSetConnectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetInfraVariableSetConnectorArgs:
+    def __init__(__self__, *,
+                 connector_ref: str,
+                 type: str):
+        """
+        :param str connector_ref: Unique identifier of the connector.
+        :param str type: Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        """
+        pulumi.set(__self__, "connector_ref", connector_ref)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> str:
+        """
+        Unique identifier of the connector.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @connector_ref.setter
+    def connector_ref(self, value: str):
+        pulumi.set(self, "connector_ref", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class GetInfraVariableSetEnvironmentVariableArgsDict(TypedDict):
+        key: str
+        """
+        Key is the identifier for the variable`
+        """
+        value: str
+        """
+        value is the value of the variable
+        """
+        value_type: str
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+elif False:
+    GetInfraVariableSetEnvironmentVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetInfraVariableSetEnvironmentVariableArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 value_type: str):
+        """
+        :param str key: Key is the identifier for the variable`
+        :param str value: value is the value of the variable
+        :param str value_type: Value type indicates the value type of the variable, text or secret
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the identifier for the variable`
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        value is the value of the variable
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: str):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: str):
+        pulumi.set(self, "value_type", value)
+
+
+if not MYPY:
+    class GetInfraVariableSetTerraformVariableArgsDict(TypedDict):
+        key: str
+        """
+        Key is the identifier for the variable`
+        """
+        value: str
+        """
+        value is the value of the variable
+        """
+        value_type: str
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+elif False:
+    GetInfraVariableSetTerraformVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetInfraVariableSetTerraformVariableArgs:
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 value_type: str):
+        """
+        :param str key: Key is the identifier for the variable`
+        :param str value: value is the value of the variable
+        :param str value_type: Value type indicates the value type of the variable, text or secret
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key is the identifier for the variable`
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: str):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        value is the value of the variable
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: str):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        Value type indicates the value type of the variable, text or secret
+        """
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: str):
+        pulumi.set(self, "value_type", value)
+
+
+if not MYPY:
+    class GetInfraVariableSetTerraformVariableFileArgsDict(TypedDict):
+        repository: str
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        repository_connector: str
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        repository_branch: NotRequired[str]
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        """
+        repository_commit: NotRequired[str]
+        """
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        """
+        repository_path: NotRequired[str]
+        """
+        Repository path is the path in which the variables reside.
+        """
+        repository_sha: NotRequired[str]
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+elif False:
+    GetInfraVariableSetTerraformVariableFileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetInfraVariableSetTerraformVariableFileArgs:
+    def __init__(__self__, *,
+                 repository: str,
+                 repository_connector: str,
+                 repository_branch: Optional[str] = None,
+                 repository_commit: Optional[str] = None,
+                 repository_path: Optional[str] = None,
+                 repository_sha: Optional[str] = None):
+        """
+        :param str repository: Repository is the name of the repository to fetch the code from.
+        :param str repository_connector: Repository connector is the reference to the connector used to fetch the variables.
+        :param str repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        :param str repository_commit: Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        :param str repository_path: Repository path is the path in which the variables reside.
+        :param str repository_sha: Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "repository_connector", repository_connector)
+        if repository_branch is not None:
+            pulumi.set(__self__, "repository_branch", repository_branch)
+        if repository_commit is not None:
+            pulumi.set(__self__, "repository_commit", repository_commit)
+        if repository_path is not None:
+            pulumi.set(__self__, "repository_path", repository_path)
+        if repository_sha is not None:
+            pulumi.set(__self__, "repository_sha", repository_sha)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        Repository is the name of the repository to fetch the code from.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: str):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter(name="repositoryConnector")
+    def repository_connector(self) -> str:
+        """
+        Repository connector is the reference to the connector used to fetch the variables.
+        """
+        return pulumi.get(self, "repository_connector")
+
+    @repository_connector.setter
+    def repository_connector(self, value: str):
+        pulumi.set(self, "repository_connector", value)
+
+    @property
+    @pulumi.getter(name="repositoryBranch")
+    def repository_branch(self) -> Optional[str]:
+        """
+        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        """
+        return pulumi.get(self, "repository_branch")
+
+    @repository_branch.setter
+    def repository_branch(self, value: Optional[str]):
+        pulumi.set(self, "repository_branch", value)
+
+    @property
+    @pulumi.getter(name="repositoryCommit")
+    def repository_commit(self) -> Optional[str]:
+        """
+        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        """
+        return pulumi.get(self, "repository_commit")
+
+    @repository_commit.setter
+    def repository_commit(self, value: Optional[str]):
+        pulumi.set(self, "repository_commit", value)
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> Optional[str]:
+        """
+        Repository path is the path in which the variables reside.
+        """
+        return pulumi.get(self, "repository_path")
+
+    @repository_path.setter
+    def repository_path(self, value: Optional[str]):
+        pulumi.set(self, "repository_path", value)
+
+    @property
+    @pulumi.getter(name="repositorySha")
+    def repository_sha(self) -> Optional[str]:
+        """
+        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        """
+        return pulumi.get(self, "repository_sha")
+
+    @repository_sha.setter
+    def repository_sha(self, value: Optional[str]):
+        pulumi.set(self, "repository_sha", value)
 
 
 if not MYPY:

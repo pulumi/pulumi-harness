@@ -6384,10 +6384,16 @@ func (o ConnectorGcpKmsOidcAuthenticationArrayOutput) Index(i pulumi.IntInput) C
 }
 
 type ConnectorJdbcCredentials struct {
+	// Authentication types for JDBC connector
+	AuthType *string `pulumi:"authType"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef string `pulumi:"passwordRef"`
+	PasswordRef *string `pulumi:"passwordRef"`
+	// Authenticate using service account.
+	ServiceAccount *ConnectorJdbcCredentialsServiceAccount `pulumi:"serviceAccount"`
 	// The username to use for the database server.
 	Username *string `pulumi:"username"`
+	// Authenticate using username password.
+	UsernamePassword *ConnectorJdbcCredentialsUsernamePassword `pulumi:"usernamePassword"`
 	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef *string `pulumi:"usernameRef"`
 }
@@ -6404,10 +6410,16 @@ type ConnectorJdbcCredentialsInput interface {
 }
 
 type ConnectorJdbcCredentialsArgs struct {
+	// Authentication types for JDBC connector
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	PasswordRef pulumi.StringPtrInput `pulumi:"passwordRef"`
+	// Authenticate using service account.
+	ServiceAccount ConnectorJdbcCredentialsServiceAccountPtrInput `pulumi:"serviceAccount"`
 	// The username to use for the database server.
 	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Authenticate using username password.
+	UsernamePassword ConnectorJdbcCredentialsUsernamePasswordPtrInput `pulumi:"usernamePassword"`
 	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
 }
@@ -6489,14 +6501,29 @@ func (o ConnectorJdbcCredentialsOutput) ToConnectorJdbcCredentialsPtrOutputWithC
 	}).(ConnectorJdbcCredentialsPtrOutput)
 }
 
+// Authentication types for JDBC connector
+func (o ConnectorJdbcCredentialsOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentials) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
 // The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-func (o ConnectorJdbcCredentialsOutput) PasswordRef() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorJdbcCredentials) string { return v.PasswordRef }).(pulumi.StringOutput)
+func (o ConnectorJdbcCredentialsOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentials) *string { return v.PasswordRef }).(pulumi.StringPtrOutput)
+}
+
+// Authenticate using service account.
+func (o ConnectorJdbcCredentialsOutput) ServiceAccount() ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentials) *ConnectorJdbcCredentialsServiceAccount { return v.ServiceAccount }).(ConnectorJdbcCredentialsServiceAccountPtrOutput)
 }
 
 // The username to use for the database server.
 func (o ConnectorJdbcCredentialsOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorJdbcCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Authenticate using username password.
+func (o ConnectorJdbcCredentialsOutput) UsernamePassword() ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentials) *ConnectorJdbcCredentialsUsernamePassword { return v.UsernamePassword }).(ConnectorJdbcCredentialsUsernamePasswordPtrOutput)
 }
 
 // The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -6528,14 +6555,34 @@ func (o ConnectorJdbcCredentialsPtrOutput) Elem() ConnectorJdbcCredentialsOutput
 	}).(ConnectorJdbcCredentialsOutput)
 }
 
+// Authentication types for JDBC connector
+func (o ConnectorJdbcCredentialsPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ConnectorJdbcCredentialsPtrOutput) PasswordRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorJdbcCredentials) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PasswordRef
+		return v.PasswordRef
 	}).(pulumi.StringPtrOutput)
+}
+
+// Authenticate using service account.
+func (o ConnectorJdbcCredentialsPtrOutput) ServiceAccount() ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentials) *ConnectorJdbcCredentialsServiceAccount {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(ConnectorJdbcCredentialsServiceAccountPtrOutput)
 }
 
 // The username to use for the database server.
@@ -6548,9 +6595,331 @@ func (o ConnectorJdbcCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Authenticate using username password.
+func (o ConnectorJdbcCredentialsPtrOutput) UsernamePassword() ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentials) *ConnectorJdbcCredentialsUsernamePassword {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePassword
+	}).(ConnectorJdbcCredentialsUsernamePasswordPtrOutput)
+}
+
 // The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o ConnectorJdbcCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorJdbcCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorJdbcCredentialsServiceAccount struct {
+	// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// ConnectorJdbcCredentialsServiceAccountInput is an input type that accepts ConnectorJdbcCredentialsServiceAccountArgs and ConnectorJdbcCredentialsServiceAccountOutput values.
+// You can construct a concrete instance of `ConnectorJdbcCredentialsServiceAccountInput` via:
+//
+//	ConnectorJdbcCredentialsServiceAccountArgs{...}
+type ConnectorJdbcCredentialsServiceAccountInput interface {
+	pulumi.Input
+
+	ToConnectorJdbcCredentialsServiceAccountOutput() ConnectorJdbcCredentialsServiceAccountOutput
+	ToConnectorJdbcCredentialsServiceAccountOutputWithContext(context.Context) ConnectorJdbcCredentialsServiceAccountOutput
+}
+
+type ConnectorJdbcCredentialsServiceAccountArgs struct {
+	// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (ConnectorJdbcCredentialsServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorJdbcCredentialsServiceAccount)(nil)).Elem()
+}
+
+func (i ConnectorJdbcCredentialsServiceAccountArgs) ToConnectorJdbcCredentialsServiceAccountOutput() ConnectorJdbcCredentialsServiceAccountOutput {
+	return i.ToConnectorJdbcCredentialsServiceAccountOutputWithContext(context.Background())
+}
+
+func (i ConnectorJdbcCredentialsServiceAccountArgs) ToConnectorJdbcCredentialsServiceAccountOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsServiceAccountOutput)
+}
+
+func (i ConnectorJdbcCredentialsServiceAccountArgs) ToConnectorJdbcCredentialsServiceAccountPtrOutput() ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return i.ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorJdbcCredentialsServiceAccountArgs) ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsServiceAccountOutput).ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(ctx)
+}
+
+// ConnectorJdbcCredentialsServiceAccountPtrInput is an input type that accepts ConnectorJdbcCredentialsServiceAccountArgs, ConnectorJdbcCredentialsServiceAccountPtr and ConnectorJdbcCredentialsServiceAccountPtrOutput values.
+// You can construct a concrete instance of `ConnectorJdbcCredentialsServiceAccountPtrInput` via:
+//
+//	        ConnectorJdbcCredentialsServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorJdbcCredentialsServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToConnectorJdbcCredentialsServiceAccountPtrOutput() ConnectorJdbcCredentialsServiceAccountPtrOutput
+	ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(context.Context) ConnectorJdbcCredentialsServiceAccountPtrOutput
+}
+
+type connectorJdbcCredentialsServiceAccountPtrType ConnectorJdbcCredentialsServiceAccountArgs
+
+func ConnectorJdbcCredentialsServiceAccountPtr(v *ConnectorJdbcCredentialsServiceAccountArgs) ConnectorJdbcCredentialsServiceAccountPtrInput {
+	return (*connectorJdbcCredentialsServiceAccountPtrType)(v)
+}
+
+func (*connectorJdbcCredentialsServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorJdbcCredentialsServiceAccount)(nil)).Elem()
+}
+
+func (i *connectorJdbcCredentialsServiceAccountPtrType) ToConnectorJdbcCredentialsServiceAccountPtrOutput() ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return i.ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorJdbcCredentialsServiceAccountPtrType) ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsServiceAccountPtrOutput)
+}
+
+type ConnectorJdbcCredentialsServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (ConnectorJdbcCredentialsServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorJdbcCredentialsServiceAccount)(nil)).Elem()
+}
+
+func (o ConnectorJdbcCredentialsServiceAccountOutput) ToConnectorJdbcCredentialsServiceAccountOutput() ConnectorJdbcCredentialsServiceAccountOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsServiceAccountOutput) ToConnectorJdbcCredentialsServiceAccountOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsServiceAccountOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsServiceAccountOutput) ToConnectorJdbcCredentialsServiceAccountPtrOutput() ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return o.ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorJdbcCredentialsServiceAccountOutput) ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorJdbcCredentialsServiceAccount) *ConnectorJdbcCredentialsServiceAccount {
+		return &v
+	}).(ConnectorJdbcCredentialsServiceAccountPtrOutput)
+}
+
+// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsServiceAccountOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentialsServiceAccount) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type ConnectorJdbcCredentialsServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorJdbcCredentialsServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorJdbcCredentialsServiceAccount)(nil)).Elem()
+}
+
+func (o ConnectorJdbcCredentialsServiceAccountPtrOutput) ToConnectorJdbcCredentialsServiceAccountPtrOutput() ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsServiceAccountPtrOutput) ToConnectorJdbcCredentialsServiceAccountPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsServiceAccountPtrOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsServiceAccountPtrOutput) Elem() ConnectorJdbcCredentialsServiceAccountOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentialsServiceAccount) ConnectorJdbcCredentialsServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorJdbcCredentialsServiceAccount
+		return ret
+	}).(ConnectorJdbcCredentialsServiceAccountOutput)
+}
+
+// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsServiceAccountPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentialsServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorJdbcCredentialsUsernamePassword struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// ConnectorJdbcCredentialsUsernamePasswordInput is an input type that accepts ConnectorJdbcCredentialsUsernamePasswordArgs and ConnectorJdbcCredentialsUsernamePasswordOutput values.
+// You can construct a concrete instance of `ConnectorJdbcCredentialsUsernamePasswordInput` via:
+//
+//	ConnectorJdbcCredentialsUsernamePasswordArgs{...}
+type ConnectorJdbcCredentialsUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToConnectorJdbcCredentialsUsernamePasswordOutput() ConnectorJdbcCredentialsUsernamePasswordOutput
+	ToConnectorJdbcCredentialsUsernamePasswordOutputWithContext(context.Context) ConnectorJdbcCredentialsUsernamePasswordOutput
+}
+
+type ConnectorJdbcCredentialsUsernamePasswordArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (ConnectorJdbcCredentialsUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorJdbcCredentialsUsernamePassword)(nil)).Elem()
+}
+
+func (i ConnectorJdbcCredentialsUsernamePasswordArgs) ToConnectorJdbcCredentialsUsernamePasswordOutput() ConnectorJdbcCredentialsUsernamePasswordOutput {
+	return i.ToConnectorJdbcCredentialsUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i ConnectorJdbcCredentialsUsernamePasswordArgs) ToConnectorJdbcCredentialsUsernamePasswordOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsUsernamePasswordOutput)
+}
+
+func (i ConnectorJdbcCredentialsUsernamePasswordArgs) ToConnectorJdbcCredentialsUsernamePasswordPtrOutput() ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return i.ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorJdbcCredentialsUsernamePasswordArgs) ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsUsernamePasswordOutput).ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(ctx)
+}
+
+// ConnectorJdbcCredentialsUsernamePasswordPtrInput is an input type that accepts ConnectorJdbcCredentialsUsernamePasswordArgs, ConnectorJdbcCredentialsUsernamePasswordPtr and ConnectorJdbcCredentialsUsernamePasswordPtrOutput values.
+// You can construct a concrete instance of `ConnectorJdbcCredentialsUsernamePasswordPtrInput` via:
+//
+//	        ConnectorJdbcCredentialsUsernamePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorJdbcCredentialsUsernamePasswordPtrInput interface {
+	pulumi.Input
+
+	ToConnectorJdbcCredentialsUsernamePasswordPtrOutput() ConnectorJdbcCredentialsUsernamePasswordPtrOutput
+	ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(context.Context) ConnectorJdbcCredentialsUsernamePasswordPtrOutput
+}
+
+type connectorJdbcCredentialsUsernamePasswordPtrType ConnectorJdbcCredentialsUsernamePasswordArgs
+
+func ConnectorJdbcCredentialsUsernamePasswordPtr(v *ConnectorJdbcCredentialsUsernamePasswordArgs) ConnectorJdbcCredentialsUsernamePasswordPtrInput {
+	return (*connectorJdbcCredentialsUsernamePasswordPtrType)(v)
+}
+
+func (*connectorJdbcCredentialsUsernamePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorJdbcCredentialsUsernamePassword)(nil)).Elem()
+}
+
+func (i *connectorJdbcCredentialsUsernamePasswordPtrType) ToConnectorJdbcCredentialsUsernamePasswordPtrOutput() ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return i.ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorJdbcCredentialsUsernamePasswordPtrType) ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorJdbcCredentialsUsernamePasswordPtrOutput)
+}
+
+type ConnectorJdbcCredentialsUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (ConnectorJdbcCredentialsUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorJdbcCredentialsUsernamePassword)(nil)).Elem()
+}
+
+func (o ConnectorJdbcCredentialsUsernamePasswordOutput) ToConnectorJdbcCredentialsUsernamePasswordOutput() ConnectorJdbcCredentialsUsernamePasswordOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsUsernamePasswordOutput) ToConnectorJdbcCredentialsUsernamePasswordOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsUsernamePasswordOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsUsernamePasswordOutput) ToConnectorJdbcCredentialsUsernamePasswordPtrOutput() ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return o.ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorJdbcCredentialsUsernamePasswordOutput) ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorJdbcCredentialsUsernamePassword) *ConnectorJdbcCredentialsUsernamePassword {
+		return &v
+	}).(ConnectorJdbcCredentialsUsernamePasswordPtrOutput)
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentialsUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o ConnectorJdbcCredentialsUsernamePasswordOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentialsUsernamePassword) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsUsernamePasswordOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorJdbcCredentialsUsernamePassword) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorJdbcCredentialsUsernamePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorJdbcCredentialsUsernamePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorJdbcCredentialsUsernamePassword)(nil)).Elem()
+}
+
+func (o ConnectorJdbcCredentialsUsernamePasswordPtrOutput) ToConnectorJdbcCredentialsUsernamePasswordPtrOutput() ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsUsernamePasswordPtrOutput) ToConnectorJdbcCredentialsUsernamePasswordPtrOutputWithContext(ctx context.Context) ConnectorJdbcCredentialsUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o ConnectorJdbcCredentialsUsernamePasswordPtrOutput) Elem() ConnectorJdbcCredentialsUsernamePasswordOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentialsUsernamePassword) ConnectorJdbcCredentialsUsernamePassword {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorJdbcCredentialsUsernamePassword
+		return ret
+	}).(ConnectorJdbcCredentialsUsernamePasswordOutput)
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsUsernamePasswordPtrOutput) PasswordRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentialsUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o ConnectorJdbcCredentialsUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentialsUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorJdbcCredentialsUsernamePasswordPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorJdbcCredentialsUsernamePassword) *string {
 		if v == nil {
 			return nil
 		}
@@ -21355,6 +21724,484 @@ func (o HelmConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput 
 		}
 		return v.UsernameRef
 	}).(pulumi.StringPtrOutput)
+}
+
+type InfraVariableSetConnector struct {
+	// Unique identifier of the connector.
+	ConnectorRef string `pulumi:"connectorRef"`
+	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	Type string `pulumi:"type"`
+}
+
+// InfraVariableSetConnectorInput is an input type that accepts InfraVariableSetConnectorArgs and InfraVariableSetConnectorOutput values.
+// You can construct a concrete instance of `InfraVariableSetConnectorInput` via:
+//
+//	InfraVariableSetConnectorArgs{...}
+type InfraVariableSetConnectorInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetConnectorOutput() InfraVariableSetConnectorOutput
+	ToInfraVariableSetConnectorOutputWithContext(context.Context) InfraVariableSetConnectorOutput
+}
+
+type InfraVariableSetConnectorArgs struct {
+	// Unique identifier of the connector.
+	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
+	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (InfraVariableSetConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetConnector)(nil)).Elem()
+}
+
+func (i InfraVariableSetConnectorArgs) ToInfraVariableSetConnectorOutput() InfraVariableSetConnectorOutput {
+	return i.ToInfraVariableSetConnectorOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetConnectorArgs) ToInfraVariableSetConnectorOutputWithContext(ctx context.Context) InfraVariableSetConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetConnectorOutput)
+}
+
+// InfraVariableSetConnectorArrayInput is an input type that accepts InfraVariableSetConnectorArray and InfraVariableSetConnectorArrayOutput values.
+// You can construct a concrete instance of `InfraVariableSetConnectorArrayInput` via:
+//
+//	InfraVariableSetConnectorArray{ InfraVariableSetConnectorArgs{...} }
+type InfraVariableSetConnectorArrayInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetConnectorArrayOutput() InfraVariableSetConnectorArrayOutput
+	ToInfraVariableSetConnectorArrayOutputWithContext(context.Context) InfraVariableSetConnectorArrayOutput
+}
+
+type InfraVariableSetConnectorArray []InfraVariableSetConnectorInput
+
+func (InfraVariableSetConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetConnector)(nil)).Elem()
+}
+
+func (i InfraVariableSetConnectorArray) ToInfraVariableSetConnectorArrayOutput() InfraVariableSetConnectorArrayOutput {
+	return i.ToInfraVariableSetConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetConnectorArray) ToInfraVariableSetConnectorArrayOutputWithContext(ctx context.Context) InfraVariableSetConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetConnectorArrayOutput)
+}
+
+type InfraVariableSetConnectorOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetConnector)(nil)).Elem()
+}
+
+func (o InfraVariableSetConnectorOutput) ToInfraVariableSetConnectorOutput() InfraVariableSetConnectorOutput {
+	return o
+}
+
+func (o InfraVariableSetConnectorOutput) ToInfraVariableSetConnectorOutputWithContext(ctx context.Context) InfraVariableSetConnectorOutput {
+	return o
+}
+
+// Unique identifier of the connector.
+func (o InfraVariableSetConnectorOutput) ConnectorRef() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
+}
+
+// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+func (o InfraVariableSetConnectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetConnector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InfraVariableSetConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetConnector)(nil)).Elem()
+}
+
+func (o InfraVariableSetConnectorArrayOutput) ToInfraVariableSetConnectorArrayOutput() InfraVariableSetConnectorArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetConnectorArrayOutput) ToInfraVariableSetConnectorArrayOutputWithContext(ctx context.Context) InfraVariableSetConnectorArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetConnectorArrayOutput) Index(i pulumi.IntInput) InfraVariableSetConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfraVariableSetConnector {
+		return vs[0].([]InfraVariableSetConnector)[vs[1].(int)]
+	}).(InfraVariableSetConnectorOutput)
+}
+
+type InfraVariableSetEnvironmentVariable struct {
+	// Key is the identifier for the variable. Must be unique within the variable set.
+	Key string `pulumi:"key"`
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	Value string `pulumi:"value"`
+	// Value type indicates the value type of the variable. Currently we support string and secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// InfraVariableSetEnvironmentVariableInput is an input type that accepts InfraVariableSetEnvironmentVariableArgs and InfraVariableSetEnvironmentVariableOutput values.
+// You can construct a concrete instance of `InfraVariableSetEnvironmentVariableInput` via:
+//
+//	InfraVariableSetEnvironmentVariableArgs{...}
+type InfraVariableSetEnvironmentVariableInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetEnvironmentVariableOutput() InfraVariableSetEnvironmentVariableOutput
+	ToInfraVariableSetEnvironmentVariableOutputWithContext(context.Context) InfraVariableSetEnvironmentVariableOutput
+}
+
+type InfraVariableSetEnvironmentVariableArgs struct {
+	// Key is the identifier for the variable. Must be unique within the variable set.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type indicates the value type of the variable. Currently we support string and secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (InfraVariableSetEnvironmentVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (i InfraVariableSetEnvironmentVariableArgs) ToInfraVariableSetEnvironmentVariableOutput() InfraVariableSetEnvironmentVariableOutput {
+	return i.ToInfraVariableSetEnvironmentVariableOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetEnvironmentVariableArgs) ToInfraVariableSetEnvironmentVariableOutputWithContext(ctx context.Context) InfraVariableSetEnvironmentVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetEnvironmentVariableOutput)
+}
+
+// InfraVariableSetEnvironmentVariableArrayInput is an input type that accepts InfraVariableSetEnvironmentVariableArray and InfraVariableSetEnvironmentVariableArrayOutput values.
+// You can construct a concrete instance of `InfraVariableSetEnvironmentVariableArrayInput` via:
+//
+//	InfraVariableSetEnvironmentVariableArray{ InfraVariableSetEnvironmentVariableArgs{...} }
+type InfraVariableSetEnvironmentVariableArrayInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetEnvironmentVariableArrayOutput() InfraVariableSetEnvironmentVariableArrayOutput
+	ToInfraVariableSetEnvironmentVariableArrayOutputWithContext(context.Context) InfraVariableSetEnvironmentVariableArrayOutput
+}
+
+type InfraVariableSetEnvironmentVariableArray []InfraVariableSetEnvironmentVariableInput
+
+func (InfraVariableSetEnvironmentVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (i InfraVariableSetEnvironmentVariableArray) ToInfraVariableSetEnvironmentVariableArrayOutput() InfraVariableSetEnvironmentVariableArrayOutput {
+	return i.ToInfraVariableSetEnvironmentVariableArrayOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetEnvironmentVariableArray) ToInfraVariableSetEnvironmentVariableArrayOutputWithContext(ctx context.Context) InfraVariableSetEnvironmentVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetEnvironmentVariableArrayOutput)
+}
+
+type InfraVariableSetEnvironmentVariableOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetEnvironmentVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (o InfraVariableSetEnvironmentVariableOutput) ToInfraVariableSetEnvironmentVariableOutput() InfraVariableSetEnvironmentVariableOutput {
+	return o
+}
+
+func (o InfraVariableSetEnvironmentVariableOutput) ToInfraVariableSetEnvironmentVariableOutputWithContext(ctx context.Context) InfraVariableSetEnvironmentVariableOutput {
+	return o
+}
+
+// Key is the identifier for the variable. Must be unique within the variable set.
+func (o InfraVariableSetEnvironmentVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+func (o InfraVariableSetEnvironmentVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetEnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type indicates the value type of the variable. Currently we support string and secret.
+func (o InfraVariableSetEnvironmentVariableOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetEnvironmentVariable) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type InfraVariableSetEnvironmentVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetEnvironmentVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (o InfraVariableSetEnvironmentVariableArrayOutput) ToInfraVariableSetEnvironmentVariableArrayOutput() InfraVariableSetEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetEnvironmentVariableArrayOutput) ToInfraVariableSetEnvironmentVariableArrayOutputWithContext(ctx context.Context) InfraVariableSetEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) InfraVariableSetEnvironmentVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfraVariableSetEnvironmentVariable {
+		return vs[0].([]InfraVariableSetEnvironmentVariable)[vs[1].(int)]
+	}).(InfraVariableSetEnvironmentVariableOutput)
+}
+
+type InfraVariableSetTerraformVariable struct {
+	// Key is the identifier for the variable. Must be unique within the variable set.
+	Key string `pulumi:"key"`
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	Value string `pulumi:"value"`
+	// Value type indicates the value type of the variable. Currently we support string and secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// InfraVariableSetTerraformVariableInput is an input type that accepts InfraVariableSetTerraformVariableArgs and InfraVariableSetTerraformVariableOutput values.
+// You can construct a concrete instance of `InfraVariableSetTerraformVariableInput` via:
+//
+//	InfraVariableSetTerraformVariableArgs{...}
+type InfraVariableSetTerraformVariableInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetTerraformVariableOutput() InfraVariableSetTerraformVariableOutput
+	ToInfraVariableSetTerraformVariableOutputWithContext(context.Context) InfraVariableSetTerraformVariableOutput
+}
+
+type InfraVariableSetTerraformVariableArgs struct {
+	// Key is the identifier for the variable. Must be unique within the variable set.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type indicates the value type of the variable. Currently we support string and secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (InfraVariableSetTerraformVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (i InfraVariableSetTerraformVariableArgs) ToInfraVariableSetTerraformVariableOutput() InfraVariableSetTerraformVariableOutput {
+	return i.ToInfraVariableSetTerraformVariableOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetTerraformVariableArgs) ToInfraVariableSetTerraformVariableOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetTerraformVariableOutput)
+}
+
+// InfraVariableSetTerraformVariableArrayInput is an input type that accepts InfraVariableSetTerraformVariableArray and InfraVariableSetTerraformVariableArrayOutput values.
+// You can construct a concrete instance of `InfraVariableSetTerraformVariableArrayInput` via:
+//
+//	InfraVariableSetTerraformVariableArray{ InfraVariableSetTerraformVariableArgs{...} }
+type InfraVariableSetTerraformVariableArrayInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetTerraformVariableArrayOutput() InfraVariableSetTerraformVariableArrayOutput
+	ToInfraVariableSetTerraformVariableArrayOutputWithContext(context.Context) InfraVariableSetTerraformVariableArrayOutput
+}
+
+type InfraVariableSetTerraformVariableArray []InfraVariableSetTerraformVariableInput
+
+func (InfraVariableSetTerraformVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (i InfraVariableSetTerraformVariableArray) ToInfraVariableSetTerraformVariableArrayOutput() InfraVariableSetTerraformVariableArrayOutput {
+	return i.ToInfraVariableSetTerraformVariableArrayOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetTerraformVariableArray) ToInfraVariableSetTerraformVariableArrayOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetTerraformVariableArrayOutput)
+}
+
+type InfraVariableSetTerraformVariableOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetTerraformVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (o InfraVariableSetTerraformVariableOutput) ToInfraVariableSetTerraformVariableOutput() InfraVariableSetTerraformVariableOutput {
+	return o
+}
+
+func (o InfraVariableSetTerraformVariableOutput) ToInfraVariableSetTerraformVariableOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableOutput {
+	return o
+}
+
+// Key is the identifier for the variable. Must be unique within the variable set.
+func (o InfraVariableSetTerraformVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariable) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+func (o InfraVariableSetTerraformVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type indicates the value type of the variable. Currently we support string and secret.
+func (o InfraVariableSetTerraformVariableOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariable) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type InfraVariableSetTerraformVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetTerraformVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (o InfraVariableSetTerraformVariableArrayOutput) ToInfraVariableSetTerraformVariableArrayOutput() InfraVariableSetTerraformVariableArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetTerraformVariableArrayOutput) ToInfraVariableSetTerraformVariableArrayOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetTerraformVariableArrayOutput) Index(i pulumi.IntInput) InfraVariableSetTerraformVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfraVariableSetTerraformVariable {
+		return vs[0].([]InfraVariableSetTerraformVariable)[vs[1].(int)]
+	}).(InfraVariableSetTerraformVariableOutput)
+}
+
+type InfraVariableSetTerraformVariableFile struct {
+	// Repository is the name of the repository to fetch the code from.
+	Repository string `pulumi:"repository"`
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+	RepositoryBranch *string `pulumi:"repositoryBranch"`
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+	RepositoryCommit *string `pulumi:"repositoryCommit"`
+	// Repository connector is the reference to the connector used to fetch the variables.
+	RepositoryConnector string `pulumi:"repositoryConnector"`
+	// Repository path is the path in which the variables reside.
+	RepositoryPath *string `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha *string `pulumi:"repositorySha"`
+}
+
+// InfraVariableSetTerraformVariableFileInput is an input type that accepts InfraVariableSetTerraformVariableFileArgs and InfraVariableSetTerraformVariableFileOutput values.
+// You can construct a concrete instance of `InfraVariableSetTerraformVariableFileInput` via:
+//
+//	InfraVariableSetTerraformVariableFileArgs{...}
+type InfraVariableSetTerraformVariableFileInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetTerraformVariableFileOutput() InfraVariableSetTerraformVariableFileOutput
+	ToInfraVariableSetTerraformVariableFileOutputWithContext(context.Context) InfraVariableSetTerraformVariableFileOutput
+}
+
+type InfraVariableSetTerraformVariableFileArgs struct {
+	// Repository is the name of the repository to fetch the code from.
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+	RepositoryBranch pulumi.StringPtrInput `pulumi:"repositoryBranch"`
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
+	// Repository connector is the reference to the connector used to fetch the variables.
+	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
+	// Repository path is the path in which the variables reside.
+	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
+}
+
+func (InfraVariableSetTerraformVariableFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (i InfraVariableSetTerraformVariableFileArgs) ToInfraVariableSetTerraformVariableFileOutput() InfraVariableSetTerraformVariableFileOutput {
+	return i.ToInfraVariableSetTerraformVariableFileOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetTerraformVariableFileArgs) ToInfraVariableSetTerraformVariableFileOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetTerraformVariableFileOutput)
+}
+
+// InfraVariableSetTerraformVariableFileArrayInput is an input type that accepts InfraVariableSetTerraformVariableFileArray and InfraVariableSetTerraformVariableFileArrayOutput values.
+// You can construct a concrete instance of `InfraVariableSetTerraformVariableFileArrayInput` via:
+//
+//	InfraVariableSetTerraformVariableFileArray{ InfraVariableSetTerraformVariableFileArgs{...} }
+type InfraVariableSetTerraformVariableFileArrayInput interface {
+	pulumi.Input
+
+	ToInfraVariableSetTerraformVariableFileArrayOutput() InfraVariableSetTerraformVariableFileArrayOutput
+	ToInfraVariableSetTerraformVariableFileArrayOutputWithContext(context.Context) InfraVariableSetTerraformVariableFileArrayOutput
+}
+
+type InfraVariableSetTerraformVariableFileArray []InfraVariableSetTerraformVariableFileInput
+
+func (InfraVariableSetTerraformVariableFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (i InfraVariableSetTerraformVariableFileArray) ToInfraVariableSetTerraformVariableFileArrayOutput() InfraVariableSetTerraformVariableFileArrayOutput {
+	return i.ToInfraVariableSetTerraformVariableFileArrayOutputWithContext(context.Background())
+}
+
+func (i InfraVariableSetTerraformVariableFileArray) ToInfraVariableSetTerraformVariableFileArrayOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfraVariableSetTerraformVariableFileArrayOutput)
+}
+
+type InfraVariableSetTerraformVariableFileOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetTerraformVariableFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (o InfraVariableSetTerraformVariableFileOutput) ToInfraVariableSetTerraformVariableFileOutput() InfraVariableSetTerraformVariableFileOutput {
+	return o
+}
+
+func (o InfraVariableSetTerraformVariableFileOutput) ToInfraVariableSetTerraformVariableFileOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableFileOutput {
+	return o
+}
+
+// Repository is the name of the repository to fetch the code from.
+func (o InfraVariableSetTerraformVariableFileOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+func (o InfraVariableSetTerraformVariableFileOutput) RepositoryBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) *string { return v.RepositoryBranch }).(pulumi.StringPtrOutput)
+}
+
+// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+func (o InfraVariableSetTerraformVariableFileOutput) RepositoryCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) *string { return v.RepositoryCommit }).(pulumi.StringPtrOutput)
+}
+
+// Repository connector is the reference to the connector used to fetch the variables.
+func (o InfraVariableSetTerraformVariableFileOutput) RepositoryConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) string { return v.RepositoryConnector }).(pulumi.StringOutput)
+}
+
+// Repository path is the path in which the variables reside.
+func (o InfraVariableSetTerraformVariableFileOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
+}
+
+// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+func (o InfraVariableSetTerraformVariableFileOutput) RepositorySha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfraVariableSetTerraformVariableFile) *string { return v.RepositorySha }).(pulumi.StringPtrOutput)
+}
+
+type InfraVariableSetTerraformVariableFileArrayOutput struct{ *pulumi.OutputState }
+
+func (InfraVariableSetTerraformVariableFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (o InfraVariableSetTerraformVariableFileArrayOutput) ToInfraVariableSetTerraformVariableFileArrayOutput() InfraVariableSetTerraformVariableFileArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetTerraformVariableFileArrayOutput) ToInfraVariableSetTerraformVariableFileArrayOutputWithContext(ctx context.Context) InfraVariableSetTerraformVariableFileArrayOutput {
+	return o
+}
+
+func (o InfraVariableSetTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) InfraVariableSetTerraformVariableFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InfraVariableSetTerraformVariableFile {
+		return vs[0].([]InfraVariableSetTerraformVariableFile)[vs[1].(int)]
+	}).(InfraVariableSetTerraformVariableFileOutput)
 }
 
 type InfrastructureGitDetails struct {
@@ -40837,10 +41684,16 @@ func (o GetConnectorGcpKmsOidcAuthenticationArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetConnectorJdbcCredential struct {
+	// Authentication types for JDBC connector
+	AuthType string `pulumi:"authType"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
+	// Authenticate using service account.
+	ServiceAccounts []GetConnectorJdbcCredentialServiceAccount `pulumi:"serviceAccounts"`
 	// The username to use for the database server.
 	Username string `pulumi:"username"`
+	// Authenticate using username password.
+	UsernamePasswords []GetConnectorJdbcCredentialUsernamePassword `pulumi:"usernamePasswords"`
 	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef string `pulumi:"usernameRef"`
 }
@@ -40857,10 +41710,16 @@ type GetConnectorJdbcCredentialInput interface {
 }
 
 type GetConnectorJdbcCredentialArgs struct {
+	// Authentication types for JDBC connector
+	AuthType pulumi.StringInput `pulumi:"authType"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Authenticate using service account.
+	ServiceAccounts GetConnectorJdbcCredentialServiceAccountArrayInput `pulumi:"serviceAccounts"`
 	// The username to use for the database server.
 	Username pulumi.StringInput `pulumi:"username"`
+	// Authenticate using username password.
+	UsernamePasswords GetConnectorJdbcCredentialUsernamePasswordArrayInput `pulumi:"usernamePasswords"`
 	// The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
 }
@@ -40916,14 +41775,33 @@ func (o GetConnectorJdbcCredentialOutput) ToGetConnectorJdbcCredentialOutputWith
 	return o
 }
 
+// Authentication types for JDBC connector
+func (o GetConnectorJdbcCredentialOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
 // The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o GetConnectorJdbcCredentialOutput) PasswordRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.PasswordRef }).(pulumi.StringOutput)
 }
 
+// Authenticate using service account.
+func (o GetConnectorJdbcCredentialOutput) ServiceAccounts() GetConnectorJdbcCredentialServiceAccountArrayOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) []GetConnectorJdbcCredentialServiceAccount {
+		return v.ServiceAccounts
+	}).(GetConnectorJdbcCredentialServiceAccountArrayOutput)
+}
+
 // The username to use for the database server.
 func (o GetConnectorJdbcCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Authenticate using username password.
+func (o GetConnectorJdbcCredentialOutput) UsernamePasswords() GetConnectorJdbcCredentialUsernamePasswordArrayOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) []GetConnectorJdbcCredentialUsernamePassword {
+		return v.UsernamePasswords
+	}).(GetConnectorJdbcCredentialUsernamePasswordArrayOutput)
 }
 
 // The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -40949,6 +41827,218 @@ func (o GetConnectorJdbcCredentialArrayOutput) Index(i pulumi.IntInput) GetConne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredential {
 		return vs[0].([]GetConnectorJdbcCredential)[vs[1].(int)]
 	}).(GetConnectorJdbcCredentialOutput)
+}
+
+type GetConnectorJdbcCredentialServiceAccount struct {
+	// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// GetConnectorJdbcCredentialServiceAccountInput is an input type that accepts GetConnectorJdbcCredentialServiceAccountArgs and GetConnectorJdbcCredentialServiceAccountOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialServiceAccountInput` via:
+//
+//	GetConnectorJdbcCredentialServiceAccountArgs{...}
+type GetConnectorJdbcCredentialServiceAccountInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialServiceAccountOutput() GetConnectorJdbcCredentialServiceAccountOutput
+	ToGetConnectorJdbcCredentialServiceAccountOutputWithContext(context.Context) GetConnectorJdbcCredentialServiceAccountOutput
+}
+
+type GetConnectorJdbcCredentialServiceAccountArgs struct {
+	// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (GetConnectorJdbcCredentialServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccount)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialServiceAccountArgs) ToGetConnectorJdbcCredentialServiceAccountOutput() GetConnectorJdbcCredentialServiceAccountOutput {
+	return i.ToGetConnectorJdbcCredentialServiceAccountOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialServiceAccountArgs) ToGetConnectorJdbcCredentialServiceAccountOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialServiceAccountOutput)
+}
+
+// GetConnectorJdbcCredentialServiceAccountArrayInput is an input type that accepts GetConnectorJdbcCredentialServiceAccountArray and GetConnectorJdbcCredentialServiceAccountArrayOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialServiceAccountArrayInput` via:
+//
+//	GetConnectorJdbcCredentialServiceAccountArray{ GetConnectorJdbcCredentialServiceAccountArgs{...} }
+type GetConnectorJdbcCredentialServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialServiceAccountArrayOutput() GetConnectorJdbcCredentialServiceAccountArrayOutput
+	ToGetConnectorJdbcCredentialServiceAccountArrayOutputWithContext(context.Context) GetConnectorJdbcCredentialServiceAccountArrayOutput
+}
+
+type GetConnectorJdbcCredentialServiceAccountArray []GetConnectorJdbcCredentialServiceAccountInput
+
+func (GetConnectorJdbcCredentialServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialServiceAccount)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialServiceAccountArray) ToGetConnectorJdbcCredentialServiceAccountArrayOutput() GetConnectorJdbcCredentialServiceAccountArrayOutput {
+	return i.ToGetConnectorJdbcCredentialServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialServiceAccountArray) ToGetConnectorJdbcCredentialServiceAccountArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialServiceAccountArrayOutput)
+}
+
+type GetConnectorJdbcCredentialServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccount)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialServiceAccountOutput) ToGetConnectorJdbcCredentialServiceAccountOutput() GetConnectorJdbcCredentialServiceAccountOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialServiceAccountOutput) ToGetConnectorJdbcCredentialServiceAccountOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialServiceAccountOutput {
+	return o
+}
+
+// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialServiceAccountOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialServiceAccount) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorJdbcCredentialServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialServiceAccount)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialServiceAccountArrayOutput) ToGetConnectorJdbcCredentialServiceAccountArrayOutput() GetConnectorJdbcCredentialServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialServiceAccountArrayOutput) ToGetConnectorJdbcCredentialServiceAccountArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialServiceAccountArrayOutput) Index(i pulumi.IntInput) GetConnectorJdbcCredentialServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialServiceAccount {
+		return vs[0].([]GetConnectorJdbcCredentialServiceAccount)[vs[1].(int)]
+	}).(GetConnectorJdbcCredentialServiceAccountOutput)
+}
+
+type GetConnectorJdbcCredentialUsernamePassword struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef string `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetConnectorJdbcCredentialUsernamePasswordInput is an input type that accepts GetConnectorJdbcCredentialUsernamePasswordArgs and GetConnectorJdbcCredentialUsernamePasswordOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialUsernamePasswordInput` via:
+//
+//	GetConnectorJdbcCredentialUsernamePasswordArgs{...}
+type GetConnectorJdbcCredentialUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialUsernamePasswordOutput() GetConnectorJdbcCredentialUsernamePasswordOutput
+	ToGetConnectorJdbcCredentialUsernamePasswordOutputWithContext(context.Context) GetConnectorJdbcCredentialUsernamePasswordOutput
+}
+
+type GetConnectorJdbcCredentialUsernamePasswordArgs struct {
+	// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetConnectorJdbcCredentialUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePassword)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialUsernamePasswordArgs) ToGetConnectorJdbcCredentialUsernamePasswordOutput() GetConnectorJdbcCredentialUsernamePasswordOutput {
+	return i.ToGetConnectorJdbcCredentialUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialUsernamePasswordArgs) ToGetConnectorJdbcCredentialUsernamePasswordOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialUsernamePasswordOutput)
+}
+
+// GetConnectorJdbcCredentialUsernamePasswordArrayInput is an input type that accepts GetConnectorJdbcCredentialUsernamePasswordArray and GetConnectorJdbcCredentialUsernamePasswordArrayOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialUsernamePasswordArrayInput` via:
+//
+//	GetConnectorJdbcCredentialUsernamePasswordArray{ GetConnectorJdbcCredentialUsernamePasswordArgs{...} }
+type GetConnectorJdbcCredentialUsernamePasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialUsernamePasswordArrayOutput() GetConnectorJdbcCredentialUsernamePasswordArrayOutput
+	ToGetConnectorJdbcCredentialUsernamePasswordArrayOutputWithContext(context.Context) GetConnectorJdbcCredentialUsernamePasswordArrayOutput
+}
+
+type GetConnectorJdbcCredentialUsernamePasswordArray []GetConnectorJdbcCredentialUsernamePasswordInput
+
+func (GetConnectorJdbcCredentialUsernamePasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialUsernamePassword)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialUsernamePasswordArray) ToGetConnectorJdbcCredentialUsernamePasswordArrayOutput() GetConnectorJdbcCredentialUsernamePasswordArrayOutput {
+	return i.ToGetConnectorJdbcCredentialUsernamePasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialUsernamePasswordArray) ToGetConnectorJdbcCredentialUsernamePasswordArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialUsernamePasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialUsernamePasswordArrayOutput)
+}
+
+type GetConnectorJdbcCredentialUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePassword)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialUsernamePasswordOutput) ToGetConnectorJdbcCredentialUsernamePasswordOutput() GetConnectorJdbcCredentialUsernamePasswordOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialUsernamePasswordOutput) ToGetConnectorJdbcCredentialUsernamePasswordOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialUsernamePasswordOutput {
+	return o
+}
+
+// Reference to a secret containing the password to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialUsernamePasswordOutput) PasswordRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialUsernamePassword) string { return v.PasswordRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o GetConnectorJdbcCredentialUsernamePasswordOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialUsernamePassword) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialUsernamePasswordOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialUsernamePassword) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorJdbcCredentialUsernamePasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialUsernamePasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialUsernamePassword)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialUsernamePasswordArrayOutput) ToGetConnectorJdbcCredentialUsernamePasswordArrayOutput() GetConnectorJdbcCredentialUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialUsernamePasswordArrayOutput) ToGetConnectorJdbcCredentialUsernamePasswordArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialUsernamePasswordArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialUsernamePasswordArrayOutput) Index(i pulumi.IntInput) GetConnectorJdbcCredentialUsernamePasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialUsernamePassword {
+		return vs[0].([]GetConnectorJdbcCredentialUsernamePassword)[vs[1].(int)]
+	}).(GetConnectorJdbcCredentialUsernamePasswordOutput)
 }
 
 type GetConnectorPdcHost struct {
@@ -50325,6 +51415,484 @@ func (o GetHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetHelmC
 	}).(GetHelmConnectorCredentialOutput)
 }
 
+type GetInfraVariableSetConnector struct {
+	// Unique identifier of the connector.
+	ConnectorRef string `pulumi:"connectorRef"`
+	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	Type string `pulumi:"type"`
+}
+
+// GetInfraVariableSetConnectorInput is an input type that accepts GetInfraVariableSetConnectorArgs and GetInfraVariableSetConnectorOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetConnectorInput` via:
+//
+//	GetInfraVariableSetConnectorArgs{...}
+type GetInfraVariableSetConnectorInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetConnectorOutput() GetInfraVariableSetConnectorOutput
+	ToGetInfraVariableSetConnectorOutputWithContext(context.Context) GetInfraVariableSetConnectorOutput
+}
+
+type GetInfraVariableSetConnectorArgs struct {
+	// Unique identifier of the connector.
+	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
+	// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInfraVariableSetConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetConnector)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetConnectorArgs) ToGetInfraVariableSetConnectorOutput() GetInfraVariableSetConnectorOutput {
+	return i.ToGetInfraVariableSetConnectorOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetConnectorArgs) ToGetInfraVariableSetConnectorOutputWithContext(ctx context.Context) GetInfraVariableSetConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetConnectorOutput)
+}
+
+// GetInfraVariableSetConnectorArrayInput is an input type that accepts GetInfraVariableSetConnectorArray and GetInfraVariableSetConnectorArrayOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetConnectorArrayInput` via:
+//
+//	GetInfraVariableSetConnectorArray{ GetInfraVariableSetConnectorArgs{...} }
+type GetInfraVariableSetConnectorArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetConnectorArrayOutput() GetInfraVariableSetConnectorArrayOutput
+	ToGetInfraVariableSetConnectorArrayOutputWithContext(context.Context) GetInfraVariableSetConnectorArrayOutput
+}
+
+type GetInfraVariableSetConnectorArray []GetInfraVariableSetConnectorInput
+
+func (GetInfraVariableSetConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetConnector)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetConnectorArray) ToGetInfraVariableSetConnectorArrayOutput() GetInfraVariableSetConnectorArrayOutput {
+	return i.ToGetInfraVariableSetConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetConnectorArray) ToGetInfraVariableSetConnectorArrayOutputWithContext(ctx context.Context) GetInfraVariableSetConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetConnectorArrayOutput)
+}
+
+type GetInfraVariableSetConnectorOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetConnector)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetConnectorOutput) ToGetInfraVariableSetConnectorOutput() GetInfraVariableSetConnectorOutput {
+	return o
+}
+
+func (o GetInfraVariableSetConnectorOutput) ToGetInfraVariableSetConnectorOutputWithContext(ctx context.Context) GetInfraVariableSetConnectorOutput {
+	return o
+}
+
+// Unique identifier of the connector.
+func (o GetInfraVariableSetConnectorOutput) ConnectorRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
+}
+
+// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+func (o GetInfraVariableSetConnectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetConnector) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInfraVariableSetConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetConnector)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetConnectorArrayOutput) ToGetInfraVariableSetConnectorArrayOutput() GetInfraVariableSetConnectorArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetConnectorArrayOutput) ToGetInfraVariableSetConnectorArrayOutputWithContext(ctx context.Context) GetInfraVariableSetConnectorArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetConnectorArrayOutput) Index(i pulumi.IntInput) GetInfraVariableSetConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraVariableSetConnector {
+		return vs[0].([]GetInfraVariableSetConnector)[vs[1].(int)]
+	}).(GetInfraVariableSetConnectorOutput)
+}
+
+type GetInfraVariableSetEnvironmentVariable struct {
+	// Key is the identifier for the variable`
+	Key string `pulumi:"key"`
+	// value is the value of the variable
+	Value string `pulumi:"value"`
+	// Value type indicates the value type of the variable, text or secret
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetInfraVariableSetEnvironmentVariableInput is an input type that accepts GetInfraVariableSetEnvironmentVariableArgs and GetInfraVariableSetEnvironmentVariableOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetEnvironmentVariableInput` via:
+//
+//	GetInfraVariableSetEnvironmentVariableArgs{...}
+type GetInfraVariableSetEnvironmentVariableInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetEnvironmentVariableOutput() GetInfraVariableSetEnvironmentVariableOutput
+	ToGetInfraVariableSetEnvironmentVariableOutputWithContext(context.Context) GetInfraVariableSetEnvironmentVariableOutput
+}
+
+type GetInfraVariableSetEnvironmentVariableArgs struct {
+	// Key is the identifier for the variable`
+	Key pulumi.StringInput `pulumi:"key"`
+	// value is the value of the variable
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type indicates the value type of the variable, text or secret
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetInfraVariableSetEnvironmentVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetEnvironmentVariableArgs) ToGetInfraVariableSetEnvironmentVariableOutput() GetInfraVariableSetEnvironmentVariableOutput {
+	return i.ToGetInfraVariableSetEnvironmentVariableOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetEnvironmentVariableArgs) ToGetInfraVariableSetEnvironmentVariableOutputWithContext(ctx context.Context) GetInfraVariableSetEnvironmentVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetEnvironmentVariableOutput)
+}
+
+// GetInfraVariableSetEnvironmentVariableArrayInput is an input type that accepts GetInfraVariableSetEnvironmentVariableArray and GetInfraVariableSetEnvironmentVariableArrayOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetEnvironmentVariableArrayInput` via:
+//
+//	GetInfraVariableSetEnvironmentVariableArray{ GetInfraVariableSetEnvironmentVariableArgs{...} }
+type GetInfraVariableSetEnvironmentVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetEnvironmentVariableArrayOutput() GetInfraVariableSetEnvironmentVariableArrayOutput
+	ToGetInfraVariableSetEnvironmentVariableArrayOutputWithContext(context.Context) GetInfraVariableSetEnvironmentVariableArrayOutput
+}
+
+type GetInfraVariableSetEnvironmentVariableArray []GetInfraVariableSetEnvironmentVariableInput
+
+func (GetInfraVariableSetEnvironmentVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetEnvironmentVariableArray) ToGetInfraVariableSetEnvironmentVariableArrayOutput() GetInfraVariableSetEnvironmentVariableArrayOutput {
+	return i.ToGetInfraVariableSetEnvironmentVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetEnvironmentVariableArray) ToGetInfraVariableSetEnvironmentVariableArrayOutputWithContext(ctx context.Context) GetInfraVariableSetEnvironmentVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetEnvironmentVariableArrayOutput)
+}
+
+type GetInfraVariableSetEnvironmentVariableOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetEnvironmentVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetEnvironmentVariableOutput) ToGetInfraVariableSetEnvironmentVariableOutput() GetInfraVariableSetEnvironmentVariableOutput {
+	return o
+}
+
+func (o GetInfraVariableSetEnvironmentVariableOutput) ToGetInfraVariableSetEnvironmentVariableOutputWithContext(ctx context.Context) GetInfraVariableSetEnvironmentVariableOutput {
+	return o
+}
+
+// Key is the identifier for the variable`
+func (o GetInfraVariableSetEnvironmentVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// value is the value of the variable
+func (o GetInfraVariableSetEnvironmentVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type indicates the value type of the variable, text or secret
+func (o GetInfraVariableSetEnvironmentVariableOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetInfraVariableSetEnvironmentVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetEnvironmentVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetEnvironmentVariable)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetEnvironmentVariableArrayOutput) ToGetInfraVariableSetEnvironmentVariableArrayOutput() GetInfraVariableSetEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetEnvironmentVariableArrayOutput) ToGetInfraVariableSetEnvironmentVariableArrayOutputWithContext(ctx context.Context) GetInfraVariableSetEnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) GetInfraVariableSetEnvironmentVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraVariableSetEnvironmentVariable {
+		return vs[0].([]GetInfraVariableSetEnvironmentVariable)[vs[1].(int)]
+	}).(GetInfraVariableSetEnvironmentVariableOutput)
+}
+
+type GetInfraVariableSetTerraformVariable struct {
+	// Key is the identifier for the variable`
+	Key string `pulumi:"key"`
+	// value is the value of the variable
+	Value string `pulumi:"value"`
+	// Value type indicates the value type of the variable, text or secret
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetInfraVariableSetTerraformVariableInput is an input type that accepts GetInfraVariableSetTerraformVariableArgs and GetInfraVariableSetTerraformVariableOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetTerraformVariableInput` via:
+//
+//	GetInfraVariableSetTerraformVariableArgs{...}
+type GetInfraVariableSetTerraformVariableInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetTerraformVariableOutput() GetInfraVariableSetTerraformVariableOutput
+	ToGetInfraVariableSetTerraformVariableOutputWithContext(context.Context) GetInfraVariableSetTerraformVariableOutput
+}
+
+type GetInfraVariableSetTerraformVariableArgs struct {
+	// Key is the identifier for the variable`
+	Key pulumi.StringInput `pulumi:"key"`
+	// value is the value of the variable
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type indicates the value type of the variable, text or secret
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetInfraVariableSetTerraformVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetTerraformVariableArgs) ToGetInfraVariableSetTerraformVariableOutput() GetInfraVariableSetTerraformVariableOutput {
+	return i.ToGetInfraVariableSetTerraformVariableOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetTerraformVariableArgs) ToGetInfraVariableSetTerraformVariableOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetTerraformVariableOutput)
+}
+
+// GetInfraVariableSetTerraformVariableArrayInput is an input type that accepts GetInfraVariableSetTerraformVariableArray and GetInfraVariableSetTerraformVariableArrayOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetTerraformVariableArrayInput` via:
+//
+//	GetInfraVariableSetTerraformVariableArray{ GetInfraVariableSetTerraformVariableArgs{...} }
+type GetInfraVariableSetTerraformVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetTerraformVariableArrayOutput() GetInfraVariableSetTerraformVariableArrayOutput
+	ToGetInfraVariableSetTerraformVariableArrayOutputWithContext(context.Context) GetInfraVariableSetTerraformVariableArrayOutput
+}
+
+type GetInfraVariableSetTerraformVariableArray []GetInfraVariableSetTerraformVariableInput
+
+func (GetInfraVariableSetTerraformVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetTerraformVariableArray) ToGetInfraVariableSetTerraformVariableArrayOutput() GetInfraVariableSetTerraformVariableArrayOutput {
+	return i.ToGetInfraVariableSetTerraformVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetTerraformVariableArray) ToGetInfraVariableSetTerraformVariableArrayOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetTerraformVariableArrayOutput)
+}
+
+type GetInfraVariableSetTerraformVariableOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetTerraformVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetTerraformVariableOutput) ToGetInfraVariableSetTerraformVariableOutput() GetInfraVariableSetTerraformVariableOutput {
+	return o
+}
+
+func (o GetInfraVariableSetTerraformVariableOutput) ToGetInfraVariableSetTerraformVariableOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableOutput {
+	return o
+}
+
+// Key is the identifier for the variable`
+func (o GetInfraVariableSetTerraformVariableOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// value is the value of the variable
+func (o GetInfraVariableSetTerraformVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type indicates the value type of the variable, text or secret
+func (o GetInfraVariableSetTerraformVariableOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetInfraVariableSetTerraformVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetTerraformVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetTerraformVariable)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetTerraformVariableArrayOutput) ToGetInfraVariableSetTerraformVariableArrayOutput() GetInfraVariableSetTerraformVariableArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetTerraformVariableArrayOutput) ToGetInfraVariableSetTerraformVariableArrayOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetTerraformVariableArrayOutput) Index(i pulumi.IntInput) GetInfraVariableSetTerraformVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraVariableSetTerraformVariable {
+		return vs[0].([]GetInfraVariableSetTerraformVariable)[vs[1].(int)]
+	}).(GetInfraVariableSetTerraformVariableOutput)
+}
+
+type GetInfraVariableSetTerraformVariableFile struct {
+	// Repository is the name of the repository to fetch the code from.
+	Repository string `pulumi:"repository"`
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+	RepositoryBranch *string `pulumi:"repositoryBranch"`
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+	RepositoryCommit *string `pulumi:"repositoryCommit"`
+	// Repository connector is the reference to the connector used to fetch the variables.
+	RepositoryConnector string `pulumi:"repositoryConnector"`
+	// Repository path is the path in which the variables reside.
+	RepositoryPath *string `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha *string `pulumi:"repositorySha"`
+}
+
+// GetInfraVariableSetTerraformVariableFileInput is an input type that accepts GetInfraVariableSetTerraformVariableFileArgs and GetInfraVariableSetTerraformVariableFileOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetTerraformVariableFileInput` via:
+//
+//	GetInfraVariableSetTerraformVariableFileArgs{...}
+type GetInfraVariableSetTerraformVariableFileInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetTerraformVariableFileOutput() GetInfraVariableSetTerraformVariableFileOutput
+	ToGetInfraVariableSetTerraformVariableFileOutputWithContext(context.Context) GetInfraVariableSetTerraformVariableFileOutput
+}
+
+type GetInfraVariableSetTerraformVariableFileArgs struct {
+	// Repository is the name of the repository to fetch the code from.
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+	RepositoryBranch pulumi.StringPtrInput `pulumi:"repositoryBranch"`
+	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
+	// Repository connector is the reference to the connector used to fetch the variables.
+	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
+	// Repository path is the path in which the variables reside.
+	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
+	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
+}
+
+func (GetInfraVariableSetTerraformVariableFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetTerraformVariableFileArgs) ToGetInfraVariableSetTerraformVariableFileOutput() GetInfraVariableSetTerraformVariableFileOutput {
+	return i.ToGetInfraVariableSetTerraformVariableFileOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetTerraformVariableFileArgs) ToGetInfraVariableSetTerraformVariableFileOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetTerraformVariableFileOutput)
+}
+
+// GetInfraVariableSetTerraformVariableFileArrayInput is an input type that accepts GetInfraVariableSetTerraformVariableFileArray and GetInfraVariableSetTerraformVariableFileArrayOutput values.
+// You can construct a concrete instance of `GetInfraVariableSetTerraformVariableFileArrayInput` via:
+//
+//	GetInfraVariableSetTerraformVariableFileArray{ GetInfraVariableSetTerraformVariableFileArgs{...} }
+type GetInfraVariableSetTerraformVariableFileArrayInput interface {
+	pulumi.Input
+
+	ToGetInfraVariableSetTerraformVariableFileArrayOutput() GetInfraVariableSetTerraformVariableFileArrayOutput
+	ToGetInfraVariableSetTerraformVariableFileArrayOutputWithContext(context.Context) GetInfraVariableSetTerraformVariableFileArrayOutput
+}
+
+type GetInfraVariableSetTerraformVariableFileArray []GetInfraVariableSetTerraformVariableFileInput
+
+func (GetInfraVariableSetTerraformVariableFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (i GetInfraVariableSetTerraformVariableFileArray) ToGetInfraVariableSetTerraformVariableFileArrayOutput() GetInfraVariableSetTerraformVariableFileArrayOutput {
+	return i.ToGetInfraVariableSetTerraformVariableFileArrayOutputWithContext(context.Background())
+}
+
+func (i GetInfraVariableSetTerraformVariableFileArray) ToGetInfraVariableSetTerraformVariableFileArrayOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfraVariableSetTerraformVariableFileArrayOutput)
+}
+
+type GetInfraVariableSetTerraformVariableFileOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetTerraformVariableFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetTerraformVariableFileOutput) ToGetInfraVariableSetTerraformVariableFileOutput() GetInfraVariableSetTerraformVariableFileOutput {
+	return o
+}
+
+func (o GetInfraVariableSetTerraformVariableFileOutput) ToGetInfraVariableSetTerraformVariableFileOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableFileOutput {
+	return o
+}
+
+// Repository is the name of the repository to fetch the code from.
+func (o GetInfraVariableSetTerraformVariableFileOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositoryBranch }).(pulumi.StringPtrOutput)
+}
+
+// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositoryCommit }).(pulumi.StringPtrOutput)
+}
+
+// Repository connector is the reference to the connector used to fetch the variables.
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) string { return v.RepositoryConnector }).(pulumi.StringOutput)
+}
+
+// Repository path is the path in which the variables reside.
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
+}
+
+// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositorySha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositorySha }).(pulumi.StringPtrOutput)
+}
+
+type GetInfraVariableSetTerraformVariableFileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInfraVariableSetTerraformVariableFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInfraVariableSetTerraformVariableFile)(nil)).Elem()
+}
+
+func (o GetInfraVariableSetTerraformVariableFileArrayOutput) ToGetInfraVariableSetTerraformVariableFileArrayOutput() GetInfraVariableSetTerraformVariableFileArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetTerraformVariableFileArrayOutput) ToGetInfraVariableSetTerraformVariableFileArrayOutputWithContext(ctx context.Context) GetInfraVariableSetTerraformVariableFileArrayOutput {
+	return o
+}
+
+func (o GetInfraVariableSetTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) GetInfraVariableSetTerraformVariableFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInfraVariableSetTerraformVariableFile {
+		return vs[0].([]GetInfraVariableSetTerraformVariableFile)[vs[1].(int)]
+	}).(GetInfraVariableSetTerraformVariableFileOutput)
+}
+
 type GetInfrastructureGitDetails struct {
 	// Name of the branch.
 	Branch string `pulumi:"branch"`
@@ -59204,6 +60772,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorGcpKmsOidcAuthenticationArrayInput)(nil)).Elem(), ConnectorGcpKmsOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsInput)(nil)).Elem(), ConnectorJdbcCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsPtrInput)(nil)).Elem(), ConnectorJdbcCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsServiceAccountInput)(nil)).Elem(), ConnectorJdbcCredentialsServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsServiceAccountPtrInput)(nil)).Elem(), ConnectorJdbcCredentialsServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsUsernamePasswordInput)(nil)).Elem(), ConnectorJdbcCredentialsUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsUsernamePasswordPtrInput)(nil)).Elem(), ConnectorJdbcCredentialsUsernamePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostInput)(nil)).Elem(), ConnectorPdcHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostArrayInput)(nil)).Elem(), ConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorRancherBearerTokenInput)(nil)).Elem(), ConnectorRancherBearerTokenArgs{})
@@ -59414,6 +60986,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthUserPasswordPtrInput)(nil)).Elem(), HarRegistryConfigAuthUserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorInput)(nil)).Elem(), InfraVariableSetConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorArrayInput)(nil)).Elem(), InfraVariableSetConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetEnvironmentVariableInput)(nil)).Elem(), InfraVariableSetEnvironmentVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetEnvironmentVariableArrayInput)(nil)).Elem(), InfraVariableSetEnvironmentVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetTerraformVariableInput)(nil)).Elem(), InfraVariableSetTerraformVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetTerraformVariableArrayInput)(nil)).Elem(), InfraVariableSetTerraformVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetTerraformVariableFileInput)(nil)).Elem(), InfraVariableSetTerraformVariableFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetTerraformVariableFileArrayInput)(nil)).Elem(), InfraVariableSetTerraformVariableFileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureGitDetailsInput)(nil)).Elem(), InfrastructureGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureGitDetailsPtrInput)(nil)).Elem(), InfrastructureGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InputSetGitDetailsInput)(nil)).Elem(), InputSetGitDetailsArgs{})
@@ -59664,6 +61244,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorGcpKmsOidcAuthenticationArrayInput)(nil)).Elem(), GetConnectorGcpKmsOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialInput)(nil)).Elem(), GetConnectorJdbcCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccountInput)(nil)).Elem(), GetConnectorJdbcCredentialServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccountArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePasswordInput)(nil)).Elem(), GetConnectorJdbcCredentialUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePasswordArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialUsernamePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostInput)(nil)).Elem(), GetConnectorPdcHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostArrayInput)(nil)).Elem(), GetConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
@@ -59814,6 +61398,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthUserPasswordPtrInput)(nil)).Elem(), GetHarRegistryConfigAuthUserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetConnectorInput)(nil)).Elem(), GetInfraVariableSetConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetConnectorArrayInput)(nil)).Elem(), GetInfraVariableSetConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetEnvironmentVariableInput)(nil)).Elem(), GetInfraVariableSetEnvironmentVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetEnvironmentVariableArrayInput)(nil)).Elem(), GetInfraVariableSetEnvironmentVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetTerraformVariableInput)(nil)).Elem(), GetInfraVariableSetTerraformVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetTerraformVariableArrayInput)(nil)).Elem(), GetInfraVariableSetTerraformVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetTerraformVariableFileInput)(nil)).Elem(), GetInfraVariableSetTerraformVariableFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraVariableSetTerraformVariableFileArrayInput)(nil)).Elem(), GetInfraVariableSetTerraformVariableFileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureGitDetailsInput)(nil)).Elem(), GetInfrastructureGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureGitDetailsPtrInput)(nil)).Elem(), GetInfrastructureGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInputSetGitDetailsInput)(nil)).Elem(), GetInputSetGitDetailsArgs{})
@@ -60031,6 +61623,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorGcpKmsOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorJdbcCredentialsOutput{})
 	pulumi.RegisterOutputType(ConnectorJdbcCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorJdbcCredentialsServiceAccountOutput{})
+	pulumi.RegisterOutputType(ConnectorJdbcCredentialsServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorJdbcCredentialsUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(ConnectorJdbcCredentialsUsernamePasswordPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorPdcHostOutput{})
 	pulumi.RegisterOutputType(ConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorRancherBearerTokenOutput{})
@@ -60241,6 +61837,14 @@ func init() {
 	pulumi.RegisterOutputType(HarRegistryConfigAuthUserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetConnectorOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetConnectorArrayOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetEnvironmentVariableOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetEnvironmentVariableArrayOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetTerraformVariableOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetTerraformVariableArrayOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetTerraformVariableFileOutput{})
+	pulumi.RegisterOutputType(InfraVariableSetTerraformVariableFileArrayOutput{})
 	pulumi.RegisterOutputType(InfrastructureGitDetailsOutput{})
 	pulumi.RegisterOutputType(InfrastructureGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(InputSetGitDetailsOutput{})
@@ -60491,6 +62095,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorGcpKmsOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialServiceAccountOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialUsernamePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorPdcHostOutput{})
 	pulumi.RegisterOutputType(GetConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenOutput{})
@@ -60641,6 +62249,14 @@ func init() {
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthUserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetConnectorOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetConnectorArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetEnvironmentVariableOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetEnvironmentVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetTerraformVariableOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetTerraformVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetTerraformVariableFileOutput{})
+	pulumi.RegisterOutputType(GetInfraVariableSetTerraformVariableFileArrayOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureGitDetailsOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GetInputSetGitDetailsOutput{})

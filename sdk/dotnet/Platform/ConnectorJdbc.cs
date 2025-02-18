@@ -12,40 +12,6 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a JDBC connector.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Harness.Platform.ConnectorJdbc("test", new()
-    ///     {
-    ///         Identifier = "identifer",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         Url = "jdbc:sqlserver://1.2.3;trustServerCertificate=true",
-    ///         DelegateSelectors = new[]
-    ///         {
-    ///             "harness-delegate",
-    ///         },
-    ///         Credentials = new Harness.Platform.Inputs.ConnectorJdbcCredentialsArgs
-    ///         {
-    ///             Username = "admin",
-    ///             PasswordRef = "account.secret_id",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Import account level jdbc connector

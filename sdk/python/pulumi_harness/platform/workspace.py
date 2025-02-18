@@ -40,7 +40,8 @@ class WorkspaceArgs:
                  repository_sha: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None):
+                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
+                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Workspace resource.
         :param pulumi.Input[bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
@@ -59,6 +60,7 @@ class WorkspaceArgs:
         :param pulumi.Input[str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
         """
         pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
         pulumi.set(__self__, "identifier", identifier)
@@ -90,6 +92,8 @@ class WorkspaceArgs:
             pulumi.set(__self__, "terraform_variable_files", terraform_variable_files)
         if terraform_variables is not None:
             pulumi.set(__self__, "terraform_variables", terraform_variables)
+        if variable_sets is not None:
+            pulumi.set(__self__, "variable_sets", variable_sets)
 
     @property
     @pulumi.getter(name="costEstimationEnabled")
@@ -319,6 +323,18 @@ class WorkspaceArgs:
     def terraform_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]):
         pulumi.set(self, "terraform_variables", value)
 
+    @property
+    @pulumi.getter(name="variableSets")
+    def variable_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Variable set identifiers. Currently support only one variable set.
+        """
+        return pulumi.get(self, "variable_sets")
+
+    @variable_sets.setter
+    def variable_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "variable_sets", value)
+
 
 @pulumi.input_type
 class _WorkspaceState:
@@ -342,7 +358,8 @@ class _WorkspaceState:
                  repository_sha: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None):
+                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
+                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Workspace resources.
         :param pulumi.Input[bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
@@ -361,6 +378,7 @@ class _WorkspaceState:
         :param pulumi.Input[str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
         """
         if cost_estimation_enabled is not None:
             pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
@@ -402,6 +420,8 @@ class _WorkspaceState:
             pulumi.set(__self__, "terraform_variable_files", terraform_variable_files)
         if terraform_variables is not None:
             pulumi.set(__self__, "terraform_variables", terraform_variables)
+        if variable_sets is not None:
+            pulumi.set(__self__, "variable_sets", variable_sets)
 
     @property
     @pulumi.getter(name="costEstimationEnabled")
@@ -631,6 +651,18 @@ class _WorkspaceState:
     def terraform_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]):
         pulumi.set(self, "terraform_variables", value)
 
+    @property
+    @pulumi.getter(name="variableSets")
+    def variable_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Variable set identifiers. Currently support only one variable set.
+        """
+        return pulumi.get(self, "variable_sets")
+
+    @variable_sets.setter
+    def variable_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "variable_sets", value)
+
 
 class Workspace(pulumi.CustomResource):
     @overload
@@ -657,6 +689,7 @@ class Workspace(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Resource for managing Workspaces
@@ -723,7 +756,8 @@ class Workspace(pulumi.CustomResource):
                     "repository_path": "tf/aws/basic",
                     "repository_connector": test["id"],
                 },
-            ])
+            ],
+            variable_sets=[test_harness_platform_infra_variable_set["id"]])
         ```
 
         ## Import
@@ -750,6 +784,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
         """
         ...
     @overload
@@ -822,7 +857,8 @@ class Workspace(pulumi.CustomResource):
                     "repository_path": "tf/aws/basic",
                     "repository_connector": test["id"],
                 },
-            ])
+            ],
+            variable_sets=[test_harness_platform_infra_variable_set["id"]])
         ```
 
         ## Import
@@ -866,6 +902,7 @@ class Workspace(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
                  terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -915,6 +952,7 @@ class Workspace(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["terraform_variable_files"] = terraform_variable_files
             __props__.__dict__["terraform_variables"] = terraform_variables
+            __props__.__dict__["variable_sets"] = variable_sets
         super(Workspace, __self__).__init__(
             'harness:platform/workspace:Workspace',
             resource_name,
@@ -944,7 +982,8 @@ class Workspace(pulumi.CustomResource):
             repository_sha: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
-            terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None) -> 'Workspace':
+            terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+            variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Workspace':
         """
         Get an existing Workspace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -968,6 +1007,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input[str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -993,6 +1033,7 @@ class Workspace(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["terraform_variable_files"] = terraform_variable_files
         __props__.__dict__["terraform_variables"] = terraform_variables
+        __props__.__dict__["variable_sets"] = variable_sets
         return Workspace(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1142,4 +1183,12 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> pulumi.Output[Optional[Sequence['outputs.WorkspaceTerraformVariable']]]:
         return pulumi.get(self, "terraform_variables")
+
+    @property
+    @pulumi.getter(name="variableSets")
+    def variable_sets(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Variable set identifiers. Currently support only one variable set.
+        """
+        return pulumi.get(self, "variable_sets")
 

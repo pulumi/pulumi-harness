@@ -9,26 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a JDBC connector.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = new harness.platform.ConnectorJdbc("test", {
- *     identifier: "identifer",
- *     name: "name",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     url: "jdbc:sqlserver://1.2.3;trustServerCertificate=true",
- *     delegateSelectors: ["harness-delegate"],
- *     credentials: {
- *         username: "admin",
- *         passwordRef: "account.secret_id",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Import account level jdbc connector

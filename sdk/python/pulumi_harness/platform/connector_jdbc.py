@@ -337,25 +337,6 @@ class ConnectorJdbc(pulumi.CustomResource):
         """
         Resource for creating a JDBC connector.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.ConnectorJdbc("test",
-            identifier="identifer",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="jdbc:sqlserver://1.2.3;trustServerCertificate=true",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
-        ```
-
         ## Import
 
         Import account level jdbc connector
@@ -396,25 +377,6 @@ class ConnectorJdbc(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a JDBC connector.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.ConnectorJdbc("test",
-            identifier="identifer",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="jdbc:sqlserver://1.2.3;trustServerCertificate=true",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
-        ```
 
         ## Import
 

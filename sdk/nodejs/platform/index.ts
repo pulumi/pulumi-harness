@@ -475,6 +475,11 @@ export const getInfraModule: typeof import("./getInfraModule").getInfraModule = 
 export const getInfraModuleOutput: typeof import("./getInfraModule").getInfraModuleOutput = null as any;
 utilities.lazyLoad(exports, ["getInfraModule","getInfraModuleOutput"], () => require("./getInfraModule"));
 
+export { GetInfraVariableSetArgs, GetInfraVariableSetResult, GetInfraVariableSetOutputArgs } from "./getInfraVariableSet";
+export const getInfraVariableSet: typeof import("./getInfraVariableSet").getInfraVariableSet = null as any;
+export const getInfraVariableSetOutput: typeof import("./getInfraVariableSet").getInfraVariableSetOutput = null as any;
+utilities.lazyLoad(exports, ["getInfraVariableSet","getInfraVariableSetOutput"], () => require("./getInfraVariableSet"));
+
 export { GetInfrastructureArgs, GetInfrastructureResult, GetInfrastructureOutputArgs } from "./getInfrastructure";
 export const getInfrastructure: typeof import("./getInfrastructure").getInfrastructure = null as any;
 export const getInfrastructureOutput: typeof import("./getInfrastructure").getInfrastructureOutput = null as any;
@@ -829,6 +834,11 @@ export { InfraModuleArgs, InfraModuleState } from "./infraModule";
 export type InfraModule = import("./infraModule").InfraModule;
 export const InfraModule: typeof import("./infraModule").InfraModule = null as any;
 utilities.lazyLoad(exports, ["InfraModule"], () => require("./infraModule"));
+
+export { InfraVariableSetArgs, InfraVariableSetState } from "./infraVariableSet";
+export type InfraVariableSet = import("./infraVariableSet").InfraVariableSet;
+export const InfraVariableSet: typeof import("./infraVariableSet").InfraVariableSet = null as any;
+utilities.lazyLoad(exports, ["InfraVariableSet"], () => require("./infraVariableSet"));
 
 export { InfrastructureArgs, InfrastructureState } from "./infrastructure";
 export type Infrastructure = import("./infrastructure").Infrastructure;
@@ -1195,6 +1205,8 @@ const _module = {
                 return new IacmDefaultPipeline(name, <any>undefined, { urn })
             case "harness:platform/infraModule:InfraModule":
                 return new InfraModule(name, <any>undefined, { urn })
+            case "harness:platform/infraVariableSet:InfraVariableSet":
+                return new InfraVariableSet(name, <any>undefined, { urn })
             case "harness:platform/infrastructure:Infrastructure":
                 return new Infrastructure(name, <any>undefined, { urn })
             case "harness:platform/inputSet:InputSet":
@@ -1355,6 +1367,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModule", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/infraVariableSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infrastructure", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/inputSet", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/jenkinsConnector", _module)
