@@ -73,7 +73,7 @@ export interface GetFileStoreFileResult {
      */
     readonly fileContentPath: string;
     /**
-     * File usage. Valid options are ManifestFile, Config, Script
+     * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      */
     readonly fileUsage: string;
     /**

@@ -113,7 +113,7 @@ class GetFileStoreFileResult:
     @pulumi.getter(name="fileUsage")
     def file_usage(self) -> str:
         """
-        File usage. Valid options are ManifestFile, Config, Script
+        File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         """
         return pulumi.get(self, "file_usage")
 

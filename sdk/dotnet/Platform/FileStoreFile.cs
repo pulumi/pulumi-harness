@@ -92,7 +92,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> FileContentPath { get; private set; } = null!;
 
         /// <summary>
-        /// File usage. Valid options are ManifestFile, Config, Script
+        /// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         /// </summary>
         [Output("fileUsage")]
         public Output<string> FileUsage { get; private set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? FileContentPath { get; set; }
 
         /// <summary>
-        /// File usage. Valid options are ManifestFile, Config, Script
+        /// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         /// </summary>
         [Input("fileUsage")]
         public Input<string>? FileUsage { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? FileContentPath { get; set; }
 
         /// <summary>
-        /// File usage. Valid options are ManifestFile, Config, Script
+        /// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         /// </summary>
         [Input("fileUsage")]
         public Input<string>? FileUsage { get; set; }

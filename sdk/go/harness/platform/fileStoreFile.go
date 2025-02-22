@@ -83,7 +83,7 @@ type FileStoreFile struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// File content path to be upladed on Harness File Store
 	FileContentPath pulumi.StringOutput `pulumi:"fileContentPath"`
-	// File usage. Valid options are ManifestFile, Config, Script
+	// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 	FileUsage pulumi.StringOutput `pulumi:"fileUsage"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -151,7 +151,7 @@ type fileStoreFileState struct {
 	Description *string `pulumi:"description"`
 	// File content path to be upladed on Harness File Store
 	FileContentPath *string `pulumi:"fileContentPath"`
-	// File usage. Valid options are ManifestFile, Config, Script
+	// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 	FileUsage *string `pulumi:"fileUsage"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -184,7 +184,7 @@ type FileStoreFileState struct {
 	Description pulumi.StringPtrInput
 	// File content path to be upladed on Harness File Store
 	FileContentPath pulumi.StringPtrInput
-	// File usage. Valid options are ManifestFile, Config, Script
+	// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 	FileUsage pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -219,7 +219,7 @@ type fileStoreFileArgs struct {
 	Description *string `pulumi:"description"`
 	// File content path to be upladed on Harness File Store
 	FileContentPath *string `pulumi:"fileContentPath"`
-	// File usage. Valid options are ManifestFile, Config, Script
+	// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 	FileUsage *string `pulumi:"fileUsage"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -245,7 +245,7 @@ type FileStoreFileArgs struct {
 	Description pulumi.StringPtrInput
 	// File content path to be upladed on Harness File Store
 	FileContentPath pulumi.StringPtrInput
-	// File usage. Valid options are ManifestFile, Config, Script
+	// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 	FileUsage pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -370,7 +370,7 @@ func (o FileStoreFileOutput) FileContentPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileStoreFile) pulumi.StringOutput { return v.FileContentPath }).(pulumi.StringOutput)
 }
 
-// File usage. Valid options are ManifestFile, Config, Script
+// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 func (o FileStoreFileOutput) FileUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileStoreFile) pulumi.StringOutput { return v.FileUsage }).(pulumi.StringOutput)
 }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness ApiKey.
+ * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
  *
  * ## Example Usage
  *
@@ -126,7 +126,7 @@ export interface GetApiKeyResult {
     readonly tags: string[];
 }
 /**
- * Data source for retrieving a Harness ApiKey.
+ * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
  *
  * ## Example Usage
  *

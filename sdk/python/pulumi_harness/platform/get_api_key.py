@@ -179,7 +179,7 @@ def get_api_key(account_id: Optional[str] = None,
                 project_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiKeyResult:
     """
-    Data source for retrieving a Harness ApiKey.
+    Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
 
     ## Example Usage
 
@@ -240,7 +240,7 @@ def get_api_key_output(account_id: Optional[pulumi.Input[str]] = None,
                        project_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiKeyResult]:
     """
-    Data source for retrieving a Harness ApiKey.
+    Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
 
     ## Example Usage
 
