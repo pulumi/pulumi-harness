@@ -345,7 +345,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class PlatformFunctions {
     /**
-     * Data source for retrieving a Harness ApiKey.
+     * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
      * 
      * ## Example Usage
      * 
@@ -393,7 +393,7 @@ public final class PlatformFunctions {
         return getApiKey(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness ApiKey.
+     * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
      * 
      * ## Example Usage
      * 
@@ -441,7 +441,7 @@ public final class PlatformFunctions {
         return getApiKeyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness ApiKey.
+     * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
      * 
      * ## Example Usage
      * 
@@ -489,7 +489,7 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getApiKey:getApiKey", TypeShape.of(GetApiKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness ApiKey.
+     * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
      * 
      * ## Example Usage
      * 
@@ -537,7 +537,7 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getApiKey:getApiKey", TypeShape.of(GetApiKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness ApiKey.
+     * Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
      * 
      * ## Example Usage
      * 

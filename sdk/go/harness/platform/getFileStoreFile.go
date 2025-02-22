@@ -70,7 +70,7 @@ type LookupFileStoreFileResult struct {
 	Description string `pulumi:"description"`
 	// File content path to be upladed on Harness File Store
 	FileContentPath string `pulumi:"fileContentPath"`
-	// File usage. Valid options are ManifestFile, Config, Script
+	// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 	FileUsage string `pulumi:"fileUsage"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -156,7 +156,7 @@ func (o LookupFileStoreFileResultOutput) FileContentPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileStoreFileResult) string { return v.FileContentPath }).(pulumi.StringOutput)
 }
 
-// File usage. Valid options are ManifestFile, Config, Script
+// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
 func (o LookupFileStoreFileResultOutput) FileUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFileStoreFileResult) string { return v.FileUsage }).(pulumi.StringOutput)
 }

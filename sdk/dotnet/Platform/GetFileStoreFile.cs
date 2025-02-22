@@ -170,7 +170,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string FileContentPath;
         /// <summary>
-        /// File usage. Valid options are ManifestFile, Config, Script
+        /// File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         /// </summary>
         public readonly string FileUsage;
         /// <summary>

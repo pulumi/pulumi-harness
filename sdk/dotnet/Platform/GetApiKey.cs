@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Platform
     public static class GetApiKey
     {
         /// <summary>
-        /// Data source for retrieving a Harness ApiKey.
+        /// Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness ApiKey.
+        /// Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving a Harness ApiKey.
+        /// Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
         /// 
         /// ## Example Usage
         /// 

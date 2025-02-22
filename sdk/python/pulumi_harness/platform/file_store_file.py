@@ -39,7 +39,7 @@ class FileStoreFileArgs:
         :param pulumi.Input[str] content: File content stored on Harness File Store
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] file_content_path: File content path to be upladed on Harness File Store
-        :param pulumi.Input[str] file_usage: File usage. Valid options are ManifestFile, Config, Script
+        :param pulumi.Input[str] file_usage: File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         :param pulumi.Input[str] mime_type: File mime type
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -131,7 +131,7 @@ class FileStoreFileArgs:
     @pulumi.getter(name="fileUsage")
     def file_usage(self) -> Optional[pulumi.Input[str]]:
         """
-        File usage. Valid options are ManifestFile, Config, Script
+        File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         """
         return pulumi.get(self, "file_usage")
 
@@ -224,7 +224,7 @@ class _FileStoreFileState:
         :param pulumi.Input[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]] created_bies: Created by
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] file_content_path: File content path to be upladed on Harness File Store
-        :param pulumi.Input[str] file_usage: File usage. Valid options are ManifestFile, Config, Script
+        :param pulumi.Input[str] file_usage: File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[int] last_modified_at: Last modified at
         :param pulumi.Input[Sequence[pulumi.Input['FileStoreFileLastModifiedByArgs']]] last_modified_bies: Last modified by
@@ -319,7 +319,7 @@ class _FileStoreFileState:
     @pulumi.getter(name="fileUsage")
     def file_usage(self) -> Optional[pulumi.Input[str]]:
         """
-        File usage. Valid options are ManifestFile, Config, Script
+        File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         """
         return pulumi.get(self, "file_usage")
 
@@ -516,7 +516,7 @@ class FileStoreFile(pulumi.CustomResource):
         :param pulumi.Input[str] content: File content stored on Harness File Store
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] file_content_path: File content path to be upladed on Harness File Store
-        :param pulumi.Input[str] file_usage: File usage. Valid options are ManifestFile, Config, Script
+        :param pulumi.Input[str] file_usage: File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] mime_type: File mime type
         :param pulumi.Input[str] name: Name of the resource.
@@ -667,7 +667,7 @@ class FileStoreFile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict']]]] created_bies: Created by
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] file_content_path: File content path to be upladed on Harness File Store
-        :param pulumi.Input[str] file_usage: File usage. Valid options are ManifestFile, Config, Script
+        :param pulumi.Input[str] file_usage: File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[int] last_modified_at: Last modified at
         :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict']]]] last_modified_bies: Last modified by
@@ -736,7 +736,7 @@ class FileStoreFile(pulumi.CustomResource):
     @pulumi.getter(name="fileUsage")
     def file_usage(self) -> pulumi.Output[str]:
         """
-        File usage. Valid options are ManifestFile, Config, Script
+        File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         """
         return pulumi.get(self, "file_usage")
 

@@ -148,14 +148,14 @@ public class FileStoreFile extends com.pulumi.resources.CustomResource {
         return this.fileContentPath;
     }
     /**
-     * File usage. Valid options are ManifestFile, Config, Script
+     * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      * 
      */
     @Export(name="fileUsage", refs={String.class}, tree="[0]")
     private Output<String> fileUsage;
 
     /**
-     * @return File usage. Valid options are ManifestFile, Config, Script
+     * @return File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      * 
      */
     public Output<String> fileUsage() {

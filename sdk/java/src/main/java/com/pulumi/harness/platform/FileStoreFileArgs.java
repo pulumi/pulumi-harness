@@ -63,14 +63,14 @@ public final class FileStoreFileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * File usage. Valid options are ManifestFile, Config, Script
+     * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      * 
      */
     @Import(name="fileUsage")
     private @Nullable Output<String> fileUsage;
 
     /**
-     * @return File usage. Valid options are ManifestFile, Config, Script
+     * @return File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      * 
      */
     public Optional<Output<String>> fileUsage() {
@@ -280,7 +280,7 @@ public final class FileStoreFileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileUsage File usage. Valid options are ManifestFile, Config, Script
+         * @param fileUsage File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class FileStoreFileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileUsage File usage. Valid options are ManifestFile, Config, Script
+         * @param fileUsage File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
          * 
          * @return builder
          * 

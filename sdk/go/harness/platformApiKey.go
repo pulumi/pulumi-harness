@@ -12,7 +12,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for creating apikeys.
+// Resource for creating and managing Harness API Keys. API Keys can be created at the account, organization, or project level.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create API Key at account level
+//			_, err := harness.NewPlatformApiKey(ctx, "account_level", &harness.PlatformApiKeyArgs{
+//				Identifier: pulumi.String("test_apikey"),
+//				Name:       pulumi.String("test_apikey"),
+//				ParentId:   pulumi.String("parent_id"),
+//				ApikeyType: pulumi.String("USER"),
+//				AccountId:  pulumi.String("account_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create API Key at organization level
+//			_, err = harness.NewPlatformApiKey(ctx, "org_level", &harness.PlatformApiKeyArgs{
+//				Identifier: pulumi.String("test_apikey"),
+//				Name:       pulumi.String("test_apikey"),
+//				ParentId:   pulumi.String("parent_id"),
+//				ApikeyType: pulumi.String("USER"),
+//				AccountId:  pulumi.String("account_id"),
+//				OrgId:      pulumi.String("org_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create API Key at project level
+//			_, err = harness.NewPlatformApiKey(ctx, "project_level", &harness.PlatformApiKeyArgs{
+//				Identifier: pulumi.String("test_apikey"),
+//				Name:       pulumi.String("test_apikey"),
+//				ParentId:   pulumi.String("parent_id"),
+//				ApikeyType: pulumi.String("USER"),
+//				AccountId:  pulumi.String("account_id"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

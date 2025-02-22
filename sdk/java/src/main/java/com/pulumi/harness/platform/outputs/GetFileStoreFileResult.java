@@ -37,7 +37,7 @@ public final class GetFileStoreFileResult {
      */
     private String fileContentPath;
     /**
-     * @return File usage. Valid options are ManifestFile, Config, Script
+     * @return File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      * 
      */
     private String fileUsage;
@@ -127,7 +127,7 @@ public final class GetFileStoreFileResult {
         return this.fileContentPath;
     }
     /**
-     * @return File usage. Valid options are ManifestFile, Config, Script
+     * @return File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      * 
      */
     public String fileUsage() {

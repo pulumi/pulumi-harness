@@ -98,7 +98,7 @@ export class FileStoreFile extends pulumi.CustomResource {
      */
     public readonly fileContentPath!: pulumi.Output<string>;
     /**
-     * File usage. Valid options are ManifestFile, Config, Script
+     * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      */
     public readonly fileUsage!: pulumi.Output<string>;
     /**
@@ -220,7 +220,7 @@ export interface FileStoreFileState {
      */
     fileContentPath?: pulumi.Input<string>;
     /**
-     * File usage. Valid options are ManifestFile, Config, Script
+     * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      */
     fileUsage?: pulumi.Input<string>;
     /**
@@ -282,7 +282,7 @@ export interface FileStoreFileArgs {
      */
     fileContentPath?: pulumi.Input<string>;
     /**
-     * File usage. Valid options are ManifestFile, Config, Script
+     * File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
      */
     fileUsage?: pulumi.Input<string>;
     /**
