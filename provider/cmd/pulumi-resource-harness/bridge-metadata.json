@@ -2044,14 +2044,10 @@
                         "elem": {
                             "fields": {
                                 "auth": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "user_password": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
+                                    "maxItemsOne": false
+                                },
+                                "upstream_proxies": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -4374,6 +4370,14 @@
                     }
                 }
             },
+            "harness_platform_gitops_agent_operator_yaml": {
+                "current": "harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml",
+                "fields": {
+                    "proxy": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_gitops_app_project": {
                 "current": "harness:platform/getGitopsAppProject:getGitopsAppProject"
             },
@@ -5395,6 +5399,12 @@
             "harness_platform_gitops_repository": {
                 "maxItemsOneOverrides": {
                     "repo": false
+                }
+            },
+            "harness_platform_har_registry": {
+                "maxItemsOneOverrides": {
+                    "config": false,
+                    "config.$.auth": false
                 }
             }
         },

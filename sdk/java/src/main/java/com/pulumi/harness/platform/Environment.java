@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.EnvironmentArgs;
 import com.pulumi.harness.platform.inputs.EnvironmentState;
 import com.pulumi.harness.platform.outputs.EnvironmentGitDetails;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -450,17 +451,17 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Enable this flag for force deletion of environments
+     * When set to true, enables force deletion of environments.
      * 
      */
-    @Export(name="forceDelete", refs={String.class}, tree="[0]")
-    private Output<String> forceDelete;
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of environments
+     * @return When set to true, enables force deletion of environments.
      * 
      */
-    public Output<String> forceDelete() {
+    public Output<Boolean> forceDelete() {
         return this.forceDelete;
     }
     /**

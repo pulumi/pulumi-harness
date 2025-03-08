@@ -26,6 +26,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/featureFlag:FeatureFlag")
 public class FeatureFlag extends com.pulumi.resources.CustomResource {
     /**
+     * Whether or not the flag is archived.
+     * 
+     */
+    @Export(name="archived", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> archived;
+
+    /**
+     * @return Whether or not the flag is archived.
+     * 
+     */
+    public Output<Optional<Boolean>> archived() {
+        return Codegen.optional(this.archived);
+    }
+    /**
      * Which of the variations to use when the flag is toggled to off state
      * 
      */

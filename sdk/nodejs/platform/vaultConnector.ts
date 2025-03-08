@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *     useVaultAgent: false,
  *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
+ *     useJwtAuth: false,
  * });
  * const appRole = new harness.platform.VaultConnector("app_role", {
  *     identifier: "identifier",
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *     renewAppRoleToken: true,
  *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
+ *     useJwtAuth: false,
  * });
  * const k8sAuth = new harness.platform.VaultConnector("k8s_auth", {
  *     identifier: "identifier",
@@ -79,6 +81,7 @@ import * as utilities from "../utilities";
  *     vaultAwsIamRole: "vault_aws_iam_role",
  *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
+ *     useJwtAuth: false,
  * });
  * const vaultAgent = new harness.platform.VaultConnector("vault_agent", {
  *     identifier: "identifier",
@@ -101,6 +104,7 @@ import * as utilities from "../utilities";
  *     sinkPath: "sink_path",
  *     delegateSelectors: ["harness-delegate"],
  *     vaultUrl: "https://vault_url.com",
+ *     useJwtAuth: false,
  * });
  * const token = new harness.platform.VaultConnector("token", {
  *     identifier: "identifier",
@@ -120,6 +124,31 @@ import * as utilities from "../utilities";
  *     useAwsIam: false,
  *     useK8sAuth: false,
  *     vaultUrl: "https://vault_url.com",
+ *     useJwtAuth: false,
+ * });
+ * const jwt = new harness.platform.VaultConnector("jwt", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     basePath: "base_path",
+ *     accessType: "JWT",
+ *     "default": false,
+ *     readOnly: true,
+ *     renewalIntervalMinutes: 60,
+ *     secretEngineManuallyConfigured: true,
+ *     secretEngineName: "secret_engine_name",
+ *     secretEngineVersion: 2,
+ *     useAwsIam: false,
+ *     useK8sAuth: false,
+ *     useVaultAgent: false,
+ *     renewAppRoleToken: false,
+ *     delegateSelectors: ["harness-delegate"],
+ *     vaultUrl: "https://vault_url.com",
+ *     useJwtAuth: true,
+ *     vaultJwtAuthRole: "vault_jwt_auth_role",
+ *     vaultJwtAuthPath: "vault_jwt_auth_path",
+ *     executeOnDelegate: true,
  * });
  * ```
  *
@@ -204,6 +233,10 @@ export class VaultConnector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Execute on delegate or not.
+     */
+    public readonly executeOnDelegate!: pulumi.Output<boolean | undefined>;
+    /**
      * Unique identifier of the resource.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -280,6 +313,10 @@ export class VaultConnector extends pulumi.CustomResource {
      */
     public readonly useAwsIam!: pulumi.Output<boolean | undefined>;
     /**
+     * Boolean value to indicate if JWT is used for authentication.
+     */
+    public readonly useJwtAuth!: pulumi.Output<boolean | undefined>;
+    /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      */
     public readonly useK8sAuth!: pulumi.Output<boolean | undefined>;
@@ -291,6 +328,14 @@ export class VaultConnector extends pulumi.CustomResource {
      * The Vault role defined to bind to aws iam account/role being accessed.
      */
     public readonly vaultAwsIamRole!: pulumi.Output<string | undefined>;
+    /**
+     * Custom path at with JWT auth in enabled for Vault.
+     */
+    public readonly vaultJwtAuthPath!: pulumi.Output<string | undefined>;
+    /**
+     * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     */
+    public readonly vaultJwtAuthRole!: pulumi.Output<string | undefined>;
     /**
      * The role where K8s Auth will happen.
      */
@@ -325,6 +370,7 @@ export class VaultConnector extends pulumi.CustomResource {
             resourceInputs["default"] = state ? state.default : undefined;
             resourceInputs["delegateSelectors"] = state ? state.delegateSelectors : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["executeOnDelegate"] = state ? state.executeOnDelegate : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["isReadOnly"] = state ? state.isReadOnly : undefined;
@@ -344,9 +390,12 @@ export class VaultConnector extends pulumi.CustomResource {
             resourceInputs["sinkPath"] = state ? state.sinkPath : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["useAwsIam"] = state ? state.useAwsIam : undefined;
+            resourceInputs["useJwtAuth"] = state ? state.useJwtAuth : undefined;
             resourceInputs["useK8sAuth"] = state ? state.useK8sAuth : undefined;
             resourceInputs["useVaultAgent"] = state ? state.useVaultAgent : undefined;
             resourceInputs["vaultAwsIamRole"] = state ? state.vaultAwsIamRole : undefined;
+            resourceInputs["vaultJwtAuthPath"] = state ? state.vaultJwtAuthPath : undefined;
+            resourceInputs["vaultJwtAuthRole"] = state ? state.vaultJwtAuthRole : undefined;
             resourceInputs["vaultK8sAuthRole"] = state ? state.vaultK8sAuthRole : undefined;
             resourceInputs["vaultUrl"] = state ? state.vaultUrl : undefined;
             resourceInputs["xvaultAwsIamServerId"] = state ? state.xvaultAwsIamServerId : undefined;
@@ -369,6 +418,7 @@ export class VaultConnector extends pulumi.CustomResource {
             resourceInputs["default"] = args ? args.default : undefined;
             resourceInputs["delegateSelectors"] = args ? args.delegateSelectors : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["executeOnDelegate"] = args ? args.executeOnDelegate : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["isReadOnly"] = args ? args.isReadOnly : undefined;
@@ -388,9 +438,12 @@ export class VaultConnector extends pulumi.CustomResource {
             resourceInputs["sinkPath"] = args ? args.sinkPath : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["useAwsIam"] = args ? args.useAwsIam : undefined;
+            resourceInputs["useJwtAuth"] = args ? args.useJwtAuth : undefined;
             resourceInputs["useK8sAuth"] = args ? args.useK8sAuth : undefined;
             resourceInputs["useVaultAgent"] = args ? args.useVaultAgent : undefined;
             resourceInputs["vaultAwsIamRole"] = args ? args.vaultAwsIamRole : undefined;
+            resourceInputs["vaultJwtAuthPath"] = args ? args.vaultJwtAuthPath : undefined;
+            resourceInputs["vaultJwtAuthRole"] = args ? args.vaultJwtAuthRole : undefined;
             resourceInputs["vaultK8sAuthRole"] = args ? args.vaultK8sAuthRole : undefined;
             resourceInputs["vaultUrl"] = args ? args.vaultUrl : undefined;
             resourceInputs["xvaultAwsIamServerId"] = args ? args.xvaultAwsIamServerId : undefined;
@@ -436,6 +489,10 @@ export interface VaultConnectorState {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute on delegate or not.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -513,6 +570,10 @@ export interface VaultConnectorState {
      */
     useAwsIam?: pulumi.Input<boolean>;
     /**
+     * Boolean value to indicate if JWT is used for authentication.
+     */
+    useJwtAuth?: pulumi.Input<boolean>;
+    /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      */
     useK8sAuth?: pulumi.Input<boolean>;
@@ -524,6 +585,14 @@ export interface VaultConnectorState {
      * The Vault role defined to bind to aws iam account/role being accessed.
      */
     vaultAwsIamRole?: pulumi.Input<string>;
+    /**
+     * Custom path at with JWT auth in enabled for Vault.
+     */
+    vaultJwtAuthPath?: pulumi.Input<string>;
+    /**
+     * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     */
+    vaultJwtAuthRole?: pulumi.Input<string>;
     /**
      * The role where K8s Auth will happen.
      */
@@ -574,6 +643,10 @@ export interface VaultConnectorArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Execute on delegate or not.
+     */
+    executeOnDelegate?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the resource.
      */
@@ -651,6 +724,10 @@ export interface VaultConnectorArgs {
      */
     useAwsIam?: pulumi.Input<boolean>;
     /**
+     * Boolean value to indicate if JWT is used for authentication.
+     */
+    useJwtAuth?: pulumi.Input<boolean>;
+    /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      */
     useK8sAuth?: pulumi.Input<boolean>;
@@ -662,6 +739,14 @@ export interface VaultConnectorArgs {
      * The Vault role defined to bind to aws iam account/role being accessed.
      */
     vaultAwsIamRole?: pulumi.Input<string>;
+    /**
+     * Custom path at with JWT auth in enabled for Vault.
+     */
+    vaultJwtAuthPath?: pulumi.Input<string>;
+    /**
+     * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     */
+    vaultJwtAuthRole?: pulumi.Input<string>;
     /**
      * The role where K8s Auth will happen.
      */

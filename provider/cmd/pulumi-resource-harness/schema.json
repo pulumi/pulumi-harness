@@ -5969,24 +5969,35 @@
         },
         "harness:platform/HarRegistryConfig:HarRegistryConfig": {
             "properties": {
+                "authType": {
+                    "type": "string",
+                    "description": "Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)\n"
+                },
                 "auths": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/HarRegistryConfigAuth:HarRegistryConfigAuth"
                     },
-                    "description": "Authentication configuration for UPSTREAM type\n"
+                    "description": "Authentication configuration for UPSTREAM registry type\n"
                 },
                 "source": {
                     "type": "string",
-                    "description": "Source of the upstream\n"
+                    "description": "Source of the upstream (only for UPSTREAM type)\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of registry (VIRTUAL only supported)\n"
+                    "description": "Type of registry (VIRTUAL or UPSTREAM)\n"
+                },
+                "upstreamProxies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of upstream proxies for VIRTUAL registry type\n"
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the upstream\n"
+                    "description": "URL of the upstream (required if type=UPSTREAM \u0026 package_type=HELM)\n"
                 }
             },
             "type": "object",
@@ -6000,38 +6011,22 @@
                     "type": "string",
                     "description": "Type of authentication (UserPassword, Anonymous)\n"
                 },
-                "userPassword": {
-                    "$ref": "#/types/harness:platform/HarRegistryConfigAuthUserPassword:HarRegistryConfigAuthUserPassword",
-                    "description": "User password authentication details\n"
+                "secretIdentifier": {
+                    "type": "string",
+                    "description": "Secret identifier for UserPassword auth type\n"
+                },
+                "secretSpacePath": {
+                    "type": "string",
+                    "description": "Secret space path for UserPassword auth type\n"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "User name for UserPassword auth type\n"
                 }
             },
             "type": "object",
             "required": [
                 "authType"
-            ]
-        },
-        "harness:platform/HarRegistryConfigAuthUserPassword:HarRegistryConfigAuthUserPassword": {
-            "properties": {
-                "secretIdentifier": {
-                    "type": "string",
-                    "description": "Secret identifier\n"
-                },
-                "secretSpaceId": {
-                    "type": "integer",
-                    "description": "Secret space ID\n"
-                },
-                "secretSpacePath": {
-                    "type": "string",
-                    "description": "Secret space path\n"
-                },
-                "userName": {
-                    "type": "string",
-                    "description": "User name\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "userName"
             ]
         },
         "harness:platform/HelmConnectorCredentials:HelmConnectorCredentials": {
@@ -10520,6 +10515,27 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "harness:platform/getGitopsAgentOperatorYamlProxy:getGitopsAgentOperatorYamlProxy": {
+            "properties": {
+                "http": {
+                    "type": "string",
+                    "description": "HTTP proxy settings for the GitOps agent.\n"
+                },
+                "https": {
+                    "type": "string",
+                    "description": "HTTPS proxy settings for the GitOps agent.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password for the proxy.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username for the proxy.\n"
+                }
+            },
+            "type": "object"
         },
         "harness:platform/getGitopsApplicationsApplication:getGitopsApplicationsApplication": {
             "properties": {
@@ -23059,8 +23075,8 @@
                     "description": "Description of the resource.\n"
                 },
                 "forceDelete": {
-                    "type": "string",
-                    "description": "Enable this flag for force deletion of environments\n"
+                    "type": "boolean",
+                    "description": "When set to true, enables force deletion of environments.\n"
                 },
                 "gitDetails": {
                     "$ref": "#/types/harness:platform/EnvironmentGitDetails:EnvironmentGitDetails",
@@ -23116,8 +23132,8 @@
                     "description": "Description of the resource.\n"
                 },
                 "forceDelete": {
-                    "type": "string",
-                    "description": "Enable this flag for force deletion of environments\n"
+                    "type": "boolean",
+                    "description": "When set to true, enables force deletion of environments.\n"
                 },
                 "gitDetails": {
                     "$ref": "#/types/harness:platform/EnvironmentGitDetails:EnvironmentGitDetails",
@@ -23172,8 +23188,8 @@
                         "description": "Description of the resource.\n"
                     },
                     "forceDelete": {
-                        "type": "string",
-                        "description": "Enable this flag for force deletion of environments\n"
+                        "type": "boolean",
+                        "description": "When set to true, enables force deletion of environments.\n"
                     },
                     "gitDetails": {
                         "$ref": "#/types/harness:platform/EnvironmentGitDetails:EnvironmentGitDetails",
@@ -23322,7 +23338,7 @@
                     "description": "Color of the environment group.\n"
                 },
                 "forceDelete": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Enable this flag for force deletion of environment group\n"
                 },
                 "identifier": {
@@ -23354,7 +23370,7 @@
                     "description": "Color of the environment group.\n"
                 },
                 "forceDelete": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Enable this flag for force deletion of environment group\n"
                 },
                 "identifier": {
@@ -23386,7 +23402,7 @@
                         "description": "Color of the environment group.\n"
                     },
                     "forceDelete": {
-                        "type": "string",
+                        "type": "boolean",
                         "description": "Enable this flag for force deletion of environment group\n"
                     },
                     "identifier": {
@@ -23508,6 +23524,10 @@
         "harness:platform/featureFlag:FeatureFlag": {
             "description": "Resource for managing Feature Flags.\n\n",
             "properties": {
+                "archived": {
+                    "type": "boolean",
+                    "description": "Whether or not the flag is archived.\n"
+                },
                 "defaultOffVariation": {
                     "type": "string",
                     "description": "Which of the variations to use when the flag is toggled to off state\n"
@@ -23582,6 +23602,10 @@
                 "variations"
             ],
             "inputProperties": {
+                "archived": {
+                    "type": "boolean",
+                    "description": "Whether or not the flag is archived.\n"
+                },
                 "defaultOffVariation": {
                     "type": "string",
                     "description": "Which of the variations to use when the flag is toggled to off state\n"
@@ -23661,6 +23685,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering FeatureFlag resources.\n",
                 "properties": {
+                    "archived": {
+                        "type": "boolean",
+                        "description": "Whether or not the flag is archived.\n"
+                    },
                     "defaultOffVariation": {
                         "type": "string",
                         "description": "Which of the variations to use when the flag is toggled to off state\n"
@@ -27359,7 +27387,7 @@
             }
         },
         "harness:platform/harRegistry:HarRegistry": {
-            "description": "Resource for create, update, list registry\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.HarRegistry(\"test\", {\n    identifier: \"test_registry\",\n    spaceRef: \"accountId/orgId/projectId\",\n    packageType: \"DOCKER\",\n    configs: [{\n        type: \"VIRTUAL\",\n    }],\n    parentRef: \"accountId/orgId/projectId\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.HarRegistry(\"test\",\n    identifier=\"test_registry\",\n    space_ref=\"accountId/orgId/projectId\",\n    package_type=\"DOCKER\",\n    configs=[{\n        \"type\": \"VIRTUAL\",\n    }],\n    parent_ref=\"accountId/orgId/projectId\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.HarRegistry(\"test\", new()\n    {\n        Identifier = \"test_registry\",\n        SpaceRef = \"accountId/orgId/projectId\",\n        PackageType = \"DOCKER\",\n        Configs = new[]\n        {\n            new Harness.Platform.Inputs.HarRegistryConfigArgs\n            {\n                Type = \"VIRTUAL\",\n            },\n        },\n        ParentRef = \"accountId/orgId/projectId\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewHarRegistry(ctx, \"test\", \u0026platform.HarRegistryArgs{\n\t\t\tIdentifier:  pulumi.String(\"test_registry\"),\n\t\t\tSpaceRef:    pulumi.String(\"accountId/orgId/projectId\"),\n\t\t\tPackageType: pulumi.String(\"DOCKER\"),\n\t\t\tConfigs: platform.HarRegistryConfigArray{\n\t\t\t\t\u0026platform.HarRegistryConfigArgs{\n\t\t\t\t\tType: pulumi.String(\"VIRTUAL\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tParentRef: pulumi.String(\"accountId/orgId/projectId\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.HarRegistry;\nimport com.pulumi.harness.platform.HarRegistryArgs;\nimport com.pulumi.harness.platform.inputs.HarRegistryConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new HarRegistry(\"test\", HarRegistryArgs.builder()\n            .identifier(\"test_registry\")\n            .spaceRef(\"accountId/orgId/projectId\")\n            .packageType(\"DOCKER\")\n            .configs(HarRegistryConfigArgs.builder()\n                .type(\"VIRTUAL\")\n                .build())\n            .parentRef(\"accountId/orgId/projectId\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:HarRegistry\n    properties:\n      identifier: test_registry\n      spaceRef: accountId/orgId/projectId\n      packageType: DOCKER\n      configs:\n        - type: VIRTUAL\n      parentRef: accountId/orgId/projectId\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Resource for creating and managing Harness Registries.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\n// Example of a Virtual Registry\nconst virtualRegistry = new harness.platform.HarRegistry(\"virtual_registry\", {\n    identifier: \"virtual_docker_registry\",\n    description: \"Virtual Docker Registry\",\n    spaceRef: \"accountId/orgId/projectId\",\n    packageType: \"DOCKER\",\n    configs: [{\n        type: \"VIRTUAL\",\n        upstreamProxies: [\n            \"registry1\",\n            \"registry2\",\n        ],\n    }],\n    parentRef: \"accountId/orgId/projectId\",\n});\n// Example of an Upstream Registry with Authentication\nconst upstreamRegistry = new harness.platform.HarRegistry(\"upstream_registry\", {\n    identifier: \"upstream_helm_registry\",\n    description: \"Upstream Helm Registry\",\n    spaceRef: \"accountId/orgId/projectId\",\n    packageType: \"HELM\",\n    configs: [{\n        type: \"UPSTREAM\",\n        source: \"CUSTOM\",\n        url: \"https://helm.sh\",\n        auths: [{\n            authType: \"UserPassword\",\n            userName: \"registry_user\",\n            secretIdentifier: \"registry_password\",\n            secretSpacePath: \"accountId/orgId/projectId\",\n        }],\n    }],\n    parentRef: \"accountId/orgId/projectId\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\n# Example of a Virtual Registry\nvirtual_registry = harness.platform.HarRegistry(\"virtual_registry\",\n    identifier=\"virtual_docker_registry\",\n    description=\"Virtual Docker Registry\",\n    space_ref=\"accountId/orgId/projectId\",\n    package_type=\"DOCKER\",\n    configs=[{\n        \"type\": \"VIRTUAL\",\n        \"upstream_proxies\": [\n            \"registry1\",\n            \"registry2\",\n        ],\n    }],\n    parent_ref=\"accountId/orgId/projectId\")\n# Example of an Upstream Registry with Authentication\nupstream_registry = harness.platform.HarRegistry(\"upstream_registry\",\n    identifier=\"upstream_helm_registry\",\n    description=\"Upstream Helm Registry\",\n    space_ref=\"accountId/orgId/projectId\",\n    package_type=\"HELM\",\n    configs=[{\n        \"type\": \"UPSTREAM\",\n        \"source\": \"CUSTOM\",\n        \"url\": \"https://helm.sh\",\n        \"auths\": [{\n            \"auth_type\": \"UserPassword\",\n            \"user_name\": \"registry_user\",\n            \"secret_identifier\": \"registry_password\",\n            \"secret_space_path\": \"accountId/orgId/projectId\",\n        }],\n    }],\n    parent_ref=\"accountId/orgId/projectId\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example of a Virtual Registry\n    var virtualRegistry = new Harness.Platform.HarRegistry(\"virtual_registry\", new()\n    {\n        Identifier = \"virtual_docker_registry\",\n        Description = \"Virtual Docker Registry\",\n        SpaceRef = \"accountId/orgId/projectId\",\n        PackageType = \"DOCKER\",\n        Configs = new[]\n        {\n            new Harness.Platform.Inputs.HarRegistryConfigArgs\n            {\n                Type = \"VIRTUAL\",\n                UpstreamProxies = new[]\n                {\n                    \"registry1\",\n                    \"registry2\",\n                },\n            },\n        },\n        ParentRef = \"accountId/orgId/projectId\",\n    });\n\n    // Example of an Upstream Registry with Authentication\n    var upstreamRegistry = new Harness.Platform.HarRegistry(\"upstream_registry\", new()\n    {\n        Identifier = \"upstream_helm_registry\",\n        Description = \"Upstream Helm Registry\",\n        SpaceRef = \"accountId/orgId/projectId\",\n        PackageType = \"HELM\",\n        Configs = new[]\n        {\n            new Harness.Platform.Inputs.HarRegistryConfigArgs\n            {\n                Type = \"UPSTREAM\",\n                Source = \"CUSTOM\",\n                Url = \"https://helm.sh\",\n                Auths = new[]\n                {\n                    new Harness.Platform.Inputs.HarRegistryConfigAuthArgs\n                    {\n                        AuthType = \"UserPassword\",\n                        UserName = \"registry_user\",\n                        SecretIdentifier = \"registry_password\",\n                        SecretSpacePath = \"accountId/orgId/projectId\",\n                    },\n                },\n            },\n        },\n        ParentRef = \"accountId/orgId/projectId\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example of a Virtual Registry\n\t\t_, err := platform.NewHarRegistry(ctx, \"virtual_registry\", \u0026platform.HarRegistryArgs{\n\t\t\tIdentifier:  pulumi.String(\"virtual_docker_registry\"),\n\t\t\tDescription: pulumi.String(\"Virtual Docker Registry\"),\n\t\t\tSpaceRef:    pulumi.String(\"accountId/orgId/projectId\"),\n\t\t\tPackageType: pulumi.String(\"DOCKER\"),\n\t\t\tConfigs: platform.HarRegistryConfigArray{\n\t\t\t\t\u0026platform.HarRegistryConfigArgs{\n\t\t\t\t\tType: pulumi.String(\"VIRTUAL\"),\n\t\t\t\t\tUpstreamProxies: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"registry1\"),\n\t\t\t\t\t\tpulumi.String(\"registry2\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tParentRef: pulumi.String(\"accountId/orgId/projectId\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of an Upstream Registry with Authentication\n\t\t_, err = platform.NewHarRegistry(ctx, \"upstream_registry\", \u0026platform.HarRegistryArgs{\n\t\t\tIdentifier:  pulumi.String(\"upstream_helm_registry\"),\n\t\t\tDescription: pulumi.String(\"Upstream Helm Registry\"),\n\t\t\tSpaceRef:    pulumi.String(\"accountId/orgId/projectId\"),\n\t\t\tPackageType: pulumi.String(\"HELM\"),\n\t\t\tConfigs: platform.HarRegistryConfigArray{\n\t\t\t\t\u0026platform.HarRegistryConfigArgs{\n\t\t\t\t\tType:   pulumi.String(\"UPSTREAM\"),\n\t\t\t\t\tSource: pulumi.String(\"CUSTOM\"),\n\t\t\t\t\tUrl:    pulumi.String(\"https://helm.sh\"),\n\t\t\t\t\tAuths: platform.HarRegistryConfigAuthArray{\n\t\t\t\t\t\t\u0026platform.HarRegistryConfigAuthArgs{\n\t\t\t\t\t\t\tAuthType:         pulumi.String(\"UserPassword\"),\n\t\t\t\t\t\t\tUserName:         pulumi.String(\"registry_user\"),\n\t\t\t\t\t\t\tSecretIdentifier: pulumi.String(\"registry_password\"),\n\t\t\t\t\t\t\tSecretSpacePath:  pulumi.String(\"accountId/orgId/projectId\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tParentRef: pulumi.String(\"accountId/orgId/projectId\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.HarRegistry;\nimport com.pulumi.harness.platform.HarRegistryArgs;\nimport com.pulumi.harness.platform.inputs.HarRegistryConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example of a Virtual Registry\n        var virtualRegistry = new HarRegistry(\"virtualRegistry\", HarRegistryArgs.builder()\n            .identifier(\"virtual_docker_registry\")\n            .description(\"Virtual Docker Registry\")\n            .spaceRef(\"accountId/orgId/projectId\")\n            .packageType(\"DOCKER\")\n            .configs(HarRegistryConfigArgs.builder()\n                .type(\"VIRTUAL\")\n                .upstreamProxies(                \n                    \"registry1\",\n                    \"registry2\")\n                .build())\n            .parentRef(\"accountId/orgId/projectId\")\n            .build());\n\n        // Example of an Upstream Registry with Authentication\n        var upstreamRegistry = new HarRegistry(\"upstreamRegistry\", HarRegistryArgs.builder()\n            .identifier(\"upstream_helm_registry\")\n            .description(\"Upstream Helm Registry\")\n            .spaceRef(\"accountId/orgId/projectId\")\n            .packageType(\"HELM\")\n            .configs(HarRegistryConfigArgs.builder()\n                .type(\"UPSTREAM\")\n                .source(\"CUSTOM\")\n                .url(\"https://helm.sh\")\n                .auths(HarRegistryConfigAuthArgs.builder()\n                    .authType(\"UserPassword\")\n                    .userName(\"registry_user\")\n                    .secretIdentifier(\"registry_password\")\n                    .secretSpacePath(\"accountId/orgId/projectId\")\n                    .build())\n                .build())\n            .parentRef(\"accountId/orgId/projectId\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example of a Virtual Registry\n  virtualRegistry:\n    type: harness:platform:HarRegistry\n    name: virtual_registry\n    properties:\n      identifier: virtual_docker_registry\n      description: Virtual Docker Registry\n      spaceRef: accountId/orgId/projectId\n      packageType: DOCKER\n      configs:\n        - type: VIRTUAL\n          upstreamProxies:\n            - registry1\n            - registry2\n      parentRef: accountId/orgId/projectId\n  # Example of an Upstream Registry with Authentication\n  upstreamRegistry:\n    type: harness:platform:HarRegistry\n    name: upstream_registry\n    properties:\n      identifier: upstream_helm_registry\n      description: Upstream Helm Registry\n      spaceRef: accountId/orgId/projectId\n      packageType: HELM\n      configs:\n        - type: UPSTREAM\n          source: CUSTOM\n          url: https://helm.sh\n          auths:\n            - authType: UserPassword\n              userName: registry_user\n              secretIdentifier: registry_password\n              secretSpacePath: accountId/orgId/projectId\n      parentRef: accountId/orgId/projectId\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "allowedPatterns": {
                     "type": "array",
@@ -27380,7 +27408,7 @@
                     "items": {
                         "$ref": "#/types/harness:platform/HarRegistryConfig:HarRegistryConfig"
                     },
-                    "description": "Type of registry.\n"
+                    "description": "Configuration for the registry\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -27392,19 +27420,19 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Unique identifier of the resource.\n"
+                    "description": "Unique identifier of the registry\n"
                 },
                 "packageType": {
                     "type": "string",
-                    "description": "Type of package (DOCKER, MAVEN, etc.)\n"
+                    "description": "Type of package (DOCKER, HELM, etc.)\n"
                 },
                 "parentRef": {
                     "type": "string",
-                    "description": "Parent Reference of the registry.\n"
+                    "description": "Parent reference for the registry\n"
                 },
                 "spaceRef": {
                     "type": "string",
-                    "description": "Reference of the space.\n"
+                    "description": "Space reference for the registry\n"
                 },
                 "url": {
                     "type": "string",
@@ -27412,6 +27440,7 @@
                 }
             },
             "required": [
+                "configs",
                 "createdAt",
                 "identifier",
                 "packageType",
@@ -27437,7 +27466,7 @@
                     "items": {
                         "$ref": "#/types/harness:platform/HarRegistryConfig:HarRegistryConfig"
                     },
-                    "description": "Type of registry.\n"
+                    "description": "Configuration for the registry\n"
                 },
                 "description": {
                     "type": "string",
@@ -27445,23 +27474,24 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "Unique identifier of the resource.\n",
+                    "description": "Unique identifier of the registry\n",
                     "willReplaceOnChanges": true
                 },
                 "packageType": {
                     "type": "string",
-                    "description": "Type of package (DOCKER, MAVEN, etc.)\n"
+                    "description": "Type of package (DOCKER, HELM, etc.)\n"
                 },
                 "parentRef": {
                     "type": "string",
-                    "description": "Parent Reference of the registry.\n"
+                    "description": "Parent reference for the registry\n"
                 },
                 "spaceRef": {
                     "type": "string",
-                    "description": "Reference of the space.\n"
+                    "description": "Space reference for the registry\n"
                 }
             },
             "requiredInputs": [
+                "configs",
                 "identifier",
                 "packageType"
             ],
@@ -27487,7 +27517,7 @@
                         "items": {
                             "$ref": "#/types/harness:platform/HarRegistryConfig:HarRegistryConfig"
                         },
-                        "description": "Type of registry.\n"
+                        "description": "Configuration for the registry\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -27499,20 +27529,20 @@
                     },
                     "identifier": {
                         "type": "string",
-                        "description": "Unique identifier of the resource.\n",
+                        "description": "Unique identifier of the registry\n",
                         "willReplaceOnChanges": true
                     },
                     "packageType": {
                         "type": "string",
-                        "description": "Type of package (DOCKER, MAVEN, etc.)\n"
+                        "description": "Type of package (DOCKER, HELM, etc.)\n"
                     },
                     "parentRef": {
                         "type": "string",
-                        "description": "Parent Reference of the registry.\n"
+                        "description": "Parent reference for the registry\n"
                     },
                     "spaceRef": {
                         "type": "string",
-                        "description": "Reference of the space.\n"
+                        "description": "Space reference for the registry\n"
                     },
                     "url": {
                         "type": "string",
@@ -28163,8 +28193,8 @@
                     "description": "Environment Identifier.\n"
                 },
                 "forceDelete": {
-                    "type": "string",
-                    "description": "Enable this flag for force deletion of infrastructure\n"
+                    "type": "boolean",
+                    "description": "When set to true, enables force deletion of infrastructure.\n"
                 },
                 "gitDetails": {
                     "$ref": "#/types/harness:platform/InfrastructureGitDetails:InfrastructureGitDetails",
@@ -28225,8 +28255,8 @@
                     "description": "Environment Identifier.\n"
                 },
                 "forceDelete": {
-                    "type": "string",
-                    "description": "Enable this flag for force deletion of infrastructure\n"
+                    "type": "boolean",
+                    "description": "When set to true, enables force deletion of infrastructure.\n"
                 },
                 "gitDetails": {
                     "$ref": "#/types/harness:platform/InfrastructureGitDetails:InfrastructureGitDetails",
@@ -28285,8 +28315,8 @@
                         "description": "Environment Identifier.\n"
                     },
                     "forceDelete": {
-                        "type": "string",
-                        "description": "Enable this flag for force deletion of infrastructure\n"
+                        "type": "boolean",
+                        "description": "When set to true, enables force deletion of infrastructure.\n"
                     },
                     "gitDetails": {
                         "$ref": "#/types/harness:platform/InfrastructureGitDetails:InfrastructureGitDetails",
@@ -32989,7 +33019,7 @@
                     "description": "to fetch resoled service yaml\n"
                 },
                 "forceDelete": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Enable this flag for force deletion of service\n"
                 },
                 "gitDetails": {
@@ -33052,7 +33082,7 @@
                     "description": "to fetch resoled service yaml\n"
                 },
                 "forceDelete": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "Enable this flag for force deletion of service\n"
                 },
                 "gitDetails": {
@@ -33111,7 +33141,7 @@
                         "description": "to fetch resoled service yaml\n"
                     },
                     "forceDelete": {
-                        "type": "string",
+                        "type": "boolean",
                         "description": "Enable this flag for force deletion of service\n"
                     },
                     "gitDetails": {
@@ -34350,8 +34380,8 @@
                     "deprecationMessage": "description field is deprecated"
                 },
                 "forceDelete": {
-                    "type": "string",
-                    "description": "Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it\n"
+                    "type": "boolean",
+                    "description": "When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.\n"
                 },
                 "gitDetails": {
                     "$ref": "#/types/harness:platform/TemplateGitDetails:TemplateGitDetails",
@@ -34425,8 +34455,8 @@
                     "deprecationMessage": "description field is deprecated"
                 },
                 "forceDelete": {
-                    "type": "string",
-                    "description": "Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it\n"
+                    "type": "boolean",
+                    "description": "When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.\n"
                 },
                 "gitDetails": {
                     "$ref": "#/types/harness:platform/TemplateGitDetails:TemplateGitDetails",
@@ -34497,8 +34527,8 @@
                         "deprecationMessage": "description field is deprecated"
                     },
                     "forceDelete": {
-                        "type": "string",
-                        "description": "Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it\n"
+                        "type": "boolean",
+                        "description": "When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.\n"
                     },
                     "gitDetails": {
                         "$ref": "#/types/harness:platform/TemplateGitDetails:TemplateGitDetails",
@@ -34680,6 +34710,10 @@
                     "type": "string",
                     "description": "Description of the resource.\n"
                 },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Enable this flag to execute on delegate (default: true).\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
@@ -34709,6 +34743,7 @@
             },
             "required": [
                 "credentials",
+                "executeOnDelegate",
                 "identifier",
                 "name",
                 "url"
@@ -34727,6 +34762,10 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Enable this flag to execute on delegate (default: true).\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -34777,6 +34816,10 @@
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Enable this flag to execute on delegate (default: true).\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -35740,7 +35783,7 @@
             }
         },
         "harness:platform/vaultConnector:VaultConnector": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst awsAuth = new harness.platform.VaultConnector(\"aws_auth\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    awsRegion: \"aws_region\",\n    basePath: \"base_path\",\n    accessType: \"AWS_IAM\",\n    \"default\": false,\n    xvaultAwsIamServerId: `account.${test.id}`,\n    readOnly: true,\n    renewalIntervalMinutes: 60,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    vaultAwsIamRole: \"vault_aws_iam_role\",\n    useAwsIam: true,\n    useK8sAuth: false,\n    useVaultAgent: false,\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n});\nconst appRole = new harness.platform.VaultConnector(\"app_role\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    appRoleId: \"app_role_id\",\n    basePath: \"base_path\",\n    accessType: \"APP_ROLE\",\n    \"default\": false,\n    secretId: `account.${test.id}`,\n    readOnly: true,\n    renewalIntervalMinutes: 60,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    useAwsIam: false,\n    useK8sAuth: false,\n    useVaultAgent: false,\n    renewAppRoleToken: true,\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n});\nconst k8sAuth = new harness.platform.VaultConnector(\"k8s_auth\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    authToken: `account.${test.id}`,\n    basePath: \"base_path\",\n    accessType: \"K8s_AUTH\",\n    \"default\": false,\n    k8sAuthEndpoint: \"k8s_auth_endpoint\",\n    namespace: \"namespace\",\n    readOnly: true,\n    renewalIntervalMinutes: 10,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    serviceAccountTokenPath: \"service_account_token_path\",\n    useAwsIam: false,\n    useK8sAuth: true,\n    useVaultAgent: false,\n    vaultK8sAuthRole: \"vault_k8s_auth_role\",\n    vaultAwsIamRole: \"vault_aws_iam_role\",\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n});\nconst vaultAgent = new harness.platform.VaultConnector(\"vault_agent\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    authToken: `account.${test.id}`,\n    basePath: \"base_path\",\n    accessType: \"VAULT_AGENT\",\n    \"default\": false,\n    namespace: \"namespace\",\n    readOnly: true,\n    renewalIntervalMinutes: 10,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    useAwsIam: false,\n    useK8sAuth: false,\n    useVaultAgent: true,\n    sinkPath: \"sink_path\",\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n});\nconst token = new harness.platform.VaultConnector(\"token\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    authToken: `account.${test.id}`,\n    basePath: \"base_path\",\n    accessType: \"TOKEN\",\n    \"default\": false,\n    namespace: \"namespace\",\n    readOnly: true,\n    renewalIntervalMinutes: 10,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    useAwsIam: false,\n    useK8sAuth: false,\n    vaultUrl: \"https://vault_url.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\naws_auth = harness.platform.VaultConnector(\"aws_auth\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    aws_region=\"aws_region\",\n    base_path=\"base_path\",\n    access_type=\"AWS_IAM\",\n    default=False,\n    xvault_aws_iam_server_id=f\"account.{test['id']}\",\n    read_only=True,\n    renewal_interval_minutes=60,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    vault_aws_iam_role=\"vault_aws_iam_role\",\n    use_aws_iam=True,\n    use_k8s_auth=False,\n    use_vault_agent=False,\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\")\napp_role = harness.platform.VaultConnector(\"app_role\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    app_role_id=\"app_role_id\",\n    base_path=\"base_path\",\n    access_type=\"APP_ROLE\",\n    default=False,\n    secret_id=f\"account.{test['id']}\",\n    read_only=True,\n    renewal_interval_minutes=60,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    use_aws_iam=False,\n    use_k8s_auth=False,\n    use_vault_agent=False,\n    renew_app_role_token=True,\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\")\nk8s_auth = harness.platform.VaultConnector(\"k8s_auth\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    auth_token=f\"account.{test['id']}\",\n    base_path=\"base_path\",\n    access_type=\"K8s_AUTH\",\n    default=False,\n    k8s_auth_endpoint=\"k8s_auth_endpoint\",\n    namespace=\"namespace\",\n    read_only=True,\n    renewal_interval_minutes=10,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    service_account_token_path=\"service_account_token_path\",\n    use_aws_iam=False,\n    use_k8s_auth=True,\n    use_vault_agent=False,\n    vault_k8s_auth_role=\"vault_k8s_auth_role\",\n    vault_aws_iam_role=\"vault_aws_iam_role\",\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\")\nvault_agent = harness.platform.VaultConnector(\"vault_agent\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    auth_token=f\"account.{test['id']}\",\n    base_path=\"base_path\",\n    access_type=\"VAULT_AGENT\",\n    default=False,\n    namespace=\"namespace\",\n    read_only=True,\n    renewal_interval_minutes=10,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    use_aws_iam=False,\n    use_k8s_auth=False,\n    use_vault_agent=True,\n    sink_path=\"sink_path\",\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\")\ntoken = harness.platform.VaultConnector(\"token\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    auth_token=f\"account.{test['id']}\",\n    base_path=\"base_path\",\n    access_type=\"TOKEN\",\n    default=False,\n    namespace=\"namespace\",\n    read_only=True,\n    renewal_interval_minutes=10,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    use_aws_iam=False,\n    use_k8s_auth=False,\n    vault_url=\"https://vault_url.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsAuth = new Harness.Platform.VaultConnector(\"aws_auth\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AwsRegion = \"aws_region\",\n        BasePath = \"base_path\",\n        AccessType = \"AWS_IAM\",\n        Default = false,\n        XvaultAwsIamServerId = $\"account.{test.Id}\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 60,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        VaultAwsIamRole = \"vault_aws_iam_role\",\n        UseAwsIam = true,\n        UseK8sAuth = false,\n        UseVaultAgent = false,\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n    });\n\n    var appRole = new Harness.Platform.VaultConnector(\"app_role\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AppRoleId = \"app_role_id\",\n        BasePath = \"base_path\",\n        AccessType = \"APP_ROLE\",\n        Default = false,\n        SecretId = $\"account.{test.Id}\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 60,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        UseAwsIam = false,\n        UseK8sAuth = false,\n        UseVaultAgent = false,\n        RenewAppRoleToken = true,\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n    });\n\n    var k8sAuth = new Harness.Platform.VaultConnector(\"k8s_auth\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AuthToken = $\"account.{test.Id}\",\n        BasePath = \"base_path\",\n        AccessType = \"K8s_AUTH\",\n        Default = false,\n        K8sAuthEndpoint = \"k8s_auth_endpoint\",\n        Namespace = \"namespace\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 10,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        ServiceAccountTokenPath = \"service_account_token_path\",\n        UseAwsIam = false,\n        UseK8sAuth = true,\n        UseVaultAgent = false,\n        VaultK8sAuthRole = \"vault_k8s_auth_role\",\n        VaultAwsIamRole = \"vault_aws_iam_role\",\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n    });\n\n    var vaultAgent = new Harness.Platform.VaultConnector(\"vault_agent\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AuthToken = $\"account.{test.Id}\",\n        BasePath = \"base_path\",\n        AccessType = \"VAULT_AGENT\",\n        Default = false,\n        Namespace = \"namespace\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 10,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        UseAwsIam = false,\n        UseK8sAuth = false,\n        UseVaultAgent = true,\n        SinkPath = \"sink_path\",\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n    });\n\n    var token = new Harness.Platform.VaultConnector(\"token\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AuthToken = $\"account.{test.Id}\",\n        BasePath = \"base_path\",\n        AccessType = \"TOKEN\",\n        Default = false,\n        Namespace = \"namespace\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 10,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        UseAwsIam = false,\n        UseK8sAuth = false,\n        VaultUrl = \"https://vault_url.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewVaultConnector(ctx, \"aws_auth\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAwsRegion:                      pulumi.String(\"aws_region\"),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"AWS_IAM\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tXvaultAwsIamServerId:           pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(60),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tVaultAwsIamRole:                pulumi.String(\"vault_aws_iam_role\"),\n\t\t\tUseAwsIam:                      pulumi.Bool(true),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tUseVaultAgent:                  pulumi.Bool(false),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl: pulumi.String(\"https://vault_url.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"app_role\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAppRoleId:                      pulumi.String(\"app_role_id\"),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"APP_ROLE\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tSecretId:                       pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(60),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tUseVaultAgent:                  pulumi.Bool(false),\n\t\t\tRenewAppRoleToken:              pulumi.Bool(true),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl: pulumi.String(\"https://vault_url.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"k8s_auth\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAuthToken:                      pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"K8s_AUTH\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tK8sAuthEndpoint:                pulumi.String(\"k8s_auth_endpoint\"),\n\t\t\tNamespace:                      pulumi.String(\"namespace\"),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(10),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tServiceAccountTokenPath:        pulumi.String(\"service_account_token_path\"),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(true),\n\t\t\tUseVaultAgent:                  pulumi.Bool(false),\n\t\t\tVaultK8sAuthRole:               pulumi.String(\"vault_k8s_auth_role\"),\n\t\t\tVaultAwsIamRole:                pulumi.String(\"vault_aws_iam_role\"),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl: pulumi.String(\"https://vault_url.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"vault_agent\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAuthToken:                      pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"VAULT_AGENT\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tNamespace:                      pulumi.String(\"namespace\"),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(10),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tUseVaultAgent:                  pulumi.Bool(true),\n\t\t\tSinkPath:                       pulumi.String(\"sink_path\"),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl: pulumi.String(\"https://vault_url.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"token\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAuthToken:                      pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"TOKEN\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tNamespace:                      pulumi.String(\"namespace\"),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(10),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tVaultUrl:                       pulumi.String(\"https://vault_url.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.VaultConnector;\nimport com.pulumi.harness.platform.VaultConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsAuth = new VaultConnector(\"awsAuth\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .awsRegion(\"aws_region\")\n            .basePath(\"base_path\")\n            .accessType(\"AWS_IAM\")\n            .default_(false)\n            .xvaultAwsIamServerId(String.format(\"account.%s\", test.id()))\n            .readOnly(true)\n            .renewalIntervalMinutes(60)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .vaultAwsIamRole(\"vault_aws_iam_role\")\n            .useAwsIam(true)\n            .useK8sAuth(false)\n            .useVaultAgent(false)\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .build());\n\n        var appRole = new VaultConnector(\"appRole\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .appRoleId(\"app_role_id\")\n            .basePath(\"base_path\")\n            .accessType(\"APP_ROLE\")\n            .default_(false)\n            .secretId(String.format(\"account.%s\", test.id()))\n            .readOnly(true)\n            .renewalIntervalMinutes(60)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .useAwsIam(false)\n            .useK8sAuth(false)\n            .useVaultAgent(false)\n            .renewAppRoleToken(true)\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .build());\n\n        var k8sAuth = new VaultConnector(\"k8sAuth\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .authToken(String.format(\"account.%s\", test.id()))\n            .basePath(\"base_path\")\n            .accessType(\"K8s_AUTH\")\n            .default_(false)\n            .k8sAuthEndpoint(\"k8s_auth_endpoint\")\n            .namespace(\"namespace\")\n            .readOnly(true)\n            .renewalIntervalMinutes(10)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .serviceAccountTokenPath(\"service_account_token_path\")\n            .useAwsIam(false)\n            .useK8sAuth(true)\n            .useVaultAgent(false)\n            .vaultK8sAuthRole(\"vault_k8s_auth_role\")\n            .vaultAwsIamRole(\"vault_aws_iam_role\")\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .build());\n\n        var vaultAgent = new VaultConnector(\"vaultAgent\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .authToken(String.format(\"account.%s\", test.id()))\n            .basePath(\"base_path\")\n            .accessType(\"VAULT_AGENT\")\n            .default_(false)\n            .namespace(\"namespace\")\n            .readOnly(true)\n            .renewalIntervalMinutes(10)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .useAwsIam(false)\n            .useK8sAuth(false)\n            .useVaultAgent(true)\n            .sinkPath(\"sink_path\")\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .build());\n\n        var token = new VaultConnector(\"token\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .authToken(String.format(\"account.%s\", test.id()))\n            .basePath(\"base_path\")\n            .accessType(\"TOKEN\")\n            .default_(false)\n            .namespace(\"namespace\")\n            .readOnly(true)\n            .renewalIntervalMinutes(10)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .useAwsIam(false)\n            .useK8sAuth(false)\n            .vaultUrl(\"https://vault_url.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsAuth:\n    type: harness:platform:VaultConnector\n    name: aws_auth\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      awsRegion: aws_region\n      basePath: base_path\n      accessType: AWS_IAM\n      default: false\n      xvaultAwsIamServerId: account.${test.id}\n      readOnly: true\n      renewalIntervalMinutes: 60\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      vaultAwsIamRole: vault_aws_iam_role\n      useAwsIam: true\n      useK8sAuth: false\n      useVaultAgent: false\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n  appRole:\n    type: harness:platform:VaultConnector\n    name: app_role\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      appRoleId: app_role_id\n      basePath: base_path\n      accessType: APP_ROLE\n      default: false\n      secretId: account.${test.id}\n      readOnly: true\n      renewalIntervalMinutes: 60\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      useAwsIam: false\n      useK8sAuth: false\n      useVaultAgent: false\n      renewAppRoleToken: true\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n  k8sAuth:\n    type: harness:platform:VaultConnector\n    name: k8s_auth\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      authToken: account.${test.id}\n      basePath: base_path\n      accessType: K8s_AUTH\n      default: false\n      k8sAuthEndpoint: k8s_auth_endpoint\n      namespace: namespace\n      readOnly: true\n      renewalIntervalMinutes: 10\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      serviceAccountTokenPath: service_account_token_path\n      useAwsIam: false\n      useK8sAuth: true\n      useVaultAgent: false\n      vaultK8sAuthRole: vault_k8s_auth_role\n      vaultAwsIamRole: vault_aws_iam_role\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n  vaultAgent:\n    type: harness:platform:VaultConnector\n    name: vault_agent\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      authToken: account.${test.id}\n      basePath: base_path\n      accessType: VAULT_AGENT\n      default: false\n      namespace: namespace\n      readOnly: true\n      renewalIntervalMinutes: 10\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      useAwsIam: false\n      useK8sAuth: false\n      useVaultAgent: true\n      sinkPath: sink_path\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n  token:\n    type: harness:platform:VaultConnector\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      authToken: account.${test.id}\n      basePath: base_path\n      accessType: TOKEN\n      default: false\n      namespace: namespace\n      readOnly: true\n      renewalIntervalMinutes: 10\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      useAwsIam: false\n      useK8sAuth: false\n      vaultUrl: https://vault_url.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level vault connector \n\n```sh\n$ pulumi import harness:platform/vaultConnector:VaultConnector example \u003cconnector_id\u003e\n```\n\nImport org level vault connector \n\n```sh\n$ pulumi import harness:platform/vaultConnector:VaultConnector example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level vault connector \n\n```sh\n$ pulumi import harness:platform/vaultConnector:VaultConnector example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst awsAuth = new harness.platform.VaultConnector(\"aws_auth\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    awsRegion: \"aws_region\",\n    basePath: \"base_path\",\n    accessType: \"AWS_IAM\",\n    \"default\": false,\n    xvaultAwsIamServerId: `account.${test.id}`,\n    readOnly: true,\n    renewalIntervalMinutes: 60,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    vaultAwsIamRole: \"vault_aws_iam_role\",\n    useAwsIam: true,\n    useK8sAuth: false,\n    useVaultAgent: false,\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n    useJwtAuth: false,\n});\nconst appRole = new harness.platform.VaultConnector(\"app_role\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    appRoleId: \"app_role_id\",\n    basePath: \"base_path\",\n    accessType: \"APP_ROLE\",\n    \"default\": false,\n    secretId: `account.${test.id}`,\n    readOnly: true,\n    renewalIntervalMinutes: 60,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    useAwsIam: false,\n    useK8sAuth: false,\n    useVaultAgent: false,\n    renewAppRoleToken: true,\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n    useJwtAuth: false,\n});\nconst k8sAuth = new harness.platform.VaultConnector(\"k8s_auth\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    authToken: `account.${test.id}`,\n    basePath: \"base_path\",\n    accessType: \"K8s_AUTH\",\n    \"default\": false,\n    k8sAuthEndpoint: \"k8s_auth_endpoint\",\n    namespace: \"namespace\",\n    readOnly: true,\n    renewalIntervalMinutes: 10,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    serviceAccountTokenPath: \"service_account_token_path\",\n    useAwsIam: false,\n    useK8sAuth: true,\n    useVaultAgent: false,\n    vaultK8sAuthRole: \"vault_k8s_auth_role\",\n    vaultAwsIamRole: \"vault_aws_iam_role\",\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n    useJwtAuth: false,\n});\nconst vaultAgent = new harness.platform.VaultConnector(\"vault_agent\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    authToken: `account.${test.id}`,\n    basePath: \"base_path\",\n    accessType: \"VAULT_AGENT\",\n    \"default\": false,\n    namespace: \"namespace\",\n    readOnly: true,\n    renewalIntervalMinutes: 10,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    useAwsIam: false,\n    useK8sAuth: false,\n    useVaultAgent: true,\n    sinkPath: \"sink_path\",\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n    useJwtAuth: false,\n});\nconst token = new harness.platform.VaultConnector(\"token\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    authToken: `account.${test.id}`,\n    basePath: \"base_path\",\n    accessType: \"TOKEN\",\n    \"default\": false,\n    namespace: \"namespace\",\n    readOnly: true,\n    renewalIntervalMinutes: 10,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    useAwsIam: false,\n    useK8sAuth: false,\n    vaultUrl: \"https://vault_url.com\",\n    useJwtAuth: false,\n});\nconst jwt = new harness.platform.VaultConnector(\"jwt\", {\n    identifier: \"identifier\",\n    name: \"name\",\n    description: \"test\",\n    tags: [\"foo:bar\"],\n    basePath: \"base_path\",\n    accessType: \"JWT\",\n    \"default\": false,\n    readOnly: true,\n    renewalIntervalMinutes: 60,\n    secretEngineManuallyConfigured: true,\n    secretEngineName: \"secret_engine_name\",\n    secretEngineVersion: 2,\n    useAwsIam: false,\n    useK8sAuth: false,\n    useVaultAgent: false,\n    renewAppRoleToken: false,\n    delegateSelectors: [\"harness-delegate\"],\n    vaultUrl: \"https://vault_url.com\",\n    useJwtAuth: true,\n    vaultJwtAuthRole: \"vault_jwt_auth_role\",\n    vaultJwtAuthPath: \"vault_jwt_auth_path\",\n    executeOnDelegate: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\naws_auth = harness.platform.VaultConnector(\"aws_auth\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    aws_region=\"aws_region\",\n    base_path=\"base_path\",\n    access_type=\"AWS_IAM\",\n    default=False,\n    xvault_aws_iam_server_id=f\"account.{test['id']}\",\n    read_only=True,\n    renewal_interval_minutes=60,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    vault_aws_iam_role=\"vault_aws_iam_role\",\n    use_aws_iam=True,\n    use_k8s_auth=False,\n    use_vault_agent=False,\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\",\n    use_jwt_auth=False)\napp_role = harness.platform.VaultConnector(\"app_role\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    app_role_id=\"app_role_id\",\n    base_path=\"base_path\",\n    access_type=\"APP_ROLE\",\n    default=False,\n    secret_id=f\"account.{test['id']}\",\n    read_only=True,\n    renewal_interval_minutes=60,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    use_aws_iam=False,\n    use_k8s_auth=False,\n    use_vault_agent=False,\n    renew_app_role_token=True,\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\",\n    use_jwt_auth=False)\nk8s_auth = harness.platform.VaultConnector(\"k8s_auth\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    auth_token=f\"account.{test['id']}\",\n    base_path=\"base_path\",\n    access_type=\"K8s_AUTH\",\n    default=False,\n    k8s_auth_endpoint=\"k8s_auth_endpoint\",\n    namespace=\"namespace\",\n    read_only=True,\n    renewal_interval_minutes=10,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    service_account_token_path=\"service_account_token_path\",\n    use_aws_iam=False,\n    use_k8s_auth=True,\n    use_vault_agent=False,\n    vault_k8s_auth_role=\"vault_k8s_auth_role\",\n    vault_aws_iam_role=\"vault_aws_iam_role\",\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\",\n    use_jwt_auth=False)\nvault_agent = harness.platform.VaultConnector(\"vault_agent\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    auth_token=f\"account.{test['id']}\",\n    base_path=\"base_path\",\n    access_type=\"VAULT_AGENT\",\n    default=False,\n    namespace=\"namespace\",\n    read_only=True,\n    renewal_interval_minutes=10,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    use_aws_iam=False,\n    use_k8s_auth=False,\n    use_vault_agent=True,\n    sink_path=\"sink_path\",\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\",\n    use_jwt_auth=False)\ntoken = harness.platform.VaultConnector(\"token\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    auth_token=f\"account.{test['id']}\",\n    base_path=\"base_path\",\n    access_type=\"TOKEN\",\n    default=False,\n    namespace=\"namespace\",\n    read_only=True,\n    renewal_interval_minutes=10,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    use_aws_iam=False,\n    use_k8s_auth=False,\n    vault_url=\"https://vault_url.com\",\n    use_jwt_auth=False)\njwt = harness.platform.VaultConnector(\"jwt\",\n    identifier=\"identifier\",\n    name=\"name\",\n    description=\"test\",\n    tags=[\"foo:bar\"],\n    base_path=\"base_path\",\n    access_type=\"JWT\",\n    default=False,\n    read_only=True,\n    renewal_interval_minutes=60,\n    secret_engine_manually_configured=True,\n    secret_engine_name=\"secret_engine_name\",\n    secret_engine_version=2,\n    use_aws_iam=False,\n    use_k8s_auth=False,\n    use_vault_agent=False,\n    renew_app_role_token=False,\n    delegate_selectors=[\"harness-delegate\"],\n    vault_url=\"https://vault_url.com\",\n    use_jwt_auth=True,\n    vault_jwt_auth_role=\"vault_jwt_auth_role\",\n    vault_jwt_auth_path=\"vault_jwt_auth_path\",\n    execute_on_delegate=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var awsAuth = new Harness.Platform.VaultConnector(\"aws_auth\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AwsRegion = \"aws_region\",\n        BasePath = \"base_path\",\n        AccessType = \"AWS_IAM\",\n        Default = false,\n        XvaultAwsIamServerId = $\"account.{test.Id}\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 60,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        VaultAwsIamRole = \"vault_aws_iam_role\",\n        UseAwsIam = true,\n        UseK8sAuth = false,\n        UseVaultAgent = false,\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n        UseJwtAuth = false,\n    });\n\n    var appRole = new Harness.Platform.VaultConnector(\"app_role\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AppRoleId = \"app_role_id\",\n        BasePath = \"base_path\",\n        AccessType = \"APP_ROLE\",\n        Default = false,\n        SecretId = $\"account.{test.Id}\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 60,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        UseAwsIam = false,\n        UseK8sAuth = false,\n        UseVaultAgent = false,\n        RenewAppRoleToken = true,\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n        UseJwtAuth = false,\n    });\n\n    var k8sAuth = new Harness.Platform.VaultConnector(\"k8s_auth\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AuthToken = $\"account.{test.Id}\",\n        BasePath = \"base_path\",\n        AccessType = \"K8s_AUTH\",\n        Default = false,\n        K8sAuthEndpoint = \"k8s_auth_endpoint\",\n        Namespace = \"namespace\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 10,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        ServiceAccountTokenPath = \"service_account_token_path\",\n        UseAwsIam = false,\n        UseK8sAuth = true,\n        UseVaultAgent = false,\n        VaultK8sAuthRole = \"vault_k8s_auth_role\",\n        VaultAwsIamRole = \"vault_aws_iam_role\",\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n        UseJwtAuth = false,\n    });\n\n    var vaultAgent = new Harness.Platform.VaultConnector(\"vault_agent\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AuthToken = $\"account.{test.Id}\",\n        BasePath = \"base_path\",\n        AccessType = \"VAULT_AGENT\",\n        Default = false,\n        Namespace = \"namespace\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 10,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        UseAwsIam = false,\n        UseK8sAuth = false,\n        UseVaultAgent = true,\n        SinkPath = \"sink_path\",\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n        UseJwtAuth = false,\n    });\n\n    var token = new Harness.Platform.VaultConnector(\"token\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        AuthToken = $\"account.{test.Id}\",\n        BasePath = \"base_path\",\n        AccessType = \"TOKEN\",\n        Default = false,\n        Namespace = \"namespace\",\n        ReadOnly = true,\n        RenewalIntervalMinutes = 10,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        UseAwsIam = false,\n        UseK8sAuth = false,\n        VaultUrl = \"https://vault_url.com\",\n        UseJwtAuth = false,\n    });\n\n    var jwt = new Harness.Platform.VaultConnector(\"jwt\", new()\n    {\n        Identifier = \"identifier\",\n        Name = \"name\",\n        Description = \"test\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n        },\n        BasePath = \"base_path\",\n        AccessType = \"JWT\",\n        Default = false,\n        ReadOnly = true,\n        RenewalIntervalMinutes = 60,\n        SecretEngineManuallyConfigured = true,\n        SecretEngineName = \"secret_engine_name\",\n        SecretEngineVersion = 2,\n        UseAwsIam = false,\n        UseK8sAuth = false,\n        UseVaultAgent = false,\n        RenewAppRoleToken = false,\n        DelegateSelectors = new[]\n        {\n            \"harness-delegate\",\n        },\n        VaultUrl = \"https://vault_url.com\",\n        UseJwtAuth = true,\n        VaultJwtAuthRole = \"vault_jwt_auth_role\",\n        VaultJwtAuthPath = \"vault_jwt_auth_path\",\n        ExecuteOnDelegate = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewVaultConnector(ctx, \"aws_auth\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAwsRegion:                      pulumi.String(\"aws_region\"),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"AWS_IAM\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tXvaultAwsIamServerId:           pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(60),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tVaultAwsIamRole:                pulumi.String(\"vault_aws_iam_role\"),\n\t\t\tUseAwsIam:                      pulumi.Bool(true),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tUseVaultAgent:                  pulumi.Bool(false),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl:   pulumi.String(\"https://vault_url.com\"),\n\t\t\tUseJwtAuth: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"app_role\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAppRoleId:                      pulumi.String(\"app_role_id\"),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"APP_ROLE\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tSecretId:                       pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(60),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tUseVaultAgent:                  pulumi.Bool(false),\n\t\t\tRenewAppRoleToken:              pulumi.Bool(true),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl:   pulumi.String(\"https://vault_url.com\"),\n\t\t\tUseJwtAuth: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"k8s_auth\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAuthToken:                      pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"K8s_AUTH\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tK8sAuthEndpoint:                pulumi.String(\"k8s_auth_endpoint\"),\n\t\t\tNamespace:                      pulumi.String(\"namespace\"),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(10),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tServiceAccountTokenPath:        pulumi.String(\"service_account_token_path\"),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(true),\n\t\t\tUseVaultAgent:                  pulumi.Bool(false),\n\t\t\tVaultK8sAuthRole:               pulumi.String(\"vault_k8s_auth_role\"),\n\t\t\tVaultAwsIamRole:                pulumi.String(\"vault_aws_iam_role\"),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl:   pulumi.String(\"https://vault_url.com\"),\n\t\t\tUseJwtAuth: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"vault_agent\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAuthToken:                      pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"VAULT_AGENT\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tNamespace:                      pulumi.String(\"namespace\"),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(10),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tUseVaultAgent:                  pulumi.Bool(true),\n\t\t\tSinkPath:                       pulumi.String(\"sink_path\"),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl:   pulumi.String(\"https://vault_url.com\"),\n\t\t\tUseJwtAuth: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"token\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tAuthToken:                      pulumi.Sprintf(\"account.%v\", test.Id),\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"TOKEN\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tNamespace:                      pulumi.String(\"namespace\"),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(10),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tVaultUrl:                       pulumi.String(\"https://vault_url.com\"),\n\t\t\tUseJwtAuth:                     pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewVaultConnector(ctx, \"jwt\", \u0026platform.VaultConnectorArgs{\n\t\t\tIdentifier:  pulumi.String(\"identifier\"),\n\t\t\tName:        pulumi.String(\"name\"),\n\t\t\tDescription: pulumi.String(\"test\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t},\n\t\t\tBasePath:                       pulumi.String(\"base_path\"),\n\t\t\tAccessType:                     pulumi.String(\"JWT\"),\n\t\t\tDefault:                        pulumi.Bool(false),\n\t\t\tReadOnly:                       pulumi.Bool(true),\n\t\t\tRenewalIntervalMinutes:         pulumi.Int(60),\n\t\t\tSecretEngineManuallyConfigured: pulumi.Bool(true),\n\t\t\tSecretEngineName:               pulumi.String(\"secret_engine_name\"),\n\t\t\tSecretEngineVersion:            pulumi.Int(2),\n\t\t\tUseAwsIam:                      pulumi.Bool(false),\n\t\t\tUseK8sAuth:                     pulumi.Bool(false),\n\t\t\tUseVaultAgent:                  pulumi.Bool(false),\n\t\t\tRenewAppRoleToken:              pulumi.Bool(false),\n\t\t\tDelegateSelectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"harness-delegate\"),\n\t\t\t},\n\t\t\tVaultUrl:          pulumi.String(\"https://vault_url.com\"),\n\t\t\tUseJwtAuth:        pulumi.Bool(true),\n\t\t\tVaultJwtAuthRole:  pulumi.String(\"vault_jwt_auth_role\"),\n\t\t\tVaultJwtAuthPath:  pulumi.String(\"vault_jwt_auth_path\"),\n\t\t\tExecuteOnDelegate: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.VaultConnector;\nimport com.pulumi.harness.platform.VaultConnectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var awsAuth = new VaultConnector(\"awsAuth\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .awsRegion(\"aws_region\")\n            .basePath(\"base_path\")\n            .accessType(\"AWS_IAM\")\n            .default_(false)\n            .xvaultAwsIamServerId(String.format(\"account.%s\", test.id()))\n            .readOnly(true)\n            .renewalIntervalMinutes(60)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .vaultAwsIamRole(\"vault_aws_iam_role\")\n            .useAwsIam(true)\n            .useK8sAuth(false)\n            .useVaultAgent(false)\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .useJwtAuth(false)\n            .build());\n\n        var appRole = new VaultConnector(\"appRole\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .appRoleId(\"app_role_id\")\n            .basePath(\"base_path\")\n            .accessType(\"APP_ROLE\")\n            .default_(false)\n            .secretId(String.format(\"account.%s\", test.id()))\n            .readOnly(true)\n            .renewalIntervalMinutes(60)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .useAwsIam(false)\n            .useK8sAuth(false)\n            .useVaultAgent(false)\n            .renewAppRoleToken(true)\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .useJwtAuth(false)\n            .build());\n\n        var k8sAuth = new VaultConnector(\"k8sAuth\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .authToken(String.format(\"account.%s\", test.id()))\n            .basePath(\"base_path\")\n            .accessType(\"K8s_AUTH\")\n            .default_(false)\n            .k8sAuthEndpoint(\"k8s_auth_endpoint\")\n            .namespace(\"namespace\")\n            .readOnly(true)\n            .renewalIntervalMinutes(10)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .serviceAccountTokenPath(\"service_account_token_path\")\n            .useAwsIam(false)\n            .useK8sAuth(true)\n            .useVaultAgent(false)\n            .vaultK8sAuthRole(\"vault_k8s_auth_role\")\n            .vaultAwsIamRole(\"vault_aws_iam_role\")\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .useJwtAuth(false)\n            .build());\n\n        var vaultAgent = new VaultConnector(\"vaultAgent\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .authToken(String.format(\"account.%s\", test.id()))\n            .basePath(\"base_path\")\n            .accessType(\"VAULT_AGENT\")\n            .default_(false)\n            .namespace(\"namespace\")\n            .readOnly(true)\n            .renewalIntervalMinutes(10)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .useAwsIam(false)\n            .useK8sAuth(false)\n            .useVaultAgent(true)\n            .sinkPath(\"sink_path\")\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .useJwtAuth(false)\n            .build());\n\n        var token = new VaultConnector(\"token\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .authToken(String.format(\"account.%s\", test.id()))\n            .basePath(\"base_path\")\n            .accessType(\"TOKEN\")\n            .default_(false)\n            .namespace(\"namespace\")\n            .readOnly(true)\n            .renewalIntervalMinutes(10)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .useAwsIam(false)\n            .useK8sAuth(false)\n            .vaultUrl(\"https://vault_url.com\")\n            .useJwtAuth(false)\n            .build());\n\n        var jwt = new VaultConnector(\"jwt\", VaultConnectorArgs.builder()\n            .identifier(\"identifier\")\n            .name(\"name\")\n            .description(\"test\")\n            .tags(\"foo:bar\")\n            .basePath(\"base_path\")\n            .accessType(\"JWT\")\n            .default_(false)\n            .readOnly(true)\n            .renewalIntervalMinutes(60)\n            .secretEngineManuallyConfigured(true)\n            .secretEngineName(\"secret_engine_name\")\n            .secretEngineVersion(2)\n            .useAwsIam(false)\n            .useK8sAuth(false)\n            .useVaultAgent(false)\n            .renewAppRoleToken(false)\n            .delegateSelectors(\"harness-delegate\")\n            .vaultUrl(\"https://vault_url.com\")\n            .useJwtAuth(true)\n            .vaultJwtAuthRole(\"vault_jwt_auth_role\")\n            .vaultJwtAuthPath(\"vault_jwt_auth_path\")\n            .executeOnDelegate(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsAuth:\n    type: harness:platform:VaultConnector\n    name: aws_auth\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      awsRegion: aws_region\n      basePath: base_path\n      accessType: AWS_IAM\n      default: false\n      xvaultAwsIamServerId: account.${test.id}\n      readOnly: true\n      renewalIntervalMinutes: 60\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      vaultAwsIamRole: vault_aws_iam_role\n      useAwsIam: true\n      useK8sAuth: false\n      useVaultAgent: false\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n      useJwtAuth: false\n  appRole:\n    type: harness:platform:VaultConnector\n    name: app_role\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      appRoleId: app_role_id\n      basePath: base_path\n      accessType: APP_ROLE\n      default: false\n      secretId: account.${test.id}\n      readOnly: true\n      renewalIntervalMinutes: 60\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      useAwsIam: false\n      useK8sAuth: false\n      useVaultAgent: false\n      renewAppRoleToken: true\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n      useJwtAuth: false\n  k8sAuth:\n    type: harness:platform:VaultConnector\n    name: k8s_auth\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      authToken: account.${test.id}\n      basePath: base_path\n      accessType: K8s_AUTH\n      default: false\n      k8sAuthEndpoint: k8s_auth_endpoint\n      namespace: namespace\n      readOnly: true\n      renewalIntervalMinutes: 10\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      serviceAccountTokenPath: service_account_token_path\n      useAwsIam: false\n      useK8sAuth: true\n      useVaultAgent: false\n      vaultK8sAuthRole: vault_k8s_auth_role\n      vaultAwsIamRole: vault_aws_iam_role\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n      useJwtAuth: false\n  vaultAgent:\n    type: harness:platform:VaultConnector\n    name: vault_agent\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      authToken: account.${test.id}\n      basePath: base_path\n      accessType: VAULT_AGENT\n      default: false\n      namespace: namespace\n      readOnly: true\n      renewalIntervalMinutes: 10\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      useAwsIam: false\n      useK8sAuth: false\n      useVaultAgent: true\n      sinkPath: sink_path\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n      useJwtAuth: false\n  token:\n    type: harness:platform:VaultConnector\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      authToken: account.${test.id}\n      basePath: base_path\n      accessType: TOKEN\n      default: false\n      namespace: namespace\n      readOnly: true\n      renewalIntervalMinutes: 10\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      useAwsIam: false\n      useK8sAuth: false\n      vaultUrl: https://vault_url.com\n      useJwtAuth: false\n  jwt:\n    type: harness:platform:VaultConnector\n    properties:\n      identifier: identifier\n      name: name\n      description: test\n      tags:\n        - foo:bar\n      basePath: base_path\n      accessType: JWT\n      default: false\n      readOnly: true\n      renewalIntervalMinutes: 60\n      secretEngineManuallyConfigured: true\n      secretEngineName: secret_engine_name\n      secretEngineVersion: 2\n      useAwsIam: false\n      useK8sAuth: false\n      useVaultAgent: false\n      renewAppRoleToken: false\n      delegateSelectors:\n        - harness-delegate\n      vaultUrl: https://vault_url.com\n      useJwtAuth: true\n      vaultJwtAuthRole: vault_jwt_auth_role\n      vaultJwtAuthPath: vault_jwt_auth_path\n      executeOnDelegate: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport account level vault connector \n\n```sh\n$ pulumi import harness:platform/vaultConnector:VaultConnector example \u003cconnector_id\u003e\n```\n\nImport org level vault connector \n\n```sh\n$ pulumi import harness:platform/vaultConnector:VaultConnector example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level vault connector \n\n```sh\n$ pulumi import harness:platform/vaultConnector:VaultConnector example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
             "properties": {
                 "accessType": {
                     "type": "string",
@@ -35776,6 +35819,10 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -35856,6 +35903,10 @@
                     "type": "boolean",
                     "description": "Boolean value to indicate if AWS IAM is used for authentication.\n"
                 },
+                "useJwtAuth": {
+                    "type": "boolean",
+                    "description": "Boolean value to indicate if JWT is used for authentication.\n"
+                },
                 "useK8sAuth": {
                     "type": "boolean",
                     "description": "Boolean value to indicate if K8s Auth is used for authentication.\n"
@@ -35867,6 +35918,14 @@
                 "vaultAwsIamRole": {
                     "type": "string",
                     "description": "The Vault role defined to bind to aws iam account/role being accessed.\n"
+                },
+                "vaultJwtAuthPath": {
+                    "type": "string",
+                    "description": "Custom path at with JWT auth in enabled for Vault.\n"
+                },
+                "vaultJwtAuthRole": {
+                    "type": "string",
+                    "description": "The Vault role defined with JWT auth type for accessing Vault as per policies binded.\n"
                 },
                 "vaultK8sAuthRole": {
                     "type": "string",
@@ -35924,6 +35983,10 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
                 },
                 "identifier": {
                     "type": "string",
@@ -36005,6 +36068,10 @@
                     "type": "boolean",
                     "description": "Boolean value to indicate if AWS IAM is used for authentication.\n"
                 },
+                "useJwtAuth": {
+                    "type": "boolean",
+                    "description": "Boolean value to indicate if JWT is used for authentication.\n"
+                },
                 "useK8sAuth": {
                     "type": "boolean",
                     "description": "Boolean value to indicate if K8s Auth is used for authentication.\n"
@@ -36016,6 +36083,14 @@
                 "vaultAwsIamRole": {
                     "type": "string",
                     "description": "The Vault role defined to bind to aws iam account/role being accessed.\n"
+                },
+                "vaultJwtAuthPath": {
+                    "type": "string",
+                    "description": "Custom path at with JWT auth in enabled for Vault.\n"
+                },
+                "vaultJwtAuthRole": {
+                    "type": "string",
+                    "description": "The Vault role defined with JWT auth type for accessing Vault as per policies binded.\n"
                 },
                 "vaultK8sAuthRole": {
                     "type": "string",
@@ -36072,6 +36147,10 @@
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Execute on delegate or not.\n"
                     },
                     "identifier": {
                         "type": "string",
@@ -36153,6 +36232,10 @@
                         "type": "boolean",
                         "description": "Boolean value to indicate if AWS IAM is used for authentication.\n"
                     },
+                    "useJwtAuth": {
+                        "type": "boolean",
+                        "description": "Boolean value to indicate if JWT is used for authentication.\n"
+                    },
                     "useK8sAuth": {
                         "type": "boolean",
                         "description": "Boolean value to indicate if K8s Auth is used for authentication.\n"
@@ -36164,6 +36247,14 @@
                     "vaultAwsIamRole": {
                         "type": "string",
                         "description": "The Vault role defined to bind to aws iam account/role being accessed.\n"
+                    },
+                    "vaultJwtAuthPath": {
+                        "type": "string",
+                        "description": "Custom path at with JWT auth in enabled for Vault.\n"
+                    },
+                    "vaultJwtAuthRole": {
+                        "type": "string",
+                        "description": "The Vault role defined with JWT auth type for accessing Vault as per policies binded.\n"
                     },
                     "vaultK8sAuthRole": {
                         "type": "string",
@@ -43863,6 +43954,109 @@
                 "type": "object"
             }
         },
+        "harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml": {
+            "description": "Datasource for fetching a Harness Gitops Agent operator manifest YAML.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()\n            .identifier(\"identifier\")\n            .accountId(\"account_id\")\n            .projectId(\"project_id\")\n            .orgId(\"org_id\")\n            .namespace(\"namespace\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: harness:platform:getGitopsAgentOperatorYaml\n      arguments:\n        identifier: identifier\n        accountId: account_id\n        projectId: project_id\n        orgId: org_id\n        namespace: namespace\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGitopsAgentOperatorYaml.\n",
+                "properties": {
+                    "caData": {
+                        "type": "string",
+                        "description": "CA data of the GitOps agent, base64 encoded content of ca chain.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Identifier of the GitOps agent.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The kubernetes namespace where the agent is installed.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Organization identifier of the GitOps agent.\n"
+                    },
+                    "privateKey": {
+                        "type": "string",
+                        "description": "Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project identifier of the GitOps agent.\n"
+                    },
+                    "proxies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getGitopsAgentOperatorYamlProxy:getGitopsAgentOperatorYamlProxy"
+                        },
+                        "description": "Proxy settings for the GitOps agent.\n"
+                    },
+                    "skipCrds": {
+                        "type": "boolean",
+                        "description": "Skip CRDs for the GitOps agent.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "namespace"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGitopsAgentOperatorYaml.\n",
+                "properties": {
+                    "caData": {
+                        "description": "CA data of the GitOps agent, base64 encoded content of ca chain.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Identifier of the GitOps agent.\n",
+                        "type": "string"
+                    },
+                    "namespace": {
+                        "description": "The kubernetes namespace where the agent is installed.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "Organization identifier of the GitOps agent.\n",
+                        "type": "string"
+                    },
+                    "privateKey": {
+                        "description": "Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "Project identifier of the GitOps agent.\n",
+                        "type": "string"
+                    },
+                    "proxies": {
+                        "description": "Proxy settings for the GitOps agent.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getGitopsAgentOperatorYamlProxy:getGitopsAgentOperatorYamlProxy"
+                        },
+                        "type": "array"
+                    },
+                    "skipCrds": {
+                        "description": "Skip CRDs for the GitOps agent.\n",
+                        "type": "boolean"
+                    },
+                    "yaml": {
+                        "description": "The operator manifest YAML of the GitOps agent.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "identifier",
+                    "namespace",
+                    "yaml",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:platform/getGitopsAppProject:getGitopsAppProject": {
             "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getGitopsAppProject({\n    agentId: \"agent_id\",\n    queryName: \"query_name\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_gitops_app_project(agent_id=\"agent_id\",\n    query_name=\"query_name\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetGitopsAppProject.Invoke(new()\n    {\n        AgentId = \"agent_id\",\n        QueryName = \"query_name\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupGitopsAppProject(ctx, \u0026platform.LookupGitopsAppProjectArgs{\n\t\t\tAgentId:   \"agent_id\",\n\t\t\tQueryName: pulumi.StringRef(\"query_name\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getGitopsAppProject(GetGitopsAppProjectArgs.builder()\n            .agentId(\"agent_id\")\n            .queryName(\"query_name\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: harness:platform:getGitopsAppProject\n      arguments:\n        agentId: agent_id\n        queryName: query_name\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -49900,6 +50094,10 @@
                         "description": "Description of the resource.\n",
                         "type": "string"
                     },
+                    "executeOnDelegate": {
+                        "description": "Execute on delegate or not.\n",
+                        "type": "boolean"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -49983,6 +50181,10 @@
                         "description": "Boolean value to indicate if AWS IAM is used for authentication.\n",
                         "type": "boolean"
                     },
+                    "useJwtAuth": {
+                        "description": "Boolean value to indicate if JWT is used for authentication.\n",
+                        "type": "boolean"
+                    },
                     "useK8sAuth": {
                         "description": "Boolean value to indicate if K8s Auth is used for authentication.\n",
                         "type": "boolean"
@@ -49993,6 +50195,14 @@
                     },
                     "vaultAwsIamRole": {
                         "description": "The Vault role defined to bind to AWS IAM account/role being accessed.\n",
+                        "type": "string"
+                    },
+                    "vaultJwtAuthPath": {
+                        "description": "Custom path at with JWT auth in enabled for Vault.\n",
+                        "type": "string"
+                    },
+                    "vaultJwtAuthRole": {
+                        "description": "The Vault role defined with JWT auth type for accessing Vault as per policies binded.\n",
                         "type": "string"
                     },
                     "vaultK8sAuthRole": {
@@ -50017,6 +50227,7 @@
                     "default",
                     "delegateSelectors",
                     "description",
+                    "executeOnDelegate",
                     "identifier",
                     "isDefault",
                     "isReadOnly",
@@ -50033,9 +50244,12 @@
                     "sinkPath",
                     "tags",
                     "useAwsIam",
+                    "useJwtAuth",
                     "useK8sAuth",
                     "useVaultAgent",
                     "vaultAwsIamRole",
+                    "vaultJwtAuthPath",
+                    "vaultJwtAuthRole",
                     "vaultK8sAuthRole",
                     "vaultUrl",
                     "xvaultAwsIamServerId",

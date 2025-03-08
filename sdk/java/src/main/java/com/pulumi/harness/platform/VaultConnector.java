@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *             .useVaultAgent(false)
  *             .delegateSelectors("harness-delegate")
  *             .vaultUrl("https://vault_url.com")
+ *             .useJwtAuth(false)
  *             .build());
  * 
  *         var appRole = new VaultConnector("appRole", VaultConnectorArgs.builder()
@@ -87,6 +88,7 @@ import javax.annotation.Nullable;
  *             .renewAppRoleToken(true)
  *             .delegateSelectors("harness-delegate")
  *             .vaultUrl("https://vault_url.com")
+ *             .useJwtAuth(false)
  *             .build());
  * 
  *         var k8sAuth = new VaultConnector("k8sAuth", VaultConnectorArgs.builder()
@@ -113,6 +115,7 @@ import javax.annotation.Nullable;
  *             .vaultAwsIamRole("vault_aws_iam_role")
  *             .delegateSelectors("harness-delegate")
  *             .vaultUrl("https://vault_url.com")
+ *             .useJwtAuth(false)
  *             .build());
  * 
  *         var vaultAgent = new VaultConnector("vaultAgent", VaultConnectorArgs.builder()
@@ -136,6 +139,7 @@ import javax.annotation.Nullable;
  *             .sinkPath("sink_path")
  *             .delegateSelectors("harness-delegate")
  *             .vaultUrl("https://vault_url.com")
+ *             .useJwtAuth(false)
  *             .build());
  * 
  *         var token = new VaultConnector("token", VaultConnectorArgs.builder()
@@ -156,6 +160,32 @@ import javax.annotation.Nullable;
  *             .useAwsIam(false)
  *             .useK8sAuth(false)
  *             .vaultUrl("https://vault_url.com")
+ *             .useJwtAuth(false)
+ *             .build());
+ * 
+ *         var jwt = new VaultConnector("jwt", VaultConnectorArgs.builder()
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .basePath("base_path")
+ *             .accessType("JWT")
+ *             .default_(false)
+ *             .readOnly(true)
+ *             .renewalIntervalMinutes(60)
+ *             .secretEngineManuallyConfigured(true)
+ *             .secretEngineName("secret_engine_name")
+ *             .secretEngineVersion(2)
+ *             .useAwsIam(false)
+ *             .useK8sAuth(false)
+ *             .useVaultAgent(false)
+ *             .renewAppRoleToken(false)
+ *             .delegateSelectors("harness-delegate")
+ *             .vaultUrl("https://vault_url.com")
+ *             .useJwtAuth(true)
+ *             .vaultJwtAuthRole("vault_jwt_auth_role")
+ *             .vaultJwtAuthPath("vault_jwt_auth_path")
+ *             .executeOnDelegate(true)
  *             .build());
  * 
  *     }
@@ -298,6 +328,20 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Execute on delegate or not.
+     * 
+     */
+    @Export(name="executeOnDelegate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Output<Optional<Boolean>> executeOnDelegate() {
+        return Codegen.optional(this.executeOnDelegate);
     }
     /**
      * Unique identifier of the resource.
@@ -566,6 +610,20 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.useAwsIam);
     }
     /**
+     * Boolean value to indicate if JWT is used for authentication.
+     * 
+     */
+    @Export(name="useJwtAuth", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useJwtAuth;
+
+    /**
+     * @return Boolean value to indicate if JWT is used for authentication.
+     * 
+     */
+    public Output<Optional<Boolean>> useJwtAuth() {
+        return Codegen.optional(this.useJwtAuth);
+    }
+    /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      * 
      */
@@ -606,6 +664,34 @@ public class VaultConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> vaultAwsIamRole() {
         return Codegen.optional(this.vaultAwsIamRole);
+    }
+    /**
+     * Custom path at with JWT auth in enabled for Vault.
+     * 
+     */
+    @Export(name="vaultJwtAuthPath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vaultJwtAuthPath;
+
+    /**
+     * @return Custom path at with JWT auth in enabled for Vault.
+     * 
+     */
+    public Output<Optional<String>> vaultJwtAuthPath() {
+        return Codegen.optional(this.vaultJwtAuthPath);
+    }
+    /**
+     * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     * 
+     */
+    @Export(name="vaultJwtAuthRole", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vaultJwtAuthRole;
+
+    /**
+     * @return The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     * 
+     */
+    public Output<Optional<String>> vaultJwtAuthRole() {
+        return Codegen.optional(this.vaultJwtAuthRole);
     }
     /**
      * The role where K8s Auth will happen.

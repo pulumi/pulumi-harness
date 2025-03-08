@@ -30,6 +30,7 @@ class VaultConnectorArgs:
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  is_read_only: Optional[pulumi.Input[bool]] = None,
                  k8s_auth_endpoint: Optional[pulumi.Input[str]] = None,
@@ -47,9 +48,12 @@ class VaultConnectorArgs:
                  sink_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_aws_iam: Optional[pulumi.Input[bool]] = None,
+                 use_jwt_auth: Optional[pulumi.Input[bool]] = None,
                  use_k8s_auth: Optional[pulumi.Input[bool]] = None,
                  use_vault_agent: Optional[pulumi.Input[bool]] = None,
                  vault_aws_iam_role: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_path: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_role: Optional[pulumi.Input[str]] = None,
                  vault_k8s_auth_role: Optional[pulumi.Input[str]] = None,
                  xvault_aws_iam_server_id: Optional[pulumi.Input[str]] = None):
         """
@@ -65,6 +69,7 @@ class VaultConnectorArgs:
         :param pulumi.Input[bool] default: Is default or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[bool] is_default: Is default or not.
         :param pulumi.Input[bool] is_read_only: Read only or not.
         :param pulumi.Input[str] k8s_auth_endpoint: The path where Kubernetes Auth is enabled in Vault.
@@ -82,9 +87,12 @@ class VaultConnectorArgs:
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
+        :param pulumi.Input[bool] use_jwt_auth: Boolean value to indicate if JWT is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
+        :param pulumi.Input[str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[str] xvault_aws_iam_server_id: The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
         """
@@ -107,6 +115,8 @@ class VaultConnectorArgs:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if is_read_only is not None:
@@ -141,12 +151,18 @@ class VaultConnectorArgs:
             pulumi.set(__self__, "tags", tags)
         if use_aws_iam is not None:
             pulumi.set(__self__, "use_aws_iam", use_aws_iam)
+        if use_jwt_auth is not None:
+            pulumi.set(__self__, "use_jwt_auth", use_jwt_auth)
         if use_k8s_auth is not None:
             pulumi.set(__self__, "use_k8s_auth", use_k8s_auth)
         if use_vault_agent is not None:
             pulumi.set(__self__, "use_vault_agent", use_vault_agent)
         if vault_aws_iam_role is not None:
             pulumi.set(__self__, "vault_aws_iam_role", vault_aws_iam_role)
+        if vault_jwt_auth_path is not None:
+            pulumi.set(__self__, "vault_jwt_auth_path", vault_jwt_auth_path)
+        if vault_jwt_auth_role is not None:
+            pulumi.set(__self__, "vault_jwt_auth_role", vault_jwt_auth_role)
         if vault_k8s_auth_role is not None:
             pulumi.set(__self__, "vault_k8s_auth_role", vault_k8s_auth_role)
         if xvault_aws_iam_server_id is not None:
@@ -283,6 +299,18 @@ class VaultConnectorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
 
     @property
     @pulumi.getter(name="isDefault")
@@ -489,6 +517,18 @@ class VaultConnectorArgs:
         pulumi.set(self, "use_aws_iam", value)
 
     @property
+    @pulumi.getter(name="useJwtAuth")
+    def use_jwt_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value to indicate if JWT is used for authentication.
+        """
+        return pulumi.get(self, "use_jwt_auth")
+
+    @use_jwt_auth.setter
+    def use_jwt_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_jwt_auth", value)
+
+    @property
     @pulumi.getter(name="useK8sAuth")
     def use_k8s_auth(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -523,6 +563,30 @@ class VaultConnectorArgs:
     @vault_aws_iam_role.setter
     def vault_aws_iam_role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vault_aws_iam_role", value)
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthPath")
+    def vault_jwt_auth_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom path at with JWT auth in enabled for Vault.
+        """
+        return pulumi.get(self, "vault_jwt_auth_path")
+
+    @vault_jwt_auth_path.setter
+    def vault_jwt_auth_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vault_jwt_auth_path", value)
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthRole")
+    def vault_jwt_auth_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        """
+        return pulumi.get(self, "vault_jwt_auth_role")
+
+    @vault_jwt_auth_role.setter
+    def vault_jwt_auth_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vault_jwt_auth_role", value)
 
     @property
     @pulumi.getter(name="vaultK8sAuthRole")
@@ -560,6 +624,7 @@ class _VaultConnectorState:
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  is_read_only: Optional[pulumi.Input[bool]] = None,
@@ -579,9 +644,12 @@ class _VaultConnectorState:
                  sink_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_aws_iam: Optional[pulumi.Input[bool]] = None,
+                 use_jwt_auth: Optional[pulumi.Input[bool]] = None,
                  use_k8s_auth: Optional[pulumi.Input[bool]] = None,
                  use_vault_agent: Optional[pulumi.Input[bool]] = None,
                  vault_aws_iam_role: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_path: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_role: Optional[pulumi.Input[str]] = None,
                  vault_k8s_auth_role: Optional[pulumi.Input[str]] = None,
                  vault_url: Optional[pulumi.Input[str]] = None,
                  xvault_aws_iam_server_id: Optional[pulumi.Input[str]] = None):
@@ -595,6 +663,7 @@ class _VaultConnectorState:
         :param pulumi.Input[bool] default: Is default or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] is_default: Is default or not.
         :param pulumi.Input[bool] is_read_only: Read only or not.
@@ -614,9 +683,12 @@ class _VaultConnectorState:
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
+        :param pulumi.Input[bool] use_jwt_auth: Boolean value to indicate if JWT is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
+        :param pulumi.Input[str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[str] vault_url: URL of the HashiCorp Vault.
         :param pulumi.Input[str] xvault_aws_iam_server_id: The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
@@ -637,6 +709,8 @@ class _VaultConnectorState:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if execute_on_delegate is not None:
+            pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if is_default is not None:
@@ -675,12 +749,18 @@ class _VaultConnectorState:
             pulumi.set(__self__, "tags", tags)
         if use_aws_iam is not None:
             pulumi.set(__self__, "use_aws_iam", use_aws_iam)
+        if use_jwt_auth is not None:
+            pulumi.set(__self__, "use_jwt_auth", use_jwt_auth)
         if use_k8s_auth is not None:
             pulumi.set(__self__, "use_k8s_auth", use_k8s_auth)
         if use_vault_agent is not None:
             pulumi.set(__self__, "use_vault_agent", use_vault_agent)
         if vault_aws_iam_role is not None:
             pulumi.set(__self__, "vault_aws_iam_role", vault_aws_iam_role)
+        if vault_jwt_auth_path is not None:
+            pulumi.set(__self__, "vault_jwt_auth_path", vault_jwt_auth_path)
+        if vault_jwt_auth_role is not None:
+            pulumi.set(__self__, "vault_jwt_auth_role", vault_jwt_auth_role)
         if vault_k8s_auth_role is not None:
             pulumi.set(__self__, "vault_k8s_auth_role", vault_k8s_auth_role)
         if vault_url is not None:
@@ -783,6 +863,18 @@ class _VaultConnectorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
+
+    @execute_on_delegate.setter
+    def execute_on_delegate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "execute_on_delegate", value)
 
     @property
     @pulumi.getter
@@ -1013,6 +1105,18 @@ class _VaultConnectorState:
         pulumi.set(self, "use_aws_iam", value)
 
     @property
+    @pulumi.getter(name="useJwtAuth")
+    def use_jwt_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value to indicate if JWT is used for authentication.
+        """
+        return pulumi.get(self, "use_jwt_auth")
+
+    @use_jwt_auth.setter
+    def use_jwt_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_jwt_auth", value)
+
+    @property
     @pulumi.getter(name="useK8sAuth")
     def use_k8s_auth(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1047,6 +1151,30 @@ class _VaultConnectorState:
     @vault_aws_iam_role.setter
     def vault_aws_iam_role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vault_aws_iam_role", value)
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthPath")
+    def vault_jwt_auth_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom path at with JWT auth in enabled for Vault.
+        """
+        return pulumi.get(self, "vault_jwt_auth_path")
+
+    @vault_jwt_auth_path.setter
+    def vault_jwt_auth_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vault_jwt_auth_path", value)
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthRole")
+    def vault_jwt_auth_role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        """
+        return pulumi.get(self, "vault_jwt_auth_role")
+
+    @vault_jwt_auth_role.setter
+    def vault_jwt_auth_role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vault_jwt_auth_role", value)
 
     @property
     @pulumi.getter(name="vaultK8sAuthRole")
@@ -1098,6 +1226,7 @@ class VaultConnector(pulumi.CustomResource):
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  is_read_only: Optional[pulumi.Input[bool]] = None,
@@ -1117,9 +1246,12 @@ class VaultConnector(pulumi.CustomResource):
                  sink_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_aws_iam: Optional[pulumi.Input[bool]] = None,
+                 use_jwt_auth: Optional[pulumi.Input[bool]] = None,
                  use_k8s_auth: Optional[pulumi.Input[bool]] = None,
                  use_vault_agent: Optional[pulumi.Input[bool]] = None,
                  vault_aws_iam_role: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_path: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_role: Optional[pulumi.Input[str]] = None,
                  vault_k8s_auth_role: Optional[pulumi.Input[str]] = None,
                  vault_url: Optional[pulumi.Input[str]] = None,
                  xvault_aws_iam_server_id: Optional[pulumi.Input[str]] = None,
@@ -1151,7 +1283,8 @@ class VaultConnector(pulumi.CustomResource):
             use_k8s_auth=False,
             use_vault_agent=False,
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         app_role = harness.platform.VaultConnector("app_role",
             identifier="identifier",
             name="name",
@@ -1172,7 +1305,8 @@ class VaultConnector(pulumi.CustomResource):
             use_vault_agent=False,
             renew_app_role_token=True,
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         k8s_auth = harness.platform.VaultConnector("k8s_auth",
             identifier="identifier",
             name="name",
@@ -1196,7 +1330,8 @@ class VaultConnector(pulumi.CustomResource):
             vault_k8s_auth_role="vault_k8s_auth_role",
             vault_aws_iam_role="vault_aws_iam_role",
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         vault_agent = harness.platform.VaultConnector("vault_agent",
             identifier="identifier",
             name="name",
@@ -1217,7 +1352,8 @@ class VaultConnector(pulumi.CustomResource):
             use_vault_agent=True,
             sink_path="sink_path",
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         token = harness.platform.VaultConnector("token",
             identifier="identifier",
             name="name",
@@ -1235,7 +1371,31 @@ class VaultConnector(pulumi.CustomResource):
             secret_engine_version=2,
             use_aws_iam=False,
             use_k8s_auth=False,
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
+        jwt = harness.platform.VaultConnector("jwt",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            base_path="base_path",
+            access_type="JWT",
+            default=False,
+            read_only=True,
+            renewal_interval_minutes=60,
+            secret_engine_manually_configured=True,
+            secret_engine_name="secret_engine_name",
+            secret_engine_version=2,
+            use_aws_iam=False,
+            use_k8s_auth=False,
+            use_vault_agent=False,
+            renew_app_role_token=False,
+            delegate_selectors=["harness-delegate"],
+            vault_url="https://vault_url.com",
+            use_jwt_auth=True,
+            vault_jwt_auth_role="vault_jwt_auth_role",
+            vault_jwt_auth_path="vault_jwt_auth_path",
+            execute_on_delegate=True)
         ```
 
         ## Import
@@ -1268,6 +1428,7 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[bool] default: Is default or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] is_default: Is default or not.
         :param pulumi.Input[bool] is_read_only: Read only or not.
@@ -1287,9 +1448,12 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
+        :param pulumi.Input[bool] use_jwt_auth: Boolean value to indicate if JWT is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
+        :param pulumi.Input[str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[str] vault_url: URL of the HashiCorp Vault.
         :param pulumi.Input[str] xvault_aws_iam_server_id: The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
@@ -1327,7 +1491,8 @@ class VaultConnector(pulumi.CustomResource):
             use_k8s_auth=False,
             use_vault_agent=False,
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         app_role = harness.platform.VaultConnector("app_role",
             identifier="identifier",
             name="name",
@@ -1348,7 +1513,8 @@ class VaultConnector(pulumi.CustomResource):
             use_vault_agent=False,
             renew_app_role_token=True,
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         k8s_auth = harness.platform.VaultConnector("k8s_auth",
             identifier="identifier",
             name="name",
@@ -1372,7 +1538,8 @@ class VaultConnector(pulumi.CustomResource):
             vault_k8s_auth_role="vault_k8s_auth_role",
             vault_aws_iam_role="vault_aws_iam_role",
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         vault_agent = harness.platform.VaultConnector("vault_agent",
             identifier="identifier",
             name="name",
@@ -1393,7 +1560,8 @@ class VaultConnector(pulumi.CustomResource):
             use_vault_agent=True,
             sink_path="sink_path",
             delegate_selectors=["harness-delegate"],
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
         token = harness.platform.VaultConnector("token",
             identifier="identifier",
             name="name",
@@ -1411,7 +1579,31 @@ class VaultConnector(pulumi.CustomResource):
             secret_engine_version=2,
             use_aws_iam=False,
             use_k8s_auth=False,
-            vault_url="https://vault_url.com")
+            vault_url="https://vault_url.com",
+            use_jwt_auth=False)
+        jwt = harness.platform.VaultConnector("jwt",
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            base_path="base_path",
+            access_type="JWT",
+            default=False,
+            read_only=True,
+            renewal_interval_minutes=60,
+            secret_engine_manually_configured=True,
+            secret_engine_name="secret_engine_name",
+            secret_engine_version=2,
+            use_aws_iam=False,
+            use_k8s_auth=False,
+            use_vault_agent=False,
+            renew_app_role_token=False,
+            delegate_selectors=["harness-delegate"],
+            vault_url="https://vault_url.com",
+            use_jwt_auth=True,
+            vault_jwt_auth_role="vault_jwt_auth_role",
+            vault_jwt_auth_path="vault_jwt_auth_path",
+            execute_on_delegate=True)
         ```
 
         ## Import
@@ -1457,6 +1649,7 @@ class VaultConnector(pulumi.CustomResource):
                  default: Optional[pulumi.Input[bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 execute_on_delegate: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  is_read_only: Optional[pulumi.Input[bool]] = None,
@@ -1476,9 +1669,12 @@ class VaultConnector(pulumi.CustomResource):
                  sink_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_aws_iam: Optional[pulumi.Input[bool]] = None,
+                 use_jwt_auth: Optional[pulumi.Input[bool]] = None,
                  use_k8s_auth: Optional[pulumi.Input[bool]] = None,
                  use_vault_agent: Optional[pulumi.Input[bool]] = None,
                  vault_aws_iam_role: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_path: Optional[pulumi.Input[str]] = None,
+                 vault_jwt_auth_role: Optional[pulumi.Input[str]] = None,
                  vault_k8s_auth_role: Optional[pulumi.Input[str]] = None,
                  vault_url: Optional[pulumi.Input[str]] = None,
                  xvault_aws_iam_server_id: Optional[pulumi.Input[str]] = None,
@@ -1499,6 +1695,7 @@ class VaultConnector(pulumi.CustomResource):
             __props__.__dict__["default"] = default
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
+            __props__.__dict__["execute_on_delegate"] = execute_on_delegate
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -1522,9 +1719,12 @@ class VaultConnector(pulumi.CustomResource):
             __props__.__dict__["sink_path"] = sink_path
             __props__.__dict__["tags"] = tags
             __props__.__dict__["use_aws_iam"] = use_aws_iam
+            __props__.__dict__["use_jwt_auth"] = use_jwt_auth
             __props__.__dict__["use_k8s_auth"] = use_k8s_auth
             __props__.__dict__["use_vault_agent"] = use_vault_agent
             __props__.__dict__["vault_aws_iam_role"] = vault_aws_iam_role
+            __props__.__dict__["vault_jwt_auth_path"] = vault_jwt_auth_path
+            __props__.__dict__["vault_jwt_auth_role"] = vault_jwt_auth_role
             __props__.__dict__["vault_k8s_auth_role"] = vault_k8s_auth_role
             if vault_url is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_url'")
@@ -1548,6 +1748,7 @@ class VaultConnector(pulumi.CustomResource):
             default: Optional[pulumi.Input[bool]] = None,
             delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            execute_on_delegate: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             is_default: Optional[pulumi.Input[bool]] = None,
             is_read_only: Optional[pulumi.Input[bool]] = None,
@@ -1567,9 +1768,12 @@ class VaultConnector(pulumi.CustomResource):
             sink_path: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             use_aws_iam: Optional[pulumi.Input[bool]] = None,
+            use_jwt_auth: Optional[pulumi.Input[bool]] = None,
             use_k8s_auth: Optional[pulumi.Input[bool]] = None,
             use_vault_agent: Optional[pulumi.Input[bool]] = None,
             vault_aws_iam_role: Optional[pulumi.Input[str]] = None,
+            vault_jwt_auth_path: Optional[pulumi.Input[str]] = None,
+            vault_jwt_auth_role: Optional[pulumi.Input[str]] = None,
             vault_k8s_auth_role: Optional[pulumi.Input[str]] = None,
             vault_url: Optional[pulumi.Input[str]] = None,
             xvault_aws_iam_server_id: Optional[pulumi.Input[str]] = None) -> 'VaultConnector':
@@ -1588,6 +1792,7 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[bool] default: Is default or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] delegate_selectors: List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
         :param pulumi.Input[str] description: Description of the resource.
+        :param pulumi.Input[bool] execute_on_delegate: Execute on delegate or not.
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] is_default: Is default or not.
         :param pulumi.Input[bool] is_read_only: Read only or not.
@@ -1607,9 +1812,12 @@ class VaultConnector(pulumi.CustomResource):
         :param pulumi.Input[str] sink_path: The location from which the authentication token should be read.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[bool] use_aws_iam: Boolean value to indicate if AWS IAM is used for authentication.
+        :param pulumi.Input[bool] use_jwt_auth: Boolean value to indicate if JWT is used for authentication.
         :param pulumi.Input[bool] use_k8s_auth: Boolean value to indicate if K8s Auth is used for authentication.
         :param pulumi.Input[bool] use_vault_agent: Boolean value to indicate if Vault Agent is used for authentication.
         :param pulumi.Input[str] vault_aws_iam_role: The Vault role defined to bind to aws iam account/role being accessed.
+        :param pulumi.Input[str] vault_jwt_auth_path: Custom path at with JWT auth in enabled for Vault.
+        :param pulumi.Input[str] vault_jwt_auth_role: The Vault role defined with JWT auth type for accessing Vault as per policies binded.
         :param pulumi.Input[str] vault_k8s_auth_role: The role where K8s Auth will happen.
         :param pulumi.Input[str] vault_url: URL of the HashiCorp Vault.
         :param pulumi.Input[str] xvault_aws_iam_server_id: The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
@@ -1626,6 +1834,7 @@ class VaultConnector(pulumi.CustomResource):
         __props__.__dict__["default"] = default
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
+        __props__.__dict__["execute_on_delegate"] = execute_on_delegate
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["is_read_only"] = is_read_only
@@ -1645,9 +1854,12 @@ class VaultConnector(pulumi.CustomResource):
         __props__.__dict__["sink_path"] = sink_path
         __props__.__dict__["tags"] = tags
         __props__.__dict__["use_aws_iam"] = use_aws_iam
+        __props__.__dict__["use_jwt_auth"] = use_jwt_auth
         __props__.__dict__["use_k8s_auth"] = use_k8s_auth
         __props__.__dict__["use_vault_agent"] = use_vault_agent
         __props__.__dict__["vault_aws_iam_role"] = vault_aws_iam_role
+        __props__.__dict__["vault_jwt_auth_path"] = vault_jwt_auth_path
+        __props__.__dict__["vault_jwt_auth_role"] = vault_jwt_auth_role
         __props__.__dict__["vault_k8s_auth_role"] = vault_k8s_auth_role
         __props__.__dict__["vault_url"] = vault_url
         __props__.__dict__["xvault_aws_iam_server_id"] = xvault_aws_iam_server_id
@@ -1716,6 +1928,14 @@ class VaultConnector(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter
@@ -1870,6 +2090,14 @@ class VaultConnector(pulumi.CustomResource):
         return pulumi.get(self, "use_aws_iam")
 
     @property
+    @pulumi.getter(name="useJwtAuth")
+    def use_jwt_auth(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean value to indicate if JWT is used for authentication.
+        """
+        return pulumi.get(self, "use_jwt_auth")
+
+    @property
     @pulumi.getter(name="useK8sAuth")
     def use_k8s_auth(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1892,6 +2120,22 @@ class VaultConnector(pulumi.CustomResource):
         The Vault role defined to bind to aws iam account/role being accessed.
         """
         return pulumi.get(self, "vault_aws_iam_role")
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthPath")
+    def vault_jwt_auth_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        Custom path at with JWT auth in enabled for Vault.
+        """
+        return pulumi.get(self, "vault_jwt_auth_path")
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthRole")
+    def vault_jwt_auth_role(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        """
+        return pulumi.get(self, "vault_jwt_auth_role")
 
     @property
     @pulumi.getter(name="vaultK8sAuthRole")

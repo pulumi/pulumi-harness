@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.EnvironmentGroupArgs;
 import com.pulumi.harness.platform.inputs.EnvironmentGroupState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -192,14 +193,14 @@ public class EnvironmentGroup extends com.pulumi.resources.CustomResource {
      * Enable this flag for force deletion of environment group
      * 
      */
-    @Export(name="forceDelete", refs={String.class}, tree="[0]")
-    private Output<String> forceDelete;
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
 
     /**
      * @return Enable this flag for force deletion of environment group
      * 
      */
-    public Output<String> forceDelete() {
+    public Output<Boolean> forceDelete() {
         return this.forceDelete;
     }
     /**

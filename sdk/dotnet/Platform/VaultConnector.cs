@@ -48,6 +48,7 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         VaultUrl = "https://vault_url.com",
+    ///         UseJwtAuth = false,
     ///     });
     /// 
     ///     var appRole = new Harness.Platform.VaultConnector("app_role", new()
@@ -78,6 +79,7 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         VaultUrl = "https://vault_url.com",
+    ///         UseJwtAuth = false,
     ///     });
     /// 
     ///     var k8sAuth = new Harness.Platform.VaultConnector("k8s_auth", new()
@@ -111,6 +113,7 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         VaultUrl = "https://vault_url.com",
+    ///         UseJwtAuth = false,
     ///     });
     /// 
     ///     var vaultAgent = new Harness.Platform.VaultConnector("vault_agent", new()
@@ -141,6 +144,7 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         VaultUrl = "https://vault_url.com",
+    ///         UseJwtAuth = false,
     ///     });
     /// 
     ///     var token = new Harness.Platform.VaultConnector("token", new()
@@ -165,6 +169,39 @@ namespace Pulumi.Harness.Platform
     ///         UseAwsIam = false,
     ///         UseK8sAuth = false,
     ///         VaultUrl = "https://vault_url.com",
+    ///         UseJwtAuth = false,
+    ///     });
+    /// 
+    ///     var jwt = new Harness.Platform.VaultConnector("jwt", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         BasePath = "base_path",
+    ///         AccessType = "JWT",
+    ///         Default = false,
+    ///         ReadOnly = true,
+    ///         RenewalIntervalMinutes = 60,
+    ///         SecretEngineManuallyConfigured = true,
+    ///         SecretEngineName = "secret_engine_name",
+    ///         SecretEngineVersion = 2,
+    ///         UseAwsIam = false,
+    ///         UseK8sAuth = false,
+    ///         UseVaultAgent = false,
+    ///         RenewAppRoleToken = false,
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         VaultUrl = "https://vault_url.com",
+    ///         UseJwtAuth = true,
+    ///         VaultJwtAuthRole = "vault_jwt_auth_role",
+    ///         VaultJwtAuthPath = "vault_jwt_auth_path",
+    ///         ExecuteOnDelegate = true,
     ///     });
     /// 
     /// });
@@ -240,6 +277,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Output("executeOnDelegate")]
+        public Output<bool?> ExecuteOnDelegate { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -356,6 +399,12 @@ namespace Pulumi.Harness.Platform
         public Output<bool?> UseAwsIam { get; private set; } = null!;
 
         /// <summary>
+        /// Boolean value to indicate if JWT is used for authentication.
+        /// </summary>
+        [Output("useJwtAuth")]
+        public Output<bool?> UseJwtAuth { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean value to indicate if K8s Auth is used for authentication.
         /// </summary>
         [Output("useK8sAuth")]
@@ -372,6 +421,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("vaultAwsIamRole")]
         public Output<string?> VaultAwsIamRole { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom path at with JWT auth in enabled for Vault.
+        /// </summary>
+        [Output("vaultJwtAuthPath")]
+        public Output<string?> VaultJwtAuthPath { get; private set; } = null!;
+
+        /// <summary>
+        /// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        /// </summary>
+        [Output("vaultJwtAuthRole")]
+        public Output<string?> VaultJwtAuthRole { get; private set; } = null!;
 
         /// <summary>
         /// The role where K8s Auth will happen.
@@ -491,6 +552,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -613,6 +680,12 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? UseAwsIam { get; set; }
 
         /// <summary>
+        /// Boolean value to indicate if JWT is used for authentication.
+        /// </summary>
+        [Input("useJwtAuth")]
+        public Input<bool>? UseJwtAuth { get; set; }
+
+        /// <summary>
         /// Boolean value to indicate if K8s Auth is used for authentication.
         /// </summary>
         [Input("useK8sAuth")]
@@ -629,6 +702,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("vaultAwsIamRole")]
         public Input<string>? VaultAwsIamRole { get; set; }
+
+        /// <summary>
+        /// Custom path at with JWT auth in enabled for Vault.
+        /// </summary>
+        [Input("vaultJwtAuthPath")]
+        public Input<string>? VaultJwtAuthPath { get; set; }
+
+        /// <summary>
+        /// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        /// </summary>
+        [Input("vaultJwtAuthRole")]
+        public Input<string>? VaultJwtAuthRole { get; set; }
 
         /// <summary>
         /// The role where K8s Auth will happen.
@@ -709,6 +794,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        [Input("executeOnDelegate")]
+        public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -831,6 +922,12 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? UseAwsIam { get; set; }
 
         /// <summary>
+        /// Boolean value to indicate if JWT is used for authentication.
+        /// </summary>
+        [Input("useJwtAuth")]
+        public Input<bool>? UseJwtAuth { get; set; }
+
+        /// <summary>
         /// Boolean value to indicate if K8s Auth is used for authentication.
         /// </summary>
         [Input("useK8sAuth")]
@@ -847,6 +944,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("vaultAwsIamRole")]
         public Input<string>? VaultAwsIamRole { get; set; }
+
+        /// <summary>
+        /// Custom path at with JWT auth in enabled for Vault.
+        /// </summary>
+        [Input("vaultJwtAuthPath")]
+        public Input<string>? VaultJwtAuthPath { get; set; }
+
+        /// <summary>
+        /// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        /// </summary>
+        [Input("vaultJwtAuthRole")]
+        public Input<string>? VaultJwtAuthRole { get; set; }
 
         /// <summary>
         /// The role where K8s Auth will happen.

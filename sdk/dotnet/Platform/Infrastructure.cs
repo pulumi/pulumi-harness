@@ -200,10 +200,10 @@ namespace Pulumi.Harness.Platform
         public Output<string> EnvId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this flag for force deletion of infrastructure
+        /// When set to true, enables force deletion of infrastructure.
         /// </summary>
         [Output("forceDelete")]
-        public Output<string> ForceDelete { get; private set; } = null!;
+        public Output<bool> ForceDelete { get; private set; } = null!;
 
         /// <summary>
         /// Contains Git Information for remote entities from Git for Create/Update/Import
@@ -319,10 +319,10 @@ namespace Pulumi.Harness.Platform
         public Input<string> EnvId { get; set; } = null!;
 
         /// <summary>
-        /// Enable this flag for force deletion of infrastructure
+        /// When set to true, enables force deletion of infrastructure.
         /// </summary>
         [Input("forceDelete")]
-        public Input<string>? ForceDelete { get; set; }
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// Contains Git Information for remote entities from Git for Create/Update/Import
@@ -405,10 +405,10 @@ namespace Pulumi.Harness.Platform
         public Input<string>? EnvId { get; set; }
 
         /// <summary>
-        /// Enable this flag for force deletion of infrastructure
+        /// When set to true, enables force deletion of infrastructure.
         /// </summary>
         [Input("forceDelete")]
-        public Input<string>? ForceDelete { get; set; }
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// Contains Git Information for remote entities from Git for Create/Update/Import

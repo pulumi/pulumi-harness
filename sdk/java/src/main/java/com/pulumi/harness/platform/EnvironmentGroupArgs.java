@@ -6,6 +6,7 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,13 +37,13 @@ public final class EnvironmentGroupArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="forceDelete")
-    private @Nullable Output<String> forceDelete;
+    private @Nullable Output<Boolean> forceDelete;
 
     /**
      * @return Enable this flag for force deletion of environment group
      * 
      */
-    public Optional<Output<String>> forceDelete() {
+    public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
     }
 
@@ -168,7 +169,7 @@ public final class EnvironmentGroupArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder forceDelete(@Nullable Output<String> forceDelete) {
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
             $.forceDelete = forceDelete;
             return this;
         }
@@ -179,7 +180,7 @@ public final class EnvironmentGroupArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder forceDelete(String forceDelete) {
+        public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
         }
 

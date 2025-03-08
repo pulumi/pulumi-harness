@@ -187,9 +187,9 @@ export class Infrastructure extends pulumi.CustomResource {
      */
     public readonly envId!: pulumi.Output<string>;
     /**
-     * Enable this flag for force deletion of infrastructure
+     * When set to true, enables force deletion of infrastructure.
      */
-    public readonly forceDelete!: pulumi.Output<string>;
+    public readonly forceDelete!: pulumi.Output<boolean>;
     /**
      * Contains Git Information for remote entities from Git for Create/Update/Import
      */
@@ -291,9 +291,9 @@ export interface InfrastructureState {
      */
     envId?: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of infrastructure
+     * When set to true, enables force deletion of infrastructure.
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains Git Information for remote entities from Git for Create/Update/Import
      */
@@ -345,9 +345,9 @@ export interface InfrastructureArgs {
      */
     envId: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of infrastructure
+     * When set to true, enables force deletion of infrastructure.
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains Git Information for remote entities from Git for Create/Update/Import
      */

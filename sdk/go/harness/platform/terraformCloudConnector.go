@@ -41,6 +41,8 @@ type TerraformCloudConnector struct {
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Enable this flag to execute on delegate (default: true).
+	ExecuteOnDelegate pulumi.BoolOutput `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -98,6 +100,8 @@ type terraformCloudConnectorState struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag to execute on delegate (default: true).
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -117,6 +121,8 @@ type TerraformCloudConnectorState struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag to execute on delegate (default: true).
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -140,6 +146,8 @@ type terraformCloudConnectorArgs struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Enable this flag to execute on delegate (default: true).
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -160,6 +168,8 @@ type TerraformCloudConnectorArgs struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Enable this flag to execute on delegate (default: true).
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -272,6 +282,11 @@ func (o TerraformCloudConnectorOutput) DelegateSelectors() pulumi.StringArrayOut
 // Description of the resource.
 func (o TerraformCloudConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TerraformCloudConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enable this flag to execute on delegate (default: true).
+func (o TerraformCloudConnectorOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TerraformCloudConnector) pulumi.BoolOutput { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
 
 // Unique identifier of the resource.

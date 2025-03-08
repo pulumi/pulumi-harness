@@ -76,6 +76,8 @@ type LookupVaultConnectorResult struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -116,12 +118,18 @@ type LookupVaultConnectorResult struct {
 	Tags []string `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam bool `pulumi:"useAwsIam"`
+	// Boolean value to indicate if JWT is used for authentication.
+	UseJwtAuth bool `pulumi:"useJwtAuth"`
 	// Boolean value to indicate if K8s Auth is used for authentication.
 	UseK8sAuth bool `pulumi:"useK8sAuth"`
 	// Boolean value to indicate if Vault Agent is used for authentication.
 	UseVaultAgent bool `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to AWS IAM account/role being accessed.
 	VaultAwsIamRole string `pulumi:"vaultAwsIamRole"`
+	// Custom path at with JWT auth in enabled for Vault.
+	VaultJwtAuthPath string `pulumi:"vaultJwtAuthPath"`
+	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+	VaultJwtAuthRole string `pulumi:"vaultJwtAuthRole"`
 	// The role where K8s auth will happen.
 	VaultK8sAuthRole string `pulumi:"vaultK8sAuthRole"`
 	// URL of the HashiCorp Vault.
@@ -208,6 +216,11 @@ func (o LookupVaultConnectorResultOutput) DelegateSelectors() pulumi.StringArray
 // Description of the resource.
 func (o LookupVaultConnectorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Execute on delegate or not.
+func (o LookupVaultConnectorResultOutput) ExecuteOnDelegate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVaultConnectorResult) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -310,6 +323,11 @@ func (o LookupVaultConnectorResultOutput) UseAwsIam() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) bool { return v.UseAwsIam }).(pulumi.BoolOutput)
 }
 
+// Boolean value to indicate if JWT is used for authentication.
+func (o LookupVaultConnectorResultOutput) UseJwtAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVaultConnectorResult) bool { return v.UseJwtAuth }).(pulumi.BoolOutput)
+}
+
 // Boolean value to indicate if K8s Auth is used for authentication.
 func (o LookupVaultConnectorResultOutput) UseK8sAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) bool { return v.UseK8sAuth }).(pulumi.BoolOutput)
@@ -323,6 +341,16 @@ func (o LookupVaultConnectorResultOutput) UseVaultAgent() pulumi.BoolOutput {
 // The Vault role defined to bind to AWS IAM account/role being accessed.
 func (o LookupVaultConnectorResultOutput) VaultAwsIamRole() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.VaultAwsIamRole }).(pulumi.StringOutput)
+}
+
+// Custom path at with JWT auth in enabled for Vault.
+func (o LookupVaultConnectorResultOutput) VaultJwtAuthPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.VaultJwtAuthPath }).(pulumi.StringOutput)
+}
+
+// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+func (o LookupVaultConnectorResultOutput) VaultJwtAuthRole() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.VaultJwtAuthRole }).(pulumi.StringOutput)
 }
 
 // The role where K8s auth will happen.

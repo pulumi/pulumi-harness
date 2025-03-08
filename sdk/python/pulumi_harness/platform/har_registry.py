@@ -21,33 +21,32 @@ __all__ = ['HarRegistryArgs', 'HarRegistry']
 @pulumi.input_type
 class HarRegistryArgs:
     def __init__(__self__, *,
+                 configs: pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]],
                  identifier: pulumi.Input[str],
                  package_type: pulumi.Input[str],
                  allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  parent_ref: Optional[pulumi.Input[str]] = None,
                  space_ref: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HarRegistry resource.
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] package_type: Type of package (DOCKER, MAVEN, etc.)
+        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
+        :param pulumi.Input[str] identifier: Unique identifier of the registry
+        :param pulumi.Input[str] package_type: Type of package (DOCKER, HELM, etc.)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_patterns: Allowed pattern for the registry
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_patterns: Blocked pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Type of registry.
         :param pulumi.Input[str] description: Description of the registry
-        :param pulumi.Input[str] parent_ref: Parent Reference of the registry.
-        :param pulumi.Input[str] space_ref: Reference of the space.
+        :param pulumi.Input[str] parent_ref: Parent reference for the registry
+        :param pulumi.Input[str] space_ref: Space reference for the registry
         """
+        pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "package_type", package_type)
         if allowed_patterns is not None:
             pulumi.set(__self__, "allowed_patterns", allowed_patterns)
         if blocked_patterns is not None:
             pulumi.set(__self__, "blocked_patterns", blocked_patterns)
-        if configs is not None:
-            pulumi.set(__self__, "configs", configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if parent_ref is not None:
@@ -57,9 +56,21 @@ class HarRegistryArgs:
 
     @property
     @pulumi.getter
+    def configs(self) -> pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]:
+        """
+        Configuration for the registry
+        """
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]):
+        pulumi.set(self, "configs", value)
+
+    @property
+    @pulumi.getter
     def identifier(self) -> pulumi.Input[str]:
         """
-        Unique identifier of the resource.
+        Unique identifier of the registry
         """
         return pulumi.get(self, "identifier")
 
@@ -71,7 +82,7 @@ class HarRegistryArgs:
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Input[str]:
         """
-        Type of package (DOCKER, MAVEN, etc.)
+        Type of package (DOCKER, HELM, etc.)
         """
         return pulumi.get(self, "package_type")
 
@@ -105,18 +116,6 @@ class HarRegistryArgs:
 
     @property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]:
-        """
-        Type of registry.
-        """
-        return pulumi.get(self, "configs")
-
-    @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]):
-        pulumi.set(self, "configs", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the registry
@@ -131,7 +130,7 @@ class HarRegistryArgs:
     @pulumi.getter(name="parentRef")
     def parent_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Parent Reference of the registry.
+        Parent reference for the registry
         """
         return pulumi.get(self, "parent_ref")
 
@@ -143,7 +142,7 @@ class HarRegistryArgs:
     @pulumi.getter(name="spaceRef")
     def space_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference of the space.
+        Space reference for the registry
         """
         return pulumi.get(self, "space_ref")
 
@@ -169,13 +168,13 @@ class _HarRegistryState:
         Input properties used for looking up and filtering HarRegistry resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_patterns: Allowed pattern for the registry
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_patterns: Blocked pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Type of registry.
+        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
         :param pulumi.Input[str] created_at: Timestamp when the registry was created
         :param pulumi.Input[str] description: Description of the registry
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] package_type: Type of package (DOCKER, MAVEN, etc.)
-        :param pulumi.Input[str] parent_ref: Parent Reference of the registry.
-        :param pulumi.Input[str] space_ref: Reference of the space.
+        :param pulumi.Input[str] identifier: Unique identifier of the registry
+        :param pulumi.Input[str] package_type: Type of package (DOCKER, HELM, etc.)
+        :param pulumi.Input[str] parent_ref: Parent reference for the registry
+        :param pulumi.Input[str] space_ref: Space reference for the registry
         :param pulumi.Input[str] url: URL of the registry
         """
         if allowed_patterns is not None:
@@ -227,7 +226,7 @@ class _HarRegistryState:
     @pulumi.getter
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]:
         """
-        Type of registry.
+        Configuration for the registry
         """
         return pulumi.get(self, "configs")
 
@@ -263,7 +262,7 @@ class _HarRegistryState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of the resource.
+        Unique identifier of the registry
         """
         return pulumi.get(self, "identifier")
 
@@ -275,7 +274,7 @@ class _HarRegistryState:
     @pulumi.getter(name="packageType")
     def package_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of package (DOCKER, MAVEN, etc.)
+        Type of package (DOCKER, HELM, etc.)
         """
         return pulumi.get(self, "package_type")
 
@@ -287,7 +286,7 @@ class _HarRegistryState:
     @pulumi.getter(name="parentRef")
     def parent_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Parent Reference of the registry.
+        Parent reference for the registry
         """
         return pulumi.get(self, "parent_ref")
 
@@ -299,7 +298,7 @@ class _HarRegistryState:
     @pulumi.getter(name="spaceRef")
     def space_ref(self) -> Optional[pulumi.Input[str]]:
         """
-        Reference of the space.
+        Space reference for the registry
         """
         return pulumi.get(self, "space_ref")
 
@@ -335,7 +334,7 @@ class HarRegistry(pulumi.CustomResource):
                  space_ref: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource for create, update, list registry
+        Resource for creating and managing Harness Registries.
 
         ## Example Usage
 
@@ -343,12 +342,36 @@ class HarRegistry(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        test = harness.platform.HarRegistry("test",
-            identifier="test_registry",
+        # Example of a Virtual Registry
+        virtual_registry = harness.platform.HarRegistry("virtual_registry",
+            identifier="virtual_docker_registry",
+            description="Virtual Docker Registry",
             space_ref="accountId/orgId/projectId",
             package_type="DOCKER",
             configs=[{
                 "type": "VIRTUAL",
+                "upstream_proxies": [
+                    "registry1",
+                    "registry2",
+                ],
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream Registry with Authentication
+        upstream_registry = harness.platform.HarRegistry("upstream_registry",
+            identifier="upstream_helm_registry",
+            description="Upstream Helm Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HELM",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "CUSTOM",
+                "url": "https://helm.sh",
+                "auths": [{
+                    "auth_type": "UserPassword",
+                    "user_name": "registry_user",
+                    "secret_identifier": "registry_password",
+                    "secret_space_path": "accountId/orgId/projectId",
+                }],
             }],
             parent_ref="accountId/orgId/projectId")
         ```
@@ -357,12 +380,12 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_patterns: Allowed pattern for the registry
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_patterns: Blocked pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Type of registry.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Configuration for the registry
         :param pulumi.Input[str] description: Description of the registry
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] package_type: Type of package (DOCKER, MAVEN, etc.)
-        :param pulumi.Input[str] parent_ref: Parent Reference of the registry.
-        :param pulumi.Input[str] space_ref: Reference of the space.
+        :param pulumi.Input[str] identifier: Unique identifier of the registry
+        :param pulumi.Input[str] package_type: Type of package (DOCKER, HELM, etc.)
+        :param pulumi.Input[str] parent_ref: Parent reference for the registry
+        :param pulumi.Input[str] space_ref: Space reference for the registry
         """
         ...
     @overload
@@ -371,7 +394,7 @@ class HarRegistry(pulumi.CustomResource):
                  args: HarRegistryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for create, update, list registry
+        Resource for creating and managing Harness Registries.
 
         ## Example Usage
 
@@ -379,12 +402,36 @@ class HarRegistry(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        test = harness.platform.HarRegistry("test",
-            identifier="test_registry",
+        # Example of a Virtual Registry
+        virtual_registry = harness.platform.HarRegistry("virtual_registry",
+            identifier="virtual_docker_registry",
+            description="Virtual Docker Registry",
             space_ref="accountId/orgId/projectId",
             package_type="DOCKER",
             configs=[{
                 "type": "VIRTUAL",
+                "upstream_proxies": [
+                    "registry1",
+                    "registry2",
+                ],
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream Registry with Authentication
+        upstream_registry = harness.platform.HarRegistry("upstream_registry",
+            identifier="upstream_helm_registry",
+            description="Upstream Helm Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HELM",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "CUSTOM",
+                "url": "https://helm.sh",
+                "auths": [{
+                    "auth_type": "UserPassword",
+                    "user_name": "registry_user",
+                    "secret_identifier": "registry_password",
+                    "secret_space_path": "accountId/orgId/projectId",
+                }],
             }],
             parent_ref="accountId/orgId/projectId")
         ```
@@ -423,6 +470,8 @@ class HarRegistry(pulumi.CustomResource):
 
             __props__.__dict__["allowed_patterns"] = allowed_patterns
             __props__.__dict__["blocked_patterns"] = blocked_patterns
+            if configs is None and not opts.urn:
+                raise TypeError("Missing required property 'configs'")
             __props__.__dict__["configs"] = configs
             __props__.__dict__["description"] = description
             if identifier is None and not opts.urn:
@@ -464,13 +513,13 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_patterns: Allowed pattern for the registry
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_patterns: Blocked pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Type of registry.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Configuration for the registry
         :param pulumi.Input[str] created_at: Timestamp when the registry was created
         :param pulumi.Input[str] description: Description of the registry
-        :param pulumi.Input[str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[str] package_type: Type of package (DOCKER, MAVEN, etc.)
-        :param pulumi.Input[str] parent_ref: Parent Reference of the registry.
-        :param pulumi.Input[str] space_ref: Reference of the space.
+        :param pulumi.Input[str] identifier: Unique identifier of the registry
+        :param pulumi.Input[str] package_type: Type of package (DOCKER, HELM, etc.)
+        :param pulumi.Input[str] parent_ref: Parent reference for the registry
+        :param pulumi.Input[str] space_ref: Space reference for the registry
         :param pulumi.Input[str] url: URL of the registry
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -507,9 +556,9 @@ class HarRegistry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configs(self) -> pulumi.Output[Optional[Sequence['outputs.HarRegistryConfig']]]:
+    def configs(self) -> pulumi.Output[Sequence['outputs.HarRegistryConfig']]:
         """
-        Type of registry.
+        Configuration for the registry
         """
         return pulumi.get(self, "configs")
 
@@ -533,7 +582,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[str]:
         """
-        Unique identifier of the resource.
+        Unique identifier of the registry
         """
         return pulumi.get(self, "identifier")
 
@@ -541,7 +590,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Output[str]:
         """
-        Type of package (DOCKER, MAVEN, etc.)
+        Type of package (DOCKER, HELM, etc.)
         """
         return pulumi.get(self, "package_type")
 
@@ -549,7 +598,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="parentRef")
     def parent_ref(self) -> pulumi.Output[Optional[str]]:
         """
-        Parent Reference of the registry.
+        Parent reference for the registry
         """
         return pulumi.get(self, "parent_ref")
 
@@ -557,7 +606,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="spaceRef")
     def space_ref(self) -> pulumi.Output[Optional[str]]:
         """
-        Reference of the space.
+        Space reference for the registry
         """
         return pulumi.get(self, "space_ref")
 

@@ -48,10 +48,10 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        /// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         /// </summary>
         [Output("forceDelete")]
-        public Output<string> ForceDelete { get; private set; } = null!;
+        public Output<bool> ForceDelete { get; private set; } = null!;
 
         /// <summary>
         /// Contains parameters related to creating an Entity for Git Experience.
@@ -185,10 +185,10 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        /// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         /// </summary>
         [Input("forceDelete")]
-        public Input<string>? ForceDelete { get; set; }
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// Contains parameters related to creating an Entity for Git Experience.
@@ -289,10 +289,10 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        /// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         /// </summary>
         [Input("forceDelete")]
-        public Input<string>? ForceDelete { get; set; }
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// Contains parameters related to creating an Entity for Git Experience.

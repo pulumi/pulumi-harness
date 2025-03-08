@@ -322,9 +322,9 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Enable this flag for force deletion of environments
+     * When set to true, enables force deletion of environments.
      */
-    public readonly forceDelete!: pulumi.Output<string>;
+    public readonly forceDelete!: pulumi.Output<boolean>;
     /**
      * Contains Git Information for remote entities from Git for Create/Update/Import
      */
@@ -421,9 +421,9 @@ export interface EnvironmentState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of environments
+     * When set to true, enables force deletion of environments.
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains Git Information for remote entities from Git for Create/Update/Import
      */
@@ -472,9 +472,9 @@ export interface EnvironmentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of environments
+     * When set to true, enables force deletion of environments.
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains Git Information for remote entities from Git for Create/Update/Import
      */

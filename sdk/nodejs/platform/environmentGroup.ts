@@ -121,7 +121,7 @@ export class EnvironmentGroup extends pulumi.CustomResource {
     /**
      * Enable this flag for force deletion of environment group
      */
-    public readonly forceDelete!: pulumi.Output<string>;
+    public readonly forceDelete!: pulumi.Output<boolean>;
     /**
      * identifier of the environment group.
      */
@@ -192,7 +192,7 @@ export interface EnvironmentGroupState {
     /**
      * Enable this flag for force deletion of environment group
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * identifier of the environment group.
      */
@@ -225,7 +225,7 @@ export interface EnvironmentGroupArgs {
     /**
      * Enable this flag for force deletion of environment group
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * identifier of the environment group.
      */

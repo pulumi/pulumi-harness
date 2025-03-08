@@ -22,7 +22,7 @@ class EnvironmentGroupArgs:
                  identifier: pulumi.Input[str],
                  yaml: pulumi.Input[str],
                  color: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None):
         """
@@ -33,7 +33,7 @@ class EnvironmentGroupArgs:
                For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
                connectorRef: org.connectorId.
         :param pulumi.Input[str] color: Color of the environment group.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
         """
@@ -89,14 +89,14 @@ class EnvironmentGroupArgs:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable this flag for force deletion of environment group
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -128,7 +128,7 @@ class EnvironmentGroupArgs:
 class _EnvironmentGroupState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class _EnvironmentGroupState:
         """
         Input properties used for looking up and filtering EnvironmentGroup resources.
         :param pulumi.Input[str] color: Color of the environment group.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] identifier: identifier of the environment group.
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
@@ -172,14 +172,14 @@ class _EnvironmentGroupState:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable this flag for force deletion of environment group
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -240,7 +240,7 @@ class EnvironmentGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -328,7 +328,7 @@ class EnvironmentGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment group.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] identifier: identifier of the environment group.
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
@@ -438,7 +438,7 @@ class EnvironmentGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -473,7 +473,7 @@ class EnvironmentGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[str]] = None,
-            force_delete: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -486,7 +486,7 @@ class EnvironmentGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment group.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environment group
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[str] identifier: identifier of the environment group.
         :param pulumi.Input[str] org_id: org_id of the environment group.
         :param pulumi.Input[str] project_id: project_id of the environment group.
@@ -517,7 +517,7 @@ class EnvironmentGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> pulumi.Output[str]:
+    def force_delete(self) -> pulumi.Output[bool]:
         """
         Enable this flag for force deletion of environment group
         """

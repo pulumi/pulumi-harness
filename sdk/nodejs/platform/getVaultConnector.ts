@@ -85,6 +85,10 @@ export interface GetVaultConnectorResult {
      */
     readonly description: string;
     /**
+     * Execute on delegate or not.
+     */
+    readonly executeOnDelegate: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -165,6 +169,10 @@ export interface GetVaultConnectorResult {
      */
     readonly useAwsIam: boolean;
     /**
+     * Boolean value to indicate if JWT is used for authentication.
+     */
+    readonly useJwtAuth: boolean;
+    /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      */
     readonly useK8sAuth: boolean;
@@ -176,6 +184,14 @@ export interface GetVaultConnectorResult {
      * The Vault role defined to bind to AWS IAM account/role being accessed.
      */
     readonly vaultAwsIamRole: string;
+    /**
+     * Custom path at with JWT auth in enabled for Vault.
+     */
+    readonly vaultJwtAuthPath: string;
+    /**
+     * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     */
+    readonly vaultJwtAuthRole: string;
     /**
      * The role where K8s auth will happen.
      */

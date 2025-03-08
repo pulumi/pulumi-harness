@@ -125,7 +125,7 @@ namespace Pulumi.Harness.Platform
         /// Enable this flag for force deletion of environment group
         /// </summary>
         [Output("forceDelete")]
-        public Output<string> ForceDelete { get; private set; } = null!;
+        public Output<bool> ForceDelete { get; private set; } = null!;
 
         /// <summary>
         /// identifier of the environment group.
@@ -211,7 +211,7 @@ namespace Pulumi.Harness.Platform
         /// Enable this flag for force deletion of environment group
         /// </summary>
         [Input("forceDelete")]
-        public Input<string>? ForceDelete { get; set; }
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// identifier of the environment group.
@@ -258,7 +258,7 @@ namespace Pulumi.Harness.Platform
         /// Enable this flag for force deletion of environment group
         /// </summary>
         [Input("forceDelete")]
-        public Input<string>? ForceDelete { get; set; }
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// identifier of the environment group.

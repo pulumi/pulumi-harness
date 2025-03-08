@@ -15,50 +15,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HarRegistryConfig {
     /**
-     * @return Authentication configuration for UPSTREAM type
+     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * 
+     */
+    private @Nullable String authType;
+    /**
+     * @return Authentication configuration for UPSTREAM registry type
      * 
      */
     private @Nullable List<HarRegistryConfigAuth> auths;
     /**
-     * @return Source of the upstream
+     * @return Source of the upstream (only for UPSTREAM type)
      * 
      */
     private @Nullable String source;
     /**
-     * @return Type of registry (VIRTUAL only supported)
+     * @return Type of registry (VIRTUAL or UPSTREAM)
      * 
      */
     private String type;
     /**
-     * @return URL of the upstream
+     * @return List of upstream proxies for VIRTUAL registry type
+     * 
+     */
+    private @Nullable List<String> upstreamProxies;
+    /**
+     * @return URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
      * 
      */
     private @Nullable String url;
 
     private HarRegistryConfig() {}
     /**
-     * @return Authentication configuration for UPSTREAM type
+     * @return Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+     * 
+     */
+    public Optional<String> authType() {
+        return Optional.ofNullable(this.authType);
+    }
+    /**
+     * @return Authentication configuration for UPSTREAM registry type
      * 
      */
     public List<HarRegistryConfigAuth> auths() {
         return this.auths == null ? List.of() : this.auths;
     }
     /**
-     * @return Source of the upstream
+     * @return Source of the upstream (only for UPSTREAM type)
      * 
      */
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
     /**
-     * @return Type of registry (VIRTUAL only supported)
+     * @return Type of registry (VIRTUAL or UPSTREAM)
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return URL of the upstream
+     * @return List of upstream proxies for VIRTUAL registry type
+     * 
+     */
+    public List<String> upstreamProxies() {
+        return this.upstreamProxies == null ? List.of() : this.upstreamProxies;
+    }
+    /**
+     * @return URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
      * 
      */
     public Optional<String> url() {
@@ -74,19 +98,29 @@ public final class HarRegistryConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String authType;
         private @Nullable List<HarRegistryConfigAuth> auths;
         private @Nullable String source;
         private String type;
+        private @Nullable List<String> upstreamProxies;
         private @Nullable String url;
         public Builder() {}
         public Builder(HarRegistryConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authType = defaults.authType;
     	      this.auths = defaults.auths;
     	      this.source = defaults.source;
     	      this.type = defaults.type;
+    	      this.upstreamProxies = defaults.upstreamProxies;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
+        public Builder authType(@Nullable String authType) {
+
+            this.authType = authType;
+            return this;
+        }
         @CustomType.Setter
         public Builder auths(@Nullable List<HarRegistryConfigAuth> auths) {
 
@@ -111,6 +145,15 @@ public final class HarRegistryConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder upstreamProxies(@Nullable List<String> upstreamProxies) {
+
+            this.upstreamProxies = upstreamProxies;
+            return this;
+        }
+        public Builder upstreamProxies(String... upstreamProxies) {
+            return upstreamProxies(List.of(upstreamProxies));
+        }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
 
             this.url = url;
@@ -118,9 +161,11 @@ public final class HarRegistryConfig {
         }
         public HarRegistryConfig build() {
             final var _resultValue = new HarRegistryConfig();
+            _resultValue.authType = authType;
             _resultValue.auths = auths;
             _resultValue.source = source;
             _resultValue.type = type;
+            _resultValue.upstreamProxies = upstreamProxies;
             _resultValue.url = url;
             return _resultValue;
         }

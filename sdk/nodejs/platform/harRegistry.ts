@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for create, update, list registry
+ * Resource for creating and managing Harness Registries.
  *
  * ## Example Usage
  *
@@ -15,12 +15,37 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = new harness.platform.HarRegistry("test", {
- *     identifier: "test_registry",
+ * // Example of a Virtual Registry
+ * const virtualRegistry = new harness.platform.HarRegistry("virtual_registry", {
+ *     identifier: "virtual_docker_registry",
+ *     description: "Virtual Docker Registry",
  *     spaceRef: "accountId/orgId/projectId",
  *     packageType: "DOCKER",
  *     configs: [{
  *         type: "VIRTUAL",
+ *         upstreamProxies: [
+ *             "registry1",
+ *             "registry2",
+ *         ],
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of an Upstream Registry with Authentication
+ * const upstreamRegistry = new harness.platform.HarRegistry("upstream_registry", {
+ *     identifier: "upstream_helm_registry",
+ *     description: "Upstream Helm Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "HELM",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "CUSTOM",
+ *         url: "https://helm.sh",
+ *         auths: [{
+ *             authType: "UserPassword",
+ *             userName: "registry_user",
+ *             secretIdentifier: "registry_password",
+ *             secretSpacePath: "accountId/orgId/projectId",
+ *         }],
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
@@ -63,9 +88,9 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     public readonly blockedPatterns!: pulumi.Output<string[] | undefined>;
     /**
-     * Type of registry.
+     * Configuration for the registry
      */
-    public readonly configs!: pulumi.Output<outputs.platform.HarRegistryConfig[] | undefined>;
+    public readonly configs!: pulumi.Output<outputs.platform.HarRegistryConfig[]>;
     /**
      * Timestamp when the registry was created
      */
@@ -75,19 +100,19 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
-     * Type of package (DOCKER, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, etc.)
      */
     public readonly packageType!: pulumi.Output<string>;
     /**
-     * Parent Reference of the registry.
+     * Parent reference for the registry
      */
     public readonly parentRef!: pulumi.Output<string | undefined>;
     /**
-     * Reference of the space.
+     * Space reference for the registry
      */
     public readonly spaceRef!: pulumi.Output<string | undefined>;
     /**
@@ -120,6 +145,9 @@ export class HarRegistry extends pulumi.CustomResource {
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as HarRegistryArgs | undefined;
+            if ((!args || args.configs === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configs'");
+            }
             if ((!args || args.identifier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -155,7 +183,7 @@ export interface HarRegistryState {
      */
     blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of registry.
+     * Configuration for the registry
      */
     configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
     /**
@@ -167,19 +195,19 @@ export interface HarRegistryState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Type of package (DOCKER, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, etc.)
      */
     packageType?: pulumi.Input<string>;
     /**
-     * Parent Reference of the registry.
+     * Parent reference for the registry
      */
     parentRef?: pulumi.Input<string>;
     /**
-     * Reference of the space.
+     * Space reference for the registry
      */
     spaceRef?: pulumi.Input<string>;
     /**
@@ -201,27 +229,27 @@ export interface HarRegistryArgs {
      */
     blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of registry.
+     * Configuration for the registry
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
+    configs: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
     /**
      * Description of the registry
      */
     description?: pulumi.Input<string>;
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      */
     identifier: pulumi.Input<string>;
     /**
-     * Type of package (DOCKER, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, etc.)
      */
     packageType: pulumi.Input<string>;
     /**
-     * Parent Reference of the registry.
+     * Parent reference for the registry
      */
     parentRef?: pulumi.Input<string>;
     /**
-     * Reference of the space.
+     * Space reference for the registry
      */
     spaceRef?: pulumi.Input<string>;
 }

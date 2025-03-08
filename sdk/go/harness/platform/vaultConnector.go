@@ -52,7 +52,8 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				VaultUrl: pulumi.String("https://vault_url.com"),
+//				VaultUrl:   pulumi.String("https://vault_url.com"),
+//				UseJwtAuth: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +82,8 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				VaultUrl: pulumi.String("https://vault_url.com"),
+//				VaultUrl:   pulumi.String("https://vault_url.com"),
+//				UseJwtAuth: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -113,7 +115,8 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				VaultUrl: pulumi.String("https://vault_url.com"),
+//				VaultUrl:   pulumi.String("https://vault_url.com"),
+//				UseJwtAuth: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -142,7 +145,8 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				VaultUrl: pulumi.String("https://vault_url.com"),
+//				VaultUrl:   pulumi.String("https://vault_url.com"),
+//				UseJwtAuth: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -167,6 +171,38 @@ import (
 //				UseAwsIam:                      pulumi.Bool(false),
 //				UseK8sAuth:                     pulumi.Bool(false),
 //				VaultUrl:                       pulumi.String("https://vault_url.com"),
+//				UseJwtAuth:                     pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewVaultConnector(ctx, "jwt", &platform.VaultConnectorArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				BasePath:                       pulumi.String("base_path"),
+//				AccessType:                     pulumi.String("JWT"),
+//				Default:                        pulumi.Bool(false),
+//				ReadOnly:                       pulumi.Bool(true),
+//				RenewalIntervalMinutes:         pulumi.Int(60),
+//				SecretEngineManuallyConfigured: pulumi.Bool(true),
+//				SecretEngineName:               pulumi.String("secret_engine_name"),
+//				SecretEngineVersion:            pulumi.Int(2),
+//				UseAwsIam:                      pulumi.Bool(false),
+//				UseK8sAuth:                     pulumi.Bool(false),
+//				UseVaultAgent:                  pulumi.Bool(false),
+//				RenewAppRoleToken:              pulumi.Bool(false),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				VaultUrl:          pulumi.String("https://vault_url.com"),
+//				UseJwtAuth:        pulumi.Bool(true),
+//				VaultJwtAuthRole:  pulumi.String("vault_jwt_auth_role"),
+//				VaultJwtAuthPath:  pulumi.String("vault_jwt_auth_path"),
+//				ExecuteOnDelegate: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -215,6 +251,8 @@ type VaultConnector struct {
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Is default or not.
@@ -253,12 +291,18 @@ type VaultConnector struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam pulumi.BoolPtrOutput `pulumi:"useAwsIam"`
+	// Boolean value to indicate if JWT is used for authentication.
+	UseJwtAuth pulumi.BoolPtrOutput `pulumi:"useJwtAuth"`
 	// Boolean value to indicate if K8s Auth is used for authentication.
 	UseK8sAuth pulumi.BoolPtrOutput `pulumi:"useK8sAuth"`
 	// Boolean value to indicate if Vault Agent is used for authentication.
 	UseVaultAgent pulumi.BoolPtrOutput `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole pulumi.StringPtrOutput `pulumi:"vaultAwsIamRole"`
+	// Custom path at with JWT auth in enabled for Vault.
+	VaultJwtAuthPath pulumi.StringPtrOutput `pulumi:"vaultJwtAuthPath"`
+	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+	VaultJwtAuthRole pulumi.StringPtrOutput `pulumi:"vaultJwtAuthRole"`
 	// The role where K8s Auth will happen.
 	VaultK8sAuthRole pulumi.StringPtrOutput `pulumi:"vaultK8sAuthRole"`
 	// URL of the HashiCorp Vault.
@@ -322,6 +366,8 @@ type vaultConnectorState struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Is default or not.
@@ -360,12 +406,18 @@ type vaultConnectorState struct {
 	Tags []string `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam *bool `pulumi:"useAwsIam"`
+	// Boolean value to indicate if JWT is used for authentication.
+	UseJwtAuth *bool `pulumi:"useJwtAuth"`
 	// Boolean value to indicate if K8s Auth is used for authentication.
 	UseK8sAuth *bool `pulumi:"useK8sAuth"`
 	// Boolean value to indicate if Vault Agent is used for authentication.
 	UseVaultAgent *bool `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole *string `pulumi:"vaultAwsIamRole"`
+	// Custom path at with JWT auth in enabled for Vault.
+	VaultJwtAuthPath *string `pulumi:"vaultJwtAuthPath"`
+	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+	VaultJwtAuthRole *string `pulumi:"vaultJwtAuthRole"`
 	// The role where K8s Auth will happen.
 	VaultK8sAuthRole *string `pulumi:"vaultK8sAuthRole"`
 	// URL of the HashiCorp Vault.
@@ -391,6 +443,8 @@ type VaultConnectorState struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Is default or not.
@@ -429,12 +483,18 @@ type VaultConnectorState struct {
 	Tags pulumi.StringArrayInput
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam pulumi.BoolPtrInput
+	// Boolean value to indicate if JWT is used for authentication.
+	UseJwtAuth pulumi.BoolPtrInput
 	// Boolean value to indicate if K8s Auth is used for authentication.
 	UseK8sAuth pulumi.BoolPtrInput
 	// Boolean value to indicate if Vault Agent is used for authentication.
 	UseVaultAgent pulumi.BoolPtrInput
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole pulumi.StringPtrInput
+	// Custom path at with JWT auth in enabled for Vault.
+	VaultJwtAuthPath pulumi.StringPtrInput
+	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+	VaultJwtAuthRole pulumi.StringPtrInput
 	// The role where K8s Auth will happen.
 	VaultK8sAuthRole pulumi.StringPtrInput
 	// URL of the HashiCorp Vault.
@@ -464,6 +524,8 @@ type vaultConnectorArgs struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Is default or not.
@@ -502,12 +564,18 @@ type vaultConnectorArgs struct {
 	Tags []string `pulumi:"tags"`
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam *bool `pulumi:"useAwsIam"`
+	// Boolean value to indicate if JWT is used for authentication.
+	UseJwtAuth *bool `pulumi:"useJwtAuth"`
 	// Boolean value to indicate if K8s Auth is used for authentication.
 	UseK8sAuth *bool `pulumi:"useK8sAuth"`
 	// Boolean value to indicate if Vault Agent is used for authentication.
 	UseVaultAgent *bool `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole *string `pulumi:"vaultAwsIamRole"`
+	// Custom path at with JWT auth in enabled for Vault.
+	VaultJwtAuthPath *string `pulumi:"vaultJwtAuthPath"`
+	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+	VaultJwtAuthRole *string `pulumi:"vaultJwtAuthRole"`
 	// The role where K8s Auth will happen.
 	VaultK8sAuthRole *string `pulumi:"vaultK8sAuthRole"`
 	// URL of the HashiCorp Vault.
@@ -534,6 +602,8 @@ type VaultConnectorArgs struct {
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Execute on delegate or not.
+	ExecuteOnDelegate pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Is default or not.
@@ -572,12 +642,18 @@ type VaultConnectorArgs struct {
 	Tags pulumi.StringArrayInput
 	// Boolean value to indicate if AWS IAM is used for authentication.
 	UseAwsIam pulumi.BoolPtrInput
+	// Boolean value to indicate if JWT is used for authentication.
+	UseJwtAuth pulumi.BoolPtrInput
 	// Boolean value to indicate if K8s Auth is used for authentication.
 	UseK8sAuth pulumi.BoolPtrInput
 	// Boolean value to indicate if Vault Agent is used for authentication.
 	UseVaultAgent pulumi.BoolPtrInput
 	// The Vault role defined to bind to aws iam account/role being accessed.
 	VaultAwsIamRole pulumi.StringPtrInput
+	// Custom path at with JWT auth in enabled for Vault.
+	VaultJwtAuthPath pulumi.StringPtrInput
+	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+	VaultJwtAuthRole pulumi.StringPtrInput
 	// The role where K8s Auth will happen.
 	VaultK8sAuthRole pulumi.StringPtrInput
 	// URL of the HashiCorp Vault.
@@ -713,6 +789,11 @@ func (o VaultConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Execute on delegate or not.
+func (o VaultConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VaultConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
+}
+
 // Unique identifier of the resource.
 func (o VaultConnectorOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -808,6 +889,11 @@ func (o VaultConnectorOutput) UseAwsIam() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.BoolPtrOutput { return v.UseAwsIam }).(pulumi.BoolPtrOutput)
 }
 
+// Boolean value to indicate if JWT is used for authentication.
+func (o VaultConnectorOutput) UseJwtAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VaultConnector) pulumi.BoolPtrOutput { return v.UseJwtAuth }).(pulumi.BoolPtrOutput)
+}
+
 // Boolean value to indicate if K8s Auth is used for authentication.
 func (o VaultConnectorOutput) UseK8sAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.BoolPtrOutput { return v.UseK8sAuth }).(pulumi.BoolPtrOutput)
@@ -821,6 +907,16 @@ func (o VaultConnectorOutput) UseVaultAgent() pulumi.BoolPtrOutput {
 // The Vault role defined to bind to aws iam account/role being accessed.
 func (o VaultConnectorOutput) VaultAwsIamRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.VaultAwsIamRole }).(pulumi.StringPtrOutput)
+}
+
+// Custom path at with JWT auth in enabled for Vault.
+func (o VaultConnectorOutput) VaultJwtAuthPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.VaultJwtAuthPath }).(pulumi.StringPtrOutput)
+}
+
+// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+func (o VaultConnectorOutput) VaultJwtAuthRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VaultConnector) pulumi.StringPtrOutput { return v.VaultJwtAuthRole }).(pulumi.StringPtrOutput)
 }
 
 // The role where K8s Auth will happen.

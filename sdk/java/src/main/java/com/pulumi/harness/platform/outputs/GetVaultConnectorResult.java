@@ -56,6 +56,11 @@ public final class GetVaultConnectorResult {
      */
     private String description;
     /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    private Boolean executeOnDelegate;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -156,6 +161,11 @@ public final class GetVaultConnectorResult {
      */
     private Boolean useAwsIam;
     /**
+     * @return Boolean value to indicate if JWT is used for authentication.
+     * 
+     */
+    private Boolean useJwtAuth;
+    /**
      * @return Boolean value to indicate if K8s Auth is used for authentication.
      * 
      */
@@ -170,6 +180,16 @@ public final class GetVaultConnectorResult {
      * 
      */
     private String vaultAwsIamRole;
+    /**
+     * @return Custom path at with JWT auth in enabled for Vault.
+     * 
+     */
+    private String vaultJwtAuthPath;
+    /**
+     * @return The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     * 
+     */
+    private String vaultJwtAuthRole;
     /**
      * @return The role where K8s auth will happen.
      * 
@@ -242,6 +262,13 @@ public final class GetVaultConnectorResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Boolean executeOnDelegate() {
+        return this.executeOnDelegate;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -384,6 +411,13 @@ public final class GetVaultConnectorResult {
         return this.useAwsIam;
     }
     /**
+     * @return Boolean value to indicate if JWT is used for authentication.
+     * 
+     */
+    public Boolean useJwtAuth() {
+        return this.useJwtAuth;
+    }
+    /**
      * @return Boolean value to indicate if K8s Auth is used for authentication.
      * 
      */
@@ -403,6 +437,20 @@ public final class GetVaultConnectorResult {
      */
     public String vaultAwsIamRole() {
         return this.vaultAwsIamRole;
+    }
+    /**
+     * @return Custom path at with JWT auth in enabled for Vault.
+     * 
+     */
+    public String vaultJwtAuthPath() {
+        return this.vaultJwtAuthPath;
+    }
+    /**
+     * @return The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     * 
+     */
+    public String vaultJwtAuthRole() {
+        return this.vaultJwtAuthRole;
     }
     /**
      * @return The role where K8s auth will happen.
@@ -443,6 +491,7 @@ public final class GetVaultConnectorResult {
         private Boolean default_;
         private List<String> delegateSelectors;
         private String description;
+        private Boolean executeOnDelegate;
         private String id;
         private String identifier;
         private Boolean isDefault;
@@ -463,9 +512,12 @@ public final class GetVaultConnectorResult {
         private String sinkPath;
         private List<String> tags;
         private Boolean useAwsIam;
+        private Boolean useJwtAuth;
         private Boolean useK8sAuth;
         private Boolean useVaultAgent;
         private String vaultAwsIamRole;
+        private String vaultJwtAuthPath;
+        private String vaultJwtAuthRole;
         private String vaultK8sAuthRole;
         private String vaultUrl;
         private String xvaultAwsIamServerId;
@@ -480,6 +532,7 @@ public final class GetVaultConnectorResult {
     	      this.default_ = defaults.default_;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.executeOnDelegate = defaults.executeOnDelegate;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.isDefault = defaults.isDefault;
@@ -500,9 +553,12 @@ public final class GetVaultConnectorResult {
     	      this.sinkPath = defaults.sinkPath;
     	      this.tags = defaults.tags;
     	      this.useAwsIam = defaults.useAwsIam;
+    	      this.useJwtAuth = defaults.useJwtAuth;
     	      this.useK8sAuth = defaults.useK8sAuth;
     	      this.useVaultAgent = defaults.useVaultAgent;
     	      this.vaultAwsIamRole = defaults.vaultAwsIamRole;
+    	      this.vaultJwtAuthPath = defaults.vaultJwtAuthPath;
+    	      this.vaultJwtAuthRole = defaults.vaultJwtAuthRole;
     	      this.vaultK8sAuthRole = defaults.vaultK8sAuthRole;
     	      this.vaultUrl = defaults.vaultUrl;
     	      this.xvaultAwsIamServerId = defaults.xvaultAwsIamServerId;
@@ -573,6 +629,14 @@ public final class GetVaultConnectorResult {
               throw new MissingRequiredPropertyException("GetVaultConnectorResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            if (executeOnDelegate == null) {
+              throw new MissingRequiredPropertyException("GetVaultConnectorResult", "executeOnDelegate");
+            }
+            this.executeOnDelegate = executeOnDelegate;
             return this;
         }
         @CustomType.Setter
@@ -733,6 +797,14 @@ public final class GetVaultConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder useJwtAuth(Boolean useJwtAuth) {
+            if (useJwtAuth == null) {
+              throw new MissingRequiredPropertyException("GetVaultConnectorResult", "useJwtAuth");
+            }
+            this.useJwtAuth = useJwtAuth;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useK8sAuth(Boolean useK8sAuth) {
             if (useK8sAuth == null) {
               throw new MissingRequiredPropertyException("GetVaultConnectorResult", "useK8sAuth");
@@ -754,6 +826,22 @@ public final class GetVaultConnectorResult {
               throw new MissingRequiredPropertyException("GetVaultConnectorResult", "vaultAwsIamRole");
             }
             this.vaultAwsIamRole = vaultAwsIamRole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vaultJwtAuthPath(String vaultJwtAuthPath) {
+            if (vaultJwtAuthPath == null) {
+              throw new MissingRequiredPropertyException("GetVaultConnectorResult", "vaultJwtAuthPath");
+            }
+            this.vaultJwtAuthPath = vaultJwtAuthPath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vaultJwtAuthRole(String vaultJwtAuthRole) {
+            if (vaultJwtAuthRole == null) {
+              throw new MissingRequiredPropertyException("GetVaultConnectorResult", "vaultJwtAuthRole");
+            }
+            this.vaultJwtAuthRole = vaultJwtAuthRole;
             return this;
         }
         @CustomType.Setter
@@ -790,6 +878,7 @@ public final class GetVaultConnectorResult {
             _resultValue.default_ = default_;
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.description = description;
+            _resultValue.executeOnDelegate = executeOnDelegate;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.isDefault = isDefault;
@@ -810,9 +899,12 @@ public final class GetVaultConnectorResult {
             _resultValue.sinkPath = sinkPath;
             _resultValue.tags = tags;
             _resultValue.useAwsIam = useAwsIam;
+            _resultValue.useJwtAuth = useJwtAuth;
             _resultValue.useK8sAuth = useK8sAuth;
             _resultValue.useVaultAgent = useVaultAgent;
             _resultValue.vaultAwsIamRole = vaultAwsIamRole;
+            _resultValue.vaultJwtAuthPath = vaultJwtAuthPath;
+            _resultValue.vaultJwtAuthRole = vaultJwtAuthRole;
             _resultValue.vaultK8sAuthRole = vaultK8sAuthRole;
             _resultValue.vaultUrl = vaultUrl;
             _resultValue.xvaultAwsIamServerId = xvaultAwsIamServerId;

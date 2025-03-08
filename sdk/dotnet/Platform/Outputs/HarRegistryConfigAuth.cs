@@ -18,18 +18,32 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string AuthType;
         /// <summary>
-        /// User password authentication details
+        /// Secret identifier for UserPassword auth type
         /// </summary>
-        public readonly Outputs.HarRegistryConfigAuthUserPassword? UserPassword;
+        public readonly string? SecretIdentifier;
+        /// <summary>
+        /// Secret space path for UserPassword auth type
+        /// </summary>
+        public readonly string? SecretSpacePath;
+        /// <summary>
+        /// User name for UserPassword auth type
+        /// </summary>
+        public readonly string? UserName;
 
         [OutputConstructor]
         private HarRegistryConfigAuth(
             string authType,
 
-            Outputs.HarRegistryConfigAuthUserPassword? userPassword)
+            string? secretIdentifier,
+
+            string? secretSpacePath,
+
+            string? userName)
         {
             AuthType = authType;
-            UserPassword = userPassword;
+            SecretIdentifier = secretIdentifier;
+            SecretSpacePath = secretSpacePath;
+            UserName = userName;
         }
     }
 }

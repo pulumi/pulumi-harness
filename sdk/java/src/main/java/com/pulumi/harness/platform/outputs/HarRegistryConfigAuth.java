@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.outputs.HarRegistryConfigAuthUserPassword;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,10 +18,20 @@ public final class HarRegistryConfigAuth {
      */
     private String authType;
     /**
-     * @return User password authentication details
+     * @return Secret identifier for UserPassword auth type
      * 
      */
-    private @Nullable HarRegistryConfigAuthUserPassword userPassword;
+    private @Nullable String secretIdentifier;
+    /**
+     * @return Secret space path for UserPassword auth type
+     * 
+     */
+    private @Nullable String secretSpacePath;
+    /**
+     * @return User name for UserPassword auth type
+     * 
+     */
+    private @Nullable String userName;
 
     private HarRegistryConfigAuth() {}
     /**
@@ -33,11 +42,25 @@ public final class HarRegistryConfigAuth {
         return this.authType;
     }
     /**
-     * @return User password authentication details
+     * @return Secret identifier for UserPassword auth type
      * 
      */
-    public Optional<HarRegistryConfigAuthUserPassword> userPassword() {
-        return Optional.ofNullable(this.userPassword);
+    public Optional<String> secretIdentifier() {
+        return Optional.ofNullable(this.secretIdentifier);
+    }
+    /**
+     * @return Secret space path for UserPassword auth type
+     * 
+     */
+    public Optional<String> secretSpacePath() {
+        return Optional.ofNullable(this.secretSpacePath);
+    }
+    /**
+     * @return User name for UserPassword auth type
+     * 
+     */
+    public Optional<String> userName() {
+        return Optional.ofNullable(this.userName);
     }
 
     public static Builder builder() {
@@ -50,12 +73,16 @@ public final class HarRegistryConfigAuth {
     @CustomType.Builder
     public static final class Builder {
         private String authType;
-        private @Nullable HarRegistryConfigAuthUserPassword userPassword;
+        private @Nullable String secretIdentifier;
+        private @Nullable String secretSpacePath;
+        private @Nullable String userName;
         public Builder() {}
         public Builder(HarRegistryConfigAuth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
-    	      this.userPassword = defaults.userPassword;
+    	      this.secretIdentifier = defaults.secretIdentifier;
+    	      this.secretSpacePath = defaults.secretSpacePath;
+    	      this.userName = defaults.userName;
         }
 
         @CustomType.Setter
@@ -67,15 +94,29 @@ public final class HarRegistryConfigAuth {
             return this;
         }
         @CustomType.Setter
-        public Builder userPassword(@Nullable HarRegistryConfigAuthUserPassword userPassword) {
+        public Builder secretIdentifier(@Nullable String secretIdentifier) {
 
-            this.userPassword = userPassword;
+            this.secretIdentifier = secretIdentifier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secretSpacePath(@Nullable String secretSpacePath) {
+
+            this.secretSpacePath = secretSpacePath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder userName(@Nullable String userName) {
+
+            this.userName = userName;
             return this;
         }
         public HarRegistryConfigAuth build() {
             final var _resultValue = new HarRegistryConfigAuth();
             _resultValue.authType = authType;
-            _resultValue.userPassword = userPassword;
+            _resultValue.secretIdentifier = secretIdentifier;
+            _resultValue.secretSpacePath = secretSpacePath;
+            _resultValue.userName = userName;
             return _resultValue;
         }
     }

@@ -26,7 +26,7 @@ class GetVaultConnectorResult:
     """
     A collection of values returned by getVaultConnector.
     """
-    def __init__(__self__, access_type=None, app_role_id=None, auth_token=None, aws_region=None, base_path=None, default=None, delegate_selectors=None, description=None, id=None, identifier=None, is_default=None, is_read_only=None, k8s_auth_endpoint=None, name=None, namespace=None, org_id=None, project_id=None, read_only=None, renew_app_role_token=None, renewal_interval_minutes=None, secret_engine_manually_configured=None, secret_engine_name=None, secret_engine_version=None, secret_id=None, service_account_token_path=None, sink_path=None, tags=None, use_aws_iam=None, use_k8s_auth=None, use_vault_agent=None, vault_aws_iam_role=None, vault_k8s_auth_role=None, vault_url=None, xvault_aws_iam_server_id=None):
+    def __init__(__self__, access_type=None, app_role_id=None, auth_token=None, aws_region=None, base_path=None, default=None, delegate_selectors=None, description=None, execute_on_delegate=None, id=None, identifier=None, is_default=None, is_read_only=None, k8s_auth_endpoint=None, name=None, namespace=None, org_id=None, project_id=None, read_only=None, renew_app_role_token=None, renewal_interval_minutes=None, secret_engine_manually_configured=None, secret_engine_name=None, secret_engine_version=None, secret_id=None, service_account_token_path=None, sink_path=None, tags=None, use_aws_iam=None, use_jwt_auth=None, use_k8s_auth=None, use_vault_agent=None, vault_aws_iam_role=None, vault_jwt_auth_path=None, vault_jwt_auth_role=None, vault_k8s_auth_role=None, vault_url=None, xvault_aws_iam_server_id=None):
         if access_type and not isinstance(access_type, str):
             raise TypeError("Expected argument 'access_type' to be a str")
         pulumi.set(__self__, "access_type", access_type)
@@ -51,6 +51,9 @@ class GetVaultConnectorResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if execute_on_delegate and not isinstance(execute_on_delegate, bool):
+            raise TypeError("Expected argument 'execute_on_delegate' to be a bool")
+        pulumi.set(__self__, "execute_on_delegate", execute_on_delegate)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -111,6 +114,9 @@ class GetVaultConnectorResult:
         if use_aws_iam and not isinstance(use_aws_iam, bool):
             raise TypeError("Expected argument 'use_aws_iam' to be a bool")
         pulumi.set(__self__, "use_aws_iam", use_aws_iam)
+        if use_jwt_auth and not isinstance(use_jwt_auth, bool):
+            raise TypeError("Expected argument 'use_jwt_auth' to be a bool")
+        pulumi.set(__self__, "use_jwt_auth", use_jwt_auth)
         if use_k8s_auth and not isinstance(use_k8s_auth, bool):
             raise TypeError("Expected argument 'use_k8s_auth' to be a bool")
         pulumi.set(__self__, "use_k8s_auth", use_k8s_auth)
@@ -120,6 +126,12 @@ class GetVaultConnectorResult:
         if vault_aws_iam_role and not isinstance(vault_aws_iam_role, str):
             raise TypeError("Expected argument 'vault_aws_iam_role' to be a str")
         pulumi.set(__self__, "vault_aws_iam_role", vault_aws_iam_role)
+        if vault_jwt_auth_path and not isinstance(vault_jwt_auth_path, str):
+            raise TypeError("Expected argument 'vault_jwt_auth_path' to be a str")
+        pulumi.set(__self__, "vault_jwt_auth_path", vault_jwt_auth_path)
+        if vault_jwt_auth_role and not isinstance(vault_jwt_auth_role, str):
+            raise TypeError("Expected argument 'vault_jwt_auth_role' to be a str")
+        pulumi.set(__self__, "vault_jwt_auth_role", vault_jwt_auth_role)
         if vault_k8s_auth_role and not isinstance(vault_k8s_auth_role, str):
             raise TypeError("Expected argument 'vault_k8s_auth_role' to be a str")
         pulumi.set(__self__, "vault_k8s_auth_role", vault_k8s_auth_role)
@@ -193,6 +205,14 @@ class GetVaultConnectorResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="executeOnDelegate")
+    def execute_on_delegate(self) -> bool:
+        """
+        Execute on delegate or not.
+        """
+        return pulumi.get(self, "execute_on_delegate")
 
     @property
     @pulumi.getter
@@ -355,6 +375,14 @@ class GetVaultConnectorResult:
         return pulumi.get(self, "use_aws_iam")
 
     @property
+    @pulumi.getter(name="useJwtAuth")
+    def use_jwt_auth(self) -> bool:
+        """
+        Boolean value to indicate if JWT is used for authentication.
+        """
+        return pulumi.get(self, "use_jwt_auth")
+
+    @property
     @pulumi.getter(name="useK8sAuth")
     def use_k8s_auth(self) -> bool:
         """
@@ -377,6 +405,22 @@ class GetVaultConnectorResult:
         The Vault role defined to bind to AWS IAM account/role being accessed.
         """
         return pulumi.get(self, "vault_aws_iam_role")
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthPath")
+    def vault_jwt_auth_path(self) -> str:
+        """
+        Custom path at with JWT auth in enabled for Vault.
+        """
+        return pulumi.get(self, "vault_jwt_auth_path")
+
+    @property
+    @pulumi.getter(name="vaultJwtAuthRole")
+    def vault_jwt_auth_role(self) -> str:
+        """
+        The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        """
+        return pulumi.get(self, "vault_jwt_auth_role")
 
     @property
     @pulumi.getter(name="vaultK8sAuthRole")
@@ -417,6 +461,7 @@ class AwaitableGetVaultConnectorResult(GetVaultConnectorResult):
             default=self.default,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
+            execute_on_delegate=self.execute_on_delegate,
             id=self.id,
             identifier=self.identifier,
             is_default=self.is_default,
@@ -437,9 +482,12 @@ class AwaitableGetVaultConnectorResult(GetVaultConnectorResult):
             sink_path=self.sink_path,
             tags=self.tags,
             use_aws_iam=self.use_aws_iam,
+            use_jwt_auth=self.use_jwt_auth,
             use_k8s_auth=self.use_k8s_auth,
             use_vault_agent=self.use_vault_agent,
             vault_aws_iam_role=self.vault_aws_iam_role,
+            vault_jwt_auth_path=self.vault_jwt_auth_path,
+            vault_jwt_auth_role=self.vault_jwt_auth_role,
             vault_k8s_auth_role=self.vault_k8s_auth_role,
             vault_url=self.vault_url,
             xvault_aws_iam_server_id=self.xvault_aws_iam_server_id)
@@ -483,6 +531,7 @@ def get_vault_connector(identifier: Optional[str] = None,
         default=pulumi.get(__ret__, 'default'),
         delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
         description=pulumi.get(__ret__, 'description'),
+        execute_on_delegate=pulumi.get(__ret__, 'execute_on_delegate'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         is_default=pulumi.get(__ret__, 'is_default'),
@@ -503,9 +552,12 @@ def get_vault_connector(identifier: Optional[str] = None,
         sink_path=pulumi.get(__ret__, 'sink_path'),
         tags=pulumi.get(__ret__, 'tags'),
         use_aws_iam=pulumi.get(__ret__, 'use_aws_iam'),
+        use_jwt_auth=pulumi.get(__ret__, 'use_jwt_auth'),
         use_k8s_auth=pulumi.get(__ret__, 'use_k8s_auth'),
         use_vault_agent=pulumi.get(__ret__, 'use_vault_agent'),
         vault_aws_iam_role=pulumi.get(__ret__, 'vault_aws_iam_role'),
+        vault_jwt_auth_path=pulumi.get(__ret__, 'vault_jwt_auth_path'),
+        vault_jwt_auth_role=pulumi.get(__ret__, 'vault_jwt_auth_role'),
         vault_k8s_auth_role=pulumi.get(__ret__, 'vault_k8s_auth_role'),
         vault_url=pulumi.get(__ret__, 'vault_url'),
         xvault_aws_iam_server_id=pulumi.get(__ret__, 'xvault_aws_iam_server_id'))
@@ -546,6 +598,7 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
         default=pulumi.get(__response__, 'default'),
         delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
         description=pulumi.get(__response__, 'description'),
+        execute_on_delegate=pulumi.get(__response__, 'execute_on_delegate'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         is_default=pulumi.get(__response__, 'is_default'),
@@ -566,9 +619,12 @@ def get_vault_connector_output(identifier: Optional[pulumi.Input[str]] = None,
         sink_path=pulumi.get(__response__, 'sink_path'),
         tags=pulumi.get(__response__, 'tags'),
         use_aws_iam=pulumi.get(__response__, 'use_aws_iam'),
+        use_jwt_auth=pulumi.get(__response__, 'use_jwt_auth'),
         use_k8s_auth=pulumi.get(__response__, 'use_k8s_auth'),
         use_vault_agent=pulumi.get(__response__, 'use_vault_agent'),
         vault_aws_iam_role=pulumi.get(__response__, 'vault_aws_iam_role'),
+        vault_jwt_auth_path=pulumi.get(__response__, 'vault_jwt_auth_path'),
+        vault_jwt_auth_role=pulumi.get(__response__, 'vault_jwt_auth_role'),
         vault_k8s_auth_role=pulumi.get(__response__, 'vault_k8s_auth_role'),
         vault_url=pulumi.get(__response__, 'vault_url'),
         xvault_aws_iam_server_id=pulumi.get(__response__, 'xvault_aws_iam_server_id')))

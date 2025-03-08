@@ -225,8 +225,8 @@ type Infrastructure struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Environment Identifier.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
-	// Enable this flag for force deletion of infrastructure
-	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of infrastructure.
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails InfrastructureGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -287,8 +287,8 @@ type infrastructureState struct {
 	Description *string `pulumi:"description"`
 	// Environment Identifier.
 	EnvId *string `pulumi:"envId"`
-	// Enable this flag for force deletion of infrastructure
-	ForceDelete *string `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of infrastructure.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails *InfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -314,8 +314,8 @@ type InfrastructureState struct {
 	Description pulumi.StringPtrInput
 	// Environment Identifier.
 	EnvId pulumi.StringPtrInput
-	// Enable this flag for force deletion of infrastructure
-	ForceDelete pulumi.StringPtrInput
+	// When set to true, enables force deletion of infrastructure.
+	ForceDelete pulumi.BoolPtrInput
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails InfrastructureGitDetailsPtrInput
 	// Unique identifier of the resource.
@@ -345,8 +345,8 @@ type infrastructureArgs struct {
 	Description *string `pulumi:"description"`
 	// Environment Identifier.
 	EnvId string `pulumi:"envId"`
-	// Enable this flag for force deletion of infrastructure
-	ForceDelete *string `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of infrastructure.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails *InfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -373,8 +373,8 @@ type InfrastructureArgs struct {
 	Description pulumi.StringPtrInput
 	// Environment Identifier.
 	EnvId pulumi.StringInput
-	// Enable this flag for force deletion of infrastructure
-	ForceDelete pulumi.StringPtrInput
+	// When set to true, enables force deletion of infrastructure.
+	ForceDelete pulumi.BoolPtrInput
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails InfrastructureGitDetailsPtrInput
 	// Unique identifier of the resource.
@@ -495,9 +495,9 @@ func (o InfrastructureOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }
 
-// Enable this flag for force deletion of infrastructure
-func (o InfrastructureOutput) ForceDelete() pulumi.StringOutput {
-	return o.ApplyT(func(v *Infrastructure) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+// When set to true, enables force deletion of infrastructure.
+func (o InfrastructureOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Infrastructure) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Contains Git Information for remote entities from Git for Create/Update/Import

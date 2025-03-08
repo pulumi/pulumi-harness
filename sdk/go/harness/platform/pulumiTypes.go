@@ -21128,13 +21128,17 @@ func (o GitopsAppProjectProjectSpecSyncWindowArrayOutput) Index(i pulumi.IntInpu
 }
 
 type HarRegistryConfig struct {
-	// Authentication configuration for UPSTREAM type
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	AuthType *string `pulumi:"authType"`
+	// Authentication configuration for UPSTREAM registry type
 	Auths []HarRegistryConfigAuth `pulumi:"auths"`
-	// Source of the upstream
+	// Source of the upstream (only for UPSTREAM type)
 	Source *string `pulumi:"source"`
-	// Type of registry (VIRTUAL only supported)
+	// Type of registry (VIRTUAL or UPSTREAM)
 	Type string `pulumi:"type"`
-	// URL of the upstream
+	// List of upstream proxies for VIRTUAL registry type
+	UpstreamProxies []string `pulumi:"upstreamProxies"`
+	// URL of the upstream (required if type=UPSTREAM & package_type=HELM)
 	Url *string `pulumi:"url"`
 }
 
@@ -21150,13 +21154,17 @@ type HarRegistryConfigInput interface {
 }
 
 type HarRegistryConfigArgs struct {
-	// Authentication configuration for UPSTREAM type
+	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
+	// Authentication configuration for UPSTREAM registry type
 	Auths HarRegistryConfigAuthArrayInput `pulumi:"auths"`
-	// Source of the upstream
+	// Source of the upstream (only for UPSTREAM type)
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Type of registry (VIRTUAL only supported)
+	// Type of registry (VIRTUAL or UPSTREAM)
 	Type pulumi.StringInput `pulumi:"type"`
-	// URL of the upstream
+	// List of upstream proxies for VIRTUAL registry type
+	UpstreamProxies pulumi.StringArrayInput `pulumi:"upstreamProxies"`
+	// URL of the upstream (required if type=UPSTREAM & package_type=HELM)
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -21211,22 +21219,32 @@ func (o HarRegistryConfigOutput) ToHarRegistryConfigOutputWithContext(ctx contex
 	return o
 }
 
-// Authentication configuration for UPSTREAM type
+// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+func (o HarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// Authentication configuration for UPSTREAM registry type
 func (o HarRegistryConfigOutput) Auths() HarRegistryConfigAuthArrayOutput {
 	return o.ApplyT(func(v HarRegistryConfig) []HarRegistryConfigAuth { return v.Auths }).(HarRegistryConfigAuthArrayOutput)
 }
 
-// Source of the upstream
+// Source of the upstream (only for UPSTREAM type)
 func (o HarRegistryConfigOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Type of registry (VIRTUAL only supported)
+// Type of registry (VIRTUAL or UPSTREAM)
 func (o HarRegistryConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v HarRegistryConfig) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// URL of the upstream
+// List of upstream proxies for VIRTUAL registry type
+func (o HarRegistryConfigOutput) UpstreamProxies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarRegistryConfig) []string { return v.UpstreamProxies }).(pulumi.StringArrayOutput)
+}
+
+// URL of the upstream (required if type=UPSTREAM & package_type=HELM)
 func (o HarRegistryConfigOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -21254,8 +21272,12 @@ func (o HarRegistryConfigArrayOutput) Index(i pulumi.IntInput) HarRegistryConfig
 type HarRegistryConfigAuth struct {
 	// Type of authentication (UserPassword, Anonymous)
 	AuthType string `pulumi:"authType"`
-	// User password authentication details
-	UserPassword *HarRegistryConfigAuthUserPassword `pulumi:"userPassword"`
+	// Secret identifier for UserPassword auth type
+	SecretIdentifier *string `pulumi:"secretIdentifier"`
+	// Secret space path for UserPassword auth type
+	SecretSpacePath *string `pulumi:"secretSpacePath"`
+	// User name for UserPassword auth type
+	UserName *string `pulumi:"userName"`
 }
 
 // HarRegistryConfigAuthInput is an input type that accepts HarRegistryConfigAuthArgs and HarRegistryConfigAuthOutput values.
@@ -21272,8 +21294,12 @@ type HarRegistryConfigAuthInput interface {
 type HarRegistryConfigAuthArgs struct {
 	// Type of authentication (UserPassword, Anonymous)
 	AuthType pulumi.StringInput `pulumi:"authType"`
-	// User password authentication details
-	UserPassword HarRegistryConfigAuthUserPasswordPtrInput `pulumi:"userPassword"`
+	// Secret identifier for UserPassword auth type
+	SecretIdentifier pulumi.StringPtrInput `pulumi:"secretIdentifier"`
+	// Secret space path for UserPassword auth type
+	SecretSpacePath pulumi.StringPtrInput `pulumi:"secretSpacePath"`
+	// User name for UserPassword auth type
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (HarRegistryConfigAuthArgs) ElementType() reflect.Type {
@@ -21332,9 +21358,19 @@ func (o HarRegistryConfigAuthOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v HarRegistryConfigAuth) string { return v.AuthType }).(pulumi.StringOutput)
 }
 
-// User password authentication details
-func (o HarRegistryConfigAuthOutput) UserPassword() HarRegistryConfigAuthUserPasswordPtrOutput {
-	return o.ApplyT(func(v HarRegistryConfigAuth) *HarRegistryConfigAuthUserPassword { return v.UserPassword }).(HarRegistryConfigAuthUserPasswordPtrOutput)
+// Secret identifier for UserPassword auth type
+func (o HarRegistryConfigAuthOutput) SecretIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Secret space path for UserPassword auth type
+func (o HarRegistryConfigAuthOutput) SecretSpacePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.SecretSpacePath }).(pulumi.StringPtrOutput)
+}
+
+// User name for UserPassword auth type
+func (o HarRegistryConfigAuthOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfigAuth) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
 
 type HarRegistryConfigAuthArrayOutput struct{ *pulumi.OutputState }
@@ -21355,200 +21391,6 @@ func (o HarRegistryConfigAuthArrayOutput) Index(i pulumi.IntInput) HarRegistryCo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HarRegistryConfigAuth {
 		return vs[0].([]HarRegistryConfigAuth)[vs[1].(int)]
 	}).(HarRegistryConfigAuthOutput)
-}
-
-type HarRegistryConfigAuthUserPassword struct {
-	// Secret identifier
-	SecretIdentifier *string `pulumi:"secretIdentifier"`
-	// Secret space ID
-	SecretSpaceId *int `pulumi:"secretSpaceId"`
-	// Secret space path
-	SecretSpacePath *string `pulumi:"secretSpacePath"`
-	// User name
-	UserName string `pulumi:"userName"`
-}
-
-// HarRegistryConfigAuthUserPasswordInput is an input type that accepts HarRegistryConfigAuthUserPasswordArgs and HarRegistryConfigAuthUserPasswordOutput values.
-// You can construct a concrete instance of `HarRegistryConfigAuthUserPasswordInput` via:
-//
-//	HarRegistryConfigAuthUserPasswordArgs{...}
-type HarRegistryConfigAuthUserPasswordInput interface {
-	pulumi.Input
-
-	ToHarRegistryConfigAuthUserPasswordOutput() HarRegistryConfigAuthUserPasswordOutput
-	ToHarRegistryConfigAuthUserPasswordOutputWithContext(context.Context) HarRegistryConfigAuthUserPasswordOutput
-}
-
-type HarRegistryConfigAuthUserPasswordArgs struct {
-	// Secret identifier
-	SecretIdentifier pulumi.StringPtrInput `pulumi:"secretIdentifier"`
-	// Secret space ID
-	SecretSpaceId pulumi.IntPtrInput `pulumi:"secretSpaceId"`
-	// Secret space path
-	SecretSpacePath pulumi.StringPtrInput `pulumi:"secretSpacePath"`
-	// User name
-	UserName pulumi.StringInput `pulumi:"userName"`
-}
-
-func (HarRegistryConfigAuthUserPasswordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (i HarRegistryConfigAuthUserPasswordArgs) ToHarRegistryConfigAuthUserPasswordOutput() HarRegistryConfigAuthUserPasswordOutput {
-	return i.ToHarRegistryConfigAuthUserPasswordOutputWithContext(context.Background())
-}
-
-func (i HarRegistryConfigAuthUserPasswordArgs) ToHarRegistryConfigAuthUserPasswordOutputWithContext(ctx context.Context) HarRegistryConfigAuthUserPasswordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HarRegistryConfigAuthUserPasswordOutput)
-}
-
-func (i HarRegistryConfigAuthUserPasswordArgs) ToHarRegistryConfigAuthUserPasswordPtrOutput() HarRegistryConfigAuthUserPasswordPtrOutput {
-	return i.ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Background())
-}
-
-func (i HarRegistryConfigAuthUserPasswordArgs) ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) HarRegistryConfigAuthUserPasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HarRegistryConfigAuthUserPasswordOutput).ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx)
-}
-
-// HarRegistryConfigAuthUserPasswordPtrInput is an input type that accepts HarRegistryConfigAuthUserPasswordArgs, HarRegistryConfigAuthUserPasswordPtr and HarRegistryConfigAuthUserPasswordPtrOutput values.
-// You can construct a concrete instance of `HarRegistryConfigAuthUserPasswordPtrInput` via:
-//
-//	        HarRegistryConfigAuthUserPasswordArgs{...}
-//
-//	or:
-//
-//	        nil
-type HarRegistryConfigAuthUserPasswordPtrInput interface {
-	pulumi.Input
-
-	ToHarRegistryConfigAuthUserPasswordPtrOutput() HarRegistryConfigAuthUserPasswordPtrOutput
-	ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Context) HarRegistryConfigAuthUserPasswordPtrOutput
-}
-
-type harRegistryConfigAuthUserPasswordPtrType HarRegistryConfigAuthUserPasswordArgs
-
-func HarRegistryConfigAuthUserPasswordPtr(v *HarRegistryConfigAuthUserPasswordArgs) HarRegistryConfigAuthUserPasswordPtrInput {
-	return (*harRegistryConfigAuthUserPasswordPtrType)(v)
-}
-
-func (*harRegistryConfigAuthUserPasswordPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**HarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (i *harRegistryConfigAuthUserPasswordPtrType) ToHarRegistryConfigAuthUserPasswordPtrOutput() HarRegistryConfigAuthUserPasswordPtrOutput {
-	return i.ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Background())
-}
-
-func (i *harRegistryConfigAuthUserPasswordPtrType) ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) HarRegistryConfigAuthUserPasswordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HarRegistryConfigAuthUserPasswordPtrOutput)
-}
-
-type HarRegistryConfigAuthUserPasswordOutput struct{ *pulumi.OutputState }
-
-func (HarRegistryConfigAuthUserPasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (o HarRegistryConfigAuthUserPasswordOutput) ToHarRegistryConfigAuthUserPasswordOutput() HarRegistryConfigAuthUserPasswordOutput {
-	return o
-}
-
-func (o HarRegistryConfigAuthUserPasswordOutput) ToHarRegistryConfigAuthUserPasswordOutputWithContext(ctx context.Context) HarRegistryConfigAuthUserPasswordOutput {
-	return o
-}
-
-func (o HarRegistryConfigAuthUserPasswordOutput) ToHarRegistryConfigAuthUserPasswordPtrOutput() HarRegistryConfigAuthUserPasswordPtrOutput {
-	return o.ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(context.Background())
-}
-
-func (o HarRegistryConfigAuthUserPasswordOutput) ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) HarRegistryConfigAuthUserPasswordPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v HarRegistryConfigAuthUserPassword) *HarRegistryConfigAuthUserPassword {
-		return &v
-	}).(HarRegistryConfigAuthUserPasswordPtrOutput)
-}
-
-// Secret identifier
-func (o HarRegistryConfigAuthUserPasswordOutput) SecretIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HarRegistryConfigAuthUserPassword) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
-}
-
-// Secret space ID
-func (o HarRegistryConfigAuthUserPasswordOutput) SecretSpaceId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HarRegistryConfigAuthUserPassword) *int { return v.SecretSpaceId }).(pulumi.IntPtrOutput)
-}
-
-// Secret space path
-func (o HarRegistryConfigAuthUserPasswordOutput) SecretSpacePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HarRegistryConfigAuthUserPassword) *string { return v.SecretSpacePath }).(pulumi.StringPtrOutput)
-}
-
-// User name
-func (o HarRegistryConfigAuthUserPasswordOutput) UserName() pulumi.StringOutput {
-	return o.ApplyT(func(v HarRegistryConfigAuthUserPassword) string { return v.UserName }).(pulumi.StringOutput)
-}
-
-type HarRegistryConfigAuthUserPasswordPtrOutput struct{ *pulumi.OutputState }
-
-func (HarRegistryConfigAuthUserPasswordPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**HarRegistryConfigAuthUserPassword)(nil)).Elem()
-}
-
-func (o HarRegistryConfigAuthUserPasswordPtrOutput) ToHarRegistryConfigAuthUserPasswordPtrOutput() HarRegistryConfigAuthUserPasswordPtrOutput {
-	return o
-}
-
-func (o HarRegistryConfigAuthUserPasswordPtrOutput) ToHarRegistryConfigAuthUserPasswordPtrOutputWithContext(ctx context.Context) HarRegistryConfigAuthUserPasswordPtrOutput {
-	return o
-}
-
-func (o HarRegistryConfigAuthUserPasswordPtrOutput) Elem() HarRegistryConfigAuthUserPasswordOutput {
-	return o.ApplyT(func(v *HarRegistryConfigAuthUserPassword) HarRegistryConfigAuthUserPassword {
-		if v != nil {
-			return *v
-		}
-		var ret HarRegistryConfigAuthUserPassword
-		return ret
-	}).(HarRegistryConfigAuthUserPasswordOutput)
-}
-
-// Secret identifier
-func (o HarRegistryConfigAuthUserPasswordPtrOutput) SecretIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HarRegistryConfigAuthUserPassword) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretIdentifier
-	}).(pulumi.StringPtrOutput)
-}
-
-// Secret space ID
-func (o HarRegistryConfigAuthUserPasswordPtrOutput) SecretSpaceId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *HarRegistryConfigAuthUserPassword) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SecretSpaceId
-	}).(pulumi.IntPtrOutput)
-}
-
-// Secret space path
-func (o HarRegistryConfigAuthUserPasswordPtrOutput) SecretSpacePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HarRegistryConfigAuthUserPassword) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretSpacePath
-	}).(pulumi.StringPtrOutput)
-}
-
-// User name
-func (o HarRegistryConfigAuthUserPasswordPtrOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HarRegistryConfigAuthUserPassword) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UserName
-	}).(pulumi.StringPtrOutput)
 }
 
 type HelmConnectorCredentials struct {
@@ -46041,6 +45883,130 @@ func (o GetGitopsAgentMetadataArrayOutput) Index(i pulumi.IntInput) GetGitopsAge
 	}).(GetGitopsAgentMetadataOutput)
 }
 
+type GetGitopsAgentOperatorYamlProxy struct {
+	// HTTP proxy settings for the GitOps agent.
+	Http *string `pulumi:"http"`
+	// HTTPS proxy settings for the GitOps agent.
+	Https *string `pulumi:"https"`
+	// Password for the proxy.
+	Password *string `pulumi:"password"`
+	// Username for the proxy.
+	Username *string `pulumi:"username"`
+}
+
+// GetGitopsAgentOperatorYamlProxyInput is an input type that accepts GetGitopsAgentOperatorYamlProxyArgs and GetGitopsAgentOperatorYamlProxyOutput values.
+// You can construct a concrete instance of `GetGitopsAgentOperatorYamlProxyInput` via:
+//
+//	GetGitopsAgentOperatorYamlProxyArgs{...}
+type GetGitopsAgentOperatorYamlProxyInput interface {
+	pulumi.Input
+
+	ToGetGitopsAgentOperatorYamlProxyOutput() GetGitopsAgentOperatorYamlProxyOutput
+	ToGetGitopsAgentOperatorYamlProxyOutputWithContext(context.Context) GetGitopsAgentOperatorYamlProxyOutput
+}
+
+type GetGitopsAgentOperatorYamlProxyArgs struct {
+	// HTTP proxy settings for the GitOps agent.
+	Http pulumi.StringPtrInput `pulumi:"http"`
+	// HTTPS proxy settings for the GitOps agent.
+	Https pulumi.StringPtrInput `pulumi:"https"`
+	// Password for the proxy.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username for the proxy.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetGitopsAgentOperatorYamlProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsAgentOperatorYamlProxy)(nil)).Elem()
+}
+
+func (i GetGitopsAgentOperatorYamlProxyArgs) ToGetGitopsAgentOperatorYamlProxyOutput() GetGitopsAgentOperatorYamlProxyOutput {
+	return i.ToGetGitopsAgentOperatorYamlProxyOutputWithContext(context.Background())
+}
+
+func (i GetGitopsAgentOperatorYamlProxyArgs) ToGetGitopsAgentOperatorYamlProxyOutputWithContext(ctx context.Context) GetGitopsAgentOperatorYamlProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsAgentOperatorYamlProxyOutput)
+}
+
+// GetGitopsAgentOperatorYamlProxyArrayInput is an input type that accepts GetGitopsAgentOperatorYamlProxyArray and GetGitopsAgentOperatorYamlProxyArrayOutput values.
+// You can construct a concrete instance of `GetGitopsAgentOperatorYamlProxyArrayInput` via:
+//
+//	GetGitopsAgentOperatorYamlProxyArray{ GetGitopsAgentOperatorYamlProxyArgs{...} }
+type GetGitopsAgentOperatorYamlProxyArrayInput interface {
+	pulumi.Input
+
+	ToGetGitopsAgentOperatorYamlProxyArrayOutput() GetGitopsAgentOperatorYamlProxyArrayOutput
+	ToGetGitopsAgentOperatorYamlProxyArrayOutputWithContext(context.Context) GetGitopsAgentOperatorYamlProxyArrayOutput
+}
+
+type GetGitopsAgentOperatorYamlProxyArray []GetGitopsAgentOperatorYamlProxyInput
+
+func (GetGitopsAgentOperatorYamlProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsAgentOperatorYamlProxy)(nil)).Elem()
+}
+
+func (i GetGitopsAgentOperatorYamlProxyArray) ToGetGitopsAgentOperatorYamlProxyArrayOutput() GetGitopsAgentOperatorYamlProxyArrayOutput {
+	return i.ToGetGitopsAgentOperatorYamlProxyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGitopsAgentOperatorYamlProxyArray) ToGetGitopsAgentOperatorYamlProxyArrayOutputWithContext(ctx context.Context) GetGitopsAgentOperatorYamlProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsAgentOperatorYamlProxyArrayOutput)
+}
+
+type GetGitopsAgentOperatorYamlProxyOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsAgentOperatorYamlProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsAgentOperatorYamlProxy)(nil)).Elem()
+}
+
+func (o GetGitopsAgentOperatorYamlProxyOutput) ToGetGitopsAgentOperatorYamlProxyOutput() GetGitopsAgentOperatorYamlProxyOutput {
+	return o
+}
+
+func (o GetGitopsAgentOperatorYamlProxyOutput) ToGetGitopsAgentOperatorYamlProxyOutputWithContext(ctx context.Context) GetGitopsAgentOperatorYamlProxyOutput {
+	return o
+}
+
+// HTTP proxy settings for the GitOps agent.
+func (o GetGitopsAgentOperatorYamlProxyOutput) Http() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentOperatorYamlProxy) *string { return v.Http }).(pulumi.StringPtrOutput)
+}
+
+// HTTPS proxy settings for the GitOps agent.
+func (o GetGitopsAgentOperatorYamlProxyOutput) Https() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentOperatorYamlProxy) *string { return v.Https }).(pulumi.StringPtrOutput)
+}
+
+// Password for the proxy.
+func (o GetGitopsAgentOperatorYamlProxyOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentOperatorYamlProxy) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username for the proxy.
+func (o GetGitopsAgentOperatorYamlProxyOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentOperatorYamlProxy) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetGitopsAgentOperatorYamlProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsAgentOperatorYamlProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGitopsAgentOperatorYamlProxy)(nil)).Elem()
+}
+
+func (o GetGitopsAgentOperatorYamlProxyArrayOutput) ToGetGitopsAgentOperatorYamlProxyArrayOutput() GetGitopsAgentOperatorYamlProxyArrayOutput {
+	return o
+}
+
+func (o GetGitopsAgentOperatorYamlProxyArrayOutput) ToGetGitopsAgentOperatorYamlProxyArrayOutputWithContext(ctx context.Context) GetGitopsAgentOperatorYamlProxyArrayOutput {
+	return o
+}
+
+func (o GetGitopsAgentOperatorYamlProxyArrayOutput) Index(i pulumi.IntInput) GetGitopsAgentOperatorYamlProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitopsAgentOperatorYamlProxy {
+		return vs[0].([]GetGitopsAgentOperatorYamlProxy)[vs[1].(int)]
+	}).(GetGitopsAgentOperatorYamlProxyOutput)
+}
+
 type GetGitopsApplicationsApplication struct {
 	// Metadata corresponding to the resources. This includes all the objects a user must create.
 	Metadatas []GetGitopsApplicationsApplicationMetadata `pulumi:"metadatas"`
@@ -60982,8 +60948,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigArrayInput)(nil)).Elem(), HarRegistryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthInput)(nil)).Elem(), HarRegistryConfigAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthArrayInput)(nil)).Elem(), HarRegistryConfigAuthArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthUserPasswordInput)(nil)).Elem(), HarRegistryConfigAuthUserPasswordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthUserPasswordPtrInput)(nil)).Elem(), HarRegistryConfigAuthUserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraVariableSetConnectorInput)(nil)).Elem(), InfraVariableSetConnectorArgs{})
@@ -61318,6 +61282,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentDeployYamlProxyArrayInput)(nil)).Elem(), GetGitopsAgentDeployYamlProxyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentMetadataInput)(nil)).Elem(), GetGitopsAgentMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentMetadataArrayInput)(nil)).Elem(), GetGitopsAgentMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentOperatorYamlProxyInput)(nil)).Elem(), GetGitopsAgentOperatorYamlProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentOperatorYamlProxyArrayInput)(nil)).Elem(), GetGitopsAgentOperatorYamlProxyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsApplicationsApplicationInput)(nil)).Elem(), GetGitopsApplicationsApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsApplicationsApplicationArrayInput)(nil)).Elem(), GetGitopsApplicationsApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsApplicationsApplicationMetadataInput)(nil)).Elem(), GetGitopsApplicationsApplicationMetadataArgs{})
@@ -61833,8 +61799,6 @@ func init() {
 	pulumi.RegisterOutputType(HarRegistryConfigArrayOutput{})
 	pulumi.RegisterOutputType(HarRegistryConfigAuthOutput{})
 	pulumi.RegisterOutputType(HarRegistryConfigAuthArrayOutput{})
-	pulumi.RegisterOutputType(HarRegistryConfigAuthUserPasswordOutput{})
-	pulumi.RegisterOutputType(HarRegistryConfigAuthUserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(InfraVariableSetConnectorOutput{})
@@ -62169,6 +62133,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGitopsAgentDeployYamlProxyArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsAgentMetadataOutput{})
 	pulumi.RegisterOutputType(GetGitopsAgentMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsAgentOperatorYamlProxyOutput{})
+	pulumi.RegisterOutputType(GetGitopsAgentOperatorYamlProxyArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsApplicationsApplicationOutput{})
 	pulumi.RegisterOutputType(GetGitopsApplicationsApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsApplicationsApplicationMetadataOutput{})

@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for create, update, list registry
+ * Resource for creating and managing Harness Registries.
  * 
  * ## Example Usage
  * 
@@ -45,12 +45,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new HarRegistry("test", HarRegistryArgs.builder()
- *             .identifier("test_registry")
+ *         // Example of a Virtual Registry
+ *         var virtualRegistry = new HarRegistry("virtualRegistry", HarRegistryArgs.builder()
+ *             .identifier("virtual_docker_registry")
+ *             .description("Virtual Docker Registry")
  *             .spaceRef("accountId/orgId/projectId")
  *             .packageType("DOCKER")
  *             .configs(HarRegistryConfigArgs.builder()
  *                 .type("VIRTUAL")
+ *                 .upstreamProxies(                
+ *                     "registry1",
+ *                     "registry2")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream Registry with Authentication
+ *         var upstreamRegistry = new HarRegistry("upstreamRegistry", HarRegistryArgs.builder()
+ *             .identifier("upstream_helm_registry")
+ *             .description("Upstream Helm Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("HELM")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("CUSTOM")
+ *                 .url("https://helm.sh")
+ *                 .auths(HarRegistryConfigAuthArgs.builder()
+ *                     .authType("UserPassword")
+ *                     .userName("registry_user")
+ *                     .secretIdentifier("registry_password")
+ *                     .secretSpacePath("accountId/orgId/projectId")
+ *                     .build())
  *                 .build())
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
@@ -93,18 +118,18 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.blockedPatterns);
     }
     /**
-     * Type of registry.
+     * Configuration for the registry
      * 
      */
     @Export(name="configs", refs={List.class,HarRegistryConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<HarRegistryConfig>> configs;
+    private Output<List<HarRegistryConfig>> configs;
 
     /**
-     * @return Type of registry.
+     * @return Configuration for the registry
      * 
      */
-    public Output<Optional<List<HarRegistryConfig>>> configs() {
-        return Codegen.optional(this.configs);
+    public Output<List<HarRegistryConfig>> configs() {
+        return this.configs;
     }
     /**
      * Timestamp when the registry was created
@@ -135,56 +160,56 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the registry
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * Type of package (DOCKER, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, etc.)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, MAVEN, etc.)
+     * @return Type of package (DOCKER, HELM, etc.)
      * 
      */
     public Output<String> packageType() {
         return this.packageType;
     }
     /**
-     * Parent Reference of the registry.
+     * Parent reference for the registry
      * 
      */
     @Export(name="parentRef", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentRef;
 
     /**
-     * @return Parent Reference of the registry.
+     * @return Parent reference for the registry
      * 
      */
     public Output<Optional<String>> parentRef() {
         return Codegen.optional(this.parentRef);
     }
     /**
-     * Reference of the space.
+     * Space reference for the registry
      * 
      */
     @Export(name="spaceRef", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spaceRef;
 
     /**
-     * @return Reference of the space.
+     * @return Space reference for the registry
      * 
      */
     public Output<Optional<String>> spaceRef() {

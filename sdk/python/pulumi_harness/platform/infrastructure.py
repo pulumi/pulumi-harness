@@ -25,7 +25,7 @@ class InfrastructureArgs:
                  identifier: pulumi.Input[str],
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['InfrastructureGitDetailsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -39,7 +39,7 @@ class InfrastructureArgs:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of infrastructure.
         :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -121,14 +121,14 @@ class InfrastructureArgs:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable this flag for force deletion of infrastructure
+        When set to true, enables force deletion of infrastructure.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -222,7 +222,7 @@ class _InfrastructureState:
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['InfrastructureGitDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -236,7 +236,7 @@ class _InfrastructureState:
         :param pulumi.Input[str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of infrastructure.
         :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -309,14 +309,14 @@ class _InfrastructureState:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable this flag for force deletion of infrastructure
+        When set to true, enables force deletion of infrastructure.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -424,7 +424,7 @@ class Infrastructure(pulumi.CustomResource):
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -575,7 +575,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of infrastructure.
         :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -745,7 +745,7 @@ class Infrastructure(pulumi.CustomResource):
                  deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -792,7 +792,7 @@ class Infrastructure(pulumi.CustomResource):
             deployment_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
-            force_delete: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             git_details: Optional[pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -811,7 +811,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[str] env_id: Environment Identifier.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of infrastructure.
         :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -865,9 +865,9 @@ class Infrastructure(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> pulumi.Output[str]:
+    def force_delete(self) -> pulumi.Output[bool]:
         """
-        Enable this flag for force deletion of infrastructure
+        When set to true, enables force deletion of infrastructure.
         """
         return pulumi.get(self, "force_delete")
 

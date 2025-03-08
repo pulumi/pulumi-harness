@@ -25,7 +25,7 @@ class TemplateArgs:
                  version: pulumi.Input[str],
                  comments: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['TemplateGitDetailsArgs']] = None,
                  git_import_details: Optional[pulumi.Input['TemplateGitImportDetailsArgs']] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
@@ -42,7 +42,7 @@ class TemplateArgs:
         :param pulumi.Input[str] version: Version Label for Template.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         :param pulumi.Input['TemplateGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['TemplateGitImportDetailsArgs'] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[bool] import_from_git: Flag to set if importing from Git
@@ -137,14 +137,14 @@ class TemplateArgs:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -273,7 +273,7 @@ class _TemplateState:
     def __init__(__self__, *,
                  comments: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['TemplateGitDetailsArgs']] = None,
                  git_import_details: Optional[pulumi.Input['TemplateGitImportDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -290,7 +290,7 @@ class _TemplateState:
         Input properties used for looking up and filtering Template resources.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         :param pulumi.Input['TemplateGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['TemplateGitImportDetailsArgs'] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource
@@ -365,14 +365,14 @@ class _TemplateState:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -527,7 +527,7 @@ class Template(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comments: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
                  git_import_details: Optional[pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -568,7 +568,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource
@@ -628,7 +628,7 @@ class Template(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comments: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
                  git_import_details: Optional[pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
@@ -681,7 +681,7 @@ class Template(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             comments: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            force_delete: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             git_details: Optional[pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
             git_import_details: Optional[pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
@@ -703,7 +703,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[str] identifier: Unique identifier of the resource
@@ -757,9 +757,9 @@ class Template(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> pulumi.Output[str]:
+    def force_delete(self) -> pulumi.Output[bool]:
         """
-        Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+        When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
         """
         return pulumi.get(self, "force_delete")
 
