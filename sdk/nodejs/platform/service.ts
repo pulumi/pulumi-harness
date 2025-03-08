@@ -305,7 +305,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Enable this flag for force deletion of service
      */
-    public readonly forceDelete!: pulumi.Output<string>;
+    public readonly forceDelete!: pulumi.Output<boolean>;
     /**
      * Contains parameters related to Git Experience for remote entities
      */
@@ -409,7 +409,7 @@ export interface ServiceState {
     /**
      * Enable this flag for force deletion of service
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains parameters related to Git Experience for remote entities
      */
@@ -466,7 +466,7 @@ export interface ServiceArgs {
     /**
      * Enable this flag for force deletion of service
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains parameters related to Git Experience for remote entities
      */

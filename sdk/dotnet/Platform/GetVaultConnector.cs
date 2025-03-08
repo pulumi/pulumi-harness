@@ -180,6 +180,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
+        public readonly bool ExecuteOnDelegate;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -260,6 +264,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly bool UseAwsIam;
         /// <summary>
+        /// Boolean value to indicate if JWT is used for authentication.
+        /// </summary>
+        public readonly bool UseJwtAuth;
+        /// <summary>
         /// Boolean value to indicate if K8s Auth is used for authentication.
         /// </summary>
         public readonly bool UseK8sAuth;
@@ -271,6 +279,14 @@ namespace Pulumi.Harness.Platform
         /// The Vault role defined to bind to AWS IAM account/role being accessed.
         /// </summary>
         public readonly string VaultAwsIamRole;
+        /// <summary>
+        /// Custom path at with JWT auth in enabled for Vault.
+        /// </summary>
+        public readonly string VaultJwtAuthPath;
+        /// <summary>
+        /// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+        /// </summary>
+        public readonly string VaultJwtAuthRole;
         /// <summary>
         /// The role where K8s auth will happen.
         /// </summary>
@@ -301,6 +317,8 @@ namespace Pulumi.Harness.Platform
             ImmutableArray<string> delegateSelectors,
 
             string description,
+
+            bool executeOnDelegate,
 
             string id,
 
@@ -342,11 +360,17 @@ namespace Pulumi.Harness.Platform
 
             bool useAwsIam,
 
+            bool useJwtAuth,
+
             bool useK8sAuth,
 
             bool useVaultAgent,
 
             string vaultAwsIamRole,
+
+            string vaultJwtAuthPath,
+
+            string vaultJwtAuthRole,
 
             string vaultK8sAuthRole,
 
@@ -362,6 +386,7 @@ namespace Pulumi.Harness.Platform
             Default = @default;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            ExecuteOnDelegate = executeOnDelegate;
             Id = id;
             Identifier = identifier;
             IsDefault = isDefault;
@@ -382,9 +407,12 @@ namespace Pulumi.Harness.Platform
             SinkPath = sinkPath;
             Tags = tags;
             UseAwsIam = useAwsIam;
+            UseJwtAuth = useJwtAuth;
             UseK8sAuth = useK8sAuth;
             UseVaultAgent = useVaultAgent;
             VaultAwsIamRole = vaultAwsIamRole;
+            VaultJwtAuthPath = vaultJwtAuthPath;
+            VaultJwtAuthRole = vaultJwtAuthRole;
             VaultK8sAuthRole = vaultK8sAuthRole;
             VaultUrl = vaultUrl;
             XvaultAwsIamServerId = xvaultAwsIamServerId;

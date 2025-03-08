@@ -59,17 +59,17 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
      * 
      */
     @Import(name="forceDelete")
-    private @Nullable Output<String> forceDelete;
+    private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+     * @return When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
      * 
      */
-    public Optional<Output<String>> forceDelete() {
+    public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
     }
 
@@ -342,23 +342,23 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+         * @param forceDelete When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
          * 
          * @return builder
          * 
          */
-        public Builder forceDelete(@Nullable Output<String> forceDelete) {
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
             $.forceDelete = forceDelete;
             return this;
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+         * @param forceDelete When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
          * 
          * @return builder
          * 
          */
-        public Builder forceDelete(String forceDelete) {
+        public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
         }
 

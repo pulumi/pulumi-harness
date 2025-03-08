@@ -86,6 +86,7 @@ from .get_github_connector import *
 from .get_gitlab_connector import *
 from .get_gitops_agent import *
 from .get_gitops_agent_deploy_yaml import *
+from .get_gitops_agent_operator_yaml import *
 from .get_gitops_app_project import *
 from .get_gitops_app_project_mapping import *
 from .get_gitops_applications import *

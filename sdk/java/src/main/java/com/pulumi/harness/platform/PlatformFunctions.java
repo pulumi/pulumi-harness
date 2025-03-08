@@ -92,6 +92,8 @@ import com.pulumi.harness.platform.inputs.GetGitlabConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAppProjectArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;
@@ -271,6 +273,7 @@ import com.pulumi.harness.platform.outputs.GetGitConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGithubConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGitlabConnectorResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAgentDeployYamlResult;
+import com.pulumi.harness.platform.outputs.GetGitopsAgentOperatorYamlResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAgentResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAppProjectMappingResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAppProjectResult;
@@ -9667,6 +9670,236 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetGitopsAgentDeployYamlResult> getGitopsAgentDeployYamlPlain(GetGitopsAgentDeployYamlPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", TypeShape.of(GetGitopsAgentDeployYamlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
+     *             .identifier("identifier")
+     *             .accountId("account_id")
+     *             .projectId("project_id")
+     *             .orgId("org_id")
+     *             .namespace("namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs args) {
+        return getGitopsAgentOperatorYaml(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
+     *             .identifier("identifier")
+     *             .accountId("account_id")
+     *             .projectId("project_id")
+     *             .orgId("org_id")
+     *             .namespace("namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYamlPlain(GetGitopsAgentOperatorYamlPlainArgs args) {
+        return getGitopsAgentOperatorYamlPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
+     *             .identifier("identifier")
+     *             .accountId("account_id")
+     *             .projectId("project_id")
+     *             .orgId("org_id")
+     *             .namespace("namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", TypeShape.of(GetGitopsAgentOperatorYamlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
+     *             .identifier("identifier")
+     *             .accountId("account_id")
+     *             .projectId("project_id")
+     *             .orgId("org_id")
+     *             .namespace("namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", TypeShape.of(GetGitopsAgentOperatorYamlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
+     *             .identifier("identifier")
+     *             .accountId("account_id")
+     *             .projectId("project_id")
+     *             .orgId("org_id")
+     *             .namespace("namespace")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGitopsAgentOperatorYamlResult> getGitopsAgentOperatorYamlPlain(GetGitopsAgentOperatorYamlPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", TypeShape.of(GetGitopsAgentOperatorYamlResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

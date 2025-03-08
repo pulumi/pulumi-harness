@@ -29,6 +29,7 @@ class FeatureFlagArgs:
                  permanent: pulumi.Input[bool],
                  project_id: pulumi.Input[str],
                  variations: pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]],
+                 archived: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class FeatureFlagArgs:
         :param pulumi.Input[bool] permanent: Whether or not the flag is permanent. If it is, it will never be flagged as stale
         :param pulumi.Input[str] project_id: Project Identifier
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: The options available for your flag
+        :param pulumi.Input[bool] archived: Whether or not the flag is archived.
         :param pulumi.Input[str] description: Description of the Feature Flag
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentArgs']]] environments: Environment Identifier
         :param pulumi.Input[str] name: Name of the Feature Flag
@@ -58,6 +60,8 @@ class FeatureFlagArgs:
         pulumi.set(__self__, "permanent", permanent)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "variations", variations)
+        if archived is not None:
+            pulumi.set(__self__, "archived", archived)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environments is not None:
@@ -167,6 +171,18 @@ class FeatureFlagArgs:
 
     @property
     @pulumi.getter
+    def archived(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the flag is archived.
+        """
+        return pulumi.get(self, "archived")
+
+    @archived.setter
+    def archived(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "archived", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the Feature Flag
@@ -229,6 +245,7 @@ class FeatureFlagArgs:
 @pulumi.input_type
 class _FeatureFlagState:
     def __init__(__self__, *,
+                 archived: Optional[pulumi.Input[bool]] = None,
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -244,6 +261,7 @@ class _FeatureFlagState:
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None):
         """
         Input properties used for looking up and filtering FeatureFlag resources.
+        :param pulumi.Input[bool] archived: Whether or not the flag is archived.
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
         :param pulumi.Input[str] description: Description of the Feature Flag
@@ -258,6 +276,8 @@ class _FeatureFlagState:
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagTagArgs']]] tags: The tags for the flag
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]] variations: The options available for your flag
         """
+        if archived is not None:
+            pulumi.set(__self__, "archived", archived)
         if default_off_variation is not None:
             pulumi.set(__self__, "default_off_variation", default_off_variation)
         if default_on_variation is not None:
@@ -284,6 +304,18 @@ class _FeatureFlagState:
             pulumi.set(__self__, "tags", tags)
         if variations is not None:
             pulumi.set(__self__, "variations", variations)
+
+    @property
+    @pulumi.getter
+    def archived(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the flag is archived.
+        """
+        return pulumi.get(self, "archived")
+
+    @archived.setter
+    def archived(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "archived", value)
 
     @property
     @pulumi.getter(name="defaultOffVariation")
@@ -447,6 +479,7 @@ class FeatureFlag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 archived: Optional[pulumi.Input[bool]] = None,
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -466,6 +499,7 @@ class FeatureFlag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] archived: Whether or not the flag is archived.
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
         :param pulumi.Input[str] description: Description of the Feature Flag
@@ -504,6 +538,7 @@ class FeatureFlag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 archived: Optional[pulumi.Input[bool]] = None,
                  default_off_variation: Optional[pulumi.Input[str]] = None,
                  default_on_variation: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -526,6 +561,7 @@ class FeatureFlag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureFlagArgs.__new__(FeatureFlagArgs)
 
+            __props__.__dict__["archived"] = archived
             if default_off_variation is None and not opts.urn:
                 raise TypeError("Missing required property 'default_off_variation'")
             __props__.__dict__["default_off_variation"] = default_off_variation
@@ -565,6 +601,7 @@ class FeatureFlag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            archived: Optional[pulumi.Input[bool]] = None,
             default_off_variation: Optional[pulumi.Input[str]] = None,
             default_on_variation: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -585,6 +622,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] archived: Whether or not the flag is archived.
         :param pulumi.Input[str] default_off_variation: Which of the variations to use when the flag is toggled to off state
         :param pulumi.Input[str] default_on_variation: Which of the variations to use when the flag is toggled to on state
         :param pulumi.Input[str] description: Description of the Feature Flag
@@ -603,6 +641,7 @@ class FeatureFlag(pulumi.CustomResource):
 
         __props__ = _FeatureFlagState.__new__(_FeatureFlagState)
 
+        __props__.__dict__["archived"] = archived
         __props__.__dict__["default_off_variation"] = default_off_variation
         __props__.__dict__["default_on_variation"] = default_on_variation
         __props__.__dict__["description"] = description
@@ -617,6 +656,14 @@ class FeatureFlag(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["variations"] = variations
         return FeatureFlag(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def archived(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not the flag is archived.
+        """
+        return pulumi.get(self, "archived")
 
     @property
     @pulumi.getter(name="defaultOffVariation")

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for create, update, list registry
+    /// Resource for creating and managing Harness Registries.
     /// 
     /// ## Example Usage
     /// 
@@ -22,9 +22,11 @@ namespace Pulumi.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Harness.Platform.HarRegistry("test", new()
+    ///     // Example of a Virtual Registry
+    ///     var virtualRegistry = new Harness.Platform.HarRegistry("virtual_registry", new()
     ///     {
-    ///         Identifier = "test_registry",
+    ///         Identifier = "virtual_docker_registry",
+    ///         Description = "Virtual Docker Registry",
     ///         SpaceRef = "accountId/orgId/projectId",
     ///         PackageType = "DOCKER",
     ///         Configs = new[]
@@ -32,6 +34,40 @@ namespace Pulumi.Harness.Platform
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
     ///             {
     ///                 Type = "VIRTUAL",
+    ///                 UpstreamProxies = new[]
+    ///                 {
+    ///                     "registry1",
+    ///                     "registry2",
+    ///                 },
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of an Upstream Registry with Authentication
+    ///     var upstreamRegistry = new Harness.Platform.HarRegistry("upstream_registry", new()
+    ///     {
+    ///         Identifier = "upstream_helm_registry",
+    ///         Description = "Upstream Helm Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "HELM",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "CUSTOM",
+    ///                 Url = "https://helm.sh",
+    ///                 Auths = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.HarRegistryConfigAuthArgs
+    ///                     {
+    ///                         AuthType = "UserPassword",
+    ///                         UserName = "registry_user",
+    ///                         SecretIdentifier = "registry_password",
+    ///                         SecretSpacePath = "accountId/orgId/projectId",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///         ParentRef = "accountId/orgId/projectId",
@@ -56,7 +92,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> BlockedPatterns { get; private set; } = null!;
 
         /// <summary>
-        /// Type of registry.
+        /// Configuration for the registry
         /// </summary>
         [Output("configs")]
         public Output<ImmutableArray<Outputs.HarRegistryConfig>> Configs { get; private set; } = null!;
@@ -74,25 +110,25 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Unique identifier of the registry
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, MAVEN, etc.)
+        /// Type of package (DOCKER, HELM, etc.)
         /// </summary>
         [Output("packageType")]
         public Output<string> PackageType { get; private set; } = null!;
 
         /// <summary>
-        /// Parent Reference of the registry.
+        /// Parent reference for the registry
         /// </summary>
         [Output("parentRef")]
         public Output<string?> ParentRef { get; private set; } = null!;
 
         /// <summary>
-        /// Reference of the space.
+        /// Space reference for the registry
         /// </summary>
         [Output("spaceRef")]
         public Output<string?> SpaceRef { get; private set; } = null!;
@@ -174,11 +210,11 @@ namespace Pulumi.Harness.Platform
             set => _blockedPatterns = value;
         }
 
-        [Input("configs")]
+        [Input("configs", required: true)]
         private InputList<Inputs.HarRegistryConfigArgs>? _configs;
 
         /// <summary>
-        /// Type of registry.
+        /// Configuration for the registry
         /// </summary>
         public InputList<Inputs.HarRegistryConfigArgs> Configs
         {
@@ -193,25 +229,25 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Unique identifier of the registry
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, MAVEN, etc.)
+        /// Type of package (DOCKER, HELM, etc.)
         /// </summary>
         [Input("packageType", required: true)]
         public Input<string> PackageType { get; set; } = null!;
 
         /// <summary>
-        /// Parent Reference of the registry.
+        /// Parent reference for the registry
         /// </summary>
         [Input("parentRef")]
         public Input<string>? ParentRef { get; set; }
 
         /// <summary>
-        /// Reference of the space.
+        /// Space reference for the registry
         /// </summary>
         [Input("spaceRef")]
         public Input<string>? SpaceRef { get; set; }
@@ -252,7 +288,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.HarRegistryConfigGetArgs>? _configs;
 
         /// <summary>
-        /// Type of registry.
+        /// Configuration for the registry
         /// </summary>
         public InputList<Inputs.HarRegistryConfigGetArgs> Configs
         {
@@ -273,25 +309,25 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource.
+        /// Unique identifier of the registry
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Type of package (DOCKER, MAVEN, etc.)
+        /// Type of package (DOCKER, HELM, etc.)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }
 
         /// <summary>
-        /// Parent Reference of the registry.
+        /// Parent reference for the registry
         /// </summary>
         [Input("parentRef")]
         public Input<string>? ParentRef { get; set; }
 
         /// <summary>
-        /// Reference of the space.
+        /// Space reference for the registry
         /// </summary>
         [Input("spaceRef")]
         public Input<string>? SpaceRef { get; set; }

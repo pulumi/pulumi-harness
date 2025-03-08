@@ -16,6 +16,8 @@ import (
 type FeatureFlag struct {
 	pulumi.CustomResourceState
 
+	// Whether or not the flag is archived.
+	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation pulumi.StringOutput `pulumi:"defaultOffVariation"`
 	// Which of the variations to use when the flag is toggled to on state
@@ -98,6 +100,8 @@ func GetFeatureFlag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureFlag resources.
 type featureFlagState struct {
+	// Whether or not the flag is archived.
+	Archived *bool `pulumi:"archived"`
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation *string `pulumi:"defaultOffVariation"`
 	// Which of the variations to use when the flag is toggled to on state
@@ -127,6 +131,8 @@ type featureFlagState struct {
 }
 
 type FeatureFlagState struct {
+	// Whether or not the flag is archived.
+	Archived pulumi.BoolPtrInput
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation pulumi.StringPtrInput
 	// Which of the variations to use when the flag is toggled to on state
@@ -160,6 +166,8 @@ func (FeatureFlagState) ElementType() reflect.Type {
 }
 
 type featureFlagArgs struct {
+	// Whether or not the flag is archived.
+	Archived *bool `pulumi:"archived"`
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation string `pulumi:"defaultOffVariation"`
 	// Which of the variations to use when the flag is toggled to on state
@@ -190,6 +198,8 @@ type featureFlagArgs struct {
 
 // The set of arguments for constructing a FeatureFlag resource.
 type FeatureFlagArgs struct {
+	// Whether or not the flag is archived.
+	Archived pulumi.BoolPtrInput
 	// Which of the variations to use when the flag is toggled to off state
 	DefaultOffVariation pulumi.StringInput
 	// Which of the variations to use when the flag is toggled to on state
@@ -303,6 +313,11 @@ func (o FeatureFlagOutput) ToFeatureFlagOutput() FeatureFlagOutput {
 
 func (o FeatureFlagOutput) ToFeatureFlagOutputWithContext(ctx context.Context) FeatureFlagOutput {
 	return o
+}
+
+// Whether or not the flag is archived.
+func (o FeatureFlagOutput) Archived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFlag) pulumi.BoolPtrOutput { return v.Archived }).(pulumi.BoolPtrOutput)
 }
 
 // Which of the variations to use when the flag is toggled to off state

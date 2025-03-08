@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.InfrastructureArgs;
 import com.pulumi.harness.platform.inputs.InfrastructureState;
 import com.pulumi.harness.platform.outputs.InfrastructureGitDetails;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -302,17 +303,17 @@ public class Infrastructure extends com.pulumi.resources.CustomResource {
         return this.envId;
     }
     /**
-     * Enable this flag for force deletion of infrastructure
+     * When set to true, enables force deletion of infrastructure.
      * 
      */
-    @Export(name="forceDelete", refs={String.class}, tree="[0]")
-    private Output<String> forceDelete;
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of infrastructure
+     * @return When set to true, enables force deletion of infrastructure.
      * 
      */
-    public Output<String> forceDelete() {
+    public Output<Boolean> forceDelete() {
         return this.forceDelete;
     }
     /**

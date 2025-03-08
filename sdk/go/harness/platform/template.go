@@ -42,8 +42,8 @@ type Template struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsOutput `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
@@ -112,8 +112,8 @@ type templateState struct {
 	//
 	// Deprecated: description field is deprecated
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-	ForceDelete *string `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
@@ -147,8 +147,8 @@ type TemplateState struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-	ForceDelete pulumi.StringPtrInput
+	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	ForceDelete pulumi.BoolPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsPtrInput
 	// Contains Git Information for importing entities from Git
@@ -186,8 +186,8 @@ type templateArgs struct {
 	//
 	// Deprecated: description field is deprecated
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-	ForceDelete *string `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
@@ -222,8 +222,8 @@ type TemplateArgs struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-	ForceDelete pulumi.StringPtrInput
+	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	ForceDelete pulumi.BoolPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsPtrInput
 	// Contains Git Information for importing entities from Git
@@ -349,9 +349,9 @@ func (o TemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-func (o TemplateOutput) ForceDelete() pulumi.StringOutput {
-	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+func (o TemplateOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Template) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Contains parameters related to creating an Entity for Git Experience.

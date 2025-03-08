@@ -307,8 +307,6 @@ __all__ = [
     'HarRegistryConfigArgsDict',
     'HarRegistryConfigAuthArgs',
     'HarRegistryConfigAuthArgsDict',
-    'HarRegistryConfigAuthUserPasswordArgs',
-    'HarRegistryConfigAuthUserPasswordArgsDict',
     'HelmConnectorCredentialsArgs',
     'HelmConnectorCredentialsArgsDict',
     'InfraVariableSetConnectorArgs',
@@ -495,6 +493,8 @@ __all__ = [
     'GetEnvironmentGitDetailsArgsDict',
     'GetGitopsAgentDeployYamlProxyArgs',
     'GetGitopsAgentDeployYamlProxyArgsDict',
+    'GetGitopsAgentOperatorYamlProxyArgs',
+    'GetGitopsAgentOperatorYamlProxyArgsDict',
     'GetGitopsGnupgRequestArgs',
     'GetGitopsGnupgRequestArgsDict',
     'GetGitopsGnupgRequestPublickeyArgs',
@@ -12189,19 +12189,27 @@ if not MYPY:
     class HarRegistryConfigArgsDict(TypedDict):
         type: pulumi.Input[str]
         """
-        Type of registry (VIRTUAL only supported)
+        Type of registry (VIRTUAL or UPSTREAM)
+        """
+        auth_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
         """
         auths: NotRequired[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgsDict']]]]
         """
-        Authentication configuration for UPSTREAM type
+        Authentication configuration for UPSTREAM registry type
         """
         source: NotRequired[pulumi.Input[str]]
         """
-        Source of the upstream
+        Source of the upstream (only for UPSTREAM type)
+        """
+        upstream_proxies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of upstream proxies for VIRTUAL registry type
         """
         url: NotRequired[pulumi.Input[str]]
         """
-        URL of the upstream
+        URL of the upstream (required if type=UPSTREAM & package_type=HELM)
         """
 elif False:
     HarRegistryConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -12210,20 +12218,28 @@ elif False:
 class HarRegistryConfigArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 auth_type: Optional[pulumi.Input[str]] = None,
                  auths: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]]] = None,
                  source: Optional[pulumi.Input[str]] = None,
+                 upstream_proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: Type of registry (VIRTUAL only supported)
-        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]] auths: Authentication configuration for UPSTREAM type
-        :param pulumi.Input[str] source: Source of the upstream
-        :param pulumi.Input[str] url: URL of the upstream
+        :param pulumi.Input[str] type: Type of registry (VIRTUAL or UPSTREAM)
+        :param pulumi.Input[str] auth_type: Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]] auths: Authentication configuration for UPSTREAM registry type
+        :param pulumi.Input[str] source: Source of the upstream (only for UPSTREAM type)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] upstream_proxies: List of upstream proxies for VIRTUAL registry type
+        :param pulumi.Input[str] url: URL of the upstream (required if type=UPSTREAM & package_type=HELM)
         """
         pulumi.set(__self__, "type", type)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
         if auths is not None:
             pulumi.set(__self__, "auths", auths)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if upstream_proxies is not None:
+            pulumi.set(__self__, "upstream_proxies", upstream_proxies)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
@@ -12231,7 +12247,7 @@ class HarRegistryConfigArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type of registry (VIRTUAL only supported)
+        Type of registry (VIRTUAL or UPSTREAM)
         """
         return pulumi.get(self, "type")
 
@@ -12240,10 +12256,22 @@ class HarRegistryConfigArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
     @pulumi.getter
     def auths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]]]:
         """
-        Authentication configuration for UPSTREAM type
+        Authentication configuration for UPSTREAM registry type
         """
         return pulumi.get(self, "auths")
 
@@ -12255,7 +12283,7 @@ class HarRegistryConfigArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
         """
-        Source of the upstream
+        Source of the upstream (only for UPSTREAM type)
         """
         return pulumi.get(self, "source")
 
@@ -12264,10 +12292,22 @@ class HarRegistryConfigArgs:
         pulumi.set(self, "source", value)
 
     @property
+    @pulumi.getter(name="upstreamProxies")
+    def upstream_proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of upstream proxies for VIRTUAL registry type
+        """
+        return pulumi.get(self, "upstream_proxies")
+
+    @upstream_proxies.setter
+    def upstream_proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "upstream_proxies", value)
+
+    @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the upstream
+        URL of the upstream (required if type=UPSTREAM & package_type=HELM)
         """
         return pulumi.get(self, "url")
 
@@ -12282,9 +12322,17 @@ if not MYPY:
         """
         Type of authentication (UserPassword, Anonymous)
         """
-        user_password: NotRequired[pulumi.Input['HarRegistryConfigAuthUserPasswordArgsDict']]
+        secret_identifier: NotRequired[pulumi.Input[str]]
         """
-        User password authentication details
+        Secret identifier for UserPassword auth type
+        """
+        secret_space_path: NotRequired[pulumi.Input[str]]
+        """
+        Secret space path for UserPassword auth type
+        """
+        user_name: NotRequired[pulumi.Input[str]]
+        """
+        User name for UserPassword auth type
         """
 elif False:
     HarRegistryConfigAuthArgsDict: TypeAlias = Mapping[str, Any]
@@ -12293,14 +12341,22 @@ elif False:
 class HarRegistryConfigAuthArgs:
     def __init__(__self__, *,
                  auth_type: pulumi.Input[str],
-                 user_password: Optional[pulumi.Input['HarRegistryConfigAuthUserPasswordArgs']] = None):
+                 secret_identifier: Optional[pulumi.Input[str]] = None,
+                 secret_space_path: Optional[pulumi.Input[str]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auth_type: Type of authentication (UserPassword, Anonymous)
-        :param pulumi.Input['HarRegistryConfigAuthUserPasswordArgs'] user_password: User password authentication details
+        :param pulumi.Input[str] secret_identifier: Secret identifier for UserPassword auth type
+        :param pulumi.Input[str] secret_space_path: Secret space path for UserPassword auth type
+        :param pulumi.Input[str] user_name: User name for UserPassword auth type
         """
         pulumi.set(__self__, "auth_type", auth_type)
-        if user_password is not None:
-            pulumi.set(__self__, "user_password", user_password)
+        if secret_identifier is not None:
+            pulumi.set(__self__, "secret_identifier", secret_identifier)
+        if secret_space_path is not None:
+            pulumi.set(__self__, "secret_space_path", secret_space_path)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter(name="authType")
@@ -12315,77 +12371,10 @@ class HarRegistryConfigAuthArgs:
         pulumi.set(self, "auth_type", value)
 
     @property
-    @pulumi.getter(name="userPassword")
-    def user_password(self) -> Optional[pulumi.Input['HarRegistryConfigAuthUserPasswordArgs']]:
-        """
-        User password authentication details
-        """
-        return pulumi.get(self, "user_password")
-
-    @user_password.setter
-    def user_password(self, value: Optional[pulumi.Input['HarRegistryConfigAuthUserPasswordArgs']]):
-        pulumi.set(self, "user_password", value)
-
-
-if not MYPY:
-    class HarRegistryConfigAuthUserPasswordArgsDict(TypedDict):
-        user_name: pulumi.Input[str]
-        """
-        User name
-        """
-        secret_identifier: NotRequired[pulumi.Input[str]]
-        """
-        Secret identifier
-        """
-        secret_space_id: NotRequired[pulumi.Input[int]]
-        """
-        Secret space ID
-        """
-        secret_space_path: NotRequired[pulumi.Input[str]]
-        """
-        Secret space path
-        """
-elif False:
-    HarRegistryConfigAuthUserPasswordArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class HarRegistryConfigAuthUserPasswordArgs:
-    def __init__(__self__, *,
-                 user_name: pulumi.Input[str],
-                 secret_identifier: Optional[pulumi.Input[str]] = None,
-                 secret_space_id: Optional[pulumi.Input[int]] = None,
-                 secret_space_path: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] user_name: User name
-        :param pulumi.Input[str] secret_identifier: Secret identifier
-        :param pulumi.Input[int] secret_space_id: Secret space ID
-        :param pulumi.Input[str] secret_space_path: Secret space path
-        """
-        pulumi.set(__self__, "user_name", user_name)
-        if secret_identifier is not None:
-            pulumi.set(__self__, "secret_identifier", secret_identifier)
-        if secret_space_id is not None:
-            pulumi.set(__self__, "secret_space_id", secret_space_id)
-        if secret_space_path is not None:
-            pulumi.set(__self__, "secret_space_path", secret_space_path)
-
-    @property
-    @pulumi.getter(name="userName")
-    def user_name(self) -> pulumi.Input[str]:
-        """
-        User name
-        """
-        return pulumi.get(self, "user_name")
-
-    @user_name.setter
-    def user_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "user_name", value)
-
-    @property
     @pulumi.getter(name="secretIdentifier")
     def secret_identifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Secret identifier
+        Secret identifier for UserPassword auth type
         """
         return pulumi.get(self, "secret_identifier")
 
@@ -12394,28 +12383,28 @@ class HarRegistryConfigAuthUserPasswordArgs:
         pulumi.set(self, "secret_identifier", value)
 
     @property
-    @pulumi.getter(name="secretSpaceId")
-    def secret_space_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        Secret space ID
-        """
-        return pulumi.get(self, "secret_space_id")
-
-    @secret_space_id.setter
-    def secret_space_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "secret_space_id", value)
-
-    @property
     @pulumi.getter(name="secretSpacePath")
     def secret_space_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Secret space path
+        Secret space path for UserPassword auth type
         """
         return pulumi.get(self, "secret_space_path")
 
     @secret_space_path.setter
     def secret_space_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_space_path", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name for UserPassword auth type
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
 
 
 if not MYPY:
@@ -21163,6 +21152,98 @@ elif False:
 
 @pulumi.input_type
 class GetGitopsAgentDeployYamlProxyArgs:
+    def __init__(__self__, *,
+                 http: Optional[str] = None,
+                 https: Optional[str] = None,
+                 password: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str http: HTTP proxy settings for the GitOps agent.
+        :param str https: HTTPS proxy settings for the GitOps agent.
+        :param str password: Password for the proxy.
+        :param str username: Username for the proxy.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if https is not None:
+            pulumi.set(__self__, "https", https)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional[str]:
+        """
+        HTTP proxy settings for the GitOps agent.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: Optional[str]):
+        pulumi.set(self, "http", value)
+
+    @property
+    @pulumi.getter
+    def https(self) -> Optional[str]:
+        """
+        HTTPS proxy settings for the GitOps agent.
+        """
+        return pulumi.get(self, "https")
+
+    @https.setter
+    def https(self, value: Optional[str]):
+        pulumi.set(self, "https", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password for the proxy.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Username for the proxy.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[str]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class GetGitopsAgentOperatorYamlProxyArgsDict(TypedDict):
+        http: NotRequired[str]
+        """
+        HTTP proxy settings for the GitOps agent.
+        """
+        https: NotRequired[str]
+        """
+        HTTPS proxy settings for the GitOps agent.
+        """
+        password: NotRequired[str]
+        """
+        Password for the proxy.
+        """
+        username: NotRequired[str]
+        """
+        Username for the proxy.
+        """
+elif False:
+    GetGitopsAgentOperatorYamlProxyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGitopsAgentOperatorYamlProxyArgs:
     def __init__(__self__, *,
                  http: Optional[str] = None,
                  https: Optional[str] = None,

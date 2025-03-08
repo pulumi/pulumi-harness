@@ -12,11 +12,17 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class HarRegistryConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+        /// </summary>
+        [Input("authType")]
+        public Input<string>? AuthType { get; set; }
+
         [Input("auths")]
         private InputList<Inputs.HarRegistryConfigAuthGetArgs>? _auths;
 
         /// <summary>
-        /// Authentication configuration for UPSTREAM type
+        /// Authentication configuration for UPSTREAM registry type
         /// </summary>
         public InputList<Inputs.HarRegistryConfigAuthGetArgs> Auths
         {
@@ -25,19 +31,31 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Source of the upstream
+        /// Source of the upstream (only for UPSTREAM type)
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// Type of registry (VIRTUAL only supported)
+        /// Type of registry (VIRTUAL or UPSTREAM)
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        [Input("upstreamProxies")]
+        private InputList<string>? _upstreamProxies;
+
         /// <summary>
-        /// URL of the upstream
+        /// List of upstream proxies for VIRTUAL registry type
+        /// </summary>
+        public InputList<string> UpstreamProxies
+        {
+            get => _upstreamProxies ?? (_upstreamProxies = new InputList<string>());
+            set => _upstreamProxies = value;
+        }
+
+        /// <summary>
+        /// URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

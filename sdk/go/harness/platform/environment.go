@@ -379,8 +379,8 @@ type Environment struct {
 	Color pulumi.StringOutput `pulumi:"color"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Enable this flag for force deletion of environments
-	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of environments.
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails EnvironmentGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -440,8 +440,8 @@ type environmentState struct {
 	Color *string `pulumi:"color"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of environments
-	ForceDelete *string `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of environments.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails *EnvironmentGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -466,8 +466,8 @@ type EnvironmentState struct {
 	Color pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of environments
-	ForceDelete pulumi.StringPtrInput
+	// When set to true, enables force deletion of environments.
+	ForceDelete pulumi.BoolPtrInput
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails EnvironmentGitDetailsPtrInput
 	// Unique identifier of the resource.
@@ -496,8 +496,8 @@ type environmentArgs struct {
 	Color *string `pulumi:"color"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Enable this flag for force deletion of environments
-	ForceDelete *string `pulumi:"forceDelete"`
+	// When set to true, enables force deletion of environments.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails *EnvironmentGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -523,8 +523,8 @@ type EnvironmentArgs struct {
 	Color pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Enable this flag for force deletion of environments
-	ForceDelete pulumi.StringPtrInput
+	// When set to true, enables force deletion of environments.
+	ForceDelete pulumi.BoolPtrInput
 	// Contains Git Information for remote entities from Git for Create/Update/Import
 	GitDetails EnvironmentGitDetailsPtrInput
 	// Unique identifier of the resource.
@@ -641,9 +641,9 @@ func (o EnvironmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Enable this flag for force deletion of environments
-func (o EnvironmentOutput) ForceDelete() pulumi.StringOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+// When set to true, enables force deletion of environments.
+func (o EnvironmentOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Contains Git Information for remote entities from Git for Create/Update/Import

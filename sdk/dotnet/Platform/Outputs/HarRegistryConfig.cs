@@ -14,35 +14,49 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class HarRegistryConfig
     {
         /// <summary>
-        /// Authentication configuration for UPSTREAM type
+        /// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+        /// </summary>
+        public readonly string? AuthType;
+        /// <summary>
+        /// Authentication configuration for UPSTREAM registry type
         /// </summary>
         public readonly ImmutableArray<Outputs.HarRegistryConfigAuth> Auths;
         /// <summary>
-        /// Source of the upstream
+        /// Source of the upstream (only for UPSTREAM type)
         /// </summary>
         public readonly string? Source;
         /// <summary>
-        /// Type of registry (VIRTUAL only supported)
+        /// Type of registry (VIRTUAL or UPSTREAM)
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// URL of the upstream
+        /// List of upstream proxies for VIRTUAL registry type
+        /// </summary>
+        public readonly ImmutableArray<string> UpstreamProxies;
+        /// <summary>
+        /// URL of the upstream (required if type=UPSTREAM &amp; package_type=HELM)
         /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]
         private HarRegistryConfig(
+            string? authType,
+
             ImmutableArray<Outputs.HarRegistryConfigAuth> auths,
 
             string? source,
 
             string type,
 
+            ImmutableArray<string> upstreamProxies,
+
             string? url)
         {
+            AuthType = authType;
             Auths = auths;
             Source = source;
             Type = type;
+            UpstreamProxies = upstreamProxies;
             Url = url;
         }
     }

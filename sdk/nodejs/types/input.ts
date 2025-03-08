@@ -2941,6 +2941,44 @@ export namespace platform {
         username?: pulumi.Input<string>;
     }
 
+    export interface GetGitopsAgentOperatorYamlProxy {
+        /**
+         * HTTP proxy settings for the GitOps agent.
+         */
+        http?: string;
+        /**
+         * HTTPS proxy settings for the GitOps agent.
+         */
+        https?: string;
+        /**
+         * Password for the proxy.
+         */
+        password?: string;
+        /**
+         * Username for the proxy.
+         */
+        username?: string;
+    }
+
+    export interface GetGitopsAgentOperatorYamlProxyArgs {
+        /**
+         * HTTP proxy settings for the GitOps agent.
+         */
+        http?: pulumi.Input<string>;
+        /**
+         * HTTPS proxy settings for the GitOps agent.
+         */
+        https?: pulumi.Input<string>;
+        /**
+         * Password for the proxy.
+         */
+        password?: pulumi.Input<string>;
+        /**
+         * Username for the proxy.
+         */
+        username?: pulumi.Input<string>;
+    }
+
     export interface GetGitopsGnupgRequest {
         /**
          * Public key details.
@@ -5610,19 +5648,27 @@ export namespace platform {
 
     export interface HarRegistryConfig {
         /**
-         * Authentication configuration for UPSTREAM type
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         */
+        authType?: pulumi.Input<string>;
+        /**
+         * Authentication configuration for UPSTREAM registry type
          */
         auths?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfigAuth>[]>;
         /**
-         * Source of the upstream
+         * Source of the upstream (only for UPSTREAM type)
          */
         source?: pulumi.Input<string>;
         /**
-         * Type of registry (VIRTUAL only supported)
+         * Type of registry (VIRTUAL or UPSTREAM)
          */
         type: pulumi.Input<string>;
         /**
-         * URL of the upstream
+         * List of upstream proxies for VIRTUAL registry type
+         */
+        upstreamProxies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * URL of the upstream (required if type=UPSTREAM & package_type=HELM)
          */
         url?: pulumi.Input<string>;
     }
@@ -5633,28 +5679,17 @@ export namespace platform {
          */
         authType: pulumi.Input<string>;
         /**
-         * User password authentication details
-         */
-        userPassword?: pulumi.Input<inputs.platform.HarRegistryConfigAuthUserPassword>;
-    }
-
-    export interface HarRegistryConfigAuthUserPassword {
-        /**
-         * Secret identifier
+         * Secret identifier for UserPassword auth type
          */
         secretIdentifier?: pulumi.Input<string>;
         /**
-         * Secret space ID
-         */
-        secretSpaceId?: pulumi.Input<number>;
-        /**
-         * Secret space path
+         * Secret space path for UserPassword auth type
          */
         secretSpacePath?: pulumi.Input<string>;
         /**
-         * User name
+         * User name for UserPassword auth type
          */
-        userName: pulumi.Input<string>;
+        userName?: pulumi.Input<string>;
     }
 
     export interface HelmConnectorCredentials {

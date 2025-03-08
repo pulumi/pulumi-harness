@@ -53,13 +53,13 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="forceDelete")
-    private @Nullable Output<String> forceDelete;
+    private @Nullable Output<Boolean> forceDelete;
 
     /**
      * @return Enable this flag for force deletion of service
      * 
      */
-    public Optional<Output<String>> forceDelete() {
+    public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
     }
 
@@ -287,7 +287,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder forceDelete(@Nullable Output<String> forceDelete) {
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
             $.forceDelete = forceDelete;
             return this;
         }
@@ -298,7 +298,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder forceDelete(String forceDelete) {
+        public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
         }
 

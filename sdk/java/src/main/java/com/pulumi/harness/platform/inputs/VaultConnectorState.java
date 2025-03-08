@@ -139,6 +139,21 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Execute on delegate or not.
+     * 
+     */
+    @Import(name="executeOnDelegate")
+    private @Nullable Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
+    public Optional<Output<Boolean>> executeOnDelegate() {
+        return Optional.ofNullable(this.executeOnDelegate);
+    }
+
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -424,6 +439,21 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Boolean value to indicate if JWT is used for authentication.
+     * 
+     */
+    @Import(name="useJwtAuth")
+    private @Nullable Output<Boolean> useJwtAuth;
+
+    /**
+     * @return Boolean value to indicate if JWT is used for authentication.
+     * 
+     */
+    public Optional<Output<Boolean>> useJwtAuth() {
+        return Optional.ofNullable(this.useJwtAuth);
+    }
+
+    /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      * 
      */
@@ -466,6 +496,36 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> vaultAwsIamRole() {
         return Optional.ofNullable(this.vaultAwsIamRole);
+    }
+
+    /**
+     * Custom path at with JWT auth in enabled for Vault.
+     * 
+     */
+    @Import(name="vaultJwtAuthPath")
+    private @Nullable Output<String> vaultJwtAuthPath;
+
+    /**
+     * @return Custom path at with JWT auth in enabled for Vault.
+     * 
+     */
+    public Optional<Output<String>> vaultJwtAuthPath() {
+        return Optional.ofNullable(this.vaultJwtAuthPath);
+    }
+
+    /**
+     * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     * 
+     */
+    @Import(name="vaultJwtAuthRole")
+    private @Nullable Output<String> vaultJwtAuthRole;
+
+    /**
+     * @return The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+     * 
+     */
+    public Optional<Output<String>> vaultJwtAuthRole() {
+        return Optional.ofNullable(this.vaultJwtAuthRole);
     }
 
     /**
@@ -524,6 +584,7 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
         this.default_ = $.default_;
         this.delegateSelectors = $.delegateSelectors;
         this.description = $.description;
+        this.executeOnDelegate = $.executeOnDelegate;
         this.identifier = $.identifier;
         this.isDefault = $.isDefault;
         this.isReadOnly = $.isReadOnly;
@@ -543,9 +604,12 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
         this.sinkPath = $.sinkPath;
         this.tags = $.tags;
         this.useAwsIam = $.useAwsIam;
+        this.useJwtAuth = $.useJwtAuth;
         this.useK8sAuth = $.useK8sAuth;
         this.useVaultAgent = $.useVaultAgent;
         this.vaultAwsIamRole = $.vaultAwsIamRole;
+        this.vaultJwtAuthPath = $.vaultJwtAuthPath;
+        this.vaultJwtAuthRole = $.vaultJwtAuthRole;
         this.vaultK8sAuthRole = $.vaultK8sAuthRole;
         this.vaultUrl = $.vaultUrl;
         this.xvaultAwsIamServerId = $.xvaultAwsIamServerId;
@@ -745,6 +809,27 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(@Nullable Output<Boolean> executeOnDelegate) {
+            $.executeOnDelegate = executeOnDelegate;
+            return this;
+        }
+
+        /**
+         * @param executeOnDelegate Execute on delegate or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder executeOnDelegate(Boolean executeOnDelegate) {
+            return executeOnDelegate(Output.of(executeOnDelegate));
         }
 
         /**
@@ -1157,6 +1242,27 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param useJwtAuth Boolean value to indicate if JWT is used for authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useJwtAuth(@Nullable Output<Boolean> useJwtAuth) {
+            $.useJwtAuth = useJwtAuth;
+            return this;
+        }
+
+        /**
+         * @param useJwtAuth Boolean value to indicate if JWT is used for authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useJwtAuth(Boolean useJwtAuth) {
+            return useJwtAuth(Output.of(useJwtAuth));
+        }
+
+        /**
          * @param useK8sAuth Boolean value to indicate if K8s Auth is used for authentication.
          * 
          * @return builder
@@ -1217,6 +1323,48 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
          */
         public Builder vaultAwsIamRole(String vaultAwsIamRole) {
             return vaultAwsIamRole(Output.of(vaultAwsIamRole));
+        }
+
+        /**
+         * @param vaultJwtAuthPath Custom path at with JWT auth in enabled for Vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vaultJwtAuthPath(@Nullable Output<String> vaultJwtAuthPath) {
+            $.vaultJwtAuthPath = vaultJwtAuthPath;
+            return this;
+        }
+
+        /**
+         * @param vaultJwtAuthPath Custom path at with JWT auth in enabled for Vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vaultJwtAuthPath(String vaultJwtAuthPath) {
+            return vaultJwtAuthPath(Output.of(vaultJwtAuthPath));
+        }
+
+        /**
+         * @param vaultJwtAuthRole The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vaultJwtAuthRole(@Nullable Output<String> vaultJwtAuthRole) {
+            $.vaultJwtAuthRole = vaultJwtAuthRole;
+            return this;
+        }
+
+        /**
+         * @param vaultJwtAuthRole The Vault role defined with JWT auth type for accessing Vault as per policies binded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vaultJwtAuthRole(String vaultJwtAuthRole) {
+            return vaultJwtAuthRole(Output.of(vaultJwtAuthRole));
         }
 
         /**

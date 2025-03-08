@@ -24,7 +24,7 @@ class ServiceArgs:
                  identifier: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['ServiceGitDetailsArgs']] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
                  is_force_import: Optional[pulumi.Input[bool]] = None,
@@ -38,7 +38,7 @@ class ServiceArgs:
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[bool] import_from_git: import service from git
         :param pulumi.Input[bool] is_force_import: force import service from remote even if same file path already exist
@@ -113,14 +113,14 @@ class ServiceArgs:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable this flag for force deletion of service
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -228,7 +228,7 @@ class _ServiceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['ServiceGitDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
@@ -242,7 +242,7 @@ class _ServiceState:
         Input properties used for looking up and filtering Service resources.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input['ServiceGitDetailsArgs'] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] import_from_git: import service from git
@@ -307,14 +307,14 @@ class _ServiceState:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
         Enable this flag for force deletion of service
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -436,7 +436,7 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
@@ -706,7 +706,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] import_from_git: import service from git
@@ -998,7 +998,7 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  import_from_git: Optional[pulumi.Input[bool]] = None,
@@ -1043,7 +1043,7 @@ class Service(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             fetch_resolved_yaml: Optional[pulumi.Input[bool]] = None,
-            force_delete: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             git_details: Optional[pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             import_from_git: Optional[pulumi.Input[bool]] = None,
@@ -1062,7 +1062,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the resource.
         :param pulumi.Input[bool] fetch_resolved_yaml: to fetch resoled service yaml
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of service
+        :param pulumi.Input[bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input[Union['ServiceGitDetailsArgs', 'ServiceGitDetailsArgsDict']] git_details: Contains parameters related to Git Experience for remote entities
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[bool] import_from_git: import service from git
@@ -1112,7 +1112,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> pulumi.Output[str]:
+    def force_delete(self) -> pulumi.Output[bool]:
         """
         Enable this flag for force deletion of service
         """

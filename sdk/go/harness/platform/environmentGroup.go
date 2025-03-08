@@ -149,7 +149,7 @@ type EnvironmentGroup struct {
 	// Color of the environment group.
 	Color pulumi.StringOutput `pulumi:"color"`
 	// Enable this flag for force deletion of environment group
-	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// identifier of the environment group.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// org_id of the environment group.
@@ -202,7 +202,7 @@ type environmentGroupState struct {
 	// Color of the environment group.
 	Color *string `pulumi:"color"`
 	// Enable this flag for force deletion of environment group
-	ForceDelete *string `pulumi:"forceDelete"`
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// identifier of the environment group.
 	Identifier *string `pulumi:"identifier"`
 	// org_id of the environment group.
@@ -220,7 +220,7 @@ type EnvironmentGroupState struct {
 	// Color of the environment group.
 	Color pulumi.StringPtrInput
 	// Enable this flag for force deletion of environment group
-	ForceDelete pulumi.StringPtrInput
+	ForceDelete pulumi.BoolPtrInput
 	// identifier of the environment group.
 	Identifier pulumi.StringPtrInput
 	// org_id of the environment group.
@@ -242,7 +242,7 @@ type environmentGroupArgs struct {
 	// Color of the environment group.
 	Color *string `pulumi:"color"`
 	// Enable this flag for force deletion of environment group
-	ForceDelete *string `pulumi:"forceDelete"`
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// identifier of the environment group.
 	Identifier string `pulumi:"identifier"`
 	// org_id of the environment group.
@@ -261,7 +261,7 @@ type EnvironmentGroupArgs struct {
 	// Color of the environment group.
 	Color pulumi.StringPtrInput
 	// Enable this flag for force deletion of environment group
-	ForceDelete pulumi.StringPtrInput
+	ForceDelete pulumi.BoolPtrInput
 	// identifier of the environment group.
 	Identifier pulumi.StringInput
 	// org_id of the environment group.
@@ -368,8 +368,8 @@ func (o EnvironmentGroupOutput) Color() pulumi.StringOutput {
 }
 
 // Enable this flag for force deletion of environment group
-func (o EnvironmentGroupOutput) ForceDelete() pulumi.StringOutput {
-	return o.ApplyT(func(v *EnvironmentGroup) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+func (o EnvironmentGroupOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EnvironmentGroup) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // identifier of the environment group.

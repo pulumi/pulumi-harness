@@ -6,7 +6,6 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.HarRegistryConfigAuthUserPasswordArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,25 +32,57 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * User password authentication details
+     * Secret identifier for UserPassword auth type
      * 
      */
-    @Import(name="userPassword")
-    private @Nullable Output<HarRegistryConfigAuthUserPasswordArgs> userPassword;
+    @Import(name="secretIdentifier")
+    private @Nullable Output<String> secretIdentifier;
 
     /**
-     * @return User password authentication details
+     * @return Secret identifier for UserPassword auth type
      * 
      */
-    public Optional<Output<HarRegistryConfigAuthUserPasswordArgs>> userPassword() {
-        return Optional.ofNullable(this.userPassword);
+    public Optional<Output<String>> secretIdentifier() {
+        return Optional.ofNullable(this.secretIdentifier);
+    }
+
+    /**
+     * Secret space path for UserPassword auth type
+     * 
+     */
+    @Import(name="secretSpacePath")
+    private @Nullable Output<String> secretSpacePath;
+
+    /**
+     * @return Secret space path for UserPassword auth type
+     * 
+     */
+    public Optional<Output<String>> secretSpacePath() {
+        return Optional.ofNullable(this.secretSpacePath);
+    }
+
+    /**
+     * User name for UserPassword auth type
+     * 
+     */
+    @Import(name="userName")
+    private @Nullable Output<String> userName;
+
+    /**
+     * @return User name for UserPassword auth type
+     * 
+     */
+    public Optional<Output<String>> userName() {
+        return Optional.ofNullable(this.userName);
     }
 
     private HarRegistryConfigAuthArgs() {}
 
     private HarRegistryConfigAuthArgs(HarRegistryConfigAuthArgs $) {
         this.authType = $.authType;
-        this.userPassword = $.userPassword;
+        this.secretIdentifier = $.secretIdentifier;
+        this.secretSpacePath = $.secretSpacePath;
+        this.userName = $.userName;
     }
 
     public static Builder builder() {
@@ -94,24 +125,66 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param userPassword User password authentication details
+         * @param secretIdentifier Secret identifier for UserPassword auth type
          * 
          * @return builder
          * 
          */
-        public Builder userPassword(@Nullable Output<HarRegistryConfigAuthUserPasswordArgs> userPassword) {
-            $.userPassword = userPassword;
+        public Builder secretIdentifier(@Nullable Output<String> secretIdentifier) {
+            $.secretIdentifier = secretIdentifier;
             return this;
         }
 
         /**
-         * @param userPassword User password authentication details
+         * @param secretIdentifier Secret identifier for UserPassword auth type
          * 
          * @return builder
          * 
          */
-        public Builder userPassword(HarRegistryConfigAuthUserPasswordArgs userPassword) {
-            return userPassword(Output.of(userPassword));
+        public Builder secretIdentifier(String secretIdentifier) {
+            return secretIdentifier(Output.of(secretIdentifier));
+        }
+
+        /**
+         * @param secretSpacePath Secret space path for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretSpacePath(@Nullable Output<String> secretSpacePath) {
+            $.secretSpacePath = secretSpacePath;
+            return this;
+        }
+
+        /**
+         * @param secretSpacePath Secret space path for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretSpacePath(String secretSpacePath) {
+            return secretSpacePath(Output.of(secretSpacePath));
+        }
+
+        /**
+         * @param userName User name for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(@Nullable Output<String> userName) {
+            $.userName = userName;
+            return this;
+        }
+
+        /**
+         * @param userName User name for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(String userName) {
+            return userName(Output.of(userName));
         }
 
         public HarRegistryConfigAuthArgs build() {

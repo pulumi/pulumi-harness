@@ -22,6 +22,21 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
     public static final FeatureFlagArgs Empty = new FeatureFlagArgs();
 
     /**
+     * Whether or not the flag is archived.
+     * 
+     */
+    @Import(name="archived")
+    private @Nullable Output<Boolean> archived;
+
+    /**
+     * @return Whether or not the flag is archived.
+     * 
+     */
+    public Optional<Output<Boolean>> archived() {
+        return Optional.ofNullable(this.archived);
+    }
+
+    /**
      * Which of the variations to use when the flag is toggled to off state
      * 
      */
@@ -219,6 +234,7 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
     private FeatureFlagArgs() {}
 
     private FeatureFlagArgs(FeatureFlagArgs $) {
+        this.archived = $.archived;
         this.defaultOffVariation = $.defaultOffVariation;
         this.defaultOnVariation = $.defaultOnVariation;
         this.description = $.description;
@@ -250,6 +266,27 @@ public final class FeatureFlagArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FeatureFlagArgs defaults) {
             $ = new FeatureFlagArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param archived Whether or not the flag is archived.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archived(@Nullable Output<Boolean> archived) {
+            $.archived = archived;
+            return this;
+        }
+
+        /**
+         * @param archived Whether or not the flag is archived.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archived(Boolean archived) {
+            return archived(Output.of(archived));
         }
 
         /**

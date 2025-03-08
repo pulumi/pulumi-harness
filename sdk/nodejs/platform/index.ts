@@ -410,6 +410,11 @@ export const getGitopsAgentDeployYaml: typeof import("./getGitopsAgentDeployYaml
 export const getGitopsAgentDeployYamlOutput: typeof import("./getGitopsAgentDeployYaml").getGitopsAgentDeployYamlOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsAgentDeployYaml","getGitopsAgentDeployYamlOutput"], () => require("./getGitopsAgentDeployYaml"));
 
+export { GetGitopsAgentOperatorYamlArgs, GetGitopsAgentOperatorYamlResult, GetGitopsAgentOperatorYamlOutputArgs } from "./getGitopsAgentOperatorYaml";
+export const getGitopsAgentOperatorYaml: typeof import("./getGitopsAgentOperatorYaml").getGitopsAgentOperatorYaml = null as any;
+export const getGitopsAgentOperatorYamlOutput: typeof import("./getGitopsAgentOperatorYaml").getGitopsAgentOperatorYamlOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsAgentOperatorYaml","getGitopsAgentOperatorYamlOutput"], () => require("./getGitopsAgentOperatorYaml"));
+
 export { GetGitopsAppProjectArgs, GetGitopsAppProjectResult, GetGitopsAppProjectOutputArgs } from "./getGitopsAppProject";
 export const getGitopsAppProject: typeof import("./getGitopsAppProject").getGitopsAppProject = null as any;
 export const getGitopsAppProjectOutput: typeof import("./getGitopsAppProject").getGitopsAppProjectOutput = null as any;

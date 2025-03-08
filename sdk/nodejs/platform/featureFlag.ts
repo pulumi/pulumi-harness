@@ -38,6 +38,10 @@ export class FeatureFlag extends pulumi.CustomResource {
     }
 
     /**
+     * Whether or not the flag is archived.
+     */
+    public readonly archived!: pulumi.Output<boolean | undefined>;
+    /**
      * Which of the variations to use when the flag is toggled to off state
      */
     public readonly defaultOffVariation!: pulumi.Output<string>;
@@ -103,6 +107,7 @@ export class FeatureFlag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
+            resourceInputs["archived"] = state ? state.archived : undefined;
             resourceInputs["defaultOffVariation"] = state ? state.defaultOffVariation : undefined;
             resourceInputs["defaultOnVariation"] = state ? state.defaultOnVariation : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -142,6 +147,7 @@ export class FeatureFlag extends pulumi.CustomResource {
             if ((!args || args.variations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'variations'");
             }
+            resourceInputs["archived"] = args ? args.archived : undefined;
             resourceInputs["defaultOffVariation"] = args ? args.defaultOffVariation : undefined;
             resourceInputs["defaultOnVariation"] = args ? args.defaultOnVariation : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -165,6 +171,10 @@ export class FeatureFlag extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FeatureFlag resources.
  */
 export interface FeatureFlagState {
+    /**
+     * Whether or not the flag is archived.
+     */
+    archived?: pulumi.Input<boolean>;
     /**
      * Which of the variations to use when the flag is toggled to off state
      */
@@ -223,6 +233,10 @@ export interface FeatureFlagState {
  * The set of arguments for constructing a FeatureFlag resource.
  */
 export interface FeatureFlagArgs {
+    /**
+     * Whether or not the flag is archived.
+     */
+    archived?: pulumi.Input<boolean>;
     /**
      * Which of the variations to use when the flag is toggled to off state
      */

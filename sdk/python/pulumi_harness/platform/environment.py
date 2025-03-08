@@ -25,7 +25,7 @@ class EnvironmentArgs:
                  type: pulumi.Input[str],
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['EnvironmentGitDetailsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -38,7 +38,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] type: The type of environment. Valid values are PreProduction, Production
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of environments.
         :param pulumi.Input['EnvironmentGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] org_id: Unique identifier of the organization.
@@ -118,14 +118,14 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable this flag for force deletion of environments
+        When set to true, enables force deletion of environments.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -207,7 +207,7 @@ class _EnvironmentState:
     def __init__(__self__, *,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input['EnvironmentGitDetailsArgs']] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class _EnvironmentState:
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of environments.
         :param pulumi.Input['EnvironmentGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -280,14 +280,14 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[str]]:
+    def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable this flag for force deletion of environments
+        When set to true, enables force deletion of environments.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[str]]):
+    def force_delete(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_delete", value)
 
     @property
@@ -395,7 +395,7 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -683,7 +683,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of environments.
         :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -991,7 +991,7 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 force_delete: Optional[pulumi.Input[str]] = None,
+                 force_delete: Optional[pulumi.Input[bool]] = None,
                  git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1036,7 +1036,7 @@ class Environment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             color: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            force_delete: Optional[pulumi.Input[str]] = None,
+            force_delete: Optional[pulumi.Input[bool]] = None,
             git_details: Optional[pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1054,7 +1054,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color: Color of the environment.
         :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of environments.
         :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
         :param pulumi.Input[str] identifier: Unique identifier of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -1100,9 +1100,9 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> pulumi.Output[str]:
+    def force_delete(self) -> pulumi.Output[bool]:
         """
-        Enable this flag for force deletion of environments
+        When set to true, enables force deletion of environments.
         """
         return pulumi.get(self, "force_delete")
 

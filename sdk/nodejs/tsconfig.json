@@ -159,6 +159,7 @@
         "platform/getGitlabConnector.ts",
         "platform/getGitopsAgent.ts",
         "platform/getGitopsAgentDeployYaml.ts",
+        "platform/getGitopsAgentOperatorYaml.ts",
         "platform/getGitopsAppProject.ts",
         "platform/getGitopsAppProjectMapping.ts",
         "platform/getGitopsApplications.ts",

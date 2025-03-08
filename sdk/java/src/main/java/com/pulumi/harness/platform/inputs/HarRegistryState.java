@@ -48,14 +48,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of registry.
+     * Configuration for the registry
      * 
      */
     @Import(name="configs")
     private @Nullable Output<List<HarRegistryConfigArgs>> configs;
 
     /**
-     * @return Type of registry.
+     * @return Configuration for the registry
      * 
      */
     public Optional<Output<List<HarRegistryConfigArgs>>> configs() {
@@ -93,14 +93,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the resource.
+     * Unique identifier of the registry
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource.
+     * @return Unique identifier of the registry
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -108,14 +108,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of package (DOCKER, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, etc.)
      * 
      */
     @Import(name="packageType")
     private @Nullable Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, MAVEN, etc.)
+     * @return Type of package (DOCKER, HELM, etc.)
      * 
      */
     public Optional<Output<String>> packageType() {
@@ -123,14 +123,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Parent Reference of the registry.
+     * Parent reference for the registry
      * 
      */
     @Import(name="parentRef")
     private @Nullable Output<String> parentRef;
 
     /**
-     * @return Parent Reference of the registry.
+     * @return Parent reference for the registry
      * 
      */
     public Optional<Output<String>> parentRef() {
@@ -138,14 +138,14 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reference of the space.
+     * Space reference for the registry
      * 
      */
     @Import(name="spaceRef")
     private @Nullable Output<String> spaceRef;
 
     /**
-     * @return Reference of the space.
+     * @return Space reference for the registry
      * 
      */
     public Optional<Output<String>> spaceRef() {
@@ -263,7 +263,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configs Type of registry.
+         * @param configs Configuration for the registry
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configs Type of registry.
+         * @param configs Configuration for the registry
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configs Type of registry.
+         * @param configs Configuration for the registry
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Unique identifier of the registry
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Unique identifier of the registry
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, MAVEN, etc.)
+         * @param packageType Type of package (DOCKER, HELM, etc.)
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, MAVEN, etc.)
+         * @param packageType Type of package (DOCKER, HELM, etc.)
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentRef Parent Reference of the registry.
+         * @param parentRef Parent reference for the registry
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentRef Parent Reference of the registry.
+         * @param parentRef Parent reference for the registry
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spaceRef Reference of the space.
+         * @param spaceRef Space reference for the registry
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spaceRef Reference of the space.
+         * @param spaceRef Space reference for the registry
          * 
          * @return builder
          * 

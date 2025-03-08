@@ -68,9 +68,9 @@ export class Template extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
      */
-    public readonly forceDelete!: pulumi.Output<string>;
+    public readonly forceDelete!: pulumi.Output<boolean>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
@@ -192,9 +192,9 @@ export interface TemplateState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
@@ -260,9 +260,9 @@ export interface TemplateArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
+     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
      */
-    forceDelete?: pulumi.Input<string>;
+    forceDelete?: pulumi.Input<boolean>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */

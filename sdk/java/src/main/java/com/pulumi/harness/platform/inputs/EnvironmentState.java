@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.EnvironmentGitDetailsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -48,17 +49,17 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable this flag for force deletion of environments
+     * When set to true, enables force deletion of environments.
      * 
      */
     @Import(name="forceDelete")
-    private @Nullable Output<String> forceDelete;
+    private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of environments
+     * @return When set to true, enables force deletion of environments.
      * 
      */
-    public Optional<Output<String>> forceDelete() {
+    public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
     }
 
@@ -261,23 +262,23 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of environments
+         * @param forceDelete When set to true, enables force deletion of environments.
          * 
          * @return builder
          * 
          */
-        public Builder forceDelete(@Nullable Output<String> forceDelete) {
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
             $.forceDelete = forceDelete;
             return this;
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of environments
+         * @param forceDelete When set to true, enables force deletion of environments.
          * 
          * @return builder
          * 
          */
-        public Builder forceDelete(String forceDelete) {
+        public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
         }
 

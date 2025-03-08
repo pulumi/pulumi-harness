@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.TerraformCloudConnectorArgs;
 import com.pulumi.harness.platform.inputs.TerraformCloudConnectorState;
 import com.pulumi.harness.platform.outputs.TerraformCloudConnectorCredentials;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -75,6 +76,20 @@ public class TerraformCloudConnector extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Enable this flag to execute on delegate (default: true).
+     * 
+     */
+    @Export(name="executeOnDelegate", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> executeOnDelegate;
+
+    /**
+     * @return Enable this flag to execute on delegate (default: true).
+     * 
+     */
+    public Output<Boolean> executeOnDelegate() {
+        return this.executeOnDelegate;
     }
     /**
      * Unique identifier of the resource.

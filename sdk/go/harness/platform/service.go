@@ -361,7 +361,7 @@ type Service struct {
 	// to fetch resoled service yaml
 	FetchResolvedYaml pulumi.BoolOutput `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
-	ForceDelete pulumi.StringOutput `pulumi:"forceDelete"`
+	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Contains parameters related to Git Experience for remote entities
 	GitDetails ServiceGitDetailsOutput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -423,7 +423,7 @@ type serviceState struct {
 	// to fetch resoled service yaml
 	FetchResolvedYaml *bool `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
-	ForceDelete *string `pulumi:"forceDelete"`
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains parameters related to Git Experience for remote entities
 	GitDetails *ServiceGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -453,7 +453,7 @@ type ServiceState struct {
 	// to fetch resoled service yaml
 	FetchResolvedYaml pulumi.BoolPtrInput
 	// Enable this flag for force deletion of service
-	ForceDelete pulumi.StringPtrInput
+	ForceDelete pulumi.BoolPtrInput
 	// Contains parameters related to Git Experience for remote entities
 	GitDetails ServiceGitDetailsPtrInput
 	// Unique identifier of the resource.
@@ -487,7 +487,7 @@ type serviceArgs struct {
 	// to fetch resoled service yaml
 	FetchResolvedYaml *bool `pulumi:"fetchResolvedYaml"`
 	// Enable this flag for force deletion of service
-	ForceDelete *string `pulumi:"forceDelete"`
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains parameters related to Git Experience for remote entities
 	GitDetails *ServiceGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
@@ -518,7 +518,7 @@ type ServiceArgs struct {
 	// to fetch resoled service yaml
 	FetchResolvedYaml pulumi.BoolPtrInput
 	// Enable this flag for force deletion of service
-	ForceDelete pulumi.StringPtrInput
+	ForceDelete pulumi.BoolPtrInput
 	// Contains parameters related to Git Experience for remote entities
 	GitDetails ServiceGitDetailsPtrInput
 	// Unique identifier of the resource.
@@ -640,8 +640,8 @@ func (o ServiceOutput) FetchResolvedYaml() pulumi.BoolOutput {
 }
 
 // Enable this flag for force deletion of service
-func (o ServiceOutput) ForceDelete() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ForceDelete }).(pulumi.StringOutput)
+func (o ServiceOutput) ForceDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
 
 // Contains parameters related to Git Experience for remote entities

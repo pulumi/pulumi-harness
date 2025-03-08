@@ -19,10 +19,22 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> AuthType { get; set; } = null!;
 
         /// <summary>
-        /// User password authentication details
+        /// Secret identifier for UserPassword auth type
         /// </summary>
-        [Input("userPassword")]
-        public Input<Inputs.HarRegistryConfigAuthUserPasswordGetArgs>? UserPassword { get; set; }
+        [Input("secretIdentifier")]
+        public Input<string>? SecretIdentifier { get; set; }
+
+        /// <summary>
+        /// Secret space path for UserPassword auth type
+        /// </summary>
+        [Input("secretSpacePath")]
+        public Input<string>? SecretSpacePath { get; set; }
+
+        /// <summary>
+        /// User name for UserPassword auth type
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
 
         public HarRegistryConfigAuthGetArgs()
         {

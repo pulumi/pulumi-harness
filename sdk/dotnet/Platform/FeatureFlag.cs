@@ -16,6 +16,12 @@ namespace Pulumi.Harness.Platform
     public partial class FeatureFlag : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether or not the flag is archived.
+        /// </summary>
+        [Output("archived")]
+        public Output<bool?> Archived { get; private set; } = null!;
+
+        /// <summary>
         /// Which of the variations to use when the flag is toggled to off state
         /// </summary>
         [Output("defaultOffVariation")]
@@ -141,6 +147,12 @@ namespace Pulumi.Harness.Platform
     public sealed class FeatureFlagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether or not the flag is archived.
+        /// </summary>
+        [Input("archived")]
+        public Input<bool>? Archived { get; set; }
+
+        /// <summary>
         /// Which of the variations to use when the flag is toggled to off state
         /// </summary>
         [Input("defaultOffVariation", required: true)]
@@ -244,6 +256,12 @@ namespace Pulumi.Harness.Platform
 
     public sealed class FeatureFlagState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not the flag is archived.
+        /// </summary>
+        [Input("archived")]
+        public Input<bool>? Archived { get; set; }
+
         /// <summary>
         /// Which of the variations to use when the flag is toggled to off state
         /// </summary>

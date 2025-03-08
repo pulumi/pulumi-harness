@@ -3592,6 +3592,25 @@ export namespace platform {
         namespace: string;
     }
 
+    export interface GetGitopsAgentOperatorYamlProxy {
+        /**
+         * HTTP proxy settings for the GitOps agent.
+         */
+        http?: string;
+        /**
+         * HTTPS proxy settings for the GitOps agent.
+         */
+        https?: string;
+        /**
+         * Password for the proxy.
+         */
+        password?: string;
+        /**
+         * Username for the proxy.
+         */
+        username?: string;
+    }
+
     export interface GetGitopsApplicationsApplication {
         /**
          * Metadata corresponding to the resources. This includes all the objects a user must create.
@@ -7203,19 +7222,27 @@ export namespace platform {
 
     export interface HarRegistryConfig {
         /**
-         * Authentication configuration for UPSTREAM type
+         * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous)
+         */
+        authType?: string;
+        /**
+         * Authentication configuration for UPSTREAM registry type
          */
         auths?: outputs.platform.HarRegistryConfigAuth[];
         /**
-         * Source of the upstream
+         * Source of the upstream (only for UPSTREAM type)
          */
         source?: string;
         /**
-         * Type of registry (VIRTUAL only supported)
+         * Type of registry (VIRTUAL or UPSTREAM)
          */
         type: string;
         /**
-         * URL of the upstream
+         * List of upstream proxies for VIRTUAL registry type
+         */
+        upstreamProxies?: string[];
+        /**
+         * URL of the upstream (required if type=UPSTREAM & package_type=HELM)
          */
         url?: string;
     }
@@ -7226,28 +7253,17 @@ export namespace platform {
          */
         authType: string;
         /**
-         * User password authentication details
-         */
-        userPassword?: outputs.platform.HarRegistryConfigAuthUserPassword;
-    }
-
-    export interface HarRegistryConfigAuthUserPassword {
-        /**
-         * Secret identifier
+         * Secret identifier for UserPassword auth type
          */
         secretIdentifier?: string;
         /**
-         * Secret space ID
-         */
-        secretSpaceId?: number;
-        /**
-         * Secret space path
+         * Secret space path for UserPassword auth type
          */
         secretSpacePath?: string;
         /**
-         * User name
+         * User name for UserPassword auth type
          */
-        userName: string;
+        userName?: string;
     }
 
     export interface HelmConnectorCredentials {

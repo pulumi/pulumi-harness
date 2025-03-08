@@ -438,14 +438,14 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Enable this flag for force deletion of service
      * 
      */
-    @Export(name="forceDelete", refs={String.class}, tree="[0]")
-    private Output<String> forceDelete;
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forceDelete;
 
     /**
      * @return Enable this flag for force deletion of service
      * 
      */
-    public Output<String> forceDelete() {
+    public Output<Boolean> forceDelete() {
         return this.forceDelete;
     }
     /**
