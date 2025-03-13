@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform
         ///     });
         /// 
         /// });
-        /// ```
+        /// ````
         /// </summary>
         public static Task<GetHarRegistryResult> InvokeAsync(GetHarRegistryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHarRegistryResult>("harness:platform/getHarRegistry:getHarRegistry", args ?? new GetHarRegistryArgs(), options.WithDefaults());
@@ -56,7 +56,7 @@ namespace Pulumi.Harness.Platform
         ///     });
         /// 
         /// });
-        /// ```
+        /// ````
         /// </summary>
         public static Output<GetHarRegistryResult> Invoke(GetHarRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHarRegistryResult>("harness:platform/getHarRegistry:getHarRegistry", args ?? new GetHarRegistryInvokeArgs(), options.WithDefaults());
@@ -81,7 +81,7 @@ namespace Pulumi.Harness.Platform
         ///     });
         /// 
         /// });
-        /// ```
+        /// ````
         /// </summary>
         public static Output<GetHarRegistryResult> Invoke(GetHarRegistryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetHarRegistryResult>("harness:platform/getHarRegistry:getHarRegistry", args ?? new GetHarRegistryInvokeArgs(), options.WithDefaults());

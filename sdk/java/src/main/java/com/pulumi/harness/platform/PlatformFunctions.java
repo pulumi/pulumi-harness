@@ -11783,7 +11783,7 @@ public final class PlatformFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;`
      * 
      */
     public static Output<GetHarRegistryResult> getHarRegistry(GetHarRegistryArgs args) {
@@ -11826,7 +11826,7 @@ public final class PlatformFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;`
      * 
      */
     public static CompletableFuture<GetHarRegistryResult> getHarRegistryPlain(GetHarRegistryPlainArgs args) {
@@ -11869,7 +11869,7 @@ public final class PlatformFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;`
      * 
      */
     public static Output<GetHarRegistryResult> getHarRegistry(GetHarRegistryArgs args, InvokeOptions options) {
@@ -11912,7 +11912,7 @@ public final class PlatformFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;`
      * 
      */
     public static Output<GetHarRegistryResult> getHarRegistry(GetHarRegistryArgs args, InvokeOutputOptions options) {
@@ -11955,7 +11955,7 @@ public final class PlatformFunctions {
      * }
      * }
      * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;`
      * 
      */
     public static CompletableFuture<GetHarRegistryResult> getHarRegistryPlain(GetHarRegistryPlainArgs args, InvokeOptions options) {
