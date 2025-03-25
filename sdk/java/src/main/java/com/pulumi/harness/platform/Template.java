@@ -246,14 +246,14 @@ public class Template extends com.pulumi.resources.CustomResource {
         return this.templateYaml;
     }
     /**
-     * Version Label for Template.
+     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Version Label for Template.
+     * @return Version Label for Template. This should match the `versionLabel` specified in the template YAML.
      * 
      */
     public Output<String> version() {

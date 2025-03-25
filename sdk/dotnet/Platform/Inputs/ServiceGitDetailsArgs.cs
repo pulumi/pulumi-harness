@@ -43,7 +43,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
-        /// If the repo is in harness code
+        /// If the repo is harness code
         /// </summary>
         [Input("isHarnessCodeRepo")]
         public Input<bool>? IsHarnessCodeRepo { get; set; }

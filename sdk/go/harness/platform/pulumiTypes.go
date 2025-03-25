@@ -22498,6 +22498,8 @@ type InputSetGitDetails struct {
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath *string `pulumi:"filePath"`
+	// If the repo is harness code.
+	IsHarnessCodeRepo *bool `pulumi:"isHarnessCodeRepo"`
 	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 	LastCommitId *string `pulumi:"lastCommitId"`
 	// Last object identifier (for Github). To be provided only when updating Pipeline.
@@ -22534,6 +22536,8 @@ type InputSetGitDetailsArgs struct {
 	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+	// If the repo is harness code.
+	IsHarnessCodeRepo pulumi.BoolPtrInput `pulumi:"isHarnessCodeRepo"`
 	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 	LastCommitId pulumi.StringPtrInput `pulumi:"lastCommitId"`
 	// Last object identifier (for Github). To be provided only when updating Pipeline.
@@ -22650,6 +22654,11 @@ func (o InputSetGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InputSetGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
+// If the repo is harness code.
+func (o InputSetGitDetailsOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InputSetGitDetails) *bool { return v.IsHarnessCodeRepo }).(pulumi.BoolPtrOutput)
+}
+
 // Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 func (o InputSetGitDetailsOutput) LastCommitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InputSetGitDetails) *string { return v.LastCommitId }).(pulumi.StringPtrOutput)
@@ -22752,6 +22761,16 @@ func (o InputSetGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
 		}
 		return v.FilePath
 	}).(pulumi.StringPtrOutput)
+}
+
+// If the repo is harness code.
+func (o InputSetGitDetailsPtrOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InputSetGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsHarnessCodeRepo
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -28904,6 +28923,8 @@ type PipelineGitDetails struct {
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath *string `pulumi:"filePath"`
+	// If the repo is harness code.
+	IsHarnessCodeRepo *bool `pulumi:"isHarnessCodeRepo"`
 	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 	LastCommitId *string `pulumi:"lastCommitId"`
 	// Last object identifier (for Github). To be provided only when updating Pipeline.
@@ -28936,6 +28957,8 @@ type PipelineGitDetailsArgs struct {
 	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+	// If the repo is harness code.
+	IsHarnessCodeRepo pulumi.BoolPtrInput `pulumi:"isHarnessCodeRepo"`
 	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 	LastCommitId pulumi.StringPtrInput `pulumi:"lastCommitId"`
 	// Last object identifier (for Github). To be provided only when updating Pipeline.
@@ -29048,6 +29071,11 @@ func (o PipelineGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
+// If the repo is harness code.
+func (o PipelineGitDetailsOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineGitDetails) *bool { return v.IsHarnessCodeRepo }).(pulumi.BoolPtrOutput)
+}
+
 // Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 func (o PipelineGitDetailsOutput) LastCommitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineGitDetails) *string { return v.LastCommitId }).(pulumi.StringPtrOutput)
@@ -29140,6 +29168,16 @@ func (o PipelineGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
 		}
 		return v.FilePath
 	}).(pulumi.StringPtrOutput)
+}
+
+// If the repo is harness code.
+func (o PipelineGitDetailsPtrOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PipelineGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsHarnessCodeRepo
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -32491,7 +32529,7 @@ type ServiceGitDetails struct {
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath *string `pulumi:"filePath"`
-	// If the repo is in harness code
+	// If the repo is harness code
 	IsHarnessCodeRepo *bool `pulumi:"isHarnessCodeRepo"`
 	// If the branch being created is new
 	IsNewBranch *bool `pulumi:"isNewBranch"`
@@ -32531,7 +32569,7 @@ type ServiceGitDetailsArgs struct {
 	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
-	// If the repo is in harness code
+	// If the repo is harness code
 	IsHarnessCodeRepo pulumi.BoolPtrInput `pulumi:"isHarnessCodeRepo"`
 	// If the branch being created is new
 	IsNewBranch pulumi.BoolPtrInput `pulumi:"isNewBranch"`
@@ -32651,7 +32689,7 @@ func (o ServiceGitDetailsOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
-// If the repo is in harness code
+// If the repo is harness code
 func (o ServiceGitDetailsOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceGitDetails) *bool { return v.IsHarnessCodeRepo }).(pulumi.BoolPtrOutput)
 }
@@ -32765,7 +32803,7 @@ func (o ServiceGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// If the repo is in harness code
+// If the repo is harness code
 func (o ServiceGitDetailsPtrOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceGitDetails) *bool {
 		if v == nil {

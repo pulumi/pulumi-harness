@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? FilePath;
         /// <summary>
-        /// If the repo is in harness code
+        /// If the repo is harness code
         /// </summary>
         public readonly bool? IsHarnessCodeRepo;
         /// <summary>

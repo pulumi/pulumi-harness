@@ -239,14 +239,14 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version Label for Template.
+     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Version Label for Template.
+     * @return Version Label for Template. This should match the `versionLabel` specified in the template YAML.
      * 
      */
     public Optional<Output<String>> version() {
@@ -604,7 +604,7 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Version Label for Template.
+         * @param version Version Label for Template. This should match the `versionLabel` specified in the template YAML.
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class TemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Version Label for Template.
+         * @param version Version Label for Template. This should match the `versionLabel` specified in the template YAML.
          * 
          * @return builder
          * 

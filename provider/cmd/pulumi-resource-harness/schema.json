@@ -4671,7 +4671,14 @@
                     "description": "Username of the server of the cluster.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bearerToken"
+                    ]
+                }
+            }
         },
         "harness:platform/GitOpsClusterRequestClusterConfigExecProviderConfig:GitOpsClusterRequestClusterConfigExecProviderConfig": {
             "properties": {
@@ -6261,6 +6268,10 @@
                     "type": "string",
                     "description": "File path of the Entity in the repository.\n"
                 },
+                "isHarnessCodeRepo": {
+                    "type": "boolean",
+                    "description": "If the repo is harness code.\n"
+                },
                 "lastCommitId": {
                     "type": "string",
                     "description": "Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.\n"
@@ -6295,6 +6306,7 @@
                         "commitMessage",
                         "connectorRef",
                         "filePath",
+                        "isHarnessCodeRepo",
                         "lastCommitId",
                         "lastObjectId",
                         "parentEntityConnectorRef",
@@ -7247,6 +7259,10 @@
                     "type": "string",
                     "description": "File path of the Entity in the repository.\n"
                 },
+                "isHarnessCodeRepo": {
+                    "type": "boolean",
+                    "description": "If the repo is harness code.\n"
+                },
                 "lastCommitId": {
                     "type": "string",
                     "description": "Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.\n"
@@ -7273,6 +7289,7 @@
                         "commitMessage",
                         "connectorRef",
                         "filePath",
+                        "isHarnessCodeRepo",
                         "lastCommitId",
                         "lastObjectId",
                         "repoName",
@@ -7794,7 +7811,7 @@
                 },
                 "isHarnessCodeRepo": {
                     "type": "boolean",
-                    "description": "If the repo is in harness code\n"
+                    "description": "If the repo is harness code\n"
                 },
                 "isNewBranch": {
                     "type": "boolean",
@@ -34432,7 +34449,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Version Label for Template.\n"
+                    "description": "Version Label for Template. This should match the `versionLabel` specified in the template YAML.\n"
                 }
             },
             "required": [
@@ -34507,7 +34524,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Version Label for Template.\n"
+                    "description": "Version Label for Template. This should match the `versionLabel` specified in the template YAML.\n"
                 }
             },
             "requiredInputs": [
@@ -34579,7 +34596,7 @@
                     },
                     "version": {
                         "type": "string",
-                        "description": "Version Label for Template.\n"
+                        "description": "Version Label for Template. This should match the `versionLabel` specified in the template YAML.\n"
                     }
                 },
                 "type": "object"

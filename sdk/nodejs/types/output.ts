@@ -6285,7 +6285,7 @@ export namespace platform {
         /**
          * Bearer authentication token the cluster.
          */
-        bearerToken?: string;
+        bearerToken: string;
         /**
          * Identifies the authentication method used to connect to the cluster.
          */
@@ -7442,6 +7442,10 @@ export namespace platform {
          */
         filePath: string;
         /**
+         * If the repo is harness code.
+         */
+        isHarnessCodeRepo: boolean;
+        /**
          * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
         lastCommitId: string;
@@ -8138,6 +8142,10 @@ export namespace platform {
          */
         filePath: string;
         /**
+         * If the repo is harness code.
+         */
+        isHarnessCodeRepo: boolean;
+        /**
          * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
         lastCommitId: string;
@@ -8536,7 +8544,7 @@ export namespace platform {
          */
         filePath: string;
         /**
-         * If the repo is in harness code
+         * If the repo is harness code
          */
         isHarnessCodeRepo: boolean;
         /**

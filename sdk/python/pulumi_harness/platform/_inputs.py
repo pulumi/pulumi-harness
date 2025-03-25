@@ -13170,6 +13170,10 @@ if not MYPY:
         """
         File path of the Entity in the repository.
         """
+        is_harness_code_repo: NotRequired[pulumi.Input[bool]]
+        """
+        If the repo is harness code.
+        """
         last_commit_id: NotRequired[pulumi.Input[str]]
         """
         Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -13205,6 +13209,7 @@ class InputSetGitDetailsArgs:
                  commit_message: Optional[pulumi.Input[str]] = None,
                  connector_ref: Optional[pulumi.Input[str]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
+                 is_harness_code_repo: Optional[pulumi.Input[bool]] = None,
                  last_commit_id: Optional[pulumi.Input[str]] = None,
                  last_object_id: Optional[pulumi.Input[str]] = None,
                  parent_entity_connector_ref: Optional[pulumi.Input[str]] = None,
@@ -13217,6 +13222,7 @@ class InputSetGitDetailsArgs:
         :param pulumi.Input[str] commit_message: Commit message used for the merge commit.
         :param pulumi.Input[str] connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] file_path: File path of the Entity in the repository.
+        :param pulumi.Input[bool] is_harness_code_repo: If the repo is harness code.
         :param pulumi.Input[str] last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
         :param pulumi.Input[str] last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
         :param pulumi.Input[str] parent_entity_connector_ref: Connector reference for Parent Entity (Pipeline). To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -13234,6 +13240,8 @@ class InputSetGitDetailsArgs:
             pulumi.set(__self__, "connector_ref", connector_ref)
         if file_path is not None:
             pulumi.set(__self__, "file_path", file_path)
+        if is_harness_code_repo is not None:
+            pulumi.set(__self__, "is_harness_code_repo", is_harness_code_repo)
         if last_commit_id is not None:
             pulumi.set(__self__, "last_commit_id", last_commit_id)
         if last_object_id is not None:
@@ -13306,6 +13314,18 @@ class InputSetGitDetailsArgs:
     @file_path.setter
     def file_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="isHarnessCodeRepo")
+    def is_harness_code_repo(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the repo is harness code.
+        """
+        return pulumi.get(self, "is_harness_code_repo")
+
+    @is_harness_code_repo.setter
+    def is_harness_code_repo(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_harness_code_repo", value)
 
     @property
     @pulumi.getter(name="lastCommitId")
@@ -16503,6 +16523,10 @@ if not MYPY:
         """
         File path of the Entity in the repository.
         """
+        is_harness_code_repo: NotRequired[pulumi.Input[bool]]
+        """
+        If the repo is harness code.
+        """
         last_commit_id: NotRequired[pulumi.Input[str]]
         """
         Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -16530,6 +16554,7 @@ class PipelineGitDetailsArgs:
                  commit_message: Optional[pulumi.Input[str]] = None,
                  connector_ref: Optional[pulumi.Input[str]] = None,
                  file_path: Optional[pulumi.Input[str]] = None,
+                 is_harness_code_repo: Optional[pulumi.Input[bool]] = None,
                  last_commit_id: Optional[pulumi.Input[str]] = None,
                  last_object_id: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
@@ -16540,6 +16565,7 @@ class PipelineGitDetailsArgs:
         :param pulumi.Input[str] commit_message: Commit message used for the merge commit.
         :param pulumi.Input[str] connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] file_path: File path of the Entity in the repository.
+        :param pulumi.Input[bool] is_harness_code_repo: If the repo is harness code.
         :param pulumi.Input[str] last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
         :param pulumi.Input[str] last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
         :param pulumi.Input[str] repo_name: Name of the repository.
@@ -16555,6 +16581,8 @@ class PipelineGitDetailsArgs:
             pulumi.set(__self__, "connector_ref", connector_ref)
         if file_path is not None:
             pulumi.set(__self__, "file_path", file_path)
+        if is_harness_code_repo is not None:
+            pulumi.set(__self__, "is_harness_code_repo", is_harness_code_repo)
         if last_commit_id is not None:
             pulumi.set(__self__, "last_commit_id", last_commit_id)
         if last_object_id is not None:
@@ -16623,6 +16651,18 @@ class PipelineGitDetailsArgs:
     @file_path.setter
     def file_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_path", value)
+
+    @property
+    @pulumi.getter(name="isHarnessCodeRepo")
+    def is_harness_code_repo(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the repo is harness code.
+        """
+        return pulumi.get(self, "is_harness_code_repo")
+
+    @is_harness_code_repo.setter
+    def is_harness_code_repo(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_harness_code_repo", value)
 
     @property
     @pulumi.getter(name="lastCommitId")
@@ -18419,7 +18459,7 @@ if not MYPY:
         """
         is_harness_code_repo: NotRequired[pulumi.Input[bool]]
         """
-        If the repo is in harness code
+        If the repo is harness code
         """
         is_new_branch: NotRequired[pulumi.Input[bool]]
         """
@@ -18474,7 +18514,7 @@ class ServiceGitDetailsArgs:
         :param pulumi.Input[str] commit_message: Commit message used for the merge commit.
         :param pulumi.Input[str] connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[str] file_path: File path of the Entity in the repository.
-        :param pulumi.Input[bool] is_harness_code_repo: If the repo is in harness code
+        :param pulumi.Input[bool] is_harness_code_repo: If the repo is harness code
         :param pulumi.Input[bool] is_new_branch: If the branch being created is new
         :param pulumi.Input[str] last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
         :param pulumi.Input[str] last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
@@ -18574,7 +18614,7 @@ class ServiceGitDetailsArgs:
     @pulumi.getter(name="isHarnessCodeRepo")
     def is_harness_code_repo(self) -> Optional[pulumi.Input[bool]]:
         """
-        If the repo is in harness code
+        If the repo is harness code
         """
         return pulumi.get(self, "is_harness_code_repo")
 

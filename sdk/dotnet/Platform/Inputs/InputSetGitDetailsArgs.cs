@@ -43,6 +43,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
+        /// If the repo is harness code.
+        /// </summary>
+        [Input("isHarnessCodeRepo")]
+        public Input<bool>? IsHarnessCodeRepo { get; set; }
+
+        /// <summary>
         /// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
         /// </summary>
         [Input("lastCommitId")]

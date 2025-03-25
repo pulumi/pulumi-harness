@@ -116,7 +116,7 @@ export class Template extends pulumi.CustomResource {
      */
     public readonly templateYaml!: pulumi.Output<string>;
     /**
-     * Version Label for Template.
+     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -240,7 +240,7 @@ export interface TemplateState {
      */
     templateYaml?: pulumi.Input<string>;
     /**
-     * Version Label for Template.
+     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
      */
     version?: pulumi.Input<string>;
 }
@@ -308,7 +308,7 @@ export interface TemplateArgs {
      */
     templateYaml?: pulumi.Input<string>;
     /**
-     * Version Label for Template.
+     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
      */
     version: pulumi.Input<string>;
 }
