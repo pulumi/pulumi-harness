@@ -260,10 +260,6 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
             ])
         ```
 
-        ## Import
-
-        # 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict']]]] clusters: list of cluster identifiers and names
@@ -318,10 +314,6 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
                 },
             ])
         ```
-
-        ## Import
-
-        # 
 
         :param str resource_name: The name of the resource.
         :param EnvironmentClustersMappingArgs args: The arguments to use to populate this resource's properties.
