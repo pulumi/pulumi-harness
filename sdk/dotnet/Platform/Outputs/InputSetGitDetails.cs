@@ -34,6 +34,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? FilePath;
         /// <summary>
+        /// If the repo is harness code.
+        /// </summary>
+        public readonly bool? IsHarnessCodeRepo;
+        /// <summary>
         /// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
         /// </summary>
         public readonly string? LastCommitId;
@@ -70,6 +74,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? filePath,
 
+            bool? isHarnessCodeRepo,
+
             string? lastCommitId,
 
             string? lastObjectId,
@@ -87,6 +93,7 @@ namespace Pulumi.Harness.Platform.Outputs
             CommitMessage = commitMessage;
             ConnectorRef = connectorRef;
             FilePath = filePath;
+            IsHarnessCodeRepo = isHarnessCodeRepo;
             LastCommitId = lastCommitId;
             LastObjectId = lastObjectId;
             ParentEntityConnectorRef = parentEntityConnectorRef;

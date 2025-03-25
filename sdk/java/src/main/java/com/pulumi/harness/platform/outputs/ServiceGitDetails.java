@@ -38,7 +38,7 @@ public final class ServiceGitDetails {
      */
     private @Nullable String filePath;
     /**
-     * @return If the repo is in harness code
+     * @return If the repo is harness code
      * 
      */
     private @Nullable Boolean isHarnessCodeRepo;
@@ -115,7 +115,7 @@ public final class ServiceGitDetails {
         return Optional.ofNullable(this.filePath);
     }
     /**
-     * @return If the repo is in harness code
+     * @return If the repo is harness code
      * 
      */
     public Optional<Boolean> isHarnessCodeRepo() {

@@ -92,14 +92,14 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If the repo is in harness code
+     * If the repo is harness code
      * 
      */
     @Import(name="isHarnessCodeRepo")
     private @Nullable Output<Boolean> isHarnessCodeRepo;
 
     /**
-     * @return If the repo is in harness code
+     * @return If the repo is harness code
      * 
      */
     public Optional<Output<Boolean>> isHarnessCodeRepo() {
@@ -353,7 +353,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isHarnessCodeRepo If the repo is in harness code
+         * @param isHarnessCodeRepo If the repo is harness code
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class ServiceGitDetailsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isHarnessCodeRepo If the repo is in harness code
+         * @param isHarnessCodeRepo If the repo is harness code
          * 
          * @return builder
          * 

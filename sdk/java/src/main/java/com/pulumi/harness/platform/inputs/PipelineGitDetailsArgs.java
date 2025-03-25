@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -91,6 +92,21 @@ public final class PipelineGitDetailsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * If the repo is harness code.
+     * 
+     */
+    @Import(name="isHarnessCodeRepo")
+    private @Nullable Output<Boolean> isHarnessCodeRepo;
+
+    /**
+     * @return If the repo is harness code.
+     * 
+     */
+    public Optional<Output<Boolean>> isHarnessCodeRepo() {
+        return Optional.ofNullable(this.isHarnessCodeRepo);
+    }
+
+    /**
      * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
      */
@@ -158,6 +174,7 @@ public final class PipelineGitDetailsArgs extends com.pulumi.resources.ResourceA
         this.commitMessage = $.commitMessage;
         this.connectorRef = $.connectorRef;
         this.filePath = $.filePath;
+        this.isHarnessCodeRepo = $.isHarnessCodeRepo;
         this.lastCommitId = $.lastCommitId;
         this.lastObjectId = $.lastObjectId;
         this.repoName = $.repoName;
@@ -285,6 +302,27 @@ public final class PipelineGitDetailsArgs extends com.pulumi.resources.ResourceA
          */
         public Builder filePath(String filePath) {
             return filePath(Output.of(filePath));
+        }
+
+        /**
+         * @param isHarnessCodeRepo If the repo is harness code.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isHarnessCodeRepo(@Nullable Output<Boolean> isHarnessCodeRepo) {
+            $.isHarnessCodeRepo = isHarnessCodeRepo;
+            return this;
+        }
+
+        /**
+         * @param isHarnessCodeRepo If the repo is harness code.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isHarnessCodeRepo(Boolean isHarnessCodeRepo) {
+            return isHarnessCodeRepo(Output.of(isHarnessCodeRepo));
         }
 
         /**

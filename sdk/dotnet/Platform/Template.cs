@@ -120,7 +120,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> TemplateYaml { get; private set; } = null!;
 
         /// <summary>
-        /// Version Label for Template.
+        /// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? TemplateYaml { get; set; }
 
         /// <summary>
-        /// Version Label for Template.
+        /// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -367,7 +367,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? TemplateYaml { get; set; }
 
         /// <summary>
-        /// Version Label for Template.
+        /// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

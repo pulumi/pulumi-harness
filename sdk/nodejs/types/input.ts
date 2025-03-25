@@ -5868,6 +5868,10 @@ export namespace platform {
          */
         filePath?: pulumi.Input<string>;
         /**
+         * If the repo is harness code.
+         */
+        isHarnessCodeRepo?: pulumi.Input<boolean>;
+        /**
          * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
         lastCommitId?: pulumi.Input<string>;
@@ -6564,6 +6568,10 @@ export namespace platform {
          */
         filePath?: pulumi.Input<string>;
         /**
+         * If the repo is harness code.
+         */
+        isHarnessCodeRepo?: pulumi.Input<boolean>;
+        /**
          * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
         lastCommitId?: pulumi.Input<string>;
@@ -6962,7 +6970,7 @@ export namespace platform {
          */
         filePath?: pulumi.Input<string>;
         /**
-         * If the repo is in harness code
+         * If the repo is harness code
          */
         isHarnessCodeRepo?: pulumi.Input<boolean>;
         /**

@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,6 +37,11 @@ public final class InputSetGitDetails {
      * 
      */
     private @Nullable String filePath;
+    /**
+     * @return If the repo is harness code.
+     * 
+     */
+    private @Nullable Boolean isHarnessCodeRepo;
     /**
      * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
@@ -104,6 +110,13 @@ public final class InputSetGitDetails {
         return Optional.ofNullable(this.filePath);
     }
     /**
+     * @return If the repo is harness code.
+     * 
+     */
+    public Optional<Boolean> isHarnessCodeRepo() {
+        return Optional.ofNullable(this.isHarnessCodeRepo);
+    }
+    /**
      * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
      */
@@ -160,6 +173,7 @@ public final class InputSetGitDetails {
         private @Nullable String commitMessage;
         private @Nullable String connectorRef;
         private @Nullable String filePath;
+        private @Nullable Boolean isHarnessCodeRepo;
         private @Nullable String lastCommitId;
         private @Nullable String lastObjectId;
         private @Nullable String parentEntityConnectorRef;
@@ -174,6 +188,7 @@ public final class InputSetGitDetails {
     	      this.commitMessage = defaults.commitMessage;
     	      this.connectorRef = defaults.connectorRef;
     	      this.filePath = defaults.filePath;
+    	      this.isHarnessCodeRepo = defaults.isHarnessCodeRepo;
     	      this.lastCommitId = defaults.lastCommitId;
     	      this.lastObjectId = defaults.lastObjectId;
     	      this.parentEntityConnectorRef = defaults.parentEntityConnectorRef;
@@ -210,6 +225,12 @@ public final class InputSetGitDetails {
         public Builder filePath(@Nullable String filePath) {
 
             this.filePath = filePath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isHarnessCodeRepo(@Nullable Boolean isHarnessCodeRepo) {
+
+            this.isHarnessCodeRepo = isHarnessCodeRepo;
             return this;
         }
         @CustomType.Setter
@@ -255,6 +276,7 @@ public final class InputSetGitDetails {
             _resultValue.commitMessage = commitMessage;
             _resultValue.connectorRef = connectorRef;
             _resultValue.filePath = filePath;
+            _resultValue.isHarnessCodeRepo = isHarnessCodeRepo;
             _resultValue.lastCommitId = lastCommitId;
             _resultValue.lastObjectId = lastObjectId;
             _resultValue.parentEntityConnectorRef = parentEntityConnectorRef;

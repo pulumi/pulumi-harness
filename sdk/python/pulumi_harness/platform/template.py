@@ -39,7 +39,7 @@ class TemplateArgs:
         """
         The set of arguments for constructing a Template resource.
         :param pulumi.Input[str] identifier: Unique identifier of the resource
-        :param pulumi.Input[str] version: Version Label for Template.
+        :param pulumi.Input[str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         :param pulumi.Input[str] comments: Specify comment with respect to changes.
         :param pulumi.Input[str] description: Description of the entity. Description field is deprecated
         :param pulumi.Input[bool] force_delete: When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
@@ -102,7 +102,7 @@ class TemplateArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Version Label for Template.
+        Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         """
         return pulumi.get(self, "version")
 
@@ -302,7 +302,7 @@ class _TemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input['TemplateTemplateImportRequestArgs'] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        :param pulumi.Input[str] version: Version Label for Template.
+        :param pulumi.Input[str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         """
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
@@ -511,7 +511,7 @@ class _TemplateState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Version Label for Template.
+        Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         """
         return pulumi.get(self, "version")
 
@@ -580,7 +580,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        :param pulumi.Input[str] version: Version Label for Template.
+        :param pulumi.Input[str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         """
         ...
     @overload
@@ -715,7 +715,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
-        :param pulumi.Input[str] version: Version Label for Template.
+        :param pulumi.Input[str] version: Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -855,7 +855,7 @@ class Template(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Version Label for Template.
+        Version Label for Template. This should match the `versionLabel` specified in the template YAML.
         """
         return pulumi.get(self, "version")
 

@@ -66,7 +66,7 @@ type Template struct {
 	TemplateImportRequest TemplateTemplateImportRequestPtrOutput `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringOutput `pulumi:"templateYaml"`
-	// Version Label for Template.
+	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -136,7 +136,7 @@ type templateState struct {
 	TemplateImportRequest *TemplateTemplateImportRequest `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml *string `pulumi:"templateYaml"`
-	// Version Label for Template.
+	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
 	Version *string `pulumi:"version"`
 }
 
@@ -171,7 +171,7 @@ type TemplateState struct {
 	TemplateImportRequest TemplateTemplateImportRequestPtrInput
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringPtrInput
-	// Version Label for Template.
+	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
 	Version pulumi.StringPtrInput
 }
 
@@ -210,7 +210,7 @@ type templateArgs struct {
 	TemplateImportRequest *TemplateTemplateImportRequest `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml *string `pulumi:"templateYaml"`
-	// Version Label for Template.
+	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
 	Version string `pulumi:"version"`
 }
 
@@ -246,7 +246,7 @@ type TemplateArgs struct {
 	TemplateImportRequest TemplateTemplateImportRequestPtrInput
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringPtrInput
-	// Version Label for Template.
+	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
 	Version pulumi.StringInput
 }
 
@@ -409,7 +409,7 @@ func (o TemplateOutput) TemplateYaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateYaml }).(pulumi.StringOutput)
 }
 
-// Version Label for Template.
+// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
 func (o TemplateOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
