@@ -1,11 +1,11 @@
 module github.com/harness/terraform-provider-harness/shim
 
-go 1.22.3
+go 1.23.0
 
 toolchain go1.23.4
 
 require (
-	github.com/harness/terraform-provider-harness v0.36.2
+	github.com/harness/terraform-provider-harness v0.37.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/pulumi/pulumi-harness/provider v0.0.0-20221227064623-0d00513c0628
 )
@@ -21,7 +21,7 @@ require (
 	github.com/cloudflare/circl v1.3.9 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/google/go-cmp v0.6.0 // indirect
+	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/harness/harness-go-sdk v0.4.40 // indirect
 	github.com/harness/harness-openapi-go-client v0.0.25 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -60,17 +60,17 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/zclconf/go-cty v1.16.2 // indirect
-	golang.org/x/crypto v0.33.0 // indirect
+	golang.org/x/crypto v0.36.0 // indirect
 	golang.org/x/mod v0.22.0 // indirect
-	golang.org/x/net v0.34.0 // indirect
-	golang.org/x/oauth2 v0.23.0 // indirect
-	golang.org/x/sync v0.11.0 // indirect
-	golang.org/x/sys v0.30.0 // indirect
-	golang.org/x/text v0.22.0 // indirect
+	golang.org/x/net v0.37.0 // indirect
+	golang.org/x/oauth2 v0.25.0 // indirect
+	golang.org/x/sync v0.12.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 	golang.org/x/tools v0.23.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241015192408-796eee8c2d53 // indirect
-	google.golang.org/grpc v1.69.4 // indirect
-	google.golang.org/protobuf v1.36.3 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250227231956-55c901821b1e // indirect
+	google.golang.org/grpc v1.71.0 // indirect
+	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
