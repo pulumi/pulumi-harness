@@ -67,10 +67,6 @@ namespace Pulumi.Harness.Platform
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// # 
     /// </summary>
     [HarnessResourceType("harness:platform/environmentClustersMapping:EnvironmentClustersMapping")]
     public partial class EnvironmentClustersMapping : global::Pulumi.CustomResource

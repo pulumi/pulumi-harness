@@ -3894,7 +3894,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = PlatformFunctions.getCurrentAccount();
+     *         final var current = PlatformFunctions.getCurrentAccount(GetCurrentAccountArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3934,7 +3935,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = PlatformFunctions.getCurrentAccount();
+     *         final var current = PlatformFunctions.getCurrentAccount(GetCurrentAccountArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3974,7 +3976,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = PlatformFunctions.getCurrentAccount();
+     *         final var current = PlatformFunctions.getCurrentAccount(GetCurrentAccountArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4014,7 +4017,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = PlatformFunctions.getCurrentAccount();
+     *         final var current = PlatformFunctions.getCurrentAccount(GetCurrentAccountArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4054,7 +4058,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = PlatformFunctions.getCurrentAccount();
+     *         final var current = PlatformFunctions.getCurrentAccount(GetCurrentAccountArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4094,7 +4099,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = PlatformFunctions.getCurrentAccount();
+     *         final var current = PlatformFunctions.getCurrentAccount(GetCurrentAccountArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4134,7 +4140,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = PlatformFunctions.getCurrentAccount();
+     *         final var current = PlatformFunctions.getCurrentAccount(GetCurrentAccountArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4856,40 +4863,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
-     *             .identifier("test_token")
-     *             .name("test token")
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4902,40 +4875,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
-     *             .identifier("test_token")
-     *             .name("test token")
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4948,40 +4887,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
-     *             .identifier("test_token")
-     *             .name("test token")
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4994,40 +4899,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
-     *             .identifier("test_token")
-     *             .name("test token")
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5040,40 +4911,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
-     *             .identifier("test_token")
-     *             .name("test token")
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6606,7 +6443,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getEnvironmentList();
+     *         final var example = PlatformFunctions.getEnvironmentList(GetEnvironmentListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -6719,7 +6557,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getEnvironmentList();
+     *         final var example = PlatformFunctions.getEnvironmentList(GetEnvironmentListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -6832,7 +6671,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getEnvironmentList();
+     *         final var example = PlatformFunctions.getEnvironmentList(GetEnvironmentListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -6945,7 +6785,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getEnvironmentList();
+     *         final var example = PlatformFunctions.getEnvironmentList(GetEnvironmentListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7058,7 +6899,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getEnvironmentList();
+     *         final var example = PlatformFunctions.getEnvironmentList(GetEnvironmentListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7171,7 +7013,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getEnvironmentList();
+     *         final var example = PlatformFunctions.getEnvironmentList(GetEnvironmentListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -7284,7 +7127,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getEnvironmentList();
+     *         final var example = PlatformFunctions.getEnvironmentList(GetEnvironmentListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -9677,40 +9521,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .namespace("namespace")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9723,40 +9533,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .namespace("namespace")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9769,40 +9545,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .namespace("namespace")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9815,40 +9557,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .namespace("namespace")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9861,40 +9569,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAgentOperatorYamlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAgentOperatorYaml(GetGitopsAgentOperatorYamlArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .namespace("namespace")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10112,40 +9786,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("organization_id")
-     *             .projectId("project_id")
-     *             .agentId("agent_id")
-     *             .argoProjName("argo_proj_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10158,40 +9798,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("organization_id")
-     *             .projectId("project_id")
-     *             .agentId("agent_id")
-     *             .argoProjName("argo_proj_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10204,40 +9810,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("organization_id")
-     *             .projectId("project_id")
-     *             .agentId("agent_id")
-     *             .argoProjName("argo_proj_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10250,40 +9822,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("organization_id")
-     *             .projectId("project_id")
-     *             .agentId("agent_id")
-     *             .argoProjName("argo_proj_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10296,40 +9834,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsAppProjectMappingArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsAppProjectMapping(GetGitopsAppProjectMappingArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("organization_id")
-     *             .projectId("project_id")
-     *             .agentId("agent_id")
-     *             .argoProjName("argo_proj_name")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10342,41 +9846,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsApplicationsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsApplications(GetGitopsApplicationsArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .repoId("repo_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10389,41 +9858,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsApplicationsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsApplications(GetGitopsApplicationsArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .repoId("repo_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10436,41 +9870,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsApplicationsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsApplications(GetGitopsApplicationsArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .repoId("repo_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10483,41 +9882,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsApplicationsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsApplications(GetGitopsApplicationsArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .repoId("repo_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10530,41 +9894,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsApplicationsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getGitopsApplications(GetGitopsApplicationsArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .repoId("repo_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11027,40 +10356,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getGitopsRepoCert(GetGitopsRepoCertArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11073,40 +10368,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getGitopsRepoCert(GetGitopsRepoCertArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11119,40 +10380,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getGitopsRepoCert(GetGitopsRepoCertArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11165,40 +10392,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getGitopsRepoCert(GetGitopsRepoCertArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11211,40 +10404,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getGitopsRepoCert(GetGitopsRepoCertArgs.builder()
-     *             .identifier("identifier")
-     *             .accountId("account_id")
-     *             .projectId("project_id")
-     *             .orgId("org_id")
-     *             .agentId("agent_id")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12212,38 +11371,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
-     *             .identifier("identifier")
-     *             .name("name")
-     *             .system("system")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12256,38 +11383,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
-     *             .identifier("identifier")
-     *             .name("name")
-     *             .system("system")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12300,38 +11395,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
-     *             .identifier("identifier")
-     *             .name("name")
-     *             .system("system")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12344,38 +11407,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
-     *             .identifier("identifier")
-     *             .name("name")
-     *             .system("system")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -12388,38 +11419,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraModule(GetInfraModuleArgs.builder()
-     *             .identifier("identifier")
-     *             .name("name")
-     *             .system("system")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -13982,39 +12981,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getMonitoredService(GetMonitoredServiceArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14027,39 +12993,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getMonitoredService(GetMonitoredServiceArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14072,39 +13005,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getMonitoredService(GetMonitoredServiceArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14117,39 +13017,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getMonitoredService(GetMonitoredServiceArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -14162,39 +13029,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetMonitoredServiceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getMonitoredService(GetMonitoredServiceArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -19842,7 +18676,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getServiceList();
+     *         final var example = PlatformFunctions.getServiceList(GetServiceListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -19955,7 +18790,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getServiceList();
+     *         final var example = PlatformFunctions.getServiceList(GetServiceListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20068,7 +18904,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getServiceList();
+     *         final var example = PlatformFunctions.getServiceList(GetServiceListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20181,7 +19018,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getServiceList();
+     *         final var example = PlatformFunctions.getServiceList(GetServiceListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20294,7 +19132,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getServiceList();
+     *         final var example = PlatformFunctions.getServiceList(GetServiceListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20407,7 +19246,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getServiceList();
+     *         final var example = PlatformFunctions.getServiceList(GetServiceListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20520,7 +19360,8 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getServiceList();
+     *         final var example = PlatformFunctions.getServiceList(GetServiceListArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20968,39 +19809,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getSlo(GetSloArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -21013,39 +19821,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getSlo(GetSloArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -21058,39 +19833,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getSlo(GetSloArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -21103,39 +19845,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getSlo(GetSloArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -21148,39 +19857,6 @@ public final class PlatformFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.harness.platform.PlatformFunctions;
-     * import com.pulumi.harness.platform.inputs.GetSloArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = PlatformFunctions.getSlo(GetSloArgs.builder()
-     *             .accountId("account_id")
-     *             .orgId("org_id")
-     *             .projectId("project_id")
-     *             .identifier("identifier")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

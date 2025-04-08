@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *                     "two")
  *                 .sloTarget(SloRequestSloTargetArgs.builder()
  *                     .type("Calender")
- *                     .sloTargetPercentage(10)
+ *                     .sloTargetPercentage(10.0)
  *                     .spec(serializeJson(
  *                         jsonObject(
  *                             jsonProperty("type", "Monthly"),

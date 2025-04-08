@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.tls.privateKey;
- * import com.pulumi.tls.PrivateKeyArgs;
+ * import com.pulumi.tls.privateKeyArgs;
  * import com.pulumi.harness.HarnessFunctions;
  * import com.pulumi.harness.inputs.GetSecretManagerArgs;
  * import com.pulumi.harness.EncryptedText;
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *         var mySecret = new EncryptedText("mySecret", EncryptedTextArgs.builder()
  *             .name("my_secret")
  *             .value(harnessDeployKey.privateKeyPem())
- *             .secretManagerId(secretManager.applyValue(getSecretManagerResult -> getSecretManagerResult.id()))
+ *             .secretManagerId(secretManager.id())
  *             .build());
  * 
  *         var sshCreds = new SshCredential("sshCreds", SshCredentialArgs.builder()

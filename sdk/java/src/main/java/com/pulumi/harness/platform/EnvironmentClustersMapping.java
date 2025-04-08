@@ -84,10 +84,6 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * # 
- * 
  */
 @ResourceType(type="harness:platform/environmentClustersMapping:EnvironmentClustersMapping")
 public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResource {
