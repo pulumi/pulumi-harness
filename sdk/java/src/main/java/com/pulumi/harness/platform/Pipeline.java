@@ -65,7 +65,8 @@ import javax.annotation.Nullable;
  *                 .storeType("REMOTE")
  *                 .repoName("repoName")
  *                 .build())
- *             .tags()
+ *             .tags(Map.ofEntries(
+ *             ))
  *             .yaml("""
  * pipeline:
  *     name: name

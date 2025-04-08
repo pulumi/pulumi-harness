@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  *             .serviceId("serviceIdentifier")
  *             .infraId("infraIdentifier")
  *             .type("INFRA_SERVICE_OVERRIDE")
- *             .importFromGit("true")
+ *             .importFromGit(true)
  *             .gitDetails(ServiceOverridesV2GitDetailsArgs.builder()
  *                 .storeType("REMOTE")
  *                 .connectorRef("connector_ref")

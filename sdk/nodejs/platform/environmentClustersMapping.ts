@@ -48,10 +48,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- *
- * ## Import
- *
- * # 
  */
 export class EnvironmentClustersMapping extends pulumi.CustomResource {
     /**
