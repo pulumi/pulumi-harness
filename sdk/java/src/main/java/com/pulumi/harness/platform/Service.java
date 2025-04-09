@@ -367,7 +367,7 @@ import javax.annotation.Nullable;
  *         var example = new Service("example", ServiceArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
- *             .importFromGit("true")
+ *             .importFromGit(true)
  *             .gitDetails(ServiceGitDetailsArgs.builder()
  *                 .storeType("REMOTE")
  *                 .connectorRef("connector_ref")

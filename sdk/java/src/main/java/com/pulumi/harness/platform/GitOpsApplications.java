@@ -49,7 +49,8 @@ import javax.annotation.Nullable;
  *         var example = new GitOpsApplications("example", GitOpsApplicationsArgs.builder()
  *             .applications(GitOpsApplicationsApplicationArgs.builder()
  *                 .metadatas(GitOpsApplicationsApplicationMetadataArgs.builder()
- *                     .annotations()
+ *                     .annotations(Map.ofEntries(
+ *                     ))
  *                     .labels(Map.ofEntries(
  *                         Map.entry("harness.io/serviceRef", "service_id"),
  *                         Map.entry("harness.io/envRef", "env_id")

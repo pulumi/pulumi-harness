@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .keyRing("key_ring")
  *             .keyName("key_name")
  *             .manual(ConnectorGcpKmsManualArgs.builder()
- *                 .credentials(test.id().applyValue(id -> String.format("account.%s", id)))
+ *                 .credentials(test.id().applyValue(_id -> String.format("account.%s", _id)))
  *                 .delegateSelectors("harness-delegate")
  *                 .build())
  *             .build());
