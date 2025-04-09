@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testDelegateApproval = new DelegateApproval("testDelegateApproval", DelegateApprovalArgs.builder()
- *             .delegateId(test.applyValue(getDelegateResult -> getDelegateResult.id()))
+ *             .delegateId(test.id())
  *             .approve(true)
  *             .build());
  * 

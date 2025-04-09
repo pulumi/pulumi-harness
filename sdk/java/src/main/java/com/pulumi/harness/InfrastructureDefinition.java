@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  *             .envId(devEnvironment.id())
  *             .cloudProviderType("CUSTOM")
  *             .deploymentType("CUSTOM")
- *             .deploymentTemplateUri(exampleYaml.name().applyValue(name -> String.format("Example Folder/%s", name)))
+ *             .deploymentTemplateUri(exampleYaml.name().applyValue(_name -> String.format("Example Folder/%s", _name)))
  *             .custom(InfrastructureDefinitionCustomArgs.builder()
  *                 .deploymentTypeTemplateVersion("1")
  *                 .variables(                

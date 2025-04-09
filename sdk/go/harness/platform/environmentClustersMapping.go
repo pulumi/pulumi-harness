@@ -73,10 +73,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// #
 type EnvironmentClustersMapping struct {
 	pulumi.CustomResourceState
 

@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  *                 .repoName("repo_name")
  *                 .filePath("file_path")
  *                 .branch("branch")
- *                 .importFromGit("true")
+ *                 .importFromGit(true)
  *                 .build())
  *             .build());
  * 
