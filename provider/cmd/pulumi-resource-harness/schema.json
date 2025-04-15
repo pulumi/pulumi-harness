@@ -3285,6 +3285,27 @@
                 "bearerTokenRef"
             ]
         },
+        "harness:platform/DbSchemaChangelogScript:DbSchemaChangelogScript": {
+            "properties": {
+                "command": {
+                    "type": "string",
+                    "description": "Script to clone changeSets\n"
+                },
+                "image": {
+                    "type": "string",
+                    "description": "The fully-qualified name (FQN) of the image\n"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Path to changeLog file\n"
+                },
+                "shell": {
+                    "type": "string",
+                    "description": "Type of the shell. For example Sh or Bash\n"
+                }
+            },
+            "type": "object"
+        },
         "harness:platform/DbSchemaSchemaSource:DbSchemaSchemaSource": {
             "properties": {
                 "archivePath": {
@@ -8500,7 +8521,7 @@
                 },
                 "repositorySha": {
                     "type": "string",
-                    "description": "Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
+                    "description": "Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
                 }
             },
             "type": "object",
@@ -9702,6 +9723,38 @@
                 "rancherUrl"
             ]
         },
+        "harness:platform/getDbSchemaChangelogScript:getDbSchemaChangelogScript": {
+            "properties": {
+                "command": {
+                    "type": "string",
+                    "description": "Script to clone changeSets\n"
+                },
+                "image": {
+                    "type": "string",
+                    "description": "The fully-qualified name (FQN) of the image\n"
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Path to changeLog file\n"
+                },
+                "shell": {
+                    "type": "string",
+                    "description": "Type of the shell. For example Sh or Bash\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "command",
+                "image",
+                "location",
+                "shell"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harness:platform/getDbSchemaSchemaSource:getDbSchemaSchemaSource": {
             "properties": {
                 "archivePath": {
@@ -10485,6 +10538,15 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "harness:platform/getGitopsAgentDeployYamlArgocdSettings:getGitopsAgentDeployYamlArgocdSettings": {
+            "properties": {
+                "enableHelmPathTraversal": {
+                    "type": "boolean",
+                    "description": "Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.\n"
+                }
+            },
+            "type": "object"
         },
         "harness:platform/getGitopsAgentDeployYamlProxy:getGitopsAgentDeployYamlProxy": {
             "properties": {
@@ -14084,7 +14146,7 @@
                 },
                 "repositorySha": {
                     "type": "string",
-                    "description": "Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
+                    "description": "Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.\n"
                 }
             },
             "type": "object",
@@ -22313,8 +22375,12 @@
             }
         },
         "harness:platform/dbSchema:DbSchema": {
-            "description": "Resource for creating a Harness DBDevOps Schema.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.DbSchema(\"test\", {\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    name: \"name\",\n    service: \"service1\",\n    tags: [\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schemaSource: {\n        connector: \"gitConnector\",\n        repo: \"TestRepo\",\n        location: \"db/example-changelog.yaml\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.DbSchema(\"test\",\n    identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    name=\"name\",\n    service=\"service1\",\n    tags=[\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema_source={\n        \"connector\": \"gitConnector\",\n        \"repo\": \"TestRepo\",\n        \"location\": \"db/example-changelog.yaml\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.DbSchema(\"test\", new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Name = \"name\",\n        Service = \"service1\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"bar:foo\",\n        },\n        SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs\n        {\n            Connector = \"gitConnector\",\n            Repo = \"TestRepo\",\n            Location = \"db/example-changelog.yaml\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewDbSchema(ctx, \"test\", \u0026platform.DbSchemaArgs{\n\t\t\tIdentifier: pulumi.String(\"identifier\"),\n\t\t\tOrgId:      pulumi.String(\"org_id\"),\n\t\t\tProjectId:  pulumi.String(\"project_id\"),\n\t\t\tName:       pulumi.String(\"name\"),\n\t\t\tService:    pulumi.String(\"service1\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"bar:foo\"),\n\t\t\t},\n\t\t\tSchemaSource: \u0026platform.DbSchemaSchemaSourceArgs{\n\t\t\t\tConnector: pulumi.String(\"gitConnector\"),\n\t\t\t\tRepo:      pulumi.String(\"TestRepo\"),\n\t\t\t\tLocation:  pulumi.String(\"db/example-changelog.yaml\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.DbSchema;\nimport com.pulumi.harness.platform.DbSchemaArgs;\nimport com.pulumi.harness.platform.inputs.DbSchemaSchemaSourceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new DbSchema(\"test\", DbSchemaArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .name(\"name\")\n            .service(\"service1\")\n            .tags(            \n                \"foo:bar\",\n                \"bar:foo\")\n            .schemaSource(DbSchemaSchemaSourceArgs.builder()\n                .connector(\"gitConnector\")\n                .repo(\"TestRepo\")\n                .location(\"db/example-changelog.yaml\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:DbSchema\n    properties:\n      identifier: identifier\n      orgId: org_id\n      projectId: project_id\n      name: name\n      service: service1\n      tags:\n        - foo:bar\n        - bar:foo\n      schemaSource:\n        connector: gitConnector\n        repo: TestRepo\n        location: db/example-changelog.yaml\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport project level db schema\n\n```sh\n$ pulumi import harness:platform/dbSchema:DbSchema example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cdb_schema_id\u003e\n```\n\n",
+            "description": "Resource for creating a Harness DBDevOps Schema.\n\n## Import\n\nImport project level db schema\n\n```sh\n$ pulumi import harness:platform/dbSchema:DbSchema example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cdb_schema_id\u003e\n```\n\n",
             "properties": {
+                "changelogScript": {
+                    "$ref": "#/types/harness:platform/DbSchemaChangelogScript:DbSchemaChangelogScript",
+                    "description": "Changelog script details\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
@@ -22341,7 +22407,7 @@
                 },
                 "service": {
                     "type": "string",
-                    "description": "The service associated with schema\n"
+                    "description": "The service associated with schema.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -22349,16 +22415,23 @@
                         "type": "string"
                     },
                     "description": "Tags to associate with the resource.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the database schema (repository/script).\n"
                 }
             },
             "required": [
                 "identifier",
                 "name",
                 "orgId",
-                "projectId",
-                "schemaSource"
+                "projectId"
             ],
             "inputProperties": {
+                "changelogScript": {
+                    "$ref": "#/types/harness:platform/DbSchemaChangelogScript:DbSchemaChangelogScript",
+                    "description": "Changelog script details\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Description of the resource.\n"
@@ -22388,7 +22461,7 @@
                 },
                 "service": {
                     "type": "string",
-                    "description": "The service associated with schema\n"
+                    "description": "The service associated with schema.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -22396,17 +22469,24 @@
                         "type": "string"
                     },
                     "description": "Tags to associate with the resource.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the database schema (repository/script).\n"
                 }
             },
             "requiredInputs": [
                 "identifier",
                 "orgId",
-                "projectId",
-                "schemaSource"
+                "projectId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering DbSchema resources.\n",
                 "properties": {
+                    "changelogScript": {
+                        "$ref": "#/types/harness:platform/DbSchemaChangelogScript:DbSchemaChangelogScript",
+                        "description": "Changelog script details\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "Description of the resource.\n"
@@ -22436,7 +22516,7 @@
                     },
                     "service": {
                         "type": "string",
-                        "description": "The service associated with schema\n"
+                        "description": "The service associated with schema.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -22444,6 +22524,10 @@
                             "type": "string"
                         },
                         "description": "Tags to associate with the resource.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the database schema (repository/script).\n"
                     }
                 },
                 "type": "object"
@@ -26654,7 +26738,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the Githubhub repository or account.\n"
+                    "description": "URL of the Github repository or account.\n"
                 },
                 "validationRepo": {
                     "type": "string",
@@ -26727,7 +26811,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the Githubhub repository or account.\n"
+                    "description": "URL of the Github repository or account.\n"
                 },
                 "validationRepo": {
                     "type": "string",
@@ -26800,7 +26884,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the Githubhub repository or account.\n"
+                        "description": "URL of the Github repository or account.\n"
                     },
                     "validationRepo": {
                         "type": "string",
@@ -27234,6 +27318,118 @@
                     "projectId": {
                         "type": "string",
                         "description": "Project identifier of the GitOps agent's Application Project.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/gitopsFilters:GitopsFilters": {
+            "description": "Resource for creating and managing Harness GitOps Filters.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.GitopsFilters(\"example\", {\n    name: \"example_filter\",\n    orgId: \"your_org_id\",\n    projectId: \"your_project_id\",\n    identifier: \"example_filter\",\n    type: \"APPLICATION\",\n    filterProperties: JSON.stringify({\n        agentIdentifiers: [\"your_agent_identifier\"],\n        clusters: [\"https://your-cluster-url\"],\n        healthStatus: [\n            \"Unknown\",\n            \"Progressing\",\n            \"Suspended\",\n            \"Healthy\",\n            \"Degraded\",\n            \"Missing\",\n        ],\n        namespaces: [\"your-namespace\"],\n        repositories: [\"your-repo\"],\n        syncStatus: [\n            \"OutOfSync\",\n            \"Synced\",\n            \"Unknown\",\n        ],\n    }),\n    filterVisibility: \"OnlyCreator\",\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_harness as harness\n\nexample = harness.platform.GitopsFilters(\"example\",\n    name=\"example_filter\",\n    org_id=\"your_org_id\",\n    project_id=\"your_project_id\",\n    identifier=\"example_filter\",\n    type=\"APPLICATION\",\n    filter_properties=json.dumps({\n        \"agentIdentifiers\": [\"your_agent_identifier\"],\n        \"clusters\": [\"https://your-cluster-url\"],\n        \"healthStatus\": [\n            \"Unknown\",\n            \"Progressing\",\n            \"Suspended\",\n            \"Healthy\",\n            \"Degraded\",\n            \"Missing\",\n        ],\n        \"namespaces\": [\"your-namespace\"],\n        \"repositories\": [\"your-repo\"],\n        \"syncStatus\": [\n            \"OutOfSync\",\n            \"Synced\",\n            \"Unknown\",\n        ],\n    }),\n    filter_visibility=\"OnlyCreator\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.GitopsFilters(\"example\", new()\n    {\n        Name = \"example_filter\",\n        OrgId = \"your_org_id\",\n        ProjectId = \"your_project_id\",\n        Identifier = \"example_filter\",\n        Type = \"APPLICATION\",\n        FilterProperties = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"agentIdentifiers\"] = new[]\n            {\n                \"your_agent_identifier\",\n            },\n            [\"clusters\"] = new[]\n            {\n                \"https://your-cluster-url\",\n            },\n            [\"healthStatus\"] = new[]\n            {\n                \"Unknown\",\n                \"Progressing\",\n                \"Suspended\",\n                \"Healthy\",\n                \"Degraded\",\n                \"Missing\",\n            },\n            [\"namespaces\"] = new[]\n            {\n                \"your-namespace\",\n            },\n            [\"repositories\"] = new[]\n            {\n                \"your-repo\",\n            },\n            [\"syncStatus\"] = new[]\n            {\n                \"OutOfSync\",\n                \"Synced\",\n                \"Unknown\",\n            },\n        }),\n        FilterVisibility = \"OnlyCreator\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"agentIdentifiers\": []string{\n\t\t\t\t\"your_agent_identifier\",\n\t\t\t},\n\t\t\t\"clusters\": []string{\n\t\t\t\t\"https://your-cluster-url\",\n\t\t\t},\n\t\t\t\"healthStatus\": []string{\n\t\t\t\t\"Unknown\",\n\t\t\t\t\"Progressing\",\n\t\t\t\t\"Suspended\",\n\t\t\t\t\"Healthy\",\n\t\t\t\t\"Degraded\",\n\t\t\t\t\"Missing\",\n\t\t\t},\n\t\t\t\"namespaces\": []string{\n\t\t\t\t\"your-namespace\",\n\t\t\t},\n\t\t\t\"repositories\": []string{\n\t\t\t\t\"your-repo\",\n\t\t\t},\n\t\t\t\"syncStatus\": []string{\n\t\t\t\t\"OutOfSync\",\n\t\t\t\t\"Synced\",\n\t\t\t\t\"Unknown\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = platform.NewGitopsFilters(ctx, \"example\", \u0026platform.GitopsFiltersArgs{\n\t\t\tName:             pulumi.String(\"example_filter\"),\n\t\t\tOrgId:            pulumi.String(\"your_org_id\"),\n\t\t\tProjectId:        pulumi.String(\"your_project_id\"),\n\t\t\tIdentifier:       pulumi.String(\"example_filter\"),\n\t\t\tType:             pulumi.String(\"APPLICATION\"),\n\t\t\tFilterProperties: pulumi.String(json0),\n\t\t\tFilterVisibility: pulumi.String(\"OnlyCreator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.GitopsFilters;\nimport com.pulumi.harness.platform.GitopsFiltersArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new GitopsFilters(\"example\", GitopsFiltersArgs.builder()\n            .name(\"example_filter\")\n            .orgId(\"your_org_id\")\n            .projectId(\"your_project_id\")\n            .identifier(\"example_filter\")\n            .type(\"APPLICATION\")\n            .filterProperties(serializeJson(\n                jsonObject(\n                    jsonProperty(\"agentIdentifiers\", jsonArray(\"your_agent_identifier\")),\n                    jsonProperty(\"clusters\", jsonArray(\"https://your-cluster-url\")),\n                    jsonProperty(\"healthStatus\", jsonArray(\n                        \"Unknown\", \n                        \"Progressing\", \n                        \"Suspended\", \n                        \"Healthy\", \n                        \"Degraded\", \n                        \"Missing\"\n                    )),\n                    jsonProperty(\"namespaces\", jsonArray(\"your-namespace\")),\n                    jsonProperty(\"repositories\", jsonArray(\"your-repo\")),\n                    jsonProperty(\"syncStatus\", jsonArray(\n                        \"OutOfSync\", \n                        \"Synced\", \n                        \"Unknown\"\n                    ))\n                )))\n            .filterVisibility(\"OnlyCreator\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:GitopsFilters\n    properties:\n      name: example_filter\n      orgId: your_org_id\n      projectId: your_project_id\n      identifier: example_filter\n      type: APPLICATION\n      filterProperties:\n        fn::toJSON:\n          agentIdentifiers:\n            - your_agent_identifier\n          clusters:\n            - https://your-cluster-url\n          healthStatus:\n            - Unknown\n            - Progressing\n            - Suspended\n            - Healthy\n            - Degraded\n            - Missing\n          namespaces:\n            - your-namespace\n          repositories:\n            - your-repo\n          syncStatus:\n            - OutOfSync\n            - Synced\n            - Unknown\n      filterVisibility: OnlyCreator\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filter Properties Reference\n\nThe `filter_properties` field supports the following filter types:\n\n\u003e **Note:** The following filter properties are only valid for filter type \"APPLICATION\". Different filter types may support different properties.\n\n* `agentIdentifiers` - Array of GitOps agent identifiers to filter by.\n* `clusters` - Array of cluster URLs to filter by.\n* `healthStatus` - Array of health status values to filter by. Valid values include: \"Unknown\", \"Progressing\", \"Suspended\", \"Healthy\", \"Degraded\", \"Missing\".\n* `namespaces` - Array of Kubernetes namespaces to filter by.\n* `repositories` - Array of Git repository URLs to filter by.\n* `syncStatus` - Array of sync status values to filter by. Valid values include: \"OutOfSync\", \"Synced\", \"Unknown\".\n\n## Schema Attributes Reference\n\n* `id` - Identifier of the GitOps filter.\n\n## Import\n\nGitOps filters can be imported using a composite ID formed of organization ID, project ID, filter ID, and filter type.\n\nbash\n\nFormat: \u003corg_id\u003e/\u003cproject_id\u003e/\u003cfilter_id\u003e/\u003cfilter_type\u003e\n\n```sh\n$ pulumi import harness:platform/gitopsFilters:GitopsFilters example org_id/project_id/filter_id/APPLICATION\n```\n\n",
+            "properties": {
+                "filterProperties": {
+                    "type": "string",
+                    "description": "Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({\"healthStatus\": [\"Healthy\", \"Degraded\"], \"syncStatus\": [\"Synced\"]})`.\n"
+                },
+                "filterVisibility": {
+                    "type": "string",
+                    "description": "Visibility of the filter. Valid values are \"EveryOne\" and \"OnlyCreator\". Default is \"EveryOne\".\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the GitOps filter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the GitOps filter.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Organization identifier for the GitOps filter.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier for the GitOps filter.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of GitOps filter. Currently, only \"APPLICATION\" is supported.\n"
+                }
+            },
+            "required": [
+                "filterProperties",
+                "identifier",
+                "name",
+                "orgId",
+                "projectId",
+                "type"
+            ],
+            "inputProperties": {
+                "filterProperties": {
+                    "type": "string",
+                    "description": "Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({\"healthStatus\": [\"Healthy\", \"Degraded\"], \"syncStatus\": [\"Synced\"]})`.\n"
+                },
+                "filterVisibility": {
+                    "type": "string",
+                    "description": "Visibility of the filter. Valid values are \"EveryOne\" and \"OnlyCreator\". Default is \"EveryOne\".\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the GitOps filter.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the GitOps filter.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Organization identifier for the GitOps filter.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project identifier for the GitOps filter.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of GitOps filter. Currently, only \"APPLICATION\" is supported.\n"
+                }
+            },
+            "requiredInputs": [
+                "filterProperties",
+                "identifier",
+                "orgId",
+                "projectId",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GitopsFilters resources.\n",
+                "properties": {
+                    "filterProperties": {
+                        "type": "string",
+                        "description": "Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({\"healthStatus\": [\"Healthy\", \"Degraded\"], \"syncStatus\": [\"Synced\"]})`.\n"
+                    },
+                    "filterVisibility": {
+                        "type": "string",
+                        "description": "Visibility of the filter. Valid values are \"EveryOne\" and \"OnlyCreator\". Default is \"EveryOne\".\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the GitOps filter.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the GitOps filter.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Organization identifier for the GitOps filter.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project identifier for the GitOps filter.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of GitOps filter. Currently, only \"APPLICATION\" is supported.\n"
                     }
                 },
                 "type": "object"
@@ -36290,7 +36486,7 @@
             }
         },
         "harness:platform/workspace:Workspace": {
-            "description": "Resource for managing Workspaces\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.Workspace(\"example\", {\n    name: \"example\",\n    identifier: \"example\",\n    orgId: testHarnessPlatformOrganization.id,\n    projectId: testHarnessPlatformProject.id,\n    provisionerType: \"terraform\",\n    provisionerVersion: \"1.5.6\",\n    repository: \"https://github.com/org/repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    costEstimationEnabled: true,\n    providerConnector: test.id,\n    repositoryConnector: test.id,\n    terraformVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    environmentVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    terraformVariableFiles: [\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"main\",\n            repositoryPath: \"tf/gcp/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryCommit: \"v1.0.0\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositorySha: \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n    ],\n    variableSets: [testHarnessPlatformInfraVariableSet.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.Workspace(\"example\",\n    name=\"example\",\n    identifier=\"example\",\n    org_id=test_harness_platform_organization[\"id\"],\n    project_id=test_harness_platform_project[\"id\"],\n    provisioner_type=\"terraform\",\n    provisioner_version=\"1.5.6\",\n    repository=\"https://github.com/org/repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    cost_estimation_enabled=True,\n    provider_connector=test[\"id\"],\n    repository_connector=test[\"id\"],\n    terraform_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    environment_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    terraform_variable_files=[\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"main\",\n            \"repository_path\": \"tf/gcp/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_commit\": \"v1.0.0\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_sha\": \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n    ],\n    variable_sets=[test_harness_platform_infra_variable_set[\"id\"]])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.Workspace(\"example\", new()\n    {\n        Name = \"example\",\n        Identifier = \"example\",\n        OrgId = testHarnessPlatformOrganization.Id,\n        ProjectId = testHarnessPlatformProject.Id,\n        ProvisionerType = \"terraform\",\n        ProvisionerVersion = \"1.5.6\",\n        Repository = \"https://github.com/org/repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        CostEstimationEnabled = true,\n        ProviderConnector = test.Id,\n        RepositoryConnector = test.Id,\n        TerraformVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        EnvironmentVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        TerraformVariableFiles = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"main\",\n                RepositoryPath = \"tf/gcp/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryCommit = \"v1.0.0\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositorySha = \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n        },\n        VariableSets = new[]\n        {\n            testHarnessPlatformInfraVariableSet.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewWorkspace(ctx, \"example\", \u0026platform.WorkspaceArgs{\n\t\t\tName:                  pulumi.String(\"example\"),\n\t\t\tIdentifier:            pulumi.String(\"example\"),\n\t\t\tOrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),\n\t\t\tProjectId:             pulumi.Any(testHarnessPlatformProject.Id),\n\t\t\tProvisionerType:       pulumi.String(\"terraform\"),\n\t\t\tProvisionerVersion:    pulumi.String(\"1.5.6\"),\n\t\t\tRepository:            pulumi.String(\"https://github.com/org/repo\"),\n\t\t\tRepositoryBranch:      pulumi.String(\"main\"),\n\t\t\tRepositoryPath:        pulumi.String(\"tf/aws/basic\"),\n\t\t\tCostEstimationEnabled: pulumi.Bool(true),\n\t\t\tProviderConnector:     pulumi.Any(test.Id),\n\t\t\tRepositoryConnector:   pulumi.Any(test.Id),\n\t\t\tTerraformVariables: platform.WorkspaceTerraformVariableArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnvironmentVariables: platform.WorkspaceEnvironmentVariableArray{\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariableFiles: platform.WorkspaceTerraformVariableFileArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/gcp/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryCommit:    pulumi.String(\"v1.0.0\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositorySha:       pulumi.String(\"349d90bb9c90f4a3482981c259080de31609e6f6\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t\tVariableSets: pulumi.StringArray{\n\t\t\t\ttestHarnessPlatformInfraVariableSet.Id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Workspace;\nimport com.pulumi.harness.platform.WorkspaceArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Workspace(\"example\", WorkspaceArgs.builder()\n            .name(\"example\")\n            .identifier(\"example\")\n            .orgId(testHarnessPlatformOrganization.id())\n            .projectId(testHarnessPlatformProject.id())\n            .provisionerType(\"terraform\")\n            .provisionerVersion(\"1.5.6\")\n            .repository(\"https://github.com/org/repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .costEstimationEnabled(true)\n            .providerConnector(test.id())\n            .repositoryConnector(test.id())\n            .terraformVariables(            \n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .environmentVariables(            \n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .terraformVariableFiles(            \n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"main\")\n                    .repositoryPath(\"tf/gcp/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryCommit(\"v1.0.0\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositorySha(\"349d90bb9c90f4a3482981c259080de31609e6f6\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build())\n            .variableSets(testHarnessPlatformInfraVariableSet.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:Workspace\n    properties:\n      name: example\n      identifier: example\n      orgId: ${testHarnessPlatformOrganization.id}\n      projectId: ${testHarnessPlatformProject.id}\n      provisionerType: terraform\n      provisionerVersion: 1.5.6\n      repository: https://github.com/org/repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      costEstimationEnabled: true\n      providerConnector: ${test.id}\n      repositoryConnector: ${test.id}\n      terraformVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      environmentVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      terraformVariableFiles:\n        - repository: https://github.com/org/repo\n          repositoryBranch: main\n          repositoryPath: tf/gcp/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositoryCommit: v1.0.0\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositorySha: 349d90bb9c90f4a3482981c259080de31609e6f6\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n      variableSets:\n        - ${testHarnessPlatformInfraVariableSet.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/workspace:Workspace example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cslo_id\u003e\n```\n\n",
+            "description": "Resource for managing Workspaces\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.Workspace(\"example\", {\n    name: \"example\",\n    identifier: \"example\",\n    orgId: testHarnessPlatformOrganization.id,\n    projectId: testHarnessPlatformProject.id,\n    provisionerType: \"terraform\",\n    provisionerVersion: \"1.5.6\",\n    repository: \"https://github.com/org/repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    costEstimationEnabled: true,\n    providerConnector: test.id,\n    repositoryConnector: test.id,\n    terraformVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    environmentVariables: [\n        {\n            key: \"key1\",\n            value: \"val1\",\n            valueType: \"string\",\n        },\n        {\n            key: \"key2\",\n            value: \"val2\",\n            valueType: \"string\",\n        },\n    ],\n    terraformVariableFiles: [\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryBranch: \"main\",\n            repositoryPath: \"tf/gcp/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositoryCommit: \"v1.0.0\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n        {\n            repository: \"https://github.com/org/repo\",\n            repositorySha: \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            repositoryPath: \"tf/aws/basic\",\n            repositoryConnector: test.id,\n        },\n    ],\n    variableSets: [testHarnessPlatformInfraVariableSet.id],\n    defaultPipelines: {\n        destroy: \"destroy_pipeline_id\",\n        drift: \"drift_pipeline_id\",\n        plan: \"plan_pipeline_id\",\n        apply: \"apply_pipeline_id\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.Workspace(\"example\",\n    name=\"example\",\n    identifier=\"example\",\n    org_id=test_harness_platform_organization[\"id\"],\n    project_id=test_harness_platform_project[\"id\"],\n    provisioner_type=\"terraform\",\n    provisioner_version=\"1.5.6\",\n    repository=\"https://github.com/org/repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    cost_estimation_enabled=True,\n    provider_connector=test[\"id\"],\n    repository_connector=test[\"id\"],\n    terraform_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    environment_variables=[\n        {\n            \"key\": \"key1\",\n            \"value\": \"val1\",\n            \"value_type\": \"string\",\n        },\n        {\n            \"key\": \"key2\",\n            \"value\": \"val2\",\n            \"value_type\": \"string\",\n        },\n    ],\n    terraform_variable_files=[\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_branch\": \"main\",\n            \"repository_path\": \"tf/gcp/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_commit\": \"v1.0.0\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n        {\n            \"repository\": \"https://github.com/org/repo\",\n            \"repository_sha\": \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n            \"repository_path\": \"tf/aws/basic\",\n            \"repository_connector\": test[\"id\"],\n        },\n    ],\n    variable_sets=[test_harness_platform_infra_variable_set[\"id\"]],\n    default_pipelines={\n        \"destroy\": \"destroy_pipeline_id\",\n        \"drift\": \"drift_pipeline_id\",\n        \"plan\": \"plan_pipeline_id\",\n        \"apply\": \"apply_pipeline_id\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.Workspace(\"example\", new()\n    {\n        Name = \"example\",\n        Identifier = \"example\",\n        OrgId = testHarnessPlatformOrganization.Id,\n        ProjectId = testHarnessPlatformProject.Id,\n        ProvisionerType = \"terraform\",\n        ProvisionerVersion = \"1.5.6\",\n        Repository = \"https://github.com/org/repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        CostEstimationEnabled = true,\n        ProviderConnector = test.Id,\n        RepositoryConnector = test.Id,\n        TerraformVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        EnvironmentVariables = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key1\",\n                Value = \"val1\",\n                ValueType = \"string\",\n            },\n            new Harness.Platform.Inputs.WorkspaceEnvironmentVariableArgs\n            {\n                Key = \"key2\",\n                Value = \"val2\",\n                ValueType = \"string\",\n            },\n        },\n        TerraformVariableFiles = new[]\n        {\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryBranch = \"main\",\n                RepositoryPath = \"tf/gcp/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositoryCommit = \"v1.0.0\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n            new Harness.Platform.Inputs.WorkspaceTerraformVariableFileArgs\n            {\n                Repository = \"https://github.com/org/repo\",\n                RepositorySha = \"349d90bb9c90f4a3482981c259080de31609e6f6\",\n                RepositoryPath = \"tf/aws/basic\",\n                RepositoryConnector = test.Id,\n            },\n        },\n        VariableSets = new[]\n        {\n            testHarnessPlatformInfraVariableSet.Id,\n        },\n        DefaultPipelines = \n        {\n            { \"destroy\", \"destroy_pipeline_id\" },\n            { \"drift\", \"drift_pipeline_id\" },\n            { \"plan\", \"plan_pipeline_id\" },\n            { \"apply\", \"apply_pipeline_id\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewWorkspace(ctx, \"example\", \u0026platform.WorkspaceArgs{\n\t\t\tName:                  pulumi.String(\"example\"),\n\t\t\tIdentifier:            pulumi.String(\"example\"),\n\t\t\tOrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),\n\t\t\tProjectId:             pulumi.Any(testHarnessPlatformProject.Id),\n\t\t\tProvisionerType:       pulumi.String(\"terraform\"),\n\t\t\tProvisionerVersion:    pulumi.String(\"1.5.6\"),\n\t\t\tRepository:            pulumi.String(\"https://github.com/org/repo\"),\n\t\t\tRepositoryBranch:      pulumi.String(\"main\"),\n\t\t\tRepositoryPath:        pulumi.String(\"tf/aws/basic\"),\n\t\t\tCostEstimationEnabled: pulumi.Bool(true),\n\t\t\tProviderConnector:     pulumi.Any(test.Id),\n\t\t\tRepositoryConnector:   pulumi.Any(test.Id),\n\t\t\tTerraformVariables: platform.WorkspaceTerraformVariableArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnvironmentVariables: platform.WorkspaceEnvironmentVariableArray{\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key1\"),\n\t\t\t\t\tValue:     pulumi.String(\"val1\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceEnvironmentVariableArgs{\n\t\t\t\t\tKey:       pulumi.String(\"key2\"),\n\t\t\t\t\tValue:     pulumi.String(\"val2\"),\n\t\t\t\t\tValueType: pulumi.String(\"string\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTerraformVariableFiles: platform.WorkspaceTerraformVariableFileArray{\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryBranch:    pulumi.String(\"main\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/gcp/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositoryCommit:    pulumi.String(\"v1.0.0\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t\t\u0026platform.WorkspaceTerraformVariableFileArgs{\n\t\t\t\t\tRepository:          pulumi.String(\"https://github.com/org/repo\"),\n\t\t\t\t\tRepositorySha:       pulumi.String(\"349d90bb9c90f4a3482981c259080de31609e6f6\"),\n\t\t\t\t\tRepositoryPath:      pulumi.String(\"tf/aws/basic\"),\n\t\t\t\t\tRepositoryConnector: pulumi.Any(test.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t\tVariableSets: pulumi.StringArray{\n\t\t\t\ttestHarnessPlatformInfraVariableSet.Id,\n\t\t\t},\n\t\t\tDefaultPipelines: pulumi.StringMap{\n\t\t\t\t\"destroy\": pulumi.String(\"destroy_pipeline_id\"),\n\t\t\t\t\"drift\":   pulumi.String(\"drift_pipeline_id\"),\n\t\t\t\t\"plan\":    pulumi.String(\"plan_pipeline_id\"),\n\t\t\t\t\"apply\":   pulumi.String(\"apply_pipeline_id\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.Workspace;\nimport com.pulumi.harness.platform.WorkspaceArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;\nimport com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Workspace(\"example\", WorkspaceArgs.builder()\n            .name(\"example\")\n            .identifier(\"example\")\n            .orgId(testHarnessPlatformOrganization.id())\n            .projectId(testHarnessPlatformProject.id())\n            .provisionerType(\"terraform\")\n            .provisionerVersion(\"1.5.6\")\n            .repository(\"https://github.com/org/repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .costEstimationEnabled(true)\n            .providerConnector(test.id())\n            .repositoryConnector(test.id())\n            .terraformVariables(            \n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceTerraformVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .environmentVariables(            \n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key1\")\n                    .value(\"val1\")\n                    .valueType(\"string\")\n                    .build(),\n                WorkspaceEnvironmentVariableArgs.builder()\n                    .key(\"key2\")\n                    .value(\"val2\")\n                    .valueType(\"string\")\n                    .build())\n            .terraformVariableFiles(            \n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryBranch(\"main\")\n                    .repositoryPath(\"tf/gcp/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositoryCommit(\"v1.0.0\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build(),\n                WorkspaceTerraformVariableFileArgs.builder()\n                    .repository(\"https://github.com/org/repo\")\n                    .repositorySha(\"349d90bb9c90f4a3482981c259080de31609e6f6\")\n                    .repositoryPath(\"tf/aws/basic\")\n                    .repositoryConnector(test.id())\n                    .build())\n            .variableSets(testHarnessPlatformInfraVariableSet.id())\n            .defaultPipelines(Map.ofEntries(\n                Map.entry(\"destroy\", \"destroy_pipeline_id\"),\n                Map.entry(\"drift\", \"drift_pipeline_id\"),\n                Map.entry(\"plan\", \"plan_pipeline_id\"),\n                Map.entry(\"apply\", \"apply_pipeline_id\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:Workspace\n    properties:\n      name: example\n      identifier: example\n      orgId: ${testHarnessPlatformOrganization.id}\n      projectId: ${testHarnessPlatformProject.id}\n      provisionerType: terraform\n      provisionerVersion: 1.5.6\n      repository: https://github.com/org/repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      costEstimationEnabled: true\n      providerConnector: ${test.id}\n      repositoryConnector: ${test.id}\n      terraformVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      environmentVariables:\n        - key: key1\n          value: val1\n          valueType: string\n        - key: key2\n          value: val2\n          valueType: string\n      terraformVariableFiles:\n        - repository: https://github.com/org/repo\n          repositoryBranch: main\n          repositoryPath: tf/gcp/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositoryCommit: v1.0.0\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n        - repository: https://github.com/org/repo\n          repositorySha: 349d90bb9c90f4a3482981c259080de31609e6f6\n          repositoryPath: tf/aws/basic\n          repositoryConnector: ${test.id}\n      variableSets:\n        - ${testHarnessPlatformInfraVariableSet.id}\n      defaultPipelines:\n        destroy: destroy_pipeline_id\n        drift: drift_pipeline_id\n        plan: plan_pipeline_id\n        apply: apply_pipeline_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import harness:platform/workspace:Workspace example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cworkspace_id\u003e\n```\n\n",
             "properties": {
                 "costEstimationEnabled": {
                     "type": "boolean",
@@ -36362,7 +36558,7 @@
                 },
                 "repositorySha": {
                     "type": "string",
-                    "description": "Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.\n"
+                    "description": "Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -36388,7 +36584,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Variable set identifiers. Currently support only one variable set.\n"
+                    "description": "Variable sets to use.\n"
                 }
             },
             "required": [
@@ -36478,7 +36674,7 @@
                 },
                 "repositorySha": {
                     "type": "string",
-                    "description": "Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.\n"
+                    "description": "Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -36504,7 +36700,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Variable set identifiers. Currently support only one variable set.\n"
+                    "description": "Variable sets to use.\n"
                 }
             },
             "requiredInputs": [
@@ -36595,7 +36791,7 @@
                     },
                     "repositorySha": {
                         "type": "string",
-                        "description": "Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.\n"
+                        "description": "Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -36621,7 +36817,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Variable set identifiers. Currently support only one variable set.\n"
+                        "description": "Variable sets to use.\n"
                     }
                 },
                 "type": "object"
@@ -41988,6 +42184,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDbSchema.\n",
                 "properties": {
+                    "changelogScript": {
+                        "$ref": "#/types/harness:platform/getDbSchemaChangelogScript:getDbSchemaChangelogScript"
+                    },
                     "identifier": {
                         "type": "string",
                         "description": "Unique identifier of the resource.\n",
@@ -42006,6 +42205,16 @@
                         "type": "string",
                         "description": "Unique identifier of the project.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "schemaSources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getDbSchemaSchemaSource:getDbSchemaSchemaSource"
+                        },
+                        "description": "Provides a connector and path at which to find the database schema representation\n"
+                    },
+                    "type": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -42018,6 +42227,9 @@
             "outputs": {
                 "description": "A collection of values returned by getDbSchema.\n",
                 "properties": {
+                    "changelogScript": {
+                        "$ref": "#/types/harness:platform/getDbSchemaChangelogScript:getDbSchemaChangelogScript"
+                    },
                     "description": {
                         "description": "Description of the resource.\n",
                         "type": "string"
@@ -42059,6 +42271,9 @@
                             "type": "string"
                         },
                         "type": "array"
+                    },
+                    "type": {
+                        "type": "string"
                     }
                 },
                 "required": [
@@ -42066,7 +42281,6 @@
                     "identifier",
                     "orgId",
                     "projectId",
-                    "schemaSources",
                     "service",
                     "tags",
                     "id"
@@ -43867,6 +44081,10 @@
                         "description": "Account identifier of the GitOps agent.\n",
                         "deprecationMessage": "This field is deprecated and will be removed in a future release."
                     },
+                    "argocdSettings": {
+                        "$ref": "#/types/harness:platform/getGitopsAgentDeployYamlArgocdSettings:getGitopsAgentDeployYamlArgocdSettings",
+                        "description": "Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.\n"
+                    },
                     "caData": {
                         "type": "string",
                         "description": "CA data of the GitOps agent, base64 encoded content of ca chain.\n"
@@ -43916,6 +44134,10 @@
                         "deprecationMessage": "This field is deprecated and will be removed in a future release.",
                         "description": "Account identifier of the GitOps agent.\n",
                         "type": "string"
+                    },
+                    "argocdSettings": {
+                        "$ref": "#/types/harness:platform/getGitopsAgentDeployYamlArgocdSettings:getGitopsAgentDeployYamlArgocdSettings",
+                        "description": "Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.\n"
                     },
                     "caData": {
                         "description": "CA data of the GitOps agent, base64 encoded content of ca chain.\n",
@@ -44439,6 +44661,80 @@
                     "agentId",
                     "identifier",
                     "requests",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getGitopsFilters:getGitopsFilters": {
+            "description": "Data source for retrieving a Harness GitOps Filter.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGitopsFilters.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the GitOps filter to retrieve.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Organization identifier for the GitOps filter.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Project identifier for the GitOps filter.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of GitOps filter. Currently, only \"APPLICATION\" is supported.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "orgId",
+                    "projectId",
+                    "type"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGitopsFilters.\n",
+                "properties": {
+                    "filterProperties": {
+                        "description": "Properties of the filter entity defined in Harness as a JSON string. This contains filter criteria such as health status, sync status, agent identifiers, clusters, namespaces, and repositories.\n",
+                        "type": "string"
+                    },
+                    "filterVisibility": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the GitOps filter.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "filterProperties",
+                    "filterVisibility",
+                    "identifier",
+                    "name",
+                    "orgId",
+                    "projectId",
+                    "type",
                     "id"
                 ],
                 "type": "object"
@@ -50313,7 +50609,7 @@
                     },
                     "repositorySha": {
                         "type": "string",
-                        "description": "Repository SHA in which the code should be accessed\n"
+                        "description": "Repository Commit SHA in which the code should be accessed\n"
                     },
                     "terraformVariableFiles": {
                         "type": "array",
@@ -50332,7 +50628,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Variable set identifiers. Currently support only one variable set.\n"
+                        "description": "Variable sets to use.\n"
                     }
                 },
                 "type": "object",
@@ -50353,6 +50649,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
+                        "description": "Default pipelines associated with this workspace\n",
                         "type": "object"
                     },
                     "description": {
@@ -50419,7 +50716,7 @@
                         "type": "string"
                     },
                     "repositorySha": {
-                        "description": "Repository SHA in which the code should be accessed\n",
+                        "description": "Repository Commit SHA in which the code should be accessed\n",
                         "type": "string"
                     },
                     "terraformVariableFiles": {
@@ -50435,7 +50732,7 @@
                         "type": "array"
                     },
                     "variableSets": {
-                        "description": "Variable set identifiers. Currently support only one variable set.\n",
+                        "description": "Variable sets to use.\n",
                         "items": {
                             "type": "string"
                         },

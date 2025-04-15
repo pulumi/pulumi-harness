@@ -52,6 +52,7 @@ func LookupDbSchema(ctx *pulumi.Context, args *LookupDbSchemaArgs, opts ...pulum
 
 // A collection of arguments for invoking getDbSchema.
 type LookupDbSchemaArgs struct {
+	ChangelogScript *GetDbSchemaChangelogScript `pulumi:"changelogScript"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -60,10 +61,14 @@ type LookupDbSchemaArgs struct {
 	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
+	// Provides a connector and path at which to find the database schema representation
+	SchemaSources []GetDbSchemaSchemaSource `pulumi:"schemaSources"`
+	Type          *string                   `pulumi:"type"`
 }
 
 // A collection of values returned by getDbSchema.
 type LookupDbSchemaResult struct {
+	ChangelogScript *GetDbSchemaChangelogScript `pulumi:"changelogScript"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -82,6 +87,7 @@ type LookupDbSchemaResult struct {
 	Service string `pulumi:"service"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	Type *string  `pulumi:"type"`
 }
 
 func LookupDbSchemaOutput(ctx *pulumi.Context, args LookupDbSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupDbSchemaResultOutput {
@@ -95,6 +101,7 @@ func LookupDbSchemaOutput(ctx *pulumi.Context, args LookupDbSchemaOutputArgs, op
 
 // A collection of arguments for invoking getDbSchema.
 type LookupDbSchemaOutputArgs struct {
+	ChangelogScript GetDbSchemaChangelogScriptPtrInput `pulumi:"changelogScript"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Name of the resource.
@@ -103,6 +110,9 @@ type LookupDbSchemaOutputArgs struct {
 	OrgId pulumi.StringInput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Provides a connector and path at which to find the database schema representation
+	SchemaSources GetDbSchemaSchemaSourceArrayInput `pulumi:"schemaSources"`
+	Type          pulumi.StringPtrInput             `pulumi:"type"`
 }
 
 func (LookupDbSchemaOutputArgs) ElementType() reflect.Type {
@@ -122,6 +132,10 @@ func (o LookupDbSchemaResultOutput) ToLookupDbSchemaResultOutput() LookupDbSchem
 
 func (o LookupDbSchemaResultOutput) ToLookupDbSchemaResultOutputWithContext(ctx context.Context) LookupDbSchemaResultOutput {
 	return o
+}
+
+func (o LookupDbSchemaResultOutput) ChangelogScript() GetDbSchemaChangelogScriptPtrOutput {
+	return o.ApplyT(func(v LookupDbSchemaResult) *GetDbSchemaChangelogScript { return v.ChangelogScript }).(GetDbSchemaChangelogScriptPtrOutput)
 }
 
 // Description of the resource.
@@ -167,6 +181,10 @@ func (o LookupDbSchemaResultOutput) Service() pulumi.StringOutput {
 // Tags to associate with the resource.
 func (o LookupDbSchemaResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDbSchemaResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDbSchemaResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDbSchemaResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func init() {

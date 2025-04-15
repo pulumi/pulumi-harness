@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.DbSchemaArgs;
 import com.pulumi.harness.platform.inputs.DbSchemaState;
+import com.pulumi.harness.platform.outputs.DbSchemaChangelogScript;
 import com.pulumi.harness.platform.outputs.DbSchemaSchemaSource;
 import java.lang.String;
 import java.util.List;
@@ -18,54 +19,6 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Harness DBDevOps Schema.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.DbSchema;
- * import com.pulumi.harness.platform.DbSchemaArgs;
- * import com.pulumi.harness.platform.inputs.DbSchemaSchemaSourceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var test = new DbSchema("test", DbSchemaArgs.builder()
- *             .identifier("identifier")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .name("name")
- *             .service("service1")
- *             .tags(            
- *                 "foo:bar",
- *                 "bar:foo")
- *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
- *                 .connector("gitConnector")
- *                 .repo("TestRepo")
- *                 .location("db/example-changelog.yaml")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -78,6 +31,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harness:platform/dbSchema:DbSchema")
 public class DbSchema extends com.pulumi.resources.CustomResource {
+    /**
+     * Changelog script details
+     * 
+     */
+    @Export(name="changelogScript", refs={DbSchemaChangelogScript.class}, tree="[0]")
+    private Output</* @Nullable */ DbSchemaChangelogScript> changelogScript;
+
+    /**
+     * @return Changelog script details
+     * 
+     */
+    public Output<Optional<DbSchemaChangelogScript>> changelogScript() {
+        return Codegen.optional(this.changelogScript);
+    }
     /**
      * Description of the resource.
      * 
@@ -153,24 +120,24 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="schemaSource", refs={DbSchemaSchemaSource.class}, tree="[0]")
-    private Output<DbSchemaSchemaSource> schemaSource;
+    private Output</* @Nullable */ DbSchemaSchemaSource> schemaSource;
 
     /**
      * @return Provides a connector and path at which to find the database schema representation
      * 
      */
-    public Output<DbSchemaSchemaSource> schemaSource() {
-        return this.schemaSource;
+    public Output<Optional<DbSchemaSchemaSource>> schemaSource() {
+        return Codegen.optional(this.schemaSource);
     }
     /**
-     * The service associated with schema
+     * The service associated with schema.
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> service;
 
     /**
-     * @return The service associated with schema
+     * @return The service associated with schema.
      * 
      */
     public Output<Optional<String>> service() {
@@ -189,6 +156,20 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Type of the database schema (repository/script).
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return Type of the database schema (repository/script).
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
 
     /**

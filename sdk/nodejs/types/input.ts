@@ -2455,6 +2455,25 @@ export namespace platform {
         bearerTokenRef: pulumi.Input<string>;
     }
 
+    export interface DbSchemaChangelogScript {
+        /**
+         * Script to clone changeSets
+         */
+        command?: pulumi.Input<string>;
+        /**
+         * The fully-qualified name (FQN) of the image
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * Path to changeLog file
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Type of the shell. For example Sh or Bash
+         */
+        shell?: pulumi.Input<string>;
+    }
+
     export interface DbSchemaSchemaSource {
         /**
          * If connector type is artifactory, path to the archive file which contains the changeLog
@@ -2835,6 +2854,82 @@ export namespace platform {
         rancherUrl: pulumi.Input<string>;
     }
 
+    export interface GetDbSchemaChangelogScript {
+        /**
+         * Script to clone changeSets
+         */
+        command?: string;
+        /**
+         * The fully-qualified name (FQN) of the image
+         */
+        image?: string;
+        /**
+         * Path to changeLog file
+         */
+        location?: string;
+        /**
+         * Type of the shell. For example Sh or Bash
+         */
+        shell?: string;
+    }
+
+    export interface GetDbSchemaChangelogScriptArgs {
+        /**
+         * Script to clone changeSets
+         */
+        command?: pulumi.Input<string>;
+        /**
+         * The fully-qualified name (FQN) of the image
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * Path to changeLog file
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Type of the shell. For example Sh or Bash
+         */
+        shell?: pulumi.Input<string>;
+    }
+
+    export interface GetDbSchemaSchemaSource {
+        /**
+         * If connector type is artifactory, path to the archive file which contains the changeLog
+         */
+        archivePath?: string;
+        /**
+         * Connector to repository at which to find details about the database schema
+         */
+        connector?: string;
+        /**
+         * The path within the specified repository at which to find details about the database schema
+         */
+        location?: string;
+        /**
+         * If connector url is of account, which repository to connect to using the connector
+         */
+        repo?: string;
+    }
+
+    export interface GetDbSchemaSchemaSourceArgs {
+        /**
+         * If connector type is artifactory, path to the archive file which contains the changeLog
+         */
+        archivePath?: pulumi.Input<string>;
+        /**
+         * Connector to repository at which to find details about the database schema
+         */
+        connector?: pulumi.Input<string>;
+        /**
+         * The path within the specified repository at which to find details about the database schema
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * If connector url is of account, which repository to connect to using the connector
+         */
+        repo?: pulumi.Input<string>;
+    }
+
     export interface GetEnvironmentClustersMappingCluster {
         /**
          * agent identifier of the cluster (include scope prefix)
@@ -2901,6 +2996,20 @@ export namespace platform {
          * Repo name of remote environment
          */
         repoName?: pulumi.Input<string>;
+    }
+
+    export interface GetGitopsAgentDeployYamlArgocdSettings {
+        /**
+         * Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+         */
+        enableHelmPathTraversal?: boolean;
+    }
+
+    export interface GetGitopsAgentDeployYamlArgocdSettingsArgs {
+        /**
+         * Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+         */
+        enableHelmPathTraversal?: pulumi.Input<boolean>;
     }
 
     export interface GetGitopsAgentDeployYamlProxy {
@@ -4135,7 +4244,7 @@ export namespace platform {
          */
         repositoryPath?: string;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: string;
     }
@@ -4162,7 +4271,7 @@ export namespace platform {
          */
         repositoryPath?: pulumi.Input<string>;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: pulumi.Input<string>;
     }
@@ -7468,7 +7577,7 @@ export namespace platform {
          */
         repositoryPath?: pulumi.Input<string>;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: pulumi.Input<string>;
     }

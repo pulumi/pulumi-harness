@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlArgocdSettingsArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsAgentDeployYamlProxyArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -40,6 +41,21 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
     @Deprecated /* This field is deprecated and will be removed in a future release. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+     * 
+     */
+    @Import(name="argocdSettings")
+    private @Nullable Output<GetGitopsAgentDeployYamlArgocdSettingsArgs> argocdSettings;
+
+    /**
+     * @return Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+     * 
+     */
+    public Optional<Output<GetGitopsAgentDeployYamlArgocdSettingsArgs>> argocdSettings() {
+        return Optional.ofNullable(this.argocdSettings);
     }
 
     /**
@@ -166,6 +182,7 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
 
     private GetGitopsAgentDeployYamlArgs(GetGitopsAgentDeployYamlArgs $) {
         this.accountId = $.accountId;
+        this.argocdSettings = $.argocdSettings;
         this.caData = $.caData;
         this.identifier = $.identifier;
         this.namespace = $.namespace;
@@ -221,6 +238,27 @@ public final class GetGitopsAgentDeployYamlArgs extends com.pulumi.resources.Inv
         @Deprecated /* This field is deprecated and will be removed in a future release. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param argocdSettings Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder argocdSettings(@Nullable Output<GetGitopsAgentDeployYamlArgocdSettingsArgs> argocdSettings) {
+            $.argocdSettings = argocdSettings;
+            return this;
+        }
+
+        /**
+         * @param argocdSettings Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder argocdSettings(GetGitopsAgentDeployYamlArgocdSettingsArgs argocdSettings) {
+            return argocdSettings(Output.of(argocdSettings));
         }
 
         /**

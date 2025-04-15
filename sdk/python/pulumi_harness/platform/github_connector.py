@@ -41,7 +41,7 @@ class GithubConnectorArgs:
         :param pulumi.Input[builtins.str] connection_type: Whether the connection we're making is to a github repository or a github account. Valid values are Account, Repo.
         :param pulumi.Input['GithubConnectorCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[builtins.str] url: URL of the Githubhub repository or account.
+        :param pulumi.Input[builtins.str] url: URL of the Github repository or account.
         :param pulumi.Input['GithubConnectorApiAuthenticationArgs'] api_authentication: Configuration for using the github api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[builtins.str] description: Description of the resource.
@@ -118,7 +118,7 @@ class GithubConnectorArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[builtins.str]:
         """
-        URL of the Githubhub repository or account.
+        URL of the Github repository or account.
         """
         return pulumi.get(self, "url")
 
@@ -278,7 +278,7 @@ class _GithubConnectorState:
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[builtins.str] url: URL of the Githubhub repository or account.
+        :param pulumi.Input[builtins.str] url: URL of the Github repository or account.
         :param pulumi.Input[builtins.str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         if api_authentication is not None:
@@ -458,7 +458,7 @@ class _GithubConnectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        URL of the Githubhub repository or account.
+        URL of the Github repository or account.
         """
         return pulumi.get(self, "url")
 
@@ -536,7 +536,7 @@ class GithubConnector(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[builtins.str] url: URL of the Githubhub repository or account.
+        :param pulumi.Input[builtins.str] url: URL of the Github repository or account.
         :param pulumi.Input[builtins.str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         ...
@@ -671,7 +671,7 @@ class GithubConnector(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[builtins.str] url: URL of the Githubhub repository or account.
+        :param pulumi.Input[builtins.str] url: URL of the Github repository or account.
         :param pulumi.Input[builtins.str] validation_repo: Repository to test the connection with. This is only used when `connection_type` is `Account`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -794,7 +794,7 @@ class GithubConnector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[builtins.str]:
         """
-        URL of the Githubhub repository or account.
+        URL of the Github repository or account.
         """
         return pulumi.get(self, "url")
 

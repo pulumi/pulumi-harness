@@ -106,7 +106,7 @@ export class GithubConnector extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * URL of the Githubhub repository or account.
+     * URL of the Github repository or account.
      */
     public readonly url!: pulumi.Output<string>;
     /**
@@ -228,7 +228,7 @@ export interface GithubConnectorState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * URL of the Githubhub repository or account.
+     * URL of the Github repository or account.
      */
     url?: pulumi.Input<string>;
     /**
@@ -290,7 +290,7 @@ export interface GithubConnectorArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * URL of the Githubhub repository or account.
+     * URL of the Github repository or account.
      */
     url: pulumi.Input<string>;
     /**

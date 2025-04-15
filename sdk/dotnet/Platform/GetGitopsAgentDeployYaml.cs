@@ -106,6 +106,12 @@ namespace Pulumi.Harness.Platform
         public string? AccountId { get; set; }
 
         /// <summary>
+        /// Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+        /// </summary>
+        [Input("argocdSettings")]
+        public Inputs.GetGitopsAgentDeployYamlArgocdSettingsArgs? ArgocdSettings { get; set; }
+
+        /// <summary>
         /// CA data of the GitOps agent, base64 encoded content of ca chain.
         /// </summary>
         [Input("caData")]
@@ -172,6 +178,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+        /// </summary>
+        [Input("argocdSettings")]
+        public Input<Inputs.GetGitopsAgentDeployYamlArgocdSettingsInputArgs>? ArgocdSettings { get; set; }
 
         /// <summary>
         /// CA data of the GitOps agent, base64 encoded content of ca chain.
@@ -242,6 +254,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string AccountId;
         /// <summary>
+        /// Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+        /// </summary>
+        public readonly Outputs.GetGitopsAgentDeployYamlArgocdSettingsResult? ArgocdSettings;
+        /// <summary>
         /// CA data of the GitOps agent, base64 encoded content of ca chain.
         /// </summary>
         public readonly string? CaData;
@@ -286,6 +302,8 @@ namespace Pulumi.Harness.Platform
         private GetGitopsAgentDeployYamlResult(
             string accountId,
 
+            Outputs.GetGitopsAgentDeployYamlArgocdSettingsResult? argocdSettings,
+
             string? caData,
 
             string id,
@@ -307,6 +325,7 @@ namespace Pulumi.Harness.Platform
             string yaml)
         {
             AccountId = accountId;
+            ArgocdSettings = argocdSettings;
             CaData = caData;
             Id = id;
             Identifier = identifier;

@@ -125,14 +125,14 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Repository SHA in which the code should be accessed
+     * Repository Commit SHA in which the code should be accessed
      * 
      */
     @Import(name="repositorySha")
     private @Nullable String repositorySha;
 
     /**
-     * @return Repository SHA in which the code should be accessed
+     * @return Repository Commit SHA in which the code should be accessed
      * 
      */
     public Optional<String> repositorySha() {
@@ -154,14 +154,14 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      * 
      */
     @Import(name="variableSets")
     private @Nullable List<String> variableSets;
 
     /**
-     * @return Variable set identifiers. Currently support only one variable set.
+     * @return Variable sets to use.
      * 
      */
     public Optional<List<String>> variableSets() {
@@ -290,7 +290,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param repositorySha Repository SHA in which the code should be accessed
+         * @param repositorySha Repository Commit SHA in which the code should be accessed
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * @param variableSets Variable sets to use.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * @param variableSets Variable sets to use.
          * 
          * @return builder
          * 

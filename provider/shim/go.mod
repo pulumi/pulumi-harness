@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.4
 
 require (
-	github.com/harness/terraform-provider-harness v0.37.1
+	github.com/harness/terraform-provider-harness v0.37.2
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0
 	github.com/pulumi/pulumi-harness/provider v0.0.0-20221227064623-0d00513c0628
 )
@@ -22,7 +22,7 @@ require (
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/harness/harness-go-sdk v0.4.40 // indirect
+	github.com/harness/harness-go-sdk v0.4.46 // indirect
 	github.com/harness/harness-openapi-go-client v0.0.25 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect

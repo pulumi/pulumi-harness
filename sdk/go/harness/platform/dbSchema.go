@@ -14,45 +14,6 @@ import (
 
 // Resource for creating a Harness DBDevOps Schema.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewDbSchema(ctx, "test", &platform.DbSchemaArgs{
-//				Identifier: pulumi.String("identifier"),
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Name:       pulumi.String("name"),
-//				Service:    pulumi.String("service1"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//					pulumi.String("bar:foo"),
-//				},
-//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
-//					Connector: pulumi.String("gitConnector"),
-//					Repo:      pulumi.String("TestRepo"),
-//					Location:  pulumi.String("db/example-changelog.yaml"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // # Import project level db schema
@@ -63,6 +24,8 @@ import (
 type DbSchema struct {
 	pulumi.CustomResourceState
 
+	// Changelog script details
+	ChangelogScript DbSchemaChangelogScriptPtrOutput `pulumi:"changelogScript"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -74,11 +37,13 @@ type DbSchema struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Provides a connector and path at which to find the database schema representation
-	SchemaSource DbSchemaSchemaSourceOutput `pulumi:"schemaSource"`
-	// The service associated with schema
+	SchemaSource DbSchemaSchemaSourcePtrOutput `pulumi:"schemaSource"`
+	// The service associated with schema.
 	Service pulumi.StringPtrOutput `pulumi:"service"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Type of the database schema (repository/script).
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewDbSchema registers a new resource with the given unique name, arguments, and options.
@@ -96,9 +61,6 @@ func NewDbSchema(ctx *pulumi.Context,
 	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
-	}
-	if args.SchemaSource == nil {
-		return nil, errors.New("invalid value for required argument 'SchemaSource'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DbSchema
@@ -123,6 +85,8 @@ func GetDbSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DbSchema resources.
 type dbSchemaState struct {
+	// Changelog script details
+	ChangelogScript *DbSchemaChangelogScript `pulumi:"changelogScript"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -135,13 +99,17 @@ type dbSchemaState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Provides a connector and path at which to find the database schema representation
 	SchemaSource *DbSchemaSchemaSource `pulumi:"schemaSource"`
-	// The service associated with schema
+	// The service associated with schema.
 	Service *string `pulumi:"service"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// Type of the database schema (repository/script).
+	Type *string `pulumi:"type"`
 }
 
 type DbSchemaState struct {
+	// Changelog script details
+	ChangelogScript DbSchemaChangelogScriptPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
@@ -154,10 +122,12 @@ type DbSchemaState struct {
 	ProjectId pulumi.StringPtrInput
 	// Provides a connector and path at which to find the database schema representation
 	SchemaSource DbSchemaSchemaSourcePtrInput
-	// The service associated with schema
+	// The service associated with schema.
 	Service pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
+	// Type of the database schema (repository/script).
+	Type pulumi.StringPtrInput
 }
 
 func (DbSchemaState) ElementType() reflect.Type {
@@ -165,6 +135,8 @@ func (DbSchemaState) ElementType() reflect.Type {
 }
 
 type dbSchemaArgs struct {
+	// Changelog script details
+	ChangelogScript *DbSchemaChangelogScript `pulumi:"changelogScript"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -176,15 +148,19 @@ type dbSchemaArgs struct {
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
 	// Provides a connector and path at which to find the database schema representation
-	SchemaSource DbSchemaSchemaSource `pulumi:"schemaSource"`
-	// The service associated with schema
+	SchemaSource *DbSchemaSchemaSource `pulumi:"schemaSource"`
+	// The service associated with schema.
 	Service *string `pulumi:"service"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
+	// Type of the database schema (repository/script).
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a DbSchema resource.
 type DbSchemaArgs struct {
+	// Changelog script details
+	ChangelogScript DbSchemaChangelogScriptPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
@@ -196,11 +172,13 @@ type DbSchemaArgs struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
 	// Provides a connector and path at which to find the database schema representation
-	SchemaSource DbSchemaSchemaSourceInput
-	// The service associated with schema
+	SchemaSource DbSchemaSchemaSourcePtrInput
+	// The service associated with schema.
 	Service pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
+	// Type of the database schema (repository/script).
+	Type pulumi.StringPtrInput
 }
 
 func (DbSchemaArgs) ElementType() reflect.Type {
@@ -290,6 +268,11 @@ func (o DbSchemaOutput) ToDbSchemaOutputWithContext(ctx context.Context) DbSchem
 	return o
 }
 
+// Changelog script details
+func (o DbSchemaOutput) ChangelogScript() DbSchemaChangelogScriptPtrOutput {
+	return o.ApplyT(func(v *DbSchema) DbSchemaChangelogScriptPtrOutput { return v.ChangelogScript }).(DbSchemaChangelogScriptPtrOutput)
+}
+
 // Description of the resource.
 func (o DbSchemaOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -316,11 +299,11 @@ func (o DbSchemaOutput) ProjectId() pulumi.StringOutput {
 }
 
 // Provides a connector and path at which to find the database schema representation
-func (o DbSchemaOutput) SchemaSource() DbSchemaSchemaSourceOutput {
-	return o.ApplyT(func(v *DbSchema) DbSchemaSchemaSourceOutput { return v.SchemaSource }).(DbSchemaSchemaSourceOutput)
+func (o DbSchemaOutput) SchemaSource() DbSchemaSchemaSourcePtrOutput {
+	return o.ApplyT(func(v *DbSchema) DbSchemaSchemaSourcePtrOutput { return v.SchemaSource }).(DbSchemaSchemaSourcePtrOutput)
 }
 
-// The service associated with schema
+// The service associated with schema.
 func (o DbSchemaOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringPtrOutput { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -328,6 +311,11 @@ func (o DbSchemaOutput) Service() pulumi.StringPtrOutput {
 // Tags to associate with the resource.
 func (o DbSchemaOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Type of the database schema (repository/script).
+func (o DbSchemaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchema) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type DbSchemaArrayOutput struct{ *pulumi.OutputState }

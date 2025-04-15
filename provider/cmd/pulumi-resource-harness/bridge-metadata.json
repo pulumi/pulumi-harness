@@ -1379,6 +1379,9 @@
             "harness_platform_db_schema": {
                 "current": "harness:platform/dbSchema:DbSchema",
                 "fields": {
+                    "changelog_script": {
+                        "maxItemsOne": true
+                    },
                     "schema_source": {
                         "maxItemsOne": true
                     },
@@ -1908,6 +1911,9 @@
                         }
                     }
                 }
+            },
+            "harness_platform_gitops_filters": {
+                "current": "harness:platform/gitopsFilters:GitopsFilters"
             },
             "harness_platform_gitops_gnupg": {
                 "current": "harness:platform/gitOpsGnupg:GitOpsGnupg",
@@ -4267,6 +4273,9 @@
             "harness_platform_db_schema": {
                 "current": "harness:platform/getDbSchema:getDbSchema",
                 "fields": {
+                    "changelog_script": {
+                        "maxItemsOne": true
+                    },
                     "schema_source": {
                         "maxItemsOne": false
                     },
@@ -4365,6 +4374,9 @@
             "harness_platform_gitops_agent_deploy_yaml": {
                 "current": "harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml",
                 "fields": {
+                    "argocd_settings": {
+                        "maxItemsOne": true
+                    },
                     "proxy": {
                         "maxItemsOne": false
                     }
@@ -4667,6 +4679,9 @@
                         }
                     }
                 }
+            },
+            "harness_platform_gitops_filters": {
+                "current": "harness:platform/getGitopsFilters:getGitopsFilters"
             },
             "harness_platform_gitops_gnupg": {
                 "current": "harness:platform/getGitopsGnupg:getGitopsGnupg",
@@ -5409,6 +5424,11 @@
             }
         },
         "datasources": {
+            "harness_platform_db_schema": {
+                "maxItemsOneOverrides": {
+                    "schema_source": false
+                }
+            },
             "harness_platform_gitops_applications": {
                 "maxItemsOneOverrides": {
                     "application.$.metadata": false,

@@ -142,7 +142,7 @@ namespace Pulumi.Harness.Platform
         public string? RepositoryCommit { get; set; }
 
         /// <summary>
-        /// Repository SHA in which the code should be accessed
+        /// Repository Commit SHA in which the code should be accessed
         /// </summary>
         [Input("repositorySha")]
         public string? RepositorySha { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.Harness.Platform
         private List<string>? _variableSets;
 
         /// <summary>
-        /// Variable set identifiers. Currently support only one variable set.
+        /// Variable sets to use.
         /// </summary>
         public List<string> VariableSets
         {
@@ -232,7 +232,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? RepositoryCommit { get; set; }
 
         /// <summary>
-        /// Repository SHA in which the code should be accessed
+        /// Repository Commit SHA in which the code should be accessed
         /// </summary>
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _variableSets;
 
         /// <summary>
-        /// Variable set identifiers. Currently support only one variable set.
+        /// Variable sets to use.
         /// </summary>
         public InputList<string> VariableSets
         {
@@ -279,6 +279,9 @@ namespace Pulumi.Harness.Platform
         /// If enabled cost estimation operations will be performed in this workspace
         /// </summary>
         public readonly bool CostEstimationEnabled;
+        /// <summary>
+        /// Default pipelines associated with this workspace
+        /// </summary>
         public readonly ImmutableDictionary<string, string> DefaultPipelines;
         /// <summary>
         /// Description of the Workspace
@@ -341,13 +344,13 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string RepositoryPath;
         /// <summary>
-        /// Repository SHA in which the code should be accessed
+        /// Repository Commit SHA in which the code should be accessed
         /// </summary>
         public readonly string RepositorySha;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> TerraformVariableFiles;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> TerraformVariables;
         /// <summary>
-        /// Variable set identifiers. Currently support only one variable set.
+        /// Variable sets to use.
         /// </summary>
         public readonly ImmutableArray<string> VariableSets;
 

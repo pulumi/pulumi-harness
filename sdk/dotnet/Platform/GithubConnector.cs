@@ -108,7 +108,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the Githubhub repository or account.
+        /// URL of the Github repository or account.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// URL of the Githubhub repository or account.
+        /// URL of the Github repository or account.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -355,7 +355,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// URL of the Githubhub repository or account.
+        /// URL of the Github repository or account.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

@@ -121,6 +121,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GitopsAppProject{}
 	case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
 		r = &GitopsAppProjectMapping{}
+	case "harness:platform/gitopsFilters:GitopsFilters":
+		r = &GitopsFilters{}
 	case "harness:platform/gitxWebhook:GitxWebhook":
 		r = &GitxWebhook{}
 	case "harness:platform/harRegistry:HarRegistry":
@@ -494,6 +496,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/gitopsAppProjectMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitopsFilters",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

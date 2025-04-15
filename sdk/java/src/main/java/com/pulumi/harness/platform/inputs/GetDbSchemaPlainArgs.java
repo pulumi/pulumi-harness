@@ -5,7 +5,10 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetDbSchemaChangelogScript;
+import com.pulumi.harness.platform.inputs.GetDbSchemaSchemaSource;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDbSchemaPlainArgs Empty = new GetDbSchemaPlainArgs();
+
+    @Import(name="changelogScript")
+    private @Nullable GetDbSchemaChangelogScript changelogScript;
+
+    public Optional<GetDbSchemaChangelogScript> changelogScript() {
+        return Optional.ofNullable(this.changelogScript);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -75,13 +85,38 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
         return this.projectId;
     }
 
+    /**
+     * Provides a connector and path at which to find the database schema representation
+     * 
+     */
+    @Import(name="schemaSources")
+    private @Nullable List<GetDbSchemaSchemaSource> schemaSources;
+
+    /**
+     * @return Provides a connector and path at which to find the database schema representation
+     * 
+     */
+    public Optional<List<GetDbSchemaSchemaSource>> schemaSources() {
+        return Optional.ofNullable(this.schemaSources);
+    }
+
+    @Import(name="type")
+    private @Nullable String type;
+
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private GetDbSchemaPlainArgs() {}
 
     private GetDbSchemaPlainArgs(GetDbSchemaPlainArgs $) {
+        this.changelogScript = $.changelogScript;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.schemaSources = $.schemaSources;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -100,6 +135,11 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder(GetDbSchemaPlainArgs defaults) {
             $ = new GetDbSchemaPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder changelogScript(@Nullable GetDbSchemaChangelogScript changelogScript) {
+            $.changelogScript = changelogScript;
+            return this;
         }
 
         /**
@@ -143,6 +183,32 @@ public final class GetDbSchemaPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder projectId(String projectId) {
             $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param schemaSources Provides a connector and path at which to find the database schema representation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaSources(@Nullable List<GetDbSchemaSchemaSource> schemaSources) {
+            $.schemaSources = schemaSources;
+            return this;
+        }
+
+        /**
+         * @param schemaSources Provides a connector and path at which to find the database schema representation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaSources(GetDbSchemaSchemaSource... schemaSources) {
+            return schemaSources(List.of(schemaSources));
+        }
+
+        public Builder type(@Nullable String type) {
+            $.type = type;
             return this;
         }
 

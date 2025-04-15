@@ -25,34 +25,43 @@ class DbSchemaArgs:
                  identifier: pulumi.Input[builtins.str],
                  org_id: pulumi.Input[builtins.str],
                  project_id: pulumi.Input[builtins.str],
-                 schema_source: pulumi.Input['DbSchemaSchemaSourceArgs'],
+                 changelog_script: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 schema_source: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']] = None,
                  service: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a DbSchema resource.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Changelog script details
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[builtins.str] name: Name of the resource.
-        :param pulumi.Input[builtins.str] service: The service associated with schema
+        :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input[builtins.str] service: The service associated with schema.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[builtins.str] type: Type of the database schema (repository/script).
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "schema_source", schema_source)
+        if changelog_script is not None:
+            pulumi.set(__self__, "changelog_script", changelog_script)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if schema_source is not None:
+            pulumi.set(__self__, "schema_source", schema_source)
         if service is not None:
             pulumi.set(__self__, "service", service)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -91,16 +100,16 @@ class DbSchemaArgs:
         pulumi.set(self, "project_id", value)
 
     @property
-    @pulumi.getter(name="schemaSource")
-    def schema_source(self) -> pulumi.Input['DbSchemaSchemaSourceArgs']:
+    @pulumi.getter(name="changelogScript")
+    def changelog_script(self) -> Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]:
         """
-        Provides a connector and path at which to find the database schema representation
+        Changelog script details
         """
-        return pulumi.get(self, "schema_source")
+        return pulumi.get(self, "changelog_script")
 
-    @schema_source.setter
-    def schema_source(self, value: pulumi.Input['DbSchemaSchemaSourceArgs']):
-        pulumi.set(self, "schema_source", value)
+    @changelog_script.setter
+    def changelog_script(self, value: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]):
+        pulumi.set(self, "changelog_script", value)
 
     @property
     @pulumi.getter
@@ -127,10 +136,22 @@ class DbSchemaArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="schemaSource")
+    def schema_source(self) -> Optional[pulumi.Input['DbSchemaSchemaSourceArgs']]:
+        """
+        Provides a connector and path at which to find the database schema representation
+        """
+        return pulumi.get(self, "schema_source")
+
+    @schema_source.setter
+    def schema_source(self, value: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']]):
+        pulumi.set(self, "schema_source", value)
+
+    @property
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The service associated with schema
+        The service associated with schema.
         """
         return pulumi.get(self, "service")
 
@@ -150,10 +171,23 @@ class DbSchemaArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Type of the database schema (repository/script).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _DbSchemaState:
     def __init__(__self__, *,
+                 changelog_script: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  identifier: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -161,18 +195,23 @@ class _DbSchemaState:
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
                  schema_source: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']] = None,
                  service: Optional[pulumi.Input[builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbSchema resources.
+        :param pulumi.Input['DbSchemaChangelogScriptArgs'] changelog_script: Changelog script details
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
-        :param pulumi.Input[builtins.str] service: The service associated with schema
+        :param pulumi.Input[builtins.str] service: The service associated with schema.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[builtins.str] type: Type of the database schema (repository/script).
         """
+        if changelog_script is not None:
+            pulumi.set(__self__, "changelog_script", changelog_script)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if identifier is not None:
@@ -189,6 +228,20 @@ class _DbSchemaState:
             pulumi.set(__self__, "service", service)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="changelogScript")
+    def changelog_script(self) -> Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]:
+        """
+        Changelog script details
+        """
+        return pulumi.get(self, "changelog_script")
+
+    @changelog_script.setter
+    def changelog_script(self, value: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]):
+        pulumi.set(self, "changelog_script", value)
 
     @property
     @pulumi.getter
@@ -266,7 +319,7 @@ class _DbSchemaState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The service associated with schema
+        The service associated with schema.
         """
         return pulumi.get(self, "service")
 
@@ -286,12 +339,25 @@ class _DbSchemaState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Type of the database schema (repository/script).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
 
 class DbSchema(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  identifier: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -300,32 +366,10 @@ class DbSchema(pulumi.CustomResource):
                  schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
                  service: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness DBDevOps Schema.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.DbSchema("test",
-            identifier="identifier",
-            org_id="org_id",
-            project_id="project_id",
-            name="name",
-            service="service1",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-            })
-        ```
 
         ## Import
 
@@ -337,14 +381,16 @@ class DbSchema(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Changelog script details
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
-        :param pulumi.Input[builtins.str] service: The service associated with schema
+        :param pulumi.Input[builtins.str] service: The service associated with schema.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[builtins.str] type: Type of the database schema (repository/script).
         """
         ...
     @overload
@@ -354,29 +400,6 @@ class DbSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness DBDevOps Schema.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.DbSchema("test",
-            identifier="identifier",
-            org_id="org_id",
-            project_id="project_id",
-            name="name",
-            service="service1",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-            })
-        ```
 
         ## Import
 
@@ -401,6 +424,7 @@ class DbSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  identifier: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -409,6 +433,7 @@ class DbSchema(pulumi.CustomResource):
                  schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
                  service: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,6 +443,7 @@ class DbSchema(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DbSchemaArgs.__new__(DbSchemaArgs)
 
+            __props__.__dict__["changelog_script"] = changelog_script
             __props__.__dict__["description"] = description
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
@@ -429,11 +455,10 @@ class DbSchema(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
-            if schema_source is None and not opts.urn:
-                raise TypeError("Missing required property 'schema_source'")
             __props__.__dict__["schema_source"] = schema_source
             __props__.__dict__["service"] = service
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["type"] = type
         super(DbSchema, __self__).__init__(
             'harness:platform/dbSchema:DbSchema',
             resource_name,
@@ -444,6 +469,7 @@ class DbSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             identifier: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
@@ -451,7 +477,8 @@ class DbSchema(pulumi.CustomResource):
             project_id: Optional[pulumi.Input[builtins.str]] = None,
             schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
             service: Optional[pulumi.Input[builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None) -> 'DbSchema':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            type: Optional[pulumi.Input[builtins.str]] = None) -> 'DbSchema':
         """
         Get an existing DbSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -459,19 +486,22 @@ class DbSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Changelog script details
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
-        :param pulumi.Input[builtins.str] service: The service associated with schema
+        :param pulumi.Input[builtins.str] service: The service associated with schema.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[builtins.str] type: Type of the database schema (repository/script).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DbSchemaState.__new__(_DbSchemaState)
 
+        __props__.__dict__["changelog_script"] = changelog_script
         __props__.__dict__["description"] = description
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
@@ -480,7 +510,16 @@ class DbSchema(pulumi.CustomResource):
         __props__.__dict__["schema_source"] = schema_source
         __props__.__dict__["service"] = service
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["type"] = type
         return DbSchema(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="changelogScript")
+    def changelog_script(self) -> pulumi.Output[Optional['outputs.DbSchemaChangelogScript']]:
+        """
+        Changelog script details
+        """
+        return pulumi.get(self, "changelog_script")
 
     @property
     @pulumi.getter
@@ -524,7 +563,7 @@ class DbSchema(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="schemaSource")
-    def schema_source(self) -> pulumi.Output['outputs.DbSchemaSchemaSource']:
+    def schema_source(self) -> pulumi.Output[Optional['outputs.DbSchemaSchemaSource']]:
         """
         Provides a connector and path at which to find the database schema representation
         """
@@ -534,7 +573,7 @@ class DbSchema(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The service associated with schema
+        The service associated with schema.
         """
         return pulumi.get(self, "service")
 
@@ -545,4 +584,12 @@ class DbSchema(pulumi.CustomResource):
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Type of the database schema (repository/script).
+        """
+        return pulumi.get(self, "type")
 

@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.DbSchemaChangelogScriptArgs;
 import com.pulumi.harness.platform.inputs.DbSchemaSchemaSourceArgs;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
 
     public static final DbSchemaState Empty = new DbSchemaState();
+
+    /**
+     * Changelog script details
+     * 
+     */
+    @Import(name="changelogScript")
+    private @Nullable Output<DbSchemaChangelogScriptArgs> changelogScript;
+
+    /**
+     * @return Changelog script details
+     * 
+     */
+    public Optional<Output<DbSchemaChangelogScriptArgs>> changelogScript() {
+        return Optional.ofNullable(this.changelogScript);
+    }
 
     /**
      * Description of the resource.
@@ -108,14 +124,14 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The service associated with schema
+     * The service associated with schema.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return The service associated with schema
+     * @return The service associated with schema.
      * 
      */
     public Optional<Output<String>> service() {
@@ -137,9 +153,25 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Type of the database schema (repository/script).
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Type of the database schema (repository/script).
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private DbSchemaState() {}
 
     private DbSchemaState(DbSchemaState $) {
+        this.changelogScript = $.changelogScript;
         this.description = $.description;
         this.identifier = $.identifier;
         this.name = $.name;
@@ -148,6 +180,7 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         this.schemaSource = $.schemaSource;
         this.service = $.service;
         this.tags = $.tags;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -166,6 +199,27 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DbSchemaState defaults) {
             $ = new DbSchemaState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param changelogScript Changelog script details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changelogScript(@Nullable Output<DbSchemaChangelogScriptArgs> changelogScript) {
+            $.changelogScript = changelogScript;
+            return this;
+        }
+
+        /**
+         * @param changelogScript Changelog script details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changelogScript(DbSchemaChangelogScriptArgs changelogScript) {
+            return changelogScript(Output.of(changelogScript));
         }
 
         /**
@@ -295,7 +349,7 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service The service associated with schema
+         * @param service The service associated with schema.
          * 
          * @return builder
          * 
@@ -306,7 +360,7 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service The service associated with schema
+         * @param service The service associated with schema.
          * 
          * @return builder
          * 
@@ -344,6 +398,27 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param type Type of the database schema (repository/script).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Type of the database schema (repository/script).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public DbSchemaState build() {

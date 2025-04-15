@@ -12,39 +12,6 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness DBDevOps Schema.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Harness.Platform.DbSchema("test", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Name = "name",
-    ///         Service = "service1",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///             "bar:foo",
-    ///         },
-    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
-    ///         {
-    ///             Connector = "gitConnector",
-    ///             Repo = "TestRepo",
-    ///             Location = "db/example-changelog.yaml",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Import project level db schema
@@ -56,6 +23,12 @@ namespace Pulumi.Harness.Platform
     [HarnessResourceType("harness:platform/dbSchema:DbSchema")]
     public partial class DbSchema : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Changelog script details
+        /// </summary>
+        [Output("changelogScript")]
+        public Output<Outputs.DbSchemaChangelogScript?> ChangelogScript { get; private set; } = null!;
+
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -90,10 +63,10 @@ namespace Pulumi.Harness.Platform
         /// Provides a connector and path at which to find the database schema representation
         /// </summary>
         [Output("schemaSource")]
-        public Output<Outputs.DbSchemaSchemaSource> SchemaSource { get; private set; } = null!;
+        public Output<Outputs.DbSchemaSchemaSource?> SchemaSource { get; private set; } = null!;
 
         /// <summary>
-        /// The service associated with schema
+        /// The service associated with schema.
         /// </summary>
         [Output("service")]
         public Output<string?> Service { get; private set; } = null!;
@@ -103,6 +76,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of the database schema (repository/script).
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -152,6 +131,12 @@ namespace Pulumi.Harness.Platform
     public sealed class DbSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Changelog script details
+        /// </summary>
+        [Input("changelogScript")]
+        public Input<Inputs.DbSchemaChangelogScriptArgs>? ChangelogScript { get; set; }
+
+        /// <summary>
         /// Description of the resource.
         /// </summary>
         [Input("description")]
@@ -184,11 +169,11 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Provides a connector and path at which to find the database schema representation
         /// </summary>
-        [Input("schemaSource", required: true)]
-        public Input<Inputs.DbSchemaSchemaSourceArgs> SchemaSource { get; set; } = null!;
+        [Input("schemaSource")]
+        public Input<Inputs.DbSchemaSchemaSourceArgs>? SchemaSource { get; set; }
 
         /// <summary>
-        /// The service associated with schema
+        /// The service associated with schema.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
@@ -205,6 +190,12 @@ namespace Pulumi.Harness.Platform
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Type of the database schema (repository/script).
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public DbSchemaArgs()
         {
         }
@@ -213,6 +204,12 @@ namespace Pulumi.Harness.Platform
 
     public sealed class DbSchemaState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Changelog script details
+        /// </summary>
+        [Input("changelogScript")]
+        public Input<Inputs.DbSchemaChangelogScriptGetArgs>? ChangelogScript { get; set; }
+
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -250,7 +247,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.DbSchemaSchemaSourceGetArgs>? SchemaSource { get; set; }
 
         /// <summary>
-        /// The service associated with schema
+        /// The service associated with schema.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
@@ -266,6 +263,12 @@ namespace Pulumi.Harness.Platform
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Type of the database schema (repository/script).
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public DbSchemaState()
         {

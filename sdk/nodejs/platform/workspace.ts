@@ -73,13 +73,19 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     variableSets: [testHarnessPlatformInfraVariableSet.id],
+ *     defaultPipelines: {
+ *         destroy: "destroy_pipeline_id",
+ *         drift: "drift_pipeline_id",
+ *         plan: "plan_pipeline_id",
+ *         apply: "apply_pipeline_id",
+ *     },
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<slo_id>
+ * $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
  * ```
  */
 export class Workspace extends pulumi.CustomResource {
@@ -169,7 +175,7 @@ export class Workspace extends pulumi.CustomResource {
      */
     public readonly repositoryPath!: pulumi.Output<string>;
     /**
-     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      */
     public readonly repositorySha!: pulumi.Output<string | undefined>;
     /**
@@ -179,7 +185,7 @@ export class Workspace extends pulumi.CustomResource {
     public readonly terraformVariableFiles!: pulumi.Output<outputs.platform.WorkspaceTerraformVariableFile[] | undefined>;
     public readonly terraformVariables!: pulumi.Output<outputs.platform.WorkspaceTerraformVariable[] | undefined>;
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      */
     public readonly variableSets!: pulumi.Output<string[] | undefined>;
 
@@ -339,7 +345,7 @@ export interface WorkspaceState {
      */
     repositoryPath?: pulumi.Input<string>;
     /**
-     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      */
     repositorySha?: pulumi.Input<string>;
     /**
@@ -349,7 +355,7 @@ export interface WorkspaceState {
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      */
     variableSets?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -417,7 +423,7 @@ export interface WorkspaceArgs {
      */
     repositoryPath: pulumi.Input<string>;
     /**
-     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      */
     repositorySha?: pulumi.Input<string>;
     /**
@@ -427,7 +433,7 @@ export interface WorkspaceArgs {
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariableFile>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceTerraformVariable>[]>;
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      */
     variableSets?: pulumi.Input<pulumi.Input<string>[]>;
 }

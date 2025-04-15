@@ -106,6 +106,12 @@ import javax.annotation.Nullable;
  *                     .repositoryConnector(test.id())
  *                     .build())
  *             .variableSets(testHarnessPlatformInfraVariableSet.id())
+ *             .defaultPipelines(Map.ofEntries(
+ *                 Map.entry("destroy", "destroy_pipeline_id"),
+ *                 Map.entry("drift", "drift_pipeline_id"),
+ *                 Map.entry("plan", "plan_pipeline_id"),
+ *                 Map.entry("apply", "apply_pipeline_id")
+ *             ))
  *             .build());
  * 
  *     }
@@ -117,7 +123,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import harness:platform/workspace:Workspace example &lt;org_id&gt;/&lt;project_id&gt;/&lt;slo_id&gt;
+ * $ pulumi import harness:platform/workspace:Workspace example &lt;org_id&gt;/&lt;project_id&gt;/&lt;workspace_id&gt;
  * ```
  * 
  */
@@ -332,14 +338,14 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return this.repositoryPath;
     }
     /**
-     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      * 
      */
     @Export(name="repositorySha", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repositorySha;
 
     /**
-     * @return Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      * 
      */
     public Output<Optional<String>> repositorySha() {
@@ -372,14 +378,14 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.terraformVariables);
     }
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      * 
      */
     @Export(name="variableSets", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> variableSets;
 
     /**
-     * @return Variable set identifiers. Currently support only one variable set.
+     * @return Variable sets to use.
      * 
      */
     public Output<Optional<List<String>>> variableSets() {

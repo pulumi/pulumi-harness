@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetGitopsAgentDeployYamlArgocdSettings;
 import com.pulumi.harness.platform.outputs.GetGitopsAgentDeployYamlProxy;
 import java.lang.Boolean;
 import java.lang.String;
@@ -24,6 +25,11 @@ public final class GetGitopsAgentDeployYamlResult {
      */
     @Deprecated /* This field is deprecated and will be removed in a future release. */
     private String accountId;
+    /**
+     * @return Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+     * 
+     */
+    private @Nullable GetGitopsAgentDeployYamlArgocdSettings argocdSettings;
     /**
      * @return CA data of the GitOps agent, base64 encoded content of ca chain.
      * 
@@ -86,6 +92,13 @@ public final class GetGitopsAgentDeployYamlResult {
     @Deprecated /* This field is deprecated and will be removed in a future release. */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+     * 
+     */
+    public Optional<GetGitopsAgentDeployYamlArgocdSettings> argocdSettings() {
+        return Optional.ofNullable(this.argocdSettings);
     }
     /**
      * @return CA data of the GitOps agent, base64 encoded content of ca chain.
@@ -168,6 +181,7 @@ public final class GetGitopsAgentDeployYamlResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private @Nullable GetGitopsAgentDeployYamlArgocdSettings argocdSettings;
         private @Nullable String caData;
         private String id;
         private String identifier;
@@ -182,6 +196,7 @@ public final class GetGitopsAgentDeployYamlResult {
         public Builder(GetGitopsAgentDeployYamlResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.argocdSettings = defaults.argocdSettings;
     	      this.caData = defaults.caData;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
@@ -200,6 +215,12 @@ public final class GetGitopsAgentDeployYamlResult {
               throw new MissingRequiredPropertyException("GetGitopsAgentDeployYamlResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder argocdSettings(@Nullable GetGitopsAgentDeployYamlArgocdSettings argocdSettings) {
+
+            this.argocdSettings = argocdSettings;
             return this;
         }
         @CustomType.Setter
@@ -276,6 +297,7 @@ public final class GetGitopsAgentDeployYamlResult {
         public GetGitopsAgentDeployYamlResult build() {
             final var _resultValue = new GetGitopsAgentDeployYamlResult();
             _resultValue.accountId = accountId;
+            _resultValue.argocdSettings = argocdSettings;
             _resultValue.caData = caData;
             _resultValue.id = id;
             _resultValue.identifier = identifier;

@@ -59,9 +59,9 @@ class WorkspaceArgs:
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
-        :param pulumi.Input[builtins.str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable sets to use.
         """
         pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
         pulumi.set(__self__, "identifier", identifier)
@@ -286,7 +286,7 @@ class WorkspaceArgs:
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         """
         return pulumi.get(self, "repository_sha")
 
@@ -328,7 +328,7 @@ class WorkspaceArgs:
     @pulumi.getter(name="variableSets")
     def variable_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Variable set identifiers. Currently support only one variable set.
+        Variable sets to use.
         """
         return pulumi.get(self, "variable_sets")
 
@@ -377,9 +377,9 @@ class _WorkspaceState:
         :param pulumi.Input[builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[builtins.str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[builtins.str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable sets to use.
         """
         if cost_estimation_enabled is not None:
             pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
@@ -614,7 +614,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         """
         return pulumi.get(self, "repository_sha")
 
@@ -656,7 +656,7 @@ class _WorkspaceState:
     @pulumi.getter(name="variableSets")
     def variable_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Variable set identifiers. Currently support only one variable set.
+        Variable sets to use.
         """
         return pulumi.get(self, "variable_sets")
 
@@ -758,13 +758,19 @@ class Workspace(pulumi.CustomResource):
                     "repository_connector": test["id"],
                 },
             ],
-            variable_sets=[test_harness_platform_infra_variable_set["id"]])
+            variable_sets=[test_harness_platform_infra_variable_set["id"]],
+            default_pipelines={
+                "destroy": "destroy_pipeline_id",
+                "drift": "drift_pipeline_id",
+                "plan": "plan_pipeline_id",
+                "apply": "apply_pipeline_id",
+            })
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<slo_id>
+        $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -783,9 +789,9 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[builtins.str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[builtins.str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable sets to use.
         """
         ...
     @overload
@@ -859,13 +865,19 @@ class Workspace(pulumi.CustomResource):
                     "repository_connector": test["id"],
                 },
             ],
-            variable_sets=[test_harness_platform_infra_variable_set["id"]])
+            variable_sets=[test_harness_platform_infra_variable_set["id"]],
+            default_pipelines={
+                "destroy": "destroy_pipeline_id",
+                "drift": "drift_pipeline_id",
+                "plan": "plan_pipeline_id",
+                "apply": "apply_pipeline_id",
+            })
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<slo_id>
+        $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1006,9 +1018,9 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[builtins.str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[builtins.str] repository_sha: Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable set identifiers. Currently support only one variable set.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] variable_sets: Variable sets to use.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1163,7 +1175,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         """
         return pulumi.get(self, "repository_sha")
 
@@ -1189,7 +1201,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="variableSets")
     def variable_sets(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
-        Variable set identifiers. Currently support only one variable set.
+        Variable sets to use.
         """
         return pulumi.get(self, "variable_sets")
 

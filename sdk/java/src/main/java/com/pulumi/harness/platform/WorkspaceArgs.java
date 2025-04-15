@@ -247,14 +247,14 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      * 
      */
     @Import(name="repositorySha")
     private @Nullable Output<String> repositorySha;
 
     /**
-     * @return Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
      * 
      */
     public Optional<Output<String>> repositorySha() {
@@ -291,14 +291,14 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      * 
      */
     @Import(name="variableSets")
     private @Nullable Output<List<String>> variableSets;
 
     /**
-     * @return Variable set identifiers. Currently support only one variable set.
+     * @return Variable sets to use.
      * 
      */
     public Optional<Output<List<String>>> variableSets() {
@@ -672,7 +672,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositorySha Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+         * @param repositorySha Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositorySha Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+         * @param repositorySha Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
          * 
          * @return builder
          * 
@@ -750,7 +750,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * @param variableSets Variable sets to use.
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * @param variableSets Variable sets to use.
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variableSets Variable set identifiers. Currently support only one variable set.
+         * @param variableSets Variable sets to use.
          * 
          * @return builder
          * 
