@@ -25,10 +25,13 @@ import * as utilities from "../utilities";
 export function getDbSchema(args: GetDbSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetDbSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDbSchema:getDbSchema", {
+        "changelogScript": args.changelogScript,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "schemaSources": args.schemaSources,
+        "type": args.type,
     }, opts);
 }
 
@@ -36,6 +39,7 @@ export function getDbSchema(args: GetDbSchemaArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getDbSchema.
  */
 export interface GetDbSchemaArgs {
+    changelogScript?: inputs.platform.GetDbSchemaChangelogScript;
     /**
      * Unique identifier of the resource.
      */
@@ -52,12 +56,18 @@ export interface GetDbSchemaArgs {
      * Unique identifier of the project.
      */
     projectId: string;
+    /**
+     * Provides a connector and path at which to find the database schema representation
+     */
+    schemaSources?: inputs.platform.GetDbSchemaSchemaSource[];
+    type?: string;
 }
 
 /**
  * A collection of values returned by getDbSchema.
  */
 export interface GetDbSchemaResult {
+    readonly changelogScript?: outputs.platform.GetDbSchemaChangelogScript;
     /**
      * Description of the resource.
      */
@@ -85,7 +95,7 @@ export interface GetDbSchemaResult {
     /**
      * Provides a connector and path at which to find the database schema representation
      */
-    readonly schemaSources: outputs.platform.GetDbSchemaSchemaSource[];
+    readonly schemaSources?: outputs.platform.GetDbSchemaSchemaSource[];
     /**
      * The service associated with schema
      */
@@ -94,6 +104,7 @@ export interface GetDbSchemaResult {
      * Tags to associate with the resource.
      */
     readonly tags: string[];
+    readonly type?: string;
 }
 /**
  * Data source for retrieving a Harness DBDevOps Schema.
@@ -114,10 +125,13 @@ export interface GetDbSchemaResult {
 export function getDbSchemaOutput(args: GetDbSchemaOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbSchemaResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDbSchema:getDbSchema", {
+        "changelogScript": args.changelogScript,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "schemaSources": args.schemaSources,
+        "type": args.type,
     }, opts);
 }
 
@@ -125,6 +139,7 @@ export function getDbSchemaOutput(args: GetDbSchemaOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getDbSchema.
  */
 export interface GetDbSchemaOutputArgs {
+    changelogScript?: pulumi.Input<inputs.platform.GetDbSchemaChangelogScriptArgs>;
     /**
      * Unique identifier of the resource.
      */
@@ -141,4 +156,9 @@ export interface GetDbSchemaOutputArgs {
      * Unique identifier of the project.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Provides a connector and path at which to find the database schema representation
+     */
+    schemaSources?: pulumi.Input<pulumi.Input<inputs.platform.GetDbSchemaSchemaSourceArgs>[]>;
+    type?: pulumi.Input<string>;
 }

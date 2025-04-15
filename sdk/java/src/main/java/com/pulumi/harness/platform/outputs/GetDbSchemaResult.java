@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetDbSchemaChangelogScript;
 import com.pulumi.harness.platform.outputs.GetDbSchemaSchemaSource;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbSchemaResult {
+    private @Nullable GetDbSchemaChangelogScript changelogScript;
     /**
      * @return Description of the resource.
      * 
@@ -48,7 +50,7 @@ public final class GetDbSchemaResult {
      * @return Provides a connector and path at which to find the database schema representation
      * 
      */
-    private List<GetDbSchemaSchemaSource> schemaSources;
+    private @Nullable List<GetDbSchemaSchemaSource> schemaSources;
     /**
      * @return The service associated with schema
      * 
@@ -59,8 +61,12 @@ public final class GetDbSchemaResult {
      * 
      */
     private List<String> tags;
+    private @Nullable String type;
 
     private GetDbSchemaResult() {}
+    public Optional<GetDbSchemaChangelogScript> changelogScript() {
+        return Optional.ofNullable(this.changelogScript);
+    }
     /**
      * @return Description of the resource.
      * 
@@ -108,7 +114,7 @@ public final class GetDbSchemaResult {
      * 
      */
     public List<GetDbSchemaSchemaSource> schemaSources() {
-        return this.schemaSources;
+        return this.schemaSources == null ? List.of() : this.schemaSources;
     }
     /**
      * @return The service associated with schema
@@ -124,6 +130,9 @@ public final class GetDbSchemaResult {
     public List<String> tags() {
         return this.tags;
     }
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -134,18 +143,21 @@ public final class GetDbSchemaResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetDbSchemaChangelogScript changelogScript;
         private String description;
         private String id;
         private String identifier;
         private @Nullable String name;
         private String orgId;
         private String projectId;
-        private List<GetDbSchemaSchemaSource> schemaSources;
+        private @Nullable List<GetDbSchemaSchemaSource> schemaSources;
         private String service;
         private List<String> tags;
+        private @Nullable String type;
         public Builder() {}
         public Builder(GetDbSchemaResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.changelogScript = defaults.changelogScript;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
@@ -155,8 +167,15 @@ public final class GetDbSchemaResult {
     	      this.schemaSources = defaults.schemaSources;
     	      this.service = defaults.service;
     	      this.tags = defaults.tags;
+    	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder changelogScript(@Nullable GetDbSchemaChangelogScript changelogScript) {
+
+            this.changelogScript = changelogScript;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -204,10 +223,8 @@ public final class GetDbSchemaResult {
             return this;
         }
         @CustomType.Setter
-        public Builder schemaSources(List<GetDbSchemaSchemaSource> schemaSources) {
-            if (schemaSources == null) {
-              throw new MissingRequiredPropertyException("GetDbSchemaResult", "schemaSources");
-            }
+        public Builder schemaSources(@Nullable List<GetDbSchemaSchemaSource> schemaSources) {
+
             this.schemaSources = schemaSources;
             return this;
         }
@@ -233,8 +250,15 @@ public final class GetDbSchemaResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
         public GetDbSchemaResult build() {
             final var _resultValue = new GetDbSchemaResult();
+            _resultValue.changelogScript = changelogScript;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
@@ -244,6 +268,7 @@ public final class GetDbSchemaResult {
             _resultValue.schemaSources = schemaSources;
             _resultValue.service = service;
             _resultValue.tags = tags;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

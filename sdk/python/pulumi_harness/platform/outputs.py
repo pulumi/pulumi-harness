@@ -62,6 +62,7 @@ __all__ = [
     'ConnectorJdbcCredentialsUsernamePassword',
     'ConnectorPdcHost',
     'ConnectorRancherBearerToken',
+    'DbSchemaChangelogScript',
     'DbSchemaSchemaSource',
     'DockerConnectorCredentials',
     'ElasticsearchConnectorApiToken',
@@ -297,6 +298,7 @@ __all__ = [
     'GetConnectorJdbcCredentialUsernamePasswordResult',
     'GetConnectorPdcHostResult',
     'GetConnectorRancherBearerTokenResult',
+    'GetDbSchemaChangelogScriptResult',
     'GetDbSchemaSchemaSourceResult',
     'GetDockerConnectorCredentialResult',
     'GetElasticsearchConnectorApiTokenResult',
@@ -328,6 +330,7 @@ __all__ = [
     'GetGitlabConnectorCredentialResult',
     'GetGitlabConnectorCredentialHttpResult',
     'GetGitlabConnectorCredentialSshResult',
+    'GetGitopsAgentDeployYamlArgocdSettingsResult',
     'GetGitopsAgentDeployYamlProxyResult',
     'GetGitopsAgentMetadataResult',
     'GetGitopsAgentOperatorYamlProxyResult',
@@ -2875,6 +2878,61 @@ class ConnectorRancherBearerToken(dict):
         Reference to the secret containing the bearer token for the rancher cluster. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "bearer_token_ref")
+
+
+@pulumi.output_type
+class DbSchemaChangelogScript(dict):
+    def __init__(__self__, *,
+                 command: Optional[builtins.str] = None,
+                 image: Optional[builtins.str] = None,
+                 location: Optional[builtins.str] = None,
+                 shell: Optional[builtins.str] = None):
+        """
+        :param builtins.str command: Script to clone changeSets
+        :param builtins.str image: The fully-qualified name (FQN) of the image
+        :param builtins.str location: Path to changeLog file
+        :param builtins.str shell: Type of the shell. For example Sh or Bash
+        """
+        if command is not None:
+            pulumi.set(__self__, "command", command)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if shell is not None:
+            pulumi.set(__self__, "shell", shell)
+
+    @property
+    @pulumi.getter
+    def command(self) -> Optional[builtins.str]:
+        """
+        Script to clone changeSets
+        """
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[builtins.str]:
+        """
+        The fully-qualified name (FQN) of the image
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[builtins.str]:
+        """
+        Path to changeLog file
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def shell(self) -> Optional[builtins.str]:
+        """
+        Type of the shell. For example Sh or Bash
+        """
+        return pulumi.get(self, "shell")
 
 
 @pulumi.output_type
@@ -16276,7 +16334,7 @@ class WorkspaceTerraformVariableFile(dict):
         :param builtins.str repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
         :param builtins.str repository_commit: Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         :param builtins.str repository_path: Repository path is the path in which the variables reside.
-        :param builtins.str repository_sha: Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        :param builtins.str repository_sha: Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
         """
         pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "repository_connector", repository_connector)
@@ -16333,7 +16391,7 @@ class WorkspaceTerraformVariableFile(dict):
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> Optional[builtins.str]:
         """
-        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
         """
         return pulumi.get(self, "repository_sha")
 
@@ -17945,6 +18003,57 @@ class GetConnectorRancherBearerTokenResult(dict):
 
 
 @pulumi.output_type
+class GetDbSchemaChangelogScriptResult(dict):
+    def __init__(__self__, *,
+                 command: builtins.str,
+                 image: builtins.str,
+                 location: builtins.str,
+                 shell: builtins.str):
+        """
+        :param builtins.str command: Script to clone changeSets
+        :param builtins.str image: The fully-qualified name (FQN) of the image
+        :param builtins.str location: Path to changeLog file
+        :param builtins.str shell: Type of the shell. For example Sh or Bash
+        """
+        pulumi.set(__self__, "command", command)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "shell", shell)
+
+    @property
+    @pulumi.getter
+    def command(self) -> builtins.str:
+        """
+        Script to clone changeSets
+        """
+        return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter
+    def image(self) -> builtins.str:
+        """
+        The fully-qualified name (FQN) of the image
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def location(self) -> builtins.str:
+        """
+        Path to changeLog file
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def shell(self) -> builtins.str:
+        """
+        Type of the shell. For example Sh or Bash
+        """
+        return pulumi.get(self, "shell")
+
+
+@pulumi.output_type
 class GetDbSchemaSchemaSourceResult(dict):
     def __init__(__self__, *,
                  archive_path: builtins.str,
@@ -19021,6 +19130,25 @@ class GetGitlabConnectorCredentialSshResult(dict):
         Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "ssh_key_ref")
+
+
+@pulumi.output_type
+class GetGitopsAgentDeployYamlArgocdSettingsResult(dict):
+    def __init__(__self__, *,
+                 enable_helm_path_traversal: Optional[builtins.bool] = None):
+        """
+        :param builtins.bool enable_helm_path_traversal: Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+        """
+        if enable_helm_path_traversal is not None:
+            pulumi.set(__self__, "enable_helm_path_traversal", enable_helm_path_traversal)
+
+    @property
+    @pulumi.getter(name="enableHelmPathTraversal")
+    def enable_helm_path_traversal(self) -> Optional[builtins.bool]:
+        """
+        Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+        """
+        return pulumi.get(self, "enable_helm_path_traversal")
 
 
 @pulumi.output_type
@@ -24990,7 +25118,7 @@ class GetWorkspaceTerraformVariableFileResult(dict):
         :param builtins.str repository_commit: Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         :param builtins.str repository_connector: Repository connector is the reference to the connector used to fetch the variables.
         :param builtins.str repository_path: Repository path is the path in which the variables reside.
-        :param builtins.str repository_sha: Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        :param builtins.str repository_sha: Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
         """
         pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "repository_branch", repository_branch)
@@ -25043,7 +25171,7 @@ class GetWorkspaceTerraformVariableFileResult(dict):
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> builtins.str:
         """
-        Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
         """
         return pulumi.get(self, "repository_sha")
 

@@ -92,6 +92,7 @@ from .get_gitops_app_project import *
 from .get_gitops_app_project_mapping import *
 from .get_gitops_applications import *
 from .get_gitops_cluster import *
+from .get_gitops_filters import *
 from .get_gitops_gnupg import *
 from .get_gitops_repo_cert import *
 from .get_gitops_repo_cred import *
@@ -168,6 +169,7 @@ from .github_connector import *
 from .gitlab_connector import *
 from .gitops_app_project import *
 from .gitops_app_project_mapping import *
+from .gitops_filters import *
 from .gitx_webhook import *
 from .har_registry import *
 from .helm_connector import *

@@ -36,7 +36,7 @@ public final class GetWorkspaceTerraformVariableFile {
      */
     private String repositoryPath;
     /**
-     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     private String repositorySha;
@@ -78,7 +78,7 @@ public final class GetWorkspaceTerraformVariableFile {
         return this.repositoryPath;
     }
     /**
-     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     public String repositorySha() {

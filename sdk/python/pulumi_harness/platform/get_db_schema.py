@@ -15,6 +15,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDbSchemaResult',
@@ -28,7 +29,10 @@ class GetDbSchemaResult:
     """
     A collection of values returned by getDbSchema.
     """
-    def __init__(__self__, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, schema_sources=None, service=None, tags=None):
+    def __init__(__self__, changelog_script=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, schema_sources=None, service=None, tags=None, type=None):
+        if changelog_script and not isinstance(changelog_script, dict):
+            raise TypeError("Expected argument 'changelog_script' to be a dict")
+        pulumi.set(__self__, "changelog_script", changelog_script)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -56,6 +60,14 @@ class GetDbSchemaResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="changelogScript")
+    def changelog_script(self) -> Optional['outputs.GetDbSchemaChangelogScriptResult']:
+        return pulumi.get(self, "changelog_script")
 
     @property
     @pulumi.getter
@@ -107,7 +119,7 @@ class GetDbSchemaResult:
 
     @property
     @pulumi.getter(name="schemaSources")
-    def schema_sources(self) -> Sequence['outputs.GetDbSchemaSchemaSourceResult']:
+    def schema_sources(self) -> Optional[Sequence['outputs.GetDbSchemaSchemaSourceResult']]:
         """
         Provides a connector and path at which to find the database schema representation
         """
@@ -129,6 +141,11 @@ class GetDbSchemaResult:
         """
         return pulumi.get(self, "tags")
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetDbSchemaResult(GetDbSchemaResult):
     # pylint: disable=using-constant-test
@@ -136,6 +153,7 @@ class AwaitableGetDbSchemaResult(GetDbSchemaResult):
         if False:
             yield self
         return GetDbSchemaResult(
+            changelog_script=self.changelog_script,
             description=self.description,
             id=self.id,
             identifier=self.identifier,
@@ -144,13 +162,17 @@ class AwaitableGetDbSchemaResult(GetDbSchemaResult):
             project_id=self.project_id,
             schema_sources=self.schema_sources,
             service=self.service,
-            tags=self.tags)
+            tags=self.tags,
+            type=self.type)
 
 
-def get_db_schema(identifier: Optional[builtins.str] = None,
+def get_db_schema(changelog_script: Optional[Union['GetDbSchemaChangelogScriptArgs', 'GetDbSchemaChangelogScriptArgsDict']] = None,
+                  identifier: Optional[builtins.str] = None,
                   name: Optional[builtins.str] = None,
                   org_id: Optional[builtins.str] = None,
                   project_id: Optional[builtins.str] = None,
+                  schema_sources: Optional[Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']]] = None,
+                  type: Optional[builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbSchemaResult:
     """
     Data source for retrieving a Harness DBDevOps Schema.
@@ -171,16 +193,21 @@ def get_db_schema(identifier: Optional[builtins.str] = None,
     :param builtins.str name: Name of the resource.
     :param builtins.str org_id: Unique identifier of the organization.
     :param builtins.str project_id: Unique identifier of the project.
+    :param Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']] schema_sources: Provides a connector and path at which to find the database schema representation
     """
     __args__ = dict()
+    __args__['changelogScript'] = changelog_script
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['schemaSources'] = schema_sources
+    __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getDbSchema:getDbSchema', __args__, opts=opts, typ=GetDbSchemaResult).value
 
     return AwaitableGetDbSchemaResult(
+        changelog_script=pulumi.get(__ret__, 'changelog_script'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
@@ -189,11 +216,15 @@ def get_db_schema(identifier: Optional[builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         schema_sources=pulumi.get(__ret__, 'schema_sources'),
         service=pulumi.get(__ret__, 'service'),
-        tags=pulumi.get(__ret__, 'tags'))
-def get_db_schema_output(identifier: Optional[pulumi.Input[builtins.str]] = None,
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
+def get_db_schema_output(changelog_script: Optional[pulumi.Input[Optional[Union['GetDbSchemaChangelogScriptArgs', 'GetDbSchemaChangelogScriptArgsDict']]]] = None,
+                         identifier: Optional[pulumi.Input[builtins.str]] = None,
                          name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                          org_id: Optional[pulumi.Input[builtins.str]] = None,
                          project_id: Optional[pulumi.Input[builtins.str]] = None,
+                         schema_sources: Optional[pulumi.Input[Optional[Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']]]]] = None,
+                         type: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbSchemaResult]:
     """
     Data source for retrieving a Harness DBDevOps Schema.
@@ -214,15 +245,20 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[builtins.str]] = None
     :param builtins.str name: Name of the resource.
     :param builtins.str org_id: Unique identifier of the organization.
     :param builtins.str project_id: Unique identifier of the project.
+    :param Sequence[Union['GetDbSchemaSchemaSourceArgs', 'GetDbSchemaSchemaSourceArgsDict']] schema_sources: Provides a connector and path at which to find the database schema representation
     """
     __args__ = dict()
+    __args__['changelogScript'] = changelog_script
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['schemaSources'] = schema_sources
+    __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDbSchema:getDbSchema', __args__, opts=opts, typ=GetDbSchemaResult)
     return __ret__.apply(lambda __response__: GetDbSchemaResult(
+        changelog_script=pulumi.get(__response__, 'changelog_script'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
@@ -231,4 +267,5 @@ def get_db_schema_output(identifier: Optional[pulumi.Input[builtins.str]] = None
         project_id=pulumi.get(__response__, 'project_id'),
         schema_sources=pulumi.get(__response__, 'schema_sources'),
         service=pulumi.get(__response__, 'service'),
-        tags=pulumi.get(__response__, 'tags')))
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))

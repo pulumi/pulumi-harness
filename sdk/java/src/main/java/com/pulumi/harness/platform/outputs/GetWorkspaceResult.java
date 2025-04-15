@@ -21,6 +21,10 @@ public final class GetWorkspaceResult {
      * 
      */
     private Boolean costEstimationEnabled;
+    /**
+     * @return Default pipelines associated with this workspace
+     * 
+     */
     private Map<String,String> defaultPipelines;
     /**
      * @return Description of the Workspace
@@ -98,14 +102,14 @@ public final class GetWorkspaceResult {
      */
     private String repositoryPath;
     /**
-     * @return Repository SHA in which the code should be accessed
+     * @return Repository Commit SHA in which the code should be accessed
      * 
      */
     private String repositorySha;
     private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
     private List<GetWorkspaceTerraformVariable> terraformVariables;
     /**
-     * @return Variable set identifiers. Currently support only one variable set.
+     * @return Variable sets to use.
      * 
      */
     private List<String> variableSets;
@@ -118,6 +122,10 @@ public final class GetWorkspaceResult {
     public Boolean costEstimationEnabled() {
         return this.costEstimationEnabled;
     }
+    /**
+     * @return Default pipelines associated with this workspace
+     * 
+     */
     public Map<String,String> defaultPipelines() {
         return this.defaultPipelines;
     }
@@ -227,7 +235,7 @@ public final class GetWorkspaceResult {
         return this.repositoryPath;
     }
     /**
-     * @return Repository SHA in which the code should be accessed
+     * @return Repository Commit SHA in which the code should be accessed
      * 
      */
     public String repositorySha() {
@@ -240,7 +248,7 @@ public final class GetWorkspaceResult {
         return this.terraformVariables;
     }
     /**
-     * @return Variable set identifiers. Currently support only one variable set.
+     * @return Variable sets to use.
      * 
      */
     public List<String> variableSets() {

@@ -6,6 +6,7 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.DbSchemaChangelogScriptArgs;
 import com.pulumi.harness.platform.inputs.DbSchemaSchemaSourceArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DbSchemaArgs Empty = new DbSchemaArgs();
+
+    /**
+     * Changelog script details
+     * 
+     */
+    @Import(name="changelogScript")
+    private @Nullable Output<DbSchemaChangelogScriptArgs> changelogScript;
+
+    /**
+     * @return Changelog script details
+     * 
+     */
+    public Optional<Output<DbSchemaChangelogScriptArgs>> changelogScript() {
+        return Optional.ofNullable(this.changelogScript);
+    }
 
     /**
      * Description of the resource.
@@ -97,26 +113,26 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
      * Provides a connector and path at which to find the database schema representation
      * 
      */
-    @Import(name="schemaSource", required=true)
-    private Output<DbSchemaSchemaSourceArgs> schemaSource;
+    @Import(name="schemaSource")
+    private @Nullable Output<DbSchemaSchemaSourceArgs> schemaSource;
 
     /**
      * @return Provides a connector and path at which to find the database schema representation
      * 
      */
-    public Output<DbSchemaSchemaSourceArgs> schemaSource() {
-        return this.schemaSource;
+    public Optional<Output<DbSchemaSchemaSourceArgs>> schemaSource() {
+        return Optional.ofNullable(this.schemaSource);
     }
 
     /**
-     * The service associated with schema
+     * The service associated with schema.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return The service associated with schema
+     * @return The service associated with schema.
      * 
      */
     public Optional<Output<String>> service() {
@@ -138,9 +154,25 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Type of the database schema (repository/script).
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Type of the database schema (repository/script).
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private DbSchemaArgs() {}
 
     private DbSchemaArgs(DbSchemaArgs $) {
+        this.changelogScript = $.changelogScript;
         this.description = $.description;
         this.identifier = $.identifier;
         this.name = $.name;
@@ -149,6 +181,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         this.schemaSource = $.schemaSource;
         this.service = $.service;
         this.tags = $.tags;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -167,6 +200,27 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DbSchemaArgs defaults) {
             $ = new DbSchemaArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param changelogScript Changelog script details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changelogScript(@Nullable Output<DbSchemaChangelogScriptArgs> changelogScript) {
+            $.changelogScript = changelogScript;
+            return this;
+        }
+
+        /**
+         * @param changelogScript Changelog script details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changelogScript(DbSchemaChangelogScriptArgs changelogScript) {
+            return changelogScript(Output.of(changelogScript));
         }
 
         /**
@@ -280,7 +334,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder schemaSource(Output<DbSchemaSchemaSourceArgs> schemaSource) {
+        public Builder schemaSource(@Nullable Output<DbSchemaSchemaSourceArgs> schemaSource) {
             $.schemaSource = schemaSource;
             return this;
         }
@@ -296,7 +350,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service The service associated with schema
+         * @param service The service associated with schema.
          * 
          * @return builder
          * 
@@ -307,7 +361,7 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param service The service associated with schema
+         * @param service The service associated with schema.
          * 
          * @return builder
          * 
@@ -347,6 +401,27 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param type Type of the database schema (repository/script).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Type of the database schema (repository/script).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
         public DbSchemaArgs build() {
             if ($.identifier == null) {
                 throw new MissingRequiredPropertyException("DbSchemaArgs", "identifier");
@@ -356,9 +431,6 @@ public final class DbSchemaArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.projectId == null) {
                 throw new MissingRequiredPropertyException("DbSchemaArgs", "projectId");
-            }
-            if ($.schemaSource == null) {
-                throw new MissingRequiredPropertyException("DbSchemaArgs", "schemaSource");
             }
             return $;
         }

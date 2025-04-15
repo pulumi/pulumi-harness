@@ -58,6 +58,8 @@ type GetGitopsAgentDeployYamlArgs struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
+	// Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+	ArgocdSettings *GetGitopsAgentDeployYamlArgocdSettings `pulumi:"argocdSettings"`
 	// CA data of the GitOps agent, base64 encoded content of ca chain.
 	CaData *string `pulumi:"caData"`
 	// Identifier of the GitOps agent.
@@ -82,6 +84,8 @@ type GetGitopsAgentDeployYamlResult struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
+	// Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+	ArgocdSettings *GetGitopsAgentDeployYamlArgocdSettings `pulumi:"argocdSettings"`
 	// CA data of the GitOps agent, base64 encoded content of ca chain.
 	CaData *string `pulumi:"caData"`
 	// The provider-assigned unique ID for this managed resource.
@@ -119,6 +123,8 @@ type GetGitopsAgentDeployYamlOutputArgs struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+	ArgocdSettings GetGitopsAgentDeployYamlArgocdSettingsPtrInput `pulumi:"argocdSettings"`
 	// CA data of the GitOps agent, base64 encoded content of ca chain.
 	CaData pulumi.StringPtrInput `pulumi:"caData"`
 	// Identifier of the GitOps agent.
@@ -161,6 +167,13 @@ func (o GetGitopsAgentDeployYamlResultOutput) ToGetGitopsAgentDeployYamlResultOu
 // Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsAgentDeployYamlResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+func (o GetGitopsAgentDeployYamlResultOutput) ArgocdSettings() GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentDeployYamlResult) *GetGitopsAgentDeployYamlArgocdSettings {
+		return v.ArgocdSettings
+	}).(GetGitopsAgentDeployYamlArgocdSettingsPtrOutput)
 }
 
 // CA data of the GitOps agent, base64 encoded content of ca chain.

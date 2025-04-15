@@ -89,14 +89,14 @@ public final class GetWorkspaceTerraformVariableFile extends com.pulumi.resource
     }
 
     /**
-     * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     @Import(name="repositorySha", required=true)
     private String repositorySha;
 
     /**
-     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     public String repositorySha() {
@@ -188,7 +188,7 @@ public final class GetWorkspaceTerraformVariableFile extends com.pulumi.resource
         }
 
         /**
-         * @param repositorySha Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * @param repositorySha Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          * 
          * @return builder
          * 

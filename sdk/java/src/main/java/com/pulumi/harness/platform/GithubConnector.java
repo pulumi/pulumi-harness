@@ -213,14 +213,14 @@ public class GithubConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * URL of the Githubhub repository or account.
+     * URL of the Github repository or account.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the Githubhub repository or account.
+     * @return URL of the Github repository or account.
      * 
      */
     public Output<String> url() {

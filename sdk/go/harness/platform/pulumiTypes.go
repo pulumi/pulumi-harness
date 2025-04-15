@@ -7170,6 +7170,200 @@ func (o ConnectorRancherBearerTokenPtrOutput) BearerTokenRef() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type DbSchemaChangelogScript struct {
+	// Script to clone changeSets
+	Command *string `pulumi:"command"`
+	// The fully-qualified name (FQN) of the image
+	Image *string `pulumi:"image"`
+	// Path to changeLog file
+	Location *string `pulumi:"location"`
+	// Type of the shell. For example Sh or Bash
+	Shell *string `pulumi:"shell"`
+}
+
+// DbSchemaChangelogScriptInput is an input type that accepts DbSchemaChangelogScriptArgs and DbSchemaChangelogScriptOutput values.
+// You can construct a concrete instance of `DbSchemaChangelogScriptInput` via:
+//
+//	DbSchemaChangelogScriptArgs{...}
+type DbSchemaChangelogScriptInput interface {
+	pulumi.Input
+
+	ToDbSchemaChangelogScriptOutput() DbSchemaChangelogScriptOutput
+	ToDbSchemaChangelogScriptOutputWithContext(context.Context) DbSchemaChangelogScriptOutput
+}
+
+type DbSchemaChangelogScriptArgs struct {
+	// Script to clone changeSets
+	Command pulumi.StringPtrInput `pulumi:"command"`
+	// The fully-qualified name (FQN) of the image
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Path to changeLog file
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Type of the shell. For example Sh or Bash
+	Shell pulumi.StringPtrInput `pulumi:"shell"`
+}
+
+func (DbSchemaChangelogScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (i DbSchemaChangelogScriptArgs) ToDbSchemaChangelogScriptOutput() DbSchemaChangelogScriptOutput {
+	return i.ToDbSchemaChangelogScriptOutputWithContext(context.Background())
+}
+
+func (i DbSchemaChangelogScriptArgs) ToDbSchemaChangelogScriptOutputWithContext(ctx context.Context) DbSchemaChangelogScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSchemaChangelogScriptOutput)
+}
+
+func (i DbSchemaChangelogScriptArgs) ToDbSchemaChangelogScriptPtrOutput() DbSchemaChangelogScriptPtrOutput {
+	return i.ToDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
+}
+
+func (i DbSchemaChangelogScriptArgs) ToDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) DbSchemaChangelogScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSchemaChangelogScriptOutput).ToDbSchemaChangelogScriptPtrOutputWithContext(ctx)
+}
+
+// DbSchemaChangelogScriptPtrInput is an input type that accepts DbSchemaChangelogScriptArgs, DbSchemaChangelogScriptPtr and DbSchemaChangelogScriptPtrOutput values.
+// You can construct a concrete instance of `DbSchemaChangelogScriptPtrInput` via:
+//
+//	        DbSchemaChangelogScriptArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbSchemaChangelogScriptPtrInput interface {
+	pulumi.Input
+
+	ToDbSchemaChangelogScriptPtrOutput() DbSchemaChangelogScriptPtrOutput
+	ToDbSchemaChangelogScriptPtrOutputWithContext(context.Context) DbSchemaChangelogScriptPtrOutput
+}
+
+type dbSchemaChangelogScriptPtrType DbSchemaChangelogScriptArgs
+
+func DbSchemaChangelogScriptPtr(v *DbSchemaChangelogScriptArgs) DbSchemaChangelogScriptPtrInput {
+	return (*dbSchemaChangelogScriptPtrType)(v)
+}
+
+func (*dbSchemaChangelogScriptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (i *dbSchemaChangelogScriptPtrType) ToDbSchemaChangelogScriptPtrOutput() DbSchemaChangelogScriptPtrOutput {
+	return i.ToDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
+}
+
+func (i *dbSchemaChangelogScriptPtrType) ToDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) DbSchemaChangelogScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbSchemaChangelogScriptPtrOutput)
+}
+
+type DbSchemaChangelogScriptOutput struct{ *pulumi.OutputState }
+
+func (DbSchemaChangelogScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (o DbSchemaChangelogScriptOutput) ToDbSchemaChangelogScriptOutput() DbSchemaChangelogScriptOutput {
+	return o
+}
+
+func (o DbSchemaChangelogScriptOutput) ToDbSchemaChangelogScriptOutputWithContext(ctx context.Context) DbSchemaChangelogScriptOutput {
+	return o
+}
+
+func (o DbSchemaChangelogScriptOutput) ToDbSchemaChangelogScriptPtrOutput() DbSchemaChangelogScriptPtrOutput {
+	return o.ToDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
+}
+
+func (o DbSchemaChangelogScriptOutput) ToDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) DbSchemaChangelogScriptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbSchemaChangelogScript) *DbSchemaChangelogScript {
+		return &v
+	}).(DbSchemaChangelogScriptPtrOutput)
+}
+
+// Script to clone changeSets
+func (o DbSchemaChangelogScriptOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSchemaChangelogScript) *string { return v.Command }).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified name (FQN) of the image
+func (o DbSchemaChangelogScriptOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSchemaChangelogScript) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Path to changeLog file
+func (o DbSchemaChangelogScriptOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSchemaChangelogScript) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Type of the shell. For example Sh or Bash
+func (o DbSchemaChangelogScriptOutput) Shell() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbSchemaChangelogScript) *string { return v.Shell }).(pulumi.StringPtrOutput)
+}
+
+type DbSchemaChangelogScriptPtrOutput struct{ *pulumi.OutputState }
+
+func (DbSchemaChangelogScriptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (o DbSchemaChangelogScriptPtrOutput) ToDbSchemaChangelogScriptPtrOutput() DbSchemaChangelogScriptPtrOutput {
+	return o
+}
+
+func (o DbSchemaChangelogScriptPtrOutput) ToDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) DbSchemaChangelogScriptPtrOutput {
+	return o
+}
+
+func (o DbSchemaChangelogScriptPtrOutput) Elem() DbSchemaChangelogScriptOutput {
+	return o.ApplyT(func(v *DbSchemaChangelogScript) DbSchemaChangelogScript {
+		if v != nil {
+			return *v
+		}
+		var ret DbSchemaChangelogScript
+		return ret
+	}).(DbSchemaChangelogScriptOutput)
+}
+
+// Script to clone changeSets
+func (o DbSchemaChangelogScriptPtrOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified name (FQN) of the image
+func (o DbSchemaChangelogScriptPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to changeLog file
+func (o DbSchemaChangelogScriptPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the shell. For example Sh or Bash
+func (o DbSchemaChangelogScriptPtrOutput) Shell() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Shell
+	}).(pulumi.StringPtrOutput)
+}
+
 type DbSchemaSchemaSource struct {
 	// If connector type is artifactory, path to the archive file which contains the changeLog
 	ArchivePath *string `pulumi:"archivePath"`
@@ -36953,7 +37147,7 @@ type WorkspaceTerraformVariableFile struct {
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath *string `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
 }
 
@@ -36979,7 +37173,7 @@ type WorkspaceTerraformVariableFileArgs struct {
 	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
 }
 
@@ -37059,7 +37253,7 @@ func (o WorkspaceTerraformVariableFileOutput) RepositoryPath() pulumi.StringPtrO
 	return o.ApplyT(func(v WorkspaceTerraformVariableFile) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
 }
 
-// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 func (o WorkspaceTerraformVariableFileOutput) RepositorySha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkspaceTerraformVariableFile) *string { return v.RepositorySha }).(pulumi.StringPtrOutput)
 }
@@ -42183,6 +42377,200 @@ func (o GetConnectorRancherBearerTokenPtrOutput) RancherUrl() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetDbSchemaChangelogScript struct {
+	// Script to clone changeSets
+	Command string `pulumi:"command"`
+	// The fully-qualified name (FQN) of the image
+	Image string `pulumi:"image"`
+	// Path to changeLog file
+	Location string `pulumi:"location"`
+	// Type of the shell. For example Sh or Bash
+	Shell string `pulumi:"shell"`
+}
+
+// GetDbSchemaChangelogScriptInput is an input type that accepts GetDbSchemaChangelogScriptArgs and GetDbSchemaChangelogScriptOutput values.
+// You can construct a concrete instance of `GetDbSchemaChangelogScriptInput` via:
+//
+//	GetDbSchemaChangelogScriptArgs{...}
+type GetDbSchemaChangelogScriptInput interface {
+	pulumi.Input
+
+	ToGetDbSchemaChangelogScriptOutput() GetDbSchemaChangelogScriptOutput
+	ToGetDbSchemaChangelogScriptOutputWithContext(context.Context) GetDbSchemaChangelogScriptOutput
+}
+
+type GetDbSchemaChangelogScriptArgs struct {
+	// Script to clone changeSets
+	Command pulumi.StringInput `pulumi:"command"`
+	// The fully-qualified name (FQN) of the image
+	Image pulumi.StringInput `pulumi:"image"`
+	// Path to changeLog file
+	Location pulumi.StringInput `pulumi:"location"`
+	// Type of the shell. For example Sh or Bash
+	Shell pulumi.StringInput `pulumi:"shell"`
+}
+
+func (GetDbSchemaChangelogScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (i GetDbSchemaChangelogScriptArgs) ToGetDbSchemaChangelogScriptOutput() GetDbSchemaChangelogScriptOutput {
+	return i.ToGetDbSchemaChangelogScriptOutputWithContext(context.Background())
+}
+
+func (i GetDbSchemaChangelogScriptArgs) ToGetDbSchemaChangelogScriptOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaChangelogScriptOutput)
+}
+
+func (i GetDbSchemaChangelogScriptArgs) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
+	return i.ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
+}
+
+func (i GetDbSchemaChangelogScriptArgs) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaChangelogScriptOutput).ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx)
+}
+
+// GetDbSchemaChangelogScriptPtrInput is an input type that accepts GetDbSchemaChangelogScriptArgs, GetDbSchemaChangelogScriptPtr and GetDbSchemaChangelogScriptPtrOutput values.
+// You can construct a concrete instance of `GetDbSchemaChangelogScriptPtrInput` via:
+//
+//	        GetDbSchemaChangelogScriptArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDbSchemaChangelogScriptPtrInput interface {
+	pulumi.Input
+
+	ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput
+	ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Context) GetDbSchemaChangelogScriptPtrOutput
+}
+
+type getDbSchemaChangelogScriptPtrType GetDbSchemaChangelogScriptArgs
+
+func GetDbSchemaChangelogScriptPtr(v *GetDbSchemaChangelogScriptArgs) GetDbSchemaChangelogScriptPtrInput {
+	return (*getDbSchemaChangelogScriptPtrType)(v)
+}
+
+func (*getDbSchemaChangelogScriptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (i *getDbSchemaChangelogScriptPtrType) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
+	return i.ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
+}
+
+func (i *getDbSchemaChangelogScriptPtrType) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbSchemaChangelogScriptPtrOutput)
+}
+
+type GetDbSchemaChangelogScriptOutput struct{ *pulumi.OutputState }
+
+func (GetDbSchemaChangelogScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptOutput() GetDbSchemaChangelogScriptOutput {
+	return o
+}
+
+func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptOutput {
+	return o
+}
+
+func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
+	return o.ToGetDbSchemaChangelogScriptPtrOutputWithContext(context.Background())
+}
+
+func (o GetDbSchemaChangelogScriptOutput) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDbSchemaChangelogScript) *GetDbSchemaChangelogScript {
+		return &v
+	}).(GetDbSchemaChangelogScriptPtrOutput)
+}
+
+// Script to clone changeSets
+func (o GetDbSchemaChangelogScriptOutput) Command() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaChangelogScript) string { return v.Command }).(pulumi.StringOutput)
+}
+
+// The fully-qualified name (FQN) of the image
+func (o GetDbSchemaChangelogScriptOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaChangelogScript) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Path to changeLog file
+func (o GetDbSchemaChangelogScriptOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaChangelogScript) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Type of the shell. For example Sh or Bash
+func (o GetDbSchemaChangelogScriptOutput) Shell() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbSchemaChangelogScript) string { return v.Shell }).(pulumi.StringOutput)
+}
+
+type GetDbSchemaChangelogScriptPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDbSchemaChangelogScriptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDbSchemaChangelogScript)(nil)).Elem()
+}
+
+func (o GetDbSchemaChangelogScriptPtrOutput) ToGetDbSchemaChangelogScriptPtrOutput() GetDbSchemaChangelogScriptPtrOutput {
+	return o
+}
+
+func (o GetDbSchemaChangelogScriptPtrOutput) ToGetDbSchemaChangelogScriptPtrOutputWithContext(ctx context.Context) GetDbSchemaChangelogScriptPtrOutput {
+	return o
+}
+
+func (o GetDbSchemaChangelogScriptPtrOutput) Elem() GetDbSchemaChangelogScriptOutput {
+	return o.ApplyT(func(v *GetDbSchemaChangelogScript) GetDbSchemaChangelogScript {
+		if v != nil {
+			return *v
+		}
+		var ret GetDbSchemaChangelogScript
+		return ret
+	}).(GetDbSchemaChangelogScriptOutput)
+}
+
+// Script to clone changeSets
+func (o GetDbSchemaChangelogScriptPtrOutput) Command() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Command
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified name (FQN) of the image
+func (o GetDbSchemaChangelogScriptPtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to changeLog file
+func (o GetDbSchemaChangelogScriptPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the shell. For example Sh or Bash
+func (o GetDbSchemaChangelogScriptPtrOutput) Shell() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDbSchemaChangelogScript) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Shell
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetDbSchemaSchemaSource struct {
 	// If connector type is artifactory, path to the archive file which contains the changeLog
 	ArchivePath string `pulumi:"archivePath"`
@@ -45680,6 +46068,143 @@ func (o GetGitlabConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGitlabConnectorCredentialSsh {
 		return vs[0].([]GetGitlabConnectorCredentialSsh)[vs[1].(int)]
 	}).(GetGitlabConnectorCredentialSshOutput)
+}
+
+type GetGitopsAgentDeployYamlArgocdSettings struct {
+	// Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+	EnableHelmPathTraversal *bool `pulumi:"enableHelmPathTraversal"`
+}
+
+// GetGitopsAgentDeployYamlArgocdSettingsInput is an input type that accepts GetGitopsAgentDeployYamlArgocdSettingsArgs and GetGitopsAgentDeployYamlArgocdSettingsOutput values.
+// You can construct a concrete instance of `GetGitopsAgentDeployYamlArgocdSettingsInput` via:
+//
+//	GetGitopsAgentDeployYamlArgocdSettingsArgs{...}
+type GetGitopsAgentDeployYamlArgocdSettingsInput interface {
+	pulumi.Input
+
+	ToGetGitopsAgentDeployYamlArgocdSettingsOutput() GetGitopsAgentDeployYamlArgocdSettingsOutput
+	ToGetGitopsAgentDeployYamlArgocdSettingsOutputWithContext(context.Context) GetGitopsAgentDeployYamlArgocdSettingsOutput
+}
+
+type GetGitopsAgentDeployYamlArgocdSettingsArgs struct {
+	// Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+	EnableHelmPathTraversal pulumi.BoolPtrInput `pulumi:"enableHelmPathTraversal"`
+}
+
+func (GetGitopsAgentDeployYamlArgocdSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsAgentDeployYamlArgocdSettings)(nil)).Elem()
+}
+
+func (i GetGitopsAgentDeployYamlArgocdSettingsArgs) ToGetGitopsAgentDeployYamlArgocdSettingsOutput() GetGitopsAgentDeployYamlArgocdSettingsOutput {
+	return i.ToGetGitopsAgentDeployYamlArgocdSettingsOutputWithContext(context.Background())
+}
+
+func (i GetGitopsAgentDeployYamlArgocdSettingsArgs) ToGetGitopsAgentDeployYamlArgocdSettingsOutputWithContext(ctx context.Context) GetGitopsAgentDeployYamlArgocdSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsAgentDeployYamlArgocdSettingsOutput)
+}
+
+func (i GetGitopsAgentDeployYamlArgocdSettingsArgs) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutput() GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return i.ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetGitopsAgentDeployYamlArgocdSettingsArgs) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(ctx context.Context) GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsAgentDeployYamlArgocdSettingsOutput).ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(ctx)
+}
+
+// GetGitopsAgentDeployYamlArgocdSettingsPtrInput is an input type that accepts GetGitopsAgentDeployYamlArgocdSettingsArgs, GetGitopsAgentDeployYamlArgocdSettingsPtr and GetGitopsAgentDeployYamlArgocdSettingsPtrOutput values.
+// You can construct a concrete instance of `GetGitopsAgentDeployYamlArgocdSettingsPtrInput` via:
+//
+//	        GetGitopsAgentDeployYamlArgocdSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetGitopsAgentDeployYamlArgocdSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutput() GetGitopsAgentDeployYamlArgocdSettingsPtrOutput
+	ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(context.Context) GetGitopsAgentDeployYamlArgocdSettingsPtrOutput
+}
+
+type getGitopsAgentDeployYamlArgocdSettingsPtrType GetGitopsAgentDeployYamlArgocdSettingsArgs
+
+func GetGitopsAgentDeployYamlArgocdSettingsPtr(v *GetGitopsAgentDeployYamlArgocdSettingsArgs) GetGitopsAgentDeployYamlArgocdSettingsPtrInput {
+	return (*getGitopsAgentDeployYamlArgocdSettingsPtrType)(v)
+}
+
+func (*getGitopsAgentDeployYamlArgocdSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetGitopsAgentDeployYamlArgocdSettings)(nil)).Elem()
+}
+
+func (i *getGitopsAgentDeployYamlArgocdSettingsPtrType) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutput() GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return i.ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getGitopsAgentDeployYamlArgocdSettingsPtrType) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(ctx context.Context) GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGitopsAgentDeployYamlArgocdSettingsPtrOutput)
+}
+
+type GetGitopsAgentDeployYamlArgocdSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsAgentDeployYamlArgocdSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGitopsAgentDeployYamlArgocdSettings)(nil)).Elem()
+}
+
+func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) ToGetGitopsAgentDeployYamlArgocdSettingsOutput() GetGitopsAgentDeployYamlArgocdSettingsOutput {
+	return o
+}
+
+func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) ToGetGitopsAgentDeployYamlArgocdSettingsOutputWithContext(ctx context.Context) GetGitopsAgentDeployYamlArgocdSettingsOutput {
+	return o
+}
+
+func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutput() GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return o.ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(ctx context.Context) GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetGitopsAgentDeployYamlArgocdSettings) *GetGitopsAgentDeployYamlArgocdSettings {
+		return &v
+	}).(GetGitopsAgentDeployYamlArgocdSettingsPtrOutput)
+}
+
+// Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) EnableHelmPathTraversal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentDeployYamlArgocdSettings) *bool { return v.EnableHelmPathTraversal }).(pulumi.BoolPtrOutput)
+}
+
+type GetGitopsAgentDeployYamlArgocdSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetGitopsAgentDeployYamlArgocdSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetGitopsAgentDeployYamlArgocdSettings)(nil)).Elem()
+}
+
+func (o GetGitopsAgentDeployYamlArgocdSettingsPtrOutput) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutput() GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return o
+}
+
+func (o GetGitopsAgentDeployYamlArgocdSettingsPtrOutput) ToGetGitopsAgentDeployYamlArgocdSettingsPtrOutputWithContext(ctx context.Context) GetGitopsAgentDeployYamlArgocdSettingsPtrOutput {
+	return o
+}
+
+func (o GetGitopsAgentDeployYamlArgocdSettingsPtrOutput) Elem() GetGitopsAgentDeployYamlArgocdSettingsOutput {
+	return o.ApplyT(func(v *GetGitopsAgentDeployYamlArgocdSettings) GetGitopsAgentDeployYamlArgocdSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetGitopsAgentDeployYamlArgocdSettings
+		return ret
+	}).(GetGitopsAgentDeployYamlArgocdSettingsOutput)
+}
+
+// Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+func (o GetGitopsAgentDeployYamlArgocdSettingsPtrOutput) EnableHelmPathTraversal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetGitopsAgentDeployYamlArgocdSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHelmPathTraversal
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetGitopsAgentDeployYamlProxy struct {
@@ -60562,7 +61087,7 @@ type GetWorkspaceTerraformVariableFile struct {
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath string `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha string `pulumi:"repositorySha"`
 }
 
@@ -60588,7 +61113,7 @@ type GetWorkspaceTerraformVariableFileArgs struct {
 	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringInput `pulumi:"repositorySha"`
 }
 
@@ -60668,7 +61193,7 @@ func (o GetWorkspaceTerraformVariableFileOutput) RepositoryPath() pulumi.StringO
 	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositoryPath }).(pulumi.StringOutput)
 }
 
-// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
 func (o GetWorkspaceTerraformVariableFileOutput) RepositorySha() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceTerraformVariableFile) string { return v.RepositorySha }).(pulumi.StringOutput)
 }
@@ -60784,6 +61309,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostArrayInput)(nil)).Elem(), ConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorRancherBearerTokenInput)(nil)).Elem(), ConnectorRancherBearerTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorRancherBearerTokenPtrInput)(nil)).Elem(), ConnectorRancherBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSchemaChangelogScriptInput)(nil)).Elem(), DbSchemaChangelogScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbSchemaChangelogScriptPtrInput)(nil)).Elem(), DbSchemaChangelogScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSchemaSchemaSourceInput)(nil)).Elem(), DbSchemaSchemaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSchemaSchemaSourcePtrInput)(nil)).Elem(), DbSchemaSchemaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerConnectorCredentialsInput)(nil)).Elem(), DockerConnectorCredentialsArgs{})
@@ -61254,6 +61781,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostArrayInput)(nil)).Elem(), GetConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenPtrInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaChangelogScriptInput)(nil)).Elem(), GetDbSchemaChangelogScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaChangelogScriptPtrInput)(nil)).Elem(), GetDbSchemaChangelogScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceInput)(nil)).Elem(), GetDbSchemaSchemaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceArrayInput)(nil)).Elem(), GetDbSchemaSchemaSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDockerConnectorCredentialInput)(nil)).Elem(), GetDockerConnectorCredentialArgs{})
@@ -61316,6 +61845,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialHttpArrayInput)(nil)).Elem(), GetGitlabConnectorCredentialHttpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialSshInput)(nil)).Elem(), GetGitlabConnectorCredentialSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitlabConnectorCredentialSshArrayInput)(nil)).Elem(), GetGitlabConnectorCredentialSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentDeployYamlArgocdSettingsInput)(nil)).Elem(), GetGitopsAgentDeployYamlArgocdSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentDeployYamlArgocdSettingsPtrInput)(nil)).Elem(), GetGitopsAgentDeployYamlArgocdSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentDeployYamlProxyInput)(nil)).Elem(), GetGitopsAgentDeployYamlProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentDeployYamlProxyArrayInput)(nil)).Elem(), GetGitopsAgentDeployYamlProxyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGitopsAgentMetadataInput)(nil)).Elem(), GetGitopsAgentMetadataArgs{})
@@ -61635,6 +62166,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorRancherBearerTokenOutput{})
 	pulumi.RegisterOutputType(ConnectorRancherBearerTokenPtrOutput{})
+	pulumi.RegisterOutputType(DbSchemaChangelogScriptOutput{})
+	pulumi.RegisterOutputType(DbSchemaChangelogScriptPtrOutput{})
 	pulumi.RegisterOutputType(DbSchemaSchemaSourceOutput{})
 	pulumi.RegisterOutputType(DbSchemaSchemaSourcePtrOutput{})
 	pulumi.RegisterOutputType(DockerConnectorCredentialsOutput{})
@@ -62105,6 +62638,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenPtrOutput{})
+	pulumi.RegisterOutputType(GetDbSchemaChangelogScriptOutput{})
+	pulumi.RegisterOutputType(GetDbSchemaChangelogScriptPtrOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetDockerConnectorCredentialOutput{})
@@ -62167,6 +62702,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGitlabConnectorCredentialHttpArrayOutput{})
 	pulumi.RegisterOutputType(GetGitlabConnectorCredentialSshOutput{})
 	pulumi.RegisterOutputType(GetGitlabConnectorCredentialSshArrayOutput{})
+	pulumi.RegisterOutputType(GetGitopsAgentDeployYamlArgocdSettingsOutput{})
+	pulumi.RegisterOutputType(GetGitopsAgentDeployYamlArgocdSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetGitopsAgentDeployYamlProxyOutput{})
 	pulumi.RegisterOutputType(GetGitopsAgentDeployYamlProxyArrayOutput{})
 	pulumi.RegisterOutputType(GetGitopsAgentMetadataOutput{})

@@ -72,13 +72,13 @@ export interface GetWorkspaceArgs {
      */
     repositoryCommit?: string;
     /**
-     * Repository SHA in which the code should be accessed
+     * Repository Commit SHA in which the code should be accessed
      */
     repositorySha?: string;
     terraformVariableFiles?: inputs.platform.GetWorkspaceTerraformVariableFile[];
     terraformVariables?: inputs.platform.GetWorkspaceTerraformVariable[];
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      */
     variableSets?: string[];
 }
@@ -91,6 +91,9 @@ export interface GetWorkspaceResult {
      * If enabled cost estimation operations will be performed in this workspace
      */
     readonly costEstimationEnabled: boolean;
+    /**
+     * Default pipelines associated with this workspace
+     */
     readonly defaultPipelines: {[key: string]: string};
     /**
      * Description of the Workspace
@@ -153,13 +156,13 @@ export interface GetWorkspaceResult {
      */
     readonly repositoryPath: string;
     /**
-     * Repository SHA in which the code should be accessed
+     * Repository Commit SHA in which the code should be accessed
      */
     readonly repositorySha: string;
     readonly terraformVariableFiles: outputs.platform.GetWorkspaceTerraformVariableFile[];
     readonly terraformVariables: outputs.platform.GetWorkspaceTerraformVariable[];
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      */
     readonly variableSets: string[];
 }
@@ -229,13 +232,13 @@ export interface GetWorkspaceOutputArgs {
      */
     repositoryCommit?: pulumi.Input<string>;
     /**
-     * Repository SHA in which the code should be accessed
+     * Repository Commit SHA in which the code should be accessed
      */
     repositorySha?: pulumi.Input<string>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[]>;
     /**
-     * Variable set identifiers. Currently support only one variable set.
+     * Variable sets to use.
      */
     variableSets?: pulumi.Input<pulumi.Input<string>[]>;
 }

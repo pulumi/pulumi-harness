@@ -88,6 +88,12 @@ import (
 //				VariableSets: pulumi.StringArray{
 //					testHarnessPlatformInfraVariableSet.Id,
 //				},
+//				DefaultPipelines: pulumi.StringMap{
+//					"destroy": pulumi.String("destroy_pipeline_id"),
+//					"drift":   pulumi.String("drift_pipeline_id"),
+//					"plan":    pulumi.String("plan_pipeline_id"),
+//					"apply":   pulumi.String("apply_pipeline_id"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -101,7 +107,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<slo_id>
+// $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
 // ```
 type Workspace struct {
 	pulumi.CustomResourceState
@@ -136,13 +142,13 @@ type Workspace struct {
 	RepositoryConnector pulumi.StringOutput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the code resides.
 	RepositoryPath pulumi.StringOutput `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrOutput `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
 	Tags                   pulumi.StringArrayOutput                  `pulumi:"tags"`
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayOutput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     WorkspaceTerraformVariableArrayOutput     `pulumi:"terraformVariables"`
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets pulumi.StringArrayOutput `pulumi:"variableSets"`
 }
 
@@ -236,13 +242,13 @@ type workspaceState struct {
 	RepositoryConnector *string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the code resides.
 	RepositoryPath *string `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
 	Tags                   []string                         `pulumi:"tags"`
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []WorkspaceTerraformVariable     `pulumi:"terraformVariables"`
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
 
@@ -277,13 +283,13 @@ type WorkspaceState struct {
 	RepositoryConnector pulumi.StringPtrInput
 	// Repository path is the path in which the code resides.
 	RepositoryPath pulumi.StringPtrInput
-	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags                   pulumi.StringArrayInput
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
 	TerraformVariables     WorkspaceTerraformVariableArrayInput
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput
 }
 
@@ -322,13 +328,13 @@ type workspaceArgs struct {
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the code resides.
 	RepositoryPath string `pulumi:"repositoryPath"`
-	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha *string `pulumi:"repositorySha"`
 	// Tags to associate with the resource.
 	Tags                   []string                         `pulumi:"tags"`
 	TerraformVariableFiles []WorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []WorkspaceTerraformVariable     `pulumi:"terraformVariables"`
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
 
@@ -364,13 +370,13 @@ type WorkspaceArgs struct {
 	RepositoryConnector pulumi.StringInput
 	// Repository path is the path in which the code resides.
 	RepositoryPath pulumi.StringInput
-	// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 	RepositorySha pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags                   pulumi.StringArrayInput
 	TerraformVariableFiles WorkspaceTerraformVariableFileArrayInput
 	TerraformVariables     WorkspaceTerraformVariableArrayInput
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput
 }
 
@@ -539,7 +545,7 @@ func (o WorkspaceOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.RepositoryPath }).(pulumi.StringOutput)
 }
 
-// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
 func (o WorkspaceOutput) RepositorySha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositorySha }).(pulumi.StringPtrOutput)
 }
@@ -557,7 +563,7 @@ func (o WorkspaceOutput) TerraformVariables() WorkspaceTerraformVariableArrayOut
 	return o.ApplyT(func(v *Workspace) WorkspaceTerraformVariableArrayOutput { return v.TerraformVariables }).(WorkspaceTerraformVariableArrayOutput)
 }
 
-// Variable set identifiers. Currently support only one variable set.
+// Variable sets to use.
 func (o WorkspaceOutput) VariableSets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringArrayOutput { return v.VariableSets }).(pulumi.StringArrayOutput)
 }

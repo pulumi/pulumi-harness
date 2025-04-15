@@ -6,7 +6,10 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetDbSchemaChangelogScriptArgs;
+import com.pulumi.harness.platform.inputs.GetDbSchemaSchemaSourceArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +18,13 @@ import javax.annotation.Nullable;
 public final class GetDbSchemaArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDbSchemaArgs Empty = new GetDbSchemaArgs();
+
+    @Import(name="changelogScript")
+    private @Nullable Output<GetDbSchemaChangelogScriptArgs> changelogScript;
+
+    public Optional<Output<GetDbSchemaChangelogScriptArgs>> changelogScript() {
+        return Optional.ofNullable(this.changelogScript);
+    }
 
     /**
      * Unique identifier of the resource.
@@ -76,13 +86,38 @@ public final class GetDbSchemaArgs extends com.pulumi.resources.InvokeArgs {
         return this.projectId;
     }
 
+    /**
+     * Provides a connector and path at which to find the database schema representation
+     * 
+     */
+    @Import(name="schemaSources")
+    private @Nullable Output<List<GetDbSchemaSchemaSourceArgs>> schemaSources;
+
+    /**
+     * @return Provides a connector and path at which to find the database schema representation
+     * 
+     */
+    public Optional<Output<List<GetDbSchemaSchemaSourceArgs>>> schemaSources() {
+        return Optional.ofNullable(this.schemaSources);
+    }
+
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private GetDbSchemaArgs() {}
 
     private GetDbSchemaArgs(GetDbSchemaArgs $) {
+        this.changelogScript = $.changelogScript;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.schemaSources = $.schemaSources;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -101,6 +136,15 @@ public final class GetDbSchemaArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetDbSchemaArgs defaults) {
             $ = new GetDbSchemaArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder changelogScript(@Nullable Output<GetDbSchemaChangelogScriptArgs> changelogScript) {
+            $.changelogScript = changelogScript;
+            return this;
+        }
+
+        public Builder changelogScript(GetDbSchemaChangelogScriptArgs changelogScript) {
+            return changelogScript(Output.of(changelogScript));
         }
 
         /**
@@ -185,6 +229,46 @@ public final class GetDbSchemaArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param schemaSources Provides a connector and path at which to find the database schema representation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaSources(@Nullable Output<List<GetDbSchemaSchemaSourceArgs>> schemaSources) {
+            $.schemaSources = schemaSources;
+            return this;
+        }
+
+        /**
+         * @param schemaSources Provides a connector and path at which to find the database schema representation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaSources(List<GetDbSchemaSchemaSourceArgs> schemaSources) {
+            return schemaSources(Output.of(schemaSources));
+        }
+
+        /**
+         * @param schemaSources Provides a connector and path at which to find the database schema representation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaSources(GetDbSchemaSchemaSourceArgs... schemaSources) {
+            return schemaSources(List.of(schemaSources));
+        }
+
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public GetDbSchemaArgs build() {

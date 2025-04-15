@@ -201,14 +201,14 @@ public final class GithubConnectorArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * URL of the Githubhub repository or account.
+     * URL of the Github repository or account.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return URL of the Githubhub repository or account.
+     * @return URL of the Github repository or account.
      * 
      */
     public Output<String> url() {
@@ -540,7 +540,7 @@ public final class GithubConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url URL of the Githubhub repository or account.
+         * @param url URL of the Github repository or account.
          * 
          * @return builder
          * 
@@ -551,7 +551,7 @@ public final class GithubConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param url URL of the Githubhub repository or account.
+         * @param url URL of the Github repository or account.
          * 
          * @return builder
          * 

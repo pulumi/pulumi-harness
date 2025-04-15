@@ -103,6 +103,8 @@ import com.pulumi.harness.platform.inputs.GetGitopsApplicationsArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsApplicationsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsClusterArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsClusterPlainArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsFiltersArgs;
+import com.pulumi.harness.platform.inputs.GetGitopsFiltersPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsGnupgArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsGnupgPlainArgs;
 import com.pulumi.harness.platform.inputs.GetGitopsRepoCertArgs;
@@ -279,6 +281,7 @@ import com.pulumi.harness.platform.outputs.GetGitopsAppProjectMappingResult;
 import com.pulumi.harness.platform.outputs.GetGitopsAppProjectResult;
 import com.pulumi.harness.platform.outputs.GetGitopsApplicationsResult;
 import com.pulumi.harness.platform.outputs.GetGitopsClusterResult;
+import com.pulumi.harness.platform.outputs.GetGitopsFiltersResult;
 import com.pulumi.harness.platform.outputs.GetGitopsGnupgResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCertResult;
 import com.pulumi.harness.platform.outputs.GetGitopsRepoCredResult;
@@ -10129,6 +10132,41 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetGitopsClusterResult> getGitopsClusterPlain(GetGitopsClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getGitopsCluster:getGitopsCluster", TypeShape.of(GetGitopsClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness GitOps Filter.
+     * 
+     */
+    public static Output<GetGitopsFiltersResult> getGitopsFilters(GetGitopsFiltersArgs args) {
+        return getGitopsFilters(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness GitOps Filter.
+     * 
+     */
+    public static CompletableFuture<GetGitopsFiltersResult> getGitopsFiltersPlain(GetGitopsFiltersPlainArgs args) {
+        return getGitopsFiltersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness GitOps Filter.
+     * 
+     */
+    public static Output<GetGitopsFiltersResult> getGitopsFilters(GetGitopsFiltersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsFilters:getGitopsFilters", TypeShape.of(GetGitopsFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness GitOps Filter.
+     * 
+     */
+    public static Output<GetGitopsFiltersResult> getGitopsFilters(GetGitopsFiltersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getGitopsFilters:getGitopsFilters", TypeShape.of(GetGitopsFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness GitOps Filter.
+     * 
+     */
+    public static CompletableFuture<GetGitopsFiltersResult> getGitopsFiltersPlain(GetGitopsFiltersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getGitopsFilters:getGitopsFilters", TypeShape.of(GetGitopsFiltersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for fetching a Harness GitOps GPG public key.

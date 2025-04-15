@@ -94,6 +94,13 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             testHarnessPlatformInfraVariableSet.Id,
     ///         },
+    ///         DefaultPipelines = 
+    ///         {
+    ///             { "destroy", "destroy_pipeline_id" },
+    ///             { "drift", "drift_pipeline_id" },
+    ///             { "plan", "plan_pipeline_id" },
+    ///             { "apply", "apply_pipeline_id" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -102,7 +109,7 @@ namespace Pulumi.Harness.Platform
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/workspace:Workspace example &lt;org_id&gt;/&lt;project_id&gt;/&lt;slo_id&gt;
+    /// $ pulumi import harness:platform/workspace:Workspace example &lt;org_id&gt;/&lt;project_id&gt;/&lt;workspace_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/workspace:Workspace")]
@@ -199,7 +206,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> RepositoryPath { get; private set; } = null!;
 
         /// <summary>
-        /// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         /// </summary>
         [Output("repositorySha")]
         public Output<string?> RepositorySha { get; private set; } = null!;
@@ -217,7 +224,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<Outputs.WorkspaceTerraformVariable>> TerraformVariables { get; private set; } = null!;
 
         /// <summary>
-        /// Variable set identifiers. Currently support only one variable set.
+        /// Variable sets to use.
         /// </summary>
         [Output("variableSets")]
         public Output<ImmutableArray<string>> VariableSets { get; private set; } = null!;
@@ -372,7 +379,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> RepositoryPath { get; set; } = null!;
 
         /// <summary>
-        /// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         /// </summary>
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }
@@ -409,7 +416,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _variableSets;
 
         /// <summary>
-        /// Variable set identifiers. Currently support only one variable set.
+        /// Variable sets to use.
         /// </summary>
         public InputList<string> VariableSets
         {
@@ -528,7 +535,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? RepositoryPath { get; set; }
 
         /// <summary>
-        /// Repository commit is sha to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         /// </summary>
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }
@@ -565,7 +572,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _variableSets;
 
         /// <summary>
-        /// Variable set identifiers. Currently support only one variable set.
+        /// Variable sets to use.
         /// </summary>
         public InputList<string> VariableSets
         {

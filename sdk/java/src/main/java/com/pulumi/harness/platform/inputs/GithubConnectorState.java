@@ -200,14 +200,14 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * URL of the Githubhub repository or account.
+     * URL of the Github repository or account.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the Githubhub repository or account.
+     * @return URL of the Github repository or account.
      * 
      */
     public Optional<Output<String>> url() {
@@ -539,7 +539,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param url URL of the Githubhub repository or account.
+         * @param url URL of the Github repository or account.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param url URL of the Githubhub repository or account.
+         * @param url URL of the Github repository or account.
          * 
          * @return builder
          * 

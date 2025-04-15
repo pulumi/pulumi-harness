@@ -66,19 +66,20 @@ type LookupWorkspaceArgs struct {
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
 	// Repository Tag in which the code should be accessed
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
-	// Repository SHA in which the code should be accessed
+	// Repository Commit SHA in which the code should be accessed
 	RepositorySha          *string                             `pulumi:"repositorySha"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
 
 // A collection of values returned by getWorkspace.
 type LookupWorkspaceResult struct {
 	// If enabled cost estimation operations will be performed in this workspace
-	CostEstimationEnabled bool              `pulumi:"costEstimationEnabled"`
-	DefaultPipelines      map[string]string `pulumi:"defaultPipelines"`
+	CostEstimationEnabled bool `pulumi:"costEstimationEnabled"`
+	// Default pipelines associated with this workspace
+	DefaultPipelines map[string]string `pulumi:"defaultPipelines"`
 	// Description of the Workspace
 	Description string `pulumi:"description"`
 	// Environment variables configured on the workspace
@@ -109,11 +110,11 @@ type LookupWorkspaceResult struct {
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository Path is the path in which the infra code resides
 	RepositoryPath string `pulumi:"repositoryPath"`
-	// Repository SHA in which the code should be accessed
+	// Repository Commit SHA in which the code should be accessed
 	RepositorySha          string                              `pulumi:"repositorySha"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets []string `pulumi:"variableSets"`
 }
 
@@ -142,11 +143,11 @@ type LookupWorkspaceOutputArgs struct {
 	RepositoryBranch pulumi.StringPtrInput `pulumi:"repositoryBranch"`
 	// Repository Tag in which the code should be accessed
 	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
-	// Repository SHA in which the code should be accessed
+	// Repository Commit SHA in which the code should be accessed
 	RepositorySha          pulumi.StringPtrInput                       `pulumi:"repositorySha"`
 	TerraformVariableFiles GetWorkspaceTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     GetWorkspaceTerraformVariableArrayInput     `pulumi:"terraformVariables"`
-	// Variable set identifiers. Currently support only one variable set.
+	// Variable sets to use.
 	VariableSets pulumi.StringArrayInput `pulumi:"variableSets"`
 }
 
@@ -174,6 +175,7 @@ func (o LookupWorkspaceResultOutput) CostEstimationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) bool { return v.CostEstimationEnabled }).(pulumi.BoolOutput)
 }
 
+// Default pipelines associated with this workspace
 func (o LookupWorkspaceResultOutput) DefaultPipelines() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) map[string]string { return v.DefaultPipelines }).(pulumi.StringMapOutput)
 }
@@ -253,7 +255,7 @@ func (o LookupWorkspaceResultOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositoryPath }).(pulumi.StringOutput)
 }
 
-// Repository SHA in which the code should be accessed
+// Repository Commit SHA in which the code should be accessed
 func (o LookupWorkspaceResultOutput) RepositorySha() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositorySha }).(pulumi.StringOutput)
 }
@@ -266,7 +268,7 @@ func (o LookupWorkspaceResultOutput) TerraformVariables() GetWorkspaceTerraformV
 	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceTerraformVariable { return v.TerraformVariables }).(GetWorkspaceTerraformVariableArrayOutput)
 }
 
-// Variable set identifiers. Currently support only one variable set.
+// Variable sets to use.
 func (o LookupWorkspaceResultOutput) VariableSets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) []string { return v.VariableSets }).(pulumi.StringArrayOutput)
 }

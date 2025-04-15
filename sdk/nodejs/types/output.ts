@@ -2199,6 +2199,25 @@ export namespace platform {
         bearerTokenRef: string;
     }
 
+    export interface DbSchemaChangelogScript {
+        /**
+         * Script to clone changeSets
+         */
+        command?: string;
+        /**
+         * The fully-qualified name (FQN) of the image
+         */
+        image?: string;
+        /**
+         * Path to changeLog file
+         */
+        location?: string;
+        /**
+         * Type of the shell. For example Sh or Bash
+         */
+        shell?: string;
+    }
+
     export interface DbSchemaSchemaSource {
         /**
          * If connector type is artifactory, path to the archive file which contains the changeLog
@@ -3155,6 +3174,25 @@ export namespace platform {
         rancherUrl: string;
     }
 
+    export interface GetDbSchemaChangelogScript {
+        /**
+         * Script to clone changeSets
+         */
+        command: string;
+        /**
+         * The fully-qualified name (FQN) of the image
+         */
+        image: string;
+        /**
+         * Path to changeLog file
+         */
+        location: string;
+        /**
+         * Type of the shell. For example Sh or Bash
+         */
+        shell: string;
+    }
+
     export interface GetDbSchemaSchemaSource {
         /**
          * If connector type is artifactory, path to the archive file which contains the changeLog
@@ -3556,6 +3594,13 @@ export namespace platform {
          * Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         sshKeyRef: string;
+    }
+
+    export interface GetGitopsAgentDeployYamlArgocdSettings {
+        /**
+         * Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
+         */
+        enableHelmPathTraversal?: boolean;
     }
 
     export interface GetGitopsAgentDeployYamlProxy {
@@ -5736,7 +5781,7 @@ export namespace platform {
          */
         repositoryPath: string;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha: string;
     }
@@ -9042,7 +9087,7 @@ export namespace platform {
          */
         repositoryPath?: string;
         /**
-         * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          */
         repositorySha?: string;
     }

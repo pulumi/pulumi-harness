@@ -759,6 +759,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/gitopsFilters",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitopsFilters:GitopsFilters": "GitopsFilters"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/gitxWebhook",
   "fqn": "pulumi_harness.platform",
   "classes": {

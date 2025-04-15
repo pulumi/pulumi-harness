@@ -435,6 +435,11 @@ export const getGitopsCluster: typeof import("./getGitopsCluster").getGitopsClus
 export const getGitopsClusterOutput: typeof import("./getGitopsCluster").getGitopsClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getGitopsCluster","getGitopsClusterOutput"], () => require("./getGitopsCluster"));
 
+export { GetGitopsFiltersArgs, GetGitopsFiltersResult, GetGitopsFiltersOutputArgs } from "./getGitopsFilters";
+export const getGitopsFilters: typeof import("./getGitopsFilters").getGitopsFilters = null as any;
+export const getGitopsFiltersOutput: typeof import("./getGitopsFilters").getGitopsFiltersOutput = null as any;
+utilities.lazyLoad(exports, ["getGitopsFilters","getGitopsFiltersOutput"], () => require("./getGitopsFilters"));
+
 export { GetGitopsGnupgArgs, GetGitopsGnupgResult, GetGitopsGnupgOutputArgs } from "./getGitopsGnupg";
 export const getGitopsGnupg: typeof import("./getGitopsGnupg").getGitopsGnupg = null as any;
 export const getGitopsGnupgOutput: typeof import("./getGitopsGnupg").getGitopsGnupgOutput = null as any;
@@ -814,6 +819,11 @@ export { GitopsAppProjectMappingArgs, GitopsAppProjectMappingState } from "./git
 export type GitopsAppProjectMapping = import("./gitopsAppProjectMapping").GitopsAppProjectMapping;
 export const GitopsAppProjectMapping: typeof import("./gitopsAppProjectMapping").GitopsAppProjectMapping = null as any;
 utilities.lazyLoad(exports, ["GitopsAppProjectMapping"], () => require("./gitopsAppProjectMapping"));
+
+export { GitopsFiltersArgs, GitopsFiltersState } from "./gitopsFilters";
+export type GitopsFilters = import("./gitopsFilters").GitopsFilters;
+export const GitopsFilters: typeof import("./gitopsFilters").GitopsFilters = null as any;
+utilities.lazyLoad(exports, ["GitopsFilters"], () => require("./gitopsFilters"));
 
 export { GitxWebhookArgs, GitxWebhookState } from "./gitxWebhook";
 export type GitxWebhook = import("./gitxWebhook").GitxWebhook;
@@ -1200,6 +1210,8 @@ const _module = {
                 return new GitopsAppProject(name, <any>undefined, { urn })
             case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
                 return new GitopsAppProjectMapping(name, <any>undefined, { urn })
+            case "harness:platform/gitopsFilters:GitopsFilters":
+                return new GitopsFilters(name, <any>undefined, { urn })
             case "harness:platform/gitxWebhook:GitxWebhook":
                 return new GitxWebhook(name, <any>undefined, { urn })
             case "harness:platform/harRegistry:HarRegistry":
@@ -1367,6 +1379,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/githubConnector", _mo
 pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProject", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMapping", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)

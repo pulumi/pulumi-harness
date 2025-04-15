@@ -28,6 +28,7 @@ export function getGitopsAgentDeployYaml(args: GetGitopsAgentDeployYamlArgs, opt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", {
         "accountId": args.accountId,
+        "argocdSettings": args.argocdSettings,
         "caData": args.caData,
         "identifier": args.identifier,
         "namespace": args.namespace,
@@ -49,6 +50,10 @@ export interface GetGitopsAgentDeployYamlArgs {
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: string;
+    /**
+     * Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+     */
+    argocdSettings?: inputs.platform.GetGitopsAgentDeployYamlArgocdSettings;
     /**
      * CA data of the GitOps agent, base64 encoded content of ca chain.
      */
@@ -93,6 +98,10 @@ export interface GetGitopsAgentDeployYamlResult {
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     readonly accountId: string;
+    /**
+     * Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+     */
+    readonly argocdSettings?: outputs.platform.GetGitopsAgentDeployYamlArgocdSettings;
     /**
      * CA data of the GitOps agent, base64 encoded content of ca chain.
      */
@@ -156,6 +165,7 @@ export function getGitopsAgentDeployYamlOutput(args: GetGitopsAgentDeployYamlOut
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", {
         "accountId": args.accountId,
+        "argocdSettings": args.argocdSettings,
         "caData": args.caData,
         "identifier": args.identifier,
         "namespace": args.namespace,
@@ -177,6 +187,10 @@ export interface GetGitopsAgentDeployYamlOutputArgs {
      * @deprecated This field is deprecated and will be removed in a future release.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+     */
+    argocdSettings?: pulumi.Input<inputs.platform.GetGitopsAgentDeployYamlArgocdSettingsArgs>;
     /**
      * CA data of the GitOps agent, base64 encoded content of ca chain.
      */

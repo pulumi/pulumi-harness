@@ -9,30 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Harness DBDevOps Schema.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const test = new harness.platform.DbSchema("test", {
- *     identifier: "identifier",
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     name: "name",
- *     service: "service1",
- *     tags: [
- *         "foo:bar",
- *         "bar:foo",
- *     ],
- *     schemaSource: {
- *         connector: "gitConnector",
- *         repo: "TestRepo",
- *         location: "db/example-changelog.yaml",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Import project level db schema
@@ -70,6 +46,10 @@ export class DbSchema extends pulumi.CustomResource {
     }
 
     /**
+     * Changelog script details
+     */
+    public readonly changelogScript!: pulumi.Output<outputs.platform.DbSchemaChangelogScript | undefined>;
+    /**
      * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -92,15 +72,19 @@ export class DbSchema extends pulumi.CustomResource {
     /**
      * Provides a connector and path at which to find the database schema representation
      */
-    public readonly schemaSource!: pulumi.Output<outputs.platform.DbSchemaSchemaSource>;
+    public readonly schemaSource!: pulumi.Output<outputs.platform.DbSchemaSchemaSource | undefined>;
     /**
-     * The service associated with schema
+     * The service associated with schema.
      */
     public readonly service!: pulumi.Output<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Type of the database schema (repository/script).
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DbSchema resource with the given unique name, arguments, and options.
@@ -115,6 +99,7 @@ export class DbSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbSchemaState | undefined;
+            resourceInputs["changelogScript"] = state ? state.changelogScript : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -123,6 +108,7 @@ export class DbSchema extends pulumi.CustomResource {
             resourceInputs["schemaSource"] = state ? state.schemaSource : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DbSchemaArgs | undefined;
             if ((!args || args.identifier === undefined) && !opts.urn) {
@@ -134,9 +120,7 @@ export class DbSchema extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.schemaSource === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'schemaSource'");
-            }
+            resourceInputs["changelogScript"] = args ? args.changelogScript : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -145,6 +129,7 @@ export class DbSchema extends pulumi.CustomResource {
             resourceInputs["schemaSource"] = args ? args.schemaSource : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbSchema.__pulumiType, name, resourceInputs, opts);
@@ -155,6 +140,10 @@ export class DbSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DbSchema resources.
  */
 export interface DbSchemaState {
+    /**
+     * Changelog script details
+     */
+    changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript>;
     /**
      * Description of the resource.
      */
@@ -180,19 +169,27 @@ export interface DbSchemaState {
      */
     schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource>;
     /**
-     * The service associated with schema
+     * The service associated with schema.
      */
     service?: pulumi.Input<string>;
     /**
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of the database schema (repository/script).
+     */
+    type?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a DbSchema resource.
  */
 export interface DbSchemaArgs {
+    /**
+     * Changelog script details
+     */
+    changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript>;
     /**
      * Description of the resource.
      */
@@ -216,13 +213,17 @@ export interface DbSchemaArgs {
     /**
      * Provides a connector and path at which to find the database schema representation
      */
-    schemaSource: pulumi.Input<inputs.platform.DbSchemaSchemaSource>;
+    schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource>;
     /**
-     * The service associated with schema
+     * The service associated with schema.
      */
     service?: pulumi.Input<string>;
     /**
      * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of the database schema (repository/script).
+     */
+    type?: pulumi.Input<string>;
 }

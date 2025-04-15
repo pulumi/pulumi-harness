@@ -29,10 +29,13 @@ class GetGitopsAgentDeployYamlResult:
     """
     A collection of values returned by getGitopsAgentDeployYaml.
     """
-    def __init__(__self__, account_id=None, ca_data=None, id=None, identifier=None, namespace=None, org_id=None, private_key=None, project_id=None, proxies=None, skip_crds=None, yaml=None):
+    def __init__(__self__, account_id=None, argocd_settings=None, ca_data=None, id=None, identifier=None, namespace=None, org_id=None, private_key=None, project_id=None, proxies=None, skip_crds=None, yaml=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if argocd_settings and not isinstance(argocd_settings, dict):
+            raise TypeError("Expected argument 'argocd_settings' to be a dict")
+        pulumi.set(__self__, "argocd_settings", argocd_settings)
         if ca_data and not isinstance(ca_data, str):
             raise TypeError("Expected argument 'ca_data' to be a str")
         pulumi.set(__self__, "ca_data", ca_data)
@@ -72,6 +75,14 @@ class GetGitopsAgentDeployYamlResult:
         Account identifier of the GitOps agent.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="argocdSettings")
+    def argocd_settings(self) -> Optional['outputs.GetGitopsAgentDeployYamlArgocdSettingsResult']:
+        """
+        Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+        """
+        return pulumi.get(self, "argocd_settings")
 
     @property
     @pulumi.getter(name="caData")
@@ -161,6 +172,7 @@ class AwaitableGetGitopsAgentDeployYamlResult(GetGitopsAgentDeployYamlResult):
             yield self
         return GetGitopsAgentDeployYamlResult(
             account_id=self.account_id,
+            argocd_settings=self.argocd_settings,
             ca_data=self.ca_data,
             id=self.id,
             identifier=self.identifier,
@@ -174,6 +186,7 @@ class AwaitableGetGitopsAgentDeployYamlResult(GetGitopsAgentDeployYamlResult):
 
 
 def get_gitops_agent_deploy_yaml(account_id: Optional[builtins.str] = None,
+                                 argocd_settings: Optional[Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict']] = None,
                                  ca_data: Optional[builtins.str] = None,
                                  identifier: Optional[builtins.str] = None,
                                  namespace: Optional[builtins.str] = None,
@@ -201,6 +214,7 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[builtins.str] = None,
 
 
     :param builtins.str account_id: Account identifier of the GitOps agent.
+    :param Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict'] argocd_settings: Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
     :param builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param builtins.str identifier: Identifier of the GitOps agent.
     :param builtins.str namespace: The kubernetes namespace where the agent is installed.
@@ -212,6 +226,7 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[builtins.str] = None,
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['argocdSettings'] = argocd_settings
     __args__['caData'] = ca_data
     __args__['identifier'] = identifier
     __args__['namespace'] = namespace
@@ -225,6 +240,7 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[builtins.str] = None,
 
     return AwaitableGetGitopsAgentDeployYamlResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        argocd_settings=pulumi.get(__ret__, 'argocd_settings'),
         ca_data=pulumi.get(__ret__, 'ca_data'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
@@ -236,6 +252,7 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[builtins.str] = None,
         skip_crds=pulumi.get(__ret__, 'skip_crds'),
         yaml=pulumi.get(__ret__, 'yaml'))
 def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                        argocd_settings: Optional[pulumi.Input[Optional[Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict']]]] = None,
                                         ca_data: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                         identifier: Optional[pulumi.Input[builtins.str]] = None,
                                         namespace: Optional[pulumi.Input[builtins.str]] = None,
@@ -263,6 +280,7 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Option
 
 
     :param builtins.str account_id: Account identifier of the GitOps agent.
+    :param Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict'] argocd_settings: Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
     :param builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param builtins.str identifier: Identifier of the GitOps agent.
     :param builtins.str namespace: The kubernetes namespace where the agent is installed.
@@ -274,6 +292,7 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Option
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['argocdSettings'] = argocd_settings
     __args__['caData'] = ca_data
     __args__['identifier'] = identifier
     __args__['namespace'] = namespace
@@ -286,6 +305,7 @@ def get_gitops_agent_deploy_yaml_output(account_id: Optional[pulumi.Input[Option
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml', __args__, opts=opts, typ=GetGitopsAgentDeployYamlResult)
     return __ret__.apply(lambda __response__: GetGitopsAgentDeployYamlResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        argocd_settings=pulumi.get(__response__, 'argocd_settings'),
         ca_data=pulumi.get(__response__, 'ca_data'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),

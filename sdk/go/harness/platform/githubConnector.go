@@ -60,7 +60,7 @@ type GithubConnector struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// URL of the Githubhub repository or account.
+	// URL of the Github repository or account.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo pulumi.StringPtrOutput `pulumi:"validationRepo"`
@@ -132,7 +132,7 @@ type githubConnectorState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// URL of the Githubhub repository or account.
+	// URL of the Github repository or account.
 	Url *string `pulumi:"url"`
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo *string `pulumi:"validationRepo"`
@@ -163,7 +163,7 @@ type GithubConnectorState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// URL of the Githubhub repository or account.
+	// URL of the Github repository or account.
 	Url pulumi.StringPtrInput
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo pulumi.StringPtrInput
@@ -198,7 +198,7 @@ type githubConnectorArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// URL of the Githubhub repository or account.
+	// URL of the Github repository or account.
 	Url string `pulumi:"url"`
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo *string `pulumi:"validationRepo"`
@@ -230,7 +230,7 @@ type GithubConnectorArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// URL of the Githubhub repository or account.
+	// URL of the Github repository or account.
 	Url pulumi.StringInput
 	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 	ValidationRepo pulumi.StringPtrInput
@@ -383,7 +383,7 @@ func (o GithubConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GithubConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// URL of the Githubhub repository or account.
+// URL of the Github repository or account.
 func (o GithubConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *GithubConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

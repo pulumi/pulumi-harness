@@ -105,6 +105,9 @@ class GetWorkspaceResult:
     @property
     @pulumi.getter(name="defaultPipelines")
     def default_pipelines(self) -> Mapping[str, builtins.str]:
+        """
+        Default pipelines associated with this workspace
+        """
         return pulumi.get(self, "default_pipelines")
 
     @property
@@ -231,7 +234,7 @@ class GetWorkspaceResult:
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> builtins.str:
         """
-        Repository SHA in which the code should be accessed
+        Repository Commit SHA in which the code should be accessed
         """
         return pulumi.get(self, "repository_sha")
 
@@ -249,7 +252,7 @@ class GetWorkspaceResult:
     @pulumi.getter(name="variableSets")
     def variable_sets(self) -> Sequence[builtins.str]:
         """
-        Variable set identifiers. Currently support only one variable set.
+        Variable sets to use.
         """
         return pulumi.get(self, "variable_sets")
 
@@ -317,8 +320,8 @@ def get_workspace(description: Optional[builtins.str] = None,
     :param builtins.str project_id: Project Identifier
     :param builtins.str repository_branch: Repository Branch in which the code should be accessed
     :param builtins.str repository_commit: Repository Tag in which the code should be accessed
-    :param builtins.str repository_sha: Repository SHA in which the code should be accessed
-    :param Sequence[builtins.str] variable_sets: Variable set identifiers. Currently support only one variable set.
+    :param builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
+    :param Sequence[builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -391,8 +394,8 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[builtins.st
     :param builtins.str project_id: Project Identifier
     :param builtins.str repository_branch: Repository Branch in which the code should be accessed
     :param builtins.str repository_commit: Repository Tag in which the code should be accessed
-    :param builtins.str repository_sha: Repository SHA in which the code should be accessed
-    :param Sequence[builtins.str] variable_sets: Variable set identifiers. Currently support only one variable set.
+    :param builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
+    :param Sequence[builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()
     __args__['description'] = description
