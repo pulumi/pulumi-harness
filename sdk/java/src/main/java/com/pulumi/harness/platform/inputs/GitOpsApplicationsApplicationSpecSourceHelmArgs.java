@@ -35,6 +35,21 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
     }
 
     /**
+     * Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * 
+     */
+    @Import(name="ignoreMissingValueFiles")
+    private @Nullable Output<Boolean> ignoreMissingValueFiles;
+
+    /**
+     * @return Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreMissingValueFiles() {
+        return Optional.ofNullable(this.ignoreMissingValueFiles);
+    }
+
+    /**
      * List of helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
@@ -77,6 +92,51 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
      */
     public Optional<Output<String>> releaseName() {
         return Optional.ofNullable(this.releaseName);
+    }
+
+    /**
+     * Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * 
+     */
+    @Import(name="skipCrds")
+    private @Nullable Output<Boolean> skipCrds;
+
+    /**
+     * @return Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * 
+     */
+    public Optional<Output<Boolean>> skipCrds() {
+        return Optional.ofNullable(this.skipCrds);
+    }
+
+    /**
+     * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    @Import(name="skipSchemaValidation")
+    private @Nullable Output<Boolean> skipSchemaValidation;
+
+    /**
+     * @return Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    public Optional<Output<Boolean>> skipSchemaValidation() {
+        return Optional.ofNullable(this.skipSchemaValidation);
+    }
+
+    /**
+     * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    @Import(name="skipTests")
+    private @Nullable Output<Boolean> skipTests;
+
+    /**
+     * @return Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    public Optional<Output<Boolean>> skipTests() {
+        return Optional.ofNullable(this.skipTests);
     }
 
     /**
@@ -128,9 +188,13 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
 
     private GitOpsApplicationsApplicationSpecSourceHelmArgs(GitOpsApplicationsApplicationSpecSourceHelmArgs $) {
         this.fileParameters = $.fileParameters;
+        this.ignoreMissingValueFiles = $.ignoreMissingValueFiles;
         this.parameters = $.parameters;
         this.passCredentials = $.passCredentials;
         this.releaseName = $.releaseName;
+        this.skipCrds = $.skipCrds;
+        this.skipSchemaValidation = $.skipSchemaValidation;
+        this.skipTests = $.skipTests;
         this.valueFiles = $.valueFiles;
         this.values = $.values;
         this.version = $.version;
@@ -183,6 +247,27 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
          */
         public Builder fileParameters(GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs... fileParameters) {
             return fileParameters(List.of(fileParameters));
+        }
+
+        /**
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreMissingValueFiles(@Nullable Output<Boolean> ignoreMissingValueFiles) {
+            $.ignoreMissingValueFiles = ignoreMissingValueFiles;
+            return this;
+        }
+
+        /**
+         * @param ignoreMissingValueFiles Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreMissingValueFiles(Boolean ignoreMissingValueFiles) {
+            return ignoreMissingValueFiles(Output.of(ignoreMissingValueFiles));
         }
 
         /**
@@ -256,6 +341,69 @@ public final class GitOpsApplicationsApplicationSpecSourceHelmArgs extends com.p
          */
         public Builder releaseName(String releaseName) {
             return releaseName(Output.of(releaseName));
+        }
+
+        /**
+         * @param skipCrds Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipCrds(@Nullable Output<Boolean> skipCrds) {
+            $.skipCrds = skipCrds;
+            return this;
+        }
+
+        /**
+         * @param skipCrds Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipCrds(Boolean skipCrds) {
+            return skipCrds(Output.of(skipCrds));
+        }
+
+        /**
+         * @param skipSchemaValidation Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSchemaValidation(@Nullable Output<Boolean> skipSchemaValidation) {
+            $.skipSchemaValidation = skipSchemaValidation;
+            return this;
+        }
+
+        /**
+         * @param skipSchemaValidation Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSchemaValidation(Boolean skipSchemaValidation) {
+            return skipSchemaValidation(Output.of(skipSchemaValidation));
+        }
+
+        /**
+         * @param skipTests Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipTests(@Nullable Output<Boolean> skipTests) {
+            $.skipTests = skipTests;
+            return this;
+        }
+
+        /**
+         * @param skipTests Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipTests(Boolean skipTests) {
+            return skipTests(Output.of(skipTests));
         }
 
         /**

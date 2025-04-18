@@ -111,6 +111,7 @@ export interface GetGitopsApplicationsResult {
      * Repository identifier of the GitOps application.
      */
     readonly repoId: string;
+    readonly repoIds: string[];
     /**
      * Request cascade to delete the GitOps application.
      */

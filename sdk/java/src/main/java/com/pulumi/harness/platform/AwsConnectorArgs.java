@@ -207,14 +207,14 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authentication using harness oidc.
+     * Authentication using Harness OIDC.
      * 
      */
     @Import(name="oidcAuthentication")
     private @Nullable Output<AwsConnectorOidcAuthenticationArgs> oidcAuthentication;
 
     /**
-     * @return Authentication using harness oidc.
+     * @return Authentication using Harness OIDC.
      * 
      */
     public Optional<Output<AwsConnectorOidcAuthenticationArgs>> oidcAuthentication() {
@@ -558,7 +558,7 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcAuthentication Authentication using harness oidc.
+         * @param oidcAuthentication Authentication using Harness OIDC.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class AwsConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcAuthentication Authentication using harness oidc.
+         * @param oidcAuthentication Authentication using Harness OIDC.
          * 
          * @return builder
          * 

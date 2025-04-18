@@ -21,6 +21,11 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
      */
     private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
     /**
+     * @return Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * 
+     */
+    private @Nullable Boolean ignoreMissingValueFiles;
+    /**
      * @return List of helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
@@ -35,6 +40,21 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
      * 
      */
     private @Nullable String releaseName;
+    /**
+     * @return Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * 
+     */
+    private @Nullable Boolean skipCrds;
+    /**
+     * @return Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    private @Nullable Boolean skipSchemaValidation;
+    /**
+     * @return Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    private @Nullable Boolean skipTests;
     /**
      * @return List of helm value files to use when generating a template.
      * 
@@ -60,6 +80,13 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         return this.fileParameters == null ? List.of() : this.fileParameters;
     }
     /**
+     * @return Prevents &#39;helm template&#39; from failing when value_files do not exist locally.
+     * 
+     */
+    public Optional<Boolean> ignoreMissingValueFiles() {
+        return Optional.ofNullable(this.ignoreMissingValueFiles);
+    }
+    /**
      * @return List of helm parameters which are passed to the helm template command upon manifest generation.
      * 
      */
@@ -79,6 +106,27 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
      */
     public Optional<String> releaseName() {
         return Optional.ofNullable(this.releaseName);
+    }
+    /**
+     * @return Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+     * 
+     */
+    public Optional<Boolean> skipCrds() {
+        return Optional.ofNullable(this.skipCrds);
+    }
+    /**
+     * @return Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+     * 
+     */
+    public Optional<Boolean> skipSchemaValidation() {
+        return Optional.ofNullable(this.skipSchemaValidation);
+    }
+    /**
+     * @return Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+     * 
+     */
+    public Optional<Boolean> skipTests() {
+        return Optional.ofNullable(this.skipTests);
     }
     /**
      * @return List of helm value files to use when generating a template.
@@ -112,9 +160,13 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelmFileParameter> fileParameters;
+        private @Nullable Boolean ignoreMissingValueFiles;
         private @Nullable List<GitOpsApplicationsApplicationSpecSourceHelmParameter> parameters;
         private @Nullable Boolean passCredentials;
         private @Nullable String releaseName;
+        private @Nullable Boolean skipCrds;
+        private @Nullable Boolean skipSchemaValidation;
+        private @Nullable Boolean skipTests;
         private @Nullable List<String> valueFiles;
         private @Nullable String values;
         private @Nullable String version;
@@ -122,9 +174,13 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         public Builder(GitOpsApplicationsApplicationSpecSourceHelm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileParameters = defaults.fileParameters;
+    	      this.ignoreMissingValueFiles = defaults.ignoreMissingValueFiles;
     	      this.parameters = defaults.parameters;
     	      this.passCredentials = defaults.passCredentials;
     	      this.releaseName = defaults.releaseName;
+    	      this.skipCrds = defaults.skipCrds;
+    	      this.skipSchemaValidation = defaults.skipSchemaValidation;
+    	      this.skipTests = defaults.skipTests;
     	      this.valueFiles = defaults.valueFiles;
     	      this.values = defaults.values;
     	      this.version = defaults.version;
@@ -138,6 +194,12 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         }
         public Builder fileParameters(GitOpsApplicationsApplicationSpecSourceHelmFileParameter... fileParameters) {
             return fileParameters(List.of(fileParameters));
+        }
+        @CustomType.Setter
+        public Builder ignoreMissingValueFiles(@Nullable Boolean ignoreMissingValueFiles) {
+
+            this.ignoreMissingValueFiles = ignoreMissingValueFiles;
+            return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable List<GitOpsApplicationsApplicationSpecSourceHelmParameter> parameters) {
@@ -158,6 +220,24 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         public Builder releaseName(@Nullable String releaseName) {
 
             this.releaseName = releaseName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipCrds(@Nullable Boolean skipCrds) {
+
+            this.skipCrds = skipCrds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipSchemaValidation(@Nullable Boolean skipSchemaValidation) {
+
+            this.skipSchemaValidation = skipSchemaValidation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipTests(@Nullable Boolean skipTests) {
+
+            this.skipTests = skipTests;
             return this;
         }
         @CustomType.Setter
@@ -184,9 +264,13 @@ public final class GitOpsApplicationsApplicationSpecSourceHelm {
         public GitOpsApplicationsApplicationSpecSourceHelm build() {
             final var _resultValue = new GitOpsApplicationsApplicationSpecSourceHelm();
             _resultValue.fileParameters = fileParameters;
+            _resultValue.ignoreMissingValueFiles = ignoreMissingValueFiles;
             _resultValue.parameters = parameters;
             _resultValue.passCredentials = passCredentials;
             _resultValue.releaseName = releaseName;
+            _resultValue.skipCrds = skipCrds;
+            _resultValue.skipSchemaValidation = skipSchemaValidation;
+            _resultValue.skipTests = skipTests;
             _resultValue.valueFiles = valueFiles;
             _resultValue.values = values;
             _resultValue.version = version;

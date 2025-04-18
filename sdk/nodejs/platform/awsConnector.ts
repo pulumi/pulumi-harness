@@ -106,7 +106,7 @@ export class AwsConnector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Authentication using harness oidc.
+     * Authentication using Harness OIDC.
      */
     public readonly oidcAuthentication!: pulumi.Output<outputs.platform.AwsConnectorOidcAuthentication | undefined>;
     /**
@@ -231,7 +231,7 @@ export interface AwsConnectorState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Authentication using harness oidc.
+     * Authentication using Harness OIDC.
      */
     oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
     /**
@@ -301,7 +301,7 @@ export interface AwsConnectorArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Authentication using harness oidc.
+     * Authentication using Harness OIDC.
      */
     oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
     /**

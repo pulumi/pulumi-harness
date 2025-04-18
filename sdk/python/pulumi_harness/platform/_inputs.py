@@ -1267,17 +1267,17 @@ class AwsConnectorManualArgs:
 
 if not MYPY:
     class AwsConnectorOidcAuthenticationArgsDict(TypedDict):
-        delegate_selectors: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
-        """
-        The delegates to inherit the credentials from.
-        """
         iam_role_arn: pulumi.Input[builtins.str]
         """
         The IAM Role to assume the credentials from.
         """
+        delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        The delegates to inherit the credentials from.
+        """
         region: NotRequired[pulumi.Input[builtins.str]]
         """
-        Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        AWS Region to perform Connection test of Connector.
         """
 elif False:
     AwsConnectorOidcAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -1285,30 +1285,19 @@ elif False:
 @pulumi.input_type
 class AwsConnectorOidcAuthenticationArgs:
     def __init__(__self__, *,
-                 delegate_selectors: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  iam_role_arn: pulumi.Input[builtins.str],
+                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] delegate_selectors: The delegates to inherit the credentials from.
         :param pulumi.Input[builtins.str] iam_role_arn: The IAM Role to assume the credentials from.
-        :param pulumi.Input[builtins.str] region: Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] delegate_selectors: The delegates to inherit the credentials from.
+        :param pulumi.Input[builtins.str] region: AWS Region to perform Connection test of Connector.
         """
-        pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if region is not None:
             pulumi.set(__self__, "region", region)
-
-    @property
-    @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
-        """
-        The delegates to inherit the credentials from.
-        """
-        return pulumi.get(self, "delegate_selectors")
-
-    @delegate_selectors.setter
-    def delegate_selectors(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
-        pulumi.set(self, "delegate_selectors", value)
 
     @property
     @pulumi.getter(name="iamRoleArn")
@@ -1323,10 +1312,22 @@ class AwsConnectorOidcAuthenticationArgs:
         pulumi.set(self, "iam_role_arn", value)
 
     @property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The delegates to inherit the credentials from.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        AWS Region to perform Connection test of Connector.
         """
         return pulumi.get(self, "region")
 
@@ -6471,6 +6472,10 @@ if not MYPY:
         """
         File parameters to the helm template.
         """
+        ignore_missing_value_files: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Prevents 'helm template' from failing when value_files do not exist locally.
+        """
         parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmParameterArgsDict']]]]
         """
         List of helm parameters which are passed to the helm template command upon manifest generation.
@@ -6482,6 +6487,18 @@ if not MYPY:
         release_name: NotRequired[pulumi.Input[builtins.str]]
         """
         Helm release name to use. If omitted it will use the GitOps application name.
+        """
+        skip_crds: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+        """
+        skip_schema_validation: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+        """
+        skip_tests: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
         """
         value_files: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
@@ -6502,29 +6519,45 @@ elif False:
 class GitOpsApplicationsApplicationSpecSourceHelmArgs:
     def __init__(__self__, *,
                  file_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs']]]] = None,
+                 ignore_missing_value_files: Optional[pulumi.Input[builtins.bool]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmParameterArgs']]]] = None,
                  pass_credentials: Optional[pulumi.Input[builtins.bool]] = None,
                  release_name: Optional[pulumi.Input[builtins.str]] = None,
+                 skip_crds: Optional[pulumi.Input[builtins.bool]] = None,
+                 skip_schema_validation: Optional[pulumi.Input[builtins.bool]] = None,
+                 skip_tests: Optional[pulumi.Input[builtins.bool]] = None,
                  value_files: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  values: Optional[pulumi.Input[builtins.str]] = None,
                  version: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs']]] file_parameters: File parameters to the helm template.
+        :param pulumi.Input[builtins.bool] ignore_missing_value_files: Prevents 'helm template' from failing when value_files do not exist locally.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmParameterArgs']]] parameters: List of helm parameters which are passed to the helm template command upon manifest generation.
         :param pulumi.Input[builtins.bool] pass_credentials: Indicates if to pass credentials to all domains (helm's --pass-credentials)
         :param pulumi.Input[builtins.str] release_name: Helm release name to use. If omitted it will use the GitOps application name.
+        :param pulumi.Input[builtins.bool] skip_crds: Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+        :param pulumi.Input[builtins.bool] skip_schema_validation: Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+        :param pulumi.Input[builtins.bool] skip_tests: Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] value_files: List of helm value files to use when generating a template.
         :param pulumi.Input[builtins.str] values: Helm values to be passed to helm template, typically defined as a block.
         :param pulumi.Input[builtins.str] version: Helm version to use for templating (either "2" or "3")
         """
         if file_parameters is not None:
             pulumi.set(__self__, "file_parameters", file_parameters)
+        if ignore_missing_value_files is not None:
+            pulumi.set(__self__, "ignore_missing_value_files", ignore_missing_value_files)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
         if pass_credentials is not None:
             pulumi.set(__self__, "pass_credentials", pass_credentials)
         if release_name is not None:
             pulumi.set(__self__, "release_name", release_name)
+        if skip_crds is not None:
+            pulumi.set(__self__, "skip_crds", skip_crds)
+        if skip_schema_validation is not None:
+            pulumi.set(__self__, "skip_schema_validation", skip_schema_validation)
+        if skip_tests is not None:
+            pulumi.set(__self__, "skip_tests", skip_tests)
         if value_files is not None:
             pulumi.set(__self__, "value_files", value_files)
         if values is not None:
@@ -6543,6 +6576,18 @@ class GitOpsApplicationsApplicationSpecSourceHelmArgs:
     @file_parameters.setter
     def file_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationSpecSourceHelmFileParameterArgs']]]]):
         pulumi.set(self, "file_parameters", value)
+
+    @property
+    @pulumi.getter(name="ignoreMissingValueFiles")
+    def ignore_missing_value_files(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Prevents 'helm template' from failing when value_files do not exist locally.
+        """
+        return pulumi.get(self, "ignore_missing_value_files")
+
+    @ignore_missing_value_files.setter
+    def ignore_missing_value_files(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "ignore_missing_value_files", value)
 
     @property
     @pulumi.getter
@@ -6579,6 +6624,42 @@ class GitOpsApplicationsApplicationSpecSourceHelmArgs:
     @release_name.setter
     def release_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "release_name", value)
+
+    @property
+    @pulumi.getter(name="skipCrds")
+    def skip_crds(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+        """
+        return pulumi.get(self, "skip_crds")
+
+    @skip_crds.setter
+    def skip_crds(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "skip_crds", value)
+
+    @property
+    @pulumi.getter(name="skipSchemaValidation")
+    def skip_schema_validation(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+        """
+        return pulumi.get(self, "skip_schema_validation")
+
+    @skip_schema_validation.setter
+    def skip_schema_validation(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "skip_schema_validation", value)
+
+    @property
+    @pulumi.getter(name="skipTests")
+    def skip_tests(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+        """
+        return pulumi.get(self, "skip_tests")
+
+    @skip_tests.setter
+    def skip_tests(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "skip_tests", value)
 
     @property
     @pulumi.getter(name="valueFiles")

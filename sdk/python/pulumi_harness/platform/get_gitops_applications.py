@@ -28,7 +28,7 @@ class GetGitopsApplicationsResult:
     """
     A collection of values returned by getGitopsApplications.
     """
-    def __init__(__self__, account_id=None, agent_id=None, applications=None, cluster_id=None, id=None, identifier=None, kind=None, name=None, options_remove_existing_finalizers=None, org_id=None, project=None, project_id=None, repo_id=None, request_cascade=None, request_propagation_policy=None, skip_repo_validation=None, upsert=None, validate=None):
+    def __init__(__self__, account_id=None, agent_id=None, applications=None, cluster_id=None, id=None, identifier=None, kind=None, name=None, options_remove_existing_finalizers=None, org_id=None, project=None, project_id=None, repo_id=None, repo_ids=None, request_cascade=None, request_propagation_policy=None, skip_repo_validation=None, upsert=None, validate=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -68,6 +68,9 @@ class GetGitopsApplicationsResult:
         if repo_id and not isinstance(repo_id, str):
             raise TypeError("Expected argument 'repo_id' to be a str")
         pulumi.set(__self__, "repo_id", repo_id)
+        if repo_ids and not isinstance(repo_ids, list):
+            raise TypeError("Expected argument 'repo_ids' to be a list")
+        pulumi.set(__self__, "repo_ids", repo_ids)
         if request_cascade and not isinstance(request_cascade, bool):
             raise TypeError("Expected argument 'request_cascade' to be a bool")
         pulumi.set(__self__, "request_cascade", request_cascade)
@@ -188,6 +191,11 @@ class GetGitopsApplicationsResult:
         return pulumi.get(self, "repo_id")
 
     @property
+    @pulumi.getter(name="repoIds")
+    def repo_ids(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "repo_ids")
+
+    @property
     @pulumi.getter(name="requestCascade")
     def request_cascade(self) -> builtins.bool:
         """
@@ -247,6 +255,7 @@ class AwaitableGetGitopsApplicationsResult(GetGitopsApplicationsResult):
             project=self.project,
             project_id=self.project_id,
             repo_id=self.repo_id,
+            repo_ids=self.repo_ids,
             request_cascade=self.request_cascade,
             request_propagation_policy=self.request_propagation_policy,
             skip_repo_validation=self.skip_repo_validation,
@@ -295,6 +304,7 @@ def get_gitops_applications(account_id: Optional[builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         project_id=pulumi.get(__ret__, 'project_id'),
         repo_id=pulumi.get(__ret__, 'repo_id'),
+        repo_ids=pulumi.get(__ret__, 'repo_ids'),
         request_cascade=pulumi.get(__ret__, 'request_cascade'),
         request_propagation_policy=pulumi.get(__ret__, 'request_propagation_policy'),
         skip_repo_validation=pulumi.get(__ret__, 'skip_repo_validation'),
@@ -340,6 +350,7 @@ def get_gitops_applications_output(account_id: Optional[pulumi.Input[Optional[bu
         project=pulumi.get(__response__, 'project'),
         project_id=pulumi.get(__response__, 'project_id'),
         repo_id=pulumi.get(__response__, 'repo_id'),
+        repo_ids=pulumi.get(__response__, 'repo_ids'),
         request_cascade=pulumi.get(__response__, 'request_cascade'),
         request_propagation_policy=pulumi.get(__response__, 'request_propagation_policy'),
         skip_repo_validation=pulumi.get(__response__, 'skip_repo_validation'),

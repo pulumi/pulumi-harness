@@ -17,14 +17,14 @@ public final class AwsConnectorOidcAuthentication {
      * @return The delegates to inherit the credentials from.
      * 
      */
-    private List<String> delegateSelectors;
+    private @Nullable List<String> delegateSelectors;
     /**
      * @return The IAM Role to assume the credentials from.
      * 
      */
     private String iamRoleArn;
     /**
-     * @return Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return AWS Region to perform Connection test of Connector.
      * 
      */
     private @Nullable String region;
@@ -35,7 +35,7 @@ public final class AwsConnectorOidcAuthentication {
      * 
      */
     public List<String> delegateSelectors() {
-        return this.delegateSelectors;
+        return this.delegateSelectors == null ? List.of() : this.delegateSelectors;
     }
     /**
      * @return The IAM Role to assume the credentials from.
@@ -45,7 +45,7 @@ public final class AwsConnectorOidcAuthentication {
         return this.iamRoleArn;
     }
     /**
-     * @return Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return AWS Region to perform Connection test of Connector.
      * 
      */
     public Optional<String> region() {
@@ -61,7 +61,7 @@ public final class AwsConnectorOidcAuthentication {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> delegateSelectors;
+        private @Nullable List<String> delegateSelectors;
         private String iamRoleArn;
         private @Nullable String region;
         public Builder() {}
@@ -73,10 +73,8 @@ public final class AwsConnectorOidcAuthentication {
         }
 
         @CustomType.Setter
-        public Builder delegateSelectors(List<String> delegateSelectors) {
-            if (delegateSelectors == null) {
-              throw new MissingRequiredPropertyException("AwsConnectorOidcAuthentication", "delegateSelectors");
-            }
+        public Builder delegateSelectors(@Nullable List<String> delegateSelectors) {
+
             this.delegateSelectors = delegateSelectors;
             return this;
         }

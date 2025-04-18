@@ -1762,13 +1762,13 @@ export namespace platform {
         /**
          * The delegates to inherit the credentials from.
          */
-        delegateSelectors: string[];
+        delegateSelectors?: string[];
         /**
          * The IAM Role to assume the credentials from.
          */
         iamRoleArn: string;
         /**
-         * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         * AWS Region to perform Connection test of Connector.
          */
         region?: string;
     }
@@ -3888,6 +3888,10 @@ export namespace platform {
          */
         fileParameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmFileParameter[];
         /**
+         * Prevents 'helm template' from failing when valueFiles do not exist locally.
+         */
+        ignoreMissingValueFiles?: boolean;
+        /**
          * List of helm parameters which are passed to the helm template command upon manifest generation.
          */
         parameters?: outputs.platform.GetGitopsApplicationsApplicationSpecSourceHelmParameter[];
@@ -3899,6 +3903,18 @@ export namespace platform {
          * Helm release name to use. If omitted it will use the GitOps application name.
          */
         releaseName?: string;
+        /**
+         * Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         */
+        skipCrds?: boolean;
+        /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
         /**
          * List of helm value files to use when generating a template.
          */
@@ -6066,6 +6082,10 @@ export namespace platform {
          */
         fileParameters?: outputs.platform.GitOpsApplicationsApplicationSpecSourceHelmFileParameter[];
         /**
+         * Prevents 'helm template' from failing when valueFiles do not exist locally.
+         */
+        ignoreMissingValueFiles?: boolean;
+        /**
          * List of helm parameters which are passed to the helm template command upon manifest generation.
          */
         parameters?: outputs.platform.GitOpsApplicationsApplicationSpecSourceHelmParameter[];
@@ -6077,6 +6097,18 @@ export namespace platform {
          * Helm release name to use. If omitted it will use the GitOps application name.
          */
         releaseName?: string;
+        /**
+         * Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+         */
+        skipCrds?: boolean;
+        /**
+         * Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+         */
+        skipSchemaValidation?: boolean;
+        /**
+         * Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+         */
+        skipTests?: boolean;
         /**
          * List of helm value files to use when generating a template.
          */

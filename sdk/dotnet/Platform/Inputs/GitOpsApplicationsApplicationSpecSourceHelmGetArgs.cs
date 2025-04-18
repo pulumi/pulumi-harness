@@ -24,6 +24,12 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _fileParameters = value;
         }
 
+        /// <summary>
+        /// Prevents 'helm template' from failing when value_files do not exist locally.
+        /// </summary>
+        [Input("ignoreMissingValueFiles")]
+        public Input<bool>? IgnoreMissingValueFiles { get; set; }
+
         [Input("parameters")]
         private InputList<Inputs.GitOpsApplicationsApplicationSpecSourceHelmParameterGetArgs>? _parameters;
 
@@ -47,6 +53,24 @@ namespace Pulumi.Harness.Platform.Inputs
         /// </summary>
         [Input("releaseName")]
         public Input<string>? ReleaseName { get; set; }
+
+        /// <summary>
+        /// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+        /// </summary>
+        [Input("skipCrds")]
+        public Input<bool>? SkipCrds { get; set; }
+
+        /// <summary>
+        /// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+        /// </summary>
+        [Input("skipSchemaValidation")]
+        public Input<bool>? SkipSchemaValidation { get; set; }
+
+        /// <summary>
+        /// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+        /// </summary>
+        [Input("skipTests")]
+        public Input<bool>? SkipTests { get; set; }
 
         [Input("valueFiles")]
         private InputList<string>? _valueFiles;

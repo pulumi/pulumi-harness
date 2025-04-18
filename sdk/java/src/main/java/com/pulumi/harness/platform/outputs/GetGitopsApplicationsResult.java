@@ -86,6 +86,7 @@ public final class GetGitopsApplicationsResult {
      * 
      */
     private String repoId;
+    private List<String> repoIds;
     /**
      * @return Request cascade to delete the GitOps application.
      * 
@@ -210,6 +211,9 @@ public final class GetGitopsApplicationsResult {
     public String repoId() {
         return this.repoId;
     }
+    public List<String> repoIds() {
+        return this.repoIds;
+    }
     /**
      * @return Request cascade to delete the GitOps application.
      * 
@@ -268,6 +272,7 @@ public final class GetGitopsApplicationsResult {
         private String project;
         private String projectId;
         private String repoId;
+        private List<String> repoIds;
         private Boolean requestCascade;
         private String requestPropagationPolicy;
         private Boolean skipRepoValidation;
@@ -289,6 +294,7 @@ public final class GetGitopsApplicationsResult {
     	      this.project = defaults.project;
     	      this.projectId = defaults.projectId;
     	      this.repoId = defaults.repoId;
+    	      this.repoIds = defaults.repoIds;
     	      this.requestCascade = defaults.requestCascade;
     	      this.requestPropagationPolicy = defaults.requestPropagationPolicy;
     	      this.skipRepoValidation = defaults.skipRepoValidation;
@@ -402,6 +408,17 @@ public final class GetGitopsApplicationsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder repoIds(List<String> repoIds) {
+            if (repoIds == null) {
+              throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "repoIds");
+            }
+            this.repoIds = repoIds;
+            return this;
+        }
+        public Builder repoIds(String... repoIds) {
+            return repoIds(List.of(repoIds));
+        }
+        @CustomType.Setter
         public Builder requestCascade(Boolean requestCascade) {
             if (requestCascade == null) {
               throw new MissingRequiredPropertyException("GetGitopsApplicationsResult", "requestCascade");
@@ -456,6 +473,7 @@ public final class GetGitopsApplicationsResult {
             _resultValue.project = project;
             _resultValue.projectId = projectId;
             _resultValue.repoId = repoId;
+            _resultValue.repoIds = repoIds;
             _resultValue.requestCascade = requestCascade;
             _resultValue.requestPropagationPolicy = requestPropagationPolicy;
             _resultValue.skipRepoValidation = skipRepoValidation;

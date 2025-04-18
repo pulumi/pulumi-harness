@@ -1867,7 +1867,7 @@ type AwsConnectorOidcAuthentication struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn string `pulumi:"iamRoleArn"`
-	// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// AWS Region to perform Connection test of Connector.
 	Region *string `pulumi:"region"`
 }
 
@@ -1887,7 +1887,7 @@ type AwsConnectorOidcAuthenticationArgs struct {
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
-	// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	// AWS Region to perform Connection test of Connector.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -1978,7 +1978,7 @@ func (o AwsConnectorOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsConnectorOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
 }
 
-// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+// AWS Region to perform Connection test of Connector.
 func (o AwsConnectorOidcAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsConnectorOidcAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -2027,7 +2027,7 @@ func (o AwsConnectorOidcAuthenticationPtrOutput) IamRoleArn() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+// AWS Region to perform Connection test of Connector.
 func (o AwsConnectorOidcAuthenticationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsConnectorOidcAuthentication) *string {
 		if v == nil {
@@ -12496,12 +12496,20 @@ func (o GitOpsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayOutput) I
 type GitOpsApplicationsApplicationSpecSourceHelm struct {
 	// File parameters to the helm template.
 	FileParameters []GitOpsApplicationsApplicationSpecSourceHelmFileParameter `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when valueFiles do not exist locally.
+	IgnoreMissingValueFiles *bool `pulumi:"ignoreMissingValueFiles"`
 	// List of helm parameters which are passed to the helm template command upon manifest generation.
 	Parameters []GitOpsApplicationsApplicationSpecSourceHelmParameter `pulumi:"parameters"`
 	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
 	PassCredentials *bool `pulumi:"passCredentials"`
 	// Helm release name to use. If omitted it will use the GitOps application name.
 	ReleaseName *string `pulumi:"releaseName"`
+	// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+	SkipCrds *bool `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests *bool `pulumi:"skipTests"`
 	// List of helm value files to use when generating a template.
 	ValueFiles []string `pulumi:"valueFiles"`
 	// Helm values to be passed to helm template, typically defined as a block.
@@ -12524,12 +12532,20 @@ type GitOpsApplicationsApplicationSpecSourceHelmInput interface {
 type GitOpsApplicationsApplicationSpecSourceHelmArgs struct {
 	// File parameters to the helm template.
 	FileParameters GitOpsApplicationsApplicationSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when valueFiles do not exist locally.
+	IgnoreMissingValueFiles pulumi.BoolPtrInput `pulumi:"ignoreMissingValueFiles"`
 	// List of helm parameters which are passed to the helm template command upon manifest generation.
 	Parameters GitOpsApplicationsApplicationSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
 	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
 	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
 	// Helm release name to use. If omitted it will use the GitOps application name.
 	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+	// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+	SkipCrds pulumi.BoolPtrInput `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation pulumi.BoolPtrInput `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests pulumi.BoolPtrInput `pulumi:"skipTests"`
 	// List of helm value files to use when generating a template.
 	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
 	// Helm values to be passed to helm template, typically defined as a block.
@@ -12596,6 +12612,11 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) FileParameters() GitO
 	}).(GitOpsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput)
 }
 
+// Prevents 'helm template' from failing when valueFiles do not exist locally.
+func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *bool { return v.IgnoreMissingValueFiles }).(pulumi.BoolPtrOutput)
+}
+
 // List of helm parameters which are passed to the helm template command upon manifest generation.
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) Parameters() GitOpsApplicationsApplicationSpecSourceHelmParameterArrayOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) []GitOpsApplicationsApplicationSpecSourceHelmParameter {
@@ -12611,6 +12632,21 @@ func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) PassCredentials() pul
 // Helm release name to use. If omitted it will use the GitOps application name.
 func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) SkipCrds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *bool { return v.SkipCrds }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *bool { return v.SkipSchemaValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GitOpsApplicationsApplicationSpecSourceHelmOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsApplicationsApplicationSpecSourceHelm) *bool { return v.SkipTests }).(pulumi.BoolPtrOutput)
 }
 
 // List of helm value files to use when generating a template.
@@ -47922,12 +47958,20 @@ func (o GetGitopsApplicationsApplicationSpecSourceDirectoryJsonnetTlaArrayOutput
 type GetGitopsApplicationsApplicationSpecSourceHelm struct {
 	// File parameters to the helm template.
 	FileParameters []GetGitopsApplicationsApplicationSpecSourceHelmFileParameter `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when valueFiles do not exist locally.
+	IgnoreMissingValueFiles *bool `pulumi:"ignoreMissingValueFiles"`
 	// List of helm parameters which are passed to the helm template command upon manifest generation.
 	Parameters []GetGitopsApplicationsApplicationSpecSourceHelmParameter `pulumi:"parameters"`
 	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
 	PassCredentials *bool `pulumi:"passCredentials"`
 	// Helm release name to use. If omitted it will use the GitOps application name.
 	ReleaseName *string `pulumi:"releaseName"`
+	// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+	SkipCrds *bool `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests *bool `pulumi:"skipTests"`
 	// List of helm value files to use when generating a template.
 	ValueFiles []string `pulumi:"valueFiles"`
 	// Helm values to be passed to helm template, typically defined as a block.
@@ -47950,12 +47994,20 @@ type GetGitopsApplicationsApplicationSpecSourceHelmInput interface {
 type GetGitopsApplicationsApplicationSpecSourceHelmArgs struct {
 	// File parameters to the helm template.
 	FileParameters GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when valueFiles do not exist locally.
+	IgnoreMissingValueFiles pulumi.BoolPtrInput `pulumi:"ignoreMissingValueFiles"`
 	// List of helm parameters which are passed to the helm template command upon manifest generation.
 	Parameters GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
 	// Indicates if to pass credentials to all domains (helm's --pass-credentials)
 	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
 	// Helm release name to use. If omitted it will use the GitOps application name.
 	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+	// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+	SkipCrds pulumi.BoolPtrInput `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation pulumi.BoolPtrInput `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests pulumi.BoolPtrInput `pulumi:"skipTests"`
 	// List of helm value files to use when generating a template.
 	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
 	// Helm values to be passed to helm template, typically defined as a block.
@@ -48022,6 +48074,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) FileParameters() G
 	}).(GetGitopsApplicationsApplicationSpecSourceHelmFileParameterArrayOutput)
 }
 
+// Prevents 'helm template' from failing when valueFiles do not exist locally.
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *bool { return v.IgnoreMissingValueFiles }).(pulumi.BoolPtrOutput)
+}
+
 // List of helm parameters which are passed to the helm template command upon manifest generation.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) Parameters() GetGitopsApplicationsApplicationSpecSourceHelmParameterArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) []GetGitopsApplicationsApplicationSpecSourceHelmParameter {
@@ -48037,6 +48094,21 @@ func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) PassCredentials() 
 // Helm release name to use. If omitted it will use the GitOps application name.
 func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) SkipCrds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *bool { return v.SkipCrds }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *bool { return v.SkipSchemaValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GetGitopsApplicationsApplicationSpecSourceHelmOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceHelm) *bool { return v.SkipTests }).(pulumi.BoolPtrOutput)
 }
 
 // List of helm value files to use when generating a template.
