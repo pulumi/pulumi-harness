@@ -4603,6 +4603,9 @@
                                 }
                             }
                         }
+                    },
+                    "repo_ids": {
+                        "maxItemsOne": false
                     }
                 }
             },
