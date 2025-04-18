@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult> FileParameters;
         /// <summary>
+        /// Prevents 'helm template' from failing when value_files do not exist locally.
+        /// </summary>
+        public readonly bool? IgnoreMissingValueFiles;
+        /// <summary>
         /// List of helm parameters which are passed to the helm template command upon manifest generation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult> Parameters;
@@ -29,6 +33,18 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Helm release name to use. If omitted it will use the GitOps application name.
         /// </summary>
         public readonly string? ReleaseName;
+        /// <summary>
+        /// Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds
+        /// </summary>
+        public readonly bool? SkipCrds;
+        /// <summary>
+        /// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+        /// </summary>
+        public readonly bool? SkipSchemaValidation;
+        /// <summary>
+        /// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+        /// </summary>
+        public readonly bool? SkipTests;
         /// <summary>
         /// List of helm value files to use when generating a template.
         /// </summary>
@@ -46,11 +62,19 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetGitopsApplicationsApplicationSpecSourceHelmResult(
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceHelmFileParameterResult> fileParameters,
 
+            bool? ignoreMissingValueFiles,
+
             ImmutableArray<Outputs.GetGitopsApplicationsApplicationSpecSourceHelmParameterResult> parameters,
 
             bool? passCredentials,
 
             string? releaseName,
+
+            bool? skipCrds,
+
+            bool? skipSchemaValidation,
+
+            bool? skipTests,
 
             ImmutableArray<string> valueFiles,
 
@@ -59,9 +83,13 @@ namespace Pulumi.Harness.Platform.Outputs
             string? version)
         {
             FileParameters = fileParameters;
+            IgnoreMissingValueFiles = ignoreMissingValueFiles;
             Parameters = parameters;
             PassCredentials = passCredentials;
             ReleaseName = releaseName;
+            SkipCrds = skipCrds;
+            SkipSchemaValidation = skipSchemaValidation;
+            SkipTests = skipTests;
             ValueFiles = valueFiles;
             Values = values;
             Version = version;

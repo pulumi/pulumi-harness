@@ -60,7 +60,7 @@ type AwsConnector struct {
 	Manual AwsConnectorManualPtrOutput `pulumi:"manual"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Authentication using harness oidc.
+	// Authentication using Harness OIDC.
 	OidcAuthentication AwsConnectorOidcAuthenticationPtrOutput `pulumi:"oidcAuthentication"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
@@ -127,7 +127,7 @@ type awsConnectorState struct {
 	Manual *AwsConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Authentication using harness oidc.
+	// Authentication using Harness OIDC.
 	OidcAuthentication *AwsConnectorOidcAuthentication `pulumi:"oidcAuthentication"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
@@ -162,7 +162,7 @@ type AwsConnectorState struct {
 	Manual AwsConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Authentication using harness oidc.
+	// Authentication using Harness OIDC.
 	OidcAuthentication AwsConnectorOidcAuthenticationPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
@@ -201,7 +201,7 @@ type awsConnectorArgs struct {
 	Manual *AwsConnectorManual `pulumi:"manual"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// Authentication using harness oidc.
+	// Authentication using Harness OIDC.
 	OidcAuthentication *AwsConnectorOidcAuthentication `pulumi:"oidcAuthentication"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
@@ -237,7 +237,7 @@ type AwsConnectorArgs struct {
 	Manual AwsConnectorManualPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
-	// Authentication using harness oidc.
+	// Authentication using Harness OIDC.
 	OidcAuthentication AwsConnectorOidcAuthenticationPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
@@ -400,7 +400,7 @@ func (o AwsConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Authentication using harness oidc.
+// Authentication using Harness OIDC.
 func (o AwsConnectorOutput) OidcAuthentication() AwsConnectorOidcAuthenticationPtrOutput {
 	return o.ApplyT(func(v *AwsConnector) AwsConnectorOidcAuthenticationPtrOutput { return v.OidcAuthentication }).(AwsConnectorOidcAuthenticationPtrOutput)
 }

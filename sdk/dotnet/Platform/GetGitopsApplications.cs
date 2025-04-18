@@ -166,6 +166,7 @@ namespace Pulumi.Harness.Platform
         /// Repository identifier of the GitOps application.
         /// </summary>
         public readonly string RepoId;
+        public readonly ImmutableArray<string> RepoIds;
         /// <summary>
         /// Request cascade to delete the GitOps application.
         /// </summary>
@@ -215,6 +216,8 @@ namespace Pulumi.Harness.Platform
 
             string repoId,
 
+            ImmutableArray<string> repoIds,
+
             bool requestCascade,
 
             string requestPropagationPolicy,
@@ -238,6 +241,7 @@ namespace Pulumi.Harness.Platform
             Project = project;
             ProjectId = projectId;
             RepoId = repoId;
+            RepoIds = repoIds;
             RequestCascade = requestCascade;
             RequestPropagationPolicy = requestPropagationPolicy;
             SkipRepoValidation = skipRepoValidation;

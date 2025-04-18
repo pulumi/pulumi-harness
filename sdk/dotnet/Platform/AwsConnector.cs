@@ -108,7 +108,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Authentication using harness oidc.
+        /// Authentication using Harness OIDC.
         /// </summary>
         [Output("oidcAuthentication")]
         public Output<Outputs.AwsConnectorOidcAuthentication?> OidcAuthentication { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authentication using harness oidc.
+        /// Authentication using Harness OIDC.
         /// </summary>
         [Input("oidcAuthentication")]
         public Input<Inputs.AwsConnectorOidcAuthenticationArgs>? OidcAuthentication { get; set; }
@@ -361,7 +361,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Authentication using harness oidc.
+        /// Authentication using Harness OIDC.
         /// </summary>
         [Input("oidcAuthentication")]
         public Input<Inputs.AwsConnectorOidcAuthenticationGetArgs>? OidcAuthentication { get; set; }

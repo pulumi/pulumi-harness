@@ -219,14 +219,14 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Authentication using harness oidc.
+     * Authentication using Harness OIDC.
      * 
      */
     @Export(name="oidcAuthentication", refs={AwsConnectorOidcAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorOidcAuthentication> oidcAuthentication;
 
     /**
-     * @return Authentication using harness oidc.
+     * @return Authentication using Harness OIDC.
      * 
      */
     public Output<Optional<AwsConnectorOidcAuthentication>> oidcAuthentication() {

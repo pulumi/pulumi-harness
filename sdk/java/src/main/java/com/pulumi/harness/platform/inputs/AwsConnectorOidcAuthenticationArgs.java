@@ -21,15 +21,15 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
      * The delegates to inherit the credentials from.
      * 
      */
-    @Import(name="delegateSelectors", required=true)
-    private Output<List<String>> delegateSelectors;
+    @Import(name="delegateSelectors")
+    private @Nullable Output<List<String>> delegateSelectors;
 
     /**
      * @return The delegates to inherit the credentials from.
      * 
      */
-    public Output<List<String>> delegateSelectors() {
-        return this.delegateSelectors;
+    public Optional<Output<List<String>>> delegateSelectors() {
+        return Optional.ofNullable(this.delegateSelectors);
     }
 
     /**
@@ -48,14 +48,14 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
     }
 
     /**
-     * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * AWS Region to perform Connection test of Connector.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return AWS Region to perform Connection test of Connector.
      * 
      */
     public Optional<Output<String>> region() {
@@ -94,7 +94,7 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder delegateSelectors(Output<List<String>> delegateSelectors) {
+        public Builder delegateSelectors(@Nullable Output<List<String>> delegateSelectors) {
             $.delegateSelectors = delegateSelectors;
             return this;
         }
@@ -141,7 +141,7 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param region AWS Region to perform Connection test of Connector.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param region Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param region AWS Region to perform Connection test of Connector.
          * 
          * @return builder
          * 
@@ -162,9 +162,6 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
         }
 
         public AwsConnectorOidcAuthenticationArgs build() {
-            if ($.delegateSelectors == null) {
-                throw new MissingRequiredPropertyException("AwsConnectorOidcAuthenticationArgs", "delegateSelectors");
-            }
             if ($.iamRoleArn == null) {
                 throw new MissingRequiredPropertyException("AwsConnectorOidcAuthenticationArgs", "iamRoleArn");
             }

@@ -69,7 +69,8 @@ type GetGitopsApplicationsResult struct {
 	// Project identifier of the GitOps application.
 	ProjectId string `pulumi:"projectId"`
 	// Repository identifier of the GitOps application.
-	RepoId string `pulumi:"repoId"`
+	RepoId  string   `pulumi:"repoId"`
+	RepoIds []string `pulumi:"repoIds"`
 	// Request cascade to delete the GitOps application.
 	RequestCascade bool `pulumi:"requestCascade"`
 	// Request propagation policy to delete the GitOps application.
@@ -193,6 +194,10 @@ func (o GetGitopsApplicationsResultOutput) ProjectId() pulumi.StringOutput {
 // Repository identifier of the GitOps application.
 func (o GetGitopsApplicationsResultOutput) RepoId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.RepoId }).(pulumi.StringOutput)
+}
+
+func (o GetGitopsApplicationsResultOutput) RepoIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsResult) []string { return v.RepoIds }).(pulumi.StringArrayOutput)
 }
 
 // Request cascade to delete the GitOps application.

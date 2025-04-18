@@ -2691,12 +2691,11 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                    "description": "AWS Region to perform Connection test of Connector.\n"
                 }
             },
             "type": "object",
             "required": [
-                "delegateSelectors",
                 "iamRoleArn"
             ]
         },
@@ -4275,6 +4274,10 @@
                     },
                     "description": "File parameters to the helm template.\n"
                 },
+                "ignoreMissingValueFiles": {
+                    "type": "boolean",
+                    "description": "Prevents 'helm template' from failing when value_files do not exist locally.\n"
+                },
                 "parameters": {
                     "type": "array",
                     "items": {
@@ -4289,6 +4292,18 @@
                 "releaseName": {
                     "type": "string",
                     "description": "Helm release name to use. If omitted it will use the GitOps application name.\n"
+                },
+                "skipCrds": {
+                    "type": "boolean",
+                    "description": "Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds\n"
+                },
+                "skipSchemaValidation": {
+                    "type": "boolean",
+                    "description": "Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation\n"
+                },
+                "skipTests": {
+                    "type": "boolean",
+                    "description": "Indicates if to skip tests during helm template. Corresponds to helm --skip-tests\n"
                 },
                 "valueFiles": {
                     "type": "array",
@@ -11003,6 +11018,10 @@
                     },
                     "description": "File parameters to the helm template.\n"
                 },
+                "ignoreMissingValueFiles": {
+                    "type": "boolean",
+                    "description": "Prevents 'helm template' from failing when value_files do not exist locally.\n"
+                },
                 "parameters": {
                     "type": "array",
                     "items": {
@@ -11017,6 +11036,18 @@
                 "releaseName": {
                     "type": "string",
                     "description": "Helm release name to use. If omitted it will use the GitOps application name.\n"
+                },
+                "skipCrds": {
+                    "type": "boolean",
+                    "description": "Indicates if to skip CRDs during helm template. Corresponds to helm --skip-crds\n"
+                },
+                "skipSchemaValidation": {
+                    "type": "boolean",
+                    "description": "Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation\n"
+                },
+                "skipTests": {
+                    "type": "boolean",
+                    "description": "Indicates if to skip tests during helm template. Corresponds to helm --skip-tests\n"
                 },
                 "valueFiles": {
                     "type": "array",
@@ -19420,7 +19451,7 @@
                 },
                 "oidcAuthentication": {
                     "$ref": "#/types/harness:platform/AwsConnectorOidcAuthentication:AwsConnectorOidcAuthentication",
-                    "description": "Authentication using harness oidc.\n"
+                    "description": "Authentication using Harness OIDC.\n"
                 },
                 "orgId": {
                     "type": "string",
@@ -19495,7 +19526,7 @@
                 },
                 "oidcAuthentication": {
                     "$ref": "#/types/harness:platform/AwsConnectorOidcAuthentication:AwsConnectorOidcAuthentication",
-                    "description": "Authentication using harness oidc.\n"
+                    "description": "Authentication using Harness OIDC.\n"
                 },
                 "orgId": {
                     "type": "string",
@@ -19570,7 +19601,7 @@
                     },
                     "oidcAuthentication": {
                         "$ref": "#/types/harness:platform/AwsConnectorOidcAuthentication:AwsConnectorOidcAuthentication",
-                        "description": "Authentication using harness oidc.\n"
+                        "description": "Authentication using Harness OIDC.\n"
                     },
                     "orgId": {
                         "type": "string",
@@ -44544,6 +44575,12 @@
                         "description": "Repository identifier of the GitOps application.\n",
                         "type": "string"
                     },
+                    "repoIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
                     "requestCascade": {
                         "description": "Request cascade to delete the GitOps application.\n",
                         "type": "boolean"
@@ -44577,6 +44614,7 @@
                     "project",
                     "projectId",
                     "repoId",
+                    "repoIds",
                     "requestCascade",
                     "requestPropagationPolicy",
                     "skipRepoValidation",
