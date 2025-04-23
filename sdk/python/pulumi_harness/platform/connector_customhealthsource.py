@@ -449,6 +449,9 @@ class _ConnectorCustomhealthsourceState:
 
 
 class ConnectorCustomhealthsource(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

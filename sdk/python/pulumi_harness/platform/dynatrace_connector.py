@@ -319,6 +319,9 @@ class _DynatraceConnectorState:
 
 
 class DynatraceConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/dynatraceConnector:DynatraceConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

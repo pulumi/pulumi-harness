@@ -161,6 +161,9 @@ class _SloState:
 
 
 class Slo(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/slo:Slo"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

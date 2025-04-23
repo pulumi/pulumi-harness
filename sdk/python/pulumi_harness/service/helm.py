@@ -163,6 +163,9 @@ class _HelmState:
 
 
 class Helm(pulumi.CustomResource):
+
+    pulumi_type = "harness:service/helm:Helm"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

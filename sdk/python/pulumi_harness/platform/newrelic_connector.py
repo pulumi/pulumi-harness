@@ -350,6 +350,9 @@ class _NewrelicConnectorState:
 
 
 class NewrelicConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/newrelicConnector:NewrelicConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

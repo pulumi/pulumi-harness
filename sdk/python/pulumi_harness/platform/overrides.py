@@ -418,6 +418,9 @@ class _OverridesState:
 
 
 class Overrides(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/overrides:Overrides"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

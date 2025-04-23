@@ -299,6 +299,9 @@ class _RuleEcsState:
 
 
 class RuleEcs(pulumi.CustomResource):
+
+    pulumi_type = "harness:autostopping/ruleEcs:RuleEcs"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

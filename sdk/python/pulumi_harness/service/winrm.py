@@ -194,6 +194,9 @@ class _WinrmState:
 
 
 class Winrm(pulumi.CustomResource):
+
+    pulumi_type = "harness:service/winrm:Winrm"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

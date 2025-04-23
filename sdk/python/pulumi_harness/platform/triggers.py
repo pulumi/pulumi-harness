@@ -349,6 +349,9 @@ class _TriggersState:
 
 
 class Triggers(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/triggers:Triggers"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

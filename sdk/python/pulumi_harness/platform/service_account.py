@@ -287,6 +287,9 @@ class _ServiceAccountState:
 
 
 class ServiceAccount(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/serviceAccount:ServiceAccount"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

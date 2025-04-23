@@ -164,6 +164,9 @@ class _SshCredentialState:
 
 
 class SshCredential(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/sshCredential:SshCredential"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -236,6 +236,9 @@ class _EnvironmentGroupState:
 
 
 class EnvironmentGroup(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/environmentGroup:EnvironmentGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

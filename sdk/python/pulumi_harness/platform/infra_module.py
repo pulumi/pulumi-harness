@@ -449,6 +449,9 @@ class _InfraModuleState:
 
 
 class InfraModule(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/infraModule:InfraModule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

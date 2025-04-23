@@ -386,6 +386,9 @@ class _ElasticsearchConnectorState:
 
 
 class ElasticsearchConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/elasticsearchConnector:ElasticsearchConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

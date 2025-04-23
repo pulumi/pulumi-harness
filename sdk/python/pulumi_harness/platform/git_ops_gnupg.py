@@ -218,6 +218,9 @@ class _GitOpsGnupgState:
 
 
 class GitOpsGnupg(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitOpsGnupg:GitOpsGnupg"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

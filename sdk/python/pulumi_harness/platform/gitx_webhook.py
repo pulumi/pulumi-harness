@@ -351,6 +351,9 @@ class _GitxWebhookState:
 
 
 class GitxWebhook(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitxWebhook:GitxWebhook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

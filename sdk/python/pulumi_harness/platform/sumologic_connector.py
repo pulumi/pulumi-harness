@@ -350,6 +350,9 @@ class _SumologicConnectorState:
 
 
 class SumologicConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/sumologicConnector:SumologicConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

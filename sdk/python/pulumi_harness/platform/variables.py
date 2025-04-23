@@ -257,6 +257,9 @@ class _VariablesState:
 
 
 class Variables(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/variables:Variables"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

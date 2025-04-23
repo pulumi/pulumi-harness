@@ -623,6 +623,9 @@ class _GitOpsApplicationsState:
 
 
 class GitOpsApplications(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitOpsApplications:GitOpsApplications"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

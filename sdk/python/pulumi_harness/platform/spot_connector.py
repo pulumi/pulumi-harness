@@ -258,6 +258,9 @@ class _SpotConnectorState:
 
 
 class SpotConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/spotConnector:SpotConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
