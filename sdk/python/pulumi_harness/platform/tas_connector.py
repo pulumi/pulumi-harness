@@ -322,6 +322,9 @@ class _TasConnectorState:
 
 
 class TasConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/tasConnector:TasConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

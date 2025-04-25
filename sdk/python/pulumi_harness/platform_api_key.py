@@ -350,6 +350,9 @@ class _PlatformApiKeyState:
 
 
 class PlatformApiKey(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/platformApiKey:PlatformApiKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

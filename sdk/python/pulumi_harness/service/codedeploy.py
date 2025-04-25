@@ -163,6 +163,9 @@ class _CodedeployState:
 
 
 class Codedeploy(pulumi.CustomResource):
+
+    pulumi_type = "harness:service/codedeploy:Codedeploy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

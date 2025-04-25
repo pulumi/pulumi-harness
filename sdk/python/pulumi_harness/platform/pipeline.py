@@ -449,6 +449,9 @@ class _PipelineState:
 
 
 class Pipeline(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/pipeline:Pipeline"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

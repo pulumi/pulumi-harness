@@ -112,6 +112,9 @@ class _DelegateApprovalState:
 
 
 class DelegateApproval(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/delegateApproval:DelegateApproval"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

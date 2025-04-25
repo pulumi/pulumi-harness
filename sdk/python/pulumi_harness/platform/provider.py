@@ -194,6 +194,9 @@ class _ProviderState:
 
 
 class Provider(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/provider:Provider"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -386,6 +386,9 @@ class _AzureCloudProviderConnectorState:
 
 
 class AzureCloudProviderConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

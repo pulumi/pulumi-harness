@@ -318,6 +318,9 @@ class _ChaosInfrastructureState:
 
 
 class ChaosInfrastructure(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/chaosInfrastructure:ChaosInfrastructure"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

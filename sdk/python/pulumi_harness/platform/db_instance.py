@@ -349,6 +349,9 @@ class _DbInstanceState:
 
 
 class DbInstance(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/dbInstance:DbInstance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -353,6 +353,9 @@ class _NexusConnectorState:
 
 
 class NexusConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/nexusConnector:NexusConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

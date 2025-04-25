@@ -381,6 +381,9 @@ class _SplunkConnectorState:
 
 
 class SplunkConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/splunkConnector:SplunkConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

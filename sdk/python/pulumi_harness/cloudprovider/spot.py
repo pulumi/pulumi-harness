@@ -128,6 +128,9 @@ class _SpotState:
 
 
 class Spot(pulumi.CustomResource):
+
+    pulumi_type = "harness:cloudprovider/spot:Spot"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

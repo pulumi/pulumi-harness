@@ -191,6 +191,9 @@ class _AzureState:
 
 
 class Azure(pulumi.CustomResource):
+
+    pulumi_type = "harness:cloudprovider/azure:Azure"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -161,6 +161,9 @@ class _MonitoredServiceState:
 
 
 class MonitoredService(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/monitoredService:MonitoredService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

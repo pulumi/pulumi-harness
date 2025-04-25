@@ -385,6 +385,9 @@ class _DockerConnectorState:
 
 
 class DockerConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/dockerConnector:DockerConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

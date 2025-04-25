@@ -259,6 +259,9 @@ class _EncryptedTextState:
 
 
 class EncryptedText(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/encryptedText:EncryptedText"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

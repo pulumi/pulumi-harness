@@ -450,6 +450,9 @@ class _FileStoreFileState:
 
 
 class FileStoreFile(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/fileStoreFile:FileStoreFile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

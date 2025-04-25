@@ -476,6 +476,9 @@ class _AzureKeyVaultConnectorState:
 
 
 class AzureKeyVaultConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

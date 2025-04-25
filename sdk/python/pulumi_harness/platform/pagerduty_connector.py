@@ -288,6 +288,9 @@ class _PagerdutyConnectorState:
 
 
 class PagerdutyConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/pagerdutyConnector:PagerdutyConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

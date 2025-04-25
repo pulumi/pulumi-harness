@@ -163,6 +163,9 @@ class _KubernetesState:
 
 
 class Kubernetes(pulumi.CustomResource):
+
+    pulumi_type = "harness:cloudprovider/kubernetes:Kubernetes"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -386,6 +386,9 @@ class _PrometheusConnectorState:
 
 
 class PrometheusConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/prometheusConnector:PrometheusConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

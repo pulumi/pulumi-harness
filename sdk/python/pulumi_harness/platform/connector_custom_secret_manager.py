@@ -537,6 +537,9 @@ class _ConnectorCustomSecretManagerState:
 
 
 class ConnectorCustomSecretManager(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

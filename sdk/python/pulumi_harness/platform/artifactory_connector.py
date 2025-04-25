@@ -322,6 +322,9 @@ class _ArtifactoryConnectorState:
 
 
 class ArtifactoryConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/artifactoryConnector:ArtifactoryConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

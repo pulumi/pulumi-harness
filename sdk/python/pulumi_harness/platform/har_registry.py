@@ -321,6 +321,9 @@ class _HarRegistryState:
 
 
 class HarRegistry(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/harRegistry:HarRegistry"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -416,6 +416,9 @@ class _AwsKmsConnectorState:
 
 
 class AwsKmsConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/awsKmsConnector:AwsKmsConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

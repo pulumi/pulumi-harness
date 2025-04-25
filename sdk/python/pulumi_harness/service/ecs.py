@@ -163,6 +163,9 @@ class _EcsState:
 
 
 class Ecs(pulumi.CustomResource):
+
+    pulumi_type = "harness:service/ecs:Ecs"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -437,6 +437,9 @@ class _AwsProxyState:
 
 
 class AwsProxy(pulumi.CustomResource):
+
+    pulumi_type = "harness:autostopping/awsProxy:AwsProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

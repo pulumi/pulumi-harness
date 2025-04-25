@@ -398,6 +398,9 @@ class _RuleEnforcementState:
 
 
 class RuleEnforcement(pulumi.CustomResource):
+
+    pulumi_type = "harness:governance/ruleEnforcement:RuleEnforcement"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

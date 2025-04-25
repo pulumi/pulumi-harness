@@ -353,6 +353,9 @@ class _SecretTextState:
 
 
 class SecretText(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/secretText:SecretText"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

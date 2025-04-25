@@ -416,6 +416,9 @@ class _BitbucketConnectorState:
 
 
 class BitbucketConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/bitbucketConnector:BitbucketConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

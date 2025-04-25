@@ -257,6 +257,9 @@ class _TemplateFiltersState:
 
 
 class TemplateFilters(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/templateFilters:TemplateFilters"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

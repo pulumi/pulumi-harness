@@ -319,6 +319,9 @@ class _FeatureFlagTargetGroupState:
 
 
 class FeatureFlagTargetGroup(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

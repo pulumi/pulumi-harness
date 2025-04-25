@@ -418,6 +418,9 @@ class _InfrastructureState:
 
 
 class Infrastructure(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/infrastructure:Infrastructure"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
