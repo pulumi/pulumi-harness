@@ -448,6 +448,9 @@ class _GitlabConnectorState:
 
 
 class GitlabConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitlabConnector:GitlabConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

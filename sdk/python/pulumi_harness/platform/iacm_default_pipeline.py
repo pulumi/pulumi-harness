@@ -189,6 +189,9 @@ class _IacmDefaultPipelineState:
 
 
 class IacmDefaultPipeline(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

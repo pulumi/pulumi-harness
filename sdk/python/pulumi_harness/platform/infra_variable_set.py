@@ -339,6 +339,9 @@ class _InfraVariableSetState:
 
 
 class InfraVariableSet(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/infraVariableSet:InfraVariableSet"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

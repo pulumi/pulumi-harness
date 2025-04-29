@@ -418,6 +418,9 @@ class _GitConnectorState:
 
 
 class GitConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/gitConnector:GitConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

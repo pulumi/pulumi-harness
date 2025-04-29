@@ -349,6 +349,9 @@ class _AwsAlbState:
 
 
 class AwsAlb(pulumi.CustomResource):
+
+    pulumi_type = "harness:autostopping/awsAlb:AwsAlb"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

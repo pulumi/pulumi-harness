@@ -131,6 +131,9 @@ class _UserGroupPermissionsState:
 
 
 class UserGroupPermissions(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/userGroupPermissions:UserGroupPermissions"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -476,6 +476,9 @@ class _FeatureFlagState:
 
 
 class FeatureFlag(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/featureFlag:FeatureFlag"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

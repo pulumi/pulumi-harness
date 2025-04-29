@@ -202,6 +202,9 @@ class _GitOpsRepoCertState:
 
 
 class GitOpsRepoCert(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitOpsRepoCert:GitOpsRepoCert"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

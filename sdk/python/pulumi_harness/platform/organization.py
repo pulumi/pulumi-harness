@@ -161,6 +161,9 @@ class _OrganizationState:
 
 
 class Organization(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/organization:Organization"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

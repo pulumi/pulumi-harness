@@ -352,6 +352,9 @@ class _GcpCloudCostConnectorState:
 
 
 class GcpCloudCostConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gcpCloudCostConnector:GcpCloudCostConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

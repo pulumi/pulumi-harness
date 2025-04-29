@@ -419,6 +419,9 @@ class _GcpSecretManagerConnectorState:
 
 
 class GcpSecretManagerConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

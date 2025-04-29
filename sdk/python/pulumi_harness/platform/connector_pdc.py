@@ -290,6 +290,9 @@ class _ConnectorPdcState:
 
 
 class ConnectorPdc(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/connectorPdc:ConnectorPdc"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

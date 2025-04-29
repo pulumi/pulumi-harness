@@ -354,6 +354,9 @@ class _ConnectorRancherState:
 
 
 class ConnectorRancher(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/connectorRancher:ConnectorRancher"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

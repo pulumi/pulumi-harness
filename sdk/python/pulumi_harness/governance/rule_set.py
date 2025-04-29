@@ -176,6 +176,9 @@ class _RuleSetState:
 
 
 class RuleSet(pulumi.CustomResource):
+
+    pulumi_type = "harness:governance/ruleSet:RuleSet"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

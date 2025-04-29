@@ -354,6 +354,9 @@ class _HelmConnectorState:
 
 
 class HelmConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/helmConnector:HelmConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

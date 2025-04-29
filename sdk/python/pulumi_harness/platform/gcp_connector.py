@@ -387,6 +387,9 @@ class _GcpConnectorState:
 
 
 class GcpConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gcpConnector:GcpConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

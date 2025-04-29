@@ -100,6 +100,9 @@ class _DatacenterState:
 
 
 class Datacenter(pulumi.CustomResource):
+
+    pulumi_type = "harness:cloudprovider/datacenter:Datacenter"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

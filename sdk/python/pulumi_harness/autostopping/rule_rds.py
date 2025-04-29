@@ -266,6 +266,9 @@ class _RuleRdsState:
 
 
 class RuleRds(pulumi.CustomResource):
+
+    pulumi_type = "harness:autostopping/ruleRds:RuleRds"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

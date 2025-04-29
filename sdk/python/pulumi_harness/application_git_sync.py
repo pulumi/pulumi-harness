@@ -191,6 +191,9 @@ class _ApplicationGitSyncState:
 
 
 class ApplicationGitSync(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/applicationGitSync:ApplicationGitSync"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

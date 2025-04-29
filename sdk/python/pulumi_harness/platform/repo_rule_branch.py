@@ -383,6 +383,9 @@ class _RepoRuleBranchState:
 
 
 class RepoRuleBranch(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/repoRuleBranch:RepoRuleBranch"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

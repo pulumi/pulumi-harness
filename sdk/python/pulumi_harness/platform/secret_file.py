@@ -287,6 +287,9 @@ class _SecretFileState:
 
 
 class SecretFile(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/secretFile:SecretFile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

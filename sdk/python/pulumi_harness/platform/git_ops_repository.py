@@ -501,6 +501,9 @@ class _GitOpsRepositoryState:
 
 
 class GitOpsRepository(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitOpsRepository:GitOpsRepository"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

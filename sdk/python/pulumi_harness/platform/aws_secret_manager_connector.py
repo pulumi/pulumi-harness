@@ -513,6 +513,9 @@ class _AwsSecretManagerConnectorState:
 
 
 class AwsSecretManagerConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

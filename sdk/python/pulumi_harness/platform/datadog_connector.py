@@ -350,6 +350,9 @@ class _DatadogConnectorState:
 
 
 class DatadogConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/datadogConnector:DatadogConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

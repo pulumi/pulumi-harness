@@ -163,6 +163,9 @@ class _AmiState:
 
 
 class Ami(pulumi.CustomResource):
+
+    pulumi_type = "harness:service/ami:Ami"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
