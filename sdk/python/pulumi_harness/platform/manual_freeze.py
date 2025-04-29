@@ -321,6 +321,9 @@ class _ManualFreezeState:
 
 
 class ManualFreeze(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/manualFreeze:ManualFreeze"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

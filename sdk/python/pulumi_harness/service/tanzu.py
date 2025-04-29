@@ -163,6 +163,9 @@ class _TanzuState:
 
 
 class Tanzu(pulumi.CustomResource):
+
+    pulumi_type = "harness:service/tanzu:Tanzu"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

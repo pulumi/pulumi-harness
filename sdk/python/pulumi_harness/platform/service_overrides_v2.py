@@ -418,6 +418,9 @@ class _ServiceOverridesV2State:
 
 
 class ServiceOverridesV2(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/serviceOverridesV2:ServiceOverridesV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

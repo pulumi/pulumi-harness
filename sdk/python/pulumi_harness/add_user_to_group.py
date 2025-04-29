@@ -96,6 +96,9 @@ class _AddUserToGroupState:
 
 
 class AddUserToGroup(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/addUserToGroup:AddUserToGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

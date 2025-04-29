@@ -479,6 +479,9 @@ class _ConnectorGcpKmsState:
 
 
 class ConnectorGcpKms(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/connectorGcpKms:ConnectorGcpKms"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

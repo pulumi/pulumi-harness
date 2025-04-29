@@ -266,6 +266,9 @@ class _GitOpsRepoCredState:
 
 
 class GitOpsRepoCred(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitOpsRepoCred:GitOpsRepoCred"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

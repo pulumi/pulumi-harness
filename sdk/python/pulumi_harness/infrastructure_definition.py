@@ -704,6 +704,9 @@ class _InfrastructureDefinitionState:
 
 
 class InfrastructureDefinition(pulumi.CustomResource):
+
+    pulumi_type = "harness:index/infrastructureDefinition:InfrastructureDefinition"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

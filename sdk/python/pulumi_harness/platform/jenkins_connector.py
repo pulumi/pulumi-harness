@@ -322,6 +322,9 @@ class _JenkinsConnectorState:
 
 
 class JenkinsConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/jenkinsConnector:JenkinsConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -451,6 +451,9 @@ class _KubernetesConnectorState:
 
 
 class KubernetesConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/kubernetesConnector:KubernetesConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

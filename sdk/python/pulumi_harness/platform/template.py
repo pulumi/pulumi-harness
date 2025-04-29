@@ -522,6 +522,9 @@ class _TemplateState:
 
 
 class Template(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/template:Template"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

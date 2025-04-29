@@ -417,6 +417,9 @@ class _JiraConnectorState:
 
 
 class JiraConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/jiraConnector:JiraConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

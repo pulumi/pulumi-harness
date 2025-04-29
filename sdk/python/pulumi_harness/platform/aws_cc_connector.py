@@ -384,6 +384,9 @@ class _AwsCCConnectorState:
 
 
 class AwsCCConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/awsCCConnector:AwsCCConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

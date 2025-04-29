@@ -498,6 +498,9 @@ class _AzureProxyState:
 
 
 class AzureProxy(pulumi.CustomResource):
+
+    pulumi_type = "harness:autostopping/azureProxy:AzureProxy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

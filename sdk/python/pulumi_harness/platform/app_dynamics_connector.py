@@ -385,6 +385,9 @@ class _AppDynamicsConnectorState:
 
 
 class AppDynamicsConnector(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/appDynamicsConnector:AppDynamicsConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -214,6 +214,9 @@ class _GitopsAppProjectMappingState:
 
 
 class GitopsAppProjectMapping(pulumi.CustomResource):
+
+    pulumi_type = "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

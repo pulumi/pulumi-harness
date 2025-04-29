@@ -163,6 +163,9 @@ class _LambdaState:
 
 
 class Lambda(pulumi.CustomResource):
+
+    pulumi_type = "harness:service/lambda:Lambda"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

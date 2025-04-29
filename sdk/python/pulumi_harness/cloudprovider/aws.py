@@ -324,6 +324,9 @@ class _AwsState:
 
 
 class Aws(pulumi.CustomResource):
+
+    pulumi_type = "harness:cloudprovider/aws:Aws"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
