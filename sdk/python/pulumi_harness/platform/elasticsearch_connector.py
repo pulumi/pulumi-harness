@@ -385,10 +385,8 @@ class _ElasticsearchConnectorState:
         pulumi.set(self, "username_password", value)
 
 
+@pulumi.type_token("harness:platform/elasticsearchConnector:ElasticsearchConnector")
 class ElasticsearchConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/elasticsearchConnector:ElasticsearchConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

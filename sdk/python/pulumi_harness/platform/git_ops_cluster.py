@@ -265,10 +265,8 @@ class _GitOpsClusterState:
         pulumi.set(self, "requests", value)
 
 
+@pulumi.type_token("harness:platform/gitOpsCluster:GitOpsCluster")
 class GitOpsCluster(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitOpsCluster:GitOpsCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

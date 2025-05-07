@@ -500,10 +500,8 @@ class _GitOpsRepositoryState:
         pulumi.set(self, "upsert", value)
 
 
+@pulumi.type_token("harness:platform/gitOpsRepository:GitOpsRepository")
 class GitOpsRepository(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitOpsRepository:GitOpsRepository"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -448,10 +448,8 @@ class _ConnectorCustomhealthsourceState:
         pulumi.set(self, "validation_path", value)
 
 
+@pulumi.type_token("harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource")
 class ConnectorCustomhealthsource(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

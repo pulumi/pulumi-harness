@@ -536,10 +536,8 @@ class _ConnectorCustomSecretManagerState:
         pulumi.set(self, "working_directory", value)
 
 
+@pulumi.type_token("harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager")
 class ConnectorCustomSecretManager(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

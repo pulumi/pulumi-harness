@@ -162,10 +162,8 @@ class _TanzuState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("harness:service/tanzu:Tanzu")
 class Tanzu(pulumi.CustomResource):
-
-    pulumi_type = "harness:service/tanzu:Tanzu"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

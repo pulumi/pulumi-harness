@@ -546,10 +546,8 @@ class _UsergroupState:
         pulumi.set(self, "users", value)
 
 
+@pulumi.type_token("harness:platform/usergroup:Usergroup")
 class Usergroup(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/usergroup:Usergroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

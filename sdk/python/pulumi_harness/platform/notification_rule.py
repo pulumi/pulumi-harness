@@ -160,10 +160,8 @@ class _NotificationRuleState:
         pulumi.set(self, "request", value)
 
 
+@pulumi.type_token("harness:platform/notificationRule:NotificationRule")
 class NotificationRule(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/notificationRule:NotificationRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -162,10 +162,8 @@ class _CodedeployState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("harness:service/codedeploy:Codedeploy")
 class Codedeploy(pulumi.CustomResource):
-
-    pulumi_type = "harness:service/codedeploy:Codedeploy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

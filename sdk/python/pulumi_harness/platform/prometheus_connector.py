@@ -385,10 +385,8 @@ class _PrometheusConnectorState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("harness:platform/prometheusConnector:PrometheusConnector")
 class PrometheusConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/prometheusConnector:PrometheusConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

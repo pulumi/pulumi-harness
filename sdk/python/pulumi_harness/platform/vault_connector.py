@@ -1214,10 +1214,8 @@ class _VaultConnectorState:
         pulumi.set(self, "xvault_aws_iam_server_id", value)
 
 
+@pulumi.type_token("harness:platform/vaultConnector:VaultConnector")
 class VaultConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/vaultConnector:VaultConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

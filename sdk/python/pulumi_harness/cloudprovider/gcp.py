@@ -195,10 +195,8 @@ class _GcpState:
         pulumi.set(self, "usage_scopes", value)
 
 
+@pulumi.type_token("harness:cloudprovider/gcp:Gcp")
 class Gcp(pulumi.CustomResource):
-
-    pulumi_type = "harness:cloudprovider/gcp:Gcp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -352,10 +352,8 @@ class _DbSchemaState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("harness:platform/dbSchema:DbSchema")
 class DbSchema(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/dbSchema:DbSchema"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

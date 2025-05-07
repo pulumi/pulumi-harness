@@ -194,10 +194,8 @@ class _KubernetesState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("harness:service/kubernetes:Kubernetes")
 class Kubernetes(pulumi.CustomResource):
-
-    pulumi_type = "harness:service/kubernetes:Kubernetes"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

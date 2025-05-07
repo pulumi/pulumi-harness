@@ -380,10 +380,8 @@ class _SplunkConnectorState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("harness:platform/splunkConnector:SplunkConnector")
 class SplunkConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/splunkConnector:SplunkConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -272,10 +272,8 @@ class _ScheduleState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("harness:autostopping/schedule:Schedule")
 class Schedule(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/schedule:Schedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

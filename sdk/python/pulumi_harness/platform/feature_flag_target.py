@@ -252,10 +252,8 @@ class _FeatureFlagTargetState:
         pulumi.set(self, "project_id", value)
 
 
+@pulumi.type_token("harness:platform/featureFlagTarget:FeatureFlagTarget")
 class FeatureFlagTarget(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/featureFlagTarget:FeatureFlagTarget"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

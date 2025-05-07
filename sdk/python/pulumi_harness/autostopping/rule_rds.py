@@ -265,10 +265,8 @@ class _RuleRdsState:
         pulumi.set(self, "tcps", value)
 
 
+@pulumi.type_token("harness:autostopping/ruleRds:RuleRds")
 class RuleRds(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/ruleRds:RuleRds"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

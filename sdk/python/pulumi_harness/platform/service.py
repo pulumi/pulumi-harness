@@ -430,10 +430,8 @@ class _ServiceState:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/service:Service")
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

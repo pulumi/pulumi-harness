@@ -622,10 +622,8 @@ class _GitOpsApplicationsState:
         pulumi.set(self, "validate", value)
 
 
+@pulumi.type_token("harness:platform/gitOpsApplications:GitOpsApplications")
 class GitOpsApplications(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitOpsApplications:GitOpsApplications"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

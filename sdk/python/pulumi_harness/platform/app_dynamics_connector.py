@@ -384,10 +384,8 @@ class _AppDynamicsConnectorState:
         pulumi.set(self, "username_password", value)
 
 
+@pulumi.type_token("harness:platform/appDynamicsConnector:AppDynamicsConnector")
 class AppDynamicsConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/appDynamicsConnector:AppDynamicsConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

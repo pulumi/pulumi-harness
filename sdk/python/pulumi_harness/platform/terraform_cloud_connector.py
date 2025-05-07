@@ -336,10 +336,8 @@ class _TerraformCloudConnectorState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/terraformCloudConnector:TerraformCloudConnector")
 class TerraformCloudConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/terraformCloudConnector:TerraformCloudConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

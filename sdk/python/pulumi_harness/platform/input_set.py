@@ -415,10 +415,8 @@ class _InputSetState:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/inputSet:InputSet")
 class InputSet(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/inputSet:InputSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

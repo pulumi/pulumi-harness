@@ -417,10 +417,8 @@ class _GitConnectorState:
         pulumi.set(self, "webhook_url", value)
 
 
+@pulumi.type_token("harness:index/gitConnector:GitConnector")
 class GitConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/gitConnector:GitConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

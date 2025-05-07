@@ -235,10 +235,8 @@ class _EnvironmentGroupState:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/environmentGroup:EnvironmentGroup")
 class EnvironmentGroup(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/environmentGroup:EnvironmentGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

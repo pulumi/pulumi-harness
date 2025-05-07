@@ -209,10 +209,8 @@ class _EnvironmentClustersMappingState:
         pulumi.set(self, "scope", value)
 
 
+@pulumi.type_token("harness:platform/environmentClustersMapping:EnvironmentClustersMapping")
 class EnvironmentClustersMapping(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/environmentClustersMapping:EnvironmentClustersMapping"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

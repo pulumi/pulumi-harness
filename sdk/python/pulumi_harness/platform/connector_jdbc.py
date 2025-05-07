@@ -320,10 +320,8 @@ class _ConnectorJdbcState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/connectorJdbc:ConnectorJdbc")
 class ConnectorJdbc(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/connectorJdbc:ConnectorJdbc"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

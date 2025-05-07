@@ -288,10 +288,8 @@ class _DelegatetokenState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("harness:platform/delegatetoken:Delegatetoken")
 class Delegatetoken(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/delegatetoken:Delegatetoken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

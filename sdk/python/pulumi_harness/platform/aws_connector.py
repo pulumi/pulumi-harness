@@ -546,10 +546,8 @@ class _AwsConnectorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/awsConnector:AwsConnector")
 class AwsConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/awsConnector:AwsConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

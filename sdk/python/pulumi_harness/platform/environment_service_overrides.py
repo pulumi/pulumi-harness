@@ -222,10 +222,8 @@ class _EnvironmentServiceOverridesState:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides")
 class EnvironmentServiceOverrides(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

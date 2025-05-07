@@ -265,10 +265,8 @@ class _GitopsAppProjectState:
         pulumi.set(self, "upsert", value)
 
 
+@pulumi.type_token("harness:platform/gitopsAppProject:GitopsAppProject")
 class GitopsAppProject(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitopsAppProject:GitopsAppProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

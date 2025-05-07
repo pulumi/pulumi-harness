@@ -298,10 +298,8 @@ class _RuleEcsState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("harness:autostopping/ruleEcs:RuleEcs")
 class RuleEcs(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/ruleEcs:RuleEcs"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

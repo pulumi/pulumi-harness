@@ -497,10 +497,8 @@ class _AzureProxyState:
         pulumi.set(self, "vpc", value)
 
 
+@pulumi.type_token("harness:autostopping/azureProxy:AzureProxy")
 class AzureProxy(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/azureProxy:AzureProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

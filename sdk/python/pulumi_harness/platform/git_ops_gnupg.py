@@ -217,10 +217,8 @@ class _GitOpsGnupgState:
         pulumi.set(self, "requests", value)
 
 
+@pulumi.type_token("harness:platform/gitOpsGnupg:GitOpsGnupg")
 class GitOpsGnupg(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitOpsGnupg:GitOpsGnupg"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

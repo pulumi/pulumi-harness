@@ -397,10 +397,8 @@ class _GitOpsAgentState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("harness:platform/gitOpsAgent:GitOpsAgent")
 class GitOpsAgent(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitOpsAgent:GitOpsAgent"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

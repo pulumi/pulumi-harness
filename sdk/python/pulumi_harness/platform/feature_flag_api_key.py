@@ -300,10 +300,8 @@ class _FeatureFlagApiKeyState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("harness:platform/featureFlagApiKey:FeatureFlagApiKey")
 class FeatureFlagApiKey(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/featureFlagApiKey:FeatureFlagApiKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

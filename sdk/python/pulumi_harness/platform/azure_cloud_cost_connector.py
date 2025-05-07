@@ -351,10 +351,8 @@ class _AzureCloudCostConnectorState:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("harness:platform/azureCloudCostConnector:AzureCloudCostConnector")
 class AzureCloudCostConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/azureCloudCostConnector:AzureCloudCostConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

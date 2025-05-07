@@ -193,10 +193,8 @@ class _SshState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("harness:service/ssh:Ssh")
 class Ssh(pulumi.CustomResource):
-
-    pulumi_type = "harness:service/ssh:Ssh"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

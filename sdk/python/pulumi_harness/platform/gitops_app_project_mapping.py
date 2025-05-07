@@ -213,10 +213,8 @@ class _GitopsAppProjectMappingState:
         pulumi.set(self, "project_id", value)
 
 
+@pulumi.type_token("harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping")
 class GitopsAppProjectMapping(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -318,10 +318,8 @@ class _DynatraceConnectorState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/dynatraceConnector:DynatraceConnector")
 class DynatraceConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/dynatraceConnector:DynatraceConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

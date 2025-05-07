@@ -348,10 +348,8 @@ class _DbInstanceState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/dbInstance:DbInstance")
 class DbInstance(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/dbInstance:DbInstance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

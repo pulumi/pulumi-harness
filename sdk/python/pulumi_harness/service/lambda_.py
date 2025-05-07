@@ -162,10 +162,8 @@ class _LambdaState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("harness:service/lambda:Lambda")
 class Lambda(pulumi.CustomResource):
-
-    pulumi_type = "harness:service/lambda:Lambda"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

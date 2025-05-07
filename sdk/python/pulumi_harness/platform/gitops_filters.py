@@ -252,10 +252,8 @@ class _GitopsFiltersState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("harness:platform/gitopsFilters:GitopsFilters")
 class GitopsFilters(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitopsFilters:GitopsFilters"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -256,10 +256,8 @@ class _PipelineFiltersState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("harness:platform/pipelineFilters:PipelineFilters")
 class PipelineFilters(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/pipelineFilters:PipelineFilters"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

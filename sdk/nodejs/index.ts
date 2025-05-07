@@ -135,10 +135,8 @@ export type PlatformCcmFilters = import("./platformCcmFilters").PlatformCcmFilte
 export const PlatformCcmFilters: typeof import("./platformCcmFilters").PlatformCcmFilters = null as any;
 utilities.lazyLoad(exports, ["PlatformCcmFilters"], () => require("./platformCcmFilters"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { SshCredentialArgs, SshCredentialState } from "./sshCredential";
 export type SshCredential = import("./sshCredential").SshCredential;
