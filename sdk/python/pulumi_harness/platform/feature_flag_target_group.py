@@ -318,10 +318,8 @@ class _FeatureFlagTargetGroupState:
         pulumi.set(self, "rules", value)
 
 
+@pulumi.type_token("harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup")
 class FeatureFlagTargetGroup(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

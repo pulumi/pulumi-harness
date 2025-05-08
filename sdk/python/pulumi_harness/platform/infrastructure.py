@@ -417,10 +417,8 @@ class _InfrastructureState:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/infrastructure:Infrastructure")
 class Infrastructure(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/infrastructure:Infrastructure"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

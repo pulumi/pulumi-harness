@@ -321,10 +321,8 @@ class _FileStoreFolderState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/fileStoreFolder:FileStoreFolder")
 class FileStoreFolder(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/fileStoreFolder:FileStoreFolder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

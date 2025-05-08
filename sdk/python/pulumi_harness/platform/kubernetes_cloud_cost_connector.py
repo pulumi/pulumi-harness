@@ -286,10 +286,8 @@ class _KubernetesCloudCostConnectorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector")
 class KubernetesCloudCostConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -288,10 +288,8 @@ class _RoleAssignmentsState:
         pulumi.set(self, "role_identifier", value)
 
 
+@pulumi.type_token("harness:platform/roleAssignments:RoleAssignments")
 class RoleAssignments(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/roleAssignments:RoleAssignments"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

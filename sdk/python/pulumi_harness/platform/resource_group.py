@@ -385,10 +385,8 @@ class _ResourceGroupState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/resourceGroup:ResourceGroup")
 class ResourceGroup(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/resourceGroup:ResourceGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

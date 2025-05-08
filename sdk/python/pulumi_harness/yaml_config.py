@@ -143,10 +143,8 @@ class _YamlConfigState:
         pulumi.set(self, "path", value)
 
 
+@pulumi.type_token("harness:index/yamlConfig:YamlConfig")
 class YamlConfig(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/yamlConfig:YamlConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

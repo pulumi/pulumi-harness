@@ -162,10 +162,8 @@ class _AmiState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("harness:service/ami:Ami")
 class Ami(pulumi.CustomResource):
-
-    pulumi_type = "harness:service/ami:Ami"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

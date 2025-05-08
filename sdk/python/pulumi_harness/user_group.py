@@ -259,10 +259,8 @@ class _UserGroupState:
         pulumi.set(self, "saml_settings", value)
 
 
+@pulumi.type_token("harness:index/userGroup:UserGroup")
 class UserGroup(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/userGroup:UserGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

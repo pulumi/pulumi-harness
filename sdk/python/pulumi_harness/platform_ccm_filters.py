@@ -256,10 +256,8 @@ class _PlatformCcmFiltersState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("harness:index/platformCcmFilters:PlatformCcmFilters")
 class PlatformCcmFilters(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/platformCcmFilters:PlatformCcmFilters"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

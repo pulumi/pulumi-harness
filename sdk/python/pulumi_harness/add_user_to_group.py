@@ -95,10 +95,8 @@ class _AddUserToGroupState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("harness:index/addUserToGroup:AddUserToGroup")
 class AddUserToGroup(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/addUserToGroup:AddUserToGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -188,10 +188,8 @@ class _IacmDefaultPipelineState:
         pulumi.set(self, "provisioner_type", value)
 
 
+@pulumi.type_token("harness:platform/iacmDefaultPipeline:IacmDefaultPipeline")
 class IacmDefaultPipeline(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

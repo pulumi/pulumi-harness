@@ -450,10 +450,8 @@ class _KubernetesConnectorState:
         pulumi.set(self, "username_password", value)
 
 
+@pulumi.type_token("harness:platform/kubernetesConnector:KubernetesConnector")
 class KubernetesConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/kubernetesConnector:KubernetesConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

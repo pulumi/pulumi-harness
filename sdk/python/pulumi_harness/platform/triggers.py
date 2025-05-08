@@ -348,10 +348,8 @@ class _TriggersState:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/triggers:Triggers")
 class Triggers(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/triggers:Triggers"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

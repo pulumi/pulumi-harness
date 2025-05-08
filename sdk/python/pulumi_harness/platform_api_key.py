@@ -349,10 +349,8 @@ class _PlatformApiKeyState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:index/platformApiKey:PlatformApiKey")
 class PlatformApiKey(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/platformApiKey:PlatformApiKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

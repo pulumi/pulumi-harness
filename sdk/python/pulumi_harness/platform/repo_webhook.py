@@ -396,10 +396,8 @@ class _RepoWebhookState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/repoWebhook:RepoWebhook")
 class RepoWebhook(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/repoWebhook:RepoWebhook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

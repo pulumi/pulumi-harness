@@ -160,10 +160,8 @@ class _MonitoredServiceState:
         pulumi.set(self, "request", value)
 
 
+@pulumi.type_token("harness:platform/monitoredService:MonitoredService")
 class MonitoredService(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/monitoredService:MonitoredService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

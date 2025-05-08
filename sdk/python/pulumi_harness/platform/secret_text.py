@@ -352,10 +352,8 @@ class _SecretTextState:
         pulumi.set(self, "value_type", value)
 
 
+@pulumi.type_token("harness:platform/secretText:SecretText")
 class SecretText(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/secretText:SecretText"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

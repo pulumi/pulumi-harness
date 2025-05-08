@@ -703,10 +703,8 @@ class _InfrastructureDefinitionState:
         pulumi.set(self, "tanzu", value)
 
 
+@pulumi.type_token("harness:index/infrastructureDefinition:InfrastructureDefinition")
 class InfrastructureDefinition(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/infrastructureDefinition:InfrastructureDefinition"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

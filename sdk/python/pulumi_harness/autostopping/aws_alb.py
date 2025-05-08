@@ -348,10 +348,8 @@ class _AwsAlbState:
         pulumi.set(self, "vpc", value)
 
 
+@pulumi.type_token("harness:autostopping/awsAlb:AwsAlb")
 class AwsAlb(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/awsAlb:AwsAlb"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

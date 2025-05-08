@@ -130,10 +130,8 @@ class _UserGroupPermissionsState:
         pulumi.set(self, "user_group_id", value)
 
 
+@pulumi.type_token("harness:index/userGroupPermissions:UserGroupPermissions")
 class UserGroupPermissions(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/userGroupPermissions:UserGroupPermissions"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

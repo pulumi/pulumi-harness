@@ -386,10 +386,8 @@ class _GcpConnectorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/gcpConnector:GcpConnector")
 class GcpConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gcpConnector:GcpConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -361,10 +361,8 @@ class _RuleVmState:
         pulumi.set(self, "use_spot", value)
 
 
+@pulumi.type_token("harness:autostopping/ruleVm:RuleVm")
 class RuleVm(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/ruleVm:RuleVm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -448,10 +448,8 @@ class _InfraModuleState:
         pulumi.set(self, "versions", value)
 
 
+@pulumi.type_token("harness:platform/infraModule:InfraModule")
 class InfraModule(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/infraModule:InfraModule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -512,10 +512,8 @@ class _AwsSecretManagerConnectorState:
         pulumi.set(self, "use_put_secret", value)
 
 
+@pulumi.type_token("harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector")
 class AwsSecretManagerConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
