@@ -417,10 +417,8 @@ class _ServiceOverridesV2State:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/serviceOverridesV2:ServiceOverridesV2")
 class ServiceOverridesV2(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/serviceOverridesV2:ServiceOverridesV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -320,10 +320,8 @@ class _ManualFreezeState:
         pulumi.set(self, "yaml", value)
 
 
+@pulumi.type_token("harness:platform/manualFreeze:ManualFreeze")
 class ManualFreeze(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/manualFreeze:ManualFreeze"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

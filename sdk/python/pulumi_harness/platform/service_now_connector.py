@@ -416,10 +416,8 @@ class _ServiceNowConnectorState:
         pulumi.set(self, "username_ref", value)
 
 
+@pulumi.type_token("harness:platform/serviceNowConnector:ServiceNowConnector")
 class ServiceNowConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/serviceNowConnector:ServiceNowConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

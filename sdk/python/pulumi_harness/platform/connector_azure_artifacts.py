@@ -320,10 +320,8 @@ class _ConnectorAzureArtifactsState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts")
 class ConnectorAzureArtifacts(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

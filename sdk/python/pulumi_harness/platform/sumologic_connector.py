@@ -349,10 +349,8 @@ class _SumologicConnectorState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/sumologicConnector:SumologicConnector")
 class SumologicConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/sumologicConnector:SumologicConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -415,10 +415,8 @@ class _BitbucketConnectorState:
         pulumi.set(self, "validation_repo", value)
 
 
+@pulumi.type_token("harness:platform/bitbucketConnector:BitbucketConnector")
 class BitbucketConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/bitbucketConnector:BitbucketConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

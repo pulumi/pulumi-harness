@@ -322,10 +322,8 @@ class _SecretSshkeyState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/secretSshkey:SecretSshkey")
 class SecretSshkey(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/secretSshkey:SecretSshkey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

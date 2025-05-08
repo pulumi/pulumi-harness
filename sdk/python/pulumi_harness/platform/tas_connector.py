@@ -321,10 +321,8 @@ class _TasConnectorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/tasConnector:TasConnector")
 class TasConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/tasConnector:TasConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -418,10 +418,8 @@ class _RepoState:
         pulumi.set(self, "updated", value)
 
 
+@pulumi.type_token("harness:platform/repo:Repo")
 class Repo(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/repo:Repo"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

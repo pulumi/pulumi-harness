@@ -521,10 +521,8 @@ class _TemplateState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("harness:platform/template:Template")
 class Template(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/template:Template"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

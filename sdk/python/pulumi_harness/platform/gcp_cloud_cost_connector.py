@@ -351,10 +351,8 @@ class _GcpCloudCostConnectorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/gcpCloudCostConnector:GcpCloudCostConnector")
 class GcpCloudCostConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gcpCloudCostConnector:GcpCloudCostConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

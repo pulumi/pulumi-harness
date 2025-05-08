@@ -382,10 +382,8 @@ class _RepoRuleBranchState:
         pulumi.set(self, "updated_by", value)
 
 
+@pulumi.type_token("harness:platform/repoRuleBranch:RepoRuleBranch")
 class RepoRuleBranch(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/repoRuleBranch:RepoRuleBranch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

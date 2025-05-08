@@ -286,10 +286,8 @@ class _ServiceAccountState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/serviceAccount:ServiceAccount")
 class ServiceAccount(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/serviceAccount:ServiceAccount"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

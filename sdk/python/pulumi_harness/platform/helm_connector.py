@@ -353,10 +353,8 @@ class _HelmConnectorState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/helmConnector:HelmConnector")
 class HelmConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/helmConnector:HelmConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

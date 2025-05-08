@@ -239,10 +239,8 @@ class _ProjectState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

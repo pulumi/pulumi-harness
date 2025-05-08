@@ -321,10 +321,8 @@ class _ArtifactoryConnectorState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/artifactoryConnector:ArtifactoryConnector")
 class ArtifactoryConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/artifactoryConnector:ArtifactoryConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

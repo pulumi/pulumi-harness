@@ -193,10 +193,8 @@ class _WinrmState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("harness:service/winrm:Winrm")
 class Winrm(pulumi.CustomResource):
-
-    pulumi_type = "harness:service/winrm:Winrm"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

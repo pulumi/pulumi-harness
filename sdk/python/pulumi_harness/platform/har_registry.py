@@ -320,10 +320,8 @@ class _HarRegistryState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("harness:platform/harRegistry:HarRegistry")
 class HarRegistry(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/harRegistry:HarRegistry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

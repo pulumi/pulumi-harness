@@ -193,10 +193,8 @@ class _EnvironmentState:
         pulumi.set(self, "variable_overrides", value)
 
 
+@pulumi.type_token("harness:index/environment:Environment")
 class Environment(pulumi.CustomResource):
-
-    pulumi_type = "harness:index/environment:Environment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

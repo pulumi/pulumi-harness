@@ -418,10 +418,8 @@ class _GcpSecretManagerConnectorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector")
 class GcpSecretManagerConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

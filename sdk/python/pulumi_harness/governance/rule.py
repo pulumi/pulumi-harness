@@ -175,10 +175,8 @@ class _RuleState:
         pulumi.set(self, "rules_yaml", value)
 
 
+@pulumi.type_token("harness:governance/rule:Rule")
 class Rule(pulumi.CustomResource):
-
-    pulumi_type = "harness:governance/rule:Rule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

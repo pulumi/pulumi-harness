@@ -265,10 +265,8 @@ class _GitOpsRepoCredState:
         pulumi.set(self, "upsert", value)
 
 
+@pulumi.type_token("harness:platform/gitOpsRepoCred:GitOpsRepoCred")
 class GitOpsRepoCred(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitOpsRepoCred:GitOpsRepoCred"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

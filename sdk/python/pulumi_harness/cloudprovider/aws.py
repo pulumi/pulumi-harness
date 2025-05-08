@@ -323,10 +323,8 @@ class _AwsState:
         pulumi.set(self, "use_irsa", value)
 
 
+@pulumi.type_token("harness:cloudprovider/aws:Aws")
 class Aws(pulumi.CustomResource):
-
-    pulumi_type = "harness:cloudprovider/aws:Aws"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

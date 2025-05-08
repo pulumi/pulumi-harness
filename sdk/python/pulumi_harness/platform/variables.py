@@ -256,10 +256,8 @@ class _VariablesState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("harness:platform/variables:Variables")
 class Variables(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/variables:Variables"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -575,10 +575,8 @@ class _PolicyState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/policy:Policy")
 class Policy(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/policy:Policy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

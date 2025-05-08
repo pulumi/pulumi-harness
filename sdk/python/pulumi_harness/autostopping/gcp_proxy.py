@@ -442,10 +442,8 @@ class _GcpProxyState:
         pulumi.set(self, "zone", value)
 
 
+@pulumi.type_token("harness:autostopping/gcpProxy:GcpProxy")
 class GcpProxy(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/gcpProxy:GcpProxy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

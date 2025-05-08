@@ -447,10 +447,8 @@ class _GitlabConnectorState:
         pulumi.set(self, "validation_repo", value)
 
 
+@pulumi.type_token("harness:platform/gitlabConnector:GitlabConnector")
 class GitlabConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitlabConnector:GitlabConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

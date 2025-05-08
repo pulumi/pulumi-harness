@@ -350,10 +350,8 @@ class _GitxWebhookState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/gitxWebhook:GitxWebhook")
 class GitxWebhook(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/gitxWebhook:GitxWebhook"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

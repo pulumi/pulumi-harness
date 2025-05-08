@@ -665,10 +665,8 @@ class _WorkspaceState:
         pulumi.set(self, "variable_sets", value)
 
 
+@pulumi.type_token("harness:platform/workspace:Workspace")
 class Workspace(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/workspace:Workspace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

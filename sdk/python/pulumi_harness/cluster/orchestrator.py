@@ -127,10 +127,8 @@ class _OrchestratorState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("harness:cluster/orchestrator:Orchestrator")
 class Orchestrator(pulumi.CustomResource):
-
-    pulumi_type = "harness:cluster/orchestrator:Orchestrator"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -257,10 +257,8 @@ class _SpotConnectorState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("harness:platform/spotConnector:SpotConnector")
 class SpotConnector(pulumi.CustomResource):
-
-    pulumi_type = "harness:platform/spotConnector:SpotConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

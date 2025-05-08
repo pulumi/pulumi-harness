@@ -450,10 +450,8 @@ class _AzureGatewayState:
         pulumi.set(self, "vpc", value)
 
 
+@pulumi.type_token("harness:autostopping/azureGateway:AzureGateway")
 class AzureGateway(pulumi.CustomResource):
-
-    pulumi_type = "harness:autostopping/azureGateway:AzureGateway"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
