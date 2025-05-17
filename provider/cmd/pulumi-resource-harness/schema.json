@@ -1150,6 +1150,284 @@
             },
             "type": "object"
         },
+        "harness:cluster/OrchestratorConfigBinpacking:OrchestratorConfigBinpacking": {
+            "properties": {
+                "disruption": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigBinpackingDisruption:OrchestratorConfigBinpackingDisruption",
+                    "description": "Harness disruption configuration\n"
+                },
+                "podEviction": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigBinpackingPodEviction:OrchestratorConfigBinpackingPodEviction",
+                    "description": "Harness Pod Evictor Configuration\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:cluster/OrchestratorConfigBinpackingDisruption:OrchestratorConfigBinpackingDisruption": {
+            "properties": {
+                "budgets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:cluster/OrchestratorConfigBinpackingDisruptionBudget:OrchestratorConfigBinpackingDisruptionBudget"
+                    },
+                    "description": "Budgets for disruption\n"
+                },
+                "criteria": {
+                    "type": "string",
+                    "description": "Criteria for considering a nodes for disruption\n"
+                },
+                "delay": {
+                    "type": "string",
+                    "description": "Deletion delay\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:cluster/OrchestratorConfigBinpackingDisruptionBudget:OrchestratorConfigBinpackingDisruptionBudget": {
+            "properties": {
+                "nodes": {
+                    "type": "string",
+                    "description": "Number or percentage of Nodes to consider for disruption\n"
+                },
+                "reasons": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Reasons for disruption\n"
+                },
+                "schedule": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigBinpackingDisruptionBudgetSchedule:OrchestratorConfigBinpackingDisruptionBudgetSchedule",
+                    "description": "Schedule for disruption budget\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "nodes"
+            ]
+        },
+        "harness:cluster/OrchestratorConfigBinpackingDisruptionBudgetSchedule:OrchestratorConfigBinpackingDisruptionBudgetSchedule": {
+            "properties": {
+                "duration": {
+                    "type": "string",
+                    "description": "Duration for disruption budget\n"
+                },
+                "frequency": {
+                    "type": "string",
+                    "description": "Frequency for disruption budget\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "frequency"
+            ]
+        },
+        "harness:cluster/OrchestratorConfigBinpackingPodEviction:OrchestratorConfigBinpackingPodEviction": {
+            "properties": {
+                "threshold": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigBinpackingPodEvictionThreshold:OrchestratorConfigBinpackingPodEvictionThreshold",
+                    "description": "Minimum Threshold for considering a node as underutilized\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "threshold"
+            ]
+        },
+        "harness:cluster/OrchestratorConfigBinpackingPodEvictionThreshold:OrchestratorConfigBinpackingPodEvictionThreshold": {
+            "properties": {
+                "cpu": {
+                    "type": "number",
+                    "description": "CPU percentage for considering a node as underutilized\n"
+                },
+                "memory": {
+                    "type": "number",
+                    "description": "Memory percentage for considering a node as underutilized\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "memory"
+            ]
+        },
+        "harness:cluster/OrchestratorConfigDistribution:OrchestratorConfigDistribution": {
+            "properties": {
+                "baseOndemandCapacity": {
+                    "type": "integer",
+                    "description": "Number of minimum ondemand replicas required for workloads\n"
+                },
+                "ondemandReplicaPercentage": {
+                    "type": "number",
+                    "description": "Percentage of on-demand replicas required for workloads\n"
+                },
+                "selector": {
+                    "type": "string",
+                    "description": "Selector for choosing workloads for distribution\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "Strategy for choosing spot nodes for cluster\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ondemandReplicaPercentage"
+            ]
+        },
+        "harness:cluster/OrchestratorConfigNodePreferences:OrchestratorConfigNodePreferences": {
+            "properties": {
+                "reverseFallbackInterval": {
+                    "type": "string",
+                    "description": "Reverse fallback interval\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "TTL for nodes\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:cluster/getOrchestratorConfigBinpacking:getOrchestratorConfigBinpacking": {
+            "properties": {
+                "disruption": {
+                    "$ref": "#/types/harness:cluster/getOrchestratorConfigBinpackingDisruption:getOrchestratorConfigBinpackingDisruption",
+                    "description": "Harness disruption configuration\n"
+                },
+                "podEviction": {
+                    "$ref": "#/types/harness:cluster/getOrchestratorConfigBinpackingPodEviction:getOrchestratorConfigBinpackingPodEviction",
+                    "description": "Harness Pod Evictor Configuration\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:cluster/getOrchestratorConfigBinpackingDisruption:getOrchestratorConfigBinpackingDisruption": {
+            "properties": {
+                "budgets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:cluster/getOrchestratorConfigBinpackingDisruptionBudget:getOrchestratorConfigBinpackingDisruptionBudget"
+                    },
+                    "description": "Budgets for disruption\n"
+                },
+                "criteria": {
+                    "type": "string",
+                    "description": "Criteria for considering a nodes for disruption\n"
+                },
+                "delay": {
+                    "type": "string",
+                    "description": "Deletion delay\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:cluster/getOrchestratorConfigBinpackingDisruptionBudget:getOrchestratorConfigBinpackingDisruptionBudget": {
+            "properties": {
+                "nodes": {
+                    "type": "string",
+                    "description": "Number or percentage of Nodes to consider for disruption\n"
+                },
+                "reasons": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Reasons for disruption\n"
+                },
+                "schedule": {
+                    "$ref": "#/types/harness:cluster/getOrchestratorConfigBinpackingDisruptionBudgetSchedule:getOrchestratorConfigBinpackingDisruptionBudgetSchedule",
+                    "description": "Schedule for disruption budget\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "nodes"
+            ]
+        },
+        "harness:cluster/getOrchestratorConfigBinpackingDisruptionBudgetSchedule:getOrchestratorConfigBinpackingDisruptionBudgetSchedule": {
+            "properties": {
+                "duration": {
+                    "type": "string",
+                    "description": "Duration for disruption budget\n"
+                },
+                "frequency": {
+                    "type": "string",
+                    "description": "Frequency for disruption budget\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "frequency"
+            ]
+        },
+        "harness:cluster/getOrchestratorConfigBinpackingPodEviction:getOrchestratorConfigBinpackingPodEviction": {
+            "properties": {
+                "threshold": {
+                    "$ref": "#/types/harness:cluster/getOrchestratorConfigBinpackingPodEvictionThreshold:getOrchestratorConfigBinpackingPodEvictionThreshold",
+                    "description": "Minimum Threshold for considering a node as underutilized\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "threshold"
+            ]
+        },
+        "harness:cluster/getOrchestratorConfigBinpackingPodEvictionThreshold:getOrchestratorConfigBinpackingPodEvictionThreshold": {
+            "properties": {
+                "cpu": {
+                    "type": "number",
+                    "description": "CPU percentage for considering a node as underutilized\n"
+                },
+                "memory": {
+                    "type": "number",
+                    "description": "Memory percentage for considering a node as underutilized\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "memory"
+            ]
+        },
+        "harness:cluster/getOrchestratorConfigDistribution:getOrchestratorConfigDistribution": {
+            "properties": {
+                "baseOndemandCapacity": {
+                    "type": "integer",
+                    "description": "Number of minimum ondemand replicas required for workloads\n"
+                },
+                "ondemandReplicaPercentage": {
+                    "type": "number",
+                    "description": "Percentage of on-demand replicas required for workloads\n"
+                },
+                "selector": {
+                    "type": "string",
+                    "description": "Selector for choosing workloads for distribution\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "Strategy for choosing spot nodes for cluster\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ondemandReplicaPercentage"
+            ]
+        },
+        "harness:cluster/getOrchestratorConfigNodePreferences:getOrchestratorConfigNodePreferences": {
+            "properties": {
+                "reverseFallbackInterval": {
+                    "type": "string",
+                    "description": "Reverse fallback interval\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "TTL for nodes\n"
+                }
+            },
+            "type": "object"
+        },
         "harness:index/EncryptedTextUsageScope:EncryptedTextUsageScope": {
             "properties": {
                 "applicationId": {
@@ -3054,6 +3332,63 @@
             "type": "object",
             "required": [
                 "tokenRef"
+            ]
+        },
+        "harness:platform/ConnectorAzureRepoApiAuthentication:ConnectorAzureRepoApiAuthentication": {
+            "properties": {
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tokenRef"
+            ]
+        },
+        "harness:platform/ConnectorAzureRepoCredentials:ConnectorAzureRepoCredentials": {
+            "properties": {
+                "http": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureRepoCredentialsHttp:ConnectorAzureRepoCredentialsHttp",
+                    "description": "Authenticate using Username and token over http(s) for the connection.\n"
+                },
+                "ssh": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureRepoCredentialsSsh:ConnectorAzureRepoCredentialsSsh",
+                    "description": "Authenticate using SSH for the connection.\n"
+                }
+            },
+            "type": "object"
+        },
+        "harness:platform/ConnectorAzureRepoCredentialsHttp:ConnectorAzureRepoCredentialsHttp": {
+            "properties": {
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use for authentication.\n"
+                },
+                "usernameRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tokenRef"
+            ]
+        },
+        "harness:platform/ConnectorAzureRepoCredentialsSsh:ConnectorAzureRepoCredentialsSsh": {
+            "properties": {
+                "sshKeyRef": {
+                    "type": "string",
+                    "description": "Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sshKeyRef"
             ]
         },
         "harness:platform/ConnectorCustomSecretManagerTemplateInput:ConnectorCustomSecretManagerTemplateInput": {
@@ -9420,6 +9755,95 @@
             "required": [
                 "filterType",
                 "tags"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getConnectorAzureRepoApiAuthentication:getConnectorAzureRepoApiAuthentication": {
+            "properties": {
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tokenRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getConnectorAzureRepoCredential:getConnectorAzureRepoCredential": {
+            "properties": {
+                "https": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getConnectorAzureRepoCredentialHttp:getConnectorAzureRepoCredentialHttp"
+                    },
+                    "description": "Authenticate using Username and password over http(s) for the connection.\n"
+                },
+                "sshes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getConnectorAzureRepoCredentialSsh:getConnectorAzureRepoCredentialSsh"
+                    },
+                    "description": "Authenticate using SSH for the connection.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "https",
+                "sshes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getConnectorAzureRepoCredentialHttp:getConnectorAzureRepoCredentialHttp": {
+            "properties": {
+                "tokenRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username to use for authentication.\n"
+                },
+                "usernameRef": {
+                    "type": "string",
+                    "description": "Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "tokenRef",
+                "username",
+                "usernameRef"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getConnectorAzureRepoCredentialSsh:getConnectorAzureRepoCredentialSsh": {
+            "properties": {
+                "sshKeyRef": {
+                    "type": "string",
+                    "description": "Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sshKeyRef"
             ],
             "language": {
                 "nodejs": {
@@ -16707,6 +17131,74 @@
                 "type": "object"
             }
         },
+        "harness:cluster/orchestratorConfig:OrchestratorConfig": {
+            "properties": {
+                "binpacking": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigBinpacking:OrchestratorConfigBinpacking",
+                    "description": "Binpacking preferences for Cluster Orchestrator\n"
+                },
+                "distribution": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigDistribution:OrchestratorConfigDistribution",
+                    "description": "Spot and Ondemand Distribution Preferences for workload replicas\n"
+                },
+                "nodePreferences": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigNodePreferences:OrchestratorConfigNodePreferences",
+                    "description": "Node preferences for Cluster Orchestrator\n"
+                },
+                "orchestratorId": {
+                    "type": "string",
+                    "description": "ID of the Cluster Orchestrator Object\n"
+                }
+            },
+            "required": [
+                "distribution",
+                "orchestratorId"
+            ],
+            "inputProperties": {
+                "binpacking": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigBinpacking:OrchestratorConfigBinpacking",
+                    "description": "Binpacking preferences for Cluster Orchestrator\n"
+                },
+                "distribution": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigDistribution:OrchestratorConfigDistribution",
+                    "description": "Spot and Ondemand Distribution Preferences for workload replicas\n"
+                },
+                "nodePreferences": {
+                    "$ref": "#/types/harness:cluster/OrchestratorConfigNodePreferences:OrchestratorConfigNodePreferences",
+                    "description": "Node preferences for Cluster Orchestrator\n"
+                },
+                "orchestratorId": {
+                    "type": "string",
+                    "description": "ID of the Cluster Orchestrator Object\n"
+                }
+            },
+            "requiredInputs": [
+                "distribution",
+                "orchestratorId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrchestratorConfig resources.\n",
+                "properties": {
+                    "binpacking": {
+                        "$ref": "#/types/harness:cluster/OrchestratorConfigBinpacking:OrchestratorConfigBinpacking",
+                        "description": "Binpacking preferences for Cluster Orchestrator\n"
+                    },
+                    "distribution": {
+                        "$ref": "#/types/harness:cluster/OrchestratorConfigDistribution:OrchestratorConfigDistribution",
+                        "description": "Spot and Ondemand Distribution Preferences for workload replicas\n"
+                    },
+                    "nodePreferences": {
+                        "$ref": "#/types/harness:cluster/OrchestratorConfigNodePreferences:OrchestratorConfigNodePreferences",
+                        "description": "Node preferences for Cluster Orchestrator\n"
+                    },
+                    "orchestratorId": {
+                        "type": "string",
+                        "description": "ID of the Cluster Orchestrator Object\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:governance/rule:Rule": {
             "description": "Resource for creating, updating, and managing rule.\n\n## Import\n\nImport governance enforcement\n\n```sh\n$ pulumi import harness:governance/rule:Rule example \u003crule_id\u003e\n```\n\n",
             "properties": {
@@ -20941,6 +21433,207 @@
                 "type": "object"
             }
         },
+        "harness:platform/connectorAzureRepo:ConnectorAzureRepo": {
+            "properties": {
+                "apiAuthentication": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureRepoApiAuthentication:ConnectorAzureRepoApiAuthentication",
+                    "description": "Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based\ntriggers, Webhooks management and updating Git statuses.\n"
+                },
+                "connectionType": {
+                    "type": "string",
+                    "description": "Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.\n"
+                },
+                "credentials": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureRepoCredentials:ConnectorAzureRepoCredentials",
+                    "description": "Credentials to use for the connection.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to filter delegates for connection.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the azure repository or account.\n"
+                },
+                "validationRepo": {
+                    "type": "string",
+                    "description": "Repository to test the connection with. This is only used when `connection_type` is `Account`.\n"
+                }
+            },
+            "required": [
+                "connectionType",
+                "credentials",
+                "identifier",
+                "name",
+                "url"
+            ],
+            "inputProperties": {
+                "apiAuthentication": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureRepoApiAuthentication:ConnectorAzureRepoApiAuthentication",
+                    "description": "Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based\ntriggers, Webhooks management and updating Git statuses.\n"
+                },
+                "connectionType": {
+                    "type": "string",
+                    "description": "Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.\n"
+                },
+                "credentials": {
+                    "$ref": "#/types/harness:platform/ConnectorAzureRepoCredentials:ConnectorAzureRepoCredentials",
+                    "description": "Credentials to use for the connection.\n"
+                },
+                "delegateSelectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to filter delegates for connection.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "executeOnDelegate": {
+                    "type": "boolean",
+                    "description": "Execute on delegate or not.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "Unique identifier of the organization.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Unique identifier of the project.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the azure repository or account.\n"
+                },
+                "validationRepo": {
+                    "type": "string",
+                    "description": "Repository to test the connection with. This is only used when `connection_type` is `Account`.\n"
+                }
+            },
+            "requiredInputs": [
+                "connectionType",
+                "credentials",
+                "identifier",
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectorAzureRepo resources.\n",
+                "properties": {
+                    "apiAuthentication": {
+                        "$ref": "#/types/harness:platform/ConnectorAzureRepoApiAuthentication:ConnectorAzureRepoApiAuthentication",
+                        "description": "Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based\ntriggers, Webhooks management and updating Git statuses.\n"
+                    },
+                    "connectionType": {
+                        "type": "string",
+                        "description": "Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.\n"
+                    },
+                    "credentials": {
+                        "$ref": "#/types/harness:platform/ConnectorAzureRepoCredentials:ConnectorAzureRepoCredentials",
+                        "description": "Credentials to use for the connection.\n"
+                    },
+                    "delegateSelectors": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to filter delegates for connection.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean",
+                        "description": "Execute on delegate or not.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "Unique identifier of the organization.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "Unique identifier of the project.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "URL of the azure repository or account.\n"
+                    },
+                    "validationRepo": {
+                        "type": "string",
+                        "description": "Repository to test the connection with. This is only used when `connection_type` is `Account`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager": {
             "description": "## Example Usage\n\n## Import\n\nImport account level custom secret manager connector\n\n```sh\n$ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example \u003cconnector_id\u003e\n```\n\nImport org level custom secret manager connector \n\n```sh\n$ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example \u003cord_id\u003e/\u003cconnector_id\u003e\n```\n\nImport project level custom secret manager connector \n\n```sh\n$ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cconnector_id\u003e\n```\n\n",
             "properties": {
@@ -22246,7 +22939,7 @@
             }
         },
         "harness:platform/dbInstance:DbInstance": {
-            "description": "Resource for creating a Harness DBDevOps Instance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.DbInstance(\"test\", {\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    name: \"name\",\n    tags: [\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema: \"schema1\",\n    branch: \"main\",\n    connector: \"jdbcConnector\",\n    context: \"ctx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.DbInstance(\"test\",\n    identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    name=\"name\",\n    tags=[\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema=\"schema1\",\n    branch=\"main\",\n    connector=\"jdbcConnector\",\n    context=\"ctx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.DbInstance(\"test\", new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Name = \"name\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"bar:foo\",\n        },\n        Schema = \"schema1\",\n        Branch = \"main\",\n        Connector = \"jdbcConnector\",\n        Context = \"ctx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewDbInstance(ctx, \"test\", \u0026platform.DbInstanceArgs{\n\t\t\tIdentifier: pulumi.String(\"identifier\"),\n\t\t\tOrgId:      pulumi.String(\"org_id\"),\n\t\t\tProjectId:  pulumi.String(\"project_id\"),\n\t\t\tName:       pulumi.String(\"name\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"bar:foo\"),\n\t\t\t},\n\t\t\tSchema:    pulumi.String(\"schema1\"),\n\t\t\tBranch:    pulumi.String(\"main\"),\n\t\t\tConnector: pulumi.String(\"jdbcConnector\"),\n\t\t\tContext:   pulumi.String(\"ctx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.DbInstance;\nimport com.pulumi.harness.platform.DbInstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new DbInstance(\"test\", DbInstanceArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .name(\"name\")\n            .tags(            \n                \"foo:bar\",\n                \"bar:foo\")\n            .schema(\"schema1\")\n            .branch(\"main\")\n            .connector(\"jdbcConnector\")\n            .context(\"ctx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:DbInstance\n    properties:\n      identifier: identifier\n      orgId: org_id\n      projectId: project_id\n      name: name\n      tags:\n        - foo:bar\n        - bar:foo\n      schema: schema1\n      branch: main\n      connector: jdbcConnector\n      context: ctx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport project level db instance\n\n```sh\n$ pulumi import harness:platform/dbInstance:DbInstance example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cdb_schema_id\u003e/\u003cdb_instance_id\u003e\n```\n\n",
+            "description": "Resource for creating a Harness DBDevOps Instance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst test = new harness.platform.DbInstance(\"test\", {\n    identifier: \"identifier\",\n    orgId: \"org_id\",\n    projectId: \"project_id\",\n    name: \"name\",\n    tags: [\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema: \"schema1\",\n    branch: \"main\",\n    connector: \"jdbcConnector\",\n    context: \"ctx\",\n    liquibaseSubstituteProperties: {\n        key1: \"value1\",\n        key2: \"value2\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ntest = harness.platform.DbInstance(\"test\",\n    identifier=\"identifier\",\n    org_id=\"org_id\",\n    project_id=\"project_id\",\n    name=\"name\",\n    tags=[\n        \"foo:bar\",\n        \"bar:foo\",\n    ],\n    schema=\"schema1\",\n    branch=\"main\",\n    connector=\"jdbcConnector\",\n    context=\"ctx\",\n    liquibase_substitute_properties={\n        \"key1\": \"value1\",\n        \"key2\": \"value2\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Harness.Platform.DbInstance(\"test\", new()\n    {\n        Identifier = \"identifier\",\n        OrgId = \"org_id\",\n        ProjectId = \"project_id\",\n        Name = \"name\",\n        Tags = new[]\n        {\n            \"foo:bar\",\n            \"bar:foo\",\n        },\n        Schema = \"schema1\",\n        Branch = \"main\",\n        Connector = \"jdbcConnector\",\n        Context = \"ctx\",\n        LiquibaseSubstituteProperties = \n        {\n            { \"key1\", \"value1\" },\n            { \"key2\", \"value2\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewDbInstance(ctx, \"test\", \u0026platform.DbInstanceArgs{\n\t\t\tIdentifier: pulumi.String(\"identifier\"),\n\t\t\tOrgId:      pulumi.String(\"org_id\"),\n\t\t\tProjectId:  pulumi.String(\"project_id\"),\n\t\t\tName:       pulumi.String(\"name\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"foo:bar\"),\n\t\t\t\tpulumi.String(\"bar:foo\"),\n\t\t\t},\n\t\t\tSchema:    pulumi.String(\"schema1\"),\n\t\t\tBranch:    pulumi.String(\"main\"),\n\t\t\tConnector: pulumi.String(\"jdbcConnector\"),\n\t\t\tContext:   pulumi.String(\"ctx\"),\n\t\t\tLiquibaseSubstituteProperties: pulumi.StringMap{\n\t\t\t\t\"key1\": pulumi.String(\"value1\"),\n\t\t\t\t\"key2\": pulumi.String(\"value2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.DbInstance;\nimport com.pulumi.harness.platform.DbInstanceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new DbInstance(\"test\", DbInstanceArgs.builder()\n            .identifier(\"identifier\")\n            .orgId(\"org_id\")\n            .projectId(\"project_id\")\n            .name(\"name\")\n            .tags(            \n                \"foo:bar\",\n                \"bar:foo\")\n            .schema(\"schema1\")\n            .branch(\"main\")\n            .connector(\"jdbcConnector\")\n            .context(\"ctx\")\n            .liquibaseSubstituteProperties(Map.ofEntries(\n                Map.entry(\"key1\", \"value1\"),\n                Map.entry(\"key2\", \"value2\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: harness:platform:DbInstance\n    properties:\n      identifier: identifier\n      orgId: org_id\n      projectId: project_id\n      name: name\n      tags:\n        - foo:bar\n        - bar:foo\n      schema: schema1\n      branch: main\n      connector: jdbcConnector\n      context: ctx\n      liquibaseSubstituteProperties:\n        key1: value1\n        key2: value2\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nImport project level db instance\n\n```sh\n$ pulumi import harness:platform/dbInstance:DbInstance example \u003corg_id\u003e/\u003cproject_id\u003e/\u003cdb_schema_id\u003e/\u003cdb_instance_id\u003e\n```\n\n",
             "properties": {
                 "branch": {
                     "type": "string",
@@ -22267,6 +22960,13 @@
                 "identifier": {
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
+                },
+                "liquibaseSubstituteProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The properties to substitute in liquibase changelog\n"
                 },
                 "name": {
                     "type": "string",
@@ -22321,6 +23021,13 @@
                     "type": "string",
                     "description": "Unique identifier of the resource.\n",
                     "willReplaceOnChanges": true
+                },
+                "liquibaseSubstituteProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The properties to substitute in liquibase changelog\n"
                 },
                 "name": {
                     "type": "string",
@@ -22378,6 +23085,13 @@
                         "type": "string",
                         "description": "Unique identifier of the resource.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "liquibaseSubstituteProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The properties to substitute in liquibase changelog\n"
                     },
                     "name": {
                         "type": "string",
@@ -38873,6 +39587,64 @@
                 "type": "object"
             }
         },
+        "harness:cluster/getOrchestratorConfig:getOrchestratorConfig": {
+            "description": "Resource for ClusterOrchestrator Config.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.cluster.getOrchestratorConfig({\n    orchestratorId: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.cluster.get_orchestrator_config(orchestrator_id=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Cluster.GetOrchestratorConfig.Invoke(new()\n    {\n        OrchestratorId = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/cluster\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cluster.LookupOrchestratorConfig(ctx, \u0026cluster.LookupOrchestratorConfigArgs{\n\t\t\tOrchestratorId: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.cluster.ClusterFunctions;\nimport com.pulumi.harness.cluster.inputs.GetOrchestratorConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = ClusterFunctions.getOrchestratorConfig(GetOrchestratorConfigArgs.builder()\n            .orchestratorId(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: harness:cluster:getOrchestratorConfig\n      arguments:\n        orchestratorId: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrchestratorConfig.\n",
+                "properties": {
+                    "binpacking": {
+                        "$ref": "#/types/harness:cluster/getOrchestratorConfigBinpacking:getOrchestratorConfigBinpacking",
+                        "description": "Binpacking preferences for Cluster Orchestrator\n"
+                    },
+                    "distribution": {
+                        "$ref": "#/types/harness:cluster/getOrchestratorConfigDistribution:getOrchestratorConfigDistribution",
+                        "description": "Spot and Ondemand Distribution Preferences for workload replicas\n"
+                    },
+                    "nodePreferences": {
+                        "$ref": "#/types/harness:cluster/getOrchestratorConfigNodePreferences:getOrchestratorConfigNodePreferences",
+                        "description": "Node preferences for Cluster Orchestrator\n"
+                    },
+                    "orchestratorId": {
+                        "type": "string",
+                        "description": "ID of the Cluster Orchestrator Object\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "orchestratorId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrchestratorConfig.\n",
+                "properties": {
+                    "binpacking": {
+                        "$ref": "#/types/harness:cluster/getOrchestratorConfigBinpacking:getOrchestratorConfigBinpacking",
+                        "description": "Binpacking preferences for Cluster Orchestrator\n"
+                    },
+                    "distribution": {
+                        "$ref": "#/types/harness:cluster/getOrchestratorConfigDistribution:getOrchestratorConfigDistribution",
+                        "description": "Spot and Ondemand Distribution Preferences for workload replicas\n"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "nodePreferences": {
+                        "$ref": "#/types/harness:cluster/getOrchestratorConfigNodePreferences:getOrchestratorConfigNodePreferences",
+                        "description": "Node preferences for Cluster Orchestrator\n"
+                    },
+                    "orchestratorId": {
+                        "description": "ID of the Cluster Orchestrator Object\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "orchestratorId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:governance/getRule:getRule": {
             "description": "Datasource for looking up a rule.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.governance.getRule({\n    ruleId: \"rule_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.governance.get_rule(rule_id=\"rule_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Governance.GetRule.Invoke(new()\n    {\n        RuleId = \"rule_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/governance\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := governance.LookupRule(ctx, \u0026governance.LookupRuleArgs{\n\t\t\tRuleId: \"rule_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.governance.GovernanceFunctions;\nimport com.pulumi.harness.governance.inputs.GetRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = GovernanceFunctions.getRule(GetRuleArgs.builder()\n            .ruleId(\"rule_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: harness:governance:getRule\n      arguments:\n        ruleId: rule_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -41261,6 +42033,104 @@
                 "type": "object"
             }
         },
+        "harness:platform/getConnectorAzureRepo:getConnectorAzureRepo": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectorAzureRepo.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectorAzureRepo.\n",
+                "properties": {
+                    "apiAuthentications": {
+                        "items": {
+                            "$ref": "#/types/harness:platform/getConnectorAzureRepoApiAuthentication:getConnectorAzureRepoApiAuthentication"
+                        },
+                        "type": "array"
+                    },
+                    "connectionType": {
+                        "type": "string"
+                    },
+                    "credentials": {
+                        "items": {
+                            "$ref": "#/types/harness:platform/getConnectorAzureRepoCredential:getConnectorAzureRepoCredential"
+                        },
+                        "type": "array"
+                    },
+                    "delegateSelectors": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "executeOnDelegate": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "validationRepo": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "apiAuthentications",
+                    "connectionType",
+                    "credentials",
+                    "delegateSelectors",
+                    "description",
+                    "executeOnDelegate",
+                    "identifier",
+                    "tags",
+                    "url",
+                    "validationRepo",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager": {
             "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = harness.platform.getConnectorCustomSecretManager({\n    identifier: \"identifier\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.get_connector_custom_secret_manager(identifier=\"identifier\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Harness.Platform.GetConnectorCustomSecretManager.Invoke(new()\n    {\n        Identifier = \"identifier\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupConnectorCustomSecretManager(ctx, \u0026platform.LookupConnectorCustomSecretManagerArgs{\n\t\t\tIdentifier: \"identifier\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = PlatformFunctions.getConnectorCustomSecretManager(GetConnectorCustomSecretManagerArgs.builder()\n            .identifier(\"identifier\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: harness:platform:getConnectorCustomSecretManager\n      arguments:\n        identifier: identifier\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -42120,6 +42990,12 @@
                         "description": "Unique identifier of the resource.\n",
                         "willReplaceOnChanges": true
                     },
+                    "liquibaseSubstituteProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the resource.\n"
@@ -42173,6 +43049,12 @@
                     "identifier": {
                         "description": "Unique identifier of the resource.\n",
                         "type": "string"
+                    },
+                    "liquibaseSubstituteProperties": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object"
                     },
                     "name": {
                         "description": "Name of the resource.\n",
