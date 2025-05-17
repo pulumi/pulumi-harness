@@ -10,10 +10,20 @@ export const getOrchestrator: typeof import("./getOrchestrator").getOrchestrator
 export const getOrchestratorOutput: typeof import("./getOrchestrator").getOrchestratorOutput = null as any;
 utilities.lazyLoad(exports, ["getOrchestrator","getOrchestratorOutput"], () => require("./getOrchestrator"));
 
+export { GetOrchestratorConfigArgs, GetOrchestratorConfigResult, GetOrchestratorConfigOutputArgs } from "./getOrchestratorConfig";
+export const getOrchestratorConfig: typeof import("./getOrchestratorConfig").getOrchestratorConfig = null as any;
+export const getOrchestratorConfigOutput: typeof import("./getOrchestratorConfig").getOrchestratorConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getOrchestratorConfig","getOrchestratorConfigOutput"], () => require("./getOrchestratorConfig"));
+
 export { OrchestratorArgs, OrchestratorState } from "./orchestrator";
 export type Orchestrator = import("./orchestrator").Orchestrator;
 export const Orchestrator: typeof import("./orchestrator").Orchestrator = null as any;
 utilities.lazyLoad(exports, ["Orchestrator"], () => require("./orchestrator"));
+
+export { OrchestratorConfigArgs, OrchestratorConfigState } from "./orchestratorConfig";
+export type OrchestratorConfig = import("./orchestratorConfig").OrchestratorConfig;
+export const OrchestratorConfig: typeof import("./orchestratorConfig").OrchestratorConfig = null as any;
+utilities.lazyLoad(exports, ["OrchestratorConfig"], () => require("./orchestratorConfig"));
 
 
 const _module = {
@@ -22,9 +32,12 @@ const _module = {
         switch (type) {
             case "harness:cluster/orchestrator:Orchestrator":
                 return new Orchestrator(name, <any>undefined, { urn })
+            case "harness:cluster/orchestratorConfig:OrchestratorConfig":
+                return new OrchestratorConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("harness", "cluster/orchestrator", _module)
+pulumi.runtime.registerResourceModule("harness", "cluster/orchestratorConfig", _module)

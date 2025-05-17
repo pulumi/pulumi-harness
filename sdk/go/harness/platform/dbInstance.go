@@ -41,6 +41,10 @@ import (
 //				Branch:    pulumi.String("main"),
 //				Connector: pulumi.String("jdbcConnector"),
 //				Context:   pulumi.String("ctx"),
+//				LiquibaseSubstituteProperties: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -71,6 +75,8 @@ type DbInstance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// The properties to substitute in liquibase changelog
+	LiquibaseSubstituteProperties pulumi.StringMapOutput `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -138,6 +144,8 @@ type dbInstanceState struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
+	// The properties to substitute in liquibase changelog
+	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -161,6 +169,8 @@ type DbInstanceState struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
+	// The properties to substitute in liquibase changelog
+	LiquibaseSubstituteProperties pulumi.StringMapInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -188,6 +198,8 @@ type dbInstanceArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
+	// The properties to substitute in liquibase changelog
+	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -212,6 +224,8 @@ type DbInstanceArgs struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
+	// The properties to substitute in liquibase changelog
+	LiquibaseSubstituteProperties pulumi.StringMapInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
@@ -334,6 +348,11 @@ func (o DbInstanceOutput) Description() pulumi.StringPtrOutput {
 // Unique identifier of the resource.
 func (o DbInstanceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// The properties to substitute in liquibase changelog
+func (o DbInstanceOutput) LiquibaseSubstituteProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringMapOutput { return v.LiquibaseSubstituteProperties }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource.

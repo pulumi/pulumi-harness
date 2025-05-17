@@ -28,6 +28,7 @@ class DbInstanceArgs:
                  branch: Optional[pulumi.Input[builtins.str]] = None,
                  context: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
+                 liquibase_substitute_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
@@ -40,6 +41,7 @@ class DbInstanceArgs:
         :param pulumi.Input[builtins.str] branch: The branch of changeSet repository
         :param pulumi.Input[builtins.str] context: The liquibase context
         :param pulumi.Input[builtins.str] description: Description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] liquibase_substitute_properties: The properties to substitute in liquibase changelog
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Tags to associate with the resource.
         """
@@ -54,6 +56,8 @@ class DbInstanceArgs:
             pulumi.set(__self__, "context", context)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if liquibase_substitute_properties is not None:
+            pulumi.set(__self__, "liquibase_substitute_properties", liquibase_substitute_properties)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -156,6 +160,18 @@ class DbInstanceArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="liquibaseSubstituteProperties")
+    def liquibase_substitute_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        The properties to substitute in liquibase changelog
+        """
+        return pulumi.get(self, "liquibase_substitute_properties")
+
+    @liquibase_substitute_properties.setter
+    def liquibase_substitute_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "liquibase_substitute_properties", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -188,6 +204,7 @@ class _DbInstanceState:
                  context: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 liquibase_substitute_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -200,6 +217,7 @@ class _DbInstanceState:
         :param pulumi.Input[builtins.str] context: The liquibase context
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] liquibase_substitute_properties: The properties to substitute in liquibase changelog
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
@@ -216,6 +234,8 @@ class _DbInstanceState:
             pulumi.set(__self__, "description", description)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if liquibase_substitute_properties is not None:
+            pulumi.set(__self__, "liquibase_substitute_properties", liquibase_substitute_properties)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -286,6 +306,18 @@ class _DbInstanceState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "identifier", value)
+
+    @property
+    @pulumi.getter(name="liquibaseSubstituteProperties")
+    def liquibase_substitute_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        The properties to substitute in liquibase changelog
+        """
+        return pulumi.get(self, "liquibase_substitute_properties")
+
+    @liquibase_substitute_properties.setter
+    def liquibase_substitute_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "liquibase_substitute_properties", value)
 
     @property
     @pulumi.getter
@@ -359,6 +391,7 @@ class DbInstance(pulumi.CustomResource):
                  context: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 liquibase_substitute_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -386,7 +419,11 @@ class DbInstance(pulumi.CustomResource):
             schema="schema1",
             branch="main",
             connector="jdbcConnector",
-            context="ctx")
+            context="ctx",
+            liquibase_substitute_properties={
+                "key1": "value1",
+                "key2": "value2",
+            })
         ```
 
         ## Import
@@ -404,6 +441,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] context: The liquibase context
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] liquibase_substitute_properties: The properties to substitute in liquibase changelog
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
@@ -437,7 +475,11 @@ class DbInstance(pulumi.CustomResource):
             schema="schema1",
             branch="main",
             connector="jdbcConnector",
-            context="ctx")
+            context="ctx",
+            liquibase_substitute_properties={
+                "key1": "value1",
+                "key2": "value2",
+            })
         ```
 
         ## Import
@@ -468,6 +510,7 @@ class DbInstance(pulumi.CustomResource):
                  context: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 liquibase_substitute_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -491,6 +534,7 @@ class DbInstance(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["liquibase_substitute_properties"] = liquibase_substitute_properties
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -517,6 +561,7 @@ class DbInstance(pulumi.CustomResource):
             context: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             identifier: Optional[pulumi.Input[builtins.str]] = None,
+            liquibase_substitute_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             org_id: Optional[pulumi.Input[builtins.str]] = None,
             project_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -534,6 +579,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] context: The liquibase context
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] liquibase_substitute_properties: The properties to substitute in liquibase changelog
         :param pulumi.Input[builtins.str] name: Name of the resource.
         :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
@@ -549,6 +595,7 @@ class DbInstance(pulumi.CustomResource):
         __props__.__dict__["context"] = context
         __props__.__dict__["description"] = description
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["liquibase_substitute_properties"] = liquibase_substitute_properties
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -595,6 +642,14 @@ class DbInstance(pulumi.CustomResource):
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
+
+    @property
+    @pulumi.getter(name="liquibaseSubstituteProperties")
+    def liquibase_substitute_properties(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
+        """
+        The properties to substitute in liquibase changelog
+        """
+        return pulumi.get(self, "liquibase_substitute_properties")
 
     @property
     @pulumi.getter

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -43,6 +44,7 @@ public final class GetDbInstanceResult {
      * 
      */
     private String identifier;
+    private @Nullable Map<String,String> liquibaseSubstituteProperties;
     /**
      * @return Name of the resource.
      * 
@@ -112,6 +114,9 @@ public final class GetDbInstanceResult {
     public String identifier() {
         return this.identifier;
     }
+    public Map<String,String> liquibaseSubstituteProperties() {
+        return this.liquibaseSubstituteProperties == null ? Map.of() : this.liquibaseSubstituteProperties;
+    }
     /**
      * @return Name of the resource.
      * 
@@ -163,6 +168,7 @@ public final class GetDbInstanceResult {
         private String description;
         private String id;
         private String identifier;
+        private @Nullable Map<String,String> liquibaseSubstituteProperties;
         private @Nullable String name;
         private String orgId;
         private String projectId;
@@ -177,6 +183,7 @@ public final class GetDbInstanceResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.liquibaseSubstituteProperties = defaults.liquibaseSubstituteProperties;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
@@ -233,6 +240,12 @@ public final class GetDbInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder liquibaseSubstituteProperties(@Nullable Map<String,String> liquibaseSubstituteProperties) {
+
+            this.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
@@ -281,6 +294,7 @@ public final class GetDbInstanceResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;

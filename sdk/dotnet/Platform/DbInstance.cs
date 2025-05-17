@@ -37,6 +37,11 @@ namespace Pulumi.Harness.Platform
     ///         Branch = "main",
     ///         Connector = "jdbcConnector",
     ///         Context = "ctx",
+    ///         LiquibaseSubstituteProperties = 
+    ///         {
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -82,6 +87,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
+
+        /// <summary>
+        /// The properties to substitute in liquibase changelog
+        /// </summary>
+        [Output("liquibaseSubstituteProperties")]
+        public Output<ImmutableDictionary<string, string>?> LiquibaseSubstituteProperties { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -190,6 +201,18 @@ namespace Pulumi.Harness.Platform
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        [Input("liquibaseSubstituteProperties")]
+        private InputMap<string>? _liquibaseSubstituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in liquibase changelog
+        /// </summary>
+        public InputMap<string> LiquibaseSubstituteProperties
+        {
+            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new InputMap<string>());
+            set => _liquibaseSubstituteProperties = value;
+        }
+
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -263,6 +286,18 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        [Input("liquibaseSubstituteProperties")]
+        private InputMap<string>? _liquibaseSubstituteProperties;
+
+        /// <summary>
+        /// The properties to substitute in liquibase changelog
+        /// </summary>
+        public InputMap<string> LiquibaseSubstituteProperties
+        {
+            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new InputMap<string>());
+            set => _liquibaseSubstituteProperties = value;
+        }
 
         /// <summary>
         /// Name of the resource.

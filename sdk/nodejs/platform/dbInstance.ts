@@ -26,6 +26,10 @@ import * as utilities from "../utilities";
  *     branch: "main",
  *     connector: "jdbcConnector",
  *     context: "ctx",
+ *     liquibaseSubstituteProperties: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
  * });
  * ```
  *
@@ -86,6 +90,10 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public readonly identifier!: pulumi.Output<string>;
     /**
+     * The properties to substitute in liquibase changelog
+     */
+    public readonly liquibaseSubstituteProperties!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
@@ -124,6 +132,7 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["context"] = state ? state.context : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["liquibaseSubstituteProperties"] = state ? state.liquibaseSubstituteProperties : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -151,6 +160,7 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["context"] = args ? args.context : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["liquibaseSubstituteProperties"] = args ? args.liquibaseSubstituteProperties : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -186,6 +196,10 @@ export interface DbInstanceState {
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * The properties to substitute in liquibase changelog
+     */
+    liquibaseSubstituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource.
      */
@@ -232,6 +246,10 @@ export interface DbInstanceArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * The properties to substitute in liquibase changelog
+     */
+    liquibaseSubstituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource.
      */

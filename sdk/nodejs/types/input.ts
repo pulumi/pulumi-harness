@@ -1864,6 +1864,308 @@ export namespace cloudprovider {
     }
 }
 
+export namespace cluster {
+    export interface GetOrchestratorConfigBinpacking {
+        /**
+         * Harness disruption configuration
+         */
+        disruption?: inputs.cluster.GetOrchestratorConfigBinpackingDisruption;
+        /**
+         * Harness Pod Evictor Configuration
+         */
+        podEviction?: inputs.cluster.GetOrchestratorConfigBinpackingPodEviction;
+    }
+
+    export interface GetOrchestratorConfigBinpackingArgs {
+        /**
+         * Harness disruption configuration
+         */
+        disruption?: pulumi.Input<inputs.cluster.GetOrchestratorConfigBinpackingDisruptionArgs>;
+        /**
+         * Harness Pod Evictor Configuration
+         */
+        podEviction?: pulumi.Input<inputs.cluster.GetOrchestratorConfigBinpackingPodEvictionArgs>;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruption {
+        /**
+         * Budgets for disruption
+         */
+        budgets?: inputs.cluster.GetOrchestratorConfigBinpackingDisruptionBudget[];
+        /**
+         * Criteria for considering a nodes for disruption
+         */
+        criteria?: string;
+        /**
+         * Deletion delay
+         */
+        delay?: string;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruptionArgs {
+        /**
+         * Budgets for disruption
+         */
+        budgets?: pulumi.Input<pulumi.Input<inputs.cluster.GetOrchestratorConfigBinpackingDisruptionBudgetArgs>[]>;
+        /**
+         * Criteria for considering a nodes for disruption
+         */
+        criteria?: pulumi.Input<string>;
+        /**
+         * Deletion delay
+         */
+        delay?: pulumi.Input<string>;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruptionBudget {
+        /**
+         * Number or percentage of Nodes to consider for disruption
+         */
+        nodes: string;
+        /**
+         * Reasons for disruption
+         */
+        reasons?: string[];
+        /**
+         * Schedule for disruption budget
+         */
+        schedule?: inputs.cluster.GetOrchestratorConfigBinpackingDisruptionBudgetSchedule;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruptionBudgetArgs {
+        /**
+         * Number or percentage of Nodes to consider for disruption
+         */
+        nodes: pulumi.Input<string>;
+        /**
+         * Reasons for disruption
+         */
+        reasons?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Schedule for disruption budget
+         */
+        schedule?: pulumi.Input<inputs.cluster.GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgs>;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruptionBudgetSchedule {
+        /**
+         * Duration for disruption budget
+         */
+        duration: string;
+        /**
+         * Frequency for disruption budget
+         */
+        frequency: string;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruptionBudgetScheduleArgs {
+        /**
+         * Duration for disruption budget
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Frequency for disruption budget
+         */
+        frequency: pulumi.Input<string>;
+    }
+
+    export interface GetOrchestratorConfigBinpackingPodEviction {
+        /**
+         * Minimum Threshold for considering a node as underutilized
+         */
+        threshold: inputs.cluster.GetOrchestratorConfigBinpackingPodEvictionThreshold;
+    }
+
+    export interface GetOrchestratorConfigBinpackingPodEvictionArgs {
+        /**
+         * Minimum Threshold for considering a node as underutilized
+         */
+        threshold: pulumi.Input<inputs.cluster.GetOrchestratorConfigBinpackingPodEvictionThresholdArgs>;
+    }
+
+    export interface GetOrchestratorConfigBinpackingPodEvictionThreshold {
+        /**
+         * CPU percentage for considering a node as underutilized
+         */
+        cpu: number;
+        /**
+         * Memory percentage for considering a node as underutilized
+         */
+        memory: number;
+    }
+
+    export interface GetOrchestratorConfigBinpackingPodEvictionThresholdArgs {
+        /**
+         * CPU percentage for considering a node as underutilized
+         */
+        cpu: pulumi.Input<number>;
+        /**
+         * Memory percentage for considering a node as underutilized
+         */
+        memory: pulumi.Input<number>;
+    }
+
+    export interface GetOrchestratorConfigDistribution {
+        /**
+         * Number of minimum ondemand replicas required for workloads
+         */
+        baseOndemandCapacity?: number;
+        /**
+         * Percentage of on-demand replicas required for workloads
+         */
+        ondemandReplicaPercentage: number;
+        /**
+         * Selector for choosing workloads for distribution
+         */
+        selector?: string;
+        /**
+         * Strategy for choosing spot nodes for cluster
+         */
+        strategy?: string;
+    }
+
+    export interface GetOrchestratorConfigDistributionArgs {
+        /**
+         * Number of minimum ondemand replicas required for workloads
+         */
+        baseOndemandCapacity?: pulumi.Input<number>;
+        /**
+         * Percentage of on-demand replicas required for workloads
+         */
+        ondemandReplicaPercentage: pulumi.Input<number>;
+        /**
+         * Selector for choosing workloads for distribution
+         */
+        selector?: pulumi.Input<string>;
+        /**
+         * Strategy for choosing spot nodes for cluster
+         */
+        strategy?: pulumi.Input<string>;
+    }
+
+    export interface GetOrchestratorConfigNodePreferences {
+        /**
+         * Reverse fallback interval
+         */
+        reverseFallbackInterval?: string;
+        /**
+         * TTL for nodes
+         */
+        ttl?: string;
+    }
+
+    export interface GetOrchestratorConfigNodePreferencesArgs {
+        /**
+         * Reverse fallback interval
+         */
+        reverseFallbackInterval?: pulumi.Input<string>;
+        /**
+         * TTL for nodes
+         */
+        ttl?: pulumi.Input<string>;
+    }
+
+    export interface OrchestratorConfigBinpacking {
+        /**
+         * Harness disruption configuration
+         */
+        disruption?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpackingDisruption>;
+        /**
+         * Harness Pod Evictor Configuration
+         */
+        podEviction?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpackingPodEviction>;
+    }
+
+    export interface OrchestratorConfigBinpackingDisruption {
+        /**
+         * Budgets for disruption
+         */
+        budgets?: pulumi.Input<pulumi.Input<inputs.cluster.OrchestratorConfigBinpackingDisruptionBudget>[]>;
+        /**
+         * Criteria for considering a nodes for disruption
+         */
+        criteria?: pulumi.Input<string>;
+        /**
+         * Deletion delay
+         */
+        delay?: pulumi.Input<string>;
+    }
+
+    export interface OrchestratorConfigBinpackingDisruptionBudget {
+        /**
+         * Number or percentage of Nodes to consider for disruption
+         */
+        nodes: pulumi.Input<string>;
+        /**
+         * Reasons for disruption
+         */
+        reasons?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Schedule for disruption budget
+         */
+        schedule?: pulumi.Input<inputs.cluster.OrchestratorConfigBinpackingDisruptionBudgetSchedule>;
+    }
+
+    export interface OrchestratorConfigBinpackingDisruptionBudgetSchedule {
+        /**
+         * Duration for disruption budget
+         */
+        duration: pulumi.Input<string>;
+        /**
+         * Frequency for disruption budget
+         */
+        frequency: pulumi.Input<string>;
+    }
+
+    export interface OrchestratorConfigBinpackingPodEviction {
+        /**
+         * Minimum Threshold for considering a node as underutilized
+         */
+        threshold: pulumi.Input<inputs.cluster.OrchestratorConfigBinpackingPodEvictionThreshold>;
+    }
+
+    export interface OrchestratorConfigBinpackingPodEvictionThreshold {
+        /**
+         * CPU percentage for considering a node as underutilized
+         */
+        cpu: pulumi.Input<number>;
+        /**
+         * Memory percentage for considering a node as underutilized
+         */
+        memory: pulumi.Input<number>;
+    }
+
+    export interface OrchestratorConfigDistribution {
+        /**
+         * Number of minimum ondemand replicas required for workloads
+         */
+        baseOndemandCapacity?: pulumi.Input<number>;
+        /**
+         * Percentage of on-demand replicas required for workloads
+         */
+        ondemandReplicaPercentage: pulumi.Input<number>;
+        /**
+         * Selector for choosing workloads for distribution
+         */
+        selector?: pulumi.Input<string>;
+        /**
+         * Strategy for choosing spot nodes for cluster
+         */
+        strategy?: pulumi.Input<string>;
+    }
+
+    export interface OrchestratorConfigNodePreferences {
+        /**
+         * Reverse fallback interval
+         */
+        reverseFallbackInterval?: pulumi.Input<string>;
+        /**
+         * TTL for nodes
+         */
+        ttl?: pulumi.Input<string>;
+    }
+}
+
 export namespace platform {
     export interface AppDynamicsConnectorApiToken {
         /**
@@ -2297,6 +2599,46 @@ export namespace platform {
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         tokenRef: pulumi.Input<string>;
+    }
+
+    export interface ConnectorAzureRepoApiAuthentication {
+        /**
+         * Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: pulumi.Input<string>;
+    }
+
+    export interface ConnectorAzureRepoCredentials {
+        /**
+         * Authenticate using Username and token over http(s) for the connection.
+         */
+        http?: pulumi.Input<inputs.platform.ConnectorAzureRepoCredentialsHttp>;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: pulumi.Input<inputs.platform.ConnectorAzureRepoCredentialsSsh>;
+    }
+
+    export interface ConnectorAzureRepoCredentialsHttp {
+        /**
+         * Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: pulumi.Input<string>;
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: pulumi.Input<string>;
+    }
+
+    export interface ConnectorAzureRepoCredentialsSsh {
+        /**
+         * Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        sshKeyRef: pulumi.Input<string>;
     }
 
     export interface ConnectorCustomSecretManagerTemplateInput {

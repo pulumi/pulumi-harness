@@ -207,6 +207,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "cluster/orchestratorConfig",
+  "fqn": "pulumi_harness.cluster",
+  "classes": {
+   "harness:cluster/orchestratorConfig:OrchestratorConfig": "OrchestratorConfig"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "governance/rule",
   "fqn": "pulumi_harness.governance",
   "classes": {
@@ -443,6 +451,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts": "ConnectorAzureArtifacts"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/connectorAzureRepo",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorAzureRepo:ConnectorAzureRepo": "ConnectorAzureRepo"
   }
  },
  {

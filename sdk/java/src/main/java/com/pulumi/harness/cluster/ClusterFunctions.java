@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.cluster.inputs.GetOrchestratorArgs;
+import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigArgs;
+import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigPlainArgs;
 import com.pulumi.harness.cluster.inputs.GetOrchestratorPlainArgs;
+import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigResult;
 import com.pulumi.harness.cluster.outputs.GetOrchestratorResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -74,5 +77,215 @@ public final class ClusterFunctions {
      */
     public static CompletableFuture<GetOrchestratorResult> getOrchestratorPlain(GetOrchestratorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:cluster/getOrchestrator:getOrchestrator", TypeShape.of(GetOrchestratorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Resource for ClusterOrchestrator Config.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.cluster.ClusterFunctions;
+     * import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClusterFunctions.getOrchestratorConfig(GetOrchestratorConfigArgs.builder()
+     *             .orchestratorId("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrchestratorConfigResult> getOrchestratorConfig(GetOrchestratorConfigArgs args) {
+        return getOrchestratorConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Resource for ClusterOrchestrator Config.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.cluster.ClusterFunctions;
+     * import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClusterFunctions.getOrchestratorConfig(GetOrchestratorConfigArgs.builder()
+     *             .orchestratorId("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetOrchestratorConfigResult> getOrchestratorConfigPlain(GetOrchestratorConfigPlainArgs args) {
+        return getOrchestratorConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Resource for ClusterOrchestrator Config.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.cluster.ClusterFunctions;
+     * import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClusterFunctions.getOrchestratorConfig(GetOrchestratorConfigArgs.builder()
+     *             .orchestratorId("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrchestratorConfigResult> getOrchestratorConfig(GetOrchestratorConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", TypeShape.of(GetOrchestratorConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Resource for ClusterOrchestrator Config.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.cluster.ClusterFunctions;
+     * import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClusterFunctions.getOrchestratorConfig(GetOrchestratorConfigArgs.builder()
+     *             .orchestratorId("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrchestratorConfigResult> getOrchestratorConfig(GetOrchestratorConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", TypeShape.of(GetOrchestratorConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Resource for ClusterOrchestrator Config.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.cluster.ClusterFunctions;
+     * import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ClusterFunctions.getOrchestratorConfig(GetOrchestratorConfigArgs.builder()
+     *             .orchestratorId("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetOrchestratorConfigResult> getOrchestratorConfigPlain(GetOrchestratorConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", TypeShape.of(GetOrchestratorConfigResult.class), args, Utilities.withVersion(options));
     }
 }

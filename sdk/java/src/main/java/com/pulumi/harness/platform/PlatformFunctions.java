@@ -33,6 +33,8 @@ import com.pulumi.harness.platform.inputs.GetBitbucketConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetBitbucketConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
 import com.pulumi.harness.platform.inputs.GetCcmFiltersPlainArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomhealthsourceArgs;
@@ -245,6 +247,7 @@ import com.pulumi.harness.platform.outputs.GetAzureCloudProviderConnectorResult;
 import com.pulumi.harness.platform.outputs.GetAzureKeyVaultConnectorResult;
 import com.pulumi.harness.platform.outputs.GetBitbucketConnectorResult;
 import com.pulumi.harness.platform.outputs.GetCcmFiltersResult;
+import com.pulumi.harness.platform.outputs.GetConnectorAzureRepoResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomSecretManagerResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomhealthsourceResult;
 import com.pulumi.harness.platform.outputs.GetConnectorGcpKmsResult;
@@ -2968,6 +2971,21 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetCcmFiltersResult> getCcmFiltersPlain(GetCcmFiltersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getCcmFilters:getCcmFilters", TypeShape.of(GetCcmFiltersResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetConnectorAzureRepoResult> getConnectorAzureRepo(GetConnectorAzureRepoArgs args) {
+        return getConnectorAzureRepo(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetConnectorAzureRepoResult> getConnectorAzureRepoPlain(GetConnectorAzureRepoPlainArgs args) {
+        return getConnectorAzureRepoPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetConnectorAzureRepoResult> getConnectorAzureRepo(GetConnectorAzureRepoArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", TypeShape.of(GetConnectorAzureRepoResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetConnectorAzureRepoResult> getConnectorAzureRepo(GetConnectorAzureRepoArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", TypeShape.of(GetConnectorAzureRepoResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetConnectorAzureRepoResult> getConnectorAzureRepoPlain(GetConnectorAzureRepoPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", TypeShape.of(GetConnectorAzureRepoResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

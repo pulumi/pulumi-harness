@@ -102,6 +102,14 @@ namespace Pulumi.Harness.Platform
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
+        [Input("liquibaseSubstituteProperties")]
+        private Dictionary<string, string>? _liquibaseSubstituteProperties;
+        public Dictionary<string, string> LiquibaseSubstituteProperties
+        {
+            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new Dictionary<string, string>());
+            set => _liquibaseSubstituteProperties = value;
+        }
+
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -139,6 +147,14 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
+
+        [Input("liquibaseSubstituteProperties")]
+        private InputMap<string>? _liquibaseSubstituteProperties;
+        public InputMap<string> LiquibaseSubstituteProperties
+        {
+            get => _liquibaseSubstituteProperties ?? (_liquibaseSubstituteProperties = new InputMap<string>());
+            set => _liquibaseSubstituteProperties = value;
+        }
 
         /// <summary>
         /// Name of the resource.
@@ -198,6 +214,7 @@ namespace Pulumi.Harness.Platform
         /// Unique identifier of the resource.
         /// </summary>
         public readonly string Identifier;
+        public readonly ImmutableDictionary<string, string>? LiquibaseSubstituteProperties;
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -233,6 +250,8 @@ namespace Pulumi.Harness.Platform
 
             string identifier,
 
+            ImmutableDictionary<string, string>? liquibaseSubstituteProperties,
+
             string? name,
 
             string orgId,
@@ -249,6 +268,7 @@ namespace Pulumi.Harness.Platform
             Description = description;
             Id = id;
             Identifier = identifier;
+            LiquibaseSubstituteProperties = liquibaseSubstituteProperties;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;
