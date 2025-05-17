@@ -60,6 +60,11 @@ export type ConnectorAzureArtifacts = import("./connectorAzureArtifacts").Connec
 export const ConnectorAzureArtifacts: typeof import("./connectorAzureArtifacts").ConnectorAzureArtifacts = null as any;
 utilities.lazyLoad(exports, ["ConnectorAzureArtifacts"], () => require("./connectorAzureArtifacts"));
 
+export { ConnectorAzureRepoArgs, ConnectorAzureRepoState } from "./connectorAzureRepo";
+export type ConnectorAzureRepo = import("./connectorAzureRepo").ConnectorAzureRepo;
+export const ConnectorAzureRepo: typeof import("./connectorAzureRepo").ConnectorAzureRepo = null as any;
+utilities.lazyLoad(exports, ["ConnectorAzureRepo"], () => require("./connectorAzureRepo"));
+
 export { ConnectorCustomSecretManagerArgs, ConnectorCustomSecretManagerState } from "./connectorCustomSecretManager";
 export type ConnectorCustomSecretManager = import("./connectorCustomSecretManager").ConnectorCustomSecretManager;
 export const ConnectorCustomSecretManager: typeof import("./connectorCustomSecretManager").ConnectorCustomSecretManager = null as any;
@@ -254,6 +259,11 @@ export { GetCcmFiltersArgs, GetCcmFiltersResult, GetCcmFiltersOutputArgs } from 
 export const getCcmFilters: typeof import("./getCcmFilters").getCcmFilters = null as any;
 export const getCcmFiltersOutput: typeof import("./getCcmFilters").getCcmFiltersOutput = null as any;
 utilities.lazyLoad(exports, ["getCcmFilters","getCcmFiltersOutput"], () => require("./getCcmFilters"));
+
+export { GetConnectorAzureRepoArgs, GetConnectorAzureRepoResult, GetConnectorAzureRepoOutputArgs } from "./getConnectorAzureRepo";
+export const getConnectorAzureRepo: typeof import("./getConnectorAzureRepo").getConnectorAzureRepo = null as any;
+export const getConnectorAzureRepoOutput: typeof import("./getConnectorAzureRepo").getConnectorAzureRepoOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorAzureRepo","getConnectorAzureRepoOutput"], () => require("./getConnectorAzureRepo"));
 
 export { GetConnectorCustomSecretManagerArgs, GetConnectorCustomSecretManagerResult, GetConnectorCustomSecretManagerOutputArgs } from "./getConnectorCustomSecretManager";
 export const getConnectorCustomSecretManager: typeof import("./getConnectorCustomSecretManager").getConnectorCustomSecretManager = null as any;
@@ -1132,6 +1142,8 @@ const _module = {
                 return new BitbucketConnector(name, <any>undefined, { urn })
             case "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts":
                 return new ConnectorAzureArtifacts(name, <any>undefined, { urn })
+            case "harness:platform/connectorAzureRepo:ConnectorAzureRepo":
+                return new ConnectorAzureRepo(name, <any>undefined, { urn })
             case "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager":
                 return new ConnectorCustomSecretManager(name, <any>undefined, { urn })
             case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
@@ -1340,6 +1352,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/azureCloudProviderCon
 pulumi.runtime.registerResourceModule("harness", "platform/azureKeyVaultConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureArtifacts", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureRepo", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomSecretManager", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomhealthsource", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorGcpKms", _module)

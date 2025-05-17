@@ -27,7 +27,7 @@ class GetDbInstanceResult:
     """
     A collection of values returned by getDbInstance.
     """
-    def __init__(__self__, branch=None, connector=None, context=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, schema=None, tags=None):
+    def __init__(__self__, branch=None, connector=None, context=None, description=None, id=None, identifier=None, liquibase_substitute_properties=None, name=None, org_id=None, project_id=None, schema=None, tags=None):
         if branch and not isinstance(branch, str):
             raise TypeError("Expected argument 'branch' to be a str")
         pulumi.set(__self__, "branch", branch)
@@ -46,6 +46,9 @@ class GetDbInstanceResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if liquibase_substitute_properties and not isinstance(liquibase_substitute_properties, dict):
+            raise TypeError("Expected argument 'liquibase_substitute_properties' to be a dict")
+        pulumi.set(__self__, "liquibase_substitute_properties", liquibase_substitute_properties)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -111,6 +114,11 @@ class GetDbInstanceResult:
         return pulumi.get(self, "identifier")
 
     @property
+    @pulumi.getter(name="liquibaseSubstituteProperties")
+    def liquibase_substitute_properties(self) -> Optional[Mapping[str, builtins.str]]:
+        return pulumi.get(self, "liquibase_substitute_properties")
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[builtins.str]:
         """
@@ -163,6 +171,7 @@ class AwaitableGetDbInstanceResult(GetDbInstanceResult):
             description=self.description,
             id=self.id,
             identifier=self.identifier,
+            liquibase_substitute_properties=self.liquibase_substitute_properties,
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
@@ -171,6 +180,7 @@ class AwaitableGetDbInstanceResult(GetDbInstanceResult):
 
 
 def get_db_instance(identifier: Optional[builtins.str] = None,
+                    liquibase_substitute_properties: Optional[Mapping[str, builtins.str]] = None,
                     name: Optional[builtins.str] = None,
                     org_id: Optional[builtins.str] = None,
                     project_id: Optional[builtins.str] = None,
@@ -200,6 +210,7 @@ def get_db_instance(identifier: Optional[builtins.str] = None,
     """
     __args__ = dict()
     __args__['identifier'] = identifier
+    __args__['liquibaseSubstituteProperties'] = liquibase_substitute_properties
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
@@ -214,12 +225,14 @@ def get_db_instance(identifier: Optional[builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        liquibase_substitute_properties=pulumi.get(__ret__, 'liquibase_substitute_properties'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         schema=pulumi.get(__ret__, 'schema'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_db_instance_output(identifier: Optional[pulumi.Input[builtins.str]] = None,
+                           liquibase_substitute_properties: Optional[pulumi.Input[Optional[Mapping[str, builtins.str]]]] = None,
                            name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                            org_id: Optional[pulumi.Input[builtins.str]] = None,
                            project_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -249,6 +262,7 @@ def get_db_instance_output(identifier: Optional[pulumi.Input[builtins.str]] = No
     """
     __args__ = dict()
     __args__['identifier'] = identifier
+    __args__['liquibaseSubstituteProperties'] = liquibase_substitute_properties
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
@@ -262,6 +276,7 @@ def get_db_instance_output(identifier: Optional[pulumi.Input[builtins.str]] = No
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        liquibase_substitute_properties=pulumi.get(__response__, 'liquibase_substitute_properties'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),

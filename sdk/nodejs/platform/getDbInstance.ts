@@ -25,6 +25,7 @@ export function getDbInstance(args: GetDbInstanceArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDbInstance:getDbInstance", {
         "identifier": args.identifier,
+        "liquibaseSubstituteProperties": args.liquibaseSubstituteProperties,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -40,6 +41,7 @@ export interface GetDbInstanceArgs {
      * Unique identifier of the resource.
      */
     identifier: string;
+    liquibaseSubstituteProperties?: {[key: string]: string};
     /**
      * Name of the resource.
      */
@@ -86,6 +88,7 @@ export interface GetDbInstanceResult {
      * Unique identifier of the resource.
      */
     readonly identifier: string;
+    readonly liquibaseSubstituteProperties?: {[key: string]: string};
     /**
      * Name of the resource.
      */
@@ -128,6 +131,7 @@ export function getDbInstanceOutput(args: GetDbInstanceOutputArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDbInstance:getDbInstance", {
         "identifier": args.identifier,
+        "liquibaseSubstituteProperties": args.liquibaseSubstituteProperties,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
@@ -143,6 +147,7 @@ export interface GetDbInstanceOutputArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    liquibaseSubstituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource.
      */

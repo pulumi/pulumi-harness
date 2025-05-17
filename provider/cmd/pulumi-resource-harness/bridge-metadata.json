@@ -258,6 +258,54 @@
             "harness_cluster_orchestrator": {
                 "current": "harness:cluster/orchestrator:Orchestrator"
             },
+            "harness_cluster_orchestrator_config": {
+                "current": "harness:cluster/orchestratorConfig:OrchestratorConfig",
+                "fields": {
+                    "binpacking": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "disruption": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "budget": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "reasons": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "schedule": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "pod_eviction": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "threshold": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "distribution": {
+                        "maxItemsOne": true
+                    },
+                    "node_preferences": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "harness_delegate_approval": {
                 "current": "harness:index/delegateApproval:DelegateApproval"
             },
@@ -701,6 +749,33 @@
             "harness_platform_connector_azure_key_vault": {
                 "current": "harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector",
                 "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_connector_azure_repo": {
+                "current": "harness:platform/connectorAzureRepo:ConnectorAzureRepo",
+                "fields": {
+                    "api_authentication": {
+                        "maxItemsOne": true
+                    },
+                    "credentials": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "http": {
+                                    "maxItemsOne": true
+                                },
+                                "ssh": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "delegate_selectors": {
                         "maxItemsOne": false
                     },
@@ -3286,6 +3361,54 @@
             "harness_cluster_orchestrator": {
                 "current": "harness:cluster/getOrchestrator:getOrchestrator"
             },
+            "harness_cluster_orchestrator_config": {
+                "current": "harness:cluster/getOrchestratorConfig:getOrchestratorConfig",
+                "fields": {
+                    "binpacking": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "disruption": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "budget": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "reasons": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "schedule": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "pod_eviction": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "threshold": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "distribution": {
+                        "maxItemsOne": true
+                    },
+                    "node_preferences": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "harness_current_account": {
                 "current": "harness:index/getCurrentAccount:getCurrentAccount"
             },
@@ -3603,6 +3726,33 @@
             "harness_platform_connector_azure_key_vault": {
                 "current": "harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector",
                 "fields": {
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_connector_azure_repo": {
+                "current": "harness:platform/getConnectorAzureRepo:getConnectorAzureRepo",
+                "fields": {
+                    "api_authentication": {
+                        "maxItemsOne": false
+                    },
+                    "credentials": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "http": {
+                                    "maxItemsOne": false
+                                },
+                                "ssh": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "delegate_selectors": {
                         "maxItemsOne": false
                     },

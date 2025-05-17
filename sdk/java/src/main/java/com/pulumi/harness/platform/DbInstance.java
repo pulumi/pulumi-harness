@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.DbInstanceArgs;
 import com.pulumi.harness.platform.inputs.DbInstanceState;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -55,6 +56,10 @@ import javax.annotation.Nullable;
  *             .branch("main")
  *             .connector("jdbcConnector")
  *             .context("ctx")
+ *             .liquibaseSubstituteProperties(Map.ofEntries(
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "value2")
+ *             ))
  *             .build());
  * 
  *     }
@@ -143,6 +148,20 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    /**
+     * The properties to substitute in liquibase changelog
+     * 
+     */
+    @Export(name="liquibaseSubstituteProperties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> liquibaseSubstituteProperties;
+
+    /**
+     * @return The properties to substitute in liquibase changelog
+     * 
+     */
+    public Output<Optional<Map<String,String>>> liquibaseSubstituteProperties() {
+        return Codegen.optional(this.liquibaseSubstituteProperties);
     }
     /**
      * Name of the resource.

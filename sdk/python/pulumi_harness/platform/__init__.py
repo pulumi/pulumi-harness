@@ -17,6 +17,7 @@ from .azure_cloud_provider_connector import *
 from .azure_key_vault_connector import *
 from .bitbucket_connector import *
 from .connector_azure_artifacts import *
+from .connector_azure_repo import *
 from .connector_custom_secret_manager import *
 from .connector_customhealthsource import *
 from .connector_gcp_kms import *
@@ -56,6 +57,7 @@ from .get_azure_cloud_provider_connector import *
 from .get_azure_key_vault_connector import *
 from .get_bitbucket_connector import *
 from .get_ccm_filters import *
+from .get_connector_azure_repo import *
 from .get_connector_custom_secret_manager import *
 from .get_connector_customhealthsource import *
 from .get_connector_gcp_kms import *

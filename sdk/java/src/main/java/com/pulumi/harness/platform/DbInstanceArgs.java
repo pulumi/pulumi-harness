@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -93,6 +94,21 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The properties to substitute in liquibase changelog
+     * 
+     */
+    @Import(name="liquibaseSubstituteProperties")
+    private @Nullable Output<Map<String,String>> liquibaseSubstituteProperties;
+
+    /**
+     * @return The properties to substitute in liquibase changelog
+     * 
+     */
+    public Optional<Output<Map<String,String>>> liquibaseSubstituteProperties() {
+        return Optional.ofNullable(this.liquibaseSubstituteProperties);
+    }
+
+    /**
      * Name of the resource.
      * 
      */
@@ -175,6 +191,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.context = $.context;
         this.description = $.description;
         this.identifier = $.identifier;
+        this.liquibaseSubstituteProperties = $.liquibaseSubstituteProperties;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -303,6 +320,27 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param liquibaseSubstituteProperties The properties to substitute in liquibase changelog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder liquibaseSubstituteProperties(@Nullable Output<Map<String,String>> liquibaseSubstituteProperties) {
+            $.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
+            return this;
+        }
+
+        /**
+         * @param liquibaseSubstituteProperties The properties to substitute in liquibase changelog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder liquibaseSubstituteProperties(Map<String,String> liquibaseSubstituteProperties) {
+            return liquibaseSubstituteProperties(Output.of(liquibaseSubstituteProperties));
         }
 
         /**

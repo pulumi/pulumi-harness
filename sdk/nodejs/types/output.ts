@@ -1608,6 +1608,209 @@ export namespace cloudprovider {
 
 }
 
+export namespace cluster {
+    export interface GetOrchestratorConfigBinpacking {
+        /**
+         * Harness disruption configuration
+         */
+        disruption?: outputs.cluster.GetOrchestratorConfigBinpackingDisruption;
+        /**
+         * Harness Pod Evictor Configuration
+         */
+        podEviction?: outputs.cluster.GetOrchestratorConfigBinpackingPodEviction;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruption {
+        /**
+         * Budgets for disruption
+         */
+        budgets?: outputs.cluster.GetOrchestratorConfigBinpackingDisruptionBudget[];
+        /**
+         * Criteria for considering a nodes for disruption
+         */
+        criteria?: string;
+        /**
+         * Deletion delay
+         */
+        delay?: string;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruptionBudget {
+        /**
+         * Number or percentage of Nodes to consider for disruption
+         */
+        nodes: string;
+        /**
+         * Reasons for disruption
+         */
+        reasons?: string[];
+        /**
+         * Schedule for disruption budget
+         */
+        schedule?: outputs.cluster.GetOrchestratorConfigBinpackingDisruptionBudgetSchedule;
+    }
+
+    export interface GetOrchestratorConfigBinpackingDisruptionBudgetSchedule {
+        /**
+         * Duration for disruption budget
+         */
+        duration: string;
+        /**
+         * Frequency for disruption budget
+         */
+        frequency: string;
+    }
+
+    export interface GetOrchestratorConfigBinpackingPodEviction {
+        /**
+         * Minimum Threshold for considering a node as underutilized
+         */
+        threshold: outputs.cluster.GetOrchestratorConfigBinpackingPodEvictionThreshold;
+    }
+
+    export interface GetOrchestratorConfigBinpackingPodEvictionThreshold {
+        /**
+         * CPU percentage for considering a node as underutilized
+         */
+        cpu: number;
+        /**
+         * Memory percentage for considering a node as underutilized
+         */
+        memory: number;
+    }
+
+    export interface GetOrchestratorConfigDistribution {
+        /**
+         * Number of minimum ondemand replicas required for workloads
+         */
+        baseOndemandCapacity?: number;
+        /**
+         * Percentage of on-demand replicas required for workloads
+         */
+        ondemandReplicaPercentage: number;
+        /**
+         * Selector for choosing workloads for distribution
+         */
+        selector?: string;
+        /**
+         * Strategy for choosing spot nodes for cluster
+         */
+        strategy?: string;
+    }
+
+    export interface GetOrchestratorConfigNodePreferences {
+        /**
+         * Reverse fallback interval
+         */
+        reverseFallbackInterval?: string;
+        /**
+         * TTL for nodes
+         */
+        ttl?: string;
+    }
+
+    export interface OrchestratorConfigBinpacking {
+        /**
+         * Harness disruption configuration
+         */
+        disruption?: outputs.cluster.OrchestratorConfigBinpackingDisruption;
+        /**
+         * Harness Pod Evictor Configuration
+         */
+        podEviction?: outputs.cluster.OrchestratorConfigBinpackingPodEviction;
+    }
+
+    export interface OrchestratorConfigBinpackingDisruption {
+        /**
+         * Budgets for disruption
+         */
+        budgets?: outputs.cluster.OrchestratorConfigBinpackingDisruptionBudget[];
+        /**
+         * Criteria for considering a nodes for disruption
+         */
+        criteria?: string;
+        /**
+         * Deletion delay
+         */
+        delay?: string;
+    }
+
+    export interface OrchestratorConfigBinpackingDisruptionBudget {
+        /**
+         * Number or percentage of Nodes to consider for disruption
+         */
+        nodes: string;
+        /**
+         * Reasons for disruption
+         */
+        reasons?: string[];
+        /**
+         * Schedule for disruption budget
+         */
+        schedule?: outputs.cluster.OrchestratorConfigBinpackingDisruptionBudgetSchedule;
+    }
+
+    export interface OrchestratorConfigBinpackingDisruptionBudgetSchedule {
+        /**
+         * Duration for disruption budget
+         */
+        duration: string;
+        /**
+         * Frequency for disruption budget
+         */
+        frequency: string;
+    }
+
+    export interface OrchestratorConfigBinpackingPodEviction {
+        /**
+         * Minimum Threshold for considering a node as underutilized
+         */
+        threshold: outputs.cluster.OrchestratorConfigBinpackingPodEvictionThreshold;
+    }
+
+    export interface OrchestratorConfigBinpackingPodEvictionThreshold {
+        /**
+         * CPU percentage for considering a node as underutilized
+         */
+        cpu: number;
+        /**
+         * Memory percentage for considering a node as underutilized
+         */
+        memory: number;
+    }
+
+    export interface OrchestratorConfigDistribution {
+        /**
+         * Number of minimum ondemand replicas required for workloads
+         */
+        baseOndemandCapacity?: number;
+        /**
+         * Percentage of on-demand replicas required for workloads
+         */
+        ondemandReplicaPercentage: number;
+        /**
+         * Selector for choosing workloads for distribution
+         */
+        selector?: string;
+        /**
+         * Strategy for choosing spot nodes for cluster
+         */
+        strategy?: string;
+    }
+
+    export interface OrchestratorConfigNodePreferences {
+        /**
+         * Reverse fallback interval
+         */
+        reverseFallbackInterval?: string;
+        /**
+         * TTL for nodes
+         */
+        ttl?: string;
+    }
+
+}
+
 export namespace platform {
     export interface AppDynamicsConnectorApiToken {
         /**
@@ -2041,6 +2244,46 @@ export namespace platform {
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         tokenRef: string;
+    }
+
+    export interface ConnectorAzureRepoApiAuthentication {
+        /**
+         * Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+    }
+
+    export interface ConnectorAzureRepoCredentials {
+        /**
+         * Authenticate using Username and token over http(s) for the connection.
+         */
+        http?: outputs.platform.ConnectorAzureRepoCredentialsHttp;
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        ssh?: outputs.platform.ConnectorAzureRepoCredentialsSsh;
+    }
+
+    export interface ConnectorAzureRepoCredentialsHttp {
+        /**
+         * Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username?: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: string;
+    }
+
+    export interface ConnectorAzureRepoCredentialsSsh {
+        /**
+         * Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        sshKeyRef: string;
     }
 
     export interface ConnectorCustomSecretManagerTemplateInput {
@@ -3012,6 +3255,46 @@ export namespace platform {
          * Tags to associate with the resource. Tags should be in the form `name:value`.
          */
         tags: string[];
+    }
+
+    export interface GetConnectorAzureRepoApiAuthentication {
+        /**
+         * Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+    }
+
+    export interface GetConnectorAzureRepoCredential {
+        /**
+         * Authenticate using Username and password over http(s) for the connection.
+         */
+        https: outputs.platform.GetConnectorAzureRepoCredentialHttp[];
+        /**
+         * Authenticate using SSH for the connection.
+         */
+        sshes: outputs.platform.GetConnectorAzureRepoCredentialSsh[];
+    }
+
+    export interface GetConnectorAzureRepoCredentialHttp {
+        /**
+         * Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef: string;
+    }
+
+    export interface GetConnectorAzureRepoCredentialSsh {
+        /**
+         * Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        sshKeyRef: string;
     }
 
     export interface GetConnectorCustomSecretManagerTemplateInput {

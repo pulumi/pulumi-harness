@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +29,13 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
      */
     public String identifier() {
         return this.identifier;
+    }
+
+    @Import(name="liquibaseSubstituteProperties")
+    private @Nullable Map<String,String> liquibaseSubstituteProperties;
+
+    public Optional<Map<String,String>> liquibaseSubstituteProperties() {
+        return Optional.ofNullable(this.liquibaseSubstituteProperties);
     }
 
     /**
@@ -94,6 +102,7 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
 
     private GetDbInstancePlainArgs(GetDbInstancePlainArgs $) {
         this.identifier = $.identifier;
+        this.liquibaseSubstituteProperties = $.liquibaseSubstituteProperties;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
@@ -126,6 +135,11 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
+            return this;
+        }
+
+        public Builder liquibaseSubstituteProperties(@Nullable Map<String,String> liquibaseSubstituteProperties) {
+            $.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
             return this;
         }
 

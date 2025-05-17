@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "harness:cluster/orchestrator:Orchestrator":
 		r = &Orchestrator{}
+	case "harness:cluster/orchestratorConfig:OrchestratorConfig":
+		r = &OrchestratorConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"cluster/orchestrator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"cluster/orchestratorConfig",
 		&module{version},
 	)
 }

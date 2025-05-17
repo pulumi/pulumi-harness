@@ -51,6 +51,10 @@ __all__ = [
     'BitbucketConnectorCredentialsHttp',
     'BitbucketConnectorCredentialsSsh',
     'ConnectorAzureArtifactsCredentials',
+    'ConnectorAzureRepoApiAuthentication',
+    'ConnectorAzureRepoCredentials',
+    'ConnectorAzureRepoCredentialsHttp',
+    'ConnectorAzureRepoCredentialsSsh',
     'ConnectorCustomSecretManagerTemplateInput',
     'ConnectorCustomSecretManagerTemplateInputEnvironmentVariable',
     'ConnectorCustomhealthsourceHeader',
@@ -287,6 +291,10 @@ __all__ = [
     'GetBitbucketConnectorCredentialHttpResult',
     'GetBitbucketConnectorCredentialSshResult',
     'GetCcmFiltersFilterPropertyResult',
+    'GetConnectorAzureRepoApiAuthenticationResult',
+    'GetConnectorAzureRepoCredentialResult',
+    'GetConnectorAzureRepoCredentialHttpResult',
+    'GetConnectorAzureRepoCredentialSshResult',
     'GetConnectorCustomSecretManagerTemplateInputResult',
     'GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableResult',
     'GetConnectorCustomhealthsourceHeaderResult',
@@ -2259,6 +2267,168 @@ class ConnectorAzureArtifactsCredentials(dict):
         Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class ConnectorAzureRepoApiAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAzureRepoApiAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAzureRepoApiAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAzureRepoApiAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: builtins.str):
+        """
+        :param builtins.str token_ref: Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> builtins.str:
+        """
+        Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class ConnectorAzureRepoCredentials(dict):
+    def __init__(__self__, *,
+                 http: Optional['outputs.ConnectorAzureRepoCredentialsHttp'] = None,
+                 ssh: Optional['outputs.ConnectorAzureRepoCredentialsSsh'] = None):
+        """
+        :param 'ConnectorAzureRepoCredentialsHttpArgs' http: Authenticate using Username and token over http(s) for the connection.
+        :param 'ConnectorAzureRepoCredentialsSshArgs' ssh: Authenticate using SSH for the connection.
+        """
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+        if ssh is not None:
+            pulumi.set(__self__, "ssh", ssh)
+
+    @property
+    @pulumi.getter
+    def http(self) -> Optional['outputs.ConnectorAzureRepoCredentialsHttp']:
+        """
+        Authenticate using Username and token over http(s) for the connection.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def ssh(self) -> Optional['outputs.ConnectorAzureRepoCredentialsSsh']:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "ssh")
+
+
+@pulumi.output_type
+class ConnectorAzureRepoCredentialsHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+        elif key == "usernameRef":
+            suggest = "username_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAzureRepoCredentialsHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAzureRepoCredentialsHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAzureRepoCredentialsHttp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: builtins.str,
+                 username: Optional[builtins.str] = None,
+                 username_ref: Optional[builtins.str] = None):
+        """
+        :param builtins.str token_ref: Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param builtins.str username: Username to use for authentication.
+        :param builtins.str username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if username_ref is not None:
+            pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> builtins.str:
+        """
+        Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[builtins.str]:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> Optional[builtins.str]:
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class ConnectorAzureRepoCredentialsSsh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sshKeyRef":
+            suggest = "ssh_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAzureRepoCredentialsSsh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAzureRepoCredentialsSsh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAzureRepoCredentialsSsh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ssh_key_ref: builtins.str):
+        """
+        :param builtins.str ssh_key_ref: Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> builtins.str:
+        """
+        Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "ssh_key_ref")
 
 
 @pulumi.output_type
@@ -17619,6 +17789,111 @@ class GetCcmFiltersFilterPropertyResult(dict):
         Tags to associate with the resource. Tags should be in the form `name:value`.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetConnectorAzureRepoApiAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 token_ref: builtins.str):
+        """
+        :param builtins.str token_ref: Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> builtins.str:
+        """
+        Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class GetConnectorAzureRepoCredentialResult(dict):
+    def __init__(__self__, *,
+                 https: Sequence['outputs.GetConnectorAzureRepoCredentialHttpResult'],
+                 sshes: Sequence['outputs.GetConnectorAzureRepoCredentialSshResult']):
+        """
+        :param Sequence['GetConnectorAzureRepoCredentialHttpArgs'] https: Authenticate using Username and password over http(s) for the connection.
+        :param Sequence['GetConnectorAzureRepoCredentialSshArgs'] sshes: Authenticate using SSH for the connection.
+        """
+        pulumi.set(__self__, "https", https)
+        pulumi.set(__self__, "sshes", sshes)
+
+    @property
+    @pulumi.getter
+    def https(self) -> Sequence['outputs.GetConnectorAzureRepoCredentialHttpResult']:
+        """
+        Authenticate using Username and password over http(s) for the connection.
+        """
+        return pulumi.get(self, "https")
+
+    @property
+    @pulumi.getter
+    def sshes(self) -> Sequence['outputs.GetConnectorAzureRepoCredentialSshResult']:
+        """
+        Authenticate using SSH for the connection.
+        """
+        return pulumi.get(self, "sshes")
+
+
+@pulumi.output_type
+class GetConnectorAzureRepoCredentialHttpResult(dict):
+    def __init__(__self__, *,
+                 token_ref: builtins.str,
+                 username: builtins.str,
+                 username_ref: builtins.str):
+        """
+        :param builtins.str token_ref: Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param builtins.str username: Username to use for authentication.
+        :param builtins.str username_ref: Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "username_ref", username_ref)
+
+    @property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> builtins.str:
+        """
+        Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+    @property
+    @pulumi.getter
+    def username(self) -> builtins.str:
+        """
+        Username to use for authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter(name="usernameRef")
+    def username_ref(self) -> builtins.str:
+        """
+        Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetConnectorAzureRepoCredentialSshResult(dict):
+    def __init__(__self__, *,
+                 ssh_key_ref: builtins.str):
+        """
+        :param builtins.str ssh_key_ref: Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "ssh_key_ref", ssh_key_ref)
+
+    @property
+    @pulumi.getter(name="sshKeyRef")
+    def ssh_key_ref(self) -> builtins.str:
+        """
+        Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "ssh_key_ref")
 
 
 @pulumi.output_type

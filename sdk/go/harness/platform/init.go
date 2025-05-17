@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BitbucketConnector{}
 	case "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts":
 		r = &ConnectorAzureArtifacts{}
+	case "harness:platform/connectorAzureRepo:ConnectorAzureRepo":
+		r = &ConnectorAzureRepo{}
 	case "harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager":
 		r = &ConnectorCustomSecretManager{}
 	case "harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource":
@@ -301,6 +303,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/connectorAzureArtifacts",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorAzureRepo",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

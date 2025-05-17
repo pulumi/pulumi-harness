@@ -5632,6 +5632,611 @@ func (o ConnectorAzureArtifactsCredentialsPtrOutput) TokenRef() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectorAzureRepoApiAuthentication struct {
+	// Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// ConnectorAzureRepoApiAuthenticationInput is an input type that accepts ConnectorAzureRepoApiAuthenticationArgs and ConnectorAzureRepoApiAuthenticationOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoApiAuthenticationInput` via:
+//
+//	ConnectorAzureRepoApiAuthenticationArgs{...}
+type ConnectorAzureRepoApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoApiAuthenticationOutput() ConnectorAzureRepoApiAuthenticationOutput
+	ToConnectorAzureRepoApiAuthenticationOutputWithContext(context.Context) ConnectorAzureRepoApiAuthenticationOutput
+}
+
+type ConnectorAzureRepoApiAuthenticationArgs struct {
+	// Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (ConnectorAzureRepoApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (i ConnectorAzureRepoApiAuthenticationArgs) ToConnectorAzureRepoApiAuthenticationOutput() ConnectorAzureRepoApiAuthenticationOutput {
+	return i.ToConnectorAzureRepoApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoApiAuthenticationArgs) ToConnectorAzureRepoApiAuthenticationOutputWithContext(ctx context.Context) ConnectorAzureRepoApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoApiAuthenticationOutput)
+}
+
+func (i ConnectorAzureRepoApiAuthenticationArgs) ToConnectorAzureRepoApiAuthenticationPtrOutput() ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return i.ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoApiAuthenticationArgs) ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoApiAuthenticationOutput).ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ConnectorAzureRepoApiAuthenticationPtrInput is an input type that accepts ConnectorAzureRepoApiAuthenticationArgs, ConnectorAzureRepoApiAuthenticationPtr and ConnectorAzureRepoApiAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoApiAuthenticationPtrInput` via:
+//
+//	        ConnectorAzureRepoApiAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAzureRepoApiAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoApiAuthenticationPtrOutput() ConnectorAzureRepoApiAuthenticationPtrOutput
+	ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(context.Context) ConnectorAzureRepoApiAuthenticationPtrOutput
+}
+
+type connectorAzureRepoApiAuthenticationPtrType ConnectorAzureRepoApiAuthenticationArgs
+
+func ConnectorAzureRepoApiAuthenticationPtr(v *ConnectorAzureRepoApiAuthenticationArgs) ConnectorAzureRepoApiAuthenticationPtrInput {
+	return (*connectorAzureRepoApiAuthenticationPtrType)(v)
+}
+
+func (*connectorAzureRepoApiAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (i *connectorAzureRepoApiAuthenticationPtrType) ToConnectorAzureRepoApiAuthenticationPtrOutput() ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return i.ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAzureRepoApiAuthenticationPtrType) ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoApiAuthenticationPtrOutput)
+}
+
+type ConnectorAzureRepoApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoApiAuthenticationOutput) ToConnectorAzureRepoApiAuthenticationOutput() ConnectorAzureRepoApiAuthenticationOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoApiAuthenticationOutput) ToConnectorAzureRepoApiAuthenticationOutputWithContext(ctx context.Context) ConnectorAzureRepoApiAuthenticationOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoApiAuthenticationOutput) ToConnectorAzureRepoApiAuthenticationPtrOutput() ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return o.ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAzureRepoApiAuthenticationOutput) ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAzureRepoApiAuthentication) *ConnectorAzureRepoApiAuthentication {
+		return &v
+	}).(ConnectorAzureRepoApiAuthenticationPtrOutput)
+}
+
+// Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAzureRepoApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type ConnectorAzureRepoApiAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoApiAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoApiAuthenticationPtrOutput) ToConnectorAzureRepoApiAuthenticationPtrOutput() ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoApiAuthenticationPtrOutput) ToConnectorAzureRepoApiAuthenticationPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoApiAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoApiAuthenticationPtrOutput) Elem() ConnectorAzureRepoApiAuthenticationOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoApiAuthentication) ConnectorAzureRepoApiAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAzureRepoApiAuthentication
+		return ret
+	}).(ConnectorAzureRepoApiAuthenticationOutput)
+}
+
+// Personal access token for interacting with the azure api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoApiAuthenticationPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoApiAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorAzureRepoCredentials struct {
+	// Authenticate using Username and token over http(s) for the connection.
+	Http *ConnectorAzureRepoCredentialsHttp `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh *ConnectorAzureRepoCredentialsSsh `pulumi:"ssh"`
+}
+
+// ConnectorAzureRepoCredentialsInput is an input type that accepts ConnectorAzureRepoCredentialsArgs and ConnectorAzureRepoCredentialsOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoCredentialsInput` via:
+//
+//	ConnectorAzureRepoCredentialsArgs{...}
+type ConnectorAzureRepoCredentialsInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoCredentialsOutput() ConnectorAzureRepoCredentialsOutput
+	ToConnectorAzureRepoCredentialsOutputWithContext(context.Context) ConnectorAzureRepoCredentialsOutput
+}
+
+type ConnectorAzureRepoCredentialsArgs struct {
+	// Authenticate using Username and token over http(s) for the connection.
+	Http ConnectorAzureRepoCredentialsHttpPtrInput `pulumi:"http"`
+	// Authenticate using SSH for the connection.
+	Ssh ConnectorAzureRepoCredentialsSshPtrInput `pulumi:"ssh"`
+}
+
+func (ConnectorAzureRepoCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoCredentials)(nil)).Elem()
+}
+
+func (i ConnectorAzureRepoCredentialsArgs) ToConnectorAzureRepoCredentialsOutput() ConnectorAzureRepoCredentialsOutput {
+	return i.ToConnectorAzureRepoCredentialsOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoCredentialsArgs) ToConnectorAzureRepoCredentialsOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsOutput)
+}
+
+func (i ConnectorAzureRepoCredentialsArgs) ToConnectorAzureRepoCredentialsPtrOutput() ConnectorAzureRepoCredentialsPtrOutput {
+	return i.ToConnectorAzureRepoCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoCredentialsArgs) ToConnectorAzureRepoCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsOutput).ToConnectorAzureRepoCredentialsPtrOutputWithContext(ctx)
+}
+
+// ConnectorAzureRepoCredentialsPtrInput is an input type that accepts ConnectorAzureRepoCredentialsArgs, ConnectorAzureRepoCredentialsPtr and ConnectorAzureRepoCredentialsPtrOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoCredentialsPtrInput` via:
+//
+//	        ConnectorAzureRepoCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAzureRepoCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoCredentialsPtrOutput() ConnectorAzureRepoCredentialsPtrOutput
+	ToConnectorAzureRepoCredentialsPtrOutputWithContext(context.Context) ConnectorAzureRepoCredentialsPtrOutput
+}
+
+type connectorAzureRepoCredentialsPtrType ConnectorAzureRepoCredentialsArgs
+
+func ConnectorAzureRepoCredentialsPtr(v *ConnectorAzureRepoCredentialsArgs) ConnectorAzureRepoCredentialsPtrInput {
+	return (*connectorAzureRepoCredentialsPtrType)(v)
+}
+
+func (*connectorAzureRepoCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoCredentials)(nil)).Elem()
+}
+
+func (i *connectorAzureRepoCredentialsPtrType) ToConnectorAzureRepoCredentialsPtrOutput() ConnectorAzureRepoCredentialsPtrOutput {
+	return i.ToConnectorAzureRepoCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAzureRepoCredentialsPtrType) ToConnectorAzureRepoCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsPtrOutput)
+}
+
+type ConnectorAzureRepoCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoCredentials)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoCredentialsOutput) ToConnectorAzureRepoCredentialsOutput() ConnectorAzureRepoCredentialsOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsOutput) ToConnectorAzureRepoCredentialsOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsOutput) ToConnectorAzureRepoCredentialsPtrOutput() ConnectorAzureRepoCredentialsPtrOutput {
+	return o.ToConnectorAzureRepoCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAzureRepoCredentialsOutput) ToConnectorAzureRepoCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAzureRepoCredentials) *ConnectorAzureRepoCredentials {
+		return &v
+	}).(ConnectorAzureRepoCredentialsPtrOutput)
+}
+
+// Authenticate using Username and token over http(s) for the connection.
+func (o ConnectorAzureRepoCredentialsOutput) Http() ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v ConnectorAzureRepoCredentials) *ConnectorAzureRepoCredentialsHttp { return v.Http }).(ConnectorAzureRepoCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o ConnectorAzureRepoCredentialsOutput) Ssh() ConnectorAzureRepoCredentialsSshPtrOutput {
+	return o.ApplyT(func(v ConnectorAzureRepoCredentials) *ConnectorAzureRepoCredentialsSsh { return v.Ssh }).(ConnectorAzureRepoCredentialsSshPtrOutput)
+}
+
+type ConnectorAzureRepoCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoCredentials)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoCredentialsPtrOutput) ToConnectorAzureRepoCredentialsPtrOutput() ConnectorAzureRepoCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsPtrOutput) ToConnectorAzureRepoCredentialsPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsPtrOutput) Elem() ConnectorAzureRepoCredentialsOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentials) ConnectorAzureRepoCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAzureRepoCredentials
+		return ret
+	}).(ConnectorAzureRepoCredentialsOutput)
+}
+
+// Authenticate using Username and token over http(s) for the connection.
+func (o ConnectorAzureRepoCredentialsPtrOutput) Http() ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentials) *ConnectorAzureRepoCredentialsHttp {
+		if v == nil {
+			return nil
+		}
+		return v.Http
+	}).(ConnectorAzureRepoCredentialsHttpPtrOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o ConnectorAzureRepoCredentialsPtrOutput) Ssh() ConnectorAzureRepoCredentialsSshPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentials) *ConnectorAzureRepoCredentialsSsh {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(ConnectorAzureRepoCredentialsSshPtrOutput)
+}
+
+type ConnectorAzureRepoCredentialsHttp struct {
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username *string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef *string `pulumi:"usernameRef"`
+}
+
+// ConnectorAzureRepoCredentialsHttpInput is an input type that accepts ConnectorAzureRepoCredentialsHttpArgs and ConnectorAzureRepoCredentialsHttpOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoCredentialsHttpInput` via:
+//
+//	ConnectorAzureRepoCredentialsHttpArgs{...}
+type ConnectorAzureRepoCredentialsHttpInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoCredentialsHttpOutput() ConnectorAzureRepoCredentialsHttpOutput
+	ToConnectorAzureRepoCredentialsHttpOutputWithContext(context.Context) ConnectorAzureRepoCredentialsHttpOutput
+}
+
+type ConnectorAzureRepoCredentialsHttpArgs struct {
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringPtrInput `pulumi:"usernameRef"`
+}
+
+func (ConnectorAzureRepoCredentialsHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoCredentialsHttp)(nil)).Elem()
+}
+
+func (i ConnectorAzureRepoCredentialsHttpArgs) ToConnectorAzureRepoCredentialsHttpOutput() ConnectorAzureRepoCredentialsHttpOutput {
+	return i.ToConnectorAzureRepoCredentialsHttpOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoCredentialsHttpArgs) ToConnectorAzureRepoCredentialsHttpOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsHttpOutput)
+}
+
+func (i ConnectorAzureRepoCredentialsHttpArgs) ToConnectorAzureRepoCredentialsHttpPtrOutput() ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return i.ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoCredentialsHttpArgs) ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsHttpOutput).ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(ctx)
+}
+
+// ConnectorAzureRepoCredentialsHttpPtrInput is an input type that accepts ConnectorAzureRepoCredentialsHttpArgs, ConnectorAzureRepoCredentialsHttpPtr and ConnectorAzureRepoCredentialsHttpPtrOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoCredentialsHttpPtrInput` via:
+//
+//	        ConnectorAzureRepoCredentialsHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAzureRepoCredentialsHttpPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoCredentialsHttpPtrOutput() ConnectorAzureRepoCredentialsHttpPtrOutput
+	ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(context.Context) ConnectorAzureRepoCredentialsHttpPtrOutput
+}
+
+type connectorAzureRepoCredentialsHttpPtrType ConnectorAzureRepoCredentialsHttpArgs
+
+func ConnectorAzureRepoCredentialsHttpPtr(v *ConnectorAzureRepoCredentialsHttpArgs) ConnectorAzureRepoCredentialsHttpPtrInput {
+	return (*connectorAzureRepoCredentialsHttpPtrType)(v)
+}
+
+func (*connectorAzureRepoCredentialsHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoCredentialsHttp)(nil)).Elem()
+}
+
+func (i *connectorAzureRepoCredentialsHttpPtrType) ToConnectorAzureRepoCredentialsHttpPtrOutput() ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return i.ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAzureRepoCredentialsHttpPtrType) ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsHttpPtrOutput)
+}
+
+type ConnectorAzureRepoCredentialsHttpOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoCredentialsHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoCredentialsHttp)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoCredentialsHttpOutput) ToConnectorAzureRepoCredentialsHttpOutput() ConnectorAzureRepoCredentialsHttpOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsHttpOutput) ToConnectorAzureRepoCredentialsHttpOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsHttpOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsHttpOutput) ToConnectorAzureRepoCredentialsHttpPtrOutput() ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return o.ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAzureRepoCredentialsHttpOutput) ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAzureRepoCredentialsHttp) *ConnectorAzureRepoCredentialsHttp {
+		return &v
+	}).(ConnectorAzureRepoCredentialsHttpPtrOutput)
+}
+
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoCredentialsHttpOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAzureRepoCredentialsHttp) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o ConnectorAzureRepoCredentialsHttpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAzureRepoCredentialsHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoCredentialsHttpOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAzureRepoCredentialsHttp) *string { return v.UsernameRef }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorAzureRepoCredentialsHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoCredentialsHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoCredentialsHttp)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoCredentialsHttpPtrOutput) ToConnectorAzureRepoCredentialsHttpPtrOutput() ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsHttpPtrOutput) ToConnectorAzureRepoCredentialsHttpPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsHttpPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsHttpPtrOutput) Elem() ConnectorAzureRepoCredentialsHttpOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentialsHttp) ConnectorAzureRepoCredentialsHttp {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAzureRepoCredentialsHttp
+		return ret
+	}).(ConnectorAzureRepoCredentialsHttpOutput)
+}
+
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoCredentialsHttpPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to use for authentication.
+func (o ConnectorAzureRepoCredentialsHttpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoCredentialsHttpPtrOutput) UsernameRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentialsHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorAzureRepoCredentialsSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// ConnectorAzureRepoCredentialsSshInput is an input type that accepts ConnectorAzureRepoCredentialsSshArgs and ConnectorAzureRepoCredentialsSshOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoCredentialsSshInput` via:
+//
+//	ConnectorAzureRepoCredentialsSshArgs{...}
+type ConnectorAzureRepoCredentialsSshInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoCredentialsSshOutput() ConnectorAzureRepoCredentialsSshOutput
+	ToConnectorAzureRepoCredentialsSshOutputWithContext(context.Context) ConnectorAzureRepoCredentialsSshOutput
+}
+
+type ConnectorAzureRepoCredentialsSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (ConnectorAzureRepoCredentialsSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoCredentialsSsh)(nil)).Elem()
+}
+
+func (i ConnectorAzureRepoCredentialsSshArgs) ToConnectorAzureRepoCredentialsSshOutput() ConnectorAzureRepoCredentialsSshOutput {
+	return i.ToConnectorAzureRepoCredentialsSshOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoCredentialsSshArgs) ToConnectorAzureRepoCredentialsSshOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsSshOutput)
+}
+
+func (i ConnectorAzureRepoCredentialsSshArgs) ToConnectorAzureRepoCredentialsSshPtrOutput() ConnectorAzureRepoCredentialsSshPtrOutput {
+	return i.ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAzureRepoCredentialsSshArgs) ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsSshOutput).ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(ctx)
+}
+
+// ConnectorAzureRepoCredentialsSshPtrInput is an input type that accepts ConnectorAzureRepoCredentialsSshArgs, ConnectorAzureRepoCredentialsSshPtr and ConnectorAzureRepoCredentialsSshPtrOutput values.
+// You can construct a concrete instance of `ConnectorAzureRepoCredentialsSshPtrInput` via:
+//
+//	        ConnectorAzureRepoCredentialsSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAzureRepoCredentialsSshPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAzureRepoCredentialsSshPtrOutput() ConnectorAzureRepoCredentialsSshPtrOutput
+	ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(context.Context) ConnectorAzureRepoCredentialsSshPtrOutput
+}
+
+type connectorAzureRepoCredentialsSshPtrType ConnectorAzureRepoCredentialsSshArgs
+
+func ConnectorAzureRepoCredentialsSshPtr(v *ConnectorAzureRepoCredentialsSshArgs) ConnectorAzureRepoCredentialsSshPtrInput {
+	return (*connectorAzureRepoCredentialsSshPtrType)(v)
+}
+
+func (*connectorAzureRepoCredentialsSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoCredentialsSsh)(nil)).Elem()
+}
+
+func (i *connectorAzureRepoCredentialsSshPtrType) ToConnectorAzureRepoCredentialsSshPtrOutput() ConnectorAzureRepoCredentialsSshPtrOutput {
+	return i.ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAzureRepoCredentialsSshPtrType) ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAzureRepoCredentialsSshPtrOutput)
+}
+
+type ConnectorAzureRepoCredentialsSshOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoCredentialsSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAzureRepoCredentialsSsh)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoCredentialsSshOutput) ToConnectorAzureRepoCredentialsSshOutput() ConnectorAzureRepoCredentialsSshOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsSshOutput) ToConnectorAzureRepoCredentialsSshOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsSshOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsSshOutput) ToConnectorAzureRepoCredentialsSshPtrOutput() ConnectorAzureRepoCredentialsSshPtrOutput {
+	return o.ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAzureRepoCredentialsSshOutput) ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAzureRepoCredentialsSsh) *ConnectorAzureRepoCredentialsSsh {
+		return &v
+	}).(ConnectorAzureRepoCredentialsSshPtrOutput)
+}
+
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoCredentialsSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAzureRepoCredentialsSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type ConnectorAzureRepoCredentialsSshPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAzureRepoCredentialsSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAzureRepoCredentialsSsh)(nil)).Elem()
+}
+
+func (o ConnectorAzureRepoCredentialsSshPtrOutput) ToConnectorAzureRepoCredentialsSshPtrOutput() ConnectorAzureRepoCredentialsSshPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsSshPtrOutput) ToConnectorAzureRepoCredentialsSshPtrOutputWithContext(ctx context.Context) ConnectorAzureRepoCredentialsSshPtrOutput {
+	return o
+}
+
+func (o ConnectorAzureRepoCredentialsSshPtrOutput) Elem() ConnectorAzureRepoCredentialsSshOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentialsSsh) ConnectorAzureRepoCredentialsSsh {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAzureRepoCredentialsSsh
+		return ret
+	}).(ConnectorAzureRepoCredentialsSshOutput)
+}
+
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o ConnectorAzureRepoCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAzureRepoCredentialsSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectorCustomSecretManagerTemplateInput struct {
 	EnvironmentVariables []ConnectorCustomSecretManagerTemplateInputEnvironmentVariable `pulumi:"environmentVariables"`
 }
@@ -41092,6 +41697,421 @@ func (o GetCcmFiltersFilterPropertyArrayOutput) Index(i pulumi.IntInput) GetCcmF
 	}).(GetCcmFiltersFilterPropertyOutput)
 }
 
+type GetConnectorAzureRepoApiAuthentication struct {
+	// Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// GetConnectorAzureRepoApiAuthenticationInput is an input type that accepts GetConnectorAzureRepoApiAuthenticationArgs and GetConnectorAzureRepoApiAuthenticationOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoApiAuthenticationInput` via:
+//
+//	GetConnectorAzureRepoApiAuthenticationArgs{...}
+type GetConnectorAzureRepoApiAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoApiAuthenticationOutput() GetConnectorAzureRepoApiAuthenticationOutput
+	ToGetConnectorAzureRepoApiAuthenticationOutputWithContext(context.Context) GetConnectorAzureRepoApiAuthenticationOutput
+}
+
+type GetConnectorAzureRepoApiAuthenticationArgs struct {
+	// Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (GetConnectorAzureRepoApiAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoApiAuthenticationArgs) ToGetConnectorAzureRepoApiAuthenticationOutput() GetConnectorAzureRepoApiAuthenticationOutput {
+	return i.ToGetConnectorAzureRepoApiAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoApiAuthenticationArgs) ToGetConnectorAzureRepoApiAuthenticationOutputWithContext(ctx context.Context) GetConnectorAzureRepoApiAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoApiAuthenticationOutput)
+}
+
+// GetConnectorAzureRepoApiAuthenticationArrayInput is an input type that accepts GetConnectorAzureRepoApiAuthenticationArray and GetConnectorAzureRepoApiAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoApiAuthenticationArrayInput` via:
+//
+//	GetConnectorAzureRepoApiAuthenticationArray{ GetConnectorAzureRepoApiAuthenticationArgs{...} }
+type GetConnectorAzureRepoApiAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoApiAuthenticationArrayOutput() GetConnectorAzureRepoApiAuthenticationArrayOutput
+	ToGetConnectorAzureRepoApiAuthenticationArrayOutputWithContext(context.Context) GetConnectorAzureRepoApiAuthenticationArrayOutput
+}
+
+type GetConnectorAzureRepoApiAuthenticationArray []GetConnectorAzureRepoApiAuthenticationInput
+
+func (GetConnectorAzureRepoApiAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoApiAuthenticationArray) ToGetConnectorAzureRepoApiAuthenticationArrayOutput() GetConnectorAzureRepoApiAuthenticationArrayOutput {
+	return i.ToGetConnectorAzureRepoApiAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoApiAuthenticationArray) ToGetConnectorAzureRepoApiAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoApiAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoApiAuthenticationArrayOutput)
+}
+
+type GetConnectorAzureRepoApiAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoApiAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoApiAuthenticationOutput) ToGetConnectorAzureRepoApiAuthenticationOutput() GetConnectorAzureRepoApiAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoApiAuthenticationOutput) ToGetConnectorAzureRepoApiAuthenticationOutputWithContext(ctx context.Context) GetConnectorAzureRepoApiAuthenticationOutput {
+	return o
+}
+
+// Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorAzureRepoApiAuthenticationOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAzureRepoApiAuthentication) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorAzureRepoApiAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoApiAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoApiAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoApiAuthenticationArrayOutput) ToGetConnectorAzureRepoApiAuthenticationArrayOutput() GetConnectorAzureRepoApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoApiAuthenticationArrayOutput) ToGetConnectorAzureRepoApiAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoApiAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoApiAuthenticationArrayOutput) Index(i pulumi.IntInput) GetConnectorAzureRepoApiAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAzureRepoApiAuthentication {
+		return vs[0].([]GetConnectorAzureRepoApiAuthentication)[vs[1].(int)]
+	}).(GetConnectorAzureRepoApiAuthenticationOutput)
+}
+
+type GetConnectorAzureRepoCredential struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Https []GetConnectorAzureRepoCredentialHttp `pulumi:"https"`
+	// Authenticate using SSH for the connection.
+	Sshes []GetConnectorAzureRepoCredentialSsh `pulumi:"sshes"`
+}
+
+// GetConnectorAzureRepoCredentialInput is an input type that accepts GetConnectorAzureRepoCredentialArgs and GetConnectorAzureRepoCredentialOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoCredentialInput` via:
+//
+//	GetConnectorAzureRepoCredentialArgs{...}
+type GetConnectorAzureRepoCredentialInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoCredentialOutput() GetConnectorAzureRepoCredentialOutput
+	ToGetConnectorAzureRepoCredentialOutputWithContext(context.Context) GetConnectorAzureRepoCredentialOutput
+}
+
+type GetConnectorAzureRepoCredentialArgs struct {
+	// Authenticate using Username and password over http(s) for the connection.
+	Https GetConnectorAzureRepoCredentialHttpArrayInput `pulumi:"https"`
+	// Authenticate using SSH for the connection.
+	Sshes GetConnectorAzureRepoCredentialSshArrayInput `pulumi:"sshes"`
+}
+
+func (GetConnectorAzureRepoCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoCredential)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoCredentialArgs) ToGetConnectorAzureRepoCredentialOutput() GetConnectorAzureRepoCredentialOutput {
+	return i.ToGetConnectorAzureRepoCredentialOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoCredentialArgs) ToGetConnectorAzureRepoCredentialOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoCredentialOutput)
+}
+
+// GetConnectorAzureRepoCredentialArrayInput is an input type that accepts GetConnectorAzureRepoCredentialArray and GetConnectorAzureRepoCredentialArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoCredentialArrayInput` via:
+//
+//	GetConnectorAzureRepoCredentialArray{ GetConnectorAzureRepoCredentialArgs{...} }
+type GetConnectorAzureRepoCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoCredentialArrayOutput() GetConnectorAzureRepoCredentialArrayOutput
+	ToGetConnectorAzureRepoCredentialArrayOutputWithContext(context.Context) GetConnectorAzureRepoCredentialArrayOutput
+}
+
+type GetConnectorAzureRepoCredentialArray []GetConnectorAzureRepoCredentialInput
+
+func (GetConnectorAzureRepoCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoCredential)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoCredentialArray) ToGetConnectorAzureRepoCredentialArrayOutput() GetConnectorAzureRepoCredentialArrayOutput {
+	return i.ToGetConnectorAzureRepoCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoCredentialArray) ToGetConnectorAzureRepoCredentialArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoCredentialArrayOutput)
+}
+
+type GetConnectorAzureRepoCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoCredential)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoCredentialOutput) ToGetConnectorAzureRepoCredentialOutput() GetConnectorAzureRepoCredentialOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialOutput) ToGetConnectorAzureRepoCredentialOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialOutput {
+	return o
+}
+
+// Authenticate using Username and password over http(s) for the connection.
+func (o GetConnectorAzureRepoCredentialOutput) Https() GetConnectorAzureRepoCredentialHttpArrayOutput {
+	return o.ApplyT(func(v GetConnectorAzureRepoCredential) []GetConnectorAzureRepoCredentialHttp { return v.Https }).(GetConnectorAzureRepoCredentialHttpArrayOutput)
+}
+
+// Authenticate using SSH for the connection.
+func (o GetConnectorAzureRepoCredentialOutput) Sshes() GetConnectorAzureRepoCredentialSshArrayOutput {
+	return o.ApplyT(func(v GetConnectorAzureRepoCredential) []GetConnectorAzureRepoCredentialSsh { return v.Sshes }).(GetConnectorAzureRepoCredentialSshArrayOutput)
+}
+
+type GetConnectorAzureRepoCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoCredential)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoCredentialArrayOutput) ToGetConnectorAzureRepoCredentialArrayOutput() GetConnectorAzureRepoCredentialArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialArrayOutput) ToGetConnectorAzureRepoCredentialArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialArrayOutput) Index(i pulumi.IntInput) GetConnectorAzureRepoCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAzureRepoCredential {
+		return vs[0].([]GetConnectorAzureRepoCredential)[vs[1].(int)]
+	}).(GetConnectorAzureRepoCredentialOutput)
+}
+
+type GetConnectorAzureRepoCredentialHttp struct {
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetConnectorAzureRepoCredentialHttpInput is an input type that accepts GetConnectorAzureRepoCredentialHttpArgs and GetConnectorAzureRepoCredentialHttpOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoCredentialHttpInput` via:
+//
+//	GetConnectorAzureRepoCredentialHttpArgs{...}
+type GetConnectorAzureRepoCredentialHttpInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoCredentialHttpOutput() GetConnectorAzureRepoCredentialHttpOutput
+	ToGetConnectorAzureRepoCredentialHttpOutputWithContext(context.Context) GetConnectorAzureRepoCredentialHttpOutput
+}
+
+type GetConnectorAzureRepoCredentialHttpArgs struct {
+	// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetConnectorAzureRepoCredentialHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoCredentialHttp)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoCredentialHttpArgs) ToGetConnectorAzureRepoCredentialHttpOutput() GetConnectorAzureRepoCredentialHttpOutput {
+	return i.ToGetConnectorAzureRepoCredentialHttpOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoCredentialHttpArgs) ToGetConnectorAzureRepoCredentialHttpOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoCredentialHttpOutput)
+}
+
+// GetConnectorAzureRepoCredentialHttpArrayInput is an input type that accepts GetConnectorAzureRepoCredentialHttpArray and GetConnectorAzureRepoCredentialHttpArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoCredentialHttpArrayInput` via:
+//
+//	GetConnectorAzureRepoCredentialHttpArray{ GetConnectorAzureRepoCredentialHttpArgs{...} }
+type GetConnectorAzureRepoCredentialHttpArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoCredentialHttpArrayOutput() GetConnectorAzureRepoCredentialHttpArrayOutput
+	ToGetConnectorAzureRepoCredentialHttpArrayOutputWithContext(context.Context) GetConnectorAzureRepoCredentialHttpArrayOutput
+}
+
+type GetConnectorAzureRepoCredentialHttpArray []GetConnectorAzureRepoCredentialHttpInput
+
+func (GetConnectorAzureRepoCredentialHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoCredentialHttp)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoCredentialHttpArray) ToGetConnectorAzureRepoCredentialHttpArrayOutput() GetConnectorAzureRepoCredentialHttpArrayOutput {
+	return i.ToGetConnectorAzureRepoCredentialHttpArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoCredentialHttpArray) ToGetConnectorAzureRepoCredentialHttpArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoCredentialHttpArrayOutput)
+}
+
+type GetConnectorAzureRepoCredentialHttpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoCredentialHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoCredentialHttp)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoCredentialHttpOutput) ToGetConnectorAzureRepoCredentialHttpOutput() GetConnectorAzureRepoCredentialHttpOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialHttpOutput) ToGetConnectorAzureRepoCredentialHttpOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialHttpOutput {
+	return o
+}
+
+// Reference to a secret containing the personal access to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorAzureRepoCredentialHttpOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAzureRepoCredentialHttp) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+// Username to use for authentication.
+func (o GetConnectorAzureRepoCredentialHttpOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAzureRepoCredentialHttp) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorAzureRepoCredentialHttpOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAzureRepoCredentialHttp) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorAzureRepoCredentialHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoCredentialHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoCredentialHttp)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoCredentialHttpArrayOutput) ToGetConnectorAzureRepoCredentialHttpArrayOutput() GetConnectorAzureRepoCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialHttpArrayOutput) ToGetConnectorAzureRepoCredentialHttpArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialHttpArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialHttpArrayOutput) Index(i pulumi.IntInput) GetConnectorAzureRepoCredentialHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAzureRepoCredentialHttp {
+		return vs[0].([]GetConnectorAzureRepoCredentialHttp)[vs[1].(int)]
+	}).(GetConnectorAzureRepoCredentialHttpOutput)
+}
+
+type GetConnectorAzureRepoCredentialSsh struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SshKeyRef string `pulumi:"sshKeyRef"`
+}
+
+// GetConnectorAzureRepoCredentialSshInput is an input type that accepts GetConnectorAzureRepoCredentialSshArgs and GetConnectorAzureRepoCredentialSshOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoCredentialSshInput` via:
+//
+//	GetConnectorAzureRepoCredentialSshArgs{...}
+type GetConnectorAzureRepoCredentialSshInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoCredentialSshOutput() GetConnectorAzureRepoCredentialSshOutput
+	ToGetConnectorAzureRepoCredentialSshOutputWithContext(context.Context) GetConnectorAzureRepoCredentialSshOutput
+}
+
+type GetConnectorAzureRepoCredentialSshArgs struct {
+	// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	SshKeyRef pulumi.StringInput `pulumi:"sshKeyRef"`
+}
+
+func (GetConnectorAzureRepoCredentialSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoCredentialSsh)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoCredentialSshArgs) ToGetConnectorAzureRepoCredentialSshOutput() GetConnectorAzureRepoCredentialSshOutput {
+	return i.ToGetConnectorAzureRepoCredentialSshOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoCredentialSshArgs) ToGetConnectorAzureRepoCredentialSshOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoCredentialSshOutput)
+}
+
+// GetConnectorAzureRepoCredentialSshArrayInput is an input type that accepts GetConnectorAzureRepoCredentialSshArray and GetConnectorAzureRepoCredentialSshArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAzureRepoCredentialSshArrayInput` via:
+//
+//	GetConnectorAzureRepoCredentialSshArray{ GetConnectorAzureRepoCredentialSshArgs{...} }
+type GetConnectorAzureRepoCredentialSshArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAzureRepoCredentialSshArrayOutput() GetConnectorAzureRepoCredentialSshArrayOutput
+	ToGetConnectorAzureRepoCredentialSshArrayOutputWithContext(context.Context) GetConnectorAzureRepoCredentialSshArrayOutput
+}
+
+type GetConnectorAzureRepoCredentialSshArray []GetConnectorAzureRepoCredentialSshInput
+
+func (GetConnectorAzureRepoCredentialSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoCredentialSsh)(nil)).Elem()
+}
+
+func (i GetConnectorAzureRepoCredentialSshArray) ToGetConnectorAzureRepoCredentialSshArrayOutput() GetConnectorAzureRepoCredentialSshArrayOutput {
+	return i.ToGetConnectorAzureRepoCredentialSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAzureRepoCredentialSshArray) ToGetConnectorAzureRepoCredentialSshArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAzureRepoCredentialSshArrayOutput)
+}
+
+type GetConnectorAzureRepoCredentialSshOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoCredentialSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAzureRepoCredentialSsh)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoCredentialSshOutput) ToGetConnectorAzureRepoCredentialSshOutput() GetConnectorAzureRepoCredentialSshOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialSshOutput) ToGetConnectorAzureRepoCredentialSshOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialSshOutput {
+	return o
+}
+
+// Reference to the Harness secret containing the ssh key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorAzureRepoCredentialSshOutput) SshKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAzureRepoCredentialSsh) string { return v.SshKeyRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorAzureRepoCredentialSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAzureRepoCredentialSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAzureRepoCredentialSsh)(nil)).Elem()
+}
+
+func (o GetConnectorAzureRepoCredentialSshArrayOutput) ToGetConnectorAzureRepoCredentialSshArrayOutput() GetConnectorAzureRepoCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialSshArrayOutput) ToGetConnectorAzureRepoCredentialSshArrayOutputWithContext(ctx context.Context) GetConnectorAzureRepoCredentialSshArrayOutput {
+	return o
+}
+
+func (o GetConnectorAzureRepoCredentialSshArrayOutput) Index(i pulumi.IntInput) GetConnectorAzureRepoCredentialSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAzureRepoCredentialSsh {
+		return vs[0].([]GetConnectorAzureRepoCredentialSsh)[vs[1].(int)]
+	}).(GetConnectorAzureRepoCredentialSshOutput)
+}
+
 type GetConnectorCustomSecretManagerTemplateInput struct {
 	EnvironmentVariables []GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable `pulumi:"environmentVariables"`
 }
@@ -61359,6 +62379,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketConnectorCredentialsSshPtrInput)(nil)).Elem(), BitbucketConnectorCredentialsSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureArtifactsCredentialsInput)(nil)).Elem(), ConnectorAzureArtifactsCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureArtifactsCredentialsPtrInput)(nil)).Elem(), ConnectorAzureArtifactsCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoApiAuthenticationInput)(nil)).Elem(), ConnectorAzureRepoApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoApiAuthenticationPtrInput)(nil)).Elem(), ConnectorAzureRepoApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoCredentialsInput)(nil)).Elem(), ConnectorAzureRepoCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoCredentialsPtrInput)(nil)).Elem(), ConnectorAzureRepoCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoCredentialsHttpInput)(nil)).Elem(), ConnectorAzureRepoCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoCredentialsHttpPtrInput)(nil)).Elem(), ConnectorAzureRepoCredentialsHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoCredentialsSshInput)(nil)).Elem(), ConnectorAzureRepoCredentialsSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoCredentialsSshPtrInput)(nil)).Elem(), ConnectorAzureRepoCredentialsSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomSecretManagerTemplateInputInput)(nil)).Elem(), ConnectorCustomSecretManagerTemplateInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomSecretManagerTemplateInputArrayInput)(nil)).Elem(), ConnectorCustomSecretManagerTemplateInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorCustomSecretManagerTemplateInputEnvironmentVariableInput)(nil)).Elem(), ConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs{})
@@ -61831,6 +62859,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialSshArrayInput)(nil)).Elem(), GetBitbucketConnectorCredentialSshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCcmFiltersFilterPropertyInput)(nil)).Elem(), GetCcmFiltersFilterPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCcmFiltersFilterPropertyArrayInput)(nil)).Elem(), GetCcmFiltersFilterPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationArrayInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialInput)(nil)).Elem(), GetConnectorAzureRepoCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialArrayInput)(nil)).Elem(), GetConnectorAzureRepoCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialHttpInput)(nil)).Elem(), GetConnectorAzureRepoCredentialHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialHttpArrayInput)(nil)).Elem(), GetConnectorAzureRepoCredentialHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialSshInput)(nil)).Elem(), GetConnectorAzureRepoCredentialSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialSshArrayInput)(nil)).Elem(), GetConnectorAzureRepoCredentialSshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomSecretManagerTemplateInputInput)(nil)).Elem(), GetConnectorCustomSecretManagerTemplateInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomSecretManagerTemplateInputArrayInput)(nil)).Elem(), GetConnectorCustomSecretManagerTemplateInputArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableInput)(nil)).Elem(), GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableArgs{})
@@ -62216,6 +63252,14 @@ func init() {
 	pulumi.RegisterOutputType(BitbucketConnectorCredentialsSshPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorAzureArtifactsCredentialsOutput{})
 	pulumi.RegisterOutputType(ConnectorAzureArtifactsCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoApiAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoCredentialsOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoCredentialsHttpOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoCredentialsHttpPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoCredentialsSshOutput{})
+	pulumi.RegisterOutputType(ConnectorAzureRepoCredentialsSshPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomSecretManagerTemplateInputOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomSecretManagerTemplateInputArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorCustomSecretManagerTemplateInputEnvironmentVariableOutput{})
@@ -62688,6 +63732,14 @@ func init() {
 	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialSshArrayOutput{})
 	pulumi.RegisterOutputType(GetCcmFiltersFilterPropertyOutput{})
 	pulumi.RegisterOutputType(GetCcmFiltersFilterPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialHttpOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialSshOutput{})
+	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialSshArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorCustomSecretManagerTemplateInputOutput{})
 	pulumi.RegisterOutputType(GetConnectorCustomSecretManagerTemplateInputArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorCustomSecretManagerTemplateInputEnvironmentVariableOutput{})
