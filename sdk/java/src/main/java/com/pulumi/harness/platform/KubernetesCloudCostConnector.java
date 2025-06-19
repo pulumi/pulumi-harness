@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Kubernetes Cloud Cost connector.
  * 
+ * These connectors need to be created at the account level in Harness.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -68,30 +70,18 @@ import javax.annotation.Nullable;
  * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;connector_id&gt;
  * ```
  * 
- * Import org level kubernetes cloud cost connector
- * 
- * ```sh
- * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
- * ```
- * 
- * Import project level kubernetes cloud cost connector
- * 
- * ```sh
- * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
- * ```
- * 
  */
 @ResourceType(type="harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector")
 public class KubernetesCloudCostConnector extends com.pulumi.resources.CustomResource {
     /**
-     * Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * Reference to a Kubernetes connector also at the account level.
      * 
      */
     @Export(name="connectorRef", refs={String.class}, tree="[0]")
     private Output<String> connectorRef;
 
     /**
-     * @return Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Reference to a Kubernetes connector also at the account level.
      * 
      */
     public Output<String> connectorRef() {

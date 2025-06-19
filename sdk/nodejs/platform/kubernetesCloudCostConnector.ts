@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a Kubernetes Cloud Cost connector.
  *
+ * These connectors need to be created at the account level in Harness.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -32,18 +34,6 @@ import * as utilities from "../utilities";
  *
  * ```sh
  * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
- * ```
- *
- * Import org level kubernetes cloud cost connector
- *
- * ```sh
- * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
- * ```
- *
- * Import project level kubernetes cloud cost connector
- *
- * ```sh
- * $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
  * ```
  */
 export class KubernetesCloudCostConnector extends pulumi.CustomResource {
@@ -75,7 +65,7 @@ export class KubernetesCloudCostConnector extends pulumi.CustomResource {
     }
 
     /**
-     * Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+     * Reference to a Kubernetes connector also at the account level.
      */
     public readonly connectorRef!: pulumi.Output<string>;
     /**
@@ -158,7 +148,7 @@ export class KubernetesCloudCostConnector extends pulumi.CustomResource {
  */
 export interface KubernetesCloudCostConnectorState {
     /**
-     * Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+     * Reference to a Kubernetes connector also at the account level.
      */
     connectorRef?: pulumi.Input<string>;
     /**
@@ -196,7 +186,7 @@ export interface KubernetesCloudCostConnectorState {
  */
 export interface KubernetesCloudCostConnectorArgs {
     /**
-     * Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+     * Reference to a Kubernetes connector also at the account level.
      */
     connectorRef: pulumi.Input<string>;
     /**

@@ -17,14 +17,14 @@ public final class KubernetesCloudCostConnectorState extends com.pulumi.resource
     public static final KubernetesCloudCostConnectorState Empty = new KubernetesCloudCostConnectorState();
 
     /**
-     * Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * Reference to a Kubernetes connector also at the account level.
      * 
      */
     @Import(name="connectorRef")
     private @Nullable Output<String> connectorRef;
 
     /**
-     * @return Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+     * @return Reference to a Kubernetes connector also at the account level.
      * 
      */
     public Optional<Output<String>> connectorRef() {
@@ -168,7 +168,7 @@ public final class KubernetesCloudCostConnectorState extends com.pulumi.resource
         }
 
         /**
-         * @param connectorRef Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param connectorRef Reference to a Kubernetes connector also at the account level.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class KubernetesCloudCostConnectorState extends com.pulumi.resource
         }
 
         /**
-         * @param connectorRef Reference of the Connector. To reference a connector at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a connector at the account scope, prefix &#39;account` to the expression: account.{identifier}.
+         * @param connectorRef Reference to a Kubernetes connector also at the account level.
          * 
          * @return builder
          * 

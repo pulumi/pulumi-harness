@@ -52,6 +52,8 @@ func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pul
 
 // A collection of arguments for invoking getWorkspace.
 type LookupWorkspaceArgs struct {
+	// Provider connector configured on the workspace
+	Connectors []GetWorkspaceConnector `pulumi:"connectors"`
 	// Description of the Workspace
 	Description *string `pulumi:"description"`
 	// Environment variables configured on the workspace
@@ -76,6 +78,8 @@ type LookupWorkspaceArgs struct {
 
 // A collection of values returned by getWorkspace.
 type LookupWorkspaceResult struct {
+	// Provider connector configured on the workspace
+	Connectors []GetWorkspaceConnector `pulumi:"connectors"`
 	// If enabled cost estimation operations will be performed in this workspace
 	CostEstimationEnabled bool `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
@@ -129,6 +133,8 @@ func LookupWorkspaceOutput(ctx *pulumi.Context, args LookupWorkspaceOutputArgs, 
 
 // A collection of arguments for invoking getWorkspace.
 type LookupWorkspaceOutputArgs struct {
+	// Provider connector configured on the workspace
+	Connectors GetWorkspaceConnectorArrayInput `pulumi:"connectors"`
 	// Description of the Workspace
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Environment variables configured on the workspace
@@ -168,6 +174,11 @@ func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutput() LookupWorks
 
 func (o LookupWorkspaceResultOutput) ToLookupWorkspaceResultOutputWithContext(ctx context.Context) LookupWorkspaceResultOutput {
 	return o
+}
+
+// Provider connector configured on the workspace
+func (o LookupWorkspaceResultOutput) Connectors() GetWorkspaceConnectorArrayOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) []GetWorkspaceConnector { return v.Connectors }).(GetWorkspaceConnectorArrayOutput)
 }
 
 // If enabled cost estimation operations will be performed in this workspace

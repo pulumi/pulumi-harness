@@ -117,6 +117,10 @@ export class Workspace extends pulumi.CustomResource {
     }
 
     /**
+     * Provider connector configured on the workspace
+     */
+    public readonly connectors!: pulumi.Output<outputs.platform.WorkspaceConnector[] | undefined>;
+    /**
      * Cost estimation enabled determines if cost estimation operations are performed.
      */
     public readonly costEstimationEnabled!: pulumi.Output<boolean>;
@@ -151,7 +155,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Provider connector is the reference to the connector for the infrastructure provider
      */
-    public readonly providerConnector!: pulumi.Output<string>;
+    public readonly providerConnector!: pulumi.Output<string | undefined>;
     public readonly provisionerType!: pulumi.Output<string>;
     public readonly provisionerVersion!: pulumi.Output<string>;
     /**
@@ -202,6 +206,7 @@ export class Workspace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceState | undefined;
+            resourceInputs["connectors"] = state ? state.connectors : undefined;
             resourceInputs["costEstimationEnabled"] = state ? state.costEstimationEnabled : undefined;
             resourceInputs["defaultPipelines"] = state ? state.defaultPipelines : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -237,9 +242,6 @@ export class Workspace extends pulumi.CustomResource {
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.providerConnector === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'providerConnector'");
-            }
             if ((!args || args.provisionerType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'provisionerType'");
             }
@@ -255,6 +257,7 @@ export class Workspace extends pulumi.CustomResource {
             if ((!args || args.repositoryPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repositoryPath'");
             }
+            resourceInputs["connectors"] = args ? args.connectors : undefined;
             resourceInputs["costEstimationEnabled"] = args ? args.costEstimationEnabled : undefined;
             resourceInputs["defaultPipelines"] = args ? args.defaultPipelines : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -286,6 +289,10 @@ export class Workspace extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Workspace resources.
  */
 export interface WorkspaceState {
+    /**
+     * Provider connector configured on the workspace
+     */
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[]>;
     /**
      * Cost estimation enabled determines if cost estimation operations are performed.
      */
@@ -365,6 +372,10 @@ export interface WorkspaceState {
  */
 export interface WorkspaceArgs {
     /**
+     * Provider connector configured on the workspace
+     */
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[]>;
+    /**
      * Cost estimation enabled determines if cost estimation operations are performed.
      */
     costEstimationEnabled: pulumi.Input<boolean>;
@@ -399,7 +410,7 @@ export interface WorkspaceArgs {
     /**
      * Provider connector is the reference to the connector for the infrastructure provider
      */
-    providerConnector: pulumi.Input<string>;
+    providerConnector?: pulumi.Input<string>;
     provisionerType: pulumi.Input<string>;
     provisionerVersion: pulumi.Input<string>;
     /**

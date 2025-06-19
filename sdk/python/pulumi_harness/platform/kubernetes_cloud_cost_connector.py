@@ -30,7 +30,7 @@ class KubernetesCloudCostConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a KubernetesCloudCostConnector resource.
-        :param pulumi.Input[builtins.str] connector_ref: Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[builtins.str] connector_ref: Reference to a Kubernetes connector also at the account level.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[builtins.str] description: Description of the resource.
@@ -57,7 +57,7 @@ class KubernetesCloudCostConnectorArgs:
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> pulumi.Input[builtins.str]:
         """
-        Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        Reference to a Kubernetes connector also at the account level.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -163,7 +163,7 @@ class _KubernetesCloudCostConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering KubernetesCloudCostConnector resources.
-        :param pulumi.Input[builtins.str] connector_ref: Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[builtins.str] connector_ref: Reference to a Kubernetes connector also at the account level.
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
@@ -193,7 +193,7 @@ class _KubernetesCloudCostConnectorState:
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        Reference to a Kubernetes connector also at the account level.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -304,6 +304,8 @@ class KubernetesCloudCostConnector(pulumi.CustomResource):
         """
         Resource for creating a Kubernetes Cloud Cost connector.
 
+        These connectors need to be created at the account level in Harness.
+
         ## Example Usage
 
         ```python
@@ -330,21 +332,9 @@ class KubernetesCloudCostConnector(pulumi.CustomResource):
         $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
         ```
 
-        Import org level kubernetes cloud cost connector
-
-        ```sh
-        $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
-        ```
-
-        Import project level kubernetes cloud cost connector
-
-        ```sh
-        $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] connector_ref: Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[builtins.str] connector_ref: Reference to a Kubernetes connector also at the account level.
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
@@ -362,6 +352,8 @@ class KubernetesCloudCostConnector(pulumi.CustomResource):
         """
         Resource for creating a Kubernetes Cloud Cost connector.
 
+        These connectors need to be created at the account level in Harness.
+
         ## Example Usage
 
         ```python
@@ -386,18 +378,6 @@ class KubernetesCloudCostConnector(pulumi.CustomResource):
 
         ```sh
         $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
-        ```
-
-        Import org level kubernetes cloud cost connector
-
-        ```sh
-        $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
-        ```
-
-        Import project level kubernetes cloud cost connector
-
-        ```sh
-        $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -471,7 +451,7 @@ class KubernetesCloudCostConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] connector_ref: Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        :param pulumi.Input[builtins.str] connector_ref: Reference to a Kubernetes connector also at the account level.
         :param pulumi.Input[builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, and Visibility.
         :param pulumi.Input[builtins.str] identifier: Unique identifier of the resource.
@@ -498,7 +478,7 @@ class KubernetesCloudCostConnector(pulumi.CustomResource):
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> pulumi.Output[builtins.str]:
         """
-        Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        Reference to a Kubernetes connector also at the account level.
         """
         return pulumi.get(self, "connector_ref")
 

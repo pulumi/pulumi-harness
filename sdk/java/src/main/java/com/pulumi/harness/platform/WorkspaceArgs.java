@@ -6,6 +6,7 @@ package com.pulumi.harness.platform;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.WorkspaceConnectorArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
@@ -21,6 +22,21 @@ import javax.annotation.Nullable;
 public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkspaceArgs Empty = new WorkspaceArgs();
+
+    /**
+     * Provider connector configured on the workspace
+     * 
+     */
+    @Import(name="connectors")
+    private @Nullable Output<List<WorkspaceConnectorArgs>> connectors;
+
+    /**
+     * @return Provider connector configured on the workspace
+     * 
+     */
+    public Optional<Output<List<WorkspaceConnectorArgs>>> connectors() {
+        return Optional.ofNullable(this.connectors);
+    }
 
     /**
      * Cost estimation enabled determines if cost estimation operations are performed.
@@ -146,15 +162,15 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
      * Provider connector is the reference to the connector for the infrastructure provider
      * 
      */
-    @Import(name="providerConnector", required=true)
-    private Output<String> providerConnector;
+    @Import(name="providerConnector")
+    private @Nullable Output<String> providerConnector;
 
     /**
      * @return Provider connector is the reference to the connector for the infrastructure provider
      * 
      */
-    public Output<String> providerConnector() {
-        return this.providerConnector;
+    public Optional<Output<String>> providerConnector() {
+        return Optional.ofNullable(this.providerConnector);
     }
 
     @Import(name="provisionerType", required=true)
@@ -308,6 +324,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
     private WorkspaceArgs() {}
 
     private WorkspaceArgs(WorkspaceArgs $) {
+        this.connectors = $.connectors;
         this.costEstimationEnabled = $.costEstimationEnabled;
         this.defaultPipelines = $.defaultPipelines;
         this.description = $.description;
@@ -347,6 +364,37 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WorkspaceArgs defaults) {
             $ = new WorkspaceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(@Nullable Output<List<WorkspaceConnectorArgs>> connectors) {
+            $.connectors = connectors;
+            return this;
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(List<WorkspaceConnectorArgs> connectors) {
+            return connectors(Output.of(connectors));
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(WorkspaceConnectorArgs... connectors) {
+            return connectors(List.of(connectors));
         }
 
         /**
@@ -533,7 +581,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder providerConnector(Output<String> providerConnector) {
+        public Builder providerConnector(@Nullable Output<String> providerConnector) {
             $.providerConnector = providerConnector;
             return this;
         }
@@ -792,9 +840,6 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.projectId == null) {
                 throw new MissingRequiredPropertyException("WorkspaceArgs", "projectId");
-            }
-            if ($.providerConnector == null) {
-                throw new MissingRequiredPropertyException("WorkspaceArgs", "providerConnector");
             }
             if ($.provisionerType == null) {
                 throw new MissingRequiredPropertyException("WorkspaceArgs", "provisionerType");

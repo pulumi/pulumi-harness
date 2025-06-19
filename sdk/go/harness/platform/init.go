@@ -57,6 +57,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectorPdc{}
 	case "harness:platform/connectorRancher:ConnectorRancher":
 		r = &ConnectorRancher{}
+	case "harness:platform/dashboardFolders:DashboardFolders":
+		r = &DashboardFolders{}
+	case "harness:platform/dashboards:Dashboards":
+		r = &Dashboards{}
 	case "harness:platform/datadogConnector:DatadogConnector":
 		r = &DatadogConnector{}
 	case "harness:platform/dbInstance:DbInstance":
@@ -123,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GitopsAppProject{}
 	case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
 		r = &GitopsAppProjectMapping{}
+	case "harness:platform/gitopsApplicationset:GitopsApplicationset":
+		r = &GitopsApplicationset{}
 	case "harness:platform/gitopsFilters:GitopsFilters":
 		r = &GitopsFilters{}
 	case "harness:platform/gitxWebhook:GitxWebhook":
@@ -342,6 +348,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/dashboardFolders",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/dashboards",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/datadogConnector",
 		&module{version},
 	)
@@ -503,6 +519,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/gitopsAppProjectMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/gitopsApplicationset",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

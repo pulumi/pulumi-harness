@@ -49,6 +49,10 @@ import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorRancherPlainArgs;
 import com.pulumi.harness.platform.inputs.GetCurrentAccountArgs;
 import com.pulumi.harness.platform.inputs.GetCurrentAccountPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+import com.pulumi.harness.platform.inputs.GetDashboardFoldersPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
+import com.pulumi.harness.platform.inputs.GetDashboardsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDatadogConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetDatadogConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDbInstanceArgs;
@@ -256,6 +260,8 @@ import com.pulumi.harness.platform.outputs.GetConnectorPdcResult;
 import com.pulumi.harness.platform.outputs.GetConnectorRancherResult;
 import com.pulumi.harness.platform.outputs.GetCurrentAccountResult;
 import com.pulumi.harness.platform.outputs.GetCurrentUserResult;
+import com.pulumi.harness.platform.outputs.GetDashboardFoldersResult;
+import com.pulumi.harness.platform.outputs.GetDashboardsResult;
 import com.pulumi.harness.platform.outputs.GetDatadogConnectorResult;
 import com.pulumi.harness.platform.outputs.GetDbInstanceResult;
 import com.pulumi.harness.platform.outputs.GetDbSchemaResult;
@@ -4222,6 +4228,426 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetCurrentUserResult> getCurrentUserPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard Folder.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .id("your_folder_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardFoldersResult> getDashboardFolders(GetDashboardFoldersArgs args) {
+        return getDashboardFolders(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard Folder.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .id("your_folder_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDashboardFoldersResult> getDashboardFoldersPlain(GetDashboardFoldersPlainArgs args) {
+        return getDashboardFoldersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard Folder.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .id("your_folder_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardFoldersResult> getDashboardFolders(GetDashboardFoldersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDashboardFolders:getDashboardFolders", TypeShape.of(GetDashboardFoldersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard Folder.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .id("your_folder_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardFoldersResult> getDashboardFolders(GetDashboardFoldersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDashboardFolders:getDashboardFolders", TypeShape.of(GetDashboardFoldersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard Folder.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .id("your_folder_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDashboardFoldersResult> getDashboardFoldersPlain(GetDashboardFoldersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDashboardFolders:getDashboardFolders", TypeShape.of(GetDashboardFoldersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .id("48525")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args) {
+        return getDashboards(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .id("48525")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args) {
+        return getDashboardsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .id("48525")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .id("48525")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Dashboard.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .id("48525")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for looking up a Datadog connector.

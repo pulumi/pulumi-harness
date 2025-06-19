@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.WorkspaceArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceState;
+import com.pulumi.harness.platform.outputs.WorkspaceConnector;
 import com.pulumi.harness.platform.outputs.WorkspaceEnvironmentVariable;
 import com.pulumi.harness.platform.outputs.WorkspaceTerraformVariable;
 import com.pulumi.harness.platform.outputs.WorkspaceTerraformVariableFile;
@@ -130,6 +131,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/workspace:Workspace")
 public class Workspace extends com.pulumi.resources.CustomResource {
     /**
+     * Provider connector configured on the workspace
+     * 
+     */
+    @Export(name="connectors", refs={List.class,WorkspaceConnector.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkspaceConnector>> connectors;
+
+    /**
+     * @return Provider connector configured on the workspace
+     * 
+     */
+    public Output<Optional<List<WorkspaceConnector>>> connectors() {
+        return Codegen.optional(this.connectors);
+    }
+    /**
      * Cost estimation enabled determines if cost estimation operations are performed.
      * 
      */
@@ -246,14 +261,14 @@ public class Workspace extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConnector", refs={String.class}, tree="[0]")
-    private Output<String> providerConnector;
+    private Output</* @Nullable */ String> providerConnector;
 
     /**
      * @return Provider connector is the reference to the connector for the infrastructure provider
      * 
      */
-    public Output<String> providerConnector() {
-        return this.providerConnector;
+    public Output<Optional<String>> providerConnector() {
+        return Codegen.optional(this.providerConnector);
     }
     @Export(name="provisionerType", refs={String.class}, tree="[0]")
     private Output<String> provisionerType;

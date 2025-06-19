@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.inputs.GetWorkspaceConnector;
 import com.pulumi.harness.platform.inputs.GetWorkspaceEnvironmentVariable;
 import com.pulumi.harness.platform.inputs.GetWorkspaceTerraformVariable;
 import com.pulumi.harness.platform.inputs.GetWorkspaceTerraformVariableFile;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWorkspacePlainArgs Empty = new GetWorkspacePlainArgs();
+
+    /**
+     * Provider connector configured on the workspace
+     * 
+     */
+    @Import(name="connectors")
+    private @Nullable List<GetWorkspaceConnector> connectors;
+
+    /**
+     * @return Provider connector configured on the workspace
+     * 
+     */
+    public Optional<List<GetWorkspaceConnector>> connectors() {
+        return Optional.ofNullable(this.connectors);
+    }
 
     /**
      * Description of the Workspace
@@ -171,6 +187,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
     private GetWorkspacePlainArgs() {}
 
     private GetWorkspacePlainArgs(GetWorkspacePlainArgs $) {
+        this.connectors = $.connectors;
         this.description = $.description;
         this.environmentVariables = $.environmentVariables;
         this.identifier = $.identifier;
@@ -200,6 +217,27 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder(GetWorkspacePlainArgs defaults) {
             $ = new GetWorkspacePlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(@Nullable List<GetWorkspaceConnector> connectors) {
+            $.connectors = connectors;
+            return this;
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(GetWorkspaceConnector... connectors) {
+            return connectors(List.of(connectors));
         }
 
         /**
