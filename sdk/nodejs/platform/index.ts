@@ -95,6 +95,16 @@ export type ConnectorRancher = import("./connectorRancher").ConnectorRancher;
 export const ConnectorRancher: typeof import("./connectorRancher").ConnectorRancher = null as any;
 utilities.lazyLoad(exports, ["ConnectorRancher"], () => require("./connectorRancher"));
 
+export { DashboardFoldersArgs, DashboardFoldersState } from "./dashboardFolders";
+export type DashboardFolders = import("./dashboardFolders").DashboardFolders;
+export const DashboardFolders: typeof import("./dashboardFolders").DashboardFolders = null as any;
+utilities.lazyLoad(exports, ["DashboardFolders"], () => require("./dashboardFolders"));
+
+export { DashboardsArgs, DashboardsState } from "./dashboards";
+export type Dashboards = import("./dashboards").Dashboards;
+export const Dashboards: typeof import("./dashboards").Dashboards = null as any;
+utilities.lazyLoad(exports, ["Dashboards"], () => require("./dashboards"));
+
 export { DatadogConnectorArgs, DatadogConnectorState } from "./datadogConnector";
 export type DatadogConnector = import("./datadogConnector").DatadogConnector;
 export const DatadogConnector: typeof import("./datadogConnector").DatadogConnector = null as any;
@@ -304,6 +314,16 @@ export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
 utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
+
+export { GetDashboardFoldersArgs, GetDashboardFoldersResult, GetDashboardFoldersOutputArgs } from "./getDashboardFolders";
+export const getDashboardFolders: typeof import("./getDashboardFolders").getDashboardFolders = null as any;
+export const getDashboardFoldersOutput: typeof import("./getDashboardFolders").getDashboardFoldersOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboardFolders","getDashboardFoldersOutput"], () => require("./getDashboardFolders"));
+
+export { GetDashboardsArgs, GetDashboardsResult, GetDashboardsOutputArgs } from "./getDashboards";
+export const getDashboards: typeof import("./getDashboards").getDashboards = null as any;
+export const getDashboardsOutput: typeof import("./getDashboards").getDashboardsOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboards","getDashboardsOutput"], () => require("./getDashboards"));
 
 export { GetDatadogConnectorArgs, GetDatadogConnectorResult, GetDatadogConnectorOutputArgs } from "./getDatadogConnector";
 export const getDatadogConnector: typeof import("./getDatadogConnector").getDatadogConnector = null as any;
@@ -830,6 +850,11 @@ export type GitopsAppProjectMapping = import("./gitopsAppProjectMapping").Gitops
 export const GitopsAppProjectMapping: typeof import("./gitopsAppProjectMapping").GitopsAppProjectMapping = null as any;
 utilities.lazyLoad(exports, ["GitopsAppProjectMapping"], () => require("./gitopsAppProjectMapping"));
 
+export { GitopsApplicationsetArgs, GitopsApplicationsetState } from "./gitopsApplicationset";
+export type GitopsApplicationset = import("./gitopsApplicationset").GitopsApplicationset;
+export const GitopsApplicationset: typeof import("./gitopsApplicationset").GitopsApplicationset = null as any;
+utilities.lazyLoad(exports, ["GitopsApplicationset"], () => require("./gitopsApplicationset"));
+
 export { GitopsFiltersArgs, GitopsFiltersState } from "./gitopsFilters";
 export type GitopsFilters = import("./gitopsFilters").GitopsFilters;
 export const GitopsFilters: typeof import("./gitopsFilters").GitopsFilters = null as any;
@@ -1156,6 +1181,10 @@ const _module = {
                 return new ConnectorPdc(name, <any>undefined, { urn })
             case "harness:platform/connectorRancher:ConnectorRancher":
                 return new ConnectorRancher(name, <any>undefined, { urn })
+            case "harness:platform/dashboardFolders:DashboardFolders":
+                return new DashboardFolders(name, <any>undefined, { urn })
+            case "harness:platform/dashboards:Dashboards":
+                return new Dashboards(name, <any>undefined, { urn })
             case "harness:platform/datadogConnector:DatadogConnector":
                 return new DatadogConnector(name, <any>undefined, { urn })
             case "harness:platform/dbInstance:DbInstance":
@@ -1222,6 +1251,8 @@ const _module = {
                 return new GitopsAppProject(name, <any>undefined, { urn })
             case "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping":
                 return new GitopsAppProjectMapping(name, <any>undefined, { urn })
+            case "harness:platform/gitopsApplicationset:GitopsApplicationset":
+                return new GitopsApplicationset(name, <any>undefined, { urn })
             case "harness:platform/gitopsFilters:GitopsFilters":
                 return new GitopsFilters(name, <any>undefined, { urn })
             case "harness:platform/gitxWebhook:GitxWebhook":
@@ -1359,6 +1390,8 @@ pulumi.runtime.registerResourceModule("harness", "platform/connectorGcpKms", _mo
 pulumi.runtime.registerResourceModule("harness", "platform/connectorJdbc", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorPdc", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorRancher", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/dashboardFolders", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/dashboards", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/datadogConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dbInstance", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dbSchema", _module)
@@ -1392,6 +1425,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/githubConnector", _mo
 pulumi.runtime.registerResourceModule("harness", "platform/gitlabConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProject", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMapping", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/gitopsApplicationset", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module)

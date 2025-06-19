@@ -29,7 +29,10 @@ class GetWorkspaceResult:
     """
     A collection of values returned by getWorkspace.
     """
-    def __init__(__self__, cost_estimation_enabled=None, default_pipelines=None, description=None, environment_variables=None, id=None, identifier=None, name=None, org_id=None, project_id=None, provider_connector=None, provisioner_type=None, provisioner_version=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_sha=None, terraform_variable_files=None, terraform_variables=None, variable_sets=None):
+    def __init__(__self__, connectors=None, cost_estimation_enabled=None, default_pipelines=None, description=None, environment_variables=None, id=None, identifier=None, name=None, org_id=None, project_id=None, provider_connector=None, provisioner_type=None, provisioner_version=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_sha=None, terraform_variable_files=None, terraform_variables=None, variable_sets=None):
+        if connectors and not isinstance(connectors, list):
+            raise TypeError("Expected argument 'connectors' to be a list")
+        pulumi.set(__self__, "connectors", connectors)
         if cost_estimation_enabled and not isinstance(cost_estimation_enabled, bool):
             raise TypeError("Expected argument 'cost_estimation_enabled' to be a bool")
         pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
@@ -93,6 +96,14 @@ class GetWorkspaceResult:
         if variable_sets and not isinstance(variable_sets, list):
             raise TypeError("Expected argument 'variable_sets' to be a list")
         pulumi.set(__self__, "variable_sets", variable_sets)
+
+    @property
+    @pulumi.getter
+    def connectors(self) -> Optional[Sequence['outputs.GetWorkspaceConnectorResult']]:
+        """
+        Provider connector configured on the workspace
+        """
+        return pulumi.get(self, "connectors")
 
     @property
     @pulumi.getter(name="costEstimationEnabled")
@@ -263,6 +274,7 @@ class AwaitableGetWorkspaceResult(GetWorkspaceResult):
         if False:
             yield self
         return GetWorkspaceResult(
+            connectors=self.connectors,
             cost_estimation_enabled=self.cost_estimation_enabled,
             default_pipelines=self.default_pipelines,
             description=self.description,
@@ -286,7 +298,8 @@ class AwaitableGetWorkspaceResult(GetWorkspaceResult):
             variable_sets=self.variable_sets)
 
 
-def get_workspace(description: Optional[builtins.str] = None,
+def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']]] = None,
+                  description: Optional[builtins.str] = None,
                   environment_variables: Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']]] = None,
                   identifier: Optional[builtins.str] = None,
                   org_id: Optional[builtins.str] = None,
@@ -313,6 +326,7 @@ def get_workspace(description: Optional[builtins.str] = None,
     ```
 
 
+    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connector configured on the workspace
     :param builtins.str description: Description of the Workspace
     :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
     :param builtins.str identifier: Identifier of the Workspace
@@ -324,6 +338,7 @@ def get_workspace(description: Optional[builtins.str] = None,
     :param Sequence[builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()
+    __args__['connectors'] = connectors
     __args__['description'] = description
     __args__['environmentVariables'] = environment_variables
     __args__['identifier'] = identifier
@@ -339,6 +354,7 @@ def get_workspace(description: Optional[builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getWorkspace:getWorkspace', __args__, opts=opts, typ=GetWorkspaceResult).value
 
     return AwaitableGetWorkspaceResult(
+        connectors=pulumi.get(__ret__, 'connectors'),
         cost_estimation_enabled=pulumi.get(__ret__, 'cost_estimation_enabled'),
         default_pipelines=pulumi.get(__ret__, 'default_pipelines'),
         description=pulumi.get(__ret__, 'description'),
@@ -360,7 +376,8 @@ def get_workspace(description: Optional[builtins.str] = None,
         terraform_variable_files=pulumi.get(__ret__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__ret__, 'terraform_variables'),
         variable_sets=pulumi.get(__ret__, 'variable_sets'))
-def get_workspace_output(description: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+def get_workspace_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']]]]] = None,
+                         description: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                          environment_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']]]]] = None,
                          identifier: Optional[pulumi.Input[builtins.str]] = None,
                          org_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -387,6 +404,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[builtins.st
     ```
 
 
+    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connector configured on the workspace
     :param builtins.str description: Description of the Workspace
     :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
     :param builtins.str identifier: Identifier of the Workspace
@@ -398,6 +416,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[builtins.st
     :param Sequence[builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()
+    __args__['connectors'] = connectors
     __args__['description'] = description
     __args__['environmentVariables'] = environment_variables
     __args__['identifier'] = identifier
@@ -412,6 +431,7 @@ def get_workspace_output(description: Optional[pulumi.Input[Optional[builtins.st
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getWorkspace:getWorkspace', __args__, opts=opts, typ=GetWorkspaceResult)
     return __ret__.apply(lambda __response__: GetWorkspaceResult(
+        connectors=pulumi.get(__response__, 'connectors'),
         cost_estimation_enabled=pulumi.get(__response__, 'cost_estimation_enabled'),
         default_pipelines=pulumi.get(__response__, 'default_pipelines'),
         description=pulumi.get(__response__, 'description'),

@@ -511,6 +511,22 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/dashboardFolders",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/dashboardFolders:DashboardFolders": "DashboardFolders"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/dashboards",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/dashboards:Dashboards": "Dashboards"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/datadogConnector",
   "fqn": "pulumi_harness.platform",
   "classes": {
@@ -771,6 +787,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping": "GitopsAppProjectMapping"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/gitopsApplicationset",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/gitopsApplicationset:GitopsApplicationset": "GitopsApplicationset"
   }
  },
  {

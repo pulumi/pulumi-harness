@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.WorkspaceConnectorArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkspaceState Empty = new WorkspaceState();
+
+    /**
+     * Provider connector configured on the workspace
+     * 
+     */
+    @Import(name="connectors")
+    private @Nullable Output<List<WorkspaceConnectorArgs>> connectors;
+
+    /**
+     * @return Provider connector configured on the workspace
+     * 
+     */
+    public Optional<Output<List<WorkspaceConnectorArgs>>> connectors() {
+        return Optional.ofNullable(this.connectors);
+    }
 
     /**
      * Cost estimation enabled determines if cost estimation operations are performed.
@@ -307,6 +323,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     private WorkspaceState() {}
 
     private WorkspaceState(WorkspaceState $) {
+        this.connectors = $.connectors;
         this.costEstimationEnabled = $.costEstimationEnabled;
         this.defaultPipelines = $.defaultPipelines;
         this.description = $.description;
@@ -346,6 +363,37 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WorkspaceState defaults) {
             $ = new WorkspaceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(@Nullable Output<List<WorkspaceConnectorArgs>> connectors) {
+            $.connectors = connectors;
+            return this;
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(List<WorkspaceConnectorArgs> connectors) {
+            return connectors(Output.of(connectors));
+        }
+
+        /**
+         * @param connectors Provider connector configured on the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectors(WorkspaceConnectorArgs... connectors) {
+            return connectors(List.of(connectors));
         }
 
         /**

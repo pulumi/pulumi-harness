@@ -116,6 +116,12 @@ namespace Pulumi.Harness.Platform
     public partial class Workspace : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Provider connector configured on the workspace
+        /// </summary>
+        [Output("connectors")]
+        public Output<ImmutableArray<Outputs.WorkspaceConnector>> Connectors { get; private set; } = null!;
+
+        /// <summary>
         /// Cost estimation enabled determines if cost estimation operations are performed.
         /// </summary>
         [Output("costEstimationEnabled")]
@@ -167,7 +173,7 @@ namespace Pulumi.Harness.Platform
         /// Provider connector is the reference to the connector for the infrastructure provider
         /// </summary>
         [Output("providerConnector")]
-        public Output<string> ProviderConnector { get; private set; } = null!;
+        public Output<string?> ProviderConnector { get; private set; } = null!;
 
         [Output("provisionerType")]
         public Output<string> ProvisionerType { get; private set; } = null!;
@@ -276,6 +282,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class WorkspaceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("connectors")]
+        private InputList<Inputs.WorkspaceConnectorArgs>? _connectors;
+
+        /// <summary>
+        /// Provider connector configured on the workspace
+        /// </summary>
+        public InputList<Inputs.WorkspaceConnectorArgs> Connectors
+        {
+            get => _connectors ?? (_connectors = new InputList<Inputs.WorkspaceConnectorArgs>());
+            set => _connectors = value;
+        }
+
         /// <summary>
         /// Cost estimation enabled determines if cost estimation operations are performed.
         /// </summary>
@@ -339,8 +357,8 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Provider connector is the reference to the connector for the infrastructure provider
         /// </summary>
-        [Input("providerConnector", required: true)]
-        public Input<string> ProviderConnector { get; set; } = null!;
+        [Input("providerConnector")]
+        public Input<string>? ProviderConnector { get; set; }
 
         [Input("provisionerType", required: true)]
         public Input<string> ProvisionerType { get; set; } = null!;
@@ -432,6 +450,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class WorkspaceState : global::Pulumi.ResourceArgs
     {
+        [Input("connectors")]
+        private InputList<Inputs.WorkspaceConnectorGetArgs>? _connectors;
+
+        /// <summary>
+        /// Provider connector configured on the workspace
+        /// </summary>
+        public InputList<Inputs.WorkspaceConnectorGetArgs> Connectors
+        {
+            get => _connectors ?? (_connectors = new InputList<Inputs.WorkspaceConnectorGetArgs>());
+            set => _connectors = value;
+        }
+
         /// <summary>
         /// Cost estimation enabled determines if cost estimation operations are performed.
         /// </summary>

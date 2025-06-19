@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetWorkspaceConnector;
 import com.pulumi.harness.platform.outputs.GetWorkspaceEnvironmentVariable;
 import com.pulumi.harness.platform.outputs.GetWorkspaceTerraformVariable;
 import com.pulumi.harness.platform.outputs.GetWorkspaceTerraformVariableFile;
@@ -13,9 +14,15 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkspaceResult {
+    /**
+     * @return Provider connector configured on the workspace
+     * 
+     */
+    private @Nullable List<GetWorkspaceConnector> connectors;
     /**
      * @return If enabled cost estimation operations will be performed in this workspace
      * 
@@ -115,6 +122,13 @@ public final class GetWorkspaceResult {
     private List<String> variableSets;
 
     private GetWorkspaceResult() {}
+    /**
+     * @return Provider connector configured on the workspace
+     * 
+     */
+    public List<GetWorkspaceConnector> connectors() {
+        return this.connectors == null ? List.of() : this.connectors;
+    }
     /**
      * @return If enabled cost estimation operations will be performed in this workspace
      * 
@@ -264,6 +278,7 @@ public final class GetWorkspaceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetWorkspaceConnector> connectors;
         private Boolean costEstimationEnabled;
         private Map<String,String> defaultPipelines;
         private String description;
@@ -288,6 +303,7 @@ public final class GetWorkspaceResult {
         public Builder() {}
         public Builder(GetWorkspaceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connectors = defaults.connectors;
     	      this.costEstimationEnabled = defaults.costEstimationEnabled;
     	      this.defaultPipelines = defaults.defaultPipelines;
     	      this.description = defaults.description;
@@ -311,6 +327,15 @@ public final class GetWorkspaceResult {
     	      this.variableSets = defaults.variableSets;
         }
 
+        @CustomType.Setter
+        public Builder connectors(@Nullable List<GetWorkspaceConnector> connectors) {
+
+            this.connectors = connectors;
+            return this;
+        }
+        public Builder connectors(GetWorkspaceConnector... connectors) {
+            return connectors(List.of(connectors));
+        }
         @CustomType.Setter
         public Builder costEstimationEnabled(Boolean costEstimationEnabled) {
             if (costEstimationEnabled == null) {
@@ -493,6 +518,7 @@ public final class GetWorkspaceResult {
         }
         public GetWorkspaceResult build() {
             final var _resultValue = new GetWorkspaceResult();
+            _resultValue.connectors = connectors;
             _resultValue.costEstimationEnabled = costEstimationEnabled;
             _resultValue.defaultPipelines = defaultPipelines;
             _resultValue.description = description;

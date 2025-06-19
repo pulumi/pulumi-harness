@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
 export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getWorkspace:getWorkspace", {
+        "connectors": args.connectors,
         "description": args.description,
         "environmentVariables": args.environmentVariables,
         "identifier": args.identifier,
@@ -43,6 +44,10 @@ export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getWorkspace.
  */
 export interface GetWorkspaceArgs {
+    /**
+     * Provider connector configured on the workspace
+     */
+    connectors?: inputs.platform.GetWorkspaceConnector[];
     /**
      * Description of the Workspace
      */
@@ -87,6 +92,10 @@ export interface GetWorkspaceArgs {
  * A collection of values returned by getWorkspace.
  */
 export interface GetWorkspaceResult {
+    /**
+     * Provider connector configured on the workspace
+     */
+    readonly connectors?: outputs.platform.GetWorkspaceConnector[];
     /**
      * If enabled cost estimation operations will be performed in this workspace
      */
@@ -185,6 +194,7 @@ export interface GetWorkspaceResult {
 export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getWorkspace:getWorkspace", {
+        "connectors": args.connectors,
         "description": args.description,
         "environmentVariables": args.environmentVariables,
         "identifier": args.identifier,
@@ -203,6 +213,10 @@ export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getWorkspace.
  */
 export interface GetWorkspaceOutputArgs {
+    /**
+     * Provider connector configured on the workspace
+     */
+    connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceConnectorArgs>[]>;
     /**
      * Description of the Workspace
      */

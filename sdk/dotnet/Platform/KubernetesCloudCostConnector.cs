@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a Kubernetes Cloud Cost connector.
     /// 
+    /// These connectors need to be created at the account level in Harness.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -49,24 +51,12 @@ namespace Pulumi.Harness.Platform
     /// ```sh
     /// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;connector_id&gt;
     /// ```
-    /// 
-    /// Import org level kubernetes cloud cost connector
-    /// 
-    /// ```sh
-    /// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;ord_id&gt;/&lt;connector_id&gt;
-    /// ```
-    /// 
-    /// Import project level kubernetes cloud cost connector
-    /// 
-    /// ```sh
-    /// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
-    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector")]
     public partial class KubernetesCloudCostConnector : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// Reference to a Kubernetes connector also at the account level.
         /// </summary>
         [Output("connectorRef")]
         public Output<string> ConnectorRef { get; private set; } = null!;
@@ -161,7 +151,7 @@ namespace Pulumi.Harness.Platform
     public sealed class KubernetesCloudCostConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// Reference to a Kubernetes connector also at the account level.
         /// </summary>
         [Input("connectorRef", required: true)]
         public Input<string> ConnectorRef { get; set; } = null!;
@@ -229,7 +219,7 @@ namespace Pulumi.Harness.Platform
     public sealed class KubernetesCloudCostConnectorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
+        /// Reference to a Kubernetes connector also at the account level.
         /// </summary>
         [Input("connectorRef")]
         public Input<string>? ConnectorRef { get; set; }

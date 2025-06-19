@@ -112,6 +112,8 @@ import (
 type Workspace struct {
 	pulumi.CustomResourceState
 
+	// Provider connector configured on the workspace
+	Connectors WorkspaceConnectorArrayOutput `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolOutput `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
@@ -129,9 +131,9 @@ type Workspace struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
-	ProviderConnector  pulumi.StringOutput `pulumi:"providerConnector"`
-	ProvisionerType    pulumi.StringOutput `pulumi:"provisionerType"`
-	ProvisionerVersion pulumi.StringOutput `pulumi:"provisionerVersion"`
+	ProviderConnector  pulumi.StringPtrOutput `pulumi:"providerConnector"`
+	ProvisionerType    pulumi.StringOutput    `pulumi:"provisionerType"`
+	ProvisionerVersion pulumi.StringOutput    `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository pulumi.StringOutput `pulumi:"repository"`
 	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
@@ -171,9 +173,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	if args.ProviderConnector == nil {
-		return nil, errors.New("invalid value for required argument 'ProviderConnector'")
-	}
 	if args.ProvisionerType == nil {
 		return nil, errors.New("invalid value for required argument 'ProvisionerType'")
 	}
@@ -212,6 +211,8 @@ func GetWorkspace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workspace resources.
 type workspaceState struct {
+	// Provider connector configured on the workspace
+	Connectors []WorkspaceConnector `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled *bool `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
@@ -253,6 +254,8 @@ type workspaceState struct {
 }
 
 type WorkspaceState struct {
+	// Provider connector configured on the workspace
+	Connectors WorkspaceConnectorArrayInput
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolPtrInput
 	// Default pipelines associated with this workspace
@@ -298,6 +301,8 @@ func (WorkspaceState) ElementType() reflect.Type {
 }
 
 type workspaceArgs struct {
+	// Provider connector configured on the workspace
+	Connectors []WorkspaceConnector `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled bool `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
@@ -315,9 +320,9 @@ type workspaceArgs struct {
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
-	ProviderConnector  string `pulumi:"providerConnector"`
-	ProvisionerType    string `pulumi:"provisionerType"`
-	ProvisionerVersion string `pulumi:"provisionerVersion"`
+	ProviderConnector  *string `pulumi:"providerConnector"`
+	ProvisionerType    string  `pulumi:"provisionerType"`
+	ProvisionerVersion string  `pulumi:"provisionerVersion"`
 	// Repository is the name of the repository to fetch the code from.
 	Repository string `pulumi:"repository"`
 	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
@@ -340,6 +345,8 @@ type workspaceArgs struct {
 
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
+	// Provider connector configured on the workspace
+	Connectors WorkspaceConnectorArrayInput
 	// Cost estimation enabled determines if cost estimation operations are performed.
 	CostEstimationEnabled pulumi.BoolInput
 	// Default pipelines associated with this workspace
@@ -357,7 +364,7 @@ type WorkspaceArgs struct {
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
 	// Provider connector is the reference to the connector for the infrastructure provider
-	ProviderConnector  pulumi.StringInput
+	ProviderConnector  pulumi.StringPtrInput
 	ProvisionerType    pulumi.StringInput
 	ProvisionerVersion pulumi.StringInput
 	// Repository is the name of the repository to fetch the code from.
@@ -467,6 +474,11 @@ func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) Works
 	return o
 }
 
+// Provider connector configured on the workspace
+func (o WorkspaceOutput) Connectors() WorkspaceConnectorArrayOutput {
+	return o.ApplyT(func(v *Workspace) WorkspaceConnectorArrayOutput { return v.Connectors }).(WorkspaceConnectorArrayOutput)
+}
+
 // Cost estimation enabled determines if cost estimation operations are performed.
 func (o WorkspaceOutput) CostEstimationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.BoolOutput { return v.CostEstimationEnabled }).(pulumi.BoolOutput)
@@ -508,8 +520,8 @@ func (o WorkspaceOutput) ProjectId() pulumi.StringOutput {
 }
 
 // Provider connector is the reference to the connector for the infrastructure provider
-func (o WorkspaceOutput) ProviderConnector() pulumi.StringOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProviderConnector }).(pulumi.StringOutput)
+func (o WorkspaceOutput) ProviderConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ProviderConnector }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkspaceOutput) ProvisionerType() pulumi.StringOutput {

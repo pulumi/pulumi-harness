@@ -93,6 +93,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetWorkspaceArgs : global::Pulumi.InvokeArgs
     {
+        [Input("connectors")]
+        private List<Inputs.GetWorkspaceConnectorArgs>? _connectors;
+
+        /// <summary>
+        /// Provider connector configured on the workspace
+        /// </summary>
+        public List<Inputs.GetWorkspaceConnectorArgs> Connectors
+        {
+            get => _connectors ?? (_connectors = new List<Inputs.GetWorkspaceConnectorArgs>());
+            set => _connectors = value;
+        }
+
         /// <summary>
         /// Description of the Workspace
         /// </summary>
@@ -183,6 +195,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetWorkspaceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("connectors")]
+        private InputList<Inputs.GetWorkspaceConnectorInputArgs>? _connectors;
+
+        /// <summary>
+        /// Provider connector configured on the workspace
+        /// </summary>
+        public InputList<Inputs.GetWorkspaceConnectorInputArgs> Connectors
+        {
+            get => _connectors ?? (_connectors = new InputList<Inputs.GetWorkspaceConnectorInputArgs>());
+            set => _connectors = value;
+        }
+
         /// <summary>
         /// Description of the Workspace
         /// </summary>
@@ -276,6 +300,10 @@ namespace Pulumi.Harness.Platform
     public sealed class GetWorkspaceResult
     {
         /// <summary>
+        /// Provider connector configured on the workspace
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkspaceConnectorResult> Connectors;
+        /// <summary>
         /// If enabled cost estimation operations will be performed in this workspace
         /// </summary>
         public readonly bool CostEstimationEnabled;
@@ -356,6 +384,8 @@ namespace Pulumi.Harness.Platform
 
         [OutputConstructor]
         private GetWorkspaceResult(
+            ImmutableArray<Outputs.GetWorkspaceConnectorResult> connectors,
+
             bool costEstimationEnabled,
 
             ImmutableDictionary<string, string> defaultPipelines,
@@ -398,6 +428,7 @@ namespace Pulumi.Harness.Platform
 
             ImmutableArray<string> variableSets)
         {
+            Connectors = connectors;
             CostEstimationEnabled = costEstimationEnabled;
             DefaultPipelines = defaultPipelines;
             Description = description;
