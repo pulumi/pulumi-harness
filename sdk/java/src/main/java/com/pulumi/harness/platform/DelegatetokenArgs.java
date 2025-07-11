@@ -34,14 +34,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time when the delegate token is created.
+     * Time when the delegate token is created. This is an epoch timestamp.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
     /**
-     * @return Time when the delegate token is created.
+     * @return Time when the delegate token is created. This is an epoch timestamp.
      * 
      */
     public Optional<Output<Integer>> createdAt() {
@@ -49,14 +49,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * created by details.
+     * created by details
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<Map<String,String>> createdBy;
 
     /**
-     * @return created by details.
+     * @return created by details
      * 
      */
     public Optional<Output<Map<String,String>>> createdBy() {
@@ -64,14 +64,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the resource.
+     * Name of the delegate token
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the resource.
+     * @return Name of the delegate token
      * 
      */
     public Optional<Output<String>> name() {
@@ -79,14 +79,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Org Identifier for the Entity
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -94,14 +94,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Project Identifier for the Entity
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -109,14 +109,29 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     * 
+     */
+    @Import(name="revokeAfter")
+    private @Nullable Output<Integer> revokeAfter;
+
+    /**
+     * @return Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     * 
+     */
+    public Optional<Output<Integer>> revokeAfter() {
+        return Optional.ofNullable(this.revokeAfter);
+    }
+
+    /**
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     @Import(name="tokenStatus")
     private @Nullable Output<String> tokenStatus;
 
     /**
-     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     public Optional<Output<String>> tokenStatus() {
@@ -124,14 +139,14 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value of the delegate Token
+     * Value of the delegate token. Encoded in base64.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Value of the delegate Token
+     * @return Value of the delegate token. Encoded in base64.
      * 
      */
     public Optional<Output<String>> value() {
@@ -147,6 +162,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.revokeAfter = $.revokeAfter;
         this.tokenStatus = $.tokenStatus;
         this.value = $.value;
     }
@@ -191,7 +207,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Time when the delegate token is created.
+         * @param createdAt Time when the delegate token is created. This is an epoch timestamp.
          * 
          * @return builder
          * 
@@ -202,7 +218,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt Time when the delegate token is created.
+         * @param createdAt Time when the delegate token is created. This is an epoch timestamp.
          * 
          * @return builder
          * 
@@ -212,7 +228,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdBy created by details.
+         * @param createdBy created by details
          * 
          * @return builder
          * 
@@ -223,7 +239,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdBy created by details.
+         * @param createdBy created by details
          * 
          * @return builder
          * 
@@ -233,7 +249,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the resource.
+         * @param name Name of the delegate token
          * 
          * @return builder
          * 
@@ -244,7 +260,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the resource.
+         * @param name Name of the delegate token
          * 
          * @return builder
          * 
@@ -254,7 +270,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Org Identifier for the Entity
          * 
          * @return builder
          * 
@@ -265,7 +281,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Org Identifier for the Entity
          * 
          * @return builder
          * 
@@ -275,7 +291,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Project Identifier for the Entity
          * 
          * @return builder
          * 
@@ -286,7 +302,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Project Identifier for the Entity
          * 
          * @return builder
          * 
@@ -296,7 +312,28 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+         * @param revokeAfter Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revokeAfter(@Nullable Output<Integer> revokeAfter) {
+            $.revokeAfter = revokeAfter;
+            return this;
+        }
+
+        /**
+         * @param revokeAfter Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder revokeAfter(Integer revokeAfter) {
+            return revokeAfter(Output.of(revokeAfter));
+        }
+
+        /**
+         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
          * 
          * @return builder
          * 
@@ -307,7 +344,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
          * 
          * @return builder
          * 
@@ -317,7 +354,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Value of the delegate Token
+         * @param value Value of the delegate token. Encoded in base64.
          * 
          * @return builder
          * 
@@ -328,7 +365,7 @@ public final class DelegatetokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Value of the delegate Token
+         * @param value Value of the delegate token. Encoded in base64.
          * 
          * @return builder
          * 

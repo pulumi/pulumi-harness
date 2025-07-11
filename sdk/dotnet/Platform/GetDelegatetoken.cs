@@ -12,19 +12,130 @@ namespace Pulumi.Harness.Platform
     public static class GetDelegatetoken
     {
         /// <summary>
-        /// Data Source for retrieving delegate tokens.
+        /// Data source for retrieving a Harness delegate Token.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Look up a delegate token at account level by name
+        ///     var accountLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "account-delegate-token",
+        ///         AccountId = "account_id",
+        ///     });
+        /// 
+        ///     // Look up a delegate token at organization level
+        ///     var orgLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "org-delegate-token",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///     });
+        /// 
+        ///     // Look up a delegate token at project level
+        ///     var projectLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "project-delegate-token",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDelegatetokenResult> InvokeAsync(GetDelegatetokenArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDelegatetokenResult>("harness:platform/getDelegatetoken:getDelegatetoken", args ?? new GetDelegatetokenArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data Source for retrieving delegate tokens.
+        /// Data source for retrieving a Harness delegate Token.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Look up a delegate token at account level by name
+        ///     var accountLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "account-delegate-token",
+        ///         AccountId = "account_id",
+        ///     });
+        /// 
+        ///     // Look up a delegate token at organization level
+        ///     var orgLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "org-delegate-token",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///     });
+        /// 
+        ///     // Look up a delegate token at project level
+        ///     var projectLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "project-delegate-token",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDelegatetokenResult> Invoke(GetDelegatetokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegatetokenResult>("harness:platform/getDelegatetoken:getDelegatetoken", args ?? new GetDelegatetokenInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data Source for retrieving delegate tokens.
+        /// Data source for retrieving a Harness delegate Token.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Look up a delegate token at account level by name
+        ///     var accountLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "account-delegate-token",
+        ///         AccountId = "account_id",
+        ///     });
+        /// 
+        ///     // Look up a delegate token at organization level
+        ///     var orgLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "org-delegate-token",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///     });
+        /// 
+        ///     // Look up a delegate token at project level
+        ///     var projectLevel = Harness.Platform.GetDelegatetoken.Invoke(new()
+        ///     {
+        ///         Name = "project-delegate-token",
+        ///         AccountId = "account_id",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDelegatetokenResult> Invoke(GetDelegatetokenInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDelegatetokenResult>("harness:platform/getDelegatetoken:getDelegatetoken", args ?? new GetDelegatetokenInvokeArgs(), options.WithDefaults());
@@ -40,40 +151,28 @@ namespace Pulumi.Harness.Platform
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Time when the delegate token is created.
-        /// </summary>
-        [Input("createdAt")]
-        public int? CreatedAt { get; set; }
-
-        /// <summary>
-        /// Name of the resource.
+        /// Name of the delegate token
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Org Identifier for the Entity
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Project Identifier for the Entity
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
         /// <summary>
-        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
         /// </summary>
         [Input("tokenStatus")]
         public string? TokenStatus { get; set; }
-
-        /// <summary>
-        /// Value of the delegate Token
-        /// </summary>
-        [Input("value")]
-        public string? Value { get; set; }
 
         public GetDelegatetokenArgs()
         {
@@ -90,40 +189,28 @@ namespace Pulumi.Harness.Platform
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Time when the delegate token is created.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<int>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// Name of the resource.
+        /// Name of the delegate token
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Org Identifier for the Entity
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Unique identifier of the project.
+        /// Project Identifier for the Entity
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
         /// </summary>
         [Input("tokenStatus")]
         public Input<string>? TokenStatus { get; set; }
-
-        /// <summary>
-        /// Value of the delegate Token
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
 
         public GetDelegatetokenInvokeArgs()
         {
@@ -140,39 +227,49 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Time when the delegate token is created.
+        /// Time when the delegate token is created. This is an epoch timestamp.
         /// </summary>
-        public readonly int? CreatedAt;
+        public readonly int CreatedAt;
+        /// <summary>
+        /// created by details
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> CreatedBy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the resource.
+        /// Name of the delegate token
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Unique identifier of the organization.
+        /// Org Identifier for the Entity
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Unique identifier of the project.
+        /// Project Identifier for the Entity
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        /// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        /// </summary>
+        public readonly int RevokeAfter;
+        /// <summary>
+        /// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
         /// </summary>
         public readonly string? TokenStatus;
         /// <summary>
-        /// Value of the delegate Token
+        /// Value of the delegate token. Encoded in base64.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetDelegatetokenResult(
             string accountId,
 
-            int? createdAt,
+            int createdAt,
+
+            ImmutableDictionary<string, string> createdBy,
 
             string id,
 
@@ -182,16 +279,20 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
+            int revokeAfter,
+
             string? tokenStatus,
 
-            string? value)
+            string value)
         {
             AccountId = accountId;
             CreatedAt = createdAt;
+            CreatedBy = createdBy;
             Id = id;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;
+            RevokeAfter = revokeAfter;
             TokenStatus = tokenStatus;
             Value = value;
         }

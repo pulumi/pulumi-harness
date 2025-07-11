@@ -26,18 +26,20 @@ class DelegatetokenArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
+                 revoke_after: Optional[pulumi.Input[builtins.int]] = None,
                  token_status: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Delegatetoken resource.
         :param pulumi.Input[builtins.str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details.
-        :param pulumi.Input[builtins.str] name: Name of the resource.
-        :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
-        :param pulumi.Input[builtins.str] value: Value of the delegate Token
+        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created. This is an epoch timestamp.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details
+        :param pulumi.Input[builtins.str] name: Name of the delegate token
+        :param pulumi.Input[builtins.str] org_id: Org Identifier for the Entity
+        :param pulumi.Input[builtins.str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[builtins.int] revoke_after: Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        :param pulumi.Input[builtins.str] value: Value of the delegate token. Encoded in base64.
         """
         pulumi.set(__self__, "account_id", account_id)
         if created_at is not None:
@@ -50,6 +52,8 @@ class DelegatetokenArgs:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if revoke_after is not None:
+            pulumi.set(__self__, "revoke_after", revoke_after)
         if token_status is not None:
             pulumi.set(__self__, "token_status", token_status)
         if value is not None:
@@ -71,7 +75,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Time when the delegate token is created.
+        Time when the delegate token is created. This is an epoch timestamp.
         """
         return pulumi.get(self, "created_at")
 
@@ -83,7 +87,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        created by details.
+        created by details
         """
         return pulumi.get(self, "created_by")
 
@@ -95,7 +99,7 @@ class DelegatetokenArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the resource.
+        Name of the delegate token
         """
         return pulumi.get(self, "name")
 
@@ -107,7 +111,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Unique identifier of the organization.
+        Org Identifier for the Entity
         """
         return pulumi.get(self, "org_id")
 
@@ -119,7 +123,7 @@ class DelegatetokenArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Unique identifier of the project.
+        Project Identifier for the Entity
         """
         return pulumi.get(self, "project_id")
 
@@ -128,10 +132,22 @@ class DelegatetokenArgs:
         pulumi.set(self, "project_id", value)
 
     @property
+    @pulumi.getter(name="revokeAfter")
+    def revoke_after(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        """
+        return pulumi.get(self, "revoke_after")
+
+    @revoke_after.setter
+    def revoke_after(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "revoke_after", value)
+
+    @property
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
         """
         return pulumi.get(self, "token_status")
 
@@ -143,7 +159,7 @@ class DelegatetokenArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Value of the delegate Token
+        Value of the delegate token. Encoded in base64.
         """
         return pulumi.get(self, "value")
 
@@ -161,18 +177,20 @@ class _DelegatetokenState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
+                 revoke_after: Optional[pulumi.Input[builtins.int]] = None,
                  token_status: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Delegatetoken resources.
         :param pulumi.Input[builtins.str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details.
-        :param pulumi.Input[builtins.str] name: Name of the resource.
-        :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
-        :param pulumi.Input[builtins.str] value: Value of the delegate Token
+        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created. This is an epoch timestamp.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details
+        :param pulumi.Input[builtins.str] name: Name of the delegate token
+        :param pulumi.Input[builtins.str] org_id: Org Identifier for the Entity
+        :param pulumi.Input[builtins.str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[builtins.int] revoke_after: Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        :param pulumi.Input[builtins.str] value: Value of the delegate token. Encoded in base64.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -186,6 +204,8 @@ class _DelegatetokenState:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if revoke_after is not None:
+            pulumi.set(__self__, "revoke_after", revoke_after)
         if token_status is not None:
             pulumi.set(__self__, "token_status", token_status)
         if value is not None:
@@ -207,7 +227,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Time when the delegate token is created.
+        Time when the delegate token is created. This is an epoch timestamp.
         """
         return pulumi.get(self, "created_at")
 
@@ -219,7 +239,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        created by details.
+        created by details
         """
         return pulumi.get(self, "created_by")
 
@@ -231,7 +251,7 @@ class _DelegatetokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the resource.
+        Name of the delegate token
         """
         return pulumi.get(self, "name")
 
@@ -243,7 +263,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Unique identifier of the organization.
+        Org Identifier for the Entity
         """
         return pulumi.get(self, "org_id")
 
@@ -255,7 +275,7 @@ class _DelegatetokenState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Unique identifier of the project.
+        Project Identifier for the Entity
         """
         return pulumi.get(self, "project_id")
 
@@ -264,10 +284,22 @@ class _DelegatetokenState:
         pulumi.set(self, "project_id", value)
 
     @property
+    @pulumi.getter(name="revokeAfter")
+    def revoke_after(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        """
+        return pulumi.get(self, "revoke_after")
+
+    @revoke_after.setter
+    def revoke_after(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "revoke_after", value)
+
+    @property
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
         """
         return pulumi.get(self, "token_status")
 
@@ -279,7 +311,7 @@ class _DelegatetokenState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Value of the delegate Token
+        Value of the delegate token. Encoded in base64.
         """
         return pulumi.get(self, "value")
 
@@ -300,42 +332,50 @@ class Delegatetoken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
+                 revoke_after: Optional[pulumi.Input[builtins.int]] = None,
                  token_status: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Resource for creating delegate tokens.
+        ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_harness as harness
 
-        Import account level delegate token
-
-        ```sh
-        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <token_id>
-        ```
-
-        Import org level delegate token
-
-        ```sh
-        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<token_id>
-        ```
-
-        Import project level delegate token
-
-        ```sh
-        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<project_id>/<token_id>
+        # Create delegate token at account level
+        account_level = harness.platform.Delegatetoken("account_level",
+            name="account-delegate-token",
+            account_id="account_id")
+        # Create delegate token at organization level
+        org_level = harness.platform.Delegatetoken("org_level",
+            name="org-delegate-token",
+            account_id="account_id",
+            org_id="org_id")
+        # Create delegate token at project level
+        project_level = harness.platform.Delegatetoken("project_level",
+            name="project-delegate-token",
+            account_id="account_id",
+            org_id="org_id",
+            project_id="project_id")
+        # Create delegate token with auto-expiry
+        expiry_token = harness.platform.Delegatetoken("expiry_token",
+            name="expiry-delegate-token",
+            account_id="account_id",
+            revoke_after=1769689600000)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details.
-        :param pulumi.Input[builtins.str] name: Name of the resource.
-        :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
-        :param pulumi.Input[builtins.str] value: Value of the delegate Token
+        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created. This is an epoch timestamp.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details
+        :param pulumi.Input[builtins.str] name: Name of the delegate token
+        :param pulumi.Input[builtins.str] org_id: Org Identifier for the Entity
+        :param pulumi.Input[builtins.str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[builtins.int] revoke_after: Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        :param pulumi.Input[builtins.str] value: Value of the delegate token. Encoded in base64.
         """
         ...
     @overload
@@ -344,26 +384,32 @@ class Delegatetoken(pulumi.CustomResource):
                  args: DelegatetokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating delegate tokens.
+        ## Example Usage
 
-        ## Import
+        ```python
+        import pulumi
+        import pulumi_harness as harness
 
-        Import account level delegate token
-
-        ```sh
-        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <token_id>
-        ```
-
-        Import org level delegate token
-
-        ```sh
-        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<token_id>
-        ```
-
-        Import project level delegate token
-
-        ```sh
-        $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<project_id>/<token_id>
+        # Create delegate token at account level
+        account_level = harness.platform.Delegatetoken("account_level",
+            name="account-delegate-token",
+            account_id="account_id")
+        # Create delegate token at organization level
+        org_level = harness.platform.Delegatetoken("org_level",
+            name="org-delegate-token",
+            account_id="account_id",
+            org_id="org_id")
+        # Create delegate token at project level
+        project_level = harness.platform.Delegatetoken("project_level",
+            name="project-delegate-token",
+            account_id="account_id",
+            org_id="org_id",
+            project_id="project_id")
+        # Create delegate token with auto-expiry
+        expiry_token = harness.platform.Delegatetoken("expiry_token",
+            name="expiry-delegate-token",
+            account_id="account_id",
+            revoke_after=1769689600000)
         ```
 
         :param str resource_name: The name of the resource.
@@ -387,6 +433,7 @@ class Delegatetoken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  org_id: Optional[pulumi.Input[builtins.str]] = None,
                  project_id: Optional[pulumi.Input[builtins.str]] = None,
+                 revoke_after: Optional[pulumi.Input[builtins.int]] = None,
                  token_status: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -406,6 +453,7 @@ class Delegatetoken(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["revoke_after"] = revoke_after
             __props__.__dict__["token_status"] = token_status
             __props__.__dict__["value"] = value
         super(Delegatetoken, __self__).__init__(
@@ -424,6 +472,7 @@ class Delegatetoken(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             org_id: Optional[pulumi.Input[builtins.str]] = None,
             project_id: Optional[pulumi.Input[builtins.str]] = None,
+            revoke_after: Optional[pulumi.Input[builtins.int]] = None,
             token_status: Optional[pulumi.Input[builtins.str]] = None,
             value: Optional[pulumi.Input[builtins.str]] = None) -> 'Delegatetoken':
         """
@@ -434,13 +483,14 @@ class Delegatetoken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Account Identifier for the Entity
-        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details.
-        :param pulumi.Input[builtins.str] name: Name of the resource.
-        :param pulumi.Input[builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
-        :param pulumi.Input[builtins.str] value: Value of the delegate Token
+        :param pulumi.Input[builtins.int] created_at: Time when the delegate token is created. This is an epoch timestamp.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] created_by: created by details
+        :param pulumi.Input[builtins.str] name: Name of the delegate token
+        :param pulumi.Input[builtins.str] org_id: Org Identifier for the Entity
+        :param pulumi.Input[builtins.str] project_id: Project Identifier for the Entity
+        :param pulumi.Input[builtins.int] revoke_after: Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        :param pulumi.Input[builtins.str] token_status: Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
+        :param pulumi.Input[builtins.str] value: Value of the delegate token. Encoded in base64.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -452,6 +502,7 @@ class Delegatetoken(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["revoke_after"] = revoke_after
         __props__.__dict__["token_status"] = token_status
         __props__.__dict__["value"] = value
         return Delegatetoken(resource_name, opts=opts, __props__=__props__)
@@ -468,7 +519,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[builtins.int]:
         """
-        Time when the delegate token is created.
+        Time when the delegate token is created. This is an epoch timestamp.
         """
         return pulumi.get(self, "created_at")
 
@@ -476,7 +527,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         """
-        created by details.
+        created by details
         """
         return pulumi.get(self, "created_by")
 
@@ -484,7 +535,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the resource.
+        Name of the delegate token
         """
         return pulumi.get(self, "name")
 
@@ -492,7 +543,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Unique identifier of the organization.
+        Org Identifier for the Entity
         """
         return pulumi.get(self, "org_id")
 
@@ -500,15 +551,23 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Unique identifier of the project.
+        Project Identifier for the Entity
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="revokeAfter")
+    def revoke_after(self) -> pulumi.Output[Optional[builtins.int]]:
+        """
+        Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+        """
+        return pulumi.get(self, "revoke_after")
 
     @property
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> pulumi.Output[builtins.str]:
         """
-        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+        Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
         """
         return pulumi.get(self, "token_status")
 
@@ -516,7 +575,7 @@ class Delegatetoken(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[builtins.str]:
         """
-        Value of the delegate Token
+        Value of the delegate token. Encoded in base64.
         """
         return pulumi.get(self, "value")
 

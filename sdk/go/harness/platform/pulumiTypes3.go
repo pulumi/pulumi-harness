@@ -13,6 +13,435 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference struct {
+	// The Kubernetes resource Group to match for.
+	Group *string `pulumi:"group"`
+	// List of JQ path expression strings targeting the field(s) to ignore.
+	JqPathExpressions []string `pulumi:"jqPathExpressions"`
+	// List of JSONPaths strings targeting the field(s) to ignore.
+	JsonPointers []string `pulumi:"jsonPointers"`
+	// The Kubernetes resource Kind to match for.
+	Kind *string `pulumi:"kind"`
+	// The Kubernetes resource Name to match for.
+	Name *string `pulumi:"name"`
+	// The Kubernetes resource Namespace to match for.
+	Namespace *string `pulumi:"namespace"`
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs and GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs{...}
+type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs struct {
+	// The Kubernetes resource Group to match for.
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// List of JQ path expression strings targeting the field(s) to ignore.
+	JqPathExpressions pulumi.StringArrayInput `pulumi:"jqPathExpressions"`
+	// List of JSONPaths strings targeting the field(s) to ignore.
+	JsonPointers pulumi.StringArrayInput `pulumi:"jsonPointers"`
+	// The Kubernetes resource Kind to match for.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// The Kubernetes resource Name to match for.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Kubernetes resource Namespace to match for.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray and GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray{ GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs{...} }
+type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray []GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceInput
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput {
+	return o
+}
+
+// The Kubernetes resource Group to match for.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference) *string { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// List of JQ path expression strings targeting the field(s) to ignore.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) JqPathExpressions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference) []string {
+		return v.JqPathExpressions
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of JSONPaths strings targeting the field(s) to ignore.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) JsonPointers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference) []string {
+		return v.JsonPointers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Kubernetes resource Kind to match for.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes resource Name to match for.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes resource Namespace to match for.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInfo struct {
+	// Name of the information.
+	Name *string `pulumi:"name"`
+	// Value of the information.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecInfoInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs and GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecInfoInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs{...}
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInfoInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs struct {
+	// Name of the information.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the information.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecInfo)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArray and GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArray{ GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs{...} }
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArray []GitopsApplicationsetApplicationsetSpecTemplateSpecInfoInput
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecTemplateSpecInfo)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArray) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArray) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecInfo)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput {
+	return o
+}
+
+// Name of the information.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the information.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecInfo) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecTemplateSpecInfo)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecTemplateSpecInfo {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecTemplateSpecInfo)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecSource struct {
+	// Helm chart name. Must be specified for applications sourced from a Helm repo.
+	Chart *string `pulumi:"chart"`
+	// Path/directory specific options.
+	Directory *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectory `pulumi:"directory"`
+	// Helm specific options.
+	Helm *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm `pulumi:"helm"`
+	// Kustomize specific options.
+	Kustomize *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize `pulumi:"kustomize"`
+	// Directory path within the repository. Only valid for applications sourced from Git.
+	Path *string `pulumi:"path"`
+	// Config management plugin specific options.
+	Plugin *GitopsApplicationsetApplicationsetSpecTemplateSpecSourcePlugin `pulumi:"plugin"`
+	// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
+	Ref *string `pulumi:"ref"`
+	// URL to the repository (Git or Helm) that contains the application manifests.
+	RepoUrl string `pulumi:"repoUrl"`
+	// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
+	TargetRevision *string `pulumi:"targetRevision"`
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecSourceInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs and GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecSourceInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{...}
+type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs struct {
+	// Helm chart name. Must be specified for applications sourced from a Helm repo.
+	Chart pulumi.StringPtrInput `pulumi:"chart"`
+	// Path/directory specific options.
+	Directory GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryPtrInput `pulumi:"directory"`
+	// Helm specific options.
+	Helm GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrInput `pulumi:"helm"`
+	// Kustomize specific options.
+	Kustomize GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrInput `pulumi:"kustomize"`
+	// Directory path within the repository. Only valid for applications sourced from Git.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Config management plugin specific options.
+	Plugin GitopsApplicationsetApplicationsetSpecTemplateSpecSourcePluginPtrInput `pulumi:"plugin"`
+	// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// URL to the repository (Git or Helm) that contains the application manifests.
+	RepoUrl pulumi.StringInput `pulumi:"repoUrl"`
+	// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
+	TargetRevision pulumi.StringPtrInput `pulumi:"targetRevision"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSource)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray and GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{ GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{...} }
+type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray []GitopsApplicationsetApplicationsetSpecTemplateSpecSourceInput
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecTemplateSpecSource)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSource)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput {
+	return o
+}
+
+// Helm chart name. Must be specified for applications sourced from a Helm repo.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) Chart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *string { return v.Chart }).(pulumi.StringPtrOutput)
+}
+
+// Path/directory specific options.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) Directory() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectory {
+		return v.Directory
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryPtrOutput)
+}
+
+// Helm specific options.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) Helm() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelm {
+		return v.Helm
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceHelmPtrOutput)
+}
+
+// Kustomize specific options.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) Kustomize() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize {
+		return v.Kustomize
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrOutput)
+}
+
+// Directory path within the repository. Only valid for applications sourced from Git.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Config management plugin specific options.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) Plugin() GitopsApplicationsetApplicationsetSpecTemplateSpecSourcePluginPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecTemplateSpecSourcePlugin {
+		return v.Plugin
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourcePluginPtrOutput)
+}
+
+// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// URL to the repository (Git or Helm) that contains the application manifests.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) RepoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) string { return v.RepoUrl }).(pulumi.StringOutput)
+}
+
+// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput) TargetRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSource) *string { return v.TargetRevision }).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecTemplateSpecSource)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecTemplateSpecSource)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectory struct {
 	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
 	Exclude *string `pulumi:"exclude"`
@@ -22352,6 +22781,400 @@ func (o GetCcmFiltersFilterPropertyArrayOutput) Index(i pulumi.IntInput) GetCcmF
 	}).(GetCcmFiltersFilterPropertyOutput)
 }
 
+type GetCentralNotificationChannelChannel struct {
+	// API key for the webhook or integration.
+	ApiKey *string `pulumi:"apiKey"`
+	// List of Datadog webhook URLs.
+	DatadogUrls []string `pulumi:"datadogUrls"`
+	// List of delegate selectors to use for sending notifications.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// List of email addresses to notify.
+	EmailIds []string `pulumi:"emailIds"`
+	// Whether to execute the notification logic on delegate.
+	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
+	// Custom HTTP headers to include in webhook requests.
+	Headers []GetCentralNotificationChannelChannelHeader `pulumi:"headers"`
+	// List of Microsoft Teams integration keys.
+	MsTeamKeys []string `pulumi:"msTeamKeys"`
+	// List of PagerDuty integration keys.
+	PagerDutyIntegrationKeys []string `pulumi:"pagerDutyIntegrationKeys"`
+	// List of Slack webhook URLs to send notifications to.
+	SlackWebhookUrls []string `pulumi:"slackWebhookUrls"`
+	// List of user groups to notify.
+	UserGroups []GetCentralNotificationChannelChannelUserGroup `pulumi:"userGroups"`
+	// List of generic webhook URLs.
+	WebhookUrls []string `pulumi:"webhookUrls"`
+}
+
+// GetCentralNotificationChannelChannelInput is an input type that accepts GetCentralNotificationChannelChannelArgs and GetCentralNotificationChannelChannelOutput values.
+// You can construct a concrete instance of `GetCentralNotificationChannelChannelInput` via:
+//
+//	GetCentralNotificationChannelChannelArgs{...}
+type GetCentralNotificationChannelChannelInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationChannelChannelOutput() GetCentralNotificationChannelChannelOutput
+	ToGetCentralNotificationChannelChannelOutputWithContext(context.Context) GetCentralNotificationChannelChannelOutput
+}
+
+type GetCentralNotificationChannelChannelArgs struct {
+	// API key for the webhook or integration.
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// List of Datadog webhook URLs.
+	DatadogUrls pulumi.StringArrayInput `pulumi:"datadogUrls"`
+	// List of delegate selectors to use for sending notifications.
+	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
+	// List of email addresses to notify.
+	EmailIds pulumi.StringArrayInput `pulumi:"emailIds"`
+	// Whether to execute the notification logic on delegate.
+	ExecuteOnDelegate pulumi.BoolPtrInput `pulumi:"executeOnDelegate"`
+	// Custom HTTP headers to include in webhook requests.
+	Headers GetCentralNotificationChannelChannelHeaderArrayInput `pulumi:"headers"`
+	// List of Microsoft Teams integration keys.
+	MsTeamKeys pulumi.StringArrayInput `pulumi:"msTeamKeys"`
+	// List of PagerDuty integration keys.
+	PagerDutyIntegrationKeys pulumi.StringArrayInput `pulumi:"pagerDutyIntegrationKeys"`
+	// List of Slack webhook URLs to send notifications to.
+	SlackWebhookUrls pulumi.StringArrayInput `pulumi:"slackWebhookUrls"`
+	// List of user groups to notify.
+	UserGroups GetCentralNotificationChannelChannelUserGroupArrayInput `pulumi:"userGroups"`
+	// List of generic webhook URLs.
+	WebhookUrls pulumi.StringArrayInput `pulumi:"webhookUrls"`
+}
+
+func (GetCentralNotificationChannelChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationChannelChannel)(nil)).Elem()
+}
+
+func (i GetCentralNotificationChannelChannelArgs) ToGetCentralNotificationChannelChannelOutput() GetCentralNotificationChannelChannelOutput {
+	return i.ToGetCentralNotificationChannelChannelOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationChannelChannelArgs) ToGetCentralNotificationChannelChannelOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationChannelChannelOutput)
+}
+
+// GetCentralNotificationChannelChannelArrayInput is an input type that accepts GetCentralNotificationChannelChannelArray and GetCentralNotificationChannelChannelArrayOutput values.
+// You can construct a concrete instance of `GetCentralNotificationChannelChannelArrayInput` via:
+//
+//	GetCentralNotificationChannelChannelArray{ GetCentralNotificationChannelChannelArgs{...} }
+type GetCentralNotificationChannelChannelArrayInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationChannelChannelArrayOutput() GetCentralNotificationChannelChannelArrayOutput
+	ToGetCentralNotificationChannelChannelArrayOutputWithContext(context.Context) GetCentralNotificationChannelChannelArrayOutput
+}
+
+type GetCentralNotificationChannelChannelArray []GetCentralNotificationChannelChannelInput
+
+func (GetCentralNotificationChannelChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationChannelChannel)(nil)).Elem()
+}
+
+func (i GetCentralNotificationChannelChannelArray) ToGetCentralNotificationChannelChannelArrayOutput() GetCentralNotificationChannelChannelArrayOutput {
+	return i.ToGetCentralNotificationChannelChannelArrayOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationChannelChannelArray) ToGetCentralNotificationChannelChannelArrayOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationChannelChannelArrayOutput)
+}
+
+type GetCentralNotificationChannelChannelOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationChannelChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationChannelChannel)(nil)).Elem()
+}
+
+func (o GetCentralNotificationChannelChannelOutput) ToGetCentralNotificationChannelChannelOutput() GetCentralNotificationChannelChannelOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelOutput) ToGetCentralNotificationChannelChannelOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelOutput {
+	return o
+}
+
+// API key for the webhook or integration.
+func (o GetCentralNotificationChannelChannelOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// List of Datadog webhook URLs.
+func (o GetCentralNotificationChannelChannelOutput) DatadogUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []string { return v.DatadogUrls }).(pulumi.StringArrayOutput)
+}
+
+// List of delegate selectors to use for sending notifications.
+func (o GetCentralNotificationChannelChannelOutput) DelegateSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
+}
+
+// List of email addresses to notify.
+func (o GetCentralNotificationChannelChannelOutput) EmailIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []string { return v.EmailIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether to execute the notification logic on delegate.
+func (o GetCentralNotificationChannelChannelOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) *bool { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
+}
+
+// Custom HTTP headers to include in webhook requests.
+func (o GetCentralNotificationChannelChannelOutput) Headers() GetCentralNotificationChannelChannelHeaderArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []GetCentralNotificationChannelChannelHeader {
+		return v.Headers
+	}).(GetCentralNotificationChannelChannelHeaderArrayOutput)
+}
+
+// List of Microsoft Teams integration keys.
+func (o GetCentralNotificationChannelChannelOutput) MsTeamKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []string { return v.MsTeamKeys }).(pulumi.StringArrayOutput)
+}
+
+// List of PagerDuty integration keys.
+func (o GetCentralNotificationChannelChannelOutput) PagerDutyIntegrationKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []string { return v.PagerDutyIntegrationKeys }).(pulumi.StringArrayOutput)
+}
+
+// List of Slack webhook URLs to send notifications to.
+func (o GetCentralNotificationChannelChannelOutput) SlackWebhookUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []string { return v.SlackWebhookUrls }).(pulumi.StringArrayOutput)
+}
+
+// List of user groups to notify.
+func (o GetCentralNotificationChannelChannelOutput) UserGroups() GetCentralNotificationChannelChannelUserGroupArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []GetCentralNotificationChannelChannelUserGroup {
+		return v.UserGroups
+	}).(GetCentralNotificationChannelChannelUserGroupArrayOutput)
+}
+
+// List of generic webhook URLs.
+func (o GetCentralNotificationChannelChannelOutput) WebhookUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannel) []string { return v.WebhookUrls }).(pulumi.StringArrayOutput)
+}
+
+type GetCentralNotificationChannelChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationChannelChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationChannelChannel)(nil)).Elem()
+}
+
+func (o GetCentralNotificationChannelChannelArrayOutput) ToGetCentralNotificationChannelChannelArrayOutput() GetCentralNotificationChannelChannelArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelArrayOutput) ToGetCentralNotificationChannelChannelArrayOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelArrayOutput) Index(i pulumi.IntInput) GetCentralNotificationChannelChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCentralNotificationChannelChannel {
+		return vs[0].([]GetCentralNotificationChannelChannel)[vs[1].(int)]
+	}).(GetCentralNotificationChannelChannelOutput)
+}
+
+type GetCentralNotificationChannelChannelHeader struct {
+	// Header key name.
+	Key string `pulumi:"key"`
+	// Header value.
+	Value string `pulumi:"value"`
+}
+
+// GetCentralNotificationChannelChannelHeaderInput is an input type that accepts GetCentralNotificationChannelChannelHeaderArgs and GetCentralNotificationChannelChannelHeaderOutput values.
+// You can construct a concrete instance of `GetCentralNotificationChannelChannelHeaderInput` via:
+//
+//	GetCentralNotificationChannelChannelHeaderArgs{...}
+type GetCentralNotificationChannelChannelHeaderInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationChannelChannelHeaderOutput() GetCentralNotificationChannelChannelHeaderOutput
+	ToGetCentralNotificationChannelChannelHeaderOutputWithContext(context.Context) GetCentralNotificationChannelChannelHeaderOutput
+}
+
+type GetCentralNotificationChannelChannelHeaderArgs struct {
+	// Header key name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Header value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetCentralNotificationChannelChannelHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationChannelChannelHeader)(nil)).Elem()
+}
+
+func (i GetCentralNotificationChannelChannelHeaderArgs) ToGetCentralNotificationChannelChannelHeaderOutput() GetCentralNotificationChannelChannelHeaderOutput {
+	return i.ToGetCentralNotificationChannelChannelHeaderOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationChannelChannelHeaderArgs) ToGetCentralNotificationChannelChannelHeaderOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationChannelChannelHeaderOutput)
+}
+
+// GetCentralNotificationChannelChannelHeaderArrayInput is an input type that accepts GetCentralNotificationChannelChannelHeaderArray and GetCentralNotificationChannelChannelHeaderArrayOutput values.
+// You can construct a concrete instance of `GetCentralNotificationChannelChannelHeaderArrayInput` via:
+//
+//	GetCentralNotificationChannelChannelHeaderArray{ GetCentralNotificationChannelChannelHeaderArgs{...} }
+type GetCentralNotificationChannelChannelHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationChannelChannelHeaderArrayOutput() GetCentralNotificationChannelChannelHeaderArrayOutput
+	ToGetCentralNotificationChannelChannelHeaderArrayOutputWithContext(context.Context) GetCentralNotificationChannelChannelHeaderArrayOutput
+}
+
+type GetCentralNotificationChannelChannelHeaderArray []GetCentralNotificationChannelChannelHeaderInput
+
+func (GetCentralNotificationChannelChannelHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationChannelChannelHeader)(nil)).Elem()
+}
+
+func (i GetCentralNotificationChannelChannelHeaderArray) ToGetCentralNotificationChannelChannelHeaderArrayOutput() GetCentralNotificationChannelChannelHeaderArrayOutput {
+	return i.ToGetCentralNotificationChannelChannelHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationChannelChannelHeaderArray) ToGetCentralNotificationChannelChannelHeaderArrayOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationChannelChannelHeaderArrayOutput)
+}
+
+type GetCentralNotificationChannelChannelHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationChannelChannelHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationChannelChannelHeader)(nil)).Elem()
+}
+
+func (o GetCentralNotificationChannelChannelHeaderOutput) ToGetCentralNotificationChannelChannelHeaderOutput() GetCentralNotificationChannelChannelHeaderOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelHeaderOutput) ToGetCentralNotificationChannelChannelHeaderOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelHeaderOutput {
+	return o
+}
+
+// Header key name.
+func (o GetCentralNotificationChannelChannelHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannelHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Header value.
+func (o GetCentralNotificationChannelChannelHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannelHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCentralNotificationChannelChannelHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationChannelChannelHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationChannelChannelHeader)(nil)).Elem()
+}
+
+func (o GetCentralNotificationChannelChannelHeaderArrayOutput) ToGetCentralNotificationChannelChannelHeaderArrayOutput() GetCentralNotificationChannelChannelHeaderArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelHeaderArrayOutput) ToGetCentralNotificationChannelChannelHeaderArrayOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelHeaderArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelHeaderArrayOutput) Index(i pulumi.IntInput) GetCentralNotificationChannelChannelHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCentralNotificationChannelChannelHeader {
+		return vs[0].([]GetCentralNotificationChannelChannelHeader)[vs[1].(int)]
+	}).(GetCentralNotificationChannelChannelHeaderOutput)
+}
+
+type GetCentralNotificationChannelChannelUserGroup struct {
+	// Identifier of the user group.
+	Identifier *string `pulumi:"identifier"`
+}
+
+// GetCentralNotificationChannelChannelUserGroupInput is an input type that accepts GetCentralNotificationChannelChannelUserGroupArgs and GetCentralNotificationChannelChannelUserGroupOutput values.
+// You can construct a concrete instance of `GetCentralNotificationChannelChannelUserGroupInput` via:
+//
+//	GetCentralNotificationChannelChannelUserGroupArgs{...}
+type GetCentralNotificationChannelChannelUserGroupInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationChannelChannelUserGroupOutput() GetCentralNotificationChannelChannelUserGroupOutput
+	ToGetCentralNotificationChannelChannelUserGroupOutputWithContext(context.Context) GetCentralNotificationChannelChannelUserGroupOutput
+}
+
+type GetCentralNotificationChannelChannelUserGroupArgs struct {
+	// Identifier of the user group.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+}
+
+func (GetCentralNotificationChannelChannelUserGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationChannelChannelUserGroup)(nil)).Elem()
+}
+
+func (i GetCentralNotificationChannelChannelUserGroupArgs) ToGetCentralNotificationChannelChannelUserGroupOutput() GetCentralNotificationChannelChannelUserGroupOutput {
+	return i.ToGetCentralNotificationChannelChannelUserGroupOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationChannelChannelUserGroupArgs) ToGetCentralNotificationChannelChannelUserGroupOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelUserGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationChannelChannelUserGroupOutput)
+}
+
+// GetCentralNotificationChannelChannelUserGroupArrayInput is an input type that accepts GetCentralNotificationChannelChannelUserGroupArray and GetCentralNotificationChannelChannelUserGroupArrayOutput values.
+// You can construct a concrete instance of `GetCentralNotificationChannelChannelUserGroupArrayInput` via:
+//
+//	GetCentralNotificationChannelChannelUserGroupArray{ GetCentralNotificationChannelChannelUserGroupArgs{...} }
+type GetCentralNotificationChannelChannelUserGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationChannelChannelUserGroupArrayOutput() GetCentralNotificationChannelChannelUserGroupArrayOutput
+	ToGetCentralNotificationChannelChannelUserGroupArrayOutputWithContext(context.Context) GetCentralNotificationChannelChannelUserGroupArrayOutput
+}
+
+type GetCentralNotificationChannelChannelUserGroupArray []GetCentralNotificationChannelChannelUserGroupInput
+
+func (GetCentralNotificationChannelChannelUserGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationChannelChannelUserGroup)(nil)).Elem()
+}
+
+func (i GetCentralNotificationChannelChannelUserGroupArray) ToGetCentralNotificationChannelChannelUserGroupArrayOutput() GetCentralNotificationChannelChannelUserGroupArrayOutput {
+	return i.ToGetCentralNotificationChannelChannelUserGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationChannelChannelUserGroupArray) ToGetCentralNotificationChannelChannelUserGroupArrayOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelUserGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationChannelChannelUserGroupArrayOutput)
+}
+
+type GetCentralNotificationChannelChannelUserGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationChannelChannelUserGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationChannelChannelUserGroup)(nil)).Elem()
+}
+
+func (o GetCentralNotificationChannelChannelUserGroupOutput) ToGetCentralNotificationChannelChannelUserGroupOutput() GetCentralNotificationChannelChannelUserGroupOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelUserGroupOutput) ToGetCentralNotificationChannelChannelUserGroupOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelUserGroupOutput {
+	return o
+}
+
+// Identifier of the user group.
+func (o GetCentralNotificationChannelChannelUserGroupOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCentralNotificationChannelChannelUserGroup) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+type GetCentralNotificationChannelChannelUserGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationChannelChannelUserGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationChannelChannelUserGroup)(nil)).Elem()
+}
+
+func (o GetCentralNotificationChannelChannelUserGroupArrayOutput) ToGetCentralNotificationChannelChannelUserGroupArrayOutput() GetCentralNotificationChannelChannelUserGroupArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelUserGroupArrayOutput) ToGetCentralNotificationChannelChannelUserGroupArrayOutputWithContext(ctx context.Context) GetCentralNotificationChannelChannelUserGroupArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationChannelChannelUserGroupArrayOutput) Index(i pulumi.IntInput) GetCentralNotificationChannelChannelUserGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCentralNotificationChannelChannelUserGroup {
+		return vs[0].([]GetCentralNotificationChannelChannelUserGroup)[vs[1].(int)]
+	}).(GetCentralNotificationChannelChannelUserGroupOutput)
+}
+
 type GetConnectorAzureRepoApiAuthentication struct {
 	// Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
@@ -43072,6 +43895,12 @@ func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecInfoInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSourceInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryJsonnetInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryJsonnetArgs{})
@@ -43354,6 +44183,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBitbucketConnectorCredentialSshArrayInput)(nil)).Elem(), GetBitbucketConnectorCredentialSshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCcmFiltersFilterPropertyInput)(nil)).Elem(), GetCcmFiltersFilterPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCcmFiltersFilterPropertyArrayInput)(nil)).Elem(), GetCcmFiltersFilterPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelInput)(nil)).Elem(), GetCentralNotificationChannelChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelArrayInput)(nil)).Elem(), GetCentralNotificationChannelChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelHeaderInput)(nil)).Elem(), GetCentralNotificationChannelChannelHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelHeaderArrayInput)(nil)).Elem(), GetCentralNotificationChannelChannelHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelUserGroupInput)(nil)).Elem(), GetCentralNotificationChannelChannelUserGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelUserGroupArrayInput)(nil)).Elem(), GetCentralNotificationChannelChannelUserGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationArrayInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialInput)(nil)).Elem(), GetConnectorAzureRepoCredentialArgs{})
@@ -43681,6 +44516,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceDirectoryJsonnetOutput{})
@@ -43963,6 +44804,12 @@ func init() {
 	pulumi.RegisterOutputType(GetBitbucketConnectorCredentialSshArrayOutput{})
 	pulumi.RegisterOutputType(GetCcmFiltersFilterPropertyOutput{})
 	pulumi.RegisterOutputType(GetCcmFiltersFilterPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelArrayOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelHeaderOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelUserGroupOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelUserGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialOutput{})

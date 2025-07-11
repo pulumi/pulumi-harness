@@ -6,7 +6,6 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,29 +32,14 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Time when the delegate token is created.
-     * 
-     */
-    @Import(name="createdAt")
-    private @Nullable Output<Integer> createdAt;
-
-    /**
-     * @return Time when the delegate token is created.
-     * 
-     */
-    public Optional<Output<Integer>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
-    /**
-     * Name of the resource.
+     * Name of the delegate token
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the resource.
+     * @return Name of the delegate token
      * 
      */
     public Output<String> name() {
@@ -63,14 +47,14 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Org Identifier for the Entity
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -78,14 +62,14 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Project Identifier for the Entity
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -93,45 +77,28 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     @Import(name="tokenStatus")
     private @Nullable Output<String> tokenStatus;
 
     /**
-     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     public Optional<Output<String>> tokenStatus() {
         return Optional.ofNullable(this.tokenStatus);
     }
 
-    /**
-     * Value of the delegate Token
-     * 
-     */
-    @Import(name="value")
-    private @Nullable Output<String> value;
-
-    /**
-     * @return Value of the delegate Token
-     * 
-     */
-    public Optional<Output<String>> value() {
-        return Optional.ofNullable(this.value);
-    }
-
     private GetDelegatetokenArgs() {}
 
     private GetDelegatetokenArgs(GetDelegatetokenArgs $) {
         this.accountId = $.accountId;
-        this.createdAt = $.createdAt;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.tokenStatus = $.tokenStatus;
-        this.value = $.value;
     }
 
     public static Builder builder() {
@@ -174,28 +141,7 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param createdAt Time when the delegate token is created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder createdAt(@Nullable Output<Integer> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        /**
-         * @param createdAt Time when the delegate token is created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder createdAt(Integer createdAt) {
-            return createdAt(Output.of(createdAt));
-        }
-
-        /**
-         * @param name Name of the resource.
+         * @param name Name of the delegate token
          * 
          * @return builder
          * 
@@ -206,7 +152,7 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param name Name of the resource.
+         * @param name Name of the delegate token
          * 
          * @return builder
          * 
@@ -216,7 +162,7 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Org Identifier for the Entity
          * 
          * @return builder
          * 
@@ -227,7 +173,7 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Org Identifier for the Entity
          * 
          * @return builder
          * 
@@ -237,7 +183,7 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Project Identifier for the Entity
          * 
          * @return builder
          * 
@@ -248,7 +194,7 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Project Identifier for the Entity
          * 
          * @return builder
          * 
@@ -258,7 +204,7 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
          * 
          * @return builder
          * 
@@ -269,34 +215,13 @@ public final class GetDelegatetokenArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+         * @param tokenStatus Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
          * 
          * @return builder
          * 
          */
         public Builder tokenStatus(String tokenStatus) {
             return tokenStatus(Output.of(tokenStatus));
-        }
-
-        /**
-         * @param value Value of the delegate Token
-         * 
-         * @return builder
-         * 
-         */
-        public Builder value(@Nullable Output<String> value) {
-            $.value = value;
-            return this;
-        }
-
-        /**
-         * @param value Value of the delegate Token
-         * 
-         * @return builder
-         * 
-         */
-        public Builder value(String value) {
-            return value(Output.of(value));
         }
 
         public GetDelegatetokenArgs build() {

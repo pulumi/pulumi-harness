@@ -33,6 +33,8 @@ import com.pulumi.harness.platform.inputs.GetBitbucketConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetBitbucketConnectorPlainArgs;
 import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
 import com.pulumi.harness.platform.inputs.GetCcmFiltersPlainArgs;
+import com.pulumi.harness.platform.inputs.GetCentralNotificationChannelArgs;
+import com.pulumi.harness.platform.inputs.GetCentralNotificationChannelPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerArgs;
@@ -251,6 +253,7 @@ import com.pulumi.harness.platform.outputs.GetAzureCloudProviderConnectorResult;
 import com.pulumi.harness.platform.outputs.GetAzureKeyVaultConnectorResult;
 import com.pulumi.harness.platform.outputs.GetBitbucketConnectorResult;
 import com.pulumi.harness.platform.outputs.GetCcmFiltersResult;
+import com.pulumi.harness.platform.outputs.GetCentralNotificationChannelResult;
 import com.pulumi.harness.platform.outputs.GetConnectorAzureRepoResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomSecretManagerResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomhealthsourceResult;
@@ -2978,6 +2981,41 @@ public final class PlatformFunctions {
     public static CompletableFuture<GetCcmFiltersResult> getCcmFiltersPlain(GetCcmFiltersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getCcmFilters:getCcmFilters", TypeShape.of(GetCcmFiltersResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Data source for retrieving a central notification channel in Harness.
+     * 
+     */
+    public static Output<GetCentralNotificationChannelResult> getCentralNotificationChannel(GetCentralNotificationChannelArgs args) {
+        return getCentralNotificationChannel(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a central notification channel in Harness.
+     * 
+     */
+    public static CompletableFuture<GetCentralNotificationChannelResult> getCentralNotificationChannelPlain(GetCentralNotificationChannelPlainArgs args) {
+        return getCentralNotificationChannelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a central notification channel in Harness.
+     * 
+     */
+    public static Output<GetCentralNotificationChannelResult> getCentralNotificationChannel(GetCentralNotificationChannelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getCentralNotificationChannel:getCentralNotificationChannel", TypeShape.of(GetCentralNotificationChannelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a central notification channel in Harness.
+     * 
+     */
+    public static Output<GetCentralNotificationChannelResult> getCentralNotificationChannel(GetCentralNotificationChannelArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getCentralNotificationChannel:getCentralNotificationChannel", TypeShape.of(GetCentralNotificationChannelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a central notification channel in Harness.
+     * 
+     */
+    public static CompletableFuture<GetCentralNotificationChannelResult> getCentralNotificationChannelPlain(GetCentralNotificationChannelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getCentralNotificationChannel:getCentralNotificationChannel", TypeShape.of(GetCentralNotificationChannelResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetConnectorAzureRepoResult> getConnectorAzureRepo(GetConnectorAzureRepoArgs args) {
         return getConnectorAzureRepo(args, InvokeOptions.Empty);
     }
@@ -5305,11 +5343,58 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getDbSchema:getDbSchema", TypeShape.of(GetDbSchemaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data Source for retrieving delegate tokens.
+     * Data source for retrieving a Harness delegate Token.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a delegate token at account level by name
+     *         final var accountLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("account-delegate-token")
+     *             .accountId("account_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at organization level
+     *         final var orgLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("org-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at project level
+     *         final var projectLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("project-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5317,11 +5402,58 @@ public final class PlatformFunctions {
         return getDelegatetoken(args, InvokeOptions.Empty);
     }
     /**
-     * Data Source for retrieving delegate tokens.
+     * Data source for retrieving a Harness delegate Token.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a delegate token at account level by name
+     *         final var accountLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("account-delegate-token")
+     *             .accountId("account_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at organization level
+     *         final var orgLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("org-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at project level
+     *         final var projectLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("project-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5329,11 +5461,58 @@ public final class PlatformFunctions {
         return getDelegatetokenPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data Source for retrieving delegate tokens.
+     * Data source for retrieving a Harness delegate Token.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a delegate token at account level by name
+     *         final var accountLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("account-delegate-token")
+     *             .accountId("account_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at organization level
+     *         final var orgLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("org-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at project level
+     *         final var projectLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("project-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5341,11 +5520,58 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getDelegatetoken:getDelegatetoken", TypeShape.of(GetDelegatetokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data Source for retrieving delegate tokens.
+     * Data source for retrieving a Harness delegate Token.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a delegate token at account level by name
+     *         final var accountLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("account-delegate-token")
+     *             .accountId("account_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at organization level
+     *         final var orgLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("org-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at project level
+     *         final var projectLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("project-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5353,11 +5579,58 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getDelegatetoken:getDelegatetoken", TypeShape.of(GetDelegatetokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data Source for retrieving delegate tokens.
+     * Data source for retrieving a Harness delegate Token.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDelegatetokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a delegate token at account level by name
+     *         final var accountLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("account-delegate-token")
+     *             .accountId("account_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at organization level
+     *         final var orgLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("org-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .build());
+     * 
+     *         // Look up a delegate token at project level
+     *         final var projectLevel = PlatformFunctions.getDelegatetoken(GetDelegatetokenArgs.builder()
+     *             .name("project-delegate-token")
+     *             .accountId("account_id")
+     *             .orgId("org_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

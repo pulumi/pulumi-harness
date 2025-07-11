@@ -5,26 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Resource for creating delegate tokens.
+ * ## Example Usage
  *
- * ## Import
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
  *
- * Import account level delegate token
- *
- * ```sh
- * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <token_id>
- * ```
- *
- * Import org level delegate token
- *
- * ```sh
- * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<token_id>
- * ```
- *
- * Import project level delegate token
- *
- * ```sh
- * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken <org_id>/<project_id>/<token_id>
+ * // Create delegate token at account level
+ * const accountLevel = new harness.platform.Delegatetoken("account_level", {
+ *     name: "account-delegate-token",
+ *     accountId: "account_id",
+ * });
+ * // Create delegate token at organization level
+ * const orgLevel = new harness.platform.Delegatetoken("org_level", {
+ *     name: "org-delegate-token",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ * });
+ * // Create delegate token at project level
+ * const projectLevel = new harness.platform.Delegatetoken("project_level", {
+ *     name: "project-delegate-token",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * // Create delegate token with auto-expiry
+ * const expiryToken = new harness.platform.Delegatetoken("expiry_token", {
+ *     name: "expiry-delegate-token",
+ *     accountId: "account_id",
+ *     revokeAfter: 1769689600000,
+ * });
  * ```
  */
 export class Delegatetoken extends pulumi.CustomResource {
@@ -60,31 +70,35 @@ export class Delegatetoken extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Time when the delegate token is created.
+     * Time when the delegate token is created. This is an epoch timestamp.
      */
     public readonly createdAt!: pulumi.Output<number>;
     /**
-     * created by details.
+     * created by details
      */
     public readonly createdBy!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Name of the resource.
+     * Name of the delegate token
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     */
+    public readonly revokeAfter!: pulumi.Output<number | undefined>;
+    /**
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
     public readonly tokenStatus!: pulumi.Output<string>;
     /**
-     * Value of the delegate Token
+     * Value of the delegate token. Encoded in base64.
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -107,6 +121,7 @@ export class Delegatetoken extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["revokeAfter"] = state ? state.revokeAfter : undefined;
             resourceInputs["tokenStatus"] = state ? state.tokenStatus : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
         } else {
@@ -120,6 +135,7 @@ export class Delegatetoken extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["revokeAfter"] = args ? args.revokeAfter : undefined;
             resourceInputs["tokenStatus"] = args ? args.tokenStatus : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
         }
@@ -137,31 +153,35 @@ export interface DelegatetokenState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Time when the delegate token is created.
+     * Time when the delegate token is created. This is an epoch timestamp.
      */
     createdAt?: pulumi.Input<number>;
     /**
-     * created by details.
+     * created by details
      */
     createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the resource.
+     * Name of the delegate token
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     */
+    revokeAfter?: pulumi.Input<number>;
+    /**
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
     tokenStatus?: pulumi.Input<string>;
     /**
-     * Value of the delegate Token
+     * Value of the delegate token. Encoded in base64.
      */
     value?: pulumi.Input<string>;
 }
@@ -175,31 +195,35 @@ export interface DelegatetokenArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Time when the delegate token is created.
+     * Time when the delegate token is created. This is an epoch timestamp.
      */
     createdAt?: pulumi.Input<number>;
     /**
-     * created by details.
+     * created by details
      */
     createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the resource.
+     * Name of the delegate token
      */
     name?: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     */
+    revokeAfter?: pulumi.Input<number>;
+    /**
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
     tokenStatus?: pulumi.Input<string>;
     /**
-     * Value of the delegate Token
+     * Value of the delegate token. Encoded in base64.
      */
     value?: pulumi.Input<string>;
 }
