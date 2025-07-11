@@ -504,6 +504,45 @@
                     }
                 }
             },
+            "harness_platform_central_notification_channel": {
+                "current": "harness:platform/centralNotificationChannel:CentralNotificationChannel",
+                "fields": {
+                    "channel": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "datadog_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                },
+                                "email_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "headers": {
+                                    "maxItemsOne": false
+                                },
+                                "ms_team_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "pager_duty_integration_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "slack_webhook_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "user_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "webhook_urls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_connector_appdynamics": {
                 "current": "harness:platform/appDynamicsConnector:AppDynamicsConnector",
                 "fields": {
@@ -15189,6 +15228,45 @@
                         "elem": {
                             "fields": {
                                 "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_central_notification_channel": {
+                "current": "harness:platform/getCentralNotificationChannel:getCentralNotificationChannel",
+                "fields": {
+                    "channel": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "datadog_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "delegate_selectors": {
+                                    "maxItemsOne": false
+                                },
+                                "email_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "headers": {
+                                    "maxItemsOne": false
+                                },
+                                "ms_team_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "pager_duty_integration_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "slack_webhook_urls": {
+                                    "maxItemsOne": false
+                                },
+                                "user_groups": {
+                                    "maxItemsOne": false
+                                },
+                                "webhook_urls": {
                                     "maxItemsOne": false
                                 }
                             }
