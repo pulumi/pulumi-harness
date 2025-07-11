@@ -2239,6 +2239,29 @@ export namespace platform {
         sshKeyRef: string;
     }
 
+    export interface CentralNotificationChannelChannel {
+        apiKey?: string;
+        datadogUrls?: string[];
+        delegateSelectors?: string[];
+        emailIds?: string[];
+        executeOnDelegate?: boolean;
+        headers?: outputs.platform.CentralNotificationChannelChannelHeader[];
+        msTeamKeys?: string[];
+        pagerDutyIntegrationKeys?: string[];
+        slackWebhookUrls?: string[];
+        userGroups?: outputs.platform.CentralNotificationChannelChannelUserGroup[];
+        webhookUrls?: string[];
+    }
+
+    export interface CentralNotificationChannelChannelHeader {
+        key: string;
+        value: string;
+    }
+
+    export interface CentralNotificationChannelChannelUserGroup {
+        identifier: string;
+    }
+
     export interface ConnectorAzureArtifactsCredentials {
         /**
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -3255,6 +3278,71 @@ export namespace platform {
          * Tags to associate with the resource. Tags should be in the form `name:value`.
          */
         tags: string[];
+    }
+
+    export interface GetCentralNotificationChannelChannel {
+        /**
+         * API key for the webhook or integration.
+         */
+        apiKey?: string;
+        /**
+         * List of Datadog webhook URLs.
+         */
+        datadogUrls?: string[];
+        /**
+         * List of delegate selectors to use for sending notifications.
+         */
+        delegateSelectors?: string[];
+        /**
+         * List of email addresses to notify.
+         */
+        emailIds?: string[];
+        /**
+         * Whether to execute the notification logic on delegate.
+         */
+        executeOnDelegate?: boolean;
+        /**
+         * Custom HTTP headers to include in webhook requests.
+         */
+        headers: outputs.platform.GetCentralNotificationChannelChannelHeader[];
+        /**
+         * List of Microsoft Teams integration keys.
+         */
+        msTeamKeys?: string[];
+        /**
+         * List of PagerDuty integration keys.
+         */
+        pagerDutyIntegrationKeys?: string[];
+        /**
+         * List of Slack webhook URLs to send notifications to.
+         */
+        slackWebhookUrls?: string[];
+        /**
+         * List of user groups to notify.
+         */
+        userGroups?: outputs.platform.GetCentralNotificationChannelChannelUserGroup[];
+        /**
+         * List of generic webhook URLs.
+         */
+        webhookUrls?: string[];
+    }
+
+    export interface GetCentralNotificationChannelChannelHeader {
+        /**
+         * Header key name.
+         */
+        key: string;
+        /**
+         * Header value.
+         */
+        value: string;
+    }
+
+    export interface GetCentralNotificationChannelChannelUserGroup {
+        /**
+         * Identifier of the user group.
+         */
+        identifier?: string;
     }
 
     export interface GetConnectorAzureRepoApiAuthentication {

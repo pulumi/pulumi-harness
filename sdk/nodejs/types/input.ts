@@ -2594,6 +2594,29 @@ export namespace platform {
         sshKeyRef: pulumi.Input<string>;
     }
 
+    export interface CentralNotificationChannelChannel {
+        apiKey?: pulumi.Input<string>;
+        datadogUrls?: pulumi.Input<pulumi.Input<string>[]>;
+        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+        emailIds?: pulumi.Input<pulumi.Input<string>[]>;
+        executeOnDelegate?: pulumi.Input<boolean>;
+        headers?: pulumi.Input<pulumi.Input<inputs.platform.CentralNotificationChannelChannelHeader>[]>;
+        msTeamKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        pagerDutyIntegrationKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        slackWebhookUrls?: pulumi.Input<pulumi.Input<string>[]>;
+        userGroups?: pulumi.Input<pulumi.Input<inputs.platform.CentralNotificationChannelChannelUserGroup>[]>;
+        webhookUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CentralNotificationChannelChannelHeader {
+        key: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface CentralNotificationChannelChannelUserGroup {
+        identifier: pulumi.Input<string>;
+    }
+
     export interface ConnectorAzureArtifactsCredentials {
         /**
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -3172,6 +3195,136 @@ export namespace platform {
          * The workload pool ID value created in GCP.
          */
         workloadPoolId: pulumi.Input<string>;
+    }
+
+    export interface GetCentralNotificationChannelChannel {
+        /**
+         * API key for the webhook or integration.
+         */
+        apiKey?: string;
+        /**
+         * List of Datadog webhook URLs.
+         */
+        datadogUrls?: string[];
+        /**
+         * List of delegate selectors to use for sending notifications.
+         */
+        delegateSelectors?: string[];
+        /**
+         * List of email addresses to notify.
+         */
+        emailIds?: string[];
+        /**
+         * Whether to execute the notification logic on delegate.
+         */
+        executeOnDelegate?: boolean;
+        /**
+         * Custom HTTP headers to include in webhook requests.
+         */
+        headers?: inputs.platform.GetCentralNotificationChannelChannelHeader[];
+        /**
+         * List of Microsoft Teams integration keys.
+         */
+        msTeamKeys?: string[];
+        /**
+         * List of PagerDuty integration keys.
+         */
+        pagerDutyIntegrationKeys?: string[];
+        /**
+         * List of Slack webhook URLs to send notifications to.
+         */
+        slackWebhookUrls?: string[];
+        /**
+         * List of user groups to notify.
+         */
+        userGroups?: inputs.platform.GetCentralNotificationChannelChannelUserGroup[];
+        /**
+         * List of generic webhook URLs.
+         */
+        webhookUrls?: string[];
+    }
+
+    export interface GetCentralNotificationChannelChannelArgs {
+        /**
+         * API key for the webhook or integration.
+         */
+        apiKey?: pulumi.Input<string>;
+        /**
+         * List of Datadog webhook URLs.
+         */
+        datadogUrls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of delegate selectors to use for sending notifications.
+         */
+        delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of email addresses to notify.
+         */
+        emailIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether to execute the notification logic on delegate.
+         */
+        executeOnDelegate?: pulumi.Input<boolean>;
+        /**
+         * Custom HTTP headers to include in webhook requests.
+         */
+        headers?: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationChannelChannelHeaderArgs>[]>;
+        /**
+         * List of Microsoft Teams integration keys.
+         */
+        msTeamKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of PagerDuty integration keys.
+         */
+        pagerDutyIntegrationKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of Slack webhook URLs to send notifications to.
+         */
+        slackWebhookUrls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of user groups to notify.
+         */
+        userGroups?: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationChannelChannelUserGroupArgs>[]>;
+        /**
+         * List of generic webhook URLs.
+         */
+        webhookUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetCentralNotificationChannelChannelHeader {
+        /**
+         * Header key name.
+         */
+        key: string;
+        /**
+         * Header value.
+         */
+        value: string;
+    }
+
+    export interface GetCentralNotificationChannelChannelHeaderArgs {
+        /**
+         * Header key name.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Header value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetCentralNotificationChannelChannelUserGroup {
+        /**
+         * Identifier of the user group.
+         */
+        identifier?: string;
+    }
+
+    export interface GetCentralNotificationChannelChannelUserGroupArgs {
+        /**
+         * Identifier of the user group.
+         */
+        identifier?: pulumi.Input<string>;
     }
 
     export interface GetConnectorRancherBearerToken {

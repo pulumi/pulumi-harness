@@ -11,7 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data Source for retrieving delegate tokens.
+// Data source for retrieving a Harness delegate Token.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Look up a delegate token at account level by name
+//			_, err := platform.LookupDelegatetoken(ctx, &platform.LookupDelegatetokenArgs{
+//				Name:      "account-delegate-token",
+//				AccountId: "account_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Look up a delegate token at organization level
+//			_, err = platform.LookupDelegatetoken(ctx, &platform.LookupDelegatetokenArgs{
+//				Name:      "org-delegate-token",
+//				AccountId: "account_id",
+//				OrgId:     pulumi.StringRef("org_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Look up a delegate token at project level
+//			_, err = platform.LookupDelegatetoken(ctx, &platform.LookupDelegatetokenArgs{
+//				Name:      "project-delegate-token",
+//				AccountId: "account_id",
+//				OrgId:     pulumi.StringRef("org_id"),
+//				ProjectId: pulumi.StringRef("project_id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDelegatetoken(ctx *pulumi.Context, args *LookupDelegatetokenArgs, opts ...pulumi.InvokeOption) (*LookupDelegatetokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDelegatetokenResult
@@ -26,38 +73,38 @@ func LookupDelegatetoken(ctx *pulumi.Context, args *LookupDelegatetokenArgs, opt
 type LookupDelegatetokenArgs struct {
 	// Account Identifier for the Entity
 	AccountId string `pulumi:"accountId"`
-	// Time when the delegate token is created.
-	CreatedAt *int `pulumi:"createdAt"`
-	// Name of the resource.
+	// Name of the delegate token
 	Name string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Org Identifier for the Entity
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project Identifier for the Entity
 	ProjectId *string `pulumi:"projectId"`
-	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
 	TokenStatus *string `pulumi:"tokenStatus"`
-	// Value of the delegate Token
-	Value *string `pulumi:"value"`
 }
 
 // A collection of values returned by getDelegatetoken.
 type LookupDelegatetokenResult struct {
 	// Account Identifier for the Entity
 	AccountId string `pulumi:"accountId"`
-	// Time when the delegate token is created.
-	CreatedAt *int `pulumi:"createdAt"`
+	// Time when the delegate token is created. This is an epoch timestamp.
+	CreatedAt int `pulumi:"createdAt"`
+	// created by details
+	CreatedBy map[string]string `pulumi:"createdBy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Name of the resource.
+	// Name of the delegate token
 	Name string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Org Identifier for the Entity
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project Identifier for the Entity
 	ProjectId *string `pulumi:"projectId"`
-	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+	// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+	RevokeAfter int `pulumi:"revokeAfter"`
+	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
 	TokenStatus *string `pulumi:"tokenStatus"`
-	// Value of the delegate Token
-	Value *string `pulumi:"value"`
+	// Value of the delegate token. Encoded in base64.
+	Value string `pulumi:"value"`
 }
 
 func LookupDelegatetokenOutput(ctx *pulumi.Context, args LookupDelegatetokenOutputArgs, opts ...pulumi.InvokeOption) LookupDelegatetokenResultOutput {
@@ -73,18 +120,14 @@ func LookupDelegatetokenOutput(ctx *pulumi.Context, args LookupDelegatetokenOutp
 type LookupDelegatetokenOutputArgs struct {
 	// Account Identifier for the Entity
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Time when the delegate token is created.
-	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
-	// Name of the resource.
+	// Name of the delegate token
 	Name pulumi.StringInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Org Identifier for the Entity
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project Identifier for the Entity
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+	// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
 	TokenStatus pulumi.StringPtrInput `pulumi:"tokenStatus"`
-	// Value of the delegate Token
-	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LookupDelegatetokenOutputArgs) ElementType() reflect.Type {
@@ -111,9 +154,14 @@ func (o LookupDelegatetokenResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDelegatetokenResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Time when the delegate token is created.
-func (o LookupDelegatetokenResultOutput) CreatedAt() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupDelegatetokenResult) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+// Time when the delegate token is created. This is an epoch timestamp.
+func (o LookupDelegatetokenResultOutput) CreatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDelegatetokenResult) int { return v.CreatedAt }).(pulumi.IntOutput)
+}
+
+// created by details
+func (o LookupDelegatetokenResultOutput) CreatedBy() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDelegatetokenResult) map[string]string { return v.CreatedBy }).(pulumi.StringMapOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -121,29 +169,34 @@ func (o LookupDelegatetokenResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDelegatetokenResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the resource.
+// Name of the delegate token
 func (o LookupDelegatetokenResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDelegatetokenResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Org Identifier for the Entity
 func (o LookupDelegatetokenResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDelegatetokenResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Project Identifier for the Entity
 func (o LookupDelegatetokenResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDelegatetokenResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+// Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+func (o LookupDelegatetokenResultOutput) RevokeAfter() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDelegatetokenResult) int { return v.RevokeAfter }).(pulumi.IntOutput)
+}
+
+// Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
 func (o LookupDelegatetokenResultOutput) TokenStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDelegatetokenResult) *string { return v.TokenStatus }).(pulumi.StringPtrOutput)
 }
 
-// Value of the delegate Token
-func (o LookupDelegatetokenResultOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDelegatetokenResult) *string { return v.Value }).(pulumi.StringPtrOutput)
+// Value of the delegate token. Encoded in base64.
+func (o LookupDelegatetokenResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDelegatetokenResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
 func init() {

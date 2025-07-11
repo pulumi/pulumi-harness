@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,40 +20,50 @@ public final class GetDelegatetokenResult {
      */
     private String accountId;
     /**
-     * @return Time when the delegate token is created.
+     * @return Time when the delegate token is created. This is an epoch timestamp.
      * 
      */
-    private @Nullable Integer createdAt;
+    private Integer createdAt;
+    /**
+     * @return created by details
+     * 
+     */
+    private Map<String,String> createdBy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return Name of the resource.
+     * @return Name of the delegate token
      * 
      */
     private String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Org Identifier for the Entity
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Project Identifier for the Entity
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * @return Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     * 
+     */
+    private Integer revokeAfter;
+    /**
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     private @Nullable String tokenStatus;
     /**
-     * @return Value of the delegate Token
+     * @return Value of the delegate token. Encoded in base64.
      * 
      */
-    private @Nullable String value;
+    private String value;
 
     private GetDelegatetokenResult() {}
     /**
@@ -63,11 +74,18 @@ public final class GetDelegatetokenResult {
         return this.accountId;
     }
     /**
-     * @return Time when the delegate token is created.
+     * @return Time when the delegate token is created. This is an epoch timestamp.
      * 
      */
-    public Optional<Integer> createdAt() {
-        return Optional.ofNullable(this.createdAt);
+    public Integer createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * @return created by details
+     * 
+     */
+    public Map<String,String> createdBy() {
+        return this.createdBy;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -77,39 +95,46 @@ public final class GetDelegatetokenResult {
         return this.id;
     }
     /**
-     * @return Name of the resource.
+     * @return Name of the delegate token
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Org Identifier for the Entity
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Project Identifier for the Entity
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * @return Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     * 
+     */
+    public Integer revokeAfter() {
+        return this.revokeAfter;
+    }
+    /**
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     public Optional<String> tokenStatus() {
         return Optional.ofNullable(this.tokenStatus);
     }
     /**
-     * @return Value of the delegate Token
+     * @return Value of the delegate token. Encoded in base64.
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -122,22 +147,26 @@ public final class GetDelegatetokenResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable Integer createdAt;
+        private Integer createdAt;
+        private Map<String,String> createdBy;
         private String id;
         private String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
+        private Integer revokeAfter;
         private @Nullable String tokenStatus;
-        private @Nullable String value;
+        private String value;
         public Builder() {}
         public Builder(GetDelegatetokenResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.createdAt = defaults.createdAt;
+    	      this.createdBy = defaults.createdBy;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
+    	      this.revokeAfter = defaults.revokeAfter;
     	      this.tokenStatus = defaults.tokenStatus;
     	      this.value = defaults.value;
         }
@@ -151,9 +180,19 @@ public final class GetDelegatetokenResult {
             return this;
         }
         @CustomType.Setter
-        public Builder createdAt(@Nullable Integer createdAt) {
-
+        public Builder createdAt(Integer createdAt) {
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetDelegatetokenResult", "createdAt");
+            }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdBy(Map<String,String> createdBy) {
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetDelegatetokenResult", "createdBy");
+            }
+            this.createdBy = createdBy;
             return this;
         }
         @CustomType.Setter
@@ -185,14 +224,24 @@ public final class GetDelegatetokenResult {
             return this;
         }
         @CustomType.Setter
+        public Builder revokeAfter(Integer revokeAfter) {
+            if (revokeAfter == null) {
+              throw new MissingRequiredPropertyException("GetDelegatetokenResult", "revokeAfter");
+            }
+            this.revokeAfter = revokeAfter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenStatus(@Nullable String tokenStatus) {
 
             this.tokenStatus = tokenStatus;
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetDelegatetokenResult", "value");
+            }
             this.value = value;
             return this;
         }
@@ -200,10 +249,12 @@ public final class GetDelegatetokenResult {
             final var _resultValue = new GetDelegatetokenResult();
             _resultValue.accountId = accountId;
             _resultValue.createdAt = createdAt;
+            _resultValue.createdBy = createdBy;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
+            _resultValue.revokeAfter = revokeAfter;
             _resultValue.tokenStatus = tokenStatus;
             _resultValue.value = value;
             return _resultValue;

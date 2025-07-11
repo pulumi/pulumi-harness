@@ -447,6 +447,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/centralNotificationChannel",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/centralNotificationChannel:CentralNotificationChannel": "CentralNotificationChannel"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/connectorAzureArtifacts",
   "fqn": "pulumi_harness.platform",
   "classes": {

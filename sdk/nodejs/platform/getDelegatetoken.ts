@@ -5,18 +5,42 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data Source for retrieving delegate tokens.
+ * Data source for retrieving a Harness delegate Token.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * // Look up a delegate token at account level by name
+ * const accountLevel = harness.platform.getDelegatetoken({
+ *     name: "account-delegate-token",
+ *     accountId: "account_id",
+ * });
+ * // Look up a delegate token at organization level
+ * const orgLevel = harness.platform.getDelegatetoken({
+ *     name: "org-delegate-token",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ * });
+ * // Look up a delegate token at project level
+ * const projectLevel = harness.platform.getDelegatetoken({
+ *     name: "project-delegate-token",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getDelegatetoken(args: GetDelegatetokenArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegatetokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDelegatetoken:getDelegatetoken", {
         "accountId": args.accountId,
-        "createdAt": args.createdAt,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
         "tokenStatus": args.tokenStatus,
-        "value": args.value,
     }, opts);
 }
 
@@ -29,29 +53,21 @@ export interface GetDelegatetokenArgs {
      */
     accountId: string;
     /**
-     * Time when the delegate token is created.
-     */
-    createdAt?: number;
-    /**
-     * Name of the resource.
+     * Name of the delegate token
      */
     name: string;
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      */
     orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      */
     projectId?: string;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
     tokenStatus?: string;
-    /**
-     * Value of the delegate Token
-     */
-    value?: string;
 }
 
 /**
@@ -63,47 +79,79 @@ export interface GetDelegatetokenResult {
      */
     readonly accountId: string;
     /**
-     * Time when the delegate token is created.
+     * Time when the delegate token is created. This is an epoch timestamp.
      */
-    readonly createdAt?: number;
+    readonly createdAt: number;
+    /**
+     * created by details
+     */
+    readonly createdBy: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Name of the resource.
+     * Name of the delegate token
      */
     readonly name: string;
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      */
     readonly projectId?: string;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     */
+    readonly revokeAfter: number;
+    /**
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
     readonly tokenStatus?: string;
     /**
-     * Value of the delegate Token
+     * Value of the delegate token. Encoded in base64.
      */
-    readonly value?: string;
+    readonly value: string;
 }
 /**
- * Data Source for retrieving delegate tokens.
+ * Data source for retrieving a Harness delegate Token.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * // Look up a delegate token at account level by name
+ * const accountLevel = harness.platform.getDelegatetoken({
+ *     name: "account-delegate-token",
+ *     accountId: "account_id",
+ * });
+ * // Look up a delegate token at organization level
+ * const orgLevel = harness.platform.getDelegatetoken({
+ *     name: "org-delegate-token",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ * });
+ * // Look up a delegate token at project level
+ * const projectLevel = harness.platform.getDelegatetoken({
+ *     name: "project-delegate-token",
+ *     accountId: "account_id",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getDelegatetokenOutput(args: GetDelegatetokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDelegatetokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDelegatetoken:getDelegatetoken", {
         "accountId": args.accountId,
-        "createdAt": args.createdAt,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
         "tokenStatus": args.tokenStatus,
-        "value": args.value,
     }, opts);
 }
 
@@ -116,27 +164,19 @@ export interface GetDelegatetokenOutputArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Time when the delegate token is created.
-     */
-    createdAt?: pulumi.Input<number>;
-    /**
-     * Name of the resource.
+     * Name of the delegate token
      */
     name: pulumi.Input<string>;
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
     tokenStatus?: pulumi.Input<string>;
-    /**
-     * Value of the delegate Token
-     */
-    value?: pulumi.Input<string>;
 }

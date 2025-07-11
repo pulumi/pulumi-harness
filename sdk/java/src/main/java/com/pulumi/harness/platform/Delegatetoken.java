@@ -17,27 +17,64 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating delegate tokens.
+ * ## Example Usage
  * 
- * ## Import
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
  * 
- * Import account level delegate token
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.Delegatetoken;
+ * import com.pulumi.harness.platform.DelegatetokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
- * ```sh
- * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;token_id&gt;
- * ```
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
  * 
- * Import org level delegate token
+ *     public static void stack(Context ctx) {
+ *         // Create delegate token at account level
+ *         var accountLevel = new Delegatetoken("accountLevel", DelegatetokenArgs.builder()
+ *             .name("account-delegate-token")
+ *             .accountId("account_id")
+ *             .build());
  * 
- * ```sh
- * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;org_id&gt;/&lt;token_id&gt;
- * ```
+ *         // Create delegate token at organization level
+ *         var orgLevel = new Delegatetoken("orgLevel", DelegatetokenArgs.builder()
+ *             .name("org-delegate-token")
+ *             .accountId("account_id")
+ *             .orgId("org_id")
+ *             .build());
  * 
- * Import project level delegate token
+ *         // Create delegate token at project level
+ *         var projectLevel = new Delegatetoken("projectLevel", DelegatetokenArgs.builder()
+ *             .name("project-delegate-token")
+ *             .accountId("account_id")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .build());
  * 
- * ```sh
- * $ pulumi import harness:platform/delegatetoken:Delegatetoken harness_platform_delegatetoken &lt;org_id&gt;/&lt;project_id&gt;/&lt;token_id&gt;
- * ```
+ *         // Create delegate token with auto-expiry
+ *         var expiryToken = new Delegatetoken("expiryToken", DelegatetokenArgs.builder()
+ *             .name("expiry-delegate-token")
+ *             .accountId("account_id")
+ *             .revokeAfter(1769689600000)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="harness:platform/delegatetoken:Delegatetoken")
@@ -57,98 +94,112 @@ public class Delegatetoken extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Time when the delegate token is created.
+     * Time when the delegate token is created. This is an epoch timestamp.
      * 
      */
     @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
     /**
-     * @return Time when the delegate token is created.
+     * @return Time when the delegate token is created. This is an epoch timestamp.
      * 
      */
     public Output<Integer> createdAt() {
         return this.createdAt;
     }
     /**
-     * created by details.
+     * created by details
      * 
      */
     @Export(name="createdBy", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> createdBy;
 
     /**
-     * @return created by details.
+     * @return created by details
      * 
      */
     public Output<Map<String,String>> createdBy() {
         return this.createdBy;
     }
     /**
-     * Name of the resource.
+     * Name of the delegate token
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the resource.
+     * @return Name of the delegate token
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Unique identifier of the organization.
+     * Org Identifier for the Entity
      * 
      */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Org Identifier for the Entity
      * 
      */
     public Output<Optional<String>> orgId() {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Unique identifier of the project.
+     * Project Identifier for the Entity
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Project Identifier for the Entity
      * 
      */
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     * 
+     */
+    @Export(name="revokeAfter", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> revokeAfter;
+
+    /**
+     * @return Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
+     * 
+     */
+    public Output<Optional<Integer>> revokeAfter() {
+        return Codegen.optional(this.revokeAfter);
+    }
+    /**
+     * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     @Export(name="tokenStatus", refs={String.class}, tree="[0]")
     private Output<String> tokenStatus;
 
     /**
-     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed.
+     * @return Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      * 
      */
     public Output<String> tokenStatus() {
         return this.tokenStatus;
     }
     /**
-     * Value of the delegate Token
+     * Value of the delegate token. Encoded in base64.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return Value of the delegate Token
+     * @return Value of the delegate token. Encoded in base64.
      * 
      */
     public Output<String> value() {

@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureKeyVaultConnector{}
 	case "harness:platform/bitbucketConnector:BitbucketConnector":
 		r = &BitbucketConnector{}
+	case "harness:platform/centralNotificationChannel:CentralNotificationChannel":
+		r = &CentralNotificationChannel{}
 	case "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts":
 		r = &ConnectorAzureArtifacts{}
 	case "harness:platform/connectorAzureRepo:ConnectorAzureRepo":
@@ -304,6 +306,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/bitbucketConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/centralNotificationChannel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
