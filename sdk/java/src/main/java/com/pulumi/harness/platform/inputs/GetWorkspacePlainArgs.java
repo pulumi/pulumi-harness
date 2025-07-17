@@ -155,6 +155,13 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.repositorySha);
     }
 
+    @Import(name="tags")
+    private @Nullable List<String> tags;
+
+    public Optional<List<String>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     @Import(name="terraformVariableFiles")
     private @Nullable List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
 
@@ -196,6 +203,7 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         this.repositoryBranch = $.repositoryBranch;
         this.repositoryCommit = $.repositoryCommit;
         this.repositorySha = $.repositorySha;
+        this.tags = $.tags;
         this.terraformVariableFiles = $.terraformVariableFiles;
         this.terraformVariables = $.terraformVariables;
         this.variableSets = $.variableSets;
@@ -336,6 +344,15 @@ public final class GetWorkspacePlainArgs extends com.pulumi.resources.InvokeArgs
         public Builder repositorySha(@Nullable String repositorySha) {
             $.repositorySha = repositorySha;
             return this;
+        }
+
+        public Builder tags(@Nullable List<String> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         public Builder terraformVariableFiles(@Nullable List<GetWorkspaceTerraformVariableFile> terraformVariableFiles) {

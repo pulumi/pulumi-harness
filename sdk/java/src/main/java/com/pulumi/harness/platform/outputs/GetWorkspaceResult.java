@@ -113,6 +113,7 @@ public final class GetWorkspaceResult {
      * 
      */
     private String repositorySha;
+    private @Nullable List<String> tags;
     private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
     private List<GetWorkspaceTerraformVariable> terraformVariables;
     /**
@@ -255,6 +256,9 @@ public final class GetWorkspaceResult {
     public String repositorySha() {
         return this.repositorySha;
     }
+    public List<String> tags() {
+        return this.tags == null ? List.of() : this.tags;
+    }
     public List<GetWorkspaceTerraformVariableFile> terraformVariableFiles() {
         return this.terraformVariableFiles;
     }
@@ -297,6 +301,7 @@ public final class GetWorkspaceResult {
         private String repositoryConnector;
         private String repositoryPath;
         private String repositorySha;
+        private @Nullable List<String> tags;
         private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
         private List<GetWorkspaceTerraformVariable> terraformVariables;
         private List<String> variableSets;
@@ -322,6 +327,7 @@ public final class GetWorkspaceResult {
     	      this.repositoryConnector = defaults.repositoryConnector;
     	      this.repositoryPath = defaults.repositoryPath;
     	      this.repositorySha = defaults.repositorySha;
+    	      this.tags = defaults.tags;
     	      this.terraformVariableFiles = defaults.terraformVariableFiles;
     	      this.terraformVariables = defaults.terraformVariables;
     	      this.variableSets = defaults.variableSets;
@@ -484,6 +490,15 @@ public final class GetWorkspaceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(@Nullable List<String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+        @CustomType.Setter
         public Builder terraformVariableFiles(List<GetWorkspaceTerraformVariableFile> terraformVariableFiles) {
             if (terraformVariableFiles == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceResult", "terraformVariableFiles");
@@ -537,6 +552,7 @@ public final class GetWorkspaceResult {
             _resultValue.repositoryConnector = repositoryConnector;
             _resultValue.repositoryPath = repositoryPath;
             _resultValue.repositorySha = repositorySha;
+            _resultValue.tags = tags;
             _resultValue.terraformVariableFiles = terraformVariableFiles;
             _resultValue.terraformVariables = terraformVariables;
             _resultValue.variableSets = variableSets;

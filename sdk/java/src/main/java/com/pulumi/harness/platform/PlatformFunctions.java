@@ -35,6 +35,8 @@ import com.pulumi.harness.platform.inputs.GetCcmFiltersArgs;
 import com.pulumi.harness.platform.inputs.GetCcmFiltersPlainArgs;
 import com.pulumi.harness.platform.inputs.GetCentralNotificationChannelArgs;
 import com.pulumi.harness.platform.inputs.GetCentralNotificationChannelPlainArgs;
+import com.pulumi.harness.platform.inputs.GetCentralNotificationRuleArgs;
+import com.pulumi.harness.platform.inputs.GetCentralNotificationRulePlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerArgs;
@@ -254,6 +256,7 @@ import com.pulumi.harness.platform.outputs.GetAzureKeyVaultConnectorResult;
 import com.pulumi.harness.platform.outputs.GetBitbucketConnectorResult;
 import com.pulumi.harness.platform.outputs.GetCcmFiltersResult;
 import com.pulumi.harness.platform.outputs.GetCentralNotificationChannelResult;
+import com.pulumi.harness.platform.outputs.GetCentralNotificationRuleResult;
 import com.pulumi.harness.platform.outputs.GetConnectorAzureRepoResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomSecretManagerResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomhealthsourceResult;
@@ -3015,6 +3018,41 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetCentralNotificationChannelResult> getCentralNotificationChannelPlain(GetCentralNotificationChannelPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getCentralNotificationChannel:getCentralNotificationChannel", TypeShape.of(GetCentralNotificationChannelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static Output<GetCentralNotificationRuleResult> getCentralNotificationRule(GetCentralNotificationRuleArgs args) {
+        return getCentralNotificationRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static CompletableFuture<GetCentralNotificationRuleResult> getCentralNotificationRulePlain(GetCentralNotificationRulePlainArgs args) {
+        return getCentralNotificationRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static Output<GetCentralNotificationRuleResult> getCentralNotificationRule(GetCentralNotificationRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getCentralNotificationRule:getCentralNotificationRule", TypeShape.of(GetCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static Output<GetCentralNotificationRuleResult> getCentralNotificationRule(GetCentralNotificationRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getCentralNotificationRule:getCentralNotificationRule", TypeShape.of(GetCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Notification Rule.
+     * 
+     */
+    public static CompletableFuture<GetCentralNotificationRuleResult> getCentralNotificationRulePlain(GetCentralNotificationRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getCentralNotificationRule:getCentralNotificationRule", TypeShape.of(GetCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetConnectorAzureRepoResult> getConnectorAzureRepo(GetConnectorAzureRepoArgs args) {
         return getConnectorAzureRepo(args, InvokeOptions.Empty);

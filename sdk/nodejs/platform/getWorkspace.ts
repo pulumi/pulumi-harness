@@ -34,6 +34,7 @@ export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions
         "repositoryBranch": args.repositoryBranch,
         "repositoryCommit": args.repositoryCommit,
         "repositorySha": args.repositorySha,
+        "tags": args.tags,
         "terraformVariableFiles": args.terraformVariableFiles,
         "terraformVariables": args.terraformVariables,
         "variableSets": args.variableSets,
@@ -80,6 +81,7 @@ export interface GetWorkspaceArgs {
      * Repository Commit SHA in which the code should be accessed
      */
     repositorySha?: string;
+    tags?: string[];
     terraformVariableFiles?: inputs.platform.GetWorkspaceTerraformVariableFile[];
     terraformVariables?: inputs.platform.GetWorkspaceTerraformVariable[];
     /**
@@ -168,6 +170,7 @@ export interface GetWorkspaceResult {
      * Repository Commit SHA in which the code should be accessed
      */
     readonly repositorySha: string;
+    readonly tags?: string[];
     readonly terraformVariableFiles: outputs.platform.GetWorkspaceTerraformVariableFile[];
     readonly terraformVariables: outputs.platform.GetWorkspaceTerraformVariable[];
     /**
@@ -203,6 +206,7 @@ export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.I
         "repositoryBranch": args.repositoryBranch,
         "repositoryCommit": args.repositoryCommit,
         "repositorySha": args.repositorySha,
+        "tags": args.tags,
         "terraformVariableFiles": args.terraformVariableFiles,
         "terraformVariables": args.terraformVariables,
         "variableSets": args.variableSets,
@@ -249,6 +253,7 @@ export interface GetWorkspaceOutputArgs {
      * Repository Commit SHA in which the code should be accessed
      */
     repositorySha?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableFileArgs>[]>;
     terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetWorkspaceTerraformVariableArgs>[]>;
     /**

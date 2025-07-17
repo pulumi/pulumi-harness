@@ -29,7 +29,7 @@ class GetWorkspaceResult:
     """
     A collection of values returned by getWorkspace.
     """
-    def __init__(__self__, connectors=None, cost_estimation_enabled=None, default_pipelines=None, description=None, environment_variables=None, id=None, identifier=None, name=None, org_id=None, project_id=None, provider_connector=None, provisioner_type=None, provisioner_version=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_sha=None, terraform_variable_files=None, terraform_variables=None, variable_sets=None):
+    def __init__(__self__, connectors=None, cost_estimation_enabled=None, default_pipelines=None, description=None, environment_variables=None, id=None, identifier=None, name=None, org_id=None, project_id=None, provider_connector=None, provisioner_type=None, provisioner_version=None, repository=None, repository_branch=None, repository_commit=None, repository_connector=None, repository_path=None, repository_sha=None, tags=None, terraform_variable_files=None, terraform_variables=None, variable_sets=None):
         if connectors and not isinstance(connectors, list):
             raise TypeError("Expected argument 'connectors' to be a list")
         pulumi.set(__self__, "connectors", connectors)
@@ -87,6 +87,9 @@ class GetWorkspaceResult:
         if repository_sha and not isinstance(repository_sha, str):
             raise TypeError("Expected argument 'repository_sha' to be a str")
         pulumi.set(__self__, "repository_sha", repository_sha)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if terraform_variable_files and not isinstance(terraform_variable_files, list):
             raise TypeError("Expected argument 'terraform_variable_files' to be a list")
         pulumi.set(__self__, "terraform_variable_files", terraform_variable_files)
@@ -250,6 +253,11 @@ class GetWorkspaceResult:
         return pulumi.get(self, "repository_sha")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="terraformVariableFiles")
     def terraform_variable_files(self) -> Sequence['outputs.GetWorkspaceTerraformVariableFileResult']:
         return pulumi.get(self, "terraform_variable_files")
@@ -293,6 +301,7 @@ class AwaitableGetWorkspaceResult(GetWorkspaceResult):
             repository_connector=self.repository_connector,
             repository_path=self.repository_path,
             repository_sha=self.repository_sha,
+            tags=self.tags,
             terraform_variable_files=self.terraform_variable_files,
             terraform_variables=self.terraform_variables,
             variable_sets=self.variable_sets)
@@ -307,6 +316,7 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
                   repository_branch: Optional[builtins.str] = None,
                   repository_commit: Optional[builtins.str] = None,
                   repository_sha: Optional[builtins.str] = None,
+                  tags: Optional[Sequence[builtins.str]] = None,
                   terraform_variable_files: Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]] = None,
                   terraform_variables: Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]] = None,
                   variable_sets: Optional[Sequence[builtins.str]] = None,
@@ -347,6 +357,7 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
     __args__['repositoryBranch'] = repository_branch
     __args__['repositoryCommit'] = repository_commit
     __args__['repositorySha'] = repository_sha
+    __args__['tags'] = tags
     __args__['terraformVariableFiles'] = terraform_variable_files
     __args__['terraformVariables'] = terraform_variables
     __args__['variableSets'] = variable_sets
@@ -373,6 +384,7 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
         repository_connector=pulumi.get(__ret__, 'repository_connector'),
         repository_path=pulumi.get(__ret__, 'repository_path'),
         repository_sha=pulumi.get(__ret__, 'repository_sha'),
+        tags=pulumi.get(__ret__, 'tags'),
         terraform_variable_files=pulumi.get(__ret__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__ret__, 'terraform_variables'),
         variable_sets=pulumi.get(__ret__, 'variable_sets'))
@@ -385,6 +397,7 @@ def get_workspace_output(connectors: Optional[pulumi.Input[Optional[Sequence[Uni
                          repository_branch: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                          repository_commit: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                          repository_sha: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                          terraform_variable_files: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]]]] = None,
                          terraform_variables: Optional[pulumi.Input[Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]]]] = None,
                          variable_sets: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
@@ -425,6 +438,7 @@ def get_workspace_output(connectors: Optional[pulumi.Input[Optional[Sequence[Uni
     __args__['repositoryBranch'] = repository_branch
     __args__['repositoryCommit'] = repository_commit
     __args__['repositorySha'] = repository_sha
+    __args__['tags'] = tags
     __args__['terraformVariableFiles'] = terraform_variable_files
     __args__['terraformVariables'] = terraform_variables
     __args__['variableSets'] = variable_sets
@@ -450,6 +464,7 @@ def get_workspace_output(connectors: Optional[pulumi.Input[Optional[Sequence[Uni
         repository_connector=pulumi.get(__response__, 'repository_connector'),
         repository_path=pulumi.get(__response__, 'repository_path'),
         repository_sha=pulumi.get(__response__, 'repository_sha'),
+        tags=pulumi.get(__response__, 'tags'),
         terraform_variable_files=pulumi.get(__response__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__response__, 'terraform_variables'),
         variable_sets=pulumi.get(__response__, 'variable_sets')))

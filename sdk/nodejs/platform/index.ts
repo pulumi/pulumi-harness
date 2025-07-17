@@ -60,6 +60,11 @@ export type CentralNotificationChannel = import("./centralNotificationChannel").
 export const CentralNotificationChannel: typeof import("./centralNotificationChannel").CentralNotificationChannel = null as any;
 utilities.lazyLoad(exports, ["CentralNotificationChannel"], () => require("./centralNotificationChannel"));
 
+export { CentralNotificationRuleArgs, CentralNotificationRuleState } from "./centralNotificationRule";
+export type CentralNotificationRule = import("./centralNotificationRule").CentralNotificationRule;
+export const CentralNotificationRule: typeof import("./centralNotificationRule").CentralNotificationRule = null as any;
+utilities.lazyLoad(exports, ["CentralNotificationRule"], () => require("./centralNotificationRule"));
+
 export { ConnectorAzureArtifactsArgs, ConnectorAzureArtifactsState } from "./connectorAzureArtifacts";
 export type ConnectorAzureArtifacts = import("./connectorAzureArtifacts").ConnectorAzureArtifacts;
 export const ConnectorAzureArtifacts: typeof import("./connectorAzureArtifacts").ConnectorAzureArtifacts = null as any;
@@ -279,6 +284,11 @@ export { GetCentralNotificationChannelArgs, GetCentralNotificationChannelResult,
 export const getCentralNotificationChannel: typeof import("./getCentralNotificationChannel").getCentralNotificationChannel = null as any;
 export const getCentralNotificationChannelOutput: typeof import("./getCentralNotificationChannel").getCentralNotificationChannelOutput = null as any;
 utilities.lazyLoad(exports, ["getCentralNotificationChannel","getCentralNotificationChannelOutput"], () => require("./getCentralNotificationChannel"));
+
+export { GetCentralNotificationRuleArgs, GetCentralNotificationRuleResult, GetCentralNotificationRuleOutputArgs } from "./getCentralNotificationRule";
+export const getCentralNotificationRule: typeof import("./getCentralNotificationRule").getCentralNotificationRule = null as any;
+export const getCentralNotificationRuleOutput: typeof import("./getCentralNotificationRule").getCentralNotificationRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getCentralNotificationRule","getCentralNotificationRuleOutput"], () => require("./getCentralNotificationRule"));
 
 export { GetConnectorAzureRepoArgs, GetConnectorAzureRepoResult, GetConnectorAzureRepoOutputArgs } from "./getConnectorAzureRepo";
 export const getConnectorAzureRepo: typeof import("./getConnectorAzureRepo").getConnectorAzureRepo = null as any;
@@ -1177,6 +1187,8 @@ const _module = {
                 return new BitbucketConnector(name, <any>undefined, { urn })
             case "harness:platform/centralNotificationChannel:CentralNotificationChannel":
                 return new CentralNotificationChannel(name, <any>undefined, { urn })
+            case "harness:platform/centralNotificationRule:CentralNotificationRule":
+                return new CentralNotificationRule(name, <any>undefined, { urn })
             case "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts":
                 return new ConnectorAzureArtifacts(name, <any>undefined, { urn })
             case "harness:platform/connectorAzureRepo:ConnectorAzureRepo":
@@ -1395,6 +1407,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/azureCloudProviderCon
 pulumi.runtime.registerResourceModule("harness", "platform/azureKeyVaultConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/centralNotificationChannel", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/centralNotificationRule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureArtifacts", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureRepo", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomSecretManager", _module)

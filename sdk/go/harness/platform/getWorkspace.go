@@ -70,6 +70,7 @@ type LookupWorkspaceArgs struct {
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
 	// Repository Commit SHA in which the code should be accessed
 	RepositorySha          *string                             `pulumi:"repositorySha"`
+	Tags                   []string                            `pulumi:"tags"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
 	// Variable sets to use.
@@ -116,6 +117,7 @@ type LookupWorkspaceResult struct {
 	RepositoryPath string `pulumi:"repositoryPath"`
 	// Repository Commit SHA in which the code should be accessed
 	RepositorySha          string                              `pulumi:"repositorySha"`
+	Tags                   []string                            `pulumi:"tags"`
 	TerraformVariableFiles []GetWorkspaceTerraformVariableFile `pulumi:"terraformVariableFiles"`
 	TerraformVariables     []GetWorkspaceTerraformVariable     `pulumi:"terraformVariables"`
 	// Variable sets to use.
@@ -151,6 +153,7 @@ type LookupWorkspaceOutputArgs struct {
 	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
 	// Repository Commit SHA in which the code should be accessed
 	RepositorySha          pulumi.StringPtrInput                       `pulumi:"repositorySha"`
+	Tags                   pulumi.StringArrayInput                     `pulumi:"tags"`
 	TerraformVariableFiles GetWorkspaceTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
 	TerraformVariables     GetWorkspaceTerraformVariableArrayInput     `pulumi:"terraformVariables"`
 	// Variable sets to use.
@@ -269,6 +272,10 @@ func (o LookupWorkspaceResultOutput) RepositoryPath() pulumi.StringOutput {
 // Repository Commit SHA in which the code should be accessed
 func (o LookupWorkspaceResultOutput) RepositorySha() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.RepositorySha }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkspaceResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupWorkspaceResultOutput) TerraformVariableFiles() GetWorkspaceTerraformVariableFileArrayOutput {
