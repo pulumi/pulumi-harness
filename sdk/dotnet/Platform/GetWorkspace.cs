@@ -159,6 +159,14 @@ namespace Pulumi.Harness.Platform
         [Input("repositorySha")]
         public string? RepositorySha { get; set; }
 
+        [Input("tags")]
+        private List<string>? _tags;
+        public List<string> Tags
+        {
+            get => _tags ?? (_tags = new List<string>());
+            set => _tags = value;
+        }
+
         [Input("terraformVariableFiles")]
         private List<Inputs.GetWorkspaceTerraformVariableFileArgs>? _terraformVariableFiles;
         public List<Inputs.GetWorkspaceTerraformVariableFileArgs> TerraformVariableFiles
@@ -260,6 +268,14 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         [Input("terraformVariableFiles")]
         private InputList<Inputs.GetWorkspaceTerraformVariableFileInputArgs>? _terraformVariableFiles;
@@ -375,6 +391,7 @@ namespace Pulumi.Harness.Platform
         /// Repository Commit SHA in which the code should be accessed
         /// </summary>
         public readonly string RepositorySha;
+        public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> TerraformVariableFiles;
         public readonly ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> TerraformVariables;
         /// <summary>
@@ -422,6 +439,8 @@ namespace Pulumi.Harness.Platform
 
             string repositorySha,
 
+            ImmutableArray<string> tags,
+
             ImmutableArray<Outputs.GetWorkspaceTerraformVariableFileResult> terraformVariableFiles,
 
             ImmutableArray<Outputs.GetWorkspaceTerraformVariableResult> terraformVariables,
@@ -447,6 +466,7 @@ namespace Pulumi.Harness.Platform
             RepositoryConnector = repositoryConnector;
             RepositoryPath = repositoryPath;
             RepositorySha = repositorySha;
+            Tags = tags;
             TerraformVariableFiles = terraformVariableFiles;
             TerraformVariables = terraformVariables;
             VariableSets = variableSets;

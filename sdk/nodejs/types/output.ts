@@ -2262,6 +2262,30 @@ export namespace platform {
         identifier: string;
     }
 
+    export interface CentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: string;
+        variables?: outputs.platform.CentralNotificationRuleCustomNotificationTemplateRefVariable[];
+        versionLabel: string;
+    }
+
+    export interface CentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: string;
+        type?: string;
+        value: string;
+    }
+
+    export interface CentralNotificationRuleNotificationCondition {
+        conditionName: string;
+        notificationEventConfigs: outputs.platform.CentralNotificationRuleNotificationConditionNotificationEventConfig[];
+    }
+
+    export interface CentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: string[];
+        notificationEntity: string;
+        notificationEvent: string;
+        notificationEventData?: {[key: string]: string};
+    }
+
     export interface ConnectorAzureArtifactsCredentials {
         /**
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -3343,6 +3367,29 @@ export namespace platform {
          * Identifier of the user group.
          */
         identifier?: string;
+    }
+
+    export interface GetCentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: string;
+        variables?: outputs.platform.GetCentralNotificationRuleCustomNotificationTemplateRefVariable[];
+        versionLabel: string;
+    }
+
+    export interface GetCentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: string;
+        type?: string;
+        value: string;
+    }
+
+    export interface GetCentralNotificationRuleNotificationCondition {
+        conditionName: string;
+        notificationEventConfigs: outputs.platform.GetCentralNotificationRuleNotificationConditionNotificationEventConfig[];
+    }
+
+    export interface GetCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        notificationEntity: string;
+        notificationEvent: string;
+        notificationEventData?: {[key: string]: string};
     }
 
     export interface GetConnectorAzureRepoApiAuthentication {

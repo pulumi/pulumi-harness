@@ -543,6 +543,41 @@
                     }
                 }
             },
+            "harness_platform_central_notification_rule": {
+                "current": "harness:platform/centralNotificationRule:CentralNotificationRule",
+                "fields": {
+                    "custom_notification_template_ref": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notification_channel_refs": {
+                        "maxItemsOne": false
+                    },
+                    "notification_conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "notification_event_configs": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "entity_identifiers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_connector_appdynamics": {
                 "current": "harness:platform/appDynamicsConnector:AppDynamicsConnector",
                 "fields": {
@@ -15274,6 +15309,34 @@
                     }
                 }
             },
+            "harness_platform_central_notification_rule": {
+                "current": "harness:platform/getCentralNotificationRule:getCentralNotificationRule",
+                "fields": {
+                    "custom_notification_template_ref": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notification_channel_refs": {
+                        "maxItemsOne": false
+                    },
+                    "notification_conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "notification_event_configs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_platform_connector_appdynamics": {
                 "current": "harness:platform/getAppDynamicsConnector:getAppDynamicsConnector",
                 "fields": {
@@ -17245,6 +17308,9 @@
                         "maxItemsOne": false
                     },
                     "environment_variable": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     },
                     "terraform_variable": {

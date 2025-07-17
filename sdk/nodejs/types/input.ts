@@ -2617,6 +2617,30 @@ export namespace platform {
         identifier: pulumi.Input<string>;
     }
 
+    export interface CentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: pulumi.Input<string>;
+        variables?: pulumi.Input<pulumi.Input<inputs.platform.CentralNotificationRuleCustomNotificationTemplateRefVariable>[]>;
+        versionLabel: pulumi.Input<string>;
+    }
+
+    export interface CentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface CentralNotificationRuleNotificationCondition {
+        conditionName: pulumi.Input<string>;
+        notificationEventConfigs: pulumi.Input<pulumi.Input<inputs.platform.CentralNotificationRuleNotificationConditionNotificationEventConfig>[]>;
+    }
+
+    export interface CentralNotificationRuleNotificationConditionNotificationEventConfig {
+        entityIdentifiers?: pulumi.Input<pulumi.Input<string>[]>;
+        notificationEntity: pulumi.Input<string>;
+        notificationEvent: pulumi.Input<string>;
+        notificationEventData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
     export interface ConnectorAzureArtifactsCredentials {
         /**
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -3325,6 +3349,52 @@ export namespace platform {
          * Identifier of the user group.
          */
         identifier?: pulumi.Input<string>;
+    }
+
+    export interface GetCentralNotificationRuleCustomNotificationTemplateRef {
+        templateRef: string;
+        variables?: inputs.platform.GetCentralNotificationRuleCustomNotificationTemplateRefVariable[];
+        versionLabel: string;
+    }
+
+    export interface GetCentralNotificationRuleCustomNotificationTemplateRefArgs {
+        templateRef: pulumi.Input<string>;
+        variables?: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs>[]>;
+        versionLabel: pulumi.Input<string>;
+    }
+
+    export interface GetCentralNotificationRuleCustomNotificationTemplateRefVariable {
+        name: string;
+        type?: string;
+        value: string;
+    }
+
+    export interface GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs {
+        name: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetCentralNotificationRuleNotificationCondition {
+        conditionName: string;
+        notificationEventConfigs: inputs.platform.GetCentralNotificationRuleNotificationConditionNotificationEventConfig[];
+    }
+
+    export interface GetCentralNotificationRuleNotificationConditionArgs {
+        conditionName: pulumi.Input<string>;
+        notificationEventConfigs: pulumi.Input<pulumi.Input<inputs.platform.GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs>[]>;
+    }
+
+    export interface GetCentralNotificationRuleNotificationConditionNotificationEventConfig {
+        notificationEntity: string;
+        notificationEvent: string;
+        notificationEventData?: {[key: string]: string};
+    }
+
+    export interface GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs {
+        notificationEntity: pulumi.Input<string>;
+        notificationEvent: pulumi.Input<string>;
+        notificationEventData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface GetConnectorRancherBearerToken {

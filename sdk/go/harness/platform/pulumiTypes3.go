@@ -13,6 +13,836 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecTemplate struct {
+	// Kubernetes object metadata for templated Application.
+	Metadata GitopsApplicationsetApplicationsetSpecTemplateMetadata `pulumi:"metadata"`
+	// The application specification.
+	Spec GitopsApplicationsetApplicationsetSpecTemplateSpec `pulumi:"spec"`
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateArgs and GitopsApplicationsetApplicationsetSpecTemplateOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateArgs{...}
+type GitopsApplicationsetApplicationsetSpecTemplateInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateOutput() GitopsApplicationsetApplicationsetSpecTemplateOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateArgs struct {
+	// Kubernetes object metadata for templated Application.
+	Metadata GitopsApplicationsetApplicationsetSpecTemplateMetadataInput `pulumi:"metadata"`
+	// The application specification.
+	Spec GitopsApplicationsetApplicationsetSpecTemplateSpecInput `pulumi:"spec"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplate)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateArgs) ToGitopsApplicationsetApplicationsetSpecTemplateOutput() GitopsApplicationsetApplicationsetSpecTemplateOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateArgs) ToGitopsApplicationsetApplicationsetSpecTemplateOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateArgs) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutput() GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateArgs) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateOutput).ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplatePtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateArgs, GitopsApplicationsetApplicationsetSpecTemplatePtr and GitopsApplicationsetApplicationsetSpecTemplatePtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplatePtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecTemplatePtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutput() GitopsApplicationsetApplicationsetSpecTemplatePtrOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplatePtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecTemplatePtrType GitopsApplicationsetApplicationsetSpecTemplateArgs
+
+func GitopsApplicationsetApplicationsetSpecTemplatePtr(v *GitopsApplicationsetApplicationsetSpecTemplateArgs) GitopsApplicationsetApplicationsetSpecTemplatePtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecTemplatePtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplate)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplatePtrType) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutput() GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplatePtrType) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplatePtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplate)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateOutput) ToGitopsApplicationsetApplicationsetSpecTemplateOutput() GitopsApplicationsetApplicationsetSpecTemplateOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateOutput) ToGitopsApplicationsetApplicationsetSpecTemplateOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateOutput) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutput() GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateOutput) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecTemplate) *GitopsApplicationsetApplicationsetSpecTemplate {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecTemplatePtrOutput)
+}
+
+// Kubernetes object metadata for templated Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateOutput) Metadata() GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplate) GitopsApplicationsetApplicationsetSpecTemplateMetadata {
+		return v.Metadata
+	}).(GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput)
+}
+
+// The application specification.
+func (o GitopsApplicationsetApplicationsetSpecTemplateOutput) Spec() GitopsApplicationsetApplicationsetSpecTemplateSpecOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplate) GitopsApplicationsetApplicationsetSpecTemplateSpec {
+		return v.Spec
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplate)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplatePtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutput() GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplatePtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplatePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplatePtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplatePtrOutput) Elem() GitopsApplicationsetApplicationsetSpecTemplateOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplate) GitopsApplicationsetApplicationsetSpecTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecTemplate
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecTemplateOutput)
+}
+
+// Kubernetes object metadata for templated Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplatePtrOutput) Metadata() GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplate) *GitopsApplicationsetApplicationsetSpecTemplateMetadata {
+		if v == nil {
+			return nil
+		}
+		return &v.Metadata
+	}).(GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput)
+}
+
+// The application specification.
+func (o GitopsApplicationsetApplicationsetSpecTemplatePtrOutput) Spec() GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplate) *GitopsApplicationsetApplicationsetSpecTemplateSpec {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateMetadata struct {
+	// An unstructured key value map that may be used to store arbitrary metadata for the resulting Application.
+	Annotations map[string]string `pulumi:"annotations"`
+	// List of finalizers to apply to the resulting Application.
+	Finalizers []string `pulumi:"finalizers"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) the resulting Application.
+	Labels map[string]string `pulumi:"labels"`
+	// Name of the resulting Application
+	Name string `pulumi:"name"`
+	// Namespace of the resulting Application
+	Namespace *string `pulumi:"namespace"`
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateMetadataInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs and GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateMetadataInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{...}
+type GitopsApplicationsetApplicationsetSpecTemplateMetadataInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateMetadataOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateMetadataOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs struct {
+	// An unstructured key value map that may be used to store arbitrary metadata for the resulting Application.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// List of finalizers to apply to the resulting Application.
+	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
+	// Map of string keys and values that can be used to organize and categorize (scope and select) the resulting Application.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name of the resulting Application
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the resulting Application
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateMetadataOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput).ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs, GitopsApplicationsetApplicationsetSpecTemplateMetadataPtr and GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecTemplateMetadataPtrType GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
+
+func GitopsApplicationsetApplicationsetSpecTemplateMetadataPtr(v *GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs) GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecTemplateMetadataPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecTemplateMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplateMetadataPtrType) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplateMetadataPtrType) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecTemplateMetadata) *GitopsApplicationsetApplicationsetSpecTemplateMetadata {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput)
+}
+
+// An unstructured key value map that may be used to store arbitrary metadata for the resulting Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// List of finalizers to apply to the resulting Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateMetadata) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
+}
+
+// Map of string keys and values that can be used to organize and categorize (scope and select) the resulting Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the resulting Application
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateMetadata) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the resulting Application
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateMetadata) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplateMetadata)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateMetadata) GitopsApplicationsetApplicationsetSpecTemplateMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecTemplateMetadata
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput)
+}
+
+// An unstructured key value map that may be used to store arbitrary metadata for the resulting Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// List of finalizers to apply to the resulting Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Finalizers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Map of string keys and values that can be used to organize and categorize (scope and select) the resulting Application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Name of the resulting Application
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Namespace of the resulting Application
+func (o GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpec struct {
+	// Reference to the Kubernetes server and namespace in which the application will be deployed.
+	Destination GitopsApplicationsetApplicationsetSpecTemplateSpecDestination `pulumi:"destination"`
+	// Resources and their fields which should be ignored during comparison. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration.
+	IgnoreDifferences []GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference `pulumi:"ignoreDifferences"`
+	// List of information (URLs, email addresses, and plain text) that relates to the application.
+	Infos []GitopsApplicationsetApplicationsetSpecTemplateSpecInfo `pulumi:"infos"`
+	// The project the application belongs to.
+	Project *string `pulumi:"project"`
+	// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
+	RevisionHistoryLimit *int `pulumi:"revisionHistoryLimit"`
+	// Location of the application's manifests or chart.
+	Source []GitopsApplicationsetApplicationsetSpecTemplateSpecSource `pulumi:"source"`
+	// Location of the application's manifests or chart. Use when specifying multiple fields
+	Sources []GitopsApplicationsetApplicationsetSpecTemplateSpecSource `pulumi:"sources"`
+	// Controls when and how a sync will be performed.
+	SyncPolicy *GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicy `pulumi:"syncPolicy"`
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecArgs and GitopsApplicationsetApplicationsetSpecTemplateSpecOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{...}
+type GitopsApplicationsetApplicationsetSpecTemplateSpecInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecArgs struct {
+	// Reference to the Kubernetes server and namespace in which the application will be deployed.
+	Destination GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationInput `pulumi:"destination"`
+	// Resources and their fields which should be ignored during comparison. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration.
+	IgnoreDifferences GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayInput `pulumi:"ignoreDifferences"`
+	// List of information (URLs, email addresses, and plain text) that relates to the application.
+	Infos GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayInput `pulumi:"infos"`
+	// The project the application belongs to.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
+	RevisionHistoryLimit pulumi.IntPtrInput `pulumi:"revisionHistoryLimit"`
+	// Location of the application's manifests or chart.
+	Source GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput `pulumi:"source"`
+	// Location of the application's manifests or chart. Use when specifying multiple fields
+	Sources GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput `pulumi:"sources"`
+	// Controls when and how a sync will be performed.
+	SyncPolicy GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyPtrInput `pulumi:"syncPolicy"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpec)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecOutput).ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecArgs, GitopsApplicationsetApplicationsetSpecTemplateSpecPtr and GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecTemplateSpecPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecTemplateSpecPtrType GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
+
+func GitopsApplicationsetApplicationsetSpecTemplateSpecPtr(v *GitopsApplicationsetApplicationsetSpecTemplateSpecArgs) GitopsApplicationsetApplicationsetSpecTemplateSpecPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecTemplateSpecPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecTemplateSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplateSpec)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplateSpecPtrType) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplateSpecPtrType) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpec)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecTemplateSpec) *GitopsApplicationsetApplicationsetSpecTemplateSpec {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput)
+}
+
+// Reference to the Kubernetes server and namespace in which the application will be deployed.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Destination() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) GitopsApplicationsetApplicationsetSpecTemplateSpecDestination {
+		return v.Destination
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput)
+}
+
+// Resources and their fields which should be ignored during comparison. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) IgnoreDifferences() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference {
+		return v.IgnoreDifferences
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput)
+}
+
+// List of information (URLs, email addresses, and plain text) that relates to the application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Infos() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecInfo {
+		return v.Infos
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput)
+}
+
+// The project the application belongs to.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) *int { return v.RevisionHistoryLimit }).(pulumi.IntPtrOutput)
+}
+
+// Location of the application's manifests or chart.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Source() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
+		return v.Source
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput)
+}
+
+// Location of the application's manifests or chart. Use when specifying multiple fields
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Sources() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
+		return v.Sources
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput)
+}
+
+// Controls when and how a sync will be performed.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) SyncPolicy() GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) *GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicy {
+		return v.SyncPolicy
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplateSpec)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecTemplateSpecOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) GitopsApplicationsetApplicationsetSpecTemplateSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecTemplateSpec
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecOutput)
+}
+
+// Reference to the Kubernetes server and namespace in which the application will be deployed.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Destination() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) *GitopsApplicationsetApplicationsetSpecTemplateSpecDestination {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput)
+}
+
+// Resources and their fields which should be ignored during comparison. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) IgnoreDifferences() GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreDifferences
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput)
+}
+
+// List of information (URLs, email addresses, and plain text) that relates to the application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Infos() GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecInfo {
+		if v == nil {
+			return nil
+		}
+		return v.Infos
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArrayOutput)
+}
+
+// The project the application belongs to.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) RevisionHistoryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RevisionHistoryLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Location of the application's manifests or chart.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Source() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput)
+}
+
+// Location of the application's manifests or chart. Use when specifying multiple fields
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Sources() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput)
+}
+
+// Controls when and how a sync will be performed.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) SyncPolicy() GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) *GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.SyncPolicy
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecDestination struct {
+	// Name of the target cluster. Can be used instead of `server`.
+	Name *string `pulumi:"name"`
+	// Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
+	Namespace *string `pulumi:"namespace"`
+	// URL of the target cluster and must be set to the Kubernetes control plane API.
+	Server *string `pulumi:"server"`
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs and GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{...}
+type GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs struct {
+	// Name of the target cluster. Can be used instead of `server`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// URL of the target cluster and must be set to the Kubernetes control plane API.
+	Server pulumi.StringPtrInput `pulumi:"server"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecDestination)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput).ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs, GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtr and GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrType GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
+
+func GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtr(v *GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplateSpecDestination)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrType) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrType) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecDestination)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) *GitopsApplicationsetApplicationsetSpecTemplateSpecDestination {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput)
+}
+
+// Name of the target cluster. Can be used instead of `server`.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// URL of the target cluster and must be set to the Kubernetes control plane API.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecTemplateSpecDestination)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput) ToGitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) GitopsApplicationsetApplicationsetSpecTemplateSpecDestination {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecTemplateSpecDestination
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput)
+}
+
+// Name of the target cluster. Can be used instead of `server`.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target namespace for the application's resources. The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the target cluster and must be set to the Kubernetes control plane API.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifference struct {
 	// The Kubernetes resource Group to match for.
 	Group *string `pulumi:"group"`
@@ -23175,6 +24005,491 @@ func (o GetCentralNotificationChannelChannelUserGroupArrayOutput) Index(i pulumi
 	}).(GetCentralNotificationChannelChannelUserGroupOutput)
 }
 
+type GetCentralNotificationRuleCustomNotificationTemplateRef struct {
+	TemplateRef  string                                                            `pulumi:"templateRef"`
+	Variables    []GetCentralNotificationRuleCustomNotificationTemplateRefVariable `pulumi:"variables"`
+	VersionLabel string                                                            `pulumi:"versionLabel"`
+}
+
+// GetCentralNotificationRuleCustomNotificationTemplateRefInput is an input type that accepts GetCentralNotificationRuleCustomNotificationTemplateRefArgs and GetCentralNotificationRuleCustomNotificationTemplateRefOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleCustomNotificationTemplateRefInput` via:
+//
+//	GetCentralNotificationRuleCustomNotificationTemplateRefArgs{...}
+type GetCentralNotificationRuleCustomNotificationTemplateRefInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefOutput() GetCentralNotificationRuleCustomNotificationTemplateRefOutput
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefOutput
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefArgs struct {
+	TemplateRef  pulumi.StringInput                                                        `pulumi:"templateRef"`
+	Variables    GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput `pulumi:"variables"`
+	VersionLabel pulumi.StringInput                                                        `pulumi:"versionLabel"`
+}
+
+func (GetCentralNotificationRuleCustomNotificationTemplateRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetCentralNotificationRuleCustomNotificationTemplateRefOutput() GetCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return i.ToGetCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleCustomNotificationTemplateRefOutput)
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return i.ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefArgs) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleCustomNotificationTemplateRefOutput).ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx)
+}
+
+// GetCentralNotificationRuleCustomNotificationTemplateRefPtrInput is an input type that accepts GetCentralNotificationRuleCustomNotificationTemplateRefArgs, GetCentralNotificationRuleCustomNotificationTemplateRefPtr and GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleCustomNotificationTemplateRefPtrInput` via:
+//
+//	        GetCentralNotificationRuleCustomNotificationTemplateRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetCentralNotificationRuleCustomNotificationTemplateRefPtrInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput
+}
+
+type getCentralNotificationRuleCustomNotificationTemplateRefPtrType GetCentralNotificationRuleCustomNotificationTemplateRefArgs
+
+func GetCentralNotificationRuleCustomNotificationTemplateRefPtr(v *GetCentralNotificationRuleCustomNotificationTemplateRefArgs) GetCentralNotificationRuleCustomNotificationTemplateRefPtrInput {
+	return (*getCentralNotificationRuleCustomNotificationTemplateRefPtrType)(v)
+}
+
+func (*getCentralNotificationRuleCustomNotificationTemplateRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (i *getCentralNotificationRuleCustomNotificationTemplateRefPtrType) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return i.ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (i *getCentralNotificationRuleCustomNotificationTemplateRefPtrType) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput)
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleCustomNotificationTemplateRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefOutput() GetCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o.ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(context.Background())
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetCentralNotificationRuleCustomNotificationTemplateRef) *GetCentralNotificationRuleCustomNotificationTemplateRef {
+		return &v
+	}).(GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefOutput) TemplateRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleCustomNotificationTemplateRef) string { return v.TemplateRef }).(pulumi.StringOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefOutput) Variables() GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleCustomNotificationTemplateRef) []GetCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		return v.Variables
+	}).(GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefOutput) VersionLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleCustomNotificationTemplateRef) string { return v.VersionLabel }).(pulumi.StringOutput)
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetCentralNotificationRuleCustomNotificationTemplateRef)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput() GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefPtrOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) Elem() GetCentralNotificationRuleCustomNotificationTemplateRefOutput {
+	return o.ApplyT(func(v *GetCentralNotificationRuleCustomNotificationTemplateRef) GetCentralNotificationRuleCustomNotificationTemplateRef {
+		if v != nil {
+			return *v
+		}
+		var ret GetCentralNotificationRuleCustomNotificationTemplateRef
+		return ret
+	}).(GetCentralNotificationRuleCustomNotificationTemplateRefOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) TemplateRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCentralNotificationRuleCustomNotificationTemplateRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateRef
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) Variables() GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o.ApplyT(func(v *GetCentralNotificationRuleCustomNotificationTemplateRef) []GetCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		if v == nil {
+			return nil
+		}
+		return v.Variables
+	}).(GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput) VersionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetCentralNotificationRuleCustomNotificationTemplateRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VersionLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefVariable struct {
+	Name  string  `pulumi:"name"`
+	Type  *string `pulumi:"type"`
+	Value string  `pulumi:"value"`
+}
+
+// GetCentralNotificationRuleCustomNotificationTemplateRefVariableInput is an input type that accepts GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs and GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleCustomNotificationTemplateRefVariableInput` via:
+//
+//	GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{...}
+type GetCentralNotificationRuleCustomNotificationTemplateRefVariableInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs struct {
+	Name  pulumi.StringInput    `pulumi:"name"`
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringInput    `pulumi:"value"`
+}
+
+func (GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return i.ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput)
+}
+
+// GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput is an input type that accepts GetCentralNotificationRuleCustomNotificationTemplateRefVariableArray and GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput` via:
+//
+//	GetCentralNotificationRuleCustomNotificationTemplateRefVariableArray{ GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{...} }
+type GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput
+	ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefVariableArray []GetCentralNotificationRuleCustomNotificationTemplateRefVariableInput
+
+func (GetCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return i.ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleCustomNotificationTemplateRefVariableArray) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput)
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput() GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleCustomNotificationTemplateRefVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleCustomNotificationTemplateRefVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleCustomNotificationTemplateRefVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationRuleCustomNotificationTemplateRefVariable)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput() GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) ToGetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutputWithContext(ctx context.Context) GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput) Index(i pulumi.IntInput) GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCentralNotificationRuleCustomNotificationTemplateRefVariable {
+		return vs[0].([]GetCentralNotificationRuleCustomNotificationTemplateRefVariable)[vs[1].(int)]
+	}).(GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput)
+}
+
+type GetCentralNotificationRuleNotificationCondition struct {
+	ConditionName            string                                                                   `pulumi:"conditionName"`
+	NotificationEventConfigs []GetCentralNotificationRuleNotificationConditionNotificationEventConfig `pulumi:"notificationEventConfigs"`
+}
+
+// GetCentralNotificationRuleNotificationConditionInput is an input type that accepts GetCentralNotificationRuleNotificationConditionArgs and GetCentralNotificationRuleNotificationConditionOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleNotificationConditionInput` via:
+//
+//	GetCentralNotificationRuleNotificationConditionArgs{...}
+type GetCentralNotificationRuleNotificationConditionInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleNotificationConditionOutput() GetCentralNotificationRuleNotificationConditionOutput
+	ToGetCentralNotificationRuleNotificationConditionOutputWithContext(context.Context) GetCentralNotificationRuleNotificationConditionOutput
+}
+
+type GetCentralNotificationRuleNotificationConditionArgs struct {
+	ConditionName            pulumi.StringInput                                                               `pulumi:"conditionName"`
+	NotificationEventConfigs GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput `pulumi:"notificationEventConfigs"`
+}
+
+func (GetCentralNotificationRuleNotificationConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (i GetCentralNotificationRuleNotificationConditionArgs) ToGetCentralNotificationRuleNotificationConditionOutput() GetCentralNotificationRuleNotificationConditionOutput {
+	return i.ToGetCentralNotificationRuleNotificationConditionOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleNotificationConditionArgs) ToGetCentralNotificationRuleNotificationConditionOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleNotificationConditionOutput)
+}
+
+// GetCentralNotificationRuleNotificationConditionArrayInput is an input type that accepts GetCentralNotificationRuleNotificationConditionArray and GetCentralNotificationRuleNotificationConditionArrayOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleNotificationConditionArrayInput` via:
+//
+//	GetCentralNotificationRuleNotificationConditionArray{ GetCentralNotificationRuleNotificationConditionArgs{...} }
+type GetCentralNotificationRuleNotificationConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleNotificationConditionArrayOutput() GetCentralNotificationRuleNotificationConditionArrayOutput
+	ToGetCentralNotificationRuleNotificationConditionArrayOutputWithContext(context.Context) GetCentralNotificationRuleNotificationConditionArrayOutput
+}
+
+type GetCentralNotificationRuleNotificationConditionArray []GetCentralNotificationRuleNotificationConditionInput
+
+func (GetCentralNotificationRuleNotificationConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (i GetCentralNotificationRuleNotificationConditionArray) ToGetCentralNotificationRuleNotificationConditionArrayOutput() GetCentralNotificationRuleNotificationConditionArrayOutput {
+	return i.ToGetCentralNotificationRuleNotificationConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleNotificationConditionArray) ToGetCentralNotificationRuleNotificationConditionArrayOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleNotificationConditionArrayOutput)
+}
+
+type GetCentralNotificationRuleNotificationConditionOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleNotificationConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleNotificationConditionOutput) ToGetCentralNotificationRuleNotificationConditionOutput() GetCentralNotificationRuleNotificationConditionOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionOutput) ToGetCentralNotificationRuleNotificationConditionOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionOutput) ConditionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleNotificationCondition) string { return v.ConditionName }).(pulumi.StringOutput)
+}
+
+func (o GetCentralNotificationRuleNotificationConditionOutput) NotificationEventConfigs() GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleNotificationCondition) []GetCentralNotificationRuleNotificationConditionNotificationEventConfig {
+		return v.NotificationEventConfigs
+	}).(GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput)
+}
+
+type GetCentralNotificationRuleNotificationConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleNotificationConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationRuleNotificationCondition)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleNotificationConditionArrayOutput) ToGetCentralNotificationRuleNotificationConditionArrayOutput() GetCentralNotificationRuleNotificationConditionArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionArrayOutput) ToGetCentralNotificationRuleNotificationConditionArrayOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionArrayOutput) Index(i pulumi.IntInput) GetCentralNotificationRuleNotificationConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCentralNotificationRuleNotificationCondition {
+		return vs[0].([]GetCentralNotificationRuleNotificationCondition)[vs[1].(int)]
+	}).(GetCentralNotificationRuleNotificationConditionOutput)
+}
+
+type GetCentralNotificationRuleNotificationConditionNotificationEventConfig struct {
+	NotificationEntity    string            `pulumi:"notificationEntity"`
+	NotificationEvent     string            `pulumi:"notificationEvent"`
+	NotificationEventData map[string]string `pulumi:"notificationEventData"`
+}
+
+// GetCentralNotificationRuleNotificationConditionNotificationEventConfigInput is an input type that accepts GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs and GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleNotificationConditionNotificationEventConfigInput` via:
+//
+//	GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{...}
+type GetCentralNotificationRuleNotificationConditionNotificationEventConfigInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput
+	ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(context.Context) GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput
+}
+
+type GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs struct {
+	NotificationEntity    pulumi.StringInput    `pulumi:"notificationEntity"`
+	NotificationEvent     pulumi.StringInput    `pulumi:"notificationEvent"`
+	NotificationEventData pulumi.StringMapInput `pulumi:"notificationEventData"`
+}
+
+func (GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (i GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return i.ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
+}
+
+// GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput is an input type that accepts GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray and GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput values.
+// You can construct a concrete instance of `GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput` via:
+//
+//	GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray{ GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{...} }
+type GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput
+	ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(context.Context) GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput
+}
+
+type GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray []GetCentralNotificationRuleNotificationConditionNotificationEventConfigInput
+
+func (GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (i GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return i.ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput)
+}
+
+type GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput() GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEntity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
+		return v.NotificationEntity
+	}).(pulumi.StringOutput)
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEvent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleNotificationConditionNotificationEventConfig) string {
+		return v.NotificationEvent
+	}).(pulumi.StringOutput)
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput) NotificationEventData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCentralNotificationRuleNotificationConditionNotificationEventConfig) map[string]string {
+		return v.NotificationEventData
+	}).(pulumi.StringMapOutput)
+}
+
+type GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCentralNotificationRuleNotificationConditionNotificationEventConfig)(nil)).Elem()
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput() GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) ToGetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutputWithContext(ctx context.Context) GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput {
+	return o
+}
+
+func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput) Index(i pulumi.IntInput) GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCentralNotificationRuleNotificationConditionNotificationEventConfig {
+		return vs[0].([]GetCentralNotificationRuleNotificationConditionNotificationEventConfig)[vs[1].(int)]
+	}).(GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
+}
+
 type GetConnectorAzureRepoApiAuthentication struct {
 	// Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
@@ -43895,6 +45210,14 @@ func (o GetWorkspaceTerraformVariableFileArrayOutput) Index(i pulumi.IntInput) G
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplatePtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateMetadataInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecInfoInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecInfoArgs{})
@@ -44189,6 +45512,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelHeaderArrayInput)(nil)).Elem(), GetCentralNotificationChannelChannelHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelUserGroupInput)(nil)).Elem(), GetCentralNotificationChannelChannelUserGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationChannelChannelUserGroupArrayInput)(nil)).Elem(), GetCentralNotificationChannelChannelUserGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRefInput)(nil)).Elem(), GetCentralNotificationRuleCustomNotificationTemplateRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRefPtrInput)(nil)).Elem(), GetCentralNotificationRuleCustomNotificationTemplateRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRefVariableInput)(nil)).Elem(), GetCentralNotificationRuleCustomNotificationTemplateRefVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayInput)(nil)).Elem(), GetCentralNotificationRuleCustomNotificationTemplateRefVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionInput)(nil)).Elem(), GetCentralNotificationRuleNotificationConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionArrayInput)(nil)).Elem(), GetCentralNotificationRuleNotificationConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionNotificationEventConfigInput)(nil)).Elem(), GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput)(nil)).Elem(), GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationArrayInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialInput)(nil)).Elem(), GetConnectorAzureRepoCredentialArgs{})
@@ -44516,6 +45847,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplatePtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateMetadataOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecIgnoreDifferenceArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecInfoOutput{})
@@ -44810,6 +46149,14 @@ func init() {
 	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelUserGroupOutput{})
 	pulumi.RegisterOutputType(GetCentralNotificationChannelChannelUserGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleCustomNotificationTemplateRefOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleCustomNotificationTemplateRefPtrOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleCustomNotificationTemplateRefVariableOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleCustomNotificationTemplateRefVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleNotificationConditionOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleNotificationConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput{})
+	pulumi.RegisterOutputType(GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialOutput{})
