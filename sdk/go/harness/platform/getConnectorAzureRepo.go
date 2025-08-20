@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Datasource for looking up a Azure Repo connector.
 func LookupConnectorAzureRepo(ctx *pulumi.Context, args *LookupConnectorAzureRepoArgs, opts ...pulumi.InvokeOption) (*LookupConnectorAzureRepoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorAzureRepoResult
@@ -23,29 +24,46 @@ func LookupConnectorAzureRepo(ctx *pulumi.Context, args *LookupConnectorAzureRep
 
 // A collection of arguments for invoking getConnectorAzureRepo.
 type LookupConnectorAzureRepoArgs struct {
-	Identifier string  `pulumi:"identifier"`
-	Name       *string `pulumi:"name"`
-	OrgId      *string `pulumi:"orgId"`
-	ProjectId  *string `pulumi:"projectId"`
+	// Unique identifier of the resource.
+	Identifier string `pulumi:"identifier"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getConnectorAzureRepo.
 type LookupConnectorAzureRepoResult struct {
+	// Configuration for using the azure repo api. API Access is Computed for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentications []GetConnectorAzureRepoApiAuthentication `pulumi:"apiAuthentications"`
-	ConnectionType     string                                   `pulumi:"connectionType"`
-	Credentials        []GetConnectorAzureRepoCredential        `pulumi:"credentials"`
-	DelegateSelectors  []string                                 `pulumi:"delegateSelectors"`
-	Description        string                                   `pulumi:"description"`
-	ExecuteOnDelegate  bool                                     `pulumi:"executeOnDelegate"`
+	// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
+	ConnectionType string `pulumi:"connectionType"`
+	// Credentials to use for the connection.
+	Credentials []GetConnectorAzureRepoCredential `pulumi:"credentials"`
+	// Tags to filter delegates for connection.
+	DelegateSelectors []string `pulumi:"delegateSelectors"`
+	// Description of the resource.
+	Description string `pulumi:"description"`
+	// Execute on delegate or not.
+	ExecuteOnDelegate bool `pulumi:"executeOnDelegate"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string   `pulumi:"id"`
-	Identifier     string   `pulumi:"identifier"`
-	Name           *string  `pulumi:"name"`
-	OrgId          *string  `pulumi:"orgId"`
-	ProjectId      *string  `pulumi:"projectId"`
-	Tags           []string `pulumi:"tags"`
-	Url            string   `pulumi:"url"`
-	ValidationRepo string   `pulumi:"validationRepo"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the resource.
+	Identifier string `pulumi:"identifier"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags to associate with the resource.
+	Tags []string `pulumi:"tags"`
+	// URL of the azure repo repository or account.
+	Url string `pulumi:"url"`
+	// Repository to test the connection with. This is only used when `connectionType` is `Account`.
+	ValidationRepo string `pulumi:"validationRepo"`
 }
 
 func LookupConnectorAzureRepoOutput(ctx *pulumi.Context, args LookupConnectorAzureRepoOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorAzureRepoResultOutput {
@@ -59,10 +77,14 @@ func LookupConnectorAzureRepoOutput(ctx *pulumi.Context, args LookupConnectorAzu
 
 // A collection of arguments for invoking getConnectorAzureRepo.
 type LookupConnectorAzureRepoOutputArgs struct {
-	Identifier pulumi.StringInput    `pulumi:"identifier"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	OrgId      pulumi.StringPtrInput `pulumi:"orgId"`
-	ProjectId  pulumi.StringPtrInput `pulumi:"projectId"`
+	// Unique identifier of the resource.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (LookupConnectorAzureRepoOutputArgs) ElementType() reflect.Type {
@@ -84,28 +106,34 @@ func (o LookupConnectorAzureRepoResultOutput) ToLookupConnectorAzureRepoResultOu
 	return o
 }
 
+// Configuration for using the azure repo api. API Access is Computed for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 func (o LookupConnectorAzureRepoResultOutput) ApiAuthentications() GetConnectorAzureRepoApiAuthenticationArrayOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) []GetConnectorAzureRepoApiAuthentication {
 		return v.ApiAuthentications
 	}).(GetConnectorAzureRepoApiAuthenticationArrayOutput)
 }
 
+// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
 func (o LookupConnectorAzureRepoResultOutput) ConnectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) string { return v.ConnectionType }).(pulumi.StringOutput)
 }
 
+// Credentials to use for the connection.
 func (o LookupConnectorAzureRepoResultOutput) Credentials() GetConnectorAzureRepoCredentialArrayOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) []GetConnectorAzureRepoCredential { return v.Credentials }).(GetConnectorAzureRepoCredentialArrayOutput)
 }
 
+// Tags to filter delegates for connection.
 func (o LookupConnectorAzureRepoResultOutput) DelegateSelectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
 
+// Description of the resource.
 func (o LookupConnectorAzureRepoResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Execute on delegate or not.
 func (o LookupConnectorAzureRepoResultOutput) ExecuteOnDelegate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) bool { return v.ExecuteOnDelegate }).(pulumi.BoolOutput)
 }
@@ -115,30 +143,37 @@ func (o LookupConnectorAzureRepoResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the resource.
 func (o LookupConnectorAzureRepoResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Name of the resource.
 func (o LookupConnectorAzureRepoResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the organization.
 func (o LookupConnectorAzureRepoResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the project.
 func (o LookupConnectorAzureRepoResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// Tags to associate with the resource.
 func (o LookupConnectorAzureRepoResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// URL of the azure repo repository or account.
 func (o LookupConnectorAzureRepoResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Repository to test the connection with. This is only used when `connectionType` is `Account`.
 func (o LookupConnectorAzureRepoResultOutput) ValidationRepo() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorAzureRepoResult) string { return v.ValidationRepo }).(pulumi.StringOutput)
 }

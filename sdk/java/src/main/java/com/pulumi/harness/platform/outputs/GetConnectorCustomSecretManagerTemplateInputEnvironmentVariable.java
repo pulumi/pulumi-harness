@@ -12,15 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
     private Boolean default_;
-    /**
-     * @return : Name of the resource.
-     * 
-     */
     private String name;
-    /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     private String type;
     private String value;
 
@@ -28,17 +20,9 @@ public final class GetConnectorCustomSecretManagerTemplateInputEnvironmentVariab
     public Boolean default_() {
         return this.default_;
     }
-    /**
-     * @return : Name of the resource.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     public String type() {
         return this.type;
     }

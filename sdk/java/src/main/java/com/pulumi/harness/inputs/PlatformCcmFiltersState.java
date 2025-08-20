@@ -32,14 +32,14 @@ public final class PlatformCcmFiltersState extends com.pulumi.resources.Resource
     }
 
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter..
+     * This indicates visibility of filters, by default it is Everyone.
      * 
      */
     @Import(name="filterVisibility")
     private @Nullable Output<String> filterVisibility;
 
     /**
-     * @return This indicates visibility of filters. By default, everyone can view this filter..
+     * @return This indicates visibility of filters, by default it is Everyone.
      * 
      */
     public Optional<Output<String>> filterVisibility() {
@@ -173,7 +173,7 @@ public final class PlatformCcmFiltersState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param filterVisibility This indicates visibility of filters. By default, everyone can view this filter..
+         * @param filterVisibility This indicates visibility of filters, by default it is Everyone.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class PlatformCcmFiltersState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param filterVisibility This indicates visibility of filters. By default, everyone can view this filter..
+         * @param filterVisibility This indicates visibility of filters, by default it is Everyone.
          * 
          * @return builder
          * 

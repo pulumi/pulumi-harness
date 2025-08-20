@@ -14,8 +14,6 @@ import (
 
 // Resource for creating a Kubernetes Cloud Cost connector.
 //
-// These connectors need to be created at the account level in Harness.
-//
 // ## Example Usage
 //
 // ```go
@@ -54,15 +52,29 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level kubernetes cloud cost connector
 //
 // ```sh
 // $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <connector_id>
 // ```
+//
+// # Import org level kubernetes cloud cost connector
+//
+// ```sh
+// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <ord_id>/<connector_id>
+// ```
+//
+// # Import project level kubernetes cloud cost connector
+//
+// ```sh
+// $ pulumi import harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector example <org_id>/<project_id>/<connector_id>
+// ```
 type KubernetesCloudCostConnector struct {
 	pulumi.CustomResourceState
 
-	// Reference to a Kubernetes connector also at the account level.
+	// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef pulumi.StringOutput `pulumi:"connectorRef"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -119,7 +131,7 @@ func GetKubernetesCloudCostConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KubernetesCloudCostConnector resources.
 type kubernetesCloudCostConnectorState struct {
-	// Reference to a Kubernetes connector also at the account level.
+	// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -138,7 +150,7 @@ type kubernetesCloudCostConnectorState struct {
 }
 
 type KubernetesCloudCostConnectorState struct {
-	// Reference to a Kubernetes connector also at the account level.
+	// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -161,7 +173,7 @@ func (KubernetesCloudCostConnectorState) ElementType() reflect.Type {
 }
 
 type kubernetesCloudCostConnectorArgs struct {
-	// Reference to a Kubernetes connector also at the account level.
+	// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef string `pulumi:"connectorRef"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -181,7 +193,7 @@ type kubernetesCloudCostConnectorArgs struct {
 
 // The set of arguments for constructing a KubernetesCloudCostConnector resource.
 type KubernetesCloudCostConnectorArgs struct {
-	// Reference to a Kubernetes connector also at the account level.
+	// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef pulumi.StringInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -286,7 +298,7 @@ func (o KubernetesCloudCostConnectorOutput) ToKubernetesCloudCostConnectorOutput
 	return o
 }
 
-// Reference to a Kubernetes connector also at the account level.
+// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o KubernetesCloudCostConnectorOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCloudCostConnector) pulumi.StringOutput { return v.ConnectorRef }).(pulumi.StringOutput)
 }

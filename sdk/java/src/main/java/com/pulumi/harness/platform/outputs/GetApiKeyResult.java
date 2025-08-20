@@ -25,7 +25,7 @@ public final class GetApiKeyResult {
      */
     private String apikeyType;
     /**
-     * @return Default expiration time of the Token within API Key
+     * @return Expiry time of the apiKey
      * 
      */
     private @Nullable Integer defaultTimeToExpireToken;
@@ -55,7 +55,7 @@ public final class GetApiKeyResult {
      */
     private @Nullable String orgId;
     /**
-     * @return Parent Entity Identifier of the API Key
+     * @return Parent Identifier for the Entity
      * 
      */
     private String parentId;
@@ -86,7 +86,7 @@ public final class GetApiKeyResult {
         return this.apikeyType;
     }
     /**
-     * @return Default expiration time of the Token within API Key
+     * @return Expiry time of the apiKey
      * 
      */
     public Optional<Integer> defaultTimeToExpireToken() {
@@ -128,7 +128,7 @@ public final class GetApiKeyResult {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Parent Entity Identifier of the API Key
+     * @return Parent Identifier for the Entity
      * 
      */
     public String parentId() {

@@ -12,6 +12,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a Harness User Group. Linking SSO providers with User Groups:
+//
+//	The following fields need to be populated for LDAP SSO Providers:
+//
+//	- linkedSsoId
+//
+//	- linkedSsoDisplayName
+//
+//	- ssoGroupId
+//
+//	- ssoGroupName
+//
+//	- linkedSsoType
+//
+//	- ssoLinked
+//
+//	The following fields need to be populated for SAML SSO Providers:
+//
+//	- linkedSsoId
+//
+//	- linkedSsoDisplayName
+//
+//	- ssoGroupName
+//
+//	- ssoGroupId // same as ssoGroupName
+//
+//	- linkedSsoType
+//
+//	- ssoLinked
+//
 // ## Example Usage
 //
 // ```go
@@ -149,6 +179,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level user group
 //
 // ```sh
@@ -199,7 +231,7 @@ type Usergroup struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
 	UserEmails pulumi.StringArrayOutput `pulumi:"userEmails"`
-	// List of users in the UserGroup. Either provide list of users or list of user emails.
+	// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 }
 
@@ -266,7 +298,7 @@ type usergroupState struct {
 	Tags []string `pulumi:"tags"`
 	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
 	UserEmails []string `pulumi:"userEmails"`
-	// List of users in the UserGroup. Either provide list of users or list of user emails.
+	// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
 	Users []string `pulumi:"users"`
 }
 
@@ -301,7 +333,7 @@ type UsergroupState struct {
 	Tags pulumi.StringArrayInput
 	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
 	UserEmails pulumi.StringArrayInput
-	// List of users in the UserGroup. Either provide list of users or list of user emails.
+	// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
 	Users pulumi.StringArrayInput
 }
 
@@ -340,7 +372,7 @@ type usergroupArgs struct {
 	Tags []string `pulumi:"tags"`
 	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
 	UserEmails []string `pulumi:"userEmails"`
-	// List of users in the UserGroup. Either provide list of users or list of user emails.
+	// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
 	Users []string `pulumi:"users"`
 }
 
@@ -376,7 +408,7 @@ type UsergroupArgs struct {
 	Tags pulumi.StringArrayInput
 	// List of user emails in the UserGroup. Either provide list of users or list of user emails.
 	UserEmails pulumi.StringArrayInput
-	// List of users in the UserGroup. Either provide list of users or list of user emails.
+	// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
 	Users pulumi.StringArrayInput
 }
 
@@ -542,7 +574,7 @@ func (o UsergroupOutput) UserEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringArrayOutput { return v.UserEmails }).(pulumi.StringArrayOutput)
 }
 
-// List of users in the UserGroup. Either provide list of users or list of user emails.
+// List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
 func (o UsergroupOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Usergroup) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }

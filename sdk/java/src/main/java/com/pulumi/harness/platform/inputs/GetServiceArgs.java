@@ -17,9 +17,17 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServiceArgs Empty = new GetServiceArgs();
 
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     * 
+     */
     @Import(name="gitDetails")
     private @Nullable Output<GetServiceGitDetailsArgs> gitDetails;
 
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     public Optional<Output<GetServiceGitDetailsArgs>> gitDetails() {
         return Optional.ofNullable(this.gitDetails);
     }
@@ -112,11 +120,23 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetServiceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote entities
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitDetails(@Nullable Output<GetServiceGitDetailsArgs> gitDetails) {
             $.gitDetails = gitDetails;
             return this;
         }
 
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote entities
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitDetails(GetServiceGitDetailsArgs gitDetails) {
             return gitDetails(Output.of(gitDetails));
         }

@@ -76,16 +76,7 @@ class AwaitableGetCurrentAccountResult(GetCurrentAccountResult):
 def get_current_account(id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentAccountResult:
     """
-    Data source for retrieving information on the current Harness account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    current = harness.platform.get_current_account()
-    ```
+    Data source for retrieving information about the current Harness account
 
 
     :param _builtins.str id: Id of the account.
@@ -102,16 +93,7 @@ def get_current_account(id: Optional[_builtins.str] = None,
 def get_current_account_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentAccountResult]:
     """
-    Data source for retrieving information on the current Harness account.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    current = harness.platform.get_current_account()
-    ```
+    Data source for retrieving information about the current Harness account
 
 
     :param _builtins.str id: Id of the account.

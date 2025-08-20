@@ -27,8 +27,19 @@ namespace Pulumi.Harness.Platform
         ///     var test = Harness.Platform.GetInfraVariableSet.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        ///     var testorg = Harness.Platform.GetInfraVariableSet.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "someorg",
+        ///     });
+        /// 
+        ///     var testproj = Harness.Platform.GetInfraVariableSet.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "someorg",
+        ///         ProjectId = "someproj",
         ///     });
         /// 
         /// });
@@ -53,8 +64,19 @@ namespace Pulumi.Harness.Platform
         ///     var test = Harness.Platform.GetInfraVariableSet.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        ///     var testorg = Harness.Platform.GetInfraVariableSet.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "someorg",
+        ///     });
+        /// 
+        ///     var testproj = Harness.Platform.GetInfraVariableSet.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "someorg",
+        ///         ProjectId = "someproj",
         ///     });
         /// 
         /// });
@@ -79,8 +101,19 @@ namespace Pulumi.Harness.Platform
         ///     var test = Harness.Platform.GetInfraVariableSet.Invoke(new()
         ///     {
         ///         Identifier = "identifier",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        ///     var testorg = Harness.Platform.GetInfraVariableSet.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "someorg",
+        ///     });
+        /// 
+        ///     var testproj = Harness.Platform.GetInfraVariableSet.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "someorg",
+        ///         ProjectId = "someproj",
         ///     });
         /// 
         /// });
@@ -97,7 +130,7 @@ namespace Pulumi.Harness.Platform
         private List<Inputs.GetInfraVariableSetConnectorArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the variable set
+        /// Provider connectors configured on the Variable Set. Only one connector of a type is supported
         /// </summary>
         public List<Inputs.GetInfraVariableSetConnectorArgs> Connectors
         {
@@ -109,7 +142,7 @@ namespace Pulumi.Harness.Platform
         private List<Inputs.GetInfraVariableSetEnvironmentVariableArgs>? _environmentVariables;
 
         /// <summary>
-        /// Environment variables configured on the variable set
+        /// Environment variables configured on the Variable Set
         /// </summary>
         public List<Inputs.GetInfraVariableSetEnvironmentVariableArgs> EnvironmentVariables
         {
@@ -118,25 +151,25 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Identifier of the Variable Set
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Variable Set
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Project Identifier
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -169,7 +202,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GetInfraVariableSetConnectorInputArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the variable set
+        /// Provider connectors configured on the Variable Set. Only one connector of a type is supported
         /// </summary>
         public InputList<Inputs.GetInfraVariableSetConnectorInputArgs> Connectors
         {
@@ -181,7 +214,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GetInfraVariableSetEnvironmentVariableInputArgs>? _environmentVariables;
 
         /// <summary>
-        /// Environment variables configured on the variable set
+        /// Environment variables configured on the Variable Set
         /// </summary>
         public InputList<Inputs.GetInfraVariableSetEnvironmentVariableInputArgs> EnvironmentVariables
         {
@@ -190,25 +223,25 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Identifier of the Variable Set
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Name of the Variable Set
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Organization Identifier
+        /// Unique identifier of the organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Project Identifier
+        /// Unique identifier of the project.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -240,15 +273,15 @@ namespace Pulumi.Harness.Platform
     public sealed class GetInfraVariableSetResult
     {
         /// <summary>
-        /// Provider connector configured on the variable set
+        /// Provider connectors configured on the Variable Set. Only one connector of a type is supported
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInfraVariableSetConnectorResult> Connectors;
         /// <summary>
-        /// Description of the Variable Set
+        /// Description of the resource.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Environment variables configured on the variable set
+        /// Environment variables configured on the Variable Set
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInfraVariableSetEnvironmentVariableResult> EnvironmentVariables;
         /// <summary>
@@ -256,21 +289,24 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier of the Variable Set
+        /// Unique identifier of the resource.
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// Name of the Variable Set
+        /// Name of the resource.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Organization Identifier
+        /// Unique identifier of the organization.
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Project Identifier
+        /// Unique identifier of the project.
         /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetInfraVariableSetTerraformVariableFileResult> TerraformVariableFiles;
         public readonly ImmutableArray<Outputs.GetInfraVariableSetTerraformVariableResult> TerraformVariables;

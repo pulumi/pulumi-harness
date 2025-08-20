@@ -17,8 +17,15 @@ import * as utilities from "../utilities";
  *
  * const test = harness.platform.getInfraVariableSet({
  *     identifier: "identifier",
- *     orgId: "org_id",
- *     projectId: "project_id",
+ * });
+ * const testorg = harness.platform.getInfraVariableSet({
+ *     identifier: "identifier",
+ *     orgId: "someorg",
+ * });
+ * const testproj = harness.platform.getInfraVariableSet({
+ *     identifier: "identifier",
+ *     orgId: "someorg",
+ *     projectId: "someproj",
  * });
  * ```
  */
@@ -41,27 +48,27 @@ export function getInfraVariableSet(args: GetInfraVariableSetArgs, opts?: pulumi
  */
 export interface GetInfraVariableSetArgs {
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
     connectors?: inputs.platform.GetInfraVariableSetConnector[];
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      */
     environmentVariables?: inputs.platform.GetInfraVariableSetEnvironmentVariable[];
     /**
-     * Identifier of the Variable Set
+     * Unique identifier of the resource.
      */
     identifier: string;
     /**
-     * Name of the Variable Set
+     * Name of the resource.
      */
     name?: string;
     /**
-     * Organization Identifier
+     * Unique identifier of the organization.
      */
     orgId?: string;
     /**
-     * Project Identifier
+     * Unique identifier of the project.
      */
     projectId?: string;
     terraformVariableFiles?: inputs.platform.GetInfraVariableSetTerraformVariableFile[];
@@ -73,15 +80,15 @@ export interface GetInfraVariableSetArgs {
  */
 export interface GetInfraVariableSetResult {
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
     readonly connectors: outputs.platform.GetInfraVariableSetConnector[];
     /**
-     * Description of the Variable Set
+     * Description of the resource.
      */
     readonly description: string;
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      */
     readonly environmentVariables: outputs.platform.GetInfraVariableSetEnvironmentVariable[];
     /**
@@ -89,21 +96,24 @@ export interface GetInfraVariableSetResult {
      */
     readonly id: string;
     /**
-     * Identifier of the Variable Set
+     * Unique identifier of the resource.
      */
     readonly identifier: string;
     /**
-     * Name of the Variable Set
+     * Name of the resource.
      */
     readonly name?: string;
     /**
-     * Organization Identifier
+     * Unique identifier of the organization.
      */
     readonly orgId?: string;
     /**
-     * Project Identifier
+     * Unique identifier of the project.
      */
     readonly projectId?: string;
+    /**
+     * Tags to associate with the resource.
+     */
     readonly tags: string[];
     readonly terraformVariableFiles: outputs.platform.GetInfraVariableSetTerraformVariableFile[];
     readonly terraformVariables: outputs.platform.GetInfraVariableSetTerraformVariable[];
@@ -119,8 +129,15 @@ export interface GetInfraVariableSetResult {
  *
  * const test = harness.platform.getInfraVariableSet({
  *     identifier: "identifier",
- *     orgId: "org_id",
- *     projectId: "project_id",
+ * });
+ * const testorg = harness.platform.getInfraVariableSet({
+ *     identifier: "identifier",
+ *     orgId: "someorg",
+ * });
+ * const testproj = harness.platform.getInfraVariableSet({
+ *     identifier: "identifier",
+ *     orgId: "someorg",
+ *     projectId: "someproj",
  * });
  * ```
  */
@@ -143,27 +160,27 @@ export function getInfraVariableSetOutput(args: GetInfraVariableSetOutputArgs, o
  */
 export interface GetInfraVariableSetOutputArgs {
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetConnectorArgs>[]>;
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      */
     environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetEnvironmentVariableArgs>[]>;
     /**
-     * Identifier of the Variable Set
+     * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
     /**
-     * Name of the Variable Set
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * Organization Identifier
+     * Unique identifier of the organization.
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Project Identifier
+     * Unique identifier of the project.
      */
     projectId?: pulumi.Input<string>;
     terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableFileArgs>[]>;

@@ -24,6 +24,8 @@ func GetGitopsApplications(ctx *pulumi.Context, args *GetGitopsApplicationsArgs,
 
 // A collection of arguments for invoking getGitopsApplications.
 type GetGitopsApplicationsArgs struct {
+	// Account identifier of the GitOps application.
+	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId *string `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
@@ -42,6 +44,8 @@ type GetGitopsApplicationsArgs struct {
 
 // A collection of values returned by getGitopsApplications.
 type GetGitopsApplicationsResult struct {
+	// Account identifier of the GitOps application.
+	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId string `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
@@ -69,7 +73,8 @@ type GetGitopsApplicationsResult struct {
 	// Project identifier of the GitOps application.
 	ProjectId string `pulumi:"projectId"`
 	// Repository identifier of the GitOps application.
-	RepoId  string   `pulumi:"repoId"`
+	RepoId string `pulumi:"repoId"`
+	// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
 	RepoIds []string `pulumi:"repoIds"`
 	// Request cascade to delete the GitOps application.
 	RequestCascade bool `pulumi:"requestCascade"`
@@ -94,6 +99,8 @@ func GetGitopsApplicationsOutput(ctx *pulumi.Context, args GetGitopsApplications
 
 // A collection of arguments for invoking getGitopsApplications.
 type GetGitopsApplicationsOutputArgs struct {
+	// Account identifier of the GitOps application.
+	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Agent identifier of the GitOps application.
@@ -129,6 +136,8 @@ func (o GetGitopsApplicationsResultOutput) ToGetGitopsApplicationsResultOutputWi
 	return o
 }
 
+// Account identifier of the GitOps application.
+//
 // Deprecated: This field is deprecated and will be removed in a future release.
 func (o GetGitopsApplicationsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.AccountId }).(pulumi.StringOutput)
@@ -196,6 +205,7 @@ func (o GetGitopsApplicationsResultOutput) RepoId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) string { return v.RepoId }).(pulumi.StringOutput)
 }
 
+// List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
 func (o GetGitopsApplicationsResultOutput) RepoIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsResult) []string { return v.RepoIds }).(pulumi.StringArrayOutput)
 }

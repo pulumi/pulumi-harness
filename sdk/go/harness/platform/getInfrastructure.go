@@ -55,7 +55,8 @@ func LookupInfrastructure(ctx *pulumi.Context, args *LookupInfrastructureArgs, o
 // A collection of arguments for invoking getInfrastructure.
 type LookupInfrastructureArgs struct {
 	// environment identifier.
-	EnvId      string                       `pulumi:"envId"`
+	EnvId string `pulumi:"envId"`
+	// Contains parameters related to Git Experience for remote entities
 	GitDetails *GetInfrastructureGitDetails `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -74,7 +75,8 @@ type LookupInfrastructureResult struct {
 	// Description of the resource.
 	Description string `pulumi:"description"`
 	// environment identifier.
-	EnvId      string                      `pulumi:"envId"`
+	EnvId string `pulumi:"envId"`
+	// Contains parameters related to Git Experience for remote entities
 	GitDetails GetInfrastructureGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -106,7 +108,8 @@ func LookupInfrastructureOutput(ctx *pulumi.Context, args LookupInfrastructureOu
 // A collection of arguments for invoking getInfrastructure.
 type LookupInfrastructureOutputArgs struct {
 	// environment identifier.
-	EnvId      pulumi.StringInput                  `pulumi:"envId"`
+	EnvId pulumi.StringInput `pulumi:"envId"`
+	// Contains parameters related to Git Experience for remote entities
 	GitDetails GetInfrastructureGitDetailsPtrInput `pulumi:"gitDetails"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
@@ -152,6 +155,7 @@ func (o LookupInfrastructureResultOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) string { return v.EnvId }).(pulumi.StringOutput)
 }
 
+// Contains parameters related to Git Experience for remote entities
 func (o LookupInfrastructureResultOutput) GitDetails() GetInfrastructureGitDetailsOutput {
 	return o.ApplyT(func(v LookupInfrastructureResult) GetInfrastructureGitDetails { return v.GitDetails }).(GetInfrastructureGitDetailsOutput)
 }

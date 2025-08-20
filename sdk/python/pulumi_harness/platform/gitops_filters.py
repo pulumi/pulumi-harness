@@ -28,13 +28,13 @@ class GitopsFiltersArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GitopsFilters resource.
-        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})`.
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the GitOps filter.
-        :param pulumi.Input[_builtins.str] org_id: Organization identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] project_id: Project identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] type: Type of GitOps filter. Currently, only "APPLICATION" is supported.
-        :param pulumi.Input[_builtins.str] filter_visibility: Visibility of the filter. Valid values are "EveryOne" and "OnlyCreator". Default is "EveryOne".
-        :param pulumi.Input[_builtins.str] name: Name of the GitOps filter.
+        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] project_id: Project Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] type: Type of GitOps filters.
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
+        :param pulumi.Input[_builtins.str] name: Name of the GitOps filters.
         """
         pulumi.set(__self__, "filter_properties", filter_properties)
         pulumi.set(__self__, "identifier", identifier)
@@ -50,7 +50,7 @@ class GitopsFiltersArgs:
     @pulumi.getter(name="filterProperties")
     def filter_properties(self) -> pulumi.Input[_builtins.str]:
         """
-        Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})`.
+        Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
         """
         return pulumi.get(self, "filter_properties")
 
@@ -62,7 +62,7 @@ class GitopsFiltersArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        Unique identifier of the GitOps filter.
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -74,7 +74,7 @@ class GitopsFiltersArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Organization identifier for the GitOps filter.
+        Organization Identifier for the Entity.
         """
         return pulumi.get(self, "org_id")
 
@@ -86,7 +86,7 @@ class GitopsFiltersArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Project identifier for the GitOps filter.
+        Project Identifier for the Entity.
         """
         return pulumi.get(self, "project_id")
 
@@ -98,7 +98,7 @@ class GitopsFiltersArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        Type of GitOps filters.
         """
         return pulumi.get(self, "type")
 
@@ -110,7 +110,7 @@ class GitopsFiltersArgs:
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Visibility of the filter. Valid values are "EveryOne" and "OnlyCreator". Default is "EveryOne".
+        This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 
@@ -122,7 +122,7 @@ class GitopsFiltersArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the GitOps filter.
+        Name of the GitOps filters.
         """
         return pulumi.get(self, "name")
 
@@ -143,13 +143,13 @@ class _GitopsFiltersState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GitopsFilters resources.
-        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})`.
-        :param pulumi.Input[_builtins.str] filter_visibility: Visibility of the filter. Valid values are "EveryOne" and "OnlyCreator". Default is "EveryOne".
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the GitOps filter.
-        :param pulumi.Input[_builtins.str] name: Name of the GitOps filter.
-        :param pulumi.Input[_builtins.str] org_id: Organization identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] project_id: Project identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] type: Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] name: Name of the GitOps filters.
+        :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] project_id: Project Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] type: Type of GitOps filters.
         """
         if filter_properties is not None:
             pulumi.set(__self__, "filter_properties", filter_properties)
@@ -170,7 +170,7 @@ class _GitopsFiltersState:
     @pulumi.getter(name="filterProperties")
     def filter_properties(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})`.
+        Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
         """
         return pulumi.get(self, "filter_properties")
 
@@ -182,7 +182,7 @@ class _GitopsFiltersState:
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Visibility of the filter. Valid values are "EveryOne" and "OnlyCreator". Default is "EveryOne".
+        This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 
@@ -194,7 +194,7 @@ class _GitopsFiltersState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Unique identifier of the GitOps filter.
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -206,7 +206,7 @@ class _GitopsFiltersState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the GitOps filter.
+        Name of the GitOps filters.
         """
         return pulumi.get(self, "name")
 
@@ -218,7 +218,7 @@ class _GitopsFiltersState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Organization identifier for the GitOps filter.
+        Organization Identifier for the Entity.
         """
         return pulumi.get(self, "org_id")
 
@@ -230,7 +230,7 @@ class _GitopsFiltersState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Project identifier for the GitOps filter.
+        Project Identifier for the Entity.
         """
         return pulumi.get(self, "project_id")
 
@@ -242,7 +242,7 @@ class _GitopsFiltersState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        Type of GitOps filters.
         """
         return pulumi.get(self, "type")
 
@@ -266,81 +266,17 @@ class GitopsFilters(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Resource for creating and managing Harness GitOps Filters.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_harness as harness
-
-        example = harness.platform.GitopsFilters("example",
-            name="example_filter",
-            org_id="your_org_id",
-            project_id="your_project_id",
-            identifier="example_filter",
-            type="APPLICATION",
-            filter_properties=json.dumps({
-                "agentIdentifiers": ["your_agent_identifier"],
-                "clusters": ["https://your-cluster-url"],
-                "healthStatus": [
-                    "Unknown",
-                    "Progressing",
-                    "Suspended",
-                    "Healthy",
-                    "Degraded",
-                    "Missing",
-                ],
-                "namespaces": ["your-namespace"],
-                "repositories": ["your-repo"],
-                "syncStatus": [
-                    "OutOfSync",
-                    "Synced",
-                    "Unknown",
-                ],
-            }),
-            filter_visibility="OnlyCreator")
-        ```
-
-        ## Filter Properties Reference
-
-        The `filter_properties` field supports the following filter types:
-
-        > **Note:** The following filter properties are only valid for filter type "APPLICATION". Different filter types may support different properties.
-
-        * `agentIdentifiers` - Array of GitOps agent identifiers to filter by.
-        * `clusters` - Array of cluster URLs to filter by.
-        * `healthStatus` - Array of health status values to filter by. Valid values include: "Unknown", "Progressing", "Suspended", "Healthy", "Degraded", "Missing".
-        * `namespaces` - Array of Kubernetes namespaces to filter by.
-        * `repositories` - Array of Git repository URLs to filter by.
-        * `syncStatus` - Array of sync status values to filter by. Valid values include: "OutOfSync", "Synced", "Unknown".
-
-        ## Schema Attributes Reference
-
-        * `id` - Identifier of the GitOps filter.
-
-        ## Import
-
-        GitOps filters can be imported using a composite ID formed of organization ID, project ID, filter ID, and filter type.
-
-        bash
-
-        Format: <org_id>/<project_id>/<filter_id>/<filter_type>
-
-        ```sh
-        $ pulumi import harness:platform/gitopsFilters:GitopsFilters example org_id/project_id/filter_id/APPLICATION
-        ```
+        Resource for creating Harness GitOps Filters.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})`.
-        :param pulumi.Input[_builtins.str] filter_visibility: Visibility of the filter. Valid values are "EveryOne" and "OnlyCreator". Default is "EveryOne".
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the GitOps filter.
-        :param pulumi.Input[_builtins.str] name: Name of the GitOps filter.
-        :param pulumi.Input[_builtins.str] org_id: Organization identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] project_id: Project identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] type: Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] name: Name of the GitOps filters.
+        :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] project_id: Project Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] type: Type of GitOps filters.
         """
         ...
     @overload
@@ -349,71 +285,7 @@ class GitopsFilters(pulumi.CustomResource):
                  args: GitopsFiltersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating and managing Harness GitOps Filters.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_harness as harness
-
-        example = harness.platform.GitopsFilters("example",
-            name="example_filter",
-            org_id="your_org_id",
-            project_id="your_project_id",
-            identifier="example_filter",
-            type="APPLICATION",
-            filter_properties=json.dumps({
-                "agentIdentifiers": ["your_agent_identifier"],
-                "clusters": ["https://your-cluster-url"],
-                "healthStatus": [
-                    "Unknown",
-                    "Progressing",
-                    "Suspended",
-                    "Healthy",
-                    "Degraded",
-                    "Missing",
-                ],
-                "namespaces": ["your-namespace"],
-                "repositories": ["your-repo"],
-                "syncStatus": [
-                    "OutOfSync",
-                    "Synced",
-                    "Unknown",
-                ],
-            }),
-            filter_visibility="OnlyCreator")
-        ```
-
-        ## Filter Properties Reference
-
-        The `filter_properties` field supports the following filter types:
-
-        > **Note:** The following filter properties are only valid for filter type "APPLICATION". Different filter types may support different properties.
-
-        * `agentIdentifiers` - Array of GitOps agent identifiers to filter by.
-        * `clusters` - Array of cluster URLs to filter by.
-        * `healthStatus` - Array of health status values to filter by. Valid values include: "Unknown", "Progressing", "Suspended", "Healthy", "Degraded", "Missing".
-        * `namespaces` - Array of Kubernetes namespaces to filter by.
-        * `repositories` - Array of Git repository URLs to filter by.
-        * `syncStatus` - Array of sync status values to filter by. Valid values include: "OutOfSync", "Synced", "Unknown".
-
-        ## Schema Attributes Reference
-
-        * `id` - Identifier of the GitOps filter.
-
-        ## Import
-
-        GitOps filters can be imported using a composite ID formed of organization ID, project ID, filter ID, and filter type.
-
-        bash
-
-        Format: <org_id>/<project_id>/<filter_id>/<filter_type>
-
-        ```sh
-        $ pulumi import harness:platform/gitopsFilters:GitopsFilters example org_id/project_id/filter_id/APPLICATION
-        ```
+        Resource for creating Harness GitOps Filters.
 
         :param str resource_name: The name of the resource.
         :param GitopsFiltersArgs args: The arguments to use to populate this resource's properties.
@@ -487,13 +359,13 @@ class GitopsFilters(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})`.
-        :param pulumi.Input[_builtins.str] filter_visibility: Visibility of the filter. Valid values are "EveryOne" and "OnlyCreator". Default is "EveryOne".
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the GitOps filter.
-        :param pulumi.Input[_builtins.str] name: Name of the GitOps filter.
-        :param pulumi.Input[_builtins.str] org_id: Organization identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] project_id: Project identifier for the GitOps filter.
-        :param pulumi.Input[_builtins.str] type: Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        :param pulumi.Input[_builtins.str] filter_properties: Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
+        :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] name: Name of the GitOps filters.
+        :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] project_id: Project Identifier for the Entity.
+        :param pulumi.Input[_builtins.str] type: Type of GitOps filters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -512,7 +384,7 @@ class GitopsFilters(pulumi.CustomResource):
     @pulumi.getter(name="filterProperties")
     def filter_properties(self) -> pulumi.Output[_builtins.str]:
         """
-        Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})`.
+        Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
         """
         return pulumi.get(self, "filter_properties")
 
@@ -520,7 +392,7 @@ class GitopsFilters(pulumi.CustomResource):
     @pulumi.getter(name="filterVisibility")
     def filter_visibility(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Visibility of the filter. Valid values are "EveryOne" and "OnlyCreator". Default is "EveryOne".
+        This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 
@@ -528,7 +400,7 @@ class GitopsFilters(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[_builtins.str]:
         """
-        Unique identifier of the GitOps filter.
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -536,7 +408,7 @@ class GitopsFilters(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the GitOps filter.
+        Name of the GitOps filters.
         """
         return pulumi.get(self, "name")
 
@@ -544,7 +416,7 @@ class GitopsFilters(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Organization identifier for the GitOps filter.
+        Organization Identifier for the Entity.
         """
         return pulumi.get(self, "org_id")
 
@@ -552,7 +424,7 @@ class GitopsFilters(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Project identifier for the GitOps filter.
+        Project Identifier for the Entity.
         """
         return pulumi.get(self, "project_id")
 
@@ -560,7 +432,7 @@ class GitopsFilters(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of GitOps filter. Currently, only "APPLICATION" is supported.
+        Type of GitOps filters.
         """
         return pulumi.get(self, "type")
 

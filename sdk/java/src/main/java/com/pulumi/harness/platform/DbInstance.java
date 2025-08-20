@@ -70,6 +70,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import project level db instance
  * 
  * ```sh

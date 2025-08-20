@@ -419,6 +419,8 @@ class RuleEnforcement(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import governance enforcement
 
         ```sh
@@ -449,6 +451,8 @@ class RuleEnforcement(pulumi.CustomResource):
         Resource for creating, updating, and managing rule enforcement.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import governance enforcement
 

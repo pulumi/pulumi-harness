@@ -188,10 +188,18 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import pipeline
+ * The `pulumi import` command can be used, for example:
+ * 
+ * Import pipeline from default branch
  * 
  * ```sh
  * $ pulumi import harness:platform/pipeline:Pipeline example &lt;org_id&gt;/&lt;project_id&gt;/&lt;pipeline_id&gt;
+ * ```
+ * 
+ * Import pipeline from non default branch
+ * 
+ * ```sh
+ * $ pulumi import harness:platform/pipeline:Pipeline example &lt;org_id&gt;/&lt;project_id&gt;/&lt;pipeline_id&gt;/&lt;branch&gt;
  * ```
  * 
  */

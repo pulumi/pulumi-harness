@@ -42,13 +42,9 @@ import (
 //					pulumi.String("target_id_2"),
 //				},
 //				Rules: platform.FeatureFlagTargetGroupRuleArray{
-//					&platform.FeatureFlagTargetGroupRuleArgs{
-//						Attribute: pulumi.String("MY_ATTRIBUTE"),
-//						Op:        pulumi.String("equal"),
-//						Values: pulumi.StringArray{
-//							pulumi.String("MY_VALUE"),
-//						},
-//					},
+//					Attribute: "MY_ATTRIBUTE",
+//					Operator:  "equal",
+//					Value:     "MY_VALUE",
 //				},
 //			})
 //			if err != nil {

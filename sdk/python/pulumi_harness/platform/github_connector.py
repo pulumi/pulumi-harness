@@ -45,7 +45,7 @@ class GithubConnectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
-        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of github connector
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -177,7 +177,7 @@ class GithubConnectorArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable this flag for force deletion of github connector
+        Enable this flag for force deletion of service
         """
         return pulumi.get(self, "force_delete")
 
@@ -271,7 +271,7 @@ class _GithubConnectorState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
-        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of github connector
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -385,7 +385,7 @@ class _GithubConnectorState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable this flag for force deletion of github connector
+        Enable this flag for force deletion of service
         """
         return pulumi.get(self, "force_delete")
 
@@ -504,6 +504,8 @@ class GithubConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level github connector
 
         ```sh
@@ -530,7 +532,7 @@ class GithubConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
-        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of github connector
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -549,6 +551,8 @@ class GithubConnector(pulumi.CustomResource):
         Resource for creating a Github connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level github connector
 
@@ -665,7 +669,7 @@ class GithubConnector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
-        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of github connector
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of service
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -746,7 +750,7 @@ class GithubConnector(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable this flag for force deletion of github connector
+        Enable this flag for force deletion of service
         """
         return pulumi.get(self, "force_delete")
 

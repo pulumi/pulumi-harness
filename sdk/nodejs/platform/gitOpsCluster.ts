@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import an Account level Gitops Cluster
  *
  * ```sh
@@ -72,6 +74,10 @@ export class GitOpsCluster extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
+     * Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+     */
+    public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier of the GitOps cluster.
      */
     public readonly identifier!: pulumi.Output<string>;
@@ -104,6 +110,7 @@ export class GitOpsCluster extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["agentId"] = state ? state.agentId : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -119,6 +126,7 @@ export class GitOpsCluster extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
@@ -147,6 +155,10 @@ export interface GitOpsClusterState {
      * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      */
     forceDelete?: pulumi.Input<boolean>;
+    /**
+     * Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+     */
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * Identifier of the GitOps cluster.
      */
@@ -183,6 +195,10 @@ export interface GitOpsClusterArgs {
      * Indicates if the cluster should be deleted forcefully, regardless of existing applications using that cluster.
      */
     forceDelete?: pulumi.Input<boolean>;
+    /**
+     * Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+     */
+    forceUpdate?: pulumi.Input<boolean>;
     /**
      * Identifier of the GitOps cluster.
      */

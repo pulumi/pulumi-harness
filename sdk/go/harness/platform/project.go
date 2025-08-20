@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a Harness project.
+//
 // ## Example Usage
 //
 // ```go
@@ -42,6 +44,8 @@ import (
 // ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import using the organization id and the project id
 //

@@ -16,146 +16,9 @@ import javax.annotation.Nullable;
 
 /**
  * Resource for creating a Harness environment service overrides.
- * ## Example to create Environment Service Override at different levels (Org, Project, Account)
  * 
- * ### Account Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
+ * ## Example Usage
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.EnvironmentServiceOverrides;
- * import com.pulumi.harness.platform.EnvironmentServiceOverridesArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new EnvironmentServiceOverrides("example", EnvironmentServiceOverridesArgs.builder()
- *             .envId("environmentIdentifier")
- *             .serviceId("serviceIdentifier")
- *             .yaml("""
- * serviceOverrides:
- *   environmentRef: environmentIdentifier
- *   serviceRef: serviceIdentifier
- *   variables:
- *    - name: asda
- *      type: String
- *      value: asddad
- *   manifests:
- *      - manifest:
- *          identifier: manifestEnv
- *          type: Values
- *          spec:
- *            store:
- *              type: Git
- *              spec:
- *                connectorRef: <+input>
- *                gitFetchType: Branch
- *                paths:
- *                  - file1
- *                repoName: <+input>
- *                branch: master
- *   configFiles:
- *      - configFile:
- *          identifier: configFileEnv
- *          spec:
- *            store:
- *              type: Harness
- *              spec:
- *                files:
- *                  - account:/Add-ons/svcOverrideTest
- *                secretFiles: []
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Org Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.EnvironmentServiceOverrides;
- * import com.pulumi.harness.platform.EnvironmentServiceOverridesArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new EnvironmentServiceOverrides("example", EnvironmentServiceOverridesArgs.builder()
- *             .orgId("orgIdentifier")
- *             .envId("environmentIdentifier")
- *             .serviceId("serviceIdentifier")
- *             .yaml("""
- * serviceOverrides:
- *   environmentRef: environmentIdentifier
- *   serviceRef: serviceIdentifier
- *   variables:
- *    - name: asda
- *      type: String
- *      value: asddad
- *   manifests:
- *      - manifest:
- *          identifier: manifestEnv
- *          type: Values
- *          spec:
- *            store:
- *              type: Git
- *              spec:
- *                connectorRef: <+input>
- *                gitFetchType: Branch
- *                paths:
- *                  - file1
- *                repoName: <+input>
- *                branch: master
- *   configFiles:
- *      - configFile:
- *          identifier: configFileEnv
- *          spec:
- *            store:
- *              type: Harness
- *              spec:
- *                files:
- *                  - account:/Add-ons/svcOverrideTest
- *                secretFiles: []
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Project Level
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -227,6 +90,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import list of account level service overrides using the env id associated with them
  * 
  * ```sh
@@ -249,14 +114,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides")
 public class EnvironmentServiceOverrides extends com.pulumi.resources.CustomResource {
     /**
-     * The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+     * The env ID to which the overrides associated.
      * 
      */
     @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
 
     /**
-     * @return The env Id associated with the overrides. To reference an environment at the organization scope, prefix &#39;org&#39; to the expression: org.{env*id}. To reference an environment at the account scope, prefix &#39;account&#39; to the expression: account.{env*id}).
+     * @return The env ID to which the overrides associated.
      * 
      */
     public Output<String> envId() {
@@ -305,14 +170,14 @@ public class EnvironmentServiceOverrides extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.projectId);
     }
     /**
-     * The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+     * The service ID to which the overrides applies.
      * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
-     * @return The service Id associated with the overrides. To reference a service at the organization scope, prefix &#39;org&#39; to the expression: org.{service*id}. To reference a service at the account scope, prefix &#39;account&#39; to the expression: account.{service*id}).
+     * @return The service ID to which the overrides applies.
      * 
      */
     public Output<String> serviceId() {

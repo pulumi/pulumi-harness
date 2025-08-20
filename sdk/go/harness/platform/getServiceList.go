@@ -11,86 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving Harness service list.
-//
-// ## Example Usage
-//
-// ### Project Level Service List
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetServiceList(ctx, &platform.GetServiceListArgs{
-//				OrgId:     pulumi.StringRef("org_id"),
-//				ProjectId: pulumi.StringRef("project_id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Organisation Level Service List
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetServiceList(ctx, &platform.GetServiceListArgs{
-//				OrgId: pulumi.StringRef("org_id"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Account Level Service List
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetServiceList(ctx, &platform.GetServiceListArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Data source for retrieving a Harness service List.
 func GetServiceList(ctx *pulumi.Context, args *GetServiceListArgs, opts ...pulumi.InvokeOption) (*GetServiceListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceListResult
@@ -103,21 +24,29 @@ func GetServiceList(ctx *pulumi.Context, args *GetServiceListArgs, opts ...pulum
 
 // A collection of arguments for invoking getServiceList.
 type GetServiceListArgs struct {
-	OrgId     *string `pulumi:"orgId"`
-	Page      *int    `pulumi:"page"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Page index of the results to fetch. Default: 0
+	Page *int `pulumi:"page"`
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	Size      *int    `pulumi:"size"`
+	// Results per page. Default: 100; Max: 1000
+	Size *int `pulumi:"size"`
 }
 
 // A collection of values returned by getServiceList.
 type GetServiceListResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                  `pulumi:"id"`
-	OrgId     *string                 `pulumi:"orgId"`
-	Page      *int                    `pulumi:"page"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Page index of the results to fetch. Default: 0
+	Page *int `pulumi:"page"`
+	// Unique identifier of the project.
 	ProjectId *string                 `pulumi:"projectId"`
 	Services  []GetServiceListService `pulumi:"services"`
-	Size      *int                    `pulumi:"size"`
+	// Results per page. Default: 100; Max: 1000
+	Size *int `pulumi:"size"`
 }
 
 func GetServiceListOutput(ctx *pulumi.Context, args GetServiceListOutputArgs, opts ...pulumi.InvokeOption) GetServiceListResultOutput {
@@ -131,10 +60,14 @@ func GetServiceListOutput(ctx *pulumi.Context, args GetServiceListOutputArgs, op
 
 // A collection of arguments for invoking getServiceList.
 type GetServiceListOutputArgs struct {
-	OrgId     pulumi.StringPtrInput `pulumi:"orgId"`
-	Page      pulumi.IntPtrInput    `pulumi:"page"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Page index of the results to fetch. Default: 0
+	Page pulumi.IntPtrInput `pulumi:"page"`
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	Size      pulumi.IntPtrInput    `pulumi:"size"`
+	// Results per page. Default: 100; Max: 1000
+	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
 func (GetServiceListOutputArgs) ElementType() reflect.Type {
@@ -161,14 +94,17 @@ func (o GetServiceListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the organization.
 func (o GetServiceListResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceListResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Page index of the results to fetch. Default: 0
 func (o GetServiceListResultOutput) Page() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceListResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
+// Unique identifier of the project.
 func (o GetServiceListResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceListResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -177,6 +113,7 @@ func (o GetServiceListResultOutput) Services() GetServiceListServiceArrayOutput 
 	return o.ApplyT(func(v GetServiceListResult) []GetServiceListService { return v.Services }).(GetServiceListServiceArrayOutput)
 }
 
+// Results per page. Default: 100; Max: 1000
 func (o GetServiceListResultOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceListResult) *int { return v.Size }).(pulumi.IntPtrOutput)
 }

@@ -5,16 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving information on the current Harness account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const current = harness.platform.getCurrentAccount({});
- * ```
+ * Data source for retrieving information about the current Harness account
  */
 export function getCurrentAccount(args?: GetCurrentAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetCurrentAccountResult> {
     args = args || {};
@@ -52,16 +43,7 @@ export interface GetCurrentAccountResult {
     readonly id?: string;
 }
 /**
- * Data source for retrieving information on the current Harness account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const current = harness.platform.getCurrentAccount({});
- * ```
+ * Data source for retrieving information about the current Harness account
  */
 export function getCurrentAccountOutput(args?: GetCurrentAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCurrentAccountResult> {
     args = args || {};

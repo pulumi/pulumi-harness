@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Datasource for looking up GCP Secret Manager connector.
+//
 // ## Example Usage
 //
 // ```go

@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetFilters
     {
         /// <summary>
+        /// Data source for retrieving a Harness Filter. This data source allows you to fetch filters of the following types: {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -37,6 +39,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFiltersResult>("harness:platform/getFilters:getFilters", args ?? new GetFiltersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness Filter. This data source allows you to fetch filters of the following types: {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -62,6 +66,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetFiltersResult>("harness:platform/getFilters:getFilters", args ?? new GetFiltersInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness Filter. This data source allows you to fetch filters of the following types: {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

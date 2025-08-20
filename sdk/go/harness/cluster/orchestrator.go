@@ -41,14 +41,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// Import using the Harness aws cloud provider id.
-//
-// ```sh
-// $ pulumi import harness:cluster/orchestrator:Orchestrator example <provider_id>
-// ```
 type Orchestrator struct {
 	pulumi.CustomResourceState
 

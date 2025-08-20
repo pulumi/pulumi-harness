@@ -6,6 +6,31 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating a Harness Override V2.
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * Import account level override
+ *
+ * ```sh
+ * $ pulumi import harness:platform/overrides:Overrides example <override_id>
+ * ```
+ *
+ * Import org level override
+ *
+ * ```sh
+ * $ pulumi import harness:platform/overrides:Overrides example <org_id>/<override_id>
+ * ```
+ *
+ * Import project level override
+ *
+ * ```sh
+ * $ pulumi import harness:platform/overrides:Overrides example <org_id>/<project_id>/<override_id>
+ * ```
+ */
 export class Overrides extends pulumi.CustomResource {
     /**
      * Get an existing Overrides resource's state with the given name, ID, and optional extra

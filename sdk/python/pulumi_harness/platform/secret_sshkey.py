@@ -338,9 +338,11 @@ class SecretSshkey(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        Resource for creating an ssh key type secret.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level secret sshkey
 
@@ -379,9 +381,11 @@ class SecretSshkey(pulumi.CustomResource):
                  args: SecretSshkeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        Resource for creating an ssh key type secret.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level secret sshkey
 

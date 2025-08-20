@@ -12,145 +12,19 @@ namespace Pulumi.Harness.Platform
     public static class GetProjectList
     {
         /// <summary>
-        /// Data source for retrieving Harness project list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Org Level Project List
-        /// 
-        /// ### Without the Pagination
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ### With Pagination Logic
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         Page = 1,
-        ///         Limit = 4,
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness project.
         /// </summary>
         public static Task<GetProjectListResult> InvokeAsync(GetProjectListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectListResult>("harness:platform/getProjectList:getProjectList", args ?? new GetProjectListArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving Harness project list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Org Level Project List
-        /// 
-        /// ### Without the Pagination
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ### With Pagination Logic
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         Page = 1,
-        ///         Limit = 4,
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness project.
         /// </summary>
         public static Output<GetProjectListResult> Invoke(GetProjectListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectListResult>("harness:platform/getProjectList:getProjectList", args ?? new GetProjectListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source for retrieving Harness project list.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ### Org Level Project List
-        /// 
-        /// ### Without the Pagination
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ### With Pagination Logic
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetProjectList.Invoke(new()
-        ///     {
-        ///         OrgId = "org_id",
-        ///         Page = 1,
-        ///         Limit = 4,
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness project.
         /// </summary>
         public static Output<GetProjectListResult> Invoke(GetProjectListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectListResult>("harness:platform/getProjectList:getProjectList", args ?? new GetProjectListInvokeArgs(), options.WithDefaults());
@@ -159,15 +33,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetProjectListArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
 
-        /// <summary>
-        /// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-        /// </summary>
         [Input("limit")]
         public int? Limit { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -177,9 +54,6 @@ namespace Pulumi.Harness.Platform
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
 
-        /// <summary>
-        /// Optional pagination parameter indicating the page number when retrieving entities.
-        /// </summary>
         [Input("page")]
         public int? Page { get; set; }
 
@@ -191,15 +65,18 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetProjectListInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
-        /// <summary>
-        /// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
-        /// </summary>
         [Input("limit")]
         public Input<int>? Limit { get; set; }
 
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -209,9 +86,6 @@ namespace Pulumi.Harness.Platform
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
-        /// <summary>
-        /// Optional pagination parameter indicating the page number when retrieving entities.
-        /// </summary>
         [Input("page")]
         public Input<int>? Page { get; set; }
 
@@ -225,29 +99,32 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetProjectListResult
     {
+        /// <summary>
+        /// Description of the resource.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? Identifier;
         /// <summary>
-        /// Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+        /// Unique identifier of the resource.
         /// </summary>
+        public readonly string? Identifier;
         public readonly int? Limit;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
         public readonly string OrgId;
-        /// <summary>
-        /// Optional pagination parameter indicating the page number when retrieving entities.
-        /// </summary>
         public readonly int? Page;
-        /// <summary>
-        /// Containing list of all projects with details identifier and name.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectListProjectResult> Projects;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]

@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// Resource for creating a Physical data center connector.
-    /// 
-    /// ## Example to create Pdc Connector at different levels (Org, Project, Account)
+    /// Resource for creating a Pdc connector.
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level pdc connector
     /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Hosts to be provided.
+        /// Host of the Physical data centers.
         /// </summary>
         [Output("hosts")]
         public Output<ImmutableArray<Outputs.ConnectorPdcHost>> Hosts { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.ConnectorPdcHostArgs>? _hosts;
 
         /// <summary>
-        /// Hosts to be provided.
+        /// Host of the Physical data centers.
         /// </summary>
         public InputList<Inputs.ConnectorPdcHostArgs> Hosts
         {
@@ -228,7 +228,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.ConnectorPdcHostGetArgs>? _hosts;
 
         /// <summary>
-        /// Hosts to be provided.
+        /// Host of the Physical data centers.
         /// </summary>
         public InputList<Inputs.ConnectorPdcHostGetArgs> Hosts
         {

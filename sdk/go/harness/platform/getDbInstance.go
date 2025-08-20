@@ -54,7 +54,8 @@ func LookupDbInstance(ctx *pulumi.Context, args *LookupDbInstanceArgs, opts ...p
 // A collection of arguments for invoking getDbInstance.
 type LookupDbInstanceArgs struct {
 	// Unique identifier of the resource.
-	Identifier                    string            `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
+	// The properties to substitute in liquibase changelog
 	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -79,7 +80,8 @@ type LookupDbInstanceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
-	Identifier                    string            `pulumi:"identifier"`
+	Identifier string `pulumi:"identifier"`
+	// The properties to substitute in liquibase changelog
 	LiquibaseSubstituteProperties map[string]string `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
@@ -105,7 +107,8 @@ func LookupDbInstanceOutput(ctx *pulumi.Context, args LookupDbInstanceOutputArgs
 // A collection of arguments for invoking getDbInstance.
 type LookupDbInstanceOutputArgs struct {
 	// Unique identifier of the resource.
-	Identifier                    pulumi.StringInput    `pulumi:"identifier"`
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// The properties to substitute in liquibase changelog
 	LiquibaseSubstituteProperties pulumi.StringMapInput `pulumi:"liquibaseSubstituteProperties"`
 	// Name of the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -166,6 +169,7 @@ func (o LookupDbInstanceResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// The properties to substitute in liquibase changelog
 func (o LookupDbInstanceResultOutput) LiquibaseSubstituteProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) map[string]string { return v.LiquibaseSubstituteProperties }).(pulumi.StringMapOutput)
 }

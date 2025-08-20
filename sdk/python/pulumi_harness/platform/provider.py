@@ -204,7 +204,8 @@ class Provider(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[Union['ProviderSpecArgs', 'ProviderSpecArgsDict']]] = None,
                  __props__=None):
         """
-        Create a Provider resource with the given unique name, props, and options.
+        Resource for creating a Harness Provider.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the provider entity.
@@ -219,7 +220,8 @@ class Provider(pulumi.CustomResource):
                  args: ProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Provider resource with the given unique name, props, and options.
+        Resource for creating a Harness Provider.
+
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

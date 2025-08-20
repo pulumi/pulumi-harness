@@ -6,6 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Data source for retrieving IACM default pipelines.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getIacmDefaultPipeline({
+ *     orgId: test.id,
+ *     projectId: testHarnessPlatformProject.id,
+ *     provisionerType: "terraform",
+ *     operation: "plan",
+ * });
+ * ```
  */
 export function getIacmDefaultPipeline(args: GetIacmDefaultPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetIacmDefaultPipelineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +84,20 @@ export interface GetIacmDefaultPipelineResult {
 }
 /**
  * Data source for retrieving IACM default pipelines.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getIacmDefaultPipeline({
+ *     orgId: test.id,
+ *     projectId: testHarnessPlatformProject.id,
+ *     provisionerType: "terraform",
+ *     operation: "plan",
+ * });
+ * ```
  */
 export function getIacmDefaultPipelineOutput(args: GetIacmDefaultPipelineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIacmDefaultPipelineResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

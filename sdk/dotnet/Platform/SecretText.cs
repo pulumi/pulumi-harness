@@ -12,7 +12,77 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating secret of type secret text
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var inline = new Harness.Platform.SecretText("inline", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         SecretManagerIdentifier = "harnessSecretManager",
+    ///         ValueType = "Inline",
+    ///         Value = "secret",
+    ///     });
+    /// 
+    ///     var reference = new Harness.Platform.SecretText("reference", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         SecretManagerIdentifier = "azureSecretManager",
+    ///         ValueType = "Reference",
+    ///         Value = "secret",
+    ///     });
+    /// 
+    ///     var gcpSecretManagerReference = new Harness.Platform.SecretText("gcp_secret_manager_reference", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         SecretManagerIdentifier = "gcpSecretManager",
+    ///         ValueType = "Reference",
+    ///         Value = "secret",
+    ///         AdditionalMetadatas = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.SecretTextAdditionalMetadataArgs
+    ///             {
+    ///                 Values = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.SecretTextAdditionalMetadataValueArgs
+    ///                     {
+    ///                         Version = "1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level secret text
     /// 

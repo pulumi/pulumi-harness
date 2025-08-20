@@ -101,7 +101,7 @@ class GetGitxWebhookResult:
     @pulumi.getter
     def tags(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -137,7 +137,7 @@ def get_gitx_webhook(description: Optional[_builtins.str] = None,
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param Sequence[_builtins.str] tags: Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+    :param Sequence[_builtins.str] tags: Tags to associate with the resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -173,7 +173,7 @@ def get_gitx_webhook_output(description: Optional[pulumi.Input[Optional[_builtin
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param Sequence[_builtins.str] tags: Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+    :param Sequence[_builtins.str] tags: Tags to associate with the resource.
     """
     __args__ = dict()
     __args__['description'] = description

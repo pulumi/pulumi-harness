@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level azure cloud cost connector
  *
  * ```sh
@@ -91,6 +93,10 @@ export class AzureCloudCostConnector extends pulumi.CustomResource {
      */
     public readonly billingExportSpec!: pulumi.Output<outputs.platform.AzureCloudCostConnectorBillingExportSpec | undefined>;
     /**
+     * Returns billing details for the Azure account.
+     */
+    public readonly billingExportSpec2!: pulumi.Output<outputs.platform.AzureCloudCostConnectorBillingExportSpec2 | undefined>;
+    /**
      * Description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -141,6 +147,7 @@ export class AzureCloudCostConnector extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AzureCloudCostConnectorState | undefined;
             resourceInputs["billingExportSpec"] = state ? state.billingExportSpec : undefined;
+            resourceInputs["billingExportSpec2"] = state ? state.billingExportSpec2 : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["featuresEnableds"] = state ? state.featuresEnableds : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
@@ -165,6 +172,7 @@ export class AzureCloudCostConnector extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["billingExportSpec"] = args ? args.billingExportSpec : undefined;
+            resourceInputs["billingExportSpec2"] = args ? args.billingExportSpec2 : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["featuresEnableds"] = args ? args.featuresEnableds : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
@@ -188,6 +196,10 @@ export interface AzureCloudCostConnectorState {
      * Returns billing details for the Azure account.
      */
     billingExportSpec?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec>;
+    /**
+     * Returns billing details for the Azure account.
+     */
+    billingExportSpec2?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec2>;
     /**
      * Description of the resource.
      */
@@ -234,6 +246,10 @@ export interface AzureCloudCostConnectorArgs {
      * Returns billing details for the Azure account.
      */
     billingExportSpec?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec>;
+    /**
+     * Returns billing details for the Azure account.
+     */
+    billingExportSpec2?: pulumi.Input<inputs.platform.AzureCloudCostConnectorBillingExportSpec2>;
     /**
      * Description of the resource.
      */

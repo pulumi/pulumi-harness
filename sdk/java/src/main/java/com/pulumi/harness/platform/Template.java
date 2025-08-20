@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import account level template
  * 
  * ```sh
@@ -78,14 +80,14 @@ public class Template extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceDelete;
 
     /**
-     * @return When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+     * @return Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     public Output<Boolean> forceDelete() {
@@ -120,14 +122,14 @@ public class Template extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gitImportDetails);
     }
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      * 
      */
     public Output<String> identifier() {
@@ -246,14 +248,14 @@ public class Template extends com.pulumi.resources.CustomResource {
         return this.templateYaml;
     }
     /**
-     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+     * Version Label for Template.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+     * @return Version Label for Template.
      * 
      */
     public Output<String> version() {

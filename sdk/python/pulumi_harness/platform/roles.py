@@ -303,6 +303,8 @@ class Roles(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Resource for creating roles.
+
         ## Example Usage
 
         ```python
@@ -319,6 +321,8 @@ class Roles(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level roles
 
@@ -356,6 +360,8 @@ class Roles(pulumi.CustomResource):
                  args: RolesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating roles.
+
         ## Example Usage
 
         ```python
@@ -372,6 +378,8 @@ class Roles(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level roles
 

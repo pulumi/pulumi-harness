@@ -117,6 +117,18 @@ def get_iacm_default_pipeline(operation: Optional[_builtins.str] = None,
     """
     Data source for retrieving IACM default pipelines.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_iacm_default_pipeline(org_id=test["id"],
+        project_id=test_harness_platform_project["id"],
+        provisioner_type="terraform",
+        operation="plan")
+    ```
+
 
     :param _builtins.str operation: The operation associated with this default.
     :param _builtins.str org_id: Organization identifier of the organization the default pipelines resides in.
@@ -145,6 +157,18 @@ def get_iacm_default_pipeline_output(operation: Optional[pulumi.Input[_builtins.
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIacmDefaultPipelineResult]:
     """
     Data source for retrieving IACM default pipelines.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_iacm_default_pipeline(org_id=test["id"],
+        project_id=test_harness_platform_project["id"],
+        provisioner_type="terraform",
+        operation="plan")
+    ```
 
 
     :param _builtins.str operation: The operation associated with this default.

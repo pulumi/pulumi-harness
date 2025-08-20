@@ -45,6 +45,8 @@ namespace Pulumi.Harness
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level ccm filter
     /// 
     /// ```sh
@@ -73,7 +75,7 @@ namespace Pulumi.Harness
         public Output<Outputs.PlatformCcmFiltersFilterProperties> FilterProperties { get; private set; } = null!;
 
         /// <summary>
-        /// This indicates visibility of filters. By default, everyone can view this filter..
+        /// This indicates visibility of filters, by default it is Everyone.
         /// </summary>
         [Output("filterVisibility")]
         public Output<string?> FilterVisibility { get; private set; } = null!;
@@ -162,7 +164,7 @@ namespace Pulumi.Harness
         public Input<Inputs.PlatformCcmFiltersFilterPropertiesArgs> FilterProperties { get; set; } = null!;
 
         /// <summary>
-        /// This indicates visibility of filters. By default, everyone can view this filter..
+        /// This indicates visibility of filters, by default it is Everyone.
         /// </summary>
         [Input("filterVisibility")]
         public Input<string>? FilterVisibility { get; set; }
@@ -212,7 +214,7 @@ namespace Pulumi.Harness
         public Input<Inputs.PlatformCcmFiltersFilterPropertiesGetArgs>? FilterProperties { get; set; }
 
         /// <summary>
-        /// This indicates visibility of filters. By default, everyone can view this filter..
+        /// This indicates visibility of filters, by default it is Everyone.
         /// </summary>
         [Input("filterVisibility")]
         public Input<string>? FilterVisibility { get; set; }

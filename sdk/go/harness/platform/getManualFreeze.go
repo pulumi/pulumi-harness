@@ -12,35 +12,6 @@ import (
 )
 
 // DataSource for deployment freeze in harness.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupManualFreeze(ctx, &platform.LookupManualFreezeArgs{
-//				Identifier: "identifier",
-//				OrgId:      pulumi.StringRef("org_id"),
-//				ProjectId:  pulumi.StringRef("project_id"),
-//				AccountId:  "account_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupManualFreeze(ctx *pulumi.Context, args *LookupManualFreezeArgs, opts ...pulumi.InvokeOption) (*LookupManualFreezeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupManualFreezeResult

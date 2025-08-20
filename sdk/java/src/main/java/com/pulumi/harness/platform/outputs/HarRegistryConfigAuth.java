@@ -12,6 +12,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HarRegistryConfigAuth {
+    private @Nullable String accessKey;
+    private @Nullable String accessKeyIdentifier;
+    private @Nullable String accessKeySecretPath;
     /**
      * @return Type of authentication (UserPassword, Anonymous)
      * 
@@ -22,6 +25,8 @@ public final class HarRegistryConfigAuth {
      * 
      */
     private @Nullable String secretIdentifier;
+    private @Nullable String secretKeyIdentifier;
+    private @Nullable String secretKeySecretPath;
     /**
      * @return Secret space path for UserPassword auth type
      * 
@@ -34,6 +39,15 @@ public final class HarRegistryConfigAuth {
     private @Nullable String userName;
 
     private HarRegistryConfigAuth() {}
+    public Optional<String> accessKey() {
+        return Optional.ofNullable(this.accessKey);
+    }
+    public Optional<String> accessKeyIdentifier() {
+        return Optional.ofNullable(this.accessKeyIdentifier);
+    }
+    public Optional<String> accessKeySecretPath() {
+        return Optional.ofNullable(this.accessKeySecretPath);
+    }
     /**
      * @return Type of authentication (UserPassword, Anonymous)
      * 
@@ -47,6 +61,12 @@ public final class HarRegistryConfigAuth {
      */
     public Optional<String> secretIdentifier() {
         return Optional.ofNullable(this.secretIdentifier);
+    }
+    public Optional<String> secretKeyIdentifier() {
+        return Optional.ofNullable(this.secretKeyIdentifier);
+    }
+    public Optional<String> secretKeySecretPath() {
+        return Optional.ofNullable(this.secretKeySecretPath);
     }
     /**
      * @return Secret space path for UserPassword auth type
@@ -72,19 +92,47 @@ public final class HarRegistryConfigAuth {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String accessKey;
+        private @Nullable String accessKeyIdentifier;
+        private @Nullable String accessKeySecretPath;
         private String authType;
         private @Nullable String secretIdentifier;
+        private @Nullable String secretKeyIdentifier;
+        private @Nullable String secretKeySecretPath;
         private @Nullable String secretSpacePath;
         private @Nullable String userName;
         public Builder() {}
         public Builder(HarRegistryConfigAuth defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessKey = defaults.accessKey;
+    	      this.accessKeyIdentifier = defaults.accessKeyIdentifier;
+    	      this.accessKeySecretPath = defaults.accessKeySecretPath;
     	      this.authType = defaults.authType;
     	      this.secretIdentifier = defaults.secretIdentifier;
+    	      this.secretKeyIdentifier = defaults.secretKeyIdentifier;
+    	      this.secretKeySecretPath = defaults.secretKeySecretPath;
     	      this.secretSpacePath = defaults.secretSpacePath;
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
+        public Builder accessKey(@Nullable String accessKey) {
+
+            this.accessKey = accessKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accessKeyIdentifier(@Nullable String accessKeyIdentifier) {
+
+            this.accessKeyIdentifier = accessKeyIdentifier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accessKeySecretPath(@Nullable String accessKeySecretPath) {
+
+            this.accessKeySecretPath = accessKeySecretPath;
+            return this;
+        }
         @CustomType.Setter
         public Builder authType(String authType) {
             if (authType == null) {
@@ -97,6 +145,18 @@ public final class HarRegistryConfigAuth {
         public Builder secretIdentifier(@Nullable String secretIdentifier) {
 
             this.secretIdentifier = secretIdentifier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secretKeyIdentifier(@Nullable String secretKeyIdentifier) {
+
+            this.secretKeyIdentifier = secretKeyIdentifier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secretKeySecretPath(@Nullable String secretKeySecretPath) {
+
+            this.secretKeySecretPath = secretKeySecretPath;
             return this;
         }
         @CustomType.Setter
@@ -113,8 +173,13 @@ public final class HarRegistryConfigAuth {
         }
         public HarRegistryConfigAuth build() {
             final var _resultValue = new HarRegistryConfigAuth();
+            _resultValue.accessKey = accessKey;
+            _resultValue.accessKeyIdentifier = accessKeyIdentifier;
+            _resultValue.accessKeySecretPath = accessKeySecretPath;
             _resultValue.authType = authType;
             _resultValue.secretIdentifier = secretIdentifier;
+            _resultValue.secretKeyIdentifier = secretKeyIdentifier;
+            _resultValue.secretKeySecretPath = secretKeySecretPath;
             _resultValue.secretSpacePath = secretSpacePath;
             _resultValue.userName = userName;
             return _resultValue;

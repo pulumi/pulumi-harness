@@ -49,7 +49,7 @@ class AwsSecretManagerConnectorArgs:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
+        :param pulumi.Input[_builtins.int] recovery_window_in_days: Recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[_builtins.str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.bool] use_put_secret: Whether to update secret value using putSecretValue action.
@@ -218,7 +218,7 @@ class AwsSecretManagerConnectorArgs:
     @pulumi.getter(name="recoveryWindowInDays")
     def recovery_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        recovery duration in days in AWS Secrets Manager.
+        Recovery duration in days in AWS Secrets Manager.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
@@ -293,7 +293,7 @@ class _AwsSecretManagerConnectorState:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
+        :param pulumi.Input[_builtins.int] recovery_window_in_days: Recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[_builtins.str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[_builtins.str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -454,7 +454,7 @@ class _AwsSecretManagerConnectorState:
     @pulumi.getter(name="recoveryWindowInDays")
     def recovery_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        recovery duration in days in AWS Secrets Manager.
+        Recovery duration in days in AWS Secrets Manager.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
@@ -534,9 +534,11 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  use_put_secret: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        Resource for creating an AWS Secret Manager connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level aws secret manager connector
 
@@ -568,7 +570,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
+        :param pulumi.Input[_builtins.int] recovery_window_in_days: Recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[_builtins.str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[_builtins.str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -581,9 +583,11 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
                  args: AwsSecretManagerConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        Resource for creating an AWS Secret Manager connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level aws secret manager connector
 
@@ -705,7 +709,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.int] recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
+        :param pulumi.Input[_builtins.int] recovery_window_in_days: Recovery duration in days in AWS Secrets Manager.
         :param pulumi.Input[_builtins.str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[_builtins.str] secret_name_prefix: A prefix to be added to all secrets.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -816,7 +820,7 @@ class AwsSecretManagerConnector(pulumi.CustomResource):
     @pulumi.getter(name="recoveryWindowInDays")
     def recovery_window_in_days(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        recovery duration in days in AWS Secrets Manager.
+        Recovery duration in days in AWS Secrets Manager.
         """
         return pulumi.get(self, "recovery_window_in_days")
 

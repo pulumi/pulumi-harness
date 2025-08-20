@@ -27,10 +27,18 @@ __all__ = [
     'OrchestratorConfigBinpackingPodEvictionArgsDict',
     'OrchestratorConfigBinpackingPodEvictionThresholdArgs',
     'OrchestratorConfigBinpackingPodEvictionThresholdArgsDict',
+    'OrchestratorConfigCommitmentIntegrationArgs',
+    'OrchestratorConfigCommitmentIntegrationArgsDict',
     'OrchestratorConfigDistributionArgs',
     'OrchestratorConfigDistributionArgsDict',
     'OrchestratorConfigNodePreferencesArgs',
     'OrchestratorConfigNodePreferencesArgsDict',
+    'OrchestratorConfigReplacementScheduleArgs',
+    'OrchestratorConfigReplacementScheduleArgsDict',
+    'OrchestratorConfigReplacementScheduleAppliesToArgs',
+    'OrchestratorConfigReplacementScheduleAppliesToArgsDict',
+    'OrchestratorConfigReplacementScheduleWindowDetailsArgs',
+    'OrchestratorConfigReplacementScheduleWindowDetailsArgsDict',
     'GetOrchestratorConfigBinpackingArgs',
     'GetOrchestratorConfigBinpackingArgsDict',
     'GetOrchestratorConfigBinpackingDisruptionArgs',
@@ -43,10 +51,18 @@ __all__ = [
     'GetOrchestratorConfigBinpackingPodEvictionArgsDict',
     'GetOrchestratorConfigBinpackingPodEvictionThresholdArgs',
     'GetOrchestratorConfigBinpackingPodEvictionThresholdArgsDict',
+    'GetOrchestratorConfigCommitmentIntegrationArgs',
+    'GetOrchestratorConfigCommitmentIntegrationArgsDict',
     'GetOrchestratorConfigDistributionArgs',
     'GetOrchestratorConfigDistributionArgsDict',
     'GetOrchestratorConfigNodePreferencesArgs',
     'GetOrchestratorConfigNodePreferencesArgsDict',
+    'GetOrchestratorConfigReplacementScheduleArgs',
+    'GetOrchestratorConfigReplacementScheduleArgsDict',
+    'GetOrchestratorConfigReplacementScheduleAppliesToArgs',
+    'GetOrchestratorConfigReplacementScheduleAppliesToArgsDict',
+    'GetOrchestratorConfigReplacementScheduleWindowDetailsArgs',
+    'GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict',
 ]
 
 MYPY = False
@@ -378,6 +394,56 @@ class OrchestratorConfigBinpackingPodEvictionThresholdArgs:
 
 
 if not MYPY:
+    class OrchestratorConfigCommitmentIntegrationArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Flag to enable Commitment Integration
+        """
+        master_account_id: pulumi.Input[_builtins.str]
+        """
+        Master AWS account id for commitment integration
+        """
+elif False:
+    OrchestratorConfigCommitmentIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrchestratorConfigCommitmentIntegrationArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 master_account_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Flag to enable Commitment Integration
+        :param pulumi.Input[_builtins.str] master_account_id: Master AWS account id for commitment integration
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "master_account_id", master_account_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Flag to enable Commitment Integration
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="masterAccountId")
+    def master_account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Master AWS account id for commitment integration
+        """
+        return pulumi.get(self, "master_account_id")
+
+    @master_account_id.setter
+    def master_account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "master_account_id", value)
+
+
+if not MYPY:
     class OrchestratorConfigDistributionArgsDict(TypedDict):
         ondemand_replica_percentage: pulumi.Input[_builtins.float]
         """
@@ -518,6 +584,218 @@ class OrchestratorConfigNodePreferencesArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class OrchestratorConfigReplacementScheduleArgsDict(TypedDict):
+        applies_to: pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgsDict']
+        """
+        Defines the scope of the replacement schedule
+        """
+        window_type: pulumi.Input[_builtins.str]
+        """
+        Window type for replacement schedule
+        """
+        window_details: NotRequired[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgsDict']]
+elif False:
+    OrchestratorConfigReplacementScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrchestratorConfigReplacementScheduleArgs:
+    def __init__(__self__, *,
+                 applies_to: pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgs'],
+                 window_type: pulumi.Input[_builtins.str],
+                 window_details: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgs']] = None):
+        """
+        :param pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgs'] applies_to: Defines the scope of the replacement schedule
+        :param pulumi.Input[_builtins.str] window_type: Window type for replacement schedule
+        """
+        pulumi.set(__self__, "applies_to", applies_to)
+        pulumi.set(__self__, "window_type", window_type)
+        if window_details is not None:
+            pulumi.set(__self__, "window_details", window_details)
+
+    @_builtins.property
+    @pulumi.getter(name="appliesTo")
+    def applies_to(self) -> pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgs']:
+        """
+        Defines the scope of the replacement schedule
+        """
+        return pulumi.get(self, "applies_to")
+
+    @applies_to.setter
+    def applies_to(self, value: pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgs']):
+        pulumi.set(self, "applies_to", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowType")
+    def window_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Window type for replacement schedule
+        """
+        return pulumi.get(self, "window_type")
+
+    @window_type.setter
+    def window_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "window_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDetails")
+    def window_details(self) -> Optional[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]:
+        return pulumi.get(self, "window_details")
+
+    @window_details.setter
+    def window_details(self, value: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]):
+        pulumi.set(self, "window_details", value)
+
+
+if not MYPY:
+    class OrchestratorConfigReplacementScheduleAppliesToArgsDict(TypedDict):
+        consolidation: pulumi.Input[_builtins.bool]
+        harness_pod_eviction: pulumi.Input[_builtins.bool]
+        reverse_fallback: pulumi.Input[_builtins.bool]
+elif False:
+    OrchestratorConfigReplacementScheduleAppliesToArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrchestratorConfigReplacementScheduleAppliesToArgs:
+    def __init__(__self__, *,
+                 consolidation: pulumi.Input[_builtins.bool],
+                 harness_pod_eviction: pulumi.Input[_builtins.bool],
+                 reverse_fallback: pulumi.Input[_builtins.bool]):
+        pulumi.set(__self__, "consolidation", consolidation)
+        pulumi.set(__self__, "harness_pod_eviction", harness_pod_eviction)
+        pulumi.set(__self__, "reverse_fallback", reverse_fallback)
+
+    @_builtins.property
+    @pulumi.getter
+    def consolidation(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "consolidation")
+
+    @consolidation.setter
+    def consolidation(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "consolidation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="harnessPodEviction")
+    def harness_pod_eviction(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "harness_pod_eviction")
+
+    @harness_pod_eviction.setter
+    def harness_pod_eviction(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "harness_pod_eviction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reverseFallback")
+    def reverse_fallback(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "reverse_fallback")
+
+    @reverse_fallback.setter
+    def reverse_fallback(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "reverse_fallback", value)
+
+
+if not MYPY:
+    class OrchestratorConfigReplacementScheduleWindowDetailsArgsDict(TypedDict):
+        days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        """
+        time_zone: pulumi.Input[_builtins.str]
+        """
+        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        """
+        all_day: NotRequired[pulumi.Input[_builtins.bool]]
+        end_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        start_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+elif False:
+    OrchestratorConfigReplacementScheduleWindowDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrchestratorConfigReplacementScheduleWindowDetailsArgs:
+    def __init__(__self__, *,
+                 days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 time_zone: pulumi.Input[_builtins.str],
+                 all_day: Optional[pulumi.Input[_builtins.bool]] = None,
+                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] days: List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        :param pulumi.Input[_builtins.str] time_zone: Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        :param pulumi.Input[_builtins.str] end_time: End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        :param pulumi.Input[_builtins.str] start_time: Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if all_day is not None:
+            pulumi.set(__self__, "all_day", all_day)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        """
+        return pulumi.get(self, "days")
+
+    @days.setter
+    def days(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[_builtins.str]:
+        """
+        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "time_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allDay")
+    def all_day(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "all_day")
+
+    @all_day.setter
+    def all_day(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "all_day", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
 
 
 if not MYPY:
@@ -847,6 +1125,56 @@ class GetOrchestratorConfigBinpackingPodEvictionThresholdArgs:
 
 
 if not MYPY:
+    class GetOrchestratorConfigCommitmentIntegrationArgsDict(TypedDict):
+        enabled: _builtins.bool
+        """
+        Flag to enable Commitment Integration
+        """
+        master_account_id: _builtins.str
+        """
+        Master AWS account id for commitment integration
+        """
+elif False:
+    GetOrchestratorConfigCommitmentIntegrationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrchestratorConfigCommitmentIntegrationArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 master_account_id: _builtins.str):
+        """
+        :param _builtins.bool enabled: Flag to enable Commitment Integration
+        :param _builtins.str master_account_id: Master AWS account id for commitment integration
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "master_account_id", master_account_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Flag to enable Commitment Integration
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="masterAccountId")
+    def master_account_id(self) -> _builtins.str:
+        """
+        Master AWS account id for commitment integration
+        """
+        return pulumi.get(self, "master_account_id")
+
+    @master_account_id.setter
+    def master_account_id(self, value: _builtins.str):
+        pulumi.set(self, "master_account_id", value)
+
+
+if not MYPY:
     class GetOrchestratorConfigDistributionArgsDict(TypedDict):
         ondemand_replica_percentage: _builtins.float
         """
@@ -987,5 +1315,217 @@ class GetOrchestratorConfigNodePreferencesArgs:
     @ttl.setter
     def ttl(self, value: Optional[_builtins.str]):
         pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class GetOrchestratorConfigReplacementScheduleArgsDict(TypedDict):
+        applies_to: 'GetOrchestratorConfigReplacementScheduleAppliesToArgsDict'
+        """
+        Defines the scope of the replacement schedule
+        """
+        window_type: _builtins.str
+        """
+        Window type for replacement schedule
+        """
+        window_details: NotRequired['GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict']
+elif False:
+    GetOrchestratorConfigReplacementScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrchestratorConfigReplacementScheduleArgs:
+    def __init__(__self__, *,
+                 applies_to: 'GetOrchestratorConfigReplacementScheduleAppliesToArgs',
+                 window_type: _builtins.str,
+                 window_details: Optional['GetOrchestratorConfigReplacementScheduleWindowDetailsArgs'] = None):
+        """
+        :param 'GetOrchestratorConfigReplacementScheduleAppliesToArgs' applies_to: Defines the scope of the replacement schedule
+        :param _builtins.str window_type: Window type for replacement schedule
+        """
+        pulumi.set(__self__, "applies_to", applies_to)
+        pulumi.set(__self__, "window_type", window_type)
+        if window_details is not None:
+            pulumi.set(__self__, "window_details", window_details)
+
+    @_builtins.property
+    @pulumi.getter(name="appliesTo")
+    def applies_to(self) -> 'GetOrchestratorConfigReplacementScheduleAppliesToArgs':
+        """
+        Defines the scope of the replacement schedule
+        """
+        return pulumi.get(self, "applies_to")
+
+    @applies_to.setter
+    def applies_to(self, value: 'GetOrchestratorConfigReplacementScheduleAppliesToArgs'):
+        pulumi.set(self, "applies_to", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowType")
+    def window_type(self) -> _builtins.str:
+        """
+        Window type for replacement schedule
+        """
+        return pulumi.get(self, "window_type")
+
+    @window_type.setter
+    def window_type(self, value: _builtins.str):
+        pulumi.set(self, "window_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDetails")
+    def window_details(self) -> Optional['GetOrchestratorConfigReplacementScheduleWindowDetailsArgs']:
+        return pulumi.get(self, "window_details")
+
+    @window_details.setter
+    def window_details(self, value: Optional['GetOrchestratorConfigReplacementScheduleWindowDetailsArgs']):
+        pulumi.set(self, "window_details", value)
+
+
+if not MYPY:
+    class GetOrchestratorConfigReplacementScheduleAppliesToArgsDict(TypedDict):
+        consolidation: _builtins.bool
+        harness_pod_eviction: _builtins.bool
+        reverse_fallback: _builtins.bool
+elif False:
+    GetOrchestratorConfigReplacementScheduleAppliesToArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrchestratorConfigReplacementScheduleAppliesToArgs:
+    def __init__(__self__, *,
+                 consolidation: _builtins.bool,
+                 harness_pod_eviction: _builtins.bool,
+                 reverse_fallback: _builtins.bool):
+        pulumi.set(__self__, "consolidation", consolidation)
+        pulumi.set(__self__, "harness_pod_eviction", harness_pod_eviction)
+        pulumi.set(__self__, "reverse_fallback", reverse_fallback)
+
+    @_builtins.property
+    @pulumi.getter
+    def consolidation(self) -> _builtins.bool:
+        return pulumi.get(self, "consolidation")
+
+    @consolidation.setter
+    def consolidation(self, value: _builtins.bool):
+        pulumi.set(self, "consolidation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="harnessPodEviction")
+    def harness_pod_eviction(self) -> _builtins.bool:
+        return pulumi.get(self, "harness_pod_eviction")
+
+    @harness_pod_eviction.setter
+    def harness_pod_eviction(self, value: _builtins.bool):
+        pulumi.set(self, "harness_pod_eviction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reverseFallback")
+    def reverse_fallback(self) -> _builtins.bool:
+        return pulumi.get(self, "reverse_fallback")
+
+    @reverse_fallback.setter
+    def reverse_fallback(self, value: _builtins.bool):
+        pulumi.set(self, "reverse_fallback", value)
+
+
+if not MYPY:
+    class GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict(TypedDict):
+        days: Sequence[_builtins.str]
+        """
+        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        """
+        time_zone: _builtins.str
+        """
+        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        """
+        all_day: NotRequired[_builtins.bool]
+        end_time: NotRequired[_builtins.str]
+        """
+        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        start_time: NotRequired[_builtins.str]
+        """
+        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+elif False:
+    GetOrchestratorConfigReplacementScheduleWindowDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetOrchestratorConfigReplacementScheduleWindowDetailsArgs:
+    def __init__(__self__, *,
+                 days: Sequence[_builtins.str],
+                 time_zone: _builtins.str,
+                 all_day: Optional[_builtins.bool] = None,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] days: List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        :param _builtins.str time_zone: Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        :param _builtins.str end_time: End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        :param _builtins.str start_time: Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if all_day is not None:
+            pulumi.set(__self__, "all_day", all_day)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Sequence[_builtins.str]:
+        """
+        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        """
+        return pulumi.get(self, "days")
+
+    @days.setter
+    def days(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.str:
+        """
+        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: _builtins.str):
+        pulumi.set(self, "time_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allDay")
+    def all_day(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all_day")
+
+    @all_day.setter
+    def all_day(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all_day", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "start_time", value)
 
 

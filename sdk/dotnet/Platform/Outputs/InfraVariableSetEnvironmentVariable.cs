@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class InfraVariableSetEnvironmentVariable
     {
         /// <summary>
-        /// Key is the identifier for the variable. Must be unique within the variable set.
+        /// Key is the identifier for the variable. Must be unique within the Variable Set.
         /// </summary>
         public readonly string Key;
         /// <summary>

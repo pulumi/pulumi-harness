@@ -115,6 +115,9 @@ class GetDbInstanceResult:
     @_builtins.property
     @pulumi.getter(name="liquibaseSubstituteProperties")
     def liquibase_substitute_properties(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The properties to substitute in liquibase changelog
+        """
         return pulumi.get(self, "liquibase_substitute_properties")
 
     @_builtins.property
@@ -202,6 +205,7 @@ def get_db_instance(identifier: Optional[_builtins.str] = None,
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
+    :param Mapping[str, _builtins.str] liquibase_substitute_properties: The properties to substitute in liquibase changelog
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
@@ -254,6 +258,7 @@ def get_db_instance_output(identifier: Optional[pulumi.Input[_builtins.str]] = N
 
 
     :param _builtins.str identifier: Unique identifier of the resource.
+    :param Mapping[str, _builtins.str] liquibase_substitute_properties: The properties to substitute in liquibase changelog
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.

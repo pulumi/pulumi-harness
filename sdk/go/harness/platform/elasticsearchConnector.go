@@ -36,7 +36,7 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				Url: pulumi.String("https://elasticsearch.com/"),
+//				Url: pulumi.String("http://elk6.dev.harness.io:9200/"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
@@ -56,7 +56,7 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				Url: pulumi.String("https://elasticsearch.com/"),
+//				Url: pulumi.String("http://elk6.dev.harness.io:9200/"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
@@ -68,7 +68,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Authentication mechanism as username and password
+//			// Authentication mechanism without authentication
 //			_, err = platform.NewElasticsearchConnector(ctx, "no_authentication", &platform.ElasticsearchConnectorArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
@@ -76,7 +76,7 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				Url: pulumi.String("https://elasticsearch.com/"),
+//				Url: pulumi.String("http://elk6.dev.harness.io:9200/"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
@@ -91,6 +91,8 @@ import (
 // ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level elasticsearch connector
 //
@@ -130,7 +132,7 @@ type ElasticsearchConnector struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// URL of the ElasticSearch controller.
+	// URL of the elasticsearch
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Authenticate to ElasticSearch using username and password.
 	UsernamePassword ElasticsearchConnectorUsernamePasswordPtrOutput `pulumi:"usernamePassword"`
@@ -190,7 +192,7 @@ type elasticsearchConnectorState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// URL of the ElasticSearch controller.
+	// URL of the elasticsearch
 	Url *string `pulumi:"url"`
 	// Authenticate to ElasticSearch using username and password.
 	UsernamePassword *ElasticsearchConnectorUsernamePassword `pulumi:"usernamePassword"`
@@ -215,7 +217,7 @@ type ElasticsearchConnectorState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// URL of the ElasticSearch controller.
+	// URL of the elasticsearch
 	Url pulumi.StringPtrInput
 	// Authenticate to ElasticSearch using username and password.
 	UsernamePassword ElasticsearchConnectorUsernamePasswordPtrInput
@@ -244,7 +246,7 @@ type elasticsearchConnectorArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// URL of the ElasticSearch controller.
+	// URL of the elasticsearch
 	Url string `pulumi:"url"`
 	// Authenticate to ElasticSearch using username and password.
 	UsernamePassword *ElasticsearchConnectorUsernamePassword `pulumi:"usernamePassword"`
@@ -270,7 +272,7 @@ type ElasticsearchConnectorArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// URL of the ElasticSearch controller.
+	// URL of the elasticsearch
 	Url pulumi.StringInput
 	// Authenticate to ElasticSearch using username and password.
 	UsernamePassword ElasticsearchConnectorUsernamePasswordPtrInput
@@ -410,7 +412,7 @@ func (o ElasticsearchConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElasticsearchConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// URL of the ElasticSearch controller.
+// URL of the elasticsearch
 func (o ElasticsearchConnectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticsearchConnector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

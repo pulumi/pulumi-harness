@@ -47,14 +47,14 @@ public final class TasConnectorCredentialsTasManualDetailsArgs extends com.pulum
     }
 
     /**
-     * Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * Reference token for authentication.
      * 
      */
     @Import(name="referenceToken")
     private @Nullable Output<String> referenceToken;
 
     /**
-     * @return Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+     * @return Reference token for authentication.
      * 
      */
     public Optional<Output<String>> referenceToken() {
@@ -162,7 +162,7 @@ public final class TasConnectorCredentialsTasManualDetailsArgs extends com.pulum
         }
 
         /**
-         * @param referenceToken Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+         * @param referenceToken Reference token for authentication.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class TasConnectorCredentialsTasManualDetailsArgs extends com.pulum
         }
 
         /**
-         * @param referenceToken Reference of the secret for the token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}
+         * @param referenceToken Reference token for authentication.
          * 
          * @return builder
          * 

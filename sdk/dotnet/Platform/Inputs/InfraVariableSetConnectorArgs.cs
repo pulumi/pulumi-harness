@@ -13,13 +13,13 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class InfraVariableSetConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Unique identifier of the connector.
+        /// Connector Ref is the reference to the connector
         /// </summary>
         [Input("connectorRef", required: true)]
         public Input<string> ConnectorRef { get; set; } = null!;
 
         /// <summary>
-        /// Type indicates the type of the connector. Currently we support aws, azure, gcp.
+        /// Type is the connector type of the connector. Supported types: aws, azure, gcp
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

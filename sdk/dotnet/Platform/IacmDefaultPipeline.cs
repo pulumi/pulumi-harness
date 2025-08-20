@@ -11,6 +11,28 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for managing IAC default pipelines
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Harness.Platform.IacmDefaultPipeline("example", new()
+    ///     {
+    ///         OrgId = test.Id,
+    ///         ProjectId = testHarnessPlatformProject.Id,
+    ///         ProvisionerType = "terraform",
+    ///         Operation = "plan",
+    ///         Pipeline = "pipeline1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/iacmDefaultPipeline:IacmDefaultPipeline")]
     public partial class IacmDefaultPipeline : global::Pulumi.CustomResource

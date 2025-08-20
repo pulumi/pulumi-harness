@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for managing infrastructure Variable Sets
+// Resource for managing Variable Sets
 //
 // ## Example Usage
 //
@@ -94,25 +94,33 @@ import (
 //
 // ## Import
 //
-// ```sh
-// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <varset_id>
-// ```
+// The `pulumi import` command can be used, for example:
+//
+// # Import account level variable set
 //
 // ```sh
-// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<varset_id>
+// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <variable_set_id>
 // ```
 //
+// # Import org level variable set
+//
 // ```sh
-// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<varset_id>
+// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <ord_id>/<variable_set_id>
+// ```
+//
+// # Import project level variable set
+//
+// ```sh
+// $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<variable_set_id>
 // ```
 type InfraVariableSet struct {
 	pulumi.CustomResourceState
 
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors InfraVariableSetConnectorArrayOutput `pulumi:"connectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables InfraVariableSetEnvironmentVariableArrayOutput `pulumi:"environmentVariables"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -161,11 +169,11 @@ func GetInfraVariableSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InfraVariableSet resources.
 type infraVariableSetState struct {
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors []InfraVariableSetConnector `pulumi:"connectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables []InfraVariableSetEnvironmentVariable `pulumi:"environmentVariables"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -182,11 +190,11 @@ type infraVariableSetState struct {
 }
 
 type InfraVariableSetState struct {
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors InfraVariableSetConnectorArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables InfraVariableSetEnvironmentVariableArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -207,11 +215,11 @@ func (InfraVariableSetState) ElementType() reflect.Type {
 }
 
 type infraVariableSetArgs struct {
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors []InfraVariableSetConnector `pulumi:"connectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables []InfraVariableSetEnvironmentVariable `pulumi:"environmentVariables"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -229,11 +237,11 @@ type infraVariableSetArgs struct {
 
 // The set of arguments for constructing a InfraVariableSet resource.
 type InfraVariableSetArgs struct {
-	// Provider connector configured on the variable set
+	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors InfraVariableSetConnectorArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Environment variables configured on the variable set
+	// Environment variables configured on the Variable Set
 	EnvironmentVariables InfraVariableSetEnvironmentVariableArrayInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -336,7 +344,7 @@ func (o InfraVariableSetOutput) ToInfraVariableSetOutputWithContext(ctx context.
 	return o
 }
 
-// Provider connector configured on the variable set
+// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 func (o InfraVariableSetOutput) Connectors() InfraVariableSetConnectorArrayOutput {
 	return o.ApplyT(func(v *InfraVariableSet) InfraVariableSetConnectorArrayOutput { return v.Connectors }).(InfraVariableSetConnectorArrayOutput)
 }
@@ -346,7 +354,7 @@ func (o InfraVariableSetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InfraVariableSet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Environment variables configured on the variable set
+// Environment variables configured on the Variable Set
 func (o InfraVariableSetOutput) EnvironmentVariables() InfraVariableSetEnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v *InfraVariableSet) InfraVariableSetEnvironmentVariableArrayOutput {
 		return v.EnvironmentVariables

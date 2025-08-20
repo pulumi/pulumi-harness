@@ -13,18 +13,81 @@ namespace Pulumi.Harness.Platform
     {
         /// <summary>
         /// Data source for retrieving IACM default pipelines.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetIacmDefaultPipeline.Invoke(new()
+        ///     {
+        ///         OrgId = test.Id,
+        ///         ProjectId = testHarnessPlatformProject.Id,
+        ///         ProvisionerType = "terraform",
+        ///         Operation = "plan",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetIacmDefaultPipelineResult> InvokeAsync(GetIacmDefaultPipelineArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIacmDefaultPipelineResult>("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args ?? new GetIacmDefaultPipelineArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving IACM default pipelines.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetIacmDefaultPipeline.Invoke(new()
+        ///     {
+        ///         OrgId = test.Id,
+        ///         ProjectId = testHarnessPlatformProject.Id,
+        ///         ProvisionerType = "terraform",
+        ///         Operation = "plan",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIacmDefaultPipelineResult> Invoke(GetIacmDefaultPipelineInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIacmDefaultPipelineResult>("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args ?? new GetIacmDefaultPipelineInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving IACM default pipelines.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetIacmDefaultPipeline.Invoke(new()
+        ///     {
+        ///         OrgId = test.Id,
+        ///         ProjectId = testHarnessPlatformProject.Id,
+        ///         ProvisionerType = "terraform",
+        ///         Operation = "plan",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIacmDefaultPipelineResult> Invoke(GetIacmDefaultPipelineInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIacmDefaultPipelineResult>("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args ?? new GetIacmDefaultPipelineInvokeArgs(), options.WithDefaults());

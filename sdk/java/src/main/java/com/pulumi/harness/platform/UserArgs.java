@@ -79,14 +79,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user group of the user.
+     * The user group of the user. Cannot be updated.
      * 
      */
     @Import(name="userGroups", required=true)
     private Output<List<String>> userGroups;
 
     /**
-     * @return The user group of the user.
+     * @return The user group of the user. Cannot be updated.
      * 
      */
     public Output<List<String>> userGroups() {
@@ -216,7 +216,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userGroups The user group of the user.
+         * @param userGroups The user group of the user. Cannot be updated.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userGroups The user group of the user.
+         * @param userGroups The user group of the user. Cannot be updated.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userGroups The user group of the user.
+         * @param userGroups The user group of the user. Cannot be updated.
          * 
          * @return builder
          * 

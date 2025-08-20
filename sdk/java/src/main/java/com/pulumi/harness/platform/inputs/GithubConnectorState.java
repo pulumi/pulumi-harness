@@ -110,14 +110,14 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enable this flag for force deletion of github connector
+     * Enable this flag for force deletion of service
      * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of github connector
+     * @return Enable this flag for force deletion of service
      * 
      */
     public Optional<Output<Boolean>> forceDelete() {
@@ -403,7 +403,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of github connector
+         * @param forceDelete Enable this flag for force deletion of service
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class GithubConnectorState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param forceDelete Enable this flag for force deletion of github connector
+         * @param forceDelete Enable this flag for force deletion of service
          * 
          * @return builder
          * 

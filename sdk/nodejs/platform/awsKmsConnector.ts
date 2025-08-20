@@ -7,9 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
+ * Resource for creating an AWS KMS connector.
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level awskms connector
  *
@@ -58,9 +60,13 @@ export class AwsKmsConnector extends pulumi.CustomResource {
     }
 
     /**
+     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     */
+    public readonly arnPlaintext!: pulumi.Output<string | undefined>;
+    /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    public readonly arnRef!: pulumi.Output<string>;
+    public readonly arnRef!: pulumi.Output<string | undefined>;
     /**
      * Credentials to connect to AWS.
      */
@@ -119,6 +125,7 @@ export class AwsKmsConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AwsKmsConnectorState | undefined;
+            resourceInputs["arnPlaintext"] = state ? state.arnPlaintext : undefined;
             resourceInputs["arnRef"] = state ? state.arnRef : undefined;
             resourceInputs["credentials"] = state ? state.credentials : undefined;
             resourceInputs["default"] = state ? state.default : undefined;
@@ -133,9 +140,6 @@ export class AwsKmsConnector extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AwsKmsConnectorArgs | undefined;
-            if ((!args || args.arnRef === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'arnRef'");
-            }
             if ((!args || args.credentials === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
@@ -145,6 +149,7 @@ export class AwsKmsConnector extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["arnPlaintext"] = args ? args.arnPlaintext : undefined;
             resourceInputs["arnRef"] = args ? args.arnRef : undefined;
             resourceInputs["credentials"] = args ? args.credentials : undefined;
             resourceInputs["default"] = args ? args.default : undefined;
@@ -167,6 +172,10 @@ export class AwsKmsConnector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AwsKmsConnector resources.
  */
 export interface AwsKmsConnectorState {
+    /**
+     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     */
+    arnPlaintext?: pulumi.Input<string>;
     /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
@@ -222,9 +231,13 @@ export interface AwsKmsConnectorState {
  */
 export interface AwsKmsConnectorArgs {
     /**
+     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     */
+    arnPlaintext?: pulumi.Input<string>;
+    /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    arnRef: pulumi.Input<string>;
+    arnRef?: pulumi.Input<string>;
     /**
      * Credentials to connect to AWS.
      */

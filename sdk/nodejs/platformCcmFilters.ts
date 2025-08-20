@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level ccm filter
  *
  * ```sh
@@ -82,7 +84,7 @@ export class PlatformCcmFilters extends pulumi.CustomResource {
      */
     public readonly filterProperties!: pulumi.Output<outputs.PlatformCcmFiltersFilterProperties>;
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter..
+     * This indicates visibility of filters, by default it is Everyone.
      */
     public readonly filterVisibility!: pulumi.Output<string | undefined>;
     /**
@@ -159,7 +161,7 @@ export interface PlatformCcmFiltersState {
      */
     filterProperties?: pulumi.Input<inputs.PlatformCcmFiltersFilterProperties>;
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter..
+     * This indicates visibility of filters, by default it is Everyone.
      */
     filterVisibility?: pulumi.Input<string>;
     /**
@@ -193,7 +195,7 @@ export interface PlatformCcmFiltersArgs {
      */
     filterProperties: pulumi.Input<inputs.PlatformCcmFiltersFilterProperties>;
     /**
-     * This indicates visibility of filters. By default, everyone can view this filter..
+     * This indicates visibility of filters, by default it is Everyone.
      */
     filterVisibility?: pulumi.Input<string>;
     /**

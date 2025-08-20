@@ -19,6 +19,10 @@ public final class GetServiceResult {
      * 
      */
     private String description;
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     private GetServiceGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -64,6 +68,10 @@ public final class GetServiceResult {
     public String description() {
         return this.description;
     }
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     public GetServiceGitDetails gitDetails() {
         return this.gitDetails;
     }

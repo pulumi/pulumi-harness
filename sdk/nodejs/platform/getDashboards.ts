@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = harness.platform.getDashboards({
- *     id: "48525",
+ * const dashboard = harness.platform.getDashboards({
+ *     id: "id",
  * });
  * ```
  */
@@ -35,9 +35,12 @@ export interface GetDashboardsArgs {
      * Identifier of the dashboard.
      */
     id: string;
+    /**
+     * Unique identifier of the resource.
+     */
     identifier?: string;
     /**
-     * Name of the Dashboard.
+     * Name of the resource.
      */
     name?: string;
 }
@@ -59,7 +62,7 @@ export interface GetDashboardsResult {
      */
     readonly dataSources: string[];
     /**
-     * Description of the Dashboard.
+     * Description of the resource.
      */
     readonly description: string;
     /**
@@ -70,26 +73,32 @@ export interface GetDashboardsResult {
      * Identifier of the dashboard.
      */
     readonly id: string;
+    /**
+     * Unique identifier of the resource.
+     */
     readonly identifier?: string;
     /**
      * Data Models within the Dashboard.
      */
     readonly models: string[];
     /**
-     * Name of the Dashboard.
+     * Name of the resource.
      */
     readonly name?: string;
     /**
      * Resource identifier of the dashboard.
      */
     readonly resourceIdentifier: string;
+    /**
+     * Tags to associate with the resource.
+     */
     readonly tags: string[];
     /**
      * Title of the Dashboard.
      */
     readonly title: string;
     /**
-     * Type of the dashboard.
+     * Resource identifier of the dashboard.
      */
     readonly type: string;
     /**
@@ -106,8 +115,8 @@ export interface GetDashboardsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = harness.platform.getDashboards({
- *     id: "48525",
+ * const dashboard = harness.platform.getDashboards({
+ *     id: "id",
  * });
  * ```
  */
@@ -128,9 +137,12 @@ export interface GetDashboardsOutputArgs {
      * Identifier of the dashboard.
      */
     id: pulumi.Input<string>;
+    /**
+     * Unique identifier of the resource.
+     */
     identifier?: pulumi.Input<string>;
     /**
-     * Name of the Dashboard.
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
 }

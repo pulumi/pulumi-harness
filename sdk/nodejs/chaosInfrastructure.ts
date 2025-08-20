@@ -7,12 +7,13 @@ import * as utilities from "./utilities";
 /**
  * Resource for creating a Chaos Infrastructure.
  *
- * ## Example to create Chaos Infrastructure
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
+ * // Sample resource for chaos infrastructure
  * const example = new harness.ChaosInfrastructure("example", {
  *     identifier: "identifier",
  *     name: "name",
@@ -26,7 +27,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Import using the Chaos Infra ID.
+ * The `pulumi import` command can be used, for example:
+ *
+ * Import using the Harness chaos_infra_id.
  *
  * ```sh
  * $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example <chaos_infra_id>

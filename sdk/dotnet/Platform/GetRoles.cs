@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetRoles
     {
         /// <summary>
+        /// Data source for retrieving roles
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +38,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("harness:platform/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving roles
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +64,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("harness:platform/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving roles
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

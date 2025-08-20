@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetManualFreezeFreezeWindowRecurrenceRecurrenceSpecResult> RecurrenceSpecs;
         /// <summary>
-        /// Recurrence type(Daily, Weekly, Monthly, Yearly)
+        /// Type of the recurrence
         /// </summary>
         public readonly string Type;
 

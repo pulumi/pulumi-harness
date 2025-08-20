@@ -35,7 +35,7 @@ class FileStoreFileArgs:
         """
         The set of arguments for constructing a FileStoreFile resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store
         :param pulumi.Input[_builtins.str] content: File content stored on Harness File Store
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_content_path: File content path to be upladed on Harness File Store
@@ -83,7 +83,7 @@ class FileStoreFileArgs:
     @pulumi.getter(name="parentIdentifier")
     def parent_identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        File parent identifier on Harness File Store
         """
         return pulumi.get(self, "parent_identifier")
 
@@ -231,7 +231,7 @@ class _FileStoreFileState:
         :param pulumi.Input[_builtins.str] mime_type: File mime type
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store
         :param pulumi.Input[_builtins.str] path: Harness File Store file path
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -403,7 +403,7 @@ class _FileStoreFileState:
     @pulumi.getter(name="parentIdentifier")
     def parent_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        File parent identifier on Harness File Store
         """
         return pulumi.get(self, "parent_identifier")
 
@@ -494,6 +494,8 @@ class FileStoreFile(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level file
 
         ```sh
@@ -522,7 +524,7 @@ class FileStoreFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mime_type: File mime type
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
@@ -559,6 +561,8 @@ class FileStoreFile(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level file
 
@@ -675,7 +679,7 @@ class FileStoreFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mime_type: File mime type
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        :param pulumi.Input[_builtins.str] parent_identifier: File parent identifier on Harness File Store
         :param pulumi.Input[_builtins.str] path: Harness File Store file path
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -793,7 +797,7 @@ class FileStoreFile(pulumi.CustomResource):
     @pulumi.getter(name="parentIdentifier")
     def parent_identifier(self) -> pulumi.Output[_builtins.str]:
         """
-        File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        File parent identifier on Harness File Store
         """
         return pulumi.get(self, "parent_identifier")
 

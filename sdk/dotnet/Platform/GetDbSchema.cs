@@ -93,9 +93,6 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetDbSchemaArgs : global::Pulumi.InvokeArgs
     {
-        [Input("changelogScript")]
-        public Inputs.GetDbSchemaChangelogScriptArgs? ChangelogScript { get; set; }
-
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -120,18 +117,9 @@ namespace Pulumi.Harness.Platform
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
-        [Input("schemaSources")]
-        private List<Inputs.GetDbSchemaSchemaSourceArgs>? _schemaSources;
-
         /// <summary>
-        /// Provides a connector and path at which to find the database schema representation
+        /// Type of the database schema. Valid values are: Repository, Script
         /// </summary>
-        public List<Inputs.GetDbSchemaSchemaSourceArgs> SchemaSources
-        {
-            get => _schemaSources ?? (_schemaSources = new List<Inputs.GetDbSchemaSchemaSourceArgs>());
-            set => _schemaSources = value;
-        }
-
         [Input("type")]
         public string? Type { get; set; }
 
@@ -143,9 +131,6 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetDbSchemaInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("changelogScript")]
-        public Input<Inputs.GetDbSchemaChangelogScriptInputArgs>? ChangelogScript { get; set; }
-
         /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
@@ -170,18 +155,9 @@ namespace Pulumi.Harness.Platform
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
-        [Input("schemaSources")]
-        private InputList<Inputs.GetDbSchemaSchemaSourceInputArgs>? _schemaSources;
-
         /// <summary>
-        /// Provides a connector and path at which to find the database schema representation
+        /// Type of the database schema. Valid values are: Repository, Script
         /// </summary>
-        public InputList<Inputs.GetDbSchemaSchemaSourceInputArgs> SchemaSources
-        {
-            get => _schemaSources ?? (_schemaSources = new InputList<Inputs.GetDbSchemaSchemaSourceInputArgs>());
-            set => _schemaSources = value;
-        }
-
         [Input("type")]
         public Input<string>? Type { get; set; }
 
@@ -195,7 +171,10 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetDbSchemaResult
     {
-        public readonly Outputs.GetDbSchemaChangelogScriptResult? ChangelogScript;
+        /// <summary>
+        /// Configuration to clone changeSets using script
+        /// </summary>
+        public readonly Outputs.GetDbSchemaChangelogScriptResult ChangelogScript;
         /// <summary>
         /// Description of the resource.
         /// </summary>
@@ -232,11 +211,14 @@ namespace Pulumi.Harness.Platform
         /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Type of the database schema. Valid values are: Repository, Script
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]
         private GetDbSchemaResult(
-            Outputs.GetDbSchemaChangelogScriptResult? changelogScript,
+            Outputs.GetDbSchemaChangelogScriptResult changelogScript,
 
             string description,
 

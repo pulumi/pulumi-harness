@@ -46,8 +46,10 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // ```sh
-// $ pulumi import harness:platform/infraModule:InfraModule example <org_id>/<module_id>
+// $ pulumi import harness:platform/infraModule:InfraModule example <module_id>
 // ```
 type InfraModule struct {
 	pulumi.CustomResourceState

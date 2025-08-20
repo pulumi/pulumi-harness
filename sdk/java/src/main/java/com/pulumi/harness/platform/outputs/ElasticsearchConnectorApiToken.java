@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ElasticsearchConnectorApiToken {
     /**
-     * @return The client id used for connecting to ElasticSearch.
+     * @return The API Key id used for connecting to ElasticSearch.
      * 
      */
     private String clientId;
@@ -23,7 +23,7 @@ public final class ElasticsearchConnectorApiToken {
 
     private ElasticsearchConnectorApiToken() {}
     /**
-     * @return The client id used for connecting to ElasticSearch.
+     * @return The API Key id used for connecting to ElasticSearch.
      * 
      */
     public String clientId() {

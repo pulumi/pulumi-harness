@@ -16,6 +16,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level template
 //
 // ```sh
@@ -42,13 +44,13 @@ type Template struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsOutput `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
 	GitImportDetails TemplateGitImportDetailsPtrOutput `pulumi:"gitImportDetails"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrOutput `pulumi:"importFromGit"`
@@ -66,7 +68,7 @@ type Template struct {
 	TemplateImportRequest TemplateTemplateImportRequestPtrOutput `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringOutput `pulumi:"templateYaml"`
-	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+	// Version Label for Template.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -112,13 +114,13 @@ type templateState struct {
 	//
 	// Deprecated: description field is deprecated
 	Description *string `pulumi:"description"`
-	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
 	GitImportDetails *TemplateGitImportDetails `pulumi:"gitImportDetails"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
 	Identifier *string `pulumi:"identifier"`
 	// Flag to set if importing from Git
 	ImportFromGit *bool `pulumi:"importFromGit"`
@@ -136,7 +138,7 @@ type templateState struct {
 	TemplateImportRequest *TemplateTemplateImportRequest `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml *string `pulumi:"templateYaml"`
-	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+	// Version Label for Template.
 	Version *string `pulumi:"version"`
 }
 
@@ -147,13 +149,13 @@ type TemplateState struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrInput
-	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete pulumi.BoolPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsPtrInput
 	// Contains Git Information for importing entities from Git
 	GitImportDetails TemplateGitImportDetailsPtrInput
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
 	Identifier pulumi.StringPtrInput
 	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrInput
@@ -171,7 +173,7 @@ type TemplateState struct {
 	TemplateImportRequest TemplateTemplateImportRequestPtrInput
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringPtrInput
-	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+	// Version Label for Template.
 	Version pulumi.StringPtrInput
 }
 
@@ -186,13 +188,13 @@ type templateArgs struct {
 	//
 	// Deprecated: description field is deprecated
 	Description *string `pulumi:"description"`
-	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails *TemplateGitDetails `pulumi:"gitDetails"`
 	// Contains Git Information for importing entities from Git
 	GitImportDetails *TemplateGitImportDetails `pulumi:"gitImportDetails"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
 	Identifier string `pulumi:"identifier"`
 	// Flag to set if importing from Git
 	ImportFromGit *bool `pulumi:"importFromGit"`
@@ -210,7 +212,7 @@ type templateArgs struct {
 	TemplateImportRequest *TemplateTemplateImportRequest `pulumi:"templateImportRequest"`
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml *string `pulumi:"templateYaml"`
-	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+	// Version Label for Template.
 	Version string `pulumi:"version"`
 }
 
@@ -222,13 +224,13 @@ type TemplateArgs struct {
 	//
 	// Deprecated: description field is deprecated
 	Description pulumi.StringPtrInput
-	// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+	// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 	ForceDelete pulumi.BoolPtrInput
 	// Contains parameters related to creating an Entity for Git Experience.
 	GitDetails TemplateGitDetailsPtrInput
 	// Contains Git Information for importing entities from Git
 	GitImportDetails TemplateGitImportDetailsPtrInput
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
 	Identifier pulumi.StringInput
 	// Flag to set if importing from Git
 	ImportFromGit pulumi.BoolPtrInput
@@ -246,7 +248,7 @@ type TemplateArgs struct {
 	TemplateImportRequest TemplateTemplateImportRequestPtrInput
 	// Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
 	TemplateYaml pulumi.StringPtrInput
-	// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+	// Version Label for Template.
 	Version pulumi.StringInput
 }
 
@@ -349,7 +351,7 @@ func (o TemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
 func (o TemplateOutput) ForceDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Template) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }
@@ -364,7 +366,7 @@ func (o TemplateOutput) GitImportDetails() TemplateGitImportDetailsPtrOutput {
 	return o.ApplyT(func(v *Template) TemplateGitImportDetailsPtrOutput { return v.GitImportDetails }).(TemplateGitImportDetailsPtrOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
 func (o TemplateOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -409,7 +411,7 @@ func (o TemplateOutput) TemplateYaml() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateYaml }).(pulumi.StringOutput)
 }
 
-// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+// Version Label for Template.
 func (o TemplateOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

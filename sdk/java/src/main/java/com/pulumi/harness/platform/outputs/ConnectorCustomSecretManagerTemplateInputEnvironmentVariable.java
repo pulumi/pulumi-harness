@@ -14,15 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectorCustomSecretManagerTemplateInputEnvironmentVariable {
     private @Nullable Boolean default_;
-    /**
-     * @return : Name of the resource.
-     * 
-     */
     private String name;
-    /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     private String type;
     private String value;
 
@@ -30,17 +22,9 @@ public final class ConnectorCustomSecretManagerTemplateInputEnvironmentVariable 
     public Optional<Boolean> default_() {
         return Optional.ofNullable(this.default_);
     }
-    /**
-     * @return : Name of the resource.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     public String type() {
         return this.type;
     }

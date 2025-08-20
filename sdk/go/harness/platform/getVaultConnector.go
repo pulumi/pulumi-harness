@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// DataSource for looking up a Vault connector in Harness.
+//
 // ## Example Usage
 //
 // ```go
@@ -126,7 +128,7 @@ type LookupVaultConnectorResult struct {
 	UseVaultAgent bool `pulumi:"useVaultAgent"`
 	// The Vault role defined to bind to AWS IAM account/role being accessed.
 	VaultAwsIamRole string `pulumi:"vaultAwsIamRole"`
-	// Custom path at with JWT auth in enabled for Vault.
+	// Custom path at with JWT auth in enabled for Vault
 	VaultJwtAuthPath string `pulumi:"vaultJwtAuthPath"`
 	// The Vault role defined with JWT auth type for accessing Vault as per policies binded.
 	VaultJwtAuthRole string `pulumi:"vaultJwtAuthRole"`
@@ -343,7 +345,7 @@ func (o LookupVaultConnectorResultOutput) VaultAwsIamRole() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.VaultAwsIamRole }).(pulumi.StringOutput)
 }
 
-// Custom path at with JWT auth in enabled for Vault.
+// Custom path at with JWT auth in enabled for Vault
 func (o LookupVaultConnectorResultOutput) VaultJwtAuthPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVaultConnectorResult) string { return v.VaultJwtAuthPath }).(pulumi.StringOutput)
 }

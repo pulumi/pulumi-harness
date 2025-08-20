@@ -90,6 +90,9 @@ class GetGitopsApplicationsResult:
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")
     def account_id(self) -> _builtins.str:
+        """
+        Account identifier of the GitOps application.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
@@ -192,6 +195,9 @@ class GetGitopsApplicationsResult:
     @_builtins.property
     @pulumi.getter(name="repoIds")
     def repo_ids(self) -> Sequence[_builtins.str]:
+        """
+        List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+        """
         return pulumi.get(self, "repo_ids")
 
     @_builtins.property
@@ -273,6 +279,7 @@ def get_gitops_applications(account_id: Optional[_builtins.str] = None,
     Datasource for fetching a Harness GitOps Application.
 
 
+    :param _builtins.str account_id: Account identifier of the GitOps application.
     :param _builtins.str agent_id: Agent identifier of the GitOps application.
     :param _builtins.str identifier: Identifier of the GitOps application.
     :param _builtins.str name: Name of the GitOps application.
@@ -320,6 +327,7 @@ def get_gitops_applications_output(account_id: Optional[pulumi.Input[Optional[_b
     Datasource for fetching a Harness GitOps Application.
 
 
+    :param _builtins.str account_id: Account identifier of the GitOps application.
     :param _builtins.str agent_id: Agent identifier of the GitOps application.
     :param _builtins.str identifier: Identifier of the GitOps application.
     :param _builtins.str name: Name of the GitOps application.

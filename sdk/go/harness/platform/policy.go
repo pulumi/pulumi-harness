@@ -16,22 +16,12 @@ import (
 //
 // ## Import
 //
-// # Import account level policy
+// The `pulumi import` command can be used, for example:
+//
+// # Import using the organization id
 //
 // ```sh
-// $ pulumi import harness:platform/policy:Policy example <policy_id>
-// ```
-//
-// # Import org level policy
-//
-// ```sh
-// $ pulumi import harness:platform/policy:Policy example <org_id>/<policy_id>
-// ```
-//
-// # Import proj level policy
-//
-// ```sh
-// $ pulumi import harness:platform/policy:Policy example <org_id>/<project_id>/<policy_id>
+// $ pulumi import harness:platform/policy:Policy example <organization_id>
 // ```
 type Policy struct {
 	pulumi.CustomResourceState

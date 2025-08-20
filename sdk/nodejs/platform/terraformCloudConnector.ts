@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level Terraform Cloud provider connector
  *
  * ```sh

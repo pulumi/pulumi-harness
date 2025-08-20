@@ -72,7 +72,7 @@ public final class GetAwsSecretManagerConnectorResult {
      */
     private @Nullable String projectId;
     /**
-     * @return recovery duration in days in AWS Secrets Manager.
+     * @return Recovery duration in days in AWS Secrets Manager.
      * 
      */
     private @Nullable Integer recoveryWindowInDays;
@@ -176,7 +176,7 @@ public final class GetAwsSecretManagerConnectorResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return recovery duration in days in AWS Secrets Manager.
+     * @return Recovery duration in days in AWS Secrets Manager.
      * 
      */
     public Optional<Integer> recoveryWindowInDays() {

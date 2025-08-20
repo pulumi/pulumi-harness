@@ -44,7 +44,7 @@ export interface GetGitxWebhookArgs {
      */
     projectId?: string;
     /**
-     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * Tags to associate with the resource.
      */
     tags?: string[];
 }
@@ -78,7 +78,7 @@ export interface GetGitxWebhookResult {
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * Tags to associate with the resource.
      */
     readonly tags?: string[];
 }
@@ -122,7 +122,7 @@ export interface GetGitxWebhookOutputArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * Tags to associate with the resource.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

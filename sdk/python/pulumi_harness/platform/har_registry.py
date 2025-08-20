@@ -21,50 +21,39 @@ __all__ = ['HarRegistryArgs', 'HarRegistry']
 @pulumi.input_type
 class HarRegistryArgs:
     def __init__(__self__, *,
-                 configs: pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]],
                  identifier: pulumi.Input[_builtins.str],
                  package_type: pulumi.Input[_builtins.str],
                  allowed_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  blocked_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_ref: Optional[pulumi.Input[_builtins.str]] = None,
                  space_ref: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HarRegistry resource.
-        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, etc.)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked pattern for the registry
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
+        :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
         """
-        pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "package_type", package_type)
         if allowed_patterns is not None:
             pulumi.set(__self__, "allowed_patterns", allowed_patterns)
         if blocked_patterns is not None:
             pulumi.set(__self__, "blocked_patterns", blocked_patterns)
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if parent_ref is not None:
             pulumi.set(__self__, "parent_ref", parent_ref)
         if space_ref is not None:
             pulumi.set(__self__, "space_ref", space_ref)
-
-    @_builtins.property
-    @pulumi.getter
-    def configs(self) -> pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]:
-        """
-        Configuration for the registry
-        """
-        return pulumi.get(self, "configs")
-
-    @configs.setter
-    def configs(self, value: pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]):
-        pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -82,7 +71,7 @@ class HarRegistryArgs:
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of package (DOCKER, HELM, etc.)
+        Type of package (DOCKER, HELM, MAVEN, etc.)
         """
         return pulumi.get(self, "package_type")
 
@@ -94,7 +83,7 @@ class HarRegistryArgs:
     @pulumi.getter(name="allowedPatterns")
     def allowed_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Allowed pattern for the registry
+        Allowed artifact patterns
         """
         return pulumi.get(self, "allowed_patterns")
 
@@ -106,13 +95,25 @@ class HarRegistryArgs:
     @pulumi.getter(name="blockedPatterns")
     def blocked_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Blocked pattern for the registry
+        Blocked artifact patterns
         """
         return pulumi.get(self, "blocked_patterns")
 
     @blocked_patterns.setter
     def blocked_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blocked_patterns", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]:
+        """
+        Configuration for the registry
+        """
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]]]):
+        pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -166,13 +167,13 @@ class _HarRegistryState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HarRegistry resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked pattern for the registry
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
-        :param pulumi.Input[_builtins.str] created_at: Timestamp when the registry was created
+        :param pulumi.Input[_builtins.str] created_at: Creation timestamp
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, etc.)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
         :param pulumi.Input[_builtins.str] url: URL of the registry
@@ -202,7 +203,7 @@ class _HarRegistryState:
     @pulumi.getter(name="allowedPatterns")
     def allowed_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Allowed pattern for the registry
+        Allowed artifact patterns
         """
         return pulumi.get(self, "allowed_patterns")
 
@@ -214,7 +215,7 @@ class _HarRegistryState:
     @pulumi.getter(name="blockedPatterns")
     def blocked_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Blocked pattern for the registry
+        Blocked artifact patterns
         """
         return pulumi.get(self, "blocked_patterns")
 
@@ -238,7 +239,7 @@ class _HarRegistryState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Timestamp when the registry was created
+        Creation timestamp
         """
         return pulumi.get(self, "created_at")
 
@@ -274,7 +275,7 @@ class _HarRegistryState:
     @pulumi.getter(name="packageType")
     def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of package (DOCKER, HELM, etc.)
+        Type of package (DOCKER, HELM, MAVEN, etc.)
         """
         return pulumi.get(self, "package_type")
 
@@ -379,12 +380,12 @@ class HarRegistry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked pattern for the registry
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, etc.)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
         """
@@ -471,8 +472,6 @@ class HarRegistry(pulumi.CustomResource):
 
             __props__.__dict__["allowed_patterns"] = allowed_patterns
             __props__.__dict__["blocked_patterns"] = blocked_patterns
-            if configs is None and not opts.urn:
-                raise TypeError("Missing required property 'configs'")
             __props__.__dict__["configs"] = configs
             __props__.__dict__["description"] = description
             if identifier is None and not opts.urn:
@@ -512,13 +511,13 @@ class HarRegistry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed pattern for the registry
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked pattern for the registry
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Configuration for the registry
-        :param pulumi.Input[_builtins.str] created_at: Timestamp when the registry was created
+        :param pulumi.Input[_builtins.str] created_at: Creation timestamp
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, etc.)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry
         :param pulumi.Input[_builtins.str] url: URL of the registry
@@ -543,7 +542,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="allowedPatterns")
     def allowed_patterns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Allowed pattern for the registry
+        Allowed artifact patterns
         """
         return pulumi.get(self, "allowed_patterns")
 
@@ -551,13 +550,13 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="blockedPatterns")
     def blocked_patterns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Blocked pattern for the registry
+        Blocked artifact patterns
         """
         return pulumi.get(self, "blocked_patterns")
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> pulumi.Output[Sequence['outputs.HarRegistryConfig']]:
+    def configs(self) -> pulumi.Output[Optional[Sequence['outputs.HarRegistryConfig']]]:
         """
         Configuration for the registry
         """
@@ -567,7 +566,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Timestamp when the registry was created
+        Creation timestamp
         """
         return pulumi.get(self, "created_at")
 
@@ -591,7 +590,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of package (DOCKER, HELM, etc.)
+        Type of package (DOCKER, HELM, MAVEN, etc.)
         """
         return pulumi.get(self, "package_type")
 

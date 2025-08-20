@@ -90,28 +90,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/harRegistry:HarRegistry")
 public class HarRegistry extends com.pulumi.resources.CustomResource {
     /**
-     * Allowed pattern for the registry
+     * Allowed artifact patterns
      * 
      */
     @Export(name="allowedPatterns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPatterns;
 
     /**
-     * @return Allowed pattern for the registry
+     * @return Allowed artifact patterns
      * 
      */
     public Output<Optional<List<String>>> allowedPatterns() {
         return Codegen.optional(this.allowedPatterns);
     }
     /**
-     * Blocked pattern for the registry
+     * Blocked artifact patterns
      * 
      */
     @Export(name="blockedPatterns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedPatterns;
 
     /**
-     * @return Blocked pattern for the registry
+     * @return Blocked artifact patterns
      * 
      */
     public Output<Optional<List<String>>> blockedPatterns() {
@@ -122,24 +122,24 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="configs", refs={List.class,HarRegistryConfig.class}, tree="[0,1]")
-    private Output<List<HarRegistryConfig>> configs;
+    private Output</* @Nullable */ List<HarRegistryConfig>> configs;
 
     /**
      * @return Configuration for the registry
      * 
      */
-    public Output<List<HarRegistryConfig>> configs() {
-        return this.configs;
+    public Output<Optional<List<HarRegistryConfig>>> configs() {
+        return Codegen.optional(this.configs);
     }
     /**
-     * Timestamp when the registry was created
+     * Creation timestamp
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Timestamp when the registry was created
+     * @return Creation timestamp
      * 
      */
     public Output<String> createdAt() {
@@ -174,14 +174,14 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
-     * Type of package (DOCKER, HELM, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, etc.)
+     * @return Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
     public Output<String> packageType() {

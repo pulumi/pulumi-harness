@@ -57,6 +57,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import a GitOps agent app project mapping
  * 
  * ```sh

@@ -14,7 +14,80 @@ import (
 
 // Resource for creating secret of type secret text
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewSecretText(ctx, "inline", &platform.SecretTextArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				SecretManagerIdentifier: pulumi.String("harnessSecretManager"),
+//				ValueType:               pulumi.String("Inline"),
+//				Value:                   pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewSecretText(ctx, "reference", &platform.SecretTextArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				SecretManagerIdentifier: pulumi.String("azureSecretManager"),
+//				ValueType:               pulumi.String("Reference"),
+//				Value:                   pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewSecretText(ctx, "gcp_secret_manager_reference", &platform.SecretTextArgs{
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				SecretManagerIdentifier: pulumi.String("gcpSecretManager"),
+//				ValueType:               pulumi.String("Reference"),
+//				Value:                   pulumi.String("secret"),
+//				AdditionalMetadatas: platform.SecretTextAdditionalMetadataArray{
+//					&platform.SecretTextAdditionalMetadataArgs{
+//						Values: platform.SecretTextAdditionalMetadataValueArray{
+//							&platform.SecretTextAdditionalMetadataValueArgs{
+//								Version: pulumi.String("1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level secret text
 //

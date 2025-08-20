@@ -92,14 +92,14 @@ public final class GetGitxWebhookPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable List<String> tags;
 
     /**
-     * @return Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<List<String>> tags() {
@@ -191,7 +191,7 @@ public final class GetGitxWebhookPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class GetGitxWebhookPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 

@@ -47,14 +47,14 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Default expiration time of the Token within API Key
+     * Expiry time of the apiKey
      * 
      */
     @Import(name="defaultTimeToExpireToken")
     private @Nullable Integer defaultTimeToExpireToken;
 
     /**
-     * @return Default expiration time of the Token within API Key
+     * @return Expiry time of the apiKey
      * 
      */
     public Optional<Integer> defaultTimeToExpireToken() {
@@ -107,14 +107,14 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Parent Entity Identifier of the API Key
+     * Parent Identifier for the Entity
      * 
      */
     @Import(name="parentId", required=true)
     private String parentId;
 
     /**
-     * @return Parent Entity Identifier of the API Key
+     * @return Parent Identifier for the Entity
      * 
      */
     public String parentId() {
@@ -190,7 +190,7 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param defaultTimeToExpireToken Default expiration time of the Token within API Key
+         * @param defaultTimeToExpireToken Expiry time of the apiKey
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class GetApiKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentId Parent Entity Identifier of the API Key
+         * @param parentId Parent Identifier for the Entity
          * 
          * @return builder
          * 

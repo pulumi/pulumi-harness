@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetUser
     {
         /// <summary>
+        /// Data source for retrieving the user based on the API key.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +38,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("harness:platform/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving the user based on the API key.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +64,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("harness:platform/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving the user based on the API key.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

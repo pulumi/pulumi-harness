@@ -13,13 +13,13 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Recurrence until timestamp
+        /// Time till which freeze window recurrs
         /// </summary>
         [Input("until")]
         public Input<string>? Until { get; set; }
 
         /// <summary>
-        /// Value of n, for n months recurrence
+        /// Every n months recurrence
         /// </summary>
         [Input("value")]
         public Input<int>? Value { get; set; }

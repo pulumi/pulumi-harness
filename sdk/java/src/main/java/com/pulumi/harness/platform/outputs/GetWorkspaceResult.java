@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceResult {
     /**
-     * @return Provider connector configured on the workspace
+     * @return Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     private @Nullable List<GetWorkspaceConnector> connectors;
@@ -113,6 +113,10 @@ public final class GetWorkspaceResult {
      * 
      */
     private String repositorySha;
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     private @Nullable List<String> tags;
     private List<GetWorkspaceTerraformVariableFile> terraformVariableFiles;
     private List<GetWorkspaceTerraformVariable> terraformVariables;
@@ -124,7 +128,7 @@ public final class GetWorkspaceResult {
 
     private GetWorkspaceResult() {}
     /**
-     * @return Provider connector configured on the workspace
+     * @return Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     public List<GetWorkspaceConnector> connectors() {
@@ -256,6 +260,10 @@ public final class GetWorkspaceResult {
     public String repositorySha() {
         return this.repositorySha;
     }
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }

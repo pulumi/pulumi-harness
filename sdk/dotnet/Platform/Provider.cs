@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating a Harness Provider.
+    /// </summary>
     [HarnessResourceType("harness:platform/provider:Provider")]
     public partial class Provider : global::Pulumi.CustomResource
     {

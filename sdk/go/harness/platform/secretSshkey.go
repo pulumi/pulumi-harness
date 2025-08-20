@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// Resource for creating an ssh key type secret.
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level secret sshkey
 //

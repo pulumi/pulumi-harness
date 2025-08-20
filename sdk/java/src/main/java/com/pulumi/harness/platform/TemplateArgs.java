@@ -60,14 +60,14 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+     * Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+     * @return Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
      * 
      */
     public Optional<Output<Boolean>> forceDelete() {
@@ -105,14 +105,14 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
      * 
      */
     public Output<String> identifier() {
@@ -240,14 +240,14 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+     * Version Label for Template.
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+     * @return Version Label for Template.
      * 
      */
     public Output<String> version() {
@@ -343,7 +343,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+         * @param forceDelete Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+         * @param forceDelete Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Unique identifier of the resource
+         * @param identifier Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Unique identifier of the resource
+         * @param identifier Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+         * @param version Version Label for Template.
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+         * @param version Version Label for Template.
          * 
          * @return builder
          * 

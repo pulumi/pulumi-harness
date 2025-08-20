@@ -82,19 +82,19 @@ import (
 type HarRegistry struct {
 	pulumi.CustomResourceState
 
-	// Allowed pattern for the registry
+	// Allowed artifact patterns
 	AllowedPatterns pulumi.StringArrayOutput `pulumi:"allowedPatterns"`
-	// Blocked pattern for the registry
+	// Blocked artifact patterns
 	BlockedPatterns pulumi.StringArrayOutput `pulumi:"blockedPatterns"`
 	// Configuration for the registry
 	Configs HarRegistryConfigArrayOutput `pulumi:"configs"`
-	// Timestamp when the registry was created
+	// Creation timestamp
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Description of the registry
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
-	// Type of package (DOCKER, HELM, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringOutput `pulumi:"packageType"`
 	// Parent reference for the registry
 	ParentRef pulumi.StringPtrOutput `pulumi:"parentRef"`
@@ -111,9 +111,6 @@ func NewHarRegistry(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Configs == nil {
-		return nil, errors.New("invalid value for required argument 'Configs'")
-	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -143,19 +140,19 @@ func GetHarRegistry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HarRegistry resources.
 type harRegistryState struct {
-	// Allowed pattern for the registry
+	// Allowed artifact patterns
 	AllowedPatterns []string `pulumi:"allowedPatterns"`
-	// Blocked pattern for the registry
+	// Blocked artifact patterns
 	BlockedPatterns []string `pulumi:"blockedPatterns"`
 	// Configuration for the registry
 	Configs []HarRegistryConfig `pulumi:"configs"`
-	// Timestamp when the registry was created
+	// Creation timestamp
 	CreatedAt *string `pulumi:"createdAt"`
 	// Description of the registry
 	Description *string `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier *string `pulumi:"identifier"`
-	// Type of package (DOCKER, HELM, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry
 	ParentRef *string `pulumi:"parentRef"`
@@ -166,19 +163,19 @@ type harRegistryState struct {
 }
 
 type HarRegistryState struct {
-	// Allowed pattern for the registry
+	// Allowed artifact patterns
 	AllowedPatterns pulumi.StringArrayInput
-	// Blocked pattern for the registry
+	// Blocked artifact patterns
 	BlockedPatterns pulumi.StringArrayInput
 	// Configuration for the registry
 	Configs HarRegistryConfigArrayInput
-	// Timestamp when the registry was created
+	// Creation timestamp
 	CreatedAt pulumi.StringPtrInput
 	// Description of the registry
 	Description pulumi.StringPtrInput
 	// Unique identifier of the registry
 	Identifier pulumi.StringPtrInput
-	// Type of package (DOCKER, HELM, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringPtrInput
 	// Parent reference for the registry
 	ParentRef pulumi.StringPtrInput
@@ -193,9 +190,9 @@ func (HarRegistryState) ElementType() reflect.Type {
 }
 
 type harRegistryArgs struct {
-	// Allowed pattern for the registry
+	// Allowed artifact patterns
 	AllowedPatterns []string `pulumi:"allowedPatterns"`
-	// Blocked pattern for the registry
+	// Blocked artifact patterns
 	BlockedPatterns []string `pulumi:"blockedPatterns"`
 	// Configuration for the registry
 	Configs []HarRegistryConfig `pulumi:"configs"`
@@ -203,7 +200,7 @@ type harRegistryArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier string `pulumi:"identifier"`
-	// Type of package (DOCKER, HELM, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType string `pulumi:"packageType"`
 	// Parent reference for the registry
 	ParentRef *string `pulumi:"parentRef"`
@@ -213,9 +210,9 @@ type harRegistryArgs struct {
 
 // The set of arguments for constructing a HarRegistry resource.
 type HarRegistryArgs struct {
-	// Allowed pattern for the registry
+	// Allowed artifact patterns
 	AllowedPatterns pulumi.StringArrayInput
-	// Blocked pattern for the registry
+	// Blocked artifact patterns
 	BlockedPatterns pulumi.StringArrayInput
 	// Configuration for the registry
 	Configs HarRegistryConfigArrayInput
@@ -223,7 +220,7 @@ type HarRegistryArgs struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the registry
 	Identifier pulumi.StringInput
-	// Type of package (DOCKER, HELM, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringInput
 	// Parent reference for the registry
 	ParentRef pulumi.StringPtrInput
@@ -318,12 +315,12 @@ func (o HarRegistryOutput) ToHarRegistryOutputWithContext(ctx context.Context) H
 	return o
 }
 
-// Allowed pattern for the registry
+// Allowed artifact patterns
 func (o HarRegistryOutput) AllowedPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringArrayOutput { return v.AllowedPatterns }).(pulumi.StringArrayOutput)
 }
 
-// Blocked pattern for the registry
+// Blocked artifact patterns
 func (o HarRegistryOutput) BlockedPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringArrayOutput { return v.BlockedPatterns }).(pulumi.StringArrayOutput)
 }
@@ -333,7 +330,7 @@ func (o HarRegistryOutput) Configs() HarRegistryConfigArrayOutput {
 	return o.ApplyT(func(v *HarRegistry) HarRegistryConfigArrayOutput { return v.Configs }).(HarRegistryConfigArrayOutput)
 }
 
-// Timestamp when the registry was created
+// Creation timestamp
 func (o HarRegistryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -348,7 +345,7 @@ func (o HarRegistryOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Type of package (DOCKER, HELM, etc.)
+// Type of package (DOCKER, HELM, MAVEN, etc.)
 func (o HarRegistryOutput) PackageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.PackageType }).(pulumi.StringOutput)
 }

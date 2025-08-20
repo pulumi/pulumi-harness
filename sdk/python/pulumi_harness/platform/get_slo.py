@@ -92,6 +92,17 @@ def get_slo(identifier: Optional[_builtins.str] = None,
     """
     Data source for retrieving an SLO.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_slo(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
 
     :param _builtins.str identifier: Identifier of the SLO.
     :param _builtins.str org_id: Identifier of the organization in which the SLO is configured.
@@ -115,6 +126,17 @@ def get_slo_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSloResult]:
     """
     Data source for retrieving an SLO.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_slo(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
 
 
     :param _builtins.str identifier: Identifier of the SLO.

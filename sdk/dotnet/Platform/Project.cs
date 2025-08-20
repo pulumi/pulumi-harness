@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// Resource for creating a Harness project.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -32,6 +34,8 @@ namespace Pulumi.Harness.Platform
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import using the organization id and the project id
     /// 

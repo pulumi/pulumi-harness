@@ -18,19 +18,21 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating a Azure Repo connector.
+ * 
+ */
 @ResourceType(type="harness:platform/connectorAzureRepo:ConnectorAzureRepo")
 public class ConnectorAzureRepo extends com.pulumi.resources.CustomResource {
     /**
-     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-     * triggers, Webhooks management and updating Git statuses.
+     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      * 
      */
     @Export(name="apiAuthentication", refs={ConnectorAzureRepoApiAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ ConnectorAzureRepoApiAuthentication> apiAuthentication;
 
     /**
-     * @return Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-     * triggers, Webhooks management and updating Git statuses.
+     * @return Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      * 
      */
     public Output<Optional<ConnectorAzureRepoApiAuthentication>> apiAuthentication() {

@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Datasource for looking up an AWS Secret Manager connector.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,7 +57,7 @@ export interface GetAwsSecretManagerConnectorArgs {
      */
     projectId?: string;
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      */
     recoveryWindowInDays?: number;
 }
@@ -109,7 +111,7 @@ export interface GetAwsSecretManagerConnectorResult {
      */
     readonly projectId?: string;
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      */
     readonly recoveryWindowInDays?: number;
     /**
@@ -130,6 +132,8 @@ export interface GetAwsSecretManagerConnectorResult {
     readonly usePutSecret: boolean;
 }
 /**
+ * Datasource for looking up an AWS Secret Manager connector.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -178,7 +182,7 @@ export interface GetAwsSecretManagerConnectorOutputArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      */
     recoveryWindowInDays?: pulumi.Input<number>;
 }

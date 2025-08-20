@@ -156,14 +156,14 @@ public final class ElasticsearchConnectorArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * URL of the ElasticSearch controller.
+     * URL of the elasticsearch
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return URL of the ElasticSearch controller.
+     * @return URL of the elasticsearch
      * 
      */
     public Output<String> url() {
@@ -429,7 +429,7 @@ public final class ElasticsearchConnectorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url URL of the ElasticSearch controller.
+         * @param url URL of the elasticsearch
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class ElasticsearchConnectorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param url URL of the ElasticSearch controller.
+         * @param url URL of the elasticsearch
          * 
          * @return builder
          * 

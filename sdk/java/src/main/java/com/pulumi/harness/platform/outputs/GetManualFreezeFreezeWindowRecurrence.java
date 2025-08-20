@@ -18,7 +18,7 @@ public final class GetManualFreezeFreezeWindowRecurrence {
      */
     private List<GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec> recurrenceSpecs;
     /**
-     * @return Recurrence type(Daily, Weekly, Monthly, Yearly)
+     * @return Type of the recurrence
      * 
      */
     private String type;
@@ -32,7 +32,7 @@ public final class GetManualFreezeFreezeWindowRecurrence {
         return this.recurrenceSpecs;
     }
     /**
-     * @return Recurrence type(Daily, Weekly, Monthly, Yearly)
+     * @return Type of the recurrence
      * 
      */
     public String type() {

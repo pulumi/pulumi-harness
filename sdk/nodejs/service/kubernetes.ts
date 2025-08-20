@@ -38,6 +38,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import using the Harness application id and service id
  *
  * ```sh

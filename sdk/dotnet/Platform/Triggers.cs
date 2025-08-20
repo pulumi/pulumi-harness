@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
+    /// Resource for creating triggers in Harness.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -64,6 +66,8 @@ namespace Pulumi.Harness.Platform
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import trigger
     /// 

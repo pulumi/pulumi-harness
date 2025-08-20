@@ -13,6 +13,9 @@ namespace Pulumi.Harness.Platform.Outputs
     [OutputType]
     public sealed class HarRegistryConfigAuth
     {
+        public readonly string? AccessKey;
+        public readonly string? AccessKeyIdentifier;
+        public readonly string? AccessKeySecretPath;
         /// <summary>
         /// Type of authentication (UserPassword, Anonymous)
         /// </summary>
@@ -21,6 +24,8 @@ namespace Pulumi.Harness.Platform.Outputs
         /// Secret identifier for UserPassword auth type
         /// </summary>
         public readonly string? SecretIdentifier;
+        public readonly string? SecretKeyIdentifier;
+        public readonly string? SecretKeySecretPath;
         /// <summary>
         /// Secret space path for UserPassword auth type
         /// </summary>
@@ -32,16 +37,31 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private HarRegistryConfigAuth(
+            string? accessKey,
+
+            string? accessKeyIdentifier,
+
+            string? accessKeySecretPath,
+
             string authType,
 
             string? secretIdentifier,
+
+            string? secretKeyIdentifier,
+
+            string? secretKeySecretPath,
 
             string? secretSpacePath,
 
             string? userName)
         {
+            AccessKey = accessKey;
+            AccessKeyIdentifier = accessKeyIdentifier;
+            AccessKeySecretPath = accessKeySecretPath;
             AuthType = authType;
             SecretIdentifier = secretIdentifier;
+            SecretKeyIdentifier = secretKeyIdentifier;
+            SecretKeySecretPath = secretKeySecretPath;
             SecretSpacePath = secretSpacePath;
             UserName = userName;
         }

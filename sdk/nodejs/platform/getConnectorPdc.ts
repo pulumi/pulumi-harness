@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Datasource for looking up a Physical data center connector.
+ * Datasource for looking up a Pdc connector.
  *
  * ## Example Usage
  *
@@ -65,7 +65,7 @@ export interface GetConnectorPdcResult {
      */
     readonly description: string;
     /**
-     * Hosts to be provided.
+     * Host of the Physical data centers.
      */
     readonly hosts: outputs.platform.GetConnectorPdcHost[];
     /**
@@ -94,7 +94,7 @@ export interface GetConnectorPdcResult {
     readonly tags: string[];
 }
 /**
- * Datasource for looking up a Physical data center connector.
+ * Datasource for looking up a Pdc connector.
  *
  * ## Example Usage
  *

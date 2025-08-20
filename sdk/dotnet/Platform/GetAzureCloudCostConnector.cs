@@ -153,6 +153,7 @@ namespace Pulumi.Harness.Platform
     [OutputType]
     public sealed class GetAzureCloudCostConnectorResult
     {
+        public readonly ImmutableArray<Outputs.GetAzureCloudCostConnectorBillingExportSpec2Result> BillingExportSpec2s;
         /// <summary>
         /// Returns billing details for the Azure account.
         /// </summary>
@@ -200,6 +201,8 @@ namespace Pulumi.Harness.Platform
 
         [OutputConstructor]
         private GetAzureCloudCostConnectorResult(
+            ImmutableArray<Outputs.GetAzureCloudCostConnectorBillingExportSpec2Result> billingExportSpec2s,
+
             ImmutableArray<Outputs.GetAzureCloudCostConnectorBillingExportSpecResult> billingExportSpecs,
 
             string description,
@@ -222,6 +225,7 @@ namespace Pulumi.Harness.Platform
 
             string tenantId)
         {
+            BillingExportSpec2s = billingExportSpec2s;
             BillingExportSpecs = billingExportSpecs;
             Description = description;
             FeaturesEnableds = featuresEnableds;

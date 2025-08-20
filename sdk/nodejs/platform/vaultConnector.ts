@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Resource for creating a HashiCorp Vault Secret Manager connector.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -153,6 +155,8 @@ import * as utilities from "../utilities";
  * ```
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level vault connector
  *
@@ -329,7 +333,7 @@ export class VaultConnector extends pulumi.CustomResource {
      */
     public readonly vaultAwsIamRole!: pulumi.Output<string | undefined>;
     /**
-     * Custom path at with JWT auth in enabled for Vault.
+     * Custom path at with JWT auth in enabled for Vault
      */
     public readonly vaultJwtAuthPath!: pulumi.Output<string | undefined>;
     /**
@@ -586,7 +590,7 @@ export interface VaultConnectorState {
      */
     vaultAwsIamRole?: pulumi.Input<string>;
     /**
-     * Custom path at with JWT auth in enabled for Vault.
+     * Custom path at with JWT auth in enabled for Vault
      */
     vaultJwtAuthPath?: pulumi.Input<string>;
     /**
@@ -740,7 +744,7 @@ export interface VaultConnectorArgs {
      */
     vaultAwsIamRole?: pulumi.Input<string>;
     /**
-     * Custom path at with JWT auth in enabled for Vault.
+     * Custom path at with JWT auth in enabled for Vault
      */
     vaultJwtAuthPath?: pulumi.Input<string>;
     /**

@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? RepositoryPath;
         /// <summary>
-        /// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
         /// </summary>
         public readonly string? RepositorySha;
 

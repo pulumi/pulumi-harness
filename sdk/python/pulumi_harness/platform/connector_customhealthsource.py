@@ -496,6 +496,8 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level elasticsearch connector
 
         ```sh
@@ -564,6 +566,8 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level elasticsearch connector
 

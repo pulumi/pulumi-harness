@@ -28,6 +28,10 @@ import * as utilities from "../utilities";
  *     costEstimationEnabled: true,
  *     providerConnector: test.id,
  *     repositoryConnector: test.id,
+ *     tags: [
+ *         "tag1",
+ *         "tag2",
+ *     ],
  *     terraformVariables: [
  *         {
  *             key: "key1",
@@ -84,6 +88,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * ```sh
  * $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
  * ```
@@ -117,7 +123,7 @@ export class Workspace extends pulumi.CustomResource {
     }
 
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
     public readonly connectors!: pulumi.Output<outputs.platform.WorkspaceConnector[] | undefined>;
     /**
@@ -290,7 +296,7 @@ export class Workspace extends pulumi.CustomResource {
  */
 export interface WorkspaceState {
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[]>;
     /**
@@ -372,7 +378,7 @@ export interface WorkspaceState {
  */
 export interface WorkspaceArgs {
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[]>;
     /**

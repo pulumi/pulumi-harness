@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetUsergroup
     {
         /// <summary>
+        /// Data source for retrieving a Harness User Group.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -43,6 +45,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsergroupResult>("harness:platform/getUsergroup:getUsergroup", args ?? new GetUsergroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness User Group.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -74,6 +78,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetUsergroupResult>("harness:platform/getUsergroup:getUsergroup", args ?? new GetUsergroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness User Group.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

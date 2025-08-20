@@ -36,8 +36,10 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
-    /// $ pulumi import harness:platform/infraModule:InfraModule example &lt;org_id&gt;/&lt;module_id&gt;
+    /// $ pulumi import harness:platform/infraModule:InfraModule example &lt;module_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/infraModule:InfraModule")]

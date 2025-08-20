@@ -221,6 +221,54 @@ class GitopsApplicationset(pulumi.CustomResource):
         """
         Resource for managing a Harness Gitops Applicationset. Please note this resource is in an alpha/experimental state and is subject to change.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test_fixed = harness.platform.GitopsApplicationset("test_fixed",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "tf-appset",
+                    "namespace": "argocd",
+                },
+                "spec": {
+                    "go_template": True,
+                    "generators": [{
+                        "clusters": [{
+                            "enabled": True,
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.name}}-guestbook",
+                            "labels": {
+                                "env": "dev",
+                                "harness.io/serviceRef": "svc1",
+                            },
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                                "path": "helm-guestbook",
+                                "target_revision": "HEAD",
+                            }],
+                            "destination": {
+                                "server": "{{.url}}",
+                                "namespace": "app-ns-{{.name}}",
+                            },
+                        },
+                    },
+                },
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps applicationset.
@@ -237,6 +285,54 @@ class GitopsApplicationset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing a Harness Gitops Applicationset. Please note this resource is in an alpha/experimental state and is subject to change.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test_fixed = harness.platform.GitopsApplicationset("test_fixed",
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True,
+            applicationset={
+                "metadata": {
+                    "name": "tf-appset",
+                    "namespace": "argocd",
+                },
+                "spec": {
+                    "go_template": True,
+                    "generators": [{
+                        "clusters": [{
+                            "enabled": True,
+                        }],
+                    }],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.name}}-guestbook",
+                            "labels": {
+                                "env": "dev",
+                                "harness.io/serviceRef": "svc1",
+                            },
+                        },
+                        "spec": {
+                            "project": "default",
+                            "sources": [{
+                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                                "path": "helm-guestbook",
+                                "target_revision": "HEAD",
+                            }],
+                            "destination": {
+                                "server": "{{.url}}",
+                                "namespace": "app-ns-{{.name}}",
+                            },
+                        },
+                    },
+                },
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param GitopsApplicationsetArgs args: The arguments to use to populate this resource's properties.

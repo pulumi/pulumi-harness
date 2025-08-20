@@ -12,7 +12,39 @@ namespace Pulumi.Harness.Platform
     /// <summary>
     /// Resource for creating a Harness Repo.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Harness.Platform.Repo("test", new()
+    ///     {
+    ///         Identifier = "test_repo_123",
+    ///         OrgId = "test_org_123",
+    ///         ProjectId = "test_project_123",
+    ///         DefaultBranch = "main",
+    ///         Description = "test_description_123",
+    ///         Sources = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.RepoSourceArgs
+    ///             {
+    ///                 Repo = "octocat/hello-worId",
+    ///                 Type = "github",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import
     /// 

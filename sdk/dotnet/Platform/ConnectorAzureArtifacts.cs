@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating an Azure Artifacts connector.
+    /// </summary>
     [HarnessResourceType("harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts")]
     public partial class ConnectorAzureArtifacts : global::Pulumi.CustomResource
     {

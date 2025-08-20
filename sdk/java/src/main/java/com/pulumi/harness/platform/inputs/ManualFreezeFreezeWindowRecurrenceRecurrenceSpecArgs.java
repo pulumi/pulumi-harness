@@ -17,14 +17,14 @@ public final class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs extends 
     public static final ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs Empty = new ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs();
 
     /**
-     * Recurrence until timestamp
+     * Time till which freeze window recurrs
      * 
      */
     @Import(name="until")
     private @Nullable Output<String> until;
 
     /**
-     * @return Recurrence until timestamp
+     * @return Time till which freeze window recurrs
      * 
      */
     public Optional<Output<String>> until() {
@@ -32,14 +32,14 @@ public final class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs extends 
     }
 
     /**
-     * Value of n, for n months recurrence
+     * Every n months recurrence
      * 
      */
     @Import(name="value")
     private @Nullable Output<Integer> value;
 
     /**
-     * @return Value of n, for n months recurrence
+     * @return Every n months recurrence
      * 
      */
     public Optional<Output<Integer>> value() {
@@ -72,7 +72,7 @@ public final class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs extends 
         }
 
         /**
-         * @param until Recurrence until timestamp
+         * @param until Time till which freeze window recurrs
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs extends 
         }
 
         /**
-         * @param until Recurrence until timestamp
+         * @param until Time till which freeze window recurrs
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs extends 
         }
 
         /**
-         * @param value Value of n, for n months recurrence
+         * @param value Every n months recurrence
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ManualFreezeFreezeWindowRecurrenceRecurrenceSpecArgs extends 
         }
 
         /**
-         * @param value Value of n, for n months recurrence
+         * @param value Every n months recurrence
          * 
          * @return builder
          * 

@@ -36,9 +36,21 @@ export function getServiceOverridesV2(args: GetServiceOverridesV2Args, opts?: pu
  * A collection of arguments for invoking getServiceOverridesV2.
  */
 export interface GetServiceOverridesV2Args {
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     */
     gitDetails?: inputs.platform.GetServiceOverridesV2GitDetails;
+    /**
+     * The identifier of the override entity.
+     */
     identifier: string;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: string;
 }
 
@@ -46,19 +58,49 @@ export interface GetServiceOverridesV2Args {
  * A collection of values returned by getServiceOverridesV2.
  */
 export interface GetServiceOverridesV2Result {
+    /**
+     * The cluster ID to which the override entity is associated.
+     */
     readonly clusterId: string;
+    /**
+     * The environment ID to which the override entity is associated.
+     */
     readonly envId: string;
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     */
     readonly gitDetails: outputs.platform.GetServiceOverridesV2GitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The identifier of the override entity.
+     */
     readonly identifier: string;
+    /**
+     * The infrastructure ID to which the override entity is associated.
+     */
     readonly infraId: string;
+    /**
+     * Unique identifier of the organization.
+     */
     readonly orgId?: string;
+    /**
+     * Unique identifier of the project.
+     */
     readonly projectId?: string;
+    /**
+     * The service ID to which the override entity is associated.
+     */
     readonly serviceId: string;
+    /**
+     * The type of the override entity.
+     */
     readonly type: string;
+    /**
+     * The yaml of the override entity's spec property.
+     */
     readonly yaml: string;
 }
 /**
@@ -91,8 +133,20 @@ export function getServiceOverridesV2Output(args: GetServiceOverridesV2OutputArg
  * A collection of arguments for invoking getServiceOverridesV2.
  */
 export interface GetServiceOverridesV2OutputArgs {
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     */
     gitDetails?: pulumi.Input<inputs.platform.GetServiceOverridesV2GitDetailsArgs>;
+    /**
+     * The identifier of the override entity.
+     */
     identifier: pulumi.Input<string>;
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: pulumi.Input<string>;
 }

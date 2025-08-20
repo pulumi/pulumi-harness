@@ -16,6 +16,27 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
 
     public static final HarRegistryConfigAuthArgs Empty = new HarRegistryConfigAuthArgs();
 
+    @Import(name="accessKey")
+    private @Nullable Output<String> accessKey;
+
+    public Optional<Output<String>> accessKey() {
+        return Optional.ofNullable(this.accessKey);
+    }
+
+    @Import(name="accessKeyIdentifier")
+    private @Nullable Output<String> accessKeyIdentifier;
+
+    public Optional<Output<String>> accessKeyIdentifier() {
+        return Optional.ofNullable(this.accessKeyIdentifier);
+    }
+
+    @Import(name="accessKeySecretPath")
+    private @Nullable Output<String> accessKeySecretPath;
+
+    public Optional<Output<String>> accessKeySecretPath() {
+        return Optional.ofNullable(this.accessKeySecretPath);
+    }
+
     /**
      * Type of authentication (UserPassword, Anonymous)
      * 
@@ -44,6 +65,20 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> secretIdentifier() {
         return Optional.ofNullable(this.secretIdentifier);
+    }
+
+    @Import(name="secretKeyIdentifier")
+    private @Nullable Output<String> secretKeyIdentifier;
+
+    public Optional<Output<String>> secretKeyIdentifier() {
+        return Optional.ofNullable(this.secretKeyIdentifier);
+    }
+
+    @Import(name="secretKeySecretPath")
+    private @Nullable Output<String> secretKeySecretPath;
+
+    public Optional<Output<String>> secretKeySecretPath() {
+        return Optional.ofNullable(this.secretKeySecretPath);
     }
 
     /**
@@ -79,8 +114,13 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
     private HarRegistryConfigAuthArgs() {}
 
     private HarRegistryConfigAuthArgs(HarRegistryConfigAuthArgs $) {
+        this.accessKey = $.accessKey;
+        this.accessKeyIdentifier = $.accessKeyIdentifier;
+        this.accessKeySecretPath = $.accessKeySecretPath;
         this.authType = $.authType;
         this.secretIdentifier = $.secretIdentifier;
+        this.secretKeyIdentifier = $.secretKeyIdentifier;
+        this.secretKeySecretPath = $.secretKeySecretPath;
         this.secretSpacePath = $.secretSpacePath;
         this.userName = $.userName;
     }
@@ -101,6 +141,33 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
 
         public Builder(HarRegistryConfigAuthArgs defaults) {
             $ = new HarRegistryConfigAuthArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder accessKey(@Nullable Output<String> accessKey) {
+            $.accessKey = accessKey;
+            return this;
+        }
+
+        public Builder accessKey(String accessKey) {
+            return accessKey(Output.of(accessKey));
+        }
+
+        public Builder accessKeyIdentifier(@Nullable Output<String> accessKeyIdentifier) {
+            $.accessKeyIdentifier = accessKeyIdentifier;
+            return this;
+        }
+
+        public Builder accessKeyIdentifier(String accessKeyIdentifier) {
+            return accessKeyIdentifier(Output.of(accessKeyIdentifier));
+        }
+
+        public Builder accessKeySecretPath(@Nullable Output<String> accessKeySecretPath) {
+            $.accessKeySecretPath = accessKeySecretPath;
+            return this;
+        }
+
+        public Builder accessKeySecretPath(String accessKeySecretPath) {
+            return accessKeySecretPath(Output.of(accessKeySecretPath));
         }
 
         /**
@@ -143,6 +210,24 @@ public final class HarRegistryConfigAuthArgs extends com.pulumi.resources.Resour
          */
         public Builder secretIdentifier(String secretIdentifier) {
             return secretIdentifier(Output.of(secretIdentifier));
+        }
+
+        public Builder secretKeyIdentifier(@Nullable Output<String> secretKeyIdentifier) {
+            $.secretKeyIdentifier = secretKeyIdentifier;
+            return this;
+        }
+
+        public Builder secretKeyIdentifier(String secretKeyIdentifier) {
+            return secretKeyIdentifier(Output.of(secretKeyIdentifier));
+        }
+
+        public Builder secretKeySecretPath(@Nullable Output<String> secretKeySecretPath) {
+            $.secretKeySecretPath = secretKeySecretPath;
+            return this;
+        }
+
+        public Builder secretKeySecretPath(String secretKeySecretPath) {
+            return secretKeySecretPath(Output.of(secretKeySecretPath));
         }
 
         /**

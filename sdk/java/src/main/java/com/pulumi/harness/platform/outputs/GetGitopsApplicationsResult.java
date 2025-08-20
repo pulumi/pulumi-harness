@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsApplicationsResult {
     /**
+     * @return Account identifier of the GitOps application.
+     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -86,6 +88,10 @@ public final class GetGitopsApplicationsResult {
      * 
      */
     private String repoId;
+    /**
+     * @return List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     * 
+     */
     private List<String> repoIds;
     /**
      * @return Request cascade to delete the GitOps application.
@@ -115,6 +121,8 @@ public final class GetGitopsApplicationsResult {
 
     private GetGitopsApplicationsResult() {}
     /**
+     * @return Account identifier of the GitOps application.
+     * 
      * @deprecated
      * This field is deprecated and will be removed in a future release.
      * 
@@ -211,6 +219,10 @@ public final class GetGitopsApplicationsResult {
     public String repoId() {
         return this.repoId;
     }
+    /**
+     * @return List of repository identifiers of the GitOps for Multi-Source application. Not required if skipRepoValidation is set to true.
+     * 
+     */
     public List<String> repoIds() {
         return this.repoIds;
     }

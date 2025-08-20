@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Resource for creating a Harness Resource Group
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -75,6 +77,8 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level resource group
  * 
@@ -168,14 +172,14 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
-     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+     * Included scopes; default selected based on resource group scope if not specified.
      * 
      */
     @Export(name="includedScopes", refs={List.class,ResourceGroupIncludedScope.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ResourceGroupIncludedScope>> includedScopes;
 
     /**
-     * @return Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+     * @return Included scopes; default selected based on resource group scope if not specified.
      * 
      */
     public Output<Optional<List<ResourceGroupIncludedScope>>> includedScopes() {

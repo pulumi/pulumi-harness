@@ -37,6 +37,9 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentArgs {
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     gitDetails?: inputs.platform.GetEnvironmentGitDetails;
     /**
      * Unique identifier of the resource.
@@ -68,6 +71,9 @@ export interface GetEnvironmentResult {
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     readonly gitDetails: outputs.platform.GetEnvironmentGitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -133,6 +139,9 @@ export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulu
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentOutputArgs {
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     gitDetails?: pulumi.Input<inputs.platform.GetEnvironmentGitDetailsArgs>;
     /**
      * Unique identifier of the resource.

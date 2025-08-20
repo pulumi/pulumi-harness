@@ -43,6 +43,8 @@ namespace Pulumi.Harness
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import using the Harness user and user group id
     /// 
     /// ```sh

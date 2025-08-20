@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// ## Example Usage
+    /// Resource for creating role assignments in Harness.
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level role assignments
     /// 
@@ -36,7 +38,7 @@ namespace Pulumi.Harness.Platform
     public partial class RoleAssignments : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
+        /// Disabled or not.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
@@ -48,7 +50,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+        /// Managed or not.
         /// </summary>
         [Output("managed")]
         public Output<bool?> Managed { get; private set; } = null!;
@@ -131,7 +133,7 @@ namespace Pulumi.Harness.Platform
     public sealed class RoleAssignmentsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
+        /// Disabled or not.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -143,7 +145,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+        /// Managed or not.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
@@ -193,7 +195,7 @@ namespace Pulumi.Harness.Platform
     public sealed class RoleAssignmentsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The `disabled` attribute in the role assignment resource controls the status of the role assignment. Setting `disabled` to `false` activates the role and its permissions, enabling the assigned entity to perform allowed actions. Conversely, setting `disabled` to `true` deactivates the role, revoking the entity's permissions and action capabilities. Default value should be `false`.
+        /// Disabled or not.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -205,7 +207,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Specifies whether the role assignment is managed by Harness. Setting managed to `true` means that Harness will manage the lifecycle of the role assignment, including its creation, updates, and deletion. Conversely, setting it to `false` indicates that the role assignment is not managed by Harness, and thus Harness will not perform actions on it. Default value should be `false`.
+        /// Managed or not.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }

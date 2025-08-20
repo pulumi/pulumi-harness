@@ -351,11 +351,11 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
             account_id="MY_ACCOUNT_ID",
             includeds=["target_id_1"],
             excludeds=["target_id_2"],
-            rules=[{
+            rules={
                 "attribute": "MY_ATTRIBUTE",
-                "op": "equal",
-                "values": ["MY_VALUE"],
-            }])
+                "operator": "equal",
+                "value": "MY_VALUE",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -394,11 +394,11 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
             account_id="MY_ACCOUNT_ID",
             includeds=["target_id_1"],
             excludeds=["target_id_2"],
-            rules=[{
+            rules={
                 "attribute": "MY_ATTRIBUTE",
-                "op": "equal",
-                "values": ["MY_VALUE"],
-            }])
+                "operator": "equal",
+                "value": "MY_VALUE",
+            })
         ```
 
         :param str resource_name: The name of the resource.

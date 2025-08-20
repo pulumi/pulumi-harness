@@ -14,6 +14,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import project level db schema
     /// 
     /// ```sh
@@ -24,7 +26,7 @@ namespace Pulumi.Harness.Platform
     public partial class DbSchema : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Changelog script details
+        /// Configuration to clone changeSets using script
         /// </summary>
         [Output("changelogScript")]
         public Output<Outputs.DbSchemaChangelogScript?> ChangelogScript { get; private set; } = null!;
@@ -66,7 +68,7 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.DbSchemaSchemaSource?> SchemaSource { get; private set; } = null!;
 
         /// <summary>
-        /// The service associated with schema.
+        /// The service associated with schema
         /// </summary>
         [Output("service")]
         public Output<string?> Service { get; private set; } = null!;
@@ -78,7 +80,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the database schema (repository/script).
+        /// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -131,7 +133,7 @@ namespace Pulumi.Harness.Platform
     public sealed class DbSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Changelog script details
+        /// Configuration to clone changeSets using script
         /// </summary>
         [Input("changelogScript")]
         public Input<Inputs.DbSchemaChangelogScriptArgs>? ChangelogScript { get; set; }
@@ -173,7 +175,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.DbSchemaSchemaSourceArgs>? SchemaSource { get; set; }
 
         /// <summary>
-        /// The service associated with schema.
+        /// The service associated with schema
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
@@ -191,7 +193,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of the database schema (repository/script).
+        /// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -205,7 +207,7 @@ namespace Pulumi.Harness.Platform
     public sealed class DbSchemaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Changelog script details
+        /// Configuration to clone changeSets using script
         /// </summary>
         [Input("changelogScript")]
         public Input<Inputs.DbSchemaChangelogScriptGetArgs>? ChangelogScript { get; set; }
@@ -247,7 +249,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.DbSchemaSchemaSourceGetArgs>? SchemaSource { get; set; }
 
         /// <summary>
-        /// The service associated with schema.
+        /// The service associated with schema
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
@@ -265,7 +267,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of the database schema (repository/script).
+        /// Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -16,14 +16,14 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
     public static final GitopsFiltersState Empty = new GitopsFiltersState();
 
     /**
-     * Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})`.
+     * Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
      * 
      */
     @Import(name="filterProperties")
     private @Nullable Output<String> filterProperties;
 
     /**
-     * @return Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})`.
+     * @return Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
      * 
      */
     public Optional<Output<String>> filterProperties() {
@@ -31,14 +31,14 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Visibility of the filter. Valid values are &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. Default is &#34;EveryOne&#34;.
+     * This indicates visibility of filters, by default it is Everyone.
      * 
      */
     @Import(name="filterVisibility")
     private @Nullable Output<String> filterVisibility;
 
     /**
-     * @return Visibility of the filter. Valid values are &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. Default is &#34;EveryOne&#34;.
+     * @return This indicates visibility of filters, by default it is Everyone.
      * 
      */
     public Optional<Output<String>> filterVisibility() {
@@ -46,14 +46,14 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Unique identifier of the GitOps filter.
+     * Unique identifier of the resource.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return Unique identifier of the GitOps filter.
+     * @return Unique identifier of the resource.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -61,14 +61,14 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the GitOps filter.
+     * Name of the GitOps filters.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the GitOps filter.
+     * @return Name of the GitOps filters.
      * 
      */
     public Optional<Output<String>> name() {
@@ -76,14 +76,14 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Organization identifier for the GitOps filter.
+     * Organization Identifier for the Entity.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Organization identifier for the GitOps filter.
+     * @return Organization Identifier for the Entity.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -91,14 +91,14 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Project identifier for the GitOps filter.
+     * Project Identifier for the Entity.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project identifier for the GitOps filter.
+     * @return Project Identifier for the Entity.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -106,14 +106,14 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+     * Type of GitOps filters.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+     * @return Type of GitOps filters.
      * 
      */
     public Optional<Output<String>> type() {
@@ -151,7 +151,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param filterProperties Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})`.
+         * @param filterProperties Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param filterProperties Properties of the filter entity defined in Harness as a JSON string. All values should be arrays of strings. Example: `jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})`.
+         * @param filterProperties Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({&#34;healthStatus&#34;: [&#34;Healthy&#34;, &#34;Degraded&#34;], &#34;syncStatus&#34;: [&#34;Synced&#34;]})
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param filterVisibility Visibility of the filter. Valid values are &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. Default is &#34;EveryOne&#34;.
+         * @param filterVisibility This indicates visibility of filters, by default it is Everyone.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param filterVisibility Visibility of the filter. Valid values are &#34;EveryOne&#34; and &#34;OnlyCreator&#34;. Default is &#34;EveryOne&#34;.
+         * @param filterVisibility This indicates visibility of filters, by default it is Everyone.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param identifier Unique identifier of the GitOps filter.
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param identifier Unique identifier of the GitOps filter.
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the GitOps filter.
+         * @param name Name of the GitOps filters.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the GitOps filter.
+         * @param name Name of the GitOps filters.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Organization identifier for the GitOps filter.
+         * @param orgId Organization Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param orgId Organization identifier for the GitOps filter.
+         * @param orgId Organization Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Project identifier for the GitOps filter.
+         * @param projectId Project Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param projectId Project identifier for the GitOps filter.
+         * @param projectId Project Identifier for the Entity.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+         * @param type Type of GitOps filters.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class GitopsFiltersState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Type of GitOps filter. Currently, only &#34;APPLICATION&#34; is supported.
+         * @param type Type of GitOps filters.
          * 
          * @return builder
          * 

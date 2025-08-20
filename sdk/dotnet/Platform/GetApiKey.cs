@@ -12,91 +12,19 @@ namespace Pulumi.Harness.Platform
     public static class GetApiKey
     {
         /// <summary>
-        /// Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var test = Harness.Platform.GetApiKey.Invoke(new()
-        ///     {
-        ///         Identifier = "test_apikey",
-        ///         Name = "test_apikey",
-        ///         ParentId = "parent_id",
-        ///         ApikeyType = "USER",
-        ///         AccountId = "account_id",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness ApiKey.
         /// </summary>
         public static Task<GetApiKeyResult> InvokeAsync(GetApiKeyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var test = Harness.Platform.GetApiKey.Invoke(new()
-        ///     {
-        ///         Identifier = "test_apikey",
-        ///         Name = "test_apikey",
-        ///         ParentId = "parent_id",
-        ///         ApikeyType = "USER",
-        ///         AccountId = "account_id",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness ApiKey.
         /// </summary>
         public static Output<GetApiKeyResult> Invoke(GetApiKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var test = Harness.Platform.GetApiKey.Invoke(new()
-        ///     {
-        ///         Identifier = "test_apikey",
-        ///         Name = "test_apikey",
-        ///         ParentId = "parent_id",
-        ///         ApikeyType = "USER",
-        ///         AccountId = "account_id",
-        ///         OrgId = "org_id",
-        ///         ProjectId = "project_id",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Data source for retrieving a Harness ApiKey.
         /// </summary>
         public static Output<GetApiKeyResult> Invoke(GetApiKeyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiKeyResult>("harness:platform/getApiKey:getApiKey", args ?? new GetApiKeyInvokeArgs(), options.WithDefaults());
@@ -118,7 +46,7 @@ namespace Pulumi.Harness.Platform
         public string ApikeyType { get; set; } = null!;
 
         /// <summary>
-        /// Default expiration time of the Token within API Key
+        /// Expiry time of the apiKey
         /// </summary>
         [Input("defaultTimeToExpireToken")]
         public int? DefaultTimeToExpireToken { get; set; }
@@ -142,7 +70,7 @@ namespace Pulumi.Harness.Platform
         public string? OrgId { get; set; }
 
         /// <summary>
-        /// Parent Entity Identifier of the API Key
+        /// Parent Identifier for the Entity
         /// </summary>
         [Input("parentId", required: true)]
         public string ParentId { get; set; } = null!;
@@ -174,7 +102,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> ApikeyType { get; set; } = null!;
 
         /// <summary>
-        /// Default expiration time of the Token within API Key
+        /// Expiry time of the apiKey
         /// </summary>
         [Input("defaultTimeToExpireToken")]
         public Input<int>? DefaultTimeToExpireToken { get; set; }
@@ -198,7 +126,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Parent Entity Identifier of the API Key
+        /// Parent Identifier for the Entity
         /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
@@ -228,7 +156,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string ApikeyType;
         /// <summary>
-        /// Default expiration time of the Token within API Key
+        /// Expiry time of the apiKey
         /// </summary>
         public readonly int? DefaultTimeToExpireToken;
         /// <summary>
@@ -252,7 +180,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// Parent Entity Identifier of the API Key
+        /// Parent Identifier for the Entity
         /// </summary>
         public readonly string ParentId;
         /// <summary>

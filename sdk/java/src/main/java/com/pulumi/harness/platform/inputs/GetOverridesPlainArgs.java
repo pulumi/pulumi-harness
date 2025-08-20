@@ -16,30 +16,62 @@ public final class GetOverridesPlainArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetOverridesPlainArgs Empty = new GetOverridesPlainArgs();
 
+    /**
+     * Contains parameters related to Git Experience for remote overrides
+     * 
+     */
     @Import(name="gitDetails")
     private @Nullable GetOverridesGitDetails gitDetails;
 
+    /**
+     * @return Contains parameters related to Git Experience for remote overrides
+     * 
+     */
     public Optional<GetOverridesGitDetails> gitDetails() {
         return Optional.ofNullable(this.gitDetails);
     }
 
+    /**
+     * The identifier of the override entity.
+     * 
+     */
     @Import(name="identifier", required=true)
     private String identifier;
 
+    /**
+     * @return The identifier of the override entity.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -71,21 +103,45 @@ public final class GetOverridesPlainArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetOverridesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote overrides
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitDetails(@Nullable GetOverridesGitDetails gitDetails) {
             $.gitDetails = gitDetails;
             return this;
         }
 
+        /**
+         * @param identifier The identifier of the override entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;

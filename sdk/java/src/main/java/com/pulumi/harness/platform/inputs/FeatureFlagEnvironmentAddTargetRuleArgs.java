@@ -17,14 +17,14 @@ public final class FeatureFlagEnvironmentAddTargetRuleArgs extends com.pulumi.re
     public static final FeatureFlagEnvironmentAddTargetRuleArgs Empty = new FeatureFlagEnvironmentAddTargetRuleArgs();
 
     /**
-     * The targets of the rule
+     * The targets that should be served this variation
      * 
      */
     @Import(name="targets")
     private @Nullable Output<List<String>> targets;
 
     /**
-     * @return The targets of the rule
+     * @return The targets that should be served this variation
      * 
      */
     public Optional<Output<List<String>>> targets() {
@@ -32,14 +32,14 @@ public final class FeatureFlagEnvironmentAddTargetRuleArgs extends com.pulumi.re
     }
 
     /**
-     * The identifier of the variation. Valid values are `enabled`, `disabled`
+     * The identifier of the variation
      * 
      */
     @Import(name="variation")
     private @Nullable Output<String> variation;
 
     /**
-     * @return The identifier of the variation. Valid values are `enabled`, `disabled`
+     * @return The identifier of the variation
      * 
      */
     public Optional<Output<String>> variation() {
@@ -72,7 +72,7 @@ public final class FeatureFlagEnvironmentAddTargetRuleArgs extends com.pulumi.re
         }
 
         /**
-         * @param targets The targets of the rule
+         * @param targets The targets that should be served this variation
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class FeatureFlagEnvironmentAddTargetRuleArgs extends com.pulumi.re
         }
 
         /**
-         * @param targets The targets of the rule
+         * @param targets The targets that should be served this variation
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class FeatureFlagEnvironmentAddTargetRuleArgs extends com.pulumi.re
         }
 
         /**
-         * @param targets The targets of the rule
+         * @param targets The targets that should be served this variation
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class FeatureFlagEnvironmentAddTargetRuleArgs extends com.pulumi.re
         }
 
         /**
-         * @param variation The identifier of the variation. Valid values are `enabled`, `disabled`
+         * @param variation The identifier of the variation
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class FeatureFlagEnvironmentAddTargetRuleArgs extends com.pulumi.re
         }
 
         /**
-         * @param variation The identifier of the variation. Valid values are `enabled`, `disabled`
+         * @param variation The identifier of the variation
          * 
          * @return builder
          * 

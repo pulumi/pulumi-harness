@@ -22,16 +22,24 @@ __all__ = [
     'OrchestratorConfigBinpackingDisruptionBudgetSchedule',
     'OrchestratorConfigBinpackingPodEviction',
     'OrchestratorConfigBinpackingPodEvictionThreshold',
+    'OrchestratorConfigCommitmentIntegration',
     'OrchestratorConfigDistribution',
     'OrchestratorConfigNodePreferences',
+    'OrchestratorConfigReplacementSchedule',
+    'OrchestratorConfigReplacementScheduleAppliesTo',
+    'OrchestratorConfigReplacementScheduleWindowDetails',
     'GetOrchestratorConfigBinpackingResult',
     'GetOrchestratorConfigBinpackingDisruptionResult',
     'GetOrchestratorConfigBinpackingDisruptionBudgetResult',
     'GetOrchestratorConfigBinpackingDisruptionBudgetScheduleResult',
     'GetOrchestratorConfigBinpackingPodEvictionResult',
     'GetOrchestratorConfigBinpackingPodEvictionThresholdResult',
+    'GetOrchestratorConfigCommitmentIntegrationResult',
     'GetOrchestratorConfigDistributionResult',
     'GetOrchestratorConfigNodePreferencesResult',
+    'GetOrchestratorConfigReplacementScheduleResult',
+    'GetOrchestratorConfigReplacementScheduleAppliesToResult',
+    'GetOrchestratorConfigReplacementScheduleWindowDetailsResult',
 ]
 
 @pulumi.output_type
@@ -244,6 +252,52 @@ class OrchestratorConfigBinpackingPodEvictionThreshold(dict):
 
 
 @pulumi.output_type
+class OrchestratorConfigCommitmentIntegration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "masterAccountId":
+            suggest = "master_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrchestratorConfigCommitmentIntegration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrchestratorConfigCommitmentIntegration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrchestratorConfigCommitmentIntegration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 master_account_id: _builtins.str):
+        """
+        :param _builtins.bool enabled: Flag to enable Commitment Integration
+        :param _builtins.str master_account_id: Master AWS account id for commitment integration
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "master_account_id", master_account_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Flag to enable Commitment Integration
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="masterAccountId")
+    def master_account_id(self) -> _builtins.str:
+        """
+        Master AWS account id for commitment integration
+        """
+        return pulumi.get(self, "master_account_id")
+
+
+@pulumi.output_type
 class OrchestratorConfigDistribution(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -362,6 +416,193 @@ class OrchestratorConfigNodePreferences(dict):
         TTL for nodes
         """
         return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class OrchestratorConfigReplacementSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appliesTo":
+            suggest = "applies_to"
+        elif key == "windowType":
+            suggest = "window_type"
+        elif key == "windowDetails":
+            suggest = "window_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrchestratorConfigReplacementSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrchestratorConfigReplacementSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrchestratorConfigReplacementSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 applies_to: 'outputs.OrchestratorConfigReplacementScheduleAppliesTo',
+                 window_type: _builtins.str,
+                 window_details: Optional['outputs.OrchestratorConfigReplacementScheduleWindowDetails'] = None):
+        """
+        :param 'OrchestratorConfigReplacementScheduleAppliesToArgs' applies_to: Defines the scope of the replacement schedule
+        :param _builtins.str window_type: Window type for replacement schedule
+        """
+        pulumi.set(__self__, "applies_to", applies_to)
+        pulumi.set(__self__, "window_type", window_type)
+        if window_details is not None:
+            pulumi.set(__self__, "window_details", window_details)
+
+    @_builtins.property
+    @pulumi.getter(name="appliesTo")
+    def applies_to(self) -> 'outputs.OrchestratorConfigReplacementScheduleAppliesTo':
+        """
+        Defines the scope of the replacement schedule
+        """
+        return pulumi.get(self, "applies_to")
+
+    @_builtins.property
+    @pulumi.getter(name="windowType")
+    def window_type(self) -> _builtins.str:
+        """
+        Window type for replacement schedule
+        """
+        return pulumi.get(self, "window_type")
+
+    @_builtins.property
+    @pulumi.getter(name="windowDetails")
+    def window_details(self) -> Optional['outputs.OrchestratorConfigReplacementScheduleWindowDetails']:
+        return pulumi.get(self, "window_details")
+
+
+@pulumi.output_type
+class OrchestratorConfigReplacementScheduleAppliesTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "harnessPodEviction":
+            suggest = "harness_pod_eviction"
+        elif key == "reverseFallback":
+            suggest = "reverse_fallback"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrchestratorConfigReplacementScheduleAppliesTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrchestratorConfigReplacementScheduleAppliesTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrchestratorConfigReplacementScheduleAppliesTo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consolidation: _builtins.bool,
+                 harness_pod_eviction: _builtins.bool,
+                 reverse_fallback: _builtins.bool):
+        pulumi.set(__self__, "consolidation", consolidation)
+        pulumi.set(__self__, "harness_pod_eviction", harness_pod_eviction)
+        pulumi.set(__self__, "reverse_fallback", reverse_fallback)
+
+    @_builtins.property
+    @pulumi.getter
+    def consolidation(self) -> _builtins.bool:
+        return pulumi.get(self, "consolidation")
+
+    @_builtins.property
+    @pulumi.getter(name="harnessPodEviction")
+    def harness_pod_eviction(self) -> _builtins.bool:
+        return pulumi.get(self, "harness_pod_eviction")
+
+    @_builtins.property
+    @pulumi.getter(name="reverseFallback")
+    def reverse_fallback(self) -> _builtins.bool:
+        return pulumi.get(self, "reverse_fallback")
+
+
+@pulumi.output_type
+class OrchestratorConfigReplacementScheduleWindowDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeZone":
+            suggest = "time_zone"
+        elif key == "allDay":
+            suggest = "all_day"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrchestratorConfigReplacementScheduleWindowDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrchestratorConfigReplacementScheduleWindowDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrchestratorConfigReplacementScheduleWindowDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 days: Sequence[_builtins.str],
+                 time_zone: _builtins.str,
+                 all_day: Optional[_builtins.bool] = None,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] days: List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        :param _builtins.str time_zone: Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        :param _builtins.str end_time: End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        :param _builtins.str start_time: Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if all_day is not None:
+            pulumi.set(__self__, "all_day", all_day)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Sequence[_builtins.str]:
+        """
+        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        """
+        return pulumi.get(self, "days")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.str:
+        """
+        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="allDay")
+    def all_day(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all_day")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -557,6 +798,35 @@ class GetOrchestratorConfigBinpackingPodEvictionThresholdResult(dict):
 
 
 @pulumi.output_type
+class GetOrchestratorConfigCommitmentIntegrationResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 master_account_id: _builtins.str):
+        """
+        :param _builtins.bool enabled: Flag to enable Commitment Integration
+        :param _builtins.str master_account_id: Master AWS account id for commitment integration
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "master_account_id", master_account_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Flag to enable Commitment Integration
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="masterAccountId")
+    def master_account_id(self) -> _builtins.str:
+        """
+        Master AWS account id for commitment integration
+        """
+        return pulumi.get(self, "master_account_id")
+
+
+@pulumi.output_type
 class GetOrchestratorConfigDistributionResult(dict):
     def __init__(__self__, *,
                  ondemand_replica_percentage: _builtins.float,
@@ -639,5 +909,129 @@ class GetOrchestratorConfigNodePreferencesResult(dict):
         TTL for nodes
         """
         return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetOrchestratorConfigReplacementScheduleResult(dict):
+    def __init__(__self__, *,
+                 applies_to: 'outputs.GetOrchestratorConfigReplacementScheduleAppliesToResult',
+                 window_type: _builtins.str,
+                 window_details: Optional['outputs.GetOrchestratorConfigReplacementScheduleWindowDetailsResult'] = None):
+        """
+        :param 'GetOrchestratorConfigReplacementScheduleAppliesToArgs' applies_to: Defines the scope of the replacement schedule
+        :param _builtins.str window_type: Window type for replacement schedule
+        """
+        pulumi.set(__self__, "applies_to", applies_to)
+        pulumi.set(__self__, "window_type", window_type)
+        if window_details is not None:
+            pulumi.set(__self__, "window_details", window_details)
+
+    @_builtins.property
+    @pulumi.getter(name="appliesTo")
+    def applies_to(self) -> 'outputs.GetOrchestratorConfigReplacementScheduleAppliesToResult':
+        """
+        Defines the scope of the replacement schedule
+        """
+        return pulumi.get(self, "applies_to")
+
+    @_builtins.property
+    @pulumi.getter(name="windowType")
+    def window_type(self) -> _builtins.str:
+        """
+        Window type for replacement schedule
+        """
+        return pulumi.get(self, "window_type")
+
+    @_builtins.property
+    @pulumi.getter(name="windowDetails")
+    def window_details(self) -> Optional['outputs.GetOrchestratorConfigReplacementScheduleWindowDetailsResult']:
+        return pulumi.get(self, "window_details")
+
+
+@pulumi.output_type
+class GetOrchestratorConfigReplacementScheduleAppliesToResult(dict):
+    def __init__(__self__, *,
+                 consolidation: _builtins.bool,
+                 harness_pod_eviction: _builtins.bool,
+                 reverse_fallback: _builtins.bool):
+        pulumi.set(__self__, "consolidation", consolidation)
+        pulumi.set(__self__, "harness_pod_eviction", harness_pod_eviction)
+        pulumi.set(__self__, "reverse_fallback", reverse_fallback)
+
+    @_builtins.property
+    @pulumi.getter
+    def consolidation(self) -> _builtins.bool:
+        return pulumi.get(self, "consolidation")
+
+    @_builtins.property
+    @pulumi.getter(name="harnessPodEviction")
+    def harness_pod_eviction(self) -> _builtins.bool:
+        return pulumi.get(self, "harness_pod_eviction")
+
+    @_builtins.property
+    @pulumi.getter(name="reverseFallback")
+    def reverse_fallback(self) -> _builtins.bool:
+        return pulumi.get(self, "reverse_fallback")
+
+
+@pulumi.output_type
+class GetOrchestratorConfigReplacementScheduleWindowDetailsResult(dict):
+    def __init__(__self__, *,
+                 days: Sequence[_builtins.str],
+                 time_zone: _builtins.str,
+                 all_day: Optional[_builtins.bool] = None,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] days: List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        :param _builtins.str time_zone: Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        :param _builtins.str end_time: End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        :param _builtins.str start_time: Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        pulumi.set(__self__, "days", days)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if all_day is not None:
+            pulumi.set(__self__, "all_day", all_day)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Sequence[_builtins.str]:
+        """
+        List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
+        """
+        return pulumi.get(self, "days")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.str:
+        """
+        Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="allDay")
+    def all_day(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all_day")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
+        """
+        return pulumi.get(self, "start_time")
 
 

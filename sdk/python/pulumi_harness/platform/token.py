@@ -612,9 +612,11 @@ class Token(pulumi.CustomResource):
                  valid_to: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        Resource for creating tokens.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level token
 
@@ -661,9 +663,11 @@ class Token(pulumi.CustomResource):
                  args: TokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        Resource for creating tokens.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level token
 

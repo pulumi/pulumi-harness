@@ -341,6 +341,8 @@ class TasConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level tas connector
 
         ```sh
@@ -381,6 +383,8 @@ class TasConnector(pulumi.CustomResource):
         Resource for creating an Tas in Harness.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level tas connector
 

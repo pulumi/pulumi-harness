@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Data source for Harness Provider.
+ */
 export function getProvider(args: GetProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetProviderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getProvider:getProvider", {
@@ -15,6 +18,9 @@ export function getProvider(args: GetProviderArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getProvider.
  */
 export interface GetProviderArgs {
+    /**
+     * The identifier of the provider entity.
+     */
     identifier: string;
 }
 
@@ -26,8 +32,14 @@ export interface GetProviderResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The identifier of the provider entity.
+     */
     readonly identifier: string;
 }
+/**
+ * Data source for Harness Provider.
+ */
 export function getProviderOutput(args: GetProviderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProviderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getProvider:getProvider", {
@@ -39,5 +51,8 @@ export function getProviderOutput(args: GetProviderOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getProvider.
  */
 export interface GetProviderOutputArgs {
+    /**
+     * The identifier of the provider entity.
+     */
     identifier: pulumi.Input<string>;
 }

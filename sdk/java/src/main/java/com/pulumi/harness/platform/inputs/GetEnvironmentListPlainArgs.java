@@ -14,16 +14,32 @@ public final class GetEnvironmentListPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetEnvironmentListPlainArgs Empty = new GetEnvironmentListPlainArgs();
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -53,11 +69,23 @@ public final class GetEnvironmentListPlainArgs extends com.pulumi.resources.Invo
             $ = new GetEnvironmentListPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;

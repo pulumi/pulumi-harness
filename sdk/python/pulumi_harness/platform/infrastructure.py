@@ -39,8 +39,8 @@ class InfrastructureArgs:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of infrastructure.
-        :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -123,7 +123,7 @@ class InfrastructureArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When set to true, enables force deletion of infrastructure.
+        Enable this flag for force deletion of infrastructure
         """
         return pulumi.get(self, "force_delete")
 
@@ -135,7 +135,7 @@ class InfrastructureArgs:
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> Optional[pulumi.Input['InfrastructureGitDetailsArgs']]:
         """
-        Contains Git Information for remote entities from Git for Create/Update/Import
+        Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
@@ -236,8 +236,8 @@ class _InfrastructureState:
         :param pulumi.Input[_builtins.str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of infrastructure.
-        :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input['InfrastructureGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -311,7 +311,7 @@ class _InfrastructureState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When set to true, enables force deletion of infrastructure.
+        Enable this flag for force deletion of infrastructure
         """
         return pulumi.get(self, "force_delete")
 
@@ -323,7 +323,7 @@ class _InfrastructureState:
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> Optional[pulumi.Input['InfrastructureGitDetailsArgs']]:
         """
-        Contains Git Information for remote entities from Git for Create/Update/Import
+        Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
@@ -437,121 +437,10 @@ class Infrastructure(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Harness Infrastructure.
-        ## Example to create Infrastructure at different levels (Org, Project, Account)
-
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
-            yaml=\"\"\"infrastructureDefinition:
-         name: name
-         identifier: identifier
-         description: ""
-         tags:
-           asda: ""
-         orgIdentifier: orgIdentifer
-         projectIdentifier: projectIdentifier
-         environmentRef: environmentIdentifier
-         deploymentType: Kubernetes
-         type: KubernetesDirect
-         spec:
-          connectorRef: account.gfgf
-          namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
-          allowSimultaneousDeployments: false
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            org_id="orgIdentifer",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
-            yaml=\"\"\"infrastructureDefinition:
-         name: name
-         identifier: identifier
-         description: ""
-         tags:
-           asda: ""
-         orgIdentifier: orgIdentifer
-         projectIdentifier: projectIdentifier
-         environmentRef: environmentIdentifier
-         deploymentType: Kubernetes
-         type: KubernetesDirect
-         spec:
-          connectorRef: account.gfgf
-          namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
-          allowSimultaneousDeployments: false
-        \"\"\")
-        ```
-
-        ### Project Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            org_id="orgIdentifer",
-            project_id="projectIdentifier",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
-            yaml=\"\"\"infrastructureDefinition:
-         name: name
-         identifier: identifier
-         description: ""
-         tags:
-           asda: ""
-         orgIdentifier: orgIdentifer
-         projectIdentifier: projectIdentifier
-         environmentRef: environmentIdentifier
-         deploymentType: Kubernetes
-         type: KubernetesDirect
-         spec:
-          connectorRef: account.gfgf
-          namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
-          allowSimultaneousDeployments: false
-        \"\"\")
-        ```
-
-        ### Importing Infrastructure From Git
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.Infrastructure("test",
-            identifier="identifier",
-            name="name",
-            env_id="env_id",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-                "import_from_git": True,
-            })
-        ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level infrastructure
 
@@ -576,8 +465,8 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of infrastructure.
-        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -594,121 +483,10 @@ class Infrastructure(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness Infrastructure.
-        ## Example to create Infrastructure at different levels (Org, Project, Account)
-
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
-            yaml=\"\"\"infrastructureDefinition:
-         name: name
-         identifier: identifier
-         description: ""
-         tags:
-           asda: ""
-         orgIdentifier: orgIdentifer
-         projectIdentifier: projectIdentifier
-         environmentRef: environmentIdentifier
-         deploymentType: Kubernetes
-         type: KubernetesDirect
-         spec:
-          connectorRef: account.gfgf
-          namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
-          allowSimultaneousDeployments: false
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            org_id="orgIdentifer",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
-            yaml=\"\"\"infrastructureDefinition:
-         name: name
-         identifier: identifier
-         description: ""
-         tags:
-           asda: ""
-         orgIdentifier: orgIdentifer
-         projectIdentifier: projectIdentifier
-         environmentRef: environmentIdentifier
-         deploymentType: Kubernetes
-         type: KubernetesDirect
-         spec:
-          connectorRef: account.gfgf
-          namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
-          allowSimultaneousDeployments: false
-        \"\"\")
-        ```
-
-        ### Project Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            org_id="orgIdentifer",
-            project_id="projectIdentifier",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
-            yaml=\"\"\"infrastructureDefinition:
-         name: name
-         identifier: identifier
-         description: ""
-         tags:
-           asda: ""
-         orgIdentifier: orgIdentifer
-         projectIdentifier: projectIdentifier
-         environmentRef: environmentIdentifier
-         deploymentType: Kubernetes
-         type: KubernetesDirect
-         spec:
-          connectorRef: account.gfgf
-          namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
-          allowSimultaneousDeployments: false
-        \"\"\")
-        ```
-
-        ### Importing Infrastructure From Git
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        test = harness.platform.Infrastructure("test",
-            identifier="identifier",
-            name="name",
-            env_id="env_id",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-                "import_from_git": True,
-            })
-        ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level infrastructure
 
@@ -812,8 +590,8 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deployment_type: Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of infrastructure.
-        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of infrastructure
+        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -868,7 +646,7 @@ class Infrastructure(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[_builtins.bool]:
         """
-        When set to true, enables force deletion of infrastructure.
+        Enable this flag for force deletion of infrastructure
         """
         return pulumi.get(self, "force_delete")
 
@@ -876,7 +654,7 @@ class Infrastructure(pulumi.CustomResource):
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> pulumi.Output['outputs.InfrastructureGitDetails']:
         """
-        Contains Git Information for remote entities from Git for Create/Update/Import
+        Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 

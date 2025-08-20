@@ -93,6 +93,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
         [Input("gitDetails")]
         public Inputs.GetServiceGitDetailsArgs? GitDetails { get; set; }
 
@@ -128,6 +131,9 @@ namespace Pulumi.Harness.Platform
 
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.GetServiceGitDetailsInputArgs>? GitDetails { get; set; }
 
@@ -169,6 +175,9 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Contains parameters related to Git Experience for remote entities
+        /// </summary>
         public readonly Outputs.GetServiceGitDetailsResult GitDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

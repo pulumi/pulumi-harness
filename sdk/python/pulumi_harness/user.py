@@ -233,6 +233,8 @@ class User(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import using the email address of the user
 
         ```sh
@@ -266,6 +268,8 @@ class User(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using the email address of the user
 

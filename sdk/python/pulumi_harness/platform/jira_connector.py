@@ -436,9 +436,10 @@ class JiraConnector(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for creating a Jira connector.
-        ## Example to create Jira Connector at different levels (Org, Project, Account)
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level jira connector
 
@@ -481,9 +482,10 @@ class JiraConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Jira connector.
-        ## Example to create Jira Connector at different levels (Org, Project, Account)
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level jira connector
 

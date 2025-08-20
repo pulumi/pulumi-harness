@@ -92,20 +92,14 @@ public final class EnvironmentGroupState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
-     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
-     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
-     * connectorRef: org.connectorId.
+     * Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Import(name="yaml")
     private @Nullable Output<String> yaml;
 
     /**
-     * @return Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
-     * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
-     * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
-     * connectorRef: org.connectorId.
+     * @return Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Optional<Output<String>> yaml() {
@@ -247,10 +241,7 @@ public final class EnvironmentGroupState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param yaml Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
-         * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
-         * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
-         * connectorRef: org.connectorId.
+         * @param yaml Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 
@@ -261,10 +252,7 @@ public final class EnvironmentGroupState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param yaml Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression:
-         * org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}.
-         * For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as
-         * connectorRef: org.connectorId.
+         * @param yaml Env group YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
          * 
          * @return builder
          * 

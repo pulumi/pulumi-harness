@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetSecretFile
     {
         /// <summary>
+        /// Datasource for looking up secert file type secret.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretFileResult>("harness:platform/getSecretFile:getSecretFile", args ?? new GetSecretFileArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up secert file type secret.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretFileResult>("harness:platform/getSecretFile:getSecretFile", args ?? new GetSecretFileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up secert file type secret.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

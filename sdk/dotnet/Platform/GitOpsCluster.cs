@@ -14,6 +14,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import an Account level Gitops Cluster
     /// 
     /// ```sh
@@ -52,6 +54,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+        /// </summary>
+        [Output("forceUpdate")]
+        public Output<bool?> ForceUpdate { get; private set; } = null!;
 
         /// <summary>
         /// Identifier of the GitOps cluster.
@@ -143,6 +151,12 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
+
+        /// <summary>
         /// Identifier of the GitOps cluster.
         /// </summary>
         [Input("identifier", required: true)]
@@ -197,6 +211,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+        /// </summary>
+        [Input("forceUpdate")]
+        public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps cluster.

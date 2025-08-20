@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManualFreezeCurrentOrUpcomingWindow {
     /**
-     * @return End time of the freeze
+     * @return End time of the freeze window
      * 
      */
     private @Nullable Integer endTime;
     /**
-     * @return Start time of the freeze
+     * @return Start time of the freeze window
      * 
      */
     private @Nullable Integer startTime;
 
     private ManualFreezeCurrentOrUpcomingWindow() {}
     /**
-     * @return End time of the freeze
+     * @return End time of the freeze window
      * 
      */
     public Optional<Integer> endTime() {
         return Optional.ofNullable(this.endTime);
     }
     /**
-     * @return Start time of the freeze
+     * @return Start time of the freeze window
      * 
      */
     public Optional<Integer> startTime() {

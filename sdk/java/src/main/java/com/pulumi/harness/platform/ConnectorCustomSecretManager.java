@@ -19,27 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * ## Import
- * 
- * Import account level custom secret manager connector
- * 
- * ```sh
- * $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example &lt;connector_id&gt;
- * ```
- * 
- * Import org level custom secret manager connector
- * 
- * ```sh
- * $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example &lt;ord_id&gt;/&lt;connector_id&gt;
- * ```
- * 
- * Import project level custom secret manager connector
- * 
- * ```sh
- * $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example &lt;org_id&gt;/&lt;project_id&gt;/&lt;connector_id&gt;
- * ```
+ * Resource for creating a Custom Secrets Manager (CSM) connector.
  * 
  */
 @ResourceType(type="harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager")
@@ -59,58 +39,50 @@ public class ConnectorCustomSecretManager extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.delegateSelectors);
     }
     /**
-     * : A brief description of what the resource does or is used for.
+     * Description of the resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return : A brief description of what the resource does or is used for.
+     * @return Description of the resource.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return : Unique identifier of the resource.
+     * @return Unique identifier of the resource.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
     }
     /**
-     * : Name of the resource.
+     * Name of the resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return : Name of the resource.
+     * @return Name of the resource.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * : Specifies whether the secrets manager runs on a Harness delegate.
-     * 
-     */
     @Export(name="onDelegate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> onDelegate;
 
-    /**
-     * @return : Specifies whether the secrets manager runs on a Harness delegate.
-     * 
-     */
     public Output<Optional<Boolean>> onDelegate() {
         return Codegen.optional(this.onDelegate);
     }
@@ -143,42 +115,42 @@ public class ConnectorCustomSecretManager extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.projectId);
     }
     /**
-     * : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+     * SSH secret reference for the custom secrets manager, required if &#39;on_delegate&#39; is false.
      * 
      */
     @Export(name="sshSecretRef", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sshSecretRef;
 
     /**
-     * @return : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+     * @return SSH secret reference for the custom secrets manager, required if &#39;on_delegate&#39; is false.
      * 
      */
     public Output<Optional<String>> sshSecretRef() {
         return Codegen.optional(this.sshSecretRef);
     }
     /**
-     * : Tags to associate with the resource.
+     * Tags to associate with the resource.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return : Tags to associate with the resource.
+     * @return Tags to associate with the resource.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+     * Host where the custom secrets manager is located, required if &#39;on_delegate&#39; is false.
      * 
      */
     @Export(name="targetHost", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetHost;
 
     /**
-     * @return : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+     * @return Host where the custom secrets manager is located, required if &#39;on_delegate&#39; is false.
      * 
      */
     public Output<Optional<String>> targetHost() {
@@ -190,71 +162,39 @@ public class ConnectorCustomSecretManager extends com.pulumi.resources.CustomRes
     public Output<Optional<List<ConnectorCustomSecretManagerTemplateInput>>> templateInputs() {
         return Codegen.optional(this.templateInputs);
     }
-    /**
-     * : Reference to the template used for managing secrets.
-     * 
-     */
     @Export(name="templateRef", refs={String.class}, tree="[0]")
     private Output<String> templateRef;
 
-    /**
-     * @return : Reference to the template used for managing secrets.
-     * 
-     */
     public Output<String> templateRef() {
         return this.templateRef;
     }
-    /**
-     * : Timeout in seconds for secrets management operations.
-     * 
-     */
     @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeout;
 
-    /**
-     * @return : Timeout in seconds for secrets management operations.
-     * 
-     */
     public Output<Optional<Integer>> timeout() {
         return Codegen.optional(this.timeout);
     }
-    /**
-     * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
-    /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }
-    /**
-     * : Version identifier of the secrets management template.
-     * 
-     */
     @Export(name="versionLabel", refs={String.class}, tree="[0]")
     private Output<String> versionLabel;
 
-    /**
-     * @return : Version identifier of the secrets management template.
-     * 
-     */
     public Output<String> versionLabel() {
         return this.versionLabel;
     }
     /**
-     * : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+     * The working directory for operations, required if &#39;on_delegate&#39; is false.
      * 
      */
     @Export(name="workingDirectory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workingDirectory;
 
     /**
-     * @return : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+     * @return The working directory for operations, required if &#39;on_delegate&#39; is false.
      * 
      */
     public Output<Optional<String>> workingDirectory() {

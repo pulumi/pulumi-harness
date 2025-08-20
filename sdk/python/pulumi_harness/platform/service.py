@@ -46,10 +46,7 @@ class ServiceArgs:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "identifier", identifier)
         if description is not None:
@@ -211,10 +208,7 @@ class ServiceArgs:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -251,10 +245,7 @@ class _ServiceState:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -417,10 +408,7 @@ class _ServiceState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -449,241 +437,11 @@ class Service(pulumi.CustomResource):
                  yaml: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Resource for creating a Harness service.
-
-        ## Example to create Service at different levels (Org, Project, Account)
-
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Project Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            project_id="project_id",
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Creating Remote Service
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            project_id="project_id",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-            },
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Importing Service From Git
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            import_from_git=True,
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-            })
-        ```
+        Resource for creating a Harness project.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level service
 
@@ -716,10 +474,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -728,241 +483,11 @@ class Service(pulumi.CustomResource):
                  args: ServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating a Harness service.
-
-        ## Example to create Service at different levels (Org, Project, Account)
-
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Project Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            project_id="project_id",
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Creating Remote Service
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            project_id="project_id",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-            },
-            yaml=\"\"\"service:
-          name: name
-          identifier: identifier
-          serviceDefinition:
-            spec:
-              manifests:
-                - manifest:
-                    identifier: manifest1
-                    type: K8sManifest
-                    spec:
-                      store:
-                        type: Github
-                        spec:
-                          connectorRef: <+input>
-                          gitFetchType: Branch
-                          paths:
-                            - files1
-                          repoName: <+input>
-                          branch: master
-                      skipResourceVersioning: false
-              configFiles:
-                - configFile:
-                    identifier: configFile1
-                    spec:
-                      store:
-                        type: Harness
-                        spec:
-                          files:
-                            - <+org.description>
-              variables:
-                - name: var1
-                  type: String
-                  value: val1
-                - name: var2
-                  type: String
-                  value: val2
-            type: Kubernetes
-          gitOpsEnabled: false
-        \"\"\")
-        ```
-
-        ### Importing Service From Git
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Service("example",
-            identifier="identifier",
-            name="name",
-            import_from_git=True,
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-            })
-        ```
+        Resource for creating a Harness project.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level service
 
@@ -1072,10 +597,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1187,10 +709,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[_builtins.str]:
         """
-        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

@@ -50,6 +50,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import an Account level Gitops Repository Credentials
     /// 
     /// ```sh

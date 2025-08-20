@@ -214,18 +214,6 @@ def get_manual_freeze(account_id: Optional[_builtins.str] = None,
     """
     DataSource for deployment freeze in harness.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_manual_freeze(identifier="identifier",
-        org_id="org_id",
-        project_id="project_id",
-        account_id="account_id")
-    ```
-
 
     :param _builtins.str account_id: Account Identifier of the freeze
     :param _builtins.str identifier: Identifier of the freeze
@@ -262,18 +250,6 @@ def get_manual_freeze_output(account_id: Optional[pulumi.Input[_builtins.str]] =
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManualFreezeResult]:
     """
     DataSource for deployment freeze in harness.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    example = harness.platform.get_manual_freeze(identifier="identifier",
-        org_id="org_id",
-        project_id="project_id",
-        account_id="account_id")
-    ```
 
 
     :param _builtins.str account_id: Account Identifier of the freeze

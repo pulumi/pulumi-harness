@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetVariables
     {
         /// <summary>
+        /// Data source for retrieving a Harness Variable.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,6 +38,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVariablesResult>("harness:platform/getVariables:getVariables", args ?? new GetVariablesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness Variable.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,6 +64,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetVariablesResult>("harness:platform/getVariables:getVariables", args ?? new GetVariablesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving a Harness Variable.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

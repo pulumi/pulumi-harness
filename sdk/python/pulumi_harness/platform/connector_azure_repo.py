@@ -40,8 +40,7 @@ class ConnectorAzureRepoArgs:
         :param pulumi.Input['ConnectorAzureRepoCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] url: URL of the azure repository or account.
-        :param pulumi.Input['ConnectorAzureRepoApiAuthenticationArgs'] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-               triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input['ConnectorAzureRepoApiAuthenticationArgs'] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
@@ -126,8 +125,7 @@ class ConnectorAzureRepoArgs:
     @pulumi.getter(name="apiAuthentication")
     def api_authentication(self) -> Optional[pulumi.Input['ConnectorAzureRepoApiAuthenticationArgs']]:
         """
-        Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-        triggers, Webhooks management and updating Git statuses.
+        Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         """
         return pulumi.get(self, "api_authentication")
 
@@ -250,8 +248,7 @@ class _ConnectorAzureRepoState:
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorAzureRepo resources.
-        :param pulumi.Input['ConnectorAzureRepoApiAuthenticationArgs'] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-               triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input['ConnectorAzureRepoApiAuthenticationArgs'] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
         :param pulumi.Input['ConnectorAzureRepoCredentialsArgs'] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -296,8 +293,7 @@ class _ConnectorAzureRepoState:
     @pulumi.getter(name="apiAuthentication")
     def api_authentication(self) -> Optional[pulumi.Input['ConnectorAzureRepoApiAuthenticationArgs']]:
         """
-        Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-        triggers, Webhooks management and updating Git statuses.
+        Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         """
         return pulumi.get(self, "api_authentication")
 
@@ -471,11 +467,11 @@ class ConnectorAzureRepo(pulumi.CustomResource):
                  validation_repo: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ConnectorAzureRepo resource with the given unique name, props, and options.
+        Resource for creating a Azure Repo connector.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectorAzureRepoApiAuthenticationArgs', 'ConnectorAzureRepoApiAuthenticationArgsDict']] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-               triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input[Union['ConnectorAzureRepoApiAuthenticationArgs', 'ConnectorAzureRepoApiAuthenticationArgsDict']] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
         :param pulumi.Input[Union['ConnectorAzureRepoCredentialsArgs', 'ConnectorAzureRepoCredentialsArgsDict']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -496,7 +492,8 @@ class ConnectorAzureRepo(pulumi.CustomResource):
                  args: ConnectorAzureRepoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ConnectorAzureRepo resource with the given unique name, props, and options.
+        Resource for creating a Azure Repo connector.
+
         :param str resource_name: The name of the resource.
         :param ConnectorAzureRepoArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -585,8 +582,7 @@ class ConnectorAzureRepo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectorAzureRepoApiAuthenticationArgs', 'ConnectorAzureRepoApiAuthenticationArgsDict']] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-               triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input[Union['ConnectorAzureRepoApiAuthenticationArgs', 'ConnectorAzureRepoApiAuthenticationArgsDict']] api_authentication: Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
         :param pulumi.Input[Union['ConnectorAzureRepoCredentialsArgs', 'ConnectorAzureRepoCredentialsArgsDict']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
@@ -623,8 +619,7 @@ class ConnectorAzureRepo(pulumi.CustomResource):
     @pulumi.getter(name="apiAuthentication")
     def api_authentication(self) -> pulumi.Output[Optional['outputs.ConnectorAzureRepoApiAuthentication']]:
         """
-        Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-        triggers, Webhooks management and updating Git statuses.
+        Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         """
         return pulumi.get(self, "api_authentication")
 

@@ -173,6 +173,9 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Execute on delegate or not.
+        /// </summary>
         public readonly bool ExecuteOnDelegate;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

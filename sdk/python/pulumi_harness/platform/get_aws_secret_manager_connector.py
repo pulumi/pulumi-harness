@@ -169,7 +169,7 @@ class GetAwsSecretManagerConnectorResult:
     @pulumi.getter(name="recoveryWindowInDays")
     def recovery_window_in_days(self) -> Optional[_builtins.int]:
         """
-        recovery duration in days in AWS Secrets Manager.
+        Recovery duration in days in AWS Secrets Manager.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
@@ -238,6 +238,8 @@ def get_aws_secret_manager_connector(force_delete_without_recovery: Optional[_bu
                                      recovery_window_in_days: Optional[_builtins.int] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsSecretManagerConnectorResult:
     """
+    Datasource for looking up an AWS Secret Manager connector.
+
     ## Example Usage
 
     ```python
@@ -253,7 +255,7 @@ def get_aws_secret_manager_connector(force_delete_without_recovery: Optional[_bu
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param _builtins.int recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
+    :param _builtins.int recovery_window_in_days: Recovery duration in days in AWS Secrets Manager.
     """
     __args__ = dict()
     __args__['forceDeleteWithoutRecovery'] = force_delete_without_recovery
@@ -290,6 +292,8 @@ def get_aws_secret_manager_connector_output(force_delete_without_recovery: Optio
                                             recovery_window_in_days: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsSecretManagerConnectorResult]:
     """
+    Datasource for looking up an AWS Secret Manager connector.
+
     ## Example Usage
 
     ```python
@@ -305,7 +309,7 @@ def get_aws_secret_manager_connector_output(force_delete_without_recovery: Optio
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
-    :param _builtins.int recovery_window_in_days: recovery duration in days in AWS Secrets Manager.
+    :param _builtins.int recovery_window_in_days: Recovery duration in days in AWS Secrets Manager.
     """
     __args__ = dict()
     __args__['forceDeleteWithoutRecovery'] = force_delete_without_recovery

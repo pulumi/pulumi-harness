@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Platform
 {
     /// <summary>
-    /// ## Example Usage
+    /// Resource for creating tokens.
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level token
     /// 

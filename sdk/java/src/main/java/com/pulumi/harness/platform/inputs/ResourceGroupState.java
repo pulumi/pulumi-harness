@@ -94,14 +94,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+     * Included scopes; default selected based on resource group scope if not specified.
      * 
      */
     @Import(name="includedScopes")
     private @Nullable Output<List<ResourceGroupIncludedScopeArgs>> includedScopes;
 
     /**
-     * @return Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+     * @return Included scopes; default selected based on resource group scope if not specified.
      * 
      */
     public Optional<Output<List<ResourceGroupIncludedScopeArgs>>> includedScopes() {
@@ -333,7 +333,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includedScopes Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+         * @param includedScopes Included scopes; default selected based on resource group scope if not specified.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includedScopes Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+         * @param includedScopes Included scopes; default selected based on resource group scope if not specified.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includedScopes Included scopes. The default is selected based on the resource group scope if not specified. (Go to nested schema below.)
+         * @param includedScopes Included scopes; default selected based on resource group scope if not specified.
          * 
          * @return builder
          * 

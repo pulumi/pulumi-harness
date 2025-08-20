@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetGcpSecretManagerConnector
     {
         /// <summary>
+        /// Datasource for looking up GCP Secret Manager connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpSecretManagerConnectorResult>("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", args ?? new GetGcpSecretManagerConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up GCP Secret Manager connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpSecretManagerConnectorResult>("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", args ?? new GetGcpSecretManagerConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up GCP Secret Manager connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

@@ -471,6 +471,8 @@ class GitlabConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level gitlab connector
 
         ```sh
@@ -515,6 +517,8 @@ class GitlabConnector(pulumi.CustomResource):
         Resource for creating a Gitlab connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level gitlab connector
 

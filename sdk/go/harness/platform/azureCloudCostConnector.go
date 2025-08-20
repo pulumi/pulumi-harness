@@ -62,6 +62,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level azure cloud cost connector
 //
 // ```sh
@@ -84,6 +86,8 @@ type AzureCloudCostConnector struct {
 
 	// Returns billing details for the Azure account.
 	BillingExportSpec AzureCloudCostConnectorBillingExportSpecPtrOutput `pulumi:"billingExportSpec"`
+	// Returns billing details for the Azure account.
+	BillingExportSpec2 AzureCloudCostConnectorBillingExportSpec2PtrOutput `pulumi:"billingExportSpec2"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
@@ -148,6 +152,8 @@ func GetAzureCloudCostConnector(ctx *pulumi.Context,
 type azureCloudCostConnectorState struct {
 	// Returns billing details for the Azure account.
 	BillingExportSpec *AzureCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`
+	// Returns billing details for the Azure account.
+	BillingExportSpec2 *AzureCloudCostConnectorBillingExportSpec2 `pulumi:"billingExportSpec2"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
@@ -171,6 +177,8 @@ type azureCloudCostConnectorState struct {
 type AzureCloudCostConnectorState struct {
 	// Returns billing details for the Azure account.
 	BillingExportSpec AzureCloudCostConnectorBillingExportSpecPtrInput
+	// Returns billing details for the Azure account.
+	BillingExportSpec2 AzureCloudCostConnectorBillingExportSpec2PtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
@@ -198,6 +206,8 @@ func (AzureCloudCostConnectorState) ElementType() reflect.Type {
 type azureCloudCostConnectorArgs struct {
 	// Returns billing details for the Azure account.
 	BillingExportSpec *AzureCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`
+	// Returns billing details for the Azure account.
+	BillingExportSpec2 *AzureCloudCostConnectorBillingExportSpec2 `pulumi:"billingExportSpec2"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
 	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
@@ -222,6 +232,8 @@ type azureCloudCostConnectorArgs struct {
 type AzureCloudCostConnectorArgs struct {
 	// Returns billing details for the Azure account.
 	BillingExportSpec AzureCloudCostConnectorBillingExportSpecPtrInput
+	// Returns billing details for the Azure account.
+	BillingExportSpec2 AzureCloudCostConnectorBillingExportSpec2PtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
 	// Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
@@ -334,6 +346,13 @@ func (o AzureCloudCostConnectorOutput) BillingExportSpec() AzureCloudCostConnect
 	return o.ApplyT(func(v *AzureCloudCostConnector) AzureCloudCostConnectorBillingExportSpecPtrOutput {
 		return v.BillingExportSpec
 	}).(AzureCloudCostConnectorBillingExportSpecPtrOutput)
+}
+
+// Returns billing details for the Azure account.
+func (o AzureCloudCostConnectorOutput) BillingExportSpec2() AzureCloudCostConnectorBillingExportSpec2PtrOutput {
+	return o.ApplyT(func(v *AzureCloudCostConnector) AzureCloudCostConnectorBillingExportSpec2PtrOutput {
+		return v.BillingExportSpec2
+	}).(AzureCloudCostConnectorBillingExportSpec2PtrOutput)
 }
 
 // Description of the resource.

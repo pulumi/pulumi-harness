@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<string>? _targets;
 
         /// <summary>
-        /// The targets of the rule
+        /// The targets that should be served this variation
         /// </summary>
         public InputList<string> Targets
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// The identifier of the variation. Valid values are `enabled`, `disabled`
+        /// The identifier of the variation
         /// </summary>
         [Input("variation")]
         public Input<string>? Variation { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputMap<string>? _attributes;
 
         /// <summary>
-        /// Host attributes with values. e.g. type, region, name, ip, etc.
+        /// attributes for current host
         /// </summary>
         public InputMap<string> Attributes
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Hostname e.g. 87.23.66.11:80
+        /// hostname
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;

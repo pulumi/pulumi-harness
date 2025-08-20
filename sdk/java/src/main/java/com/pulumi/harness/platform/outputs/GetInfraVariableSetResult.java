@@ -18,17 +18,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInfraVariableSetResult {
     /**
-     * @return Provider connector configured on the variable set
+     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     private List<GetInfraVariableSetConnector> connectors;
     /**
-     * @return Description of the Variable Set
+     * @return Description of the resource.
      * 
      */
     private String description;
     /**
-     * @return Environment variables configured on the variable set
+     * @return Environment variables configured on the Variable Set
      * 
      */
     private List<GetInfraVariableSetEnvironmentVariable> environmentVariables;
@@ -38,46 +38,50 @@ public final class GetInfraVariableSetResult {
      */
     private String id;
     /**
-     * @return Identifier of the Variable Set
+     * @return Unique identifier of the resource.
      * 
      */
     private String identifier;
     /**
-     * @return Name of the Variable Set
+     * @return Name of the resource.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Organization Identifier
+     * @return Unique identifier of the organization.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Project Identifier
+     * @return Unique identifier of the project.
      * 
      */
     private @Nullable String projectId;
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     private List<String> tags;
     private List<GetInfraVariableSetTerraformVariableFile> terraformVariableFiles;
     private List<GetInfraVariableSetTerraformVariable> terraformVariables;
 
     private GetInfraVariableSetResult() {}
     /**
-     * @return Provider connector configured on the variable set
+     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     public List<GetInfraVariableSetConnector> connectors() {
         return this.connectors;
     }
     /**
-     * @return Description of the Variable Set
+     * @return Description of the resource.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Environment variables configured on the variable set
+     * @return Environment variables configured on the Variable Set
      * 
      */
     public List<GetInfraVariableSetEnvironmentVariable> environmentVariables() {
@@ -91,33 +95,37 @@ public final class GetInfraVariableSetResult {
         return this.id;
     }
     /**
-     * @return Identifier of the Variable Set
+     * @return Unique identifier of the resource.
      * 
      */
     public String identifier() {
         return this.identifier;
     }
     /**
-     * @return Name of the Variable Set
+     * @return Name of the resource.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Organization Identifier
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Project Identifier
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }

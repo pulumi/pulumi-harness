@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetPagerdutyConnector
     {
         /// <summary>
+        /// Datasource for looking up a PagerDuty connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up a PagerDuty connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetPagerdutyConnectorResult>("harness:platform/getPagerdutyConnector:getPagerdutyConnector", args ?? new GetPagerdutyConnectorInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Datasource for looking up a PagerDuty connector.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

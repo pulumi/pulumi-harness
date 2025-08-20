@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Data source for Harness Overrides V2.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupOverrides(ctx, &platform.LookupOverridesArgs{
+//				Identifier: "identifier",
+//				OrgId:      pulumi.StringRef("orgIdentifier"),
+//				ProjectId:  pulumi.StringRef("projectIdentifier"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupOverrides(ctx *pulumi.Context, args *LookupOverridesArgs, opts ...pulumi.InvokeOption) (*LookupOverridesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOverridesResult
@@ -23,26 +52,40 @@ func LookupOverrides(ctx *pulumi.Context, args *LookupOverridesArgs, opts ...pul
 
 // A collection of arguments for invoking getOverrides.
 type LookupOverridesArgs struct {
+	// Contains parameters related to Git Experience for remote overrides
 	GitDetails *GetOverridesGitDetails `pulumi:"gitDetails"`
-	Identifier string                  `pulumi:"identifier"`
-	OrgId      *string                 `pulumi:"orgId"`
-	ProjectId  *string                 `pulumi:"projectId"`
+	// The identifier of the override entity.
+	Identifier string `pulumi:"identifier"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // A collection of values returned by getOverrides.
 type LookupOverridesResult struct {
-	ClusterId  string                 `pulumi:"clusterId"`
-	EnvId      string                 `pulumi:"envId"`
+	// The cluster ID to which the override entity is associated.
+	ClusterId string `pulumi:"clusterId"`
+	// The environment ID to which the override entity is associated.
+	EnvId string `pulumi:"envId"`
+	// Contains parameters related to Git Experience for remote overrides
 	GitDetails GetOverridesGitDetails `pulumi:"gitDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	Identifier string  `pulumi:"identifier"`
-	InfraId    string  `pulumi:"infraId"`
-	OrgId      *string `pulumi:"orgId"`
-	ProjectId  *string `pulumi:"projectId"`
-	ServiceId  string  `pulumi:"serviceId"`
-	Type       string  `pulumi:"type"`
-	Yaml       string  `pulumi:"yaml"`
+	Id string `pulumi:"id"`
+	// The identifier of the override entity.
+	Identifier string `pulumi:"identifier"`
+	// The infrastructure ID to which the override entity is associated.
+	InfraId string `pulumi:"infraId"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// The service ID to which the override entity is associated.
+	ServiceId string `pulumi:"serviceId"`
+	// The type of the override entity.
+	Type string `pulumi:"type"`
+	// The yaml of the override entity.
+	Yaml string `pulumi:"yaml"`
 }
 
 func LookupOverridesOutput(ctx *pulumi.Context, args LookupOverridesOutputArgs, opts ...pulumi.InvokeOption) LookupOverridesResultOutput {
@@ -56,10 +99,14 @@ func LookupOverridesOutput(ctx *pulumi.Context, args LookupOverridesOutputArgs, 
 
 // A collection of arguments for invoking getOverrides.
 type LookupOverridesOutputArgs struct {
+	// Contains parameters related to Git Experience for remote overrides
 	GitDetails GetOverridesGitDetailsPtrInput `pulumi:"gitDetails"`
-	Identifier pulumi.StringInput             `pulumi:"identifier"`
-	OrgId      pulumi.StringPtrInput          `pulumi:"orgId"`
-	ProjectId  pulumi.StringPtrInput          `pulumi:"projectId"`
+	// The identifier of the override entity.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
 func (LookupOverridesOutputArgs) ElementType() reflect.Type {
@@ -81,14 +128,17 @@ func (o LookupOverridesResultOutput) ToLookupOverridesResultOutputWithContext(ct
 	return o
 }
 
+// The cluster ID to which the override entity is associated.
 func (o LookupOverridesResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The environment ID to which the override entity is associated.
 func (o LookupOverridesResultOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.EnvId }).(pulumi.StringOutput)
 }
 
+// Contains parameters related to Git Experience for remote overrides
 func (o LookupOverridesResultOutput) GitDetails() GetOverridesGitDetailsOutput {
 	return o.ApplyT(func(v LookupOverridesResult) GetOverridesGitDetails { return v.GitDetails }).(GetOverridesGitDetailsOutput)
 }
@@ -98,30 +148,37 @@ func (o LookupOverridesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The identifier of the override entity.
 func (o LookupOverridesResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// The infrastructure ID to which the override entity is associated.
 func (o LookupOverridesResultOutput) InfraId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.InfraId }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the organization.
 func (o LookupOverridesResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOverridesResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the project.
 func (o LookupOverridesResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOverridesResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// The service ID to which the override entity is associated.
 func (o LookupOverridesResultOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
+// The type of the override entity.
 func (o LookupOverridesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The yaml of the override entity.
 func (o LookupOverridesResultOutput) Yaml() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOverridesResult) string { return v.Yaml }).(pulumi.StringOutput)
 }

@@ -38,14 +38,13 @@ class EnvironmentArgs:
         :param pulumi.Input[_builtins.str] type: The type of environment. Valid values are PreProduction, Production
         :param pulumi.Input[_builtins.str] color: Color of the environment.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of environments.
-        :param pulumi.Input['EnvironmentGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input['EnvironmentGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
-               connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "type", type)
@@ -120,7 +119,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When set to true, enables force deletion of environments.
+        Enable this flag for force deletion of environments
         """
         return pulumi.get(self, "force_delete")
 
@@ -132,7 +131,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> Optional[pulumi.Input['EnvironmentGitDetailsArgs']]:
         """
-        Contains Git Information for remote entities from Git for Create/Update/Import
+        Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
@@ -192,8 +191,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
-        connectorId.
+        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -220,16 +218,15 @@ class _EnvironmentState:
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[_builtins.str] color: Color of the environment.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of environments.
-        :param pulumi.Input['EnvironmentGitDetailsArgs'] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input['EnvironmentGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: The type of environment. Valid values are PreProduction, Production
-        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
-               connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -282,7 +279,7 @@ class _EnvironmentState:
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When set to true, enables force deletion of environments.
+        Enable this flag for force deletion of environments
         """
         return pulumi.get(self, "force_delete")
 
@@ -294,7 +291,7 @@ class _EnvironmentState:
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> Optional[pulumi.Input['EnvironmentGitDetailsArgs']]:
         """
-        Contains Git Information for remote entities from Git for Create/Update/Import
+        Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
@@ -378,8 +375,7 @@ class _EnvironmentState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
-        connectorId.
+        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -409,258 +405,9 @@ class Environment(pulumi.CustomResource):
         """
         Resource for creating a Harness environment.
 
-        ## Example to create Environment at different levels (Org, Project, Account)
-
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            type="PreProduction",
-            description="env description",
-            yaml=\"\"\"environment:
-           name: name
-           identifier: identifier
-           type: PreProduction
-           tags:
-             foo: bar
-             bar: foo
-           variables:
-             - name: envVar1
-               type: String
-               value: v1
-               description: ""
-             - name: envVar2
-               type: String
-               value: v2
-               description: ""
-           overrides:
-             manifests:
-               - manifest:
-                   identifier: manifestEnv
-                   type: Values
-                   spec:
-                     store:
-                       type: Git
-                       spec:
-                         connectorRef: <+input>
-                         gitFetchType: Branch
-                         paths:
-                           - file1
-                         repoName: <+input>
-                         branch: master
-             configFiles:
-               - configFile:
-                   identifier: configFileEnv
-                   spec:
-                     store:
-                       type: Harness
-                       spec:
-                         files:
-                           - account:/Add-ons/svcOverrideTest
-                         secretFiles: []
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            type="PreProduction",
-            description="env description",
-            yaml=\"\"\"environment:
-           name: name
-           identifier: identifier
-           orgIdentifier: org_id
-           type: PreProduction
-           tags:
-             foo: bar
-             bar: foo
-           variables:
-             - name: envVar1
-               type: String
-               value: v1
-               description: ""
-             - name: envVar2
-               type: String
-               value: v2
-               description: ""
-           overrides:
-             manifests:
-               - manifest:
-                   identifier: manifestEnv
-                   type: Values
-                   spec:
-                     store:
-                       type: Git
-                       spec:
-                         connectorRef: <+input>
-                         gitFetchType: Branch
-                         paths:
-                           - file1
-                         repoName: <+input>
-                         branch: master
-             configFiles:
-               - configFile:
-                   identifier: configFileEnv
-                   spec:
-                     store:
-                       type: Harness
-                       spec:
-                         files:
-                           - account:/Add-ons/svcOverrideTest
-                         secretFiles: []
-        \"\"\")
-        ```
-
-        ### Project Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            type="PreProduction",
-            description="env description",
-            yaml=\"\"\"environment:
-           name: name
-           identifier: identifier
-           orgIdentifier: org_id
-           projectIdentifier: project_id
-           type: PreProduction
-           tags:
-             foo: bar
-             bar: foo
-           variables:
-             - name: envVar1
-               type: String
-               value: v1
-               description: ""
-             - name: envVar2
-               type: String
-               value: v2
-               description: ""
-           overrides:
-             manifests:
-               - manifest:
-                   identifier: manifestEnv
-                   type: Values
-                   spec:
-                     store:
-                       type: Git
-                       spec:
-                         connectorRef: <+input>
-                         gitFetchType: Branch
-                         paths:
-                           - file1
-                         repoName: <+input>
-                         branch: master
-             configFiles:
-               - configFile:
-                   identifier: configFileEnv
-                   spec:
-                     store:
-                       type: Harness
-                       spec:
-                         files:
-                           - account:/Add-ons/svcOverrideTest
-                         secretFiles: []
-        \"\"\")
-        ```
-
-        ### Creating Remote Environment
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            project_id="project_id",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-            },
-            yaml=\"\"\"environment:
-          name: env
-          identifier: env
-          tags:
-            test: ""
-          type: PreProduction
-          orgIdentifier: default
-          projectIdentifier: proj1
-          variables:
-            - name: var1
-              type: String
-              value: abc
-              description: ""
-              required: false
-          overrides:
-            manifests:
-              - manifest:
-                  identifier: Manifest1
-                  type: Values
-                  spec:
-                    store:
-                      type: Github
-                      spec:
-                        connectorRef: <+input>
-                        gitFetchType: Branch
-                        paths:
-                          - .harness/
-                        repoName: <+input>
-                        branch: <+input>
-        \"\"\")
-        ```
-
-        ### Importing Environment From Git
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            type="PreProduction",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-                "import_from_git": True,
-            })
-        ```
-
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level environment id
 
@@ -684,16 +431,15 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color: Color of the environment.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of environments.
-        :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: The type of environment. Valid values are PreProduction, Production
-        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
-               connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -704,258 +450,9 @@ class Environment(pulumi.CustomResource):
         """
         Resource for creating a Harness environment.
 
-        ## Example to create Environment at different levels (Org, Project, Account)
-
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            type="PreProduction",
-            description="env description",
-            yaml=\"\"\"environment:
-           name: name
-           identifier: identifier
-           type: PreProduction
-           tags:
-             foo: bar
-             bar: foo
-           variables:
-             - name: envVar1
-               type: String
-               value: v1
-               description: ""
-             - name: envVar2
-               type: String
-               value: v2
-               description: ""
-           overrides:
-             manifests:
-               - manifest:
-                   identifier: manifestEnv
-                   type: Values
-                   spec:
-                     store:
-                       type: Git
-                       spec:
-                         connectorRef: <+input>
-                         gitFetchType: Branch
-                         paths:
-                           - file1
-                         repoName: <+input>
-                         branch: master
-             configFiles:
-               - configFile:
-                   identifier: configFileEnv
-                   spec:
-                     store:
-                       type: Harness
-                       spec:
-                         files:
-                           - account:/Add-ons/svcOverrideTest
-                         secretFiles: []
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            type="PreProduction",
-            description="env description",
-            yaml=\"\"\"environment:
-           name: name
-           identifier: identifier
-           orgIdentifier: org_id
-           type: PreProduction
-           tags:
-             foo: bar
-             bar: foo
-           variables:
-             - name: envVar1
-               type: String
-               value: v1
-               description: ""
-             - name: envVar2
-               type: String
-               value: v2
-               description: ""
-           overrides:
-             manifests:
-               - manifest:
-                   identifier: manifestEnv
-                   type: Values
-                   spec:
-                     store:
-                       type: Git
-                       spec:
-                         connectorRef: <+input>
-                         gitFetchType: Branch
-                         paths:
-                           - file1
-                         repoName: <+input>
-                         branch: master
-             configFiles:
-               - configFile:
-                   identifier: configFileEnv
-                   spec:
-                     store:
-                       type: Harness
-                       spec:
-                         files:
-                           - account:/Add-ons/svcOverrideTest
-                         secretFiles: []
-        \"\"\")
-        ```
-
-        ### Project Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            tags=[
-                "foo:bar",
-                "bar:foo",
-            ],
-            type="PreProduction",
-            description="env description",
-            yaml=\"\"\"environment:
-           name: name
-           identifier: identifier
-           orgIdentifier: org_id
-           projectIdentifier: project_id
-           type: PreProduction
-           tags:
-             foo: bar
-             bar: foo
-           variables:
-             - name: envVar1
-               type: String
-               value: v1
-               description: ""
-             - name: envVar2
-               type: String
-               value: v2
-               description: ""
-           overrides:
-             manifests:
-               - manifest:
-                   identifier: manifestEnv
-                   type: Values
-                   spec:
-                     store:
-                       type: Git
-                       spec:
-                         connectorRef: <+input>
-                         gitFetchType: Branch
-                         paths:
-                           - file1
-                         repoName: <+input>
-                         branch: master
-             configFiles:
-               - configFile:
-                   identifier: configFileEnv
-                   spec:
-                     store:
-                       type: Harness
-                       spec:
-                         files:
-                           - account:/Add-ons/svcOverrideTest
-                         secretFiles: []
-        \"\"\")
-        ```
-
-        ### Creating Remote Environment
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            description="test",
-            org_id="org_id",
-            project_id="project_id",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-            },
-            yaml=\"\"\"environment:
-          name: env
-          identifier: env
-          tags:
-            test: ""
-          type: PreProduction
-          orgIdentifier: default
-          projectIdentifier: proj1
-          variables:
-            - name: var1
-              type: String
-              value: abc
-              description: ""
-              required: false
-          overrides:
-            manifests:
-              - manifest:
-                  identifier: Manifest1
-                  type: Values
-                  spec:
-                    store:
-                      type: Github
-                      spec:
-                        connectorRef: <+input>
-                        gitFetchType: Branch
-                        paths:
-                          - .harness/
-                        repoName: <+input>
-                        branch: <+input>
-        \"\"\")
-        ```
-
-        ### Importing Environment From Git
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.Environment("example",
-            identifier="identifier",
-            name="name",
-            type="PreProduction",
-            git_details={
-                "store_type": "REMOTE",
-                "connector_ref": "connector_ref",
-                "repo_name": "repo_name",
-                "file_path": "file_path",
-                "branch": "branch",
-                "import_from_git": True,
-            })
-        ```
-
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level environment id
 
@@ -1055,16 +552,15 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] color: Color of the environment.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.bool] force_delete: When set to true, enables force deletion of environments.
-        :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains Git Information for remote entities from Git for Create/Update/Import
+        :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of environments
+        :param pulumi.Input[Union['EnvironmentGitDetailsArgs', 'EnvironmentGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: The type of environment. Valid values are PreProduction, Production
-        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
-               connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1103,7 +599,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="forceDelete")
     def force_delete(self) -> pulumi.Output[_builtins.bool]:
         """
-        When set to true, enables force deletion of environments.
+        Enable this flag for force deletion of environments
         """
         return pulumi.get(self, "force_delete")
 
@@ -1111,7 +607,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> pulumi.Output['outputs.EnvironmentGitDetails']:
         """
-        Contains Git Information for remote entities from Git for Create/Update/Import
+        Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
@@ -1167,8 +663,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.
-        connectorId.
+        Environment YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

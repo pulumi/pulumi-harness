@@ -47,11 +47,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Slo("example", SloArgs.builder()
- *             .orgId("default")
- *             .projectId("default_project")
- *             .identifier("TerraformSLO")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
  *             .request(SloRequestArgs.builder()
- *                 .name("TSLO")
+ *                 .name("name")
  *                 .description("description")
  *                 .tags(                
  *                     "foo:bar",
@@ -103,12 +103,9 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * Note the above example is for &#34;Threshold&#34; SLI type, if you want to use
- * &#34;Ratio&#34;, the SLI should be changed appropriately.
- * Here&#39;s an example of SLO target and Spec for &#34;Ratio&#34; based SLI and
- * &#34;Rolling&#34; SLO target.
- * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level SLO
  * 

@@ -82,6 +82,9 @@ class GetEnvironmentResult:
     @_builtins.property
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> 'outputs.GetEnvironmentGitDetailsResult':
+        """
+        Contains parameters related to Git Experience for remote entities
+        """
         return pulumi.get(self, "git_details")
 
     @_builtins.property
@@ -189,6 +192,7 @@ def get_environment(git_details: Optional[Union['GetEnvironmentGitDetailsArgs', 
     ```
 
 
+    :param Union['GetEnvironmentGitDetailsArgs', 'GetEnvironmentGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -236,6 +240,7 @@ def get_environment_output(git_details: Optional[pulumi.Input[Optional[Union['Ge
     ```
 
 
+    :param Union['GetEnvironmentGitDetailsArgs', 'GetEnvironmentGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

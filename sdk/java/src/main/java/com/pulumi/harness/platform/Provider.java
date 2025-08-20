@@ -16,6 +16,10 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating a Harness Provider.
+ * 
+ */
 @ResourceType(type="harness:platform/provider:Provider")
 public class Provider extends com.pulumi.resources.CustomResource {
     /**

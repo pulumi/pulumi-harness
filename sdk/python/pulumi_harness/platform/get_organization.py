@@ -101,6 +101,8 @@ def get_organization(identifier: Optional[_builtins.str] = None,
                      name: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
+    Data source for retrieving a Harness organization
+
     ## Example Usage
 
     ```python
@@ -130,6 +132,8 @@ def get_organization_output(identifier: Optional[pulumi.Input[Optional[_builtins
                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
+    Data source for retrieving a Harness organization
+
     ## Example Usage
 
     ```python

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GithubConnectorCredentialsHttp {
     /**
-     * @return Configuration for using the http anonymous github for interacting with the github api.
+     * @return Configuration for using the github http anonymous for interacting with the github api.
      * 
      */
     private @Nullable List<GithubConnectorCredentialsHttpAnonymouse> anonymouses;
@@ -42,7 +42,7 @@ public final class GithubConnectorCredentialsHttp {
 
     private GithubConnectorCredentialsHttp() {}
     /**
-     * @return Configuration for using the http anonymous github for interacting with the github api.
+     * @return Configuration for using the github http anonymous for interacting with the github api.
      * 
      */
     public List<GithubConnectorCredentialsHttpAnonymouse> anonymouses() {

@@ -53,6 +53,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level ccm filter
 //
 // ```sh
@@ -75,7 +77,7 @@ type PlatformCcmFilters struct {
 
 	// Properties of the filters entity defined in Harness.
 	FilterProperties PlatformCcmFiltersFilterPropertiesOutput `pulumi:"filterProperties"`
-	// This indicates visibility of filters. By default, everyone can view this filter..
+	// This indicates visibility of filters, by default it is Everyone.
 	FilterVisibility pulumi.StringPtrOutput `pulumi:"filterVisibility"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -130,7 +132,7 @@ func GetPlatformCcmFilters(ctx *pulumi.Context,
 type platformCcmFiltersState struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties *PlatformCcmFiltersFilterProperties `pulumi:"filterProperties"`
-	// This indicates visibility of filters. By default, everyone can view this filter..
+	// This indicates visibility of filters, by default it is Everyone.
 	FilterVisibility *string `pulumi:"filterVisibility"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -147,7 +149,7 @@ type platformCcmFiltersState struct {
 type PlatformCcmFiltersState struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties PlatformCcmFiltersFilterPropertiesPtrInput
-	// This indicates visibility of filters. By default, everyone can view this filter..
+	// This indicates visibility of filters, by default it is Everyone.
 	FilterVisibility pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -168,7 +170,7 @@ func (PlatformCcmFiltersState) ElementType() reflect.Type {
 type platformCcmFiltersArgs struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties PlatformCcmFiltersFilterProperties `pulumi:"filterProperties"`
-	// This indicates visibility of filters. By default, everyone can view this filter..
+	// This indicates visibility of filters, by default it is Everyone.
 	FilterVisibility *string `pulumi:"filterVisibility"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -186,7 +188,7 @@ type platformCcmFiltersArgs struct {
 type PlatformCcmFiltersArgs struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties PlatformCcmFiltersFilterPropertiesInput
-	// This indicates visibility of filters. By default, everyone can view this filter..
+	// This indicates visibility of filters, by default it is Everyone.
 	FilterVisibility pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -292,7 +294,7 @@ func (o PlatformCcmFiltersOutput) FilterProperties() PlatformCcmFiltersFilterPro
 	return o.ApplyT(func(v *PlatformCcmFilters) PlatformCcmFiltersFilterPropertiesOutput { return v.FilterProperties }).(PlatformCcmFiltersFilterPropertiesOutput)
 }
 
-// This indicates visibility of filters. By default, everyone can view this filter..
+// This indicates visibility of filters, by default it is Everyone.
 func (o PlatformCcmFiltersOutput) FilterVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PlatformCcmFilters) pulumi.StringPtrOutput { return v.FilterVisibility }).(pulumi.StringPtrOutput)
 }

@@ -7,9 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
+ * Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level
  *
@@ -94,7 +96,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly roleBindings!: pulumi.Output<outputs.platform.UserRoleBinding[] | undefined>;
     /**
-     * The user group of the user.
+     * The user group of the user. Cannot be updated.
      */
     public readonly userGroups!: pulumi.Output<string[]>;
 
@@ -186,7 +188,7 @@ export interface UserState {
      */
     roleBindings?: pulumi.Input<pulumi.Input<inputs.platform.UserRoleBinding>[]>;
     /**
-     * The user group of the user.
+     * The user group of the user. Cannot be updated.
      */
     userGroups?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -212,7 +214,7 @@ export interface UserArgs {
      */
     roleBindings?: pulumi.Input<pulumi.Input<inputs.platform.UserRoleBinding>[]>;
     /**
-     * The user group of the user.
+     * The user group of the user. Cannot be updated.
      */
     userGroups: pulumi.Input<pulumi.Input<string>[]>;
 }

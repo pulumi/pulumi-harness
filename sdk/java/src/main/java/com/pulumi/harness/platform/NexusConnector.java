@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Nexus connector.
  * 
- * ## Example to create Nexus Connector at different levels (Org, Project, Account)
- * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level nexus connector
  * 

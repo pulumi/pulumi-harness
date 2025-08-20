@@ -38,6 +38,7 @@ var modules = []string{
 	autostoppingMod,
 	"cluster",
 	"governance",
+	"chaos",
 }
 
 func harnessDataSource(mod string, res string) tokens.ModuleMember {

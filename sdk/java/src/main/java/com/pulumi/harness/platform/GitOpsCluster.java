@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import an Account level Gitops Cluster
  * 
  * ```sh
@@ -88,6 +90,20 @@ public class GitOpsCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> forceDelete() {
         return Codegen.optional(this.forceDelete);
+    }
+    /**
+     * Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+     * 
+     */
+    @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceUpdate;
+
+    /**
+     * @return Indicates if the cluster should be updated forcefully, regardless of existing applications using that cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> forceUpdate() {
+        return Codegen.optional(this.forceUpdate);
     }
     /**
      * Identifier of the GitOps cluster.

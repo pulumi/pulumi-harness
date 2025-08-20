@@ -7,35 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness pipeline list.
- *
- * ## Example Usage
- *
- * ### Without the Pagination
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getPipelineList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
- *
- * ### With Pagination Logic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getPipelineList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     page: 1,
- *     limit: 4,
- * });
- * ```
+ * Data source for retieving the Harness pipleine List
  */
 export function getPipelineList(args: GetPipelineListArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,19 +25,19 @@ export function getPipelineList(args: GetPipelineListArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getPipelineList.
  */
 export interface GetPipelineListArgs {
-    identifier?: string;
     /**
-     * Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+     * Unique identifier of the resource.
      */
+    identifier?: string;
     limit?: number;
+    /**
+     * Name of the resource.
+     */
     name?: string;
     /**
      * Unique identifier of the organization.
      */
     orgId: string;
-    /**
-     * Optional pagination parameter indicating the page number when retrieving entities.
-     */
     page?: number;
     /**
      * Unique identifier of the project.
@@ -77,65 +49,40 @@ export interface GetPipelineListArgs {
  * A collection of values returned by getPipelineList.
  */
 export interface GetPipelineListResult {
+    /**
+     * Description of the resource.
+     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly identifier?: string;
     /**
-     * Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+     * Unique identifier of the resource.
      */
+    readonly identifier?: string;
     readonly limit?: number;
+    /**
+     * Name of the resource.
+     */
     readonly name?: string;
     /**
      * Unique identifier of the organization.
      */
     readonly orgId: string;
-    /**
-     * Optional pagination parameter indicating the page number when retrieving entities.
-     */
     readonly page?: number;
-    /**
-     * Containing list of all pipeline with details identifier and name.
-     */
     readonly pipelines: outputs.platform.GetPipelineListPipeline[];
     /**
      * Unique identifier of the project.
      */
     readonly projectId: string;
+    /**
+     * Tags to associate with the resource.
+     */
     readonly tags: string[];
 }
 /**
- * Data source for retrieving a Harness pipeline list.
- *
- * ## Example Usage
- *
- * ### Without the Pagination
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getPipelineList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
- *
- * ### With Pagination Logic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getPipelineList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     page: 1,
- *     limit: 4,
- * });
- * ```
+ * Data source for retieving the Harness pipleine List
  */
 export function getPipelineListOutput(args: GetPipelineListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -153,19 +100,19 @@ export function getPipelineListOutput(args: GetPipelineListOutputArgs, opts?: pu
  * A collection of arguments for invoking getPipelineList.
  */
 export interface GetPipelineListOutputArgs {
-    identifier?: pulumi.Input<string>;
     /**
-     * Optional pagination parameter indicating the maximum number of entities to retrieve per page.
+     * Unique identifier of the resource.
      */
+    identifier?: pulumi.Input<string>;
     limit?: pulumi.Input<number>;
+    /**
+     * Name of the resource.
+     */
     name?: pulumi.Input<string>;
     /**
      * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
-    /**
-     * Optional pagination parameter indicating the page number when retrieving entities.
-     */
     page?: pulumi.Input<number>;
     /**
      * Unique identifier of the project.

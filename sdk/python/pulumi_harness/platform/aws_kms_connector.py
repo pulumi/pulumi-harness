@@ -21,10 +21,11 @@ __all__ = ['AwsKmsConnectorArgs', 'AwsKmsConnector']
 @pulumi.input_type
 class AwsKmsConnectorArgs:
     def __init__(__self__, *,
-                 arn_ref: pulumi.Input[_builtins.str],
                  credentials: pulumi.Input['AwsKmsConnectorCredentialsArgs'],
                  identifier: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
+                 arn_plaintext: Optional[pulumi.Input[_builtins.str]] = None,
+                 arn_ref: Optional[pulumi.Input[_builtins.str]] = None,
                  default: Optional[pulumi.Input[_builtins.bool]] = None,
                  delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,10 +36,11 @@ class AwsKmsConnectorArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsKmsConnector resource.
-        :param pulumi.Input[_builtins.str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] region: The AWS region where the AWS Secret Manager is.
+        :param pulumi.Input[_builtins.str] arn_plaintext: A reference to the Harness secret containing the ARN of the AWS KMS.
+        :param pulumi.Input[_builtins.str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[_builtins.bool] default: Set this connector as the default for all the services.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -48,10 +50,13 @@ class AwsKmsConnectorArgs:
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
-        pulumi.set(__self__, "arn_ref", arn_ref)
         pulumi.set(__self__, "credentials", credentials)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "region", region)
+        if arn_plaintext is not None:
+            pulumi.set(__self__, "arn_plaintext", arn_plaintext)
+        if arn_ref is not None:
+            pulumi.set(__self__, "arn_ref", arn_ref)
         if default is not None:
             pulumi.set(__self__, "default", default)
         if delegate_selectors is not None:
@@ -68,18 +73,6 @@ class AwsKmsConnectorArgs:
             pulumi.set(__self__, "project_id", project_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter(name="arnRef")
-    def arn_ref(self) -> pulumi.Input[_builtins.str]:
-        """
-        A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
-        """
-        return pulumi.get(self, "arn_ref")
-
-    @arn_ref.setter
-    def arn_ref(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "arn_ref", value)
 
     @_builtins.property
     @pulumi.getter
@@ -116,6 +109,30 @@ class AwsKmsConnectorArgs:
     @region.setter
     def region(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="arnPlaintext")
+    def arn_plaintext(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the Harness secret containing the ARN of the AWS KMS.
+        """
+        return pulumi.get(self, "arn_plaintext")
+
+    @arn_plaintext.setter
+    def arn_plaintext(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "arn_plaintext", value)
+
+    @_builtins.property
+    @pulumi.getter(name="arnRef")
+    def arn_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "arn_ref")
+
+    @arn_ref.setter
+    def arn_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "arn_ref", value)
 
     @_builtins.property
     @pulumi.getter
@@ -217,6 +234,7 @@ class AwsKmsConnectorArgs:
 @pulumi.input_type
 class _AwsKmsConnectorState:
     def __init__(__self__, *,
+                 arn_plaintext: Optional[pulumi.Input[_builtins.str]] = None,
                  arn_ref: Optional[pulumi.Input[_builtins.str]] = None,
                  credentials: Optional[pulumi.Input['AwsKmsConnectorCredentialsArgs']] = None,
                  default: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -231,6 +249,7 @@ class _AwsKmsConnectorState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AwsKmsConnector resources.
+        :param pulumi.Input[_builtins.str] arn_plaintext: A reference to the Harness secret containing the ARN of the AWS KMS.
         :param pulumi.Input[_builtins.str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input['AwsKmsConnectorCredentialsArgs'] credentials: Credentials to connect to AWS.
         :param pulumi.Input[_builtins.bool] default: Set this connector as the default for all the services.
@@ -244,6 +263,8 @@ class _AwsKmsConnectorState:
         :param pulumi.Input[_builtins.str] region: The AWS region where the AWS Secret Manager is.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
+        if arn_plaintext is not None:
+            pulumi.set(__self__, "arn_plaintext", arn_plaintext)
         if arn_ref is not None:
             pulumi.set(__self__, "arn_ref", arn_ref)
         if credentials is not None:
@@ -268,6 +289,18 @@ class _AwsKmsConnectorState:
             pulumi.set(__self__, "region", region)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="arnPlaintext")
+    def arn_plaintext(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the Harness secret containing the ARN of the AWS KMS.
+        """
+        return pulumi.get(self, "arn_plaintext")
+
+    @arn_plaintext.setter
+    def arn_plaintext(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "arn_plaintext", value)
 
     @_builtins.property
     @pulumi.getter(name="arnRef")
@@ -420,6 +453,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 arn_plaintext: Optional[pulumi.Input[_builtins.str]] = None,
                  arn_ref: Optional[pulumi.Input[_builtins.str]] = None,
                  credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
                  default: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -434,9 +468,11 @@ class AwsKmsConnector(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        Resource for creating an AWS KMS connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level awskms connector
 
@@ -458,6 +494,7 @@ class AwsKmsConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] arn_plaintext: A reference to the Harness secret containing the ARN of the AWS KMS.
         :param pulumi.Input[_builtins.str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
         :param pulumi.Input[_builtins.bool] default: Set this connector as the default for all the services.
@@ -478,9 +515,11 @@ class AwsKmsConnector(pulumi.CustomResource):
                  args: AwsKmsConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        Resource for creating an AWS KMS connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level awskms connector
 
@@ -515,6 +554,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 arn_plaintext: Optional[pulumi.Input[_builtins.str]] = None,
                  arn_ref: Optional[pulumi.Input[_builtins.str]] = None,
                  credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
                  default: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -536,8 +576,7 @@ class AwsKmsConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AwsKmsConnectorArgs.__new__(AwsKmsConnectorArgs)
 
-            if arn_ref is None and not opts.urn:
-                raise TypeError("Missing required property 'arn_ref'")
+            __props__.__dict__["arn_plaintext"] = arn_plaintext
             __props__.__dict__["arn_ref"] = arn_ref
             if credentials is None and not opts.urn:
                 raise TypeError("Missing required property 'credentials'")
@@ -566,6 +605,7 @@ class AwsKmsConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            arn_plaintext: Optional[pulumi.Input[_builtins.str]] = None,
             arn_ref: Optional[pulumi.Input[_builtins.str]] = None,
             credentials: Optional[pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']]] = None,
             default: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -585,6 +625,7 @@ class AwsKmsConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] arn_plaintext: A reference to the Harness secret containing the ARN of the AWS KMS.
         :param pulumi.Input[_builtins.str] arn_ref: A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict']] credentials: Credentials to connect to AWS.
         :param pulumi.Input[_builtins.bool] default: Set this connector as the default for all the services.
@@ -602,6 +643,7 @@ class AwsKmsConnector(pulumi.CustomResource):
 
         __props__ = _AwsKmsConnectorState.__new__(_AwsKmsConnectorState)
 
+        __props__.__dict__["arn_plaintext"] = arn_plaintext
         __props__.__dict__["arn_ref"] = arn_ref
         __props__.__dict__["credentials"] = credentials
         __props__.__dict__["default"] = default
@@ -617,8 +659,16 @@ class AwsKmsConnector(pulumi.CustomResource):
         return AwsKmsConnector(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="arnPlaintext")
+    def arn_plaintext(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A reference to the Harness secret containing the ARN of the AWS KMS.
+        """
+        return pulumi.get(self, "arn_plaintext")
+
+    @_builtins.property
     @pulumi.getter(name="arnRef")
-    def arn_ref(self) -> pulumi.Output[_builtins.str]:
+    def arn_ref(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """

@@ -8,7 +8,11 @@ import typing
 # Export this package's modules as members:
 from .ami import *
 from .codedeploy import *
+from .discovery_agent import *
+from .discovery_setting import *
 from .ecs import *
+from .get_discovery_agent import *
+from .get_discovery_setting import *
 from .helm import *
 from .kubernetes import *
 from .lambda_ import *

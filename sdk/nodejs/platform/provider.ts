@@ -6,6 +6,9 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for creating a Harness Provider.
+ */
 export class Provider extends pulumi.CustomResource {
     /**
      * Get an existing Provider resource's state with the given name, ID, and optional extra

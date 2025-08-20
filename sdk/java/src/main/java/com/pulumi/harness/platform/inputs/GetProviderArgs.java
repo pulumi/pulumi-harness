@@ -14,9 +14,17 @@ public final class GetProviderArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProviderArgs Empty = new GetProviderArgs();
 
+    /**
+     * The identifier of the provider entity.
+     * 
+     */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
+    /**
+     * @return The identifier of the provider entity.
+     * 
+     */
     public Output<String> identifier() {
         return this.identifier;
     }
@@ -45,11 +53,23 @@ public final class GetProviderArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetProviderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identifier The identifier of the provider entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(Output<String> identifier) {
             $.identifier = identifier;
             return this;
         }
 
+        /**
+         * @param identifier The identifier of the provider entity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }

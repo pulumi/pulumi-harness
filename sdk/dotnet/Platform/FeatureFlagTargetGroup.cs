@@ -38,17 +38,11 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "target_id_2",
     ///         },
-    ///         Rules = new[]
+    ///         Rules = 
     ///         {
-    ///             new Harness.Platform.Inputs.FeatureFlagTargetGroupRuleArgs
-    ///             {
-    ///                 Attribute = "MY_ATTRIBUTE",
-    ///                 Op = "equal",
-    ///                 Values = new[]
-    ///                 {
-    ///                     "MY_VALUE",
-    ///                 },
-    ///             },
+    ///             { "attribute", "MY_ATTRIBUTE" },
+    ///             { "operator", "equal" },
+    ///             { "value", "MY_VALUE" },
     ///         },
     ///     });
     /// 

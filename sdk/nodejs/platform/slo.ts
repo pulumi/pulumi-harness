@@ -16,11 +16,11 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Slo("example", {
- *     orgId: "default",
- *     projectId: "default_project",
- *     identifier: "TerraformSLO",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
  *     request: {
- *         name: "TSLO",
+ *         name: "name",
  *         description: "description",
  *         tags: [
  *             "foo:bar",
@@ -67,12 +67,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * Note the above example is for "Threshold" SLI type, if you want to use
- * "Ratio", the SLI should be changed appropriately.
- * Here's an example of SLO target and Spec for "Ratio" based SLI and
- * "Rolling" SLO target.
- *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level SLO
  *

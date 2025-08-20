@@ -31,14 +31,6 @@ namespace Pulumi.Harness.Cluster
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Import using the Harness aws cloud provider id.
-    /// 
-    /// ```sh
-    /// $ pulumi import harness:cluster/orchestrator:Orchestrator example &lt;provider_id&gt;
-    /// ```
     /// </summary>
     [HarnessResourceType("harness:cluster/orchestrator:Orchestrator")]
     public partial class Orchestrator : global::Pulumi.CustomResource

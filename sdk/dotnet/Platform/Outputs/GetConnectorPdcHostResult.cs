@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetConnectorPdcHostResult
     {
         /// <summary>
-        /// Host attributes with values. e.g. type, region, name, ip, etc.
+        /// attributes for current host
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Attributes;
         /// <summary>
-        /// Hostname e.g. 87.23.66.11:80
+        /// hostname
         /// </summary>
         public readonly string Hostname;
 

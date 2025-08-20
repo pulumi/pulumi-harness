@@ -31,9 +31,17 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
         return this.identifier;
     }
 
+    /**
+     * The properties to substitute in liquibase changelog
+     * 
+     */
     @Import(name="liquibaseSubstituteProperties")
     private @Nullable Map<String,String> liquibaseSubstituteProperties;
 
+    /**
+     * @return The properties to substitute in liquibase changelog
+     * 
+     */
     public Optional<Map<String,String>> liquibaseSubstituteProperties() {
         return Optional.ofNullable(this.liquibaseSubstituteProperties);
     }
@@ -138,6 +146,12 @@ public final class GetDbInstancePlainArgs extends com.pulumi.resources.InvokeArg
             return this;
         }
 
+        /**
+         * @param liquibaseSubstituteProperties The properties to substitute in liquibase changelog
+         * 
+         * @return builder
+         * 
+         */
         public Builder liquibaseSubstituteProperties(@Nullable Map<String,String> liquibaseSubstituteProperties) {
             $.liquibaseSubstituteProperties = liquibaseSubstituteProperties;
             return this;

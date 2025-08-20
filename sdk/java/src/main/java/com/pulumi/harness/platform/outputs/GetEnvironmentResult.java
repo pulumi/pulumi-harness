@@ -24,6 +24,10 @@ public final class GetEnvironmentResult {
      * 
      */
     private String description;
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     private GetEnvironmentGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -81,6 +85,10 @@ public final class GetEnvironmentResult {
     public String description() {
         return this.description;
     }
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     public GetEnvironmentGitDetails gitDetails() {
         return this.gitDetails;
     }

@@ -6,8 +6,10 @@ package com.pulumi.harness.cluster.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigBinpacking;
+import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigCommitmentIntegration;
 import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigDistribution;
 import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigNodePreferences;
+import com.pulumi.harness.cluster.outputs.GetOrchestratorConfigReplacementSchedule;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +22,11 @@ public final class GetOrchestratorConfigResult {
      * 
      */
     private @Nullable GetOrchestratorConfigBinpacking binpacking;
+    /**
+     * @return Commitment integration configuration for Cluster Orchestrator
+     * 
+     */
+    private @Nullable GetOrchestratorConfigCommitmentIntegration commitmentIntegration;
     /**
      * @return Spot and Ondemand Distribution Preferences for workload replicas
      * 
@@ -40,6 +47,11 @@ public final class GetOrchestratorConfigResult {
      * 
      */
     private String orchestratorId;
+    /**
+     * @return Replacement schedule for Cluster Orchestrator
+     * 
+     */
+    private @Nullable GetOrchestratorConfigReplacementSchedule replacementSchedule;
 
     private GetOrchestratorConfigResult() {}
     /**
@@ -48,6 +60,13 @@ public final class GetOrchestratorConfigResult {
      */
     public Optional<GetOrchestratorConfigBinpacking> binpacking() {
         return Optional.ofNullable(this.binpacking);
+    }
+    /**
+     * @return Commitment integration configuration for Cluster Orchestrator
+     * 
+     */
+    public Optional<GetOrchestratorConfigCommitmentIntegration> commitmentIntegration() {
+        return Optional.ofNullable(this.commitmentIntegration);
     }
     /**
      * @return Spot and Ondemand Distribution Preferences for workload replicas
@@ -77,6 +96,13 @@ public final class GetOrchestratorConfigResult {
     public String orchestratorId() {
         return this.orchestratorId;
     }
+    /**
+     * @return Replacement schedule for Cluster Orchestrator
+     * 
+     */
+    public Optional<GetOrchestratorConfigReplacementSchedule> replacementSchedule() {
+        return Optional.ofNullable(this.replacementSchedule);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -88,24 +114,34 @@ public final class GetOrchestratorConfigResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetOrchestratorConfigBinpacking binpacking;
+        private @Nullable GetOrchestratorConfigCommitmentIntegration commitmentIntegration;
         private @Nullable GetOrchestratorConfigDistribution distribution;
         private String id;
         private @Nullable GetOrchestratorConfigNodePreferences nodePreferences;
         private String orchestratorId;
+        private @Nullable GetOrchestratorConfigReplacementSchedule replacementSchedule;
         public Builder() {}
         public Builder(GetOrchestratorConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.binpacking = defaults.binpacking;
+    	      this.commitmentIntegration = defaults.commitmentIntegration;
     	      this.distribution = defaults.distribution;
     	      this.id = defaults.id;
     	      this.nodePreferences = defaults.nodePreferences;
     	      this.orchestratorId = defaults.orchestratorId;
+    	      this.replacementSchedule = defaults.replacementSchedule;
         }
 
         @CustomType.Setter
         public Builder binpacking(@Nullable GetOrchestratorConfigBinpacking binpacking) {
 
             this.binpacking = binpacking;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder commitmentIntegration(@Nullable GetOrchestratorConfigCommitmentIntegration commitmentIntegration) {
+
+            this.commitmentIntegration = commitmentIntegration;
             return this;
         }
         @CustomType.Setter
@@ -136,13 +172,21 @@ public final class GetOrchestratorConfigResult {
             this.orchestratorId = orchestratorId;
             return this;
         }
+        @CustomType.Setter
+        public Builder replacementSchedule(@Nullable GetOrchestratorConfigReplacementSchedule replacementSchedule) {
+
+            this.replacementSchedule = replacementSchedule;
+            return this;
+        }
         public GetOrchestratorConfigResult build() {
             final var _resultValue = new GetOrchestratorConfigResult();
             _resultValue.binpacking = binpacking;
+            _resultValue.commitmentIntegration = commitmentIntegration;
             _resultValue.distribution = distribution;
             _resultValue.id = id;
             _resultValue.nodePreferences = nodePreferences;
             _resultValue.orchestratorId = orchestratorId;
+            _resultValue.replacementSchedule = replacementSchedule;
             return _resultValue;
         }
     }

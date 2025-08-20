@@ -15,15 +15,9 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("default")]
         public Input<bool>? Default { get; set; }
 
-        /// <summary>
-        /// : Name of the resource.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

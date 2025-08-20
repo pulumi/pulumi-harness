@@ -93,14 +93,14 @@ public final class GetGitxWebhookArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -242,7 +242,7 @@ public final class GetGitxWebhookArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GetGitxWebhookArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetGitxWebhookArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 

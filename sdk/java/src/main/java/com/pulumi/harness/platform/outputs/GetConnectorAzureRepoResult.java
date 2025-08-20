@@ -16,41 +16,117 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectorAzureRepoResult {
+    /**
+     * @return Configuration for using the azure repo api. API Access is Computed for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+     * 
+     */
     private List<GetConnectorAzureRepoApiAuthentication> apiAuthentications;
+    /**
+     * @return Whether the connection we&#39;re making is to a azure repository or a azure account. Valid values are Project, Repo.
+     * 
+     */
     private String connectionType;
+    /**
+     * @return Credentials to use for the connection.
+     * 
+     */
     private List<GetConnectorAzureRepoCredential> credentials;
+    /**
+     * @return Tags to filter delegates for connection.
+     * 
+     */
     private List<String> delegateSelectors;
+    /**
+     * @return Description of the resource.
+     * 
+     */
     private String description;
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
     private Boolean executeOnDelegate;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     private String identifier;
+    /**
+     * @return Name of the resource.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     private @Nullable String projectId;
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return URL of the azure repo repository or account.
+     * 
+     */
     private String url;
+    /**
+     * @return Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * 
+     */
     private String validationRepo;
 
     private GetConnectorAzureRepoResult() {}
+    /**
+     * @return Configuration for using the azure repo api. API Access is Computed for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+     * 
+     */
     public List<GetConnectorAzureRepoApiAuthentication> apiAuthentications() {
         return this.apiAuthentications;
     }
+    /**
+     * @return Whether the connection we&#39;re making is to a azure repository or a azure account. Valid values are Project, Repo.
+     * 
+     */
     public String connectionType() {
         return this.connectionType;
     }
+    /**
+     * @return Credentials to use for the connection.
+     * 
+     */
     public List<GetConnectorAzureRepoCredential> credentials() {
         return this.credentials;
     }
+    /**
+     * @return Tags to filter delegates for connection.
+     * 
+     */
     public List<String> delegateSelectors() {
         return this.delegateSelectors;
     }
+    /**
+     * @return Description of the resource.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Execute on delegate or not.
+     * 
+     */
     public Boolean executeOnDelegate() {
         return this.executeOnDelegate;
     }
@@ -61,24 +137,52 @@ public final class GetConnectorAzureRepoResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public String identifier() {
         return this.identifier;
     }
+    /**
+     * @return Name of the resource.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return URL of the azure repo repository or account.
+     * 
+     */
     public String url() {
         return this.url;
     }
+    /**
+     * @return Repository to test the connection with. This is only used when `connection_type` is `Account`.
+     * 
+     */
     public String validationRepo() {
         return this.validationRepo;
     }

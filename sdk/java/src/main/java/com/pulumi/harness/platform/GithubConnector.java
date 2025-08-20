@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import account level github connector
  * 
  * ```sh
@@ -129,14 +131,14 @@ public class GithubConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.executeOnDelegate);
     }
     /**
-     * Enable this flag for force deletion of github connector
+     * Enable this flag for force deletion of service
      * 
      */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceDelete;
 
     /**
-     * @return Enable this flag for force deletion of github connector
+     * @return Enable this flag for force deletion of service
      * 
      */
     public Output<Boolean> forceDelete() {

@@ -9,7 +9,49 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating secret of type secret text
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const inline = new harness.platform.SecretText("inline", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     secretManagerIdentifier: "harnessSecretManager",
+ *     valueType: "Inline",
+ *     value: "secret",
+ * });
+ * const reference = new harness.platform.SecretText("reference", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     secretManagerIdentifier: "azureSecretManager",
+ *     valueType: "Reference",
+ *     value: "secret",
+ * });
+ * const gcpSecretManagerReference = new harness.platform.SecretText("gcp_secret_manager_reference", {
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     secretManagerIdentifier: "gcpSecretManager",
+ *     valueType: "Reference",
+ *     value: "secret",
+ *     additionalMetadatas: [{
+ *         values: [{
+ *             version: "1",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level secret text
  *

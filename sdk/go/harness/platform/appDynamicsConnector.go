@@ -78,6 +78,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level appdynamics connector
 //
 // ```sh

@@ -36,14 +36,14 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
     }
 
     /**
-     * : A brief description of what the resource does or is used for.
+     * Description of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return : A brief description of what the resource does or is used for.
+     * @return Description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -51,14 +51,14 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
     }
 
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return : Unique identifier of the resource.
+     * @return Unique identifier of the resource.
      * 
      */
     public Output<String> identifier() {
@@ -66,31 +66,23 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
     }
 
     /**
-     * : Name of the resource.
+     * Name of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return : Name of the resource.
+     * @return Name of the resource.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * : Specifies whether the secrets manager runs on a Harness delegate.
-     * 
-     */
     @Import(name="onDelegate")
     private @Nullable Output<Boolean> onDelegate;
 
-    /**
-     * @return : Specifies whether the secrets manager runs on a Harness delegate.
-     * 
-     */
     public Optional<Output<Boolean>> onDelegate() {
         return Optional.ofNullable(this.onDelegate);
     }
@@ -126,14 +118,14 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
     }
 
     /**
-     * : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+     * SSH secret reference for the custom secrets manager, required if &#39;on_delegate&#39; is false.
      * 
      */
     @Import(name="sshSecretRef")
     private @Nullable Output<String> sshSecretRef;
 
     /**
-     * @return : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+     * @return SSH secret reference for the custom secrets manager, required if &#39;on_delegate&#39; is false.
      * 
      */
     public Optional<Output<String>> sshSecretRef() {
@@ -141,14 +133,14 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
     }
 
     /**
-     * : Tags to associate with the resource.
+     * Tags to associate with the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return : Tags to associate with the resource.
+     * @return Tags to associate with the resource.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -156,14 +148,14 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
     }
 
     /**
-     * : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+     * Host where the custom secrets manager is located, required if &#39;on_delegate&#39; is false.
      * 
      */
     @Import(name="targetHost")
     private @Nullable Output<String> targetHost;
 
     /**
-     * @return : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+     * @return Host where the custom secrets manager is located, required if &#39;on_delegate&#39; is false.
      * 
      */
     public Optional<Output<String>> targetHost() {
@@ -177,75 +169,43 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         return Optional.ofNullable(this.templateInputs);
     }
 
-    /**
-     * : Reference to the template used for managing secrets.
-     * 
-     */
     @Import(name="templateRef", required=true)
     private Output<String> templateRef;
 
-    /**
-     * @return : Reference to the template used for managing secrets.
-     * 
-     */
     public Output<String> templateRef() {
         return this.templateRef;
     }
 
-    /**
-     * : Timeout in seconds for secrets management operations.
-     * 
-     */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
-    /**
-     * @return : Timeout in seconds for secrets management operations.
-     * 
-     */
     public Optional<Output<Integer>> timeout() {
         return Optional.ofNullable(this.timeout);
     }
 
-    /**
-     * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
-    /**
-     * : Version identifier of the secrets management template.
-     * 
-     */
     @Import(name="versionLabel", required=true)
     private Output<String> versionLabel;
 
-    /**
-     * @return : Version identifier of the secrets management template.
-     * 
-     */
     public Output<String> versionLabel() {
         return this.versionLabel;
     }
 
     /**
-     * : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+     * The working directory for operations, required if &#39;on_delegate&#39; is false.
      * 
      */
     @Import(name="workingDirectory")
     private @Nullable Output<String> workingDirectory;
 
     /**
-     * @return : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+     * @return The working directory for operations, required if &#39;on_delegate&#39; is false.
      * 
      */
     public Optional<Output<String>> workingDirectory() {
@@ -323,7 +283,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param description : A brief description of what the resource does or is used for.
+         * @param description Description of the resource.
          * 
          * @return builder
          * 
@@ -334,7 +294,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param description : A brief description of what the resource does or is used for.
+         * @param description Description of the resource.
          * 
          * @return builder
          * 
@@ -344,7 +304,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param identifier : Unique identifier of the resource.
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -355,7 +315,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param identifier : Unique identifier of the resource.
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -365,7 +325,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name : Name of the resource.
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -376,7 +336,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name : Name of the resource.
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -385,23 +345,11 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
             return name(Output.of(name));
         }
 
-        /**
-         * @param onDelegate : Specifies whether the secrets manager runs on a Harness delegate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDelegate(@Nullable Output<Boolean> onDelegate) {
             $.onDelegate = onDelegate;
             return this;
         }
 
-        /**
-         * @param onDelegate : Specifies whether the secrets manager runs on a Harness delegate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDelegate(Boolean onDelegate) {
             return onDelegate(Output.of(onDelegate));
         }
@@ -449,7 +397,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshSecretRef : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+         * @param sshSecretRef SSH secret reference for the custom secrets manager, required if &#39;on_delegate&#39; is false.
          * 
          * @return builder
          * 
@@ -460,7 +408,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sshSecretRef : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+         * @param sshSecretRef SSH secret reference for the custom secrets manager, required if &#39;on_delegate&#39; is false.
          * 
          * @return builder
          * 
@@ -470,7 +418,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags : Tags to associate with the resource.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -481,7 +429,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags : Tags to associate with the resource.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -491,7 +439,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags : Tags to associate with the resource.
+         * @param tags Tags to associate with the resource.
          * 
          * @return builder
          * 
@@ -501,7 +449,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param targetHost : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+         * @param targetHost Host where the custom secrets manager is located, required if &#39;on_delegate&#39; is false.
          * 
          * @return builder
          * 
@@ -512,7 +460,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param targetHost : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+         * @param targetHost Host where the custom secrets manager is located, required if &#39;on_delegate&#39; is false.
          * 
          * @return builder
          * 
@@ -534,92 +482,44 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
             return templateInputs(List.of(templateInputs));
         }
 
-        /**
-         * @param templateRef : Reference to the template used for managing secrets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder templateRef(Output<String> templateRef) {
             $.templateRef = templateRef;
             return this;
         }
 
-        /**
-         * @param templateRef : Reference to the template used for managing secrets.
-         * 
-         * @return builder
-         * 
-         */
         public Builder templateRef(String templateRef) {
             return templateRef(Output.of(templateRef));
         }
 
-        /**
-         * @param timeout : Timeout in seconds for secrets management operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeout(@Nullable Output<Integer> timeout) {
             $.timeout = timeout;
             return this;
         }
 
-        /**
-         * @param timeout : Timeout in seconds for secrets management operations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
         }
 
-        /**
-         * @param type : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
-        /**
-         * @param versionLabel : Version identifier of the secrets management template.
-         * 
-         * @return builder
-         * 
-         */
         public Builder versionLabel(Output<String> versionLabel) {
             $.versionLabel = versionLabel;
             return this;
         }
 
-        /**
-         * @param versionLabel : Version identifier of the secrets management template.
-         * 
-         * @return builder
-         * 
-         */
         public Builder versionLabel(String versionLabel) {
             return versionLabel(Output.of(versionLabel));
         }
 
         /**
-         * @param workingDirectory : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+         * @param workingDirectory The working directory for operations, required if &#39;on_delegate&#39; is false.
          * 
          * @return builder
          * 
@@ -630,7 +530,7 @@ public final class ConnectorCustomSecretManagerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workingDirectory : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+         * @param workingDirectory The working directory for operations, required if &#39;on_delegate&#39; is false.
          * 
          * @return builder
          * 

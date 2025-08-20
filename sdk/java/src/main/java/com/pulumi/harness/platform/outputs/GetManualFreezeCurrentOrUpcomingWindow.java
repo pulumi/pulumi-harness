@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetManualFreezeCurrentOrUpcomingWindow {
     /**
-     * @return End time of the freeze
+     * @return End time of the freeze window
      * 
      */
     private Integer endTime;
     /**
-     * @return Start time of the freeze
+     * @return Start time of the freeze window
      * 
      */
     private Integer startTime;
 
     private GetManualFreezeCurrentOrUpcomingWindow() {}
     /**
-     * @return End time of the freeze
+     * @return End time of the freeze window
      * 
      */
     public Integer endTime() {
         return this.endTime;
     }
     /**
-     * @return Start time of the freeze
+     * @return Start time of the freeze window
      * 
      */
     public Integer startTime() {

@@ -53,7 +53,7 @@ func LookupEnvironmentServiceOverrides(ctx *pulumi.Context, args *LookupEnvironm
 
 // A collection of arguments for invoking getEnvironmentServiceOverrides.
 type LookupEnvironmentServiceOverridesArgs struct {
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId string `pulumi:"envId"`
 	// identifier of the service overrides.
 	Identifier *string `pulumi:"identifier"`
@@ -61,13 +61,13 @@ type LookupEnvironmentServiceOverridesArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId *string `pulumi:"serviceId"`
 }
 
 // A collection of values returned by getEnvironmentServiceOverrides.
 type LookupEnvironmentServiceOverridesResult struct {
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId string `pulumi:"envId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -77,7 +77,7 @@ type LookupEnvironmentServiceOverridesResult struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId *string `pulumi:"serviceId"`
 	// Environment Service Overrides YAML
 	Yaml string `pulumi:"yaml"`
@@ -94,7 +94,7 @@ func LookupEnvironmentServiceOverridesOutput(ctx *pulumi.Context, args LookupEnv
 
 // A collection of arguments for invoking getEnvironmentServiceOverrides.
 type LookupEnvironmentServiceOverridesOutputArgs struct {
-	// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+	// The env ID to which the overrides associated.
 	EnvId pulumi.StringInput `pulumi:"envId"`
 	// identifier of the service overrides.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
@@ -102,7 +102,7 @@ type LookupEnvironmentServiceOverridesOutputArgs struct {
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+	// The service ID to which the overrides applies.
 	ServiceId pulumi.StringPtrInput `pulumi:"serviceId"`
 }
 
@@ -125,7 +125,7 @@ func (o LookupEnvironmentServiceOverridesResultOutput) ToLookupEnvironmentServic
 	return o
 }
 
-// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+// The env ID to which the overrides associated.
 func (o LookupEnvironmentServiceOverridesResultOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentServiceOverridesResult) string { return v.EnvId }).(pulumi.StringOutput)
 }
@@ -150,7 +150,7 @@ func (o LookupEnvironmentServiceOverridesResultOutput) ProjectId() pulumi.String
 	return o.ApplyT(func(v LookupEnvironmentServiceOverridesResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+// The service ID to which the overrides applies.
 func (o LookupEnvironmentServiceOverridesResultOutput) ServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentServiceOverridesResult) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
 }

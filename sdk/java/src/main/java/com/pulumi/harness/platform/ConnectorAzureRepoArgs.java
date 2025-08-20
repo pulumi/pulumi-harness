@@ -21,16 +21,14 @@ public final class ConnectorAzureRepoArgs extends com.pulumi.resources.ResourceA
     public static final ConnectorAzureRepoArgs Empty = new ConnectorAzureRepoArgs();
 
     /**
-     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-     * triggers, Webhooks management and updating Git statuses.
+     * Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      * 
      */
     @Import(name="apiAuthentication")
     private @Nullable Output<ConnectorAzureRepoApiAuthenticationArgs> apiAuthentication;
 
     /**
-     * @return Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-     * triggers, Webhooks management and updating Git statuses.
+     * @return Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      * 
      */
     public Optional<Output<ConnectorAzureRepoApiAuthenticationArgs>> apiAuthentication() {
@@ -254,8 +252,7 @@ public final class ConnectorAzureRepoArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param apiAuthentication Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-         * triggers, Webhooks management and updating Git statuses.
+         * @param apiAuthentication Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
          * 
          * @return builder
          * 
@@ -266,8 +263,7 @@ public final class ConnectorAzureRepoArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param apiAuthentication Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-         * triggers, Webhooks management and updating Git statuses.
+         * @param apiAuthentication Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
          * 
          * @return builder
          * 

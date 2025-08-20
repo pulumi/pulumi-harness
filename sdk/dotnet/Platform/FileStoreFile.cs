@@ -46,6 +46,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level file
     /// 
     /// ```sh
@@ -134,7 +136,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        /// File parent identifier on Harness File Store
         /// </summary>
         [Output("parentIdentifier")]
         public Output<string> ParentIdentifier { get; private set; } = null!;
@@ -253,7 +255,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        /// File parent identifier on Harness File Store
         /// </summary>
         [Input("parentIdentifier", required: true)]
         public Input<string> ParentIdentifier { get; set; } = null!;
@@ -363,7 +365,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// File parent identifier on Harness File Store. If the folder is at the root level, the parent_identifier will be `Root`.
+        /// File parent identifier on Harness File Store
         /// </summary>
         [Input("parentIdentifier")]
         public Input<string>? ParentIdentifier { get; set; }

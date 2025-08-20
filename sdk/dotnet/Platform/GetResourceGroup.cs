@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetResourceGroup
     {
         /// <summary>
+        /// DataSource for looking up resource group in harness.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceGroupResult>("harness:platform/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupArgs(), options.WithDefaults());
 
         /// <summary>
+        /// DataSource for looking up resource group in harness.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceGroupResult>("harness:platform/getResourceGroup:getResourceGroup", args ?? new GetResourceGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// DataSource for looking up resource group in harness.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

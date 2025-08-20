@@ -43,7 +43,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? RepositoryPath { get; set; }
 
         /// <summary>
-        /// Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
         /// </summary>
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }

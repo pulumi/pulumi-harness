@@ -15,14 +15,14 @@ public final class GetInfraVariableSetConnectorArgs extends com.pulumi.resources
     public static final GetInfraVariableSetConnectorArgs Empty = new GetInfraVariableSetConnectorArgs();
 
     /**
-     * Unique identifier of the connector.
+     * Connector Ref is the reference to the connector
      * 
      */
     @Import(name="connectorRef", required=true)
     private Output<String> connectorRef;
 
     /**
-     * @return Unique identifier of the connector.
+     * @return Connector Ref is the reference to the connector
      * 
      */
     public Output<String> connectorRef() {
@@ -30,14 +30,14 @@ public final class GetInfraVariableSetConnectorArgs extends com.pulumi.resources
     }
 
     /**
-     * Type indicates the type of the connector. Currently we support aws, azure, gcp.
+     * Type is the connector type of the connector. Supported types: aws, azure, gcp
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type indicates the type of the connector. Currently we support aws, azure, gcp.
+     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp
      * 
      */
     public Output<String> type() {
@@ -70,7 +70,7 @@ public final class GetInfraVariableSetConnectorArgs extends com.pulumi.resources
         }
 
         /**
-         * @param connectorRef Unique identifier of the connector.
+         * @param connectorRef Connector Ref is the reference to the connector
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetInfraVariableSetConnectorArgs extends com.pulumi.resources
         }
 
         /**
-         * @param connectorRef Unique identifier of the connector.
+         * @param connectorRef Connector Ref is the reference to the connector
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetInfraVariableSetConnectorArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * @param type Type is the connector type of the connector. Supported types: aws, azure, gcp
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetInfraVariableSetConnectorArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type Type indicates the type of the connector. Currently we support aws, azure, gcp.
+         * @param type Type is the connector type of the connector. Supported types: aws, azure, gcp
          * 
          * @return builder
          * 

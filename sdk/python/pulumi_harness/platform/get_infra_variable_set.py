@@ -67,7 +67,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def connectors(self) -> Sequence['outputs.GetInfraVariableSetConnectorResult']:
         """
-        Provider connector configured on the variable set
+        Provider connectors configured on the Variable Set. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
@@ -75,7 +75,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Description of the Variable Set
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -83,7 +83,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> Sequence['outputs.GetInfraVariableSetEnvironmentVariableResult']:
         """
-        Environment variables configured on the variable set
+        Environment variables configured on the Variable Set
         """
         return pulumi.get(self, "environment_variables")
 
@@ -99,7 +99,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Identifier of the Variable Set
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -107,7 +107,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Name of the Variable Set
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -115,7 +115,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
         """
-        Organization Identifier
+        Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -123,13 +123,16 @@ class GetInfraVariableSetResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
         """
-        Project Identifier
+        Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
+        """
+        Tags to associate with the resource.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -180,18 +183,21 @@ def get_infra_variable_set(connectors: Optional[Sequence[Union['GetInfraVariable
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_infra_variable_set(identifier="identifier",
-        org_id="org_id",
-        project_id="project_id")
+    test = harness.platform.get_infra_variable_set(identifier="identifier")
+    testorg = harness.platform.get_infra_variable_set(identifier="identifier",
+        org_id="someorg")
+    testproj = harness.platform.get_infra_variable_set(identifier="identifier",
+        org_id="someorg",
+        project_id="someproj")
     ```
 
 
-    :param Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']] connectors: Provider connector configured on the variable set
-    :param Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the variable set
-    :param _builtins.str identifier: Identifier of the Variable Set
-    :param _builtins.str name: Name of the Variable Set
-    :param _builtins.str org_id: Organization Identifier
-    :param _builtins.str project_id: Project Identifier
+    :param Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
+    :param Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the Variable Set
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['connectors'] = connectors
@@ -235,18 +241,21 @@ def get_infra_variable_set_output(connectors: Optional[pulumi.Input[Optional[Seq
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_infra_variable_set(identifier="identifier",
-        org_id="org_id",
-        project_id="project_id")
+    test = harness.platform.get_infra_variable_set(identifier="identifier")
+    testorg = harness.platform.get_infra_variable_set(identifier="identifier",
+        org_id="someorg")
+    testproj = harness.platform.get_infra_variable_set(identifier="identifier",
+        org_id="someorg",
+        project_id="someproj")
     ```
 
 
-    :param Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']] connectors: Provider connector configured on the variable set
-    :param Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the variable set
-    :param _builtins.str identifier: Identifier of the Variable Set
-    :param _builtins.str name: Name of the Variable Set
-    :param _builtins.str org_id: Organization Identifier
-    :param _builtins.str project_id: Project Identifier
+    :param Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
+    :param Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the Variable Set
+    :param _builtins.str identifier: Unique identifier of the resource.
+    :param _builtins.str name: Name of the resource.
+    :param _builtins.str org_id: Unique identifier of the organization.
+    :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
     __args__['connectors'] = connectors

@@ -438,6 +438,8 @@ class InputSet(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import input set
 
         ```sh
@@ -469,6 +471,8 @@ class InputSet(pulumi.CustomResource):
         Resource for creating a Harness InputSet.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import input set
 

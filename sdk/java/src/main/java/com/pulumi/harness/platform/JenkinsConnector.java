@@ -17,7 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Resource for creating a Jenkins connector.
+ * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level jenkins connector
  * 

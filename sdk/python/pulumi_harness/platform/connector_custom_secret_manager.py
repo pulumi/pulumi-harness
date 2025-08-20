@@ -39,21 +39,16 @@ class ConnectorCustomSecretManagerArgs:
                  working_directory: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorCustomSecretManager resource.
-        :param pulumi.Input[_builtins.str] identifier: : Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] template_ref: : Reference to the template used for managing secrets.
-        :param pulumi.Input[_builtins.str] version_label: : Version identifier of the secrets management template.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
-        :param pulumi.Input[_builtins.str] description: : A brief description of what the resource does or is used for.
-        :param pulumi.Input[_builtins.str] name: : Name of the resource.
-        :param pulumi.Input[_builtins.bool] on_delegate: : Specifies whether the secrets manager runs on a Harness delegate.
+        :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] ssh_secret_ref: : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: : Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] target_host: : Host address where secrets will be managed. Required if `on_delegate` is set to false.
-        :param pulumi.Input[_builtins.int] timeout: : Timeout in seconds for secrets management operations.
-        :param pulumi.Input[_builtins.str] type: : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        :param pulumi.Input[_builtins.str] working_directory: : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        :param pulumi.Input[_builtins.str] ssh_secret_ref: SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] target_host: Host where the custom secrets manager is located, required if 'on_delegate' is false.
+        :param pulumi.Input[_builtins.str] working_directory: The working directory for operations, required if 'on_delegate' is false.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "template_ref", template_ref)
@@ -89,7 +84,7 @@ class ConnectorCustomSecretManagerArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        : Unique identifier of the resource.
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -100,9 +95,6 @@ class ConnectorCustomSecretManagerArgs:
     @_builtins.property
     @pulumi.getter(name="templateRef")
     def template_ref(self) -> pulumi.Input[_builtins.str]:
-        """
-        : Reference to the template used for managing secrets.
-        """
         return pulumi.get(self, "template_ref")
 
     @template_ref.setter
@@ -112,9 +104,6 @@ class ConnectorCustomSecretManagerArgs:
     @_builtins.property
     @pulumi.getter(name="versionLabel")
     def version_label(self) -> pulumi.Input[_builtins.str]:
-        """
-        : Version identifier of the secrets management template.
-        """
         return pulumi.get(self, "version_label")
 
     @version_label.setter
@@ -137,7 +126,7 @@ class ConnectorCustomSecretManagerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : A brief description of what the resource does or is used for.
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -149,7 +138,7 @@ class ConnectorCustomSecretManagerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Name of the resource.
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -160,9 +149,6 @@ class ConnectorCustomSecretManagerArgs:
     @_builtins.property
     @pulumi.getter(name="onDelegate")
     def on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        : Specifies whether the secrets manager runs on a Harness delegate.
-        """
         return pulumi.get(self, "on_delegate")
 
     @on_delegate.setter
@@ -197,7 +183,7 @@ class ConnectorCustomSecretManagerArgs:
     @pulumi.getter(name="sshSecretRef")
     def ssh_secret_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+        SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "ssh_secret_ref")
 
@@ -209,7 +195,7 @@ class ConnectorCustomSecretManagerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        : Tags to associate with the resource.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -221,7 +207,7 @@ class ConnectorCustomSecretManagerArgs:
     @pulumi.getter(name="targetHost")
     def target_host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+        Host where the custom secrets manager is located, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "target_host")
 
@@ -241,9 +227,6 @@ class ConnectorCustomSecretManagerArgs:
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        : Timeout in seconds for secrets management operations.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -253,9 +236,6 @@ class ConnectorCustomSecretManagerArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -266,7 +246,7 @@ class ConnectorCustomSecretManagerArgs:
     @pulumi.getter(name="workingDirectory")
     def working_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        The working directory for operations, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "working_directory")
 
@@ -297,20 +277,15 @@ class _ConnectorCustomSecretManagerState:
         """
         Input properties used for looking up and filtering ConnectorCustomSecretManager resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
-        :param pulumi.Input[_builtins.str] description: : A brief description of what the resource does or is used for.
-        :param pulumi.Input[_builtins.str] identifier: : Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] name: : Name of the resource.
-        :param pulumi.Input[_builtins.bool] on_delegate: : Specifies whether the secrets manager runs on a Harness delegate.
+        :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] ssh_secret_ref: : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: : Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] target_host: : Host address where secrets will be managed. Required if `on_delegate` is set to false.
-        :param pulumi.Input[_builtins.str] template_ref: : Reference to the template used for managing secrets.
-        :param pulumi.Input[_builtins.int] timeout: : Timeout in seconds for secrets management operations.
-        :param pulumi.Input[_builtins.str] type: : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        :param pulumi.Input[_builtins.str] version_label: : Version identifier of the secrets management template.
-        :param pulumi.Input[_builtins.str] working_directory: : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        :param pulumi.Input[_builtins.str] ssh_secret_ref: SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] target_host: Host where the custom secrets manager is located, required if 'on_delegate' is false.
+        :param pulumi.Input[_builtins.str] working_directory: The working directory for operations, required if 'on_delegate' is false.
         """
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
@@ -361,7 +336,7 @@ class _ConnectorCustomSecretManagerState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : A brief description of what the resource does or is used for.
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -373,7 +348,7 @@ class _ConnectorCustomSecretManagerState:
     @pulumi.getter
     def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Unique identifier of the resource.
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -385,7 +360,7 @@ class _ConnectorCustomSecretManagerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Name of the resource.
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -396,9 +371,6 @@ class _ConnectorCustomSecretManagerState:
     @_builtins.property
     @pulumi.getter(name="onDelegate")
     def on_delegate(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        : Specifies whether the secrets manager runs on a Harness delegate.
-        """
         return pulumi.get(self, "on_delegate")
 
     @on_delegate.setter
@@ -433,7 +405,7 @@ class _ConnectorCustomSecretManagerState:
     @pulumi.getter(name="sshSecretRef")
     def ssh_secret_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+        SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "ssh_secret_ref")
 
@@ -445,7 +417,7 @@ class _ConnectorCustomSecretManagerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        : Tags to associate with the resource.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -457,7 +429,7 @@ class _ConnectorCustomSecretManagerState:
     @pulumi.getter(name="targetHost")
     def target_host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+        Host where the custom secrets manager is located, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "target_host")
 
@@ -477,9 +449,6 @@ class _ConnectorCustomSecretManagerState:
     @_builtins.property
     @pulumi.getter(name="templateRef")
     def template_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        : Reference to the template used for managing secrets.
-        """
         return pulumi.get(self, "template_ref")
 
     @template_ref.setter
@@ -489,9 +458,6 @@ class _ConnectorCustomSecretManagerState:
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        : Timeout in seconds for secrets management operations.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -501,9 +467,6 @@ class _ConnectorCustomSecretManagerState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -513,9 +476,6 @@ class _ConnectorCustomSecretManagerState:
     @_builtins.property
     @pulumi.getter(name="versionLabel")
     def version_label(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        : Version identifier of the secrets management template.
-        """
         return pulumi.get(self, "version_label")
 
     @version_label.setter
@@ -526,7 +486,7 @@ class _ConnectorCustomSecretManagerState:
     @pulumi.getter(name="workingDirectory")
     def working_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        The working directory for operations, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "working_directory")
 
@@ -559,45 +519,20 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
                  working_directory: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ## Import
-
-        Import account level custom secret manager connector
-
-        ```sh
-        $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <connector_id>
-        ```
-
-        Import org level custom secret manager connector
-
-        ```sh
-        $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <ord_id>/<connector_id>
-        ```
-
-        Import project level custom secret manager connector
-
-        ```sh
-        $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <org_id>/<project_id>/<connector_id>
-        ```
+        Resource for creating a Custom Secrets Manager (CSM) connector.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
-        :param pulumi.Input[_builtins.str] description: : A brief description of what the resource does or is used for.
-        :param pulumi.Input[_builtins.str] identifier: : Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] name: : Name of the resource.
-        :param pulumi.Input[_builtins.bool] on_delegate: : Specifies whether the secrets manager runs on a Harness delegate.
+        :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] ssh_secret_ref: : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: : Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] target_host: : Host address where secrets will be managed. Required if `on_delegate` is set to false.
-        :param pulumi.Input[_builtins.str] template_ref: : Reference to the template used for managing secrets.
-        :param pulumi.Input[_builtins.int] timeout: : Timeout in seconds for secrets management operations.
-        :param pulumi.Input[_builtins.str] type: : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        :param pulumi.Input[_builtins.str] version_label: : Version identifier of the secrets management template.
-        :param pulumi.Input[_builtins.str] working_directory: : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        :param pulumi.Input[_builtins.str] ssh_secret_ref: SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] target_host: Host where the custom secrets manager is located, required if 'on_delegate' is false.
+        :param pulumi.Input[_builtins.str] working_directory: The working directory for operations, required if 'on_delegate' is false.
         """
         ...
     @overload
@@ -606,27 +541,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
                  args: ConnectorCustomSecretManagerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ## Import
-
-        Import account level custom secret manager connector
-
-        ```sh
-        $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <connector_id>
-        ```
-
-        Import org level custom secret manager connector
-
-        ```sh
-        $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <ord_id>/<connector_id>
-        ```
-
-        Import project level custom secret manager connector
-
-        ```sh
-        $ pulumi import harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager example <org_id>/<project_id>/<connector_id>
-        ```
+        Resource for creating a Custom Secrets Manager (CSM) connector.
 
         :param str resource_name: The name of the resource.
         :param ConnectorCustomSecretManagerArgs args: The arguments to use to populate this resource's properties.
@@ -724,20 +639,15 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
-        :param pulumi.Input[_builtins.str] description: : A brief description of what the resource does or is used for.
-        :param pulumi.Input[_builtins.str] identifier: : Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] name: : Name of the resource.
-        :param pulumi.Input[_builtins.bool] on_delegate: : Specifies whether the secrets manager runs on a Harness delegate.
+        :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] ssh_secret_ref: : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: : Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] target_host: : Host address where secrets will be managed. Required if `on_delegate` is set to false.
-        :param pulumi.Input[_builtins.str] template_ref: : Reference to the template used for managing secrets.
-        :param pulumi.Input[_builtins.int] timeout: : Timeout in seconds for secrets management operations.
-        :param pulumi.Input[_builtins.str] type: : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        :param pulumi.Input[_builtins.str] version_label: : Version identifier of the secrets management template.
-        :param pulumi.Input[_builtins.str] working_directory: : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        :param pulumi.Input[_builtins.str] ssh_secret_ref: SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] target_host: Host where the custom secrets manager is located, required if 'on_delegate' is false.
+        :param pulumi.Input[_builtins.str] working_directory: The working directory for operations, required if 'on_delegate' is false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -773,7 +683,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        : A brief description of what the resource does or is used for.
+        Description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -781,7 +691,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
     @pulumi.getter
     def identifier(self) -> pulumi.Output[_builtins.str]:
         """
-        : Unique identifier of the resource.
+        Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
@@ -789,16 +699,13 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        : Name of the resource.
+        Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="onDelegate")
     def on_delegate(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        : Specifies whether the secrets manager runs on a Harness delegate.
-        """
         return pulumi.get(self, "on_delegate")
 
     @_builtins.property
@@ -821,7 +728,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
     @pulumi.getter(name="sshSecretRef")
     def ssh_secret_ref(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+        SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "ssh_secret_ref")
 
@@ -829,7 +736,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        : Tags to associate with the resource.
+        Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -837,7 +744,7 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
     @pulumi.getter(name="targetHost")
     def target_host(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+        Host where the custom secrets manager is located, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "target_host")
 
@@ -849,40 +756,28 @@ class ConnectorCustomSecretManager(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="templateRef")
     def template_ref(self) -> pulumi.Output[_builtins.str]:
-        """
-        : Reference to the template used for managing secrets.
-        """
         return pulumi.get(self, "template_ref")
 
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        : Timeout in seconds for secrets management operations.
-        """
         return pulumi.get(self, "timeout")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="versionLabel")
     def version_label(self) -> pulumi.Output[_builtins.str]:
-        """
-        : Version identifier of the secrets management template.
-        """
         return pulumi.get(self, "version_label")
 
     @_builtins.property
     @pulumi.getter(name="workingDirectory")
     def working_directory(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        The working directory for operations, required if 'on_delegate' is false.
         """
         return pulumi.get(self, "working_directory")
 

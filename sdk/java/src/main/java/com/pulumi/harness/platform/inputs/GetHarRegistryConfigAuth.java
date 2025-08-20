@@ -5,7 +5,6 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GetHarRegistryConfigAuthUserPassword;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +14,27 @@ import javax.annotation.Nullable;
 public final class GetHarRegistryConfigAuth extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHarRegistryConfigAuth Empty = new GetHarRegistryConfigAuth();
+
+    @Import(name="accessKey")
+    private @Nullable String accessKey;
+
+    public Optional<String> accessKey() {
+        return Optional.ofNullable(this.accessKey);
+    }
+
+    @Import(name="accessKeyIdentifier")
+    private @Nullable String accessKeyIdentifier;
+
+    public Optional<String> accessKeyIdentifier() {
+        return Optional.ofNullable(this.accessKeyIdentifier);
+    }
+
+    @Import(name="accessKeySecretPath")
+    private @Nullable String accessKeySecretPath;
+
+    public Optional<String> accessKeySecretPath() {
+        return Optional.ofNullable(this.accessKeySecretPath);
+    }
 
     /**
      * Type of authentication (UserPassword, Anonymous)
@@ -32,25 +52,76 @@ public final class GetHarRegistryConfigAuth extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * User password authentication details
+     * Secret identifier for UserPassword auth type
      * 
      */
-    @Import(name="userPassword")
-    private @Nullable GetHarRegistryConfigAuthUserPassword userPassword;
+    @Import(name="secretIdentifier")
+    private @Nullable String secretIdentifier;
 
     /**
-     * @return User password authentication details
+     * @return Secret identifier for UserPassword auth type
      * 
      */
-    public Optional<GetHarRegistryConfigAuthUserPassword> userPassword() {
-        return Optional.ofNullable(this.userPassword);
+    public Optional<String> secretIdentifier() {
+        return Optional.ofNullable(this.secretIdentifier);
+    }
+
+    @Import(name="secretKeyIdentifier")
+    private @Nullable String secretKeyIdentifier;
+
+    public Optional<String> secretKeyIdentifier() {
+        return Optional.ofNullable(this.secretKeyIdentifier);
+    }
+
+    @Import(name="secretKeySecretPath")
+    private @Nullable String secretKeySecretPath;
+
+    public Optional<String> secretKeySecretPath() {
+        return Optional.ofNullable(this.secretKeySecretPath);
+    }
+
+    /**
+     * Secret space path for UserPassword auth type
+     * 
+     */
+    @Import(name="secretSpacePath")
+    private @Nullable String secretSpacePath;
+
+    /**
+     * @return Secret space path for UserPassword auth type
+     * 
+     */
+    public Optional<String> secretSpacePath() {
+        return Optional.ofNullable(this.secretSpacePath);
+    }
+
+    /**
+     * User name for UserPassword auth type
+     * 
+     */
+    @Import(name="userName")
+    private @Nullable String userName;
+
+    /**
+     * @return User name for UserPassword auth type
+     * 
+     */
+    public Optional<String> userName() {
+        return Optional.ofNullable(this.userName);
     }
 
     private GetHarRegistryConfigAuth() {}
 
     private GetHarRegistryConfigAuth(GetHarRegistryConfigAuth $) {
+        this.accessKey = $.accessKey;
+        this.accessKeyIdentifier = $.accessKeyIdentifier;
+        this.accessKeySecretPath = $.accessKeySecretPath;
         this.authType = $.authType;
-        this.userPassword = $.userPassword;
+        this.secretIdentifier = $.secretIdentifier;
+        this.secretKeyIdentifier = $.secretKeyIdentifier;
+        this.secretKeySecretPath = $.secretKeySecretPath;
+        this.secretSpacePath = $.secretSpacePath;
+        this.userName = $.userName;
     }
 
     public static Builder builder() {
@@ -71,6 +142,21 @@ public final class GetHarRegistryConfigAuth extends com.pulumi.resources.InvokeA
             $ = new GetHarRegistryConfigAuth(Objects.requireNonNull(defaults));
         }
 
+        public Builder accessKey(@Nullable String accessKey) {
+            $.accessKey = accessKey;
+            return this;
+        }
+
+        public Builder accessKeyIdentifier(@Nullable String accessKeyIdentifier) {
+            $.accessKeyIdentifier = accessKeyIdentifier;
+            return this;
+        }
+
+        public Builder accessKeySecretPath(@Nullable String accessKeySecretPath) {
+            $.accessKeySecretPath = accessKeySecretPath;
+            return this;
+        }
+
         /**
          * @param authType Type of authentication (UserPassword, Anonymous)
          * 
@@ -83,13 +169,45 @@ public final class GetHarRegistryConfigAuth extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param userPassword User password authentication details
+         * @param secretIdentifier Secret identifier for UserPassword auth type
          * 
          * @return builder
          * 
          */
-        public Builder userPassword(@Nullable GetHarRegistryConfigAuthUserPassword userPassword) {
-            $.userPassword = userPassword;
+        public Builder secretIdentifier(@Nullable String secretIdentifier) {
+            $.secretIdentifier = secretIdentifier;
+            return this;
+        }
+
+        public Builder secretKeyIdentifier(@Nullable String secretKeyIdentifier) {
+            $.secretKeyIdentifier = secretKeyIdentifier;
+            return this;
+        }
+
+        public Builder secretKeySecretPath(@Nullable String secretKeySecretPath) {
+            $.secretKeySecretPath = secretKeySecretPath;
+            return this;
+        }
+
+        /**
+         * @param secretSpacePath Secret space path for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretSpacePath(@Nullable String secretSpacePath) {
+            $.secretSpacePath = secretSpacePath;
+            return this;
+        }
+
+        /**
+         * @param userName User name for UserPassword auth type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(@Nullable String userName) {
+            $.userName = userName;
             return this;
         }
 

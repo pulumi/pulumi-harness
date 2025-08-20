@@ -24,9 +24,9 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetDashboardFolders.Invoke(new()
+        ///     var folder = Harness.Platform.GetDashboardFolders.Invoke(new()
         ///     {
-        ///         Id = "your_folder_id",
+        ///         Id = "id",
         ///     });
         /// 
         /// });
@@ -48,9 +48,9 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetDashboardFolders.Invoke(new()
+        ///     var folder = Harness.Platform.GetDashboardFolders.Invoke(new()
         ///     {
-        ///         Id = "your_folder_id",
+        ///         Id = "id",
         ///     });
         /// 
         /// });
@@ -72,9 +72,9 @@ namespace Pulumi.Harness.Platform
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Harness.Platform.GetDashboardFolders.Invoke(new()
+        ///     var folder = Harness.Platform.GetDashboardFolders.Invoke(new()
         ///     {
-        ///         Id = "your_folder_id",
+        ///         Id = "id",
         ///     });
         /// 
         /// });
@@ -93,11 +93,14 @@ namespace Pulumi.Harness.Platform
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
 
         /// <summary>
-        /// Name of the folder.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -116,11 +119,14 @@ namespace Pulumi.Harness.Platform
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Name of the folder.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -139,16 +145,25 @@ namespace Pulumi.Harness.Platform
         /// Created DateTime of the folder.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Description of the resource.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// Identifier of the folder.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
         public readonly string? Identifier;
         /// <summary>
-        /// Name of the folder.
+        /// Name of the resource.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]

@@ -29,6 +29,10 @@ public final class GetInfrastructureResult {
      * 
      */
     private String envId;
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     private GetInfrastructureGitDetails gitDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -93,6 +97,10 @@ public final class GetInfrastructureResult {
     public String envId() {
         return this.envId;
     }
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     public GetInfrastructureGitDetails gitDetails() {
         return this.gitDetails;
     }

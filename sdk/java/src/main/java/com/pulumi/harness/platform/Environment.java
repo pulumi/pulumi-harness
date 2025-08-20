@@ -20,386 +20,14 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness environment.
  * 
- * ## Example to create Environment at different levels (Org, Project, Account)
+ * ## Example Usage
  * 
- * ### Account Level
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Environment;
- * import com.pulumi.harness.platform.EnvironmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Environment("example", EnvironmentArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .tags(            
- *                 "foo:bar",
- *                 "bar:foo")
- *             .type("PreProduction")
- *             .description("env description")
- *             .yaml("""
- * environment:
- *    name: name
- *    identifier: identifier
- *    type: PreProduction
- *    tags:
- *      foo: bar
- *      bar: foo
- *    variables:
- *      - name: envVar1
- *        type: String
- *        value: v1
- *        description: ""
- *      - name: envVar2
- *        type: String
- *        value: v2
- *        description: ""
- *    overrides:
- *      manifests:
- *        - manifest:
- *            identifier: manifestEnv
- *            type: Values
- *            spec:
- *              store:
- *                type: Git
- *                spec:
- *                  connectorRef: <+input>
- *                  gitFetchType: Branch
- *                  paths:
- *                    - file1
- *                  repoName: <+input>
- *                  branch: master
- *      configFiles:
- *        - configFile:
- *            identifier: configFileEnv
- *            spec:
- *              store:
- *                type: Harness
- *                spec:
- *                  files:
- *                    - account:/Add-ons/svcOverrideTest
- *                  secretFiles: []
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Org Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Environment;
- * import com.pulumi.harness.platform.EnvironmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Environment("example", EnvironmentArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId("org_id")
- *             .tags(            
- *                 "foo:bar",
- *                 "bar:foo")
- *             .type("PreProduction")
- *             .description("env description")
- *             .yaml("""
- * environment:
- *    name: name
- *    identifier: identifier
- *    orgIdentifier: org_id
- *    type: PreProduction
- *    tags:
- *      foo: bar
- *      bar: foo
- *    variables:
- *      - name: envVar1
- *        type: String
- *        value: v1
- *        description: ""
- *      - name: envVar2
- *        type: String
- *        value: v2
- *        description: ""
- *    overrides:
- *      manifests:
- *        - manifest:
- *            identifier: manifestEnv
- *            type: Values
- *            spec:
- *              store:
- *                type: Git
- *                spec:
- *                  connectorRef: <+input>
- *                  gitFetchType: Branch
- *                  paths:
- *                    - file1
- *                  repoName: <+input>
- *                  branch: master
- *      configFiles:
- *        - configFile:
- *            identifier: configFileEnv
- *            spec:
- *              store:
- *                type: Harness
- *                spec:
- *                  files:
- *                    - account:/Add-ons/svcOverrideTest
- *                  secretFiles: []
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Project Level
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Environment;
- * import com.pulumi.harness.platform.EnvironmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Environment("example", EnvironmentArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .tags(            
- *                 "foo:bar",
- *                 "bar:foo")
- *             .type("PreProduction")
- *             .description("env description")
- *             .yaml("""
- * environment:
- *    name: name
- *    identifier: identifier
- *    orgIdentifier: org_id
- *    projectIdentifier: project_id
- *    type: PreProduction
- *    tags:
- *      foo: bar
- *      bar: foo
- *    variables:
- *      - name: envVar1
- *        type: String
- *        value: v1
- *        description: ""
- *      - name: envVar2
- *        type: String
- *        value: v2
- *        description: ""
- *    overrides:
- *      manifests:
- *        - manifest:
- *            identifier: manifestEnv
- *            type: Values
- *            spec:
- *              store:
- *                type: Git
- *                spec:
- *                  connectorRef: <+input>
- *                  gitFetchType: Branch
- *                  paths:
- *                    - file1
- *                  repoName: <+input>
- *                  branch: master
- *      configFiles:
- *        - configFile:
- *            identifier: configFileEnv
- *            spec:
- *              store:
- *                type: Harness
- *                spec:
- *                  files:
- *                    - account:/Add-ons/svcOverrideTest
- *                  secretFiles: []
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Creating Remote Environment
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Environment;
- * import com.pulumi.harness.platform.EnvironmentArgs;
- * import com.pulumi.harness.platform.inputs.EnvironmentGitDetailsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Environment("example", EnvironmentArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .gitDetails(EnvironmentGitDetailsArgs.builder()
- *                 .storeType("REMOTE")
- *                 .connectorRef("connector_ref")
- *                 .repoName("repo_name")
- *                 .filePath("file_path")
- *                 .branch("branch")
- *                 .build())
- *             .yaml("""
- * environment:
- *   name: env
- *   identifier: env
- *   tags:
- *     test: ""
- *   type: PreProduction
- *   orgIdentifier: default
- *   projectIdentifier: proj1
- *   variables:
- *     - name: var1
- *       type: String
- *       value: abc
- *       description: ""
- *       required: false
- *   overrides:
- *     manifests:
- *       - manifest:
- *           identifier: Manifest1
- *           type: Values
- *           spec:
- *             store:
- *               type: Github
- *               spec:
- *                 connectorRef: <+input>
- *                 gitFetchType: Branch
- *                 paths:
- *                   - .harness/
- *                 repoName: <+input>
- *                 branch: <+input>
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Importing Environment From Git
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.Environment;
- * import com.pulumi.harness.platform.EnvironmentArgs;
- * import com.pulumi.harness.platform.inputs.EnvironmentGitDetailsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Environment("example", EnvironmentArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .type("PreProduction")
- *             .gitDetails(EnvironmentGitDetailsArgs.builder()
- *                 .storeType("REMOTE")
- *                 .connectorRef("connector_ref")
- *                 .repoName("repo_name")
- *                 .filePath("file_path")
- *                 .branch("branch")
- *                 .importFromGit(true)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level environment id
  * 
@@ -451,28 +79,28 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * When set to true, enables force deletion of environments.
+     * Enable this flag for force deletion of environments
      * 
      */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceDelete;
 
     /**
-     * @return When set to true, enables force deletion of environments.
+     * @return Enable this flag for force deletion of environments
      * 
      */
     public Output<Boolean> forceDelete() {
         return this.forceDelete;
     }
     /**
-     * Contains Git Information for remote entities from Git for Create/Update/Import
+     * Contains parameters related to creating an Entity for Git Experience.
      * 
      */
     @Export(name="gitDetails", refs={EnvironmentGitDetails.class}, tree="[0]")
     private Output<EnvironmentGitDetails> gitDetails;
 
     /**
-     * @return Contains Git Information for remote entities from Git for Create/Update/Import
+     * @return Contains parameters related to creating an Entity for Git Experience.
      * 
      */
     public Output<EnvironmentGitDetails> gitDetails() {
@@ -563,16 +191,14 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.
-     * connectorId.
+     * Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     @Export(name="yaml", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> yaml;
 
     /**
-     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.
-     * connectorId.
+     * @return Environment YAML. In YAML, to reference an entity at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference an entity at the account scope, prefix &#39;account` to the expression: account.{identifier}. For eg, to reference a connector with identifier &#39;connectorId&#39; at the organization scope in a stage mention it as connectorRef: org.connectorId.
      * 
      */
     public Output<Optional<String>> yaml() {

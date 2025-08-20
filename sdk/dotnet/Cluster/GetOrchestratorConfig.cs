@@ -12,7 +12,7 @@ namespace Pulumi.Harness.Cluster
     public static class GetOrchestratorConfig
     {
         /// <summary>
-        /// Resource for ClusterOrchestrator Config.
+        /// Data Source for retrieving Harness CCM ClusterOrchestrator Config.
         /// 
         /// ## Example Usage
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.Harness.Cluster
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrchestratorConfigResult>("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", args ?? new GetOrchestratorConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Resource for ClusterOrchestrator Config.
+        /// Data Source for retrieving Harness CCM ClusterOrchestrator Config.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Harness.Cluster
             => global::Pulumi.Deployment.Instance.Invoke<GetOrchestratorConfigResult>("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", args ?? new GetOrchestratorConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Resource for ClusterOrchestrator Config.
+        /// Data Source for retrieving Harness CCM ClusterOrchestrator Config.
         /// 
         /// ## Example Usage
         /// 
@@ -94,6 +94,12 @@ namespace Pulumi.Harness.Cluster
         public Inputs.GetOrchestratorConfigBinpackingArgs? Binpacking { get; set; }
 
         /// <summary>
+        /// Commitment integration configuration for Cluster Orchestrator
+        /// </summary>
+        [Input("commitmentIntegration")]
+        public Inputs.GetOrchestratorConfigCommitmentIntegrationArgs? CommitmentIntegration { get; set; }
+
+        /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
         [Input("distribution")]
@@ -111,6 +117,12 @@ namespace Pulumi.Harness.Cluster
         [Input("orchestratorId", required: true)]
         public string OrchestratorId { get; set; } = null!;
 
+        /// <summary>
+        /// Replacement schedule for Cluster Orchestrator
+        /// </summary>
+        [Input("replacementSchedule")]
+        public Inputs.GetOrchestratorConfigReplacementScheduleArgs? ReplacementSchedule { get; set; }
+
         public GetOrchestratorConfigArgs()
         {
         }
@@ -124,6 +136,12 @@ namespace Pulumi.Harness.Cluster
         /// </summary>
         [Input("binpacking")]
         public Input<Inputs.GetOrchestratorConfigBinpackingInputArgs>? Binpacking { get; set; }
+
+        /// <summary>
+        /// Commitment integration configuration for Cluster Orchestrator
+        /// </summary>
+        [Input("commitmentIntegration")]
+        public Input<Inputs.GetOrchestratorConfigCommitmentIntegrationInputArgs>? CommitmentIntegration { get; set; }
 
         /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
@@ -143,6 +161,12 @@ namespace Pulumi.Harness.Cluster
         [Input("orchestratorId", required: true)]
         public Input<string> OrchestratorId { get; set; } = null!;
 
+        /// <summary>
+        /// Replacement schedule for Cluster Orchestrator
+        /// </summary>
+        [Input("replacementSchedule")]
+        public Input<Inputs.GetOrchestratorConfigReplacementScheduleInputArgs>? ReplacementSchedule { get; set; }
+
         public GetOrchestratorConfigInvokeArgs()
         {
         }
@@ -157,6 +181,10 @@ namespace Pulumi.Harness.Cluster
         /// Binpacking preferences for Cluster Orchestrator
         /// </summary>
         public readonly Outputs.GetOrchestratorConfigBinpackingResult? Binpacking;
+        /// <summary>
+        /// Commitment integration configuration for Cluster Orchestrator
+        /// </summary>
+        public readonly Outputs.GetOrchestratorConfigCommitmentIntegrationResult? CommitmentIntegration;
         /// <summary>
         /// Spot and Ondemand Distribution Preferences for workload replicas
         /// </summary>
@@ -173,10 +201,16 @@ namespace Pulumi.Harness.Cluster
         /// ID of the Cluster Orchestrator Object
         /// </summary>
         public readonly string OrchestratorId;
+        /// <summary>
+        /// Replacement schedule for Cluster Orchestrator
+        /// </summary>
+        public readonly Outputs.GetOrchestratorConfigReplacementScheduleResult? ReplacementSchedule;
 
         [OutputConstructor]
         private GetOrchestratorConfigResult(
             Outputs.GetOrchestratorConfigBinpackingResult? binpacking,
+
+            Outputs.GetOrchestratorConfigCommitmentIntegrationResult? commitmentIntegration,
 
             Outputs.GetOrchestratorConfigDistributionResult? distribution,
 
@@ -184,13 +218,17 @@ namespace Pulumi.Harness.Cluster
 
             Outputs.GetOrchestratorConfigNodePreferencesResult? nodePreferences,
 
-            string orchestratorId)
+            string orchestratorId,
+
+            Outputs.GetOrchestratorConfigReplacementScheduleResult? replacementSchedule)
         {
             Binpacking = binpacking;
+            CommitmentIntegration = commitmentIntegration;
             Distribution = distribution;
             Id = id;
             NodePreferences = nodePreferences;
             OrchestratorId = orchestratorId;
+            ReplacementSchedule = replacementSchedule;
         }
     }
 }

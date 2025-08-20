@@ -18,9 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * Resource for creating an AWS KMS connector.
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level awskms connector
  * 
@@ -44,18 +46,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/awsKmsConnector:AwsKmsConnector")
 public class AwsKmsConnector extends com.pulumi.resources.CustomResource {
     /**
+     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * 
+     */
+    @Export(name="arnPlaintext", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> arnPlaintext;
+
+    /**
+     * @return A reference to the Harness secret containing the ARN of the AWS KMS.
+     * 
+     */
+    public Output<Optional<String>> arnPlaintext() {
+        return Codegen.optional(this.arnPlaintext);
+    }
+    /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Export(name="arnRef", refs={String.class}, tree="[0]")
-    private Output<String> arnRef;
+    private Output</* @Nullable */ String> arnRef;
 
     /**
      * @return A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<String> arnRef() {
-        return this.arnRef;
+    public Output<Optional<String>> arnRef() {
+        return Codegen.optional(this.arnRef);
     }
     /**
      * Credentials to connect to AWS.

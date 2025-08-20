@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating a Azure Repo connector.
 type ConnectorAzureRepo struct {
 	pulumi.CustomResourceState
 
-	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-	// triggers, Webhooks management and updating Git statuses.
+	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication ConnectorAzureRepoApiAuthenticationPtrOutput `pulumi:"apiAuthentication"`
 	// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
 	ConnectionType pulumi.StringOutput `pulumi:"connectionType"`
@@ -86,8 +86,7 @@ func GetConnectorAzureRepo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectorAzureRepo resources.
 type connectorAzureRepoState struct {
-	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-	// triggers, Webhooks management and updating Git statuses.
+	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication *ConnectorAzureRepoApiAuthentication `pulumi:"apiAuthentication"`
 	// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
 	ConnectionType *string `pulumi:"connectionType"`
@@ -116,8 +115,7 @@ type connectorAzureRepoState struct {
 }
 
 type ConnectorAzureRepoState struct {
-	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-	// triggers, Webhooks management and updating Git statuses.
+	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication ConnectorAzureRepoApiAuthenticationPtrInput
 	// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
 	ConnectionType pulumi.StringPtrInput
@@ -150,8 +148,7 @@ func (ConnectorAzureRepoState) ElementType() reflect.Type {
 }
 
 type connectorAzureRepoArgs struct {
-	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-	// triggers, Webhooks management and updating Git statuses.
+	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication *ConnectorAzureRepoApiAuthentication `pulumi:"apiAuthentication"`
 	// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
 	ConnectionType string `pulumi:"connectionType"`
@@ -181,8 +178,7 @@ type connectorAzureRepoArgs struct {
 
 // The set of arguments for constructing a ConnectorAzureRepo resource.
 type ConnectorAzureRepoArgs struct {
-	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-	// triggers, Webhooks management and updating Git statuses.
+	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication ConnectorAzureRepoApiAuthenticationPtrInput
 	// Whether the connection we're making is to a azure repository or a azure account. Valid values are Project, Repo.
 	ConnectionType pulumi.StringInput
@@ -297,8 +293,7 @@ func (o ConnectorAzureRepoOutput) ToConnectorAzureRepoOutputWithContext(ctx cont
 	return o
 }
 
-// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based
-// triggers, Webhooks management and updating Git statuses.
+// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 func (o ConnectorAzureRepoOutput) ApiAuthentication() ConnectorAzureRepoApiAuthenticationPtrOutput {
 	return o.ApplyT(func(v *ConnectorAzureRepo) ConnectorAzureRepoApiAuthenticationPtrOutput { return v.ApiAuthentication }).(ConnectorAzureRepoApiAuthenticationPtrOutput)
 }

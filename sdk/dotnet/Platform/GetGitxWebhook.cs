@@ -67,7 +67,7 @@ namespace Pulumi.Harness.Platform
         private List<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+        /// Tags to associate with the resource.
         /// </summary>
         public List<string> Tags
         {
@@ -117,7 +117,7 @@ namespace Pulumi.Harness.Platform
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+        /// Tags to associate with the resource.
         /// </summary>
         public InputList<string> Tags
         {
@@ -160,7 +160,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
 

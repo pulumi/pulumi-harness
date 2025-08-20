@@ -499,14 +499,14 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Custom path at with JWT auth in enabled for Vault.
+     * Custom path at with JWT auth in enabled for Vault
      * 
      */
     @Import(name="vaultJwtAuthPath")
     private @Nullable Output<String> vaultJwtAuthPath;
 
     /**
-     * @return Custom path at with JWT auth in enabled for Vault.
+     * @return Custom path at with JWT auth in enabled for Vault
      * 
      */
     public Optional<Output<String>> vaultJwtAuthPath() {
@@ -1326,7 +1326,7 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vaultJwtAuthPath Custom path at with JWT auth in enabled for Vault.
+         * @param vaultJwtAuthPath Custom path at with JWT auth in enabled for Vault
          * 
          * @return builder
          * 
@@ -1337,7 +1337,7 @@ public final class VaultConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vaultJwtAuthPath Custom path at with JWT auth in enabled for Vault.
+         * @param vaultJwtAuthPath Custom path at with JWT auth in enabled for Vault
          * 
          * @return builder
          * 

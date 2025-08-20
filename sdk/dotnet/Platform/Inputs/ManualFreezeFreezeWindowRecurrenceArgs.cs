@@ -25,7 +25,7 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Recurrence type(Daily, Weekly, Monthly, Yearly)
+        /// Type of the recurrence
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

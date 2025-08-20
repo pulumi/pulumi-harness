@@ -525,6 +525,8 @@ class GitOpsRepository(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import an Account level Gitops Repository
 
         ```sh
@@ -571,6 +573,8 @@ class GitOpsRepository(pulumi.CustomResource):
         Resource for managing Harness Gitops Repository.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import an Account level Gitops Repository
 

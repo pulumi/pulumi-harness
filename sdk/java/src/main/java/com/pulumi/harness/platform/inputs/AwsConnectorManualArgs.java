@@ -63,14 +63,14 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Test Region to perform Connection test of AWS Connector.
+     * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Test Region to perform Connection test of AWS Connector.
+     * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> region() {
@@ -93,14 +93,14 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Reference to the Harness secret containing the aws session token.
+     * Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     @Import(name="sessionTokenRef")
     private @Nullable Output<String> sessionTokenRef;
 
     /**
-     * @return Reference to the Harness secret containing the aws session token.
+     * @return Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
     public Optional<Output<String>> sessionTokenRef() {
@@ -210,7 +210,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region Test Region to perform Connection test of AWS Connector.
+         * @param region Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param region Test Region to perform Connection test of AWS Connector.
+         * @param region Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sessionTokenRef Reference to the Harness secret containing the aws session token.
+         * @param sessionTokenRef Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class AwsConnectorManualArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sessionTokenRef Reference to the Harness secret containing the aws session token.
+         * @param sessionTokenRef Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 

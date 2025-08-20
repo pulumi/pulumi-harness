@@ -28,10 +28,7 @@ class EnvironmentGroupArgs:
         """
         The set of arguments for constructing a EnvironmentGroup resource.
         :param pulumi.Input[_builtins.str] identifier: identifier of the environment group.
-        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[_builtins.str] color: Color of the environment group.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of environment group
         :param pulumi.Input[_builtins.str] org_id: org_id of the environment group.
@@ -64,10 +61,7 @@ class EnvironmentGroupArgs:
     @pulumi.getter
     def yaml(self) -> pulumi.Input[_builtins.str]:
         """
-        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -140,10 +134,7 @@ class _EnvironmentGroupState:
         :param pulumi.Input[_builtins.str] identifier: identifier of the environment group.
         :param pulumi.Input[_builtins.str] org_id: org_id of the environment group.
         :param pulumi.Input[_builtins.str] project_id: project_id of the environment group.
-        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -222,10 +213,7 @@ class _EnvironmentGroupState:
     @pulumi.getter
     def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 
@@ -250,43 +238,8 @@ class EnvironmentGroup(pulumi.CustomResource):
         """
         Resource for creating a Harness environment group.
 
-        ## Example to create Environment Group at different levels (Org, Project, Account)
+        ## Example Usage
 
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.EnvironmentGroup("example",
-            identifier="identifier",
-            color="#0063F7",
-            yaml=\"\"\"environmentGroup:
-          name: "name"
-          identifier: "identifier"
-          description: "temp"
-          envIdentifiers: []
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.EnvironmentGroup("example",
-            identifier="identifier",
-            org_id="orgIdentifer",
-            color="#0063F7",
-            yaml=\"\"\"environmentGroup:
-          name: "name"
-          identifier: "identifier"
-          description: "temp"
-          orgIdentifier: "orgIdentifer"
-          envIdentifiers: []
-        \"\"\")
-        ```
-
-        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -307,6 +260,8 @@ class EnvironmentGroup(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level environment group.
 
@@ -333,10 +288,7 @@ class EnvironmentGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: identifier of the environment group.
         :param pulumi.Input[_builtins.str] org_id: org_id of the environment group.
         :param pulumi.Input[_builtins.str] project_id: project_id of the environment group.
-        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         ...
     @overload
@@ -347,43 +299,8 @@ class EnvironmentGroup(pulumi.CustomResource):
         """
         Resource for creating a Harness environment group.
 
-        ## Example to create Environment Group at different levels (Org, Project, Account)
+        ## Example Usage
 
-        ### Account Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.EnvironmentGroup("example",
-            identifier="identifier",
-            color="#0063F7",
-            yaml=\"\"\"environmentGroup:
-          name: "name"
-          identifier: "identifier"
-          description: "temp"
-          envIdentifiers: []
-        \"\"\")
-        ```
-
-        ### Org Level
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        example = harness.platform.EnvironmentGroup("example",
-            identifier="identifier",
-            org_id="orgIdentifer",
-            color="#0063F7",
-            yaml=\"\"\"environmentGroup:
-          name: "name"
-          identifier: "identifier"
-          description: "temp"
-          orgIdentifier: "orgIdentifer"
-          envIdentifiers: []
-        \"\"\")
-        ```
-
-        ### Project Level
         ```python
         import pulumi
         import pulumi_harness as harness
@@ -404,6 +321,8 @@ class EnvironmentGroup(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level environment group.
 
@@ -491,10 +410,7 @@ class EnvironmentGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: identifier of the environment group.
         :param pulumi.Input[_builtins.str] org_id: org_id of the environment group.
         :param pulumi.Input[_builtins.str] project_id: project_id of the environment group.
-        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-               org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-               For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-               connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml: Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -552,10 +468,7 @@ class EnvironmentGroup(pulumi.CustomResource):
     @pulumi.getter
     def yaml(self) -> pulumi.Output[_builtins.str]:
         """
-        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression:
-        org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}.
-        For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as
-        connectorRef: org.connectorId.
+        Env group YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
 

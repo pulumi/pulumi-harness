@@ -32,7 +32,7 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///         },
-    ///         Url = "https://elasticsearch.com/",
+    ///         Url = "http://elk6.dev.harness.io:9200/",
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
@@ -54,7 +54,7 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///         },
-    ///         Url = "https://elasticsearch.com/",
+    ///         Url = "http://elk6.dev.harness.io:9200/",
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
@@ -66,7 +66,7 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///     });
     /// 
-    ///     // Authentication mechanism as username and password
+    ///     // Authentication mechanism without authentication
     ///     var noAuthentication = new Harness.Platform.ElasticsearchConnector("no_authentication", new()
     ///     {
     ///         Identifier = "identifier",
@@ -76,7 +76,7 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///         },
-    ///         Url = "https://elasticsearch.com/",
+    ///         Url = "http://elk6.dev.harness.io:9200/",
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
@@ -87,6 +87,8 @@ namespace Pulumi.Harness.Platform
     /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level elasticsearch connector
     /// 
@@ -164,7 +166,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the ElasticSearch controller.
+        /// URL of the elasticsearch
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -289,7 +291,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// URL of the ElasticSearch controller.
+        /// URL of the elasticsearch
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -375,7 +377,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// URL of the ElasticSearch controller.
+        /// URL of the elasticsearch
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

@@ -174,10 +174,174 @@
                     }
                 }
             },
+            "harness_chaos_hub": {
+                "current": "harness:chaos/hub:Hub",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_hub_sync": {
+                "current": "harness:chaos/hubSync:HubSync"
+            },
+            "harness_chaos_image_registry": {
+                "current": "harness:chaos/imageRegistry:ImageRegistry",
+                "fields": {
+                    "custom_images": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_infrastructure": {
                 "current": "harness:index/chaosInfrastructure:ChaosInfrastructure",
                 "fields": {
                     "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_infrastructure_v2": {
+                "current": "harness:chaos/infrastructureV2:InfrastructureV2",
+                "fields": {
+                    "env": {
+                        "maxItemsOne": false
+                    },
+                    "identifier": {
+                        "maxItemsOne": false
+                    },
+                    "image_registry": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_images": {
+                                    "maxItemsOne": false
+                                },
+                                "identifier": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "mtls": {
+                        "maxItemsOne": true
+                    },
+                    "proxy": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "tolerations": {
+                        "maxItemsOne": false
+                    },
+                    "volume_mounts": {
+                        "maxItemsOne": false
+                    },
+                    "volumes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_security_governance_condition": {
+                "current": "harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition",
+                "fields": {
+                    "fault_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "faults": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "k8s_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "application_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "workloads": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "services": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "chaos_service_account_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "service_accounts": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "infra_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "machine_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "infra_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_security_governance_rule": {
+                "current": "harness:chaos/securityGovernanceRule:SecurityGovernanceRule",
+                "fields": {
+                    "condition_ids": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "time_windows": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "recurrence": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "user_group_ids": {
                         "maxItemsOne": false
                     }
                 }
@@ -298,11 +462,34 @@
                             }
                         }
                     },
+                    "commitment_integration": {
+                        "maxItemsOne": true
+                    },
                     "distribution": {
                         "maxItemsOne": true
                     },
                     "node_preferences": {
                         "maxItemsOne": true
+                    },
+                    "replacement_schedule": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "applies_to": {
+                                    "maxItemsOne": true
+                                },
+                                "window_details": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "days": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -755,6 +942,9 @@
                 "current": "harness:platform/azureCloudCostConnector:AzureCloudCostConnector",
                 "fields": {
                     "billing_export_spec": {
+                        "maxItemsOne": true
+                    },
+                    "billing_export_spec2": {
                         "maxItemsOne": true
                     },
                     "features_enabled": {
@@ -14552,6 +14742,101 @@
                     }
                 }
             },
+            "harness_service_discovery_agent": {
+                "current": "harness:service/discoveryAgent:DiscoveryAgent",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "blacklisted_namespaces": {
+                                                "maxItemsOne": false
+                                            },
+                                            "cron": {
+                                                "maxItemsOne": false
+                                            },
+                                            "observed_namespaces": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "image_pull_secrets": {
+                                    "maxItemsOne": false
+                                },
+                                "kubernetes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "resources": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "limits": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "requests": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tolerations": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "mtls": {
+                                    "maxItemsOne": false
+                                },
+                                "proxy": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "installation_details": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agent_details": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cluster": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_service_discovery_setting": {
+                "current": "harness:service/discoverySetting:DiscoverySetting",
+                "fields": {
+                    "image_registry": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "secrets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_service_ecs": {
                 "current": "harness:service/ecs:Ecs",
                 "fields": {
@@ -15130,8 +15415,136 @@
                     }
                 }
             },
+            "harness_chaos_hub": {
+                "current": "harness:chaos/getHub:getHub",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_image_registry": {
+                "current": "harness:chaos/getImageRegistry:getImageRegistry",
+                "fields": {
+                    "custom_images": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_infrastructure": {
                 "current": "harness:index/getChaosInfrastructure:getChaosInfrastructure"
+            },
+            "harness_chaos_infrastructure_v2": {
+                "current": "harness:chaos/getInfrastructureV2:getInfrastructureV2",
+                "fields": {
+                    "image_registry": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_images": {
+                                    "maxItemsOne": false
+                                },
+                                "identifier": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "mtls": {
+                        "maxItemsOne": true
+                    },
+                    "proxy": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "tolerations": {
+                        "maxItemsOne": false
+                    },
+                    "volume_mounts": {
+                        "maxItemsOne": false
+                    },
+                    "volumes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_security_governance_condition": {
+                "current": "harness:chaos/getSecurityGovernanceCondition:getSecurityGovernanceCondition",
+                "fields": {
+                    "fault_spec": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "faults": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "k8s_spec": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "infra_spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "machine_spec": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "infra_spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_security_governance_rule": {
+                "current": "harness:chaos/getSecurityGovernanceRule:getSecurityGovernanceRule",
+                "fields": {
+                    "condition_ids": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "time_windows": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "recurrence": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "user_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_cluster_orchestrator": {
                 "current": "harness:cluster/getOrchestrator:getOrchestrator"
@@ -15176,11 +15589,34 @@
                             }
                         }
                     },
+                    "commitment_integration": {
+                        "maxItemsOne": true
+                    },
                     "distribution": {
                         "maxItemsOne": true
                     },
                     "node_preferences": {
                         "maxItemsOne": true
+                    },
+                    "replacement_schedule": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "applies_to": {
+                                    "maxItemsOne": true
+                                },
+                                "window_details": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "days": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -15500,6 +15936,9 @@
                 "current": "harness:platform/getAzureCloudCostConnector:getAzureCloudCostConnector",
                 "fields": {
                     "billing_export_spec": {
+                        "maxItemsOne": false
+                    },
+                    "billing_export_spec2": {
                         "maxItemsOne": false
                     },
                     "features_enabled": {
@@ -16756,14 +17195,10 @@
                         "elem": {
                             "fields": {
                                 "auth": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "user_password": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
+                                    "maxItemsOne": false
+                                },
+                                "upstream_proxies": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -17343,6 +17778,104 @@
             "harness_service": {
                 "current": "harness:index/getService:getService"
             },
+            "harness_service_discovery_agent": {
+                "current": "harness:service/getDiscoveryAgent:getDiscoveryAgent",
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "blacklisted_namespaces": {
+                                                "maxItemsOne": false
+                                            },
+                                            "cron": {
+                                                "maxItemsOne": false
+                                            },
+                                            "observed_namespaces": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "image_pull_secrets": {
+                                    "maxItemsOne": false
+                                },
+                                "kubernetes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "resources": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "limits": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "requests": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tolerations": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "mtls": {
+                                    "maxItemsOne": false
+                                },
+                                "proxy": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "installation_details": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agent_details": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cluster": {
+                                                "maxItemsOne": false
+                                            },
+                                            "node": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_service_discovery_setting": {
+                "current": "harness:service/getDiscoverySetting:getDiscoverySetting",
+                "fields": {
+                    "image_registry": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "secrets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "harness_ssh_credential": {
                 "current": "harness:index/getSshCredential:getSshCredential",
                 "fields": {
@@ -17449,7 +17982,7 @@
         "datasources": {
             "harness_platform_db_schema": {
                 "maxItemsOneOverrides": {
-                    "schema_source": false
+                    "changelog_script": true
                 }
             },
             "harness_platform_gitops_applications": {
@@ -17464,6 +17997,12 @@
                     "request.$.cluster.$.config": false,
                     "request.$.cluster.$.config.$.tls_client_config": false,
                     "request.$.cluster.$.refresh_requested_at": false
+                }
+            },
+            "harness_platform_har_registry": {
+                "maxItemsOneOverrides": {
+                    "config": false,
+                    "config.$.auth": false
                 }
             }
         }

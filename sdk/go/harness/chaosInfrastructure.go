@@ -14,7 +14,7 @@ import (
 
 // Resource for creating a Chaos Infrastructure.
 //
-// ## Example to create Chaos Infrastructure
+// ## Example Usage
 //
 // ```go
 // package main
@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Sample resource for chaos infrastructure
 //			_, err := harness.NewChaosInfrastructure(ctx, "example", &harness.ChaosInfrastructureArgs{
 //				Identifier:     pulumi.String("identifier"),
 //				Name:           pulumi.String("name"),
@@ -48,7 +49,9 @@ import (
 //
 // ## Import
 //
-// Import using the Chaos Infra ID.
+// The `pulumi import` command can be used, for example:
+//
+// Import using the Harness chaos_infra_id.
 //
 // ```sh
 // $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example <chaos_infra_id>

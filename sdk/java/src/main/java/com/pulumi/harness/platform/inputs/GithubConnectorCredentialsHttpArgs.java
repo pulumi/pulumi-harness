@@ -19,14 +19,14 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
     public static final GithubConnectorCredentialsHttpArgs Empty = new GithubConnectorCredentialsHttpArgs();
 
     /**
-     * Configuration for using the http anonymous github for interacting with the github api.
+     * Configuration for using the github http anonymous for interacting with the github api.
      * 
      */
     @Import(name="anonymouses")
     private @Nullable Output<List<GithubConnectorCredentialsHttpAnonymouseArgs>> anonymouses;
 
     /**
-     * @return Configuration for using the http anonymous github for interacting with the github api.
+     * @return Configuration for using the github http anonymous for interacting with the github api.
      * 
      */
     public Optional<Output<List<GithubConnectorCredentialsHttpAnonymouseArgs>>> anonymouses() {
@@ -122,7 +122,7 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param anonymouses Configuration for using the http anonymous github for interacting with the github api.
+         * @param anonymouses Configuration for using the github http anonymous for interacting with the github api.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param anonymouses Configuration for using the http anonymous github for interacting with the github api.
+         * @param anonymouses Configuration for using the github http anonymous for interacting with the github api.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GithubConnectorCredentialsHttpArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param anonymouses Configuration for using the http anonymous github for interacting with the github api.
+         * @param anonymouses Configuration for using the github http anonymous for interacting with the github api.
          * 
          * @return builder
          * 

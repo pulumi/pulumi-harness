@@ -12,67 +12,19 @@ namespace Pulumi.Harness.Platform
     public static class GetConnectorCustomSecretManager
     {
         /// <summary>
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetConnectorCustomSecretManager.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Datasource for looking up a Custom Secret Manager connector.
         /// </summary>
         public static Task<GetConnectorCustomSecretManagerResult> InvokeAsync(GetConnectorCustomSecretManagerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorCustomSecretManagerResult>("harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager", args ?? new GetConnectorCustomSecretManagerArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetConnectorCustomSecretManager.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Datasource for looking up a Custom Secret Manager connector.
         /// </summary>
         public static Output<GetConnectorCustomSecretManagerResult> Invoke(GetConnectorCustomSecretManagerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCustomSecretManagerResult>("harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager", args ?? new GetConnectorCustomSecretManagerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harness = Pulumi.Harness;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Harness.Platform.GetConnectorCustomSecretManager.Invoke(new()
-        ///     {
-        ///         Identifier = "identifier",
-        ///     });
-        /// 
-        /// });
-        /// ```
+        /// Datasource for looking up a Custom Secret Manager connector.
         /// </summary>
         public static Output<GetConnectorCustomSecretManagerResult> Invoke(GetConnectorCustomSecretManagerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorCustomSecretManagerResult>("harness:platform/getConnectorCustomSecretManager:getConnectorCustomSecretManager", args ?? new GetConnectorCustomSecretManagerInvokeArgs(), options.WithDefaults());
@@ -94,20 +46,26 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// : Unique identifier of the resource.
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// : Name of the resource.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public string? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
@@ -132,20 +90,26 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// : Unique identifier of the resource.
+        /// Unique identifier of the resource.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
-        /// : Name of the resource.
+        /// Name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -164,7 +128,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
-        /// : A brief description of what the resource does or is used for.
+        /// Description of the resource.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -172,50 +136,56 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// : Unique identifier of the resource.
+        /// Unique identifier of the resource.
         /// </summary>
         public readonly string Identifier;
         /// <summary>
-        /// : Name of the resource.
+        /// Name of the resource.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// : Specifies whether the secrets manager runs on a Harness delegate.
+        /// Specifies whether the secrets manager runs on a Harness delegate.
         /// </summary>
         public readonly bool OnDelegate;
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// : Reference to the Harness secret containing SSH credentials for the target host. Required if `on_delegate` is set to false.
+        /// SSH secret reference for the custom secrets manager, Computed if 'on_delegate' is false.
         /// </summary>
         public readonly string SshSecretRef;
         /// <summary>
-        /// : Tags to associate with the resource.
+        /// Tags to associate with the resource.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// : Host address where secrets will be managed. Required if `on_delegate` is set to false.
+        /// Host where the custom secrets manager is located, Computed if 'on_delegate' is false.
         /// </summary>
         public readonly string TargetHost;
         public readonly ImmutableArray<Outputs.GetConnectorCustomSecretManagerTemplateInputResult> TemplateInputs;
         /// <summary>
-        /// : Reference to the template used for managing secrets.
+        /// Reference to the template used for managing secrets.
         /// </summary>
         public readonly string TemplateRef;
         /// <summary>
-        /// : Timeout in seconds for secrets management operations.
+        /// Timeout in seconds for secrets management operations.
         /// </summary>
         public readonly int Timeout;
         /// <summary>
-        /// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+        /// Type of the custom secrets manager, typically set to 'CustomSecretManager'.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// : Version identifier of the secrets management template.
+        /// Version identifier of the secrets management template.
         /// </summary>
         public readonly string VersionLabel;
         /// <summary>
-        /// : Directory path on the target host where secrets management tasks are performed. Required if `on_delegate` is set to false.
+        /// The working directory for operations, Computed if 'on_delegate' is false.
         /// </summary>
         public readonly string WorkingDirectory;
 

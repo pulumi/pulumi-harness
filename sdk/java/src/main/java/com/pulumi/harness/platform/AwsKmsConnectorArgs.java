@@ -20,18 +20,33 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     public static final AwsKmsConnectorArgs Empty = new AwsKmsConnectorArgs();
 
     /**
+     * A reference to the Harness secret containing the ARN of the AWS KMS.
+     * 
+     */
+    @Import(name="arnPlaintext")
+    private @Nullable Output<String> arnPlaintext;
+
+    /**
+     * @return A reference to the Harness secret containing the ARN of the AWS KMS.
+     * 
+     */
+    public Optional<Output<String>> arnPlaintext() {
+        return Optional.ofNullable(this.arnPlaintext);
+    }
+
+    /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    @Import(name="arnRef", required=true)
-    private Output<String> arnRef;
+    @Import(name="arnRef")
+    private @Nullable Output<String> arnRef;
 
     /**
      * @return A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
-    public Output<String> arnRef() {
-        return this.arnRef;
+    public Optional<Output<String>> arnRef() {
+        return Optional.ofNullable(this.arnRef);
     }
 
     /**
@@ -202,6 +217,7 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
     private AwsKmsConnectorArgs() {}
 
     private AwsKmsConnectorArgs(AwsKmsConnectorArgs $) {
+        this.arnPlaintext = $.arnPlaintext;
         this.arnRef = $.arnRef;
         this.credentials = $.credentials;
         this.default_ = $.default_;
@@ -235,12 +251,33 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param arnPlaintext A reference to the Harness secret containing the ARN of the AWS KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arnPlaintext(@Nullable Output<String> arnPlaintext) {
+            $.arnPlaintext = arnPlaintext;
+            return this;
+        }
+
+        /**
+         * @param arnPlaintext A reference to the Harness secret containing the ARN of the AWS KMS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arnPlaintext(String arnPlaintext) {
+            return arnPlaintext(Output.of(arnPlaintext));
+        }
+
+        /**
          * @param arnRef A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
          * 
          * @return builder
          * 
          */
-        public Builder arnRef(Output<String> arnRef) {
+        public Builder arnRef(@Nullable Output<String> arnRef) {
             $.arnRef = arnRef;
             return this;
         }
@@ -507,9 +544,6 @@ public final class AwsKmsConnectorArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AwsKmsConnectorArgs build() {
-            if ($.arnRef == null) {
-                throw new MissingRequiredPropertyException("AwsKmsConnectorArgs", "arnRef");
-            }
             if ($.credentials == null) {
                 throw new MissingRequiredPropertyException("AwsKmsConnectorArgs", "credentials");
             }

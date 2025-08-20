@@ -44,7 +44,7 @@ public final class GetGitxWebhookResult {
      */
     private @Nullable String projectId;
     /**
-     * @return Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * @return Tags to associate with the resource.
      * 
      */
     private @Nullable List<String> tags;
@@ -93,7 +93,7 @@ public final class GetGitxWebhookResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+     * @return Tags to associate with the resource.
      * 
      */
     public List<String> tags() {

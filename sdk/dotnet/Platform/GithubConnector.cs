@@ -14,6 +14,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level github connector
     /// 
     /// ```sh
@@ -72,7 +74,7 @@ namespace Pulumi.Harness.Platform
         public Output<bool?> ExecuteOnDelegate { get; private set; } = null!;
 
         /// <summary>
-        /// Enable this flag for force deletion of github connector
+        /// Enable this flag for force deletion of service
         /// </summary>
         [Output("forceDelete")]
         public Output<bool> ForceDelete { get; private set; } = null!;
@@ -209,7 +211,7 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
-        /// Enable this flag for force deletion of github connector
+        /// Enable this flag for force deletion of service
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -313,7 +315,7 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? ExecuteOnDelegate { get; set; }
 
         /// <summary>
-        /// Enable this flag for force deletion of github connector
+        /// Enable this flag for force deletion of service
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }

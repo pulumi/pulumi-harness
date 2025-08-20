@@ -34,7 +34,7 @@ type LookupGitxWebhookArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -52,7 +52,7 @@ type LookupGitxWebhookResult struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -77,7 +77,7 @@ type LookupGitxWebhookOutputArgs struct {
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -130,7 +130,7 @@ func (o LookupGitxWebhookResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGitxWebhookResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource. These should match the tag value passed in the YAML; if this parameter is null or not passed, the tags specified in YAML should also be null.
+// Tags to associate with the resource.
 func (o LookupGitxWebhookResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGitxWebhookResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }

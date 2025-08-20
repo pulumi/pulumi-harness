@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Data source for retrieving a Harness Filter. This data source allows you to fetch filters of the following types: {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -91,6 +93,8 @@ export interface GetFiltersResult {
     readonly type: string;
 }
 /**
+ * Data source for retrieving a Harness Filter. This data source allows you to fetch filters of the following types: {Connector, DelegateProfile, Delegate, EnvironmentGroup, FileStore, Environment}
+ *
  * ## Example Usage
  *
  * ```typescript

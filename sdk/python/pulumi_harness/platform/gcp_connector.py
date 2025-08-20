@@ -408,6 +408,8 @@ class GcpConnector(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import account level gcp connector
 
         ```sh
@@ -450,6 +452,8 @@ class GcpConnector(pulumi.CustomResource):
         Resource for creating a Gcp connector.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level gcp connector
 

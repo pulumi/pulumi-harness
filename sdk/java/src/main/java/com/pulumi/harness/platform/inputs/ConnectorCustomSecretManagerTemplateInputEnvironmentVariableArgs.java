@@ -24,32 +24,16 @@ public final class ConnectorCustomSecretManagerTemplateInputEnvironmentVariableA
         return Optional.ofNullable(this.default_);
     }
 
-    /**
-     * : Name of the resource.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return : Name of the resource.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -97,44 +81,20 @@ public final class ConnectorCustomSecretManagerTemplateInputEnvironmentVariableA
             return default_(Output.of(default_));
         }
 
-        /**
-         * @param name : Name of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name : Name of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param type : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type : Type of the custom secrets manager, typically set to `CustomSecretManager`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

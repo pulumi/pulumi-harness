@@ -36,6 +36,11 @@ namespace Pulumi.Harness.Platform
     ///         CostEstimationEnabled = true,
     ///         ProviderConnector = test.Id,
     ///         RepositoryConnector = test.Id,
+    ///         Tags = new[]
+    ///         {
+    ///             "tag1",
+    ///             "tag2",
+    ///         },
     ///         TerraformVariables = new[]
     ///         {
     ///             new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs
@@ -108,6 +113,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// ```sh
     /// $ pulumi import harness:platform/workspace:Workspace example &lt;org_id&gt;/&lt;project_id&gt;/&lt;workspace_id&gt;
     /// ```
@@ -116,7 +123,7 @@ namespace Pulumi.Harness.Platform
     public partial class Workspace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Provider connector configured on the workspace
+        /// Provider connectors configured on the Workspace. Only one connector of a type is supported
         /// </summary>
         [Output("connectors")]
         public Output<ImmutableArray<Outputs.WorkspaceConnector>> Connectors { get; private set; } = null!;
@@ -286,7 +293,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.WorkspaceConnectorArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the workspace
+        /// Provider connectors configured on the Workspace. Only one connector of a type is supported
         /// </summary>
         public InputList<Inputs.WorkspaceConnectorArgs> Connectors
         {
@@ -454,7 +461,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.WorkspaceConnectorGetArgs>? _connectors;
 
         /// <summary>
-        /// Provider connector configured on the workspace
+        /// Provider connectors configured on the Workspace. Only one connector of a type is supported
         /// </summary>
         public InputList<Inputs.WorkspaceConnectorGetArgs> Connectors
         {

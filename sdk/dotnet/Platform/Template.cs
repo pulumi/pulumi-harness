@@ -14,6 +14,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Import
     /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
     /// Import account level template
     /// 
     /// ```sh
@@ -48,7 +50,7 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        /// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         /// </summary>
         [Output("forceDelete")]
         public Output<bool> ForceDelete { get; private set; } = null!;
@@ -66,7 +68,7 @@ namespace Pulumi.Harness.Platform
         public Output<Outputs.TemplateGitImportDetails?> GitImportDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
@@ -120,7 +122,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> TemplateYaml { get; private set; } = null!;
 
         /// <summary>
-        /// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        /// Version Label for Template.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -185,7 +187,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        /// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -203,7 +205,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.TemplateGitImportDetailsArgs>? GitImportDetails { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
@@ -263,7 +265,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? TemplateYaml { get; set; }
 
         /// <summary>
-        /// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        /// Version Label for Template.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -289,7 +291,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// When set to true, enables force deletion of the template. It will delete the Harness entity even if your pipelines or other entities reference it.
+        /// Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -307,7 +309,7 @@ namespace Pulumi.Harness.Platform
         public Input<Inputs.TemplateGitImportDetailsGetArgs>? GitImportDetails { get; set; }
 
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource. Cannot be changed once the resource is created. Must match the identifier in the template_yaml.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
@@ -367,7 +369,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? TemplateYaml { get; set; }
 
         /// <summary>
-        /// Version Label for Template. This should match the `versionLabel` specified in the template YAML.
+        /// Version Label for Template.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

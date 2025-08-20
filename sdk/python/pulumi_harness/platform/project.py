@@ -252,6 +252,8 @@ class Project(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Resource for creating a Harness project.
+
         ## Example Usage
 
         ```python
@@ -266,6 +268,8 @@ class Project(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using the organization id and the project id
 
@@ -289,6 +293,8 @@ class Project(pulumi.CustomResource):
                  args: ProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating a Harness project.
+
         ## Example Usage
 
         ```python
@@ -303,6 +309,8 @@ class Project(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import using the organization id and the project id
 

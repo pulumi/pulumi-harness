@@ -436,7 +436,27 @@ class Repo(pulumi.CustomResource):
         """
         Resource for creating a Harness Repo.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.Repo("test",
+            identifier="test_repo_123",
+            org_id="test_org_123",
+            project_id="test_project_123",
+            default_branch="main",
+            description="test_description_123",
+            sources=[{
+                "repo": "octocat/hello-worId",
+                "type": "github",
+            }])
+        ```
+
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import
 
@@ -477,7 +497,27 @@ class Repo(pulumi.CustomResource):
         """
         Resource for creating a Harness Repo.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        test = harness.platform.Repo("test",
+            identifier="test_repo_123",
+            org_id="test_org_123",
+            project_id="test_project_123",
+            default_branch="main",
+            description="test_description_123",
+            sources=[{
+                "repo": "octocat/hello-worId",
+                "type": "github",
+            }])
+        ```
+
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import
 

@@ -21,14 +21,14 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
     public static final GetInfraVariableSetPlainArgs Empty = new GetInfraVariableSetPlainArgs();
 
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     @Import(name="connectors")
     private @Nullable List<GetInfraVariableSetConnector> connectors;
 
     /**
-     * @return Provider connector configured on the variable set
+     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
      * 
      */
     public Optional<List<GetInfraVariableSetConnector>> connectors() {
@@ -36,14 +36,14 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      * 
      */
     @Import(name="environmentVariables")
     private @Nullable List<GetInfraVariableSetEnvironmentVariable> environmentVariables;
 
     /**
-     * @return Environment variables configured on the variable set
+     * @return Environment variables configured on the Variable Set
      * 
      */
     public Optional<List<GetInfraVariableSetEnvironmentVariable>> environmentVariables() {
@@ -51,14 +51,14 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Identifier of the Variable Set
+     * Unique identifier of the resource.
      * 
      */
     @Import(name="identifier", required=true)
     private String identifier;
 
     /**
-     * @return Identifier of the Variable Set
+     * @return Unique identifier of the resource.
      * 
      */
     public String identifier() {
@@ -66,14 +66,14 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Name of the Variable Set
+     * Name of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Name of the Variable Set
+     * @return Name of the resource.
      * 
      */
     public Optional<String> name() {
@@ -81,14 +81,14 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Organization Identifier
+     * Unique identifier of the organization.
      * 
      */
     @Import(name="orgId")
     private @Nullable String orgId;
 
     /**
-     * @return Organization Identifier
+     * @return Unique identifier of the organization.
      * 
      */
     public Optional<String> orgId() {
@@ -96,14 +96,14 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Project Identifier
+     * Unique identifier of the project.
      * 
      */
     @Import(name="projectId")
     private @Nullable String projectId;
 
     /**
-     * @return Project Identifier
+     * @return Unique identifier of the project.
      * 
      */
     public Optional<String> projectId() {
@@ -156,7 +156,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param connectors Provider connector configured on the variable set
+         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param connectors Provider connector configured on the variable set
+         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param environmentVariables Environment variables configured on the variable set
+         * @param environmentVariables Environment variables configured on the Variable Set
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param environmentVariables Environment variables configured on the variable set
+         * @param environmentVariables Environment variables configured on the Variable Set
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param identifier Identifier of the Variable Set
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name Name of the Variable Set
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param orgId Organization Identifier
+         * @param orgId Unique identifier of the organization.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class GetInfraVariableSetPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param projectId Project Identifier
+         * @param projectId Unique identifier of the project.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Chaos Infrastructure.
  * 
- * ## Example to create Chaos Infrastructure
+ * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Sample resource for chaos infrastructure
  *         var example = new ChaosInfrastructure("example", ChaosInfrastructureArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
@@ -61,7 +62,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Import using the Chaos Infra ID.
+ * The `pulumi import` command can be used, for example:
+ * 
+ * Import using the Harness chaos_infra_id.
  * 
  * ```sh
  * $ pulumi import harness:index/chaosInfrastructure:ChaosInfrastructure example &lt;chaos_infra_id&gt;

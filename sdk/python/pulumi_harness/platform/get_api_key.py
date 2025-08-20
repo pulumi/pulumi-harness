@@ -81,7 +81,7 @@ class GetApiKeyResult:
     @pulumi.getter(name="defaultTimeToExpireToken")
     def default_time_to_expire_token(self) -> Optional[_builtins.int]:
         """
-        Default expiration time of the Token within API Key
+        Expiry time of the apiKey
         """
         return pulumi.get(self, "default_time_to_expire_token")
 
@@ -129,7 +129,7 @@ class GetApiKeyResult:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> _builtins.str:
         """
-        Parent Entity Identifier of the API Key
+        Parent Identifier for the Entity
         """
         return pulumi.get(self, "parent_id")
 
@@ -179,31 +179,16 @@ def get_api_key(account_id: Optional[_builtins.str] = None,
                 project_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiKeyResult:
     """
-    Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    test = harness.platform.get_api_key(identifier="test_apikey",
-        name="test_apikey",
-        parent_id="parent_id",
-        apikey_type="USER",
-        account_id="account_id",
-        org_id="org_id",
-        project_id="project_id")
-    ```
+    Data source for retrieving a Harness ApiKey.
 
 
     :param _builtins.str account_id: Account Identifier for the Entity
     :param _builtins.str apikey_type: Type of the API Key
-    :param _builtins.int default_time_to_expire_token: Default expiration time of the Token within API Key
+    :param _builtins.int default_time_to_expire_token: Expiry time of the apiKey
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param _builtins.str parent_id: Parent Entity Identifier of the API Key
+    :param _builtins.str parent_id: Parent Identifier for the Entity
     :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()
@@ -240,31 +225,16 @@ def get_api_key_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                        project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiKeyResult]:
     """
-    Use this data source to retrieve information about a Harness API Key. API Keys are used to authenticate and authorize access to Harness Platform resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harness as harness
-
-    test = harness.platform.get_api_key(identifier="test_apikey",
-        name="test_apikey",
-        parent_id="parent_id",
-        apikey_type="USER",
-        account_id="account_id",
-        org_id="org_id",
-        project_id="project_id")
-    ```
+    Data source for retrieving a Harness ApiKey.
 
 
     :param _builtins.str account_id: Account Identifier for the Entity
     :param _builtins.str apikey_type: Type of the API Key
-    :param _builtins.int default_time_to_expire_token: Default expiration time of the Token within API Key
+    :param _builtins.int default_time_to_expire_token: Expiry time of the apiKey
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param _builtins.str parent_id: Parent Entity Identifier of the API Key
+    :param _builtins.str parent_id: Parent Identifier for the Entity
     :param _builtins.str project_id: Unique identifier of the project.
     """
     __args__ = dict()

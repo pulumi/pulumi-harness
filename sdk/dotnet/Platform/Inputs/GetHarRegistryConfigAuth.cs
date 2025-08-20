@@ -12,6 +12,20 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class GetHarRegistryConfigAuthArgs : global::Pulumi.InvokeArgs
     {
+        [Input("accessKey")]
+        private string? _accessKey;
+        public string? AccessKey
+        {
+            get => _accessKey;
+            set => _accessKey = value;
+        }
+
+        [Input("accessKeyIdentifier")]
+        public string? AccessKeyIdentifier { get; set; }
+
+        [Input("accessKeySecretPath")]
+        public string? AccessKeySecretPath { get; set; }
+
         /// <summary>
         /// Type of authentication (UserPassword, Anonymous)
         /// </summary>
@@ -19,10 +33,28 @@ namespace Pulumi.Harness.Platform.Inputs
         public string AuthType { get; set; } = null!;
 
         /// <summary>
-        /// User password authentication details
+        /// Secret identifier for UserPassword auth type
         /// </summary>
-        [Input("userPassword")]
-        public Inputs.GetHarRegistryConfigAuthUserPasswordArgs? UserPassword { get; set; }
+        [Input("secretIdentifier")]
+        public string? SecretIdentifier { get; set; }
+
+        [Input("secretKeyIdentifier")]
+        public string? SecretKeyIdentifier { get; set; }
+
+        [Input("secretKeySecretPath")]
+        public string? SecretKeySecretPath { get; set; }
+
+        /// <summary>
+        /// Secret space path for UserPassword auth type
+        /// </summary>
+        [Input("secretSpacePath")]
+        public string? SecretSpacePath { get; set; }
+
+        /// <summary>
+        /// User name for UserPassword auth type
+        /// </summary>
+        [Input("userName")]
+        public string? UserName { get; set; }
 
         public GetHarRegistryConfigAuthArgs()
         {

@@ -32,14 +32,14 @@ public final class GetConnectorCustomSecretManagerPlainArgs extends com.pulumi.r
     }
 
     /**
-     * : Unique identifier of the resource.
+     * Unique identifier of the resource.
      * 
      */
     @Import(name="identifier", required=true)
     private String identifier;
 
     /**
-     * @return : Unique identifier of the resource.
+     * @return Unique identifier of the resource.
      * 
      */
     public String identifier() {
@@ -47,30 +47,46 @@ public final class GetConnectorCustomSecretManagerPlainArgs extends com.pulumi.r
     }
 
     /**
-     * : Name of the resource.
+     * Name of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return : Name of the resource.
+     * @return Name of the resource.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Unique identifier of the organization.
+     * 
+     */
     @Import(name="orgId")
     private @Nullable String orgId;
 
+    /**
+     * @return Unique identifier of the organization.
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Unique identifier of the project.
+     * 
+     */
     @Import(name="projectId")
     private @Nullable String projectId;
 
+    /**
+     * @return Unique identifier of the project.
+     * 
+     */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
@@ -125,7 +141,7 @@ public final class GetConnectorCustomSecretManagerPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param identifier : Unique identifier of the resource.
+         * @param identifier Unique identifier of the resource.
          * 
          * @return builder
          * 
@@ -136,7 +152,7 @@ public final class GetConnectorCustomSecretManagerPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param name : Name of the resource.
+         * @param name Name of the resource.
          * 
          * @return builder
          * 
@@ -146,11 +162,23 @@ public final class GetConnectorCustomSecretManagerPlainArgs extends com.pulumi.r
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of the organization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable String orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param projectId Unique identifier of the project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;

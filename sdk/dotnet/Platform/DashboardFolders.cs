@@ -22,9 +22,9 @@ namespace Pulumi.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Harness.Platform.DashboardFolders("example", new()
+    ///     var folder = new Harness.Platform.DashboardFolders("folder", new()
     ///     {
-    ///         Name = "Example Folder",
+    ///         Name = "name",
     ///     });
     /// 
     /// });

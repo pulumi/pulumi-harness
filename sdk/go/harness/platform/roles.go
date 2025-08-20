@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for creating roles.
+//
 // ## Example Usage
 //
 // ```go
@@ -50,6 +52,8 @@ import (
 // ```
 //
 // ## Import
+//
+// The `pulumi import` command can be used, for example:
 //
 // # Import account level roles
 //

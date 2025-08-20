@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Ami{}
 	case "harness:service/codedeploy:Codedeploy":
 		r = &Codedeploy{}
+	case "harness:service/discoveryAgent:DiscoveryAgent":
+		r = &DiscoveryAgent{}
+	case "harness:service/discoverySetting:DiscoverySetting":
+		r = &DiscoverySetting{}
 	case "harness:service/ecs:Ecs":
 		r = &Ecs{}
 	case "harness:service/helm:Helm":
@@ -60,6 +64,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"service/codedeploy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"service/discoveryAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"service/discoverySetting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -8,6 +8,55 @@ import * as utilities from "../utilities";
 
 /**
  * Resource for managing a Harness Gitops Applicationset. Please note this resource is in an alpha/experimental state and is subject to change.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const testFixed = new harness.platform.GitopsApplicationset("test_fixed", {
+ *     orgId: "default",
+ *     projectId: "projectId",
+ *     agentId: "account.agentuseast1",
+ *     upsert: true,
+ *     applicationset: {
+ *         metadata: {
+ *             name: "tf-appset",
+ *             namespace: "argocd",
+ *         },
+ *         spec: {
+ *             goTemplate: true,
+ *             generators: [{
+ *                 clusters: [{
+ *                     enabled: true,
+ *                 }],
+ *             }],
+ *             template: {
+ *                 metadata: {
+ *                     name: "{{.name}}-guestbook",
+ *                     labels: {
+ *                         env: "dev",
+ *                         "harness.io/serviceRef": "svc1",
+ *                     },
+ *                 },
+ *                 spec: {
+ *                     project: "default",
+ *                     sources: [{
+ *                         repoUrl: "https://github.com/argoproj/argocd-example-apps.git",
+ *                         path: "helm-guestbook",
+ *                         targetRevision: "HEAD",
+ *                     }],
+ *                     destination: {
+ *                         server: "{{.url}}",
+ *                         namespace: "app-ns-{{.name}}",
+ *                     },
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class GitopsApplicationset extends pulumi.CustomResource {
     /**

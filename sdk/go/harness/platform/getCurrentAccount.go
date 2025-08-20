@@ -11,31 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving information on the current Harness account.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.GetCurrentAccount(ctx, &platform.GetCurrentAccountArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Data source for retrieving information about the current Harness account
 func GetCurrentAccount(ctx *pulumi.Context, args *GetCurrentAccountArgs, opts ...pulumi.InvokeOption) (*GetCurrentAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentAccountResult

@@ -16,6 +16,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for creating an Azure Artifacts connector.
+ * 
+ */
 @ResourceType(type="harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts")
 public class ConnectorAzureArtifacts extends com.pulumi.resources.CustomResource {
     /**

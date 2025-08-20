@@ -97,7 +97,7 @@ namespace Pulumi.Harness.Platform
     public sealed class GetEnvironmentServiceOverridesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        /// The env ID to which the overrides associated.
         /// </summary>
         [Input("envId", required: true)]
         public string EnvId { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Harness.Platform
         public string? ProjectId { get; set; }
 
         /// <summary>
-        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        /// The service ID to which the overrides applies.
         /// </summary>
         [Input("serviceId")]
         public string? ServiceId { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Harness.Platform
     public sealed class GetEnvironmentServiceOverridesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        /// The env ID to which the overrides associated.
         /// </summary>
         [Input("envId", required: true)]
         public Input<string> EnvId { get; set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        /// The service ID to which the overrides applies.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.Harness.Platform
     public sealed class GetEnvironmentServiceOverridesResult
     {
         /// <summary>
-        /// The env Id associated with the overrides. To reference an environment at the organization scope, prefix 'org' to the expression: org.{env*id}. To reference an environment at the account scope, prefix 'account' to the expression: account.{env*id}).
+        /// The env ID to which the overrides associated.
         /// </summary>
         public readonly string EnvId;
         /// <summary>
@@ -195,7 +195,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// The service Id associated with the overrides. To reference a service at the organization scope, prefix 'org' to the expression: org.{service*id}. To reference a service at the account scope, prefix 'account' to the expression: account.{service*id}).
+        /// The service ID to which the overrides applies.
         /// </summary>
         public readonly string? ServiceId;
         /// <summary>

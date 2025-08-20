@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManualFreezeFreezeWindow {
     /**
-     * @return Duration of the freeze
+     * @return Duration of the freeze window
      * 
      */
     private @Nullable String duration;
     /**
-     * @return End time of the freeze
+     * @return End Time of the freeze window
      * 
      */
     private @Nullable String endTime;
@@ -29,26 +29,26 @@ public final class ManualFreezeFreezeWindow {
      */
     private @Nullable List<ManualFreezeFreezeWindowRecurrence> recurrences;
     /**
-     * @return Start time of the freeze
+     * @return Start Time of the freeze window
      * 
      */
     private @Nullable String startTime;
     /**
-     * @return Timezone
+     * @return Time zone of the freeze window
      * 
      */
     private @Nullable String timeZone;
 
     private ManualFreezeFreezeWindow() {}
     /**
-     * @return Duration of the freeze
+     * @return Duration of the freeze window
      * 
      */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return End time of the freeze
+     * @return End Time of the freeze window
      * 
      */
     public Optional<String> endTime() {
@@ -62,14 +62,14 @@ public final class ManualFreezeFreezeWindow {
         return this.recurrences == null ? List.of() : this.recurrences;
     }
     /**
-     * @return Start time of the freeze
+     * @return Start Time of the freeze window
      * 
      */
     public Optional<String> startTime() {
         return Optional.ofNullable(this.startTime);
     }
     /**
-     * @return Timezone
+     * @return Time zone of the freeze window
      * 
      */
     public Optional<String> timeZone() {

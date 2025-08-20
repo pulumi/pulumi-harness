@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DashboardFolders("example", DashboardFoldersArgs.builder()
- *             .name("Example Folder")
+ *         var folder = new DashboardFolders("folder", DashboardFoldersArgs.builder()
+ *             .name("name")
  *             .build());
  * 
  *     }

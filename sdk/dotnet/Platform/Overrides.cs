@@ -9,6 +9,31 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// Resource for creating a Harness Override V2.
+    /// 
+    /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
+    /// Import account level override
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/overrides:Overrides example &lt;override_id&gt;
+    /// ```
+    /// 
+    /// Import org level override
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/overrides:Overrides example &lt;org_id&gt;/&lt;override_id&gt;
+    /// ```
+    /// 
+    /// Import project level override
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/overrides:Overrides example &lt;org_id&gt;/&lt;project_id&gt;/&lt;override_id&gt;
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:platform/overrides:Overrides")]
     public partial class Overrides : global::Pulumi.CustomResource
     {

@@ -270,6 +270,8 @@ class Variables(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Resource for creating a Harness Variables.
+
         ## Example Usage
 
         ```python
@@ -289,6 +291,8 @@ class Variables(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level variables
 
@@ -325,6 +329,8 @@ class Variables(pulumi.CustomResource):
                  args: VariablesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating a Harness Variables.
+
         ## Example Usage
 
         ```python
@@ -344,6 +350,8 @@ class Variables(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level variables
 

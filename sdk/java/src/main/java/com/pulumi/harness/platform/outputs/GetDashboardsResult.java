@@ -30,7 +30,7 @@ public final class GetDashboardsResult {
      */
     private List<String> dataSources;
     /**
-     * @return Description of the Dashboard.
+     * @return Description of the resource.
      * 
      */
     private String description;
@@ -44,6 +44,10 @@ public final class GetDashboardsResult {
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     private @Nullable String identifier;
     /**
      * @return Data Models within the Dashboard.
@@ -51,7 +55,7 @@ public final class GetDashboardsResult {
      */
     private List<String> models;
     /**
-     * @return Name of the Dashboard.
+     * @return Name of the resource.
      * 
      */
     private @Nullable String name;
@@ -60,6 +64,10 @@ public final class GetDashboardsResult {
      * 
      */
     private String resourceIdentifier;
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     private List<String> tags;
     /**
      * @return Title of the Dashboard.
@@ -67,7 +75,7 @@ public final class GetDashboardsResult {
      */
     private String title;
     /**
-     * @return Type of the dashboard.
+     * @return Resource identifier of the dashboard.
      * 
      */
     private String type;
@@ -100,7 +108,7 @@ public final class GetDashboardsResult {
         return this.dataSources;
     }
     /**
-     * @return Description of the Dashboard.
+     * @return Description of the resource.
      * 
      */
     public String description() {
@@ -120,6 +128,10 @@ public final class GetDashboardsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the resource.
+     * 
+     */
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }
@@ -131,7 +143,7 @@ public final class GetDashboardsResult {
         return this.models;
     }
     /**
-     * @return Name of the Dashboard.
+     * @return Name of the resource.
      * 
      */
     public Optional<String> name() {
@@ -144,6 +156,10 @@ public final class GetDashboardsResult {
     public String resourceIdentifier() {
         return this.resourceIdentifier;
     }
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
@@ -155,7 +171,7 @@ public final class GetDashboardsResult {
         return this.title;
     }
     /**
-     * @return Type of the dashboard.
+     * @return Resource identifier of the dashboard.
      * 
      */
     public String type() {

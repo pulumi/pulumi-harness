@@ -37,6 +37,9 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceArgs {
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     gitDetails?: inputs.platform.GetServiceGitDetails;
     /**
      * Unique identifier of the resource.
@@ -64,6 +67,9 @@ export interface GetServiceResult {
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     readonly gitDetails: outputs.platform.GetServiceGitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -125,6 +131,9 @@ export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceOutputArgs {
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     gitDetails?: pulumi.Input<inputs.platform.GetServiceGitDetailsArgs>;
     /**
      * Unique identifier of the resource.

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Datasource for looking up a Physical data center connector.
+// Datasource for looking up a Pdc connector.
 //
 // ## Example Usage
 //
@@ -66,7 +66,7 @@ type LookupConnectorPdcResult struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
-	// Hosts to be provided.
+	// Host of the Physical data centers.
 	Hosts []GetConnectorPdcHost `pulumi:"hosts"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -132,7 +132,7 @@ func (o LookupConnectorPdcResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorPdcResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Hosts to be provided.
+// Host of the Physical data centers.
 func (o LookupConnectorPdcResultOutput) Hosts() GetConnectorPdcHostArrayOutput {
 	return o.ApplyT(func(v LookupConnectorPdcResult) []GetConnectorPdcHost { return v.Hosts }).(GetConnectorPdcHostArrayOutput)
 }

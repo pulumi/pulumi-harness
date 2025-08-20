@@ -45,6 +45,9 @@ class GetProviderResult:
     @_builtins.property
     @pulumi.getter
     def identifier(self) -> _builtins.str:
+        """
+        The identifier of the provider entity.
+        """
         return pulumi.get(self, "identifier")
 
 
@@ -61,7 +64,10 @@ class AwaitableGetProviderResult(GetProviderResult):
 def get_provider(identifier: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProviderResult:
     """
-    Use this data source to access information about an existing resource.
+    Data source for Harness Provider.
+
+
+    :param _builtins.str identifier: The identifier of the provider entity.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -74,7 +80,10 @@ def get_provider(identifier: Optional[_builtins.str] = None,
 def get_provider_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProviderResult]:
     """
-    Use this data source to access information about an existing resource.
+    Data source for Harness Provider.
+
+
+    :param _builtins.str identifier: The identifier of the provider entity.
     """
     __args__ = dict()
     __args__['identifier'] = identifier

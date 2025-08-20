@@ -32,6 +32,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
+ * The `pulumi import` command can be used, for example:
+ *
  * Import account level folder
  *
  * ```sh
@@ -107,7 +109,7 @@ export class FileStoreFolder extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string | undefined>;
     /**
-     * Folder parent identifier on Harness File Store. If the file is at the root level, the parentIdentifier will be `Root`.
+     * Folder parent identifier on Harness File Store
      */
     public readonly parentIdentifier!: pulumi.Output<string>;
     /**
@@ -205,7 +207,7 @@ export interface FileStoreFolderState {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Folder parent identifier on Harness File Store. If the file is at the root level, the parentIdentifier will be `Root`.
+     * Folder parent identifier on Harness File Store
      */
     parentIdentifier?: pulumi.Input<string>;
     /**
@@ -243,7 +245,7 @@ export interface FileStoreFolderArgs {
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Folder parent identifier on Harness File Store. If the file is at the root level, the parentIdentifier will be `Root`.
+     * Folder parent identifier on Harness File Store
      */
     parentIdentifier: pulumi.Input<string>;
     /**

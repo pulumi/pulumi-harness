@@ -12,6 +12,24 @@ namespace Pulumi.Harness.Platform.Inputs
 
     public sealed class HarRegistryConfigAuthArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessKeyIdentifier")]
+        public Input<string>? AccessKeyIdentifier { get; set; }
+
+        [Input("accessKeySecretPath")]
+        public Input<string>? AccessKeySecretPath { get; set; }
+
         /// <summary>
         /// Type of authentication (UserPassword, Anonymous)
         /// </summary>
@@ -23,6 +41,12 @@ namespace Pulumi.Harness.Platform.Inputs
         /// </summary>
         [Input("secretIdentifier")]
         public Input<string>? SecretIdentifier { get; set; }
+
+        [Input("secretKeyIdentifier")]
+        public Input<string>? SecretKeyIdentifier { get; set; }
+
+        [Input("secretKeySecretPath")]
+        public Input<string>? SecretKeySecretPath { get; set; }
 
         /// <summary>
         /// Secret space path for UserPassword auth type

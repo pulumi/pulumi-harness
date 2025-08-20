@@ -436,7 +436,30 @@ class Overrides(pulumi.CustomResource):
                  yaml: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a Overrides resource with the given unique name, props, and options.
+        Resource for creating a Harness Override V2.
+
+        ## Import
+
+        The `pulumi import` command can be used, for example:
+
+        Import account level override
+
+        ```sh
+        $ pulumi import harness:platform/overrides:Overrides example <override_id>
+        ```
+
+        Import org level override
+
+        ```sh
+        $ pulumi import harness:platform/overrides:Overrides example <org_id>/<override_id>
+        ```
+
+        Import project level override
+
+        ```sh
+        $ pulumi import harness:platform/overrides:Overrides example <org_id>/<project_id>/<override_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID to which the overrides are associated.
@@ -459,7 +482,30 @@ class Overrides(pulumi.CustomResource):
                  args: OverridesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Overrides resource with the given unique name, props, and options.
+        Resource for creating a Harness Override V2.
+
+        ## Import
+
+        The `pulumi import` command can be used, for example:
+
+        Import account level override
+
+        ```sh
+        $ pulumi import harness:platform/overrides:Overrides example <override_id>
+        ```
+
+        Import org level override
+
+        ```sh
+        $ pulumi import harness:platform/overrides:Overrides example <org_id>/<override_id>
+        ```
+
+        Import project level override
+
+        ```sh
+        $ pulumi import harness:platform/overrides:Overrides example <org_id>/<project_id>/<override_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param OverridesArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

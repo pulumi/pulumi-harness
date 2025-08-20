@@ -365,6 +365,8 @@ class Triggers(pulumi.CustomResource):
                  yaml: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Resource for creating triggers in Harness.
+
         ## Example Usage
 
         ```python
@@ -411,6 +413,8 @@ class Triggers(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import trigger
 
@@ -438,6 +442,8 @@ class Triggers(pulumi.CustomResource):
                  args: TriggersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for creating triggers in Harness.
+
         ## Example Usage
 
         ```python
@@ -484,6 +490,8 @@ class Triggers(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import trigger
 

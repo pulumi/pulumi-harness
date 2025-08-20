@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * const test = harness.platform.getToken({
  *     identifier: "test_token",
  *     parentId: "apikey_parent_id",
+ *     accountId: "account_id",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     apikeyId: "apikey_id",
@@ -199,6 +200,7 @@ export interface GetTokenResult {
  * const test = harness.platform.getToken({
  *     identifier: "test_token",
  *     parentId: "apikey_parent_id",
+ *     accountId: "account_id",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     apikeyId: "apikey_id",

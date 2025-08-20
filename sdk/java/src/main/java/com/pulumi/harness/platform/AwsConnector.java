@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * The `pulumi import` command can be used, for example:
+ * 
  * Import account level aws connector
  * 
  * ```sh
@@ -219,14 +221,14 @@ public class AwsConnector extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Authentication using Harness OIDC.
+     * Authentication using harness oidc.
      * 
      */
     @Export(name="oidcAuthentication", refs={AwsConnectorOidcAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ AwsConnectorOidcAuthentication> oidcAuthentication;
 
     /**
-     * @return Authentication using Harness OIDC.
+     * @return Authentication using harness oidc.
      * 
      */
     public Output<Optional<AwsConnectorOidcAuthentication>> oidcAuthentication() {

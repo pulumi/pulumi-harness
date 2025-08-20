@@ -27,7 +27,10 @@ class GetAwsKmsConnectorResult:
     """
     A collection of values returned by getAwsKmsConnector.
     """
-    def __init__(__self__, arn_ref=None, credentials=None, default=None, delegate_selectors=None, description=None, execute_on_delegate=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, tags=None):
+    def __init__(__self__, arn_plaintext=None, arn_ref=None, credentials=None, default=None, delegate_selectors=None, description=None, execute_on_delegate=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, tags=None):
+        if arn_plaintext and not isinstance(arn_plaintext, str):
+            raise TypeError("Expected argument 'arn_plaintext' to be a str")
+        pulumi.set(__self__, "arn_plaintext", arn_plaintext)
         if arn_ref and not isinstance(arn_ref, str):
             raise TypeError("Expected argument 'arn_ref' to be a str")
         pulumi.set(__self__, "arn_ref", arn_ref)
@@ -67,6 +70,11 @@ class GetAwsKmsConnectorResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+
+    @_builtins.property
+    @pulumi.getter(name="arnPlaintext")
+    def arn_plaintext(self) -> _builtins.str:
+        return pulumi.get(self, "arn_plaintext")
 
     @_builtins.property
     @pulumi.getter(name="arnRef")
@@ -179,6 +187,7 @@ class AwaitableGetAwsKmsConnectorResult(GetAwsKmsConnectorResult):
         if False:
             yield self
         return GetAwsKmsConnectorResult(
+            arn_plaintext=self.arn_plaintext,
             arn_ref=self.arn_ref,
             credentials=self.credentials,
             default=self.default,
@@ -200,6 +209,8 @@ def get_aws_kms_connector(identifier: Optional[_builtins.str] = None,
                           project_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsKmsConnectorResult:
     """
+    Datasource for looking up an AWS KMS connector.
+
     ## Example Usage
 
     ```python
@@ -224,6 +235,7 @@ def get_aws_kms_connector(identifier: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('harness:platform/getAwsKmsConnector:getAwsKmsConnector', __args__, opts=opts, typ=GetAwsKmsConnectorResult).value
 
     return AwaitableGetAwsKmsConnectorResult(
+        arn_plaintext=pulumi.get(__ret__, 'arn_plaintext'),
         arn_ref=pulumi.get(__ret__, 'arn_ref'),
         credentials=pulumi.get(__ret__, 'credentials'),
         default=pulumi.get(__ret__, 'default'),
@@ -243,6 +255,8 @@ def get_aws_kms_connector_output(identifier: Optional[pulumi.Input[_builtins.str
                                  project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsKmsConnectorResult]:
     """
+    Datasource for looking up an AWS KMS connector.
+
     ## Example Usage
 
     ```python
@@ -266,6 +280,7 @@ def get_aws_kms_connector_output(identifier: Optional[pulumi.Input[_builtins.str
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getAwsKmsConnector:getAwsKmsConnector', __args__, opts=opts, typ=GetAwsKmsConnectorResult)
     return __ret__.apply(lambda __response__: GetAwsKmsConnectorResult(
+        arn_plaintext=pulumi.get(__response__, 'arn_plaintext'),
         arn_ref=pulumi.get(__response__, 'arn_ref'),
         credentials=pulumi.get(__response__, 'credentials'),
         default=pulumi.get(__response__, 'default'),

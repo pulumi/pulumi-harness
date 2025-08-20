@@ -7,9 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
+ * Resource for creating an AWS Secret Manager connector.
  *
  * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
  *
  * Import account level aws secret manager connector
  *
@@ -98,7 +100,7 @@ export class AwsSecretManagerConnector extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      */
     public readonly recoveryWindowInDays!: pulumi.Output<number | undefined>;
     /**
@@ -223,7 +225,7 @@ export interface AwsSecretManagerConnectorState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      */
     recoveryWindowInDays?: pulumi.Input<number>;
     /**
@@ -289,7 +291,7 @@ export interface AwsSecretManagerConnectorArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      */
     recoveryWindowInDays?: pulumi.Input<number>;
     /**

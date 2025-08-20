@@ -13,8 +13,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = harness.platform.getDashboardFolders({
- *     id: "your_folder_id",
+ * const folder = harness.platform.getDashboardFolders({
+ *     id: "id",
  * });
  * ```
  */
@@ -35,9 +35,12 @@ export interface GetDashboardFoldersArgs {
      * Identifier of the folder.
      */
     id: string;
+    /**
+     * Unique identifier of the resource.
+     */
     identifier?: string;
     /**
-     * Name of the folder.
+     * Name of the resource.
      */
     name?: string;
 }
@@ -50,16 +53,25 @@ export interface GetDashboardFoldersResult {
      * Created DateTime of the folder.
      */
     readonly createdAt: string;
+    /**
+     * Description of the resource.
+     */
     readonly description: string;
     /**
      * Identifier of the folder.
      */
     readonly id: string;
+    /**
+     * Unique identifier of the resource.
+     */
     readonly identifier?: string;
     /**
-     * Name of the folder.
+     * Name of the resource.
      */
     readonly name?: string;
+    /**
+     * Tags to associate with the resource.
+     */
     readonly tags: string[];
 }
 /**
@@ -71,8 +83,8 @@ export interface GetDashboardFoldersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const example = harness.platform.getDashboardFolders({
- *     id: "your_folder_id",
+ * const folder = harness.platform.getDashboardFolders({
+ *     id: "id",
  * });
  * ```
  */
@@ -93,9 +105,12 @@ export interface GetDashboardFoldersOutputArgs {
      * Identifier of the folder.
      */
     id: pulumi.Input<string>;
+    /**
+     * Unique identifier of the resource.
+     */
     identifier?: pulumi.Input<string>;
     /**
-     * Name of the folder.
+     * Name of the resource.
      */
     name?: pulumi.Input<string>;
 }

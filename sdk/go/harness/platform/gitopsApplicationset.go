@@ -13,6 +13,76 @@ import (
 )
 
 // Resource for managing a Harness Gitops Applicationset. Please note this resource is in an alpha/experimental state and is subject to change.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewGitopsApplicationset(ctx, "test_fixed", &platform.GitopsApplicationsetArgs{
+//				OrgId:     pulumi.String("default"),
+//				ProjectId: pulumi.String("projectId"),
+//				AgentId:   pulumi.String("account.agentuseast1"),
+//				Upsert:    pulumi.Bool(true),
+//				Applicationset: &platform.GitopsApplicationsetApplicationsetArgs{
+//					Metadata: &platform.GitopsApplicationsetApplicationsetMetadataArgs{
+//						Name:      pulumi.String("tf-appset"),
+//						Namespace: pulumi.String("argocd"),
+//					},
+//					Spec: &platform.GitopsApplicationsetApplicationsetSpecArgs{
+//						GoTemplate: pulumi.Bool(true),
+//						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
+//							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
+//								Clusters: platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterArray{
+//									&platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterArgs{
+//										Enabled: pulumi.Bool(true),
+//									},
+//								},
+//							},
+//						},
+//						Template: &platform.GitopsApplicationsetApplicationsetSpecTemplateArgs{
+//							Metadata: &platform.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{
+//								Name: pulumi.String("{{.name}}-guestbook"),
+//								Labels: pulumi.StringMap{
+//									"env":                   pulumi.String("dev"),
+//									"harness.io/serviceRef": pulumi.String("svc1"),
+//								},
+//							},
+//							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
+//								Project: pulumi.String("default"),
+//								Sources: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
+//									&platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{
+//										RepoUrl:        pulumi.String("https://github.com/argoproj/argocd-example-apps.git"),
+//										Path:           pulumi.String("helm-guestbook"),
+//										TargetRevision: pulumi.String("HEAD"),
+//									},
+//								},
+//								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
+//									Server:    pulumi.String("{{.url}}"),
+//									Namespace: pulumi.String("app-ns-{{.name}}"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type GitopsApplicationset struct {
 	pulumi.CustomResourceState
 

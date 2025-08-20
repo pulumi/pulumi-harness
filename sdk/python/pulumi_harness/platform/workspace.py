@@ -52,7 +52,7 @@ class WorkspaceArgs:
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
         :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
         :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]] connectors: Provider connector configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
@@ -206,7 +206,7 @@ class WorkspaceArgs:
     @pulumi.getter
     def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]:
         """
-        Provider connector configured on the workspace
+        Provider connectors configured on the Workspace. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
@@ -380,7 +380,7 @@ class _WorkspaceState:
                  variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Workspace resources.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]] connectors: Provider connector configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
         :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -448,7 +448,7 @@ class _WorkspaceState:
     @pulumi.getter
     def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]:
         """
-        Provider connector configured on the workspace
+        Provider connectors configured on the Workspace. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
@@ -748,6 +748,10 @@ class Workspace(pulumi.CustomResource):
             cost_estimation_enabled=True,
             provider_connector=test["id"],
             repository_connector=test["id"],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
             terraform_variables=[
                 {
                     "key": "key1",
@@ -803,13 +807,15 @@ class Workspace(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         ```sh
         $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connector configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
         :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -856,6 +862,10 @@ class Workspace(pulumi.CustomResource):
             cost_estimation_enabled=True,
             provider_connector=test["id"],
             repository_connector=test["id"],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
             terraform_variables=[
                 {
                     "key": "key1",
@@ -910,6 +920,8 @@ class Workspace(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         ```sh
         $ pulumi import harness:platform/workspace:Workspace example <org_id>/<project_id>/<workspace_id>
@@ -1040,7 +1052,7 @@ class Workspace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connector configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
         :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -1091,7 +1103,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter
     def connectors(self) -> pulumi.Output[Optional[Sequence['outputs.WorkspaceConnector']]]:
         """
-        Provider connector configured on the workspace
+        Provider connectors configured on the Workspace. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 

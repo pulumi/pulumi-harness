@@ -68,6 +68,9 @@ class GetServiceResult:
     @_builtins.property
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> 'outputs.GetServiceGitDetailsResult':
+        """
+        Contains parameters related to Git Experience for remote entities
+        """
         return pulumi.get(self, "git_details")
 
     @_builtins.property
@@ -165,6 +168,7 @@ def get_service(git_details: Optional[Union['GetServiceGitDetailsArgs', 'GetServ
     ```
 
 
+    :param Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -210,6 +214,7 @@ def get_service_output(git_details: Optional[pulumi.Input[Optional[Union['GetSer
     ```
 
 
+    :param Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

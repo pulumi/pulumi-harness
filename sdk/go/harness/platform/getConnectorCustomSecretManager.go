@@ -11,31 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupConnectorCustomSecretManager(ctx, &platform.LookupConnectorCustomSecretManagerArgs{
-//				Identifier: "identifier",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// Datasource for looking up a Custom Secret Manager connector.
 func LookupConnectorCustomSecretManager(ctx *pulumi.Context, args *LookupConnectorCustomSecretManagerArgs, opts ...pulumi.InvokeOption) (*LookupConnectorCustomSecretManagerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorCustomSecretManagerResult
@@ -50,11 +26,13 @@ func LookupConnectorCustomSecretManager(ctx *pulumi.Context, args *LookupConnect
 type LookupConnectorCustomSecretManagerArgs struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	// : Unique identifier of the resource.
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// : Name of the resource.
-	Name      *string `pulumi:"name"`
-	OrgId     *string `pulumi:"orgId"`
+	// Name of the resource.
+	Name *string `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -62,34 +40,36 @@ type LookupConnectorCustomSecretManagerArgs struct {
 type LookupConnectorCustomSecretManagerResult struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
-	// : A brief description of what the resource does or is used for.
+	// Description of the resource.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// : Unique identifier of the resource.
+	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
-	// : Name of the resource.
+	// Name of the resource.
 	Name *string `pulumi:"name"`
-	// : Specifies whether the secrets manager runs on a Harness delegate.
-	OnDelegate bool    `pulumi:"onDelegate"`
-	OrgId      *string `pulumi:"orgId"`
-	ProjectId  *string `pulumi:"projectId"`
-	// : Reference to the Harness secret containing SSH credentials for the target host. Required if `onDelegate` is set to false.
+	// Specifies whether the secrets manager runs on a Harness delegate.
+	OnDelegate bool `pulumi:"onDelegate"`
+	// Unique identifier of the organization.
+	OrgId *string `pulumi:"orgId"`
+	// Unique identifier of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// SSH secret reference for the custom secrets manager, Computed if 'on_delegate' is false.
 	SshSecretRef string `pulumi:"sshSecretRef"`
-	// : Tags to associate with the resource.
+	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// : Host address where secrets will be managed. Required if `onDelegate` is set to false.
+	// Host where the custom secrets manager is located, Computed if 'on_delegate' is false.
 	TargetHost     string                                         `pulumi:"targetHost"`
 	TemplateInputs []GetConnectorCustomSecretManagerTemplateInput `pulumi:"templateInputs"`
-	// : Reference to the template used for managing secrets.
+	// Reference to the template used for managing secrets.
 	TemplateRef string `pulumi:"templateRef"`
-	// : Timeout in seconds for secrets management operations.
+	// Timeout in seconds for secrets management operations.
 	Timeout int `pulumi:"timeout"`
-	// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+	// Type of the custom secrets manager, typically set to 'CustomSecretManager'.
 	Type string `pulumi:"type"`
-	// : Version identifier of the secrets management template.
+	// Version identifier of the secrets management template.
 	VersionLabel string `pulumi:"versionLabel"`
-	// : Directory path on the target host where secrets management tasks are performed. Required if `onDelegate` is set to false.
+	// The working directory for operations, Computed if 'on_delegate' is false.
 	WorkingDirectory string `pulumi:"workingDirectory"`
 }
 
@@ -106,11 +86,13 @@ func LookupConnectorCustomSecretManagerOutput(ctx *pulumi.Context, args LookupCo
 type LookupConnectorCustomSecretManagerOutputArgs struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
-	// : Unique identifier of the resource.
+	// Unique identifier of the resource.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// : Name of the resource.
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	OrgId     pulumi.StringPtrInput `pulumi:"orgId"`
+	// Name of the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Unique identifier of the organization.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -138,7 +120,7 @@ func (o LookupConnectorCustomSecretManagerResultOutput) DelegateSelectors() pulu
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) []string { return v.DelegateSelectors }).(pulumi.StringArrayOutput)
 }
 
-// : A brief description of what the resource does or is used for.
+// Description of the resource.
 func (o LookupConnectorCustomSecretManagerResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -148,40 +130,42 @@ func (o LookupConnectorCustomSecretManagerResultOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// : Unique identifier of the resource.
+// Unique identifier of the resource.
 func (o LookupConnectorCustomSecretManagerResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// : Name of the resource.
+// Name of the resource.
 func (o LookupConnectorCustomSecretManagerResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// : Specifies whether the secrets manager runs on a Harness delegate.
+// Specifies whether the secrets manager runs on a Harness delegate.
 func (o LookupConnectorCustomSecretManagerResultOutput) OnDelegate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) bool { return v.OnDelegate }).(pulumi.BoolOutput)
 }
 
+// Unique identifier of the organization.
 func (o LookupConnectorCustomSecretManagerResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the project.
 func (o LookupConnectorCustomSecretManagerResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// : Reference to the Harness secret containing SSH credentials for the target host. Required if `onDelegate` is set to false.
+// SSH secret reference for the custom secrets manager, Computed if 'on_delegate' is false.
 func (o LookupConnectorCustomSecretManagerResultOutput) SshSecretRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.SshSecretRef }).(pulumi.StringOutput)
 }
 
-// : Tags to associate with the resource.
+// Tags to associate with the resource.
 func (o LookupConnectorCustomSecretManagerResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// : Host address where secrets will be managed. Required if `onDelegate` is set to false.
+// Host where the custom secrets manager is located, Computed if 'on_delegate' is false.
 func (o LookupConnectorCustomSecretManagerResultOutput) TargetHost() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.TargetHost }).(pulumi.StringOutput)
 }
@@ -192,27 +176,27 @@ func (o LookupConnectorCustomSecretManagerResultOutput) TemplateInputs() GetConn
 	}).(GetConnectorCustomSecretManagerTemplateInputArrayOutput)
 }
 
-// : Reference to the template used for managing secrets.
+// Reference to the template used for managing secrets.
 func (o LookupConnectorCustomSecretManagerResultOutput) TemplateRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.TemplateRef }).(pulumi.StringOutput)
 }
 
-// : Timeout in seconds for secrets management operations.
+// Timeout in seconds for secrets management operations.
 func (o LookupConnectorCustomSecretManagerResultOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// : Type of the custom secrets manager, typically set to `CustomSecretManager`.
+// Type of the custom secrets manager, typically set to 'CustomSecretManager'.
 func (o LookupConnectorCustomSecretManagerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// : Version identifier of the secrets management template.
+// Version identifier of the secrets management template.
 func (o LookupConnectorCustomSecretManagerResultOutput) VersionLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.VersionLabel }).(pulumi.StringOutput)
 }
 
-// : Directory path on the target host where secrets management tasks are performed. Required if `onDelegate` is set to false.
+// The working directory for operations, Computed if 'on_delegate' is false.
 func (o LookupConnectorCustomSecretManagerResultOutput) WorkingDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCustomSecretManagerResult) string { return v.WorkingDirectory }).(pulumi.StringOutput)
 }

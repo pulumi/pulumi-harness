@@ -17,70 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for creating and managing Harness API Keys. API Keys can be created at the account, organization, or project level.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.harness.PlatformApiKey;
- * import com.pulumi.harness.PlatformApiKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create API Key at account level
- *         var accountLevel = new PlatformApiKey("accountLevel", PlatformApiKeyArgs.builder()
- *             .identifier("test_apikey")
- *             .name("test_apikey")
- *             .parentId("parent_id")
- *             .apikeyType("USER")
- *             .accountId("account_id")
- *             .build());
- * 
- *         // Create API Key at organization level
- *         var orgLevel = new PlatformApiKey("orgLevel", PlatformApiKeyArgs.builder()
- *             .identifier("test_apikey")
- *             .name("test_apikey")
- *             .parentId("parent_id")
- *             .apikeyType("USER")
- *             .accountId("account_id")
- *             .orgId("org_id")
- *             .build());
- * 
- *         // Create API Key at project level
- *         var projectLevel = new PlatformApiKey("projectLevel", PlatformApiKeyArgs.builder()
- *             .identifier("test_apikey")
- *             .name("test_apikey")
- *             .parentId("parent_id")
- *             .apikeyType("USER")
- *             .accountId("account_id")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * Resource for creating ApiKeys.
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level apikey
  * 

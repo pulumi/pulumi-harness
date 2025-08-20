@@ -250,6 +250,8 @@ class GitOpsGnupg(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Import an Account level Gitops GnuPG Key
 
         ```sh
@@ -303,6 +305,8 @@ class GitOpsGnupg(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import an Account level Gitops GnuPG Key
 

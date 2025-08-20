@@ -25,12 +25,12 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.Slo("example", new()
     ///     {
-    ///         OrgId = "default",
-    ///         ProjectId = "default_project",
-    ///         Identifier = "TerraformSLO",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
     ///         Request = new Harness.Platform.Inputs.SloRequestArgs
     ///         {
-    ///             Name = "TSLO",
+    ///             Name = "name",
     ///             Description = "description",
     ///             Tags = new[]
     ///             {
@@ -95,12 +95,9 @@ namespace Pulumi.Harness.Platform
     /// });
     /// ```
     /// 
-    /// Note the above example is for "Threshold" SLI type, if you want to use
-    /// "Ratio", the SLI should be changed appropriately.
-    /// Here's an example of SLO target and Spec for "Ratio" based SLI and
-    /// "Rolling" SLO target.
-    /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level SLO
     /// 

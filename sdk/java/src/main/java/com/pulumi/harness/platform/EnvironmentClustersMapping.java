@@ -84,6 +84,10 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
+ * 
  */
 @ResourceType(type="harness:platform/environmentClustersMapping:EnvironmentClustersMapping")
 public class EnvironmentClustersMapping extends com.pulumi.resources.CustomResource {

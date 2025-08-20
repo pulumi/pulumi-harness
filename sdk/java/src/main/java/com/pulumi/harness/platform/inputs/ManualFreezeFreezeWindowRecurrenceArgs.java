@@ -33,14 +33,14 @@ public final class ManualFreezeFreezeWindowRecurrenceArgs extends com.pulumi.res
     }
 
     /**
-     * Recurrence type(Daily, Weekly, Monthly, Yearly)
+     * Type of the recurrence
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Recurrence type(Daily, Weekly, Monthly, Yearly)
+     * @return Type of the recurrence
      * 
      */
     public Optional<Output<String>> type() {
@@ -104,7 +104,7 @@ public final class ManualFreezeFreezeWindowRecurrenceArgs extends com.pulumi.res
         }
 
         /**
-         * @param type Recurrence type(Daily, Weekly, Monthly, Yearly)
+         * @param type Type of the recurrence
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ManualFreezeFreezeWindowRecurrenceArgs extends com.pulumi.res
         }
 
         /**
-         * @param type Recurrence type(Daily, Weekly, Monthly, Yearly)
+         * @param type Type of the recurrence
          * 
          * @return builder
          * 

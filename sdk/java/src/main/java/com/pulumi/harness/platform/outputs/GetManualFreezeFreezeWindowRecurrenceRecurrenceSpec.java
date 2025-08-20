@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec {
     /**
-     * @return Recurrence until timestamp
+     * @return Time till which freeze window recurrs
      * 
      */
     private String until;
     /**
-     * @return Value of n, for n months recurrence
+     * @return Every n months recurrence
      * 
      */
     private Integer value;
 
     private GetManualFreezeFreezeWindowRecurrenceRecurrenceSpec() {}
     /**
-     * @return Recurrence until timestamp
+     * @return Time till which freeze window recurrs
      * 
      */
     public String until() {
         return this.until;
     }
     /**
-     * @return Value of n, for n months recurrence
+     * @return Every n months recurrence
      * 
      */
     public Integer value() {

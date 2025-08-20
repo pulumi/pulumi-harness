@@ -18,14 +18,14 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
     public static final ManualFreezeFreezeWindowArgs Empty = new ManualFreezeFreezeWindowArgs();
 
     /**
-     * Duration of the freeze
+     * Duration of the freeze window
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return Duration of the freeze
+     * @return Duration of the freeze window
      * 
      */
     public Optional<Output<String>> duration() {
@@ -33,14 +33,14 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * End time of the freeze
+     * End Time of the freeze window
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return End time of the freeze
+     * @return End Time of the freeze window
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -63,14 +63,14 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Start time of the freeze
+     * Start Time of the freeze window
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return Start time of the freeze
+     * @return Start Time of the freeze window
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -78,14 +78,14 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Timezone
+     * Time zone of the freeze window
      * 
      */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
     /**
-     * @return Timezone
+     * @return Time zone of the freeze window
      * 
      */
     public Optional<Output<String>> timeZone() {
@@ -121,7 +121,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param duration Duration of the freeze
+         * @param duration Duration of the freeze window
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param duration Duration of the freeze
+         * @param duration Duration of the freeze window
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param endTime End time of the freeze
+         * @param endTime End Time of the freeze window
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param endTime End time of the freeze
+         * @param endTime End Time of the freeze window
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param startTime Start time of the freeze
+         * @param startTime Start Time of the freeze window
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param startTime Start time of the freeze
+         * @param startTime Start Time of the freeze window
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone Timezone
+         * @param timeZone Time zone of the freeze window
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ManualFreezeFreezeWindowArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param timeZone Timezone
+         * @param timeZone Time zone of the freeze window
          * 
          * @return builder
          * 

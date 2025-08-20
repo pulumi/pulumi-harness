@@ -91,14 +91,14 @@ public final class GetInfraVariableSetTerraformVariableFile extends com.pulumi.r
     }
 
     /**
-     * Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     @Import(name="repositorySha")
     private @Nullable String repositorySha;
 
     /**
-     * @return Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
      * 
      */
     public Optional<String> repositorySha() {
@@ -190,7 +190,7 @@ public final class GetInfraVariableSetTerraformVariableFile extends com.pulumi.r
         }
 
         /**
-         * @param repositorySha Repository commit is sha to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * @param repositorySha Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
          * 
          * @return builder
          * 

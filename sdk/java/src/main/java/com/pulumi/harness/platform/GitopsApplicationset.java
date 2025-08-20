@@ -19,6 +19,86 @@ import javax.annotation.Nullable;
 /**
  * Resource for managing a Harness Gitops Applicationset. Please note this resource is in an alpha/experimental state and is subject to change.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.GitopsApplicationset;
+ * import com.pulumi.harness.platform.GitopsApplicationsetArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetMetadataArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs;
+ * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testFixed = new GitopsApplicationset("testFixed", GitopsApplicationsetArgs.builder()
+ *             .orgId("default")
+ *             .projectId("projectId")
+ *             .agentId("account.agentuseast1")
+ *             .upsert(true)
+ *             .applicationset(GitopsApplicationsetApplicationsetArgs.builder()
+ *                 .metadata(GitopsApplicationsetApplicationsetMetadataArgs.builder()
+ *                     .name("tf-appset")
+ *                     .namespace("argocd")
+ *                     .build())
+ *                 .spec(GitopsApplicationsetApplicationsetSpecArgs.builder()
+ *                     .goTemplate(true)
+ *                     .generators(GitopsApplicationsetApplicationsetSpecGeneratorArgs.builder()
+ *                         .clusters(GitopsApplicationsetApplicationsetSpecGeneratorClusterArgs.builder()
+ *                             .enabled(true)
+ *                             .build())
+ *                         .build())
+ *                     .template(GitopsApplicationsetApplicationsetSpecTemplateArgs.builder()
+ *                         .metadata(GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs.builder()
+ *                             .name("{{.name}}-guestbook")
+ *                             .labels(Map.ofEntries(
+ *                                 Map.entry("env", "dev"),
+ *                                 Map.entry("harness.io/serviceRef", "svc1")
+ *                             ))
+ *                             .build())
+ *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
+ *                             .project("default")
+ *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                                 .repoUrl("https://github.com/argoproj/argocd-example-apps.git")
+ *                                 .path("helm-guestbook")
+ *                                 .targetRevision("HEAD")
+ *                                 .build())
+ *                             .destination(GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs.builder()
+ *                                 .server("{{.url}}")
+ *                                 .namespace("app-ns-{{.name}}")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="harness:platform/gitopsApplicationset:GitopsApplicationset")
 public class GitopsApplicationset extends com.pulumi.resources.CustomResource {

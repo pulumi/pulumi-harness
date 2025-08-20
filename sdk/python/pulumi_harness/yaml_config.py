@@ -174,6 +174,8 @@ class YamlConfig(pulumi.CustomResource):
 
         ## Import
 
+        The `pulumi import` command can be used, for example:
+
         Importing a global config only using the yaml path
 
         ```sh
@@ -219,6 +221,8 @@ class YamlConfig(pulumi.CustomResource):
         ```
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Importing a global config only using the yaml path
 

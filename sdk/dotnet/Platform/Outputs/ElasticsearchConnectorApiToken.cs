@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class ElasticsearchConnectorApiToken
     {
         /// <summary>
-        /// The client id used for connecting to ElasticSearch.
+        /// The API Key id used for connecting to ElasticSearch.
         /// </summary>
         public readonly string ClientId;
         /// <summary>

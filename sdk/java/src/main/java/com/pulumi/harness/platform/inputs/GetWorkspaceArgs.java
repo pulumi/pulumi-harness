@@ -22,14 +22,14 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetWorkspaceArgs Empty = new GetWorkspaceArgs();
 
     /**
-     * Provider connector configured on the workspace
+     * Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     @Import(name="connectors")
     private @Nullable Output<List<GetWorkspaceConnectorArgs>> connectors;
 
     /**
-     * @return Provider connector configured on the workspace
+     * @return Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
      */
     public Optional<Output<List<GetWorkspaceConnectorArgs>>> connectors() {
@@ -156,9 +156,17 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.repositorySha);
     }
 
+    /**
+     * Tags to associate with the resource.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
+    /**
+     * @return Tags to associate with the resource.
+     * 
+     */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -229,7 +237,7 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -240,7 +248,7 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -250,7 +258,7 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param connectors Provider connector configured on the workspace
+         * @param connectors Provider connectors configured on the Workspace. Only one connector of a type is supported
          * 
          * @return builder
          * 
@@ -437,15 +445,33 @@ public final class GetWorkspaceArgs extends com.pulumi.resources.InvokeArgs {
             return repositorySha(Output.of(repositorySha));
         }
 
+        /**
+         * @param tags Tags to associate with the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags Tags to associate with the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags Tags to associate with the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

@@ -153,6 +153,8 @@ def get_roles(allowed_scope_levels: Optional[Sequence[_builtins.str]] = None,
               project_id: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
     """
+    Data source for retrieving roles
+
     ## Example Usage
 
     ```python
@@ -200,6 +202,8 @@ def get_roles_output(allowed_scope_levels: Optional[pulumi.Input[Optional[Sequen
                      project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRolesResult]:
     """
+    Data source for retrieving roles
+
     ## Example Usage
 
     ```python

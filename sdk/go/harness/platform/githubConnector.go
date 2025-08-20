@@ -16,6 +16,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // # Import account level github connector
 //
 // ```sh
@@ -48,7 +50,7 @@ type GithubConnector struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrOutput `pulumi:"executeOnDelegate"`
-	// Enable this flag for force deletion of github connector
+	// Enable this flag for force deletion of service
 	ForceDelete pulumi.BoolOutput `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -120,7 +122,7 @@ type githubConnectorState struct {
 	Description *string `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
-	// Enable this flag for force deletion of github connector
+	// Enable this flag for force deletion of service
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
@@ -151,7 +153,7 @@ type GithubConnectorState struct {
 	Description pulumi.StringPtrInput
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrInput
-	// Enable this flag for force deletion of github connector
+	// Enable this flag for force deletion of service
 	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
@@ -186,7 +188,7 @@ type githubConnectorArgs struct {
 	Description *string `pulumi:"description"`
 	// Execute on delegate or not.
 	ExecuteOnDelegate *bool `pulumi:"executeOnDelegate"`
-	// Enable this flag for force deletion of github connector
+	// Enable this flag for force deletion of service
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
@@ -218,7 +220,7 @@ type GithubConnectorArgs struct {
 	Description pulumi.StringPtrInput
 	// Execute on delegate or not.
 	ExecuteOnDelegate pulumi.BoolPtrInput
-	// Enable this flag for force deletion of github connector
+	// Enable this flag for force deletion of service
 	ForceDelete pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
@@ -353,7 +355,7 @@ func (o GithubConnectorOutput) ExecuteOnDelegate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GithubConnector) pulumi.BoolPtrOutput { return v.ExecuteOnDelegate }).(pulumi.BoolPtrOutput)
 }
 
-// Enable this flag for force deletion of github connector
+// Enable this flag for force deletion of service
 func (o GithubConnectorOutput) ForceDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GithubConnector) pulumi.BoolOutput { return v.ForceDelete }).(pulumi.BoolOutput)
 }

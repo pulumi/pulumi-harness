@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigBinpackingArgs;
+import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigCommitmentIntegrationArgs;
 import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigDistributionArgs;
 import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigNodePreferencesArgs;
+import com.pulumi.harness.cluster.inputs.GetOrchestratorConfigReplacementScheduleArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +34,21 @@ public final class GetOrchestratorConfigArgs extends com.pulumi.resources.Invoke
      */
     public Optional<Output<GetOrchestratorConfigBinpackingArgs>> binpacking() {
         return Optional.ofNullable(this.binpacking);
+    }
+
+    /**
+     * Commitment integration configuration for Cluster Orchestrator
+     * 
+     */
+    @Import(name="commitmentIntegration")
+    private @Nullable Output<GetOrchestratorConfigCommitmentIntegrationArgs> commitmentIntegration;
+
+    /**
+     * @return Commitment integration configuration for Cluster Orchestrator
+     * 
+     */
+    public Optional<Output<GetOrchestratorConfigCommitmentIntegrationArgs>> commitmentIntegration() {
+        return Optional.ofNullable(this.commitmentIntegration);
     }
 
     /**
@@ -79,13 +96,30 @@ public final class GetOrchestratorConfigArgs extends com.pulumi.resources.Invoke
         return this.orchestratorId;
     }
 
+    /**
+     * Replacement schedule for Cluster Orchestrator
+     * 
+     */
+    @Import(name="replacementSchedule")
+    private @Nullable Output<GetOrchestratorConfigReplacementScheduleArgs> replacementSchedule;
+
+    /**
+     * @return Replacement schedule for Cluster Orchestrator
+     * 
+     */
+    public Optional<Output<GetOrchestratorConfigReplacementScheduleArgs>> replacementSchedule() {
+        return Optional.ofNullable(this.replacementSchedule);
+    }
+
     private GetOrchestratorConfigArgs() {}
 
     private GetOrchestratorConfigArgs(GetOrchestratorConfigArgs $) {
         this.binpacking = $.binpacking;
+        this.commitmentIntegration = $.commitmentIntegration;
         this.distribution = $.distribution;
         this.nodePreferences = $.nodePreferences;
         this.orchestratorId = $.orchestratorId;
+        this.replacementSchedule = $.replacementSchedule;
     }
 
     public static Builder builder() {
@@ -125,6 +159,27 @@ public final class GetOrchestratorConfigArgs extends com.pulumi.resources.Invoke
          */
         public Builder binpacking(GetOrchestratorConfigBinpackingArgs binpacking) {
             return binpacking(Output.of(binpacking));
+        }
+
+        /**
+         * @param commitmentIntegration Commitment integration configuration for Cluster Orchestrator
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitmentIntegration(@Nullable Output<GetOrchestratorConfigCommitmentIntegrationArgs> commitmentIntegration) {
+            $.commitmentIntegration = commitmentIntegration;
+            return this;
+        }
+
+        /**
+         * @param commitmentIntegration Commitment integration configuration for Cluster Orchestrator
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitmentIntegration(GetOrchestratorConfigCommitmentIntegrationArgs commitmentIntegration) {
+            return commitmentIntegration(Output.of(commitmentIntegration));
         }
 
         /**
@@ -188,6 +243,27 @@ public final class GetOrchestratorConfigArgs extends com.pulumi.resources.Invoke
          */
         public Builder orchestratorId(String orchestratorId) {
             return orchestratorId(Output.of(orchestratorId));
+        }
+
+        /**
+         * @param replacementSchedule Replacement schedule for Cluster Orchestrator
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replacementSchedule(@Nullable Output<GetOrchestratorConfigReplacementScheduleArgs> replacementSchedule) {
+            $.replacementSchedule = replacementSchedule;
+            return this;
+        }
+
+        /**
+         * @param replacementSchedule Replacement schedule for Cluster Orchestrator
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replacementSchedule(GetOrchestratorConfigReplacementScheduleArgs replacementSchedule) {
+            return replacementSchedule(Output.of(replacementSchedule));
         }
 
         public GetOrchestratorConfigArgs build() {

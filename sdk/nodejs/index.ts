@@ -166,6 +166,7 @@ utilities.lazyLoad(exports, ["YamlConfig"], () => require("./yamlConfig"));
 
 // Export sub-modules:
 import * as autostopping from "./autostopping";
+import * as chaos from "./chaos";
 import * as cloudprovider from "./cloudprovider";
 import * as cluster from "./cluster";
 import * as config from "./config";
@@ -176,6 +177,7 @@ import * as types from "./types";
 
 export {
     autostopping,
+    chaos,
     cloudprovider,
     cluster,
     config,

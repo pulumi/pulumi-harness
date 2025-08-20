@@ -12,17 +12,114 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for ClusterOrchestrator Config.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cluster"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cluster.NewOrchestratorConfig(ctx, "example", &cluster.OrchestratorConfigArgs{
+//				OrchestratorId: pulumi.String("orch-cvifpfl9rbg8neldj97g"),
+//				Distribution: &cluster.OrchestratorConfigDistributionArgs{
+//					BaseOndemandCapacity:      pulumi.Int(2),
+//					OndemandReplicaPercentage: pulumi.Float64(50),
+//					Selector:                  pulumi.String("ALL"),
+//					Strategy:                  pulumi.String("CostOptimized"),
+//				},
+//				Binpacking: &cluster.OrchestratorConfigBinpackingArgs{
+//					PodEviction: &cluster.OrchestratorConfigBinpackingPodEvictionArgs{
+//						Threshold: &cluster.OrchestratorConfigBinpackingPodEvictionThresholdArgs{
+//							Cpu:    pulumi.Float64(60),
+//							Memory: pulumi.Float64(80),
+//						},
+//					},
+//					Disruption: &cluster.OrchestratorConfigBinpackingDisruptionArgs{
+//						Criteria: pulumi.String("WhenEmpty"),
+//						Delay:    pulumi.String("10m"),
+//						Budgets: cluster.OrchestratorConfigBinpackingDisruptionBudgetArray{
+//							&cluster.OrchestratorConfigBinpackingDisruptionBudgetArgs{
+//								Reasons: pulumi.StringArray{
+//									pulumi.String("Drifted"),
+//									pulumi.String("Underutilized"),
+//									pulumi.String("Empty"),
+//								},
+//								Nodes: pulumi.String("20"),
+//							},
+//							&cluster.OrchestratorConfigBinpackingDisruptionBudgetArgs{
+//								Reasons: pulumi.StringArray{
+//									pulumi.String("Drifted"),
+//									pulumi.String("Empty"),
+//								},
+//								Nodes: pulumi.String("1"),
+//								Schedule: &cluster.OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs{
+//									Frequency: pulumi.String("@monthly"),
+//									Duration:  pulumi.String("10m"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				NodePreferences: &cluster.OrchestratorConfigNodePreferencesArgs{
+//					Ttl:                     pulumi.String("Never"),
+//					ReverseFallbackInterval: pulumi.String("6h"),
+//				},
+//				CommitmentIntegration: &cluster.OrchestratorConfigCommitmentIntegrationArgs{
+//					Enabled:         pulumi.Bool(true),
+//					MasterAccountId: pulumi.String("dummyAccountId"),
+//				},
+//				ReplacementSchedule: &cluster.OrchestratorConfigReplacementScheduleArgs{
+//					WindowType: pulumi.String("Custom"),
+//					AppliesTo: &cluster.OrchestratorConfigReplacementScheduleAppliesToArgs{
+//						Consolidation:      pulumi.Bool(true),
+//						HarnessPodEviction: pulumi.Bool(true),
+//						ReverseFallback:    pulumi.Bool(true),
+//					},
+//					WindowDetails: &cluster.OrchestratorConfigReplacementScheduleWindowDetailsArgs{
+//						Days: pulumi.StringArray{
+//							pulumi.String("SUN"),
+//							pulumi.String("WED"),
+//							pulumi.String("SAT"),
+//						},
+//						TimeZone:  pulumi.String("Asia/Calcutta"),
+//						AllDay:    pulumi.Bool(false),
+//						StartTime: pulumi.String("10:30"),
+//						EndTime:   pulumi.String("11:30"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type OrchestratorConfig struct {
 	pulumi.CustomResourceState
 
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking OrchestratorConfigBinpackingPtrOutput `pulumi:"binpacking"`
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration OrchestratorConfigCommitmentIntegrationPtrOutput `pulumi:"commitmentIntegration"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistributionOutput `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
 	NodePreferences OrchestratorConfigNodePreferencesPtrOutput `pulumi:"nodePreferences"`
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId pulumi.StringOutput `pulumi:"orchestratorId"`
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule OrchestratorConfigReplacementSchedulePtrOutput `pulumi:"replacementSchedule"`
 }
 
 // NewOrchestratorConfig registers a new resource with the given unique name, arguments, and options.
@@ -63,23 +160,31 @@ func GetOrchestratorConfig(ctx *pulumi.Context,
 type orchestratorConfigState struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking *OrchestratorConfigBinpacking `pulumi:"binpacking"`
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration *OrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution *OrchestratorConfigDistribution `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
 	NodePreferences *OrchestratorConfigNodePreferences `pulumi:"nodePreferences"`
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId *string `pulumi:"orchestratorId"`
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule *OrchestratorConfigReplacementSchedule `pulumi:"replacementSchedule"`
 }
 
 type OrchestratorConfigState struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking OrchestratorConfigBinpackingPtrInput
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration OrchestratorConfigCommitmentIntegrationPtrInput
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistributionPtrInput
 	// Node preferences for Cluster Orchestrator
 	NodePreferences OrchestratorConfigNodePreferencesPtrInput
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId pulumi.StringPtrInput
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule OrchestratorConfigReplacementSchedulePtrInput
 }
 
 func (OrchestratorConfigState) ElementType() reflect.Type {
@@ -89,24 +194,32 @@ func (OrchestratorConfigState) ElementType() reflect.Type {
 type orchestratorConfigArgs struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking *OrchestratorConfigBinpacking `pulumi:"binpacking"`
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration *OrchestratorConfigCommitmentIntegration `pulumi:"commitmentIntegration"`
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistribution `pulumi:"distribution"`
 	// Node preferences for Cluster Orchestrator
 	NodePreferences *OrchestratorConfigNodePreferences `pulumi:"nodePreferences"`
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId string `pulumi:"orchestratorId"`
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule *OrchestratorConfigReplacementSchedule `pulumi:"replacementSchedule"`
 }
 
 // The set of arguments for constructing a OrchestratorConfig resource.
 type OrchestratorConfigArgs struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking OrchestratorConfigBinpackingPtrInput
+	// Commitment integration configuration for Cluster Orchestrator
+	CommitmentIntegration OrchestratorConfigCommitmentIntegrationPtrInput
 	// Spot and Ondemand Distribution Preferences for workload replicas
 	Distribution OrchestratorConfigDistributionInput
 	// Node preferences for Cluster Orchestrator
 	NodePreferences OrchestratorConfigNodePreferencesPtrInput
 	// ID of the Cluster Orchestrator Object
 	OrchestratorId pulumi.StringInput
+	// Replacement schedule for Cluster Orchestrator
+	ReplacementSchedule OrchestratorConfigReplacementSchedulePtrInput
 }
 
 func (OrchestratorConfigArgs) ElementType() reflect.Type {
@@ -201,6 +314,13 @@ func (o OrchestratorConfigOutput) Binpacking() OrchestratorConfigBinpackingPtrOu
 	return o.ApplyT(func(v *OrchestratorConfig) OrchestratorConfigBinpackingPtrOutput { return v.Binpacking }).(OrchestratorConfigBinpackingPtrOutput)
 }
 
+// Commitment integration configuration for Cluster Orchestrator
+func (o OrchestratorConfigOutput) CommitmentIntegration() OrchestratorConfigCommitmentIntegrationPtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfig) OrchestratorConfigCommitmentIntegrationPtrOutput {
+		return v.CommitmentIntegration
+	}).(OrchestratorConfigCommitmentIntegrationPtrOutput)
+}
+
 // Spot and Ondemand Distribution Preferences for workload replicas
 func (o OrchestratorConfigOutput) Distribution() OrchestratorConfigDistributionOutput {
 	return o.ApplyT(func(v *OrchestratorConfig) OrchestratorConfigDistributionOutput { return v.Distribution }).(OrchestratorConfigDistributionOutput)
@@ -214,6 +334,13 @@ func (o OrchestratorConfigOutput) NodePreferences() OrchestratorConfigNodePrefer
 // ID of the Cluster Orchestrator Object
 func (o OrchestratorConfigOutput) OrchestratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrchestratorConfig) pulumi.StringOutput { return v.OrchestratorId }).(pulumi.StringOutput)
+}
+
+// Replacement schedule for Cluster Orchestrator
+func (o OrchestratorConfigOutput) ReplacementSchedule() OrchestratorConfigReplacementSchedulePtrOutput {
+	return o.ApplyT(func(v *OrchestratorConfig) OrchestratorConfigReplacementSchedulePtrOutput {
+		return v.ReplacementSchedule
+	}).(OrchestratorConfigReplacementSchedulePtrOutput)
 }
 
 type OrchestratorConfigArrayOutput struct{ *pulumi.OutputState }

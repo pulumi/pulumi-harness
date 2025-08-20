@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class ManualFreezeFreezeWindowRecurrenceRecurrenceSpec
     {
         /// <summary>
-        /// Recurrence until timestamp
+        /// Time till which freeze window recurrs
         /// </summary>
         public readonly string? Until;
         /// <summary>
-        /// Value of n, for n months recurrence
+        /// Every n months recurrence
         /// </summary>
         public readonly int? Value;
 

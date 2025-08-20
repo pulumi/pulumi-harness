@@ -44,6 +44,9 @@ export interface GetInfrastructureArgs {
      * environment identifier.
      */
     envId: string;
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     gitDetails?: inputs.platform.GetInfrastructureGitDetails;
     /**
      * Unique identifier of the resource.
@@ -79,6 +82,9 @@ export interface GetInfrastructureResult {
      * environment identifier.
      */
     readonly envId: string;
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     readonly gitDetails: outputs.platform.GetInfrastructureGitDetails;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -151,6 +157,9 @@ export interface GetInfrastructureOutputArgs {
      * environment identifier.
      */
     envId: pulumi.Input<string>;
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     */
     gitDetails?: pulumi.Input<inputs.platform.GetInfrastructureGitDetailsArgs>;
     /**
      * Unique identifier of the resource.

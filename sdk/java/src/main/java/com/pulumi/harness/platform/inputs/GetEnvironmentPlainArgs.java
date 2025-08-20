@@ -16,9 +16,17 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetEnvironmentPlainArgs Empty = new GetEnvironmentPlainArgs();
 
+    /**
+     * Contains parameters related to Git Experience for remote entities
+     * 
+     */
     @Import(name="gitDetails")
     private @Nullable GetEnvironmentGitDetails gitDetails;
 
+    /**
+     * @return Contains parameters related to Git Experience for remote entities
+     * 
+     */
     public Optional<GetEnvironmentGitDetails> gitDetails() {
         return Optional.ofNullable(this.gitDetails);
     }
@@ -111,6 +119,12 @@ public final class GetEnvironmentPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetEnvironmentPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gitDetails Contains parameters related to Git Experience for remote entities
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitDetails(@Nullable GetEnvironmentGitDetails gitDetails) {
             $.gitDetails = gitDetails;
             return this;

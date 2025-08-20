@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DelegateSelectors;
         /// <summary>
-        /// Test Region to perform Connection test of AWS Connector.
+        /// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? Region;
 

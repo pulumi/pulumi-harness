@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data Source for retrieving a Harness Artifact registry
+// Resource for creating and managing Harness Registries.
 //
 // ## Example Usage
 //
@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupHarRegistry(ctx, &platform.LookupHarRegistryArgs{
 //				Identifier: "test_registry",
-//				SpaceRef:   "accountId/orgId/projectId",
+//				SpaceRef:   pulumi.StringRef("accountId/orgId/projectId"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,34 +51,48 @@ func LookupHarRegistry(ctx *pulumi.Context, args *LookupHarRegistryArgs, opts ..
 
 // A collection of arguments for invoking getHarRegistry.
 type LookupHarRegistryArgs struct {
-	AllowedPatterns []string               `pulumi:"allowedPatterns"`
-	BlockedPatterns []string               `pulumi:"blockedPatterns"`
-	Configs         []GetHarRegistryConfig `pulumi:"configs"`
-	Description     *string                `pulumi:"description"`
-	// Unique identifier of the resource.
-	Identifier  string  `pulumi:"identifier"`
+	// Allowed artifact patterns
+	AllowedPatterns []string `pulumi:"allowedPatterns"`
+	// Blocked artifact patterns
+	BlockedPatterns []string `pulumi:"blockedPatterns"`
+	// Configuration for the registry
+	Configs []GetHarRegistryConfig `pulumi:"configs"`
+	// Description of the registry
+	Description *string `pulumi:"description"`
+	// Unique identifier of the registry
+	Identifier string `pulumi:"identifier"`
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
-	ParentRef   *string `pulumi:"parentRef"`
-	// Reference of the space.
-	SpaceRef string `pulumi:"spaceRef"`
+	// Parent reference for the registry
+	ParentRef *string `pulumi:"parentRef"`
+	// Space reference for the registry
+	SpaceRef *string `pulumi:"spaceRef"`
 }
 
 // A collection of values returned by getHarRegistry.
 type LookupHarRegistryResult struct {
-	AllowedPatterns []string               `pulumi:"allowedPatterns"`
-	BlockedPatterns []string               `pulumi:"blockedPatterns"`
-	Configs         []GetHarRegistryConfig `pulumi:"configs"`
-	CreatedAt       string                 `pulumi:"createdAt"`
-	Description     *string                `pulumi:"description"`
+	// Allowed artifact patterns
+	AllowedPatterns []string `pulumi:"allowedPatterns"`
+	// Blocked artifact patterns
+	BlockedPatterns []string `pulumi:"blockedPatterns"`
+	// Configuration for the registry
+	Configs []GetHarRegistryConfig `pulumi:"configs"`
+	// Creation timestamp
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the registry
+	Description *string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource.
-	Identifier  string  `pulumi:"identifier"`
+	// Unique identifier of the registry
+	Identifier string `pulumi:"identifier"`
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
-	ParentRef   *string `pulumi:"parentRef"`
-	// Reference of the space.
-	SpaceRef string `pulumi:"spaceRef"`
-	Url      string `pulumi:"url"`
+	// Parent reference for the registry
+	ParentRef *string `pulumi:"parentRef"`
+	// Space reference for the registry
+	SpaceRef *string `pulumi:"spaceRef"`
+	// URL of the registry
+	Url string `pulumi:"url"`
 }
 
 func LookupHarRegistryOutput(ctx *pulumi.Context, args LookupHarRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupHarRegistryResultOutput {
@@ -92,16 +106,22 @@ func LookupHarRegistryOutput(ctx *pulumi.Context, args LookupHarRegistryOutputAr
 
 // A collection of arguments for invoking getHarRegistry.
 type LookupHarRegistryOutputArgs struct {
-	AllowedPatterns pulumi.StringArrayInput        `pulumi:"allowedPatterns"`
-	BlockedPatterns pulumi.StringArrayInput        `pulumi:"blockedPatterns"`
-	Configs         GetHarRegistryConfigArrayInput `pulumi:"configs"`
-	Description     pulumi.StringPtrInput          `pulumi:"description"`
-	// Unique identifier of the resource.
-	Identifier  pulumi.StringInput    `pulumi:"identifier"`
+	// Allowed artifact patterns
+	AllowedPatterns pulumi.StringArrayInput `pulumi:"allowedPatterns"`
+	// Blocked artifact patterns
+	BlockedPatterns pulumi.StringArrayInput `pulumi:"blockedPatterns"`
+	// Configuration for the registry
+	Configs GetHarRegistryConfigArrayInput `pulumi:"configs"`
+	// Description of the registry
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Unique identifier of the registry
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
-	ParentRef   pulumi.StringPtrInput `pulumi:"parentRef"`
-	// Reference of the space.
-	SpaceRef pulumi.StringInput `pulumi:"spaceRef"`
+	// Parent reference for the registry
+	ParentRef pulumi.StringPtrInput `pulumi:"parentRef"`
+	// Space reference for the registry
+	SpaceRef pulumi.StringPtrInput `pulumi:"spaceRef"`
 }
 
 func (LookupHarRegistryOutputArgs) ElementType() reflect.Type {
@@ -123,22 +143,27 @@ func (o LookupHarRegistryResultOutput) ToLookupHarRegistryResultOutputWithContex
 	return o
 }
 
+// Allowed artifact patterns
 func (o LookupHarRegistryResultOutput) AllowedPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) []string { return v.AllowedPatterns }).(pulumi.StringArrayOutput)
 }
 
+// Blocked artifact patterns
 func (o LookupHarRegistryResultOutput) BlockedPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) []string { return v.BlockedPatterns }).(pulumi.StringArrayOutput)
 }
 
+// Configuration for the registry
 func (o LookupHarRegistryResultOutput) Configs() GetHarRegistryConfigArrayOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) []GetHarRegistryConfig { return v.Configs }).(GetHarRegistryConfigArrayOutput)
 }
 
+// Creation timestamp
 func (o LookupHarRegistryResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Description of the registry
 func (o LookupHarRegistryResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -148,24 +173,27 @@ func (o LookupHarRegistryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource.
+// Unique identifier of the registry
 func (o LookupHarRegistryResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
+// Type of package (DOCKER, HELM, MAVEN, etc.)
 func (o LookupHarRegistryResultOutput) PackageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) *string { return v.PackageType }).(pulumi.StringPtrOutput)
 }
 
+// Parent reference for the registry
 func (o LookupHarRegistryResultOutput) ParentRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) *string { return v.ParentRef }).(pulumi.StringPtrOutput)
 }
 
-// Reference of the space.
-func (o LookupHarRegistryResultOutput) SpaceRef() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.SpaceRef }).(pulumi.StringOutput)
+// Space reference for the registry
+func (o LookupHarRegistryResultOutput) SpaceRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHarRegistryResult) *string { return v.SpaceRef }).(pulumi.StringPtrOutput)
 }
 
+// URL of the registry
 func (o LookupHarRegistryResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.Url }).(pulumi.StringOutput)
 }

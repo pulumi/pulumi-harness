@@ -366,41 +366,11 @@ class PlatformApiKey(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Resource for creating and managing Harness API Keys. API Keys can be created at the account, organization, or project level.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        # Create API Key at account level
-        account_level = harness.PlatformApiKey("account_level",
-            identifier="test_apikey",
-            name="test_apikey",
-            parent_id="parent_id",
-            apikey_type="USER",
-            account_id="account_id")
-        # Create API Key at organization level
-        org_level = harness.PlatformApiKey("org_level",
-            identifier="test_apikey",
-            name="test_apikey",
-            parent_id="parent_id",
-            apikey_type="USER",
-            account_id="account_id",
-            org_id="org_id")
-        # Create API Key at project level
-        project_level = harness.PlatformApiKey("project_level",
-            identifier="test_apikey",
-            name="test_apikey",
-            parent_id="parent_id",
-            apikey_type="USER",
-            account_id="account_id",
-            org_id="org_id",
-            project_id="project_id")
-        ```
+        Resource for creating ApiKeys.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level apikey
 
@@ -440,41 +410,11 @@ class PlatformApiKey(pulumi.CustomResource):
                  args: PlatformApiKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for creating and managing Harness API Keys. API Keys can be created at the account, organization, or project level.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_harness as harness
-
-        # Create API Key at account level
-        account_level = harness.PlatformApiKey("account_level",
-            identifier="test_apikey",
-            name="test_apikey",
-            parent_id="parent_id",
-            apikey_type="USER",
-            account_id="account_id")
-        # Create API Key at organization level
-        org_level = harness.PlatformApiKey("org_level",
-            identifier="test_apikey",
-            name="test_apikey",
-            parent_id="parent_id",
-            apikey_type="USER",
-            account_id="account_id",
-            org_id="org_id")
-        # Create API Key at project level
-        project_level = harness.PlatformApiKey("project_level",
-            identifier="test_apikey",
-            name="test_apikey",
-            parent_id="parent_id",
-            apikey_type="USER",
-            account_id="account_id",
-            org_id="org_id",
-            project_id="project_id")
-        ```
+        Resource for creating ApiKeys.
 
         ## Import
+
+        The `pulumi import` command can be used, for example:
 
         Import account level apikey
 

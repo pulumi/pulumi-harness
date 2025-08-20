@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Platform
     public static class GetServiceAccount
     {
         /// <summary>
+        /// Data source for retrieving service account.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +36,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("harness:platform/getServiceAccount:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving service account.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +60,8 @@ namespace Pulumi.Harness.Platform
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceAccountResult>("harness:platform/getServiceAccount:getServiceAccount", args ?? new GetServiceAccountInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Data source for retrieving service account.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

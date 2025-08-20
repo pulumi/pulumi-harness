@@ -28,6 +28,7 @@ namespace Pulumi.Harness.Platform
         ///     {
         ///         Identifier = "test_token",
         ///         ParentId = "apikey_parent_id",
+        ///         AccountId = "account_id",
         ///         OrgId = "org_id",
         ///         ProjectId = "project_id",
         ///         ApikeyId = "apikey_id",
@@ -57,6 +58,7 @@ namespace Pulumi.Harness.Platform
         ///     {
         ///         Identifier = "test_token",
         ///         ParentId = "apikey_parent_id",
+        ///         AccountId = "account_id",
         ///         OrgId = "org_id",
         ///         ProjectId = "project_id",
         ///         ApikeyId = "apikey_id",
@@ -86,6 +88,7 @@ namespace Pulumi.Harness.Platform
         ///     {
         ///         Identifier = "test_token",
         ///         ParentId = "apikey_parent_id",
+        ///         AccountId = "account_id",
         ///         OrgId = "org_id",
         ///         ProjectId = "project_id",
         ///         ApikeyId = "apikey_id",

@@ -19,9 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * Resource for creating an AWS Secret Manager connector.
  * 
  * ## Import
+ * 
+ * The `pulumi import` command can be used, for example:
  * 
  * Import account level aws secret manager connector
  * 
@@ -185,14 +187,14 @@ public class AwsSecretManagerConnector extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.projectId);
     }
     /**
-     * recovery duration in days in AWS Secrets Manager.
+     * Recovery duration in days in AWS Secrets Manager.
      * 
      */
     @Export(name="recoveryWindowInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> recoveryWindowInDays;
 
     /**
-     * @return recovery duration in days in AWS Secrets Manager.
+     * @return Recovery duration in days in AWS Secrets Manager.
      * 
      */
     public Output<Optional<Integer>> recoveryWindowInDays() {

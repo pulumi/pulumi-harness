@@ -7,41 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving Harness service list.
- *
- * ## Example Usage
- *
- * ### Project Level Service List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getServiceList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
- *
- * ### Organisation Level Service List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getServiceList({
- *     orgId: "org_id",
- * });
- * ```
- *
- * ### Account Level Service List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getServiceList({});
- * ```
+ * Data source for retrieving a Harness service List.
  */
 export function getServiceList(args?: GetServiceListArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceListResult> {
     args = args || {};
@@ -58,9 +24,21 @@ export function getServiceList(args?: GetServiceListArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getServiceList.
  */
 export interface GetServiceListArgs {
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: string;
+    /**
+     * Page index of the results to fetch. Default: 0
+     */
     page?: number;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: string;
+    /**
+     * Results per page. Default: 100; Max: 1000
+     */
     size?: number;
 }
 
@@ -72,48 +50,26 @@ export interface GetServiceListResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Unique identifier of the organization.
+     */
     readonly orgId?: string;
+    /**
+     * Page index of the results to fetch. Default: 0
+     */
     readonly page?: number;
+    /**
+     * Unique identifier of the project.
+     */
     readonly projectId?: string;
     readonly services: outputs.platform.GetServiceListService[];
+    /**
+     * Results per page. Default: 100; Max: 1000
+     */
     readonly size?: number;
 }
 /**
- * Data source for retrieving Harness service list.
- *
- * ## Example Usage
- *
- * ### Project Level Service List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getServiceList({
- *     orgId: "org_id",
- *     projectId: "project_id",
- * });
- * ```
- *
- * ### Organisation Level Service List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getServiceList({
- *     orgId: "org_id",
- * });
- * ```
- *
- * ### Account Level Service List
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harness from "@pulumi/harness";
- *
- * const example = harness.platform.getServiceList({});
- * ```
+ * Data source for retrieving a Harness service List.
  */
 export function getServiceListOutput(args?: GetServiceListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceListResult> {
     args = args || {};
@@ -130,8 +86,20 @@ export function getServiceListOutput(args?: GetServiceListOutputArgs, opts?: pul
  * A collection of arguments for invoking getServiceList.
  */
 export interface GetServiceListOutputArgs {
+    /**
+     * Unique identifier of the organization.
+     */
     orgId?: pulumi.Input<string>;
+    /**
+     * Page index of the results to fetch. Default: 0
+     */
     page?: pulumi.Input<number>;
+    /**
+     * Unique identifier of the project.
+     */
     projectId?: pulumi.Input<string>;
+    /**
+     * Results per page. Default: 100; Max: 1000
+     */
     size?: pulumi.Input<number>;
 }

@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetInfraVariableSetTerraformVariable {
     /**
-     * @return Key is the identifier for the variable`
+     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     private String key;
     /**
-     * @return value is the value of the variable
+     * @return Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
      * 
      */
     private String value;
     /**
-     * @return Value type indicates the value type of the variable, text or secret
+     * @return Value type indicates the value type of the variable. Currently we support string and secret.
      * 
      */
     private String valueType;
 
     private GetInfraVariableSetTerraformVariable() {}
     /**
-     * @return Key is the identifier for the variable`
+     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return value is the value of the variable
+     * @return Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
      * 
      */
     public String value() {
         return this.value;
     }
     /**
-     * @return Value type indicates the value type of the variable, text or secret
+     * @return Value type indicates the value type of the variable. Currently we support string and secret.
      * 
      */
     public String valueType() {

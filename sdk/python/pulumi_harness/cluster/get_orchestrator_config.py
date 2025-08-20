@@ -28,10 +28,13 @@ class GetOrchestratorConfigResult:
     """
     A collection of values returned by getOrchestratorConfig.
     """
-    def __init__(__self__, binpacking=None, distribution=None, id=None, node_preferences=None, orchestrator_id=None):
+    def __init__(__self__, binpacking=None, commitment_integration=None, distribution=None, id=None, node_preferences=None, orchestrator_id=None, replacement_schedule=None):
         if binpacking and not isinstance(binpacking, dict):
             raise TypeError("Expected argument 'binpacking' to be a dict")
         pulumi.set(__self__, "binpacking", binpacking)
+        if commitment_integration and not isinstance(commitment_integration, dict):
+            raise TypeError("Expected argument 'commitment_integration' to be a dict")
+        pulumi.set(__self__, "commitment_integration", commitment_integration)
         if distribution and not isinstance(distribution, dict):
             raise TypeError("Expected argument 'distribution' to be a dict")
         pulumi.set(__self__, "distribution", distribution)
@@ -44,6 +47,9 @@ class GetOrchestratorConfigResult:
         if orchestrator_id and not isinstance(orchestrator_id, str):
             raise TypeError("Expected argument 'orchestrator_id' to be a str")
         pulumi.set(__self__, "orchestrator_id", orchestrator_id)
+        if replacement_schedule and not isinstance(replacement_schedule, dict):
+            raise TypeError("Expected argument 'replacement_schedule' to be a dict")
+        pulumi.set(__self__, "replacement_schedule", replacement_schedule)
 
     @_builtins.property
     @pulumi.getter
@@ -52,6 +58,14 @@ class GetOrchestratorConfigResult:
         Binpacking preferences for Cluster Orchestrator
         """
         return pulumi.get(self, "binpacking")
+
+    @_builtins.property
+    @pulumi.getter(name="commitmentIntegration")
+    def commitment_integration(self) -> Optional['outputs.GetOrchestratorConfigCommitmentIntegrationResult']:
+        """
+        Commitment integration configuration for Cluster Orchestrator
+        """
+        return pulumi.get(self, "commitment_integration")
 
     @_builtins.property
     @pulumi.getter
@@ -85,6 +99,14 @@ class GetOrchestratorConfigResult:
         """
         return pulumi.get(self, "orchestrator_id")
 
+    @_builtins.property
+    @pulumi.getter(name="replacementSchedule")
+    def replacement_schedule(self) -> Optional['outputs.GetOrchestratorConfigReplacementScheduleResult']:
+        """
+        Replacement schedule for Cluster Orchestrator
+        """
+        return pulumi.get(self, "replacement_schedule")
+
 
 class AwaitableGetOrchestratorConfigResult(GetOrchestratorConfigResult):
     # pylint: disable=using-constant-test
@@ -93,19 +115,23 @@ class AwaitableGetOrchestratorConfigResult(GetOrchestratorConfigResult):
             yield self
         return GetOrchestratorConfigResult(
             binpacking=self.binpacking,
+            commitment_integration=self.commitment_integration,
             distribution=self.distribution,
             id=self.id,
             node_preferences=self.node_preferences,
-            orchestrator_id=self.orchestrator_id)
+            orchestrator_id=self.orchestrator_id,
+            replacement_schedule=self.replacement_schedule)
 
 
 def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']] = None,
+                            commitment_integration: Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']] = None,
                             distribution: Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']] = None,
                             node_preferences: Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']] = None,
                             orchestrator_id: Optional[_builtins.str] = None,
+                            replacement_schedule: Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrchestratorConfigResult:
     """
-    Resource for ClusterOrchestrator Config.
+    Data Source for retrieving Harness CCM ClusterOrchestrator Config.
 
     ## Example Usage
 
@@ -118,31 +144,39 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
 
 
     :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict'] binpacking: Binpacking preferences for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
     :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
     :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict'] node_preferences: Node preferences for Cluster Orchestrator
     :param _builtins.str orchestrator_id: ID of the Cluster Orchestrator Object
+    :param Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict'] replacement_schedule: Replacement schedule for Cluster Orchestrator
     """
     __args__ = dict()
     __args__['binpacking'] = binpacking
+    __args__['commitmentIntegration'] = commitment_integration
     __args__['distribution'] = distribution
     __args__['nodePreferences'] = node_preferences
     __args__['orchestratorId'] = orchestrator_id
+    __args__['replacementSchedule'] = replacement_schedule
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:cluster/getOrchestratorConfig:getOrchestratorConfig', __args__, opts=opts, typ=GetOrchestratorConfigResult).value
 
     return AwaitableGetOrchestratorConfigResult(
         binpacking=pulumi.get(__ret__, 'binpacking'),
+        commitment_integration=pulumi.get(__ret__, 'commitment_integration'),
         distribution=pulumi.get(__ret__, 'distribution'),
         id=pulumi.get(__ret__, 'id'),
         node_preferences=pulumi.get(__ret__, 'node_preferences'),
-        orchestrator_id=pulumi.get(__ret__, 'orchestrator_id'))
+        orchestrator_id=pulumi.get(__ret__, 'orchestrator_id'),
+        replacement_schedule=pulumi.get(__ret__, 'replacement_schedule'))
 def get_orchestrator_config_output(binpacking: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']]]] = None,
+                                   commitment_integration: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']]]] = None,
                                    distribution: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']]]] = None,
                                    node_preferences: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']]]] = None,
                                    orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                   replacement_schedule: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrchestratorConfigResult]:
     """
-    Resource for ClusterOrchestrator Config.
+    Data Source for retrieving Harness CCM ClusterOrchestrator Config.
 
     ## Example Usage
 
@@ -155,20 +189,26 @@ def get_orchestrator_config_output(binpacking: Optional[pulumi.Input[Optional[Un
 
 
     :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict'] binpacking: Binpacking preferences for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
     :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
     :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict'] node_preferences: Node preferences for Cluster Orchestrator
     :param _builtins.str orchestrator_id: ID of the Cluster Orchestrator Object
+    :param Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict'] replacement_schedule: Replacement schedule for Cluster Orchestrator
     """
     __args__ = dict()
     __args__['binpacking'] = binpacking
+    __args__['commitmentIntegration'] = commitment_integration
     __args__['distribution'] = distribution
     __args__['nodePreferences'] = node_preferences
     __args__['orchestratorId'] = orchestrator_id
+    __args__['replacementSchedule'] = replacement_schedule
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:cluster/getOrchestratorConfig:getOrchestratorConfig', __args__, opts=opts, typ=GetOrchestratorConfigResult)
     return __ret__.apply(lambda __response__: GetOrchestratorConfigResult(
         binpacking=pulumi.get(__response__, 'binpacking'),
+        commitment_integration=pulumi.get(__response__, 'commitment_integration'),
         distribution=pulumi.get(__response__, 'distribution'),
         id=pulumi.get(__response__, 'id'),
         node_preferences=pulumi.get(__response__, 'node_preferences'),
-        orchestrator_id=pulumi.get(__response__, 'orchestrator_id')))
+        orchestrator_id=pulumi.get(__response__, 'orchestrator_id'),
+        replacement_schedule=pulumi.get(__response__, 'replacement_schedule')))

@@ -11,154 +11,10 @@ namespace Pulumi.Harness.Platform
 {
     /// <summary>
     /// Resource for creating a Harness Infrastructure.
-    /// ## Example to create Infrastructure at different levels (Org, Project, Account)
-    /// 
-    /// ### Account Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Infrastructure("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         EnvId = "environmentIdentifier",
-    ///         Type = "KubernetesDirect",
-    ///         DeploymentType = "Kubernetes",
-    ///         Yaml = @"infrastructureDefinition:
-    ///  name: name
-    ///  identifier: identifier
-    ///  description: """"
-    ///  tags:
-    ///    asda: """"
-    ///  orgIdentifier: orgIdentifer
-    ///  projectIdentifier: projectIdentifier
-    ///  environmentRef: environmentIdentifier
-    ///  deploymentType: Kubernetes
-    ///  type: KubernetesDirect
-    ///  spec:
-    ///   connectorRef: account.gfgf
-    ///   namespace: asdasdsa
-    ///   releaseName: release-&lt;+INFRA_KEY&gt;
-    ///   allowSimultaneousDeployments: false
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Org Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Infrastructure("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "orgIdentifer",
-    ///         EnvId = "environmentIdentifier",
-    ///         Type = "KubernetesDirect",
-    ///         DeploymentType = "Kubernetes",
-    ///         Yaml = @"infrastructureDefinition:
-    ///  name: name
-    ///  identifier: identifier
-    ///  description: """"
-    ///  tags:
-    ///    asda: """"
-    ///  orgIdentifier: orgIdentifer
-    ///  projectIdentifier: projectIdentifier
-    ///  environmentRef: environmentIdentifier
-    ///  deploymentType: Kubernetes
-    ///  type: KubernetesDirect
-    ///  spec:
-    ///   connectorRef: account.gfgf
-    ///   namespace: asdasdsa
-    ///   releaseName: release-&lt;+INFRA_KEY&gt;
-    ///   allowSimultaneousDeployments: false
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Project Level
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Harness.Platform.Infrastructure("example", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "orgIdentifer",
-    ///         ProjectId = "projectIdentifier",
-    ///         EnvId = "environmentIdentifier",
-    ///         Type = "KubernetesDirect",
-    ///         DeploymentType = "Kubernetes",
-    ///         Yaml = @"infrastructureDefinition:
-    ///  name: name
-    ///  identifier: identifier
-    ///  description: """"
-    ///  tags:
-    ///    asda: """"
-    ///  orgIdentifier: orgIdentifer
-    ///  projectIdentifier: projectIdentifier
-    ///  environmentRef: environmentIdentifier
-    ///  deploymentType: Kubernetes
-    ///  type: KubernetesDirect
-    ///  spec:
-    ///   connectorRef: account.gfgf
-    ///   namespace: asdasdsa
-    ///   releaseName: release-&lt;+INFRA_KEY&gt;
-    ///   allowSimultaneousDeployments: false
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Importing Infrastructure From Git
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harness = Pulumi.Harness;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Harness.Platform.Infrastructure("test", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         EnvId = "env_id",
-    ///         GitDetails = new Harness.Platform.Inputs.InfrastructureGitDetailsArgs
-    ///         {
-    ///             StoreType = "REMOTE",
-    ///             ConnectorRef = "connector_ref",
-    ///             RepoName = "repo_name",
-    ///             FilePath = "file_path",
-    ///             Branch = "branch",
-    ///             ImportFromGit = true,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
     /// 
     /// Import account level infrastructure
     /// 
@@ -200,13 +56,13 @@ namespace Pulumi.Harness.Platform
         public Output<string> EnvId { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, enables force deletion of infrastructure.
+        /// Enable this flag for force deletion of infrastructure
         /// </summary>
         [Output("forceDelete")]
         public Output<bool> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// Contains parameters related to creating an Entity for Git Experience.
         /// </summary>
         [Output("gitDetails")]
         public Output<Outputs.InfrastructureGitDetails> GitDetails { get; private set; } = null!;
@@ -319,13 +175,13 @@ namespace Pulumi.Harness.Platform
         public Input<string> EnvId { get; set; } = null!;
 
         /// <summary>
-        /// When set to true, enables force deletion of infrastructure.
+        /// Enable this flag for force deletion of infrastructure
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// Contains parameters related to creating an Entity for Git Experience.
         /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.InfrastructureGitDetailsArgs>? GitDetails { get; set; }
@@ -405,13 +261,13 @@ namespace Pulumi.Harness.Platform
         public Input<string>? EnvId { get; set; }
 
         /// <summary>
-        /// When set to true, enables force deletion of infrastructure.
+        /// Enable this flag for force deletion of infrastructure
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// Contains Git Information for remote entities from Git for Create/Update/Import
+        /// Contains parameters related to creating an Entity for Git Experience.
         /// </summary>
         [Input("gitDetails")]
         public Input<Inputs.InfrastructureGitDetailsGetArgs>? GitDetails { get; set; }

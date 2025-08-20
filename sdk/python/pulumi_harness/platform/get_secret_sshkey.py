@@ -164,6 +164,8 @@ def get_secret_sshkey(identifier: Optional[_builtins.str] = None,
                       project_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretSshkeyResult:
     """
+    Resource for looking up an SSH Key type secret.
+
     ## Example Usage
 
     ```python
@@ -204,6 +206,8 @@ def get_secret_sshkey_output(identifier: Optional[pulumi.Input[_builtins.str]] =
                              project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretSshkeyResult]:
     """
+    Resource for looking up an SSH Key type secret.
+
     ## Example Usage
 
     ```python

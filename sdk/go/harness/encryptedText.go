@@ -58,6 +58,8 @@ import (
 //
 // ## Import
 //
+// The `pulumi import` command can be used, for example:
+//
 // Import using the Harness encrypted text format.
 //
 // NOTE: The secret value cannot be decrypted and imported.

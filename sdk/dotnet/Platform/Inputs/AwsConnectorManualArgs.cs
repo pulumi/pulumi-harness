@@ -37,7 +37,7 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
-        /// Test Region to perform Connection test of AWS Connector.
+        /// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> SecretKeyRef { get; set; } = null!;
 
         /// <summary>
-        /// Reference to the Harness secret containing the aws session token.
+        /// Reference to the Harness secret containing the aws session token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("sessionTokenRef")]
         public Input<string>? SessionTokenRef { get; set; }

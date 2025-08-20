@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for managing infrastructure Variable Sets
+ * Resource for managing Variable Sets
  *
  * ## Example Usage
  *
@@ -74,16 +74,24 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ```sh
- * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <varset_id>
- * ```
+ * The `pulumi import` command can be used, for example:
+ *
+ * Import account level variable set
  *
  * ```sh
- * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<varset_id>
+ * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <variable_set_id>
  * ```
  *
+ * Import org level variable set
+ *
  * ```sh
- * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<varset_id>
+ * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <ord_id>/<variable_set_id>
+ * ```
+ *
+ * Import project level variable set
+ *
+ * ```sh
+ * $ pulumi import harness:platform/infraVariableSet:InfraVariableSet example <org_id>/<project_id>/<variable_set_id>
  * ```
  */
 export class InfraVariableSet extends pulumi.CustomResource {
@@ -115,7 +123,7 @@ export class InfraVariableSet extends pulumi.CustomResource {
     }
 
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
     public readonly connectors!: pulumi.Output<outputs.platform.InfraVariableSetConnector[] | undefined>;
     /**
@@ -123,7 +131,7 @@ export class InfraVariableSet extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      */
     public readonly environmentVariables!: pulumi.Output<outputs.platform.InfraVariableSetEnvironmentVariable[] | undefined>;
     /**
@@ -198,7 +206,7 @@ export class InfraVariableSet extends pulumi.CustomResource {
  */
 export interface InfraVariableSetState {
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetConnector>[]>;
     /**
@@ -206,7 +214,7 @@ export interface InfraVariableSetState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      */
     environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetEnvironmentVariable>[]>;
     /**
@@ -238,7 +246,7 @@ export interface InfraVariableSetState {
  */
 export interface InfraVariableSetArgs {
     /**
-     * Provider connector configured on the variable set
+     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetConnector>[]>;
     /**
@@ -246,7 +254,7 @@ export interface InfraVariableSetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Environment variables configured on the variable set
+     * Environment variables configured on the Variable Set
      */
     environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.InfraVariableSetEnvironmentVariable>[]>;
     /**

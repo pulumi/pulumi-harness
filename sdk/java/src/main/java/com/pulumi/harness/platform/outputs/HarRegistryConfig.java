@@ -25,7 +25,7 @@ public final class HarRegistryConfig {
      */
     private @Nullable List<HarRegistryConfigAuth> auths;
     /**
-     * @return Source of the upstream (only for UPSTREAM type)
+     * @return Upstream source
      * 
      */
     private @Nullable String source;
@@ -61,7 +61,7 @@ public final class HarRegistryConfig {
         return this.auths == null ? List.of() : this.auths;
     }
     /**
-     * @return Source of the upstream (only for UPSTREAM type)
+     * @return Upstream source
      * 
      */
     public Optional<String> source() {

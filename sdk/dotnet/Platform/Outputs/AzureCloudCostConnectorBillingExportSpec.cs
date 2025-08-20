@@ -14,6 +14,10 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class AzureCloudCostConnectorBillingExportSpec
     {
         /// <summary>
+        /// Billing type.
+        /// </summary>
+        public readonly string BillingType;
+        /// <summary>
         /// Name of the container.
         /// </summary>
         public readonly string ContainerName;
@@ -36,6 +40,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private AzureCloudCostConnectorBillingExportSpec(
+            string billingType,
+
             string containerName,
 
             string directoryName,
@@ -46,6 +52,7 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string subscriptionId)
         {
+            BillingType = billingType;
             ContainerName = containerName;
             DirectoryName = directoryName;
             ReportName = reportName;
